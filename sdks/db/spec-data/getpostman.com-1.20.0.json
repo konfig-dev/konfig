@@ -3,6 +3,1101 @@
   "openApiRaw": "https://gist.githubusercontent.com/MikeRalphson/f5dd7e7e712a4f2caa8f1783f1053dbc/raw/05fb7ae8b877b37d93413a0b8183bf60c2e1bdfe/postman-api.yaml",
   "homepage": "getpostman.com",
   "apiVersion": "1.20.0",
+  "methods": [
+    {
+      "url": "/apis",
+      "method": "getAllApIs",
+      "httpMethod": "get",
+      "tag": "API",
+      "description": "Get all APIs",
+      "parameters": [
+        {
+          "name": "workspace",
+          "schema": "string",
+          "description": "Only return APIs that are inside the given workspace."
+        },
+        {
+          "name": "since",
+          "schema": "string",
+          "description": "Only return APIs that have been updated after this time. Time is represented using the ISO 8601 date and time format."
+        },
+        {
+          "name": "until",
+          "schema": "string",
+          "description": "Only return APIs that have been updated before this time. Time is represented using the ISO 8601 date and time format."
+        },
+        {
+          "name": "createdBy",
+          "schema": "string",
+          "description": "Only return APIs that have been created by the user ID represented by the given value."
+        },
+        {
+          "name": "updatedBy",
+          "schema": "string",
+          "description": "Only return APIs that have been updated by the user ID represented by the given value."
+        },
+        {
+          "name": "isPublic",
+          "schema": "string",
+          "description": "Only return APIs with the corresponding privacy state. Public APIs have the isPublic value true; private APIs have the isPublic value false."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": "Only return APIs whose name includes the given value. Matching is case insensitive."
+        },
+        {
+          "name": "summary",
+          "schema": "string",
+          "description": "Only return APIs whose summary includes the given value. Matching is case insensitive."
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": "Only return APIs whose description includes the given value. Matching is case insensitive."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "The value of sort can be one of the names of the fields included in the response."
+        },
+        {
+          "name": "direction",
+          "schema": "string",
+          "description": "The sorting direction, which can be ascending or descending. The value can be asc to specify an ascending direction or desc to specify a descending direction. If none is specified, the default sorting direction is descending for timestamp and numeric fields and ascending otherwise. An ID is not considered a numeric field."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/apis",
+      "method": "createApi",
+      "httpMethod": "post",
+      "tag": "API",
+      "description": "Create API",
+      "parameters": [
+        {
+          "name": "workspace",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "api",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apis/{apiId}",
+      "method": "deleteAnApi",
+      "httpMethod": "delete",
+      "tag": "API",
+      "description": "Delete an API",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apis/{apiId}",
+      "method": "singleApi",
+      "httpMethod": "get",
+      "tag": "API",
+      "description": "Single API",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apis/{apiId}",
+      "method": "updateAnApi",
+      "httpMethod": "put",
+      "tag": "API",
+      "description": "Update an API",
+      "parameters": [
+        {
+          "name": "api",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apis/{apiId}/versions",
+      "method": "getAllApiVersions",
+      "httpMethod": "get",
+      "tag": "API",
+      "description": "Get All API Versions",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apis/{apiId}/versions",
+      "method": "createApiVersion",
+      "httpMethod": "post",
+      "tag": "API",
+      "description": "Create API Version",
+      "parameters": [
+        {
+          "name": "version",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apis/{apiId}/versions/{apiVersionId}",
+      "method": "deleteAnApiVersion",
+      "httpMethod": "delete",
+      "tag": "API",
+      "description": "Delete an API Version",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apis/{apiId}/versions/{apiVersionId}",
+      "method": "getAnApiVersion",
+      "httpMethod": "get",
+      "tag": "API",
+      "description": "Get an API Version",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apis/{apiId}/versions/{apiVersionId}",
+      "method": "updateAnApiVersion",
+      "httpMethod": "put",
+      "tag": "API",
+      "description": "Update an API Version",
+      "parameters": [
+        {
+          "name": "version",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apis/{apiId}/versions/{apiVersionId}/contracttest",
+      "method": "getContractTestRelations",
+      "httpMethod": "get",
+      "tag": "API",
+      "description": "Get contract test relations",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apis/{apiId}/versions/{apiVersionId}/documentation",
+      "method": "getDocumentationRelations",
+      "httpMethod": "get",
+      "tag": "API",
+      "description": "Get  documentation relations",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apis/{apiId}/versions/{apiVersionId}/environment",
+      "method": "getEnvironmentRelations",
+      "httpMethod": "get",
+      "tag": "API",
+      "description": "Get environment relations",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apis/{apiId}/versions/{apiVersionId}/integrationtest",
+      "method": "getIntegrationTestRelations",
+      "httpMethod": "get",
+      "tag": "API",
+      "description": "Get integration test relations",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apis/{apiId}/versions/{apiVersionId}/monitor",
+      "method": "getMonitorRelations",
+      "httpMethod": "get",
+      "tag": "API",
+      "description": "Get monitor relations",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apis/{apiId}/versions/{apiVersionId}/relations",
+      "method": "getLinkedRelations",
+      "httpMethod": "get",
+      "tag": "API",
+      "description": "Get linked relations",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apis/{apiId}/versions/{apiVersionId}/relations",
+      "method": "createRelations",
+      "httpMethod": "post",
+      "tag": "API",
+      "description": "Create relations",
+      "parameters": [
+        {
+          "name": "contracttest",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "documentation",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "mock",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "testsuite",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apis/{apiId}/versions/{apiVersionId}/schemas",
+      "method": "createSchema",
+      "httpMethod": "post",
+      "tag": "API",
+      "description": "Create Schema",
+      "parameters": [
+        {
+          "name": "schema",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apis/{apiId}/versions/{apiVersionId}/schemas/{schemaId}",
+      "method": "getSchema",
+      "httpMethod": "get",
+      "tag": "API",
+      "description": "Get Schema",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apis/{apiId}/versions/{apiVersionId}/schemas/{schemaId}",
+      "method": "updateSchema",
+      "httpMethod": "put",
+      "tag": "API",
+      "description": "Update Schema",
+      "parameters": [
+        {
+          "name": "schema",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apis/{apiId}/versions/{apiVersionId}/schemas/{schemaId}/collections",
+      "method": "createCollectionFromSchema",
+      "httpMethod": "post",
+      "tag": "API",
+      "description": "Create collection from schema",
+      "parameters": [
+        {
+          "name": "workspace",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "relations",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apis/{apiId}/versions/{apiVersionId}/testsuite",
+      "method": "getTestSuiteRelations",
+      "httpMethod": "get",
+      "tag": "API",
+      "description": "Get test suite relations",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apis/{apiId}/versions/{apiVersionId}/{entityType}/{entityId}/syncWithSchema",
+      "method": "syncRelationsWithSchema",
+      "httpMethod": "put",
+      "tag": "API",
+      "description": "Sync relations with schema",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections",
+      "method": "allCollections",
+      "httpMethod": "get",
+      "tag": "Collections",
+      "description": "All Collections",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections",
+      "method": "createCollection",
+      "httpMethod": "post",
+      "tag": "Collections",
+      "description": "Create Collection",
+      "parameters": [
+        {
+          "name": "collection",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections/fork/{collection_uid}",
+      "method": "createAFork",
+      "httpMethod": "post",
+      "tag": "Collections",
+      "description": "Create a Fork",
+      "parameters": [
+        {
+          "name": "workspace",
+          "schema": "string",
+          "description": "Workspace ID is required to create a fork"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/collections/merge",
+      "method": "mergeAFork",
+      "httpMethod": "post",
+      "tag": "Collections",
+      "description": "Merge a Fork",
+      "parameters": [
+        {
+          "name": "destination",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "source",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "strategy",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/collections/{collection_uid}",
+      "method": "deleteCollection",
+      "httpMethod": "delete",
+      "tag": "Collections",
+      "description": "Delete Collection",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections/{collection_uid}",
+      "method": "singleCollection",
+      "httpMethod": "get",
+      "tag": "Collections",
+      "description": "Single Collection ",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections/{collection_uid}",
+      "method": "updateCollection",
+      "httpMethod": "put",
+      "tag": "Collections",
+      "description": "Update Collection",
+      "parameters": [
+        {
+          "name": "collection",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/environments",
+      "method": "allEnvironments",
+      "httpMethod": "get",
+      "tag": "Environments",
+      "description": "All Environments",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/environments",
+      "method": "createEnvironment",
+      "httpMethod": "post",
+      "tag": "Environments",
+      "description": "Create Environment",
+      "parameters": [
+        {
+          "name": "environment",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/environments/{environment_uid}",
+      "method": "deleteEnvironment",
+      "httpMethod": "delete",
+      "tag": "Environments",
+      "description": "Delete Environment",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/environments/{environment_uid}",
+      "method": "singleEnvironment",
+      "httpMethod": "get",
+      "tag": "Environments",
+      "description": "Single Environment",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/environments/{environment_uid}",
+      "method": "updateEnvironment",
+      "httpMethod": "put",
+      "tag": "Environments",
+      "description": "Update Environment",
+      "parameters": [
+        {
+          "name": "environment",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/import/exported",
+      "method": "importExportedData",
+      "httpMethod": "post",
+      "tag": "Import",
+      "description": "Import exported data",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/import/openapi",
+      "method": "importExternalApiSpecification",
+      "httpMethod": "post",
+      "tag": "Import",
+      "description": "Import external API specification",
+      "parameters": [
+        {
+          "name": "input",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/me",
+      "method": "apiKeyOwner",
+      "httpMethod": "get",
+      "tag": "User",
+      "description": "API Key Owner",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mocks",
+      "method": "allMocks",
+      "httpMethod": "get",
+      "tag": "Mocks",
+      "description": "All Mocks",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mocks",
+      "method": "createMock",
+      "httpMethod": "post",
+      "tag": "Mocks",
+      "description": "Create Mock",
+      "parameters": [
+        {
+          "name": "mock",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mocks/{mock_uid}",
+      "method": "deleteMock",
+      "httpMethod": "delete",
+      "tag": "Mocks",
+      "description": "Delete Mock",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mocks/{mock_uid}",
+      "method": "singleMock",
+      "httpMethod": "get",
+      "tag": "Mocks",
+      "description": "Single Mock",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mocks/{mock_uid}",
+      "method": "updateMock",
+      "httpMethod": "put",
+      "tag": "Mocks",
+      "description": "Update Mock",
+      "parameters": [
+        {
+          "name": "mock",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mocks/{mock_uid}/publish",
+      "method": "publishMock",
+      "httpMethod": "post",
+      "tag": "Mocks",
+      "description": "Publish Mock",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mocks/{mock_uid}/unpublish",
+      "method": "unpublishMock",
+      "httpMethod": "delete",
+      "tag": "Mocks",
+      "description": "Unpublish Mock",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/monitors",
+      "method": "allMonitors",
+      "httpMethod": "get",
+      "tag": "Monitors",
+      "description": "All Monitors",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/monitors",
+      "method": "createMonitor",
+      "httpMethod": "post",
+      "tag": "Monitors",
+      "description": "Create Monitor",
+      "parameters": [
+        {
+          "name": "monitor",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/monitors/{monitor_uid}",
+      "method": "deleteMonitor",
+      "httpMethod": "delete",
+      "tag": "Monitors",
+      "description": "Delete Monitor",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/monitors/{monitor_uid}",
+      "method": "singleMonitor",
+      "httpMethod": "get",
+      "tag": "Monitors",
+      "description": "Single Monitor",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/monitors/{monitor_uid}",
+      "method": "updateMonitor",
+      "httpMethod": "put",
+      "tag": "Monitors",
+      "description": "Update Monitor",
+      "parameters": [
+        {
+          "name": "monitor",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/monitors/{monitor_uid}/run",
+      "method": "runAMonitor",
+      "httpMethod": "post",
+      "tag": "Monitors",
+      "description": "Run a Monitor",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/webhooks",
+      "method": "createWebhook",
+      "httpMethod": "post",
+      "tag": "Webhooks",
+      "description": "Create Webhook",
+      "parameters": [
+        {
+          "name": "workspace",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "webhook",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/workspaces",
+      "method": "allWorkspaces",
+      "httpMethod": "get",
+      "tag": "Workspaces",
+      "description": "All workspaces",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/workspaces",
+      "method": "createWorkspace",
+      "httpMethod": "post",
+      "tag": "Workspaces",
+      "description": "Create Workspace",
+      "parameters": [
+        {
+          "name": "workspace",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/workspaces/{workspace_id}",
+      "method": "deleteWorkspace",
+      "httpMethod": "delete",
+      "tag": "Workspaces",
+      "description": "Delete Workspace",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/workspaces/{workspace_id}",
+      "method": "singleWorkspace",
+      "httpMethod": "get",
+      "tag": "Workspaces",
+      "description": "Single workspace",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/workspaces/{workspace_id}",
+      "method": "updateWorkspace",
+      "httpMethod": "put",
+      "tag": "Workspaces",
+      "description": "Update Workspace",
+      "parameters": [
+        {
+          "name": "workspace",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.getpostman.com",
   "apiDescription": "The Postman API allows you to programmatically access data stored in Postman account with ease.\n\nThe easiest way to get started with the API is to click the **fork** button to fork this collection to your own workspace and use Postman to send requests.\n\n\n# Overview\n\n1. You need a valid <a href=\"#authentication\">API Key</a> to send requests to the API endpoints. You can get your key from the [integrations dashboard](https://go.postman.co/settings/me/api-keys).\n\n1. The API has an access <a href=\"#rate-limits\">rate limit</a> applied to it.\n\n1. The Postman API will only respond to secured communication done over HTTPS. HTTP requests will be sent a `301` redirect to corresponding HTTPS resources.\n\n1. Response to every request is sent in [JSON format](https://en.wikipedia.org/wiki/JSON). In case the API request results in an error, it is represented by an `\"error\": {}` key in the JSON response.\n\n1. The request method (verb) determines the nature of action you intend to perform. A request made using the `GET` method implies that you want to fetch something from Postman, and `POST` implies you want to save something new to Postman.\n\n1. The API calls will respond with appropriate [HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) for all requests. Within Postman Client, when a response is received, the status code is highlighted and is accompanied by a help text that indicates the possible meaning of the response code. A `200 OK` indicates all went well, while `4XX` or `5XX` response codes indicate an error from the requesting client or our API servers respectively.\n\n1. Individual resources in your Postman Account is accessible using its unique id (`uid`). The `uid` is a simple concatenation of the resource owner's user-id and the resource-id. For example, a collection's `uid` is `{{owner_id}}-{{collection_id}}`.\n\n# Authentication\n\nAn API Key is required to be sent as part of every request to the Postman API, in the form of an `X-Api-Key` request header.\n\n> If you do not have an API Key, you can easily generate one by heading over to the [Postman Integrations Dashboard](https://go.postman.co/integrations/services/pm_pro_api).\n\nAn API Key tells our API server that the request it received came from you. Everything that you have access to in Postman is accessible with an API Key that is generated by you.\n\nFor ease of use inside Postman, you could store your API key in an [environment variable](https://www.getpostman.com/docs/environments) called `postman_api_key` and this [Collection](https://www.getpostman.com/docs/collections) will automatically use it to make API calls.\n\n## API Key related error response\n\nIf an API Key is missing, malformed, or invalid, you will receive a `401 Unauthorised` response code and the following JSON response:\n\n```\n{\n  \"error\": { \n    \"name\": \"AuthenticationError\",\n    \"message\": \"API Key missing. Every request requires an API Key to be sent.\"\n  }\n}\n```\n\n## Using the API Key as a query parameter\n\nEvery request that accepts API Key as `X-Api-Key` request header, also accepts the key when sent as `apikey` URL query parameter.\n\nAPI key sent as part of the header has a higher priority in case you send the key using both request header and query parameter.\n\n\n# Rate Limits\n\nAPI access rate limits are applied at a per-key basis in unit time. Access to the API using a key is limited to **60 requests per minute**. In addition, every API response is accompanied by the following set of headers to identify the status of your consumption.\n\n\n| Header                  | Description |\n|-------------------------|-------------|\n| `X-RateLimit-Limit`     | The maximum number of requests that the consumer is permitted to make per minute. |\n| `X-RateLimit-Remaining` | The number of requests remaining in the current rate limit window. |\n| `X-RateLimit-Reset`     | The time at which the current rate limit window resets in UTC epoch seconds. |\n\n\nOnce you hit the rate limit, you will receive a response similar to the following JSON, with a status code of `429 Too Many Requests`.\n\n```json\n{\n  \"error\": {\n    \"name\": \"rateLimitError\",\n    \"message\": \"Rate Limit exceeded. Please retry at 1465452702843\"\n  }\n}\n```\n\n\n# Support\n\nFor help regarding accessing the Postman API, feel free to discuss it in our [Discourse Community](https://community.getpostman.com). You can also drop in a line at [help@getpostman.com](mailto:help@getpostman.com).\n\nIn the event you receive a `503` response from our servers, it implies that we have hit an unexpected spike in API access traffic and would usually be operational within the next 5 minutes. If the outage persists, or your receive any other form of `5XX` error, kindly let us know.\n\n\n# Terms of Use\n\nFor information on API terms of use and privacy, refer to our terms at [http://postman.com/legal/terms/](http://postman.com/legal/terms/) and our privacy policy at [https://www.postman.com/legal/privacy-policy/](https://www.postman.com/legal/privacy-policy/).\n\n\n# API Reference",
   "apiTitle": "Postman API",

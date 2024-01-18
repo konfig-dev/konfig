@@ -3,6 +3,198 @@
   "openApiRaw": "https://bikewise.org/api/v2/swagger_doc",
   "homepage": "bikewise.org",
   "apiVersion": "v2",
+  "methods": [
+    {
+      "url": "/v2/incidents",
+      "method": "getVersionIncidentsFormat",
+      "httpMethod": "get",
+      "tag": "incidents",
+      "description": "Paginated incidents matching parameters",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "<p>Page of results to fetch.</p>\n"
+        },
+        {
+          "name": "per_page",
+          "schema": "integer",
+          "required": false,
+          "description": "<p>Number of results to return per page.</p>\n"
+        },
+        {
+          "name": "occurred_before",
+          "schema": "integer",
+          "required": false,
+          "description": "<p>End of period</p>\n"
+        },
+        {
+          "name": "occurred_after",
+          "schema": "integer",
+          "required": false,
+          "description": "<p>Start of period</p>\n"
+        },
+        {
+          "name": "incident_type",
+          "schema": "string",
+          "required": false,
+          "description": "<p>Only incidents of specific type</p>\n"
+        },
+        {
+          "name": "proximity",
+          "schema": "string",
+          "required": false,
+          "description": "<p>Center of location for proximity search</p>\n"
+        },
+        {
+          "name": "proximity_square",
+          "schema": "integer",
+          "required": false,
+          "description": "<p>Size of the proximity search</p>\n"
+        },
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "<p>Full text search of incidents</p>\n"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v2/incidents/{id}",
+      "method": "getVersionIncidentsIdFormat",
+      "httpMethod": "get",
+      "tag": "incidents",
+      "description": "",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "<p>Incident ID</p>\n"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v2/locations",
+      "method": "getVersionLocationsFormat",
+      "httpMethod": "get",
+      "tag": "locations",
+      "description": "Unpaginated geojson response",
+      "parameters": [
+        {
+          "name": "occurred_before",
+          "schema": "integer",
+          "required": false,
+          "description": "<p>End of period</p>\n"
+        },
+        {
+          "name": "occurred_after",
+          "schema": "integer",
+          "required": false,
+          "description": "<p>Start of period</p>\n"
+        },
+        {
+          "name": "incident_type",
+          "schema": "string",
+          "required": false,
+          "description": "<p>Only incidents of specific type</p>\n"
+        },
+        {
+          "name": "proximity",
+          "schema": "string",
+          "required": false,
+          "description": "<p>Center of location for proximity search</p>\n"
+        },
+        {
+          "name": "proximity_square",
+          "schema": "integer",
+          "required": false,
+          "description": "<p>Size of the proximity search</p>\n"
+        },
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "<p>Full text search of incidents</p>\n"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "<p>Max number of results to return. Defaults to 100</p>\n"
+        },
+        {
+          "name": "all",
+          "schema": "boolean",
+          "required": false,
+          "description": "<p>Give ‘em all to me. Will ignore limit</p>\n"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v2/locations/markers",
+      "method": "getVersionLocationsMarkersFormat",
+      "httpMethod": "get",
+      "tag": "locations",
+      "description": "Unpaginated geojson response with simplestyled markers",
+      "parameters": [
+        {
+          "name": "occurred_before",
+          "schema": "integer",
+          "required": false,
+          "description": "<p>End of period</p>\n"
+        },
+        {
+          "name": "occurred_after",
+          "schema": "integer",
+          "required": false,
+          "description": "<p>Start of period</p>\n"
+        },
+        {
+          "name": "incident_type",
+          "schema": "string",
+          "required": false,
+          "description": "<p>Only incidents of specific type</p>\n"
+        },
+        {
+          "name": "proximity",
+          "schema": "string",
+          "required": false,
+          "description": "<p>Center of location for proximity search</p>\n"
+        },
+        {
+          "name": "proximity_square",
+          "schema": "integer",
+          "required": false,
+          "description": "<p>Size of the proximity search</p>\n"
+        },
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "<p>Full text search of incidents</p>\n"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "<p>Max number of results to return. Defaults to 100</p>\n"
+        },
+        {
+          "name": "all",
+          "schema": "boolean",
+          "required": false,
+          "description": "<p>Give ‘em all to me. Will ignore limit</p>\n"
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://bikewise.org/api",
   "apiDescription": "<p>This is an API for accessing information about bicycling related incidents. You can find the source code on <a href=\"https://github.com/bikeindex/bikewise\">GitHub</a>.</p>\n",
   "apiTitle": "BikeWise API v2",

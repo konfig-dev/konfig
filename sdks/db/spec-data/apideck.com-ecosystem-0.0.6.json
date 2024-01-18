@@ -4,6 +4,367 @@
   "homepage": "apideck.com",
   "serviceName": "ecosystem",
   "apiVersion": "0.0.6",
+  "methods": [
+    {
+      "url": "/ecosystems/{ecosystem_id}",
+      "method": "ecosystemsOne",
+      "httpMethod": "get",
+      "tag": "Ecosystem",
+      "description": "Get ecosystem",
+      "parameters": [
+        {
+          "name": "ecosystem_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ecosystems/{ecosystem_id}/categories",
+      "method": "categoriesAll",
+      "httpMethod": "get",
+      "tag": "Category",
+      "description": "List categories",
+      "parameters": [
+        {
+          "name": "ecosystem_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "cursor",
+          "schema": "string",
+          "description": "Cursor to start from. You can find cursors for next/previous pages in the meta.cursors property of the response."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Number of records to return"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ecosystems/{ecosystem_id}/categories/{id}",
+      "method": "categoriesOne",
+      "httpMethod": "get",
+      "tag": "Category",
+      "description": "Get category",
+      "parameters": [
+        {
+          "name": "ecosystem_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the record you are acting upon."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ecosystems/{ecosystem_id}/categories/{id}/listings",
+      "method": "categoryListingsAll",
+      "httpMethod": "get",
+      "tag": "Category",
+      "description": "List category listings",
+      "parameters": [
+        {
+          "name": "ecosystem_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the record you are acting upon."
+        },
+        {
+          "name": "cursor",
+          "schema": "string",
+          "description": "Cursor to start from. You can find cursors for next/previous pages in the meta.cursors property of the response."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Number of records to return"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ecosystems/{ecosystem_id}/collections",
+      "method": "collectionsAll",
+      "httpMethod": "get",
+      "tag": "Collection",
+      "description": "List collections",
+      "parameters": [
+        {
+          "name": "ecosystem_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "cursor",
+          "schema": "string",
+          "description": "Cursor to start from. You can find cursors for next/previous pages in the meta.cursors property of the response."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Number of records to return"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ecosystems/{ecosystem_id}/collections/{id}",
+      "method": "collectionsOne",
+      "httpMethod": "get",
+      "tag": "Collection",
+      "description": "Get collection",
+      "parameters": [
+        {
+          "name": "ecosystem_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the record you are acting upon."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ecosystems/{ecosystem_id}/collections/{id}/listings",
+      "method": "collectionListingsAll",
+      "httpMethod": "get",
+      "tag": "Collection",
+      "description": "List collection listings",
+      "parameters": [
+        {
+          "name": "ecosystem_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the record you are acting upon."
+        },
+        {
+          "name": "cursor",
+          "schema": "string",
+          "description": "Cursor to start from. You can find cursors for next/previous pages in the meta.cursors property of the response."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Number of records to return"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ecosystems/{ecosystem_id}/listings",
+      "method": "listingsAll",
+      "httpMethod": "get",
+      "tag": "Listing",
+      "description": "List listings",
+      "parameters": [
+        {
+          "name": "ecosystem_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "cursor",
+          "schema": "string",
+          "description": "Cursor to start from. You can find cursors for next/previous pages in the meta.cursors property of the response."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Number of records to return"
+        },
+        {
+          "name": "external_id",
+          "schema": "string",
+          "description": "Filter on external_id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ecosystems/{ecosystem_id}/listings/{id}",
+      "method": "listingsOne",
+      "httpMethod": "get",
+      "tag": "Listing",
+      "description": "Get listing",
+      "parameters": [
+        {
+          "name": "ecosystem_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the record you are acting upon."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ecosystems/{ecosystem_id}/products",
+      "method": "productsAll",
+      "httpMethod": "get",
+      "tag": "Product",
+      "description": "List products",
+      "parameters": [
+        {
+          "name": "ecosystem_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ecosystems/{ecosystem_id}/products/{id}",
+      "method": "productsOne",
+      "httpMethod": "get",
+      "tag": "Product",
+      "description": "Get product",
+      "parameters": [
+        {
+          "name": "ecosystem_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the record you are acting upon."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ecosystems/{ecosystem_id}/products/{id}/listings",
+      "method": "productListingsAll",
+      "httpMethod": "get",
+      "tag": "Product",
+      "description": "List product listings",
+      "parameters": [
+        {
+          "name": "ecosystem_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the record you are acting upon."
+        },
+        {
+          "name": "cursor",
+          "schema": "string",
+          "description": "Cursor to start from. You can find cursors for next/previous pages in the meta.cursors property of the response."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Number of records to return"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.apideck.com",
   "apiDescription": "Ecosystem API",
   "apiTitle": "Ecosystem API",

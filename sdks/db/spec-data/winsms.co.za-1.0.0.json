@@ -3,6 +3,519 @@
   "openApiRaw": "https://www.winsms.co.za/api/restdocs/swagger.json",
   "homepage": "winsms.co.za",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/credits/balance",
+      "method": "getCreditBalance",
+      "httpMethod": "get",
+      "tag": "credits",
+      "description": "Get your current WinSMS credit balance",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/credits/transfer",
+      "method": "transferCredits",
+      "httpMethod": "post",
+      "tag": "credits",
+      "description": "Transfer credits between main and sub accounts.",
+      "parameters": [
+        {
+          "name": "receivingAccountNumber",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "sendingAccountNumber",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "transferQuantity",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "413",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/shortcode/incoming",
+      "method": "getShortCodeMessages",
+      "httpMethod": "get",
+      "tag": "shortcode",
+      "description": "Get a list of incoming short/long code messages\n",
+      "parameters": [
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "***Optional*** - The number of items to skip before starting to return results. Default 0. Minimum 0.\n"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "***Optional*** - The number of items to return. Default 100. Minimum 1. Maximum 1000.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sms/incoming",
+      "method": "getIncomingMessages",
+      "httpMethod": "get",
+      "tag": "sms",
+      "description": "Get a list of incoming SMS messages",
+      "parameters": [
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "***Optional*** - The number of items to skip before starting to return results. Default 0. Minimum 0.\n"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "***Optional*** - The number of items to return. Default 100. Minimum 1. Maximum 1000.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sms/incoming/optout",
+      "method": "getOptoutMessages",
+      "httpMethod": "get",
+      "tag": "sms",
+      "description": "Get a list of incoming opt-out SMS messages",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sms/outgoing/send",
+      "method": "smsSend",
+      "httpMethod": "post",
+      "tag": "sms",
+      "description": "Send SMS messages",
+      "parameters": [
+        {
+          "name": "maxSegments",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "recipients",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "scheduledTime",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "413",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sms/outgoing/sendmulti",
+      "method": "smsSendBatch",
+      "httpMethod": "post",
+      "tag": "sms",
+      "description": "Send multiple different SMS messages",
+      "parameters": [
+        {
+          "name": "messages",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "413",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sms/outgoing/status",
+      "method": "smsStatus",
+      "httpMethod": "post",
+      "tag": "sms",
+      "description": "Get SMS delivery statuses",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "413",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sms/scheduled",
+      "method": "getScheduledMessages",
+      "httpMethod": "get",
+      "tag": "sms",
+      "description": "Get a list of scheduled SMS messages",
+      "parameters": [
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "***Optional*** - The number of items to skip before starting to return results. Default 0. Minimum 0.\n"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "***Optional*** - The number of items to return. Default 100. Minimum 1. Maximum 1000.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sms/scheduled/delete",
+      "method": "deleteScheduledMessages",
+      "httpMethod": "post",
+      "tag": "sms",
+      "description": "Delete scheduled SMS messages and refund credits",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "413",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/subaccounts",
+      "method": "getSubAccounts",
+      "httpMethod": "get",
+      "tag": "subaccounts",
+      "description": "Get a list of all Sub Accounts.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://www.winsms.co.za/api/rest/v1",
   "apiDescription": "WinSMS RESTful API",
   "apiTitle": "WINSMS",

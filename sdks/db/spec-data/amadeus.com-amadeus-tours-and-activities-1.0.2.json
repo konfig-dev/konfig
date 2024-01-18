@@ -4,6 +4,121 @@
   "homepage": "amadeus.com",
   "serviceName": "amadeus-tours-and-activities",
   "apiVersion": "1.0.2",
+  "methods": [
+    {
+      "url": "/shopping/activities",
+      "method": "listActivities",
+      "httpMethod": "get",
+      "tag": "Search",
+      "description": "Returns Activities around a given location",
+      "parameters": [
+        {
+          "name": "latitude",
+          "schema": "number",
+          "required": true,
+          "description": "Latitude (decimal coordinates)"
+        },
+        {
+          "name": "longitude",
+          "schema": "number",
+          "required": true,
+          "description": "Longitude (decimal coordinates)"
+        },
+        {
+          "name": "radius",
+          "schema": "integer",
+          "description": "radius of the search in Kilometer. Can be from 0 to 20, default value is 1 Km."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/shopping/activities/by-square",
+      "method": "listActivitiesBySquare",
+      "httpMethod": "get",
+      "tag": "Search",
+      "description": "Returns Activities around a given location",
+      "parameters": [
+        {
+          "name": "north",
+          "schema": "number",
+          "required": true,
+          "description": "Latitude north of bounding box (decimal coordinates)"
+        },
+        {
+          "name": "west",
+          "schema": "number",
+          "required": true,
+          "description": "Longitude west of bounding box (decimal coordinates)"
+        },
+        {
+          "name": "south",
+          "schema": "number",
+          "required": true,
+          "description": "Latitude south of bounding box (decimal coordinates)"
+        },
+        {
+          "name": "east",
+          "schema": "number",
+          "required": true,
+          "description": "Longitude east of bounding box (decimal coordinates)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/shopping/activities/{activityId}",
+      "method": "getActivity",
+      "httpMethod": "get",
+      "tag": "Retrieve",
+      "description": "Retrieve one activity by its id",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://test.api.amadeus.com/v1",
   "apiDescription": "\nBefore using this API, we recommend you read our **[Authorization Guide](https://developers.amadeus.com/self-service/apis-docs/guides/authorization-262)** for more information on how to generate an access token. \n  \nPlease also be aware that our test environment is based on a subset of the production, this API in test only returns a few selected cities. You can find the list in our **[data collection](https://github.com/amadeus4dev/data-collection)**.",
   "apiTitle": "Tours and Activities",

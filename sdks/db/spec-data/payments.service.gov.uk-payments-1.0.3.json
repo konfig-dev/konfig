@@ -4,6 +4,520 @@
   "homepage": "payments.service.gov.uk",
   "serviceName": "payments",
   "apiVersion": "1.0.3",
+  "methods": [
+    {
+      "url": "/v1/payments",
+      "method": "searchPayments",
+      "httpMethod": "get",
+      "tag": "Card payments",
+      "description": "Search payments",
+      "parameters": [
+        {
+          "name": "reference",
+          "schema": "string",
+          "required": false,
+          "description": "Your payment reference to search (exact match, case insensitive)"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": false,
+          "description": "The user email used in the payment to be searched"
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "required": false,
+          "description": "State of payments to be searched. Example=success"
+        },
+        {
+          "name": "card_brand",
+          "schema": "string",
+          "required": false,
+          "description": "Card brand used for payment. Example=master-card"
+        },
+        {
+          "name": "from_date",
+          "schema": "string",
+          "required": false,
+          "description": "From date of payments to be searched (this date is inclusive). Example=2015-08-13T12:35:00Z"
+        },
+        {
+          "name": "to_date",
+          "schema": "string",
+          "required": false,
+          "description": "To date of payments to be searched (this date is exclusive). Example=2015-08-14T12:35:00Z"
+        },
+        {
+          "name": "page",
+          "schema": "string",
+          "required": false,
+          "description": "Page number requested for the search, should be a positive integer (optional, defaults to 1)"
+        },
+        {
+          "name": "display_size",
+          "schema": "string",
+          "required": false,
+          "description": "Number of results to be shown per page, should be a positive integer (optional, defaults to 500, max 500)"
+        },
+        {
+          "name": "cardholder_name",
+          "schema": "string",
+          "required": false,
+          "description": "Name on card used to make payment"
+        },
+        {
+          "name": "first_digits_card_number",
+          "schema": "string",
+          "required": false,
+          "description": "First six digits of the card used to make payment"
+        },
+        {
+          "name": "last_digits_card_number",
+          "schema": "string",
+          "required": false,
+          "description": "Last four digits of the card used to make payment"
+        },
+        {
+          "name": "from_settled_date",
+          "schema": "string",
+          "required": false,
+          "description": "From settled date of payment to be searched (this date is inclusive). Example=2015-08-13"
+        },
+        {
+          "name": "to_settled_date",
+          "schema": "string",
+          "required": false,
+          "description": "To settled date of payment to be searched (this date is inclusive). Example=2015-08-14"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Payment Error response"
+        },
+        {
+          "statusCode": "429",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A Payment Error response"
+        }
+      ]
+    },
+    {
+      "url": "/v1/payments",
+      "method": "createAPayment",
+      "httpMethod": "post",
+      "tag": "Card payments",
+      "description": "Create new payment",
+      "parameters": [
+        {
+          "name": "amount",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "delayed_capture",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "moto",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "prefilled_cardholder_details",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reference",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "return_url",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "A Payment Error response"
+        },
+        {
+          "statusCode": "422",
+          "description": "A Payment Error response"
+        },
+        {
+          "statusCode": "429",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A Payment Error response"
+        }
+      ]
+    },
+    {
+      "url": "/v1/payments/{paymentId}",
+      "method": "getAPayment",
+      "httpMethod": "get",
+      "tag": "Card payments",
+      "description": "Find payment by ID",
+      "parameters": [
+        {
+          "name": "paymentId",
+          "schema": "string",
+          "required": true,
+          "description": "Payment identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": "A Payment Error response"
+        },
+        {
+          "statusCode": "429",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A Payment Error response"
+        }
+      ]
+    },
+    {
+      "url": "/v1/payments/{paymentId}/cancel",
+      "method": "cancelAPayment",
+      "httpMethod": "post",
+      "tag": "Card payments",
+      "description": "Cancel payment",
+      "parameters": [
+        {
+          "name": "paymentId",
+          "schema": "string",
+          "required": true,
+          "description": "Payment identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": "A Payment Error response"
+        },
+        {
+          "statusCode": "404",
+          "description": "A Payment Error response"
+        },
+        {
+          "statusCode": "409",
+          "description": "A Payment Error response"
+        },
+        {
+          "statusCode": "429",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A Payment Error response"
+        }
+      ]
+    },
+    {
+      "url": "/v1/payments/{paymentId}/capture",
+      "method": "captureAPayment",
+      "httpMethod": "post",
+      "tag": "Card payments",
+      "description": "Capture payment",
+      "parameters": [
+        {
+          "name": "paymentId",
+          "schema": "string",
+          "required": true,
+          "description": "Payment identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": "A Payment Error response"
+        },
+        {
+          "statusCode": "404",
+          "description": "A Payment Error response"
+        },
+        {
+          "statusCode": "409",
+          "description": "A Payment Error response"
+        },
+        {
+          "statusCode": "429",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A Payment Error response"
+        }
+      ]
+    },
+    {
+      "url": "/v1/payments/{paymentId}/events",
+      "method": "getEventsForAPayment",
+      "httpMethod": "get",
+      "tag": "Card payments",
+      "description": "Return payment events by ID",
+      "parameters": [
+        {
+          "name": "paymentId",
+          "schema": "string",
+          "required": true,
+          "description": "Payment identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A List of Payment Events information"
+        },
+        {
+          "statusCode": "404",
+          "description": "A Payment Error response"
+        },
+        {
+          "statusCode": "429",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A Payment Error response"
+        }
+      ]
+    },
+    {
+      "url": "/v1/payments/{paymentId}/refunds",
+      "method": "getAllRefundsForAPayment",
+      "httpMethod": "get",
+      "tag": "Refunding card payments",
+      "description": "Get all refunds for a payment",
+      "parameters": [
+        {
+          "name": "paymentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": "A Payment Error response"
+        },
+        {
+          "statusCode": "429",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A Payment Error response"
+        }
+      ]
+    },
+    {
+      "url": "/v1/payments/{paymentId}/refunds",
+      "method": "submitARefundForAPayment",
+      "httpMethod": "post",
+      "tag": "Refunding card payments",
+      "description": "Submit a refund for a payment",
+      "parameters": [
+        {
+          "name": "paymentId",
+          "schema": "string",
+          "required": true,
+          "description": "paymentId"
+        },
+        {
+          "name": "amount",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "refund_amount_available",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": "A Payment Error response"
+        },
+        {
+          "statusCode": "429",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A Payment Error response"
+        }
+      ]
+    },
+    {
+      "url": "/v1/payments/{paymentId}/refunds/{refundId}",
+      "method": "getAPaymentRefund",
+      "httpMethod": "get",
+      "tag": "Refunding card payments",
+      "description": "Find payment refund by ID",
+      "parameters": [
+        {
+          "name": "paymentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "refundId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": "A Payment Error response"
+        },
+        {
+          "statusCode": "429",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A Payment Error response"
+        }
+      ]
+    },
+    {
+      "url": "/v1/refunds",
+      "method": "searchRefunds",
+      "httpMethod": "get",
+      "tag": "Refunding card payments",
+      "description": "Search refunds",
+      "parameters": [
+        {
+          "name": "from_date",
+          "schema": "string",
+          "required": false,
+          "description": "From date of refunds to be searched (this date is inclusive). Example=2015-08-13T12:35:00Z"
+        },
+        {
+          "name": "to_date",
+          "schema": "string",
+          "required": false,
+          "description": "To date of refunds to be searched (this date is exclusive). Example=2015-08-14T12:35:00Z"
+        },
+        {
+          "name": "from_settled_date",
+          "schema": "string",
+          "required": false,
+          "description": "From settled date of refund to be searched (this date is inclusive). Example=2015-08-13"
+        },
+        {
+          "name": "to_settled_date",
+          "schema": "string",
+          "required": false,
+          "description": "To settled date of refund to be searched (this date is inclusive). Example=2015-08-13"
+        },
+        {
+          "name": "page",
+          "schema": "string",
+          "required": false,
+          "description": "Page number requested for the search, should be a positive integer (optional, defaults to 1)"
+        },
+        {
+          "name": "display_size",
+          "schema": "string",
+          "required": false,
+          "description": "Number of results to be shown per page, should be a positive integer (optional, defaults to 500, max 500)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Refund Error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A Refund Error response"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://publicapi.payments.service.gov.uk",
   "apiDescription": "GOV.UK Pay API (This version is no longer maintained. See openapi/publicapi_spec.json for latest API specification)",
   "apiTitle": "GOV.UK Pay API",

@@ -4,6 +4,143 @@
   "homepage": "mermade.org.uk",
   "serviceName": "openapi-converter",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/badge",
+      "method": "getBadge",
+      "httpMethod": "get",
+      "tag": "validation",
+      "description": "Return a redirect to a badge svg file depending on a source definition's validity",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": "The URL to retrieve the OpenAPI 3.0.x definition from"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/convert",
+      "method": "convertUrl",
+      "httpMethod": "get",
+      "tag": "conversion",
+      "description": "Convert a Swagger 2.0 definition to OpenAPI 3.0.x from a URL",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": "The URL to retrieve the OpenAPI 2.0 definition from"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/convert",
+      "method": "convert",
+      "httpMethod": "post",
+      "tag": "conversion",
+      "description": "Convert a Swagger 2.0 definition passed in the body to OpenAPI 3.0.x ",
+      "parameters": [
+        {
+          "name": "filename",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "source",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "validate",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/status",
+      "method": "getStatus",
+      "httpMethod": "get",
+      "tag": "metadata",
+      "description": "Get the status of the API",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/validate",
+      "method": "validateUrl",
+      "httpMethod": "get",
+      "tag": "validation",
+      "description": "Validate an OpenAPI 3.0.x definition",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": "The URL to retrieve the OpenAPI 3.0.x definition from"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/validate",
+      "method": "validate",
+      "httpMethod": "post",
+      "tag": "validation",
+      "description": "Validate an OpenAPI 3.0.x definition supplied in the body of the request",
+      "parameters": [
+        {
+          "name": "filename",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "source",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://mermade.org.uk/api/v1",
   "apiDescription": "Converter and validator for Swagger 2.0 to OpenAPI 3.0.x definitions",
   "apiTitle": "Swagger2OpenAPI Converter",

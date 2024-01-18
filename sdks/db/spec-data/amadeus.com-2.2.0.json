@@ -3,6 +3,174 @@
   "openApiRaw": "https://developers.amadeus.com/PAS-EAS/api/v0/documents/10181/file",
   "homepage": "amadeus.com",
   "apiVersion": "2.2.0",
+  "methods": [
+    {
+      "url": "/shopping/flight-offers",
+      "method": "getFlightOffers",
+      "httpMethod": "get",
+      "tag": "Shopping",
+      "description": "Return list of Flight Offers based on searching criteria.",
+      "parameters": [
+        {
+          "name": "originLocationCode",
+          "schema": "string",
+          "required": true,
+          "description": "city/airport [IATA code](http://www.iata.org/publications/Pages/code-search.aspx) from which the traveler will depart, e.g. BOS for Boston"
+        },
+        {
+          "name": "destinationLocationCode",
+          "schema": "string",
+          "required": true,
+          "description": "city/airport [IATA code](http://www.iata.org/publications/Pages/code-search.aspx) to which the traveler is going, e.g. PAR for Paris"
+        },
+        {
+          "name": "departureDate",
+          "schema": "string",
+          "required": true,
+          "description": "the date on which the traveler will depart from the origin to go to the destination. Dates are specified in the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) YYYY-MM-DD format, e.g. 2017-12-25"
+        },
+        {
+          "name": "returnDate",
+          "schema": "string",
+          "required": false,
+          "description": "the date on which the traveler will depart from the destination to return to the origin. If this parameter is not specified, only one-way itineraries are found. If this parameter is specified, only round-trip itineraries are found. Dates are specified in the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) YYYY-MM-DD format, e.g. 2018-02-28"
+        },
+        {
+          "name": "adults",
+          "schema": "integer",
+          "required": true,
+          "description": "the number of adult travelers (age 12 or older on date of departure)."
+        },
+        {
+          "name": "children",
+          "schema": "integer",
+          "required": false,
+          "description": "the number of child travelers (older than age 2 and younger than age 12 on date of departure) who will each have their own separate seat. If specified, this number should be greater than or equal to 0"
+        },
+        {
+          "name": "infants",
+          "schema": "integer",
+          "required": false,
+          "description": "the number of infant travelers (whose age is less or equal to 2 on date of departure). Infants travel on the lap of an adult traveler, and thus the number of infants must not exceed the number of adults. If specified, this number should be greater than or equal to 0"
+        },
+        {
+          "name": "travelClass",
+          "schema": "string",
+          "required": false,
+          "description": "most of the flight time should be spent in a cabin of this quality or higher. The accepted travel class is economy, premium economy, business or first class. If no travel class is specified, the search considers any travel class"
+        },
+        {
+          "name": "includedAirlineCodes",
+          "schema": "string",
+          "required": false,
+          "description": "This option ensures that the system will only consider these airlines. This can not be cumulated with parameter excludedAirlineCodes.\n\nAirlines are specified as [IATA airline codes](http://www.iata.org/publications/Pages/code-search.aspx) and are comma-separated, e.g. 6X,7X,8X\n"
+        },
+        {
+          "name": "excludedAirlineCodes",
+          "schema": "string",
+          "required": false,
+          "description": "This option ensures that the system will ignore these airlines. This can not be cumulated with parameter includedAirlineCodes.\n\nAirlines are specified as [IATA airline codes](http://www.iata.org/publications/Pages/code-search.aspx) and are comma-separated, e.g. 6X,7X,8X\n"
+        },
+        {
+          "name": "nonStop",
+          "schema": "boolean",
+          "required": false,
+          "description": "if set to true, the search will find only flights going from the origin to the destination with no stop in between"
+        },
+        {
+          "name": "currencyCode",
+          "schema": "string",
+          "required": false,
+          "description": "the preferred currency for the flight offers. Currency is specified in the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) format, e.g. EUR for Euro"
+        },
+        {
+          "name": "maxPrice",
+          "schema": "integer",
+          "required": false,
+          "description": "maximum price per traveler. By default, no limit is applied. If specified, the value should be a positive number with no decimals"
+        },
+        {
+          "name": "max",
+          "schema": "integer",
+          "required": false,
+          "description": "maximum number of flight offers to return. If specified, the value should be greater than or equal to 1"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/shopping/flight-offers",
+      "method": "searchFlightOffers",
+      "httpMethod": "post",
+      "tag": "Shopping",
+      "description": "Return list of Flight Offers based on posted searching criteria.",
+      "parameters": [
+        {
+          "name": "X-HTTP-Method-Override",
+          "schema": "string",
+          "required": true,
+          "description": "the HTTP method to apply"
+        },
+        {
+          "name": "currencyCode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "originDestinations",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "searchCriteria",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sources",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "travelers",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://test.api.amadeus.com/v2",
   "apiDescription": "\nBefore using this API, we recommend you read our **[Authorization Guide](https://developers.amadeus.com/self-service/apis-docs/guides/authorization)** for more information on how to generate an access token. \n\nPlease also be aware that our test environment is based on a subset of the production, if you are not returning any results try with big cities/airports like LON (London) or NYC (New-York).",
   "apiTitle": "Flight Offers Search",

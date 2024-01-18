@@ -3,6 +3,1660 @@
   "openApiRaw": "https://www.zoomconnect.com/zoom/api-docs",
   "homepage": "zoomconnect.com",
   "apiVersion": "1",
+  "methods": [
+    {
+      "url": "/api/rest/v1/account/balance",
+      "method": "getBalance",
+      "httpMethod": "get",
+      "tag": "account",
+      "description": "balance",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceAccount"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/account/statistics",
+      "method": "getStatistics",
+      "httpMethod": "get",
+      "tag": "account",
+      "description": "statistics",
+      "parameters": [
+        {
+          "name": "from",
+          "schema": "string",
+          "required": false,
+          "description": "date format: dd-MM-yyyy"
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "required": false,
+          "description": "date format: dd-MM-yyyy"
+        },
+        {
+          "name": "userEmailAddress",
+          "schema": "string",
+          "required": false,
+          "description": "optional email address of user to return statistics for a single user, default is to return statistics for all users if administrator, or statistics for your own account if not an administrator"
+        },
+        {
+          "name": "campaign",
+          "schema": "string",
+          "required": false,
+          "description": "optional campaign name"
+        },
+        {
+          "name": "includeRefundedAndOptout",
+          "schema": "boolean",
+          "required": false,
+          "description": "optionally include refunded and optout counts, default is false"
+        },
+        {
+          "name": "calculateCreditValue",
+          "schema": "boolean",
+          "required": false,
+          "description": "optionally calculate using credit value rather than message count, default is false"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceAccountStatistics"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/account/transfer",
+      "method": "transfer",
+      "httpMethod": "post",
+      "tag": "account",
+      "description": "transfer",
+      "parameters": [
+        {
+          "name": "numberOfCreditsToTransfer",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "transferFromEmailAddress",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "transferToEmailAddress",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceUser"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/account/user",
+      "method": "search",
+      "httpMethod": "get",
+      "tag": "account",
+      "description": "search",
+      "parameters": [
+        {
+          "name": "searchEmail",
+          "schema": "string",
+          "required": true,
+          "description": "search by email address"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceUsers"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/account/user",
+      "method": "/api/rest/v1/account/userPut",
+      "httpMethod": "put",
+      "tag": "account",
+      "description": "create",
+      "parameters": [
+        {
+          "name": "company",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "contactNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "creditBalance",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "emailAddress",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "userId",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceUser"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/account/user/{userId}",
+      "method": "getUser",
+      "httpMethod": "get",
+      "tag": "account",
+      "description": "getUser",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "userId"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceUser"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/account/user/{userId}",
+      "method": "/api/rest/v1/account/user/{userId}Post",
+      "httpMethod": "post",
+      "tag": "account",
+      "description": "update",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "userId"
+        },
+        {
+          "name": "company",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "contactNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "creditBalance",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "emailAddress",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "userId",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceUser"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/contacts/all",
+      "method": "/api/rest/v1/contacts/allGet",
+      "httpMethod": "get",
+      "tag": "contacts",
+      "description": "all",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceContacts"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/contacts/create",
+      "method": "/api/rest/v1/contacts/createPost",
+      "httpMethod": "post",
+      "tag": "contacts",
+      "description": "create",
+      "parameters": [
+        {
+          "name": "contactId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "contactNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceContact"
+        },
+        {
+          "statusCode": "201",
+          "description": "WebServiceContact"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/contacts/{contactId}",
+      "method": "/api/rest/v1/contacts/{contactId}Delete",
+      "httpMethod": "delete",
+      "tag": "contacts",
+      "description": "delete",
+      "parameters": [
+        {
+          "name": "contactId",
+          "schema": "string",
+          "required": true,
+          "description": "contactId"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/rest/v1/contacts/{contactId}",
+      "method": "/api/rest/v1/contacts/{contactId}Get",
+      "httpMethod": "get",
+      "tag": "contacts",
+      "description": "get",
+      "parameters": [
+        {
+          "name": "contactId",
+          "schema": "string",
+          "required": true,
+          "description": "contactId"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceContact"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/contacts/{contactId}",
+      "method": "/api/rest/v1/contacts/{contactId}Post",
+      "httpMethod": "post",
+      "tag": "contacts",
+      "description": "update",
+      "parameters": [
+        {
+          "name": "contactId",
+          "schema": "string",
+          "required": true,
+          "description": "contactId"
+        },
+        {
+          "name": "contactId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "contactNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceContact"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/contacts/{contactId}/addFromGroup/{groupId}",
+      "method": "/api/rest/v1/contacts/{contactId}/addFromGroup/{groupId}Get",
+      "httpMethod": "get",
+      "tag": "contacts",
+      "description": "removeFromGroup",
+      "parameters": [
+        {
+          "name": "contactId",
+          "schema": "string",
+          "required": true,
+          "description": "contactId"
+        },
+        {
+          "name": "groupId",
+          "schema": "string",
+          "required": true,
+          "description": "groupId"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/rest/v1/contacts/{contactId}/addFromGroup/{groupId}",
+      "method": "/api/rest/v1/contacts/{contactId}/addFromGroup/{groupId}Post",
+      "httpMethod": "post",
+      "tag": "contacts",
+      "description": "removeFromGroup",
+      "parameters": [
+        {
+          "name": "contactId",
+          "schema": "string",
+          "required": true,
+          "description": "contactId"
+        },
+        {
+          "name": "groupId",
+          "schema": "string",
+          "required": true,
+          "description": "groupId"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/rest/v1/contacts/{contactId}/addToGroup/{groupId}",
+      "method": "/api/rest/v1/contacts/{contactId}/addToGroup/{groupId}Get",
+      "httpMethod": "get",
+      "tag": "contacts",
+      "description": "addToGroup",
+      "parameters": [
+        {
+          "name": "contactId",
+          "schema": "string",
+          "required": true,
+          "description": "contactId"
+        },
+        {
+          "name": "groupId",
+          "schema": "string",
+          "required": true,
+          "description": "groupId"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/rest/v1/contacts/{contactId}/addToGroup/{groupId}",
+      "method": "/api/rest/v1/contacts/{contactId}/addToGroup/{groupId}Post",
+      "httpMethod": "post",
+      "tag": "contacts",
+      "description": "addToGroup",
+      "parameters": [
+        {
+          "name": "contactId",
+          "schema": "string",
+          "required": true,
+          "description": "contactId"
+        },
+        {
+          "name": "groupId",
+          "schema": "string",
+          "required": true,
+          "description": "groupId"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/rest/v1/groups/all",
+      "method": "/api/rest/v1/groups/allGet",
+      "httpMethod": "get",
+      "tag": "groups",
+      "description": "all",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceGroups"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/groups/create",
+      "method": "/api/rest/v1/groups/createPost",
+      "httpMethod": "post",
+      "tag": "groups",
+      "description": "create",
+      "parameters": [
+        {
+          "name": "groupId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceGroup"
+        },
+        {
+          "statusCode": "201",
+          "description": "WebServiceGroup"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/groups/{groupId}",
+      "method": "/api/rest/v1/groups/{groupId}Delete",
+      "httpMethod": "delete",
+      "tag": "groups",
+      "description": "delete",
+      "parameters": [
+        {
+          "name": "groupId",
+          "schema": "string",
+          "required": true,
+          "description": "groupId"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/rest/v1/groups/{groupId}",
+      "method": "/api/rest/v1/groups/{groupId}Get",
+      "httpMethod": "get",
+      "tag": "groups",
+      "description": "get",
+      "parameters": [
+        {
+          "name": "groupId",
+          "schema": "string",
+          "required": true,
+          "description": "groupId"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceGroup"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/groups/{groupId}",
+      "method": "/api/rest/v1/groups/{groupId}Post",
+      "httpMethod": "post",
+      "tag": "groups",
+      "description": "update",
+      "parameters": [
+        {
+          "name": "groupId",
+          "schema": "string",
+          "required": true,
+          "description": "groupId"
+        },
+        {
+          "name": "groupId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceGroup"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/groups/{groupId}/addContact/{contactId}",
+      "method": "/api/rest/v1/groups/{groupId}/addContact/{contactId}Get",
+      "httpMethod": "get",
+      "tag": "groups",
+      "description": "addContact",
+      "parameters": [
+        {
+          "name": "groupId",
+          "schema": "string",
+          "required": true,
+          "description": "groupId"
+        },
+        {
+          "name": "contactId",
+          "schema": "string",
+          "required": true,
+          "description": "contactId"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/rest/v1/groups/{groupId}/addContact/{contactId}",
+      "method": "/api/rest/v1/groups/{groupId}/addContact/{contactId}Post",
+      "httpMethod": "post",
+      "tag": "groups",
+      "description": "addContact",
+      "parameters": [
+        {
+          "name": "groupId",
+          "schema": "string",
+          "required": true,
+          "description": "groupId"
+        },
+        {
+          "name": "contactId",
+          "schema": "string",
+          "required": true,
+          "description": "contactId"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/rest/v1/groups/{groupId}/removeContact/{contactId}",
+      "method": "/api/rest/v1/groups/{groupId}/removeContact/{contactId}Get",
+      "httpMethod": "get",
+      "tag": "groups",
+      "description": "removeContact",
+      "parameters": [
+        {
+          "name": "groupId",
+          "schema": "string",
+          "required": true,
+          "description": "groupId"
+        },
+        {
+          "name": "contactId",
+          "schema": "string",
+          "required": true,
+          "description": "contactId"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/rest/v1/groups/{groupId}/removeContact/{contactId}",
+      "method": "/api/rest/v1/groups/{groupId}/removeContact/{contactId}Post",
+      "httpMethod": "post",
+      "tag": "groups",
+      "description": "removeContact",
+      "parameters": [
+        {
+          "name": "groupId",
+          "schema": "string",
+          "required": true,
+          "description": "groupId"
+        },
+        {
+          "name": "contactId",
+          "schema": "string",
+          "required": true,
+          "description": "contactId"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/rest/v1/messages/all",
+      "method": "/api/rest/v1/messages/allGet",
+      "httpMethod": "get",
+      "tag": "messages",
+      "description": "all",
+      "parameters": [
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "number of elements to return at a time"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "page number"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "filter by message type"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "filter by message status"
+        },
+        {
+          "name": "fromDateTimeSent",
+          "schema": "string",
+          "required": false,
+          "description": "date format: yyyyMMdd"
+        },
+        {
+          "name": "toDateTimeSent",
+          "schema": "string",
+          "required": false,
+          "description": "date format: yyyyMMdd"
+        },
+        {
+          "name": "fromDateTimeReceived",
+          "schema": "string",
+          "required": false,
+          "description": "date format: yyyyMMdd"
+        },
+        {
+          "name": "toDateTimeReceived",
+          "schema": "string",
+          "required": false,
+          "description": "date format: yyyyMMdd"
+        },
+        {
+          "name": "fromNumber",
+          "schema": "string",
+          "required": false,
+          "description": "phone number the message was sent from"
+        },
+        {
+          "name": "toNumber",
+          "schema": "string",
+          "required": false,
+          "description": "phone number the message was sent to"
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "required": false,
+          "description": "search matching message text"
+        },
+        {
+          "name": "campaign",
+          "schema": "string",
+          "required": false,
+          "description": "search by campaign"
+        },
+        {
+          "name": "dataField",
+          "schema": "string",
+          "required": false,
+          "description": "search by data field"
+        },
+        {
+          "name": "deleted",
+          "schema": "boolean",
+          "required": false,
+          "description": "return only deleted / not deleted messages"
+        },
+        {
+          "name": "read",
+          "schema": "boolean",
+          "required": false,
+          "description": "return only read / unread messages (inbox messages only)"
+        },
+        {
+          "name": "repliesToMessageId",
+          "schema": "string",
+          "required": false,
+          "description": "return only inbox messages which are a reply to the message with the given message id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceMessages"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/messages/analyse/full",
+      "method": "analyseFull",
+      "httpMethod": "post",
+      "tag": "messages",
+      "description": "analyse-full",
+      "parameters": [
+        {
+          "name": "message",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "recipientNumber",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceAnalyseMessageResponse"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/messages/analyse/message-credit-cost",
+      "method": "analyseMessageCreditCost",
+      "httpMethod": "post",
+      "tag": "messages",
+      "description": "analyse-message-credit-cost",
+      "parameters": [
+        {
+          "name": "message",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "recipientNumber",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/messages/analyse/message-encoding",
+      "method": "analyseMessageEncoding",
+      "httpMethod": "post",
+      "tag": "messages",
+      "description": "analyse-message-encoding",
+      "parameters": [
+        {
+          "name": "message",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "recipientNumber",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/messages/analyse/message-length",
+      "method": "analyseMessageLength",
+      "httpMethod": "post",
+      "tag": "messages",
+      "description": "analyse-message-length",
+      "parameters": [
+        {
+          "name": "message",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "recipientNumber",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/messages/analyse/message-length-within-max-allowed",
+      "method": "analyse",
+      "httpMethod": "post",
+      "tag": "messages",
+      "description": "analyse-",
+      "parameters": [
+        {
+          "name": "message",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "recipientNumber",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/messages/analyse/number-of-messages",
+      "method": "analyseNumberOfMessages",
+      "httpMethod": "post",
+      "tag": "messages",
+      "description": "analyse-number-of-messages",
+      "parameters": [
+        {
+          "name": "message",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "recipientNumber",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/messages/{messageId}",
+      "method": "/api/rest/v1/messages/{messageId}Delete",
+      "httpMethod": "delete",
+      "tag": "messages",
+      "description": "delete",
+      "parameters": [
+        {
+          "name": "messageId",
+          "schema": "string",
+          "required": true,
+          "description": "messageId"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/rest/v1/messages/{messageId}",
+      "method": "/api/rest/v1/messages/{messageId}Get",
+      "httpMethod": "get",
+      "tag": "messages",
+      "description": "get",
+      "parameters": [
+        {
+          "name": "messageId",
+          "schema": "string",
+          "required": true,
+          "description": "messageId"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceMessage"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/messages/{messageId}/markRead",
+      "method": "/api/rest/v1/messages/{messageId}/markReadPost",
+      "httpMethod": "post",
+      "tag": "messages",
+      "description": "markRead",
+      "parameters": [
+        {
+          "name": "messageId",
+          "schema": "string",
+          "required": true,
+          "description": "messageId"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceMessage"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/messages/{messageId}/markRead",
+      "method": "/api/rest/v1/messages/{messageId}/markReadPut",
+      "httpMethod": "put",
+      "tag": "messages",
+      "description": "markRead",
+      "parameters": [
+        {
+          "name": "messageId",
+          "schema": "string",
+          "required": true,
+          "description": "messageId"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceMessage"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/messages/{messageId}/markUnread",
+      "method": "/api/rest/v1/messages/{messageId}/markUnreadPost",
+      "httpMethod": "post",
+      "tag": "messages",
+      "description": "markUnread",
+      "parameters": [
+        {
+          "name": "messageId",
+          "schema": "string",
+          "required": true,
+          "description": "messageId"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceMessage"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/messages/{messageId}/markUnread",
+      "method": "/api/rest/v1/messages/{messageId}/markUnreadPut",
+      "httpMethod": "put",
+      "tag": "messages",
+      "description": "markUnread",
+      "parameters": [
+        {
+          "name": "messageId",
+          "schema": "string",
+          "required": true,
+          "description": "messageId"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceMessage"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/sms/send",
+      "method": "/api/rest/v1/sms/sendGet",
+      "httpMethod": "get",
+      "tag": "sms",
+      "description": "send",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceSendSmsRequest"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/sms/send",
+      "method": "/api/rest/v1/sms/sendPost",
+      "httpMethod": "post",
+      "tag": "sms",
+      "description": "send",
+      "parameters": [
+        {
+          "name": "campaign",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "dataField",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "dateToSend",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "recipientNumber",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceSendSmsResponse"
+        },
+        {
+          "statusCode": "400",
+          "description": "RestErrorDTO"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/sms/send-bulk",
+      "method": "/api/rest/v1/sms/sendBulkGet",
+      "httpMethod": "get",
+      "tag": "sms",
+      "description": "send-bulk",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceSendSmsRequests"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/sms/send-bulk",
+      "method": "/api/rest/v1/sms/sendBulkPost",
+      "httpMethod": "post",
+      "tag": "sms",
+      "description": "send-bulk",
+      "parameters": [
+        {
+          "name": "defaultDateToSend",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "messagesPerMinute",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "sendSmsRequests",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceSendSmsResponses"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/sms/send-url-parameters",
+      "method": "/api/rest/v1/sms/sendUrlParametersGet",
+      "httpMethod": "get",
+      "tag": "sms",
+      "description": "send-url-parameters",
+      "parameters": [
+        {
+          "name": "recipientNumber",
+          "schema": "string",
+          "required": true,
+          "description": "the phone number of the recipient to send to"
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "required": true,
+          "description": "the message to send"
+        },
+        {
+          "name": "dateToSend",
+          "schema": "string",
+          "required": false,
+          "description": "date format: yyyyMMddHHmm"
+        },
+        {
+          "name": "campaign",
+          "schema": "string",
+          "required": false,
+          "description": "optional campaign name"
+        },
+        {
+          "name": "dataField",
+          "schema": "string",
+          "required": false,
+          "description": "optional extra data"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/sms/send-url-parameters",
+      "method": "/api/rest/v1/sms/sendUrlParametersPost",
+      "httpMethod": "post",
+      "tag": "sms",
+      "description": "send-url-parameters",
+      "parameters": [
+        {
+          "name": "recipientNumber",
+          "schema": "string",
+          "required": true,
+          "description": "the phone number of the recipient to send to"
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "required": true,
+          "description": "the message to send"
+        },
+        {
+          "name": "dateToSend",
+          "schema": "string",
+          "required": false,
+          "description": "date format: yyyyMMddHHmm"
+        },
+        {
+          "name": "campaign",
+          "schema": "string",
+          "required": false,
+          "description": "optional campaign name"
+        },
+        {
+          "name": "dataField",
+          "schema": "string",
+          "required": false,
+          "description": "optional extra data"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/sms/send-url/{token}",
+      "method": "/api/rest/v1/sms/sendUrl/{token}Get",
+      "httpMethod": "get",
+      "tag": "sms",
+      "description": "send-url",
+      "parameters": [
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": "token"
+        },
+        {
+          "name": "recipientNumber",
+          "schema": "string",
+          "required": true,
+          "description": "the phone number of the recipient to send to"
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "required": true,
+          "description": "the message to send"
+        },
+        {
+          "name": "dateToSend",
+          "schema": "string",
+          "required": false,
+          "description": "date format: yyyyMMddHHmm"
+        },
+        {
+          "name": "campaign",
+          "schema": "string",
+          "required": false,
+          "description": "optional campaign name"
+        },
+        {
+          "name": "dataField",
+          "schema": "string",
+          "required": false,
+          "description": "optional extra data"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/sms/send-url/{token}",
+      "method": "/api/rest/v1/sms/sendUrl/{token}Post",
+      "httpMethod": "post",
+      "tag": "sms",
+      "description": "send-url",
+      "parameters": [
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": "token"
+        },
+        {
+          "name": "recipientNumber",
+          "schema": "string",
+          "required": true,
+          "description": "the phone number of the recipient to send to"
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "required": true,
+          "description": "the message to send"
+        },
+        {
+          "name": "dateToSend",
+          "schema": "string",
+          "required": false,
+          "description": "date format: yyyyMMddHHmm"
+        },
+        {
+          "name": "campaign",
+          "schema": "string",
+          "required": false,
+          "description": "optional campaign name"
+        },
+        {
+          "name": "dataField",
+          "schema": "string",
+          "required": false,
+          "description": "optional extra data"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/templates/all",
+      "method": "/api/rest/v1/templates/allGet",
+      "httpMethod": "get",
+      "tag": "templates",
+      "description": "all",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceTemplates"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/templates/{templateId}",
+      "method": "/api/rest/v1/templates/{templateId}Delete",
+      "httpMethod": "delete",
+      "tag": "templates",
+      "description": "delete",
+      "parameters": [
+        {
+          "name": "templateId",
+          "schema": "integer",
+          "required": true,
+          "description": "templateId"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/rest/v1/templates/{templateId}",
+      "method": "/api/rest/v1/templates/{templateId}Get",
+      "httpMethod": "get",
+      "tag": "templates",
+      "description": "get",
+      "parameters": [
+        {
+          "name": "templateId",
+          "schema": "integer",
+          "required": true,
+          "description": "templateId"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceTemplate"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/voice/all",
+      "method": "/api/rest/v1/voice/allGet",
+      "httpMethod": "get",
+      "tag": "voice",
+      "description": "all",
+      "parameters": [
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "number of elements to return at a time"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "page number"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "filter by message status"
+        },
+        {
+          "name": "fromDateTimeSent",
+          "schema": "string",
+          "required": false,
+          "description": "date format: yyyyMMdd"
+        },
+        {
+          "name": "toDateTimeSent",
+          "schema": "string",
+          "required": false,
+          "description": "date format: yyyyMMdd"
+        },
+        {
+          "name": "toNumber",
+          "schema": "string",
+          "required": false,
+          "description": "phone number the message was sent to"
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "required": false,
+          "description": "search matching message text"
+        },
+        {
+          "name": "campaign",
+          "schema": "string",
+          "required": false,
+          "description": "search by campaign"
+        },
+        {
+          "name": "dataField",
+          "schema": "string",
+          "required": false,
+          "description": "search by data field"
+        },
+        {
+          "name": "deleted",
+          "schema": "boolean",
+          "required": false,
+          "description": "return only deleted / not deleted messages"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceVoiceMessages"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/voice/single-audio",
+      "method": "singleAudio",
+      "httpMethod": "post",
+      "tag": "voice",
+      "description": "single-audio",
+      "parameters": [
+        {
+          "name": "recipientNumber",
+          "schema": "string",
+          "required": true,
+          "description": "the phone number of the recipient to send to"
+        },
+        {
+          "name": "campaign",
+          "schema": "string",
+          "required": false,
+          "description": "optional campaign name"
+        },
+        {
+          "name": "dataField",
+          "schema": "string",
+          "required": false,
+          "description": "optional extra data"
+        },
+        {
+          "name": "retryCount",
+          "schema": "integer",
+          "required": false,
+          "description": "optional number of times to retry unanswered call"
+        },
+        {
+          "name": "retryMinimumInterval",
+          "schema": "integer",
+          "required": false,
+          "description": "optional minimum interval in minutes between retry attempts"
+        },
+        {
+          "name": "retryMaximumInterval",
+          "schema": "integer",
+          "required": false,
+          "description": "optional maximum interval in minutes between retry attempts"
+        },
+        {
+          "name": "file",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceSendVoiceMessageResponse"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/voice/single-text",
+      "method": "singleText",
+      "httpMethod": "post",
+      "tag": "voice",
+      "description": "single-text",
+      "parameters": [
+        {
+          "name": "campaign",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "dataField",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "recipientNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "retryCount",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "retryMaximumInterval",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "retryMinimumInterval",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceSendVoiceMessageResponse"
+        }
+      ]
+    },
+    {
+      "url": "/api/rest/v1/voice/{messageId}",
+      "method": "/api/rest/v1/voice/{messageId}Delete",
+      "httpMethod": "delete",
+      "tag": "voice",
+      "description": "delete",
+      "parameters": [
+        {
+          "name": "messageId",
+          "schema": "string",
+          "required": true,
+          "description": "messageId"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/rest/v1/voice/{messageId}",
+      "method": "/api/rest/v1/voice/{messageId}Get",
+      "httpMethod": "get",
+      "tag": "voice",
+      "description": "get",
+      "parameters": [
+        {
+          "name": "messageId",
+          "schema": "string",
+          "required": true,
+          "description": "messageId"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "WebServiceVoiceMessage"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://www.zoomconnect.com/app",
   "apiDescription": "The world's greatest SMS API",
   "apiTitle": "www.zoomconnect.com",

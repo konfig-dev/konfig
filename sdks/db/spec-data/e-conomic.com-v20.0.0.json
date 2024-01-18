@@ -3,6 +3,4277 @@
   "openApiRaw": "https://apis.e-conomic.com/openapi/e-conomic.openapi.json",
   "homepage": "e-conomic.com",
   "apiVersion": "v20.0.0",
+  "methods": [
+    {
+      "url": "/activities",
+      "method": "getAllActivities",
+      "httpMethod": "get",
+      "tag": "Activities",
+      "description": "Retrieve all Activities",
+      "parameters": [
+        {
+          "name": "Cursor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Array of objects along with a cursor. Max number in the array returned is 1000"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/activities",
+      "method": "createActivity",
+      "httpMethod": "post",
+      "tag": "Activities",
+      "description": "Create a single Activity",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/activities",
+      "method": "updateActivity",
+      "httpMethod": "put",
+      "tag": "Activities",
+      "description": "Update a single Activity",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/activities/allowed",
+      "method": "getAllowedActivities",
+      "httpMethod": "get",
+      "tag": "Activities",
+      "description": "Retrieve allowed activities",
+      "parameters": [
+        {
+          "name": "employeeNumber",
+          "schema": "integer",
+          "required": true,
+          "description": "The employee number."
+        },
+        {
+          "name": "projectNumber",
+          "schema": "integer",
+          "required": true,
+          "description": "The project number."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/activities/count",
+      "method": "getNumberOfActivities",
+      "httpMethod": "get",
+      "tag": "Activities",
+      "description": "Retrieve the number of Activities",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/activities/paged",
+      "method": "getPageOfActivities",
+      "httpMethod": "get",
+      "tag": "Activities",
+      "description": "Retrieve a page of Activities",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Sort",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "PageSize",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "SkipPages",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/activities/{number}",
+      "method": "getActivityById",
+      "httpMethod": "get",
+      "tag": "Activities",
+      "description": "Retrieve single Activity",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/activitygroups",
+      "method": "getAllActivityGroups",
+      "httpMethod": "get",
+      "tag": "Activity Groups",
+      "description": "Retrieve all Activity Groups",
+      "parameters": [
+        {
+          "name": "Cursor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Array of objects along with a cursor. Max number in the array returned is 1000"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/activitygroups",
+      "method": "createActivityGroup",
+      "httpMethod": "post",
+      "tag": "Activity Groups",
+      "description": "Create a single Activity Group",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/activitygroups/count",
+      "method": "getNumberOfActivityGroups",
+      "httpMethod": "get",
+      "tag": "Activity Groups",
+      "description": "Retrieve the number of Activity Groups",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/activitygroups/paged",
+      "method": "getPageOfActivityGroups",
+      "httpMethod": "get",
+      "tag": "Activity Groups",
+      "description": "Retrieve a page of Activity Groups",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Sort",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "PageSize",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "SkipPages",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/activitygroups/{number}",
+      "method": "getActivityGroupById",
+      "httpMethod": "get",
+      "tag": "Activity Groups",
+      "description": "Retrieve single Activity Group",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/costtypegroups",
+      "method": "getAllCostTypeGroups",
+      "httpMethod": "get",
+      "tag": "Cost Type Groups",
+      "description": "Retrieve all Cost Type Groups",
+      "parameters": [
+        {
+          "name": "Cursor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Array of objects along with a cursor. Max number in the array returned is 1000"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/costtypegroups/count",
+      "method": "getNumberOfCostTypeGroups",
+      "httpMethod": "get",
+      "tag": "Cost Type Groups",
+      "description": "Retrieve the number of Cost Type Groups",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/costtypegroups/paged",
+      "method": "getPageOfCostTypeGroups",
+      "httpMethod": "get",
+      "tag": "Cost Type Groups",
+      "description": "Retrieve a page of Cost Type Groups",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Sort",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "PageSize",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "SkipPages",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/costtypegroups/{number}",
+      "method": "getCostTypeGroupById",
+      "httpMethod": "get",
+      "tag": "Cost Type Groups",
+      "description": "Retrieve single Cost Type Group",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/costtypes",
+      "method": "getAllCostTypes",
+      "httpMethod": "get",
+      "tag": "Cost Types",
+      "description": "Retrieve all Cost Types",
+      "parameters": [
+        {
+          "name": "Cursor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Array of objects along with a cursor. Max number in the array returned is 1000"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/costtypes/count",
+      "method": "getNumberOfCostTypes",
+      "httpMethod": "get",
+      "tag": "Cost Types",
+      "description": "Retrieve the number of Cost Types",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/costtypes/paged",
+      "method": "getPageOfCostTypes",
+      "httpMethod": "get",
+      "tag": "Cost Types",
+      "description": "Retrieve a page of Cost Types",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Sort",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "PageSize",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "SkipPages",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/costtypes/{number}",
+      "method": "getCostTypeById",
+      "httpMethod": "get",
+      "tag": "Cost Types",
+      "description": "Retrieve single Cost Type",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/employeegroups",
+      "method": "getAllEmployeeGroups",
+      "httpMethod": "get",
+      "tag": "Employee groups",
+      "description": "Retrieve all Employee groups",
+      "parameters": [
+        {
+          "name": "Cursor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Array of objects along with a cursor. Max number in the array returned is 1000"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/employeegroups",
+      "method": "createEmployeeGroup",
+      "httpMethod": "post",
+      "tag": "Employee groups",
+      "description": "Create a single Employee group",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/employeegroups",
+      "method": "updateEmployeeGroup",
+      "httpMethod": "put",
+      "tag": "Employee groups",
+      "description": "Update a single Employee group",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/employeegroups/count",
+      "method": "getNumberOfEmployeeGroups",
+      "httpMethod": "get",
+      "tag": "Employee groups",
+      "description": "Retrieve the number of Employee groups",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/employeegroups/paged",
+      "method": "getPageOfEmployeeGroups",
+      "httpMethod": "get",
+      "tag": "Employee groups",
+      "description": "Retrieve a page of Employee groups",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Sort",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "PageSize",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "SkipPages",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/employeegroups/{number}",
+      "method": "deleteEmployeeGroupById",
+      "httpMethod": "delete",
+      "tag": "Employee groups",
+      "description": "Delete single Employee group",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/employeegroups/{number}",
+      "method": "getEmployeeGroupById",
+      "httpMethod": "get",
+      "tag": "Employee groups",
+      "description": "Retrieve single Employee group",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/employees",
+      "method": "getAllEmployees",
+      "httpMethod": "get",
+      "tag": "Employees",
+      "description": "Retrieve all Employees",
+      "parameters": [
+        {
+          "name": "Cursor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Array of objects along with a cursor. Max number in the array returned is 1000"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/employees",
+      "method": "createEmployee",
+      "httpMethod": "post",
+      "tag": "Employees",
+      "description": "Create a single Employee",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/employees",
+      "method": "updateEmployee",
+      "httpMethod": "put",
+      "tag": "Employees",
+      "description": "Update a single Employee",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/employees/count",
+      "method": "getNumberOfEmployees",
+      "httpMethod": "get",
+      "tag": "Employees",
+      "description": "Retrieve the number of Employees",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/employees/paged",
+      "method": "getPageOfEmployees",
+      "httpMethod": "get",
+      "tag": "Employees",
+      "description": "Retrieve a page of Employees",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Sort",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "PageSize",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "SkipPages",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/employees/{number}",
+      "method": "deleteEmployeeById",
+      "httpMethod": "delete",
+      "tag": "Employees",
+      "description": "Delete single Employee",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/employees/{number}",
+      "method": "getEmployeeById",
+      "httpMethod": "get",
+      "tag": "Employees",
+      "description": "Retrieve single Employee",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mileageprices",
+      "method": "getAllMileageEntryPrices",
+      "httpMethod": "get",
+      "tag": "Mileage entry prices",
+      "description": "Retrieve all Mileage entry prices",
+      "parameters": [
+        {
+          "name": "Cursor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Array of objects along with a cursor. Max number in the array returned is 1000"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mileageprices/paged",
+      "method": "getPageOfMileageEntryPrices",
+      "httpMethod": "get",
+      "tag": "Mileage entry prices",
+      "description": "Retrieve a page of Mileage entry prices",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Sort",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "PageSize",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "SkipPages",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mileageprices/{number}",
+      "method": "getMileagePricesById",
+      "httpMethod": "get",
+      "tag": "Mileage entry prices",
+      "description": "Retrieve single Mileage entry prices",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mileages",
+      "method": "getAllMileageEntries",
+      "httpMethod": "get",
+      "tag": "Mileage entries",
+      "description": "Retrieve all Mileage entries",
+      "parameters": [
+        {
+          "name": "Cursor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Array of objects along with a cursor. Max number in the array returned is 1000"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mileages",
+      "method": "createMileage",
+      "httpMethod": "post",
+      "tag": "Mileage entries",
+      "description": "Create a single Mileage entry",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mileages",
+      "method": "updateMileage",
+      "httpMethod": "put",
+      "tag": "Mileage entries",
+      "description": "Update a single Mileage entry",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mileages/approve",
+      "method": "approveMileageEntries",
+      "httpMethod": "post",
+      "tag": "Mileages",
+      "description": "Approve a list of Mileage entries",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mileages/count",
+      "method": "getNumberOfMileageEntries",
+      "httpMethod": "get",
+      "tag": "Mileage entries",
+      "description": "Retrieve the number of Mileage entries",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mileages/paged",
+      "method": "getPageOfMileageEntries",
+      "httpMethod": "get",
+      "tag": "Mileage entries",
+      "description": "Retrieve a page of Mileage entries",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Sort",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "PageSize",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "SkipPages",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mileages/{number}",
+      "method": "deleteMileageById",
+      "httpMethod": "delete",
+      "tag": "Mileage entries",
+      "description": "Delete single Mileage entry",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mileages/{number}",
+      "method": "getMileageById",
+      "httpMethod": "get",
+      "tag": "Mileage entries",
+      "description": "Retrieve single Mileage entry",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/project-activities",
+      "method": "getAllProjectActivities",
+      "httpMethod": "get",
+      "tag": "Project Activities",
+      "description": "Retrieve all Project Activities",
+      "parameters": [
+        {
+          "name": "Cursor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Array of objects along with a cursor. Max number in the array returned is 1000"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/project-activities",
+      "method": "createProjectActivity",
+      "httpMethod": "post",
+      "tag": "Project Activities",
+      "description": "Create a single Project Activity",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/project-activities",
+      "method": "updateProjectActivity",
+      "httpMethod": "put",
+      "tag": "Project Activities",
+      "description": "Update a single Project Activity",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/project-activities/count",
+      "method": "getNumberOfProjectActivities",
+      "httpMethod": "get",
+      "tag": "Project Activities",
+      "description": "Retrieve the number of Project Activities",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/project-activities/paged",
+      "method": "getPageOfProjectActivities",
+      "httpMethod": "get",
+      "tag": "Project Activities",
+      "description": "Retrieve a page of Project Activities",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Sort",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "PageSize",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "SkipPages",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/project-activities/{number}",
+      "method": "deleteProjectActivityById",
+      "httpMethod": "delete",
+      "tag": "Project Activities",
+      "description": "Delete single Project Activity",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/project-activities/{number}",
+      "method": "getProjectActivityById",
+      "httpMethod": "get",
+      "tag": "Project Activities",
+      "description": "Retrieve single Project Activity",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/project-customers",
+      "method": "getAllProjectCustomers",
+      "httpMethod": "get",
+      "tag": "Project Customers",
+      "description": "Retrieve all Project Customers",
+      "parameters": [
+        {
+          "name": "Cursor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Array of objects along with a cursor. Max number in the array returned is 1000"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/project-customers/count",
+      "method": "getNumberOfProjectCustomers",
+      "httpMethod": "get",
+      "tag": "Project Customers",
+      "description": "Retrieve the number of Project Customers",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/project-customers/paged",
+      "method": "getPageOfProjectCustomers",
+      "httpMethod": "get",
+      "tag": "Project Customers",
+      "description": "Retrieve a page of Project Customers",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Sort",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "PageSize",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "SkipPages",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/project-customers/{number}",
+      "method": "getProjectCustomerById",
+      "httpMethod": "get",
+      "tag": "Project Customers",
+      "description": "Retrieve single Project Customer",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/project-employeegroups",
+      "method": "getAllProjectEmployeeGroups",
+      "httpMethod": "get",
+      "tag": "Project employee groups",
+      "description": "Retrieve all Project employee groups",
+      "parameters": [
+        {
+          "name": "Cursor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Array of objects along with a cursor. Max number in the array returned is 1000"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/project-employeegroups",
+      "method": "createProjectEmployeeGroup",
+      "httpMethod": "post",
+      "tag": "Project employee groups",
+      "description": "Create a single Project employee group",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/project-employeegroups",
+      "method": "updateProjectEmployeeGroup",
+      "httpMethod": "put",
+      "tag": "Project employee groups",
+      "description": "Update a single Project employee group",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/project-employeegroups/count",
+      "method": "getNumberOfProjectEmployeeGroups",
+      "httpMethod": "get",
+      "tag": "Project employee groups",
+      "description": "Retrieve the number of Project employee groups",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/project-employeegroups/paged",
+      "method": "getPageOfProjectEmployeeGroups",
+      "httpMethod": "get",
+      "tag": "Project employee groups",
+      "description": "Retrieve a page of Project employee groups",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Sort",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "PageSize",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "SkipPages",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/project-employeegroups/{number}",
+      "method": "deleteProjectEmployeeGroupById",
+      "httpMethod": "delete",
+      "tag": "Project employee groups",
+      "description": "Delete single Project employee group",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/project-employeegroups/{number}",
+      "method": "getProjectEmployeeGroupById",
+      "httpMethod": "get",
+      "tag": "Project employee groups",
+      "description": "Retrieve single Project employee group",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/project-employees",
+      "method": "getAllProjectEmployees",
+      "httpMethod": "get",
+      "tag": "Project employees",
+      "description": "Retrieve all Project employees",
+      "parameters": [
+        {
+          "name": "Cursor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Array of objects along with a cursor. Max number in the array returned is 1000"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/project-employees",
+      "method": "createProjectEmployee",
+      "httpMethod": "post",
+      "tag": "Project employees",
+      "description": "Create a single Project employee",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/project-employees",
+      "method": "updateProjectEmployee",
+      "httpMethod": "put",
+      "tag": "Project employees",
+      "description": "Update a single Project employee",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/project-employees/count",
+      "method": "getNumberOfProjectEmployees",
+      "httpMethod": "get",
+      "tag": "Project employees",
+      "description": "Retrieve the number of Project employees",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/project-employees/paged",
+      "method": "getPageOfProjectEmployees",
+      "httpMethod": "get",
+      "tag": "Project employees",
+      "description": "Retrieve a page of Project employees",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Sort",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "PageSize",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "SkipPages",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/project-employees/{number}",
+      "method": "deleteProjectEmployeeById",
+      "httpMethod": "delete",
+      "tag": "Project employees",
+      "description": "Delete single Project employee",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/project-employees/{number}",
+      "method": "getProjectEmployeeById",
+      "httpMethod": "get",
+      "tag": "Project employees",
+      "description": "Retrieve single Project employee",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projectgroups",
+      "method": "getAllProjectGroups",
+      "httpMethod": "get",
+      "tag": "Project Groups",
+      "description": "Retrieve all Project Groups",
+      "parameters": [
+        {
+          "name": "Cursor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Array of objects along with a cursor. Max number in the array returned is 1000"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projectgroups",
+      "method": "createProjectGroup",
+      "httpMethod": "post",
+      "tag": "Project Groups",
+      "description": "Create a single Project Group",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projectgroups/count",
+      "method": "getNumberOfProjectGroups",
+      "httpMethod": "get",
+      "tag": "Project Groups",
+      "description": "Retrieve the number of Project Groups",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projectgroups/paged",
+      "method": "getPageOfProjectGroups",
+      "httpMethod": "get",
+      "tag": "Project Groups",
+      "description": "Retrieve a page of Project Groups",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Sort",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "PageSize",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "SkipPages",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projectgroups/{number}",
+      "method": "getProjectGroupById",
+      "httpMethod": "get",
+      "tag": "Project Groups",
+      "description": "Retrieve single Project Group",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects",
+      "method": "getAllProjects",
+      "httpMethod": "get",
+      "tag": "Projects",
+      "description": "Retrieve all Projects",
+      "parameters": [
+        {
+          "name": "Cursor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Array of objects along with a cursor. Max number in the array returned is 1000"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects",
+      "method": "createProject",
+      "httpMethod": "post",
+      "tag": "Projects",
+      "description": "Create a single Project",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects",
+      "method": "updateProject",
+      "httpMethod": "put",
+      "tag": "Projects",
+      "description": "Update a single Project",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/allowed",
+      "method": "getPagedListOfProjectUnderEmployee",
+      "httpMethod": "get",
+      "tag": "Projects",
+      "description": "Retrieve the allowed projects that employee can register an entry on.",
+      "parameters": [
+        {
+          "name": "employeeNumber",
+          "schema": "integer",
+          "required": true,
+          "description": "The employee number."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/count",
+      "method": "getNumberOfProjects",
+      "httpMethod": "get",
+      "tag": "Projects",
+      "description": "Retrieve the number of Projects",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/paged",
+      "method": "getPageOfProjects",
+      "httpMethod": "get",
+      "tag": "Projects",
+      "description": "Retrieve a page of Projects",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Sort",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "PageSize",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "SkipPages",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{number}",
+      "method": "deleteProjectById",
+      "httpMethod": "delete",
+      "tag": "Projects",
+      "description": "Delete single Project",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{number}",
+      "method": "getProjectById",
+      "httpMethod": "get",
+      "tag": "Projects",
+      "description": "Retrieve single Project",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projectstatuses",
+      "method": "getAllProjectStatuses",
+      "httpMethod": "get",
+      "tag": "Project Statuses",
+      "description": "Retrieve all Project Statuses",
+      "parameters": [
+        {
+          "name": "Cursor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Array of objects along with a cursor. Max number in the array returned is 1000"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projectstatuses/count",
+      "method": "getNumberOfProjectStatuses",
+      "httpMethod": "get",
+      "tag": "Project Statuses",
+      "description": "Retrieve the number of Project Statuses",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projectstatuses/paged",
+      "method": "getPageOfProjectStatuses",
+      "httpMethod": "get",
+      "tag": "Project Statuses",
+      "description": "Retrieve a page of Project Statuses",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Sort",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "PageSize",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "SkipPages",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projectstatuses/{number}",
+      "method": "getProjectStatusById",
+      "httpMethod": "get",
+      "tag": "Project Statuses",
+      "description": "Retrieve single Project Status",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/timeentries",
+      "method": "getAllTimeEntries",
+      "httpMethod": "get",
+      "tag": "Time entries",
+      "description": "Retrieve all Time entries",
+      "parameters": [
+        {
+          "name": "Cursor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Array of objects along with a cursor. Max number in the array returned is 1000"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/timeentries",
+      "method": "createTimeEntry",
+      "httpMethod": "post",
+      "tag": "Time entries",
+      "description": "Create a single Time entry",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/timeentries",
+      "method": "updateTimeEntry",
+      "httpMethod": "put",
+      "tag": "Time entries",
+      "description": "Update a single Time entry",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/timeentries/approve",
+      "method": "approveTimeEntries",
+      "httpMethod": "post",
+      "tag": "TimeEntries",
+      "description": "Approve a list of Time entries",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/timeentries/count",
+      "method": "getNumberOfTimeEntries",
+      "httpMethod": "get",
+      "tag": "Time entries",
+      "description": "Retrieve the number of Time entries",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/timeentries/paged",
+      "method": "getPageOfTimeEntries",
+      "httpMethod": "get",
+      "tag": "Time entries",
+      "description": "Retrieve a page of Time entries",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Sort",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "PageSize",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "SkipPages",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/timeentries/{number}",
+      "method": "deleteTimeEntryById",
+      "httpMethod": "delete",
+      "tag": "Time entries",
+      "description": "Delete single Time entry",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/timeentries/{number}",
+      "method": "getTimeEntryById",
+      "httpMethod": "get",
+      "tag": "Time entries",
+      "description": "Retrieve single Time entry",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/timeentryprices",
+      "method": "getAllTimeEntryPrices",
+      "httpMethod": "get",
+      "tag": "Time entry prices",
+      "description": "Retrieve all Time entry prices",
+      "parameters": [
+        {
+          "name": "Cursor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Array of objects along with a cursor. Max number in the array returned is 1000"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/timeentryprices/paged",
+      "method": "getPageOfTimeEntryPrices",
+      "httpMethod": "get",
+      "tag": "Time entry prices",
+      "description": "Retrieve a page of Time entry prices",
+      "parameters": [
+        {
+          "name": "Filter",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Sort",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "PageSize",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "SkipPages",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/timeentryprices/{number}",
+      "method": "getTimeEntryPricesById",
+      "httpMethod": "get",
+      "tag": "Time entry prices",
+      "description": "Retrieve single Time entry prices",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://apis.e-conomic.com/api/v20.0.0/",
   "apiDescription": "# Changelog\r\n\r\n<details>\r\n  <summary>Click to see changelog.</summary>\r\n\r\n| Version | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |\r\n|---------| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\r\n| 20.0.0  | Customer contacts and delivery locations endpoints deprecated. You can find the same enpoints in [`Customers API`](https://apis.e-conomic.com/#Customers) \r\n| 19.0.0  | Page-based endpoints were moved under /paged url and cursor-based endpoints dropped the /all.\r\n| 18.0.0  | Added isDeleted flag to [`customer-contacts`](#tag/Customer-contacts) and included deleted contacts in the response. <br> Deleted contacts can be used for history purposes, but cannot be set as reference persons on sales documents. <br> In previous versions only customer-contacts/id returns deleted contacts as well.\r\n| 17.0.2  | `TimeEntryEmployeeNumberCannotBeUpdated` and `MileageEmployeeNumberCannotBeUpdated` error codes removed. The change affects all versions, but we bumped the version for transparency.\r\n| 17.0.1  | New custom [`OpenAPI extension`](#section/Retrieving-data/Custom-extensions-in-OpenAPI-specification) added in the specification: `x-error-codes`. Existing `x-required-roles` extension converted to an array of strings.\r\n| 17.0.0  | Improved the error model. Added `code` and `property` fields to the model. `code` represents the error code. `property` is the field name on which the input validation failed.\r\n| 16.4.0  | [`customer-deliverylocations`](#tag/Customer-delivery-locations) endpoints added.\r\n| 16.3.0  | [`customer-contacts`](#tag/Customer-contacts) endpoints added.  \r\n| 16.2.2  | Added input validations for required string properties, if a string property is required it can't be empty, it should contain at least 1 character.\r\n| 16.2.1  | Error codes extended for [`mileages`](#tag/Mileage-entries) and [`timeentries`](#tag/Time-entries). Affects all the exisiting versions.\r\n| 16.2.0  | - [`employeegroups`](#operation/DeleteEmployeeGroupById) DELETE endpoint added. <br>- [`employees`](#operation/DeleteEmployeeById) DELETE endpoint added. <br>- [`project-employeegroups`](#operation/DeleteProjectEmployeeGroupById) DELETE endpoint added. <br>- [`project-employees`](#operation/DeleteProjectEmployeeById) DELETE endpoint added.\r\n| 16.1.0  | [`Time entry prices`](#tag/Time-entry-prices) and [`Mileage entry prices`](#tag/Mileage-entry-prices) endpoints added.\r\n| 16.0.0  | Changed parameter schema for [`mileages`](#operation/ApproveMileageEntries) and [`timeentries`](#operation/ApproveTimeEntries) approve endpoints.\r\n| 15.0.0  | Added cost and sales accounts properties in [`activitygroups`](#tag/Activity-Groups) endpoints.\r\n| 14.1.3  | - Added new filter for `IsAccessible` in [`activities`](#tag/Activities) endpoints. <br>- Added new filter for `IsBarred` in [`costtypes`](#tag/Cost-Types) endpoints.\r\n| 14.1.2  | - Added input validations for [`activitygroups`](#tag/Activity-Groups). <br>- Updated description for [`projectgroups`](#operation/CreateProjectGroup) properties.\r\n| 14.1.1  | Added input validations for [`projectgroups`](#operation/CreateProjectGroup).\r\n| 14.1.0  | [`project-employees-count`](#operation/GetNumberOfProjectEmployees) endpoint added.                                                                                                                                                                                                                                             \r\n| 14.0.0  | - [`project-activities`](#tag/Project-Activities) endpoints added. <br>- `projects/activities` have been deprecated.|\r\n| 13.2.0  | [`costtypegroups`](#tag/Cost-Type-Groups) endpoints added.|\r\n| 13.1.0  | [`costtypes`](#tag/Cost-Types) endpoints added.|\r\n| 13.0.0  | - [`projectgroups`](#operation/CreateProjectGroup) POST endpoint added, `Number` made non-required,<br>- [`activitygroups`](#operation/CreateActivityGroup) POST endpoint added, `Number` made non-required.|\r\n| 12.0.0  | [`projects`](#tag/Projects) `Number` made non-required.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |\r\n| 11.0.0  | [`employees`](#tag/Employees) `Number` made required.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |\r\n| 10.1.2  | API version number moved to the server URL.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |\r\n| 10.1.1  | - [`activities`](#operation/GetAllowedActivities) `employeeNumber` maximum value changed to 999999. <br>- [`projects`](#operation/GetPagedListOfProjectUnderEmployee) `employeeNumber` maximum value changed to 999999.                                                                                                                                                                                                                                                                                                                                                                                             |\r\n| 10.1.0  | [`project-employees`](#operation/CreateProjectEmployee) POST endpoint added.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |\r\n| 10.0.0  | - [`activities`](#tag/Activities) POST and PUT endpoints added. <br>- [`activitygroups`](#tag/Activity-Groups) GET endpoints added. <br>- Object version field added to `activities`, `projectstatuses` and `projectgroups` endpoints.                                                                                                                                                                                                                                                                                                                                                                              |\r\n| 9.0.0   | `Project related settings for employee` resource renamed as `Project employee`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |\r\n| 8.1.0   | [`project-customers`](#tag/Project-Customers) endpoints added.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |\r\n| 8.0.0   | - [`employeegroups`](#tag/Employee-groups) endpoints added: GET all paginated, GET count, POST and PUT. <br>- [`project-employeegroups`](#tag/Project-employee-groups) endpoints added: GET all paginated, GET all cursor-based, GET count, GET by number, POST and PUT. <br> - Object version field added to employee groups endpoints.                                                                                                                                                                                                                                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |\r\n| 7.0.0   | [Projects related settings for employee](#tag/Project-employees) extended with new fields for Name, GroupNumber and IsBarred.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |\r\n| 6.0.0   | Readonly property `IsReconciled` added to `TimeEntries` endpoint.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |\r\n| 5.1.0   | [Project delete](#operation/DeleteProjectById) endpoint added.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |\r\n| 5.0.0   | - Project-related properties such as `isUser`, `userId`, `canApprove`, `canInvoice`, `employeeType` in `/employees` moved to `/project-employees`. <br>- Properties `lastUpdated`, `costPrice`, `salesPrice` and `invoicedtotal` in `/projects` changed to readonly.<br>- Property `date` in `/timeentries` changed to mandatory.<br>- Access permission to `/employees` changed to requiring access to `Sales`.<br>- PUT endpoints for `/timeentries/{number}`, `/employees/{number}`, `/employeeprojectrelatedsettings/{number}` have been deprecated and new ones without `{number}` in the URL have been added. |\r\n| 4.0.0   | `project.CustomerNumber` made non-required, range check introduced.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |\r\n| 3.1.0   | Error messages of time entry approval improved, `timeEntry.IsApproved`, `mileage.IsApproved` and `mileage.IncludeApproval` made read-only.                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |\r\n| 3.0.0   | `mileage.Date` made required. Verification for `mileage.EmployeeNumber` and `mileage.Distance` added.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |\r\n| 2.2.2   | Range check introduced in `projects.Number`, `employee.Number` and `employeeGroup.Number`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |\r\n| 2.2.1   | Employees PATCH endpoint deprecated.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |\r\n| 2.2.0   | [`employeegroups/all`](#operation/GetAllEmployeeGroups) and [`employeegroups/{number}`](#operation/GetEmployeeGroupById) endpoints added.                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |\r\n| 2.1.0   | [`/activities/allowed`](#operation/GetAllowedActivities) endpoint added to get allowed activities for an employee and project.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |\r\n| 2.0.0   | Open API released! Endpoints related to Projects module added.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |\r\n\r\n</details>\r\n\n# TL;DR\r\n\r\n**Add these three headers to your requests.**\r\n\r\n| Header                | Value                      | What is this?                                                |\r\n| :-------------------- | :------------------------- | :----------------------------------------------------------- |\r\n| X-AppSecretToken      | YOUR_PRIVATE_TOKEN         | This identifies your app. This is your secret token. Try using the value `demo`. |\r\n| X-AgreementGrantToken | YOUR_AGREEMENT_GRANT_TOKEN | This identifies the grant issued by an agreement, to allow your app to access the agreements data. Try using the value `demo`. |\r\n| Content-Type          | application/json           | We’re a JSON based API. This tells us that you agree with us on using JSON. |\r\n\r\n### Examples\r\n\r\n#### jQuery\r\n\r\n```javascript/jQuery\r\n$.ajax({\r\n    url: \"https://apis.e-conomic.com/api/v20.0.0/projects\",\r\n    dataType: \"json\",\r\n    headers: {\r\n        'X-AppSecretToken': \"demo\",\r\n        'X-AgreementGrantToken': \"demo\",\r\n        'Content-Type': \"application/json\"\r\n    },\r\n    type: \"GET\"\r\n})\r\n    .always(function (data) {\r\n    $(\"#output\").text(JSON.stringify(data, null, 4));\r\n});\r\n```\r\n\r\n#### cURL\r\n\r\n```curl\r\ncurl -H \"X-AppSecretToken: demo\" -H \"X-AgreementGrantToken: demo\" https://apis.e-conomic.com/api/v20.0.0/projects\r\n```\r\n\r\n\r\n\r\n# Introduction\r\n\r\nWelcome to the **Visma e-conomic OpenAPI** documentation!\r\n\r\nThe e-conomic API is a document-based JSON REST API. \r\n\r\nFor more in-depth information about e-conomic itself, please have a look at the e-copedia [http://wiki.e-conomic.dk](http://wiki.e-conomic.dk/).\r\n\r\n## Usage\r\n\r\n- **Generating a client** can easily be done using tools like [swagger-codegen](https://github.com/swagger-api/swagger-codegen) or others that work with [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification) specs.\r\n\r\n\r\n## Versioning\r\n\r\nAPI releases are versioned using a three-part versioning scheme: `{major version}.{minor version}.{patch version}`.\r\n\r\nWe broadly follow [Semantic Versioning](https://semver.org/) principles when versioning the API. The major version number is incremented when a breaking change occurs. \r\n\r\nThe format is:\r\n\r\n`/api/v{major version}.{minor version}.{patch version}/{resource-name}`\r\n\r\nEach value of the above are integers and you should configure the specific version in each API call. \r\n\r\nAn example could be: `/api/v2.2.1/projects`\r\n\r\nTo track the changes of versions, please see our [changelog](#section/Changelog).\r\n\r\nWe reserve the right to deprecate versions at intervals since this allows for moving into a friendly environment for you faster.\r\n\r\n## Demo authentication\r\n\r\nIf you wish to try out the API before registering a developer agreement, you can do this by using the demo agreement, which mimics the authentication flow you will have to use when you create your app. All you have to do is specify HTTP header tokens `X-AgreementGrantToken: demo` and `X-AppSecretToken: demo`. Note however that you can only do GET requests with the demo agreement. If you want full access to our API's, you will need to register.\r\n\r\n# Retrieving data\r\n\r\nOur data is exposed as collections of items. Each item has many properties, with one property as a unique identifier, usually called `number` or `id`. You can always get a single item if you already know the unique identifier. In case the unique identifier is not known, you can always search the collection and retrieve an array of items that satisfy the search criteria, or retrieve only the count of items that satisfy the search criteria. When you search for items in a collection, you can always use filtering, sorting and pagination. When it comes to pagination, we offer two distinct approaches available on separate endpoints. You can read more about filtering, sorting and pagination in the following sections. \r\n\r\n## Filtering\r\n\r\nFiltering is enabled on all collection endpoints but not on all properties.\r\n\r\nFiltering on collections can be done using the query string parameter `filter`. A filter is made up of a set of predicates and follows a syntax inspired by mongoDB. A predicate is made up of a property name, an operator, and a value.\r\n\r\nExample: `?filter=name$eq:Joe`\r\n\r\nThis matches all resources with the value Joe in the property name.\r\n\r\nPredicates can be chained using either of the logical operators AND and OR.\r\n\r\nExample: `?filter=name$eq:Joe$and:city$like:*port`\r\n\r\nFiltering on strings is case insensitive.\r\n\r\n#### Filterable properties\r\nInformation about what properties allow filtering and on what operators can be found in the property in the schema for the collection. Each property that allows filtering has the property `\"x-filterable\"` in combination with `operators` set. If you try to filter on something that isn’t allowed the server will respond with a status code 400.\r\n\r\n#### Specifying Operator affinity\r\nIf you want to control the operator affinity then you can use parentheses.\r\n\r\nAn example is: `?filter=name$eq:Joe$and:(city$like:*port$or:age$lt:40)`\r\n\r\n#### URL Encoding\r\nURL parameter values should always be URL compatible. Always URL encode filter strings.\r\n\r\n#### Filter Operators\r\nThe possible filtering operators are:\r\n\r\n| Operator   | Syntax |\r\n| --------   | ------ |\r\n|Equals | $eq:|\r\n|Not equals | $ne:|\r\n|Greater than | $gt:|\r\n|Greater than or equal | $gte:|\r\n|Less than | $lt:|\r\n|Less than or equal | $lte:|\r\n|Substring match\t| $like:|\r\n|And also | $and:|\r\n|Or else | $or:|\r\n|In | $in:|\r\n|Not In | $nin:|\r\n\r\n#### Substring matching\r\n\r\nThe `$like:` operator supports both using wildcards (*) and not using wildcards. If no wildcards are used, the expression is considered a `contains` expression and effectively becomes a filter with a wildcard at the start of the string and one at the end of the string. This operator is only allowed on some properties.\r\n\r\n#### Escaping special characters in your filter\r\nTo not interfere with the parsing of the filter expression, certain escape sequences are necessary.\r\n\r\n- “$” is escaped with “$$”\r\n- “(” is escaped with “$(”\r\n- “)” is escaped with “$)”\r\n- “*” is escaped with “$*”\r\n- “,” is escaped with “$,”\r\n- “[” is escaped with “$[”\r\n- “]” is escaped with “$]”\r\n\r\n#### Using null values in your filter\r\nShould you want to filter for the nonexistence of a property (i.e. null value) you can use the null escape sequence.\r\n\r\n`$null:`\r\n\r\n#### Using in and not in operators\r\nTo determine whether a specified value matches any value in (or not in) a list you filter using the `$in:` or `$nin:` operator. The list to filter by has to be enclosed in brackets and values separated by commas.\r\n\r\n`customerNumber$in:[2,5,7,22,45]`\r\n\r\n\r\nIt is possible to also use the `$null:` keyword if you wish to include that in the filter. The max supported length of an array using the `$in:` or `$nin:` operator is 200.\r\n\r\n\r\n## Sorting\r\n\r\nSorting on strings is case insensitive.\r\n\r\n### Sort ascending\r\n\r\nSorting on collections can be done using the query string parameter ‘sort’.\r\n\r\n```\r\n?sort=name\r\n```\r\n\r\n### Sort descending\r\n\r\nThe default sort direction is ascending, but this can be turned by prepending a minus (-).\r\n\r\n```\r\n?sort=-name\r\n```\r\n\r\n### Sort by multiple properties\r\n\r\nIf you need to sort by multiple properties these can just be separated by commas. Mixing of directions is allowed.\r\n\r\n```\r\n?sort=-name,age\r\n```\r\n\r\n### Sort alphabetically\r\n\r\nIn certain cases, you might want to enforce that even numeric values are sorted alphabetically, so 1000 is less than 30. In those cases, you can prepend the sort property with a tilde (~).\r\n\r\n```\r\n?sort=~name\r\n```\r\n\r\n#### Sortable properties\r\nInformation about what properties are sortable can be found in the schema for the collection. Each property that allows sorting has the property `\"x-sortable\": true` set.\r\n\r\n\r\n## Pagination\r\n\r\nWhen it comes to retrieving a collection of items, you can use two distinct approaches:\r\n\r\n* **Cursor-based pagination** (continued loading of items using a `cursor` as a query parameter to get the next page of items)\r\n  * This is the recommended approach, and the one you should use by default.\r\n  * The endpoint naming scheme is **\"Retrieve all `Items`\"**. (Usage: `/{ITEM}?cursor={CURSOR_VALUE}`)\r\n\r\n\r\n* **Classic pagination** (limited functionality*. Specify `skippages` and `pagesize ` as query parameters to get a specific page of items)\r\n  * You should only consider using classic pagination, if you rely on loading pages (i.e. for list views or table/grid-based UI's).\r\n  * The endpoint naming scheme is **\"Retrieve a page of `Items`\"**. (Usage: `/{ITEM}/paged?skippages=0&pagesize=20`)  \r\n    \\* It's important to note that there is a limit of 10.000 items using this approach. Any items outside of the first 10.000 items will not be loaded.\r\n\r\nPlease bear in mind that the two approaches are supported by **separate endpoints**. To use classic pagination, add `/paged` to your request URL.\r\n\r\nIf you need to know the total count of items that you can expect to get from your search, you can use a separate endpoint called **\"Retrieve the number of `Items`\"**.  \r\nYou can also use the result of this endpoint to calculate the pagination navigation buttons for a table/grid-based UI.\r\n\r\n\r\n### Which approach should you use?\r\nWe highly recommend that you use cursor-based pagination because:\r\n- It is more performant and offers much faster retrieval of items;\r\n- It can be used for very large collections of many thousands or millions of items, whereas classic pagination is limited to only returning 10.000 results, everything else is ignored;  \r\n  Classic pagination is only appropriate when you have an app with a table/grid-based UI.\r\n\r\n### Cursor-based pagination\r\n\r\n#### How it works\r\n\r\nWhen you search for items in a large collection, the response will contain the first 1.000 items and a `cursor` that you can use in a subsequent request to get the next series of items. This way you can retrieve the next set of items only when needed (if 1.000 items suffice, you don't need to send a second request).\r\n\r\nPlease note that the cursor is currently the `id` of the first `item` on the next set and it should not be mistaken for the number of items which are yet to be displayed.\r\nAlso, if the cursor is not present in the response, it means that there are no more items in the results.\r\n\r\n##### Real world example\r\n\r\nI want to retrieve all projects.\r\n\r\n1) I send a request to `https://apis.e-conomic.com/api/v20.0.0/projects`\r\n   and get back an array of 1.000 projects, and a `cursor` with value `34781`\r\n\r\n\r\n2) I send a request for the next items in the resulting collection:  \r\n   `https://apis.e-conomic.com/api/v20.0.0/projects?cursor=34781`  \r\n   and get back an array of 1.000 projects and a cursor with value `87695`\r\n\r\n\r\n3) I send a request for the next items in the result:  \r\n   `https://apis.e-conomic.com/api/v20.0.0/projects?cursor=87695`  \r\n   and get back an array of 56 items and no cursor.  \r\n   No cursor means I have retrieved all the projects, i.e. I have reached the end of the list.\r\n\r\n\r\n### Classic pagination\r\n\r\nIf no parameters are used, the collection endpoint returns 20 items at a time. URL parameters allow you to increase this to up to 100 items or to skip pages if necessary.\r\n\r\n##### Real world example\r\n\r\nI want to show a grid with page size of 50 and pagination navigation buttons.\r\n\r\n1) I send a request to see how many projects there are in the collection:  \r\n   `https://apis.e-conomic.com/api/v20.0.0/projects/count`  \r\n   I get the number of projects in the collection, `2056`, and I can calculate the number of pages to be 2056 divided by 50 = 40 with 6 as remainder, meaning I have 41 pages total. I can then use this to present the user the navigation buttons.\r\n\r\n\r\n2) I send a request to retrieve the first page of projects that my user will see:  \r\n   `https://apis.e-conomic.com/api/v20.0.0/projects/paged?pagesize=50&sort=name`  \r\n   with this I get back an array of 50 projects, sorted alphabetically by the project name.\r\n\r\n\r\n3) Now if the user wants to see page number 6, I'll send a new request, skipping the first 5 pages to get the projects from page number 6:  \r\n   `https://apis.e-conomic.com/api/v20.0.0/projects/paged?pagesize=50&skippages=5&sort=name`  \r\n   I get back an array of 50 projects, that belong to page number 6 when sorting alphabetically by the project name.\r\n\r\n\r\n\r\n### Number of items in a collection\r\n\r\nAs mentioned before we offer endpoint to get the count of items in the collection. You can also use this info for calculation of pagination navigation in case of classic pagination.\r\n\r\nExample `https://apis.e-conomic.com/api/v20.0.0/projects/count`\r\n\r\n\r\n## HTTP Status Codes\r\n\r\nThe Open API returns these HTTP status codes.\r\n\r\n| Code | Text                   | Description                                                  |\r\n| :--- | :--------------------- | :----------------------------------------------------------- |\r\n| 200  | OK                     | Everything is OK                                             |\r\n| 201  | Created                | When you create resources, this is what you get. This will be accompanied by the created resource in the body and a location header with a link to the created resource. |\r\n| 204  | No Content             | In certain cases there is nothing to return. So we will let you know by returning a 204. |\r\n| 400  | Bad Request            | The request you made was somehow malformed. A malformed request could be failed validation on creation or updating. If you try to filter on something that isn’t filterable this is also what you’ll see. Whenever possible we will also try to include a developer hint to help you get around this issue. |\r\n| 401  | Unauthorized           | The credentials you supplied us with weren’t correct, or perhaps you forgot them altogether. If an agreement has revoked the grant they gave your app, this is what you will see. |\r\n| 403  | Forbidden              | You won’t necessarily have access to everything. So even though you were authorized we might still deny access to certain resources. This depends on the roles asked for when the grant was issued. |\r\n| 404  | Not Found              | This is returned when you try to request something that doesn’t exist. This could be a resource that has been deleted or just a URL you tried to hack. If you see a lot of these, it could be an indication that you aren’t using the links provided by the API. You should never need to concatenate any URLs. The API should provide you with the links needed. |\r\n| 405  | Method Not Allowed     | Not all endpoints support all HTTP methods. If you try issue a PUT request to a collection resource this is what you get. |\r\n| 415  | Unsupported Media Type | Our API is a JSON api. If you ask us to give you anything else, we give you this, and tell you why in the JSON body of the response. |\r\n| 500  | Internal Server Error  | We don’t like to see these, and they are flagged in our logs. When you see this, something went wrong on our end. Either try again, or contact our support. |\r\n\r\n\r\n## Required and Readonly Properties\r\n\r\nSince OpenAPI allows client generation based on the specification, we decided to use the same model/schema in our for both read and write endpoints where possible.\r\n\r\nThis led us to chose not to have the Id/Number in the URL parameter for PUT requests, but to use the one from the body, so there is no confusion.\r\n\r\nWhen a property is marked as `required` it means you need to provide a value on each POST and PUT requests.\r\n\r\nWhen a property is marked as `readonly` it means you should provide the same value you get in the GET requests, or do not send the property in the JSON at all (skip it).\r\n\r\n## Custom resource encoding\r\n\r\nFor some resource ids (the direct URL path to a resource) the question of non-alphanumeric characters must be solved in REST APIs by either encoding or replacement to ensure URL compatibility.\r\n\r\nIn the e-conomic REST API a subset of non-alphanumeric characters are replaced using a custom scheme for resource URLs:\r\n\r\n| Character        | Replacement |\r\n| :--------------- | :---------- |\r\n| “<”              | *0*         |\r\n| “>”              | *1*         |\r\n| “*”              | *2*         |\r\n| “%”              | *3*         |\r\n| “:”              | *4*         |\r\n| “&”              | *5*         |\r\n| “/”              | *6*         |\r\n| “\\”              | *7*         |\r\n| “_”              | *8*         |\r\n| “ ” (whitespace) | *9*         |\r\n| “?”              | *10*        |\r\n| “.”              | *11*        |\r\n| “#”              | *12*        |\r\n| “+”              | *13*        |\r\n\r\nExample: Product “My Awesome Product_Discount5%” Resource URL (self): https://apis.e-conomic.com/products/My_9_Awesome_9_Product_8_Discount5_3_\r\n\r\nAll other non-alphanumeric characters in resource URLs are standard URL encoded. Please refer to standard URL encoding for characters not mentioned above.\r\n\r\n## Implementation specifics\r\n\r\nHelpful details to know when implementing e-conomic REST.\r\n\r\n### Booleans\r\n\r\nBooleans should only be expected to be represented in responses when true. A false boolean is omitted from response body. The same logic applies to write operations such as POST and PUT.\r\n\r\n### Null values\r\n\r\nNull values are omitted from the response body.\r\n\r\n### Nulling\r\n\r\nWe do not generally accept null as a value and a validation exception should be expected. To null a property you must exclude it from your JSON on the write operation.\r\n\r\n## Object version\r\n\r\nObjectVersion is the mechanism that enforces updates only on latest state of an object.\r\nObjectVersion property is mandatory in Put Requests.\r\nObjectVersion property is retrieved on Get Request and needs to be included in Put Request.\r\nIf object was modified between Get and Put requests, Put request will fail with error code `409 Conflict`\r\n\r\n```\r\n{\r\n  \"message\": \"Update conflict. Version does not match.\",\r\n  \"developerHint\": \"The resource has been updated by another user. Retrieve the resource/object and try the update again. This is needed in order to prevent you from rolling back another user's update.\",\r\n  \"logId\": \"09580053-1141-4e7f-85e1-bed8600e0278\",\r\n  \"logTimeUtc\": \"2021-11-04T09:07:56\",\r\n  \"property\": \"version\"\r\n}\r\n```\r\n\r\n## Custom extensions in OpenAPI specification\r\n\r\nIn the specification file, there are some custom extensions that developers can make use of when consuming endpoints. \r\nThose extensions are always prefixed by `x-`.\r\n\r\n1) `x-required-roles`: The list of roles that are required for each group of endpoints.\r\n2) `x-error-codes`: The list of error codes that are potentially returned from each group of endpoints.\r\n",
   "apiTitle": "Visma e-conomic OpenAPI",

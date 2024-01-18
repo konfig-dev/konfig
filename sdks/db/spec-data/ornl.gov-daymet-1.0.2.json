@@ -4,6 +4,196 @@
   "homepage": "ornl.gov",
   "serviceName": "daymet",
   "apiVersion": "1.0.2",
+  "methods": [
+    {
+      "url": "/api/data",
+      "method": "/api/dataGet",
+      "httpMethod": "get",
+      "description": "Download Daymet Data",
+      "parameters": [
+        {
+          "name": "lat",
+          "schema": "number",
+          "required": true,
+          "description": "Latitude component of location."
+        },
+        {
+          "name": "lon",
+          "schema": "number",
+          "required": true,
+          "description": "Longitude component of location."
+        },
+        {
+          "name": "vars",
+          "schema": "array",
+          "description": "Daymet Daily weather estimates."
+        },
+        {
+          "name": "years",
+          "schema": "array",
+          "description": "Subset on years [1980..2019]."
+        },
+        {
+          "name": "start",
+          "schema": "string",
+          "description": "Subset on dates (start date)."
+        },
+        {
+          "name": "end",
+          "schema": "string",
+          "description": "Subset on dates (end date)."
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Specify a format for data retrieval."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/preview",
+      "method": "/previewGet",
+      "httpMethod": "get",
+      "description": "Preview Daymet Data in a web browser",
+      "parameters": [
+        {
+          "name": "lat",
+          "schema": "number",
+          "required": true,
+          "description": "Latitude component of location"
+        },
+        {
+          "name": "lon",
+          "schema": "number",
+          "required": true,
+          "description": "Longitude component of location."
+        },
+        {
+          "name": "vars",
+          "schema": "array",
+          "description": "Daymet Daily weather estimates."
+        },
+        {
+          "name": "years",
+          "schema": "array",
+          "description": "Subset on years [1980..2019]."
+        },
+        {
+          "name": "start",
+          "schema": "string",
+          "description": "Subset on dates (start date)."
+        },
+        {
+          "name": "end",
+          "schema": "string",
+          "description": "Subset on dates (end date)."
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Specify a format for data retrieval."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/send/saveData",
+      "method": "/send/saveDataGet",
+      "httpMethod": "get",
+      "description": "Download Daymet Data",
+      "parameters": [
+        {
+          "name": "lat",
+          "schema": "number",
+          "required": true,
+          "description": "Latitude component of location."
+        },
+        {
+          "name": "lon",
+          "schema": "number",
+          "required": true,
+          "description": "Longitude component of location."
+        },
+        {
+          "name": "vars",
+          "schema": "array",
+          "description": "Daymet Daily weather estimates."
+        },
+        {
+          "name": "years",
+          "schema": "array",
+          "description": "Subset on years [1980..2019]."
+        },
+        {
+          "name": "start",
+          "schema": "string",
+          "description": "Subset on dates (start date)."
+        },
+        {
+          "name": "end",
+          "schema": "string",
+          "description": "Subset on dates (end date)."
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Specify a format for data retrieval."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/visualize",
+      "method": "/visualizeGet",
+      "httpMethod": "get",
+      "description": "Visualize Daymet Data in a web browser",
+      "parameters": [
+        {
+          "name": "lat",
+          "schema": "number",
+          "required": true,
+          "description": "Latitude component of location."
+        },
+        {
+          "name": "lon",
+          "schema": "number",
+          "required": true,
+          "description": "Longitude component of location."
+        },
+        {
+          "name": "vars",
+          "schema": "array",
+          "description": "Daymet Daily weather estimates."
+        },
+        {
+          "name": "years",
+          "schema": "array",
+          "description": "Subset on years [1980..2019]."
+        },
+        {
+          "name": "start",
+          "schema": "string",
+          "description": "Subset on dates (start date)."
+        },
+        {
+          "name": "end",
+          "schema": "string",
+          "description": "Subset on dates (end date)."
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Specify a format for data retrieval."
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://daymet.ornl.gov/single-pixel",
   "apiDescription": "Welcome to the Daymet Single Pixel Extraction Tool API. You can use this API to download daily surface data within the Daymet database in a `csv` or `json` format for a single point. This API allows users to query a single geographic point by latitude and longitude in decimal degrees. A routine is executed that translates the (lon, lat) coordinates into projected Daymet (x,y) Lambert Conformal Coordinates. These coordinates are used to access the Daymet database of daily interpolated surface weather variables. Daily data from the nearest 1 km x 1 km Daymet grid cell are extracted from the database.\n\nIf you would like to learn how to automate the download of multiple locations for the Daymet Single Pixel Extraction Tool, click [here](https://github.com/ornldaac/daymet-single-pixel-batch).",
   "apiTitle": "Daymet Single Pixel Extraction Tool API",

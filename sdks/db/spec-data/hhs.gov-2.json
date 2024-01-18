@@ -3,6 +3,1355 @@
   "openApiRaw": "https://api.digitalmedia.hhs.gov/swagger",
   "homepage": "hhs.gov",
   "apiVersion": "2",
+  "methods": [
+    {
+      "url": "/resources.json",
+      "method": "/resourcesJsonGet",
+      "httpMethod": "get",
+      "tag": "resources",
+      "description": "Get Resources by search query",
+      "parameters": [
+        {
+          "name": "q",
+          "schema": "string",
+          "required": true,
+          "description": "The search query supplied by the user"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/campaigns.json",
+      "method": "/resources/campaignsJsonGet",
+      "httpMethod": "get",
+      "tag": "campaigns",
+      "description": "Get Campaigns",
+      "parameters": [
+        {
+          "name": "max",
+          "schema": "integer",
+          "required": false,
+          "description": "The maximum number of records to return"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The offset of the records set to return for pagination"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "* Set of fields to sort the records by."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/campaigns/{id}.json",
+      "method": "/resources/campaigns/{id}JsonGet",
+      "httpMethod": "get",
+      "tag": "campaigns",
+      "description": "Get Campaign by ID",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the record to look up"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/campaigns/{id}/media.json",
+      "method": "/resources/campaigns/{id}/mediaJsonGet",
+      "httpMethod": "get",
+      "tag": "campaigns",
+      "description": "Get MediaItems by Campaign ID",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the campaign to find media items for"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "The name of the property to which sorting will be applied"
+        },
+        {
+          "name": "max",
+          "schema": "integer",
+          "required": false,
+          "description": "The maximum number of records to return"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The offset of the records set to return for pagination"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/campaigns/{id}/syndicate.{format}",
+      "method": "/resources/campaigns/{id}/syndicate.{format}Get",
+      "httpMethod": "get",
+      "tag": "campaigns",
+      "description": "Get MediaItems for Campaign",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the record to look up"
+        },
+        {
+          "name": "displayMethod",
+          "schema": "string",
+          "required": false,
+          "description": "Method used to render an html request. Accepts one: [mv, list, feed]"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/languages.json",
+      "method": "/resources/languagesJsonGet",
+      "httpMethod": "get",
+      "tag": "languages",
+      "description": "Get Languages",
+      "parameters": [
+        {
+          "name": "max",
+          "schema": "integer",
+          "required": false,
+          "description": "The maximum number of records to return"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Return records starting at the offset index."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "The name of the property to which sorting will be applied"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/languages/{id}.json",
+      "method": "/resources/languages/{id}JsonGet",
+      "httpMethod": "get",
+      "tag": "languages",
+      "description": "Get Language by ID",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the language to look up"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/media.json",
+      "method": "/resources/mediaJsonGet",
+      "httpMethod": "get",
+      "tag": "media",
+      "description": "Get MediaItems",
+      "parameters": [
+        {
+          "name": "max",
+          "schema": "integer",
+          "required": false,
+          "description": "The maximum number of records to return"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The offset of the records set to return for pagination."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "* Set of fields to sort the records by."
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "required": false,
+          "description": "* The ascending or descending order."
+        },
+        {
+          "name": "mediaTypes",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items belonging to the specified media type[s]."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items containing the provided name, case insensitive."
+        },
+        {
+          "name": "collectionId",
+          "schema": "integer",
+          "required": false,
+          "description": "Restrict filtering to media items in a specific collection."
+        },
+        {
+          "name": "nameContains",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items containing the partial name, case insensitive."
+        },
+        {
+          "name": "descriptionContains",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items containing the provided partial description, case insensitive."
+        },
+        {
+          "name": "sourceUrl",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items which have the provided sourceUrl, case insensitive."
+        },
+        {
+          "name": "sourceUrlContains",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items which contain the provided partial sourceUrl, case insensitive."
+        },
+        {
+          "name": "customThumbnailUrl",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items which have the provided customThumbnailUrl, case insensitive."
+        },
+        {
+          "name": "customThumbnailUrlContains",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items which contain the provided partial customThumbnailUrl, case insensitive."
+        },
+        {
+          "name": "dateContentAuthored",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items authored on the provided day (RFC 3339, time ignored)."
+        },
+        {
+          "name": "dateContentUpdated",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items updated on the provided day (RFC 3339, time ignored)."
+        },
+        {
+          "name": "dateContentPublished",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items published on the provided day (RFC 3339, time ignored)."
+        },
+        {
+          "name": "dateContentReviewed",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items reviewed on the provided day (RFC 3339, time ignored)."
+        },
+        {
+          "name": "dateSyndicationCaptured",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items syndicated on the provided day (RFC 3339, time ignored)."
+        },
+        {
+          "name": "dateSyndicationUpdated",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items updated through the syndication system on the provided day, (RFC 3339, time ignored)."
+        },
+        {
+          "name": "contentAuthoredSinceDate",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items authored since the provided day (RFC 3339, time ignored)."
+        },
+        {
+          "name": "contentAuthoredBeforeDate",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items authored before the provided day (RFC 3339, time ignored)."
+        },
+        {
+          "name": "contentAuthoredInRange",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items authored between the provided start and end days (RFC 3339, comma separated, time ignored)."
+        },
+        {
+          "name": "contentUpdatedSinceDate",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items updated since the provided day (RFC 3339, time ignored)."
+        },
+        {
+          "name": "contentUpdatedBeforeDate",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items updated before the provided day (RFC 3339, time ignored)."
+        },
+        {
+          "name": "contentUpdatedInRange",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items updated between the provided start and end days (RFC 3339, comma separated, time ignored)."
+        },
+        {
+          "name": "contentPublishedSinceDate",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items updated since the provided day (RFC 3339, time ignored)."
+        },
+        {
+          "name": "contentPublishedBeforeDate",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items published before the provided day (RFC 3339, time ignored)."
+        },
+        {
+          "name": "contentPublishedInRange",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items published between the provided start and end days (RFC 3339, comma separated, time ignored)."
+        },
+        {
+          "name": "contentReviewedSinceDate",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items reviewed since the provided day (RFC 3339, time ignored)."
+        },
+        {
+          "name": "contentReviewedBeforeDate",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items reviewed before the provided day (RFC 3339, time ignored)."
+        },
+        {
+          "name": "contentReviewedInRange",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items reviewed between the provided start and end days (RFC 3339, comma separated, time ignored)."
+        },
+        {
+          "name": "syndicationCapturedSinceDate",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items authored since the provided day (RFC 3339, time ignored)."
+        },
+        {
+          "name": "syndicationCapturedBeforeDate",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items authored before the provided day (RFC 3339, time ignored)."
+        },
+        {
+          "name": "syndicationCapturedInRange",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items authored between the provided start and end days (RFC 3339, comma separated, time ignored)."
+        },
+        {
+          "name": "syndicationUpdatedSinceDate",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items updated since the provided day, (RFC 3339, time ignored)."
+        },
+        {
+          "name": "syndicationUpdatedBeforeDate",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items updated before the provided day, (RFC 3339, time ignored)."
+        },
+        {
+          "name": "syndicationUpdatedInRange",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items updated between the provided start and end days, (RFC 3339, comma separated, time ignored)."
+        },
+        {
+          "name": "syndicationVisibleSinceDate",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items visible since the provided day, (RFC 3339, time ignored)."
+        },
+        {
+          "name": "syndicationVisibleBeforeDate",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items visible before the provided day, (RFC 3339, time ignored)."
+        },
+        {
+          "name": "syndicationVisibleInRange",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items visible between the provided start and end days, (RFC 3339, comma separated, time ignored)."
+        },
+        {
+          "name": "languageId",
+          "schema": "integer",
+          "required": false,
+          "description": "Find all media items written in the language specified by Id."
+        },
+        {
+          "name": "languageName",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items written in the language specified by name, case insensitive."
+        },
+        {
+          "name": "languageIsoCode",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items written in the language specified by 639-2 isoCode , case insensitive."
+        },
+        {
+          "name": "hash",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items which match the provided hash, case insensitive."
+        },
+        {
+          "name": "hashContains",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items which match the provided partial hash, case insensitive."
+        },
+        {
+          "name": "sourceId",
+          "schema": "integer",
+          "required": false,
+          "description": "Find all media items that belong to the source specified by Id."
+        },
+        {
+          "name": "sourceName",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items that belong to the source specified by name, case insensitive."
+        },
+        {
+          "name": "sourceNameContains",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items that belong to the source specified by partial name, case insensitive."
+        },
+        {
+          "name": "sourceAcronym",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items that belong to the source specified by acronym, case insensitive."
+        },
+        {
+          "name": "sourceAcronymContains",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items that belong to the source specified by partial acronym, case insensitive."
+        },
+        {
+          "name": "tagIds",
+          "schema": "string",
+          "required": false,
+          "description": "Find only media items tagged with the specified tag Ids."
+        },
+        {
+          "name": "restrictToSet",
+          "schema": "string",
+          "required": false,
+          "description": "Find only media from within the supplied list of Ids."
+        },
+        {
+          "name": "createdBy",
+          "schema": "string",
+          "required": false,
+          "description": "Find all media items containing the createdBy value."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/media/featured.json",
+      "method": "/resources/media/featuredJsonGet",
+      "httpMethod": "get",
+      "tag": "media",
+      "description": "Get the list of featured content in the syndication system",
+      "parameters": [
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "The name of the property to which sorting will be applied"
+        },
+        {
+          "name": "max",
+          "schema": "integer",
+          "required": false,
+          "description": "The maximum number of records to return"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Return records starting at the offset index."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/media/mostPopularMedia.{format}",
+      "method": "/resources/media/mostPopularMedia.{format}Get",
+      "httpMethod": "get",
+      "tag": "media",
+      "description": "Get MediaItems by popularity",
+      "parameters": [
+        {
+          "name": "max",
+          "schema": "integer",
+          "required": false,
+          "description": "The maximum number of records to return"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The offset of the records set to return for pagination."
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/media/searchResults.json",
+      "method": "/resources/media/searchResultsJsonGet",
+      "httpMethod": "get",
+      "tag": "media",
+      "description": "Get MediaItems by search query",
+      "parameters": [
+        {
+          "name": "q",
+          "schema": "string",
+          "required": true,
+          "description": "The search query supplied by the user"
+        },
+        {
+          "name": "max",
+          "schema": "integer",
+          "required": false,
+          "description": "The maximum number of records to return"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The offset of the records set to return for pagination."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/media/{id}.json",
+      "method": "/resources/media/{id}JsonGet",
+      "httpMethod": "get",
+      "tag": "media",
+      "description": "Get MediaItem by ID",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the record to look up"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/media/{id}/content",
+      "method": "/resources/media/{id}/contentGet",
+      "httpMethod": "get",
+      "tag": "media",
+      "description": "Get content for MediaItem",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the media to show content for."
+        },
+        {
+          "name": "calledByBuild",
+          "schema": "boolean",
+          "required": false,
+          "description": "The method that called this method"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/media/{id}/embed.json",
+      "method": "/resources/media/{id}/embedJsonGet",
+      "httpMethod": "get",
+      "tag": "media",
+      "description": "Get embed code for MediaItem",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the media to get embed code for."
+        },
+        {
+          "name": "flavor",
+          "schema": "string",
+          "required": false,
+          "description": "Currently supports 'iframe', defaults to 'javascript'."
+        },
+        {
+          "name": "width",
+          "schema": "integer",
+          "required": false,
+          "description": "The width of the generated iframe."
+        },
+        {
+          "name": "height",
+          "schema": "integer",
+          "required": false,
+          "description": "The height of the generated iframe."
+        },
+        {
+          "name": "iframeName",
+          "schema": "string",
+          "required": false,
+          "description": "The name of the iframe element"
+        },
+        {
+          "name": "excludeJquery",
+          "schema": "boolean",
+          "required": false,
+          "description": "Should a reference to the JQuery Library be omitted?"
+        },
+        {
+          "name": "excludeDiv",
+          "schema": "boolean",
+          "required": false,
+          "description": "Should the div to insert content into be omitted?"
+        },
+        {
+          "name": "divId",
+          "schema": "string",
+          "required": false,
+          "description": "Should the div to insert content into have a specific name?"
+        },
+        {
+          "name": "displayMethod",
+          "schema": "string",
+          "required": false,
+          "description": "Method used to render an html request. Accepts one: [mv, list, feed]"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/media/{id}/preview.jpg",
+      "method": "/resources/media/{id}/previewJpgGet",
+      "httpMethod": "get",
+      "tag": "media",
+      "description": "Get Tag by ID",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the media to get a preview for."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/media/{id}/relatedMedia.{format}",
+      "method": "/resources/media/{id}/relatedMedia.{format}Get",
+      "httpMethod": "get",
+      "tag": "media",
+      "description": "Get related MediaItems by ID",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the media item to get related media for"
+        },
+        {
+          "name": "max",
+          "schema": "integer",
+          "required": false,
+          "description": "The maximum number of records to return"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Return records starting at the offset index."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "The name of the property to which sorting will be applied"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/media/{id}/syndicate.{format}",
+      "method": "/resources/media/{id}/syndicate.{format}Get",
+      "httpMethod": "get",
+      "tag": "media",
+      "description": "Get syndicated content for MediaItem",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the media to show embed code for."
+        },
+        {
+          "name": "cssClass",
+          "schema": "string",
+          "required": false,
+          "description": "The css class to target for extraction."
+        },
+        {
+          "name": "stripStyles",
+          "schema": "boolean",
+          "required": false,
+          "description": "Remove in-line styles from content."
+        },
+        {
+          "name": "stripScripts",
+          "schema": "boolean",
+          "required": false,
+          "description": "Remove script tags from content."
+        },
+        {
+          "name": "stripImages",
+          "schema": "boolean",
+          "required": false,
+          "description": "Remove image tags from content."
+        },
+        {
+          "name": "stripBreaks",
+          "schema": "boolean",
+          "required": false,
+          "description": "Remove break tags from content."
+        },
+        {
+          "name": "stripClasses",
+          "schema": "boolean",
+          "required": false,
+          "description": "Remove class attributes from content (except 'syndicate')."
+        },
+        {
+          "name": "font-size",
+          "schema": "integer",
+          "required": false,
+          "description": "Set font size (in points) of p, div, and span tags."
+        },
+        {
+          "name": "imageFloat",
+          "schema": "string",
+          "required": false,
+          "description": "Accepts valid CSS float options, such as 'left' or 'right'. Will inject a style into the content before rendering."
+        },
+        {
+          "name": "imageMargin",
+          "schema": "string",
+          "required": false,
+          "description": "Accepts 4 CSV values representing pixel sizes of margin similar to CSS. Default format is 'north,east,south,west' - for example '0,10,10,0' would put a 10 pixel margin on the right and bottom sides of an image. Will inject a style into the content before rendering."
+        },
+        {
+          "name": "autoplay",
+          "schema": "boolean",
+          "required": false,
+          "description": "If content is a video, the embeded video will auto play when loaded."
+        },
+        {
+          "name": "rel",
+          "schema": "boolean",
+          "required": false,
+          "description": "If content is a video, related items will be shown at the end of playback."
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/media/{id}/thumbnail.jpg",
+      "method": "/resources/media/{id}/thumbnailJpgGet",
+      "httpMethod": "get",
+      "tag": "media",
+      "description": "Get JPG thumbnail for MediaItem",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the media to get a thumbnail for."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/media/{id}/youtubeMetaData.json",
+      "method": "/resources/media/{id}/youtubeMetaDataJsonGet",
+      "httpMethod": "get",
+      "tag": "media",
+      "description": "Get Youtube metadata for MediaItem",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the video to show meta data for."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/mediaTypes.{format}",
+      "method": "/resources/mediaTypes.{format}Get",
+      "httpMethod": "get",
+      "tag": "mediaTypes",
+      "description": "Get MediaTypes",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/sources.json",
+      "method": "/resources/sourcesJsonGet",
+      "httpMethod": "get",
+      "tag": "sources",
+      "description": "Get Sources",
+      "parameters": [
+        {
+          "name": "max",
+          "schema": "integer",
+          "required": false,
+          "description": "The maximum number of records to return"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Return records starting at the offset index."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "The name of the property to which sorting will be applied"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/sources/{id}.json",
+      "method": "/resources/sources/{id}JsonGet",
+      "httpMethod": "get",
+      "tag": "sources",
+      "description": "Get Source by ID",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the source to look up"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/sources/{id}/syndicate.{format}",
+      "method": "/resources/sources/{id}/syndicate.{format}Get",
+      "httpMethod": "get",
+      "tag": "sources",
+      "description": "Get MediaItems for Source",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the record to look up"
+        },
+        {
+          "name": "displayMethod",
+          "schema": "string",
+          "required": false,
+          "description": "Method used to render an html request. Accepts one: [mv, list, feed]"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/tags.{format}",
+      "method": "/resources/tags.{format}Get",
+      "httpMethod": "get",
+      "tag": "tags",
+      "description": "Get Tags",
+      "parameters": [
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "The name of the property to which sorting will be applied"
+        },
+        {
+          "name": "max",
+          "schema": "integer",
+          "required": false,
+          "description": "The maximum number of records to return"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Return records starting at the offset index."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "Return tags[s] matching the supplied name"
+        },
+        {
+          "name": "nameContains",
+          "schema": "string",
+          "required": false,
+          "description": "Return tags which contain the supplied partial name."
+        },
+        {
+          "name": "mediaId",
+          "schema": "integer",
+          "required": false,
+          "description": "Return tags associated with the supplied media id."
+        },
+        {
+          "name": "typeId",
+          "schema": "integer",
+          "required": false,
+          "description": "Return tags belonging to the supplied tag type id."
+        },
+        {
+          "name": "typeName",
+          "schema": "string",
+          "required": false,
+          "description": "Return tags belonging to the supplied tag type name."
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/tags/tagLanguages.{format}",
+      "method": "/resources/tags/tagLanguages.{format}Get",
+      "httpMethod": "get",
+      "tag": "tags",
+      "description": "Get TagLanguages",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/tags/tagTypes.{format}",
+      "method": "/resources/tags/tagTypes.{format}Get",
+      "httpMethod": "get",
+      "tag": "tags",
+      "description": "Get MediaItems for Tag",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/tags/{id}.{format}",
+      "method": "/resources/tags/{id}.{format}Get",
+      "httpMethod": "get",
+      "tag": "tags",
+      "description": "Get Tag by ID",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the record to look up"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/tags/{id}/media.{format}",
+      "method": "/resources/tags/{id}/media.{format}Get",
+      "httpMethod": "get",
+      "tag": "tags",
+      "description": "Get MediaItems for Tag",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the tag to look up"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "The name of the property to which sorting will be applied"
+        },
+        {
+          "name": "max",
+          "schema": "integer",
+          "required": false,
+          "description": "The maximum number of records to return"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Return records starting at the offset index."
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/tags/{id}/related.{format}",
+      "method": "/resources/tags/{id}/related.{format}Get",
+      "httpMethod": "get",
+      "tag": "tags",
+      "description": "Get related Tags by ID",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the tag to look up"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "The name of the property to which sorting will be applied"
+        },
+        {
+          "name": "max",
+          "schema": "integer",
+          "required": false,
+          "description": "The maximum number of records to return"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Return records starting at the offset index."
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/tags/{id}/syndicate.{format}",
+      "method": "/resources/tags/{id}/syndicate.{format}Get",
+      "httpMethod": "get",
+      "tag": "tags",
+      "description": "Get MediaItems for Tag",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the record to look up"
+        },
+        {
+          "name": "displayMethod",
+          "schema": "string",
+          "required": false,
+          "description": "Method used to render an html request. Accepts one: [mv, list, feed]"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/userMediaLists/{id}.json",
+      "method": "/resources/userMediaLists/{id}JsonGet",
+      "httpMethod": "get",
+      "tag": "userMediaLists",
+      "description": "Get UserMediaList by ID",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the record to look up"
+        },
+        {
+          "name": "displayMethod",
+          "schema": "string",
+          "required": false,
+          "description": "Method used to render an html request. Accepts one: [mv, list, feed]"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "/api/v2",
   "apiDescription": "<div class=\"swagger-ui-wrap extraFooter\"><h3>Common Features / Behaviors</h3> <div class=\"features\"> <ul> <li><strong>* \"sort\" param:</strong> supports multi column sorting through the use of commas as delimiters, and a hyphen to denote descending order. <br/> <strong><span>Examples:</span></strong> <ul> <li><span class=\"example\">name</span><span class=\"description\">sort results by name ascending</span></li> <li><span class=\"example\">-name</span><span class=\"description\">sort results by name descending</span></li> <li><span class=\"example\">-name,id</span><span class=\"description\">sort results by name descending and then by id ascending</span></li> <li><span class=\"example\">id,-dateContentAuthored</span><span class=\"description\">sort results by id ascending and then date descending</span></li> </ul> </li> <li><strong>Date formats:</strong> Date input format is expected to be based on <a href=\"http://www.ietf.org/rfc/rfc3339.txt\">RFC 3339</a>. <br/> <span><strong>Example:</strong></span> <ul><li>2013-11-18T18:43:01Z</li></ul> </li> </ul> </div> </div>",
   "apiTitle": "HHS Media Services API",

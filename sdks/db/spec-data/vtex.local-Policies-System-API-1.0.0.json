@@ -4,6 +4,237 @@
   "homepage": "vtex.local",
   "serviceName": "Policies-System-API",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/api/policy-engine/evaluate",
+      "method": "policyEvaluate",
+      "httpMethod": "post",
+      "tag": "Policy",
+      "description": "Evaluate Policies",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand "
+        },
+        {
+          "name": "context",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resource",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/policy-engine/policies",
+      "method": "policyList",
+      "httpMethod": "get",
+      "tag": "Policy",
+      "description": "Get Policy List",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/policy-engine/policies/{id}",
+      "method": "policyDelete",
+      "httpMethod": "delete",
+      "tag": "Policy",
+      "description": "Delete Policy by ID",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand "
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Policy ID"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/policy-engine/policies/{id}",
+      "method": "policyGet",
+      "httpMethod": "get",
+      "tag": "Policy",
+      "description": "Get Policy by ID",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand "
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Policy ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/policy-engine/policies/{id}",
+      "method": "policyCreateOrUpdate",
+      "httpMethod": "post",
+      "tag": "Policy",
+      "description": "Create Policy",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand "
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Policy ID"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "statements",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/policy-engine/policies/{id}",
+      "method": "/api/policyEngine/policies/{id}Put",
+      "httpMethod": "put",
+      "tag": "Policy",
+      "description": "Update Policy",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand "
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Policy ID"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "statements",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://vtex.local",
   "apiDescription": "\r\n This API will create promotion alarms when selling products with undesired prices and promotions. It will create conditions that will check if the prices and the promotions are correct. If not, the system will alarm the store with information about the product sold at unexpected prices.\r\n\r\n ## Index\r\n\r\n `GET` [Get Policy List](https://developers.vtex.com/docs/api-reference/policies-system-api#get-/api/policy-engine/policies)\r\n `POST` [Evaluate Policies](https://developers.vtex.com/docs/api-reference/policies-system-api#post-/api/policy-engine/evaluate)\r\n `GET` [Get Policy by ID](https://developers.vtex.com/docs/api-reference/policies-system-api#get-/api/policy-engine/policies/-id-)\r\n `POST` [Create Policy](https://developers.vtex.com/docs/api-reference/policies-system-api#post-/api/policy-engine/policies/-id-)\r\n `PUT` [Update Policy](https://developers.vtex.com/docs/api-reference/policies-system-api#put-/api/policy-engine/policies/-id-)\r\n `DELETE` [Delete Policy by ID](https://developers.vtex.com/docs/api-reference/policies-system-api#delete-/api/policy-engine/policies/-id-)",
   "apiTitle": "Policies System API",

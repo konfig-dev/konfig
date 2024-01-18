@@ -4,6 +4,663 @@
   "homepage": "parliament.uk",
   "serviceName": "bills",
   "apiVersion": "v1",
+  "methods": [
+    {
+      "url": "/api/v1/BillTypes",
+      "method": "/api/v1/billTypesGet",
+      "httpMethod": "get",
+      "tag": "BillTypes",
+      "description": "Returns a list of Bill types.",
+      "parameters": [
+        {
+          "name": "Category",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Skip",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "Take",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Bills",
+      "method": "getBills",
+      "httpMethod": "get",
+      "tag": "Bills",
+      "description": "Returns a list of Bills.",
+      "parameters": [
+        {
+          "name": "SearchTerm",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Session",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "CurrentHouse",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "OriginatingHouse",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "MemberId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "DepartmentId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "BillStage",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "BillStagesExcluded",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "IsDefeated",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "IsWithdrawn",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "BillType",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "SortOrder",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "BillIds",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "Skip",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "Take",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Bills/{billId}",
+      "method": "getBill",
+      "httpMethod": "get",
+      "tag": "Bills",
+      "description": "Return a Bill.",
+      "parameters": [
+        {
+          "name": "billId",
+          "schema": "integer",
+          "required": true,
+          "description": "Bill with ID specified"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Bills/{billId}/NewsArticles",
+      "method": "getNewsArticles",
+      "httpMethod": "get",
+      "tag": "BillNews",
+      "description": "Returns a list of news articles for a Bill.",
+      "parameters": [
+        {
+          "name": "billId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Skip",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "Take",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Bills/{billId}/Publications",
+      "method": "getBillPublication",
+      "httpMethod": "get",
+      "tag": "Publications",
+      "description": "Return a list of Bill publications.",
+      "parameters": [
+        {
+          "name": "billId",
+          "schema": "integer",
+          "required": true,
+          "description": "Publications relating to Bill with Bill ID specified"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Bills/{billId}/Stages",
+      "method": "/api/v1/bills/{billId}/stagesGet",
+      "httpMethod": "get",
+      "tag": "Bills",
+      "description": "Returns all Bill stages.",
+      "parameters": [
+        {
+          "name": "billId",
+          "schema": "integer",
+          "required": true,
+          "description": "Stages relating to a Bill with Bill ID specified"
+        },
+        {
+          "name": "Skip",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "Take",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Bills/{billId}/Stages/{billStageId}",
+      "method": "getBillStageDetails",
+      "httpMethod": "get",
+      "tag": "Bills",
+      "description": "Returns a Bill stage.",
+      "parameters": [
+        {
+          "name": "billId",
+          "schema": "integer",
+          "required": true,
+          "description": "Bill stage relating to Bill with Bill ID specified"
+        },
+        {
+          "name": "billStageId",
+          "schema": "integer",
+          "required": true,
+          "description": "Bill stage with ID specified"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Bills/{billId}/Stages/{billStageId}/Amendments",
+      "method": "getAmendments",
+      "httpMethod": "get",
+      "tag": "Amendments",
+      "description": "Returns a list of amendments.",
+      "parameters": [
+        {
+          "name": "billId",
+          "schema": "integer",
+          "required": true,
+          "description": "Amendments relating to a Bill with Bill ID specified"
+        },
+        {
+          "name": "billStageId",
+          "schema": "integer",
+          "required": true,
+          "description": "Amendments relating to a Bill stage with Bill stage ID specified"
+        },
+        {
+          "name": "SearchTerm",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Decision",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "MemberId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "Skip",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "Take",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Bills/{billId}/Stages/{billStageId}/Amendments/{amendmentId}",
+      "method": "getAmendment",
+      "httpMethod": "get",
+      "tag": "Amendments",
+      "description": "Returns an amendment.",
+      "parameters": [
+        {
+          "name": "billId",
+          "schema": "integer",
+          "required": true,
+          "description": "Amendment relating to a bill with bill ID specified"
+        },
+        {
+          "name": "billStageId",
+          "schema": "integer",
+          "required": true,
+          "description": "Amendment relating to a bill stage with bill stage ID specified"
+        },
+        {
+          "name": "amendmentId",
+          "schema": "integer",
+          "required": true,
+          "description": "Amendment with amendment ID specified"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Bills/{billId}/Stages/{stageId}/Publications",
+      "method": "/api/v1/bills/{billId}/stages/{stageId}/publicationsGet",
+      "httpMethod": "get",
+      "tag": "Publications",
+      "description": "Return a list of Bill stage publications.",
+      "parameters": [
+        {
+          "name": "billId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "stageId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/PublicationTypes",
+      "method": "/api/v1/publicationTypesGet",
+      "httpMethod": "get",
+      "tag": "PublicationTypes",
+      "description": "Returns a list of publication types.",
+      "parameters": [
+        {
+          "name": "Skip",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "Take",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Publications/{publicationId}/Documents/{documentId}",
+      "method": "/api/v1/publications/{publicationId}/documents/{documentId}Get",
+      "httpMethod": "get",
+      "tag": "Documents",
+      "description": "Return information on a document.",
+      "parameters": [
+        {
+          "name": "publicationId",
+          "schema": "integer",
+          "required": true,
+          "description": "Document with publication Id specified"
+        },
+        {
+          "name": "documentId",
+          "schema": "integer",
+          "required": true,
+          "description": "Document with Id specified"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Publications/{publicationId}/Documents/{documentId}/Download",
+      "method": "/api/v1/publications/{publicationId}/documents/{documentId}/downloadGet",
+      "httpMethod": "get",
+      "tag": "Documents",
+      "description": "Return a document.",
+      "parameters": [
+        {
+          "name": "publicationId",
+          "schema": "integer",
+          "required": true,
+          "description": "Document with publication Id specified"
+        },
+        {
+          "name": "documentId",
+          "schema": "integer",
+          "required": true,
+          "description": "Document with Id specified"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Rss/Bills/{id}.rss",
+      "method": "/api/v1/rss/bills/{id}RssGet",
+      "httpMethod": "get",
+      "tag": "Rss",
+      "description": "Returns an Rss feed of a certain Bill.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of Bill"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Rss/allbills.rss",
+      "method": "/api/v1/rss/allbillsRssGet",
+      "httpMethod": "get",
+      "tag": "Rss",
+      "description": "Returns an Rss feed of all Bills.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/Rss/privatebills.rss",
+      "method": "/api/v1/rss/privatebillsRssGet",
+      "httpMethod": "get",
+      "tag": "Rss",
+      "description": "Returns an Rss feed of private Bills.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/Rss/publicbills.rss",
+      "method": "/api/v1/rss/publicbillsRssGet",
+      "httpMethod": "get",
+      "tag": "Rss",
+      "description": "Returns an Rss feed of public Bills.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/Sittings",
+      "method": "getSittings",
+      "httpMethod": "get",
+      "tag": "Sittings",
+      "description": "Returns a list of Sittings.",
+      "parameters": [
+        {
+          "name": "House",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "DateFrom",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "DateTo",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Skip",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "Take",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Stages",
+      "method": "/api/v1/stagesGet",
+      "httpMethod": "get",
+      "tag": "Stages",
+      "description": "Returns a list of Bill stages.",
+      "parameters": [
+        {
+          "name": "Skip",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "Take",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://bills-api.parliament.uk",
   "apiDescription": "API to get and search for information regarding Bills, their stages, associated amendments and publications.",
   "apiTitle": "Bills API",

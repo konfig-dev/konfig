@@ -3,6 +3,678 @@
   "openApiRaw": "https://api.slmonitor.com/swagger/v2.1/swagger.json",
   "homepage": "slmonitor.com",
   "apiVersion": "2.1",
+  "methods": [
+    {
+      "url": "/api/v2.1/companies/{companyId}/me",
+      "method": "apiGetUser",
+      "httpMethod": "get",
+      "tag": "Api",
+      "description": "Get the authenticated user",
+      "parameters": [
+        {
+          "name": "companyId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "User information"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2.1/companies/{companyId}/users",
+      "method": "apiGetUsers",
+      "httpMethod": "get",
+      "tag": "Api",
+      "description": "Get all the users",
+      "parameters": [
+        {
+          "name": "companyId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2.1/companies/{companyId}/users/{uniqueUserId}",
+      "method": "apiGetUser2",
+      "httpMethod": "get",
+      "tag": "Api",
+      "description": "Get the user's profile",
+      "parameters": [
+        {
+          "name": "uniqueUserId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique user id"
+        },
+        {
+          "name": "companyId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "User information"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2.1/companies/{companyId}/users/{uniqueUserId}/checkin",
+      "method": "apiCheckIn",
+      "httpMethod": "post",
+      "tag": "Api",
+      "description": "Check in",
+      "parameters": [
+        {
+          "name": "uniqueUserId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique user id"
+        },
+        {
+          "name": "interval",
+          "schema": "integer",
+          "description": "The optional check-in interval in minutes"
+        },
+        {
+          "name": "deviceType",
+          "schema": "integer",
+          "description": "Optional, the device type performing the command."
+        },
+        {
+          "name": "companyId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "User information"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2.1/companies/{companyId}/users/{uniqueUserId}/checkin-audio",
+      "method": "apiCheckInWithAudio",
+      "httpMethod": "post",
+      "tag": "Api",
+      "description": "Check in with an audio recording",
+      "parameters": [
+        {
+          "name": "uniqueUserId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "interval",
+          "schema": "integer",
+          "description": "The optional check-in interval in minutes"
+        },
+        {
+          "name": "deviceType",
+          "schema": "integer",
+          "description": "Optional, the device type performing the command."
+        },
+        {
+          "name": "companyId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "container",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "data",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "encoding",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "User information"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2.1/companies/{companyId}/users/{uniqueUserId}/checkin-text",
+      "method": "apiCheckInWithText",
+      "httpMethod": "post",
+      "tag": "Api",
+      "description": "Check in with a text report",
+      "parameters": [
+        {
+          "name": "uniqueUserId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique user id"
+        },
+        {
+          "name": "interval",
+          "schema": "integer",
+          "description": "The optional check-in interval in minutes"
+        },
+        {
+          "name": "deviceType",
+          "schema": "integer",
+          "description": "Optional, the device type performing the command."
+        },
+        {
+          "name": "companyId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "User information"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2.1/companies/{companyId}/users/{uniqueUserId}/emergency",
+      "method": "apiEmergency",
+      "httpMethod": "post",
+      "tag": "Api",
+      "description": "Declare an emergency",
+      "parameters": [
+        {
+          "name": "uniqueUserId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique user id"
+        },
+        {
+          "name": "deviceType",
+          "schema": "integer",
+          "description": "Optional, the device type performing the command."
+        },
+        {
+          "name": "companyId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "User information"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2.1/companies/{companyId}/users/{uniqueUserId}/emergency-audio",
+      "method": "apiEmergencyWithAudio",
+      "httpMethod": "post",
+      "tag": "Api",
+      "description": "Declare an emergency with an audio recording",
+      "parameters": [
+        {
+          "name": "uniqueUserId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique user id"
+        },
+        {
+          "name": "deviceType",
+          "schema": "integer",
+          "description": "Optional, the device type performing the command."
+        },
+        {
+          "name": "companyId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "container",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "data",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "encoding",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "User information"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2.1/companies/{companyId}/users/{uniqueUserId}/emergency-text",
+      "method": "apiEmergencyWithText",
+      "httpMethod": "post",
+      "tag": "Api",
+      "description": "Declare an emergency with a text report",
+      "parameters": [
+        {
+          "name": "uniqueUserId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique user id"
+        },
+        {
+          "name": "deviceType",
+          "schema": "integer",
+          "description": "Optional, the device type performing the command."
+        },
+        {
+          "name": "companyId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "User information"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2.1/companies/{companyId}/users/{uniqueUserId}/end",
+      "method": "apiEnd",
+      "httpMethod": "post",
+      "tag": "Api",
+      "description": "End monitoring",
+      "parameters": [
+        {
+          "name": "uniqueUserId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique user id"
+        },
+        {
+          "name": "deviceType",
+          "schema": "integer",
+          "description": "Optional, the device type performing the command."
+        },
+        {
+          "name": "companyId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "User information"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2.1/companies/{companyId}/users/{uniqueUserId}/end-audio",
+      "method": "apiEndWithAudio",
+      "httpMethod": "post",
+      "tag": "Api",
+      "description": "End monitoring with an audio recording",
+      "parameters": [
+        {
+          "name": "uniqueUserId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique user id"
+        },
+        {
+          "name": "deviceType",
+          "schema": "integer",
+          "description": "Optional, the device type performing the command."
+        },
+        {
+          "name": "companyId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "container",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "data",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "encoding",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "User information"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2.1/companies/{companyId}/users/{uniqueUserId}/end-text",
+      "method": "apiEndWithText",
+      "httpMethod": "post",
+      "tag": "Api",
+      "description": "End monitoring with a text report",
+      "parameters": [
+        {
+          "name": "uniqueUserId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique user id"
+        },
+        {
+          "name": "deviceType",
+          "schema": "integer",
+          "description": "Optional, the device type performing the command."
+        },
+        {
+          "name": "companyId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "User information"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2.1/companies/{companyId}/users/{uniqueUserId}/itinerary",
+      "method": "apiUpdateItinerary",
+      "httpMethod": "put",
+      "tag": "Api",
+      "description": "Update the itinerary",
+      "parameters": [
+        {
+          "name": "uniqueUserId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique user id"
+        },
+        {
+          "name": "companyId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "User information"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2.1/companies/{companyId}/users/{uniqueUserId}/itinerary-file",
+      "method": "apiUpdateItineraryFile",
+      "httpMethod": "put",
+      "tag": "Api",
+      "description": "Update the itinerary file",
+      "parameters": [
+        {
+          "name": "uniqueUserId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique user id"
+        },
+        {
+          "name": "companyId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "itinerary",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "User information"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2.1/companies/{companyId}/users/{uniqueUserId}/location",
+      "method": "apiReportLocation",
+      "httpMethod": "post",
+      "tag": "Api",
+      "description": "Report a location",
+      "parameters": [
+        {
+          "name": "uniqueUserId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique user id"
+        },
+        {
+          "name": "deviceType",
+          "schema": "integer",
+          "description": "Optional, the device type performing the command."
+        },
+        {
+          "name": "companyId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "address",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "altitude",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "date",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "device",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "heading",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "horizontalAccuracy",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "latitude",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "longitude",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "speed",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "verticalAccuracy",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "User information"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2.1/companies/{companyId}/users/{uniqueUserId}/text",
+      "method": "apiReportText",
+      "httpMethod": "post",
+      "tag": "Api",
+      "description": "Send a text message",
+      "parameters": [
+        {
+          "name": "uniqueUserId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique user id"
+        },
+        {
+          "name": "deviceType",
+          "schema": "integer",
+          "description": "Optional, the device type performing the command."
+        },
+        {
+          "name": "companyId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.slmonitor.com",
   "apiTitle": "SafetyLine",
   "endpoints": 16,

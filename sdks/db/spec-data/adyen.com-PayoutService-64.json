@@ -4,6 +4,638 @@
   "homepage": "adyen.com",
   "serviceName": "PayoutService",
   "apiVersion": "64",
+  "methods": [
+    {
+      "url": "/confirmThirdParty",
+      "method": "postConfirmThirdParty",
+      "httpMethod": "post",
+      "tag": "Reviewing",
+      "description": "Confirm a payout",
+      "parameters": [
+        {
+          "name": "additionalData",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "merchantAccount",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "originalReference",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/declineThirdParty",
+      "method": "postDeclineThirdParty",
+      "httpMethod": "post",
+      "tag": "Reviewing",
+      "description": "Cancel a payout",
+      "parameters": [
+        {
+          "name": "additionalData",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "merchantAccount",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "originalReference",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/payout",
+      "method": "postPayout",
+      "httpMethod": "post",
+      "tag": "Instant payouts",
+      "description": "Make an instant card payout",
+      "parameters": [
+        {
+          "name": "amount",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "billingAddress",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "card",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "fraudOffset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "fundSource",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "merchantAccount",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "recurring",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reference",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "selectedRecurringDetailReference",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "shopperEmail",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "shopperInteraction",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "shopperName",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "shopperReference",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "telephoneNumber",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/storeDetail",
+      "method": "postStoreDetail",
+      "httpMethod": "post",
+      "tag": "Initialization",
+      "description": "Store payout details",
+      "parameters": [
+        {
+          "name": "additionalData",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "bank",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "billingAddress",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "card",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dateOfBirth",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "entityType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "fraudOffset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "merchantAccount",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "nationality",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "recurring",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "selectedBrand",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "shopperEmail",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "shopperName",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "shopperReference",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "socialSecurityNumber",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "telephoneNumber",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/storeDetailAndSubmitThirdParty",
+      "method": "postStoreDetailAndSubmitThirdParty",
+      "httpMethod": "post",
+      "tag": "Initialization",
+      "description": "Store details and submit a payout",
+      "parameters": [
+        {
+          "name": "additionalData",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "amount",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "bank",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "billingAddress",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "card",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dateOfBirth",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "entityType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "fraudOffset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "merchantAccount",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "nationality",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "recurring",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "reference",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "selectedBrand",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "shopperEmail",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "shopperName",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "shopperReference",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "shopperStatement",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "socialSecurityNumber",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "telephoneNumber",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/submitThirdParty",
+      "method": "postSubmitThirdParty",
+      "httpMethod": "post",
+      "tag": "Initialization",
+      "description": "Submit a payout",
+      "parameters": [
+        {
+          "name": "additionalData",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "amount",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "dateOfBirth",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "entityType",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "fraudOffset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "merchantAccount",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "nationality",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "recurring",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "reference",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "selectedRecurringDetailReference",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "shopperEmail",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "shopperName",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "shopperReference",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "shopperStatement",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "socialSecurityNumber",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://pal-test.adyen.com/pal/servlet/Payout/v64",
   "apiDescription": "A set of API endpoints that allow you to store payout details, confirm, or decline a payout.\n\nFor more information, refer to [Online payouts](https://docs.adyen.com/online-payments/online-payouts).\n## Authentication\nTo use the Payout API, you need to have [two API credentials](https://docs.adyen.com/online-payments/online-payouts#payouts-to-bank-accounts-and-wallets): one for storing payout details and submitting payouts, and another one for confirming or declining payouts. If you don't have the required API credentials, contact our [Support Team](https://www.adyen.help/hc/en-us/requests/new).\n\nIf using an API key, add an `X-API-Key` header with the API key as the value, for example:\n\n ```\ncurl\n-H \"Content-Type: application/json\" \\\n-H \"X-API-Key: YOUR_API_KEY\" \\\n...\n```\n\nAlternatively, you can use the username and password to connect to the API using [basic authentication](https://docs.adyen.com/development-resources/api-credentials#basic-authentication).\n\nThe following example shows how to authenticate your request with basic authentication when submitting a payout:\n\n```\ncurl\n-U \"storePayout@Company.YOUR_COMPANY_ACCOUNT\":\"YOUR_BASIC_AUTHENTICATION_PASSWORD\" \\\n-H \"Content-Type: application/json\" \\\n...\n```\n\n## Versioning\nPayments API supports [versioning](https://docs.adyen.com/development-resources/versioning) using a version suffix in the endpoint URL. This suffix has the following format: \"vXX\", where XX is the version number.\n\nFor example:\n```\nhttps://pal-test.adyen.com/pal/servlet/Payout/v64/payout\n```\n\n## Going live\n\nTo authenticate to the live endpoints, you need [API credentials](https://docs.adyen.com/development-resources/api-credentials) from your live Customer Area.\n\nThe live endpoint URLs contain a prefix which is unique to your company account:\n```\n\nhttps://{PREFIX}-pal-live.adyenpayments.com/pal/servlet/Payout/v64/payout\n```\n\nGet your `{PREFIX}` from your live Customer Area under **Developers** > **API URLs** > **Prefix**.",
   "apiTitle": "Adyen Payout API",

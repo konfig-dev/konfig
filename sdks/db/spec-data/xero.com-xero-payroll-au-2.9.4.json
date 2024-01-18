@@ -4,6 +4,720 @@
   "homepage": "xero.com",
   "serviceName": "xero-payroll-au",
   "apiVersion": "2.9.4",
+  "methods": [
+    {
+      "url": "/Employees",
+      "method": "getEmployees",
+      "httpMethod": "get",
+      "tag": "PayrollAu",
+      "description": "Searches payroll employees",
+      "parameters": [
+        {
+          "name": "If-Modified-Since",
+          "schema": "string",
+          "description": "Only records created or modified since this timestamp will be returned"
+        },
+        {
+          "name": "where",
+          "schema": "string",
+          "description": "Filter by an any element"
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "description": "Order by an any element"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": "e.g. page=1 – Up to 100 employees will be returned in a single API call"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "The object returned for a bad request"
+        }
+      ]
+    },
+    {
+      "url": "/Employees",
+      "method": "createEmployee",
+      "httpMethod": "post",
+      "tag": "PayrollAu",
+      "description": "Creates a payroll employee",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Employees/{EmployeeID}",
+      "method": "getEmployee",
+      "httpMethod": "get",
+      "tag": "PayrollAu",
+      "description": "Retrieves an employee's detail by unique employee id",
+      "parameters": [
+        {
+          "name": "EmployeeID",
+          "schema": "string",
+          "required": true,
+          "description": "Employee id for single object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Employees/{EmployeeID}",
+      "method": "updateEmployee",
+      "httpMethod": "post",
+      "tag": "PayrollAu",
+      "description": "Updates an employee's detail",
+      "parameters": [
+        {
+          "name": "EmployeeID",
+          "schema": "string",
+          "required": true,
+          "description": "Employee id for single object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/LeaveApplications",
+      "method": "getLeaveApplications",
+      "httpMethod": "get",
+      "tag": "PayrollAu",
+      "description": "Retrieves leave applications",
+      "parameters": [
+        {
+          "name": "If-Modified-Since",
+          "schema": "string",
+          "description": "Only records created or modified since this timestamp will be returned"
+        },
+        {
+          "name": "where",
+          "schema": "string",
+          "description": "Filter by an any element"
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "description": "Order by an any element"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": "e.g. page=1 – Up to 100 objects will be returned in a single API call"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "The object returned for a bad request"
+        }
+      ]
+    },
+    {
+      "url": "/LeaveApplications",
+      "method": "createLeaveApplication",
+      "httpMethod": "post",
+      "tag": "PayrollAu",
+      "description": "Creates a leave application",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/LeaveApplications/{LeaveApplicationID}",
+      "method": "getLeaveApplication",
+      "httpMethod": "get",
+      "tag": "PayrollAu",
+      "description": "Retrieves a leave application by a unique leave application id",
+      "parameters": [
+        {
+          "name": "LeaveApplicationID",
+          "schema": "string",
+          "required": true,
+          "description": "Leave Application id for single object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/LeaveApplications/{LeaveApplicationID}",
+      "method": "updateLeaveApplication",
+      "httpMethod": "post",
+      "tag": "PayrollAu",
+      "description": "Updates a specific leave application",
+      "parameters": [
+        {
+          "name": "LeaveApplicationID",
+          "schema": "string",
+          "required": true,
+          "description": "Leave Application id for single object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/PayItems",
+      "method": "getPayItems",
+      "httpMethod": "get",
+      "tag": "PayrollAu",
+      "description": "Retrieves pay items",
+      "parameters": [
+        {
+          "name": "If-Modified-Since",
+          "schema": "string",
+          "description": "Only records created or modified since this timestamp will be returned"
+        },
+        {
+          "name": "where",
+          "schema": "string",
+          "description": "Filter by an any element"
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "description": "Order by an any element"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": "e.g. page=1 – Up to 100 objects will be returned in a single API call"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "The object returned for a bad request"
+        }
+      ]
+    },
+    {
+      "url": "/PayItems",
+      "method": "createPayItem",
+      "httpMethod": "post",
+      "tag": "PayrollAu",
+      "description": "Creates a pay item",
+      "parameters": [
+        {
+          "name": "DeductionTypes",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "EarningsRates",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "LeaveTypes",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "ReimbursementTypes",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/PayRuns",
+      "method": "getPayRuns",
+      "httpMethod": "get",
+      "tag": "PayrollAu",
+      "description": "Retrieves pay runs",
+      "parameters": [
+        {
+          "name": "If-Modified-Since",
+          "schema": "string",
+          "description": "Only records created or modified since this timestamp will be returned"
+        },
+        {
+          "name": "where",
+          "schema": "string",
+          "description": "Filter by an any element"
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "description": "Order by an any element"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": "e.g. page=1 – Up to 100 PayRuns will be returned in a single API call"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "The object returned for a bad request"
+        }
+      ]
+    },
+    {
+      "url": "/PayRuns",
+      "method": "createPayRun",
+      "httpMethod": "post",
+      "tag": "PayrollAu",
+      "description": "Creates a pay run",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/PayRuns/{PayRunID}",
+      "method": "getPayRun",
+      "httpMethod": "get",
+      "tag": "PayrollAu",
+      "description": "Retrieves a pay run by using a unique pay run id",
+      "parameters": [
+        {
+          "name": "PayRunID",
+          "schema": "string",
+          "required": true,
+          "description": "PayRun id for single object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/PayRuns/{PayRunID}",
+      "method": "updatePayRun",
+      "httpMethod": "post",
+      "tag": "PayrollAu",
+      "description": "Updates a pay run",
+      "parameters": [
+        {
+          "name": "PayRunID",
+          "schema": "string",
+          "required": true,
+          "description": "PayRun id for single object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/PayrollCalendars",
+      "method": "getPayrollCalendars",
+      "httpMethod": "get",
+      "tag": "PayrollAu",
+      "description": "Retrieves payroll calendars",
+      "parameters": [
+        {
+          "name": "If-Modified-Since",
+          "schema": "string",
+          "description": "Only records created or modified since this timestamp will be returned"
+        },
+        {
+          "name": "where",
+          "schema": "string",
+          "description": "Filter by an any element"
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "description": "Order by an any element"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": "e.g. page=1 – Up to 100 objects will be returned in a single API call"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "The object returned for a bad request"
+        }
+      ]
+    },
+    {
+      "url": "/PayrollCalendars",
+      "method": "createPayrollCalendar",
+      "httpMethod": "post",
+      "tag": "PayrollAu",
+      "description": "Creates a Payroll Calendar",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/PayrollCalendars/{PayrollCalendarID}",
+      "method": "getPayrollCalendar",
+      "httpMethod": "get",
+      "tag": "PayrollAu",
+      "description": "Retrieves payroll calendar by using a unique payroll calendar ID",
+      "parameters": [
+        {
+          "name": "PayrollCalendarID",
+          "schema": "string",
+          "required": true,
+          "description": "Payroll Calendar id for single object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "The object returned for a bad request"
+        }
+      ]
+    },
+    {
+      "url": "/Payslip/{PayslipID}",
+      "method": "getPayslip",
+      "httpMethod": "get",
+      "tag": "PayrollAu",
+      "description": "Retrieves for a payslip by a unique payslip id",
+      "parameters": [
+        {
+          "name": "PayslipID",
+          "schema": "string",
+          "required": true,
+          "description": "Payslip id for single object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Payslip/{PayslipID}",
+      "method": "updatePayslip",
+      "httpMethod": "post",
+      "tag": "PayrollAu",
+      "description": "Updates a payslip",
+      "parameters": [
+        {
+          "name": "PayslipID",
+          "schema": "string",
+          "required": true,
+          "description": "Payslip id for single object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Settings",
+      "method": "getSettings",
+      "httpMethod": "get",
+      "tag": "PayrollAu",
+      "description": "Retrieves payroll settings",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/SuperfundProducts",
+      "method": "getSuperfundProducts",
+      "httpMethod": "get",
+      "tag": "PayrollAu",
+      "description": "Retrieves superfund products",
+      "parameters": [
+        {
+          "name": "ABN",
+          "schema": "string",
+          "description": "The ABN of the Regulated SuperFund"
+        },
+        {
+          "name": "USI",
+          "schema": "string",
+          "description": "The USI of the Regulated SuperFund"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "The object returned for a bad request"
+        }
+      ]
+    },
+    {
+      "url": "/Superfunds",
+      "method": "getSuperfunds",
+      "httpMethod": "get",
+      "tag": "PayrollAu",
+      "description": "Retrieves superfunds",
+      "parameters": [
+        {
+          "name": "If-Modified-Since",
+          "schema": "string",
+          "description": "Only records created or modified since this timestamp will be returned"
+        },
+        {
+          "name": "where",
+          "schema": "string",
+          "description": "Filter by an any element"
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "description": "Order by an any element"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": "e.g. page=1 – Up to 100 SuperFunds will be returned in a single API call"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "The object returned for a bad request"
+        }
+      ]
+    },
+    {
+      "url": "/Superfunds",
+      "method": "createSuperfund",
+      "httpMethod": "post",
+      "tag": "PayrollAu",
+      "description": "Creates a superfund",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Superfunds/{SuperFundID}",
+      "method": "getSuperfund",
+      "httpMethod": "get",
+      "tag": "PayrollAu",
+      "description": "Retrieves a superfund by using a unique superfund ID",
+      "parameters": [
+        {
+          "name": "SuperFundID",
+          "schema": "string",
+          "required": true,
+          "description": "Superfund id for single object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Superfunds/{SuperFundID}",
+      "method": "updateSuperfund",
+      "httpMethod": "post",
+      "tag": "PayrollAu",
+      "description": "Updates a superfund",
+      "parameters": [
+        {
+          "name": "SuperFundID",
+          "schema": "string",
+          "required": true,
+          "description": "Superfund id for single object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Timesheets",
+      "method": "getTimesheets",
+      "httpMethod": "get",
+      "tag": "PayrollAu",
+      "description": "Retrieves timesheets",
+      "parameters": [
+        {
+          "name": "If-Modified-Since",
+          "schema": "string",
+          "description": "Only records created or modified since this timestamp will be returned"
+        },
+        {
+          "name": "where",
+          "schema": "string",
+          "description": "Filter by an any element"
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "description": "Order by an any element"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": "e.g. page=1 – Up to 100 timesheets will be returned in a single API call"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "The object returned for a bad request"
+        }
+      ]
+    },
+    {
+      "url": "/Timesheets",
+      "method": "createTimesheet",
+      "httpMethod": "post",
+      "tag": "PayrollAu",
+      "description": "Creates a timesheet",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Timesheets/{TimesheetID}",
+      "method": "getTimesheet",
+      "httpMethod": "get",
+      "tag": "PayrollAu",
+      "description": "Retrieves a timesheet by using a unique timesheet id",
+      "parameters": [
+        {
+          "name": "TimesheetID",
+          "schema": "string",
+          "required": true,
+          "description": "Timesheet id for single object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Timesheets/{TimesheetID}",
+      "method": "updateTimesheet",
+      "httpMethod": "post",
+      "tag": "PayrollAu",
+      "description": "Updates a timesheet",
+      "parameters": [
+        {
+          "name": "TimesheetID",
+          "schema": "string",
+          "required": true,
+          "description": "Timesheet id for single object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.xero.com/payroll.xro/1.0",
   "apiDescription": "This is the Xero Payroll API for orgs in Australia region.",
   "apiTitle": "Xero Payroll AU API",

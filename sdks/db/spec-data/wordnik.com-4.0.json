@@ -3,6 +3,800 @@
   "openApiRaw": "https://developer.wordnik.com/api-docs/swagger.json",
   "homepage": "wordnik.com",
   "apiVersion": "4.0",
+  "methods": [
+    {
+      "url": "/word.json/{word}/audio",
+      "method": "getAudio",
+      "httpMethod": "get",
+      "tag": "word",
+      "description": "Fetches audio metadata for a word.",
+      "parameters": [
+        {
+          "name": "word",
+          "schema": "string",
+          "required": true,
+          "description": "Word to get audio for."
+        },
+        {
+          "name": "useCanonical",
+          "schema": "string",
+          "required": false,
+          "description": "If true will try to return the correct word root ('cats' -> 'cat'). If false returns exactly what was requested."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum number of results to return"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/word.json/{word}/definitions",
+      "method": "getDefinitions",
+      "httpMethod": "get",
+      "tag": "word",
+      "description": "Return definitions for a word",
+      "parameters": [
+        {
+          "name": "word",
+          "schema": "string",
+          "required": true,
+          "description": "Word to return definitions for"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum number of results to return"
+        },
+        {
+          "name": "partOfSpeech",
+          "schema": "string",
+          "required": false,
+          "description": "CSV list of part-of-speech types"
+        },
+        {
+          "name": "includeRelated",
+          "schema": "string",
+          "required": false,
+          "description": "Return related words with definitions"
+        },
+        {
+          "name": "sourceDictionaries",
+          "schema": "array",
+          "required": false,
+          "description": "Source dictionary to return definitions from.  If 'all' is received, results are returned from all sources. If multiple values are received (e.g. 'century,wiktionary'), results are returned from the first specified dictionary that has definitions. If left blank, results are returned from the first dictionary that has definitions. By default, dictionaries are searched in this order: ahd-5, wiktionary, webster, century, wordnet"
+        },
+        {
+          "name": "useCanonical",
+          "schema": "string",
+          "required": false,
+          "description": "If true will try to return the correct word root ('cats' -> 'cat'). If false returns exactly what was requested."
+        },
+        {
+          "name": "includeTags",
+          "schema": "string",
+          "required": false,
+          "description": "Return a closed set of XML tags in response"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/word.json/{word}/etymologies",
+      "method": "getEtymologies",
+      "httpMethod": "get",
+      "tag": "word",
+      "description": "Fetches etymology data",
+      "parameters": [
+        {
+          "name": "word",
+          "schema": "string",
+          "required": true,
+          "description": "Word to return"
+        },
+        {
+          "name": "useCanonical",
+          "schema": "string",
+          "required": false,
+          "description": "If true will try to return the correct word root ('cats' -> 'cat'). If false returns exactly what was requested."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/word.json/{word}/examples",
+      "method": "getExamples",
+      "httpMethod": "get",
+      "tag": "word",
+      "description": "Returns examples for a word",
+      "parameters": [
+        {
+          "name": "word",
+          "schema": "string",
+          "required": true,
+          "description": "Word to return examples for"
+        },
+        {
+          "name": "includeDuplicates",
+          "schema": "string",
+          "required": false,
+          "description": "Show duplicate examples from different sources"
+        },
+        {
+          "name": "useCanonical",
+          "schema": "string",
+          "required": false,
+          "description": "If true will try to return the correct word root ('cats' -> 'cat'). If false returns exactly what was requested."
+        },
+        {
+          "name": "skip",
+          "schema": "integer",
+          "required": false,
+          "description": "Results to skip"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum number of results to return"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/word.json/{word}/frequency",
+      "method": "getWordFrequency",
+      "httpMethod": "get",
+      "tag": "word",
+      "description": "Returns word usage over time",
+      "parameters": [
+        {
+          "name": "word",
+          "schema": "string",
+          "required": true,
+          "description": "Word to return"
+        },
+        {
+          "name": "useCanonical",
+          "schema": "string",
+          "required": false,
+          "description": "If true will try to return the correct word root ('cats' -> 'cat'). If false returns exactly what was requested."
+        },
+        {
+          "name": "startYear",
+          "schema": "integer",
+          "required": false,
+          "description": "Starting Year"
+        },
+        {
+          "name": "endYear",
+          "schema": "integer",
+          "required": false,
+          "description": "Ending Year"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/word.json/{word}/hyphenation",
+      "method": "getHyphenation",
+      "httpMethod": "get",
+      "tag": "word",
+      "description": "Returns syllable information for a word",
+      "parameters": [
+        {
+          "name": "word",
+          "schema": "string",
+          "required": true,
+          "description": "Word to get syllables for"
+        },
+        {
+          "name": "useCanonical",
+          "schema": "string",
+          "required": false,
+          "description": "If true will try to return a correct word root ('cats' -> 'cat'). If false returns exactly what was requested."
+        },
+        {
+          "name": "sourceDictionary",
+          "schema": "string",
+          "required": false,
+          "description": "Get from a single dictionary. Valid options: ahd-5, century, wiktionary, webster, and wordnet."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum number of results to return"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/word.json/{word}/phrases",
+      "method": "getPhrases",
+      "httpMethod": "get",
+      "tag": "word",
+      "description": "Fetches bi-gram phrases for a word",
+      "parameters": [
+        {
+          "name": "word",
+          "schema": "string",
+          "required": true,
+          "description": "Word to fetch phrases for"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum number of results to return"
+        },
+        {
+          "name": "wlmi",
+          "schema": "integer",
+          "required": false,
+          "description": "Minimum WLMI for the phrase"
+        },
+        {
+          "name": "useCanonical",
+          "schema": "string",
+          "required": false,
+          "description": "If true will try to return the correct word root ('cats' -> 'cat'). If false returns exactly what was requested."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/word.json/{word}/pronunciations",
+      "method": "getTextPronunciations",
+      "httpMethod": "get",
+      "tag": "word",
+      "description": "Returns text pronunciations for a given word",
+      "parameters": [
+        {
+          "name": "word",
+          "schema": "string",
+          "required": true,
+          "description": "Word to get pronunciations for"
+        },
+        {
+          "name": "useCanonical",
+          "schema": "string",
+          "required": false,
+          "description": "If true will try to return a correct word root ('cats' -> 'cat'). If false returns exactly what was requested."
+        },
+        {
+          "name": "sourceDictionary",
+          "schema": "string",
+          "required": false,
+          "description": "Get from a single dictionary"
+        },
+        {
+          "name": "typeFormat",
+          "schema": "string",
+          "required": false,
+          "description": "Text pronunciation type"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum number of results to return"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/word.json/{word}/relatedWords",
+      "method": "getRelatedWords",
+      "httpMethod": "get",
+      "tag": "word",
+      "description": "Given a word as a string, returns relationships from the Word Graph",
+      "parameters": [
+        {
+          "name": "word",
+          "schema": "string",
+          "required": true,
+          "description": "Word to fetch relationships for"
+        },
+        {
+          "name": "useCanonical",
+          "schema": "string",
+          "required": false,
+          "description": "If true will try to return the correct word root ('cats' -> 'cat'). If false returns exactly what was requested."
+        },
+        {
+          "name": "relationshipTypes",
+          "schema": "string",
+          "required": false,
+          "description": "Limits the total results per type of relationship type"
+        },
+        {
+          "name": "limitPerRelationshipType",
+          "schema": "integer",
+          "required": false,
+          "description": "Restrict to the supplied relationship types"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/word.json/{word}/scrabbleScore",
+      "method": "getScrabbleScore",
+      "httpMethod": "get",
+      "tag": "word",
+      "description": "Returns the Scrabble score for a word",
+      "parameters": [
+        {
+          "name": "word",
+          "schema": "string",
+          "required": true,
+          "description": "Word to get scrabble score for."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/word.json/{word}/topExample",
+      "method": "getTopExample",
+      "httpMethod": "get",
+      "tag": "word",
+      "description": "Returns a top example for a word",
+      "parameters": [
+        {
+          "name": "word",
+          "schema": "string",
+          "required": true,
+          "description": "Word to fetch examples for"
+        },
+        {
+          "name": "useCanonical",
+          "schema": "string",
+          "required": false,
+          "description": "If true will try to return the correct word root ('cats' -> 'cat'). If false returns exactly what was requested."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/words.json/randomWord",
+      "method": "getRandomWord",
+      "httpMethod": "get",
+      "tag": "words",
+      "description": "Returns a single random WordObject",
+      "parameters": [
+        {
+          "name": "hasDictionaryDef",
+          "schema": "string",
+          "required": false,
+          "description": "Only return words with dictionary definitions"
+        },
+        {
+          "name": "includePartOfSpeech",
+          "schema": "string",
+          "required": false,
+          "description": "CSV part-of-speech values to include (allowable values are noun, adjective, verb, adverb, interjection, pronoun, preposition, abbreviation, affix, article, auxiliary-verb, conjunction, definite-article, family-name, given-name, idiom, imperative, noun-plural, noun-posessive, past-participle, phrasal-prefix, proper-noun, proper-noun-plural, proper-noun-posessive, suffix, verb-intransitive, verb-transitive)"
+        },
+        {
+          "name": "excludePartOfSpeech",
+          "schema": "string",
+          "required": false,
+          "description": "CSV part-of-speech values to exclude (allowable values are noun, adjective, verb, adverb, interjection, pronoun, preposition, abbreviation, affix, article, auxiliary-verb, conjunction, definite-article, family-name, given-name, idiom, imperative, noun-plural, noun-posessive, past-participle, phrasal-prefix, proper-noun, proper-noun-plural, proper-noun-posessive, suffix, verb-intransitive, verb-transitive)"
+        },
+        {
+          "name": "minCorpusCount",
+          "schema": "integer",
+          "required": false,
+          "description": "Minimum corpus frequency for terms"
+        },
+        {
+          "name": "maxCorpusCount",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum corpus frequency for terms"
+        },
+        {
+          "name": "minDictionaryCount",
+          "schema": "integer",
+          "required": false,
+          "description": "Minimum dictionary count"
+        },
+        {
+          "name": "maxDictionaryCount",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum dictionary count"
+        },
+        {
+          "name": "minLength",
+          "schema": "integer",
+          "required": false,
+          "description": "Minimum word length"
+        },
+        {
+          "name": "maxLength",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum word length"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/words.json/randomWords",
+      "method": "getRandomWords",
+      "httpMethod": "get",
+      "tag": "words",
+      "description": "Returns an array of random WordObjects",
+      "parameters": [
+        {
+          "name": "hasDictionaryDef",
+          "schema": "string",
+          "required": false,
+          "description": "Only return words with dictionary definitions"
+        },
+        {
+          "name": "includePartOfSpeech",
+          "schema": "string",
+          "required": false,
+          "description": "CSV part-of-speech values to include (allowable values are noun, adjective, verb, adverb, interjection, pronoun, preposition, abbreviation, affix, article, auxiliary-verb, conjunction, definite-article, family-name, given-name, idiom, imperative, noun-plural, noun-posessive, past-participle, phrasal-prefix, proper-noun, proper-noun-plural, proper-noun-posessive, suffix, verb-intransitive, verb-transitive)"
+        },
+        {
+          "name": "excludePartOfSpeech",
+          "schema": "string",
+          "required": false,
+          "description": "CSV part-of-speech values to exclude (allowable values are noun, adjective, verb, adverb, interjection, pronoun, preposition, abbreviation, affix, article, auxiliary-verb, conjunction, definite-article, family-name, given-name, idiom, imperative, noun-plural, noun-posessive, past-participle, phrasal-prefix, proper-noun, proper-noun-plural, proper-noun-posessive, suffix, verb-intransitive, verb-transitive)"
+        },
+        {
+          "name": "minCorpusCount",
+          "schema": "integer",
+          "required": false,
+          "description": "Minimum corpus frequency for terms"
+        },
+        {
+          "name": "maxCorpusCount",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum corpus frequency for terms"
+        },
+        {
+          "name": "minDictionaryCount",
+          "schema": "integer",
+          "required": false,
+          "description": "Minimum dictionary count"
+        },
+        {
+          "name": "maxDictionaryCount",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum dictionary count"
+        },
+        {
+          "name": "minLength",
+          "schema": "integer",
+          "required": false,
+          "description": "Minimum word length"
+        },
+        {
+          "name": "maxLength",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum word length"
+        },
+        {
+          "name": "sortBy",
+          "schema": "string",
+          "required": false,
+          "description": "Attribute to sort by"
+        },
+        {
+          "name": "sortOrder",
+          "schema": "string",
+          "required": false,
+          "description": "Sort direction"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum number of results to return"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/words.json/reverseDictionary",
+      "method": "reverseDictionary",
+      "httpMethod": "get",
+      "tag": "words",
+      "description": "Reverse dictionary search",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": true,
+          "description": "Search term"
+        },
+        {
+          "name": "findSenseForWord",
+          "schema": "string",
+          "required": false,
+          "description": "Restricts words and finds closest sense"
+        },
+        {
+          "name": "includeSourceDictionaries",
+          "schema": "string",
+          "required": false,
+          "description": "Only include these comma-delimited source dictionaries"
+        },
+        {
+          "name": "excludeSourceDictionaries",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude these comma-delimited source dictionaries"
+        },
+        {
+          "name": "includePartOfSpeech",
+          "schema": "string",
+          "required": false,
+          "description": "Only include these comma-delimited parts of speech (allowable values are noun, adjective, verb, adverb, interjection, pronoun, preposition, abbreviation, affix, article, auxiliary-verb, conjunction, definite-article, family-name, given-name, idiom, imperative, noun-plural, noun-posessive, past-participle, phrasal-prefix, proper-noun, proper-noun-plural, proper-noun-posessive, suffix, verb-intransitive, verb-transitive)"
+        },
+        {
+          "name": "excludePartOfSpeech",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude these comma-delimited parts of speech (allowable values are noun, adjective, verb, adverb, interjection, pronoun, preposition, abbreviation, affix, article, auxiliary-verb, conjunction, definite-article, family-name, given-name, idiom, imperative, noun-plural, noun-posessive, past-participle, phrasal-prefix, proper-noun, proper-noun-plural, proper-noun-posessive, suffix, verb-intransitive, verb-transitive)"
+        },
+        {
+          "name": "minCorpusCount",
+          "schema": "integer",
+          "required": false,
+          "description": "Minimum corpus frequency for terms"
+        },
+        {
+          "name": "maxCorpusCount",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum corpus frequency for terms"
+        },
+        {
+          "name": "minLength",
+          "schema": "integer",
+          "required": false,
+          "description": "Minimum word length"
+        },
+        {
+          "name": "maxLength",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum word length"
+        },
+        {
+          "name": "expandTerms",
+          "schema": "string",
+          "required": false,
+          "description": "Expand terms"
+        },
+        {
+          "name": "includeTags",
+          "schema": "string",
+          "required": false,
+          "description": "Return a closed set of XML tags in response"
+        },
+        {
+          "name": "sortBy",
+          "schema": "string",
+          "required": false,
+          "description": "Attribute to sort by"
+        },
+        {
+          "name": "sortOrder",
+          "schema": "string",
+          "required": false,
+          "description": "Sort direction"
+        },
+        {
+          "name": "skip",
+          "schema": "string",
+          "required": false,
+          "description": "Results to skip"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum number of results to return"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/words.json/search/{query}",
+      "method": "searchWords",
+      "httpMethod": "get",
+      "tag": "words",
+      "description": "Searches words",
+      "parameters": [
+        {
+          "name": "allowRegex",
+          "schema": "string",
+          "required": false,
+          "description": "Search term is a Regular Expression"
+        },
+        {
+          "name": "query",
+          "schema": "string",
+          "required": true,
+          "description": "Search query"
+        },
+        {
+          "name": "caseSensitive",
+          "schema": "string",
+          "required": false,
+          "description": "Search case sensitive"
+        },
+        {
+          "name": "includePartOfSpeech",
+          "schema": "string",
+          "required": false,
+          "description": "Only include these comma-delimited parts of speech (allowable values are noun, adjective, verb, adverb, interjection, pronoun, preposition, abbreviation, affix, article, auxiliary-verb, conjunction, definite-article, family-name, given-name, idiom, imperative, noun-plural, noun-posessive, past-participle, phrasal-prefix, proper-noun, proper-noun-plural, proper-noun-posessive, suffix, verb-intransitive, verb-transitive)"
+        },
+        {
+          "name": "excludePartOfSpeech",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude these comma-delimited parts of speech (allowable values are noun, adjective, verb, adverb, interjection, pronoun, preposition, abbreviation, affix, article, auxiliary-verb, conjunction, definite-article, family-name, given-name, idiom, imperative, noun-plural, noun-posessive, past-participle, phrasal-prefix, proper-noun, proper-noun-plural, proper-noun-posessive, suffix, verb-intransitive, verb-transitive)"
+        },
+        {
+          "name": "minCorpusCount",
+          "schema": "integer",
+          "required": false,
+          "description": "Minimum corpus frequency for terms"
+        },
+        {
+          "name": "maxCorpusCount",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum corpus frequency for terms"
+        },
+        {
+          "name": "minDictionaryCount",
+          "schema": "integer",
+          "required": false,
+          "description": "Minimum number of dictionary entries for words returned"
+        },
+        {
+          "name": "maxDictionaryCount",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum dictionary definition count"
+        },
+        {
+          "name": "minLength",
+          "schema": "integer",
+          "required": false,
+          "description": "Minimum word length"
+        },
+        {
+          "name": "maxLength",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum word length"
+        },
+        {
+          "name": "skip",
+          "schema": "integer",
+          "required": false,
+          "description": "Results to skip"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum number of results to return"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/words.json/wordOfTheDay",
+      "method": "getWordOfTheDay",
+      "httpMethod": "get",
+      "tag": "words",
+      "description": "Returns a specific WordOfTheDay",
+      "parameters": [
+        {
+          "name": "date",
+          "schema": "string",
+          "required": false,
+          "description": "Fetches by date in yyyy-MM-dd"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.wordnik.com/v4",
   "apiDescription": "Wordnik is the worlds biggest online English dictionary, by number of words",
   "apiTitle": "Wordnik",

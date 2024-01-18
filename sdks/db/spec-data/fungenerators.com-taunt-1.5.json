@@ -4,6 +4,70 @@
   "homepage": "fungenerators.com",
   "serviceName": "taunt",
   "apiVersion": "1.5",
+  "methods": [
+    {
+      "url": "/taunt/categories",
+      "method": "/taunt/categoriesGet",
+      "httpMethod": "get",
+      "tag": "Taunt",
+      "description": "Get available taunt generation categories.",
+      "parameters": [
+        {
+          "name": "start",
+          "schema": "integer",
+          "required": false,
+          "description": "start"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "limit"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/taunt/generate",
+      "method": "/taunt/generateGet",
+      "httpMethod": "get",
+      "tag": "Taunt",
+      "description": "Generated taunts in the given category",
+      "parameters": [
+        {
+          "name": "category",
+          "schema": "string",
+          "required": true,
+          "description": "Category to generator taunt from"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Limit. Controls number of taunts generated. Max of 5-10 based on the plan"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.fungenerators.com",
   "apiDescription": "Fungenerators taunt generation API generates random taunts / insults,  relevant to the given category. Many categories are supported and new ones are added very frequently. [Click here to subscribe](http://fungenerators.com/api/taunt/)\n",
   "apiTitle": "Taunt as a service",

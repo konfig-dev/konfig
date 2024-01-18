@@ -3,6 +3,56 @@
   "openApiRaw": "https://bintable.com/api-files/openapi.json",
   "homepage": "bintable.com",
   "apiVersion": "1.0.0-oas3",
+  "methods": [
+    {
+      "url": "/balance",
+      "method": "balanceLookup",
+      "httpMethod": "get",
+      "tag": "Balance",
+      "description": "Check Balance",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": "The API key, which you can get from bintable.com website."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{bin}",
+      "method": "binLookup",
+      "httpMethod": "get",
+      "tag": "Lookup",
+      "description": "Lookup for bin",
+      "parameters": [
+        {
+          "name": "bin",
+          "schema": "string",
+          "required": true,
+          "description": "pass the required BIN code"
+        },
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": "The API key, which you can get from bintable.com website."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.bintable.com/v1",
   "apiDescription": "BIN lookup API, the free api service from bintable.com to lookup card information using it's BIN. the service maintains updated database based on the comunity and other third party services to make sure all BINs in the database are accurate and up to date.",
   "apiTitle": "BIN Lookup API",

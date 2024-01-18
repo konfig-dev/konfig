@@ -3,6 +3,444 @@
   "openApiRaw": "http://www.gisgraphy.com/documentation/gisgraphy-swagger.json",
   "homepage": "gisgraphy.com",
   "apiVersion": "4.0.0",
+  "methods": [
+    {
+      "url": "/addressparser/parse",
+      "method": "addressparsing",
+      "httpMethod": "get",
+      "tag": "addressparser - standardizer",
+      "description": "split a raw address into several parts",
+      "parameters": [
+        {
+          "name": "address",
+          "schema": "string",
+          "required": true,
+          "description": "A postal address."
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "required": false,
+          "description": "The ISO 3166 Alpha 2 code of the country."
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": "The output format."
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "The callback method name (optional), use to wrap the content into a (alphanumeric) Javascript method. Works only for script output formats (JSON, PHP, Ruby, Python)"
+        },
+        {
+          "name": "indent",
+          "schema": "boolean",
+          "required": false,
+          "description": "indents the results.Default to false. Possible values are true or false (or on when used with the rest service. If you use a checkbox in a web form, to indent the results, the value will be 'on' or 'off', so for a simple use : the value of indent can be 'true' or 'on'"
+        },
+        {
+          "name": "standardize",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether the address should be standardized after parsing, the value will be 'on' or 'off', so for a simple use : the value of indent can be 'true' or 'on'"
+        },
+        {
+          "name": "geocode",
+          "schema": "boolean",
+          "required": false,
+          "description": "UNUSED YET. Whether the address should be geocoded after parsing, the value will be 'on' or 'off', so for a simple use : the value of indent can be 'true' or 'on'"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/fulltext/search",
+      "method": "fulltxtsearch",
+      "httpMethod": "get",
+      "tag": "fulltext - autocomplete",
+      "description": "search for places by text around a GPS point",
+      "parameters": [
+        {
+          "name": "q",
+          "schema": "string",
+          "required": true,
+          "description": "The searched text : The text for the query can be a zip code, a string or one or more strings"
+        },
+        {
+          "name": "allwordsrequired",
+          "schema": "boolean",
+          "required": true,
+          "description": "Whether the fulltext engine should considers all the words specified as required. Defaults to false (since v 4.0). possible values are true|false (or 'on' when used with the rest service)"
+        },
+        {
+          "name": "spellchecking",
+          "schema": "string",
+          "required": false,
+          "description": "The spellchecking (optional) : whether some suggestions should be provided if no results are found"
+        },
+        {
+          "name": "lat",
+          "schema": "number",
+          "required": false,
+          "description": "The latitude (north-south) for the location point to search around. The value is a floating number, between -90 and +90. It uses GPS coordinates"
+        },
+        {
+          "name": "lng",
+          "schema": "number",
+          "required": false,
+          "description": "TThe longitude (east-West) for the location point to search around. The value is a floating number between -180 and +180. It uses GPS coordinates."
+        },
+        {
+          "name": "radius",
+          "schema": "number",
+          "required": false,
+          "description": "distance from the location point in meters we'd like to search around. The value is a number > 0 if it is not specify or incorrect."
+        },
+        {
+          "name": "suggest",
+          "schema": "boolean",
+          "description": "If this parameter is set then it will search in part of the names of the street, place,.... It allow you to do auto completion auto suggestion. See the Gisgraphy leaflet plugin for more details. The JSON format will be forced if this parameter is true. See auto completion / suggestions engine for more details"
+        },
+        {
+          "name": "style",
+          "schema": "string",
+          "description": "The output style verbosity (optional) : Determines the output verbosity. 4 styles are available"
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "required": false,
+          "description": "limit the search to the specified ISO 3166 country code. Default : search in all countries"
+        },
+        {
+          "name": "lang",
+          "schema": "string",
+          "required": false,
+          "description": "The language code (optional) : The iso 639 Alpha2 or alpha3 Language Code. Some properties such as the AlternateName AdmNames and countryname belong to a certain language code. The language parameter can limit the output of those fields to a certain language (it only apply when style parameter='style') : If the language code does not exists or is not specified, properties with all the languages are retrieved If it exists, the properties with the specified language code, are retrieved"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": "The output format."
+        },
+        {
+          "name": "from",
+          "schema": "integer",
+          "required": false,
+          "description": "The first pagination index. Numbered from 1. If the number is < 1 or not specified, it will be set to the default value : 1"
+        },
+        {
+          "name": "to",
+          "schema": "integer",
+          "required": false,
+          "description": "The last pagination index. if < 1 or not specified, it will be set to startindex + 10. Max = 10 (can be changed)"
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "The callback method name (optional), use to wrap the content into a (alphanumeric) Javascript method. Works only for script output formats (JSON, PHP, Ruby, Python)"
+        },
+        {
+          "name": "indent",
+          "schema": "boolean",
+          "required": false,
+          "description": "indents the results.Default to false. Possible values are true or false (or on when used with the rest service. If you use a checkbox in a web form, to indent the results, the value will be 'on' or 'off', so for a simple use : the value of indent can be 'true' or 'on'"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/geocoding/geocode",
+      "method": "geocode",
+      "httpMethod": "get",
+      "tag": "geocoding",
+      "description": "Geocode an address",
+      "parameters": [
+        {
+          "name": "address",
+          "schema": "string",
+          "required": true,
+          "description": "A postal address, structured or not, a street, a city, a postal code, a country, or a combination."
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "required": false,
+          "description": "The country where the place/address is. It is used to determine the postal address format and to improve performance. It will probably be optional in next version to ease the usability. The value must be the ISO 3166 Alpha 2 code of the country."
+        },
+        {
+          "name": "postal",
+          "schema": "string",
+          "required": false,
+          "description": "Whether the given address is a postal address. default to false. In other words, if the address follow the specification or if it is a well-formed address as it was written on an envelope. This parameter will enable the parsing of the address by the address parser before geocoding, this way, the relevance will be better because because if parsing is successful, we will know the meaning of each word. Note that you can also specify each field if you already know them."
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": "The output format."
+        },
+        {
+          "name": "from",
+          "schema": "integer",
+          "required": false,
+          "description": "The first pagination index. Numbered from 1. If the number is < 1 or not specified, it will be set to the default value : 1"
+        },
+        {
+          "name": "to",
+          "schema": "integer",
+          "required": false,
+          "description": "The last pagination index. if < 1 or not specified, it will be set to startindex + 10. Max = 10 (can be changed)"
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "The callback method name (optional), use to wrap the content into a (alphanumeric) Javascript method. Works only for script output formats (JSON, PHP, Ruby, Python)"
+        },
+        {
+          "name": "indent",
+          "schema": "boolean",
+          "required": false,
+          "description": "indents the results. Possible values are true or false (or on when used with the rest service. If you use a checkbox in a web form, to indent the results, the value will be 'on' or 'off', so for a simple use : the value of indent can be 'true' or 'on'"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/geoloc/search",
+      "method": "geoloc",
+      "httpMethod": "get",
+      "tag": "geolocalisation",
+      "description": "Geocode an address",
+      "parameters": [
+        {
+          "name": "lat",
+          "schema": "number",
+          "required": true,
+          "description": "The latitude (north-south) for the location point to search around. The value is a floating number, between -90 and +90. It uses GPS coordinates"
+        },
+        {
+          "name": "lng",
+          "schema": "number",
+          "required": true,
+          "description": "TThe longitude (east-West) for the location point to search around. The value is a floating number between -180 and +180. It uses GPS coordinates."
+        },
+        {
+          "name": "radius",
+          "schema": "number",
+          "required": false,
+          "description": "distance from the location point in meters we'd like to search around. The value is a number > 0 if it is not specify or incorrect."
+        },
+        {
+          "name": "distance",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether (or not) we want the distance field to be output. This option is useful to improve the performance if we don't care about the distance (e.g : we search for name). Of course, the results won't be sorted by distance. If you use a checkbox in a form to indent the results, the value will be 'on' or 'off', so to simplify the use : the value for the web service can be 'true' or 'on'"
+        },
+        {
+          "name": "placetype",
+          "schema": "string",
+          "required": false,
+          "description": "filter search for a given placetype"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": "The output format."
+        },
+        {
+          "name": "from",
+          "schema": "integer",
+          "required": false,
+          "description": "The first pagination index. Numbered from 1. If the number is < 1 or not specified, it will be set to the default value : 1"
+        },
+        {
+          "name": "to",
+          "schema": "integer",
+          "required": false,
+          "description": "The last pagination index. if < 1 or not specified, it will be set to startindex + 10. Max = 10 (can be changed)"
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "The callback method name (optional), use to wrap the content into a (alphanumeric) Javascript method. Works only for script output formats (JSON, PHP, Ruby, Python)"
+        },
+        {
+          "name": "indent",
+          "schema": "boolean",
+          "required": false,
+          "description": "indents the results.Default to false. Possible values are true or false (or on when used with the rest service. If you use a checkbox in a web form, to indent the results, the value will be 'on' or 'off', so for a simple use : the value of indent can be 'true' or 'on'"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reversegeocoding/reversegeocode",
+      "method": "reversegeocode",
+      "httpMethod": "get",
+      "tag": "reversegeocoding",
+      "description": "Reverse geocode an address",
+      "parameters": [
+        {
+          "name": "lat",
+          "schema": "number",
+          "required": true,
+          "description": "The latitude (north-south) for the location point to search around. The value is a floating number, between -90 and +90. It uses GPS coordinates"
+        },
+        {
+          "name": "lng",
+          "schema": "number",
+          "required": true,
+          "description": "TThe longitude (east-West) for the location point to search around. The value is a floating number between -180 and +180. It uses GPS coordinates."
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": "The output format."
+        },
+        {
+          "name": "from",
+          "schema": "integer",
+          "required": false,
+          "description": "The first pagination index. Numbered from 1. If the number is < 1 or not specified, it will be set to the default value : 1"
+        },
+        {
+          "name": "to",
+          "schema": "integer",
+          "required": false,
+          "description": "The last pagination index. if < 1 or not specified, it will be set to startindex + 10. Max = 10 (can be changed)"
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "The callback method name (optional), use to wrap the content into a (alphanumeric) Javascript method. Works only for script output formats (JSON, PHP, Ruby, Python)"
+        },
+        {
+          "name": "indent",
+          "schema": "boolean",
+          "required": false,
+          "description": "indents the results. Possible values are true or false (or on when used with the rest service. If you use a checkbox in a web form, to indent the results, the value will be 'on' or 'off', so for a simple use : the value of indent can be 'true' or 'on'"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/street/find",
+      "method": "streetsearch",
+      "httpMethod": "get",
+      "tag": "streetservice",
+      "description": "Geocode an address",
+      "parameters": [
+        {
+          "name": "lat",
+          "schema": "number",
+          "required": true,
+          "description": "The latitude (north-south) for the location point to search around. The value is a floating number, between -90 and +90. It uses GPS coordinates"
+        },
+        {
+          "name": "lng",
+          "schema": "number",
+          "required": true,
+          "description": "TThe longitude (east-West) for the location point to search around. The value is a floating number between -180 and +180. It uses GPS coordinates."
+        },
+        {
+          "name": "radius",
+          "schema": "number",
+          "required": false,
+          "description": "distance from the location point in meters we'd like to search around. The value is a number > 0 if it is not specify or incorrect."
+        },
+        {
+          "name": "oneway",
+          "schema": "boolean",
+          "required": false,
+          "description": "whether the street should be a oneWay street (optional) : limit the search to the street that are one way street. If you use a checkbox in a form to indent the results, the value will be 'on' or 'off', so to simplify the use : the value for the web service can be 'true' or 'on'"
+        },
+        {
+          "name": "distance",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether (or not) we want the distance field to be output. This option is useful to improve the performance if we don't care about the distance (e.g : we search for name). Of course, the results won't be sorted by distance. If you use a checkbox in a form to indent the results, the value will be 'on' or 'off', so to simplify the use : the value for the web service can be 'true' or 'on'"
+        },
+        {
+          "name": "streettype",
+          "schema": "string",
+          "required": false,
+          "description": "filter search with a stret type"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": "The output format."
+        },
+        {
+          "name": "from",
+          "schema": "integer",
+          "required": false,
+          "description": "The first pagination index. Numbered from 1. If the number is < 1 or not specified, it will be set to the default value : 1"
+        },
+        {
+          "name": "to",
+          "schema": "integer",
+          "required": false,
+          "description": "The last pagination index. if < 1 or not specified, it will be set to startindex + 10. Max = 10 (can be changed)"
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "The callback method name (optional), use to wrap the content into a (alphanumeric) Javascript method. Works only for script output formats (JSON, PHP, Ruby, Python)"
+        },
+        {
+          "name": "indent",
+          "schema": "boolean",
+          "required": false,
+          "description": "indents the results. Possible values are true or false (or on when used with the rest service. If you use a checkbox in a web form, to indent the results, the value will be 'on' or 'off', so for a simple use : the value of indent can be 'true' or 'on'"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://free.gisgraphy.com",
   "apiDescription": "Since 2006, [Gisgraphy](http://www.gisgraphy.com) is a free, open source framework that offers the possibility to do geolocalisation and geocoding via Java APIs or REST webservices. Because geocoding is nothing without data, it provides an easy to use importer that will automatically download and import the necessary (free) data to your local database ([OpenStreetMap](http://www.openstreetmap.org/), [Geonames](http://www.geonames.org/) and [Quattroshapes](http://www.quattroshapes.com/): more than 100 million entries). You can also add your own data with the Web interface or the importer connectors provided. Gisgraphy is production ready, and has been designed to be scalable(load balanced), performant and used in other languages than just java : results can be output in XML, JSON, PHP, Python, Ruby, YAML, GeoRSS, and Atom. One of the most popular GPS tracking System (OpenGTS) also includes a Gisgraphy client...Gisgraphy is a framework. As a result it's flexible and powerful enough to be used in a lot of different use cases. [read more](http://www.gisgraphy.com)\n\n\nif you use the premium servers, you can use the api key to test the webservices\n",
   "apiTitle": "Gisgraphy webservices",

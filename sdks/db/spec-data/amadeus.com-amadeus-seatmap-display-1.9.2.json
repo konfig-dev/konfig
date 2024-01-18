@@ -4,6 +4,88 @@
   "homepage": "amadeus.com",
   "serviceName": "amadeus-seatmap-display",
   "apiVersion": "1.9.2",
+  "methods": [
+    {
+      "url": "/shopping/seatmaps",
+      "method": "getSeatmapFromOrder",
+      "httpMethod": "get",
+      "tag": "Display SeatMaps",
+      "description": "Returns all the seat maps of a given order.",
+      "parameters": [
+        {
+          "name": "flightOrderId",
+          "schema": "string",
+          "required": false,
+          "description": "identifier of the order"
+        },
+        {
+          "name": "flight-orderId",
+          "schema": "string",
+          "required": false,
+          "description": "DEPRECATED identifier of the order , kept for backward compatibility"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/shopping/seatmaps",
+      "method": "getSeatmapFromFlightOffer",
+      "httpMethod": "post",
+      "tag": "Display SeatMaps",
+      "description": "Returns all the seat maps of a given flightOffer.",
+      "parameters": [
+        {
+          "name": "X-HTTP-Method-Override",
+          "schema": "string",
+          "required": true,
+          "description": "the HTTP method to apply"
+        },
+        {
+          "name": "data",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "included",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://test.api.amadeus.com/v1",
   "apiDescription": "Before using this API, we recommend you read our **[Authorization Guide](https://developers.amadeus.com/self-service/apis-docs/guides/authorization-262)** for more information on how to generate an access token. \n\nPlease also be aware that our test environment is based on a subset of the production, if you are not returning any results try with big cities/airports like LON (London) or NYC (New-York).",
   "apiTitle": "Seatmap Display",

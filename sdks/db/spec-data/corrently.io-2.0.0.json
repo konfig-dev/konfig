@@ -3,6 +3,589 @@
   "openApiRaw": "https://corrently.io/dist.yaml",
   "homepage": "corrently.io",
   "apiVersion": "2.0.0",
+  "methods": [
+    {
+      "url": "/alternative/easee/lastSessions",
+      "method": "easeeSessions",
+      "httpMethod": "get",
+      "tag": "easee",
+      "description": "Returns lastSession info for all easee wallboxes (chargers) given user has access to.",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "description": "Username as used on easy.cloud"
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": "Password as used on easy.cloud"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/alternative/ocpp/lastSessions",
+      "method": "ocppSessions",
+      "httpMethod": "get",
+      "tag": "OCPP",
+      "description": "Last Session Info",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/alternative/openmeter/activities",
+      "method": "omActivities",
+      "httpMethod": "get",
+      "tag": "OpenMETER",
+      "description": "Public shared smart meters installed in Germany and available for subservices and exploration.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/alternative/openmeter/meters",
+      "method": "omMeters",
+      "httpMethod": "get",
+      "tag": "OpenMETER",
+      "description": "Public shared smart meters installed in Germany and available for subservices and exploration.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/alternative/openmeter/readings",
+      "method": "omReadings",
+      "httpMethod": "get",
+      "tag": "OpenMETER",
+      "description": "Public shared smart meters installed in Germany and available for subservices and exploration.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/gsi/bestHour",
+      "method": "gsiBesthour",
+      "httpMethod": "get",
+      "tag": "GreenPowerIndex (GrünstromIndex)",
+      "description": "Get best hour (with most regional green energy) in a given timeframe.",
+      "parameters": [
+        {
+          "name": "zip",
+          "schema": "string",
+          "description": "Zipcode (Postleitzahl) of a city in Germany."
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "description": "Any valid Stromkonto account (address)."
+        },
+        {
+          "name": "timeframe",
+          "schema": "integer",
+          "description": "Number of hours to check (default 24 hours from now)."
+        },
+        {
+          "name": "hours",
+          "schema": "integer",
+          "description": "How many hours in row do you need the device turned on?"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "true if device should be turned on now. false if not."
+        }
+      ]
+    },
+    {
+      "url": "/gsi/dispatch",
+      "method": "gsiDispatch",
+      "httpMethod": "get",
+      "tag": "GreenPowerIndex (GrünstromIndex)",
+      "description": "Dispatch (Green Energy Distribution Schedule)",
+      "parameters": [
+        {
+          "name": "zip",
+          "schema": "string",
+          "description": "Zipcode (Postleitzahl) of a city in Germany."
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "description": "Any valid Stromkonto account (address)."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/gsi/marketdata",
+      "method": "gsiMarketdata",
+      "httpMethod": "get",
+      "tag": "GreenPowerIndex (GrünstromIndex)",
+      "description": "Marketdata",
+      "parameters": [
+        {
+          "name": "zip",
+          "schema": "string",
+          "description": "Zipcode (Postleitzahl) of a city in Germany."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/gsi/prediction",
+      "method": "gsiPrediction",
+      "httpMethod": "get",
+      "tag": "GreenPowerIndex (GrünstromIndex)",
+      "description": "Prediction",
+      "parameters": [
+        {
+          "name": "zip",
+          "schema": "string",
+          "description": "Zipcode (Postleitzahl) of a city in Germany."
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "description": "Any valid Stromkonto account (address)."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/metering/reading",
+      "method": "meteringGet",
+      "httpMethod": "get",
+      "tag": "Metering (Decorator)",
+      "description": "Meter Reading",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "description": "Account/Address (Stromkonto) to retrieve reading for."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/metering/reading",
+      "method": "meteringPost",
+      "httpMethod": "post",
+      "tag": "Metering (Decorator)",
+      "description": "Meter Reading",
+      "parameters": [
+        {
+          "name": "1.8.0",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "account",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "energy",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "secret",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "value",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "zip",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quittung/commit",
+      "method": "quittungComit",
+      "httpMethod": "post",
+      "tag": "Strom-Quittung",
+      "description": "Finishs a collection of data and finalizes receipt. Use this method after collecting all data via quittung/prepare",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Unique ID of a receipt. It might be used via https://api.corrently.io/v2.0/quittung/pdf?token= to retrieve a PDF version of receipt or via   https://corrently.de/service/quittung.html?token= to get online version."
+        }
+      ]
+    },
+    {
+      "url": "/quittung/create",
+      "method": "quittungCreate",
+      "httpMethod": "post",
+      "tag": "Strom-Quittung",
+      "description": "Create a receipt for an energy delivery (only valid in Germany).",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Token for this receipt. It might be extended as 'token' parameter to retrieve actual receipt [sample](https://corrently.de/service/quittung.html?token=0x3C4750bf93aa96e55A0d60be334B6b6E14DCe5bc)"
+        }
+      ]
+    },
+    {
+      "url": "/quittung/prepare",
+      "method": "quittungPrepare",
+      "httpMethod": "post",
+      "tag": "Strom-Quittung",
+      "description": "Allows to collect data with several requests (or a single) for a receipt.",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "All collected values for an account (eq. session)."
+        }
+      ]
+    },
+    {
+      "url": "/quittung/tse",
+      "method": "quittungTse",
+      "httpMethod": "post",
+      "tag": "Strom-Quittung",
+      "description": "Retrieve TSE (Technische Sicherheitseinrichtung) Data for a given receipt (Strom-Quittung).",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "description": "Quittung Identifier  (serialnumber generated during receipt generation process)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quittung/tsedata",
+      "method": "quittungTseData",
+      "httpMethod": "post",
+      "tag": "Strom-Quittung",
+      "description": "Retrieve TSE (Technische Sicherheitseinrichtung) raw data  only for a given receipt (Strom-Quittung).",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "description": "Quittung Identifier  (serialnumber generated during receipt generation process)"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/quittung/tsesignature",
+      "method": "quittungTsEsignature",
+      "httpMethod": "post",
+      "tag": "Strom-Quittung",
+      "description": "Retrieve TSE (Technische Sicherheitseinrichtung) Signature only for a given receipt (Strom-Quittung).",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "description": "Quittung Identifier  (serialnumber generated during receipt generation process)"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/quittung/zugferd",
+      "method": "quittungZugferd",
+      "httpMethod": "get",
+      "tag": "Strom-Quittung",
+      "description": "Retrieve Zugferd XML for a given receipt (Strom-Quittung).",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "description": "Quittung Identifier  (serialnumber generated during receipt generation process)"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/stromkonto/balances",
+      "method": "stromkontoBalances",
+      "httpMethod": "get",
+      "tag": "Stromkonto (Ledger)",
+      "description": "Balances",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "description": "Ethereum style address referencing a valid account (AKA Stromkonto)."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stromkonto/choices",
+      "method": "stromkontoChoices",
+      "httpMethod": "get",
+      "tag": "Stromkonto (Ledger)",
+      "description": "Selectable Choices for customer",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "description": "Ethereum style address referencing a valid account alias (never use Stromkonto directly!)."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stromkonto/login",
+      "method": "stromkontoLogin",
+      "httpMethod": "post",
+      "tag": "Stromkonto (Ledger)",
+      "description": "Login (via Mail)",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stromkonto/prepareTransaction",
+      "method": "prepareTransaction",
+      "httpMethod": "post",
+      "tag": "Stromkonto (Ledger)",
+      "description": "Prepare Transaction",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "signature",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "value",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "variation",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/stromkonto/register",
+      "method": "stromkontoRegister",
+      "httpMethod": "post",
+      "tag": "Stromkonto (Ledger)",
+      "description": "Register (new Stromkonto)",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "first_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "last_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "zipcode",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/tariff/components",
+      "method": "tariffcomponents",
+      "httpMethod": "get",
+      "tag": "Tariff (Price API)",
+      "description": "Energy Tariff price components",
+      "parameters": [
+        {
+          "name": "zipcode",
+          "schema": "string",
+          "description": "Zipcode (Postzleitzahl) of a city in Germany."
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": "Valid email address to assign request to (pre offer generation). Ensure GDPR (DSGVO) at any time"
+        },
+        {
+          "name": "kwha",
+          "schema": "integer",
+          "description": "Total amount of energy in kilo-watt-hours per year. (sample 2100)"
+        },
+        {
+          "name": "milliseconds",
+          "schema": "integer",
+          "description": "If provided all results will be scaled to this timeframe"
+        },
+        {
+          "name": "wh",
+          "schema": "integer",
+          "description": "If provided together with milliseconds, a cost component stament for a particular event (like charging a car) will be created."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tariff/slph0",
+      "method": "tariffSlph0",
+      "httpMethod": "get",
+      "tag": "Tariff (Price API)",
+      "description": "Energy Tariff information",
+      "parameters": [
+        {
+          "name": "zipcode",
+          "schema": "string",
+          "description": "Zipcode (Postzleitzahl) of a city in Germany."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/wim/status",
+      "method": "wimstatus",
+      "httpMethod": "get",
+      "tag": "WiM (Wechselprozesse im Messwesen Strom - Status API)",
+      "description": "WiM Proess Informtion",
+      "parameters": [
+        {
+          "name": "vid",
+          "schema": "string",
+          "description": "VID key of the process."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.corrently.io/v2.0",
   "apiDescription": "*Corrently - from italian corrente, which is energy*\n# Introduction\nThe Corrently ecosystem gets maintained by [STROMDAO GmbH](https://www.stromdao.de/) to support green energy services for prosumers, grid operators, regulators, integrators or any other party with an emerging need of consensus driven management.\nAs the [energy product Corrently](https://www.corrently.de/) got first launched in Germany parts of this documentation provide simple translations for better understanding.\n[Released SKDs for Download](https://github.com/energychain/corrently-api/releases)\n",
   "apiTitle": "Corrently.io",

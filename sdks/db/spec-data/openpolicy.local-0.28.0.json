@@ -3,6 +3,555 @@
   "openApiRaw": "https://raw.githubusercontent.com/open-policy-agent/contrib/master/open_api/openapi.yaml",
   "homepage": "openpolicy.local",
   "apiVersion": "0.28.0",
+  "methods": [
+    {
+      "url": "/",
+      "method": "postSimpleQuery",
+      "httpMethod": "post",
+      "tag": "Query API",
+      "description": "Execute a simple query",
+      "parameters": [
+        {
+          "name": "pretty",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, response will be in a human-readable format."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/health",
+      "method": "getHealth",
+      "httpMethod": "get",
+      "tag": "Health API",
+      "description": "Health",
+      "parameters": [
+        {
+          "name": "bundles",
+          "schema": "boolean",
+          "required": false,
+          "description": "Reports on bundle activation status (useful for 'ready' checks at startup).\n\nThis includes any discovery bundles or bundles defined in the loaded discovery configuration."
+        },
+        {
+          "name": "plugins",
+          "schema": "boolean",
+          "required": false,
+          "description": "Reports on plugin status"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v0/data/{path}",
+      "method": "getDocumentWithWebHook",
+      "httpMethod": "post",
+      "tag": "Data API",
+      "description": "Get a document (with webhook)",
+      "parameters": [
+        {
+          "name": "pretty",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, response will be in a human-readable format."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/compile",
+      "method": "postCompile",
+      "httpMethod": "post",
+      "tag": "Compile API",
+      "description": "Compile",
+      "parameters": [
+        {
+          "name": "pretty",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, response will be in a human-readable format."
+        },
+        {
+          "name": "explain",
+          "schema": "string",
+          "required": false,
+          "description": "If set to *full*, response will include query explanations in addition to the result."
+        },
+        {
+          "name": "metrics",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, compiler performance metrics will be returned in the response."
+        },
+        {
+          "name": "instrument",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, response will return additional performance metrics in addition to the result and the standard metrics.\n\n**Caution:** This can add significant overhead to query evaluation. The recommendation is to only use this parameter if you are debugging a performance problem."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/config",
+      "method": "getConfig",
+      "httpMethod": "get",
+      "tag": "Config API",
+      "description": "Get configurations",
+      "parameters": [
+        {
+          "name": "pretty",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, response will be in a human-readable format."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/data/{path}",
+      "method": "deleteDocument",
+      "httpMethod": "delete",
+      "tag": "Data API",
+      "description": "Delete a document",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/data/{path}",
+      "method": "getDocument",
+      "httpMethod": "get",
+      "tag": "Data API",
+      "description": "Get a document",
+      "parameters": [
+        {
+          "name": "input",
+          "schema": "object",
+          "required": false,
+          "description": "Provide the text for an [input document](https://www.openpolicyagent.org/docs/latest/kubernetes-primer/#input-document) in JSON format"
+        },
+        {
+          "name": "pretty",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, response will be in a human-readable format."
+        },
+        {
+          "name": "provenance",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, response will include build and version information in addition to the result."
+        },
+        {
+          "name": "explain",
+          "schema": "string",
+          "required": false,
+          "description": "If set to *full*, response will include query explanations in addition to the result."
+        },
+        {
+          "name": "metrics",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, compiler performance metrics will be returned in the response."
+        },
+        {
+          "name": "instrument",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, response will return additional performance metrics in addition to the result and the standard metrics.\n\n**Caution:** This can add significant overhead to query evaluation. The recommendation is to only use this parameter if you are debugging a performance problem."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/data/{path}",
+      "method": "patchDocument",
+      "httpMethod": "patch",
+      "tag": "Data API",
+      "description": "Update a document",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/data/{path}",
+      "method": "getDocumentWithPath",
+      "httpMethod": "post",
+      "tag": "Data API",
+      "description": "Get a document (with input)",
+      "parameters": [
+        {
+          "name": "pretty",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, response will be in a human-readable format."
+        },
+        {
+          "name": "provenance",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, response will include build and version information in addition to the result."
+        },
+        {
+          "name": "explain",
+          "schema": "string",
+          "required": false,
+          "description": "If set to *full*, response will include query explanations in addition to the result."
+        },
+        {
+          "name": "metrics",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, compiler performance metrics will be returned in the response."
+        },
+        {
+          "name": "instrument",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, response will return additional performance metrics in addition to the result and the standard metrics.\n\n**Caution:** This can add significant overhead to query evaluation. The recommendation is to only use this parameter if you are debugging a performance problem."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/data/{path}",
+      "method": "putDocument",
+      "httpMethod": "put",
+      "tag": "Data API",
+      "description": "Create or overwrite a document",
+      "parameters": [
+        {
+          "name": "If-None-Match",
+          "schema": "string",
+          "required": false,
+          "description": "The server will respect the If-None-Match header if it is set to * (in other words, it will not overwrite an existing document located at the specified `path`)."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/policies",
+      "method": "getPolicies",
+      "httpMethod": "get",
+      "tag": "Policy API",
+      "description": "List policies",
+      "parameters": [
+        {
+          "name": "pretty",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, response will be in a human-readable format."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/policies/{id}",
+      "method": "deletePolicyModule",
+      "httpMethod": "delete",
+      "tag": "Policy API",
+      "description": "Delete a policy module",
+      "parameters": [
+        {
+          "name": "pretty",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, response will be in a human-readable format."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/policies/{id}",
+      "method": "getPolicyModule",
+      "httpMethod": "get",
+      "tag": "Policy API",
+      "description": "Get a policy module",
+      "parameters": [
+        {
+          "name": "pretty",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, response will be in a human-readable format."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/policies/{id}",
+      "method": "putPolicyModule",
+      "httpMethod": "put",
+      "tag": "Policy API",
+      "description": "Create or update a policy module",
+      "parameters": [
+        {
+          "name": "pretty",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, response will be in a human-readable format."
+        },
+        {
+          "name": "metrics",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, compiler performance metrics will be returned in the response."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/query",
+      "method": "getQuery",
+      "httpMethod": "get",
+      "tag": "Query API",
+      "description": "Execute an ad-hoc query (simple)",
+      "parameters": [
+        {
+          "name": "q",
+          "schema": "string",
+          "required": true,
+          "description": "The [URL-encoded](https://www.w3schools.com/tags/ref_urlencode.ASP) ad-hoc query to execute."
+        },
+        {
+          "name": "pretty",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, response will be in a human-readable format."
+        },
+        {
+          "name": "explain",
+          "schema": "string",
+          "required": false,
+          "description": "If set to *full*, response will include query explanations in addition to the result."
+        },
+        {
+          "name": "metrics",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, compiler performance metrics will be returned in the response."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/query",
+      "method": "postQuery",
+      "httpMethod": "post",
+      "tag": "Query API",
+      "description": "Execute an ad-hoc query (complex)",
+      "parameters": [
+        {
+          "name": "pretty",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, response will be in a human-readable format."
+        },
+        {
+          "name": "explain",
+          "schema": "string",
+          "required": false,
+          "description": "If set to *full*, response will include query explanations in addition to the result."
+        },
+        {
+          "name": "metrics",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, compiler performance metrics will be returned in the response."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://openpolicy.local",
   "apiDescription": "OPA provides policy-based control for cloud native environments. The following *endpoints* (such as `PUT /v1/policies`) provide reference documentation for the OPA REST API.\n\n### API specification viewing options\n\n- **[View the specification in *Redoc* (default)](index.html)**\n- **[View the specification in *Swagger UI*](swagger-ui.html)**",
   "apiTitle": "Open Policy Agent (OPA) REST API",

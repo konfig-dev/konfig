@@ -3,6 +3,4590 @@
   "openApiRaw": "https://api.noosh.com/api/swagger.json",
   "homepage": "noosh.com",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/1.1/workgroups/{workgroup_id}/projects/{project_id}/fileTags",
+      "method": "getFileTags",
+      "httpMethod": "get",
+      "tag": "File",
+      "description": "List Tags from Workgroup and Project.",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.file.FileTagResponseVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/1.1/workgroups/{workgroup_id}/projects/{project_id}/files",
+      "method": "getFiles",
+      "httpMethod": "get",
+      "tag": "File",
+      "description": "List Files from Project.  Works for Regular and Remote Files",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.file.FileResponseVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/1.1/workgroups/{workgroup_id}/projects/{project_id}/files",
+      "method": "uploadFile",
+      "httpMethod": "post",
+      "tag": "File",
+      "description": "Upload File to Project.  A multipart/form-data request with a name \"file\"",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.file.FileResponseVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/1.1/workgroups/{workgroup_id}/projects/{project_id}/files/{file_id}",
+      "method": "getFile",
+      "httpMethod": "get",
+      "tag": "File",
+      "description": "Get File from Project.  Works for Regular and Remote Files",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "file_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.file.FileResponseVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/1.1/workgroups/{workgroup_id}/projects/{project_id}/specs/{spec_id}",
+      "method": "getSpec",
+      "httpMethod": "get",
+      "tag": "Spec",
+      "description": "List a specific spec of project Level",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "spec_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.v1x1.V1x1SpecExpandVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/1.1/workgroups/{workgroup_id}/projects/{project_id}/specs/{spec_id}",
+      "method": "putSpec",
+      "httpMethod": "put",
+      "tag": "Spec",
+      "description": "Update a specific Spec",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "spec_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "first_level_custom_fields",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "header_custom_fields",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "product_type_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "quantity_1",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "quantity_2",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "quantity_3",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "quantity_4",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "quantity_5",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "second_level_custom_fields",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "sku",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "spec_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "spec_type_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "versions",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.SpecHTTPStatusVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/1.1/workgroups/{workgroup_id}/projects/{project_id}/teammembers",
+      "method": "postTeamMemberOfProject",
+      "httpMethod": "post",
+      "tag": "Team Member",
+      "description": "Invite a team member or all the members of team template for the specific project.",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "role_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "team_template_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.v1x1.V1x1InvitedTeamMemberResultsVO"
+        },
+        {
+          "statusCode": "422",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/1.1/workgroups/{workgroup_id}/specTypes/{spec_type_id}/specTypeFields",
+      "method": "getSpecTypeFields",
+      "httpMethod": "get",
+      "tag": "Spec",
+      "description": "Get Spec Type Fields",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "spec_type_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.v1x1.SpecTypeFieldsListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/countries",
+      "method": "getCountryList",
+      "httpMethod": "get",
+      "tag": "Country",
+      "description": "List all countries",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.CountryListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups",
+      "method": "getWorkgroupList",
+      "httpMethod": "get",
+      "tag": "Workgroup",
+      "description": "List the workgroups",
+      "parameters": [
+        {
+          "name": "workgroup_name",
+          "schema": "string",
+          "required": false,
+          "description": "Workgroup Name"
+        },
+        {
+          "name": "workgroup_types",
+          "schema": "array",
+          "required": false,
+          "description": "1000001 for Buyer, 1000002 for supplier, 1000003 for agent, 1000004 for Broker/Outsourcer and 1000005 for Partner"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.WorkgroupListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/automaticInvitations",
+      "method": "getAutomaticInvitationList",
+      "httpMethod": "get",
+      "tag": "My Info",
+      "description": "List current user's automatic invitations info ",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.AutomaticInvitationsListVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/billingRecipients",
+      "method": "getBillingRecipients",
+      "httpMethod": "get",
+      "tag": "Contact",
+      "description": "List Billing Recipients",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.ContactsListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/buyOrders",
+      "method": "getBuyOrderListOfWorkgroup",
+      "httpMethod": "get",
+      "tag": "Order",
+      "description": "List the buy orders of workgroup",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.OrderWorkgroupLevelListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/buyOrders/{order_id}",
+      "method": "getBuyOrderOfWorkgroup",
+      "httpMethod": "get",
+      "tag": "Order",
+      "description": "Get a specific buy order of workgroup",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "order_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.OrderExpandWorkgroupLevelVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/clientWorkgroups",
+      "method": "getClientWorkgroupList",
+      "httpMethod": "get",
+      "tag": "Workgroup",
+      "description": "List client workgroups",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.ClientWorkgroupListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/clientWorkgroups/{client_workgroup_id}",
+      "method": "getSpecificClientWorkgroup",
+      "httpMethod": "get",
+      "tag": "Workgroup",
+      "description": "Get a specific client workgroups",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "client_workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.ClientWorkgroupExpandVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/clientWorkgroups/{client_workgroup_id}/projectCategory",
+      "method": "getProjectCategoryListOfClient",
+      "httpMethod": "get",
+      "tag": "Project Category",
+      "description": "List the project categories of client side",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "client_workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.ProjectCategoryListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "422",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/clientWorkgroups/{client_workgroup_id}/projectHomeUserFields",
+      "method": "getProjectHomeUserFieldListOfClient",
+      "httpMethod": "get",
+      "tag": "User Fields",
+      "description": "List projec home user fields of client workgroup",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "client_workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.ProjectHomeUserFieldsListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/clientWorkgroups/{client_workgroup_id}/projectStatus",
+      "method": "getProjectStatusOfClient",
+      "httpMethod": "get",
+      "tag": "Project Status",
+      "description": "List the project status of client",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "client_workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.ProjectStatusListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/contacts",
+      "method": "getContactList",
+      "httpMethod": "get",
+      "tag": "Contact",
+      "description": "List the contacts",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.ContactsListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/contacts/{user_id}",
+      "method": "getContactUserInfo",
+      "httpMethod": "get",
+      "tag": "Contact",
+      "description": "Contact Info",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.UserDetailsExpandVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/customTaskStatus",
+      "method": "getWgTaskStatusListOfWorkgroup",
+      "httpMethod": "get",
+      "tag": "Task",
+      "description": "Get custom task status of workgroup level",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.WgTaskStatusListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/customTaskTypes",
+      "method": "getCustomTaskTypesOfWg",
+      "httpMethod": "get",
+      "tag": "Task",
+      "description": "Get custom task types of workgroup level",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.TaskTypeListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/deactivationReasons",
+      "method": "getDeactivationReasonList",
+      "httpMethod": "get",
+      "tag": "Deactivation Reason",
+      "description": "List all deactivation reasons",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.DeactivationReasonListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/defaultTaskPriority",
+      "method": "taskPriorityList",
+      "httpMethod": "get",
+      "tag": "Task",
+      "description": "Get default task priority list",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.TaskPriorityListVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/defaultTaskStatus",
+      "method": "getDefaultTaskStatusList",
+      "httpMethod": "get",
+      "tag": "Task",
+      "description": "Get default task status list",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.TaskStatusListVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/detail",
+      "method": "getWorkgroupDetail",
+      "httpMethod": "get",
+      "tag": "Workgroup",
+      "description": "Detail workgroup info",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.WorkgroupExpandVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/detail",
+      "method": "putWorkgroup",
+      "httpMethod": "put",
+      "tag": "Workgroup",
+      "description": "Update a specific Workgroup",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "address_line1",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "address_line2",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "address_line3",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "city",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "custom_fields",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "decimal_places",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "postal",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "workgroup_name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.WorkgroupHTTPStatusVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/exchangeRate",
+      "method": "getExchangeRateList",
+      "httpMethod": "get",
+      "tag": "Exchange Rate",
+      "description": "Get Exchange Rate List",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.MultiExchangeRateListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/exchangeRate",
+      "method": "postExchangeRate",
+      "httpMethod": "post",
+      "tag": "Exchange Rate",
+      "description": "Create Exchange Rates",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "exchange_rates",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.domain.constant.HTTPStatus"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/myTimeCards",
+      "method": "getMyTimeCardList",
+      "httpMethod": "get",
+      "tag": "Time Card",
+      "description": "List my time cards",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.TimeCardListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/myTimeCards/{timeCard_id}",
+      "method": "getMyTimeCard",
+      "httpMethod": "get",
+      "tag": "Time Card",
+      "description": "Get a specific my time cards",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timeCard_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.TimeCardDetailVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/productTypes",
+      "method": "getProductTypeListOfWorkgroup",
+      "httpMethod": "get",
+      "tag": "Spec",
+      "description": "Get product type of workgroup level",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.WorkgroupAttributeListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/productTypesOfSpecTypes",
+      "method": "getSpecProductTypeListOfWorkgroup",
+      "httpMethod": "get",
+      "tag": "Spec",
+      "description": "Get product type of spec level by workgroupId",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.WorkgroupAttributeListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/productTypesOfSpecTypes",
+      "method": "postSpecProductTypeListOfWorkgroup",
+      "httpMethod": "post",
+      "tag": "Spec",
+      "description": "Register product types for spec types",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "enableDifferentiatePrdTypePreference",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "spec_prdType_list",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.domain.nooshapi.persist.vo.WgSpecPrdTypeRegPersistVO"
+        },
+        {
+          "statusCode": "422",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/profileImage",
+      "method": "uploadProfileImage",
+      "httpMethod": "post",
+      "tag": "My Info",
+      "description": "Upload Profile Image.  A multipart/form-data request with a name \"file\"",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.ProfileImageVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projectCategory",
+      "method": "getProjectCategoryList",
+      "httpMethod": "get",
+      "tag": "Project Category",
+      "description": "List the project categories",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.ProjectCategoryListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projectHomeUserFields",
+      "method": "getProjectHomeUserFieldsList",
+      "httpMethod": "get",
+      "tag": "User Fields",
+      "description": "List projec home user fields",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.ProjectHomeUserFieldsListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projectStatus",
+      "method": "getProjectStatus",
+      "httpMethod": "get",
+      "tag": "Project Status",
+      "description": "List the project status",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.ProjectStatusListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects",
+      "method": "getProjectList",
+      "httpMethod": "get",
+      "tag": "Project",
+      "description": "List the projects",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.ProjectListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects",
+      "method": "postProject",
+      "httpMethod": "post",
+      "tag": "Project",
+      "description": "Create a Project",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "client_account",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "client_user_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "client_workgroup_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "comments",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "completion_date",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "custom_fields",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "deactivation_reason_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "is_active",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "is_hot",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "is_paper_direct",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "project_category_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "project_description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "project_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "project_number",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "project_owner_user_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "project_status_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.ProjectVO"
+        },
+        {
+          "statusCode": "422",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}",
+      "method": "deleteProject",
+      "httpMethod": "delete",
+      "tag": "Project",
+      "description": "Archieve a specific Project",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "422",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}",
+      "method": "getProject",
+      "httpMethod": "get",
+      "tag": "Project",
+      "description": "Get a specific Project",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.ProjectExpandVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}",
+      "method": "patchProject",
+      "httpMethod": "patch",
+      "tag": "Project",
+      "description": "Patch a specific Project",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "client_user_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "client_workgroup_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "comments",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "completion_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "custom_fields",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "deactivation_reason_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "is_active",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "is_hot",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "project_category_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "project_description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "project_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "project_number",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "project_status_id",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "422",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}",
+      "method": "putProject",
+      "httpMethod": "put",
+      "tag": "Project",
+      "description": "Update a specific Project",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "client_account",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "client_user_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "client_workgroup_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "comments",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "completion_date",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "custom_fields",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "deactivation_reason_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "is_active",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "is_hot",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "is_paper_direct",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "project_category_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "project_description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "project_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "project_number",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "project_owner_user_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "project_status_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "422",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/buyOrders",
+      "method": "getBuyOrderList",
+      "httpMethod": "get",
+      "tag": "Order",
+      "description": "List the buy orders",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.OrderListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/buyOrders",
+      "method": "postBuyOrder",
+      "httpMethod": "post",
+      "tag": "Order",
+      "description": "Create a quick buy order",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "buyer_user_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "comments",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "custom_fields",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "invoice_or_billing_recipient",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "order_completion_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "order_items",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "other_selection_reason",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "payment_method_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "payment_reference_no",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sellOrder",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "shipping",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "supplier_reference",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "supplier_selection_reason_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "supplier_user_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "tax",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.domain.nooshapi.persist.po.OrderPO"
+        },
+        {
+          "statusCode": "422",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/buyOrders/{order_id}",
+      "method": "getBuyOrder",
+      "httpMethod": "get",
+      "tag": "Order",
+      "description": "Get a specific buy order",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "order_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.OrderDetailVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/buyOrders/{order_id}",
+      "method": "putBuyOrder",
+      "httpMethod": "put",
+      "tag": "Order",
+      "description": "Update a specific buy order",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "order_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "action",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "budget_type_field_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "comments",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "custom_fields",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "order_completion_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "order_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "other_selection_reason",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "overs_percent",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "payment_method_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "payment_reference_no",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "reject_reason",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "supplier_selection_reason_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "unders_percent",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.OrderVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/children",
+      "method": "attachProject",
+      "httpMethod": "post",
+      "tag": "Project",
+      "description": "Attach children projects to specific Project",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "childProjectIds",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "422",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/estimates",
+      "method": "getEstimateList",
+      "httpMethod": "get",
+      "tag": "Estimate",
+      "description": "List the Estimates",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.EstimateListExpandVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/estimates",
+      "method": "postEstimate",
+      "httpMethod": "post",
+      "tag": "Estimate",
+      "description": "Create a Estimate",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "comments",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "estimate_items",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "estimate_title",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "expiration_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "owner_reference",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "rfe_id",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.domain.nooshapi.persist.po.EstimatePO"
+        },
+        {
+          "statusCode": "422",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/estimates/{estimate_id}",
+      "method": "getEstimate",
+      "httpMethod": "get",
+      "tag": "Estimate",
+      "description": "Get a specific estimate of project",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "estimate_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.EstimateExpandVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/invoices/orders/{order_id}",
+      "method": "getInvoices",
+      "httpMethod": "get",
+      "tag": "Invoice",
+      "description": "List invoices by a specific order",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "order_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.InvoiceDetailListExpandVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/invoices/{invoice_id}",
+      "method": "getInvoice",
+      "httpMethod": "get",
+      "tag": "Invoice",
+      "description": "List a specific invoice of project Level",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "invoice_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.InvoiceExpandVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/invoices/{invoice_id}/files",
+      "method": "getInvoiceFiles",
+      "httpMethod": "get",
+      "tag": "Invoice",
+      "description": "List files of invoice Level",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "invoice_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.file.FileListResponseVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/memberroles/{user_id}",
+      "method": "getMemberRoles",
+      "httpMethod": "get",
+      "tag": "Team Member Role",
+      "description": "List all the role options for the user",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.RoleListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/orders/{order_id}",
+      "method": "getOrder",
+      "httpMethod": "get",
+      "tag": "Order",
+      "description": "Get a specific buy/sell order",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "order_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.OrderDetailWithIndicatorVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/quotes",
+      "method": "getQuoteList",
+      "httpMethod": "get",
+      "tag": "Quote",
+      "description": "List the quotes",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "quote_state_id, use filters={\"quote_state_id\":111111}",
+          "schema": "string",
+          "required": false,
+          "description": "Quote Object State Id, use /workgroups/{workgroup_id}/quoteStates to get correct value"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.QuoteListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/quotes/{quote_id}",
+      "method": "getQuote",
+      "httpMethod": "get",
+      "tag": "Quote",
+      "description": "Get a specific quote of project",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "quote_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.QuoteExpandVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/quotes/{quote_id}",
+      "method": "putQuote",
+      "httpMethod": "put",
+      "tag": "Quote",
+      "description": "Accept / Reject a Quote",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "quote_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "action",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "po_number",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "quote_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "state_change_comments",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "422",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/rfes",
+      "method": "getRfeList",
+      "httpMethod": "get",
+      "tag": "RFE",
+      "description": "List the RFES",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.RfeListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/rfes",
+      "method": "postRfe",
+      "httpMethod": "post",
+      "tag": "RFE",
+      "description": "Create a RFE",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "details",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "estimate_due_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "proposed_order_completion_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "rfe_number",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "rfe_title",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "specs",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "supplier_user_ids",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.RfqVO"
+        },
+        {
+          "statusCode": "422",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/rfes/{rfe_id}",
+      "method": "getRfe",
+      "httpMethod": "get",
+      "tag": "RFE",
+      "description": "Get a specific Rfe",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "rfe_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.RfeExpandVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/rfqs",
+      "method": "getRfqList",
+      "httpMethod": "get",
+      "tag": "Rfq",
+      "description": "List the rfqs",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.RfqListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/rfqs/{rfq_id}",
+      "method": "getRfq",
+      "httpMethod": "get",
+      "tag": "Rfq",
+      "description": "Get a specific Rfq",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "rfq_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.RfqExpandVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/sellOrders",
+      "method": "getSellOrderList",
+      "httpMethod": "get",
+      "tag": "Order",
+      "description": "List the sell orders",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.OrderListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/sellOrders/{order_id}",
+      "method": "getSellOrder",
+      "httpMethod": "get",
+      "tag": "Order",
+      "description": "Get a specific sell order",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "order_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.OrderDetailVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/sellOrders/{order_id}",
+      "method": "putSellOrder",
+      "httpMethod": "put",
+      "tag": "Order",
+      "description": "Update / Accept or Reject a specific sell order",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "order_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "action",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "budget_type_field_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "comments",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "custom_fields",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "order_completion_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "order_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "other_selection_reason",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "overs_percent",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "payment_method_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "payment_reference_no",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "reject_reason",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "supplier_selection_reason_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "unders_percent",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.OrderVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/shipments",
+      "method": "getShipmentList",
+      "httpMethod": "get",
+      "tag": "Shipment",
+      "description": "List shipments of project",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.ShipmentListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/shipments",
+      "method": "postShipment",
+      "httpMethod": "post",
+      "tag": "Shipment",
+      "description": "Create a shipment",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "address_line1",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "address_line2",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "address_line3",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "batch_label",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "city",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "company_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "country_iso_code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "delivery_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description_or_title",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "first_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "inner_carton_label",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "last_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "middle_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "outer_carton_label",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "pallet_lablel",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "poof_type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "postal_code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "request_type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "requested_quantity",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "shipment_custom_fields",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "shipment_request_custom_fields",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "shipping_carrier",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "shipping_instruction",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "shpping_method",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "spec_ids",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "work_phone_number",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "workgroup_name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.ShipmentLocationsPOSTResultVO"
+        },
+        {
+          "statusCode": "422",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/shipments/{shipment_id}",
+      "method": "getShipment",
+      "httpMethod": "get",
+      "tag": "Shipment",
+      "description": "Get a specific shipment.",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "shipment_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.ShipmentExpandVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/shipments/{shipment_id}/locations/{location_id}",
+      "method": "putShipmentLocation",
+      "httpMethod": "put",
+      "tag": "Shipment",
+      "description": "Update a specific shipment location",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "shipment_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "location_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "due_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "qty_received",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "qty_requested",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "qty_shipped",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "received_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "shipped_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "shipping_cost",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "422",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/specs",
+      "method": "getSpecList",
+      "httpMethod": "get",
+      "tag": "Spec",
+      "description": "List specs of project Level",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.SpecListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/specs",
+      "method": "postSpec",
+      "httpMethod": "post",
+      "tag": "Spec",
+      "description": "Create a Spec",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "jsonBody",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "product_type_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "quantity_1",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "quantity_2",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "quantity_3",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "quantity_4",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "quantity_5",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "sku",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "spec_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "spec_template_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "spec_type_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "versions",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.SpecVO"
+        },
+        {
+          "statusCode": "422",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/specs/{spec_id}",
+      "method": "/v1/workgroups/{workgroupId}/projects/{projectId}/specs/{specId}Get",
+      "httpMethod": "get",
+      "tag": "Spec",
+      "description": "List a specific spec of project Level",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "spec_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.SpecListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/specs/{spec_id}",
+      "method": "/v1/workgroups/{workgroupId}/projects/{projectId}/specs/{specId}Put",
+      "httpMethod": "put",
+      "tag": "Spec",
+      "description": "Update a specific Spec",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "spec_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "inks_and_paper",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "product_type_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "quantity_1",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "quantity_2",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "quantity_3",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "quantity_4",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "quantity_5",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "sku",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "spec_name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.SpecHTTPStatusVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/tasks",
+      "method": "getTaskListOfProject",
+      "httpMethod": "get",
+      "tag": "Task",
+      "description": "Get task list of project level",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.TaskListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/tasks",
+      "method": "postTaskForProject",
+      "httpMethod": "post",
+      "tag": "Task",
+      "description": "Create a new task",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "actual_duration",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "actual_duration_hour",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "actual_end_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "actual_start_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "assign_to_user_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "comments",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "contributors",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "custom_status_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "percentage_complete",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "priority",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "revised_duration",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "revised_duration_hour",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "revised_end_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "revised_start_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "status_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "task_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "task_type_id",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.ne.TaskCreatedVO"
+        },
+        {
+          "statusCode": "422",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/tasks/{task_id}",
+      "method": "getTaskOfProject",
+      "httpMethod": "get",
+      "tag": "Task",
+      "description": "Get a sepcific task of project level",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "task_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.TaskExpandVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/teamMembersOfClientProject",
+      "method": "getTeamMemberListOfClientProject",
+      "httpMethod": "get",
+      "tag": "Team Member",
+      "description": "List team member of client project side.",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.TeamMemberListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/teammembers",
+      "method": "getTeamMemberListOfProject",
+      "httpMethod": "get",
+      "tag": "Team Member",
+      "description": "List team member of project.",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.TeamMemberListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/teammembers",
+      "method": "/v1/workgroups/{workgroupId}/projects/{projectId}/teammembersPost",
+      "httpMethod": "post",
+      "tag": "Team Member",
+      "description": "Deprecated, please use 1.1 Version",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "role_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.TeamMemberBaseInfVO"
+        },
+        {
+          "statusCode": "422",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/projects/{project_id}/teammembers/{teammember_id}",
+      "method": "deleteTeamMemberOfProject",
+      "httpMethod": "delete",
+      "tag": "Team Member",
+      "description": "Delete a team member for the specific project.",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "teammember_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.TeamMemberBaseInfVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/quoteStates",
+      "method": "getQuoteStateList",
+      "httpMethod": "get",
+      "tag": "Quote",
+      "description": "List the quote states",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.ObjectStateListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/quotes",
+      "method": "/v1/workgroups/{workgroupId}/quotesGet",
+      "httpMethod": "get",
+      "tag": "Quote",
+      "description": "List the quotes of workgroup level",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "quote_state_id, use filters={\"quote_state_id\":111111}",
+          "schema": "string",
+          "required": false,
+          "description": "Quote Object State Id, use /workgroups/{workgroup_id}/quoteStates to get correct value"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.QuoteOfWgLevelSimpleVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/receivedTimeCards",
+      "method": "getReceivedTimeCardList",
+      "httpMethod": "get",
+      "tag": "Time Card",
+      "description": "List received time cards",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.TimeCardListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/receivedTimeCards/{timeCard_id}",
+      "method": "getReceivedTimeCard",
+      "httpMethod": "get",
+      "tag": "Time Card",
+      "description": "List a specific received time cards",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timeCard_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.TimeCardReceivedDetailVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/sellOrders",
+      "method": "getSellOrderListOfWorkgroup",
+      "httpMethod": "get",
+      "tag": "Order",
+      "description": "List the sell orders of workgrop",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.OrderWorkgroupLevelListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/sellOrders/{order_id}",
+      "method": "getSellOrderOfWorkgroup",
+      "httpMethod": "get",
+      "tag": "Order",
+      "description": "Get a specific sell order",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "order_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.OrderExpandWorkgroupLevelVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/specTemplates",
+      "method": "getSpecTemplateList",
+      "httpMethod": "get",
+      "tag": "Spec Template",
+      "description": "List Spec Templates of Workgroup Level ",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.SpecTemplateListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/specTemplates/{spec_template_id}",
+      "method": "getSpecTemplate",
+      "httpMethod": "get",
+      "tag": "Spec Template",
+      "description": "Get a specific Spec Template",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "spec_template_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.SpecTemplateExpandVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/specTypes/{spec_type_id}/specTypeFields",
+      "method": "/v1/workgroups/{workgroupId}/specTypes/{specTypeId}/specTypeFieldsGet",
+      "httpMethod": "get",
+      "tag": "Spec",
+      "description": "Get Spec Type Fields",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "spec_type_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.PropertyParamListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/supplierWorkgroups",
+      "method": "getSupplierWorkgroupList",
+      "httpMethod": "get",
+      "tag": "Workgroup",
+      "description": "List supplier workgroups",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.SupplierWorkgroupListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/supplierWorkgroups/{bu_supplier_workgroup_id}",
+      "method": "getSupplierWorkgroupDetail",
+      "httpMethod": "get",
+      "tag": "Workgroup",
+      "description": "Get the specific supplier of My Group",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "bu_supplier_workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.SupplierWorkgroupExpandVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/taskTypes",
+      "method": "getTaskTypesOfWorkgroup",
+      "httpMethod": "get",
+      "tag": "Task",
+      "description": "Get task types of workgroup level",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.TaskTypeListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/tasks",
+      "method": "getTaskListOfWorkgroup",
+      "httpMethod": "get",
+      "tag": "Task",
+      "description": "Get task list of workgroup level",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.TaskWorkgroupLevelListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/tasks/{task_id}",
+      "method": "getTaskOfWorkgroup",
+      "httpMethod": "get",
+      "tag": "Task",
+      "description": "Get a sepcific task of workgroup level",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "task_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.TaskExpandWorkgroupLevelVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/teamTemplates",
+      "method": "getTeamTemplateList",
+      "httpMethod": "get",
+      "tag": "My Info",
+      "description": "List current user's team templates info ",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.TeamTemplateListVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/teamTemplates/{team_template_id}",
+      "method": "getTeamTemplateDetail",
+      "httpMethod": "get",
+      "tag": "My Info",
+      "description": "Get current user's team template detal info ",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "team_template_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.TeamTemplateExpandVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/workgroupMembers",
+      "method": "getWorkgroupMemberList",
+      "httpMethod": "get",
+      "tag": "Workgroup Members",
+      "description": "List the workgroup members",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.WorkgroupMembersListVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    },
+    {
+      "url": "/v1/workgroups/{workgroup_id}/workgroupMembers/{user_id}",
+      "method": "getWorkgroupMemberInfo",
+      "httpMethod": "get",
+      "tag": "Workgroup Members",
+      "description": "Workgroup Member Info",
+      "parameters": [
+        {
+          "name": "workgroup_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Java type: com.noosh.nooshapi.vo.UserDetailsExpandVO"
+        },
+        {
+          "statusCode": "404",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        },
+        {
+          "statusCode": "500",
+          "description": "Java type: com.noosh.core.vo.HTTPStatusVO"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://example.com:80/v1",
   "apiDescription": "Full description of Noosh API",
   "apiTitle": "Noosh API application",

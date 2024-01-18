@@ -3,6 +3,70 @@
   "openApiRaw": "https://stellastra.com/stellastra.json",
   "homepage": "stellastra.com",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/post-review",
+      "method": "/postReviewPost",
+      "httpMethod": "post",
+      "description": "Posts the user's review to Stellastra",
+      "parameters": [
+        {
+          "name": "user_email",
+          "schema": "string",
+          "required": true,
+          "description": "User's email to which the review verification will be sent. "
+        },
+        {
+          "name": "user_name",
+          "schema": "string",
+          "required": false,
+          "description": "The user's name, defaults to empty string \"\".  Thus, if this is omitted, the email to the user will not use the user's name. "
+        },
+        {
+          "name": "rating",
+          "schema": "integer",
+          "required": true,
+          "description": "The user's star rating, must be a single integer from [1, 2, 3, 4, 5]"
+        },
+        {
+          "name": "rating",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user_email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "This can appear because the authorization header is missing or malformed, or becuse the auth email and key pair is not authorized."
+        },
+        {
+          "statusCode": "403",
+          "description": "The 403 response can have many detailed response messages related to the user's email address validation"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://stellastra.com/api/",
   "apiDescription": "Stellastra makes it easy to get reviews for your cybersecurity solution in real-time with its platform-agnostic REST API.",
   "apiTitle": "Stellastra",

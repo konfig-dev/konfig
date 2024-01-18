@@ -3,6 +3,3081 @@
   "openApiRaw": "https://docs.openaq.org/openapi.json",
   "homepage": "openaq.local",
   "apiVersion": "2.0.0",
+  "methods": [
+    {
+      "url": "/favicon.ico",
+      "method": "favicoFaviconIcoGet",
+      "httpMethod": "get",
+      "description": "Favico",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ping",
+      "method": "pongPingGet",
+      "httpMethod": "get",
+      "description": "Pong",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/cities",
+      "method": "citiesGetv1V1CitiesGet",
+      "httpMethod": "get",
+      "tag": "v1",
+      "description": "Provides a simple listing of cities within the platform",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Change the number of results returned."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Paginate through results."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "schema": "undefined",
+          "required": false,
+          "description": "Define sort order."
+        },
+        {
+          "name": "country_id",
+          "schema": "string",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. /US)\n        "
+        },
+        {
+          "name": "country",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. ?country=US or ?country=US&country=MX)\n        "
+        },
+        {
+          "name": "city",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain city or cities.\n        (ex. ?city=Chicago or ?city=Chicago&city=Boston)\n        "
+        },
+        {
+          "name": "order_by",
+          "schema": "undefined",
+          "required": false,
+          "description": "Order by a field"
+        },
+        {
+          "name": "entity",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/countries",
+      "method": "countriesGetv1V1CountriesGet",
+      "httpMethod": "get",
+      "tag": "v1",
+      "description": "Countries Getv1",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Paginate through results."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "schema": "undefined",
+          "required": false,
+          "description": "Define sort order."
+        },
+        {
+          "name": "country_id",
+          "schema": "string",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. /US)\n        "
+        },
+        {
+          "name": "country",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. ?country=US or ?country=US&country=MX)\n        "
+        },
+        {
+          "name": "order_by",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/countries/{country_id}",
+      "method": "countriesGetV1CountriesCountryIdGet",
+      "httpMethod": "get",
+      "tag": "v1",
+      "description": "Countries Get",
+      "parameters": [
+        {
+          "name": "country_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Paginate through results."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "schema": "undefined",
+          "required": false,
+          "description": "Define sort order."
+        },
+        {
+          "name": "country",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. ?country=US or ?country=US&country=MX)\n        "
+        },
+        {
+          "name": "order_by",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/latest",
+      "method": "latestV1GetV1LatestGet",
+      "httpMethod": "get",
+      "tag": "v1",
+      "description": "Latest V1 Get",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Change the number of results returned."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Paginate through results."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "schema": "undefined",
+          "required": false,
+          "description": "Sort Direction"
+        },
+        {
+          "name": "has_geo",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parameter_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parameter",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "unit",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "coordinates",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "radius",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "country_id",
+          "schema": "string",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. /US)\n        "
+        },
+        {
+          "name": "country",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. ?country=US or ?country=US&country=MX)\n        "
+        },
+        {
+          "name": "city",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain city or cities.\n        (ex. ?city=Chicago or ?city=Chicago&city=Boston)\n        "
+        },
+        {
+          "name": "location_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "order_by",
+          "schema": "undefined",
+          "required": false,
+          "description": "Order by a field"
+        },
+        {
+          "name": "isMobile",
+          "schema": "boolean",
+          "required": false,
+          "description": "Location is mobile"
+        },
+        {
+          "name": "isAnalysis",
+          "schema": "boolean",
+          "required": false,
+          "description": "Data is the product of a previous analysis/aggregation and not raw measurements"
+        },
+        {
+          "name": "sourceName",
+          "schema": "array",
+          "required": false,
+          "description": "Name of the data source"
+        },
+        {
+          "name": "entity",
+          "schema": "undefined",
+          "required": false,
+          "description": "Source entity type."
+        },
+        {
+          "name": "sensorType",
+          "schema": "undefined",
+          "required": false,
+          "description": "Type of Sensor"
+        },
+        {
+          "name": "modelName",
+          "schema": "array",
+          "required": false,
+          "description": "Model Name of Sensor"
+        },
+        {
+          "name": "manufacturerName",
+          "schema": "array",
+          "required": false,
+          "description": "Manufacturer of Sensor"
+        },
+        {
+          "name": "dumpRaw",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/latest/{location_id}",
+      "method": "latestV1GetV1LatestLocationIdGet",
+      "httpMethod": "get",
+      "tag": "v1",
+      "description": "Latest V1 Get",
+      "parameters": [
+        {
+          "name": "location_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Change the number of results returned."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Paginate through results."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "schema": "undefined",
+          "required": false,
+          "description": "Sort Direction"
+        },
+        {
+          "name": "has_geo",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parameter_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parameter",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "unit",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "coordinates",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "radius",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "country_id",
+          "schema": "string",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. /US)\n        "
+        },
+        {
+          "name": "country",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. ?country=US or ?country=US&country=MX)\n        "
+        },
+        {
+          "name": "city",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain city or cities.\n        (ex. ?city=Chicago or ?city=Chicago&city=Boston)\n        "
+        },
+        {
+          "name": "location",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "order_by",
+          "schema": "undefined",
+          "required": false,
+          "description": "Order by a field"
+        },
+        {
+          "name": "isMobile",
+          "schema": "boolean",
+          "required": false,
+          "description": "Location is mobile"
+        },
+        {
+          "name": "isAnalysis",
+          "schema": "boolean",
+          "required": false,
+          "description": "Data is the product of a previous analysis/aggregation and not raw measurements"
+        },
+        {
+          "name": "sourceName",
+          "schema": "array",
+          "required": false,
+          "description": "Name of the data source"
+        },
+        {
+          "name": "entity",
+          "schema": "undefined",
+          "required": false,
+          "description": "Source entity type."
+        },
+        {
+          "name": "sensorType",
+          "schema": "undefined",
+          "required": false,
+          "description": "Type of Sensor"
+        },
+        {
+          "name": "modelName",
+          "schema": "array",
+          "required": false,
+          "description": "Model Name of Sensor"
+        },
+        {
+          "name": "manufacturerName",
+          "schema": "array",
+          "required": false,
+          "description": "Manufacturer of Sensor"
+        },
+        {
+          "name": "dumpRaw",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/locations",
+      "method": "locationsv1GetV1LocationsGet",
+      "httpMethod": "get",
+      "tag": "v1",
+      "description": "Locationsv1 Get",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Change the number of results returned."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Paginate through results."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "schema": "undefined",
+          "required": false,
+          "description": "Sort Direction"
+        },
+        {
+          "name": "has_geo",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parameter_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parameter",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "unit",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "coordinates",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "radius",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "country_id",
+          "schema": "string",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. /US)\n        "
+        },
+        {
+          "name": "country",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. ?country=US or ?country=US&country=MX)\n        "
+        },
+        {
+          "name": "city",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain city or cities.\n        (ex. ?city=Chicago or ?city=Chicago&city=Boston)\n        "
+        },
+        {
+          "name": "location_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "order_by",
+          "schema": "undefined",
+          "required": false,
+          "description": "Order by a field"
+        },
+        {
+          "name": "isMobile",
+          "schema": "boolean",
+          "required": false,
+          "description": "Location is mobile"
+        },
+        {
+          "name": "isAnalysis",
+          "schema": "boolean",
+          "required": false,
+          "description": "Data is the product of a previous analysis/aggregation and not raw measurements"
+        },
+        {
+          "name": "sourceName",
+          "schema": "array",
+          "required": false,
+          "description": "Name of the data source"
+        },
+        {
+          "name": "entity",
+          "schema": "undefined",
+          "required": false,
+          "description": "Source entity type."
+        },
+        {
+          "name": "sensorType",
+          "schema": "undefined",
+          "required": false,
+          "description": "Type of Sensor"
+        },
+        {
+          "name": "modelName",
+          "schema": "array",
+          "required": false,
+          "description": "Model Name of Sensor"
+        },
+        {
+          "name": "manufacturerName",
+          "schema": "array",
+          "required": false,
+          "description": "Manufacturer of Sensor"
+        },
+        {
+          "name": "dumpRaw",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/locations/{location_id}",
+      "method": "locationsv1GetV1LocationsLocationIdGet",
+      "httpMethod": "get",
+      "tag": "v1",
+      "description": "Locationsv1 Get",
+      "parameters": [
+        {
+          "name": "location_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Change the number of results returned."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Paginate through results."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "schema": "undefined",
+          "required": false,
+          "description": "Sort Direction"
+        },
+        {
+          "name": "has_geo",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parameter_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parameter",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "unit",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "coordinates",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "radius",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "country_id",
+          "schema": "string",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. /US)\n        "
+        },
+        {
+          "name": "country",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. ?country=US or ?country=US&country=MX)\n        "
+        },
+        {
+          "name": "city",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain city or cities.\n        (ex. ?city=Chicago or ?city=Chicago&city=Boston)\n        "
+        },
+        {
+          "name": "location",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "order_by",
+          "schema": "undefined",
+          "required": false,
+          "description": "Order by a field"
+        },
+        {
+          "name": "isMobile",
+          "schema": "boolean",
+          "required": false,
+          "description": "Location is mobile"
+        },
+        {
+          "name": "isAnalysis",
+          "schema": "boolean",
+          "required": false,
+          "description": "Data is the product of a previous analysis/aggregation and not raw measurements"
+        },
+        {
+          "name": "sourceName",
+          "schema": "array",
+          "required": false,
+          "description": "Name of the data source"
+        },
+        {
+          "name": "entity",
+          "schema": "undefined",
+          "required": false,
+          "description": "Source entity type."
+        },
+        {
+          "name": "sensorType",
+          "schema": "undefined",
+          "required": false,
+          "description": "Type of Sensor"
+        },
+        {
+          "name": "modelName",
+          "schema": "array",
+          "required": false,
+          "description": "Model Name of Sensor"
+        },
+        {
+          "name": "manufacturerName",
+          "schema": "array",
+          "required": false,
+          "description": "Manufacturer of Sensor"
+        },
+        {
+          "name": "dumpRaw",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/measurements",
+      "method": "measurementsGetV1V1MeasurementsGet",
+      "httpMethod": "get",
+      "tag": "v1",
+      "description": "Measurements Get V1",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "date_from",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "date_to",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Change the number of results returned."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Paginate through results."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "has_geo",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parameter_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parameter",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "unit",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "coordinates",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "radius",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "country_id",
+          "schema": "string",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. /US)\n        "
+        },
+        {
+          "name": "country",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. ?country=US or ?country=US&country=MX)\n        "
+        },
+        {
+          "name": "city",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain city or cities.\n        (ex. ?city=Chicago or ?city=Chicago&city=Boston)\n        "
+        },
+        {
+          "name": "location_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "order_by",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isMobile",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isAnalysis",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "project",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "entity",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sensorType",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "value_from",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "value_to",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "include_fields",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/parameters",
+      "method": "parametersGetv1V1ParametersGet",
+      "httpMethod": "get",
+      "tag": "v1",
+      "description": "Parameters Getv1",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Change the number of results returned."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Paginate through results."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "schema": "undefined",
+          "required": false,
+          "description": "Define sort order."
+        },
+        {
+          "name": "sourceName",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sourceId",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sourceSlug",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "order_by",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/sources",
+      "method": "sourcesV1GetV1SourcesGet",
+      "httpMethod": "get",
+      "tag": "v1",
+      "description": "Sources V1 Get",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Change the number of results returned."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Paginate through results."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "schema": "undefined",
+          "required": false,
+          "description": "Define sort order."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "order_by",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/averages",
+      "method": "averagesV2GetV2AveragesGet",
+      "httpMethod": "get",
+      "tag": "v2",
+      "description": "Averages V2 Get",
+      "parameters": [
+        {
+          "name": "date_from",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "date_to",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parameter_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parameter",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "unit",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "project",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "country_id",
+          "schema": "string",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. /US)\n        "
+        },
+        {
+          "name": "country",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. ?country=US or ?country=US&country=MX)\n        "
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Change the number of results returned."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Paginate through results."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "schema": "undefined",
+          "required": false,
+          "description": "Define sort order."
+        },
+        {
+          "name": "spatial",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "temporal",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "group",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/cities",
+      "method": "citiesGetV2CitiesGet",
+      "httpMethod": "get",
+      "tag": "v2",
+      "description": "Provides a simple listing of cities within the platform",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Change the number of results returned."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Paginate through results."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "schema": "undefined",
+          "required": false,
+          "description": "Define sort order."
+        },
+        {
+          "name": "country_id",
+          "schema": "string",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. /US)\n        "
+        },
+        {
+          "name": "country",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. ?country=US or ?country=US&country=MX)\n        "
+        },
+        {
+          "name": "city",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain city or cities.\n        (ex. ?city=Chicago or ?city=Chicago&city=Boston)\n        "
+        },
+        {
+          "name": "order_by",
+          "schema": "undefined",
+          "required": false,
+          "description": "Order by a field"
+        },
+        {
+          "name": "entity",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/countries",
+      "method": "countriesGetV2CountriesGet",
+      "httpMethod": "get",
+      "tag": "v2",
+      "description": "Countries Get",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Paginate through results."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "schema": "undefined",
+          "required": false,
+          "description": "Define sort order."
+        },
+        {
+          "name": "country_id",
+          "schema": "string",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. /US)\n        "
+        },
+        {
+          "name": "country",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. ?country=US or ?country=US&country=MX)\n        "
+        },
+        {
+          "name": "order_by",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/countries/{country_id}",
+      "method": "countriesGetV2CountriesCountryIdGet",
+      "httpMethod": "get",
+      "tag": "v2",
+      "description": "Countries Get",
+      "parameters": [
+        {
+          "name": "country_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Paginate through results."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "schema": "undefined",
+          "required": false,
+          "description": "Define sort order."
+        },
+        {
+          "name": "country",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. ?country=US or ?country=US&country=MX)\n        "
+        },
+        {
+          "name": "order_by",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/latest",
+      "method": "latestGetV2LatestGet",
+      "httpMethod": "get",
+      "tag": "v2",
+      "description": "Latest Get",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Change the number of results returned."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Paginate through results."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "schema": "undefined",
+          "required": false,
+          "description": "Sort Direction"
+        },
+        {
+          "name": "has_geo",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parameter_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parameter",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "unit",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "coordinates",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "radius",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "country_id",
+          "schema": "string",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. /US)\n        "
+        },
+        {
+          "name": "country",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. ?country=US or ?country=US&country=MX)\n        "
+        },
+        {
+          "name": "city",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain city or cities.\n        (ex. ?city=Chicago or ?city=Chicago&city=Boston)\n        "
+        },
+        {
+          "name": "location_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "order_by",
+          "schema": "undefined",
+          "required": false,
+          "description": "Order by a field"
+        },
+        {
+          "name": "isMobile",
+          "schema": "boolean",
+          "required": false,
+          "description": "Location is mobile"
+        },
+        {
+          "name": "isAnalysis",
+          "schema": "boolean",
+          "required": false,
+          "description": "Data is the product of a previous analysis/aggregation and not raw measurements"
+        },
+        {
+          "name": "sourceName",
+          "schema": "array",
+          "required": false,
+          "description": "Name of the data source"
+        },
+        {
+          "name": "entity",
+          "schema": "undefined",
+          "required": false,
+          "description": "Source entity type."
+        },
+        {
+          "name": "sensorType",
+          "schema": "undefined",
+          "required": false,
+          "description": "Type of Sensor"
+        },
+        {
+          "name": "modelName",
+          "schema": "array",
+          "required": false,
+          "description": "Model Name of Sensor"
+        },
+        {
+          "name": "manufacturerName",
+          "schema": "array",
+          "required": false,
+          "description": "Manufacturer of Sensor"
+        },
+        {
+          "name": "dumpRaw",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/latest/{location_id}",
+      "method": "latestGetV2LatestLocationIdGet",
+      "httpMethod": "get",
+      "tag": "v2",
+      "description": "Latest Get",
+      "parameters": [
+        {
+          "name": "location_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Change the number of results returned."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Paginate through results."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "schema": "undefined",
+          "required": false,
+          "description": "Sort Direction"
+        },
+        {
+          "name": "has_geo",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parameter_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parameter",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "unit",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "coordinates",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "radius",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "country_id",
+          "schema": "string",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. /US)\n        "
+        },
+        {
+          "name": "country",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. ?country=US or ?country=US&country=MX)\n        "
+        },
+        {
+          "name": "city",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain city or cities.\n        (ex. ?city=Chicago or ?city=Chicago&city=Boston)\n        "
+        },
+        {
+          "name": "location",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "order_by",
+          "schema": "undefined",
+          "required": false,
+          "description": "Order by a field"
+        },
+        {
+          "name": "isMobile",
+          "schema": "boolean",
+          "required": false,
+          "description": "Location is mobile"
+        },
+        {
+          "name": "isAnalysis",
+          "schema": "boolean",
+          "required": false,
+          "description": "Data is the product of a previous analysis/aggregation and not raw measurements"
+        },
+        {
+          "name": "sourceName",
+          "schema": "array",
+          "required": false,
+          "description": "Name of the data source"
+        },
+        {
+          "name": "entity",
+          "schema": "undefined",
+          "required": false,
+          "description": "Source entity type."
+        },
+        {
+          "name": "sensorType",
+          "schema": "undefined",
+          "required": false,
+          "description": "Type of Sensor"
+        },
+        {
+          "name": "modelName",
+          "schema": "array",
+          "required": false,
+          "description": "Model Name of Sensor"
+        },
+        {
+          "name": "manufacturerName",
+          "schema": "array",
+          "required": false,
+          "description": "Manufacturer of Sensor"
+        },
+        {
+          "name": "dumpRaw",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/locations",
+      "method": "locationsGetV2LocationsGet",
+      "httpMethod": "get",
+      "tag": "v2",
+      "description": "Locations Get",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Change the number of results returned."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Paginate through results."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "schema": "undefined",
+          "required": false,
+          "description": "Sort Direction"
+        },
+        {
+          "name": "has_geo",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parameter_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parameter",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "unit",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "coordinates",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "radius",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "country_id",
+          "schema": "string",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. /US)\n        "
+        },
+        {
+          "name": "country",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. ?country=US or ?country=US&country=MX)\n        "
+        },
+        {
+          "name": "city",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain city or cities.\n        (ex. ?city=Chicago or ?city=Chicago&city=Boston)\n        "
+        },
+        {
+          "name": "location_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "order_by",
+          "schema": "undefined",
+          "required": false,
+          "description": "Order by a field"
+        },
+        {
+          "name": "isMobile",
+          "schema": "boolean",
+          "required": false,
+          "description": "Location is mobile"
+        },
+        {
+          "name": "isAnalysis",
+          "schema": "boolean",
+          "required": false,
+          "description": "Data is the product of a previous analysis/aggregation and not raw measurements"
+        },
+        {
+          "name": "sourceName",
+          "schema": "array",
+          "required": false,
+          "description": "Name of the data source"
+        },
+        {
+          "name": "entity",
+          "schema": "undefined",
+          "required": false,
+          "description": "Source entity type."
+        },
+        {
+          "name": "sensorType",
+          "schema": "undefined",
+          "required": false,
+          "description": "Type of Sensor"
+        },
+        {
+          "name": "modelName",
+          "schema": "array",
+          "required": false,
+          "description": "Model Name of Sensor"
+        },
+        {
+          "name": "manufacturerName",
+          "schema": "array",
+          "required": false,
+          "description": "Manufacturer of Sensor"
+        },
+        {
+          "name": "dumpRaw",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/locations/tiles/mobile-generalized/tiles.json",
+      "method": "mobilegentilejsonV2LocationsTilesMobileGeneralizedTilesJsonGet",
+      "httpMethod": "get",
+      "tag": "v2",
+      "description": "Mobilegentilejson",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "TileJSON model.\nBased on https://github.com/mapbox/tilejson-spec/tree/master/2.2.0"
+        }
+      ]
+    },
+    {
+      "url": "/v2/locations/tiles/mobile-generalized/{z}/{x}/{y}.pbf",
+      "method": "getMobilegentileV2LocationsTilesMobileGeneralizedZXYPbfGet",
+      "httpMethod": "get",
+      "tag": "v2",
+      "description": "Get Mobilegentile",
+      "parameters": [
+        {
+          "name": "z",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "x",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "y",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "parameter",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "array",
+          "required": false,
+          "description": "limit data to location id"
+        },
+        {
+          "name": "lastUpdatedFrom",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "lastUpdatedTo",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isMobile",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "project",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isAnalysis",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/locations/tiles/mobile/tiles.json",
+      "method": "mobiletilejsonV2LocationsTilesMobileTilesJsonGet",
+      "httpMethod": "get",
+      "tag": "v2",
+      "description": "Mobiletilejson",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "TileJSON model.\nBased on https://github.com/mapbox/tilejson-spec/tree/master/2.2.0"
+        }
+      ]
+    },
+    {
+      "url": "/v2/locations/tiles/mobile/{z}/{x}/{y}.pbf",
+      "method": "getMobiletileV2LocationsTilesMobileZXYPbfGet",
+      "httpMethod": "get",
+      "tag": "v2",
+      "description": "Get Mobiletile",
+      "parameters": [
+        {
+          "name": "z",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "x",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "y",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "dateFrom",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "dateTo",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "parameter",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "array",
+          "required": false,
+          "description": "limit data to location id"
+        },
+        {
+          "name": "lastUpdatedFrom",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "lastUpdatedTo",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isMobile",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "project",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isAnalysis",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/locations/tiles/tiles.json",
+      "method": "tilejsonV2LocationsTilesTilesJsonGet",
+      "httpMethod": "get",
+      "tag": "v2",
+      "description": "Tilejson",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "TileJSON model.\nBased on https://github.com/mapbox/tilejson-spec/tree/master/2.2.0"
+        }
+      ]
+    },
+    {
+      "url": "/v2/locations/tiles/viewer",
+      "method": "demoV2LocationsTilesViewerGet",
+      "httpMethod": "get",
+      "tag": "v2",
+      "description": "Demo",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/locations/tiles/{z}/{x}/{y}.pbf",
+      "method": "getTileV2LocationsTilesZXYPbfGet",
+      "httpMethod": "get",
+      "tag": "v2",
+      "description": "Get Tile",
+      "parameters": [
+        {
+          "name": "z",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "x",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "y",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "parameter",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "array",
+          "required": false,
+          "description": "limit data to location id"
+        },
+        {
+          "name": "lastUpdatedFrom",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "lastUpdatedTo",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isMobile",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "project",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isAnalysis",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/locations/{location_id}",
+      "method": "locationsGetV2LocationsLocationIdGet",
+      "httpMethod": "get",
+      "tag": "v2",
+      "description": "Locations Get",
+      "parameters": [
+        {
+          "name": "location_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Change the number of results returned."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Paginate through results."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "schema": "undefined",
+          "required": false,
+          "description": "Sort Direction"
+        },
+        {
+          "name": "has_geo",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parameter_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parameter",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "unit",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "coordinates",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "radius",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "country_id",
+          "schema": "string",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. /US)\n        "
+        },
+        {
+          "name": "country",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. ?country=US or ?country=US&country=MX)\n        "
+        },
+        {
+          "name": "city",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain city or cities.\n        (ex. ?city=Chicago or ?city=Chicago&city=Boston)\n        "
+        },
+        {
+          "name": "location",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "order_by",
+          "schema": "undefined",
+          "required": false,
+          "description": "Order by a field"
+        },
+        {
+          "name": "isMobile",
+          "schema": "boolean",
+          "required": false,
+          "description": "Location is mobile"
+        },
+        {
+          "name": "isAnalysis",
+          "schema": "boolean",
+          "required": false,
+          "description": "Data is the product of a previous analysis/aggregation and not raw measurements"
+        },
+        {
+          "name": "sourceName",
+          "schema": "array",
+          "required": false,
+          "description": "Name of the data source"
+        },
+        {
+          "name": "entity",
+          "schema": "undefined",
+          "required": false,
+          "description": "Source entity type."
+        },
+        {
+          "name": "sensorType",
+          "schema": "undefined",
+          "required": false,
+          "description": "Type of Sensor"
+        },
+        {
+          "name": "modelName",
+          "schema": "array",
+          "required": false,
+          "description": "Model Name of Sensor"
+        },
+        {
+          "name": "manufacturerName",
+          "schema": "array",
+          "required": false,
+          "description": "Manufacturer of Sensor"
+        },
+        {
+          "name": "dumpRaw",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/manufacturers",
+      "method": "mfrGetV2ManufacturersGet",
+      "httpMethod": "get",
+      "tag": "v2",
+      "description": "Mfr Get",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/measurements",
+      "method": "measurementsGetV2MeasurementsGet",
+      "httpMethod": "get",
+      "tag": "v2",
+      "description": "Measurements Get",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "date_from",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "date_to",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Change the number of results returned."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Paginate through results."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "has_geo",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parameter_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parameter",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "unit",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "coordinates",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "radius",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "country_id",
+          "schema": "string",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. /US)\n        "
+        },
+        {
+          "name": "country",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. ?country=US or ?country=US&country=MX)\n        "
+        },
+        {
+          "name": "city",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain city or cities.\n        (ex. ?city=Chicago or ?city=Chicago&city=Boston)\n        "
+        },
+        {
+          "name": "location_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "order_by",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isMobile",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isAnalysis",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "project",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "entity",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sensorType",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "value_from",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "value_to",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "include_fields",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/models",
+      "method": "modelGetV2ModelsGet",
+      "httpMethod": "get",
+      "tag": "v2",
+      "description": "Model Get",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/parameters",
+      "method": "parametersGetV2ParametersGet",
+      "httpMethod": "get",
+      "tag": "v2",
+      "description": "Parameters Get",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Change the number of results returned."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Paginate through results."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "schema": "undefined",
+          "required": false,
+          "description": "Define sort order."
+        },
+        {
+          "name": "sourceName",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sourceId",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sourceSlug",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "order_by",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/projects",
+      "method": "projectsGetV2ProjectsGet",
+      "httpMethod": "get",
+      "tag": "v2",
+      "description": "Projects Get",
+      "parameters": [
+        {
+          "name": "country_id",
+          "schema": "string",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. /US)\n        "
+        },
+        {
+          "name": "country",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. ?country=US or ?country=US&country=MX)\n        "
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Change the number of results returned."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Paginate through results."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "schema": "undefined",
+          "required": false,
+          "description": "Define sort order."
+        },
+        {
+          "name": "parameter_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parameter",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "unit",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "project",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "order_by",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isMobile",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isAnalysis",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "entity",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sensorType",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sourceName",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/projects/{project_id}",
+      "method": "projectsGetV2ProjectsProjectIdGet",
+      "httpMethod": "get",
+      "tag": "v2",
+      "description": "Projects Get",
+      "parameters": [
+        {
+          "name": "project_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "country_id",
+          "schema": "string",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. /US)\n        "
+        },
+        {
+          "name": "country",
+          "schema": "array",
+          "required": false,
+          "description": "\n        Limit results by a certain country using two letter country code.\n        (ex. ?country=US or ?country=US&country=MX)\n        "
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Change the number of results returned."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Paginate through results."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "schema": "undefined",
+          "required": false,
+          "description": "Define sort order."
+        },
+        {
+          "name": "parameter_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parameter",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "unit",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "project",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "order_by",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isMobile",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isAnalysis",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "entity",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sensorType",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sourceName",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/sources",
+      "method": "sourcesGetV2SourcesGet",
+      "httpMethod": "get",
+      "tag": "v2",
+      "description": "Sources Get",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Change the number of results returned."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Paginate through results."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "schema": "undefined",
+          "required": false,
+          "description": "Define sort order."
+        },
+        {
+          "name": "sourceName",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sourceId",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sourceSlug",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "order_by",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/sources/readme/{slug}",
+      "method": "readmeGetV2SourcesReadmeSlugGet",
+      "httpMethod": "get",
+      "tag": "v2",
+      "description": "Readme Get",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/summary",
+      "method": "summaryGetV2SummaryGet",
+      "httpMethod": "get",
+      "tag": "v2",
+      "description": "Summary Get",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://openaq.local",
   "apiDescription": "API for OpenAQ LCS",
   "apiTitle": "OpenAQ",

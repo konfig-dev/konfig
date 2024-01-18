@@ -4,6 +4,61 @@
   "homepage": "ote-godaddy.com",
   "serviceName": "agreements",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/v1/agreements",
+      "method": "get",
+      "httpMethod": "get",
+      "tag": "v1",
+      "description": "Retrieve Legal Agreements for provided agreements keys",
+      "parameters": [
+        {
+          "name": "X-Private-Label-Id",
+          "schema": "integer",
+          "required": false,
+          "description": "PrivateLabelId to operate as, if different from JWT"
+        },
+        {
+          "name": "X-Market-Id",
+          "schema": "string",
+          "required": false,
+          "description": "Unique identifier of the Market used to retrieve/translate Legal Agreements"
+        },
+        {
+          "name": "keys",
+          "schema": "array",
+          "required": true,
+          "description": "Keys for Agreements whose details are to be retrieved"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "//api.ote-godaddy.com",
   "apiTitle": "",
   "endpoints": 1,

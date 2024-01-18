@@ -3,6 +3,319 @@
   "openApiRaw": "https://apibeta.uscann.net/apiv1/v2/api-docs?group=authentication-api",
   "homepage": "uscann.net",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/authentication/forgotPassword",
+      "method": "forgotPassword",
+      "httpMethod": "post",
+      "tag": "authentication-api-controller",
+      "description": "forgotPassword",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/authentication/register",
+      "method": "register",
+      "httpMethod": "post",
+      "tag": "authentication-api-controller",
+      "description": "register",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "city",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "companyDescription",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "companyName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "date1",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "date2",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "date3",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "number1",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "number2",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "number3",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "phone",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "storage",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "streetAddress",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "string1",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "string2",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "string3",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "zip",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/authentication/setForgotPassword",
+      "method": "setForgotPassword",
+      "httpMethod": "post",
+      "tag": "authentication-api-controller",
+      "description": "validates the mail token and set new password",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "activity",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/authentication/token",
+      "method": "authenticateUser",
+      "httpMethod": "post",
+      "tag": "authentication-api-controller",
+      "description": "authenticate the user and returns the token",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/authentication/validateMailToken",
+      "method": "validateMailToken",
+      "httpMethod": "post",
+      "tag": "authentication-api-controller",
+      "description": "validates the mail token",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "activity",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "apibeta.uscann.net/apiv1",
   "apiDescription": "Api Documentation",
   "apiTitle": "Api Documentation",

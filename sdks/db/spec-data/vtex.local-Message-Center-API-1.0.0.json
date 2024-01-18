@@ -4,6 +4,33 @@
   "homepage": "vtex.local",
   "serviceName": "Message-Center-API",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/api/mail-service/pvt/providers/{EmailProvider}/dkim",
+      "method": "createDkim",
+      "httpMethod": "post",
+      "tag": "DKIM Configuration",
+      "description": "Generate DKIM keys",
+      "parameters": [
+        {
+          "name": "EmailProvider",
+          "schema": "string",
+          "required": true,
+          "description": "E-mail address for sender that was setup in VTEX mail servers"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://vtex.local",
   "apiTitle": "Message Center API",
   "endpoints": 1,

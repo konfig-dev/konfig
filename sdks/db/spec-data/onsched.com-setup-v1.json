@@ -4,6 +4,5081 @@
   "homepage": "onsched.com",
   "serviceName": "setup",
   "apiVersion": "v1",
+  "methods": [
+    {
+      "url": "/setup/v1/appointments",
+      "method": "/setup/v1/appointmentsGet",
+      "httpMethod": "get",
+      "tag": "Appointments",
+      "description": "List Appointments",
+      "parameters": [
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": "id of business location, defaults to primary business location"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": "Filter appointments by email address"
+        },
+        {
+          "name": "lastname",
+          "schema": "string",
+          "description": "Filter appointments by lastname or part of"
+        },
+        {
+          "name": "serviceId",
+          "schema": "string",
+          "description": "Filter appointments by service"
+        },
+        {
+          "name": "calendarId",
+          "schema": "string",
+          "description": "Filter appointments by calendar"
+        },
+        {
+          "name": "resourceId",
+          "schema": "string",
+          "description": "Filter appointments by resource"
+        },
+        {
+          "name": "customerId",
+          "schema": "string",
+          "description": "Filter appointments by customer"
+        },
+        {
+          "name": "serviceAllocationId",
+          "schema": "string",
+          "description": "Filter appointments by service allocation"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "description": "Format YYYY-MM-DD: Filter appointments by on/after startDate"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "description": "Format YYYY-MM-DD: Filter appointments on/before endDate"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": "Filter appointments by status: IN, BK, CN, RE, RS"
+        },
+        {
+          "name": "bookedBy",
+          "schema": "string",
+          "description": "Filter appointments by user email who booked"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit default 20, max 100"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/appointments/{id}",
+      "method": "/setup/v1/appointments/{id}Get",
+      "httpMethod": "get",
+      "tag": "Appointments",
+      "description": "Get Appointment",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of appointment object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/appointments/{id}/reassign/resource/{resourceId}",
+      "method": "/setup/v1/appointments/{id}/reassign/resource/{resourceId}Put",
+      "httpMethod": "put",
+      "tag": "Appointments",
+      "description": "Reassign Appointment",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of appointment object"
+        },
+        {
+          "name": "resourceId",
+          "schema": "string",
+          "required": true,
+          "description": "id of target resource"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/businessusers",
+      "method": "/setup/v1/businessusersGet",
+      "httpMethod": "get",
+      "tag": "BusinessUsers",
+      "description": "List Users",
+      "parameters": [
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": "id of business location, defaults to primary business location"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": "Filter by email address"
+        },
+        {
+          "name": "role",
+          "schema": "string",
+          "description": "Filter user role"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit default 20, max 100"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/businessusers",
+      "method": "/setup/v1/businessusersPost",
+      "httpMethod": "post",
+      "tag": "BusinessUsers",
+      "description": "Create User",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "resourceId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "role",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sendRegistrationInvite",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/businessusers/permissions",
+      "method": "/setup/v1/businessusers/permissionsGet",
+      "httpMethod": "get",
+      "tag": "BusinessUsers",
+      "description": "List User Permissions",
+      "parameters": [
+        {
+          "name": "role",
+          "schema": "string",
+          "description": "Filter permissions by role"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit default 20, max 100"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/businessusers/{email}/companies",
+      "method": "/setup/v1/businessusers/{email}/companiesGet",
+      "httpMethod": "get",
+      "tag": "BusinessUsers",
+      "description": "List User Companies",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": "Email of business user"
+        },
+        {
+          "name": "searchText",
+          "schema": "string",
+          "description": "All or partial company name"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit default 20, max 100"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/businessusers/{id}",
+      "method": "/setup/v1/businessusers/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "BusinessUsers",
+      "description": "Delete User",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/setup/v1/businessusers/{id}",
+      "method": "/setup/v1/businessusers/{id}Get",
+      "httpMethod": "get",
+      "tag": "BusinessUsers",
+      "description": "Get User",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of businessUser object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/businessusers/{id}",
+      "method": "/setup/v1/businessusers/{id}Put",
+      "httpMethod": "put",
+      "tag": "BusinessUsers",
+      "description": "Update User",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "resourceId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "role",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sendRegistrationInvite",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/calendars",
+      "method": "/setup/v1/calendarsGet",
+      "httpMethod": "get",
+      "tag": "Calendars",
+      "description": "List Calendars",
+      "parameters": [
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": "id of business location, defaults to primary business location"
+        },
+        {
+          "name": "deleted",
+          "schema": "boolean",
+          "description": "Filter by deleted status"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit default 20, max 100"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/calendars",
+      "method": "/setup/v1/calendarsPost",
+      "httpMethod": "post",
+      "tag": "Calendars",
+      "description": "DEPRECATING: Create",
+      "parameters": [
+        {
+          "name": "availability",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "bookingsPerSlot",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "interval",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "resourceGroupId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/calendars/block/{id}",
+      "method": "/setup/v1/calendars/block/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Calendars",
+      "description": "Delete Calendar Block",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of a calendarBlock object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/calendars/block/{id}",
+      "method": "/setup/v1/calendars/block/{id}Put",
+      "httpMethod": "put",
+      "tag": "Calendars",
+      "description": "Update Calendar Block",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of calendarBlock object"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "endTime",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "repeat",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "repeats",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "startTime",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/calendars/blocks/{id}",
+      "method": "/setup/v1/calendars/blocks/{id}Get",
+      "httpMethod": "get",
+      "tag": "Calendars",
+      "description": "Get Calendar Block",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of calendarBlock object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/calendars/{id}",
+      "method": "/setup/v1/calendars/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Calendars",
+      "description": "Delete Calendar",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of calendar object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/calendars/{id}",
+      "method": "/setup/v1/calendars/{id}Get",
+      "httpMethod": "get",
+      "tag": "Calendars",
+      "description": "Get Calendar",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of calendar object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/calendars/{id}",
+      "method": "/setup/v1/calendars/{id}Put",
+      "httpMethod": "put",
+      "tag": "Calendars",
+      "description": "Update Calendar",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of calendar object"
+        },
+        {
+          "name": "availability",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "bookingsPerSlot",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "interval",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "resourceGroupId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/calendars/{id}/block",
+      "method": "/setup/v1/calendars/{id}/blockPost",
+      "httpMethod": "post",
+      "tag": "Calendars",
+      "description": "Create Calendar Block",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of calendar object"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "endTime",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "repeat",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "repeats",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "startTime",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/calendars/{id}/blocks",
+      "method": "/setup/v1/calendars/{id}/blocksGet",
+      "httpMethod": "get",
+      "tag": "Calendars",
+      "description": "List Calendar Blocks",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of calendar to list blocks"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit default 20, max 100"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/calendars/{id}/recover",
+      "method": "/setup/v1/calendars/{id}/recoverPut",
+      "httpMethod": "put",
+      "tag": "Calendars",
+      "description": "Recover Calendar",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of calendar object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/calendars/{id}/services",
+      "method": "/setup/v1/calendars/{id}/servicesGet",
+      "httpMethod": "get",
+      "tag": "Calendars",
+      "description": "List Calendar Services",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of calendar object"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit default 20, max 100"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/companies",
+      "method": "/setup/v1/companiesGet",
+      "httpMethod": "get",
+      "tag": "Companies",
+      "description": "Get Company",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/companies",
+      "method": "/setup/v1/companiesPost",
+      "httpMethod": "post",
+      "tag": "Companies",
+      "description": "Create Company",
+      "parameters": [
+        {
+          "name": "addressLine1",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "addressLine2",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "bookingWebhookUrl",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "city",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "customerWebhookUrl",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "disableEmailAndSmsNotifications",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "fax",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "notificationFromEmailAddress",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "notificationFromName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "phone",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "postalCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "registrationEmail",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "reminderWebhookUrl",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "resourceWebhookUrl",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "timezoneName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "webhookSignatureHash",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "website",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/companies",
+      "method": "/setup/v1/companiesPut",
+      "httpMethod": "put",
+      "tag": "Companies",
+      "description": "Update Company",
+      "parameters": [
+        {
+          "name": "addressLine1",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "addressLine2",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "bookingWebhookUrl",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "city",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "customerWebhookUrl",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "disableEmailAndSmsNotifications",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "fax",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "notificationFromEmailAddress",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "notificationFromName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "phone",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "postalCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "registrationEmail",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "reminderWebhookUrl",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "resourceWebhookUrl",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "timezoneName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "webhookSignatureHash",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "website",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/companies/domains",
+      "method": "/setup/v1/companies/domainsGet",
+      "httpMethod": "get",
+      "tag": "Companies",
+      "description": "List Company Domains",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/companies/domains",
+      "method": "/setup/v1/companies/domainsPost",
+      "httpMethod": "post",
+      "tag": "Companies",
+      "description": "Create Company Domain",
+      "parameters": [
+        {
+          "name": "domain",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/companies/domains/{id}",
+      "method": "/setup/v1/companies/domains/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Companies",
+      "description": "Delete Company Domain",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of companyDomain object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/companies/domains/{id}",
+      "method": "/setup/v1/companies/domains/{id}Get",
+      "httpMethod": "get",
+      "tag": "Companies",
+      "description": "Get Company Domain",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of companyDomain object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/companies/domains/{id}",
+      "method": "/setup/v1/companies/domains/{id}Put",
+      "httpMethod": "put",
+      "tag": "Companies",
+      "description": "Update Company Domain",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of companyDomain object"
+        },
+        {
+          "name": "domain",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/companies/email/templates",
+      "method": "/setup/v1/companies/email/templatesGet",
+      "httpMethod": "get",
+      "tag": "Companies",
+      "description": "List Email Templates",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/companies/email/templates/master",
+      "method": "/setup/v1/companies/email/templates/masterDelete",
+      "httpMethod": "delete",
+      "tag": "Companies",
+      "description": "Delete Master Template Settings",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/companies/email/templates/master",
+      "method": "/setup/v1/companies/email/templates/masterGet",
+      "httpMethod": "get",
+      "tag": "Companies",
+      "description": "Get Master Template Settings",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/companies/email/templates/master",
+      "method": "/setup/v1/companies/email/templates/masterPost",
+      "httpMethod": "post",
+      "tag": "Companies",
+      "description": "Create Master Template Settings",
+      "parameters": [
+        {
+          "name": "centerEmailContent",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "centerEmailContentPanel",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "centerEmailFooter",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "contentBackgroundColor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "contentColor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "contentLinkColor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "emailBackgroundColor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "emailColor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "emailLinkColor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "footerFontSize",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "footerLogoHeight",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "footerLogoPadding",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "footerPanelEmailContact",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "footerPanelPhoneContact",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "footerPanelWebsiteContact",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "headerLogoHeight",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "headerLogoPadding",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "panelBackgroundColor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "panelColor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "panelLinkColor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "privacyPolicyLink",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "showContentPanel",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "showFooterLogo",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "showFooterPanel",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "showHeaderLogo",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "showHeaderPanel",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/companies/email/templates/{templateName}",
+      "method": "/setup/v1/companies/email/templates/{templateName}Get",
+      "httpMethod": "get",
+      "tag": "Companies",
+      "description": "Get Email Template",
+      "parameters": [
+        {
+          "name": "templateName",
+          "schema": "string",
+          "required": true,
+          "description": "Email template name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/companies/regions",
+      "method": "/setup/v1/companies/regionsGet",
+      "httpMethod": "get",
+      "tag": "Companies",
+      "description": "List Regions",
+      "parameters": [
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit default 20, max 100"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/companies/regions",
+      "method": "/setup/v1/companies/regionsPost",
+      "httpMethod": "post",
+      "tag": "Companies",
+      "description": "Create Region",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/companies/regions/{id}",
+      "method": "/setup/v1/companies/regions/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Companies",
+      "description": "Delete Region",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of Region"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/companies/regions/{id}",
+      "method": "/setup/v1/companies/regions/{id}Get",
+      "httpMethod": "get",
+      "tag": "Companies",
+      "description": "Get Region",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of a region object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/companies/regions/{id}",
+      "method": "/setup/v1/companies/regions/{id}Put",
+      "httpMethod": "put",
+      "tag": "Companies",
+      "description": "Update Region",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of Region"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/companies/timezones/{date}",
+      "method": "/setup/v1/companies/timezones/{date}Get",
+      "httpMethod": "get",
+      "tag": "Companies",
+      "description": "List Time Zones",
+      "parameters": [
+        {
+          "name": "date",
+          "schema": "string",
+          "required": true,
+          "description": "\"YYYY-MM-DD: Date for timezone info\""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/customers",
+      "method": "/setup/v1/customersGet",
+      "httpMethod": "get",
+      "tag": "Customers",
+      "description": "List Customers",
+      "parameters": [
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": "id of business location, defaults to primary business location"
+        },
+        {
+          "name": "groupId",
+          "schema": "string",
+          "description": "Filter by groupId"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": "Filter by email address."
+        },
+        {
+          "name": "lastname",
+          "schema": "string",
+          "description": "Search by lastname."
+        },
+        {
+          "name": "deleted",
+          "schema": "boolean",
+          "description": "Filter by deleted status."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit default 20, max 100"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/customers/{id}",
+      "method": "/setup/v1/customers/{id}Get",
+      "httpMethod": "get",
+      "tag": "Customers",
+      "description": "Get Customer",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of customer object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/customers/{id}/privacy",
+      "method": "/setup/v1/customers/{id}/privacyGet",
+      "httpMethod": "get",
+      "tag": "Customers",
+      "description": "Get Customer Data",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of customer object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/locations",
+      "method": "/setup/v1/locationsGet",
+      "httpMethod": "get",
+      "tag": "Locations",
+      "description": "List Locations",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "description": "Location name(full or partial) to filter on"
+        },
+        {
+          "name": "serviceId",
+          "schema": "string",
+          "description": "Find locations that offer this service"
+        },
+        {
+          "name": "friendlyId",
+          "schema": "string",
+          "description": "friendlyId of location"
+        },
+        {
+          "name": "deleted",
+          "schema": "boolean",
+          "description": "Filter locations on deleted status"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit default 20, max 100"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/locations",
+      "method": "/setup/v1/locationsPost",
+      "httpMethod": "post",
+      "tag": "Locations",
+      "description": "Create Location",
+      "parameters": [
+        {
+          "name": "address",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "adminEmail",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "adminName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "appointmentReminders",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "businessHours",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "defaults",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "fax",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "friendlyId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "phone",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "regionId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "settings",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "timezoneName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "website",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/locations/bulk",
+      "method": "/setup/v1/locations/bulkPost",
+      "httpMethod": "post",
+      "tag": "Locations",
+      "description": "Create Locations Bulk",
+      "parameters": [
+        {
+          "name": "locations",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/locations/services/{id}",
+      "method": "/setup/v1/locations/services/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Locations",
+      "description": "Unlink Service",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of locationService object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/locations/services/{id}",
+      "method": "/setup/v1/locations/services/{id}Get",
+      "httpMethod": "get",
+      "tag": "Locations",
+      "description": "Get Linked Service",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of locationService object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/locations/{id}",
+      "method": "/setup/v1/locations/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Locations",
+      "description": "Delete Location",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of business location, defaults to primary business location"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/locations/{id}",
+      "method": "/setup/v1/locations/{id}Get",
+      "httpMethod": "get",
+      "tag": "Locations",
+      "description": "Get Location",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of business location, defaults to primary business location"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/locations/{id}",
+      "method": "/setup/v1/locations/{id}Put",
+      "httpMethod": "put",
+      "tag": "Locations",
+      "description": "Update Location",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "removeRegion",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "address",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "adminEmail",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "adminName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "appointmentReminders",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "businessHours",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "defaults",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "fax",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "friendlyId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "phone",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "regionId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "settings",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "timezoneName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "website",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/locations/{id}/appointmentreminders",
+      "method": "/setup/v1/locations/{id}/appointmentremindersGet",
+      "httpMethod": "get",
+      "tag": "Locations",
+      "description": "Get Reminders",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of business location, defaults to primary business location"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/locations/{id}/appointmentreminders",
+      "method": "/setup/v1/locations/{id}/appointmentremindersPut",
+      "httpMethod": "put",
+      "tag": "Locations",
+      "description": "Update Reminders",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of business location, defaults to primary business location"
+        },
+        {
+          "name": "emailFirstReminder",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "emailFirstReminderInterval",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "emailSecondReminder",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "emailSecondReminderInterval",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "smsFirstReminder",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "smsFirstReminderInterval",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "smsSecondReminder",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "smsSecondReminderInterval",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/locations/{id}/deleteallimages",
+      "method": "/setup/v1/locations/{id}/deleteallimagesDelete",
+      "httpMethod": "delete",
+      "tag": "Locations",
+      "description": "Delete All Location Images",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "uppercase",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/locations/{id}/deleteimage",
+      "method": "/setup/v1/locations/{id}/deleteimageDelete",
+      "httpMethod": "delete",
+      "tag": "Locations",
+      "description": "Delete Location Image",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of business location, defaults to primary business location"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/locations/{id}/email/templates",
+      "method": "/setup/v1/locations/{id}/email/templatesGet",
+      "httpMethod": "get",
+      "tag": "Locations",
+      "description": "List Email Templates",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/locations/{id}/email/templates",
+      "method": "/setup/v1/locations/{id}/email/templatesPost",
+      "httpMethod": "post",
+      "tag": "Locations",
+      "description": "Create Custom Template",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of business location, defaults to primary business location"
+        },
+        {
+          "name": "templateContent",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "templateName",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/locations/{id}/email/templates/master",
+      "method": "/setup/v1/locations/{id}/email/templates/masterDelete",
+      "httpMethod": "delete",
+      "tag": "Locations",
+      "description": "Delete Master Template Settings",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of business location, defaults to primary business location"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/locations/{id}/email/templates/master",
+      "method": "/setup/v1/locations/{id}/email/templates/masterGet",
+      "httpMethod": "get",
+      "tag": "Locations",
+      "description": "Get Master Template Settings",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of business location, defaults to primary business location"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/locations/{id}/email/templates/master",
+      "method": "/setup/v1/locations/{id}/email/templates/masterPost",
+      "httpMethod": "post",
+      "tag": "Locations",
+      "description": "Create Master Template Settings",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of business location, defaults to primary business location"
+        },
+        {
+          "name": "centerEmailContent",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "centerEmailContentPanel",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "centerEmailFooter",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "contentBackgroundColor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "contentColor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "contentLinkColor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "emailBackgroundColor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "emailColor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "emailLinkColor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "footerFontSize",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "footerLogoHeight",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "footerLogoPadding",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "footerPanelEmailContact",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "footerPanelPhoneContact",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "footerPanelWebsiteContact",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "headerLogoHeight",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "headerLogoPadding",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "panelBackgroundColor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "panelColor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "panelLinkColor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "privacyPolicyLink",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "showContentPanel",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "showFooterLogo",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "showFooterPanel",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "showHeaderLogo",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "showHeaderPanel",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/locations/{id}/email/templates/{templateName}",
+      "method": "/setup/v1/locations/{id}/email/templates/{templateName}Delete",
+      "httpMethod": "delete",
+      "tag": "Locations",
+      "description": "Delete Custom Template",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of business location, defaults to primary business location"
+        },
+        {
+          "name": "templateName",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the email template"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/locations/{id}/email/templates/{templateName}",
+      "method": "/setup/v1/locations/{id}/email/templates/{templateName}Get",
+      "httpMethod": "get",
+      "tag": "Locations",
+      "description": "Get Email Template",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of business location"
+        },
+        {
+          "name": "templateName",
+          "schema": "string",
+          "required": true,
+          "description": "name of the email template"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/locations/{id}/google/service/account",
+      "method": "/setup/v1/locations/{id}/google/service/accountDelete",
+      "httpMethod": "delete",
+      "tag": "Locations",
+      "description": "Delete Google Cal Access",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of business location, defaults to primary business location"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/setup/v1/locations/{id}/google/service/account",
+      "method": "/setup/v1/locations/{id}/google/service/accountPost",
+      "httpMethod": "post",
+      "tag": "Locations",
+      "description": "Create Google Cal Access",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of business location, defaults to primary business location"
+        },
+        {
+          "name": "auth_provider_x509_cert_url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "auth_uri",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "client_email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "client_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "client_x509_cert_url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "private_key",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "private_key_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "token_uri",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/locations/{id}/holidays/{holidayId}/{closed}",
+      "method": "/setup/v1/locations/{id}/holidays/{holidayId}/{closed}Put",
+      "httpMethod": "put",
+      "tag": "Locations",
+      "description": "Update Location Holidays",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "holidayId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "closed",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/locations/{id}/recover",
+      "method": "/setup/v1/locations/{id}/recoverPut",
+      "httpMethod": "put",
+      "tag": "Locations",
+      "description": "Recover Location",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/locations/{id}/services",
+      "method": "/setup/v1/locations/{id}/servicesDelete",
+      "httpMethod": "delete",
+      "tag": "Locations",
+      "description": "Delete Linked Services",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of business location, defaults to primary business location"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/locations/{id}/services",
+      "method": "/setup/v1/locations/{id}/servicesGet",
+      "httpMethod": "get",
+      "tag": "Locations",
+      "description": "List Location Linked Services",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of business location, defaults to primary business location"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit default 20, max 100"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/locations/{id}/services",
+      "method": "/setup/v1/locations/{id}/servicesPost",
+      "httpMethod": "post",
+      "tag": "Locations",
+      "description": "Create Linked Service",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of business location, defaults to primary business location"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/locations/{id}/settings/scope/{settingsScope}",
+      "method": "/setup/v1/locations/{id}/settings/scope/{settingsScope}Put",
+      "httpMethod": "put",
+      "tag": "Locations",
+      "description": "Update Location Scope",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "settingsScope",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/locations/{id}/uploadimage",
+      "method": "/setup/v1/locations/{id}/uploadimagePost",
+      "httpMethod": "post",
+      "tag": "Locations",
+      "description": "Upload Location Image",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of business location, defaults to primary business location"
+        },
+        {
+          "name": "imageFileData",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "imageFileName",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resourcegroups",
+      "method": "/setup/v1/resourcegroupsGet",
+      "httpMethod": "get",
+      "tag": "ResourceGroups",
+      "description": "List Resource Groups",
+      "parameters": [
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": "id of business location, defaults to primary business location"
+        },
+        {
+          "name": "deleted",
+          "schema": "boolean",
+          "description": "Filter results by deleted status"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit default 20, max 100"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resourcegroups",
+      "method": "/setup/v1/resourcegroupsPost",
+      "httpMethod": "post",
+      "tag": "ResourceGroups",
+      "description": "Create Resource Group",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resourcegroups/{id}",
+      "method": "/setup/v1/resourcegroups/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "ResourceGroups",
+      "description": "Delete Resource Group",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of resourceGroup object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resourcegroups/{id}",
+      "method": "/setup/v1/resourcegroups/{id}Get",
+      "httpMethod": "get",
+      "tag": "ResourceGroups",
+      "description": "Get Resource Group",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of resourceGroup object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resourcegroups/{id}",
+      "method": "/setup/v1/resourcegroups/{id}Put",
+      "httpMethod": "put",
+      "tag": "ResourceGroups",
+      "description": "Update Resource Group",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of resourcGroup object"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resourcegroups/{id}/recover",
+      "method": "/setup/v1/resourcegroups/{id}/recoverPut",
+      "httpMethod": "put",
+      "tag": "ResourceGroups",
+      "description": "Recover Resource Group",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of resourceGroup object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resources",
+      "method": "/setup/v1/resourcesGet",
+      "httpMethod": "get",
+      "tag": "Resources",
+      "description": "List Resources",
+      "parameters": [
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": "id of business location, defaults to primary business location"
+        },
+        {
+          "name": "resourceGroupId",
+          "schema": "string",
+          "description": "Filter by group Id"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": "Filter by email address"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": "Search by name"
+        },
+        {
+          "name": "deleted",
+          "schema": "boolean",
+          "description": "Show by deleted status, default is false"
+        },
+        {
+          "name": "googleAuthReturnUrl",
+          "schema": "string",
+          "description": "Google calendar authorization return url"
+        },
+        {
+          "name": "outlookAuthReturnUrl",
+          "schema": "string",
+          "description": "Outlook calendar authorization return url"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit default 20, max is 100"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resources",
+      "method": "/setup/v1/resourcesPost",
+      "httpMethod": "post",
+      "tag": "Resources",
+      "description": "Create Resource",
+      "parameters": [
+        {
+          "name": "googleAuthReturnUrl",
+          "schema": "string",
+          "description": "Google calendar authorization return url"
+        },
+        {
+          "name": "outlookAuthReturnUrl",
+          "schema": "string",
+          "description": "Outlook calendar authorization return url"
+        },
+        {
+          "name": "address",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "availability",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "contact",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "customFields",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "groupId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "options",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "recurringAvailability",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "serviceIds",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "timezoneId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resources/allocations/{id}",
+      "method": "/setup/v1/resources/allocations/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Resources",
+      "description": "Delete Allocation",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of resourceAllocation object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resources/allocations/{id}",
+      "method": "/setup/v1/resources/allocations/{id}Get",
+      "httpMethod": "get",
+      "tag": "Resources",
+      "description": "Get Allocation",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of resourceAllocation object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resources/allocations/{id}",
+      "method": "/setup/v1/resources/allocations/{id}Put",
+      "httpMethod": "put",
+      "tag": "Resources",
+      "description": "Update Allocation",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of resourceAllocation object"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "endTime",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "repeat",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "repeats",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "startTime",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resources/block/{id}",
+      "method": "/setup/v1/resources/block/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Resources",
+      "description": "Delete Block",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of resourceBlock object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resources/block/{id}",
+      "method": "/setup/v1/resources/block/{id}Put",
+      "httpMethod": "put",
+      "tag": "Resources",
+      "description": "Update Block",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of resourceBlock object"
+        },
+        {
+          "name": "allDay",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "endTime",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "repeat",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "repeats",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "startTime",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resources/blocks/{id}",
+      "method": "/setup/v1/resources/blocks/{id}Get",
+      "httpMethod": "get",
+      "tag": "Resources",
+      "description": "Get Block",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of resourceBlock object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resources/bulk",
+      "method": "/setup/v1/resources/bulkPost",
+      "httpMethod": "post",
+      "tag": "Resources",
+      "description": "Create Resources Bulk",
+      "parameters": [
+        {
+          "name": "googleAuthReturnUrl",
+          "schema": "string",
+          "description": "Google calendar authorization return url"
+        },
+        {
+          "name": "outlookAuthReturnUrl",
+          "schema": "string",
+          "description": "Outlook calendar authorization return url"
+        },
+        {
+          "name": "resources",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resources/bulk",
+      "method": "/setup/v1/resources/bulkPut",
+      "httpMethod": "put",
+      "tag": "Resources",
+      "description": "Update Resources Bulk",
+      "parameters": [
+        {
+          "name": "googleAuthReturnUrl",
+          "schema": "string",
+          "description": "Google calendar authorization return url"
+        },
+        {
+          "name": "outlookAuthReturnUrl",
+          "schema": "string",
+          "description": "Outlook calendar authorization return url"
+        },
+        {
+          "name": "resources",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resources/timezones",
+      "method": "/setup/v1/resources/timezonesGet",
+      "httpMethod": "get",
+      "tag": "Resources",
+      "description": "Get Time Zones",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resources/{id}",
+      "method": "/setup/v1/resources/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Resources",
+      "description": "Delete Resource",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of resource object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resources/{id}",
+      "method": "/setup/v1/resources/{id}Get",
+      "httpMethod": "get",
+      "tag": "Resources",
+      "description": "Get Resource",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of resource object"
+        },
+        {
+          "name": "googleAuthReturnUrl",
+          "schema": "string",
+          "description": "Google calendar authorization return url"
+        },
+        {
+          "name": "outlookAuthReturnUrl",
+          "schema": "string",
+          "description": "Outlook calendar authorization return url"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resources/{id}",
+      "method": "/setup/v1/resources/{id}Put",
+      "httpMethod": "put",
+      "tag": "Resources",
+      "description": "Update Resource",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of resource object"
+        },
+        {
+          "name": "googleAuthReturnUrl",
+          "schema": "string",
+          "description": "Google calendar authorization return url"
+        },
+        {
+          "name": "outlookAuthReturnUrl",
+          "schema": "string",
+          "description": "Outlook calendar authorization return url"
+        },
+        {
+          "name": "address",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "availability",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "contact",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "customFields",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "groupId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "options",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "recurringAvailability",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "serviceIds",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "timezoneId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resources/{id}/allocations",
+      "method": "/setup/v1/resources/{id}/allocationsGet",
+      "httpMethod": "get",
+      "tag": "Resources",
+      "description": "List Resource Allocations",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of resource to list allocations for"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "description": "yyyy-mm-dd, filter allocations on/after startDate"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "description": "yyyy-mm-dd, filter on/before endDate"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit default 20, max 100"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resources/{id}/allocations",
+      "method": "/setup/v1/resources/{id}/allocationsPost",
+      "httpMethod": "post",
+      "tag": "Resources",
+      "description": "Create Allocation",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of resource object"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "endTime",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "repeat",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "repeats",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "startTime",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resources/{id}/availability",
+      "method": "/setup/v1/resources/{id}/availabilityGet",
+      "httpMethod": "get",
+      "tag": "Resources",
+      "description": "List Weekly Availability",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of resource object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resources/{id}/availability",
+      "method": "/setup/v1/resources/{id}/availabilityPut",
+      "httpMethod": "put",
+      "tag": "Resources",
+      "description": "Update Weekly Availability",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of resource object"
+        },
+        {
+          "name": "fri",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "mon",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "sat",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "sun",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "thu",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "tue",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "wed",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resources/{id}/block",
+      "method": "/setup/v1/resources/{id}/blockPost",
+      "httpMethod": "post",
+      "tag": "Resources",
+      "description": "Create Block",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of resource object"
+        },
+        {
+          "name": "allDay",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "endTime",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "repeat",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "repeats",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "startTime",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resources/{id}/blocks",
+      "method": "/setup/v1/resources/{id}/blocksGet",
+      "httpMethod": "get",
+      "tag": "Resources",
+      "description": "List Resource Blocks",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of resource to list blocks for"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "description": "YYYY-MM-DD, filter blocks on/after startDate"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "description": "YYYY-MM-DD, filter on/before endDate"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit default 20, max 100"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resources/{id}/calendar/auth/google/{googleEmailAddress}",
+      "method": "/setup/v1/resources/{id}/calendar/auth/google/{googleEmailAddress}Get",
+      "httpMethod": "get",
+      "tag": "Resources",
+      "description": "Get Resource Google URL",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of resource object"
+        },
+        {
+          "name": "googleEmailAddress",
+          "schema": "string",
+          "required": true,
+          "description": "Email address of Google Calendar"
+        },
+        {
+          "name": "googleAuthReturnUrl",
+          "schema": "string",
+          "description": "Google calendar authorization return url"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resources/{id}/calendar/auth/outlook/{outlookEmailAddress}",
+      "method": "/setup/v1/resources/{id}/calendar/auth/outlook/{outlookEmailAddress}Get",
+      "httpMethod": "get",
+      "tag": "Resources",
+      "description": "Get Resource Outlook URL",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of resource object"
+        },
+        {
+          "name": "outlookEmailAddress",
+          "schema": "string",
+          "required": true,
+          "description": "Email address of Outlook Calendar"
+        },
+        {
+          "name": "outlookAuthReturnUrl",
+          "schema": "string",
+          "description": "Outlook calendar authorization return url"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resources/{id}/deleteimage",
+      "method": "/setup/v1/resources/{id}/deleteimageDelete",
+      "httpMethod": "delete",
+      "tag": "Resources",
+      "description": "Delete Resource Image",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of resource object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resources/{id}/reassign/appointments/{resourceId}",
+      "method": "/setup/v1/resources/{id}/reassign/appointments/{resourceId}Put",
+      "httpMethod": "put",
+      "tag": "Resources",
+      "description": "Reassign Resource",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of the original resource"
+        },
+        {
+          "name": "resourceId",
+          "schema": "string",
+          "required": true,
+          "description": "id of the target resource"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "description": "YYYY-MM-DD, Appt range start date"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "description": "YYYY-MM-DD, Appt range end date"
+        },
+        {
+          "name": "calendarId",
+          "schema": "string",
+          "description": "CalendarId of calendar containing appointments"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resources/{id}/recover",
+      "method": "/setup/v1/resources/{id}/recoverPut",
+      "httpMethod": "put",
+      "tag": "Resources",
+      "description": "Recover Resource",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of resource object"
+        },
+        {
+          "name": "googleAuthReturnUrl",
+          "schema": "string",
+          "description": "Google calendar authorization return url"
+        },
+        {
+          "name": "outlookAuthReturnUrl",
+          "schema": "string",
+          "description": "Outlook calendar authorization return url"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resources/{id}/services",
+      "method": "/setup/v1/resources/{id}/servicesDelete",
+      "httpMethod": "delete",
+      "tag": "Resources",
+      "description": "Delete Linked Services",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of resource object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resources/{id}/services",
+      "method": "/setup/v1/resources/{id}/servicesPost",
+      "httpMethod": "post",
+      "tag": "Resources",
+      "description": "Create Linked Services",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of resource object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resources/{id}/services",
+      "method": "/setup/v1/resources/{id}/servicesPut",
+      "httpMethod": "put",
+      "tag": "Resources",
+      "description": "Update Linked Services",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of resource object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/resources/{id}/uploadimage",
+      "method": "/setup/v1/resources/{id}/uploadimagePost",
+      "httpMethod": "post",
+      "tag": "Resources",
+      "description": "Upload Resource Image",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of resource object"
+        },
+        {
+          "name": "imageFileData",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "imageFileName",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/servicegroups",
+      "method": "/setup/v1/servicegroupsGet",
+      "httpMethod": "get",
+      "tag": "ServiceGroups",
+      "description": "List Service Groups",
+      "parameters": [
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": "id of business location, defaults to primary business location"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit default 20, max 100"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/servicegroups",
+      "method": "/setup/v1/servicegroupsPost",
+      "httpMethod": "post",
+      "tag": "ServiceGroups",
+      "description": "Create Service Group",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/servicegroups/{id}",
+      "method": "/setup/v1/servicegroups/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "ServiceGroups",
+      "description": "Delete Service Group",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "id of serviceGroup object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/servicegroups/{id}",
+      "method": "/setup/v1/servicegroups/{id}Get",
+      "httpMethod": "get",
+      "tag": "ServiceGroups",
+      "description": "Get Service Group",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "id of serviceGroup object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/servicegroups/{id}",
+      "method": "/setup/v1/servicegroups/{id}Put",
+      "httpMethod": "put",
+      "tag": "ServiceGroups",
+      "description": "Update Service Group",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "id of serviceGroup object"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/servicegroups/{id}/recover",
+      "method": "/setup/v1/servicegroups/{id}/recoverPut",
+      "httpMethod": "put",
+      "tag": "ServiceGroups",
+      "description": "Recover Service Group",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "id of serviceGroup object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/services",
+      "method": "/setup/v1/servicesGet",
+      "httpMethod": "get",
+      "tag": "Services",
+      "description": "List Services",
+      "parameters": [
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": "id of business location, defaults to primary business location"
+        },
+        {
+          "name": "serviceGroupId",
+          "schema": "integer",
+          "description": "Filter services by groupId"
+        },
+        {
+          "name": "deleted",
+          "schema": "boolean",
+          "description": "Filter by deleted status"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit default 20, max 100"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/services",
+      "method": "/setup/v1/servicesPost",
+      "httpMethod": "post",
+      "tag": "Services",
+      "description": "Create Service",
+      "parameters": [
+        {
+          "name": "availability",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "bookingInterval",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "bookingLimit",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "customFields",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "duration",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "fees",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "maxCapacity",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "maxGroupSize",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "mediaPageUrl",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "options",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "public",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "serviceGroupId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "settings",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/services/allocations/{id}",
+      "method": "/setup/v1/services/allocations/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Services",
+      "description": "Delete Allocation",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of serviceAllocation object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/services/allocations/{id}",
+      "method": "/setup/v1/services/allocations/{id}Get",
+      "httpMethod": "get",
+      "tag": "Services",
+      "description": "Get Allocation",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of serviceAllocation object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/services/allocations/{id}",
+      "method": "/setup/v1/services/allocations/{id}Put",
+      "httpMethod": "put",
+      "tag": "Services",
+      "description": "Update Allocation",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of serviceAllocation object"
+        },
+        {
+          "name": "bookingLimit",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "endTime",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "repeat",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "repeats",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "resourceId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "startTime",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/services/block/{id}",
+      "method": "/setup/v1/services/block/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Services",
+      "description": "Delete Block",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of serviceBlock object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/services/block/{id}",
+      "method": "/setup/v1/services/block/{id}Put",
+      "httpMethod": "put",
+      "tag": "Services",
+      "description": "Update Block",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of serviceBlock object"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "endTime",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "repeat",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "repeats",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "startTime",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/services/blocks/{id}",
+      "method": "/setup/v1/services/blocks/{id}Get",
+      "httpMethod": "get",
+      "tag": "Services",
+      "description": "Get Block",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of serviceBlock object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/services/calendar",
+      "method": "/setup/v1/services/calendarPost",
+      "httpMethod": "post",
+      "tag": "Services",
+      "description": "Link Service to Calendar",
+      "parameters": [
+        {
+          "name": "calendarId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "serviceId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/services/calendar/{id}",
+      "method": "/setup/v1/services/calendar/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Services",
+      "description": "Delete Service Links",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of calender to delete service links from"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/services/{id}",
+      "method": "/setup/v1/services/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Services",
+      "description": "Delete Service",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of service object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/services/{id}",
+      "method": "/setup/v1/services/{id}Get",
+      "httpMethod": "get",
+      "tag": "Services",
+      "description": "Get Service",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "id of service object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/services/{id}",
+      "method": "/setup/v1/services/{id}Put",
+      "httpMethod": "put",
+      "tag": "Services",
+      "description": "Update Service",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "availability",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "bookingInterval",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "bookingLimit",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "customFields",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "duration",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "fees",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "maxCapacity",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "maxGroupSize",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "mediaPageUrl",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "options",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "public",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "serviceGroupId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "settings",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/services/{id}/allocations",
+      "method": "/setup/v1/services/{id}/allocationsGet",
+      "httpMethod": "get",
+      "tag": "Services",
+      "description": "List Service Allocations",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of  service to list allocations for, 0 for all"
+        },
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": "The id of the location. Defaults to the primary location"
+        },
+        {
+          "name": "resourceId",
+          "schema": "string",
+          "description": "The id of the resource to filter on"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "description": "Format YYYY-MM-DD. Filter appointments by on/after startDate"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "description": "Format YYYY-MM-DD. Filter appointments on/before endDate"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit default 20, max 100"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/services/{id}/allocations",
+      "method": "/setup/v1/services/{id}/allocationsPost",
+      "httpMethod": "post",
+      "tag": "Services",
+      "description": "Create Allocation",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of service object"
+        },
+        {
+          "name": "bookingLimit",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "endTime",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "repeat",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "repeats",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "resourceId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "startTime",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/services/{id}/allocations/bulk",
+      "method": "/setup/v1/services/{id}/allocations/bulkPost",
+      "httpMethod": "post",
+      "tag": "Services",
+      "description": "Create Allocations Bulk",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of service object"
+        },
+        {
+          "name": "serviceAllocations",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/services/{id}/availability",
+      "method": "/setup/v1/services/{id}/availabilityGet",
+      "httpMethod": "get",
+      "tag": "Services",
+      "description": "Get Weekly Availability",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of service object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/services/{id}/availability",
+      "method": "/setup/v1/services/{id}/availabilityPut",
+      "httpMethod": "put",
+      "tag": "Services",
+      "description": "Update Weekly Availability",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of service object"
+        },
+        {
+          "name": "fri",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "mon",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "sat",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "sun",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "thu",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "tue",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "wed",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/services/{id}/block",
+      "method": "/setup/v1/services/{id}/blockPost",
+      "httpMethod": "post",
+      "tag": "Services",
+      "description": "Create Block",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of service object"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "endTime",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "repeat",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "repeats",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "startTime",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/services/{id}/blocks",
+      "method": "/setup/v1/services/{id}/blocksGet",
+      "httpMethod": "get",
+      "tag": "Services",
+      "description": "List Service Blocks",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of service to list blocks for"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "description": "Format YYYY-MM-DD. Filter blocks on/after startDate"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "description": "Format YYYY-MM-DD. Filter on/before endDate"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit default 20, max 100"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/services/{id}/calendar",
+      "method": "/setup/v1/services/{id}/calendarGet",
+      "httpMethod": "get",
+      "tag": "Services",
+      "description": "Get Linked Calendar",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of service object"
+        },
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": "id of business location, defaults to primary business location"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/services/{id}/deleteimage",
+      "method": "/setup/v1/services/{id}/deleteimageDelete",
+      "httpMethod": "delete",
+      "tag": "Services",
+      "description": "Delete Service Image",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of service object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/services/{id}/recover",
+      "method": "/setup/v1/services/{id}/recoverPut",
+      "httpMethod": "put",
+      "tag": "Services",
+      "description": "Recover Service",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/services/{id}/resources",
+      "method": "/setup/v1/services/{id}/resourcesGet",
+      "httpMethod": "get",
+      "tag": "Services",
+      "description": "List Resources for Service",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of service object"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit default 20, max 100"
+        },
+        {
+          "name": "googleAuthReturnUrl",
+          "schema": "string",
+          "description": "Google calendar authorization return url"
+        },
+        {
+          "name": "outlookAuthReturnUrl",
+          "schema": "string",
+          "description": "Outlook calendar authorization return url"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup/v1/services/{id}/uploadimage",
+      "method": "/setup/v1/services/{id}/uploadimagePost",
+      "httpMethod": "post",
+      "tag": "Services",
+      "description": "Upload Service Image",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of service object"
+        },
+        {
+          "name": "imageFileData",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "imageFileName",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://sandbox-api.onsched.com/",
   "apiDescription": "Build secure and scalable custom apps for onboarding and setup. Our flexible API provides many options for configuration.\r\n<br><br>\r\nTake the API for a test drive. Just click on the Authorize button below and authenticate. \r\nYou can access our demo company profile if you are not a customer, or your own profile by using your assigned ClientId and Secret.\r\n<br><br>\r\nThe API has two interfaces, consumer and setup. \r\n<ul>\r\n<li>\r\nThe consumer interface provides all the endpoints required for implementing consumer booking flows.\r\n</li>\r\n<li>\r\nThe setup interface provides endpoints for profile configuration and setup.\r\n</li>\r\n</ul>\r\nToggle freely between the two interfaces using the swagger tool bar option labelled 'Select a definition'.\r\n",
   "apiTitle": "OnSched Setup API",

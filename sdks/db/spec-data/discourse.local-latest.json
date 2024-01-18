@@ -3,6 +3,2582 @@
   "openApiRaw": "http://docs.discourse.org/openapi.json",
   "homepage": "discourse.local",
   "apiVersion": "latest",
+  "methods": [
+    {
+      "url": "/admin/backups.json",
+      "method": "getBackups",
+      "httpMethod": "get",
+      "tag": "Backups",
+      "description": "List backups",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/admin/backups.json",
+      "method": "createBackup",
+      "httpMethod": "post",
+      "tag": "Backups",
+      "description": "Create backup",
+      "parameters": [
+        {
+          "name": "with_uploads",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/admin/backups/{filename}",
+      "method": "downloadBackup",
+      "httpMethod": "get",
+      "tag": "Backups",
+      "description": "Download backup",
+      "parameters": [
+        {
+          "name": "filename",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/admin/backups/{filename}",
+      "method": "sendDownloadBackupEmail",
+      "httpMethod": "put",
+      "tag": "Backups",
+      "description": "Send download backup email",
+      "parameters": [
+        {
+          "name": "filename",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/admin/badges.json",
+      "method": "adminListBadges",
+      "httpMethod": "get",
+      "tag": "Badges",
+      "description": "List badges",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/admin/badges.json",
+      "method": "createBadge",
+      "httpMethod": "post",
+      "tag": "Badges",
+      "description": "Create badge",
+      "parameters": [
+        {
+          "name": "badge_type_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/admin/badges/{id}.json",
+      "method": "deleteBadge",
+      "httpMethod": "delete",
+      "tag": "Badges",
+      "description": "Delete badge",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/admin/badges/{id}.json",
+      "method": "updateBadge",
+      "httpMethod": "put",
+      "tag": "Badges",
+      "description": "Update badge",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "badge_type_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/admin/groups.json",
+      "method": "createGroup",
+      "httpMethod": "post",
+      "tag": "Groups",
+      "description": "Create a group",
+      "parameters": [
+        {
+          "name": "group",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/admin/groups/{id}.json",
+      "method": "deleteGroup",
+      "httpMethod": "delete",
+      "tag": "Groups",
+      "description": "Delete a group",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/admin/users/list/{flag}.json",
+      "method": "adminListUsers",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Get a list of users",
+      "parameters": [
+        {
+          "name": "flag",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "asc",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "show_emails",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/admin/users/{id}.json",
+      "method": "deleteUser",
+      "httpMethod": "delete",
+      "tag": "Users",
+      "description": "Delete a user",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "block_email",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "block_ip",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "block_urls",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "delete_posts",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/admin/users/{id}.json",
+      "method": "adminGetUser",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Get a user by id",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/admin/users/{id}/anonymize.json",
+      "method": "anonymizeUser",
+      "httpMethod": "put",
+      "tag": "Users",
+      "description": "Anonymize a user",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/admin/users/{id}/log_out.json",
+      "method": "logOutUser",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Log a user out",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/admin/users/{id}/silence.json",
+      "method": "silenceUser",
+      "httpMethod": "put",
+      "tag": "Users",
+      "description": "Silence a user",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "post_action",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "silenced_till",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/admin/users/{id}/suspend.json",
+      "method": "suspendUser",
+      "httpMethod": "put",
+      "tag": "Users",
+      "description": "Suspend a user",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "post_action",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "suspend_until",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/c/{id}/show.json",
+      "method": "getCategory",
+      "httpMethod": "get",
+      "tag": "Categories",
+      "description": "Show category",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/c/{slug}/{id}.json",
+      "method": "listCategoryTopics",
+      "httpMethod": "get",
+      "tag": "Categories",
+      "description": "List topics",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/categories.json",
+      "method": "listCategories",
+      "httpMethod": "get",
+      "tag": "Categories",
+      "description": "Retrieves a list of categories",
+      "parameters": [
+        {
+          "name": "include_subcategories",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/categories.json",
+      "method": "createCategory",
+      "httpMethod": "post",
+      "tag": "Categories",
+      "description": "Creates a category",
+      "parameters": [
+        {
+          "name": "allow_badges",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "color",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "form_template_ids",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "parent_category_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "permissions",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "search_priority",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "text_color",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "topic_featured_links_allowed",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/categories/{id}.json",
+      "method": "updateCategory",
+      "httpMethod": "put",
+      "tag": "Categories",
+      "description": "Updates a category",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "allow_badges",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "color",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "form_template_ids",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "parent_category_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "permissions",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "search_priority",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "text_color",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "topic_featured_links_allowed",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/directory_items.json",
+      "method": "listUsersPublic",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Get a public list of users",
+      "parameters": [
+        {
+          "name": "period",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "asc",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups.json",
+      "method": "listGroups",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "List groups",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{id}.json",
+      "method": "getGroup",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "Get a group",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Use group name instead of id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{id}.json",
+      "method": "updateGroup",
+      "httpMethod": "put",
+      "tag": "Groups",
+      "description": "Update a group",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "group",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{id}/members.json",
+      "method": "removeGroupMembers",
+      "httpMethod": "delete",
+      "tag": "Groups",
+      "description": "Remove group members",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "usernames",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{id}/members.json",
+      "method": "listGroupMembers",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "List group members",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Use group name instead of id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{id}/members.json",
+      "method": "addGroupMembers",
+      "httpMethod": "put",
+      "tag": "Groups",
+      "description": "Add group members",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "usernames",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/invites.json",
+      "method": "createInvite",
+      "httpMethod": "post",
+      "tag": "Invites",
+      "description": "Create an invite",
+      "parameters": [
+        {
+          "name": "Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Api-Username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "custom_message",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "expires_at",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "group_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "group_names",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "max_redemptions_allowed",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "skip_email",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "topic_id",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/latest.json",
+      "method": "listLatestTopics",
+      "httpMethod": "get",
+      "tag": "Topics",
+      "description": "Get the latest topics",
+      "parameters": [
+        {
+          "name": "Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Api-Username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "description": "Enum: `default`, `created`, `activity`, `views`, `posts`, `category`,\n`likes`, `op_likes`, `posters`"
+        },
+        {
+          "name": "ascending",
+          "schema": "string",
+          "description": "Defaults to `desc`, add `ascending=true` to sort asc"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/notifications.json",
+      "method": "getNotifications",
+      "httpMethod": "get",
+      "tag": "Notifications",
+      "description": "Get the notifications that belong to the current user",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/notifications/mark-read.json",
+      "method": "markNotificationsAsRead",
+      "httpMethod": "put",
+      "tag": "Notifications",
+      "description": "Mark notifications as read",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/post_actions.json",
+      "method": "performPostAction",
+      "httpMethod": "post",
+      "tag": "Posts",
+      "description": "Like a post and other actions",
+      "parameters": [
+        {
+          "name": "Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Api-Username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "flag_topic",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "post_action_type_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/posts.json",
+      "method": "listPosts",
+      "httpMethod": "get",
+      "tag": "Posts",
+      "description": "List latest posts across topics",
+      "parameters": [
+        {
+          "name": "Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Api-Username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "before",
+          "schema": "string",
+          "required": false,
+          "description": "Load posts with an id lower than this value. Useful for pagination."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/posts.json",
+      "method": "createTopicPostPm",
+      "httpMethod": "post",
+      "tag": "Posts",
+      "description": "Creates a new topic, a new post, or a private message",
+      "parameters": [
+        {
+          "name": "archetype",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "category",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "embed_url",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "external_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "raw",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "target_recipients",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "target_usernames",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "topic_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/posts/{id}.json",
+      "method": "deletePost",
+      "httpMethod": "delete",
+      "tag": "Posts",
+      "description": "delete a single post",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "force_destroy",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/posts/{id}.json",
+      "method": "getPost",
+      "httpMethod": "get",
+      "tag": "Posts",
+      "description": "Retrieve a single post",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/posts/{id}.json",
+      "method": "updatePost",
+      "httpMethod": "put",
+      "tag": "Posts",
+      "description": "Update a single post",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "post",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/posts/{id}/locked.json",
+      "method": "lockPost",
+      "httpMethod": "put",
+      "tag": "Posts",
+      "description": "Lock a post from being edited",
+      "parameters": [
+        {
+          "name": "Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Api-Username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "locked",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/posts/{id}/replies.json",
+      "method": "postReplies",
+      "httpMethod": "get",
+      "tag": "Posts",
+      "description": "List replies to a post",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/search.json",
+      "method": "search",
+      "httpMethod": "get",
+      "tag": "Search",
+      "description": "Search for a term",
+      "parameters": [
+        {
+          "name": "q",
+          "schema": "string",
+          "description": "The query string needs to be url encoded and is made up of the following options:\n- Search term. This is just a string. Usually it would be the first item in the query.\n- `@<username>`: Use the `@` followed by the username to specify posts by this user.\n- `#<category>`: Use the `#` followed by the category slug to search within this category.\n- `tags:`: `api,solved` or for posts that have all the specified tags `api+solved`.\n- `before:`: `yyyy-mm-dd`\n- `after:`: `yyyy-mm-dd`\n- `order:`: `latest`, `likes`, `views`, `latest_topic`\n- `assigned:`: username (without `@`)\n- `in:`: `title`, `likes`, `personal`, `messages`, `seen`, `unseen`, `posted`, `created`, `watching`, `tracking`, `bookmarks`, `assigned`, `unassigned`, `first`, `pinned`, `wiki`\n- `with:`: `images`\n- `status:`: `open`, `closed`, `public`, `archived`, `noreplies`, `single_user`, `solved`, `unsolved`\n- `group:`: group_name or group_id\n- `group_messages:`: group_name or group_id\n- `min_posts:`: 1\n- `max_posts:`: 10\n- `min_views:`: 1\n- `max_views:`: 10\n\nIf you are using cURL you can use the `-G` and the `--data-urlencode` flags to encode the query:\n\n```\ncurl -i -sS -X GET -G \"http://localhost:4200/search.json\" \\\n--data-urlencode 'q=wordpress @scossar #fun after:2020-01-01'\n```\n"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/session/forgot_password.json",
+      "method": "sendPasswordResetEmail",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Send password reset email",
+      "parameters": [
+        {
+          "name": "login",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/site.json",
+      "method": "getSite",
+      "httpMethod": "get",
+      "tag": "Site",
+      "description": "Get site info",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/t/-/{id}.json",
+      "method": "updateTopic",
+      "httpMethod": "put",
+      "tag": "Topics",
+      "description": "Update a topic",
+      "parameters": [
+        {
+          "name": "Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Api-Username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "topic",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/t/external_id/{external_id}.json",
+      "method": "getTopicByExternalId",
+      "httpMethod": "get",
+      "tag": "Topics",
+      "description": "Get topic by external_id",
+      "parameters": [
+        {
+          "name": "external_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/t/{id}.json",
+      "method": "removeTopic",
+      "httpMethod": "delete",
+      "tag": "Topics",
+      "description": "Remove a topic",
+      "parameters": [
+        {
+          "name": "Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Api-Username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/t/{id}.json",
+      "method": "getTopic",
+      "httpMethod": "get",
+      "tag": "Topics",
+      "description": "Get a single topic",
+      "parameters": [
+        {
+          "name": "Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Api-Username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/t/{id}/bookmark.json",
+      "method": "bookmarkTopic",
+      "httpMethod": "put",
+      "tag": "Topics",
+      "description": "Bookmark topic",
+      "parameters": [
+        {
+          "name": "Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Api-Username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/t/{id}/change-timestamp.json",
+      "method": "updateTopicTimestamp",
+      "httpMethod": "put",
+      "tag": "Topics",
+      "description": "Update topic timestamp",
+      "parameters": [
+        {
+          "name": "Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Api-Username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/t/{id}/invite.json",
+      "method": "inviteToTopic",
+      "httpMethod": "post",
+      "tag": "Topics",
+      "description": "Invite to topic",
+      "parameters": [
+        {
+          "name": "Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Api-Username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/t/{id}/notifications.json",
+      "method": "setNotificationLevel",
+      "httpMethod": "post",
+      "tag": "Topics",
+      "description": "Set notification level",
+      "parameters": [
+        {
+          "name": "Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Api-Username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "notification_level",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/t/{id}/posts.json",
+      "method": "getSpecificPostsFromTopic",
+      "httpMethod": "get",
+      "tag": "Topics",
+      "description": "Get specific posts from a topic",
+      "parameters": [
+        {
+          "name": "Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Api-Username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "post_ids[]",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/t/{id}/status.json",
+      "method": "updateTopicStatus",
+      "httpMethod": "put",
+      "tag": "Topics",
+      "description": "Update the status of a topic",
+      "parameters": [
+        {
+          "name": "Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Api-Username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "enabled",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "until",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/t/{id}/timer.json",
+      "method": "createTopicTimer",
+      "httpMethod": "post",
+      "tag": "Topics",
+      "description": "Create topic timer",
+      "parameters": [
+        {
+          "name": "Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Api-Username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "based_on_last_post",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "category_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "status_type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "time",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tag/{name}.json",
+      "method": "getTag",
+      "httpMethod": "get",
+      "tag": "Tags",
+      "description": "Get a specific tag",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tag_groups.json",
+      "method": "listTagGroups",
+      "httpMethod": "get",
+      "tag": "Tags",
+      "description": "Get a list of tag groups",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tag_groups.json",
+      "method": "createTagGroup",
+      "httpMethod": "post",
+      "tag": "Tags",
+      "description": "Creates a tag group",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tag_groups/{id}.json",
+      "method": "getTagGroup",
+      "httpMethod": "get",
+      "tag": "Tags",
+      "description": "Get a single tag group",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tag_groups/{id}.json",
+      "method": "updateTagGroup",
+      "httpMethod": "put",
+      "tag": "Tags",
+      "description": "Update tag group",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tags.json",
+      "method": "listTags",
+      "httpMethod": "get",
+      "tag": "Tags",
+      "description": "Get a list of tags",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/top.json",
+      "method": "listTopTopics",
+      "httpMethod": "get",
+      "tag": "Topics",
+      "description": "Get the top topics filtered by period",
+      "parameters": [
+        {
+          "name": "Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Api-Username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "period",
+          "schema": "string",
+          "description": "Enum: `all`, `yearly`, `quarterly`, `monthly`, `weekly`, `daily`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/topics/private-messages-sent/{username}.json",
+      "method": "getUserSentPrivateMessages",
+      "httpMethod": "get",
+      "tag": "Private Messages",
+      "description": "Get a list of private messages sent for a user",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/topics/private-messages/{username}.json",
+      "method": "listUserPrivateMessages",
+      "httpMethod": "get",
+      "tag": "Private Messages",
+      "description": "Get a list of private messages for a user",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/u/by-external/{external_id}.json",
+      "method": "getUserExternalId",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Get a user by external_id",
+      "parameters": [
+        {
+          "name": "Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Api-Username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "external_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/u/by-external/{provider}/{external_id}.json",
+      "method": "getUserIdentiyProviderExternalId",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Get a user by identity provider external ID",
+      "parameters": [
+        {
+          "name": "Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Api-Username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "provider",
+          "schema": "string",
+          "required": true,
+          "description": "Authentication provider name. Can be found in the provider callback\nURL: `/auth/{provider}/callback`"
+        },
+        {
+          "name": "external_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/u/{username}.json",
+      "method": "getUser",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Get a single user by username",
+      "parameters": [
+        {
+          "name": "Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Api-Username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/u/{username}.json",
+      "method": "updateUser",
+      "httpMethod": "put",
+      "tag": "Users",
+      "description": "Update a user",
+      "parameters": [
+        {
+          "name": "Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Api-Username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "external_ids",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/u/{username}/emails.json",
+      "method": "getUserEmails",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Get email addresses belonging to a user",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/u/{username}/preferences/avatar/pick.json",
+      "method": "updateAvatar",
+      "httpMethod": "put",
+      "tag": "Users",
+      "description": "Update avatar",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "upload_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/u/{username}/preferences/email.json",
+      "method": "updateEmail",
+      "httpMethod": "put",
+      "tag": "Users",
+      "description": "Update email",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/u/{username}/preferences/username.json",
+      "method": "updateUsername",
+      "httpMethod": "put",
+      "tag": "Users",
+      "description": "Update username",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "new_username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/uploads.json",
+      "method": "createUpload",
+      "httpMethod": "post",
+      "tag": "Uploads",
+      "description": "Creates an upload",
+      "parameters": [
+        {
+          "name": "file",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "synchronous",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/uploads/abort-multipart.json",
+      "method": "abortMultipart",
+      "httpMethod": "post",
+      "tag": "Uploads",
+      "description": "Abort multipart upload",
+      "parameters": [
+        {
+          "name": "external_upload_identifier",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/uploads/batch-presign-multipart-parts.json",
+      "method": "batchPresignMultipartParts",
+      "httpMethod": "post",
+      "tag": "Uploads",
+      "description": "Generates batches of presigned URLs for multipart parts",
+      "parameters": [
+        {
+          "name": "part_numbers",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "unique_identifier",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/uploads/complete-external-upload.json",
+      "method": "completeExternalUpload",
+      "httpMethod": "post",
+      "tag": "Uploads",
+      "description": "Completes a direct external upload",
+      "parameters": [
+        {
+          "name": "for_private_message",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "for_site_setting",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pasted",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "unique_identifier",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/uploads/complete-multipart.json",
+      "method": "completeMultipart",
+      "httpMethod": "post",
+      "tag": "Uploads",
+      "description": "Complete multipart upload",
+      "parameters": [
+        {
+          "name": "parts",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "unique_identifier",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/uploads/create-multipart.json",
+      "method": "createMultipartUpload",
+      "httpMethod": "post",
+      "tag": "Uploads",
+      "description": "Creates a multipart external upload",
+      "parameters": [
+        {
+          "name": "file_name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "file_size",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "upload_type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/uploads/generate-presigned-put.json",
+      "method": "generatePresignedPut",
+      "httpMethod": "post",
+      "tag": "Uploads",
+      "description": "Initiates a direct external upload",
+      "parameters": [
+        {
+          "name": "file_name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "file_size",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/user-badges/{username}.json",
+      "method": "listUserBadges",
+      "httpMethod": "get",
+      "tag": "Badges",
+      "description": "List badges for a user",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/user_actions.json",
+      "method": "listUserActions",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Get a list of user actions",
+      "parameters": [
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "filter",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/user_avatar/{username}/refresh_gravatar.json",
+      "method": "refreshGravatar",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Refresh gravatar",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users.json",
+      "method": "createUser",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Creates a user",
+      "parameters": [
+        {
+          "name": "Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Api-Username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "active",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "approved",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "external_ids",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user_fields[1]",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/password-reset/{token}.json",
+      "method": "changePassword",
+      "httpMethod": "put",
+      "tag": "Users",
+      "description": "Change password",
+      "parameters": [
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "http://discourse.local",
   "apiDescription": "This page contains the documentation on how to use Discourse through API calls.\n\n> Note: For any endpoints not listed you can follow the\n[reverse engineer the Discourse API](https://meta.discourse.org/t/-/20576)\nguide to figure out how to use an API endpoint.\n\n### Request Content-Type\n\nThe Content-Type for POST and PUT requests can be set to `application/x-www-form-urlencoded`,\n`multipart/form-data`, or `application/json`.\n\n### Endpoint Names and Response Content-Type\n\nMost API endpoints provide the same content as their HTML counterparts. For example\nthe URL `/categories` serves a list of categories, the `/categories.json` API provides the\nsame information in JSON format.\n\nInstead of sending API requests to `/categories.json` you may also send them to `/categories`\nand add an `Accept: application/json` header to the request to get the JSON response.\nSending requests with the `Accept` header is necessary if you want to use URLs\nfor related endpoints returned by the API, such as pagination URLs.\nThese URLs are returned without the `.json` prefix so you need to add the header in\norder to get the correct response format.\n\n### Authentication\n\nSome endpoints do not require any authentication, pretty much anything else will\nrequire you to be authenticated.\n\nTo become authenticated you will need to create an API Key from the admin panel.\n\nOnce you have your API Key you can pass it in along with your API Username\nas an HTTP header like this:\n\n```\ncurl -X GET \"http://127.0.0.1:3000/admin/users/list/active.json\" \\\n-H \"Api-Key: 714552c6148e1617aeab526d0606184b94a80ec048fc09894ff1a72b740c5f19\" \\\n-H \"Api-Username: system\"\n```\n\nand this is how POST requests will look:\n\n```\ncurl -X POST \"http://127.0.0.1:3000/categories\" \\\n-H \"Content-Type: multipart/form-data;\" \\\n-H \"Api-Key: 714552c6148e1617aeab526d0606184b94a80ec048fc09894ff1a72b740c5f19\" \\\n-H \"Api-Username: system\" \\\n-F \"name=89853c20-4409-e91a-a8ea-f6cdff96aaaa\" \\\n-F \"color=49d9e9\" \\\n-F \"text_color=f0fcfd\"\n```\n\n### Boolean values\n\nIf an endpoint accepts a boolean be sure to specify it as a lowercase\n`true` or `false` value unless noted otherwise.\n",
   "apiTitle": "Discourse API Documentation",

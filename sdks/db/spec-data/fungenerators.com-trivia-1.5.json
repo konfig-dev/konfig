@@ -4,6 +4,176 @@
   "homepage": "fungenerators.com",
   "serviceName": "trivia",
   "apiVersion": "1.5",
+  "methods": [
+    {
+      "url": "/trivia",
+      "method": "/triviaDelete",
+      "httpMethod": "delete",
+      "tag": "Trivia",
+      "description": "Create a random Trivia entry.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Trivia ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/trivia",
+      "method": "/triviaGet",
+      "httpMethod": "get",
+      "tag": "Trivia",
+      "description": "Get a Trivia entry for a given id. Retrieves a trivia question and answer based on the id.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": "ID of the trivia to fetch"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/trivia",
+      "method": "/triviaPut",
+      "httpMethod": "put",
+      "tag": "Trivia",
+      "description": "Create a random Trivia entry.",
+      "parameters": [
+        {
+          "name": "question",
+          "schema": "string",
+          "required": true,
+          "description": "Trivia Question"
+        },
+        {
+          "name": "category",
+          "schema": "string",
+          "required": true,
+          "description": "Category of the trivia"
+        },
+        {
+          "name": "answer",
+          "schema": "string",
+          "required": true,
+          "description": "Answer(s) to the trivia question"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/trivia/categories",
+      "method": "/trivia/categoriesGet",
+      "httpMethod": "get",
+      "tag": "Trivia",
+      "description": "Get a random Trivia.",
+      "parameters": [
+        {
+          "name": "start",
+          "schema": "integer",
+          "required": false,
+          "description": "start"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/trivia/random",
+      "method": "/trivia/randomGet",
+      "httpMethod": "get",
+      "tag": "Trivia",
+      "description": "Get a random trivia for a given category(optional)",
+      "parameters": [
+        {
+          "name": "category",
+          "schema": "string",
+          "required": false,
+          "description": "Category to get the trivia from"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/trivia/search",
+      "method": "/trivia/searchGet",
+      "httpMethod": "get",
+      "tag": "Trivia",
+      "description": "Search for random trivia which has the text in the query, for a given category(optional).",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "Text to search for in the trivia"
+        },
+        {
+          "name": "category",
+          "schema": "string",
+          "required": false,
+          "description": "Category to get the trivia from"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.fungenerators.com",
   "apiDescription": "Below is the documentation for the API calls. You can try them out right here. \n",
   "apiTitle": "Fun Generators API",

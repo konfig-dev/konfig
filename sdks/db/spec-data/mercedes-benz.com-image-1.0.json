@@ -4,6 +4,262 @@
   "homepage": "mercedes-benz.com",
   "serviceName": "image",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/{finorvin}/components",
+      "method": "imageComponentsGet",
+      "httpMethod": "get",
+      "tag": "Components",
+      "description": "Returns URLs pointing to images in JPG format in the highest available resolution (depending on the component) of the vehicle's:\n  * engine (1024x576 px), \n  * rim (710x710 px), \n  * trim (800x600 px), \n  * paints (800x600 px), \n  * upholstery (800x600 px) and \n  * equipments (740x416 px).",
+      "parameters": [
+        {
+          "name": "finorvin",
+          "schema": "string",
+          "required": true,
+          "description": "The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A paint object"
+        },
+        {
+          "statusCode": "404",
+          "description": "The error object containing detailed information about the error."
+        },
+        {
+          "statusCode": "500",
+          "description": "The error object containing detailed information about the error."
+        }
+      ]
+    },
+    {
+      "url": "/{finorvin}/components/engine",
+      "method": "imageComponentsEngineGet",
+      "httpMethod": "get",
+      "tag": "Components",
+      "description": "Returns a URL pointing to an image of the vehicles engine.  These images are available in the resolution 1024x576 px.",
+      "parameters": [
+        {
+          "name": "finorvin",
+          "schema": "string",
+          "required": true,
+          "description": "The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A paint object"
+        },
+        {
+          "statusCode": "404",
+          "description": "The error object containing detailed information about the error."
+        },
+        {
+          "statusCode": "500",
+          "description": "The error object containing detailed information about the error."
+        }
+      ]
+    },
+    {
+      "url": "/{finorvin}/components/equipments",
+      "method": "imageComponentsEquipmentsGet",
+      "httpMethod": "get",
+      "tag": "Components",
+      "description": "Returns URLs pointing to images of this vehicle's equipments. The images are available in the highest possible resolution (usually 740x416 px).",
+      "parameters": [
+        {
+          "name": "finorvin",
+          "schema": "string",
+          "required": true,
+          "description": "The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The response object holds either an error object, in case that the request was malformed, or an equipments object containing a map with all equipment urls for the requested vehicle with the equipment codes as map keys."
+        },
+        {
+          "statusCode": "404",
+          "description": "The error object containing detailed information about the error."
+        },
+        {
+          "statusCode": "500",
+          "description": "The error object containing detailed information about the error."
+        }
+      ]
+    },
+    {
+      "url": "/{finorvin}/components/paint",
+      "method": "imageComponentsPaintGet",
+      "httpMethod": "get",
+      "tag": "Components",
+      "description": "Returns URLs pointing to images of this vehicles paint.  These images are available in resolution 800x600 px.  Note there might be two paints (e.g. Smart, 'paint' for body panel and 'paint2' for the tridion cell)",
+      "parameters": [
+        {
+          "name": "finorvin",
+          "schema": "string",
+          "required": true,
+          "description": "The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A paint object"
+        },
+        {
+          "statusCode": "404",
+          "description": "The error object containing detailed information about the error."
+        },
+        {
+          "statusCode": "500",
+          "description": "The error object containing detailed information about the error."
+        }
+      ]
+    },
+    {
+      "url": "/{finorvin}/components/rim",
+      "method": "imageComponentsRimGet",
+      "httpMethod": "get",
+      "tag": "Components",
+      "description": "Returns a URL pointing to an image of the vehicles rim.  These images are available in the resolution 710x710 px.",
+      "parameters": [
+        {
+          "name": "finorvin",
+          "schema": "string",
+          "required": true,
+          "description": "The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A rim object"
+        },
+        {
+          "statusCode": "404",
+          "description": "The error object containing detailed information about the error."
+        },
+        {
+          "statusCode": "500",
+          "description": "The error object containing detailed information about the error."
+        }
+      ]
+    },
+    {
+      "url": "/{finorvin}/components/trim",
+      "method": "imageComponentsTrimGet",
+      "httpMethod": "get",
+      "tag": "Components",
+      "description": "Returns a URL pointing to an image of this vehicles trim.  These images are available in resolution 800x600 px.",
+      "parameters": [
+        {
+          "name": "finorvin",
+          "schema": "string",
+          "required": true,
+          "description": "The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A trim object"
+        },
+        {
+          "statusCode": "404",
+          "description": "The error object containing detailed information about the error."
+        },
+        {
+          "statusCode": "500",
+          "description": "The error object containing detailed information about the error."
+        }
+      ]
+    },
+    {
+      "url": "/{finorvin}/components/upholstery",
+      "method": "imageComponentsUpholsteryGet",
+      "httpMethod": "get",
+      "tag": "Components",
+      "description": "Returns URLs pointing to images of the vehicle's upholsteries. Tge images are available in the highest possible resolution (usually 800x600 px).",
+      "parameters": [
+        {
+          "name": "finorvin",
+          "schema": "string",
+          "required": true,
+          "description": "The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A paint object"
+        },
+        {
+          "statusCode": "404",
+          "description": "The error object containing detailed information about the error."
+        },
+        {
+          "statusCode": "500",
+          "description": "The error object containing detailed information about the error."
+        }
+      ]
+    },
+    {
+      "url": "/{finorvin}/vehicle",
+      "method": "imageVehicleGet",
+      "httpMethod": "get",
+      "tag": "Perspectives",
+      "description": "Returns URLs pointing to PNG images of a vehicle with a transparent background.",
+      "parameters": [
+        {
+          "name": "finorvin",
+          "schema": "string",
+          "required": true,
+          "description": "The FIN or VIN of one specific vehicle. For testing purposes the following sample FINs are available (please note that these FINs are NOT available in the tryout): \n  * E 350 d: WDD2130331A123456\n  * B 180: WDD2462421N123456\n  * GLA 200: WDC1569431J123456\n  * S 500 Cabrio: WDD2174821A123456\n  * Smart fortwo turbo: WME4533441K012345"
+        },
+        {
+          "name": "perspectives",
+          "schema": "string",
+          "required": false,
+          "description": "One or more perspectives as a comma separated String list e.g. 'EXT000,EXT010,INT1'.  The following perspectives are available:\n  * EXT000-EXT350: EXT000 defines the front view, EXT010 defines a rotation of 10 degress and so forth.\n  * INT1-INT4: These are the 4 available interior perspectives.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  \nThe default value is EXT020,INT1 if no value is provided."
+        },
+        {
+          "name": "roofOpen",
+          "schema": "boolean",
+          "required": false,
+          "description": "Set 'true', if you are looking for images with the roof open. This option is only valid for cabrios. Default is 'false'."
+        },
+        {
+          "name": "night",
+          "schema": "boolean",
+          "required": false,
+          "description": "Set 'true', if you are looking for images with a darker background and the vehicle's headlights turned on. Default is 'false'."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The response object holds either an error object, in case that the request was malformed, or a vehicle object containing all urls for the requested perspectives."
+        },
+        {
+          "statusCode": "400",
+          "description": "The error object containing detailed information about the error."
+        },
+        {
+          "statusCode": "404",
+          "description": "The error object containing detailed information about the error."
+        },
+        {
+          "statusCode": "500",
+          "description": "The error object containing detailed information about the error."
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.mercedes-benz.com/image_tryout/v1/vehicles",
   "apiDescription": "The vehicle images API offers access to original Mercedes-Benz vehicle images.  It provides access to exterior and interior images with parameters e.g. to modify the perspective and to display vehicles at day/nighttime.  In addition you can request component images of a vehicle's engine, paint, rim, trim, upholstery and equipments.",
   "apiTitle": "Vehicle Image",

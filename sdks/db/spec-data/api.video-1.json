@@ -3,6 +3,1608 @@
   "openApiRaw": "https://docs.api.video/openapi/5f0d4679158b8d006ea6f068",
   "homepage": "api.video",
   "apiVersion": "1",
+  "methods": [
+    {
+      "url": "/account",
+      "method": "getAccount",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Show account",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/analytics/live-streams/{liveStreamId}",
+      "method": "getAnalyticsLiveStreamsLiveStreamId",
+      "httpMethod": "get",
+      "tag": "Analytics",
+      "description": "List live stream player sessions",
+      "parameters": [
+        {
+          "name": "liveStreamId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the live stream you want to retrieve analytics for."
+        },
+        {
+          "name": "period",
+          "schema": "string",
+          "required": false,
+          "description": "Period must have one of the following formats: \n- For a day : \"2018-01-01\",\n- For a week: \"2018-W01\", \n- For a month: \"2018-01\"\n- For a year: \"2018\"\nFor a range period: \n-  Date range: \"2018-01-01/2018-01-15\"\n"
+        },
+        {
+          "name": "currentPage",
+          "schema": "integer",
+          "required": false,
+          "description": "Choose the number of search results to return per page. Minimum value: 1"
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "Results per page. Allowed values 1-100, default is 25."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/analytics/sessions/{sessionId}/events",
+      "method": "getAnalyticsSessionsSessionIdEvents",
+      "httpMethod": "get",
+      "tag": "Analytics",
+      "description": "List player session events",
+      "parameters": [
+        {
+          "name": "sessionId",
+          "schema": "string",
+          "required": true,
+          "description": "A unique identifier you can use to reference and track a session with."
+        },
+        {
+          "name": "currentPage",
+          "schema": "integer",
+          "required": false,
+          "description": "Choose the number of search results to return per page. Minimum value: 1"
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "Results per page. Allowed values 1-100, default is 25."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/analytics/videos/{videoId}",
+      "method": "getAnalyticsVideosVideoId",
+      "httpMethod": "get",
+      "tag": "Analytics",
+      "description": "List video player sessions",
+      "parameters": [
+        {
+          "name": "videoId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the video you want to retrieve session information for."
+        },
+        {
+          "name": "period",
+          "schema": "string",
+          "required": false,
+          "description": "Period must have one of the following formats: \n- For a day : 2018-01-01,\n- For a week: 2018-W01, \n- For a month: 2018-01\n- For a year: 2018\nFor a range period: \n-  Date range: 2018-01-01/2018-01-15\n"
+        },
+        {
+          "name": "metadata",
+          "schema": "array",
+          "required": false,
+          "description": "Metadata and [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) filter. Send an array of key value pairs you want to filter sessios with."
+        },
+        {
+          "name": "currentPage",
+          "schema": "integer",
+          "required": false,
+          "description": "Choose the number of search results to return per page. Minimum value: 1"
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "Results per page. Allowed values 1-100, default is 25."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/auth/api-key",
+      "method": "postAuthApiKey",
+      "httpMethod": "post",
+      "tag": "Authentication",
+      "description": "Authenticate",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/auth/refresh",
+      "method": "postAuthRefresh",
+      "httpMethod": "post",
+      "tag": "Authentication",
+      "description": "Refresh token",
+      "parameters": [
+        {
+          "name": "refreshToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/live-streams",
+      "method": "getLiveStreams",
+      "httpMethod": "get",
+      "tag": "Live",
+      "description": "List all live streams",
+      "parameters": [
+        {
+          "name": "streamKey",
+          "schema": "string",
+          "required": false,
+          "description": "The unique stream key that allows you to stream videos."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "You can filter live streams by their name or a part of their name."
+        },
+        {
+          "name": "sortBy",
+          "schema": "string",
+          "required": false,
+          "description": "Allowed: createdAt, publishedAt, name. createdAt - the time a livestream was created using the specified streamKey. publishedAt - the time a livestream was published using the specified streamKey. name - the name of the livestream. If you choose one of the time based options, the time is presented in ISO-8601 format."
+        },
+        {
+          "name": "sortOrder",
+          "schema": "string",
+          "required": false,
+          "description": "Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending."
+        },
+        {
+          "name": "currentPage",
+          "schema": "integer",
+          "required": false,
+          "description": "Choose the number of search results to return per page. Minimum value: 1"
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "Results per page. Allowed values 1-100, default is 25."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/live-streams",
+      "method": "postLiveStreams",
+      "httpMethod": "post",
+      "tag": "Live",
+      "description": "Create live stream",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "playerId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "public",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "record",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/live-streams/{liveStreamId}",
+      "method": "deleteLiveStreamsLiveStreamId",
+      "httpMethod": "delete",
+      "tag": "Live",
+      "description": "Delete a live stream",
+      "parameters": [
+        {
+          "name": "liveStreamId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID for the live stream that you want to remove."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/live-streams/{liveStreamId}",
+      "method": "getLiveStreamsLiveStreamId",
+      "httpMethod": "get",
+      "tag": "Live",
+      "description": "Show live stream",
+      "parameters": [
+        {
+          "name": "liveStreamId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID for the live stream you want to watch."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/live-streams/{liveStreamId}",
+      "method": "patchLiveStreamsLiveStreamId",
+      "httpMethod": "patch",
+      "tag": "Live",
+      "description": "Update a live stream",
+      "parameters": [
+        {
+          "name": "liveStreamId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "playerId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "public",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "record",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/live-streams/{liveStreamId}/thumbnail",
+      "method": "deleteLiveStreamsLiveStreamIdThumbnail",
+      "httpMethod": "delete",
+      "tag": "Live",
+      "description": "Delete a thumbnail",
+      "parameters": [
+        {
+          "name": "liveStreamId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the live stream you want to delete. "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/live-streams/{liveStreamId}/thumbnail",
+      "method": "postLiveStreamsLiveStreamIdThumbnail",
+      "httpMethod": "post",
+      "tag": "Live",
+      "description": "Upload a thumbnail",
+      "parameters": [
+        {
+          "name": "liveStreamId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID for the live stream you want to upload."
+        },
+        {
+          "name": "file",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/players",
+      "method": "getPlayers",
+      "httpMethod": "get",
+      "tag": "Players",
+      "description": "List all players",
+      "parameters": [
+        {
+          "name": "sortBy",
+          "schema": "string",
+          "required": false,
+          "description": "createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format."
+        },
+        {
+          "name": "sortOrder",
+          "schema": "string",
+          "required": false,
+          "description": "Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones."
+        },
+        {
+          "name": "currentPage",
+          "schema": "integer",
+          "required": false,
+          "description": "Choose the number of search results to return per page. Minimum value: 1"
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "Results per page. Allowed values 1-100, default is 25."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/players",
+      "method": "postPlayers",
+      "httpMethod": "post",
+      "tag": "Players",
+      "description": "Create a player",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/players/{playerId}",
+      "method": "deletePlayersPlayerId",
+      "httpMethod": "delete",
+      "tag": "Players",
+      "description": "Delete a player",
+      "parameters": [
+        {
+          "name": "playerId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the player you want to delete."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/players/{playerId}",
+      "method": "getPlayersPlayerId",
+      "httpMethod": "get",
+      "tag": "Players",
+      "description": "Show a player",
+      "parameters": [
+        {
+          "name": "playerId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the player you want to retrieve. "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/players/{playerId}",
+      "method": "patchPlayersPlayerId",
+      "httpMethod": "patch",
+      "tag": "Players",
+      "description": "Update a player",
+      "parameters": [
+        {
+          "name": "playerId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the player."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/players/{playerId}/logo",
+      "method": "deletePlayersPlayerIdLogo",
+      "httpMethod": "delete",
+      "tag": "Players",
+      "description": "Delete logo",
+      "parameters": [
+        {
+          "name": "playerId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the player."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/players/{playerId}/logo",
+      "method": "postPlayersPlayerIdLogo",
+      "httpMethod": "post",
+      "tag": "Players",
+      "description": "Upload a logo",
+      "parameters": [
+        {
+          "name": "playerId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the player."
+        },
+        {
+          "name": "file",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "link",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/upload",
+      "method": "postUpload",
+      "httpMethod": "post",
+      "tag": "Videos - Delegated upload",
+      "description": "Upload with an upload token",
+      "parameters": [
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the token you want to use to upload a video."
+        },
+        {
+          "name": "Content-Range",
+          "schema": "string",
+          "required": false,
+          "description": "Content-Range represents the range of bytes that will be returned as a result of the request. Byte ranges are inclusive, meaning that bytes 0-999 represents the first 1000 bytes in a file or object."
+        },
+        {
+          "name": "file",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "videoId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/upload-tokens",
+      "method": "getUploadTokens",
+      "httpMethod": "get",
+      "tag": "Videos - Delegated upload",
+      "description": "List all active upload tokens.",
+      "parameters": [
+        {
+          "name": "sortBy",
+          "schema": "string",
+          "required": false,
+          "description": "Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format."
+        },
+        {
+          "name": "sortOrder",
+          "schema": "string",
+          "required": false,
+          "description": "Allowed: asc, desc. Ascending is 0-9 or A-Z. Descending is 9-0 or Z-A."
+        },
+        {
+          "name": "currentPage",
+          "schema": "integer",
+          "required": false,
+          "description": "Choose the number of search results to return per page. Minimum value: 1"
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "Results per page. Allowed values 1-100, default is 25."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/upload-tokens",
+      "method": "postUploadTokens",
+      "httpMethod": "post",
+      "tag": "Videos - Delegated upload",
+      "description": "Generate an upload token",
+      "parameters": [
+        {
+          "name": "ttl",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/upload-tokens/{uploadToken}",
+      "method": "deleteUploadTokensUploadToken",
+      "httpMethod": "delete",
+      "tag": "Videos - Delegated upload",
+      "description": "Delete an upload token",
+      "parameters": [
+        {
+          "name": "uploadToken",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the upload token you want to delete. Deleting a token will make it so the token can no longer be used for authentication."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/upload-tokens/{uploadToken}",
+      "method": "getUploadTokensUploadToken",
+      "httpMethod": "get",
+      "tag": "Videos - Delegated upload",
+      "description": "Show upload token",
+      "parameters": [
+        {
+          "name": "uploadToken",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the token you want information about."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/videos",
+      "method": "listVideos",
+      "httpMethod": "get",
+      "tag": "Videos",
+      "description": "List all videos",
+      "parameters": [
+        {
+          "name": "title",
+          "schema": "string",
+          "required": false,
+          "description": "The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles."
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "required": false,
+          "description": "A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned."
+        },
+        {
+          "name": "metadata",
+          "schema": "array",
+          "required": false,
+          "description": "Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value pair."
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": "If you described a video with a term or sentence, you can add it here to return videos containing this string."
+        },
+        {
+          "name": "liveStreamId",
+          "schema": "string",
+          "required": false,
+          "description": "If you know the ID for a live stream, you can retrieve the stream by adding the ID for it here."
+        },
+        {
+          "name": "sortBy",
+          "schema": "string",
+          "required": false,
+          "description": "Allowed: publishedAt, title. You can search by the time videos were published at, or by title."
+        },
+        {
+          "name": "sortOrder",
+          "schema": "string",
+          "required": false,
+          "description": "Allowed: asc, desc. asc is ascending and sorts from A to Z. desc is descending and sorts from Z to A."
+        },
+        {
+          "name": "currentPage",
+          "schema": "integer",
+          "required": false,
+          "description": "Choose the number of search results to return per page. Minimum value: 1"
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "Results per page. Allowed values 1-100, default is 25."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/videos",
+      "method": "postVideo",
+      "httpMethod": "post",
+      "tag": "Videos",
+      "description": "Create a video",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "mp4Support",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "panoramic",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "playerId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "public",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "publishedAt",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "source",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/videos/{videoId}",
+      "method": "deleteVideo",
+      "httpMethod": "delete",
+      "tag": "Videos",
+      "description": "Delete a video",
+      "parameters": [
+        {
+          "name": "videoId",
+          "schema": "string",
+          "required": true,
+          "description": "The video ID for the video you want to delete."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/videos/{videoId}",
+      "method": "getVideo",
+      "httpMethod": "get",
+      "tag": "Videos",
+      "description": "Show a video",
+      "parameters": [
+        {
+          "name": "videoId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the video you want details about."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/videos/{videoId}",
+      "method": "patchVideo",
+      "httpMethod": "patch",
+      "tag": "Videos",
+      "description": "Update a video",
+      "parameters": [
+        {
+          "name": "videoId",
+          "schema": "string",
+          "required": true,
+          "description": "The video ID for the video you want to delete."
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "mp4Support",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "panoramic",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "playerId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "public",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/videos/{videoId}/captions",
+      "method": "getVideosVideoIdCaptions",
+      "httpMethod": "get",
+      "tag": "Captions",
+      "description": "List video captions",
+      "parameters": [
+        {
+          "name": "videoId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the video you want to retrieve a list of captions for."
+        },
+        {
+          "name": "currentPage",
+          "schema": "integer",
+          "required": false,
+          "description": "Choose the number of search results to return per page. Minimum value: 1"
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "Results per page. Allowed values 1-100, default is 25."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/videos/{videoId}/captions/{language}",
+      "method": "deleteVideosVideoIdCaptionsLanguage",
+      "httpMethod": "delete",
+      "tag": "Captions",
+      "description": "Delete a caption",
+      "parameters": [
+        {
+          "name": "videoId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the video you want to delete a caption from."
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": true,
+          "description": "A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/videos/{videoId}/captions/{language}",
+      "method": "getVideosVideoIdCaptionsLanguage",
+      "httpMethod": "get",
+      "tag": "Captions",
+      "description": "Show a caption",
+      "parameters": [
+        {
+          "name": "videoId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the video you want captions for."
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": true,
+          "description": "A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/videos/{videoId}/captions/{language}",
+      "method": "patchVideosVideoIdCaptionsLanguage",
+      "httpMethod": "patch",
+      "tag": "Captions",
+      "description": "Update caption",
+      "parameters": [
+        {
+          "name": "videoId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the video you want to have automatic captions for. "
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": true,
+          "description": "A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation."
+        },
+        {
+          "name": "default",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/videos/{videoId}/captions/{language}",
+      "method": "postVideosVideoIdCaptionsLanguage",
+      "httpMethod": "post",
+      "tag": "Captions",
+      "description": "Upload a caption",
+      "parameters": [
+        {
+          "name": "videoId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the video you want to add a caption to."
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": true,
+          "description": "A valid BCP 47 language representation."
+        },
+        {
+          "name": "file",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/videos/{videoId}/chapters",
+      "method": "getVideosVideoIdChapters",
+      "httpMethod": "get",
+      "tag": "Chapters",
+      "description": "List video chapters",
+      "parameters": [
+        {
+          "name": "videoId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the video you want to retrieve a list of chapters for."
+        },
+        {
+          "name": "currentPage",
+          "schema": "integer",
+          "required": false,
+          "description": "Choose the number of search results to return per page. Minimum value: 1"
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "Results per page. Allowed values 1-100, default is 25."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/videos/{videoId}/chapters/{language}",
+      "method": "deleteVideosVideoIdChaptersLanguage",
+      "httpMethod": "delete",
+      "tag": "Chapters",
+      "description": "Delete a chapter",
+      "parameters": [
+        {
+          "name": "videoId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the video you want to delete a chapter from. "
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": true,
+          "description": "A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/videos/{videoId}/chapters/{language}",
+      "method": "getVideosVideoIdChaptersLanguage",
+      "httpMethod": "get",
+      "tag": "Chapters",
+      "description": "Show a chapter",
+      "parameters": [
+        {
+          "name": "videoId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the video you want to show a chapter for."
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": true,
+          "description": "A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/videos/{videoId}/chapters/{language}",
+      "method": "postVideosVideoIdChaptersLanguage",
+      "httpMethod": "post",
+      "tag": "Chapters",
+      "description": "Upload a chapter",
+      "parameters": [
+        {
+          "name": "videoId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the video you want to upload a chapter for."
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": true,
+          "description": "A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation."
+        },
+        {
+          "name": "file",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/videos/{videoId}/source",
+      "method": "postVideosVideoIdSource",
+      "httpMethod": "post",
+      "tag": "Videos",
+      "description": "Upload a video",
+      "parameters": [
+        {
+          "name": "videoId",
+          "schema": "string",
+          "required": true,
+          "description": "Enter the videoId you want to use to upload your video."
+        },
+        {
+          "name": "Content-Range",
+          "schema": "string",
+          "required": false,
+          "description": "Content-Range represents the range of bytes that will be returned as a result of the request. Byte ranges are inclusive, meaning that bytes 0-999 represents the first 1000 bytes in a file or object."
+        },
+        {
+          "name": "file",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/videos/{videoId}/status",
+      "method": "getVideoStatus",
+      "httpMethod": "get",
+      "tag": "Videos",
+      "description": "Show video status",
+      "parameters": [
+        {
+          "name": "videoId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the video you want the status for."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/videos/{videoId}/thumbnail",
+      "method": "patchVideosVideoIdThumbnail",
+      "httpMethod": "patch",
+      "tag": "Videos",
+      "description": "Pick a thumbnail",
+      "parameters": [
+        {
+          "name": "videoId",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail."
+        },
+        {
+          "name": "timecode",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/videos/{videoId}/thumbnail",
+      "method": "postVideosVideoIdThumbnail",
+      "httpMethod": "post",
+      "tag": "Videos",
+      "description": "Upload a thumbnail",
+      "parameters": [
+        {
+          "name": "videoId",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier of the chosen video "
+        },
+        {
+          "name": "file",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/webhooks",
+      "method": "listWebhooks",
+      "httpMethod": "get",
+      "tag": "Webhooks",
+      "description": "List all webhooks",
+      "parameters": [
+        {
+          "name": "events",
+          "schema": "string",
+          "required": false,
+          "description": "The webhook event that you wish to filter on."
+        },
+        {
+          "name": "currentPage",
+          "schema": "integer",
+          "required": false,
+          "description": "Choose the number of search results to return per page. Minimum value: 1"
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "Results per page. Allowed values 1-100, default is 25."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/webhooks",
+      "method": "postWebhooks",
+      "httpMethod": "post",
+      "tag": "Webhooks",
+      "description": "Create Webhook",
+      "parameters": [
+        {
+          "name": "events",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/webhooks/{webhookId}",
+      "method": "deleteWebhook",
+      "httpMethod": "delete",
+      "tag": "Webhooks",
+      "description": "Delete a Webhook",
+      "parameters": [
+        {
+          "name": "webhookId",
+          "schema": "string",
+          "required": true,
+          "description": "The webhook you wish to delete."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/webhooks/{webhookId}",
+      "method": "getWebhook",
+      "httpMethod": "get",
+      "tag": "Webhooks",
+      "description": "Show Webhook details",
+      "parameters": [
+        {
+          "name": "webhookId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique webhook you wish to retreive details on."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://ws.api.video",
   "apiDescription": "api.video is an API that encodes on the go to facilitate immediate playback, enhancing viewer streaming experiences across multiple devices and platforms. You can stream live or on-demand online videos within minutes.",
   "apiTitle": "api.video",

@@ -4,6 +4,1098 @@
   "homepage": "ably.net",
   "serviceName": "control",
   "apiVersion": "v1",
+  "methods": [
+    {
+      "url": "/accounts/{account_id}/apps",
+      "method": "/accounts/{accountId}/appsGet",
+      "httpMethod": "get",
+      "tag": "apps",
+      "description": "Lists account apps",
+      "parameters": [
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{account_id}/apps",
+      "method": "/accounts/{accountId}/appsPost",
+      "httpMethod": "post",
+      "tag": "apps",
+      "description": "Creates an app",
+      "parameters": [
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "apnsCertificate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "apnsPrivateKey",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "apnsUseSandboxEndpoint",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "fcmKey",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "tlsOnly",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/{app_id}/keys",
+      "method": "/apps/{appId}/keysGet",
+      "httpMethod": "get",
+      "tag": "keys",
+      "description": "Lists app keys",
+      "parameters": [
+        {
+          "name": "app_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "504",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/{app_id}/keys",
+      "method": "/apps/{appId}/keysPost",
+      "httpMethod": "post",
+      "tag": "keys",
+      "description": "Creates a key",
+      "parameters": [
+        {
+          "name": "app_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "capability",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/{app_id}/keys/{key_id}",
+      "method": "/apps/{appId}/keys/{keyId}Patch",
+      "httpMethod": "patch",
+      "tag": "keys",
+      "description": "Updates a key",
+      "parameters": [
+        {
+          "name": "app_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "key_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "capability",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "504",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/{app_id}/keys/{key_id}/revoke",
+      "method": "/apps/{appId}/keys/{keyId}/revokePost",
+      "httpMethod": "post",
+      "tag": "keys",
+      "description": "Revokes a key",
+      "parameters": [
+        {
+          "name": "app_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "key_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "504",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/{app_id}/namespaces",
+      "method": "/apps/{appId}/namespacesGet",
+      "httpMethod": "get",
+      "tag": "namespaces",
+      "description": "Lists namespaces",
+      "parameters": [
+        {
+          "name": "app_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "504",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/{app_id}/namespaces",
+      "method": "/apps/{appId}/namespacesPost",
+      "httpMethod": "post",
+      "tag": "namespaces",
+      "description": "Creates a namespace",
+      "parameters": [
+        {
+          "name": "app_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "authenticated",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "exposeTimeserial",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "persistLast",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "persisted",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pushEnabled",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "tlsOnly",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/{app_id}/namespaces/{namespace_id}",
+      "method": "/apps/{appId}/namespaces/{namespaceId}Delete",
+      "httpMethod": "delete",
+      "tag": "namespaces",
+      "description": "Deletes a namespace",
+      "parameters": [
+        {
+          "name": "app_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "namespace_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "504",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/{app_id}/namespaces/{namespace_id}",
+      "method": "/apps/{appId}/namespaces/{namespaceId}Patch",
+      "httpMethod": "patch",
+      "tag": "namespaces",
+      "description": "Updates a namespace",
+      "parameters": [
+        {
+          "name": "app_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "namespace_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "authenticated",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "exposeTimeserial",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "persistLast",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "persisted",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "pushEnabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "tlsOnly",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "504",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/{app_id}/queues",
+      "method": "/apps/{appId}/queuesGet",
+      "httpMethod": "get",
+      "tag": "queues",
+      "description": "Lists queues",
+      "parameters": [
+        {
+          "name": "app_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        },
+        {
+          "statusCode": "504",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/{app_id}/queues",
+      "method": "/apps/{appId}/queuesPost",
+      "httpMethod": "post",
+      "tag": "queues",
+      "description": "Creates a queue",
+      "parameters": [
+        {
+          "name": "app_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "maxLength",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "region",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "ttl",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/{app_id}/queues/{queue_id}",
+      "method": "/apps/{appId}/queues/{queueId}Delete",
+      "httpMethod": "delete",
+      "tag": "queues",
+      "description": "Deletes a queue",
+      "parameters": [
+        {
+          "name": "app_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "queue_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/{app_id}/rules",
+      "method": "/apps/{appId}/rulesGet",
+      "httpMethod": "get",
+      "tag": "rules",
+      "description": "Lists Integration rules",
+      "parameters": [
+        {
+          "name": "app_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "504",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/{app_id}/rules",
+      "method": "/apps/{appId}/rulesPost",
+      "httpMethod": "post",
+      "tag": "rules",
+      "description": "Creates a Integration Rule",
+      "parameters": [
+        {
+          "name": "app_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "504",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/{app_id}/rules/{rule_id}",
+      "method": "/apps/{appId}/rules/{ruleId}Delete",
+      "httpMethod": "delete",
+      "tag": "rules",
+      "description": "Deletes a Integration Rule",
+      "parameters": [
+        {
+          "name": "app_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "rule_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "504",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/{app_id}/rules/{rule_id}",
+      "method": "/apps/{appId}/rules/{ruleId}Get",
+      "httpMethod": "get",
+      "tag": "rules",
+      "description": "Gets a Integration Rule by ID",
+      "parameters": [
+        {
+          "name": "app_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "rule_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "504",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/{app_id}/rules/{rule_id}",
+      "method": "/apps/{appId}/rules/{ruleId}Patch",
+      "httpMethod": "patch",
+      "tag": "rules",
+      "description": "Updates a Integration Rule",
+      "parameters": [
+        {
+          "name": "app_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "rule_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "504",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/{id}",
+      "method": "/apps/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "apps",
+      "description": "Deletes an app",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/{id}",
+      "method": "/apps/{id}Patch",
+      "httpMethod": "patch",
+      "tag": "apps",
+      "description": "Updates an app",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "apnsCertificate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "apnsPrivateKey",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "apnsUseSandboxEndpoint",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "fcmKey",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tlsOnly",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/{id}/pkcs12",
+      "method": "/apps/{id}/pkcs12Post",
+      "httpMethod": "post",
+      "tag": "apps",
+      "description": "Updates app's APNS info from a .p12 file",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "p12File",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "p12Pass",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/me",
+      "method": "/meGet",
+      "httpMethod": "get",
+      "tag": "tokens",
+      "description": "Get token details",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://control.ably.net/v1",
   "apiTitle": "API V1",
   "endpoints": 13,

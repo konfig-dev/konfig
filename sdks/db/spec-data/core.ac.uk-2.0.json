@@ -3,6 +3,720 @@
   "openApiRaw": "http://core.ac.uk/api-v2/doc",
   "homepage": "core.ac.uk",
   "apiVersion": "2.0",
+  "methods": [
+    {
+      "url": "/articles/dedup",
+      "method": "nearDuplicateArticles",
+      "httpMethod": "post",
+      "tag": "articles",
+      "description": "Get all near duplicate articles",
+      "parameters": [
+        {
+          "name": "doi",
+          "schema": "string",
+          "required": false,
+          "description": "The DOI for which the duplicates will be identified"
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "required": false,
+          "description": "Title to match when looking for duplicate articles. Only useful when either value for @year or @description is supplied."
+        },
+        {
+          "name": "year",
+          "schema": "string",
+          "required": false,
+          "description": "Year the article was published. Only useful when value for @title is supplied. "
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": "Abstract for an article based on which its duplicates will be found. Only useful when value for @title is supplied."
+        },
+        {
+          "name": "fulltext",
+          "schema": "string",
+          "required": false,
+          "description": "Full text for an article based on which its duplicates will be found."
+        },
+        {
+          "name": "identifier",
+          "schema": "string",
+          "required": false,
+          "description": "Article identifier for which the duplicates will be identified. Only useful when either values for @doi or (@title and @year) or (@title and @abstract) or @fulltext are supplied."
+        },
+        {
+          "name": "repositoryId",
+          "schema": "string",
+          "required": false,
+          "description": "Limit the duplicates search to particular repository id. "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/articles/get",
+      "method": "getArticleByCoreIdBatch",
+      "httpMethod": "post",
+      "tag": "articles",
+      "description": "Batch operation for retrieving articles by CORE ID",
+      "parameters": [
+        {
+          "name": "metadata",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve the full article metadata or only the IDs. The default value is true"
+        },
+        {
+          "name": "fulltext",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve fulltexts of the articles. The default value is false"
+        },
+        {
+          "name": "citations",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve citations found in the articles. The default value is false"
+        },
+        {
+          "name": "similar",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve lists of similar articles. The default value is false. Because the similar articles are calculated on demand, setting this parameter to true might slightly slow down the response time"
+        },
+        {
+          "name": "duplicate",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve CORE IDs of different versions of the articles. The default value is false"
+        },
+        {
+          "name": "urls",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve lists of URLs of the article fulltexts. The default value is false"
+        },
+        {
+          "name": "faithfulMetadata",
+          "schema": "boolean",
+          "required": false,
+          "description": "Returns the records raw XML metadata from the original repository. The default value is false"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/articles/get/{coreId}",
+      "method": "getArticleByCoreId",
+      "httpMethod": "get",
+      "tag": "articles",
+      "description": "Get article by CORE ID",
+      "parameters": [
+        {
+          "name": "coreId",
+          "schema": "integer",
+          "required": true,
+          "description": "CORE ID of the article that needs to be fetched."
+        },
+        {
+          "name": "metadata",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve the full article metadata or only the ID. The default value is true."
+        },
+        {
+          "name": "fulltext",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve full text of the article. The default value is false"
+        },
+        {
+          "name": "citations",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve citations found in the article. The default value is false"
+        },
+        {
+          "name": "similar",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve a list of similar articles. The default value is false. Because the similar articles are calculated on demand, setting this parameter to true might slightly slow down the response time"
+        },
+        {
+          "name": "duplicate",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve a list of CORE IDs of different versions of the article. The default value is false"
+        },
+        {
+          "name": "urls",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve a list of URLs from which the article can be downloaded. This can include links to PDFs as well as HTML pages. The default value is false"
+        },
+        {
+          "name": "faithfulMetadata",
+          "schema": "boolean",
+          "required": false,
+          "description": "Returns the records raw XML metadata from the original repository. The default value is false"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/articles/get/{coreId}/download/pdf",
+      "method": "getArticlePdfByCoreId",
+      "httpMethod": "get",
+      "tag": "articles",
+      "description": "Get fulltext PDF by CORE ID",
+      "parameters": [
+        {
+          "name": "coreId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of article history that needs to be fetched"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/articles/get/{coreId}/history",
+      "method": "getArticleHistoryByCoreId",
+      "httpMethod": "get",
+      "tag": "articles",
+      "description": "Get article history by CORE ID",
+      "parameters": [
+        {
+          "name": "coreId",
+          "schema": "string",
+          "required": true,
+          "description": "CORE ID of the article which history should be fetched"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Which page of the history results should be retrieved. Can be any number betwen 1 and 100, default is 1 (first page)."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to return per page. Can be any number between 10 and 100, default is 10."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/articles/search",
+      "method": "searchArticlesBatch",
+      "httpMethod": "post",
+      "tag": "articles",
+      "description": "Batch operation for search through articles",
+      "parameters": [
+        {
+          "name": "metadata",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve the full article metadata or only the ID. The default value is true."
+        },
+        {
+          "name": "fulltext",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve full text of the article. The default value is false"
+        },
+        {
+          "name": "citations",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve citations found in the article. The default value is false"
+        },
+        {
+          "name": "similar",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve a list of similar articles. The default value is false. Because the similar articles are calculated on demand, setting this parameter to true might slightly slow down the response time"
+        },
+        {
+          "name": "duplicate",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve a list of CORE IDs of different versions of the article. The default value is false"
+        },
+        {
+          "name": "urls",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve a list of URLs from which the article can be downloaded. This can include links to PDFs as well as HTML pages. The default value is false"
+        },
+        {
+          "name": "faithfulMetadata",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve the raw XML metadata of the article. The default value is false"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/articles/search/{query}",
+      "method": "searchArticles",
+      "httpMethod": "get",
+      "tag": "articles",
+      "description": "Search through all documents",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "integer",
+          "required": true,
+          "description": "The search query"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Which page of the search results should be retrieved. Can be any number betwen 1 and 100, default is 1 (first page)."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to return per page. Can be any number between 10 and 100, default is 10."
+        },
+        {
+          "name": "metadata",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve the full article metadata or only the ID. The default value is true."
+        },
+        {
+          "name": "fulltext",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve full text of the article. The default value is false"
+        },
+        {
+          "name": "citations",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve citations found in the article. The default value is false"
+        },
+        {
+          "name": "similar",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve a list of similar articles. The default value is false. Because the similar articles are calculated on demand, setting this parameter to true might slightly slow down the response time"
+        },
+        {
+          "name": "duplicate",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve a list of CORE IDs of different versions of the article. The default value is false"
+        },
+        {
+          "name": "urls",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve a list of URLs from which the article can be downloaded. This can include links to PDFs as well as HTML pages. The default value is false"
+        },
+        {
+          "name": "faithfulMetadata",
+          "schema": "boolean",
+          "required": false,
+          "description": "Returns the records raw XML metadata from the original repository. The default value is false"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/articles/similar",
+      "method": "similarArticles",
+      "httpMethod": "post",
+      "tag": "articles",
+      "description": "Get articles by similarity to a text",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "How many similar articles to retrieve at most. Can be any number betwen 1 and 100, default is 10"
+        },
+        {
+          "name": "metadata",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve the full article metadata or only the IDs of the similar articles. The default value is true"
+        },
+        {
+          "name": "fulltext",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve fulltexts of the similar articles. The default value is false"
+        },
+        {
+          "name": "citations",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve citations found in the articles. The default value is false"
+        },
+        {
+          "name": "similar",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve lists of similar articles. The default value is false. Because the similar articles are calculated on demand, setting this parameter to true might slightly slow down the response time"
+        },
+        {
+          "name": "duplicate",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve CORE IDs of different versions of the articles. The default value is false"
+        },
+        {
+          "name": "urls",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve lists of URLs of the article fulltexts. The default value is false"
+        },
+        {
+          "name": "faithfulMetadata",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve the raw XML metadata of the articles. The default value is false"
+        },
+        {
+          "name": "text",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/journals/get",
+      "method": "getJournalByIssnBatch",
+      "httpMethod": "post",
+      "tag": "journals",
+      "description": "Batch operation for retrieving journals by ISSN",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/journals/get/{issn}",
+      "method": "getJournalByIssn",
+      "httpMethod": "get",
+      "tag": "journals",
+      "description": "Find journal by ISSN",
+      "parameters": [
+        {
+          "name": "issn",
+          "schema": "string",
+          "required": true,
+          "description": "ISSN identifier of journal that needs to be fetched."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/journals/search",
+      "method": "/journals/searchPost",
+      "httpMethod": "post",
+      "tag": "journals",
+      "description": "Batch operation for search through journals",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/journals/search/{query}",
+      "method": "/journals/search/{query}Get",
+      "httpMethod": "get",
+      "tag": "journals",
+      "description": "Search through journals",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": true,
+          "description": "Search query"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Which page of the search results should be retrieved. Can be any number betwen 1 and 100, default is 1 (first page)."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to return per page. Can be any number between 10 and 100, default is 10."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/repositories/get",
+      "method": "getRepositoryByIdBatch",
+      "httpMethod": "post",
+      "tag": "repositories",
+      "description": "Batch operation for retrieving repositories by CORE repository ID",
+      "parameters": [
+        {
+          "name": "stats",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve statistics about the repository. The default value is false"
+        },
+        {
+          "name": "depositHistory",
+          "schema": "boolean",
+          "required": false,
+          "description": "Returns deposit history over time"
+        },
+        {
+          "name": "depositHistoryCumulative",
+          "schema": "boolean",
+          "required": false,
+          "description": "Returns deposit history over time"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/repositories/get/{repositoryId}",
+      "method": "getRepositoryById",
+      "httpMethod": "get",
+      "tag": "repositories",
+      "description": "Get repository by CORE repository ID",
+      "parameters": [
+        {
+          "name": "repositoryId",
+          "schema": "integer",
+          "required": true,
+          "description": "CORE repository ID of the article that needs to be fetched."
+        },
+        {
+          "name": "stats",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve statistics about the repository. The default value is false"
+        },
+        {
+          "name": "depositHistory",
+          "schema": "boolean",
+          "required": false,
+          "description": "Returns deposit history over time"
+        },
+        {
+          "name": "depositHistoryCumulative",
+          "schema": "boolean",
+          "required": false,
+          "description": "Returns deposit history over time"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/repositories/search",
+      "method": "/repositories/searchPost",
+      "httpMethod": "post",
+      "tag": "repositories",
+      "description": "Batch operation for searching through repositories",
+      "parameters": [
+        {
+          "name": "stats",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve statistics about the repository. The default value is false"
+        },
+        {
+          "name": "depositHistory",
+          "schema": "boolean",
+          "required": false,
+          "description": "Returns deposit history over time"
+        },
+        {
+          "name": "depositHistoryCumulative",
+          "schema": "boolean",
+          "required": false,
+          "description": "Returns deposit history over time"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/repositories/search/{query}",
+      "method": "/repositories/search/{query}Get",
+      "httpMethod": "get",
+      "tag": "repositories",
+      "description": "Search through all repositories",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": true,
+          "description": "The search query"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Which page of the search results should be retrieved. Can be any number betwen 1 and 100, default is 1 (first page)."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to return per page. Can be any number between 10 and 100, default is 10."
+        },
+        {
+          "name": "stats",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to retrieve statistics about the repository. The default value is false"
+        },
+        {
+          "name": "depositHistory",
+          "schema": "boolean",
+          "required": false,
+          "description": "Returns deposit history over time"
+        },
+        {
+          "name": "depositHistoryCumulative",
+          "schema": "boolean",
+          "required": false,
+          "description": "Returns deposit history over time"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/search",
+      "method": "/searchPost",
+      "httpMethod": "post",
+      "tag": "all",
+      "description": "Batch operation for search through all resources",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/search/{query}",
+      "method": "/search/{query}Get",
+      "httpMethod": "get",
+      "tag": "all",
+      "description": "Search through all resources",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": true,
+          "description": "The search query"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Which page of the search results should be retrieved. Can be any number betwen 1 and 100, default is 1 (first page)."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to return per page. Can be any number between 10 and 100, default is 10."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://core.ac.uk/api-v2",
   "apiDescription": "<p style=\"text-align: justify;\">You can use the CORE API to access the \n    resources harvested and enriched by CORE. If you encounter any problems with the API, please <a href=\"/contact\">report them to us</a>.</p>\n\n<h2>Overview</h2>\n<p style=\"text-align: justify;\">The API is organised by resource type. The resources are <b>articles</b>, \n    <b>journals</b> and <b>repositories</b> and are represented using JSON data format. Furthermore, \n    each resource has a list of methods. The API also provides two global methods for accessing all resources at once.</p>\n\n<h2>Response format</h2>\n<p style=\"text-align: justify;\">Response for each query contains two fields: <b>status</b> and <b>data</b>.\n    In case of an error status, the data field is empty. The data field contains a single object\n    in case the request is for a specific identifier (e.g. CORE ID, CORE repository ID, etc.), or  \n    contains a list of objects, for example for search queries. In case of batch requests, the response\n    is an array of objects, each of which contains its own <b>status</b> and <b>data</b> fields.\n    For search queries the response contains an additional field <b>totalHits</b>, which is the \n    total number of items which match the search criteria.</p>\n\n<h2>Search query syntax</h2>\n\n<p style=\"text-align: justify\">Complex search queries can be used in all of the API search methods.\n    The query can be a simple string or it can be built using terms and operators described in Elasticsearch\n    <a href=\"http://www.elastic.co/guide/en/elasticsearch/reference/1.4/query-dsl-query-string-query.html#query-string-syntax\">documentation</a>.\n    The usable field names are <strong>title</strong>, <strong>description</strong>, <strong>fullText</strong>, \n    <strong>authors</strong>, <strong>publisher</strong>, <strong>repositories.id</strong>, <strong>repositories.name</strong>, \n    <strong>doi</strong>, <strong>oai</strong>, <strong>identifiers</strong> (which is a list of article identifiers including OAI, URL, etc.), <strong>language.name</strong> \n    and <strong>year</strong>. Some example queries:\n</p>\n\n<ul style=\"margin-left: 30px;\">\n    <li><p>title:psychology and language.name:English</p></li>\n    <li><p>repositories.id:86 AND year:2014</p></li>\n    <li><p>identifiers:\"oai:aura.abdn.ac.uk:2164/3837\" OR identifiers:\"oai:aura.abdn.ac.uk:2164/3843\"</p></li>\n    <li><p>doi:\"10.1186/1471-2458-6-309\"</p></li>\n</ul>\n\n<h3>Retrieving the latest Articles</h3>\n<p style=\"text-align: justify\">\n    You can retrieve the harvested items since specific dates using the following queries:\n</p>\n\n<ul style=\"margin-left: 30px;\">\n    <li><p>repositoryDocument.metadataUpdated:>2017-02-10</p></li>\n    <li><p>repositoryDocument.metadataUpdated:>2017-03-01 AND repositoryDocument.metadataUpdated:<2017-03-31</p></li>    \n</ul>\n\n<h2>Sort order</h2>\n\n<p style=\"text-align: justify;\">For search queries, the results are ordered by relevance score. For batch \n    requests, the results are retrieved in the order of the requests.</p>\n\n<h2>Parameters</h2>\n<p style=\"text-align: justify;\">The API methods allow different parameters to be passed. Additionally, there is an API key parameter which is common to all API methods. For all API methods \n    the API key can be provided either as a query parameter or in the request header. If the API key \n    is not provided, the API will return HTTP 401 error. You can register for an API key <a href=\"/services#api\">here</a>.</p>\n\n<h2>API methods</h2>",
   "apiTitle": "CORE API v2",

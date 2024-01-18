@@ -3,6 +3,94 @@
   "openApiRaw": "https://www.citycontext.com/swagger/spec.json",
   "homepage": "citycontext.com",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/@{lat},{lon}",
+      "method": "byPoint",
+      "httpMethod": "get",
+      "tag": "citycontext",
+      "description": "Query by coordinates (SRID 4326 - decimal degrees)",
+      "parameters": [
+        {
+          "name": "lat",
+          "schema": "number",
+          "required": true,
+          "description": "Latitude"
+        },
+        {
+          "name": "lon",
+          "schema": "number",
+          "required": true,
+          "description": "Longitude"
+        },
+        {
+          "name": "school_search_radius",
+          "schema": "integer",
+          "required": false,
+          "description": "Search radius for schools, in metres, between 100 and 4000"
+        },
+        {
+          "name": "park_search_radius",
+          "schema": "integer",
+          "required": false,
+          "description": "Search radius for parks, in metres, between 100 and 2000"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Contextual information around a given point"
+        }
+      ]
+    },
+    {
+      "url": "/postcodes/{postcode}",
+      "method": "byPostcode",
+      "httpMethod": "get",
+      "tag": "citycontext",
+      "description": "Query by postcode",
+      "parameters": [
+        {
+          "name": "postcode",
+          "schema": "string",
+          "required": true,
+          "description": "Postcode"
+        },
+        {
+          "name": "school_search_radius",
+          "schema": "integer",
+          "required": false,
+          "description": "Search radius for schools, in metres, between 100 and 4000"
+        },
+        {
+          "name": "park_search_radius",
+          "schema": "integer",
+          "required": false,
+          "description": "Search radius for parks, in metres, between 100 and 2000"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Contextual information around a given point"
+        }
+      ]
+    },
+    {
+      "url": "/usage",
+      "method": "usage",
+      "httpMethod": "get",
+      "tag": "citycontext",
+      "description": "Get usage in current month",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "User plan monthly API quota and usage"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://api.citycontext.com/v1",
   "apiDescription": "City Context provides a straightforward API to access UK Open Data: crime statistics, schools, demographics and more.",
   "apiTitle": "City Context",

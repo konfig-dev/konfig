@@ -3,6 +3,210 @@
   "openApiRaw": "https://www.refugerestrooms.org/api/swagger_doc.json",
   "homepage": "refugerestrooms.org",
   "apiVersion": "0.0.1",
+  "methods": [
+    {
+      "url": "/v1/restrooms",
+      "method": "getV1Restrooms",
+      "httpMethod": "get",
+      "tag": "restrooms",
+      "description": "Get all restroom records ordered by date descending.",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page offset to fetch."
+        },
+        {
+          "name": "per_page",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return per page."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Pad a number of results."
+        },
+        {
+          "name": "ada",
+          "schema": "boolean",
+          "required": false,
+          "description": "Only return restrooms that are ADA accessible."
+        },
+        {
+          "name": "unisex",
+          "schema": "boolean",
+          "required": false,
+          "description": "Only return restrooms that are unisex."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/restrooms/by_date",
+      "method": "getV1RestroomsByDate",
+      "httpMethod": "get",
+      "tag": "restrooms",
+      "description": "Search for restroom records updated or created on or after a given date",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page offset to fetch."
+        },
+        {
+          "name": "per_page",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return per page."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Pad a number of results."
+        },
+        {
+          "name": "ada",
+          "schema": "boolean",
+          "required": false,
+          "description": "Only return restrooms that are ADA accessible."
+        },
+        {
+          "name": "unisex",
+          "schema": "boolean",
+          "required": false,
+          "description": "Only return restrooms that are unisex."
+        },
+        {
+          "name": "updated",
+          "schema": "boolean",
+          "required": false,
+          "description": "Return restroom records updated (rather than created) since given date"
+        },
+        {
+          "name": "day",
+          "schema": "integer",
+          "required": true,
+          "description": "Day"
+        },
+        {
+          "name": "month",
+          "schema": "integer",
+          "required": true,
+          "description": "Month"
+        },
+        {
+          "name": "year",
+          "schema": "integer",
+          "required": true,
+          "description": "Year"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/restrooms/by_location",
+      "method": "getV1RestroomsByLocation",
+      "httpMethod": "get",
+      "tag": "restrooms",
+      "description": "Search by location.",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page offset to fetch."
+        },
+        {
+          "name": "per_page",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return per page."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Pad a number of results."
+        },
+        {
+          "name": "ada",
+          "schema": "boolean",
+          "required": false,
+          "description": "Only return restrooms that are ADA accessible."
+        },
+        {
+          "name": "unisex",
+          "schema": "boolean",
+          "required": false,
+          "description": "Only return restrooms that are unisex."
+        },
+        {
+          "name": "lat",
+          "schema": "number",
+          "required": true,
+          "description": "latitude"
+        },
+        {
+          "name": "lng",
+          "schema": "number",
+          "required": true,
+          "description": "longitude"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/restrooms/search",
+      "method": "getV1RestroomsSearch",
+      "httpMethod": "get",
+      "tag": "restrooms",
+      "description": "Perform full-text search of restroom records.",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page offset to fetch."
+        },
+        {
+          "name": "per_page",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return per page."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Pad a number of results."
+        },
+        {
+          "name": "ada",
+          "schema": "boolean",
+          "required": false,
+          "description": "Only return restrooms that are ADA accessible."
+        },
+        {
+          "name": "unisex",
+          "schema": "boolean",
+          "required": false,
+          "description": "Only return restrooms that are unisex."
+        },
+        {
+          "name": "query",
+          "schema": "string",
+          "required": true,
+          "description": "Your search query."
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "www.refugerestrooms.org/api",
   "apiDescription": "REFUGE is a web application that seeks to provide safe restroom access for transgender, intersex, and gender nonconforming individuals.",
   "apiTitle": "Refuge Restrooms API",

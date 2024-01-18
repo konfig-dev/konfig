@@ -4,6 +4,404 @@
   "homepage": "walmart.com",
   "serviceName": "item",
   "apiVersion": "3.0.1",
+  "methods": [
+    {
+      "url": "/v2/feeds",
+      "method": "v2GetFeedItemStatus",
+      "httpMethod": "get",
+      "tag": "Version 2",
+      "description": "Get status of an item feed",
+      "parameters": [
+        {
+          "name": "feedId",
+          "schema": "string",
+          "required": false,
+          "description": "The feed ID."
+        },
+        {
+          "name": "includeDetails",
+          "schema": "string",
+          "required": false,
+          "description": "Includes the status details for each item in the feed. Do not set this parameter to true as discrepancies may appear between the header and the item details (the item details may be incorrect). Instead, use the Get a feedItems status."
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "required": false,
+          "description": "The object response to start with, where 0 is the first entity that can be requested. It can only be used when includeDetails is set to true."
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": "The number of items to be returned. Cannot be more than 50 items. Use it only when the includeDetails is set to true."
+        },
+        {
+          "name": "WM_CONSUMER.CHANNEL.TYPE",
+          "schema": "string",
+          "required": true,
+          "description": "Channel Type"
+        },
+        {
+          "name": "WM_CONSUMER.ID",
+          "schema": "string",
+          "required": true,
+          "description": "Your Consumer ID"
+        },
+        {
+          "name": "WM_SEC.TIMESTAMP",
+          "schema": "string",
+          "required": true,
+          "description": "Epoch timestamp"
+        },
+        {
+          "name": "WM_SEC.AUTH_SIGNATURE",
+          "schema": "string",
+          "required": true,
+          "description": "Authentication signature"
+        },
+        {
+          "name": "WM_SVC.NAME",
+          "schema": "string",
+          "required": true,
+          "description": "The Service name"
+        },
+        {
+          "name": "WM_QOS.CORRELATION_ID",
+          "schema": "string",
+          "required": true,
+          "description": "A Transaction ID"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v2/feeds",
+      "method": "v2DoPostMultiPart",
+      "httpMethod": "post",
+      "tag": "Version 2",
+      "description": "Upload an item feed",
+      "parameters": [
+        {
+          "name": "feedType",
+          "schema": "string",
+          "required": false,
+          "description": "Feed Type"
+        },
+        {
+          "name": "WM_CONSUMER.CHANNEL.TYPE",
+          "schema": "string",
+          "required": true,
+          "description": "Channel Type"
+        },
+        {
+          "name": "WM_CONSUMER.ID",
+          "schema": "string",
+          "required": true,
+          "description": "Your Consumer ID"
+        },
+        {
+          "name": "WM_SEC.TIMESTAMP",
+          "schema": "string",
+          "required": true,
+          "description": "Epoch timestamp"
+        },
+        {
+          "name": "WM_SEC.AUTH_SIGNATURE",
+          "schema": "string",
+          "required": true,
+          "description": "Authentication signature"
+        },
+        {
+          "name": "WM_SVC.NAME",
+          "schema": "string",
+          "required": true,
+          "description": "The Service name"
+        },
+        {
+          "name": "WM_QOS.CORRELATION_ID",
+          "schema": "string",
+          "required": true,
+          "description": "A Transaction ID"
+        },
+        {
+          "name": "file",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v2/feeds/{feedId}",
+      "method": "v2GetAllItemsStatus",
+      "httpMethod": "get",
+      "tag": "Version 2",
+      "description": "Get status of an item within a feed",
+      "parameters": [
+        {
+          "name": "feedId",
+          "schema": "string",
+          "required": true,
+          "description": "The feed ID"
+        },
+        {
+          "name": "includeDetails",
+          "schema": "string",
+          "required": false,
+          "description": "Includes details of each entity in the feed. Do not set this parameter to true."
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "required": false,
+          "description": "The object response to start with, where 0 is the first entity that can be requested. It can only be used when includeDetails is set to true."
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": "The number of entities to be returned. It cannot be more than 50 entities. Use it only when the includeDetails is set to true."
+        },
+        {
+          "name": "WM_CONSUMER.CHANNEL.TYPE",
+          "schema": "string",
+          "required": true,
+          "description": "Channel Type"
+        },
+        {
+          "name": "WM_CONSUMER.ID",
+          "schema": "string",
+          "required": true,
+          "description": "Your Consumer ID"
+        },
+        {
+          "name": "WM_SEC.TIMESTAMP",
+          "schema": "string",
+          "required": true,
+          "description": "Epoch timestamp"
+        },
+        {
+          "name": "WM_SEC.AUTH_SIGNATURE",
+          "schema": "string",
+          "required": true,
+          "description": "Authentication signature"
+        },
+        {
+          "name": "WM_SVC.NAME",
+          "schema": "string",
+          "required": true,
+          "description": "The Service name"
+        },
+        {
+          "name": "WM_QOS.CORRELATION_ID",
+          "schema": "string",
+          "required": true,
+          "description": "A Transaction ID"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v3/feeds",
+      "method": "v3GetFeedItemStatus",
+      "httpMethod": "get",
+      "tag": "Version 3",
+      "description": "Get status of an item feed",
+      "parameters": [
+        {
+          "name": "feedId",
+          "schema": "string",
+          "required": false,
+          "description": "The feed ID."
+        },
+        {
+          "name": "includeDetails",
+          "schema": "string",
+          "required": false,
+          "description": "Includes the status details for each item in the feed. Do not set this parameter to true as discrepancies may appear between the header and the item details (the item details may be incorrect). Instead, use the Get a feedItems status."
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "required": false,
+          "description": "The object response to start with, where 0 is the first entity that can be requested. It can only be used when includeDetails is set to true."
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": "The number of items to be returned. Cannot be more than 50 items. Use it only when the includeDetails is set to true."
+        },
+        {
+          "name": "WM_CONSUMER.CHANNEL.TYPE",
+          "schema": "string",
+          "required": true,
+          "description": "Channel Type"
+        },
+        {
+          "name": "WM_CONSUMER.ID",
+          "schema": "string",
+          "required": true,
+          "description": "Your Consumer ID"
+        },
+        {
+          "name": "WM_SEC.TIMESTAMP",
+          "schema": "string",
+          "required": true,
+          "description": "Epoch timestamp"
+        },
+        {
+          "name": "WM_SEC.AUTH_SIGNATURE",
+          "schema": "string",
+          "required": true,
+          "description": "Authentication signature"
+        },
+        {
+          "name": "WM_SVC.NAME",
+          "schema": "string",
+          "required": true,
+          "description": "The Service name"
+        },
+        {
+          "name": "WM_QOS.CORRELATION_ID",
+          "schema": "string",
+          "required": true,
+          "description": "A Transaction ID"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v3/feeds",
+      "method": "v3DoPostMultiPart",
+      "httpMethod": "post",
+      "tag": "Version 3",
+      "description": "Upload an item feed",
+      "parameters": [
+        {
+          "name": "feedType",
+          "schema": "string",
+          "required": false,
+          "description": "Feed Type"
+        },
+        {
+          "name": "WM_CONSUMER.CHANNEL.TYPE",
+          "schema": "string",
+          "required": true,
+          "description": "Channel Type"
+        },
+        {
+          "name": "WM_CONSUMER.ID",
+          "schema": "string",
+          "required": true,
+          "description": "Your Consumer ID"
+        },
+        {
+          "name": "WM_SEC.TIMESTAMP",
+          "schema": "string",
+          "required": true,
+          "description": "Epoch timestamp"
+        },
+        {
+          "name": "WM_SEC.AUTH_SIGNATURE",
+          "schema": "string",
+          "required": true,
+          "description": "Authentication signature"
+        },
+        {
+          "name": "WM_SVC.NAME",
+          "schema": "string",
+          "required": true,
+          "description": "The Service name"
+        },
+        {
+          "name": "WM_QOS.CORRELATION_ID",
+          "schema": "string",
+          "required": true,
+          "description": "A Transaction ID"
+        },
+        {
+          "name": "file",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v3/feeds/{feedId}",
+      "method": "v3GetAllItemsStatus",
+      "httpMethod": "get",
+      "tag": "Version 3",
+      "description": "Get status of an item within a feed",
+      "parameters": [
+        {
+          "name": "feedId",
+          "schema": "string",
+          "required": true,
+          "description": "The feed ID"
+        },
+        {
+          "name": "includeDetails",
+          "schema": "string",
+          "required": false,
+          "description": "Includes details of each entity in the feed. Do not set this parameter to true."
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "required": false,
+          "description": "The object response to start with, where 0 is the first entity that can be requested. It can only be used when includeDetails is set to true."
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": "The number of entities to be returned. It cannot be more than 50 entities. Use it only when the includeDetails is set to true."
+        },
+        {
+          "name": "WM_CONSUMER.CHANNEL.TYPE",
+          "schema": "string",
+          "required": true,
+          "description": "Channel Type"
+        },
+        {
+          "name": "WM_CONSUMER.ID",
+          "schema": "string",
+          "required": true,
+          "description": "Your Consumer ID"
+        },
+        {
+          "name": "WM_SEC.TIMESTAMP",
+          "schema": "string",
+          "required": true,
+          "description": "Epoch timestamp"
+        },
+        {
+          "name": "WM_SEC.AUTH_SIGNATURE",
+          "schema": "string",
+          "required": true,
+          "description": "Authentication signature"
+        },
+        {
+          "name": "WM_SVC.NAME",
+          "schema": "string",
+          "required": true,
+          "description": "The Service name"
+        },
+        {
+          "name": "WM_QOS.CORRELATION_ID",
+          "schema": "string",
+          "required": true,
+          "description": "A Transaction ID"
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://developer.walmart.com/proxy/item-api-doc-app/rest",
   "apiDescription": "Please make sure you use the correct version of the APIs for your use case. To find out the appropriate version, go to the API Docs  drop down on the menu.",
   "apiTitle": "Item API",

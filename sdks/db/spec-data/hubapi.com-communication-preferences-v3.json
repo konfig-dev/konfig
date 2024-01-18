@@ -4,6 +4,153 @@
   "homepage": "hubapi.com",
   "serviceName": "communication-preferences",
   "apiVersion": "v3",
+  "methods": [
+    {
+      "url": "/communication-preferences/v3/definitions",
+      "method": "get-/communicationPreferences/v3/definitionsGetPage",
+      "httpMethod": "get",
+      "tag": "Definition",
+      "description": "Get subscription definitions",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A collection of subscription definitions for the portal."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/communication-preferences/v3/status/email/{emailAddress}",
+      "method": "get-/communicationPreferences/v3/status/email/{emailAddress}GetEmailStatus",
+      "httpMethod": "get",
+      "tag": "Status",
+      "description": "Get subscription statuses for a contact",
+      "parameters": [
+        {
+          "name": "emailAddress",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A collection of subscription statuses for a contact."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/communication-preferences/v3/subscribe",
+      "method": "post-/communicationPreferences/v3/subscribeSubscribe",
+      "httpMethod": "post",
+      "tag": "Status",
+      "description": "Subscribe a contact",
+      "parameters": [
+        {
+          "name": "emailAddress",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "legalBasis",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "legalBasisExplanation",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The status of a subscription for a contact."
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/communication-preferences/v3/unsubscribe",
+      "method": "post-/communicationPreferences/v3/unsubscribeUnsubscribe",
+      "httpMethod": "post",
+      "tag": "Status",
+      "description": "Unsubscribe a contact",
+      "parameters": [
+        {
+          "name": "emailAddress",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "legalBasis",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "legalBasisExplanation",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The status of a subscription for a contact."
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.hubapi.com",
   "apiDescription": "Subscriptions allow contacts to control what forms of communications they receive. Contacts can decide whether they want to receive communication pertaining to a specific topic, brand, or an entire HubSpot account.",
   "apiTitle": "Subscriptions",

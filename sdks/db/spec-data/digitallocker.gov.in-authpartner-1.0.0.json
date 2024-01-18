@@ -4,6 +4,956 @@
   "homepage": "digitallocker.gov.in",
   "serviceName": "authpartner",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/account/1/pushuri",
+      "method": "pushUriToAccountId",
+      "httpMethod": "post",
+      "tag": "DigiLocker Meta APIs",
+      "description": "Push URI to Account",
+      "parameters": [
+        {
+          "name": "action",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "clientid",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "digilockerid",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "docid",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "hmac",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "issuedate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ts",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "uri",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "validfrom",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "validto",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/2/verify",
+      "method": "verifyAccountId",
+      "httpMethod": "post",
+      "tag": "DigiLocker Meta APIs",
+      "description": "Verify Account",
+      "parameters": [
+        {
+          "name": "clientid",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "hmac",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "mobile",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "ts",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "uid",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/oauth2/1/authorize",
+      "method": "getAuthorizationCodeId",
+      "httpMethod": "get",
+      "tag": "Authorization",
+      "description": "Get Authorization Code",
+      "parameters": [
+        {
+          "name": "client_id",
+          "schema": "string",
+          "description": "Provide the client id that was created during the application registration process on Partners Portal."
+        },
+        {
+          "name": "response_type",
+          "schema": "string",
+          "required": true,
+          "description": "Provide the grant type requested, either token or code."
+        },
+        {
+          "name": "redirect_uri",
+          "schema": "string",
+          "required": true,
+          "description": "The URI to redirect the user after authorization has completed."
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "required": true,
+          "description": "This is your application specific data that will be passed back to your application through redirect_uri."
+        },
+        {
+          "name": "Code_challenge",
+          "schema": "string",
+          "required": false,
+          "description": "A unique random string called code verifier (code_verifier) is\ncreated by the client application for every authorization request.\nThe code_challenge sent as this parameter is the Base64URL (with no\npadding) encoded SHA256 hash of the code verifier.\n        Code block:\n\n       ```\n       string base64_url_encode_without_padding(string arg)\n       { \n          string s = base64encode(arg); //Regular base64encoder with padding\n          s = s.replace(’=’,’’); //Remove any trailing ’=’\n          s = s.replace(’+’, ’-’); //Replace ’+’ with ’-’\n          s = s.replace(’/’, ’_’); //Replace ’/’ with ’_’ return s;\n        }\n        ```\n"
+        },
+        {
+          "name": "Code_challenge_method",
+          "schema": "string",
+          "required": false,
+          "description": "Specifies what method was used to encode a code_verifier to generate code_challenge parameter above. This parameter must be used with the code_challenge parameter. The only supported values for this parameter is S256."
+        },
+        {
+          "name": "dl_flow",
+          "schema": "string",
+          "required": false,
+          "description": "If this parameter is provided its value will always be signup. This parameter indicates that the user does not have a DigiLocker account and will be directed to the signup flow directly. After the account is created, the user will be directed to the authorization flow. If this parameter is not sent, the user will be redirected to the sign in flow."
+        },
+        {
+          "name": "Verified_mobile",
+          "schema": "integer",
+          "required": false,
+          "description": "Verified mobile number of the user. If this parameter is passed, DigiLocker will skip the mobile OTP verification step during sign up. DigiLocker will treat the mobile number passed in this parameter as a verified mobile number by the trusted client application. This parameter will be used only if dl_flow parameter mentioned above is set to signup and will be ignored otherwise."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/oauth2/1/code",
+      "method": "getDeviceCodeId",
+      "httpMethod": "post",
+      "tag": "Authorization API",
+      "description": "Get Device Code",
+      "parameters": [
+        {
+          "name": "client_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "dl_mobile",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "dl_username",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "response_type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/oauth2/1/file/upload",
+      "method": "uploadFileToLockerId",
+      "httpMethod": "post",
+      "tag": "File APIs",
+      "description": "Upload file to locker",
+      "parameters": [
+        {
+          "name": "path",
+          "schema": "string",
+          "required": false,
+          "description": "The destination path of the file in DigiLocker including filename."
+        },
+        {
+          "name": "hmac",
+          "schema": "string",
+          "required": false,
+          "description": "This is used to verify the integrity of the file data. The client app calculates the hash message authentication code (HMAC) of the file content using SHA256 hashing algorithm and the client secret as the hashing key. The resulting HMAC is converted to Base64 format and sent in this parameter. Upon upload of file, DigiLocker calculates the HMAC of the file data and compares it with this HMAC.."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/oauth2/1/file/{uri}",
+      "method": "getFileFromUriId",
+      "httpMethod": "get",
+      "tag": "File APIs",
+      "description": "Get File from URI",
+      "parameters": [
+        {
+          "name": "uri",
+          "schema": "string",
+          "required": true,
+          "description": "This is the unique identifier of the document."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/oauth2/1/files/",
+      "method": "getListOfSelfUploadedDocuments",
+      "httpMethod": "get",
+      "tag": "File APIs",
+      "description": "Get List of Self Uploaded Documents",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/oauth2/1/files/issued",
+      "method": "getListOfIssuedDocumentsVersion1Id",
+      "httpMethod": "get",
+      "tag": "File APIs",
+      "description": "Issued Documents",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/oauth2/1/files/{id}",
+      "method": "getListOfSelfUploadedDocumentsId",
+      "httpMethod": "get",
+      "tag": "File APIs",
+      "description": "Get List of Self Uploaded Documents",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the folder to list. To list the files of root folder of a user’s locker, do not send this parameter. This is sent as a part of the URL."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/oauth2/1/pull/doctype",
+      "method": "getListOfDocumentsProvidedByAnIssuerId",
+      "httpMethod": "post",
+      "tag": "DigiLocker Meta APIs",
+      "description": "Get List of Documents Provided by an Issuer",
+      "parameters": [
+        {
+          "name": "clientid",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "hmac",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "orgid",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ts",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/oauth2/1/pull/issuers",
+      "method": "getListOfIssuersId",
+      "httpMethod": "post",
+      "tag": "DigiLocker Meta APIs",
+      "description": "Get List of Issuers",
+      "parameters": [
+        {
+          "name": "clientid",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "hmac",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ts",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/oauth2/1/pull/parameters",
+      "method": "getSearchParametersForADocumentId",
+      "httpMethod": "post",
+      "tag": "DigiLocker Meta APIs",
+      "description": "Get Search Parameters for a Document",
+      "parameters": [
+        {
+          "name": "clientid",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "doctype",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "hmac",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "orgid",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ts",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/oauth2/1/pull/pulldocument",
+      "method": "pullDocumentId",
+      "httpMethod": "post",
+      "tag": "File APIs",
+      "description": "Pull Document",
+      "parameters": [
+        {
+          "name": "chasis_no",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "consent",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "doctype",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "orgid",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "reg_no",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/oauth2/1/revoke",
+      "method": "getTokenRevocationId",
+      "httpMethod": "post",
+      "tag": "Token Revocation API",
+      "description": "Revoke Token.",
+      "parameters": [
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "token_type_hint",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/oauth2/1/token",
+      "method": "getaccesstokenId",
+      "httpMethod": "post",
+      "tag": "Authorization",
+      "description": "Get Access Token",
+      "parameters": [
+        {
+          "name": "Get access token using authorization code",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "Get access token using device code and OTP",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "Get access token using refresh token",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/oauth2/1/user",
+      "method": "accountDetailApiId",
+      "httpMethod": "get",
+      "tag": "Account Detail API",
+      "description": "Get User Details",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/oauth2/1/xml/{uri}",
+      "method": "getCertificateDataInXmlFormatFromUriId",
+      "httpMethod": "get",
+      "tag": "File APIs",
+      "description": "Get Certificate Data in XML Format from URI",
+      "parameters": [
+        {
+          "name": "uri",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/oauth2/2/files/issued",
+      "method": "getListOfIssuedDocumentsId",
+      "httpMethod": "get",
+      "tag": "File APIs",
+      "description": "Issued Documents",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/oauth2/2/xml/eaadhaar",
+      "method": "getEAadhaarDataInXmlFormatId",
+      "httpMethod": "get",
+      "tag": "File APIs",
+      "description": "Get e-Aadhaar Data in XML Format",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/signup/1/demoauthverify",
+      "method": "verifyOtpId",
+      "httpMethod": "post",
+      "tag": "DigiLocker Sign up APIs",
+      "description": "Verify OTP",
+      "parameters": [
+        {
+          "name": "clientid",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "hmac",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "mobile",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "otp",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "ts",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/signup/2/demoauth",
+      "method": "signUpId",
+      "httpMethod": "post",
+      "tag": "DigiLocker Sign up APIs",
+      "description": "SIGN UP",
+      "parameters": [
+        {
+          "name": "clientid",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "consent",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "demoauth",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "dob",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "gender",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "hmac",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "mobile",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ts",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "uid",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "verification",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/statistics/1/counts",
+      "method": "getStatisticsId",
+      "httpMethod": "post",
+      "tag": "DigiLocker Meta APIs",
+      "description": "Get Statistics",
+      "parameters": [
+        {
+          "name": "clientid",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "hmac",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ts",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://betaapi.digitallocker.gov.in/public",
   "apiDescription": "To access files in user’s DigiLocker account from your application, you must first obtain user’s authorization.",
   "apiTitle": "Authorized Partner API Specification",

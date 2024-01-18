@@ -4,6 +4,118 @@
   "homepage": "deutschebahn.com",
   "serviceName": "reisezentren",
   "apiVersion": "v1",
+  "methods": [
+    {
+      "url": "/reisezentren",
+      "method": "/reisezentrenGet",
+      "httpMethod": "get",
+      "description": "Get all station infos",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "A station name or part of it"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "416",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reisezentren/loc/{lat}/{lon}",
+      "method": "",
+      "httpMethod": "get",
+      "description": "Get information about a station near a location",
+      "parameters": [
+        {
+          "name": "lat",
+          "schema": "number",
+          "required": true,
+          "description": "Latitude"
+        },
+        {
+          "name": "lon",
+          "schema": "number",
+          "required": true,
+          "description": "Longitude"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reisezentren/loc/{lat}/{lon}/{dist}",
+      "method": "/reisezentren/loc/{lat}/{lon}/{dist}Get",
+      "httpMethod": "get",
+      "description": "Get stations in a given radius",
+      "parameters": [
+        {
+          "name": "lat",
+          "schema": "number",
+          "required": true,
+          "description": "Latitude"
+        },
+        {
+          "name": "lon",
+          "schema": "number",
+          "required": true,
+          "description": "Longitude"
+        },
+        {
+          "name": "dist",
+          "schema": "number",
+          "required": true,
+          "description": "Radius"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reisezentren/{id}",
+      "method": "/reisezentren/{id}Get",
+      "httpMethod": "get",
+      "description": "Get information about a specific station",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Station id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.deutschebahn.com/reisezentren/v1",
   "apiDescription": "This REST-API enables you to query information about travel centers in Germany.",
   "apiTitle": "Reisezentren-API",

@@ -3,6 +3,871 @@
   "openApiRaw": "https://developer.sakari.io/openapi.yaml",
   "homepage": "sakari.io",
   "apiVersion": "1.0.1",
+  "methods": [
+    {
+      "url": "/oauth2/token",
+      "method": "authToken",
+      "httpMethod": "post",
+      "tag": "authentication",
+      "description": "Get token for accessing APIs",
+      "parameters": [
+        {
+          "name": "client_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "client_secret",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "grant_type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/accounts/{accountId}/campaigns",
+      "method": "campaignsFetchAll",
+      "httpMethod": "get",
+      "tag": "campaigns",
+      "description": "Fetch campaigns",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "Account to apply operations to"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Results to skip when paginating through a result set"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum number of results to return"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by name or part of"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "4XX",
+          "description": ""
+        },
+        {
+          "statusCode": "5XX",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/accounts/{accountId}/campaigns",
+      "method": "campaignsCreate",
+      "httpMethod": "post",
+      "tag": "campaigns",
+      "description": "Create campaign",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "Account to apply operations to"
+        },
+        {
+          "name": "filters",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "template",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "trigger",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/accounts/{accountId}/campaigns/{campaignId}",
+      "method": "campaignsRemove",
+      "httpMethod": "delete",
+      "tag": "campaigns",
+      "description": "Deletes a campaign",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "Account to apply operations to"
+        },
+        {
+          "name": "campaignId",
+          "schema": "string",
+          "required": true,
+          "description": "Campaign id to delete"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/accounts/{accountId}/campaigns/{campaignId}",
+      "method": "campaignsFetch",
+      "httpMethod": "get",
+      "tag": "campaigns",
+      "description": "Fetch campaign by ID",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "Account to apply operations to"
+        },
+        {
+          "name": "campaignId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of campaign to return"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/accounts/{accountId}/campaigns/{campaignId}",
+      "method": "campaignsUpdate",
+      "httpMethod": "put",
+      "tag": "campaigns",
+      "description": "Updates a campaign",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "Account to apply operations to"
+        },
+        {
+          "name": "campaignId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of campaign"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/accounts/{accountId}/contacts",
+      "method": "contactsFetchAll",
+      "httpMethod": "get",
+      "tag": "contacts",
+      "description": "Fetch contacts",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "Account to apply operations to"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Results to skip when paginating through a result set"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum number of results to return"
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by first name or part of"
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by last name or part of"
+        },
+        {
+          "name": "mobile",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by mobile or part of"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by email or part of"
+        },
+        {
+          "name": "tags",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by tag(s)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "4XX",
+          "description": ""
+        },
+        {
+          "statusCode": "5XX",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/accounts/{accountId}/contacts",
+      "method": "contactsCreate",
+      "httpMethod": "post",
+      "tag": "contacts",
+      "description": "Create contact",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "Account to apply operations to"
+        },
+        {
+          "name": "mergeStrategy",
+          "schema": "string",
+          "required": false,
+          "description": "Determines how existing contacts with matching mobile numbers are treated"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/accounts/{accountId}/contacts/{contactId}",
+      "method": "contactsRemove",
+      "httpMethod": "delete",
+      "tag": "contacts",
+      "description": "Deletes a contact",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "Account to apply operations to"
+        },
+        {
+          "name": "contactId",
+          "schema": "string",
+          "required": true,
+          "description": "Contact id to delete"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/accounts/{accountId}/contacts/{contactId}",
+      "method": "contactsFetch",
+      "httpMethod": "get",
+      "tag": "contacts",
+      "description": "Fetch contact by ID",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "Account to apply operations to"
+        },
+        {
+          "name": "contactId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of contact to return"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/accounts/{accountId}/contacts/{contactId}",
+      "method": "contactsUpdate",
+      "httpMethod": "put",
+      "tag": "contacts",
+      "description": "Updates a contact",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "Account to apply operations to"
+        },
+        {
+          "name": "contactId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of contact"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/accounts/{accountId}/conversations",
+      "method": "conversationsFetchAll",
+      "httpMethod": "get",
+      "tag": "conversations",
+      "description": "Fetch conversations",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "Account to apply operations to"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Results to skip when paginating through a result set"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum number of results to return"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "4XX",
+          "description": ""
+        },
+        {
+          "statusCode": "5XX",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/accounts/{accountId}/conversations/{conversationId}",
+      "method": "conversationsFetch",
+      "httpMethod": "get",
+      "tag": "conversations",
+      "description": "Fetch conversation by ID",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "Account to apply operations to"
+        },
+        {
+          "name": "conversationId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of template to return"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/accounts/{accountId}/conversations/{conversationId}/close",
+      "method": "conversationsClose",
+      "httpMethod": "put",
+      "tag": "conversations",
+      "description": "Closes a conversation",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "Account to apply operations to"
+        },
+        {
+          "name": "conversationId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of conversation"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/accounts/{accountId}/messages",
+      "method": "messagesFetchAll",
+      "httpMethod": "get",
+      "tag": "messages",
+      "description": "Fetch messages",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "Account to apply operations to"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Results to skip when paginating through a result set"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum number of results to return"
+        },
+        {
+          "name": "contactId",
+          "schema": "string",
+          "required": false,
+          "description": "ID of contact"
+        },
+        {
+          "name": "conversationId",
+          "schema": "string",
+          "required": false,
+          "description": "ID of conversation"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/accounts/{accountId}/messages",
+      "method": "messagesSend",
+      "httpMethod": "post",
+      "tag": "messages",
+      "description": "Send Messages",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "Account to apply operations to"
+        },
+        {
+          "name": "contacts",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "conversationStrategy",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "conversations",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "filters",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "media",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "phoneNumberFilter",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "template",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/accounts/{accountId}/messages/{messageId}",
+      "method": "messagesFetch",
+      "httpMethod": "get",
+      "tag": "messages",
+      "description": "Fetch message by id",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "Account to apply operations to"
+        },
+        {
+          "name": "messageId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of message to return"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/accounts/{accountId}/templates",
+      "method": "templatesFetchAll",
+      "httpMethod": "get",
+      "tag": "templates",
+      "description": "Fetch templates",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "Account to apply operations to"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Results to skip when paginating through a result set"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum number of results to return"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by name or part of"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "4XX",
+          "description": ""
+        },
+        {
+          "statusCode": "5XX",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/accounts/{accountId}/templates",
+      "method": "templatesCreate",
+      "httpMethod": "post",
+      "tag": "templates",
+      "description": "Create template",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "Account to apply operations to"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "template",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/accounts/{accountId}/templates/{templateId}",
+      "method": "templatesRemove",
+      "httpMethod": "delete",
+      "tag": "templates",
+      "description": "Deletes a template",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "Account to apply operations to"
+        },
+        {
+          "name": "templateId",
+          "schema": "string",
+          "required": true,
+          "description": "Template id to delete"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/accounts/{accountId}/templates/{templateId}",
+      "method": "templatesFetch",
+      "httpMethod": "get",
+      "tag": "templates",
+      "description": "Fetch template by ID",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "Account to apply operations to"
+        },
+        {
+          "name": "templateId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of template to return"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/accounts/{accountId}/templates/{templateId}",
+      "method": "templatesUpdate",
+      "httpMethod": "put",
+      "tag": "templates",
+      "description": "Updates a template",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "Account to apply operations to"
+        },
+        {
+          "name": "templateId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of template"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/accounts/{accountId}/webhooks",
+      "method": "webhooksFetchAll",
+      "httpMethod": "get",
+      "tag": "webhooks",
+      "description": "Fetch active webhooks",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "Account to apply operations to"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/accounts/{accountId}/webhooks",
+      "method": "webhooksSubscribe",
+      "httpMethod": "post",
+      "tag": "webhooks",
+      "description": "Subscribe to message events",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "Account to apply operations to"
+        },
+        {
+          "name": "eventTypes",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/accounts/{accountId}/webhooks/{url}",
+      "method": "webhooksUnsubscribe",
+      "httpMethod": "delete",
+      "tag": "webhooks",
+      "description": "Unsubscribe to message events",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "Account to apply operations to"
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": "Account to apply operations to"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/tools/sharefile",
+      "method": "toolsShareFile",
+      "httpMethod": "post",
+      "tag": "tools",
+      "description": "Share file - use to host a file and generate a short link to be used directly in a message or as a link to media for a MMS",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "4XX",
+          "description": ""
+        },
+        {
+          "statusCode": "5XX",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.sakari.io",
   "apiDescription": "# Introduction\n\nWelcome to the documentation for the Sakari Messaging REST API. \n\nSakari provides an advanced platform to drive large scale customized SMS communication\n\nREST is a web-service protocol that lends itself to rapid development by using everyday HTTP and JSON technology.\n\nTo find out more about our product offering, please visit [https://sakari.io](https://sakari.io).\n\n# Quickstart\n\nFor your convenience we have created a quickstart guide to get you up and running in 5 minutes. \n\n[https://sakari.io/blog/sakari-api-quickstart](https://sakari.io/blog/sakari-api-quickstart)\n\n# PostMan Collection\n\nWe've created a simple set of examples using [PostMan](https://www.getpostman.com/) Simply click below to import these. You will need to setup three environment variables in PostMan - AccountId, ClientId and ClientSecret. Check out our PostMan blog post for more information\n\n[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/d616e273edc916a7a6eb)\n\n# Finding your client id, client secret and account id\n\nTo authenticate against the API's you will need three key pieces of data\n - client id\n - client secret\n - account id\n\nTo retrieve these, simply login into [https://hub.sakari.io](https://hub.sakari.io) and click on the \"cog\" in the top right corner. In the popup dialog at the bottom you should see your API credentials and account id. If these are not visible you will need to click on \"Request Credentials\"\n\n# Versioning\n\nWith any breaking changes we will introduce a new version of the API. The latest version is v1.\n\nThe API uses an open schema model, which means server may add extra properties to responses. Likewise, the server will ignore any extra query parameters and request body properties. When you write clients, you need to ignore additional properties in responses to ensure they do not break.\n\n# Testing\n\nThere are numerous tools available for testing the API's. We will include examples using curl and the client SDKs that we have created. If you would like to see an SDK in a language not currently available, please let us know.\n\n# Throttling / Limits\n\nOur API's have been specifically designed to support bulk messaging in a single API call. We therefore impose limits on the frequency of calling the APIs to prevent abuse or runaway processes. If you feel you need a higher limit, please contact us. If you hit the limit you will get a 429 error code returned from our servers\n\n# Errors\n\nThe API uses standard HTTP status codes to indicate the success or failure of the API call. The body of the response will be JSON in the following format:\n\n```\n{\n  \"success\": false,\n  \"error\": {\n    \"code\": \"CONT-001\",\n    \"message\": \"Invalid mobile number\"\n  }\n}\n```\n\n# Pagination\n\nFor performance, most GET calls return a subset of data. This data is paginated for easy access. Most APIs which return collections of data will return a pagination object as such:\n\n```\n{\n  \"pagination\": {\n    \"offset\": 0,\n    \"limit\": 10\n    \"totalCount\": 21\n  }  \n}\n```\n\nWhen making calls to the API, you can adjust the slice of data returned using query parameters such as:\n\n`` https://api.sakari.io/v1/accounts/123/contacts?offset=20&limit=25 ``\n\nThis will return 25 contacts with an offset of 20.\n",
   "apiTitle": "Sakari",

@@ -3,6 +3,148 @@
   "openApiRaw": "https://raw.githubusercontent.com/Kalebu/mtaa-docs/main/openapi.yaml",
   "homepage": "mtaa-api.herokuapp.com",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/{country}",
+      "method": "tanzaniaRegions",
+      "httpMethod": "get",
+      "tag": "Tanzania regions",
+      "description": "Returns all regions present in Tanzania",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "Country name in lowercase eg (Tanzania)"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/{country}/{region}",
+      "method": "districtsInARegion",
+      "httpMethod": "get",
+      "tag": "Districts in region",
+      "description": "Returns all districts in region",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "Country name in lowercase eg( tanzania)"
+        },
+        {
+          "name": "region",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the region eg (Mbeya)"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/{country}/{region}/{district}",
+      "method": "wardsInADistrict",
+      "httpMethod": "get",
+      "tag": "Wards in a district",
+      "description": "Returns all wards in a district",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "Country name in lowercase eg( tanzania)"
+        },
+        {
+          "name": "region",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the region eg (Mbeya)"
+        },
+        {
+          "name": "district",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the District eg (Rungwe)"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/{country}/{region}/{district}/{ward}",
+      "method": "streetsInAWard",
+      "httpMethod": "get",
+      "tag": "Streets in a ward",
+      "description": "Returns all streets in a ward",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "Country name in lowercase eg( tanzania)"
+        },
+        {
+          "name": "region",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the region eg (Mbeya)"
+        },
+        {
+          "name": "district",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the District eg (Rungwe)"
+        },
+        {
+          "name": "ward",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the Ward eg (Kiwira)"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/{country}/{region}/{district}/{ward}/{street}",
+      "method": "neighborhoodInAStreet",
+      "httpMethod": "get",
+      "tag": "neighborhood in a street",
+      "description": "Returns all neighborhood in a street",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "Country name in lowercase eg( tanzania)"
+        },
+        {
+          "name": "region",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the region eg (Mbeya)"
+        },
+        {
+          "name": "district",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the District eg (Rungwe)"
+        },
+        {
+          "name": "ward",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the Ward eg (Kiwira)"
+        },
+        {
+          "name": "street",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the Street eg (Ilundo)"
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://mtaa-api.herokuapp.com/api",
   "apiDescription": "Mtaa A simple REST API to access Tanzania's location information,With mtaa API you can easily query and integrate all the location in tanzania from region level to streets from your programming language of your your choice",
   "apiTitle": "Mtaa API Documentation",

@@ -3,6 +3,1815 @@
   "openApiRaw": "https://api.brex.io/docs/api-docs.json",
   "homepage": "brex.io",
   "apiVersion": "2021.12",
+  "methods": [
+    {
+      "url": "/api/v1/company/announcement/{id}",
+      "method": "companyAnnouncement",
+      "httpMethod": "get",
+      "tag": "v1-company",
+      "description": "Retrieves announcement data",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "announcement hex ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/company/deepsearch/isin",
+      "method": "companyDeepsearchIsin",
+      "httpMethod": "post",
+      "tag": "v1-company",
+      "description": "Retrieves a list of stock exchange listings",
+      "parameters": [
+        {
+          "name": "isin",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/company/deepsearch/lei/{number}",
+      "method": "companyDeepsearchLei",
+      "httpMethod": "get",
+      "tag": "v1-company",
+      "description": "Retrieves a list of companies",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "string",
+          "required": true,
+          "description": "lei number"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Pagination for the ISIN number results (1000 numbers per page)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/company/deepsearch/name/{country}/{name}",
+      "method": "companyDeepsearchName",
+      "httpMethod": "get",
+      "tag": "v1-company",
+      "description": "Retrieves a list of companies from the official business register",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "ISO_3166-1_alpha-2 representation of a country name - 2 chars"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "company name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/company/deepsearch/number/{country}/{number}",
+      "method": "companyDeepsearchNumber",
+      "httpMethod": "get",
+      "tag": "v1-company",
+      "description": "Retrieves a list of companies from the official business register",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "ISO_3166-1_alpha-2 representation of a country name - 2 chars"
+        },
+        {
+          "name": "number",
+          "schema": "string",
+          "required": true,
+          "description": "company registration number"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/company/monitoring/changeTypes",
+      "method": "companyMonitorChangeTypesList",
+      "httpMethod": "get",
+      "tag": "v1-company",
+      "description": "Get available ChangeTypes",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/company/monitoring/list",
+      "method": "companyMonitorList",
+      "httpMethod": "get",
+      "tag": "v1-company",
+      "description": "Retrieves a list of registered monitors",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/company/monitoring/list/{id}",
+      "method": "companyMonitorId",
+      "httpMethod": "get",
+      "tag": "v1-company",
+      "description": "Get monitor status for specific company id",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Company Hex ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/company/monitoring/register/{id}",
+      "method": "companyMonitorRegister",
+      "httpMethod": "post",
+      "tag": "v1-company",
+      "description": "Register a Company for monitoring",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Company Hex ID"
+        },
+        {
+          "name": "callbackUrl",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "changeType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/company/monitoring/unregister/{id}",
+      "method": "companyMonitorUnregister",
+      "httpMethod": "post",
+      "tag": "v1-company",
+      "description": "Deactivates an active notification",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Registration id of monitoring request record"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/company/notification/list",
+      "method": "companyNotificationList",
+      "httpMethod": "get",
+      "tag": "v1-company",
+      "description": "Retrieves a list of registered notifications",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/company/notification/list/{id}",
+      "method": "companyNotificationId",
+      "httpMethod": "get",
+      "tag": "v1-company",
+      "description": "Retrieves a list of registered notifications",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Company Hex ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/company/notification/register/{id}",
+      "method": "companyNotificationRegister",
+      "httpMethod": "post",
+      "tag": "v1-company",
+      "description": "Creates a new notification",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Company Hex ID"
+        },
+        {
+          "name": "callbackUrl",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/company/notification/unregister/{id}",
+      "method": "companyNotificationUnregister",
+      "httpMethod": "post",
+      "tag": "v1-company",
+      "description": "Unregister a company from Monitoring",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Registration id of monitoring request record"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/company/search/name/{country}/{name}",
+      "method": "companySearchName",
+      "httpMethod": "get",
+      "tag": "v1-company",
+      "description": "Retrieves a list of companies from the KYC API company index",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "ISO_3166-1_alpha-2 representation of a country name - 2 chars"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "company name"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "number of search results"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/company/search/number/{country}/{number}",
+      "method": "companySearchNumber",
+      "httpMethod": "get",
+      "tag": "v1-company",
+      "description": "Retrieves a list of companies from the KYC API company index",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "ISO_3166-1_alpha-2 representation of a country name - 2 chars"
+        },
+        {
+          "name": "number",
+          "schema": "string",
+          "required": true,
+          "description": "company registration number"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "number of search results"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/company/search/{country}",
+      "method": "companyAlternativeSearch",
+      "httpMethod": "post",
+      "tag": "v1-company",
+      "description": "Retrieves a list of companies from the KYC API company index",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "ISO_3166-1_alpha-2 representation of a country name - 2 chars"
+        },
+        {
+          "name": "address",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "number",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "phone",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "vat",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/company/{id}/announcements",
+      "method": "companyIdAnnouncements",
+      "httpMethod": "get",
+      "tag": "v1-company",
+      "description": "Retrieves company announcements",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "company hex ID"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "limit of announcements in response (default 10)"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "to paginate through results (default 0)"
+        },
+        {
+          "name": "data",
+          "schema": "boolean",
+          "required": false,
+          "description": "If this parameter is set to false, you will only receive ids, and no additional data about announcements and no hits to the metric will be counted. (and potentially minimizing your costs)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/company/{id}/super/{country}",
+      "method": "companyIdSuper",
+      "httpMethod": "get",
+      "tag": "v1-company",
+      "description": "Retrieves structured data extracted from a company document",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "company superdata by id"
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "ISO_3166-1_alpha-2 representation of a country name - 2 chars"
+        },
+        {
+          "name": "lang",
+          "schema": "string",
+          "required": false,
+          "description": "Optional data translation (only available in limited jurisdictions)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/company/{id}/{dataset}",
+      "method": "companyIdDataset",
+      "httpMethod": "get",
+      "tag": "v1-company",
+      "description": "Retrieves company details",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "company master data by id"
+        },
+        {
+          "name": "check_stock_listing",
+          "schema": "boolean",
+          "required": false,
+          "description": "Try to retrieve additional stock information for this company. (Only available on refresh)"
+        },
+        {
+          "name": "dataset",
+          "schema": "string",
+          "required": true,
+          "description": "company master data by id"
+        },
+        {
+          "name": "lang",
+          "schema": "string",
+          "required": false,
+          "description": "Optional data translation (only available in limited jurisdictions)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/ein-verification/basic-check",
+      "method": "einVerificationBasic",
+      "httpMethod": "get",
+      "tag": "v1-ein-verification",
+      "description": "Verifies an EIN number",
+      "parameters": [
+        {
+          "name": "ein",
+          "schema": "string",
+          "required": true,
+          "description": "Nine letter EIN number with or without hyphens"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/ein-verification/comprehensive-check",
+      "method": "einVerificationComprehensive",
+      "httpMethod": "get",
+      "tag": "v1-ein-verification",
+      "description": "Verifies EIN number and retrieves company data",
+      "parameters": [
+        {
+          "name": "ein",
+          "schema": "string",
+          "required": true,
+          "description": "Nine letter EIN number with or without hyphens"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/ein-verification/lookup",
+      "method": "einVerificationLookup",
+      "httpMethod": "get",
+      "tag": "v1-ein-verification",
+      "description": "Retrieves a list of EIN numbers",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "Business name of the company"
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "required": false,
+          "description": "Optional state parameter to improve results. (Two letter code for example CA or US-CA for California)"
+        },
+        {
+          "name": "zip",
+          "schema": "string",
+          "required": false,
+          "description": "Optional zip code parameter to improve results. (Zip is preferred over state)"
+        },
+        {
+          "name": "tight",
+          "schema": "boolean",
+          "required": false,
+          "description": "Optional parameter to do tight matching. (Only the best match will be returned rather then the top 5)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/iban-verification/check-iban",
+      "method": "ibanBasic",
+      "httpMethod": "post",
+      "tag": "v1-iban-verification",
+      "description": "Checks validity of an IBAN number",
+      "parameters": [
+        {
+          "name": "ibanNumber",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/iban-verification/comprehensive-check-iban",
+      "method": "ibanComprehensive",
+      "httpMethod": "post",
+      "tag": "v1-iban-verification",
+      "description": "Checks validity of an IBAN number",
+      "parameters": [
+        {
+          "name": "ibanNumber",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/nif-verification/basic-check/{country}",
+      "method": "nifBasic",
+      "httpMethod": "post",
+      "tag": "v1-nif-verification",
+      "description": "Verifies a NIF number",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "ISO_3166-1_alpha-2 representation of a country name - 2 chars"
+        },
+        {
+          "name": "companyAddress",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "companyName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "nifNumber",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/nif-verification/comprehensive-check/{country}",
+      "method": "nifComprehensive",
+      "httpMethod": "post",
+      "tag": "v1-nif-verification",
+      "description": "Verifies a NIF number and retrieves company data",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "ISO_3166-1_alpha-2 representation of a country name - 2 chars"
+        },
+        {
+          "name": "companyAddress",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "companyName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "nifNumber",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/pepsanction/monitor/list",
+      "method": "pepMonitorList",
+      "httpMethod": "get",
+      "tag": "v1-pepsanction",
+      "description": "Retrieves a list of monitor entries",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/pepsanction/monitor/unregister/{id}",
+      "method": "pepMonitorUnregister",
+      "httpMethod": "post",
+      "tag": "v1-pepsanction",
+      "description": "Deactive a pep sanction monitor",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Monitor"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/pepsanction/monitor/update/{id}",
+      "method": "pepMonitorUpdate",
+      "httpMethod": "post",
+      "tag": "v1-pepsanction",
+      "description": "Update details of active Pep Sanction monitor",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Monitor"
+        },
+        {
+          "name": "Webhook",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/pepsanction/order/{type}/{search}",
+      "method": "pepOrder",
+      "httpMethod": "post",
+      "tag": "v1-pepsanction",
+      "description": "Orders a new Pep Sanction Check Report",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": "Type (Business or Person) of the requested Pep Sanction Check"
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "required": true,
+          "description": "Search string for the Pep Sanction Check"
+        },
+        {
+          "name": "Aliases",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Country",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "DOB",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "FamilyName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Filters",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "GivenName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "LEI",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Locale",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Medialists",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "MiddleName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Monitoring",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "Peplists",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Region",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "SmartMatch",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "Watchlists",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Webhook",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/pepsanction/retrieve/{id}",
+      "method": "pepRetrieve",
+      "httpMethod": "get",
+      "tag": "v1-pepsanction",
+      "description": "Returns a json or pdf report",
+      "parameters": [
+        {
+          "name": "accept",
+          "schema": "string",
+          "required": false,
+          "description": "The type (pdf or json) in which the check should be returned"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the ordered Pep Sanction Check (id as returned by orderPepSanction call)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/product/availability/{sku}/{subjectId}",
+      "method": "productAvailability",
+      "httpMethod": "get",
+      "tag": "v1-product",
+      "description": "Retrieves a document availability result",
+      "parameters": [
+        {
+          "name": "sku",
+          "schema": "string",
+          "required": true,
+          "description": "SKU - 9 character value from a Product object"
+        },
+        {
+          "name": "subjectId",
+          "schema": "string",
+          "required": true,
+          "description": "Subject (e.g. Company) ID - 32 character hex value"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/product/catalog/{country}",
+      "method": "productCatalog",
+      "httpMethod": "get",
+      "tag": "v1-product",
+      "description": "Returns a catalog of products",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "two letter country code in upper case"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/product/notifier/{notifierId}",
+      "method": "productNotifier",
+      "httpMethod": "get",
+      "tag": "v1-product",
+      "description": "Returns metadata for a notifier",
+      "parameters": [
+        {
+          "name": "notifierId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the ProductOrderNotifier as returned from a /notifier POST call - 32 character hex value"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/product/notifier/{orderId}/{type}/{uri}",
+      "method": "productNotifierCreate",
+      "httpMethod": "post",
+      "tag": "v1-product",
+      "description": "Creates a notifier for an order",
+      "parameters": [
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the ProductOrder as returned from a /product/buy call - 32 character hex value"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the notifier - indicates the action the notifier will perform. Currently GET and POST are supported which performs an http(s) GET/POST to the supplied uri with appended notifierId= and orderId= parameters when the order processing is completed. Upon the POST request the order object is sent as a JSON body"
+        },
+        {
+          "name": "uri",
+          "schema": "string",
+          "required": true,
+          "description": "URI of the notifier for the 'complete' action. Currently only a GET method HTTP(s) URL is supported. 1 to 250 characters long. Every slash in the URI must be replaced by a ~"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/product/order/concierge",
+      "method": "productOrderConcierge",
+      "httpMethod": "post",
+      "tag": "v1-product",
+      "description": "Places a concierge order",
+      "parameters": [
+        {
+          "name": "companyName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "contactEmail",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "contactPhone",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "costConfirmation",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "financialData",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "historicInformation",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "informationRequirements",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "locationInvestigation",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "priority",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "registerData",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "registerNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "subjectId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/product/order/ubo",
+      "method": "productOrderUbo",
+      "httpMethod": "post",
+      "tag": "v1-product",
+      "description": "Places a UBO order",
+      "parameters": [
+        {
+          "name": "callbackUrl",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "credits",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "includeDocs",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "levels",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "strategy",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "subjectId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/product/order/{sku}/{option}/{subjectId}",
+      "method": "productOrderWithOption",
+      "httpMethod": "post",
+      "tag": "v1-product",
+      "description": "Places a product order",
+      "parameters": [
+        {
+          "name": "sku",
+          "schema": "string",
+          "required": true,
+          "description": "SKU - 9 character value from a Product object"
+        },
+        {
+          "name": "option",
+          "schema": "string",
+          "required": true,
+          "description": "Product option (e.g. Accounts year) from a previous Availability call"
+        },
+        {
+          "name": "subjectId",
+          "schema": "string",
+          "required": true,
+          "description": "Subject (e.g. Company) ID - 32 character hex value"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/product/order/{sku}/{subjectId}",
+      "method": "productOrder",
+      "httpMethod": "post",
+      "tag": "v1-product",
+      "description": "Places a product order",
+      "parameters": [
+        {
+          "name": "sku",
+          "schema": "string",
+          "required": true,
+          "description": "SKU - 9 character value from a Product object"
+        },
+        {
+          "name": "subjectId",
+          "schema": "string",
+          "required": true,
+          "description": "Subject (e.g. Company) ID - 32 character hex value"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/product/search/{subjectId}",
+      "method": "productSearch",
+      "httpMethod": "get",
+      "tag": "v1-product",
+      "description": "Returns a list of products",
+      "parameters": [
+        {
+          "name": "subjectId",
+          "schema": "string",
+          "required": true,
+          "description": "Subject (e.g. Company) ID - 32 character hex value"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/product/status/{orderId}",
+      "method": "productStatus",
+      "httpMethod": "get",
+      "tag": "v1-product",
+      "description": "Returns metadata for a order",
+      "parameters": [
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the ProductOrder as returned from a /product/buy call - 32 character hex value"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/product/update/{action}/{orderId}",
+      "method": "productUpdateAction",
+      "httpMethod": "post",
+      "tag": "v1-product",
+      "description": "Updates metadata of an order",
+      "parameters": [
+        {
+          "name": "action",
+          "schema": "string",
+          "required": true,
+          "description": "The action you want to perform for the order"
+        },
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the ProductOrder as returned from a /product/buy call - 32 character hex value"
+        },
+        {
+          "name": "credits",
+          "schema": "number",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/product/{orderId}",
+      "method": "productRetrieve",
+      "httpMethod": "get",
+      "tag": "v1-product",
+      "description": "Retrieves the result of an order",
+      "parameters": [
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the ProductOrder as returned from a /product/buy call - 32 character hex value"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/system/countries",
+      "method": "systemCountries",
+      "httpMethod": "get",
+      "tag": "v1-system",
+      "description": "Returns a list of countries",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/system/health",
+      "method": "healthCheck",
+      "httpMethod": "get",
+      "tag": "v1-system",
+      "description": "Returns the health information for the official business registers based on usage.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/system/pricelist",
+      "method": "systemPricelist",
+      "httpMethod": "get",
+      "tag": "v1-system",
+      "description": "Returns a list of products with prices",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/tin-verification/basic-check",
+      "method": "tinVerificationBasicCheck",
+      "httpMethod": "get",
+      "tag": "v1-tin-verification",
+      "description": "Verifies a TIN number",
+      "parameters": [
+        {
+          "name": "tin",
+          "schema": "string",
+          "required": true,
+          "description": "Nine letter TIN number with or without hyphens"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "Company Name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/tin-verification/comprehensive-check",
+      "method": "tinVerificationComprehensiveCheck",
+      "httpMethod": "get",
+      "tag": "v1-tin-verification",
+      "description": "EIN Name Lookup with TIN number and retrieves company data",
+      "parameters": [
+        {
+          "name": "tin",
+          "schema": "string",
+          "required": true,
+          "description": "Nine letter TIN number with or without hyphens"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "Company Name"
+        },
+        {
+          "name": "threshold",
+          "schema": "integer",
+          "required": false,
+          "description": "The percentage of minimum similarity threshold for company matching (optional, default: 70%)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/tin-verification/name-lookup",
+      "method": "tinVerificationNameLookup",
+      "httpMethod": "get",
+      "tag": "v1-tin-verification",
+      "description": "EIN Name Lookup with TIN number",
+      "parameters": [
+        {
+          "name": "tin",
+          "schema": "string",
+          "required": true,
+          "description": "Nine letter TIN number with or without hyphens"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/vat-verification/basic-check/{country}",
+      "method": "vatBasic",
+      "httpMethod": "post",
+      "tag": "v1-vat-verification",
+      "description": "Returns a verification result",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "ISO_3166-1_alpha-2 representation of a country name - 2 chars"
+        },
+        {
+          "name": "companyAddress",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "companyName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "companyNumber",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "vatNumber",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/vat-verification/comprehensive-check/{country}",
+      "method": "vatComprehensive",
+      "httpMethod": "post",
+      "tag": "v1-vat-verification",
+      "description": "Returns a verification result and company data",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "ISO_3166-1_alpha-2 representation of a country name - 2 chars"
+        },
+        {
+          "name": "companyAddress",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "companyName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "companyNumber",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "vatNumber",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/vat-verification/leveltwo-check/{country}",
+      "method": "vatLevelTwo",
+      "httpMethod": "post",
+      "tag": "v1-vat-verification",
+      "description": "Returns a level two verification result",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "ISO_3166-1_alpha-2 representation of a country name - 2 chars"
+        },
+        {
+          "name": "confirmation",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "vatNumber",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/vat-verification/lookup/{country}",
+      "method": "vatLookup",
+      "httpMethod": "post",
+      "tag": "v1-vat-verification",
+      "description": "Returns a list of vat numbers with additional data",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "ISO_3166-1_alpha-2 representation of a country name - 2 chars"
+        },
+        {
+          "name": "address",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.kompany.com/",
   "apiDescription": "API Interface to retrieve company data and products from business registers",
   "apiTitle": "KYC API Documentation",

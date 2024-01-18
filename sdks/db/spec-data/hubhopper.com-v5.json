@@ -3,6 +3,237 @@
   "openApiRaw": "https://docs.hubhopper.com/api/integrations/partner/swagger.yaml",
   "homepage": "hubhopper.com",
   "apiVersion": "v5",
+  "methods": [
+    {
+      "url": "/categories",
+      "method": "/categoriesGet",
+      "httpMethod": "get",
+      "tag": "Category",
+      "description": "Get the list of all content categories.",
+      "parameters": [
+        {
+          "name": "pageSize",
+          "schema": "string",
+          "required": false,
+          "description": "Provide the size of the page to fetch."
+        },
+        {
+          "name": "page",
+          "schema": "string",
+          "required": false,
+          "description": "Provide the page number to fetch."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/categories/{categoryId}",
+      "method": "/categories/{categoryId}Get",
+      "httpMethod": "get",
+      "tag": "Category",
+      "description": "Get specific content category.",
+      "parameters": [
+        {
+          "name": "categoryId",
+          "schema": "string",
+          "required": true,
+          "description": "Unique qualifier for a category."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Model to fetch a single category."
+        }
+      ]
+    },
+    {
+      "url": "/categories/{categoryId}/podcasts",
+      "method": "/categories/{categoryId}/podcastsGet",
+      "httpMethod": "get",
+      "tag": "Category",
+      "description": "Get a list of all podcasts under a category.",
+      "parameters": [
+        {
+          "name": "categoryId",
+          "schema": "string",
+          "required": true,
+          "description": "Unique qualifier for a category."
+        },
+        {
+          "name": "page",
+          "schema": "string",
+          "required": false,
+          "description": "Provide the page number to fetch."
+        },
+        {
+          "name": "pageSize",
+          "schema": "string",
+          "required": false,
+          "description": "Provide the size of the page to fetch."
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "required": false,
+          "description": "Order the items by 'newest' | 'random'"
+        },
+        {
+          "name": "filters",
+          "schema": "string",
+          "required": false,
+          "description": "Takes filters like 'lang' in a url encoded json. \nExample:\n1)Single ->\n&nbsp;&nbsp;&nbsp;&nbsp; var filterJson = {\"lang\":[\"en\"]};\n&nbsp;&nbsp;&nbsp;&nbsp; var url = baseUrl+'?'+filters=enocdeURI(JSON.stringify(filterJson));\n2)Multiple ->\n&nbsp;&nbsp;&nbsp;&nbsp; var filterJson = {\"lang\":[\"en\",\"hi\"]};\n&nbsp;&nbsp;&nbsp;&nbsp; var url = baseUrl+'?'+filters=enocdeURI(JSON.stringify(filterJson));"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/podcasts",
+      "method": "/podcastsGet",
+      "httpMethod": "get",
+      "tag": "Podcast",
+      "description": "Get the list of all podcasts.",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "string",
+          "required": false,
+          "description": "Provide the page number to fetch."
+        },
+        {
+          "name": "pageSize",
+          "schema": "string",
+          "required": false,
+          "description": "Provide the size of the page to fetch."
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "required": false,
+          "description": "Order the items by 'newest' | 'random'"
+        },
+        {
+          "name": "filters",
+          "schema": "string",
+          "required": false,
+          "description": "Takes filters like 'lang' in a url encoded json. \nExample:\n1)Single ->\n&nbsp;&nbsp;&nbsp;&nbsp; var filterJson = {\"lang\":[\"en\"]};\n&nbsp;&nbsp;&nbsp;&nbsp; var url = baseUrl+'?'+filters=enocdeURI(JSON.stringify(filterJson));\n2)Multiple ->\n&nbsp;&nbsp;&nbsp;&nbsp; var filterJson = {\"lang\":[\"en\",\"hi\"]};\n&nbsp;&nbsp;&nbsp;&nbsp; var url = baseUrl+'?'+filters=enocdeURI(JSON.stringify(filterJson));"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/podcasts/{podcastId}",
+      "method": "/podcasts/{podcastId}Get",
+      "httpMethod": "get",
+      "tag": "Podcast",
+      "description": "Get a single Podcast.",
+      "parameters": [
+        {
+          "name": "podcastId",
+          "schema": "string",
+          "required": true,
+          "description": "Unique qualifier for a podcast."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/podcasts/{podcastId}/episodes",
+      "method": "/podcasts/{podcastId}/episodesGet",
+      "httpMethod": "get",
+      "tag": "Podcast",
+      "description": "Get a list of all episodes under a podcast.",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "string",
+          "required": false,
+          "description": "Provide the page number to fetch."
+        },
+        {
+          "name": "pageSize",
+          "schema": "string",
+          "required": false,
+          "description": "Provide the size of the page to fetch."
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "required": false,
+          "description": "Order the items by 'newest' | 'random'"
+        },
+        {
+          "name": "filters",
+          "schema": "string",
+          "required": false,
+          "description": "Takes filters like 'lang' in a url encoded json. \nExample:\n1)Single ->\n&nbsp;&nbsp;&nbsp;&nbsp; var filterJson = {\"lang\":[\"en\"]};\n&nbsp;&nbsp;&nbsp;&nbsp; var url = baseUrl+'?'+filters=enocdeURI(JSON.stringify(filterJson));\n2)Multiple ->\n&nbsp;&nbsp;&nbsp;&nbsp; var filterJson = {\"lang\":[\"en\",\"hi\"]};\n&nbsp;&nbsp;&nbsp;&nbsp; var url = baseUrl+'?'+filters=enocdeURI(JSON.stringify(filterJson));"
+        },
+        {
+          "name": "podcastId",
+          "schema": "string",
+          "required": true,
+          "description": "Unique qualifier for a podcast."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/util/languages",
+      "method": "/util/languagesGet",
+      "httpMethod": "get",
+      "tag": "Util",
+      "description": "",
+      "parameters": [
+        {
+          "name": "pageSize",
+          "schema": "string",
+          "required": false,
+          "description": "Provide the size of the page to fetch."
+        },
+        {
+          "name": "page",
+          "schema": "string",
+          "required": false,
+          "description": "Provide the page number to fetch."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://apis.hubhopper.com/partner",
   "apiDescription": "This is an interactive document explaining the API(s) that could be used to fetch data from [Hubhopper](https://hubhopper.com). Use the api key provided to authorize `x-api-key` and test the API(s). The output data models are also available for reference.",
   "apiTitle": "Hubhopper Partner Integration API(s) - Production",

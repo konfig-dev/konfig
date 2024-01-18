@@ -4,6 +4,45 @@
   "homepage": "xero.com",
   "serviceName": "xero-identity",
   "apiVersion": "2.9.4",
+  "methods": [
+    {
+      "url": "/Connections",
+      "method": "getConnections",
+      "httpMethod": "get",
+      "tag": "identity",
+      "description": "Retrieves the connections for this user",
+      "parameters": [
+        {
+          "name": "authEventId",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by authEventId"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Connections/{id}",
+      "method": "deleteConnection",
+      "httpMethod": "delete",
+      "tag": "identity",
+      "description": "Deletes a connection for this user (i.e. disconnect a tenant)",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier for retrieving single object"
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://api.xero.com",
   "apiDescription": "These endpoints are related to managing authentication tokens and identity for Xero API",
   "apiTitle": "Xero OAuth 2 Identity Service API",

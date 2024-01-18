@@ -3,6 +3,3417 @@
   "openApiRaw": "https://circuitsandbox.net/rest/v2/swagger",
   "homepage": "circuitsandbox.net",
   "apiVersion": "2.9.235",
+  "methods": [
+    {
+      "url": "/conversations",
+      "method": "getConversations",
+      "httpMethod": "get",
+      "tag": "Conversations",
+      "description": "Gets a list of conversations",
+      "parameters": [
+        {
+          "name": "modTime",
+          "schema": "string",
+          "required": false,
+          "description": "The modification time of the conversation in UTC format. During the query the conversations before (<i>default</i>) or after this timestamp are returned. In case no timestamp is specified the current server time in UTC is used, i.e. the last 25 modified conversations are returned"
+        },
+        {
+          "name": "direction",
+          "schema": "string",
+          "required": false,
+          "description": "The direction of the search based on the modification time. Valid values are either BEFORE (default) or AFTER"
+        },
+        {
+          "name": "results",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum number of returned results (default 25). The maximum allowed value is 100."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/byIds",
+      "method": "getConversationsById",
+      "httpMethod": "get",
+      "tag": "Conversations",
+      "description": "Gets conversations",
+      "parameters": [
+        {
+          "name": "convIds",
+          "schema": "array",
+          "required": true,
+          "description": "The array of IDs of the conversations which should be retrieved"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/community",
+      "method": "getCommunityConversations",
+      "httpMethod": "get",
+      "tag": "Conversations",
+      "description": "Gets a list of communities",
+      "parameters": [
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "Defines the type of sorting for the community conversations (default is alphabetical)"
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "required": false,
+          "description": "Defines the ordering of the conversations (default is ascending)"
+        },
+        {
+          "name": "includeOwn",
+          "schema": "boolean",
+          "required": false,
+          "description": "If set to false only conversations are returned where the user is no member of, otherwise all community conversations are returned"
+        },
+        {
+          "name": "startIndex",
+          "schema": "number",
+          "required": false,
+          "description": "The index of the conversation that is the first one that has to be returned. E.g. if a request starts with startIndex 40 and results 20 the conversations 40 to 60 are returned"
+        },
+        {
+          "name": "results",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum number of returned results (default 25). The maximum allowed value is 100."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/community",
+      "method": "createCommunityConversation",
+      "httpMethod": "post",
+      "tag": "Conversations",
+      "description": "Creates a community conversation",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "participants",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "topic",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/community/{convId}",
+      "method": "updateConversationCommunity",
+      "httpMethod": "put",
+      "tag": "Conversations",
+      "description": "Updates the information of a community",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation which should be updated"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "topic",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/community/{convId}/join",
+      "method": "joinCommunityConversation",
+      "httpMethod": "post",
+      "tag": "Conversations",
+      "description": "Adds the authenticated user to a community",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation which the user will join"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/community/{convId}/participants",
+      "method": "removeParticipantCommunity",
+      "httpMethod": "delete",
+      "tag": "Conversations",
+      "description": "Removes participants from a community",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation from which the participant have to be removed"
+        },
+        {
+          "name": "participants",
+          "schema": "array",
+          "required": true,
+          "description": "The IDs or the unique email addresses of the Circuit users that have to be removed"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/community/{convId}/participants",
+      "method": "addParticipantCommunity",
+      "httpMethod": "post",
+      "tag": "Conversations",
+      "description": "Adds participants to a community",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation to which the participant has to be added."
+        },
+        {
+          "name": "participants",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/conversationdetails",
+      "method": "getJoinDetailsMultiple",
+      "httpMethod": "get",
+      "tag": "Conversations",
+      "description": "Gets the conference details for multiple conversations",
+      "parameters": [
+        {
+          "name": "convIds",
+          "schema": "array",
+          "required": true,
+          "description": "An array of IDs of the conversations for which the join details should be returned"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/direct",
+      "method": "getDirectConversation",
+      "httpMethod": "get",
+      "tag": "Conversations",
+      "description": "Checks for a 1-to-1 conversation",
+      "parameters": [
+        {
+          "name": "participant",
+          "schema": "string",
+          "required": true,
+          "description": "The participant that will be part of this conversation together with the creator, specified by the Circuit user ID or the unique email address"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/direct",
+      "method": "createDirectConversation",
+      "httpMethod": "post",
+      "tag": "Conversations",
+      "description": "Creates a 1-to-1 conversation",
+      "parameters": [
+        {
+          "name": "participant",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/favorite",
+      "method": "getFavoriteConversations",
+      "httpMethod": "get",
+      "tag": "Conversations",
+      "description": "Gets favorite conversations",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/group",
+      "method": "createGroupConversation",
+      "httpMethod": "post",
+      "tag": "Conversations",
+      "description": "Creates a group conversation",
+      "parameters": [
+        {
+          "name": "participants",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "topic",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/group/{convId}",
+      "method": "updateConversationGroup",
+      "httpMethod": "put",
+      "tag": "Conversations",
+      "description": "Updates the information of a group conversation",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation which should be updated"
+        },
+        {
+          "name": "topic",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/group/{convId}/participants",
+      "method": "removeParticipantGroup",
+      "httpMethod": "delete",
+      "tag": "Conversations",
+      "description": "Removes participants from a group conversation",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation from which the participant have to be removed"
+        },
+        {
+          "name": "participants",
+          "schema": "array",
+          "required": true,
+          "description": "The IDs or the unique email addresses of the Circuit users that have to be removed"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/group/{convId}/participants",
+      "method": "addParticipantGroup",
+      "httpMethod": "post",
+      "tag": "Conversations",
+      "description": "Adds participants to a group conversation",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation to which the participant has to be added."
+        },
+        {
+          "name": "participants",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/label/{labelId}",
+      "method": "getConversationsByLabel",
+      "httpMethod": "get",
+      "tag": "Conversations",
+      "description": "Returns conversations with a certain label",
+      "parameters": [
+        {
+          "name": "labelId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the label to look for"
+        },
+        {
+          "name": "nextPagePointer",
+          "schema": "string",
+          "required": false,
+          "description": "Pointer to the next page of conversations if there are any"
+        },
+        {
+          "name": "pageSize",
+          "schema": "number",
+          "required": false,
+          "description": "Numbers of max conversations per page"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/messages/flag",
+      "method": "getFlagItemConv",
+      "httpMethod": "get",
+      "tag": "Conversations",
+      "description": "Gets a list of the flagged messages",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/messages/{itemId}",
+      "method": "getSingleConversationtem",
+      "httpMethod": "get",
+      "tag": "Conversations",
+      "description": "Returns a text item",
+      "parameters": [
+        {
+          "name": "itemId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the item that will be returned"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/moderate/{convId}",
+      "method": "moderateConversation",
+      "httpMethod": "post",
+      "tag": "Conversations",
+      "description": "Set conversation moderated",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation which will be set to moderated state"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/conversations/resolveinvitetoken",
+      "method": "resolveInvitationToken",
+      "httpMethod": "get",
+      "tag": "Conversations",
+      "description": "Resolves an invite token to a conversation",
+      "parameters": [
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": "The invite token to resolve"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/search",
+      "method": "searchConversations",
+      "httpMethod": "get",
+      "tag": "Conversations",
+      "description": "Performs a conversation search",
+      "parameters": [
+        {
+          "name": "term",
+          "schema": "string",
+          "required": true,
+          "description": "The search term"
+        },
+        {
+          "name": "includeItemIds",
+          "schema": "boolean",
+          "required": false,
+          "description": "Optional parameter to specify if a deep or normal search is executed. In a deep search all matching item IDs inside every conversation are returned (up to a maximum of 100). For a normal search only the conversation IDs are returned. Default is a normal search (without item IDs)."
+        },
+        {
+          "name": "scope",
+          "schema": "string",
+          "required": false,
+          "description": "The search scope, FILES||PEOPLE||MEMBERS||MESSAGES||SENTBY||ALL||CONVERSATIONS||LABEL||FILTER"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/unmoderate/{convId}",
+      "method": "unmoderateConversation",
+      "httpMethod": "post",
+      "tag": "Conversations",
+      "description": "Set conversation unmoderated",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation which will be set to unmoderated state"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/conversations/{convId}",
+      "method": "getConversationbyId",
+      "httpMethod": "get",
+      "tag": "Conversations",
+      "description": "Gets a conversation",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation which should be updated"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/{convId}/archive",
+      "method": "undoArchiveConversation",
+      "httpMethod": "delete",
+      "tag": "Conversations",
+      "description": "Unmute conversation",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation which will be unmarked as muted"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/conversations/{convId}/archive",
+      "method": "archiveConversation",
+      "httpMethod": "post",
+      "tag": "Conversations",
+      "description": "Archives conversation",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation which will be archived"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/conversations/{convId}/conversationdetails",
+      "method": "getJoinDetails",
+      "httpMethod": "get",
+      "tag": "Conversations",
+      "description": "Gets the conference details of a conversation",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation for which the join details should be returned"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/{convId}/favorite",
+      "method": "deleteFavorite",
+      "httpMethod": "delete",
+      "tag": "Conversations",
+      "description": "Removes a conversation from favorites",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation which will be unmarked as favorite"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/conversations/{convId}/favorite",
+      "method": "addFavorite",
+      "httpMethod": "post",
+      "tag": "Conversations",
+      "description": "Adds a conversation to the favorites",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation which will be marked as favorite"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/conversations/{convId}/items",
+      "method": "getConversationItems",
+      "httpMethod": "get",
+      "tag": "Conversations",
+      "description": "Gets a list of conversation items",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation to which the items belong"
+        },
+        {
+          "name": "modTime",
+          "schema": "string",
+          "required": false,
+          "description": "The modification time of the item in UTC format. During the query the items before (default) or after this timestamps are returned. In case no timestamp is specified the current server time in UTC is used, i.e. the last 25 modified items are returned"
+        },
+        {
+          "name": "direction",
+          "schema": "string",
+          "required": false,
+          "description": "The direction of the search based on the modification time. Valid values are either BEFORE (default) or AFTER"
+        },
+        {
+          "name": "results",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum number of returned results (default 25). The maximum allowed value is 100."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/{convId}/label",
+      "method": "assignLabel",
+      "httpMethod": "post",
+      "tag": "Conversations",
+      "description": "Adds a label to a conversation",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation to which the label is added"
+        },
+        {
+          "name": "label",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/{convId}/label/{labelId}",
+      "method": "unassignLabel",
+      "httpMethod": "delete",
+      "tag": "Conversations",
+      "description": "Removes a label from a conversation",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation from which the label is removed"
+        },
+        {
+          "name": "labelId",
+          "schema": "string",
+          "required": true,
+          "description": "The actual label "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/{convId}/messages",
+      "method": "addTextItem",
+      "httpMethod": "post",
+      "tag": "Conversations",
+      "description": "Adds a message to a conversation",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation to which the new item has to be added"
+        },
+        {
+          "name": "attachments",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "content",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "formMetaData",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "subject",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/{convId}/messages/flag",
+      "method": "getFlagItem",
+      "httpMethod": "get",
+      "tag": "Conversations",
+      "description": "Gets a list of the flagged messages of a conversation",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation to which the item belongs"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/{convId}/messages/{itemId}",
+      "method": "deleteTextItem",
+      "httpMethod": "delete",
+      "tag": "Conversations",
+      "description": "Deletes a message from a conversation",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation to which the item belongs"
+        },
+        {
+          "name": "itemId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the item that will be deleted"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/{convId}/messages/{itemId}",
+      "method": "addTextItemWithParent",
+      "httpMethod": "post",
+      "tag": "Conversations",
+      "description": "Adds a message to an item",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation to which the new item has to be added"
+        },
+        {
+          "name": "itemId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the item to which the new one has to be added as child"
+        },
+        {
+          "name": "attachments",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "content",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "formMetaData",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "subject",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/{convId}/messages/{itemId}",
+      "method": "updateTextItem",
+      "httpMethod": "put",
+      "tag": "Conversations",
+      "description": "Updates a message",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation to which the item belongs"
+        },
+        {
+          "name": "itemId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the item to update"
+        },
+        {
+          "name": "attachments",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "content",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "formMetaData",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "subject",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/{convId}/messages/{itemId}/flag",
+      "method": "unFlagItem",
+      "httpMethod": "delete",
+      "tag": "Conversations",
+      "description": "Removes the flag from a message",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation to which the item belongs"
+        },
+        {
+          "name": "itemId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the item that will be flagged"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/conversations/{convId}/messages/{itemId}/flag",
+      "method": "flagItem",
+      "httpMethod": "post",
+      "tag": "Conversations",
+      "description": "Adds a flag to a message in a conversation",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation to which the item belongs"
+        },
+        {
+          "name": "itemId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the item that will be flagged"
+        },
+        {
+          "name": "itemCreationTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "parentId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/conversations/{convId}/messages/{itemId}/like",
+      "method": "unlikeItem",
+      "httpMethod": "delete",
+      "tag": "Conversations",
+      "description": "Removes a \"like\" from a message",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation to which the item belongs"
+        },
+        {
+          "name": "itemId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the item that will be unliked"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/conversations/{convId}/messages/{itemId}/like",
+      "method": "likeItem",
+      "httpMethod": "post",
+      "tag": "Conversations",
+      "description": "Adds a \"like\" to a message",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation to which the item belongs"
+        },
+        {
+          "name": "itemId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the item that will be liked"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/conversations/{convId}/moderators",
+      "method": "removeModerators",
+      "httpMethod": "delete",
+      "tag": "Conversations",
+      "description": "Remove moderators",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation where the moderators are removed"
+        },
+        {
+          "name": "moderators",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/conversations/{convId}/moderators",
+      "method": "addModerators",
+      "httpMethod": "post",
+      "tag": "Conversations",
+      "description": "Add moderators",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation to which the moderators are added"
+        },
+        {
+          "name": "moderators",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/conversations/{convId}/participants",
+      "method": "getParticipantsByConvId",
+      "httpMethod": "get",
+      "tag": "Conversations",
+      "description": "Performs a list of participants",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the conversation the participants are searched for."
+        },
+        {
+          "name": "pageSize",
+          "schema": "number",
+          "required": true,
+          "description": "The page size of the hit list"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "Part of name to filter the results"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Type of participant to filter the results"
+        },
+        {
+          "name": "searchPointer",
+          "schema": "string",
+          "required": false,
+          "description": "Pointer for paged output. Add to consecutive request to get next page"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/{convId}/pins",
+      "method": "getPinnedConversations",
+      "httpMethod": "get",
+      "tag": "Conversations",
+      "description": "Returns pinned topics of a conversation",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the conversation"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/{convId}/pins/{itemId}",
+      "method": "unPinAConversation",
+      "httpMethod": "delete",
+      "tag": "Conversations",
+      "description": "Unpins a topic of a conversation",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation"
+        },
+        {
+          "name": "itemId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the topic"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/{convId}/pins/{itemId}",
+      "method": "pinAConversation",
+      "httpMethod": "post",
+      "tag": "Conversations",
+      "description": "Pins a topic of a conversation",
+      "parameters": [
+        {
+          "name": "convId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the conversation"
+        },
+        {
+          "name": "itemId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the topic"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rtc/sessions",
+      "method": "getActiveSessions",
+      "httpMethod": "get",
+      "tag": "RTC",
+      "description": "Gets a list of active sessions",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spaces",
+      "method": "getSpaces",
+      "httpMethod": "get",
+      "tag": "Spaces",
+      "description": "Get the spaces",
+      "parameters": [
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": false,
+          "description": "a beautiful timestamp"
+        },
+        {
+          "name": "numberOfResults",
+          "schema": "number",
+          "required": false,
+          "description": "the number of results you want"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spaces/create",
+      "method": "createSpace",
+      "httpMethod": "post",
+      "tag": "Spaces",
+      "description": "Create a space",
+      "parameters": [
+        {
+          "name": "accessModeType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "largePictureBase64",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "role",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "smallPictureBase64",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spaces/directory",
+      "method": "getDirectory",
+      "httpMethod": "get",
+      "tag": "Spaces",
+      "description": "Get the directory",
+      "parameters": [
+        {
+          "name": "sortBy",
+          "schema": "string",
+          "required": true,
+          "description": "sort the spaces by LAST_CONTENT, NAME, NUMBER_OF_USERS or CREATION_DATE"
+        },
+        {
+          "name": "sortOrder",
+          "schema": "string",
+          "required": true,
+          "description": "ascending or descending"
+        },
+        {
+          "name": "filter",
+          "schema": "string",
+          "required": true,
+          "description": "filter for spaces (JOINED, REQUESTED, OPEN, CLOSED or NOT_JOINED_REQUESTED)"
+        },
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "some sort of query"
+        },
+        {
+          "name": "pagePointer",
+          "schema": "string",
+          "required": false,
+          "description": "page pointer, start with nothing and for next query use returned pointer"
+        },
+        {
+          "name": "numberOfResults",
+          "schema": "number",
+          "required": false,
+          "description": "number of results to return, 25 by default."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spaces/exists/{name}",
+      "method": "existsSpaceName",
+      "httpMethod": "get",
+      "tag": "Spaces",
+      "description": "Space name exists",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "The name to check for existence."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/spaces/flag/{itemId}",
+      "method": "flagSpaceItem",
+      "httpMethod": "put",
+      "tag": "Spaces",
+      "description": "flag a space item",
+      "parameters": [
+        {
+          "name": "itemId",
+          "schema": "string",
+          "required": true,
+          "description": "the id of the item you want to flag"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/spaces/flagged",
+      "method": "getFlaggedItems",
+      "httpMethod": "get",
+      "tag": "Spaces",
+      "description": "Get flagged items",
+      "parameters": [
+        {
+          "name": "searchDirection",
+          "schema": "string",
+          "required": true,
+          "description": "before or after the time stamp"
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": "The timestamp according to which you want to retrieve the flagged items"
+        },
+        {
+          "name": "searchPointer",
+          "schema": "string",
+          "required": false,
+          "description": "The searchpointer for the search (initially not set)."
+        },
+        {
+          "name": "numberOfResults",
+          "schema": "number",
+          "required": false,
+          "description": "The number of results you want to retrieve."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spaces/ids",
+      "method": "getSpacesByIds",
+      "httpMethod": "get",
+      "tag": "Spaces",
+      "description": "Get the spaces by their ids",
+      "parameters": [
+        {
+          "name": "ids",
+          "schema": "array",
+          "required": true,
+          "description": "an array of ids"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spaces/item/{itemId}",
+      "method": "deleteSpaceItem",
+      "httpMethod": "delete",
+      "tag": "Spaces",
+      "description": "deletes a space item",
+      "parameters": [
+        {
+          "name": "itemId",
+          "schema": "string",
+          "required": true,
+          "description": "the id of the spaceItem"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/spaces/like/{itemId}",
+      "method": "likeSpaceItem",
+      "httpMethod": "put",
+      "tag": "Spaces",
+      "description": "Like a space item",
+      "parameters": [
+        {
+          "name": "itemId",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the item you want to like"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/spaces/likes/{itemId}",
+      "method": "getLikes",
+      "httpMethod": "get",
+      "tag": "Spaces",
+      "description": "Get the likes of an item",
+      "parameters": [
+        {
+          "name": "itemId",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the item to retrieve the likes from"
+        },
+        {
+          "name": "searchPointer",
+          "schema": "string",
+          "required": false,
+          "description": "The searchpointer for the search (initially not set)."
+        },
+        {
+          "name": "numberOfResults",
+          "schema": "number",
+          "required": false,
+          "description": "The number of results you want to retrieve."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spaces/search/add/recent",
+      "method": "addRecentSpaceSearch",
+      "httpMethod": "put",
+      "tag": "Spaces",
+      "description": "Add recent search ",
+      "parameters": [
+        {
+          "name": "endTime",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "scope",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "searchTerm",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "startTime",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/spaces/search/cancel/{searchId}",
+      "method": "cancelSpaceSearch",
+      "httpMethod": "put",
+      "tag": "Spaces",
+      "description": "Cancels a space search of a client.",
+      "parameters": [
+        {
+          "name": "searchId",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the search to cancel"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/spaces/search/recent",
+      "method": "getRecentSearches",
+      "httpMethod": "get",
+      "tag": "Spaces",
+      "description": "Retrieve recent space searches",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spaces/search/startBasic",
+      "method": "startBasicSpacesSearch",
+      "httpMethod": "get",
+      "tag": "Spaces",
+      "description": "starts a basic search in spaces",
+      "parameters": [
+        {
+          "name": "scope",
+          "schema": "string",
+          "required": true,
+          "description": "the scope of the search"
+        },
+        {
+          "name": "searchTerm",
+          "schema": "string",
+          "required": true,
+          "description": "the term to search for"
+        },
+        {
+          "name": "startTime",
+          "schema": "string",
+          "required": false,
+          "description": "the starttime"
+        },
+        {
+          "name": "endTime",
+          "schema": "string",
+          "required": false,
+          "description": "the end time"
+        },
+        {
+          "name": "prioritySpaces",
+          "schema": "array",
+          "required": false,
+          "description": "list of prioritized spaces"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spaces/search/startDetailed",
+      "method": "startDetailedSpaceSearch",
+      "httpMethod": "get",
+      "tag": "Spaces",
+      "description": "starts a detailed search in a space",
+      "parameters": [
+        {
+          "name": "scope",
+          "schema": "string",
+          "required": true,
+          "description": "the scope of the search"
+        },
+        {
+          "name": "searchTerm",
+          "schema": "string",
+          "required": true,
+          "description": "the term to search for"
+        },
+        {
+          "name": "startTime",
+          "schema": "string",
+          "required": false,
+          "description": "the starttime"
+        },
+        {
+          "name": "endTime",
+          "schema": "string",
+          "required": false,
+          "description": "the end time"
+        },
+        {
+          "name": "spaceId",
+          "schema": "string",
+          "required": true,
+          "description": "missing documentation"
+        },
+        {
+          "name": "searchId",
+          "schema": "string",
+          "required": false,
+          "description": "missing documentation"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spaces/topic/{topicId}/updateTags",
+      "method": "updateTopicTags",
+      "httpMethod": "put",
+      "tag": "Spaces",
+      "description": "Update tags",
+      "parameters": [
+        {
+          "name": "topicId",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the topic"
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spaces/unflag/{itemId}",
+      "method": "unflagSpaceItem",
+      "httpMethod": "put",
+      "tag": "Spaces",
+      "description": "Unflag a space item",
+      "parameters": [
+        {
+          "name": "itemId",
+          "schema": "string",
+          "required": true,
+          "description": "the id of the item you want to unflag"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/spaces/unlike/{itemId}",
+      "method": "unlikeSpaceItem",
+      "httpMethod": "put",
+      "tag": "Spaces",
+      "description": "Unlike a space item",
+      "parameters": [
+        {
+          "name": "itemId",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the item you want to unlike"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/spaces/{id}",
+      "method": "deleteSpace",
+      "httpMethod": "delete",
+      "tag": "Spaces",
+      "description": "Delete a space",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of the space"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/spaces/{id}",
+      "method": "updateSpace",
+      "httpMethod": "put",
+      "tag": "Spaces",
+      "description": "Update a space",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of the space"
+        },
+        {
+          "name": "accessModeType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "largePictureBase64",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ownerId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "role",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "smallPictureBase64",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spaces/{id}/join",
+      "method": "joinSpace",
+      "httpMethod": "post",
+      "tag": "Spaces",
+      "description": "Join a space",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the space"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spaces/{id}/labels/assign",
+      "method": "assignLabels",
+      "httpMethod": "post",
+      "tag": "Spaces",
+      "description": "Assign labels",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the space."
+        },
+        {
+          "name": "labels",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spaces/{id}/labels/unassign",
+      "method": "unassignLabels",
+      "httpMethod": "delete",
+      "tag": "Spaces",
+      "description": "Unassign labels",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the space."
+        },
+        {
+          "name": "labelIds",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spaces/{id}/leave",
+      "method": "leaveSpace",
+      "httpMethod": "post",
+      "tag": "Spaces",
+      "description": "Leave a space",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the space"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/spaces/{id}/participant",
+      "method": "addParticipantsToSpace",
+      "httpMethod": "post",
+      "tag": "Spaces",
+      "description": "Add Participant to Space",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the space"
+        },
+        {
+          "name": "role",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "userId",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spaces/{id}/participant/remove",
+      "method": "v2RemoveParticipantsFromSpace",
+      "httpMethod": "post",
+      "tag": "Spaces",
+      "description": "Removes participants from a space",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the space"
+        },
+        {
+          "name": "userIds",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/spaces/{id}/participants",
+      "method": "getSpaceParticipants",
+      "httpMethod": "get",
+      "tag": "Spaces",
+      "description": "Get the participants of a space",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the space."
+        },
+        {
+          "name": "sortBy",
+          "schema": "string",
+          "required": true,
+          "description": "sort the spaces by LAST_CONTENT, NAME, NUMBER_OF_USERS or CREATION_DATE"
+        },
+        {
+          "name": "sortOrder",
+          "schema": "string",
+          "required": true,
+          "description": "ascending or descending"
+        },
+        {
+          "name": "filterType",
+          "schema": "string",
+          "required": true,
+          "description": "filtertype for participants (ACCESS_TYPE, ROLE or STATE)"
+        },
+        {
+          "name": "filterValue",
+          "schema": "string",
+          "required": false,
+          "description": "value for the filter"
+        },
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "some sort of query"
+        },
+        {
+          "name": "searchPointer",
+          "schema": "string",
+          "required": false,
+          "description": "The search pointer (leave empty initially)."
+        },
+        {
+          "name": "numberOfResults",
+          "schema": "number",
+          "required": false,
+          "description": "number of results to return, 25 by default."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spaces/{id}/participants/pending",
+      "method": "getPendingParticipants",
+      "httpMethod": "get",
+      "tag": "Spaces",
+      "description": "Get the pending participants of a space",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the space."
+        },
+        {
+          "name": "searchPointer",
+          "schema": "string",
+          "required": false,
+          "description": "The search pointer (leave empty initially)."
+        },
+        {
+          "name": "numberOfResults",
+          "schema": "number",
+          "required": false,
+          "description": "number of results to return, 25 by default."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spaces/{id}/pinnedTopics",
+      "method": "getPinnedTopics",
+      "httpMethod": "get",
+      "tag": "Spaces",
+      "description": "Retrieve pinned topics",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the space."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spaces/{id}/searchParticipantsToAdd",
+      "method": "searchParticipantsToAdd",
+      "httpMethod": "get",
+      "tag": "Spaces",
+      "description": "Finds participants to add to add to a space ",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the space"
+        },
+        {
+          "name": "query",
+          "schema": "string",
+          "required": true,
+          "description": "The query "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spaces/{id}/searchSpaceParticipants",
+      "method": "searchSpaceParticipants",
+      "httpMethod": "get",
+      "tag": "Spaces",
+      "description": "Get the participants of a space",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the space."
+        },
+        {
+          "name": "query",
+          "schema": "string",
+          "required": true,
+          "description": "The query to search with. If searchpointer/hasMotre is returned, refine query."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spaces/{id}/updateTimestamp",
+      "method": "updateReadTimestamp",
+      "httpMethod": "put",
+      "tag": "Spaces",
+      "description": "Update read timestamp",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of a space"
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/spaces/{spaceId}/participant",
+      "method": "updateParticipantInSpace",
+      "httpMethod": "put",
+      "tag": "Spaces",
+      "description": "Update participant",
+      "parameters": [
+        {
+          "name": "spaceId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the space"
+        },
+        {
+          "name": "role",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/spaces/{spaceId}/participant/import/",
+      "method": "getParticipantsImportData",
+      "httpMethod": "get",
+      "tag": "Spaces",
+      "description": "missing documentation",
+      "parameters": [
+        {
+          "name": "spaceId",
+          "schema": "string",
+          "required": true,
+          "description": "missing documentation"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spaces/{spaceId}/participant/request",
+      "method": "requestSpaceAcces",
+      "httpMethod": "post",
+      "tag": "Spaces",
+      "description": "request access for a space",
+      "parameters": [
+        {
+          "name": "spaceId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the space"
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/spaces/{spaceId}/participant/{participantId}/deny",
+      "method": "denySpaceAcces",
+      "httpMethod": "post",
+      "tag": "Spaces",
+      "description": "Deny access for a space",
+      "parameters": [
+        {
+          "name": "spaceId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the space"
+        },
+        {
+          "name": "participantId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the participant"
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/spaces/{spaceId}/participant/{participantId}/grant",
+      "method": "grantSpaceAcces",
+      "httpMethod": "post",
+      "tag": "Spaces",
+      "description": "grant access for a space",
+      "parameters": [
+        {
+          "name": "spaceId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the space"
+        },
+        {
+          "name": "participantId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the participant"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/spaces/{spaceId}/topic",
+      "method": "createSpaceTopic",
+      "httpMethod": "post",
+      "tag": "Spaces",
+      "description": "creates a new space topic",
+      "parameters": [
+        {
+          "name": "spaceId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the space"
+        },
+        {
+          "name": "attachments",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "complex",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "content",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "contentTags",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "formMetaData",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "mentionedUser",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "subject",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spaces/{spaceId}/topic/{topicId}",
+      "method": "v2GetTopicWithReplies",
+      "httpMethod": "get",
+      "tag": "Spaces",
+      "description": "Gets space replies and a topic",
+      "parameters": [
+        {
+          "name": "spaceId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the topic"
+        },
+        {
+          "name": "topicId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the topic"
+        },
+        {
+          "name": "numberOfReplies",
+          "schema": "number",
+          "required": false,
+          "description": "The number of replies"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spaces/{spaceId}/topic/{topicId}",
+      "method": "updateSpaceTopic",
+      "httpMethod": "put",
+      "tag": "Spaces",
+      "description": "Updates a topic",
+      "parameters": [
+        {
+          "name": "spaceId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the space"
+        },
+        {
+          "name": "topicId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the topic to update"
+        },
+        {
+          "name": "attachments",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "complex",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "content",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "contentTags",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "formMetaData",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "mentionedUsers",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "subject",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spaces/{spaceId}/topic/{topicId}/reply",
+      "method": "getSpaceReplies",
+      "httpMethod": "get",
+      "tag": "Spaces",
+      "description": "Gets space replies",
+      "parameters": [
+        {
+          "name": "spaceId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the containing space"
+        },
+        {
+          "name": "topicId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the topic"
+        },
+        {
+          "name": "searchDirection",
+          "schema": "string",
+          "required": true,
+          "description": "Search before or after a certain timestamp"
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": false,
+          "description": "Timestamp to start the search from"
+        },
+        {
+          "name": "numberOfResults",
+          "schema": "number",
+          "required": false,
+          "description": "The number of results that should be returned"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spaces/{spaceId}/topic/{topicId}/reply",
+      "method": "createReply",
+      "httpMethod": "post",
+      "tag": "Spaces",
+      "description": "creates a reply to a topic",
+      "parameters": [
+        {
+          "name": "spaceId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the space"
+        },
+        {
+          "name": "topicId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the topic"
+        },
+        {
+          "name": "attachments",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "complex",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "content",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "formMetaData",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "mentionedUser",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spaces/{spaceId}/topic/{topicId}/reply/{replyId}",
+      "method": "updateSpaceReply",
+      "httpMethod": "put",
+      "tag": "Spaces",
+      "description": "Updates a space reply",
+      "parameters": [
+        {
+          "name": "spaceId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the space"
+        },
+        {
+          "name": "topicId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the topic"
+        },
+        {
+          "name": "replyId",
+          "schema": "string",
+          "required": true,
+          "description": "id of the reply"
+        },
+        {
+          "name": "attachments",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "complex",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "content",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "formMetaData",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "mentionedUsers",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spaces/{spaceId}/topics",
+      "method": "getSpaceTopics",
+      "httpMethod": "get",
+      "tag": "Spaces",
+      "description": "Gets space topics",
+      "parameters": [
+        {
+          "name": "spaceId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the space"
+        },
+        {
+          "name": "searchDirection",
+          "schema": "string",
+          "required": true,
+          "description": "Search before or after a certain timestamp"
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": false,
+          "description": "Timestamp to start the search from"
+        },
+        {
+          "name": "numberOfResults",
+          "schema": "number",
+          "required": false,
+          "description": "The number of results that should be returned"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spaces/{spaceId}/welcomebox/{content}",
+      "method": "v2UpdateWelcomeBoxContent",
+      "httpMethod": "put",
+      "tag": "Spaces",
+      "description": "Update content of welcome box",
+      "parameters": [
+        {
+          "name": "spaceId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the space"
+        },
+        {
+          "name": "content",
+          "schema": "string",
+          "required": true,
+          "description": "The new content"
+        },
+        {
+          "name": "displayWelcomeBox",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/spaces/{topicId}/pin",
+      "method": "pinTopic",
+      "httpMethod": "put",
+      "tag": "Spaces",
+      "description": "Pin a topic",
+      "parameters": [
+        {
+          "name": "topicId",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the topic"
+        },
+        {
+          "name": "position",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/spaces/{topicId}/unpin",
+      "method": "unpinTopic",
+      "httpMethod": "put",
+      "tag": "Spaces",
+      "description": "Unpin a topic",
+      "parameters": [
+        {
+          "name": "topicId",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the topic to unpin"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/telephony/deviceInfos",
+      "method": "v2GetDeviceInfos",
+      "httpMethod": "get",
+      "tag": "Telephony",
+      "description": "Get devices infos",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/telephony/telephonyConversationId",
+      "method": "v2GetTelephonyConversationId",
+      "httpMethod": "get",
+      "tag": "Telephony",
+      "description": "Get telephony conversation id",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/telephony/{telephonyConversationId}/journal",
+      "method": "getJournalEntries",
+      "httpMethod": "get",
+      "tag": "Telephony",
+      "description": "Get journal",
+      "parameters": [
+        {
+          "name": "telephonyConversationId",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the telephony conversation"
+        },
+        {
+          "name": "timestamp",
+          "schema": "number",
+          "required": false,
+          "description": "A timestamp, default = 0"
+        },
+        {
+          "name": "numberOfEntries",
+          "schema": "number",
+          "required": false,
+          "description": "The number of entries, between 1 and 100, default = 25"
+        },
+        {
+          "name": "direction",
+          "schema": "string",
+          "required": false,
+          "description": "The direction (BEFORE||AFTER||BOTH), default = AFTER"
+        },
+        {
+          "name": "journalFilter",
+          "schema": "string",
+          "required": false,
+          "description": "The filter, ALL||MISSED||DIALED||RECEIVED||DIVERTED||VOICEMAILS||UNHERAD_VOICEMAILS. default = ALL"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users",
+      "method": "searchUser",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Search for users",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "Search for a user by name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/labels",
+      "method": "getLabel",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Returns all user labels",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/labels",
+      "method": "addLabel",
+      "httpMethod": "post",
+      "tag": "Conversations",
+      "description": "Add a user label",
+      "parameters": [
+        {
+          "name": "label",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/labels/{labelId}",
+      "method": "removeLabel",
+      "httpMethod": "delete",
+      "tag": "Conversations",
+      "description": "Remove a user label",
+      "parameters": [
+        {
+          "name": "labelId",
+          "schema": "string",
+          "required": true,
+          "description": "The label value to remove, either the unique ID or the label value"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/list",
+      "method": "searchUsersList",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Search multiple users.",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "array",
+          "required": true,
+          "description": "Multiple email addresses or UUIDs."
+        },
+        {
+          "name": "returnFullUserInfo",
+          "schema": "boolean",
+          "required": false,
+          "description": "Boolean, return full user info?"
+        },
+        {
+          "name": "secondaryLookup",
+          "schema": "boolean",
+          "required": false,
+          "description": "Boolean, lookup secondary email?"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/presence",
+      "method": "getPresence",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Gets the presence status",
+      "parameters": [
+        {
+          "name": "userIds",
+          "schema": "array",
+          "required": true,
+          "description": "A list of unique user IDs or email addresses of the users you want to query the presence state for"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/presence",
+      "method": "setUserPresence",
+      "httpMethod": "put",
+      "tag": "Users",
+      "description": "Updates the presence status",
+      "parameters": [
+        {
+          "name": "clearDND",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dndUntil",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "statusMessage",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/profile",
+      "method": "getProfile",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Gets the authenticated user's profile information",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/profile",
+      "method": "updateProfile",
+      "httpMethod": "put",
+      "tag": "Conversations",
+      "description": "Updates the user profile",
+      "parameters": [
+        {
+          "name": "firstname",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "jobTitle",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "lastname",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "locale",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/supportinfo",
+      "method": "getSupportInfo",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Gets the support information",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{emailAddress}/getUserByEmail",
+      "method": "getUserByEmailAddress",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Get user by email",
+      "parameters": [
+        {
+          "name": "emailAddress",
+          "schema": "string",
+          "required": true,
+          "description": "The main or secondary email address of a user."
+        },
+        {
+          "name": "secondaryLookup",
+          "schema": "boolean",
+          "required": false,
+          "description": "secondaryLookup enabled (default = false)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}",
+      "method": "getUserById",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Gets the user's profile information",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID or the email address of the user to fetch"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}/presence",
+      "method": "getUserPresence",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Gets the presence status",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID or the email address of the user to fetch."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/webhooks",
+      "method": "removeWebHooks",
+      "httpMethod": "delete",
+      "tag": "Outgoing Webhooks",
+      "description": "Removes all webHooks",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/webhooks",
+      "method": "getWebHook",
+      "httpMethod": "get",
+      "tag": "Outgoing Webhooks",
+      "description": "Gets a list of webHooks",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/webhooks",
+      "method": "addWebHook",
+      "httpMethod": "post",
+      "tag": "Outgoing Webhooks",
+      "description": "Registers a WebHook",
+      "parameters": [
+        {
+          "name": "filter",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/webhooks/incoming/create/{conversationId}",
+      "method": "createIncomingWebhook",
+      "httpMethod": "post",
+      "tag": "Incoming Webhooks",
+      "description": "Create a new webhook for existing conversation.",
+      "parameters": [
+        {
+          "name": "conversationId",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the conversation."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "The name of the webhook"
+        },
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": false,
+          "description": "The id of the user of the webhook"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": "A short description of the webhook"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/webhooks/incoming/user/{userId}",
+      "method": "getIncomingWebhookByUser",
+      "httpMethod": "get",
+      "tag": "Incoming Webhooks",
+      "description": "Get all webhooks of a special user.",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the user."
+        },
+        {
+          "name": "pagesize",
+          "schema": "number",
+          "required": false,
+          "description": "Max number of hooks per request. Default is 25"
+        },
+        {
+          "name": "searchpointer",
+          "schema": "string",
+          "required": false,
+          "description": "Start of search if consequtive call."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/webhooks/incoming/{webhookId}",
+      "method": "deleteIncomingWebhook",
+      "httpMethod": "delete",
+      "tag": "Incoming Webhooks",
+      "description": "Delete an existing webhook",
+      "parameters": [
+        {
+          "name": "webhookId",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the webhook"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/webhooks/incoming/{webhookId}",
+      "method": "postWebhookAsSlackMessage",
+      "httpMethod": "post",
+      "tag": "Incoming Webhooks",
+      "description": "Post text item for conversation via webhook.",
+      "parameters": [
+        {
+          "name": "webhookId",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the webhook."
+        },
+        {
+          "name": "fileURL",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "filename",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "markdown",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "subject",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "text",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/webhooks/presence",
+      "method": "addPresenceWebHook",
+      "httpMethod": "post",
+      "tag": "Outgoing Webhooks",
+      "description": "Registers Presence WebHook registration",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "userIds",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/webhooks/presence/{id}",
+      "method": "updatePresenceWebHook",
+      "httpMethod": "put",
+      "tag": "Outgoing Webhooks",
+      "description": "Updates a Presence WebHook registration",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the webHook to update"
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "userIds",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/webhooks/{id}",
+      "method": "removeWebHook",
+      "httpMethod": "delete",
+      "tag": "Outgoing Webhooks",
+      "description": "Removes a registered webHook",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the webHook to remove"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/webhooks/{id}",
+      "method": "getWebHookById",
+      "httpMethod": "get",
+      "tag": "Outgoing Webhooks",
+      "description": "Gets a webHook",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the webHook to fetch"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/webhooks/{id}",
+      "method": "updateWebHook",
+      "httpMethod": "put",
+      "tag": "Outgoing Webhooks",
+      "description": "Updates a WebHook registration",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the webHook to update"
+        },
+        {
+          "name": "filter",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://circuitsandbox.net/rest/v2",
   "apiDescription": "Circuit REST API to interact with the Circuit system.\n\n[Learn more about the Circuit Development Community](https://www.circuit.com/web/developers/home)",
   "apiTitle": "REST API Version 2",

@@ -3,6 +3,238 @@
   "openApiRaw": "https://raw.githubusercontent.com/microsoft/powerplatform-qualtrics-api/main/Qualtrics%20Connector%20Spec%20-%20Swagger%202.0.json",
   "homepage": "qualtrics.com",
   "apiVersion": "0.2",
+  "methods": [
+    {
+      "url": "/directories/{DirectoryId}/mailinglists/{MailingListId}/contacts",
+      "method": "createContactInMailinglist",
+      "httpMethod": "post",
+      "description": "Create contact in mailing list",
+      "parameters": [
+        {
+          "name": "DirectoryId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the qualtrics directory to create the contact to"
+        },
+        {
+          "name": "MailingListId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the mailing list"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "unsubscribed",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/distributions",
+      "method": "getDistributions",
+      "httpMethod": "get",
+      "description": "Get distributions for survey",
+      "parameters": [
+        {
+          "name": "surveyId",
+          "schema": "string",
+          "required": true,
+          "description": "The survey for which to load the distributions"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/distributions",
+      "method": "generateDistributionLinks",
+      "httpMethod": "post",
+      "description": "Generate distribution links",
+      "parameters": [
+        {
+          "name": "action",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "expirationDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "linkType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "mailingListId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "surveyId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/distributions/{DistributionId}/links",
+      "method": "retrievedistributionlinks",
+      "httpMethod": "get",
+      "description": "Retrieve distribution links",
+      "parameters": [
+        {
+          "name": "surveyId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the survey (eg: SV_123)"
+        },
+        {
+          "name": "DistributionId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the distribution list"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/eventsubscriptions/",
+      "method": "webhookDelete",
+      "httpMethod": "delete",
+      "description": "Remove subscription to response event",
+      "parameters": [
+        {
+          "name": "encrypt",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "publicationUrl",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "topics",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/eventsubscriptions/",
+      "method": "whenAResponseIsReceived",
+      "httpMethod": "post",
+      "description": "Triggers when a response is submitted to a qualtrics survey",
+      "parameters": [
+        {
+          "name": "encrypt",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "publicationUrl",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "topics",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/eventsubscriptions/{SubscriptionId}",
+      "method": "getEventSubscriptions",
+      "httpMethod": "get",
+      "description": "Get event subscriptions",
+      "parameters": [
+        {
+          "name": "SubscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of event subscription - can be obtained from web hook response"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/survey-definitions/{SurveyId}",
+      "method": "getSurvey",
+      "httpMethod": "get",
+      "description": "Get survey",
+      "parameters": [
+        {
+          "name": "SurveyId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of survey (eg. SV_123)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://fra1.qualtrics.com/API/v3",
   "apiDescription": "Work with Qualtrics surveys, distributions and response events",
   "apiTitle": "Qualtrics API",

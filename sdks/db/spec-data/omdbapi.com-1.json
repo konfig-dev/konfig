@@ -3,6 +3,88 @@
   "openApiRaw": "https://raw.githubusercontent.com/Mermade/open_api_specifications/master/OMDb/swagger.json",
   "homepage": "omdbapi.com",
   "apiVersion": "1",
+  "methods": [
+    {
+      "url": "/",
+      "method": "getOmDbSearch",
+      "httpMethod": "get",
+      "description": "OMDb Search",
+      "parameters": [
+        {
+          "name": "t",
+          "schema": "string",
+          "required": false,
+          "description": "Movie title to search for. One of t, i or s is required."
+        },
+        {
+          "name": "i",
+          "schema": "string",
+          "required": false,
+          "description": "A valid IMDb ID (e.g. tt1285016). One of t, i or s is required."
+        },
+        {
+          "name": "s",
+          "schema": "string",
+          "required": false,
+          "description": "Movie title to search for. One of t, i or s is required."
+        },
+        {
+          "name": "y",
+          "schema": "integer",
+          "required": false,
+          "description": "Year of release."
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Type of result to return."
+        },
+        {
+          "name": "plot",
+          "schema": "string",
+          "required": false,
+          "description": "Return short or full plot."
+        },
+        {
+          "name": "tomatoes",
+          "schema": "boolean",
+          "required": false,
+          "description": "Include Rotten Tomatoes ratings."
+        },
+        {
+          "name": "r",
+          "schema": "string",
+          "required": true,
+          "description": "The data type to return."
+        },
+        {
+          "name": "v",
+          "schema": "integer",
+          "required": false,
+          "description": "API version (reserved for future use)."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number to return."
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "JSONP callback name."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://www.omdbapi.com",
   "apiDescription": "The Open Movie Database. The OMDb API is a free web service to obtain movie information, all content and images on the site are contributed and maintained by our users.",
   "apiTitle": "OMDb",

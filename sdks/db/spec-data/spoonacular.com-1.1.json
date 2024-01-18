@@ -3,6 +3,4284 @@
   "openApiRaw": "https://spoonacular.com/application/frontend/downloads/spoonacular-openapi-3.json",
   "homepage": "spoonacular.com",
   "apiVersion": "1.1",
+  "methods": [
+    {
+      "url": "/food/converse",
+      "method": "talkToChatbot",
+      "httpMethod": "get",
+      "tag": "misc",
+      "description": "Talk to Chatbot",
+      "parameters": [
+        {
+          "name": "text",
+          "schema": "string",
+          "required": true,
+          "description": "The request / question / answer from the user to the chatbot."
+        },
+        {
+          "name": "contextId",
+          "schema": "string",
+          "required": false,
+          "description": "An arbitrary globally unique id for your conversation. The conversation can contain states so you should pass your context id if you want the bot to be able to remember the conversation."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/converse/suggest",
+      "method": "getConversationSuggests",
+      "httpMethod": "get",
+      "tag": "misc",
+      "description": "Conversation Suggests",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": true,
+          "description": "A (partial) query from the user. The endpoint will return if it matches topics it can talk about."
+        },
+        {
+          "name": "number",
+          "schema": "number",
+          "required": false,
+          "description": "The number of suggestions to return (between 1 and 25)."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/customFoods/search",
+      "method": "searchCustomFoods",
+      "httpMethod": "get",
+      "tag": "misc",
+      "description": "Search Custom Foods",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "The (natural language) search query."
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "The username."
+        },
+        {
+          "name": "hash",
+          "schema": "string",
+          "required": true,
+          "description": "The private hash for the username."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to skip (between 0 and 900)."
+        },
+        {
+          "name": "number",
+          "schema": "integer",
+          "description": "The maximum number of items to return (between 1 and 100). Defaults to 10."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/detect",
+      "method": "detectFoodInText",
+      "httpMethod": "post",
+      "tag": "misc",
+      "description": "Detect Food in Text",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": false,
+          "description": "The content type."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/images/analyze",
+      "method": "imageAnalysisByUrl",
+      "httpMethod": "get",
+      "tag": "misc",
+      "description": "Image Analysis by URL",
+      "parameters": [
+        {
+          "name": "imageUrl",
+          "schema": "string",
+          "required": true,
+          "description": "The URL of the image to be analyzed."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/images/classify",
+      "method": "imageClassificationByUrl",
+      "httpMethod": "get",
+      "tag": "misc",
+      "description": "Image Classification by URL",
+      "parameters": [
+        {
+          "name": "imageUrl",
+          "schema": "string",
+          "required": true,
+          "description": "The URL of the image to be classified."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/ingredients/autocomplete",
+      "method": "autocompleteIngredientSearch",
+      "httpMethod": "get",
+      "tag": "ingredients",
+      "description": "Autocomplete Ingredient Search",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "The (natural language) search query."
+        },
+        {
+          "name": "number",
+          "schema": "integer",
+          "description": "The maximum number of items to return (between 1 and 100). Defaults to 10."
+        },
+        {
+          "name": "metaInformation",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to return more meta information about the ingredients."
+        },
+        {
+          "name": "intolerances",
+          "schema": "string",
+          "required": false,
+          "description": "A comma-separated list of intolerances. All recipes returned must not contain ingredients that are not suitable for people with the intolerances entered. See a full list of supported intolerances."
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": false,
+          "description": "The language of the input. Either 'en' or 'de'."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/ingredients/glycemicLoad",
+      "method": "computeGlycemicLoad",
+      "httpMethod": "post",
+      "tag": "recipes",
+      "description": "Compute Glycemic Load",
+      "parameters": [
+        {
+          "name": "language",
+          "schema": "string",
+          "required": false,
+          "description": "The language of the input. Either 'en' or 'de'."
+        },
+        {
+          "name": "ingredients",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/ingredients/map",
+      "method": "mapIngredientsToGroceryProducts",
+      "httpMethod": "post",
+      "tag": "ingredients",
+      "description": "Map Ingredients to Grocery Products",
+      "parameters": [
+        {
+          "name": "ingredients",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "servings",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/ingredients/search",
+      "method": "ingredientSearch",
+      "httpMethod": "get",
+      "tag": "ingredients",
+      "description": "Ingredient Search",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "The (natural language) search query."
+        },
+        {
+          "name": "addChildren",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to add children of found foods."
+        },
+        {
+          "name": "minProteinPercent",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum percentage of protein the food must have (between 0 and 100)."
+        },
+        {
+          "name": "maxProteinPercent",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum percentage of protein the food can have (between 0 and 100)."
+        },
+        {
+          "name": "minFatPercent",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum percentage of fat the food must have (between 0 and 100)."
+        },
+        {
+          "name": "maxFatPercent",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum percentage of fat the food can have (between 0 and 100)."
+        },
+        {
+          "name": "minCarbsPercent",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum percentage of carbs the food must have (between 0 and 100)."
+        },
+        {
+          "name": "maxCarbsPercent",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum percentage of carbs the food can have (between 0 and 100)."
+        },
+        {
+          "name": "metaInformation",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to return more meta information about the ingredients."
+        },
+        {
+          "name": "intolerances",
+          "schema": "string",
+          "required": false,
+          "description": "A comma-separated list of intolerances. All recipes returned must not contain ingredients that are not suitable for people with the intolerances entered. See a full list of supported intolerances."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "The strategy to sort recipes by. See a full list of supported sorting options."
+        },
+        {
+          "name": "sortDirection",
+          "schema": "string",
+          "required": false,
+          "description": "The direction in which to sort. Must be either 'asc' (ascending) or 'desc' (descending)."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to skip (between 0 and 900)."
+        },
+        {
+          "name": "number",
+          "schema": "integer",
+          "description": "The maximum number of items to return (between 1 and 100). Defaults to 10."
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": false,
+          "description": "The language of the input. Either 'en' or 'de'."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/ingredients/substitutes",
+      "method": "getIngredientSubstitutes",
+      "httpMethod": "get",
+      "tag": "ingredients",
+      "description": "Get Ingredient Substitutes",
+      "parameters": [
+        {
+          "name": "ingredientName",
+          "schema": "string",
+          "required": true,
+          "description": "The name of the ingredient you want to replace."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/ingredients/{id}/amount",
+      "method": "computeIngredientAmount",
+      "httpMethod": "get",
+      "tag": "ingredients",
+      "description": "Compute Ingredient Amount",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The id of the ingredient you want the amount for."
+        },
+        {
+          "name": "nutrient",
+          "schema": "string",
+          "required": true,
+          "description": "The target nutrient. See a list of supported nutrients."
+        },
+        {
+          "name": "target",
+          "schema": "number",
+          "required": true,
+          "description": "The target number of the given nutrient."
+        },
+        {
+          "name": "unit",
+          "schema": "string",
+          "required": false,
+          "description": "The target unit."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/ingredients/{id}/information",
+      "method": "getIngredientInformation",
+      "httpMethod": "get",
+      "tag": "ingredients",
+      "description": "Get Ingredient Information",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The ingredient id."
+        },
+        {
+          "name": "amount",
+          "schema": "number",
+          "required": false,
+          "description": "The amount of this ingredient."
+        },
+        {
+          "name": "unit",
+          "schema": "string",
+          "required": false,
+          "description": "The unit for the given amount."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/ingredients/{id}/substitutes",
+      "method": "getIngredientSubstitutesById",
+      "httpMethod": "get",
+      "tag": "ingredients",
+      "description": "Get Ingredient Substitutes by ID",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The id of the ingredient you want substitutes for."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/jokes/random",
+      "method": "getARandomFoodJoke",
+      "httpMethod": "get",
+      "tag": "misc",
+      "description": "Random Food Joke",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/menuItems/search",
+      "method": "searchMenuItems",
+      "httpMethod": "get",
+      "tag": "menu items",
+      "description": "Search Menu Items",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "The (natural language) search query."
+        },
+        {
+          "name": "minCalories",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of calories the menu item must have."
+        },
+        {
+          "name": "maxCalories",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of calories the menu item can have."
+        },
+        {
+          "name": "minCarbs",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of carbohydrates in grams the menu item must have."
+        },
+        {
+          "name": "maxCarbs",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of carbohydrates in grams the menu item can have."
+        },
+        {
+          "name": "minProtein",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of protein in grams the menu item must have."
+        },
+        {
+          "name": "maxProtein",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of protein in grams the menu item can have."
+        },
+        {
+          "name": "minFat",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of fat in grams the menu item must have."
+        },
+        {
+          "name": "maxFat",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of fat in grams the menu item can have."
+        },
+        {
+          "name": "addMenuItemInformation",
+          "schema": "boolean",
+          "description": "If set to true, you get more information about the menu items returned."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to skip (between 0 and 900)."
+        },
+        {
+          "name": "number",
+          "schema": "integer",
+          "description": "The maximum number of items to return (between 1 and 100). Defaults to 10."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/menuItems/suggest",
+      "method": "autocompleteMenuItemSearch",
+      "httpMethod": "get",
+      "tag": "menu items",
+      "description": "Autocomplete Menu Item Search",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": true,
+          "description": "The (partial) search query."
+        },
+        {
+          "name": "number",
+          "schema": "number",
+          "required": false,
+          "description": "The number of results to return (between 1 and 25)."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/menuItems/{id}",
+      "method": "getMenuItemInformation",
+      "httpMethod": "get",
+      "tag": "menu items",
+      "description": "Get Menu Item Information",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The menu item id."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/menuItems/{id}/nutritionLabel",
+      "method": "menuItemNutritionLabelWidget",
+      "httpMethod": "get",
+      "tag": "menu items",
+      "description": "Menu Item Nutrition Label Widget",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The menu item id."
+        },
+        {
+          "name": "defaultCss",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether the default CSS should be added to the response."
+        },
+        {
+          "name": "showOptionalNutrients",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to show optional nutrients."
+        },
+        {
+          "name": "showZeroValues",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to show zero values."
+        },
+        {
+          "name": "showIngredients",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to show a list of ingredients."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/menuItems/{id}/nutritionLabel.png",
+      "method": "menuItemNutritionLabelImage",
+      "httpMethod": "get",
+      "tag": "menu items",
+      "description": "Menu Item Nutrition Label Image",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The menu item id."
+        },
+        {
+          "name": "showOptionalNutrients",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to show optional nutrients."
+        },
+        {
+          "name": "showZeroValues",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to show zero values."
+        },
+        {
+          "name": "showIngredients",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to show a list of ingredients."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/menuItems/{id}/nutritionWidget",
+      "method": "visualizeMenuItemNutritionById",
+      "httpMethod": "get",
+      "tag": "menu items",
+      "description": "Menu Item Nutrition by ID Widget",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The menu item id."
+        },
+        {
+          "name": "defaultCss",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether the default CSS should be added to the response."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": false,
+          "description": "Accept header."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/menuItems/{id}/nutritionWidget.png",
+      "method": "menuItemNutritionByIdImage",
+      "httpMethod": "get",
+      "tag": "menu items",
+      "description": "Menu Item Nutrition by ID Image",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The menu item id."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/products/classify",
+      "method": "classifyGroceryProduct",
+      "httpMethod": "post",
+      "tag": "products",
+      "description": "Classify Grocery Product",
+      "parameters": [
+        {
+          "name": "locale",
+          "schema": "string",
+          "required": false,
+          "description": "The display name of the returned category, supported is en_US (for American English) and en_GB (for British English)."
+        },
+        {
+          "name": "plu_code",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "upc",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/products/classifyBatch",
+      "method": "classifyGroceryProductBulk",
+      "httpMethod": "post",
+      "tag": "products",
+      "description": "Classify Grocery Product Bulk",
+      "parameters": [
+        {
+          "name": "locale",
+          "schema": "string",
+          "required": false,
+          "description": "The display name of the returned category, supported is en_US (for American English) and en_GB (for British English)."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/products/search",
+      "method": "searchGroceryProducts",
+      "httpMethod": "get",
+      "tag": "products",
+      "description": "Search Grocery Products",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "The (natural language) search query."
+        },
+        {
+          "name": "minCalories",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of calories the product must have."
+        },
+        {
+          "name": "maxCalories",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of calories the product can have."
+        },
+        {
+          "name": "minCarbs",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of carbohydrates in grams the product must have."
+        },
+        {
+          "name": "maxCarbs",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of carbohydrates in grams the product can have."
+        },
+        {
+          "name": "minProtein",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of protein in grams the product must have."
+        },
+        {
+          "name": "maxProtein",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of protein in grams the product can have."
+        },
+        {
+          "name": "minFat",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of fat in grams the product must have."
+        },
+        {
+          "name": "maxFat",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of fat in grams the product can have."
+        },
+        {
+          "name": "addProductInformation",
+          "schema": "boolean",
+          "description": "If set to true, you get more information about the products returned."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to skip (between 0 and 900)."
+        },
+        {
+          "name": "number",
+          "schema": "integer",
+          "description": "The maximum number of items to return (between 1 and 100). Defaults to 10."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/products/suggest",
+      "method": "autocompleteProductSearch",
+      "httpMethod": "get",
+      "tag": "products",
+      "description": "Autocomplete Product Search",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": true,
+          "description": "The (partial) search query."
+        },
+        {
+          "name": "number",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to return (between 1 and 25)."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/products/upc/{upc}",
+      "method": "searchGroceryProductsByUpc",
+      "httpMethod": "get",
+      "tag": "products",
+      "description": "Search Grocery Products by UPC",
+      "parameters": [
+        {
+          "name": "upc",
+          "schema": "number",
+          "required": true,
+          "description": "The product's UPC."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/products/upc/{upc}/comparable",
+      "method": "getComparableProducts",
+      "httpMethod": "get",
+      "tag": "products",
+      "description": "Get Comparable Products",
+      "parameters": [
+        {
+          "name": "upc",
+          "schema": "number",
+          "required": true,
+          "description": "The UPC of the product for which you want to find comparable products."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/products/{id}",
+      "method": "getProductInformation",
+      "httpMethod": "get",
+      "tag": "products",
+      "description": "Get Product Information",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The id of the packaged food."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/products/{id}/nutritionLabel",
+      "method": "productNutritionLabelWidget",
+      "httpMethod": "get",
+      "tag": "products",
+      "description": "Product Nutrition Label Widget",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The product id."
+        },
+        {
+          "name": "defaultCss",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether the default CSS should be added to the response."
+        },
+        {
+          "name": "showOptionalNutrients",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to show optional nutrients."
+        },
+        {
+          "name": "showZeroValues",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to show zero values."
+        },
+        {
+          "name": "showIngredients",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to show a list of ingredients."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/products/{id}/nutritionLabel.png",
+      "method": "productNutritionLabelImage",
+      "httpMethod": "get",
+      "tag": "products",
+      "description": "Product Nutrition Label Image",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The product id."
+        },
+        {
+          "name": "showOptionalNutrients",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to show optional nutrients."
+        },
+        {
+          "name": "showZeroValues",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to show zero values."
+        },
+        {
+          "name": "showIngredients",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to show a list of ingredients."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/products/{id}/nutritionWidget",
+      "method": "visualizeProductNutritionById",
+      "httpMethod": "get",
+      "tag": "products",
+      "description": "Product Nutrition by ID Widget",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The id of the product."
+        },
+        {
+          "name": "defaultCss",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether the default CSS should be added to the response."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": false,
+          "description": "Accept header."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/products/{id}/nutritionWidget.png",
+      "method": "productNutritionByIdImage",
+      "httpMethod": "get",
+      "tag": "products",
+      "description": "Product Nutrition by ID Image",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The id of the product."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/restaurants/search",
+      "method": "searchRestaurants",
+      "httpMethod": "get",
+      "description": "Search Restaurants",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "The search query."
+        },
+        {
+          "name": "lat",
+          "schema": "number",
+          "required": false,
+          "description": "The latitude of the user's location."
+        },
+        {
+          "name": "lng",
+          "schema": "number",
+          "required": false,
+          "description": "The longitude of the user's location.\"."
+        },
+        {
+          "name": "distance",
+          "schema": "number",
+          "required": false,
+          "description": "The distance around the location in miles."
+        },
+        {
+          "name": "budget",
+          "schema": "number",
+          "required": false,
+          "description": "The user's budget for a meal in USD."
+        },
+        {
+          "name": "cuisine",
+          "schema": "string",
+          "required": false,
+          "description": "The cuisine of the restaurant."
+        },
+        {
+          "name": "min-rating",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum rating of the restaurant between 0 and 5."
+        },
+        {
+          "name": "is-open",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether the restaurant must be open at the time of search."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "How to sort the results, one of the following 'cheapest', 'fastest', 'rating', 'distance' or the default 'relevance'."
+        },
+        {
+          "name": "page",
+          "schema": "number",
+          "required": false,
+          "description": "The page number of results."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/search",
+      "method": "searchAllFood",
+      "httpMethod": "get",
+      "tag": "misc",
+      "description": "Search All Food",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": true,
+          "description": "The search query."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to skip (between 0 and 900)."
+        },
+        {
+          "name": "number",
+          "schema": "integer",
+          "description": "The maximum number of items to return (between 1 and 100). Defaults to 10."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/site/search",
+      "method": "searchSiteContent",
+      "httpMethod": "get",
+      "tag": "misc",
+      "description": "Search Site Content",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": true,
+          "description": "The query to search for. You can also use partial queries such as \"spagh\" to already find spaghetti recipes, articles, grocery products, and other content."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/trivia/random",
+      "method": "getRandomFoodTrivia",
+      "httpMethod": "get",
+      "tag": "misc",
+      "description": "Random Food Trivia",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/videos/search",
+      "method": "searchFoodVideos",
+      "httpMethod": "get",
+      "tag": "misc",
+      "description": "Search Food Videos",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "The (natural language) search query."
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "The type of the recipes. See a full list of supported meal types."
+        },
+        {
+          "name": "cuisine",
+          "schema": "string",
+          "required": false,
+          "description": "The cuisine(s) of the recipes. One or more, comma separated. See a full list of supported cuisines."
+        },
+        {
+          "name": "diet",
+          "schema": "string",
+          "required": false,
+          "description": "The diet for which the recipes must be suitable. See a full list of supported diets."
+        },
+        {
+          "name": "includeIngredients",
+          "schema": "string",
+          "required": false,
+          "description": "A comma-separated list of ingredients that the recipes should contain."
+        },
+        {
+          "name": "excludeIngredients",
+          "schema": "string",
+          "required": false,
+          "description": "A comma-separated list of ingredients or ingredient types that the recipes must not contain."
+        },
+        {
+          "name": "minLength",
+          "schema": "number",
+          "required": false,
+          "description": "Minimum video length in seconds."
+        },
+        {
+          "name": "maxLength",
+          "schema": "number",
+          "required": false,
+          "description": "Maximum video length in seconds."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to skip (between 0 and 900)."
+        },
+        {
+          "name": "number",
+          "schema": "integer",
+          "description": "The maximum number of items to return (between 1 and 100). Defaults to 10."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/wine/description",
+      "method": "getWineDescription",
+      "httpMethod": "get",
+      "tag": "wine",
+      "description": "Wine Description",
+      "parameters": [
+        {
+          "name": "wine",
+          "schema": "string",
+          "required": true,
+          "description": "The name of the wine that should be paired, e.g. \"merlot\", \"riesling\", or \"malbec\"."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/wine/dishes",
+      "method": "getDishPairingForWine",
+      "httpMethod": "get",
+      "tag": "wine",
+      "description": "Dish Pairing for Wine",
+      "parameters": [
+        {
+          "name": "wine",
+          "schema": "string",
+          "required": true,
+          "description": "The type of wine that should be paired, e.g. \"merlot\", \"riesling\", or \"malbec\"."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/wine/pairing",
+      "method": "getWinePairing",
+      "httpMethod": "get",
+      "tag": "wine",
+      "description": "Wine Pairing",
+      "parameters": [
+        {
+          "name": "food",
+          "schema": "string",
+          "required": true,
+          "description": "The food to get a pairing for. This can be a dish (\"steak\"), an ingredient (\"salmon\"), or a cuisine (\"italian\")."
+        },
+        {
+          "name": "maxPrice",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum price for the specific wine recommendation in USD."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/food/wine/recommendation",
+      "method": "getWineRecommendation",
+      "httpMethod": "get",
+      "tag": "wine",
+      "description": "Wine Recommendation",
+      "parameters": [
+        {
+          "name": "wine",
+          "schema": "string",
+          "required": true,
+          "description": "The type of wine to get a specific product recommendation for."
+        },
+        {
+          "name": "maxPrice",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum price for the specific wine recommendation in USD."
+        },
+        {
+          "name": "minRating",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum rating of the recommended wine between 0 and 1. For example, 0.8 equals 4 out of 5 stars."
+        },
+        {
+          "name": "number",
+          "schema": "number",
+          "required": false,
+          "description": "The number of wine recommendations expected (between 1 and 100)."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mealplanner/generate",
+      "method": "generateMealPlan",
+      "httpMethod": "get",
+      "tag": "meal planning",
+      "description": "Generate Meal Plan",
+      "parameters": [
+        {
+          "name": "timeFrame",
+          "schema": "string",
+          "required": false,
+          "description": "Either for one \"day\" or an entire \"week\"."
+        },
+        {
+          "name": "targetCalories",
+          "schema": "number",
+          "required": false,
+          "description": "What is the caloric target for one day? The meal plan generator will try to get as close as possible to that goal."
+        },
+        {
+          "name": "diet",
+          "schema": "string",
+          "required": false,
+          "description": "Enter a diet that the meal plan has to adhere to. See a full list of supported diets."
+        },
+        {
+          "name": "exclude",
+          "schema": "string",
+          "required": false,
+          "description": "A comma-separated list of allergens or ingredients that must be excluded."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mealplanner/{username}/day/{date}",
+      "method": "clearMealPlanDay",
+      "httpMethod": "delete",
+      "tag": "meal planning",
+      "description": "Clear Meal Plan Day",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "The username."
+        },
+        {
+          "name": "date",
+          "schema": "string",
+          "required": true,
+          "description": "The date in the format yyyy-mm-dd."
+        },
+        {
+          "name": "hash",
+          "schema": "string",
+          "required": true,
+          "description": "The private hash for the username."
+        },
+        {
+          "name": "date",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "hash",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mealplanner/{username}/items",
+      "method": "addToMealPlan",
+      "httpMethod": "post",
+      "tag": "meal planning",
+      "description": "Add to Meal Plan",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "The username."
+        },
+        {
+          "name": "hash",
+          "schema": "string",
+          "required": true,
+          "description": "The private hash for the username."
+        },
+        {
+          "name": "hash",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mealplanner/{username}/items/{id}",
+      "method": "deleteFromMealPlan",
+      "httpMethod": "delete",
+      "tag": "meal planning",
+      "description": "Delete from Meal Plan",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "The username."
+        },
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The shopping list item id."
+        },
+        {
+          "name": "hash",
+          "schema": "string",
+          "required": true,
+          "description": "The private hash for the username."
+        },
+        {
+          "name": "hash",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mealplanner/{username}/shopping-list",
+      "method": "getShoppingList",
+      "httpMethod": "get",
+      "tag": "meal planning",
+      "description": "Get Shopping List",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "The username."
+        },
+        {
+          "name": "hash",
+          "schema": "string",
+          "required": true,
+          "description": "The private hash for the username."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mealplanner/{username}/shopping-list/items",
+      "method": "addToShoppingList",
+      "httpMethod": "post",
+      "tag": "meal planning",
+      "description": "Add to Shopping List",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "The username."
+        },
+        {
+          "name": "hash",
+          "schema": "string",
+          "required": true,
+          "description": "The private hash for the username."
+        },
+        {
+          "name": "hash",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mealplanner/{username}/shopping-list/items/{id}",
+      "method": "deleteFromShoppingList",
+      "httpMethod": "delete",
+      "tag": "meal planning",
+      "description": "Delete from Shopping List",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "The username."
+        },
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The shopping list item id."
+        },
+        {
+          "name": "hash",
+          "schema": "string",
+          "required": true,
+          "description": "The private hash for the username."
+        },
+        {
+          "name": "hash",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mealplanner/{username}/shopping-list/{start-date}/{end-date}",
+      "method": "generateShoppingList",
+      "httpMethod": "post",
+      "tag": "meal planning",
+      "description": "Generate Shopping List",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "The username."
+        },
+        {
+          "name": "start-date",
+          "schema": "string",
+          "required": true,
+          "description": "The start date in the format yyyy-mm-dd."
+        },
+        {
+          "name": "end-date",
+          "schema": "string",
+          "required": true,
+          "description": "The end date in the format yyyy-mm-dd."
+        },
+        {
+          "name": "hash",
+          "schema": "string",
+          "required": true,
+          "description": "The private hash for the username."
+        },
+        {
+          "name": "end-date",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "hash",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "start-date",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mealplanner/{username}/templates",
+      "method": "getMealPlanTemplates",
+      "httpMethod": "get",
+      "tag": "meal planning",
+      "description": "Get Meal Plan Templates",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "The username."
+        },
+        {
+          "name": "hash",
+          "schema": "string",
+          "required": true,
+          "description": "The private hash for the username."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mealplanner/{username}/templates",
+      "method": "addMealPlanTemplate",
+      "httpMethod": "post",
+      "tag": "meal planning",
+      "description": "Add Meal Plan Template",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "The username."
+        },
+        {
+          "name": "hash",
+          "schema": "string",
+          "required": true,
+          "description": "The private hash for the username."
+        },
+        {
+          "name": "hash",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mealplanner/{username}/templates/{id}",
+      "method": "deleteMealPlanTemplate",
+      "httpMethod": "delete",
+      "tag": "meal planning",
+      "description": "Delete Meal Plan Template",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "The username."
+        },
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The shopping list item id."
+        },
+        {
+          "name": "hash",
+          "schema": "string",
+          "required": true,
+          "description": "The private hash for the username."
+        },
+        {
+          "name": "hash",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mealplanner/{username}/templates/{id}",
+      "method": "getMealPlanTemplate",
+      "httpMethod": "get",
+      "tag": "meal planning",
+      "description": "Get Meal Plan Template",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "The username."
+        },
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The shopping list item id."
+        },
+        {
+          "name": "hash",
+          "schema": "string",
+          "required": true,
+          "description": "The private hash for the username."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mealplanner/{username}/week/{start-date}",
+      "method": "getMealPlanWeek",
+      "httpMethod": "get",
+      "tag": "meal planning",
+      "description": "Get Meal Plan Week",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "The username."
+        },
+        {
+          "name": "start-date",
+          "schema": "string",
+          "required": true,
+          "description": "The start date of the meal planned week in the format yyyy-mm-dd."
+        },
+        {
+          "name": "hash",
+          "schema": "string",
+          "required": true,
+          "description": "The private hash for the username."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/analyze",
+      "method": "analyzeRecipe",
+      "httpMethod": "post",
+      "description": "Analyze Recipe",
+      "parameters": [
+        {
+          "name": "language",
+          "schema": "string",
+          "required": false,
+          "description": "The input language, either \"en\" or \"de\"."
+        },
+        {
+          "name": "includeNutrition",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether nutrition data should be added to correctly parsed ingredients."
+        },
+        {
+          "name": "includeTaste",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether taste data should be added to correctly parsed ingredients."
+        },
+        {
+          "name": "includeNutrition",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "includeTaste",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/analyzeInstructions",
+      "method": "analyzeRecipeInstructions",
+      "httpMethod": "post",
+      "tag": "recipes",
+      "description": "Analyze Recipe Instructions",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": false,
+          "description": "The content type."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/autocomplete",
+      "method": "autocompleteRecipeSearch",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Autocomplete Recipe Search",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "The (natural language) search query."
+        },
+        {
+          "name": "number",
+          "schema": "integer",
+          "description": "The maximum number of items to return (between 1 and 100). Defaults to 10."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/complexSearch",
+      "method": "searchRecipes",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Search Recipes",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "The (natural language) search query."
+        },
+        {
+          "name": "cuisine",
+          "schema": "string",
+          "required": false,
+          "description": "The cuisine(s) of the recipes. One or more, comma separated (will be interpreted as 'OR'). See a full list of supported cuisines."
+        },
+        {
+          "name": "excludeCuisine",
+          "schema": "string",
+          "required": false,
+          "description": "The cuisine(s) the recipes must not match. One or more, comma separated (will be interpreted as 'AND'). See a full list of supported cuisines."
+        },
+        {
+          "name": "diet",
+          "schema": "string",
+          "required": false,
+          "description": "The diet for which the recipes must be suitable. See a full list of supported diets."
+        },
+        {
+          "name": "intolerances",
+          "schema": "string",
+          "required": false,
+          "description": "A comma-separated list of intolerances. All recipes returned must not contain ingredients that are not suitable for people with the intolerances entered. See a full list of supported intolerances."
+        },
+        {
+          "name": "equipment",
+          "schema": "string",
+          "required": false,
+          "description": "The equipment required. Multiple values will be interpreted as 'or'. For example, value could be \"blender, frying pan, bowl\"."
+        },
+        {
+          "name": "includeIngredients",
+          "schema": "string",
+          "required": false,
+          "description": "A comma-separated list of ingredients that should/must be used in the recipes."
+        },
+        {
+          "name": "excludeIngredients",
+          "schema": "string",
+          "required": false,
+          "description": "A comma-separated list of ingredients or ingredient types that the recipes must not contain."
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "The type of recipe. See a full list of supported meal types."
+        },
+        {
+          "name": "instructionsRequired",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether the recipes must have instructions."
+        },
+        {
+          "name": "fillIngredients",
+          "schema": "boolean",
+          "required": false,
+          "description": "Add information about the ingredients and whether they are used or missing in relation to the query."
+        },
+        {
+          "name": "addRecipeInformation",
+          "schema": "boolean",
+          "required": false,
+          "description": "If set to true, you get more information about the recipes returned."
+        },
+        {
+          "name": "addRecipeNutrition",
+          "schema": "boolean",
+          "required": false,
+          "description": "If set to true, you get nutritional information about each recipes returned."
+        },
+        {
+          "name": "author",
+          "schema": "string",
+          "required": false,
+          "description": "The username of the recipe author."
+        },
+        {
+          "name": "tags",
+          "schema": "string",
+          "required": false,
+          "description": "The tags (can be diets, meal types, cuisines, or intolerances) that the recipe must have."
+        },
+        {
+          "name": "recipeBoxId",
+          "schema": "number",
+          "required": false,
+          "description": "The id of the recipe box to which the search should be limited to."
+        },
+        {
+          "name": "titleMatch",
+          "schema": "string",
+          "required": false,
+          "description": "Enter text that must be found in the title of the recipes."
+        },
+        {
+          "name": "maxReadyTime",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum time in minutes it should take to prepare and cook the recipe."
+        },
+        {
+          "name": "ignorePantry",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to ignore typical pantry items, such as water, salt, flour, etc."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "The strategy to sort recipes by. See a full list of supported sorting options."
+        },
+        {
+          "name": "sortDirection",
+          "schema": "string",
+          "required": false,
+          "description": "The direction in which to sort. Must be either 'asc' (ascending) or 'desc' (descending)."
+        },
+        {
+          "name": "minCarbs",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of carbohydrates in grams the recipe must have."
+        },
+        {
+          "name": "maxCarbs",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of carbohydrates in grams the recipe can have."
+        },
+        {
+          "name": "minProtein",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of protein in grams the recipe must have."
+        },
+        {
+          "name": "maxProtein",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of protein in grams the recipe can have."
+        },
+        {
+          "name": "minCalories",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of calories the recipe must have."
+        },
+        {
+          "name": "maxCalories",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of calories the recipe can have."
+        },
+        {
+          "name": "minFat",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of fat in grams the recipe must have."
+        },
+        {
+          "name": "maxFat",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of fat in grams the recipe can have."
+        },
+        {
+          "name": "minAlcohol",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of alcohol in grams the recipe must have."
+        },
+        {
+          "name": "maxAlcohol",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of alcohol in grams the recipe can have."
+        },
+        {
+          "name": "minCaffeine",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of caffeine in milligrams the recipe must have."
+        },
+        {
+          "name": "maxCaffeine",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of caffeine in milligrams the recipe can have."
+        },
+        {
+          "name": "minCopper",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of copper in milligrams the recipe must have."
+        },
+        {
+          "name": "maxCopper",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of copper in milligrams the recipe can have."
+        },
+        {
+          "name": "minCalcium",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of calcium in milligrams the recipe must have."
+        },
+        {
+          "name": "maxCalcium",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of calcium in milligrams the recipe can have."
+        },
+        {
+          "name": "minCholine",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of choline in milligrams the recipe must have."
+        },
+        {
+          "name": "maxCholine",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of choline in milligrams the recipe can have."
+        },
+        {
+          "name": "minCholesterol",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of cholesterol in milligrams the recipe must have."
+        },
+        {
+          "name": "maxCholesterol",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of cholesterol in milligrams the recipe can have."
+        },
+        {
+          "name": "minFluoride",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of fluoride in milligrams the recipe must have."
+        },
+        {
+          "name": "maxFluoride",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of fluoride in milligrams the recipe can have."
+        },
+        {
+          "name": "minSaturatedFat",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of saturated fat in grams the recipe must have."
+        },
+        {
+          "name": "maxSaturatedFat",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of saturated fat in grams the recipe can have."
+        },
+        {
+          "name": "minVitaminA",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of Vitamin A in IU the recipe must have."
+        },
+        {
+          "name": "maxVitaminA",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of Vitamin A in IU the recipe can have."
+        },
+        {
+          "name": "minVitaminC",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of Vitamin C milligrams the recipe must have."
+        },
+        {
+          "name": "maxVitaminC",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of Vitamin C in milligrams the recipe can have."
+        },
+        {
+          "name": "minVitaminD",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of Vitamin D in micrograms the recipe must have."
+        },
+        {
+          "name": "maxVitaminD",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of Vitamin D in micrograms the recipe can have."
+        },
+        {
+          "name": "minVitaminE",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of Vitamin E in milligrams the recipe must have."
+        },
+        {
+          "name": "maxVitaminE",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of Vitamin E in milligrams the recipe can have."
+        },
+        {
+          "name": "minVitaminK",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of Vitamin K in micrograms the recipe must have."
+        },
+        {
+          "name": "maxVitaminK",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of Vitamin K in micrograms the recipe can have."
+        },
+        {
+          "name": "minVitaminB1",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of Vitamin B1 in milligrams the recipe must have."
+        },
+        {
+          "name": "maxVitaminB1",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of Vitamin B1 in milligrams the recipe can have."
+        },
+        {
+          "name": "minVitaminB2",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of Vitamin B2 in milligrams the recipe must have."
+        },
+        {
+          "name": "maxVitaminB2",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of Vitamin B2 in milligrams the recipe can have."
+        },
+        {
+          "name": "minVitaminB5",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of Vitamin B5 in milligrams the recipe must have."
+        },
+        {
+          "name": "maxVitaminB5",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of Vitamin B5 in milligrams the recipe can have."
+        },
+        {
+          "name": "minVitaminB3",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of Vitamin B3 in milligrams the recipe must have."
+        },
+        {
+          "name": "maxVitaminB3",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of Vitamin B3 in milligrams the recipe can have."
+        },
+        {
+          "name": "minVitaminB6",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of Vitamin B6 in milligrams the recipe must have."
+        },
+        {
+          "name": "maxVitaminB6",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of Vitamin B6 in milligrams the recipe can have."
+        },
+        {
+          "name": "minVitaminB12",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of Vitamin B12 in micrograms the recipe must have."
+        },
+        {
+          "name": "maxVitaminB12",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of Vitamin B12 in micrograms the recipe can have."
+        },
+        {
+          "name": "minFiber",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of fiber in grams the recipe must have."
+        },
+        {
+          "name": "maxFiber",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of fiber in grams the recipe can have."
+        },
+        {
+          "name": "minFolate",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of folate in micrograms the recipe must have."
+        },
+        {
+          "name": "maxFolate",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of folate in micrograms the recipe can have."
+        },
+        {
+          "name": "minFolicAcid",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of folic acid in micrograms the recipe must have."
+        },
+        {
+          "name": "maxFolicAcid",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of folic acid in micrograms the recipe can have."
+        },
+        {
+          "name": "minIodine",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of iodine in micrograms the recipe must have."
+        },
+        {
+          "name": "maxIodine",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of iodine in micrograms the recipe can have."
+        },
+        {
+          "name": "minIron",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of iron in milligrams the recipe must have."
+        },
+        {
+          "name": "maxIron",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of iron in milligrams the recipe can have."
+        },
+        {
+          "name": "minMagnesium",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of magnesium in milligrams the recipe must have."
+        },
+        {
+          "name": "maxMagnesium",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of magnesium in milligrams the recipe can have."
+        },
+        {
+          "name": "minManganese",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of manganese in milligrams the recipe must have."
+        },
+        {
+          "name": "maxManganese",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of manganese in milligrams the recipe can have."
+        },
+        {
+          "name": "minPhosphorus",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of phosphorus in milligrams the recipe must have."
+        },
+        {
+          "name": "maxPhosphorus",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of phosphorus in milligrams the recipe can have."
+        },
+        {
+          "name": "minPotassium",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of potassium in milligrams the recipe must have."
+        },
+        {
+          "name": "maxPotassium",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of potassium in milligrams the recipe can have."
+        },
+        {
+          "name": "minSelenium",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of selenium in micrograms the recipe must have."
+        },
+        {
+          "name": "maxSelenium",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of selenium in micrograms the recipe can have."
+        },
+        {
+          "name": "minSodium",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of sodium in milligrams the recipe must have."
+        },
+        {
+          "name": "maxSodium",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of sodium in milligrams the recipe can have."
+        },
+        {
+          "name": "minSugar",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of sugar in grams the recipe must have."
+        },
+        {
+          "name": "maxSugar",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of sugar in grams the recipe can have."
+        },
+        {
+          "name": "minZinc",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of zinc in milligrams the recipe must have."
+        },
+        {
+          "name": "maxZinc",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of zinc in milligrams the recipe can have."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to skip (between 0 and 900)."
+        },
+        {
+          "name": "number",
+          "schema": "integer",
+          "description": "The maximum number of items to return (between 1 and 100). Defaults to 10."
+        },
+        {
+          "name": "limitLicense",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether the recipes should have an open license that allows display with proper attribution."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/convert",
+      "method": "convertAmounts",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Convert Amounts",
+      "parameters": [
+        {
+          "name": "ingredientName",
+          "schema": "string",
+          "required": true,
+          "description": "The ingredient which you want to convert."
+        },
+        {
+          "name": "sourceAmount",
+          "schema": "number",
+          "required": true,
+          "description": "The amount from which you want to convert, e.g. the 2.5 in \"2.5 cups of flour to grams\"."
+        },
+        {
+          "name": "sourceUnit",
+          "schema": "string",
+          "required": true,
+          "description": "The unit from which you want to convert, e.g. the grams in \"2.5 cups of flour to grams\". You can also use \"piece\", e.g. \"3.4 oz tomatoes to piece\""
+        },
+        {
+          "name": "targetUnit",
+          "schema": "string",
+          "required": true,
+          "description": "The unit to which you want to convert, e.g. the grams in \"2.5 cups of flour to grams\". You can also use \"piece\", e.g. \"3.4 oz tomatoes to piece\""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/cuisine",
+      "method": "classifyCuisine",
+      "httpMethod": "post",
+      "tag": "recipes",
+      "description": "Classify Cuisine",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": false,
+          "description": "The content type."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/extract",
+      "method": "extractRecipeFromWebsite",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Extract Recipe from Website",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": "The URL of the recipe page."
+        },
+        {
+          "name": "forceExtraction",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, the extraction will be triggered whether we already know the recipe or not. Use this only if information is missing as this operation is slower."
+        },
+        {
+          "name": "analyze",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, the recipe will be analyzed and classified resolving in more data such as cuisines, dish types, and more."
+        },
+        {
+          "name": "includeNutrition",
+          "schema": "boolean",
+          "required": false,
+          "description": "Include nutrition data in the recipe information. Nutrition data is per serving. If you want the nutrition data for the entire recipe, just multiply by the number of servings."
+        },
+        {
+          "name": "includeTaste",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether taste data should be added to correctly parsed ingredients."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/findByIngredients",
+      "method": "searchRecipesByIngredients",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Search Recipes by Ingredients",
+      "parameters": [
+        {
+          "name": "ingredients",
+          "schema": "string",
+          "description": "A comma-separated list of ingredients that the recipes should contain."
+        },
+        {
+          "name": "number",
+          "schema": "integer",
+          "description": "The maximum number of items to return (between 1 and 100). Defaults to 10."
+        },
+        {
+          "name": "limitLicense",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether the recipes should have an open license that allows display with proper attribution."
+        },
+        {
+          "name": "ranking",
+          "schema": "number",
+          "required": false,
+          "description": "Whether to maximize used ingredients (1) or minimize missing ingredients (2) first."
+        },
+        {
+          "name": "ignorePantry",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to ignore typical pantry items, such as water, salt, flour, etc."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/findByNutrients",
+      "method": "searchRecipesByNutrients",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Search Recipes by Nutrients",
+      "parameters": [
+        {
+          "name": "minCarbs",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of carbohydrates in grams the recipe must have."
+        },
+        {
+          "name": "maxCarbs",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of carbohydrates in grams the recipe can have."
+        },
+        {
+          "name": "minProtein",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of protein in grams the recipe must have."
+        },
+        {
+          "name": "maxProtein",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of protein in grams the recipe can have."
+        },
+        {
+          "name": "minCalories",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of calories the recipe must have."
+        },
+        {
+          "name": "maxCalories",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of calories the recipe can have."
+        },
+        {
+          "name": "minFat",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of fat in grams the recipe must have."
+        },
+        {
+          "name": "maxFat",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of fat in grams the recipe can have."
+        },
+        {
+          "name": "minAlcohol",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of alcohol in grams the recipe must have."
+        },
+        {
+          "name": "maxAlcohol",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of alcohol in grams the recipe can have."
+        },
+        {
+          "name": "minCaffeine",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of caffeine in milligrams the recipe must have."
+        },
+        {
+          "name": "maxCaffeine",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of caffeine in milligrams the recipe can have."
+        },
+        {
+          "name": "minCopper",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of copper in milligrams the recipe must have."
+        },
+        {
+          "name": "maxCopper",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of copper in milligrams the recipe can have."
+        },
+        {
+          "name": "minCalcium",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of calcium in milligrams the recipe must have."
+        },
+        {
+          "name": "maxCalcium",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of calcium in milligrams the recipe can have."
+        },
+        {
+          "name": "minCholine",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of choline in milligrams the recipe must have."
+        },
+        {
+          "name": "maxCholine",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of choline in milligrams the recipe can have."
+        },
+        {
+          "name": "minCholesterol",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of cholesterol in milligrams the recipe must have."
+        },
+        {
+          "name": "maxCholesterol",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of cholesterol in milligrams the recipe can have."
+        },
+        {
+          "name": "minFluoride",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of fluoride in milligrams the recipe must have."
+        },
+        {
+          "name": "maxFluoride",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of fluoride in milligrams the recipe can have."
+        },
+        {
+          "name": "minSaturatedFat",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of saturated fat in grams the recipe must have."
+        },
+        {
+          "name": "maxSaturatedFat",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of saturated fat in grams the recipe can have."
+        },
+        {
+          "name": "minVitaminA",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of Vitamin A in IU the recipe must have."
+        },
+        {
+          "name": "maxVitaminA",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of Vitamin A in IU the recipe can have."
+        },
+        {
+          "name": "minVitaminC",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of Vitamin C in milligrams the recipe must have."
+        },
+        {
+          "name": "maxVitaminC",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of Vitamin C in milligrams the recipe can have."
+        },
+        {
+          "name": "minVitaminD",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of Vitamin D in micrograms the recipe must have."
+        },
+        {
+          "name": "maxVitaminD",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of Vitamin D in micrograms the recipe can have."
+        },
+        {
+          "name": "minVitaminE",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of Vitamin E in milligrams the recipe must have."
+        },
+        {
+          "name": "maxVitaminE",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of Vitamin E in milligrams the recipe can have."
+        },
+        {
+          "name": "minVitaminK",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of Vitamin K in micrograms the recipe must have."
+        },
+        {
+          "name": "maxVitaminK",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of Vitamin K in micrograms the recipe can have."
+        },
+        {
+          "name": "minVitaminB1",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of Vitamin B1 in milligrams the recipe must have."
+        },
+        {
+          "name": "maxVitaminB1",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of Vitamin B1 in milligrams the recipe can have."
+        },
+        {
+          "name": "minVitaminB2",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of Vitamin B2 in milligrams the recipe must have."
+        },
+        {
+          "name": "maxVitaminB2",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of Vitamin B2 in milligrams the recipe can have."
+        },
+        {
+          "name": "minVitaminB5",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of Vitamin B5 in milligrams the recipe must have."
+        },
+        {
+          "name": "maxVitaminB5",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of Vitamin B5 in milligrams the recipe can have."
+        },
+        {
+          "name": "minVitaminB3",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of Vitamin B3 in milligrams the recipe must have."
+        },
+        {
+          "name": "maxVitaminB3",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of Vitamin B3 in milligrams the recipe can have."
+        },
+        {
+          "name": "minVitaminB6",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of Vitamin B6 in milligrams the recipe must have."
+        },
+        {
+          "name": "maxVitaminB6",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of Vitamin B6 in milligrams the recipe can have."
+        },
+        {
+          "name": "minVitaminB12",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of Vitamin B12 in micrograms the recipe must have."
+        },
+        {
+          "name": "maxVitaminB12",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of Vitamin B12 in micrograms the recipe can have."
+        },
+        {
+          "name": "minFiber",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of fiber in grams the recipe must have."
+        },
+        {
+          "name": "maxFiber",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of fiber in grams the recipe can have."
+        },
+        {
+          "name": "minFolate",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of folate in micrograms the recipe must have."
+        },
+        {
+          "name": "maxFolate",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of folate in micrograms the recipe can have."
+        },
+        {
+          "name": "minFolicAcid",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of folic acid in micrograms the recipe must have."
+        },
+        {
+          "name": "maxFolicAcid",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of folic acid in micrograms the recipe can have."
+        },
+        {
+          "name": "minIodine",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of iodine in micrograms the recipe must have."
+        },
+        {
+          "name": "maxIodine",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of iodine in micrograms the recipe can have."
+        },
+        {
+          "name": "minIron",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of iron in milligrams the recipe must have."
+        },
+        {
+          "name": "maxIron",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of iron in milligrams the recipe can have."
+        },
+        {
+          "name": "minMagnesium",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of magnesium in milligrams the recipe must have."
+        },
+        {
+          "name": "maxMagnesium",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of magnesium in milligrams the recipe can have."
+        },
+        {
+          "name": "minManganese",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of manganese in milligrams the recipe must have."
+        },
+        {
+          "name": "maxManganese",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of manganese in milligrams the recipe can have."
+        },
+        {
+          "name": "minPhosphorus",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of phosphorus in milligrams the recipe must have."
+        },
+        {
+          "name": "maxPhosphorus",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of phosphorus in milligrams the recipe can have."
+        },
+        {
+          "name": "minPotassium",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of potassium in milligrams the recipe must have."
+        },
+        {
+          "name": "maxPotassium",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of potassium in milligrams the recipe can have."
+        },
+        {
+          "name": "minSelenium",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of selenium in micrograms the recipe must have."
+        },
+        {
+          "name": "maxSelenium",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of selenium in micrograms the recipe can have."
+        },
+        {
+          "name": "minSodium",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of sodium in milligrams the recipe must have."
+        },
+        {
+          "name": "maxSodium",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of sodium in milligrams the recipe can have."
+        },
+        {
+          "name": "minSugar",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of sugar in grams the recipe must have."
+        },
+        {
+          "name": "maxSugar",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of sugar in grams the recipe can have."
+        },
+        {
+          "name": "minZinc",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum amount of zinc in milligrams the recipe must have."
+        },
+        {
+          "name": "maxZinc",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum amount of zinc in milligrams the recipe can have."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to skip (between 0 and 900)."
+        },
+        {
+          "name": "number",
+          "schema": "integer",
+          "description": "The maximum number of items to return (between 1 and 100). Defaults to 10."
+        },
+        {
+          "name": "random",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, every request will give you a random set of recipes within the requested limits."
+        },
+        {
+          "name": "limitLicense",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether the recipes should have an open license that allows display with proper attribution."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/guessNutrition",
+      "method": "guessNutritionByDishName",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Guess Nutrition by Dish Name",
+      "parameters": [
+        {
+          "name": "title",
+          "schema": "string",
+          "required": true,
+          "description": "The title of the dish."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/informationBulk",
+      "method": "getRecipeInformationBulk",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Get Recipe Information Bulk",
+      "parameters": [
+        {
+          "name": "ids",
+          "schema": "string",
+          "required": true,
+          "description": "A comma-separated list of recipe ids."
+        },
+        {
+          "name": "includeNutrition",
+          "schema": "boolean",
+          "required": false,
+          "description": "Include nutrition data in the recipe information. Nutrition data is per serving. If you want the nutrition data for the entire recipe, just multiply by the number of servings."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/parseIngredients",
+      "method": "parseIngredients",
+      "httpMethod": "post",
+      "tag": "recipes",
+      "description": "Parse Ingredients",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": false,
+          "description": "The content type."
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": false,
+          "description": "The language of the input. Either 'en' or 'de'."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/queries/analyze",
+      "method": "analyzeARecipeSearchQuery",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Analyze a Recipe Search Query",
+      "parameters": [
+        {
+          "name": "q",
+          "schema": "string",
+          "required": true,
+          "description": "The recipe search query."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/quickAnswer",
+      "method": "quickAnswer",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Quick Answer",
+      "parameters": [
+        {
+          "name": "q",
+          "schema": "string",
+          "required": true,
+          "description": "The nutrition related question."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/random",
+      "method": "getRandomRecipes",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Get Random Recipes",
+      "parameters": [
+        {
+          "name": "limitLicense",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether the recipes should have an open license that allows display with proper attribution."
+        },
+        {
+          "name": "tags",
+          "schema": "string",
+          "required": false,
+          "description": "The tags (can be diets, meal types, cuisines, or intolerances) that the recipe must have."
+        },
+        {
+          "name": "number",
+          "schema": "integer",
+          "description": "The maximum number of items to return (between 1 and 100). Defaults to 10."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/visualizeEquipment",
+      "method": "visualizeEquipment",
+      "httpMethod": "post",
+      "tag": "recipes",
+      "description": "Equipment Widget",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": false,
+          "description": "The content type."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": false,
+          "description": "Accept header."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/visualizeIngredients",
+      "method": "visualizeIngredients",
+      "httpMethod": "post",
+      "tag": "ingredients",
+      "description": "Ingredients Widget",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": false,
+          "description": "The content type."
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": false,
+          "description": "The language of the input. Either 'en' or 'de'."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": false,
+          "description": "Accept header."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/visualizeNutrition",
+      "method": "visualizeRecipeNutrition",
+      "httpMethod": "post",
+      "tag": "recipes",
+      "description": "Recipe Nutrition Widget",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": false,
+          "description": "The content type."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": false,
+          "description": "Accept header."
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": false,
+          "description": "The language of the input. Either 'en' or 'de'."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/visualizePriceEstimator",
+      "method": "visualizePriceBreakdown",
+      "httpMethod": "post",
+      "tag": "recipes",
+      "description": "Price Breakdown Widget",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": false,
+          "description": "The content type."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": false,
+          "description": "Accept header."
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": false,
+          "description": "The language of the input. Either 'en' or 'de'."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/visualizeRecipe",
+      "method": "createRecipeCard",
+      "httpMethod": "post",
+      "tag": "recipes",
+      "description": "Create Recipe Card",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": false,
+          "description": "The content type."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/visualizeTaste",
+      "method": "visualizeRecipeTaste",
+      "httpMethod": "post",
+      "tag": "recipes",
+      "description": "Recipe Taste Widget",
+      "parameters": [
+        {
+          "name": "language",
+          "schema": "string",
+          "required": false,
+          "description": "The language of the input. Either 'en' or 'de'."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": false,
+          "description": "The content type."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": false,
+          "description": "Accept header."
+        },
+        {
+          "name": "normalize",
+          "schema": "boolean",
+          "description": "Whether to normalize to the strongest taste."
+        },
+        {
+          "name": "rgb",
+          "schema": "string",
+          "required": false,
+          "description": "Red, green, blue values for the chart color."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/{id}/analyzedInstructions",
+      "method": "getAnalyzedRecipeInstructions",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Get Analyzed Recipe Instructions",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The recipe id."
+        },
+        {
+          "name": "stepBreakdown",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to break down the recipe steps even more."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/{id}/card",
+      "method": "createRecipeCardGet",
+      "httpMethod": "get",
+      "description": "Create Recipe Card",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The recipe id."
+        },
+        {
+          "name": "mask",
+          "schema": "string",
+          "required": false,
+          "description": "The mask to put over the recipe image (\"ellipseMask\", \"diamondMask\", \"starMask\", \"heartMask\", \"potMask\", \"fishMask\")."
+        },
+        {
+          "name": "backgroundImage",
+          "schema": "string",
+          "required": false,
+          "description": "The background image (\"none\",\"background1\", or \"background2\")."
+        },
+        {
+          "name": "backgroundColor",
+          "schema": "string",
+          "required": false,
+          "description": "The background color for the recipe card as a hex-string."
+        },
+        {
+          "name": "fontColor",
+          "schema": "string",
+          "required": false,
+          "description": "The font color for the recipe card as a hex-string."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/{id}/equipmentWidget",
+      "method": "visualizeRecipeEquipmentById",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Equipment by ID Widget",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The recipe id."
+        },
+        {
+          "name": "defaultCss",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether the default CSS should be added to the response."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/{id}/equipmentWidget.json",
+      "method": "getRecipeEquipmentById",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Equipment by ID",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The recipe id."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/{id}/equipmentWidget.png",
+      "method": "equipmentByIdImage",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Equipment by ID Image",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The recipe id."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/{id}/information",
+      "method": "getRecipeInformation",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Get Recipe Information",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The id of the recipe."
+        },
+        {
+          "name": "includeNutrition",
+          "schema": "boolean",
+          "required": false,
+          "description": "Include nutrition data in the recipe information. Nutrition data is per serving. If you want the nutrition data for the entire recipe, just multiply by the number of servings."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/{id}/ingredientWidget",
+      "method": "visualizeRecipeIngredientsById",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Ingredients by ID Widget",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The recipe id."
+        },
+        {
+          "name": "defaultCss",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether the default CSS should be added to the response."
+        },
+        {
+          "name": "measure",
+          "schema": "string",
+          "description": "Whether the the measures should be 'us' or 'metric'."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/{id}/ingredientWidget.json",
+      "method": "getRecipeIngredientsById",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Ingredients by ID",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The recipe id."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/{id}/ingredientWidget.png",
+      "method": "ingredientsByIdImage",
+      "httpMethod": "get",
+      "tag": "ingredients",
+      "description": "Ingredients by ID Image",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The recipe id."
+        },
+        {
+          "name": "measure",
+          "schema": "string",
+          "required": false,
+          "description": "Whether the the measures should be 'us' or 'metric'."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/{id}/nutritionLabel",
+      "method": "recipeNutritionLabelWidget",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Recipe Nutrition Label Widget",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The recipe id."
+        },
+        {
+          "name": "defaultCss",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether the default CSS should be added to the response."
+        },
+        {
+          "name": "showOptionalNutrients",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to show optional nutrients."
+        },
+        {
+          "name": "showZeroValues",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to show zero values."
+        },
+        {
+          "name": "showIngredients",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to show a list of ingredients."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/{id}/nutritionLabel.png",
+      "method": "recipeNutritionLabelImage",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Recipe Nutrition Label Image",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The recipe id."
+        },
+        {
+          "name": "showOptionalNutrients",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to show optional nutrients."
+        },
+        {
+          "name": "showZeroValues",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to show zero values."
+        },
+        {
+          "name": "showIngredients",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to show a list of ingredients."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/{id}/nutritionWidget",
+      "method": "visualizeRecipeNutritionById",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Recipe Nutrition by ID Widget",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The recipe id."
+        },
+        {
+          "name": "defaultCss",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether the default CSS should be added to the response."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": false,
+          "description": "Accept header."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/{id}/nutritionWidget.json",
+      "method": "getRecipeNutritionWidgetById",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Nutrition by ID",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The recipe id."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/{id}/nutritionWidget.png",
+      "method": "recipeNutritionByIdImage",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Recipe Nutrition by ID Image",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The recipe id."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/{id}/priceBreakdownWidget",
+      "method": "visualizeRecipePriceBreakdownById",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Price Breakdown by ID Widget",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The recipe id."
+        },
+        {
+          "name": "defaultCss",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether the default CSS should be added to the response."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/{id}/priceBreakdownWidget.json",
+      "method": "getRecipePriceBreakdownById",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Price Breakdown by ID",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The recipe id."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/{id}/priceBreakdownWidget.png",
+      "method": "priceBreakdownByIdImage",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Price Breakdown by ID Image",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The recipe id."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/{id}/similar",
+      "method": "getSimilarRecipes",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Get Similar Recipes",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The id of the source recipe for which similar recipes should be found."
+        },
+        {
+          "name": "number",
+          "schema": "integer",
+          "description": "The maximum number of items to return (between 1 and 100). Defaults to 10."
+        },
+        {
+          "name": "limitLicense",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether the recipes should have an open license that allows display with proper attribution."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/{id}/summary",
+      "method": "summarizeRecipe",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Summarize Recipe",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The recipe id."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/{id}/tasteWidget",
+      "method": "visualizeRecipeTasteById",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Recipe Taste by ID Widget",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The recipe id."
+        },
+        {
+          "name": "normalize",
+          "schema": "boolean",
+          "description": "Whether to normalize to the strongest taste."
+        },
+        {
+          "name": "rgb",
+          "schema": "string",
+          "required": false,
+          "description": "Red, green, blue values for the chart color."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/{id}/tasteWidget.json",
+      "method": "getRecipeTasteById",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Taste by ID",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The recipe id."
+        },
+        {
+          "name": "normalize",
+          "schema": "boolean",
+          "description": "Normalize to the strongest taste."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipes/{id}/tasteWidget.png",
+      "method": "recipeTasteByIdImage",
+      "httpMethod": "get",
+      "tag": "recipes",
+      "description": "Recipe Taste by ID Image",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The recipe id."
+        },
+        {
+          "name": "normalize",
+          "schema": "boolean",
+          "required": false,
+          "description": "Normalize to the strongest taste."
+        },
+        {
+          "name": "rgb",
+          "schema": "string",
+          "required": false,
+          "description": "Red, green, blue values for the chart color."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/connect",
+      "method": "connectUser",
+      "httpMethod": "post",
+      "tag": "meal planning",
+      "description": "Connect User",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.spoonacular.com",
   "apiDescription": "The spoonacular Nutrition, Recipe, and Food API allows you to access over thousands of recipes, thousands of ingredients, 800,000 food products, over 100,000 menu items, and restaurants. Our food ontology and semantic recipe search engine makes it possible to search for recipes using natural language queries, such as \"gluten free brownies without sugar\" or \"low fat vegan cupcakes.\" You can automatically calculate the nutritional information for any recipe, analyze recipe costs, visualize ingredient lists, find recipes for what's in your fridge, find recipes based on special diets, nutritional requirements, or favorite ingredients, classify recipes into types and cuisines, convert ingredient amounts, or even compute an entire meal plan. With our powerful API, you can create many kinds of food and especially nutrition apps.\n\nSpecial diets/dietary requirements currently available include: vegan, vegetarian, pescetarian, gluten free, grain free, dairy free, high protein, whole 30, low sodium, low carb, Paleo, ketogenic, FODMAP, and Primal.",
   "apiTitle": "spoonacular API",

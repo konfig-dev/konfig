@@ -4,6 +4,340 @@
   "homepage": "mastercard.com",
   "serviceName": "PersonalizedLoyaltyOffers",
   "apiVersion": "1.3",
+  "methods": [
+    {
+      "url": "/activatestatementcreditoffer",
+      "method": "/activatestatementcreditofferPost",
+      "httpMethod": "post",
+      "tag": "Activate Statement Credit Offer",
+      "description": "Make Statement Credit Offer Available Redeemable",
+      "parameters": [
+        {
+          "name": "FId",
+          "schema": "string",
+          "required": true,
+          "description": "Financial Institution Identifier. Code that specifies the platform and configuration instance, provided by Mastercard during implementation."
+        },
+        {
+          "name": "UserToken",
+          "schema": "string",
+          "required": true,
+          "description": "Session identifier as returned by the UserToken resource."
+        },
+        {
+          "name": "OfferId",
+          "schema": "string",
+          "required": true,
+          "description": "System-wide identifier for the campaign, not intended for end-user display."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/matchedoffers",
+      "method": "/matchedoffersGet",
+      "httpMethod": "get",
+      "tag": "Matched Offers",
+      "description": "Returns Matched Offers",
+      "parameters": [
+        {
+          "name": "FId",
+          "schema": "string",
+          "required": true,
+          "description": "Financial Institution Identifier. Code that specifies the platform and configuration instance, provided by Mastercard during implementation."
+        },
+        {
+          "name": "UserToken",
+          "schema": "string",
+          "required": true,
+          "description": "Session identifier as returned by the UserToken resource."
+        },
+        {
+          "name": "Lang",
+          "schema": "string",
+          "required": false,
+          "description": "When utilized with a multi-lingual implementation, may be the tongue and country of the user in ISO 639-1, underscore, ISO 3166-1 alpha-2 format."
+        },
+        {
+          "name": "MerchantName",
+          "schema": "string",
+          "required": false,
+          "description": "Fuzzy term to search retailers with offers for the user. In general, searching of Matched Offers is not advised as users generally have a modest selection of highly relevant promotions."
+        },
+        {
+          "name": "Category",
+          "schema": "string",
+          "required": false,
+          "description": "Offer Categories."
+        },
+        {
+          "name": "OfferType",
+          "schema": "string",
+          "required": false,
+          "description": "The kind of deal. POSTPAIDCREDIT- Statement Credit Offer, which is a discount that is automatically applied to the card linked to the user and utilized to make the purchase."
+        },
+        {
+          "name": "PageNumber",
+          "schema": "integer",
+          "required": false,
+          "description": "Segment of offers to return."
+        },
+        {
+          "name": "ItemsPerPage",
+          "schema": "integer",
+          "required": false,
+          "description": "Segment size of offer to be returned. Default is 25."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/offerdetails",
+      "method": "/offerdetailsGet",
+      "httpMethod": "get",
+      "tag": "Offer Details",
+      "description": "Returns Information on an Offer",
+      "parameters": [
+        {
+          "name": "FId",
+          "schema": "string",
+          "required": true,
+          "description": "Financial Institution Identifier. Code that specifies the platform and configuration instance, provided by Mastercard during implementation."
+        },
+        {
+          "name": "UserToken",
+          "schema": "string",
+          "required": true,
+          "description": "Session identifier as returned by the UserToken resource."
+        },
+        {
+          "name": "OfferId",
+          "schema": "string",
+          "required": true,
+          "description": "System-wide identifier for the campaign, not intended for end-user display."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/redeemedoffers",
+      "method": "/redeemedoffersGet",
+      "httpMethod": "get",
+      "tag": "Redeemed Offers",
+      "description": "Returns Redeemed Offers",
+      "parameters": [
+        {
+          "name": "FId",
+          "schema": "string",
+          "required": true,
+          "description": "Financial Institution Identifier. Code that specifies the platform and configuration instance, provided by Mastercard during implementation."
+        },
+        {
+          "name": "UserToken",
+          "schema": "string",
+          "required": true,
+          "description": "Session identifier as returned by the UserToken resource."
+        },
+        {
+          "name": "Lang",
+          "schema": "string",
+          "required": false,
+          "description": "When utilized with a multi-lingual implementation, may be the tongue and country of the user in ISO 639-1, underscore, ISO 3166-1 alpha-2 format."
+        },
+        {
+          "name": "PageNumber",
+          "schema": "integer",
+          "required": false,
+          "description": "Segment of offers to return."
+        },
+        {
+          "name": "ItemsPerPage",
+          "schema": "integer",
+          "required": false,
+          "description": "Segment size of offer to be returned. Default is 25."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/statementcreditactivationdetail",
+      "method": "/statementcreditactivationdetailGet",
+      "httpMethod": "get",
+      "tag": "Statement Credit Activation Detail",
+      "description": "Returns Information About Redeemable Postpaid Credit Offer",
+      "parameters": [
+        {
+          "name": "FId",
+          "schema": "string",
+          "required": true,
+          "description": "Financial Institution Identifier. Code that specifies the platform and configuration instance, provided by Mastercard during implementation."
+        },
+        {
+          "name": "UserToken",
+          "schema": "string",
+          "required": true,
+          "description": "Session identifier as returned by the UserToken resource."
+        },
+        {
+          "name": "ActivationId",
+          "schema": "string",
+          "required": true,
+          "description": "Distinct identifier for the offer being available for redemption by the user as returned by Activate Statement Credit Offer or Redeemed Offers, not intended for end-user display."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/userfeedback",
+      "method": "/userfeedbackPost",
+      "httpMethod": "post",
+      "tag": "User Feedback",
+      "description": "Provide User Feedback on Offer",
+      "parameters": [
+        {
+          "name": "FId",
+          "schema": "string",
+          "required": true,
+          "description": "Financial Institution Identifier. Code that specifies the platform and configuration instance, provided by Mastercard during implementation."
+        },
+        {
+          "name": "UserToken",
+          "schema": "string",
+          "required": true,
+          "description": "Session identifier as returned by the UserToken resource."
+        },
+        {
+          "name": "OfferId",
+          "schema": "string",
+          "required": true,
+          "description": "System-wide identifier for the campaign, not intended for end-user display."
+        },
+        {
+          "name": "Feedback",
+          "schema": "integer",
+          "required": true,
+          "description": "User response to the offer. 0- Dislike offer. 1- Like offer."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/usersavings",
+      "method": "/usersavingsGet",
+      "httpMethod": "get",
+      "tag": "User Savings",
+      "description": "Returns Savings for the User",
+      "parameters": [
+        {
+          "name": "FId",
+          "schema": "string",
+          "required": true,
+          "description": "Financial Institution Identifier. Code that specifies the platform and configuration instance, provided by Mastercard during implementation."
+        },
+        {
+          "name": "UserToken",
+          "schema": "string",
+          "required": true,
+          "description": "Session identifier as returned by the UserToken resource."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/usertoken",
+      "method": "/usertokenGet",
+      "httpMethod": "get",
+      "tag": "User Token",
+      "description": "Returns User Session Token",
+      "parameters": [
+        {
+          "name": "FId",
+          "schema": "string",
+          "required": true,
+          "description": "Financial Institution Identifier. Code that specifies the platform and configuration instance, provided by Mastercard during implementation."
+        },
+        {
+          "name": "AuthInfo",
+          "schema": "string",
+          "required": true,
+          "description": "Authorization Information. AES 128-bit encrypted concatenation of \"User ID as specified in enrollment:FI ID as provided by Mastercard:current Unix time\". Key exchange and establishment of maintenance procedures occur during implementation."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.mastercard.com/plo/v1",
   "apiDescription": "This API provides content for financial instutions participating in Mastercard Personalized Offers to use in online and mobile banking applications for cardholders.",
   "apiTitle": "Personalized Offers",

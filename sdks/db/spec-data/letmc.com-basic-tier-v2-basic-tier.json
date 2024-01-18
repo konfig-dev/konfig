@@ -4,6 +4,1685 @@
   "homepage": "letmc.com",
   "serviceName": "basic-tier",
   "apiVersion": "v2-basic-tier",
+  "methods": [
+    {
+      "url": "/v2/tier2/{shortName}/area/areas",
+      "method": "/v2/tier2/{shortName}/area/areasGet",
+      "httpMethod": "get",
+      "tag": "AreaController",
+      "description": "A collection of all the areas for a company",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "The index of the first item to return"
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of items to return (up to 1000 per request)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Holds results from a paged query returning AreaModel values"
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/area/areas/{areaID}",
+      "method": "/v2/tier2/{shortName}/area/areas/{areaId}Get",
+      "httpMethod": "get",
+      "tag": "AreaController",
+      "description": "Get a specific area given its unique Object ID (OID)",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "areaID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the Area"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Stores the information about a single property area."
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/branch/branches",
+      "method": "/v2/tier2/{shortName}/branch/branchesGet",
+      "httpMethod": "get",
+      "tag": "BranchController",
+      "description": "All branches defined for a company",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "The index of the first item to return"
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of items to return (up to 1000 per request)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Holds results from a paged query returning BranchModel values"
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/branch/branches/{branchID}",
+      "method": "/v2/tier2/{shortName}/branch/branches/{branchId}Get",
+      "httpMethod": "get",
+      "tag": "BranchController",
+      "description": "Get a specific branch given its unique Object ID (OID)",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "branchID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the Branch"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Defines a single branch of a client."
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/company",
+      "method": "companyControllerGetCompany",
+      "httpMethod": "get",
+      "tag": "CompanyController",
+      "description": "Information about a specific company",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The search code for the ApplicationCompany storage object."
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/county/counties",
+      "method": "/v2/tier2/{shortName}/county/countiesGet",
+      "httpMethod": "get",
+      "tag": "CountyController",
+      "description": "A collection of all counties available for a company",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "The index of the first item to return"
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of items to return (up to 1000 per request)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Holds results from a paged query returning CountyModel values"
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/county/counties/{countyID}",
+      "method": "/v2/tier2/{shortName}/county/counties/{countyId}Get",
+      "httpMethod": "get",
+      "tag": "CountyController",
+      "description": "Get a specific county given its unique Object ID (OID)",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "countyID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the County"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Stores the information about a single property County. A County can have a number of areas linked to it."
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/county/counties/{countyID}/branches",
+      "method": "countyControllerGetCountiesBranches",
+      "httpMethod": "get",
+      "tag": "CountyController",
+      "description": "A collection of branches that manage a specific county",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "countyID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the County"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "The index of the first item to return"
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of items to return (up to 1000 per request)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Holds results from a paged query returning BranchModel values"
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/diary/allocations",
+      "method": "/v2/tier2/{shortName}/diary/allocationsGet",
+      "httpMethod": "get",
+      "tag": "DiaryController",
+      "description": "A collection of all diary allocations",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "The index of the first item to return"
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of items to return (up to 1000 per request)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Holds results from a paged query returning DiaryAllocationModel values"
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/diary/allocations/{diaryAllocationID}",
+      "method": "/v2/tier2/{shortName}/diary/allocations/{diaryAllocationId}Get",
+      "httpMethod": "get",
+      "tag": "DiaryController",
+      "description": "Get a specific diary allocation given its unique Object ID (OID)",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "diaryAllocationID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the DiaryAllocation"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a single diary allocation, capable of holding a number\r\n            of appointments associated with a member of staff."
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/diary/appointments",
+      "method": "/v2/tier2/{shortName}/diary/appointmentsGet",
+      "httpMethod": "get",
+      "tag": "DiaryController",
+      "description": "A collection of all diary appointments",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "The index of the first item to return"
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of items to return (up to 1000 per request)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Holds results from a paged query returning DiaryAppointmentModel values"
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/diary/appointments/{diaryAppointmentID}",
+      "method": "/v2/tier2/{shortName}/diary/appointments/{diaryAppointmentId}Get",
+      "httpMethod": "get",
+      "tag": "DiaryController",
+      "description": "Get a specific diary appointment given its unique Object ID (OID)",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "diaryAppointmentID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the DiaryAppointment"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a single diary appointment for a staff member."
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/diary/appointmenttypes",
+      "method": "/v2/tier2/{shortName}/diary/appointmenttypesGet",
+      "httpMethod": "get",
+      "tag": "DiaryController",
+      "description": "A collection of all diary appointment types",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "The index of the first item to return"
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of items to return (up to 1000 per request)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Holds results from a paged query returning DiaryAppointmentTypeModel values"
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/diary/appointmenttypes/{diaryAppointmentTypeID}",
+      "method": "/v2/tier2/{shortName}/diary/appointmenttypes/{diaryAppointmentTypeId}Get",
+      "httpMethod": "get",
+      "tag": "DiaryController",
+      "description": "Get a specific diary appointment type given its unique Object ID (OID)",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "diaryAppointmentTypeID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the DiaryAppointmentType"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a diary appointment type."
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/lettings/advertised",
+      "method": "lettingsControllerGetAdvertised",
+      "httpMethod": "get",
+      "tag": "LettingsController",
+      "description": "Search all properties available for rent given a range of search criteria.",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "branchID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the Branch"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "The index of the first item to return"
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of items to return (up to 1000 per request)"
+        },
+        {
+          "name": "areaID",
+          "schema": "string",
+          "required": false,
+          "description": "The unique ID of the Area"
+        },
+        {
+          "name": "rentMinimum",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum advertised rent to search for"
+        },
+        {
+          "name": "rentMaximum",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum advertised rent to search for"
+        },
+        {
+          "name": "maximumTenants",
+          "schema": "integer",
+          "required": false,
+          "description": "The maximum number of tenants a property can accommodate"
+        },
+        {
+          "name": "wantSharedProperties",
+          "schema": "boolean",
+          "required": false,
+          "description": "Search for shared properties?"
+        },
+        {
+          "name": "wantStudentProperties",
+          "schema": "boolean",
+          "required": false,
+          "description": "Search for student properties?"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Holds results from a paged query returning TenancyModel values"
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/lettings/advertisedbetweendates",
+      "method": "lettingsControllerGetAdvertisedBetweenDates",
+      "httpMethod": "get",
+      "tag": "LettingsController",
+      "description": "Search all properties available for rent given a range of search criteria and dates.",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "branchID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the Branch"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "The index of the first item to return"
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of items to return (up to 1000 per request)"
+        },
+        {
+          "name": "rangeStartDate",
+          "schema": "string",
+          "required": true,
+          "description": "The date to search from"
+        },
+        {
+          "name": "rangeEndDate",
+          "schema": "string",
+          "required": true,
+          "description": "The date to search to"
+        },
+        {
+          "name": "areaID",
+          "schema": "string",
+          "required": false,
+          "description": "The unique ID of the Area"
+        },
+        {
+          "name": "rentMinimum",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum advertised rent to search for"
+        },
+        {
+          "name": "rentMaximum",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum advertised rent to search for"
+        },
+        {
+          "name": "maximumTenants",
+          "schema": "integer",
+          "required": false,
+          "description": "The maximum number of tenants a property can accommodate"
+        },
+        {
+          "name": "wantSharedProperties",
+          "schema": "boolean",
+          "required": false,
+          "description": "Search for shared properties?"
+        },
+        {
+          "name": "wantStudentProperties",
+          "schema": "boolean",
+          "required": false,
+          "description": "Search for student properties?"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Holds results from a paged query returning TenancyModel values"
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/lettings/tenancies",
+      "method": "/v2/tier2/{shortName}/lettings/tenanciesGet",
+      "httpMethod": "get",
+      "tag": "LettingsController",
+      "description": "A collection of all the company's tenancies",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "The index of the first item to return"
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of items to return (up to 1000 per request)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Holds results from a paged query returning TenancyModel values"
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/lettings/tenancies/{tenancyID}",
+      "method": "/v2/tier2/{shortName}/lettings/tenancies/{tenancyId}Get",
+      "httpMethod": "get",
+      "tag": "LettingsController",
+      "description": "Get a specific tenancy given its unique Object ID (OID)",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "tenancyID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the Tenancy"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a single tenancy on a property structure. This class may\r\n            be considered to be the context of the tenancy strategy pattern. The\r\n            strategy is the tenancy service, that dictates the algorithm applied\r\n            to the tenancy. This class therefore holds the raw data of a tenancy,\r\n            and ignores any tenancy service (fully managed, let only) parameters."
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/lettings/tenancies/{tenancyID}/brochure",
+      "method": "lettingsControllerGetTenancyBrochure",
+      "httpMethod": "get",
+      "tag": "LettingsController",
+      "description": "Downloads the brochure relating to the latest advertised rental of a property",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "tenancyID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the tenancy"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/photo/photos",
+      "method": "/v2/tier2/{shortName}/photo/photosGet",
+      "httpMethod": "get",
+      "tag": "PhotoController",
+      "description": "A collection of all photos in the company",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "The index of the first item to return"
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of items to return (up to 1000 per request)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Holds results from a paged query returning PhotoModel values"
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/photo/photos/{photoID}",
+      "method": "/v2/tier2/{shortName}/photo/photos/{photoId}Get",
+      "httpMethod": "get",
+      "tag": "PhotoController",
+      "description": "Get a specific photo given its unique Object ID (OID)",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "photoID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the Photo"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Stores a photo related to a property structure."
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/photos/photo/{photoID}/download",
+      "method": "photoControllerGetPhotoDownload",
+      "httpMethod": "get",
+      "tag": "PhotoController",
+      "description": "Downloads the photo of a property given the property and photo ID.",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "photoID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the photo on the property"
+        },
+        {
+          "name": "width",
+          "schema": "integer",
+          "required": false,
+          "description": "An optional parameter specifying the image width"
+        },
+        {
+          "name": "height",
+          "schema": "integer",
+          "required": false,
+          "description": "An optional parameter specifying the image height"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/property/properties",
+      "method": "/v2/tier2/{shortName}/property/propertiesGet",
+      "httpMethod": "get",
+      "tag": "PropertyController",
+      "description": "A collection of all properties within a company",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "The index of the first item to return"
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of items to return (up to 1000 per request)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Holds results from a paged query returning PropertyModel values"
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/property/properties/{propertyID}",
+      "method": "/v2/tier2/{shortName}/property/properties/{propertyId}Get",
+      "httpMethod": "get",
+      "tag": "PropertyController",
+      "description": "Get a specific property given its unique Object ID (OID)",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "propertyID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the Property"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Stores the 'Sales' type fields for property ownable as a stepping stone to a full on BO when we finally get the go ahead to write sales!!"
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/property/properties/{propertyID}/facilities",
+      "method": "propertyControllerGetPropertiesFacilities",
+      "httpMethod": "get",
+      "tag": "PropertyController",
+      "description": "A collection of facilities linked to a block, property or room",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "propertyID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the Property"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "The index of the first item to return"
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of items to return (up to 1000 per request)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Holds results from a paged query returning PropertyFacilityModel values"
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/property/properties/{propertyID}/photos",
+      "method": "propertyControllerGetPropertiesPhotos",
+      "httpMethod": "get",
+      "tag": "PropertyController",
+      "description": "A collection showing all the photos linked to a specific block, property or room",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "propertyID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the Property"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "The index of the first item to return"
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of items to return (up to 1000 per request)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Holds results from a paged query returning PhotoModel values"
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/property/properties/{propertyID}/rooms",
+      "method": "propertyControllerGetPropertiesRooms",
+      "httpMethod": "get",
+      "tag": "PropertyController",
+      "description": "A collection of the rooms that belong to this property or block",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "propertyID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the Property"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "The index of the first item to return"
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of items to return (up to 1000 per request)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Holds results from a paged query returning PropertyRoomModel values"
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/property/properties/{propertyID}/tenancies",
+      "method": "propertyControllerGetPropertiesTenancies",
+      "httpMethod": "get",
+      "tag": "PropertyController",
+      "description": "A collection of all tenancies associated with this block, property or room",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "propertyID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the Property"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "The index of the first item to return"
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of items to return (up to 1000 per request)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Holds results from a paged query returning TenancyModel values"
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/property/structures/{propertyStructureID}/reports/eer",
+      "method": "propertyControllerGetPropertyEerDownload",
+      "httpMethod": "get",
+      "tag": "PropertyController",
+      "description": "Downloads the energy efficiency report (EER) graph for a property",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "propertyStructureID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the property structure"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/property/structures/{propertyStructureID}/reports/eir",
+      "method": "propertyControllerGetPropertyEirDownload",
+      "httpMethod": "get",
+      "tag": "PropertyController",
+      "description": "Downloads the environmental impact report (EIR) graph for a property",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "propertyStructureID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the property structure"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/sales/advertisedsales",
+      "method": "salesControllerGetAdvertisedSales",
+      "httpMethod": "get",
+      "tag": "SalesController",
+      "description": "Search all sales properties available given a range of search criteria",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "branchID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the Branch"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "The index of the first item to return"
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of items to return (up to 1000 per request)"
+        },
+        {
+          "name": "onlyDevelopement",
+          "schema": "boolean",
+          "required": true,
+          "description": "Show only development properties?"
+        },
+        {
+          "name": "onlyInvestements",
+          "schema": "boolean",
+          "required": true,
+          "description": "Show only investment properties?"
+        },
+        {
+          "name": "minimumPrice",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum price to search for"
+        },
+        {
+          "name": "maximumPrice",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum price to search for"
+        },
+        {
+          "name": "minimumBeds",
+          "schema": "integer",
+          "required": false,
+          "description": "The minimum beds to search for"
+        },
+        {
+          "name": "minimumBathrooms",
+          "schema": "integer",
+          "required": false,
+          "description": "The minimum bathrooms to search for"
+        },
+        {
+          "name": "minimumEnsuites",
+          "schema": "integer",
+          "required": false,
+          "description": "The minimum ensuite bathrooms to search for"
+        },
+        {
+          "name": "minimumToilets",
+          "schema": "integer",
+          "required": false,
+          "description": "The minimum toilets to search for"
+        },
+        {
+          "name": "minimumReception",
+          "schema": "integer",
+          "required": false,
+          "description": "The minimum reception rooms to search for"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Holds results from a paged query returning SalesInstructionModel values"
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/sales/reports/eer/{salesInstructionID}",
+      "method": "salesControllerGetEer",
+      "httpMethod": "get",
+      "tag": "SalesController",
+      "description": "Downloads the energy efficiency report (EER) graph for a sales instruction",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "salesInstructionID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the SalesInstruction"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/sales/reports/eir/{salesInstructionID}",
+      "method": "salesControllerGetEir",
+      "httpMethod": "get",
+      "tag": "SalesController",
+      "description": "Downloads the energy efficiency report (EIR) graph for a sales instruction",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "salesInstructionID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the SalesInstruction"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/sales/salesfeaturetypes",
+      "method": "/v2/tier2/{shortName}/sales/salesfeaturetypesGet",
+      "httpMethod": "get",
+      "tag": "SalesController",
+      "description": "A collection of all sales feature types linked to a company",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "The index of the first item to return"
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of items to return (up to 1000 per request)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Holds results from a paged query returning SalesFeatureTypeModel values"
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/sales/salesfeaturetypes/{salesFeatureTypeID}",
+      "method": "/v2/tier2/{shortName}/sales/salesfeaturetypes/{salesFeatureTypeId}Get",
+      "httpMethod": "get",
+      "tag": "SalesController",
+      "description": "Get a specific sales feature type given its unique Object ID (OID)",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "salesFeatureTypeID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the SalesFeatureType"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/sales/salesinstructions",
+      "method": "/v2/tier2/{shortName}/sales/salesinstructionsGet",
+      "httpMethod": "get",
+      "tag": "SalesController",
+      "description": "A collection of all sales instructions linked to a company",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "The index of the first item to return"
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of items to return (up to 1000 per request)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Holds results from a paged query returning SalesInstructionModel values"
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/sales/salesinstructions/{salesInstructionID}",
+      "method": "/v2/tier2/{shortName}/sales/salesinstructions/{salesInstructionId}Get",
+      "httpMethod": "get",
+      "tag": "SalesController",
+      "description": "Get a specific sales instruction given its unique Object ID (OID)",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "salesInstructionID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the SalesInstruction"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/sales/salesinstructions/{salesInstructionID}/features",
+      "method": "salesControllerGetSalesInstructionsFeatures",
+      "httpMethod": "get",
+      "tag": "SalesController",
+      "description": "A collection of all features linked to a sales instruction",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "salesInstructionID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the SalesInstruction"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "The index of the first item to return"
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of items to return (up to 1000 per request)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Holds results from a paged query returning SalesFeatureModel values"
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/sales/salesinstructions/{salesInstructionID}/floorplans",
+      "method": "salesControllerGetSalesInstructionsFloorPlans",
+      "httpMethod": "get",
+      "tag": "SalesController",
+      "description": "A collection of floor plans linked to an instruction",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "salesInstructionID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the SalesInstruction"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "The index of the first item to return"
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of items to return (up to 1000 per request)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Holds results from a paged query returning PhotoModel values"
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/sales/salesinstructions/{salesInstructionID}/photos",
+      "method": "salesControllerGetSalesInstructionsPhotos",
+      "httpMethod": "get",
+      "tag": "SalesController",
+      "description": "A collection of photos linked to an instruction",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "salesInstructionID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the SalesInstruction"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "The index of the first item to return"
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of items to return (up to 1000 per request)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Holds results from a paged query returning PhotoModel values"
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/sales/salesinstructions/{salesInstructionID}/rooms",
+      "method": "salesControllerGetSalesInstructionsRooms",
+      "httpMethod": "get",
+      "tag": "SalesController",
+      "description": "A collection of rooms linked to an instruction",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "salesInstructionID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the SalesInstruction"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "The index of the first item to return"
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of items to return (up to 1000 per request)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Holds results from a paged query returning PropertyRoomModel values"
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/staff/staff",
+      "method": "/v2/tier2/{shortName}/staff/staffGet",
+      "httpMethod": "get",
+      "tag": "StaffController",
+      "description": "A collection of all the staff members linked to a specific company",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "The index of the first item to return"
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of items to return (up to 1000 per request)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Holds results from a paged query returning ApplicationStaffModel values"
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/staff/staff/{applicationStaffID}",
+      "method": "/v2/tier2/{shortName}/staff/staff/{applicationStaffId}Get",
+      "httpMethod": "get",
+      "tag": "StaffController",
+      "description": "Get a specific application staff given its unique Object ID (OID)",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "applicationStaffID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the ApplicationStaff"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Holds the information about a member of staff."
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/viewing/bookings",
+      "method": "viewingControllerGetBookings",
+      "httpMethod": "get",
+      "tag": "ViewingController",
+      "description": "Gets a list of available viewing slots for one or more properties",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "preferredDate",
+          "schema": "string",
+          "required": true,
+          "description": "The preferred date for a viewing"
+        },
+        {
+          "name": "propertyIDsToView",
+          "schema": "array",
+          "required": true,
+          "description": "An array of unique IDs of properties to view"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/tier2/{shortName}/viewing/bookings",
+      "method": "viewingControllerMakeBooking",
+      "httpMethod": "post",
+      "tag": "ViewingController",
+      "description": "Book an appointment for a viewing slot returned from the GET verb",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "forename",
+          "schema": "string",
+          "required": true,
+          "description": "The forename of the prospect"
+        },
+        {
+          "name": "surname",
+          "schema": "string",
+          "required": true,
+          "description": "The surname of the prospect"
+        },
+        {
+          "name": "mobilePhone",
+          "schema": "string",
+          "required": true,
+          "description": "The mobile phone number of the prospect"
+        },
+        {
+          "name": "emailAddress",
+          "schema": "string",
+          "required": true,
+          "description": "The email address of the prospect"
+        },
+        {
+          "name": "propertyIDsToView",
+          "schema": "array",
+          "required": true,
+          "description": "An array of unique IDs of properties to view"
+        },
+        {
+          "name": "wantRoomInSharedProperty",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether the prospect wants a shared property"
+        },
+        {
+          "name": "alertMinRent",
+          "schema": "number",
+          "required": false,
+          "description": "The minimum rent amount the prospect is looking for"
+        },
+        {
+          "name": "alertMaxRent",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum rent amount the prospect is looking for"
+        },
+        {
+          "name": "alertNumberOfBeds",
+          "schema": "integer",
+          "required": false,
+          "description": "The minimum number of beds the prospect is looking for"
+        },
+        {
+          "name": "alertAreaID",
+          "schema": "string",
+          "required": false,
+          "description": "The unique ID of the area the prospect is looking for"
+        },
+        {
+          "name": "alertTenantType",
+          "schema": "string",
+          "required": false,
+          "description": "The tenanct type the prospect is looking for"
+        },
+        {
+          "name": "subscribeToEmailAlerts",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to subscribe the prospect to email alerts"
+        },
+        {
+          "name": "subscribeToSMSAlerts",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to subscribe the prospect to SMS alerts"
+        },
+        {
+          "name": "End",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "StaffID",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "StaffName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Start",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://live-api.letmc.com",
   "apiTitle": "LetMC Api V2, Basic (Tier 2)",
   "endpoints": 44,

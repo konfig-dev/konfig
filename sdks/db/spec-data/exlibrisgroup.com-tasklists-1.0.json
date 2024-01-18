@@ -4,6 +4,432 @@
   "homepage": "exlibrisgroup.com",
   "serviceName": "tasklists",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/almaws/v1/task-lists/printouts",
+      "method": "get/almaws/v1/taskLists/printouts",
+      "httpMethod": "get",
+      "tag": "Printouts",
+      "description": "Retrieve Printouts",
+      "parameters": [
+        {
+          "name": "letter",
+          "schema": "string",
+          "required": false,
+          "description": "Printout Name. Optional. "
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Printout status. Optional. Valid values are: Printed, Pending, Canceled."
+        },
+        {
+          "name": "printer_id",
+          "schema": "string",
+          "required": false,
+          "description": "Printout Printer"
+        },
+        {
+          "name": "printout_id",
+          "schema": "string",
+          "required": false,
+          "description": "A list of Printout IDs (for example: 123,456,778) from 1 to the limit of 100 Optional. Use of this option overrides all of the filtering parameters"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Limits the number of results. Optional. Valid values are 0-100. Default value: 10."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Offset of the results returned. Optional. Default value: 0, which means that the first results will be returned."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of printouts."
+        }
+      ]
+    },
+    {
+      "url": "/almaws/v1/task-lists/printouts",
+      "method": "post/almaws/v1/taskLists/printouts",
+      "httpMethod": "post",
+      "tag": "Printouts",
+      "description": "Act on Printouts",
+      "parameters": [
+        {
+          "name": "letter",
+          "schema": "string",
+          "required": false,
+          "description": "Printout Name. Optional. "
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Printout status. Optional. Valid values are: Printed, Pending, Canceled."
+        },
+        {
+          "name": "printer_id",
+          "schema": "string",
+          "required": false,
+          "description": "Printout Printer"
+        },
+        {
+          "name": "printout_id",
+          "schema": "string",
+          "required": false,
+          "description": "A list of Printout IDs (for example: 123,456,778) from 1 to the limit of 100 Optional. Use of this option overrides all of the filtering parameters"
+        },
+        {
+          "name": "op",
+          "schema": "string",
+          "required": true,
+          "description": "The operation to perform on the printout. Currently, the options are: 'mark_as_printed','mark_as_canceled'"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of printouts."
+        }
+      ]
+    },
+    {
+      "url": "/almaws/v1/task-lists/printouts/{printout_id}",
+      "method": "get/almaws/v1/taskLists/printouts/{printoutId}",
+      "httpMethod": "get",
+      "tag": "Printouts",
+      "description": "Retrieve a Printout",
+      "parameters": [
+        {
+          "name": "printout_id",
+          "schema": "string",
+          "required": true,
+          "description": "The Printout ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Printout Object."
+        }
+      ]
+    },
+    {
+      "url": "/almaws/v1/task-lists/printouts/{printout_id}",
+      "method": "post/almaws/v1/taskLists/printouts/{printoutId}",
+      "httpMethod": "post",
+      "tag": "Printouts",
+      "description": "Printout Service",
+      "parameters": [
+        {
+          "name": "printout_id",
+          "schema": "string",
+          "required": true,
+          "description": "The Printout ID"
+        },
+        {
+          "name": "op",
+          "schema": "string",
+          "required": true,
+          "description": "The operation to perform on the printout. Currently, the options are 'mark_as_printed','mark_as_canceled'"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Printout Object."
+        }
+      ]
+    },
+    {
+      "url": "/almaws/v1/task-lists/requested-resources",
+      "method": "get/almaws/v1/taskLists/requestedResources",
+      "httpMethod": "get",
+      "tag": "Requested Resources",
+      "description": "Get Requested Resources",
+      "parameters": [
+        {
+          "name": "library",
+          "schema": "string",
+          "required": true,
+          "description": "The library of the given circulation desk or department where the resources are located. Mandatory."
+        },
+        {
+          "name": "circ_desk",
+          "schema": "string",
+          "required": true,
+          "description": "The circulation desk where the action is being performed. Mandatory."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": false,
+          "description": "The location code. Optional."
+        },
+        {
+          "name": "order_by",
+          "schema": "string",
+          "required": false,
+          "description": "The order in which to retrieve the results: location/call_number (default)."
+        },
+        {
+          "name": "direction",
+          "schema": "string",
+          "required": false,
+          "description": "The order direction in which to retrieve the results. Optional."
+        },
+        {
+          "name": "pickup_inst",
+          "schema": "string",
+          "required": false,
+          "description": "The pickup institution. Optional."
+        },
+        {
+          "name": "reported",
+          "schema": "string",
+          "required": false,
+          "description": "Show reported results: Y/N. Optional."
+        },
+        {
+          "name": "printed",
+          "schema": "string",
+          "required": false,
+          "description": "Show printed results: Y/N. Optional."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Limits the number of results. Optional. Valid values are 0-100. Default value: 10."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Offset of the results returned. Optional. Default value: 0, which means that the first results will be returned."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of requested resources."
+        }
+      ]
+    },
+    {
+      "url": "/almaws/v1/task-lists/requested-resources",
+      "method": "post/almaws/v1/taskLists/requestedResources",
+      "httpMethod": "post",
+      "tag": "Requested Resources",
+      "description": "Act on Requested Resources",
+      "parameters": [
+        {
+          "name": "library",
+          "schema": "string",
+          "required": false,
+          "description": "The library of the given circulation desk or department where the resources are located. Mandatory."
+        },
+        {
+          "name": "circ_desk",
+          "schema": "string",
+          "required": false,
+          "description": "The circulation desk where the action is being performed. Mandatory."
+        },
+        {
+          "name": "op",
+          "schema": "string",
+          "required": false,
+          "description": "Operation to be preformed on the list of given requests. Currently the only supported action is 'mark_reported'. Mandatory."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": false,
+          "description": "The location code. Optional."
+        },
+        {
+          "name": "pickup_inst",
+          "schema": "string",
+          "required": false,
+          "description": "The pickup institution. Optional."
+        },
+        {
+          "name": "reported",
+          "schema": "string",
+          "required": false,
+          "description": "Show reported results: Y/N. Optional."
+        },
+        {
+          "name": "printed",
+          "schema": "string",
+          "required": false,
+          "description": "Show printed results: Y/N. Optional."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of requested resources."
+        }
+      ]
+    },
+    {
+      "url": "/almaws/v1/task-lists/rs/lending-requests",
+      "method": "get/almaws/v1/taskLists/rs/lendingRequests",
+      "httpMethod": "get",
+      "tag": "Lending Requests",
+      "description": "Get Lending Requests",
+      "parameters": [
+        {
+          "name": "library",
+          "schema": "string",
+          "required": false,
+          "description": "The resource sharing library for which lending requests should be retrieved. Mandatory. List of possible libraries can be retrieved using the [GET /almaws/v1/conf/libraries API](https://developers.exlibrisgroup.com/alma/apis/conf/GET/gwPcGly021p29HpB7XTI4Dp4I8TKv6CAxBlD4LyRaVE=/37088dc9-c685-4641-bc7f-60b5ca7cabed)."
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "The status of lending requests to retrieve. Optional. List of possible statuses can be retrieved using the [GET almaws/v1/conf/code-tables/MandatoryLendingWorkflowSteps API](https://developers.exlibrisgroup.com/alma/apis/conf/GET/gwPcGly021p29HpB7XTI4K7cQ0vuYHLS4NSgDGmcRpRYqx5hIMRTng9SIKO5Vof+/37088dc9-c685-4641-bc7f-60b5ca7cabed) and the  [GET almaws/v1/conf/code-tables/OptionalLendingWorkflowSteps API](https://developers.exlibrisgroup.com/alma/apis/conf/GET/gwPcGly021p29HpB7XTI4K7cQ0vuYHLS4NSgDGmcRpRYqx5hIMRTng9SIKO5Vof+/37088dc9-c685-4641-bc7f-60b5ca7cabed)."
+        },
+        {
+          "name": "printed",
+          "schema": "string",
+          "required": false,
+          "description": "The 'printed' value of lending requests to retrieve. Optional. Possible values: Y, N."
+        },
+        {
+          "name": "reported",
+          "schema": "string",
+          "required": false,
+          "description": "The 'reported' value of lending requests to retrieve. Optional. Possible values: Y, N."
+        },
+        {
+          "name": "partner",
+          "schema": "string",
+          "required": false,
+          "description": "The partner value. Only lending requests from this partner should be retrieved. Optional. List of possible partners can be retrieved using the [GET almaws/v1/partners API](https://developers.exlibrisgroup.com/alma/apis/partners/GET/gwPcGly021piAVNPLaef7suP1zfa6Lui/8883ef41-c3b8-4792-9ff8-cb6b729d6e07)."
+        },
+        {
+          "name": "requested_format",
+          "schema": "string",
+          "required": false,
+          "description": "Requested format of the resource. Optional. List of possible formats can be retrieved using the [GET almaws/v1/conf/code-tables/RequestFormats API](https://developers.exlibrisgroup.com/alma/apis/conf/GET/gwPcGly021p29HpB7XTI4K7cQ0vuYHLS4NSgDGmcRpRYqx5hIMRTng9SIKO5Vof+/37088dc9-c685-4641-bc7f-60b5ca7cabed)."
+        },
+        {
+          "name": "supplied_format",
+          "schema": "string",
+          "required": false,
+          "description": "Supplied Format of the resource. Optional. List of possible formats can be retrieved using the [GET almaws/v1/conf/code-tables/RequestFormats API](https://developers.exlibrisgroup.com/alma/apis/conf/GET/gwPcGly021p29HpB7XTI4K7cQ0vuYHLS4NSgDGmcRpRYqx5hIMRTng9SIKO5Vof+/37088dc9-c685-4641-bc7f-60b5ca7cabed)."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of resource sharing requests."
+        }
+      ]
+    },
+    {
+      "url": "/almaws/v1/task-lists/rs/lending-requests",
+      "method": "post/almaws/v1/taskLists/rs/lendingRequests",
+      "httpMethod": "post",
+      "tag": "Lending Requests",
+      "description": "Act on Lending Requests",
+      "parameters": [
+        {
+          "name": "library",
+          "schema": "string",
+          "required": false,
+          "description": "The resource sharing library from which lending requests should be retrieved. Mandatory. List of possible libraries can be retrieved using the [GET /almaws/v1/conf/libraries API](https://developers.exlibrisgroup.com/alma/apis/conf/GET/gwPcGly021p29HpB7XTI4Dp4I8TKv6CAxBlD4LyRaVE=/37088dc9-c685-4641-bc7f-60b5ca7cabed)."
+        },
+        {
+          "name": "op",
+          "schema": "string",
+          "required": false,
+          "description": "Operation to be preformed on the list of given requests. Currently the only supported action is 'mark_reported'. Mandatory."
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "The status of lending requests to retrieve. Optional. List of possible statuses can be retrieved using the [GET almaws/v1/conf/code-tables/MandatoryLendingWorkflowSteps API](https://developers.exlibrisgroup.com/alma/apis/conf/GET/gwPcGly021p29HpB7XTI4K7cQ0vuYHLS4NSgDGmcRpRYqx5hIMRTng9SIKO5Vof+/37088dc9-c685-4641-bc7f-60b5ca7cabed).and the  [GET almaws/v1/conf/code-tables/OptionalLendingWorkflowSteps API](https://developers.exlibrisgroup.com/alma/apis/conf/GET/gwPcGly021p29HpB7XTI4K7cQ0vuYHLS4NSgDGmcRpRYqx5hIMRTng9SIKO5Vof+/37088dc9-c685-4641-bc7f-60b5ca7cabed)."
+        },
+        {
+          "name": "printed",
+          "schema": "string",
+          "required": false,
+          "description": "The 'printed' value of lending requests to retrieve. Optional. Possible values: Y, N."
+        },
+        {
+          "name": "reported",
+          "schema": "string",
+          "required": false,
+          "description": "The 'reported' value of lending requests to retrieve. Optional. Possible values: Y, N."
+        },
+        {
+          "name": "partner",
+          "schema": "string",
+          "required": false,
+          "description": "The partner value. Only lending requests from this partner should be. Optional. List of possible partners can be retrieved using the [GET almaws/v1/partners API](https://developers.exlibrisgroup.com/alma/apis/partners/GET/gwPcGly021piAVNPLaef7suP1zfa6Lui/8883ef41-c3b8-4792-9ff8-cb6b729d6e07)."
+        },
+        {
+          "name": "requested_format",
+          "schema": "string",
+          "required": false,
+          "description": "Requested format of the resource. Optional. List of possible formats can be retrieved using the [GET almaws/v1/conf/code-tables/RequestFormats API](https://developers.exlibrisgroup.com/alma/apis/conf/GET/gwPcGly021p29HpB7XTI4K7cQ0vuYHLS4NSgDGmcRpRYqx5hIMRTng9SIKO5Vof+/37088dc9-c685-4641-bc7f-60b5ca7cabed)."
+        },
+        {
+          "name": "supplied_format",
+          "schema": "string",
+          "required": false,
+          "description": "Supplied Format of the resource. Optional. List of possible formats can be retrieved using the [GET almaws/v1/conf/code-tables/RequestFormats API](https://developers.exlibrisgroup.com/alma/apis/conf/GET/gwPcGly021p29HpB7XTI4K7cQ0vuYHLS4NSgDGmcRpRYqx5hIMRTng9SIKO5Vof+/37088dc9-c685-4641-bc7f-60b5ca7cabed)."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Resource sharing request Object."
+        }
+      ]
+    },
+    {
+      "url": "/almaws/v1/task-lists/test",
+      "method": "get/almaws/v1/taskLists/test",
+      "httpMethod": "get",
+      "tag": "Test",
+      "description": "GET Task-lists Test API",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/almaws/v1/task-lists/test",
+      "method": "post/almaws/v1/taskLists/test",
+      "httpMethod": "post",
+      "tag": "Test",
+      "description": "POST Task-lists Test API",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api-eu.hosted.exlibrisgroup.com",
   "apiDescription": "For more information on how to use these APIs, including how to create an API key required for authentication, see [Alma REST APIs](https://developers.exlibrisgroup.com/alma/apis).",
   "apiTitle": "Ex Libris APIs",

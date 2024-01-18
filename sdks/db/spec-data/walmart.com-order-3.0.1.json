@@ -4,6 +4,680 @@
   "homepage": "walmart.com",
   "serviceName": "order",
   "apiVersion": "3.0.1",
+  "methods": [
+    {
+      "url": "/v3/orders",
+      "method": "getAllOrders",
+      "httpMethod": "get",
+      "tag": "Version 3",
+      "description": "Get all orders",
+      "parameters": [
+        {
+          "name": "shipNode",
+          "schema": "string",
+          "required": false,
+          "description": "Ship Node"
+        },
+        {
+          "name": "sku",
+          "schema": "string",
+          "required": false,
+          "description": "Retrieves all orders with the specified SKU."
+        },
+        {
+          "name": "customerOrderId",
+          "schema": "string",
+          "required": false,
+          "description": "Retrives the details of the specified customerOrderId."
+        },
+        {
+          "name": "purchaseOrderId",
+          "schema": "string",
+          "required": false,
+          "description": "The purchase order ID associated with the order to retrieve. One customer order can have multiple purchase orders associated with it."
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "The list of orders corresponding to the requested status."
+        },
+        {
+          "name": "createdStartDate",
+          "schema": "string",
+          "required": false,
+          "description": "Limit orders to those created after this date or a timestamp."
+        },
+        {
+          "name": "createdEndDate",
+          "schema": "string",
+          "required": false,
+          "description": "Limit orders to those created before this date or timestamp."
+        },
+        {
+          "name": "fromExpectedShipDate",
+          "schema": "string",
+          "required": false,
+          "description": "Limit orders to those that have order lines with an expected ship date after this date."
+        },
+        {
+          "name": "toExpectedShipDate",
+          "schema": "string",
+          "required": false,
+          "description": "Limit orders to those that have order lines with an expected ship date before this date. "
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of orders to be returned. Do not set this parameter to over 200 orders."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "application/xml,\napplication/json"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "application/xml,\napplication/json"
+        },
+        {
+          "name": "WM_CONSUMER.CHANNEL.TYPE",
+          "schema": "string",
+          "required": true,
+          "description": "Channel Type"
+        },
+        {
+          "name": "WM_CONSUMER.ID",
+          "schema": "string",
+          "required": true,
+          "description": "Your Consumer ID"
+        },
+        {
+          "name": "WM_SEC.TIMESTAMP",
+          "schema": "string",
+          "required": true,
+          "description": "Epoch timestamp"
+        },
+        {
+          "name": "WM_SEC.AUTH_SIGNATURE",
+          "schema": "string",
+          "required": true,
+          "description": "Authentication signature"
+        },
+        {
+          "name": "WM_SVC.NAME",
+          "schema": "string",
+          "required": true,
+          "description": "The Service name"
+        },
+        {
+          "name": "WM_QOS.CORRELATION_ID",
+          "schema": "string",
+          "required": true,
+          "description": "A Transaction ID"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v3/orders/released",
+      "method": "getReleasedOrders",
+      "httpMethod": "get",
+      "tag": "Version 3",
+      "description": "Get all released orders",
+      "parameters": [
+        {
+          "name": "shipNode",
+          "schema": "string",
+          "required": false,
+          "description": "Ship Node"
+        },
+        {
+          "name": "createdStartDate",
+          "schema": "string",
+          "required": true,
+          "description": "Limit orders to those created after this date or a timestamp."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of orders to be returned. Do not set this parameter to over 200 orders."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "application/xml,\napplication/json"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "application/xml,\napplication/json"
+        },
+        {
+          "name": "WM_CONSUMER.CHANNEL.TYPE",
+          "schema": "string",
+          "required": true,
+          "description": "Channel Type"
+        },
+        {
+          "name": "WM_CONSUMER.ID",
+          "schema": "string",
+          "required": true,
+          "description": "Your Consumer ID"
+        },
+        {
+          "name": "WM_SEC.TIMESTAMP",
+          "schema": "string",
+          "required": true,
+          "description": "Epoch timestamp"
+        },
+        {
+          "name": "WM_SEC.AUTH_SIGNATURE",
+          "schema": "string",
+          "required": true,
+          "description": "Authentication signature"
+        },
+        {
+          "name": "WM_SVC.NAME",
+          "schema": "string",
+          "required": true,
+          "description": "The Service name"
+        },
+        {
+          "name": "WM_QOS.CORRELATION_ID",
+          "schema": "string",
+          "required": true,
+          "description": "A Transaction ID"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v3/orders/released{nextCursor}",
+      "method": "getNextCursorReleasedOrders",
+      "httpMethod": "get",
+      "tag": "Version 3",
+      "description": "Get released orders for next page",
+      "parameters": [
+        {
+          "name": "nextCursor",
+          "schema": "string",
+          "required": true,
+          "description": "Used for pagination when there are more than 200 orders to retrieve. The nextCursor value of the returned response includes a link to another GET call to retrieve the next page. Copy the link and paste it in the next call."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "application/xml,\napplication/json"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "application/xml,\napplication/json"
+        },
+        {
+          "name": "WM_CONSUMER.CHANNEL.TYPE",
+          "schema": "string",
+          "required": true,
+          "description": "Channel Type"
+        },
+        {
+          "name": "WM_CONSUMER.ID",
+          "schema": "string",
+          "required": true,
+          "description": "Your Consumer ID"
+        },
+        {
+          "name": "WM_SEC.TIMESTAMP",
+          "schema": "string",
+          "required": true,
+          "description": "Epoch timestamp"
+        },
+        {
+          "name": "WM_SEC.AUTH_SIGNATURE",
+          "schema": "string",
+          "required": true,
+          "description": "Authentication signature"
+        },
+        {
+          "name": "WM_SVC.NAME",
+          "schema": "string",
+          "required": true,
+          "description": "The Service name"
+        },
+        {
+          "name": "WM_QOS.CORRELATION_ID",
+          "schema": "string",
+          "required": true,
+          "description": "A Transaction ID"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v3/orders/{purchaseOrderId}",
+      "method": "getOrderByPurchaseOrderId",
+      "httpMethod": "get",
+      "tag": "Version 3",
+      "description": "Get an order",
+      "parameters": [
+        {
+          "name": "purchaseOrderId",
+          "schema": "string",
+          "required": true,
+          "description": "Purchase Order ID"
+        },
+        {
+          "name": "shipNode",
+          "schema": "string",
+          "required": false,
+          "description": "Ship Node"
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "application/xml,\napplication/json"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "application/xml,\napplication/json"
+        },
+        {
+          "name": "WM_CONSUMER.CHANNEL.TYPE",
+          "schema": "string",
+          "required": true,
+          "description": "Channel Type"
+        },
+        {
+          "name": "WM_CONSUMER.ID",
+          "schema": "string",
+          "required": true,
+          "description": "Your Consumer ID"
+        },
+        {
+          "name": "WM_SEC.TIMESTAMP",
+          "schema": "string",
+          "required": true,
+          "description": "Epoch timestamp"
+        },
+        {
+          "name": "WM_SEC.AUTH_SIGNATURE",
+          "schema": "string",
+          "required": true,
+          "description": "Authentication signature"
+        },
+        {
+          "name": "WM_SVC.NAME",
+          "schema": "string",
+          "required": true,
+          "description": "The Service name"
+        },
+        {
+          "name": "WM_QOS.CORRELATION_ID",
+          "schema": "string",
+          "required": true,
+          "description": "A Transaction ID"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v3/orders/{purchaseOrderId}/acknowledge",
+      "method": "acknowledgeOrders",
+      "httpMethod": "post",
+      "tag": "Version 3",
+      "description": "Acknowledge orders",
+      "parameters": [
+        {
+          "name": "purchaseOrderId",
+          "schema": "string",
+          "required": true,
+          "description": "Purchase Order ID"
+        },
+        {
+          "name": "shipNode",
+          "schema": "string",
+          "required": false,
+          "description": "Ship Node"
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "application/xml,\napplication/json"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "application/xml,\napplication/json"
+        },
+        {
+          "name": "WM_CONSUMER.CHANNEL.TYPE",
+          "schema": "string",
+          "required": true,
+          "description": "Channel Type"
+        },
+        {
+          "name": "WM_CONSUMER.ID",
+          "schema": "string",
+          "required": true,
+          "description": "Your Consumer ID"
+        },
+        {
+          "name": "WM_SEC.TIMESTAMP",
+          "schema": "string",
+          "required": true,
+          "description": "Epoch timestamp"
+        },
+        {
+          "name": "WM_SEC.AUTH_SIGNATURE",
+          "schema": "string",
+          "required": true,
+          "description": "Authentication signature"
+        },
+        {
+          "name": "WM_SVC.NAME",
+          "schema": "string",
+          "required": true,
+          "description": "The Service name"
+        },
+        {
+          "name": "WM_QOS.CORRELATION_ID",
+          "schema": "string",
+          "required": true,
+          "description": "A Transaction ID"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v3/orders/{purchaseOrderId}/cancel",
+      "method": "cancelOrder",
+      "httpMethod": "post",
+      "tag": "Version 3",
+      "description": "Cancel order lines",
+      "parameters": [
+        {
+          "name": "purchaseOrderId",
+          "schema": "string",
+          "required": true,
+          "description": "Purchase Order ID"
+        },
+        {
+          "name": "shipNode",
+          "schema": "string",
+          "required": false,
+          "description": "Ship Node"
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "application/xml,\napplication/json"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "application/xml,\napplication/json"
+        },
+        {
+          "name": "WM_CONSUMER.CHANNEL.TYPE",
+          "schema": "string",
+          "required": true,
+          "description": "Channel Type"
+        },
+        {
+          "name": "WM_CONSUMER.ID",
+          "schema": "string",
+          "required": true,
+          "description": "Your Consumer ID"
+        },
+        {
+          "name": "WM_SEC.TIMESTAMP",
+          "schema": "string",
+          "required": true,
+          "description": "Epoch timestamp"
+        },
+        {
+          "name": "WM_SEC.AUTH_SIGNATURE",
+          "schema": "string",
+          "required": true,
+          "description": "Authentication signature"
+        },
+        {
+          "name": "WM_SVC.NAME",
+          "schema": "string",
+          "required": true,
+          "description": "The Service name"
+        },
+        {
+          "name": "WM_QOS.CORRELATION_ID",
+          "schema": "string",
+          "required": true,
+          "description": "A Transaction ID"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v3/orders/{purchaseOrderId}/refund",
+      "method": "refundOrder",
+      "httpMethod": "post",
+      "tag": "Version 3",
+      "description": "Refund order lines",
+      "parameters": [
+        {
+          "name": "purchaseOrderId",
+          "schema": "string",
+          "required": true,
+          "description": "Purchase Order ID"
+        },
+        {
+          "name": "shipNode",
+          "schema": "string",
+          "required": false,
+          "description": "Ship Node"
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "application/xml,\napplication/json"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "application/xml,\napplication/json"
+        },
+        {
+          "name": "WM_CONSUMER.CHANNEL.TYPE",
+          "schema": "string",
+          "required": true,
+          "description": "Channel Type"
+        },
+        {
+          "name": "WM_CONSUMER.ID",
+          "schema": "string",
+          "required": true,
+          "description": "Your Consumer ID"
+        },
+        {
+          "name": "WM_SEC.TIMESTAMP",
+          "schema": "string",
+          "required": true,
+          "description": "Epoch timestamp"
+        },
+        {
+          "name": "WM_SEC.AUTH_SIGNATURE",
+          "schema": "string",
+          "required": true,
+          "description": "Authentication signature"
+        },
+        {
+          "name": "WM_SVC.NAME",
+          "schema": "string",
+          "required": true,
+          "description": "The Service name"
+        },
+        {
+          "name": "WM_QOS.CORRELATION_ID",
+          "schema": "string",
+          "required": true,
+          "description": "A Transaction ID"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v3/orders/{purchaseOrderId}/shipping",
+      "method": "shippingOrder",
+      "httpMethod": "post",
+      "tag": "Version 3",
+      "description": "Shipping updates",
+      "parameters": [
+        {
+          "name": "purchaseOrderId",
+          "schema": "string",
+          "required": true,
+          "description": "Purchase Order ID"
+        },
+        {
+          "name": "shipNode",
+          "schema": "string",
+          "required": false,
+          "description": "Ship Node"
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "application/xml,\napplication/json"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "application/xml,\napplication/json"
+        },
+        {
+          "name": "WM_CONSUMER.CHANNEL.TYPE",
+          "schema": "string",
+          "required": true,
+          "description": "Channel Type"
+        },
+        {
+          "name": "WM_CONSUMER.ID",
+          "schema": "string",
+          "required": true,
+          "description": "Your Consumer ID"
+        },
+        {
+          "name": "WM_SEC.TIMESTAMP",
+          "schema": "string",
+          "required": true,
+          "description": "Epoch timestamp"
+        },
+        {
+          "name": "WM_SEC.AUTH_SIGNATURE",
+          "schema": "string",
+          "required": true,
+          "description": "Authentication signature"
+        },
+        {
+          "name": "WM_SVC.NAME",
+          "schema": "string",
+          "required": true,
+          "description": "The Service name"
+        },
+        {
+          "name": "WM_QOS.CORRELATION_ID",
+          "schema": "string",
+          "required": true,
+          "description": "A Transaction ID"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v3/orders{nextCursor}",
+      "method": "getAllOrdersNext",
+      "httpMethod": "get",
+      "tag": "Version 3",
+      "description": "Get orders for next page",
+      "parameters": [
+        {
+          "name": "nextCursor",
+          "schema": "string",
+          "required": true,
+          "description": "Used for pagination when there are more than 200 orders to retrieve. The nextCursor value of the returned response includes a link to another GET call to retrieve the next page. Copy the link and paste it in the next call."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "application/xml,\napplication/json"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "application/xml,\napplication/json"
+        },
+        {
+          "name": "WM_CONSUMER.CHANNEL.TYPE",
+          "schema": "string",
+          "required": true,
+          "description": "Channel Type"
+        },
+        {
+          "name": "WM_CONSUMER.ID",
+          "schema": "string",
+          "required": true,
+          "description": "Your Consumer ID"
+        },
+        {
+          "name": "WM_SEC.TIMESTAMP",
+          "schema": "string",
+          "required": true,
+          "description": "Epoch timestamp"
+        },
+        {
+          "name": "WM_SEC.AUTH_SIGNATURE",
+          "schema": "string",
+          "required": true,
+          "description": "Authentication signature"
+        },
+        {
+          "name": "WM_SVC.NAME",
+          "schema": "string",
+          "required": true,
+          "description": "The Service name"
+        },
+        {
+          "name": "WM_QOS.CORRELATION_ID",
+          "schema": "string",
+          "required": true,
+          "description": "A Transaction ID"
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://developer.walmart.com/orderProxy/order-api-doc-app/rest",
   "apiDescription": "Please make sure you use the correct version of the APIs for your use case. To find out the appropriate version, go to the API Docs  drop down on the menu.",
   "apiTitle": "Orders API",

@@ -4,6 +4,683 @@
   "homepage": "lufthansa.com",
   "serviceName": "public",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/cargo/getRoute/{origin}-{destination}/{fromDate}/{productCode}",
+      "method": "cargoGetRouteFromDateProductCodeByOriginAndDestinationGet",
+      "httpMethod": "get",
+      "tag": "Cargo",
+      "description": "Retrieve all flights",
+      "parameters": [
+        {
+          "name": "origin",
+          "schema": "string",
+          "required": true,
+          "description": "Departure Airport : 3-letter IATA airport code, e.g. FRA."
+        },
+        {
+          "name": "destination",
+          "schema": "string",
+          "required": true,
+          "description": "Arrival airport : 3-letter IATA airport code, e.g. HKG."
+        },
+        {
+          "name": "fromDate",
+          "schema": "string",
+          "required": true,
+          "description": "Departure date in the local time of the departure airport. Based on LAT (Latest Acceptance Time). format : yyyy-MM-dd eg : 2017-07-15"
+        },
+        {
+          "name": "productCode",
+          "schema": "string",
+          "required": true,
+          "description": "Product code for requested service and specials : 3-letter eg: YNZ"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cargo/shipmentTracking/{aWBPrefix}-{aWBNumber}",
+      "method": "cargoShipmentTrackingByAwbPrefixAndAwbNumberGet",
+      "httpMethod": "get",
+      "tag": "Cargo",
+      "description": "Shipment Tracking",
+      "parameters": [
+        {
+          "name": "aWBPrefix",
+          "schema": "string",
+          "required": true,
+          "description": "aWBPrefix : Represents the airline that is the owner of this AWB, i.e. \"020\" = Lufthansa Cargo, format : [0-9]{3} e.g. 020"
+        },
+        {
+          "name": "aWBNumber",
+          "schema": "string",
+          "required": true,
+          "description": "aWBNumber : The Air Waybill Number , format : [0-9]{8} e.g. 08002050"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/offers/lounges/{location}",
+      "method": "offersLoungesByLocationGet",
+      "httpMethod": "get",
+      "tag": "Offers",
+      "description": "Lounges",
+      "parameters": [
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "3-leter IATA airport or city code (e.g. 'ZRH')"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")"
+        },
+        {
+          "name": "cabinClass",
+          "schema": "string",
+          "required": false,
+          "description": "Cabin class: 'M', 'E', 'C', 'F' (Acceptable values are: \"\", \"M\", \"E\", \"C\", \"F\")"
+        },
+        {
+          "name": "tierCode",
+          "schema": "string",
+          "required": false,
+          "description": "Frequent flyer level ('FTL', 'SGC', 'SEN', 'HON') (Acceptable values are: \"\", \"FTL\", \"SGC\", \"SEN\", \"HON\")"
+        },
+        {
+          "name": "lang",
+          "schema": "string",
+          "required": false,
+          "description": "Language code."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/offers/seatmaps/{flightNumber}/{origin}/{destination}/{date}/{cabinClass}",
+      "method": "offersSeatmapsDestinationDateCabinClassByFlightNumberAndOriginGet",
+      "httpMethod": "get",
+      "tag": "Offers",
+      "description": "Seat Maps",
+      "parameters": [
+        {
+          "name": "flightNumber",
+          "schema": "string",
+          "required": true,
+          "description": "Flight number including carrier code and any suffix (e.g. 'LH2037')"
+        },
+        {
+          "name": "origin",
+          "schema": "string",
+          "required": true,
+          "description": "Departure airport. 3-letter IATA airport code (e.g. 'TXL')"
+        },
+        {
+          "name": "destination",
+          "schema": "string",
+          "required": true,
+          "description": "Destination airport. 3-letter IATA airport code (e.g. 'MUC')"
+        },
+        {
+          "name": "date",
+          "schema": "string",
+          "required": true,
+          "description": "Departure date (YYYY-MM-DD)"
+        },
+        {
+          "name": "cabinClass",
+          "schema": "string",
+          "required": true,
+          "description": "Cabin class: 'M', 'E', 'C', 'F'. Some flights have fewer classes (Acceptable values are: \"M\", \"E\", \"C\", \"F\")"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/operations/flightstatus/arrivals/{airportCode}/{fromDateTime}",
+      "method": "operationsFlightstatusArrivalsByAirportCodeAndFromDateTimeGet",
+      "httpMethod": "get",
+      "tag": "Operations",
+      "description": "Flight Status at Arrival Airport",
+      "parameters": [
+        {
+          "name": "airportCode",
+          "schema": "string",
+          "required": true,
+          "description": "3-letter IATA aiport code (e.g. 'ZRH')"
+        },
+        {
+          "name": "fromDateTime",
+          "schema": "string",
+          "required": true,
+          "description": "Start of time range in local time of arrival airport (YYYY-MM-DDTHH:mm)"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")"
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": "Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)"
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "required": false,
+          "description": "Number of records skipped. Defaults to 0"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/operations/flightstatus/departures/{airportCode}/{fromDateTime}",
+      "method": "operationsFlightstatusDeparturesByAirportCodeAndFromDateTimeGet",
+      "httpMethod": "get",
+      "tag": "Operations",
+      "description": "Flight Status at Departure Airport",
+      "parameters": [
+        {
+          "name": "airportCode",
+          "schema": "string",
+          "required": true,
+          "description": "Departure airport. 3-letter IATA airport code (e.g. 'HAM')"
+        },
+        {
+          "name": "fromDateTime",
+          "schema": "string",
+          "required": true,
+          "description": "Start of time range in local time of departure airport (YYYY-MM-DDTHH:mm)"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")"
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": "Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)"
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "required": false,
+          "description": "Number of records skipped. Defaults to 0"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/operations/flightstatus/route/{origin}/{destination}/{date}",
+      "method": "operationsFlightstatusRouteDateByOriginAndDestinationGet",
+      "httpMethod": "get",
+      "tag": "Operations",
+      "description": "Flight Status by Route",
+      "parameters": [
+        {
+          "name": "origin",
+          "schema": "string",
+          "required": true,
+          "description": "3-letter IATA airport (e.g. 'FRA')"
+        },
+        {
+          "name": "destination",
+          "schema": "string",
+          "required": true,
+          "description": "3-letter IATA airport code (e.g. 'JFK')"
+        },
+        {
+          "name": "date",
+          "schema": "string",
+          "required": true,
+          "description": "Departure date (YYYY-MM-DD) in local time of departure airport"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")"
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": "Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)"
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "required": false,
+          "description": "Number of records skipped. Defaults to 0"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/operations/flightstatus/{flightNumber}/{date}",
+      "method": "operationsFlightstatusByFlightNumberAndDateGet",
+      "httpMethod": "get",
+      "tag": "Operations",
+      "description": "Flight Status",
+      "parameters": [
+        {
+          "name": "flightNumber",
+          "schema": "string",
+          "required": true,
+          "description": "Flight number including carrier code and any suffix (e.g. 'LH400')"
+        },
+        {
+          "name": "date",
+          "schema": "string",
+          "required": true,
+          "description": "The departure date (YYYY-MM-DD) in the local time of the departure airport"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")"
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": "Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)"
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "required": false,
+          "description": "Number of records skipped. Defaults to 0"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/operations/schedules/{origin}/{destination}/{fromDateTime}",
+      "method": "operationsSchedulesFromDateTimeByOriginAndDestinationGet",
+      "httpMethod": "get",
+      "tag": "Operations",
+      "description": "Flight Schedules",
+      "parameters": [
+        {
+          "name": "origin",
+          "schema": "string",
+          "required": true,
+          "description": "Departure airport. 3-letter IATA airport code (e.g. 'ZRH')"
+        },
+        {
+          "name": "destination",
+          "schema": "string",
+          "required": true,
+          "description": "Destination airport. 3-letter IATA airport code (e.g. 'FRA')"
+        },
+        {
+          "name": "fromDateTime",
+          "schema": "string",
+          "required": true,
+          "description": "Local departure date and optionally departure time (YYYY-MM-DD or YYYY-MM-DDTHH:mm). When not provided, time is assumed to be 00:01"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")"
+        },
+        {
+          "name": "directFlights",
+          "schema": "boolean",
+          "required": false,
+          "description": "Show only direct flights (false=0, true=1). Default is false"
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": "Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)"
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "required": false,
+          "description": "Number of records skipped. Defaults to 0"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/references/aircraft/{aircraftCode}",
+      "method": "referencesAircraftByAircraftCodeGet",
+      "httpMethod": "get",
+      "tag": "Reference Data",
+      "description": "Aircraft",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")"
+        },
+        {
+          "name": "aircraftCode",
+          "schema": "string",
+          "required": true,
+          "description": "3-character IATA aircraft code"
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": "Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)"
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "required": false,
+          "description": "Number of records skipped. Defaults to 0"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/references/airlines/{airlineCode}",
+      "method": "referencesAirlinesByAirlineCodeGet",
+      "httpMethod": "get",
+      "tag": "Reference Data",
+      "description": "Airlines",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")"
+        },
+        {
+          "name": "airlineCode",
+          "schema": "string",
+          "required": true,
+          "description": "2-character IATA airline/carrier code"
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": "Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)"
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "required": false,
+          "description": "Number of records skipped. Defaults to 0"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/references/airports/nearest/{latitude},{longitude}",
+      "method": "referencesAirportsNearestByLatitudeAndLongitudeGet",
+      "httpMethod": "get",
+      "tag": "Reference Data",
+      "description": "Nearest Airports",
+      "parameters": [
+        {
+          "name": "latitude",
+          "schema": "integer",
+          "required": true,
+          "description": "Latitude in decimal format to at most 3 decimal places"
+        },
+        {
+          "name": "longitude",
+          "schema": "integer",
+          "required": true,
+          "description": "Longitude in decimal format to at most 3 decimal places"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")"
+        },
+        {
+          "name": "lang",
+          "schema": "string",
+          "required": false,
+          "description": "2 letter ISO 3166-1 language code"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/references/airports/{airportCode}",
+      "method": "referencesAirportsByAirportCodeGet",
+      "httpMethod": "get",
+      "tag": "Reference Data",
+      "description": "Airports",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")"
+        },
+        {
+          "name": "airportCode",
+          "schema": "string",
+          "required": true,
+          "description": "3-letter IATA airport code"
+        },
+        {
+          "name": "lang",
+          "schema": "string",
+          "required": false,
+          "description": "2-letter ISO 3166-1 language code"
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": "Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)"
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "required": false,
+          "description": "Number of records skipped. Defaults to 0"
+        },
+        {
+          "name": "LHoperated",
+          "schema": "boolean",
+          "required": false,
+          "description": "Restrict the results to locations with flights operated by LH (false=0, true=1)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/references/cities/{cityCode}",
+      "method": "referencesCitiesByCityCodeGet",
+      "httpMethod": "get",
+      "tag": "Reference Data",
+      "description": "Cities",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")"
+        },
+        {
+          "name": "cityCode",
+          "schema": "string",
+          "required": true,
+          "description": "3-letter IATA city code"
+        },
+        {
+          "name": "lang",
+          "schema": "string",
+          "required": false,
+          "description": "2 letter ISO 3166-1 language code"
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": "Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)"
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "required": false,
+          "description": "Number of records skipped. Defaults to 0"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/references/countries/{countryCode}",
+      "method": "referencesCountriesByCountryCodeGet",
+      "httpMethod": "get",
+      "tag": "Reference Data",
+      "description": "Countries",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "http header: application/json or application/xml (Acceptable values are: \"application/json\", \"application/xml\")"
+        },
+        {
+          "name": "countryCode",
+          "schema": "string",
+          "required": true,
+          "description": "2-letter ISO 3166-1 country code"
+        },
+        {
+          "name": "lang",
+          "schema": "string",
+          "required": false,
+          "description": "2 letter ISO 3166-1 language code"
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": "Number of records returned per request. Defaults to 20, maximum is 100 (if a value bigger than 100 is given, 100 will be taken)"
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "required": false,
+          "description": "Number of records skipped. Defaults to 0"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.lufthansa.com/v1",
   "apiDescription": "",
   "apiTitle": "LH Public API",

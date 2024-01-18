@@ -4,6 +4,54 @@
   "homepage": "rapidapi.com",
   "serviceName": "dynamicdocs",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/templates/{template-token}/compile",
+      "method": "compile",
+      "httpMethod": "post",
+      "tag": "PDF Generation",
+      "description": "Compile New Document PDF",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Should be set to \"application/json\""
+        },
+        {
+          "name": "doc-url-expires-in",
+          "schema": "integer",
+          "description": "The doc-url-expires-in is a numerical parameter which takes integers and describes after how many seconds the provided URL is available to download the document."
+        },
+        {
+          "name": "latex-compiler",
+          "schema": "string",
+          "description": "The latex-compiler parameter can take the following values:  pdflatex lualatex"
+        },
+        {
+          "name": "latex-runs ",
+          "schema": "integer",
+          "description": "The latex-runs is a numerical parameter and can take values of 1, 2 and 3. "
+        },
+        {
+          "name": "main-file-name",
+          "schema": "string",
+          "description": "The main-file-name is a string parameter which identifies the main file to compile."
+        },
+        {
+          "name": "doc-file-name",
+          "schema": "string",
+          "description": "The doc-file-name is a string parameter which determines the name of the file. Note that the extension of the file is not required."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://dynamicdocs.p.rapidapi.com",
   "apiDescription": "ADVICEment's [DynamicDocs API automates your document generation](https://advicement.io/dynamic-documents-api) and creates dynamic, optimized, interactive PDFs. Write your templates in LaTeX and call the API with JSON data to get your PDFs in seconds.\n\nThe template files are stored in your dashboard and can be edited, tested and published online. Document templates can contain dynamic text using logic statements, include tables stretching multiple pages and show great-looking charts based on the underlying data. LaTeX creates crisp, high-quality documents where every detail is well-positioned and styled.\n\nIntegrate with ADVICEment DynamicDocs API in minutes and start creating beautiful [dynamic PDF documents](https://advicement.io/dynamic-documents-api) for your needs.\n\nFor more information, visit [DynamicDocs API Home page](https://advicement.io/dynamic-documents-api).",
   "apiTitle": "DynamicDocs",

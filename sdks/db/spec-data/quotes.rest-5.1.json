@@ -3,6 +3,1656 @@
   "openApiRaw": "http://quotes.rest/yaml/theysaidso.quotes.openapi.yaml?v1.1",
   "homepage": "quotes.rest",
   "apiVersion": "5.1",
+  "methods": [
+    {
+      "url": "/qod",
+      "method": "/qodGet",
+      "httpMethod": "get",
+      "tag": "Quote of the day",
+      "description": "Gets `Quote of the Day` (QOD). Optional `category` param determines the category of returned quote of the day\n",
+      "parameters": [
+        {
+          "name": "category",
+          "schema": "string",
+          "required": false,
+          "description": "QOD Category (Used in public QOD only)"
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": false,
+          "description": "Language of the QOD. The language must be supported in our QOD system."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": "QOD defition id (Used in private QOD only)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/qod",
+      "method": "/qodPatch",
+      "httpMethod": "patch",
+      "tag": "Private QOD",
+      "description": "Update an existing private `Quote of the Day` definition.\n",
+      "parameters": [
+        {
+          "name": "repeat_after",
+          "schema": "integer",
+          "required": false,
+          "description": "How many days after the quotes can repeat? If you are setting this up from your private collection make sure you have more quotes that meet the filter conditions than the days you specify here."
+        },
+        {
+          "name": "authors",
+          "schema": "string",
+          "required": false,
+          "description": "Comma seperated author names. Quotes will be chosen from one of these authors."
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "required": true,
+          "description": "Title of the Quote of the day category"
+        },
+        {
+          "name": "private",
+          "schema": "boolean",
+          "required": false,
+          "description": "Should apply the filters to the private collection. Default is public quotes in the platform."
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": false,
+          "description": "Quotes language."
+        },
+        {
+          "name": "sfw",
+          "schema": "boolean",
+          "required": false,
+          "description": "Consider only quotes marked as \"sfw\" (Safe for work)."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/qod",
+      "method": "/qodPut",
+      "httpMethod": "put",
+      "tag": "Private QOD",
+      "description": "Create a private `Quote of the Day` service. \n",
+      "parameters": [
+        {
+          "name": "repeat_after",
+          "schema": "integer",
+          "required": false,
+          "description": "How many days after the quotes can repeat? If you are setting this up from your private collection make sure you have more quotes that meet the filter conditions than the days you specify here."
+        },
+        {
+          "name": "authors",
+          "schema": "string",
+          "required": false,
+          "description": "Comma seperated author names. Quotes will be chosen from one of these authors."
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "required": true,
+          "description": "Title of the Quote of the day category"
+        },
+        {
+          "name": "private",
+          "schema": "boolean",
+          "required": false,
+          "description": "Should apply the filters to the private collection. Default is public quotes in the platform."
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": false,
+          "description": "Quotes language."
+        },
+        {
+          "name": "sfw",
+          "schema": "boolean",
+          "required": false,
+          "description": "Consider only quotes marked as \"sfw\" (Safe for work)."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/qod/categories",
+      "method": "/qod/categoriesGet",
+      "httpMethod": "get",
+      "tag": "Quote of the day",
+      "description": "Gets a list of `Quote of the Day` Categories.\n",
+      "parameters": [
+        {
+          "name": "language",
+          "schema": "string",
+          "required": false,
+          "description": "Language of the QOD category. The language must be supported in our QOD system."
+        },
+        {
+          "name": "detailed",
+          "schema": "boolean",
+          "required": false,
+          "description": "Return detailed information of the categories. Note the data format changes between the two values of this switch."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/qod/languages",
+      "method": "/qod/languagesGet",
+      "httpMethod": "get",
+      "tag": "Quote of the day",
+      "description": "Gets a list of supported languages for `Quote of the Day`. \n",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/qshow",
+      "method": "/qshowDelete",
+      "httpMethod": "delete",
+      "tag": "Qshow",
+      "description": "Delete a qshow.\n",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Qshow ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/qshow",
+      "method": "/qshowGet",
+      "httpMethod": "get",
+      "tag": "Qshow",
+      "description": "Gets a details about a qshow.\n",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Qshow ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/qshow",
+      "method": "/qshowPatch",
+      "httpMethod": "patch",
+      "tag": "Qshow",
+      "description": "Update an existing qshow.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Qshow ID"
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "required": false,
+          "description": "Qshow title"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": "Qshow description"
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "required": false,
+          "description": "Tags for the qshow"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/qshow",
+      "method": "/qshowPut",
+      "httpMethod": "put",
+      "tag": "Qshow",
+      "description": "Create and add a new qshow to your private collection.",
+      "parameters": [
+        {
+          "name": "title",
+          "schema": "string",
+          "required": true,
+          "description": "Qshow title"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": "Qshow description"
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "required": false,
+          "description": "Tags for the qshow"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/qshow/list",
+      "method": "/qshow/listGet",
+      "httpMethod": "get",
+      "tag": "Qshow",
+      "description": "Get the list of Qshows in They Said So platform.",
+      "parameters": [
+        {
+          "name": "start",
+          "schema": "integer",
+          "required": false,
+          "description": "Response is paged. This parameter controls where response starts the listing at"
+        },
+        {
+          "name": "public",
+          "schema": "boolean",
+          "required": false,
+          "description": "Should include public qshows or not in the list"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/qshow/quotes",
+      "method": "/qshow/quotesGet",
+      "httpMethod": "get",
+      "tag": "Qshow",
+      "description": "Get the quotes in a given Qshow.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Qshow ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/qshow/quotes/add",
+      "method": "/qshow/quotes/addPost",
+      "httpMethod": "post",
+      "tag": "Qshow",
+      "description": "Add a quote to a given Qshow.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Qshow ID"
+        },
+        {
+          "name": "quoteid",
+          "schema": "string",
+          "required": true,
+          "description": "Quote ID to add the qshow collection"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/qshow/quotes/remove",
+      "method": "/qshow/quotes/removePost",
+      "httpMethod": "post",
+      "tag": "Qshow",
+      "description": "Remove a quote to a given Qshow.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Qshow ID"
+        },
+        {
+          "name": "quoteid",
+          "schema": "string",
+          "required": true,
+          "description": "Quote ID to remove from the qshow collection"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote",
+      "method": "/quoteDelete",
+      "httpMethod": "delete",
+      "tag": "Private Quotes",
+      "description": "Delete a quote. The user needs to be the owner of the quote to be able to delete it.\n",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Quote ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote",
+      "method": "/quoteGet",
+      "httpMethod": "get",
+      "tag": "Quote",
+      "description": "Gets a `Quote` with a given `id`.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": "Quote ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote",
+      "method": "/quotePatch",
+      "httpMethod": "patch",
+      "tag": "Private Quotes",
+      "description": "Update a quote",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Quote ID"
+        },
+        {
+          "name": "quote",
+          "schema": "string",
+          "required": false,
+          "description": "Quote"
+        },
+        {
+          "name": "author",
+          "schema": "string",
+          "required": false,
+          "description": "Quote Author"
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": false,
+          "description": "Language. If not supplied an auto detection mechanism will be used to detect a language."
+        },
+        {
+          "name": "tags",
+          "schema": "string",
+          "required": false,
+          "description": "Comma Separated tags"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote",
+      "method": "/quotePost",
+      "httpMethod": "post",
+      "tag": "Private Quotes",
+      "description": "Add a new quote to your private collection. Same as 'PUT' but added since some clients don't handle PUT well.",
+      "parameters": [
+        {
+          "name": "quote",
+          "schema": "string",
+          "required": true,
+          "description": "Quote"
+        },
+        {
+          "name": "author",
+          "schema": "string",
+          "required": false,
+          "description": "Quote Author"
+        },
+        {
+          "name": "tags",
+          "schema": "string",
+          "required": false,
+          "description": "Comma Separated tags"
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": false,
+          "description": "Language. If not supplied an auto detection mechanism will be used to detect a language."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote",
+      "method": "/quotePut",
+      "httpMethod": "put",
+      "tag": "Private Quotes",
+      "description": "Add a new quote to your private collection.",
+      "parameters": [
+        {
+          "name": "quote",
+          "schema": "string",
+          "required": true,
+          "description": "Quote"
+        },
+        {
+          "name": "author",
+          "schema": "string",
+          "required": false,
+          "description": "Quote Author"
+        },
+        {
+          "name": "tags",
+          "schema": "string",
+          "required": false,
+          "description": "Comma Separated tags"
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": false,
+          "description": "Language. If not supplied an auto detection mechanism will be used to detect a language."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote/authors/popular",
+      "method": "/quote/authors/popularGet",
+      "httpMethod": "get",
+      "tag": "Quote",
+      "description": "Gets a list of popular author names in the system. \n",
+      "parameters": [
+        {
+          "name": "language",
+          "schema": "string",
+          "required": false,
+          "description": "Language. A same author may have quotes in two or more different languages. So for example 'Mahatma Gandhi' may be returned for language \"en\"(English), and \"மஹாத்மா காந்தி\" may be returned when the language is \"ta\" (Tamil)."
+        },
+        {
+          "name": "detailed",
+          "schema": "boolean",
+          "required": false,
+          "description": "Should return detailed author information such as `birthday`, `death date`, `occupation`, `description` etc. Only available at certain subscription levels."
+        },
+        {
+          "name": "start",
+          "schema": "integer",
+          "required": false,
+          "description": "Response is paged. This parameter controls where response starts the listing at"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Response is paged. This parameter controls how many is returned in the result. The maximum depends on the subscription level."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote/authors/search",
+      "method": "/quote/authors/searchGet",
+      "httpMethod": "get",
+      "tag": "Quote",
+      "description": "Gets a list of author names in the system. \n",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "Text string to search for in author names"
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": false,
+          "description": "Language. A same author may have quotes in two or more different languages. So for example 'Mahatma Gandhi' may be returned for language \"en\"(English), and \"மஹாத்மா காந்தி\" may be returned when the language is \"ta\" (Tamil)."
+        },
+        {
+          "name": "detailed",
+          "schema": "boolean",
+          "required": false,
+          "description": "Should return detailed author information such as `birthday`, `death date`, `occupation`, `description` etc. Only available at certain subscription levels."
+        },
+        {
+          "name": "start",
+          "schema": "integer",
+          "required": false,
+          "description": "Response is paged. This parameter controls where response starts the listing at"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Response is paged. This parameter controls how many is returned in the result. The maximum depends on the subscription level."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote/bookmark/toggle",
+      "method": "/quote/bookmark/toggleGet",
+      "httpMethod": "get",
+      "tag": "Quote",
+      "description": "Toggle the user bookmark of the given Quote as a user of the API Key.",
+      "parameters": [
+        {
+          "name": "quote_id",
+          "schema": "string",
+          "required": true,
+          "description": "Quote ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote/categories/popular",
+      "method": "/quote/categories/popularGet",
+      "httpMethod": "get",
+      "tag": "Quote",
+      "description": "Gets a list of popular `Quote` Categories.\n",
+      "parameters": [
+        {
+          "name": "start",
+          "schema": "integer",
+          "required": false,
+          "description": "Response is paged. This parameter controls where response starts the listing at"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Response is paged. This parameter controls how many is returned in the result. The maximum depends on the subscription level."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote/categories/search",
+      "method": "/quote/categories/searchGet",
+      "httpMethod": "get",
+      "tag": "Quote",
+      "description": "Gets a list of `Quote` Categories matching the query string.\n",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "Text string to search for in the categories"
+        },
+        {
+          "name": "start",
+          "schema": "integer",
+          "required": false,
+          "description": "Response is paged. This parameter controls where response starts the listing at"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Response is paged. This parameter controls how many is returned in the result. The maximum depends on the subscription level."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote/image",
+      "method": "/quote/imageDelete",
+      "httpMethod": "delete",
+      "tag": "Quote Images",
+      "description": "Delete a quote image. The user needs to be the owner of the quote image to be able to delete it.\n",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Quote Image ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote/image",
+      "method": "/quote/imageGet",
+      "httpMethod": "get",
+      "tag": "Quote Images",
+      "description": "Gets a Quote image for a given id. Response can be an image file as a binary or a base64 encoded contents wrapped in json. `TODO`\n",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Quote Image id"
+        },
+        {
+          "name": "binary",
+          "schema": "boolean",
+          "required": false,
+          "description": "Should the response be a direct file download of the image or a base64 encoded image file wrapped in json?"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote/image",
+      "method": "/quote/imagePut",
+      "httpMethod": "put",
+      "tag": "Quote Images",
+      "description": "Create a new quote image for a given quote. Choose background colors/images , choose different font styles and generate a beautiful quote image. Did you just had a feeling of being a god or what?!\n",
+      "parameters": [
+        {
+          "name": "quote_id",
+          "schema": "string",
+          "required": true,
+          "description": "Quote id"
+        },
+        {
+          "name": "bgimage_id",
+          "schema": "string",
+          "required": false,
+          "description": "Background Image id ( Will override bgcolor if supplied)"
+        },
+        {
+          "name": "bg_color",
+          "schema": "string",
+          "required": false,
+          "description": "Background Color(if background image id is not supplied)"
+        },
+        {
+          "name": "font_id",
+          "schema": "string",
+          "required": false,
+          "description": "Font id"
+        },
+        {
+          "name": "text_color",
+          "schema": "string",
+          "required": false,
+          "description": "Text Color"
+        },
+        {
+          "name": "text_size",
+          "schema": "string",
+          "required": false,
+          "description": "Text/font size"
+        },
+        {
+          "name": "halign",
+          "schema": "string",
+          "required": false,
+          "description": "Horizontal text Alignment Value"
+        },
+        {
+          "name": "valign",
+          "schema": "string",
+          "required": false,
+          "description": "Vertical text Alignment Value"
+        },
+        {
+          "name": "width",
+          "schema": "integer",
+          "required": false,
+          "description": "Image Width(By default this takes the width of the background image)"
+        },
+        {
+          "name": "height",
+          "schema": "integer",
+          "required": false,
+          "description": "Image Height(By default this takes the height of the background image)"
+        },
+        {
+          "name": "branding",
+          "schema": "boolean",
+          "required": false,
+          "description": "Disable They Said So branding (Only available in certain subscription levels. Ignored in other levels)"
+        },
+        {
+          "name": "include_transparent_layer",
+          "schema": "boolean",
+          "required": false,
+          "description": "Should include a transparent layer between the text and the background image? This helps when the background image is bright and obscures the text."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote/image/background",
+      "method": "/quote/image/backgroundDelete",
+      "httpMethod": "delete",
+      "tag": "Quote Images",
+      "description": "Delete a background image file. The user needs to be the owner of the background image to be able to delete it.\n",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Font ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote/image/background",
+      "method": "/quote/image/backgroundPost",
+      "httpMethod": "post",
+      "tag": "Quote Images",
+      "description": "Add an image for use later as a quote background image.",
+      "parameters": [
+        {
+          "name": "image",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote/image/background/list",
+      "method": "/quote/image/background/listGet",
+      "httpMethod": "get",
+      "tag": "Quote Images",
+      "description": "Lists background images in your private collection. \n",
+      "parameters": [
+        {
+          "name": "start",
+          "schema": "integer",
+          "required": false,
+          "description": "Response is paged. This parameter determines where the response should start."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote/image/background/search",
+      "method": "/quote/image/background/searchGet",
+      "httpMethod": "get",
+      "tag": "Quote Images",
+      "description": "Searches for a background image with a given tag. \n",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "Tag string"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote/image/background/tags/add",
+      "method": "/quote/image/background/tags/addPost",
+      "httpMethod": "post",
+      "tag": "Quote Images",
+      "description": "Add a tag to a given Image.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Image ID"
+        },
+        {
+          "name": "tags",
+          "schema": "string",
+          "required": true,
+          "description": "Comma Separated tags"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote/image/background/tags/remove",
+      "method": "/quote/image/background/tags/removePost",
+      "httpMethod": "post",
+      "tag": "Quote Images",
+      "description": "Remove a tag from a given Image.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Image ID"
+        },
+        {
+          "name": "tags",
+          "schema": "string",
+          "required": true,
+          "description": "Comma Separated tags"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote/image/font",
+      "method": "/quote/image/fontDelete",
+      "httpMethod": "delete",
+      "tag": "Quote Images",
+      "description": "Delete a font file. The user needs to be the owner of the font to be able to delete it.\n",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Font ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote/image/font",
+      "method": "/quote/image/fontPost",
+      "httpMethod": "post",
+      "tag": "Quote Images",
+      "description": "Add a font file for use later in creating a quote image. This is essentially a `PUT` but not many clients handle PUT with binary stream i.e. a file, gracefully.",
+      "parameters": [
+        {
+          "name": "font",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote/image/font/list",
+      "method": "/quote/image/font/listGet",
+      "httpMethod": "get",
+      "tag": "Quote Images",
+      "description": "Lists background images in your private collection. \n",
+      "parameters": [
+        {
+          "name": "start",
+          "schema": "integer",
+          "required": false,
+          "description": "Response is paged. This parameter determines where the response should start."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote/image/font/search",
+      "method": "/quote/image/font/searchGet",
+      "httpMethod": "get",
+      "tag": "Quote Images",
+      "description": "Searches for a font with a given tag. \n",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "Tag string"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote/image/font/tags/add",
+      "method": "/quote/image/font/tags/addPost",
+      "httpMethod": "post",
+      "tag": "Quote Images",
+      "description": "Add a tag to a given font.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Font ID"
+        },
+        {
+          "name": "tags",
+          "schema": "string",
+          "required": true,
+          "description": "Comma Separated tags"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote/image/font/tags/remove",
+      "method": "/quote/image/font/tags/removePost",
+      "httpMethod": "post",
+      "tag": "Quote Images",
+      "description": "Remove a tag from a given Font.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Font ID"
+        },
+        {
+          "name": "tags",
+          "schema": "string",
+          "required": true,
+          "description": "Comma Separated tags"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote/image/search",
+      "method": "/quote/image/searchGet",
+      "httpMethod": "get",
+      "tag": "Quote Images",
+      "description": "Gets a Random Quote image. Optional `category` param determines the category of quote used in the image. Optional `author` param gets the quote image of a given author. \n",
+      "parameters": [
+        {
+          "name": "category",
+          "schema": "string",
+          "required": false,
+          "description": "Quote Category"
+        },
+        {
+          "name": "author",
+          "schema": "string",
+          "required": false,
+          "description": "Quote Author"
+        },
+        {
+          "name": "private",
+          "schema": "boolean",
+          "required": false,
+          "description": "Should search private collection. Default searches public image collection."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote/like/toggle",
+      "method": "/quote/like/toggleGet",
+      "httpMethod": "get",
+      "tag": "Quote",
+      "description": "Toggle the user like of the given Quote as a user of the API Key.",
+      "parameters": [
+        {
+          "name": "quote_id",
+          "schema": "string",
+          "required": true,
+          "description": "Quote ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote/list",
+      "method": "/quote/listGet",
+      "httpMethod": "get",
+      "tag": "Private Quotes",
+      "description": "Get the list of quotes in your private collection.",
+      "parameters": [
+        {
+          "name": "start",
+          "schema": "integer",
+          "required": false,
+          "description": "Response is paged. This parameter controls where response starts the listing at"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Response is paged. This parameter controls how many is returned in the result."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote/random",
+      "method": "/quote/randomGet",
+      "httpMethod": "get",
+      "tag": "Quote",
+      "description": "Gets a `Random Quote`. When you are in a hurry this is what you call to get a random famous quote.",
+      "parameters": [
+        {
+          "name": "language",
+          "schema": "string",
+          "required": false,
+          "description": "Language of the Quote. The language must be supported in our system."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "No of quotes to return. The max limit depends on the subscription level."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote/search",
+      "method": "/quote/searchGet",
+      "httpMethod": "get",
+      "tag": "Quote",
+      "description": "Search for a `Quote` in They Said So platform. Optional `category` , `author`, `minlength`, `maxlength` params determines the filters applied while searching for the quote. ",
+      "parameters": [
+        {
+          "name": "category",
+          "schema": "string",
+          "required": false,
+          "description": "Quote Category"
+        },
+        {
+          "name": "author",
+          "schema": "string",
+          "required": false,
+          "description": "Quote Author"
+        },
+        {
+          "name": "minlength",
+          "schema": "integer",
+          "required": false,
+          "description": "Quote minimum Length"
+        },
+        {
+          "name": "maxlength",
+          "schema": "integer",
+          "required": false,
+          "description": "Quote maximum Length"
+        },
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "keyword to search for in the quote"
+        },
+        {
+          "name": "private",
+          "schema": "boolean",
+          "required": false,
+          "description": "Should search private collection? Default searches public collection."
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": false,
+          "description": "Language of the Quote. The language must be supported in our system."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "No of quotes to return. The max limit depends on the subscription level."
+        },
+        {
+          "name": "sfw",
+          "schema": "boolean",
+          "required": false,
+          "description": "Should search only SFW (Safe For Work) quotes?"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote/tags/add",
+      "method": "/quote/tags/addPost",
+      "httpMethod": "post",
+      "tag": "Private Quotes",
+      "description": "Add a tag to a given Quote.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Quote ID"
+        },
+        {
+          "name": "tags",
+          "schema": "string",
+          "required": true,
+          "description": "Comma Separated tags"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/quote/tags/remove",
+      "method": "/quote/tags/removePost",
+      "httpMethod": "post",
+      "tag": "Private Quotes",
+      "description": "Remove a tag from a given quote.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Quote ID"
+        },
+        {
+          "name": "tags",
+          "schema": "string",
+          "required": true,
+          "description": "Comma Separated tags"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://quotes.rest",
   "apiDescription": " They Said So Quotes API offers a complete feature rich REST API access to its quotes platform.  This is the documentation for the world famous [quotes API](https://theysaidso.com/api).  If you are a subscriber and you are trying this from a console you can use Bearer token with your api key as the token. You can test and play with the API right here on this web page. Please note recently we closed downs public access without api key to prevent abuse. The public routes are still available to use free of charge but requires a api token. You can get one for free at our website. For using the private end points and subscribing to the API please visit [https://theysaidso.com/api](https://theysaidso.com/api).",
   "apiTitle": "They Said So Quotes API",

@@ -3,6 +3,1384 @@
   "openApiRaw": "https://raw.githubusercontent.com/NeblioTeam/neblio-api-swagger-docs/master/swagger.yaml",
   "homepage": "nebl.io",
   "apiVersion": "1.3.0",
+  "methods": [
+    {
+      "url": "/",
+      "method": "jsonRpc",
+      "httpMethod": "post",
+      "tag": "JSON-RPC",
+      "description": "Send a JSON-RPC call to a localhost neblio-Qt or nebliod node",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "jsonrpc",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "method",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "params",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Object containing the JSON response from the Neblio node."
+        }
+      ]
+    },
+    {
+      "url": "/ins/addr/{address}",
+      "method": "getAddress",
+      "httpMethod": "get",
+      "tag": "Insight",
+      "description": "Returns address object",
+      "parameters": [
+        {
+          "name": "address",
+          "schema": "string",
+          "required": true,
+          "description": "Address"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ins/addr/{address}/balance",
+      "method": "getAddressBalance",
+      "httpMethod": "get",
+      "tag": "Insight",
+      "description": "Returns address balance in sats",
+      "parameters": [
+        {
+          "name": "address",
+          "schema": "string",
+          "required": true,
+          "description": "Address"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Address balance in satoshis"
+        }
+      ]
+    },
+    {
+      "url": "/ins/addr/{address}/totalReceived",
+      "method": "getAddressTotalReceived",
+      "httpMethod": "get",
+      "tag": "Insight",
+      "description": "Returns total received by address in sats",
+      "parameters": [
+        {
+          "name": "address",
+          "schema": "string",
+          "required": true,
+          "description": "Address"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Address total received in satoshis"
+        }
+      ]
+    },
+    {
+      "url": "/ins/addr/{address}/totalSent",
+      "method": "getAddressTotalSent",
+      "httpMethod": "get",
+      "tag": "Insight",
+      "description": "Returns total sent by address in sats",
+      "parameters": [
+        {
+          "name": "address",
+          "schema": "string",
+          "required": true,
+          "description": "Address"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Address total sent in satoshis"
+        }
+      ]
+    },
+    {
+      "url": "/ins/addr/{address}/unconfirmedBalance",
+      "method": "getAddressUnconfirmedBalance",
+      "httpMethod": "get",
+      "tag": "Insight",
+      "description": "Returns address unconfirmed balance in sats",
+      "parameters": [
+        {
+          "name": "address",
+          "schema": "string",
+          "required": true,
+          "description": "Address"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Address unconfirmed balance in satoshis"
+        }
+      ]
+    },
+    {
+      "url": "/ins/addr/{address}/utxo",
+      "method": "getAddressUtxos",
+      "httpMethod": "get",
+      "tag": "Insight",
+      "description": "Returns all UTXOs at a given address",
+      "parameters": [
+        {
+          "name": "address",
+          "schema": "string",
+          "required": true,
+          "description": "Address"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Array of objects representing this address' UTXOs"
+        }
+      ]
+    },
+    {
+      "url": "/ins/block-index/{blockindex}",
+      "method": "getBlockIndex",
+      "httpMethod": "get",
+      "tag": "Insight",
+      "description": "Returns block hash of block",
+      "parameters": [
+        {
+          "name": "blockindex",
+          "schema": "number",
+          "required": true,
+          "description": "Block Index"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ins/block/{blockhash}",
+      "method": "getBlock",
+      "httpMethod": "get",
+      "tag": "Insight",
+      "description": "Returns information regarding a Neblio block",
+      "parameters": [
+        {
+          "name": "blockhash",
+          "schema": "string",
+          "required": true,
+          "description": "Block Hash"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ins/rawtx/{txid}",
+      "method": "getRawTx",
+      "httpMethod": "get",
+      "tag": "Insight",
+      "description": "Returns raw transaction hex",
+      "parameters": [
+        {
+          "name": "txid",
+          "schema": "string",
+          "required": true,
+          "description": "Transaction ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ins/status",
+      "method": "getStatus",
+      "httpMethod": "get",
+      "tag": "Insight",
+      "description": "Utility API for calling several blockchain node functions",
+      "parameters": [
+        {
+          "name": "q",
+          "schema": "string",
+          "required": false,
+          "description": "Function to call, getInfo, getDifficulty, getBestBlockHash, or getLastBlockHash"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Depending on the function called, the structure and information contained in this object will vary"
+        }
+      ]
+    },
+    {
+      "url": "/ins/sync",
+      "method": "getSync",
+      "httpMethod": "get",
+      "tag": "Insight",
+      "description": "Get node sync status",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Object containing node sync status"
+        }
+      ]
+    },
+    {
+      "url": "/ins/tx/send",
+      "method": "sendTx",
+      "httpMethod": "post",
+      "tag": "Insight",
+      "description": "Broadcasts a signed raw transaction to the network (not NTP1 specific)",
+      "parameters": [
+        {
+          "name": "rawtx",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ins/tx/{txid}",
+      "method": "getTx",
+      "httpMethod": "get",
+      "tag": "Insight",
+      "description": "Returns transaction object",
+      "parameters": [
+        {
+          "name": "txid",
+          "schema": "string",
+          "required": true,
+          "description": "Transaction ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ins/txs",
+      "method": "getTxs",
+      "httpMethod": "get",
+      "tag": "Insight",
+      "description": "Get transactions by block or address",
+      "parameters": [
+        {
+          "name": "address",
+          "schema": "string",
+          "required": false,
+          "description": "Address"
+        },
+        {
+          "name": "block",
+          "schema": "string",
+          "required": false,
+          "description": "Block Hash"
+        },
+        {
+          "name": "pageNum",
+          "schema": "number",
+          "required": false,
+          "description": "Page number to display"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Object containing an array of transaction objects"
+        }
+      ]
+    },
+    {
+      "url": "/ntp1/addressinfo/{address}",
+      "method": "getAddressInfo",
+      "httpMethod": "get",
+      "tag": "NTP1",
+      "description": "Information On a Neblio Address",
+      "parameters": [
+        {
+          "name": "address",
+          "schema": "string",
+          "required": true,
+          "description": "Neblio Address to get information on."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ntp1/broadcast",
+      "method": "broadcastTx",
+      "httpMethod": "post",
+      "tag": "NTP1",
+      "description": "Broadcasts a signed raw transaction to the network",
+      "parameters": [
+        {
+          "name": "txHex",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ntp1/burntoken",
+      "method": "burnToken",
+      "httpMethod": "post",
+      "tag": "NTP1",
+      "description": "Builds a transaction that burns an NTP1 Token",
+      "parameters": [
+        {
+          "name": "burn",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "fee",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "from",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "transfer",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ntp1/issue",
+      "method": "issueToken",
+      "httpMethod": "post",
+      "tag": "NTP1",
+      "description": "Builds a transaction that issues a new NTP1 Token",
+      "parameters": [
+        {
+          "name": "amount",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "divisibility",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "fee",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "flags",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "issueAddress",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reissuable",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "transfer",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ntp1/sendtoken",
+      "method": "sendToken",
+      "httpMethod": "post",
+      "tag": "NTP1",
+      "description": "Builds a transaction that sends an NTP1 Token",
+      "parameters": [
+        {
+          "name": "fee",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "flags",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "from",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sendutxo",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "to",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ntp1/stakeholders/{tokenid}",
+      "method": "getTokenHolders",
+      "httpMethod": "get",
+      "tag": "NTP1",
+      "description": "Get Addresses Holding a Token",
+      "parameters": [
+        {
+          "name": "tokenid",
+          "schema": "string",
+          "required": true,
+          "description": "TokenId to request metadata for"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ntp1/tokenid/{tokensymbol}",
+      "method": "getTokenId",
+      "httpMethod": "get",
+      "tag": "NTP1",
+      "description": "Returns the tokenId representing a token",
+      "parameters": [
+        {
+          "name": "tokensymbol",
+          "schema": "string",
+          "required": true,
+          "description": "Token symbol"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ntp1/tokenmetadata/{tokenid}",
+      "method": "getTokenMetadata",
+      "httpMethod": "get",
+      "tag": "NTP1",
+      "description": "Get Metadata of Token",
+      "parameters": [
+        {
+          "name": "tokenid",
+          "schema": "string",
+          "required": true,
+          "description": "TokenId to request metadata for"
+        },
+        {
+          "name": "verbosity",
+          "schema": "number",
+          "description": "0 (Default) is fastest, 1 contains token stats, 2 contains token holding addresses"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ntp1/tokenmetadata/{tokenid}/{utxo}",
+      "method": "getTokenMetadataOfUtxo",
+      "httpMethod": "get",
+      "tag": "NTP1",
+      "description": "Get UTXO Metadata of Token",
+      "parameters": [
+        {
+          "name": "tokenid",
+          "schema": "string",
+          "required": true,
+          "description": "TokenId to request metadata for"
+        },
+        {
+          "name": "utxo",
+          "schema": "string",
+          "required": true,
+          "description": "Specific UTXO to request metadata for"
+        },
+        {
+          "name": "verbosity",
+          "schema": "number",
+          "description": "0 (Default) is fastest, 1 contains token stats, 2 contains token holding addresses"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ntp1/transactioninfo/{txid}",
+      "method": "getTransactionInfo",
+      "httpMethod": "get",
+      "tag": "NTP1",
+      "description": "Information On an NTP1 Transaction",
+      "parameters": [
+        {
+          "name": "txid",
+          "schema": "string",
+          "required": true,
+          "description": "Neblio txid to get information on."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/testnet/faucet",
+      "method": "testnetGetFaucet",
+      "httpMethod": "get",
+      "tag": "Testnet-Faucet",
+      "description": "Withdraws testnet NEBL to the specified address",
+      "parameters": [
+        {
+          "name": "address",
+          "schema": "string",
+          "required": true,
+          "description": "Your Neblio Testnet Address"
+        },
+        {
+          "name": "amount",
+          "schema": "number",
+          "required": false,
+          "description": "Amount of NEBL to withdrawal in satoshis"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/testnet/ins/addr/{address}",
+      "method": "testnetGetAddress",
+      "httpMethod": "get",
+      "tag": "Testnet-Insight",
+      "description": "Returns address object",
+      "parameters": [
+        {
+          "name": "address",
+          "schema": "string",
+          "required": true,
+          "description": "Address"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/testnet/ins/addr/{address}/balance",
+      "method": "testnetGetAddressBalance",
+      "httpMethod": "get",
+      "tag": "Testnet-Insight",
+      "description": "Returns address balance in sats",
+      "parameters": [
+        {
+          "name": "address",
+          "schema": "string",
+          "required": true,
+          "description": "Address"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Address balance in satoshis"
+        }
+      ]
+    },
+    {
+      "url": "/testnet/ins/addr/{address}/totalReceived",
+      "method": "testnetGetAddressTotalReceived",
+      "httpMethod": "get",
+      "tag": "Testnet-Insight",
+      "description": "Returns total received by address in sats",
+      "parameters": [
+        {
+          "name": "address",
+          "schema": "string",
+          "required": true,
+          "description": "Address"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Address total received in satoshis"
+        }
+      ]
+    },
+    {
+      "url": "/testnet/ins/addr/{address}/totalSent",
+      "method": "testnetGetAddressTotalSent",
+      "httpMethod": "get",
+      "tag": "Testnet-Insight",
+      "description": "Returns total sent by address in sats",
+      "parameters": [
+        {
+          "name": "address",
+          "schema": "string",
+          "required": true,
+          "description": "Address"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Address total sent in satoshis"
+        }
+      ]
+    },
+    {
+      "url": "/testnet/ins/addr/{address}/unconfirmedBalance",
+      "method": "testnetGetAddressUnconfirmedBalance",
+      "httpMethod": "get",
+      "tag": "Testnet-Insight",
+      "description": "Returns address unconfirmed balance in sats",
+      "parameters": [
+        {
+          "name": "address",
+          "schema": "string",
+          "required": true,
+          "description": "Address"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Address unconfirmed balance in satoshis"
+        }
+      ]
+    },
+    {
+      "url": "/testnet/ins/addr/{address}/utxo",
+      "method": "testnetGetAddressUtxos",
+      "httpMethod": "get",
+      "tag": "Testnet-Insight",
+      "description": "Returns all UTXOs at a given address",
+      "parameters": [
+        {
+          "name": "address",
+          "schema": "string",
+          "required": true,
+          "description": "Address"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Array of objects representing this address' UTXOs"
+        }
+      ]
+    },
+    {
+      "url": "/testnet/ins/block-index/{blockindex}",
+      "method": "testnetGetBlockIndex",
+      "httpMethod": "get",
+      "tag": "Testnet-Insight",
+      "description": "Returns block hash of block",
+      "parameters": [
+        {
+          "name": "blockindex",
+          "schema": "number",
+          "required": true,
+          "description": "Block Index"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/testnet/ins/block/{blockhash}",
+      "method": "testnetGetBlock",
+      "httpMethod": "get",
+      "tag": "Testnet-Insight",
+      "description": "Returns information regarding a Neblio block",
+      "parameters": [
+        {
+          "name": "blockhash",
+          "schema": "string",
+          "required": true,
+          "description": "Block Hash"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/testnet/ins/rawtx/{txid}",
+      "method": "testnetGetRawTx",
+      "httpMethod": "get",
+      "tag": "Testnet-Insight",
+      "description": "Returns raw transaction hex",
+      "parameters": [
+        {
+          "name": "txid",
+          "schema": "string",
+          "required": true,
+          "description": "Transaction ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/testnet/ins/status",
+      "method": "testnetGetStatus",
+      "httpMethod": "get",
+      "tag": "Testnet-Insight",
+      "description": "Utility API for calling several blockchain node functions",
+      "parameters": [
+        {
+          "name": "q",
+          "schema": "string",
+          "required": false,
+          "description": "Function to call, getInfo, getDifficulty, getBestBlockHash, or getLastBlockHash"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Depending on the function called, the structure and information contained in this object will vary"
+        }
+      ]
+    },
+    {
+      "url": "/testnet/ins/sync",
+      "method": "testnetGetSync",
+      "httpMethod": "get",
+      "tag": "Testnet-Insight",
+      "description": "Get node sync status",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Object containing node sync status"
+        }
+      ]
+    },
+    {
+      "url": "/testnet/ins/tx/send",
+      "method": "testnetSendTx",
+      "httpMethod": "post",
+      "tag": "Testnet-Insight",
+      "description": "Broadcasts a signed raw transaction to the network (not NTP1 specific)",
+      "parameters": [
+        {
+          "name": "rawtx",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/testnet/ins/tx/{txid}",
+      "method": "testnetGetTx",
+      "httpMethod": "get",
+      "tag": "Testnet-Insight",
+      "description": "Returns transaction object",
+      "parameters": [
+        {
+          "name": "txid",
+          "schema": "string",
+          "required": true,
+          "description": "Transaction ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/testnet/ins/txs",
+      "method": "testnetGetTxs",
+      "httpMethod": "get",
+      "tag": "Testnet-Insight",
+      "description": "Get transactions by block or address",
+      "parameters": [
+        {
+          "name": "address",
+          "schema": "string",
+          "required": false,
+          "description": "Address"
+        },
+        {
+          "name": "block",
+          "schema": "string",
+          "required": false,
+          "description": "Block Hash"
+        },
+        {
+          "name": "pageNum",
+          "schema": "number",
+          "required": false,
+          "description": "Page number to display"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Object containing an array of transaction objects"
+        }
+      ]
+    },
+    {
+      "url": "/testnet/ntp1/addressinfo/{address}",
+      "method": "testnetGetAddressInfo",
+      "httpMethod": "get",
+      "tag": "Testnet-NTP1",
+      "description": "Information On a Neblio Address",
+      "parameters": [
+        {
+          "name": "address",
+          "schema": "string",
+          "required": true,
+          "description": "Neblio Address to get information on."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/testnet/ntp1/broadcast",
+      "method": "testnetBroadcastTx",
+      "httpMethod": "post",
+      "tag": "Testnet-NTP1",
+      "description": "Broadcasts a signed raw transaction to the network",
+      "parameters": [
+        {
+          "name": "txHex",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/testnet/ntp1/burntoken",
+      "method": "testnetBurnToken",
+      "httpMethod": "post",
+      "tag": "Testnet-NTP1",
+      "description": "Builds a transaction that burns an NTP1 Token",
+      "parameters": [
+        {
+          "name": "burn",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "fee",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "from",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "transfer",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/testnet/ntp1/issue",
+      "method": "testnetIssueToken",
+      "httpMethod": "post",
+      "tag": "Testnet-NTP1",
+      "description": "Builds a transaction that issues a new NTP1 Token",
+      "parameters": [
+        {
+          "name": "amount",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "divisibility",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "fee",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "flags",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "issueAddress",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reissuable",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "transfer",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/testnet/ntp1/sendtoken",
+      "method": "testnetSendToken",
+      "httpMethod": "post",
+      "tag": "Testnet-NTP1",
+      "description": "Builds a transaction that sends an NTP1 Token",
+      "parameters": [
+        {
+          "name": "fee",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "flags",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "from",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sendutxo",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "to",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/testnet/ntp1/stakeholders/{tokenid}",
+      "method": "testnetGetTokenHolders",
+      "httpMethod": "get",
+      "tag": "Testnet-NTP1",
+      "description": "Get Addresses Holding a Token",
+      "parameters": [
+        {
+          "name": "tokenid",
+          "schema": "string",
+          "required": true,
+          "description": "TokenId to request metadata for"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/testnet/ntp1/tokenid/{tokensymbol}",
+      "method": "testnetGetTokenId",
+      "httpMethod": "get",
+      "tag": "Testnet-NTP1",
+      "description": "Returns the tokenId representing a token",
+      "parameters": [
+        {
+          "name": "tokensymbol",
+          "schema": "string",
+          "required": true,
+          "description": "Token symbol"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/testnet/ntp1/tokenmetadata/{tokenid}",
+      "method": "testnetGetTokenMetadata",
+      "httpMethod": "get",
+      "tag": "Testnet-NTP1",
+      "description": "Get Metadata of Token",
+      "parameters": [
+        {
+          "name": "tokenid",
+          "schema": "string",
+          "required": true,
+          "description": "TokenId to request metadata for"
+        },
+        {
+          "name": "verbosity",
+          "schema": "number",
+          "description": "0 (Default) is fastest, 1 contains token stats, 2 contains token holding addresses"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/testnet/ntp1/tokenmetadata/{tokenid}/{utxo}",
+      "method": "testnetGetTokenMetadataOfUtxo",
+      "httpMethod": "get",
+      "tag": "Testnet-NTP1",
+      "description": "Get UTXO Metadata of Token",
+      "parameters": [
+        {
+          "name": "tokenid",
+          "schema": "string",
+          "required": true,
+          "description": "TokenId to request metadata for"
+        },
+        {
+          "name": "utxo",
+          "schema": "string",
+          "required": true,
+          "description": "Specific UTXO to request metadata for"
+        },
+        {
+          "name": "verbosity",
+          "schema": "number",
+          "description": "0 (Default) is fastest, 1 contains token stats, 2 contains token holding addresses"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/testnet/ntp1/transactioninfo/{txid}",
+      "method": "testnetGetTransactionInfo",
+      "httpMethod": "get",
+      "tag": "Testnet-NTP1",
+      "description": "Information On an NTP1 Transaction",
+      "parameters": [
+        {
+          "name": "txid",
+          "schema": "string",
+          "required": true,
+          "description": "Neblio txid to get information on."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://ntp1node.nebl.io/",
   "apiDescription": "APIs for Interacting with NTP1 Tokens & The Neblio Blockchain",
   "apiTitle": "Neblio REST API Suite",

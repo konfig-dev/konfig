@@ -3,6 +3,216 @@
   "openApiRaw": "https://change-api-definition.s3-us-west-1.amazonaws.com/swagger.yaml",
   "homepage": "change.local",
   "apiVersion": "v1",
+  "methods": [
+    {
+      "url": "/api/v1/donations/carbon_calculate",
+      "method": "/api/v1/donations/carbonCalculateGet",
+      "httpMethod": "get",
+      "description": "Calculate shipping carbon offset",
+      "parameters": [
+        {
+          "name": "origin_address",
+          "schema": "number",
+          "description": "The origin zip code (US only) of the shipment. If you send this parameter, also send `destination_address`."
+        },
+        {
+          "name": "destination_address",
+          "schema": "number",
+          "description": "The destination zip code (US only) of the shipment. If you send this parameter, also send `origin_address`."
+        },
+        {
+          "name": "distance_mi",
+          "schema": "number",
+          "description": "The total distance (in miles) of the shipment. You can use this parameter in place of `origin_address` and `destination_address`."
+        },
+        {
+          "name": "weight_lb",
+          "schema": "number",
+          "required": true,
+          "description": "The total weight (in pounds) of the shipment."
+        },
+        {
+          "name": "transportation_method",
+          "schema": "string",
+          "description": "The primary transportation method of the shipment."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/donations/carbon_stats",
+      "method": "/api/v1/donations/carbonStatsGet",
+      "httpMethod": "get",
+      "description": "Retrieve carbon offset stats",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "number",
+          "description": "The id of a donation to the CarbonFund nonprofit. Ids are returned when a donation is created. If an ID is not provided, the total stats for all donations to CarbonFund are returned."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/donations/create",
+      "method": "/api/v1/donations/createPost",
+      "httpMethod": "post",
+      "description": "Create a donation",
+      "parameters": [
+        {
+          "name": "amount",
+          "schema": "string",
+          "required": true,
+          "description": "The amount of the donation in cents."
+        },
+        {
+          "name": "nonprofit_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of a nonprofit from the CHANGE network."
+        },
+        {
+          "name": "funding_source",
+          "schema": "string",
+          "required": true,
+          "description": "Source of the donation funds. If you are collecting payment from your customer for the donation, use `customer`."
+        },
+        {
+          "name": "zip_code",
+          "schema": "string",
+          "description": "The customer's zip code. Provide this to unlock geographic insights."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/donations/crypto_calculate",
+      "method": "/api/v1/donations/cryptoCalculateGet",
+      "httpMethod": "get",
+      "description": "Calculate crypto carbon offset",
+      "parameters": [
+        {
+          "name": "count",
+          "schema": "number",
+          "description": "The number of transactions to offset."
+        },
+        {
+          "name": "currency",
+          "schema": "string",
+          "required": true,
+          "description": "The currency of the transaction."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/donations/index",
+      "method": "/api/v1/donations/indexGet",
+      "httpMethod": "get",
+      "description": "List your donations",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "number",
+          "description": "Which page to return. This endpoint is paginated, and returns maximum 30 donations per page."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/donations/show",
+      "method": "/api/v1/donations/showGet",
+      "httpMethod": "get",
+      "description": "Retrieve a donation",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of a donation. Ids are returned when a donation is created."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/nonprofits/list",
+      "method": "/api/v1/nonprofits/listGet",
+      "httpMethod": "get",
+      "description": "Search a nonprofit",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "description": "A string to search."
+        },
+        {
+          "name": "page",
+          "schema": "number",
+          "description": "The page to return. This endpoint is paginated, and returns up to 30 nonprofits at a time."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/nonprofits/show",
+      "method": "/api/v1/nonprofits/showGet",
+      "httpMethod": "get",
+      "description": "Show a nonprofit",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of a nonprofit from the CHANGE network."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://change.local",
   "apiTitle": "API V1",
   "endpoints": 8,

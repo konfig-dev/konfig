@@ -3,6 +3,3713 @@
   "openApiRaw": "http://developer.osf.io/swagger.json",
   "homepage": "osf.io",
   "apiVersion": "2.0",
+  "methods": [
+    {
+      "url": "/",
+      "method": "baseRead",
+      "httpMethod": "get",
+      "tag": "Base",
+      "description": "Root",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/actions/",
+      "method": "logsActions",
+      "httpMethod": "get",
+      "tag": "Logs",
+      "description": "Actions",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/addons/",
+      "method": "addonsList",
+      "httpMethod": "get",
+      "tag": "Addons",
+      "description": "List all addons",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/citations/styles/",
+      "method": "citationsStylesList",
+      "httpMethod": "get",
+      "tag": "Citations",
+      "description": "List all citation styles",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/citations/styles/{style_id}/",
+      "method": "citationsStylesRead",
+      "httpMethod": "get",
+      "tag": "Citations",
+      "description": "Retrieve a citation style",
+      "parameters": [
+        {
+          "name": "style_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the citation style."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections/",
+      "method": "collectionsList",
+      "httpMethod": "get",
+      "tag": "Collections",
+      "description": "List all Collections",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections/",
+      "method": "collectionsCreate",
+      "httpMethod": "post",
+      "tag": "Collections",
+      "description": "Create a Collection",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections/{collection_id}/",
+      "method": "collectionsDelete",
+      "httpMethod": "delete",
+      "tag": "Collections",
+      "description": "Delete a Collection",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "string",
+          "required": true,
+          "description": "A short id for that collection"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/collections/{collection_id}/",
+      "method": "collectionsDetail",
+      "httpMethod": "get",
+      "tag": "Collections",
+      "description": "Retrieve a Collection",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "string",
+          "required": true,
+          "description": "A short id for that collection"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections/{collection_id}/collected_metadata/",
+      "method": "collectionsMetadataRegistrationsList",
+      "httpMethod": "get",
+      "tag": "Collections",
+      "description": "Retrieve a list of collected metadata for a collection",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "string",
+          "required": true,
+          "description": "A short id for that collection"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections/{collection_id}/collected_metadata/",
+      "method": "collectionsAddMetadata",
+      "httpMethod": "post",
+      "tag": "Collections",
+      "description": "Add Metadata or Subjects to a Entity in a Collection",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "string",
+          "required": true,
+          "description": "A short id for that collection"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/collections/{collection_id}/collected_metadata/{cgm_id}",
+      "method": "collectionsMetadataDelete",
+      "httpMethod": "delete",
+      "tag": "Collections",
+      "description": "Delete Collection Metadata from entitiy",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "string",
+          "required": true,
+          "description": "A short id for that collection"
+        },
+        {
+          "name": "cgm_id",
+          "schema": "string",
+          "required": true,
+          "description": "A short id for that piece of metadata"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/collections/{collection_id}/collected_metadata/{cgm_id}",
+      "method": "collectionsMetadataRegistrationsDetail",
+      "httpMethod": "get",
+      "tag": "Collections",
+      "description": "Retrieve Specific Metadata for a Collection",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "string",
+          "required": true,
+          "description": "A short id for that collection"
+        },
+        {
+          "name": "cgm_id",
+          "schema": "string",
+          "required": true,
+          "description": "A short id for that piece of metadata"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections/{collection_id}/collected_metadata/{cgm_id}",
+      "method": "collectionsMetadataDetail",
+      "httpMethod": "post",
+      "tag": "Collections",
+      "description": "Add Metadata or Subjects to an Entity in a Collection",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "string",
+          "required": true,
+          "description": "A short id for that collection"
+        },
+        {
+          "name": "cgm_id",
+          "schema": "string",
+          "required": true,
+          "description": "A short id for that piece of metadata"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/collections/{collection_id}/collected_metadata/{cgm_id}/relationships/subjects/",
+      "method": "collectionsMetadataSubjectsRelationships",
+      "httpMethod": "get",
+      "tag": "Collections",
+      "description": "Retrieve subject metadata for a specific piece of metadata in a collection",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "string",
+          "required": true,
+          "description": "A short id for that collection"
+        },
+        {
+          "name": "cgm_id",
+          "schema": "string",
+          "required": true,
+          "description": "A short id for that piece of metadata"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections/{collection_id}/collected_metadata/{cgm_id}/relationships/subjects/",
+      "method": "collectionsMetadataSubjectsRelationshipsUpdate",
+      "httpMethod": "post",
+      "tag": "Collections",
+      "description": "Update subjects for a specific piece of metadata in a collection",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "string",
+          "required": true,
+          "description": "A short id for that collection"
+        },
+        {
+          "name": "cgm_id",
+          "schema": "string",
+          "required": true,
+          "description": "A short id for that piece of metadata"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/collections/{collection_id}/collected_metadata/{cgm_id}/subjects/",
+      "method": "collectionsCollectedMetadata",
+      "httpMethod": "get",
+      "tag": "Collections",
+      "description": "Retrieve subject data for a specific piece of metadata info for a collection",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "string",
+          "required": true,
+          "description": "A short id for that collection"
+        },
+        {
+          "name": "cgm_id",
+          "schema": "string",
+          "required": true,
+          "description": "A short id for that piece of metadata"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections/{collection_id}/linked_nodes",
+      "method": "collectionsLinkedNodesList",
+      "httpMethod": "get",
+      "tag": "Collections",
+      "description": "List All Linked Nodes for a Collection",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "string",
+          "required": true,
+          "description": "A short id for that collection"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections/{collection_id}/linked_nodes/relationships/",
+      "method": "collectionsLinkedNodesRelationshipsDelete",
+      "httpMethod": "delete",
+      "tag": "Collections",
+      "description": "Remove Nodes From Collection",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "string",
+          "required": true,
+          "description": "A short id for that collection"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections/{collection_id}/linked_nodes/relationships/",
+      "method": "collectionsLinkedNodesRelationshipsCreate",
+      "httpMethod": "get",
+      "tag": "Collections",
+      "description": "Give a Sparse List of Node Ids",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "string",
+          "required": true,
+          "description": "A short id for that collection"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections/{collection_id}/linked_nodes/relationships/",
+      "method": "collectionsLinkedNodesRelationships",
+      "httpMethod": "post",
+      "tag": "Collections",
+      "description": "Link Nodes to Collection",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "string",
+          "required": true,
+          "description": "A short id for that collection"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections/{collection_id}/linked_preprints/",
+      "method": "collectionsLinkedPreprintsList",
+      "httpMethod": "get",
+      "tag": "Collections",
+      "description": "List All Linked Preprints for a Collection",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "string",
+          "required": true,
+          "description": "A short id for that collection"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections/{collection_id}/linked_registrations/",
+      "method": "collectionsLinkedRegistrationsList",
+      "httpMethod": "get",
+      "tag": "Collections",
+      "description": "List All Linked Registrations for a Collection",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "string",
+          "required": true,
+          "description": "A short id for that collection"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections/{collection_id}/linked_registrations/relationships/",
+      "method": "collectionsLinkedRegistrationsRelationshipsDelete",
+      "httpMethod": "delete",
+      "tag": "Collections",
+      "description": "Remove Registrations From Collection",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "string",
+          "required": true,
+          "description": "A short id for that collection"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections/{collection_id}/linked_registrations/relationships/",
+      "method": "collectionsLinkedRegistrationsRelationshipsCreate",
+      "httpMethod": "get",
+      "tag": "Collections",
+      "description": "Give a Sparse List of Registrations Ids",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "string",
+          "required": true,
+          "description": "A short id for that collection"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections/{collection_id}/linked_registrations/relationships/",
+      "method": "collectionsLinkedRegistrationsRelationships",
+      "httpMethod": "post",
+      "tag": "Collections",
+      "description": "Link Registrations to Collection",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "string",
+          "required": true,
+          "description": "A short id for that collection"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/comments/{comment_id}/",
+      "method": "commentsDelete",
+      "httpMethod": "delete",
+      "tag": "Comments",
+      "description": "Delete a comment",
+      "parameters": [
+        {
+          "name": "comment_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the comment you wish to delete."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/comments/{comment_id}/",
+      "method": "commentsRead",
+      "httpMethod": "get",
+      "tag": "Comments",
+      "description": "Retrieve a comment",
+      "parameters": [
+        {
+          "name": "comment_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the comment you wish to retrieve."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/comments/{comment_id}/",
+      "method": "commentsPut",
+      "httpMethod": "put",
+      "tag": "Comments",
+      "description": "Update a comment",
+      "parameters": [
+        {
+          "name": "comment_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the comment you wish to update."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/draft_registrations/",
+      "method": "draftRegistrationsRead",
+      "httpMethod": "get",
+      "tag": "Draft Registrations",
+      "description": "Retrieve a list of Draft Registrations",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/draft_registrations/",
+      "method": "draftRegistrationsCreate",
+      "httpMethod": "post",
+      "tag": "Draft Registrations",
+      "description": "Create a Draft Registration",
+      "parameters": [
+        {
+          "name": "attributes",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "relationships",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/draft_registrations/{draft_id}/",
+      "method": "/draftRegistrations/{draftId}/Delete",
+      "httpMethod": "delete",
+      "tag": "Draft Registrations",
+      "description": "Delete a draft registration",
+      "parameters": [
+        {
+          "name": "draft_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the draft registration."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/draft_registrations/{draft_id}/",
+      "method": "/draftRegistrations/{draftId}/Get",
+      "httpMethod": "get",
+      "tag": "Draft Registrations",
+      "description": "Retrieve a Draft Registration",
+      "parameters": [
+        {
+          "name": "draft_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the draft registration."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/draft_registrations/{draft_id}/",
+      "method": "/draftRegistrations/{draftId}/Patch",
+      "httpMethod": "patch",
+      "tag": "Draft Registrations",
+      "description": "Update a Draft Registration",
+      "parameters": [
+        {
+          "name": "draft_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the draft registration."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/draft_registrations/{draft_id}/contributors/",
+      "method": "draftRegistrationContributorsList",
+      "httpMethod": "get",
+      "tag": "Draft Registrations",
+      "description": "Retreive a list Contributors from a Draft Registration",
+      "parameters": [
+        {
+          "name": "draft_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the Draft Registration."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/draft_registrations/{draft_id}/contributors/",
+      "method": "draftRegistrationContributorsCreate",
+      "httpMethod": "post",
+      "tag": "Draft Registrations",
+      "description": "Add a contributor to a Draft Registration",
+      "parameters": [
+        {
+          "name": "draft_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the Draft Registration."
+        },
+        {
+          "name": "attributes",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "relationships",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/draft_registrations/{draft_id}/contributors/{user_id}/",
+      "method": "/draftRegistrations/{draftId}/contributors/{userId}/Get",
+      "httpMethod": "get",
+      "tag": "Draft Registrations",
+      "description": "Retreive a Contributor from a Draft Registration",
+      "parameters": [
+        {
+          "name": "draft_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the Draft Registration."
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the Contributor."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/draft_registrations/{draft_id}/institutions/",
+      "method": "/draftRegistrations/{draftId}/institutions/Get",
+      "httpMethod": "get",
+      "tag": "Draft Registrations",
+      "description": "Retrieve Institutions afilliated with a Draft Registration",
+      "parameters": [
+        {
+          "name": "draft_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the draft registration."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/draft_registrations/{draft_id}/subjects/",
+      "method": "nodesDraftRegistrationsSubjects",
+      "httpMethod": "get",
+      "tag": "Draft Registrations",
+      "description": "Retrieve Subjects associated with a Draft Registration",
+      "parameters": [
+        {
+          "name": "draft_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the draft registration."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/files/{file_id}/",
+      "method": "filesDetail",
+      "httpMethod": "get",
+      "tag": "Files",
+      "description": "Retrieve a file",
+      "parameters": [
+        {
+          "name": "file_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the file you wish to retrieve."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/files/{file_id}/",
+      "method": "filesPatch",
+      "httpMethod": "patch",
+      "tag": "Files",
+      "description": "Update a file",
+      "parameters": [
+        {
+          "name": "file_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the file you wish to update."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/files/{file_id}/versions/",
+      "method": "filesVersions",
+      "httpMethod": "get",
+      "tag": "Files",
+      "description": "List all file versions",
+      "parameters": [
+        {
+          "name": "file_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the file from which you want to retrieve versions."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/files/{file_id}/versions/{version_id}/",
+      "method": "filesVersionDetail",
+      "httpMethod": "get",
+      "tag": "Files",
+      "description": "Retrieve a file version",
+      "parameters": [
+        {
+          "name": "file_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the file from which you want to retrieve versions."
+        },
+        {
+          "name": "version_id",
+          "schema": "string",
+          "required": true,
+          "description": "The file version number you want to retrieve."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/institutions/",
+      "method": "institutionsList",
+      "httpMethod": "get",
+      "tag": "Institutions",
+      "description": "List all institutions",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/institutions/{institution_id}/",
+      "method": "institutionsDetail",
+      "httpMethod": "get",
+      "tag": "Institutions",
+      "description": "Retrieve an institution",
+      "parameters": [
+        {
+          "name": "institution_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the institution you wish to retrieve."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/institutions/{institution_id}/nodes/",
+      "method": "institutionsNodeList",
+      "httpMethod": "get",
+      "tag": "Institutions",
+      "description": "List all affiliated nodes",
+      "parameters": [
+        {
+          "name": "institution_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the institution you wish to retrieve."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/institutions/{institution_id}/registrations/",
+      "method": "institutionsRegistrationList",
+      "httpMethod": "get",
+      "tag": "Institutions",
+      "description": "List all affiliated registrations",
+      "parameters": [
+        {
+          "name": "institution_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the institution you wish to retrieve."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/institutions/{institution_id}/users/",
+      "method": "institutionsUsersList",
+      "httpMethod": "get",
+      "tag": "Institutions",
+      "description": "List all affiliated users",
+      "parameters": [
+        {
+          "name": "institution_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the institution you wish to retrieve."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/license/{license_id}/",
+      "method": "licensesRead",
+      "httpMethod": "get",
+      "tag": "Licenses",
+      "description": "Retrieve a license",
+      "parameters": [
+        {
+          "name": "license_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the license."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/licenses/",
+      "method": "licenseList",
+      "httpMethod": "get",
+      "tag": "Licenses",
+      "description": "List all licenses",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/logs/{log_id}/",
+      "method": "logsRead",
+      "httpMethod": "get",
+      "tag": "Logs",
+      "description": "Retrieve a log",
+      "parameters": [
+        {
+          "name": "log_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the log you wish to retrieve."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/",
+      "method": "nodesList",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "List all nodes",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/",
+      "method": "nodesCreate",
+      "httpMethod": "post",
+      "tag": "Nodes",
+      "description": "Create a node",
+      "parameters": [
+        {
+          "name": "attributes",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "relationships",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/nodes/{node_id}/",
+      "method": "nodesDelete",
+      "httpMethod": "delete",
+      "tag": "Nodes",
+      "description": "Delete a node",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/nodes/{node_id}/",
+      "method": "nodesRead",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "Retrieve a node",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{node_id}/",
+      "method": "nodesPartialUpdate",
+      "httpMethod": "patch",
+      "tag": "Nodes",
+      "description": "Update a node",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/nodes/{node_id}/addons/",
+      "method": "nodesAddonsList",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "List all addons",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{node_id}/addons/{provider}/",
+      "method": "nodesAddonRead",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "Retrieve an addon",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        },
+        {
+          "name": "provider",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the addon."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{node_id}/addons/{provider}/",
+      "method": "nodesNodeAddonUpdate",
+      "httpMethod": "patch",
+      "tag": "Nodes",
+      "description": "Update an addon",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        },
+        {
+          "name": "provider",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the addon."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/nodes/{node_id}/addons/{provider}/folders/",
+      "method": "nodesAddonsFoldersList",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "List all addon folders",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        },
+        {
+          "name": "provider",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the provider"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{node_id}/children/",
+      "method": "nodesChildrenList",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "List all child nodes",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{node_id}/children/",
+      "method": "nodesChildrenCreate",
+      "httpMethod": "post",
+      "tag": "Nodes",
+      "description": "Create a child node",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        },
+        {
+          "name": "attributes",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "relationships",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/nodes/{node_id}/citation/",
+      "method": "nodesCitationList",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "Retrieve citation details",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{node_id}/citation/{style_id}/",
+      "method": "nodesCitationRead",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "Retrieve a styled citation",
+      "parameters": [
+        {
+          "name": "style_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the citation style."
+        },
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{node_id}/comments/",
+      "method": "nodesCommentsList",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "List all comments",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{node_id}/comments/",
+      "method": "nodesCommentCreate",
+      "httpMethod": "post",
+      "tag": "Nodes",
+      "description": "Create a comment",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node you want to comment on."
+        },
+        {
+          "name": "attributes",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "relationships",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/nodes/{node_id}/contributors/",
+      "method": "nodesContributorsList",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "List all contributors",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{node_id}/contributors/",
+      "method": "nodesContributorsCreate",
+      "httpMethod": "post",
+      "tag": "Nodes",
+      "description": "Create a contributor",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        },
+        {
+          "name": "attributes",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "relationships",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/nodes/{node_id}/contributors/{user_id}/",
+      "method": "nodesContributorsDelete",
+      "httpMethod": "delete",
+      "tag": "Nodes",
+      "description": "Delete a contributor",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the user."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/nodes/{node_id}/contributors/{user_id}/",
+      "method": "nodesContributorsRead",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "Retrieve a contributor",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the user."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{node_id}/contributors/{user_id}/",
+      "method": "nodesContributorsPartialUpdate",
+      "httpMethod": "patch",
+      "tag": "Nodes",
+      "description": "Update a contributor",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the user."
+        },
+        {
+          "name": "attributes",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "relationships",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/nodes/{node_id}/draft_registrations/",
+      "method": "nodesDraftRegistrationsList",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "List all draft registrations",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{node_id}/draft_registrations/",
+      "method": "nodesDraftRegistrationsCreate",
+      "httpMethod": "post",
+      "tag": "Nodes",
+      "description": "Create a draft registration based on your current project Node.",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        },
+        {
+          "name": "attributes",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "relationships",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/nodes/{node_id}/draft_registrations/{draft_id}/",
+      "method": "nodesDraftRegistrationsDelete",
+      "httpMethod": "delete",
+      "tag": "Nodes",
+      "description": "Delete a draft registration",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        },
+        {
+          "name": "draft_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the draft registration."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/nodes/{node_id}/draft_registrations/{draft_id}/",
+      "method": "nodesDraftRegistrationsRead",
+      "httpMethod": "get",
+      "tag": "Draft Registrations",
+      "description": "Retrieve a Draft Registration",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        },
+        {
+          "name": "draft_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the draft registration."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{node_id}/draft_registrations/{draft_id}/",
+      "method": "nodesDraftRegistrationsPartialUpdate",
+      "httpMethod": "patch",
+      "tag": "Nodes",
+      "description": "Update a draft registration",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        },
+        {
+          "name": "draft_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the draft registration."
+        },
+        {
+          "name": "attributes",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "relationships",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/nodes/{node_id}/files/",
+      "method": "nodesProvidersList",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "List all storage providers",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{node_id}/files/providers/{provider}/",
+      "method": "nodesProvidersRead",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "Retrieve a storage provider",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        },
+        {
+          "name": "provider",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the storage provider."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{node_id}/files/{provider}/",
+      "method": "nodesFilesList",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "List all node files",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        },
+        {
+          "name": "provider",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the storage provider."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{node_id}/files/{provider}/{path}/",
+      "method": "nodesFilesRead",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "Retrieve a file",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        },
+        {
+          "name": "provider",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the storage provider."
+        },
+        {
+          "name": "path",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the file path."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{node_id}/forks/",
+      "method": "nodesForksList",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "List all forks of this node",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{node_id}/forks/",
+      "method": "nodesForksCreate",
+      "httpMethod": "post",
+      "tag": "Nodes",
+      "description": "Create a fork of this node",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        },
+        {
+          "name": "attributes",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "relationships",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/nodes/{node_id}/identifiers/",
+      "method": "nodesIdentifiersList",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "List all identifiers",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{node_id}/institutions/",
+      "method": "nodesInstitutionsList",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "List all institutions",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{node_id}/linked_nodes/",
+      "method": "nodesLinkedNodesList",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "List all linked nodes",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{node_id}/logs/",
+      "method": "nodesLogsList",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "List all logs",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{node_id}/preprints/",
+      "method": "nodesPreprintsList",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "List all preprints",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{node_id}/registrations/",
+      "method": "nodesRegistrationsList",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "List all registrations",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{node_id}/view_only_links/",
+      "method": "nodesViewOnlyLinksList",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "List all view only links",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{node_id}/view_only_links/{link_id}/",
+      "method": "nodesViewOnlyLinksRead",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "Retrieve a view only link",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        },
+        {
+          "name": "link_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the view only link."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{node_id}/wikis/",
+      "method": "nodesWikisList",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "List all wikis",
+      "parameters": [
+        {
+          "name": "node_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the node."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/preprint_providers/",
+      "method": "preprintProviderList",
+      "httpMethod": "get",
+      "tag": "Preprint Providers",
+      "description": "List all preprint providers",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/preprint_providers/{preprint_provider_id}/",
+      "method": "preprintProviderDetail",
+      "httpMethod": "get",
+      "tag": "Preprint Providers",
+      "description": "Retrieve a preprint provider",
+      "parameters": [
+        {
+          "name": "preprint_provider_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the preprint provider."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/preprint_providers/{preprint_provider_id}/licenses/",
+      "method": "preprintProviderLicensesList",
+      "httpMethod": "get",
+      "tag": "Preprint Providers",
+      "description": "List all licenses",
+      "parameters": [
+        {
+          "name": "preprint_provider_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the preprint provider."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/preprint_providers/{preprint_provider_id}/preprints/",
+      "method": "preprintProvidersPreprintsList",
+      "httpMethod": "get",
+      "tag": "Preprint Providers",
+      "description": "List all preprints",
+      "parameters": [
+        {
+          "name": "preprint_provider_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the preprint provider."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/preprint_providers/{preprint_provider_id}/taxonomies/",
+      "method": "preprintProviderTaxonomiesList",
+      "httpMethod": "get",
+      "tag": "Preprint Providers",
+      "description": "List all taxonomies",
+      "parameters": [
+        {
+          "name": "preprint_provider_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the preprint provider."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/preprints/",
+      "method": "preprintsList",
+      "httpMethod": "get",
+      "tag": "Preprints",
+      "description": "List all preprints",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/preprints/",
+      "method": "preprintsCreate",
+      "httpMethod": "post",
+      "tag": "Preprints",
+      "description": "Create a preprint",
+      "parameters": [
+        {
+          "name": "attributes",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "relationships",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/preprints/{preprint_id}/",
+      "method": "preprintsRead",
+      "httpMethod": "get",
+      "tag": "Preprints",
+      "description": "Retrieve a preprint",
+      "parameters": [
+        {
+          "name": "preprint_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the preprint."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/preprints/{preprint_id}/",
+      "method": "preprintsPartialUpdate",
+      "httpMethod": "patch",
+      "tag": "Preprints",
+      "description": "Update a preprint",
+      "parameters": [
+        {
+          "name": "preprint_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the preprint."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/preprints/{preprint_id}/bibliographic_contributors/",
+      "method": "preprintsBibliographicContributorsList",
+      "httpMethod": "get",
+      "tag": "Preprints",
+      "description": "List all Bibliographic Contributors",
+      "parameters": [
+        {
+          "name": "preprint_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the preprint."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/preprints/{preprint_id}/citation/",
+      "method": "preprintsCitationList",
+      "httpMethod": "get",
+      "tag": "Preprints",
+      "description": "Retrieve citation details",
+      "parameters": [
+        {
+          "name": "preprint_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the preprint whose citation you wish to retrieve."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/preprints/{preprint_id}/citation/{style_id}/",
+      "method": "preprintsCitationRead",
+      "httpMethod": "get",
+      "tag": "Preprints",
+      "description": "Retrieve a styled citation",
+      "parameters": [
+        {
+          "name": "style_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the citation style."
+        },
+        {
+          "name": "preprint_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the preprint."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/preprints/{preprint_id}/contributors/",
+      "method": "preprintsContributorsList",
+      "httpMethod": "get",
+      "tag": "Preprints",
+      "description": "List all Contributors for a Preprint",
+      "parameters": [
+        {
+          "name": "preprint_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the preprint."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/preprints/{preprint_id}/contributors/",
+      "method": "preprintsContributorsCreate",
+      "httpMethod": "post",
+      "tag": "Preprints",
+      "description": "Create a Contributor",
+      "parameters": [
+        {
+          "name": "preprint_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the Preprint."
+        },
+        {
+          "name": "attributes",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "relationships",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/preprints/{preprint_id}/contributors/{user_id}/",
+      "method": "preprintsContributorRead",
+      "httpMethod": "get",
+      "tag": "Preprints",
+      "description": "Retrieve a contributor",
+      "parameters": [
+        {
+          "name": "preprint_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the Preprint."
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the user."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/registrations/",
+      "method": "registrationsList",
+      "httpMethod": "get",
+      "tag": "Registrations",
+      "description": "List all registrations",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/registrations/{registration_id}/",
+      "method": "registrationsRead",
+      "httpMethod": "get",
+      "tag": "Registrations",
+      "description": "Retrieve a registration",
+      "parameters": [
+        {
+          "name": "registration_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the registration."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/registrations/{registration_id}/",
+      "method": "registrationsPartialUpdate",
+      "httpMethod": "patch",
+      "tag": "Registrations",
+      "description": "Update a registration",
+      "parameters": [
+        {
+          "name": "registration_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the registration."
+        },
+        {
+          "name": "attributes",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "relationships",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/registrations/{registration_id}/children/",
+      "method": "registrationsChildrenList",
+      "httpMethod": "get",
+      "tag": "Registrations",
+      "description": "List all child registrations",
+      "parameters": [
+        {
+          "name": "registration_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the registration."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/registrations/{registration_id}/citations/",
+      "method": "registrationsCitationsList",
+      "httpMethod": "get",
+      "tag": "Registrations",
+      "description": "List all citation styles",
+      "parameters": [
+        {
+          "name": "registration_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the registration."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/registrations/{registration_id}/citations/{citation_id}/",
+      "method": "registrationsCitationRead",
+      "httpMethod": "get",
+      "tag": "Registrations",
+      "description": "Retrieve a citation",
+      "parameters": [
+        {
+          "name": "registration_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the registration."
+        },
+        {
+          "name": "citation_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the citation."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/registrations/{registration_id}/comments/",
+      "method": "registrationsCommentsList",
+      "httpMethod": "get",
+      "tag": "Registrations",
+      "description": "List all comments",
+      "parameters": [
+        {
+          "name": "registration_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the registration."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/registrations/{registration_id}/contributors/",
+      "method": "registrationsContributorsList",
+      "httpMethod": "get",
+      "tag": "Registrations",
+      "description": "List all contributors",
+      "parameters": [
+        {
+          "name": "registration_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the registration."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/registrations/{registration_id}/contributors/{user_id}/",
+      "method": "registrationsContributorsRead",
+      "httpMethod": "get",
+      "tag": "Registrations",
+      "description": "Retrieve a contributor",
+      "parameters": [
+        {
+          "name": "registration_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the registration."
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the user."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/registrations/{registration_id}/files/",
+      "method": "registrationsProvidersList",
+      "httpMethod": "get",
+      "tag": "Registrations",
+      "description": "List all storage providers",
+      "parameters": [
+        {
+          "name": "registration_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the registration."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/registrations/{registration_id}/files/{provider}/",
+      "method": "registrationsFilesList",
+      "httpMethod": "get",
+      "tag": "Registrations",
+      "description": "List all files",
+      "parameters": [
+        {
+          "name": "registration_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the registration."
+        },
+        {
+          "name": "provider",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the storage provider."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/registrations/{registration_id}/files/{provider}/{path}/",
+      "method": "registrationsFilesRead",
+      "httpMethod": "get",
+      "tag": "Registrations",
+      "description": "Retrieve a file",
+      "parameters": [
+        {
+          "name": "registration_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the registration."
+        },
+        {
+          "name": "provider",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the storage provider."
+        },
+        {
+          "name": "path",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the file path."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/registrations/{registration_id}/forks/",
+      "method": "registrationsForksList",
+      "httpMethod": "get",
+      "tag": "Registrations",
+      "description": "List all forks",
+      "parameters": [
+        {
+          "name": "registration_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the registration."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/registrations/{registration_id}/forks/",
+      "method": "registrationsForksCreate",
+      "httpMethod": "post",
+      "tag": "Registrations",
+      "description": "Create a fork",
+      "parameters": [
+        {
+          "name": "registration_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the registration."
+        },
+        {
+          "name": "attributes",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "relationships",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/registrations/{registration_id}/identifiers/",
+      "method": "registrationsIdentifiersList",
+      "httpMethod": "get",
+      "tag": "Registrations",
+      "description": "List all identifiers",
+      "parameters": [
+        {
+          "name": "registration_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the registration."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/registrations/{registration_id}/institutions/",
+      "method": "registrationsInstitutionsList",
+      "httpMethod": "get",
+      "tag": "Registrations",
+      "description": "List all institutions",
+      "parameters": [
+        {
+          "name": "registration_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the registration."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/registrations/{registration_id}/linked_nodes/",
+      "method": "registrationsLinkedNodesList",
+      "httpMethod": "get",
+      "tag": "Registrations",
+      "description": "List all linked nodes",
+      "parameters": [
+        {
+          "name": "registration_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the registration."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/registrations/{registration_id}/logs/",
+      "method": "registrationsLogsList",
+      "httpMethod": "get",
+      "tag": "Registrations",
+      "description": "List all logs",
+      "parameters": [
+        {
+          "name": "registration_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the registration."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/registrations/{registration_id}/view_only_links/",
+      "method": "registrationsViewOnlyLinksList",
+      "httpMethod": "get",
+      "tag": "Registrations",
+      "description": "List all view only links",
+      "parameters": [
+        {
+          "name": "registration_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the registration."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/registrations/{registration_id}/view_only_links/{link_id}/",
+      "method": "registrationsViewOnlyLinksRead",
+      "httpMethod": "get",
+      "tag": "Registrations",
+      "description": "Retrieve a view only link",
+      "parameters": [
+        {
+          "name": "registration_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the registration."
+        },
+        {
+          "name": "link_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the view only link."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/registrations/{registration_id}/wikis/",
+      "method": "registrationsWikisList",
+      "httpMethod": "get",
+      "tag": "Registrations",
+      "description": "List all wikis",
+      "parameters": [
+        {
+          "name": "registration_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the registration."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/schema_responses/",
+      "method": "schemaResponsesList",
+      "httpMethod": "get",
+      "tag": "Schema Responses",
+      "description": "List all Schema Responses",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/schema_responses/",
+      "method": "schemaResponsePpost",
+      "httpMethod": "post",
+      "tag": "Schema Responses",
+      "description": "Create a new Schema Response",
+      "parameters": [
+        {
+          "name": "attributes",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "relationships",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/schema_responses/{schema_response_id}",
+      "method": "schemaResponseDelete",
+      "httpMethod": "delete",
+      "tag": "Schema Responses",
+      "description": "Delete a Incomplete Schema Response",
+      "parameters": [
+        {
+          "name": "schema_response_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the Registration Schema example `6176c9d45e01f100091d4f94`."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/schema_responses/{schema_response_id}",
+      "method": "schemaResponsesRead",
+      "httpMethod": "get",
+      "tag": "Schema Responses",
+      "description": "Retrieve a Schema Response",
+      "parameters": [
+        {
+          "name": "schema_response_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the Registration Schema example `6176c9d45e01f100091d4f94`."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/schema_responses/{schema_response_id}",
+      "method": "schemaResponsePatch",
+      "httpMethod": "patch",
+      "tag": "Schema Responses",
+      "description": "Update a Registration's Schema Response",
+      "parameters": [
+        {
+          "name": "schema_response_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the Registration Schema example `6176c9d45e01f100091d4f94`."
+        },
+        {
+          "name": "attributes",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "relationships",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/schema_responses/{schema_response_id}/actions/",
+      "method": "schemaResponseActionRead",
+      "httpMethod": "get",
+      "tag": "Schema Response Actions",
+      "description": "Retrieve a list of Schema Response Actions for a Schema Response",
+      "parameters": [
+        {
+          "name": "schema_response_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the Registration Schema example `6176c9d45e01f100091d4f94`."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/schema_responses/{schema_response_id}/actions/",
+      "method": "/schemaResponses/{schemaResponseId}/actions/Post",
+      "httpMethod": "post",
+      "tag": "Schema Response Actions",
+      "description": "Create a new Schema Response Action",
+      "parameters": [
+        {
+          "name": "schema_response_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the Registration Schema example `6176c9d45e01f100091d4f94`."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/schema_responses/{schema_response_id}/actions/{schema_response_action_id}",
+      "method": "/schemaResponses/{schemaResponseId}/actions/{schemaResponseActionId}Get",
+      "httpMethod": "get",
+      "tag": "Schema Response Actions",
+      "description": "A Schema Response Action from a Schema Response",
+      "parameters": [
+        {
+          "name": "schema_response_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the Schema Response example `61b9cd62eb66180215222669`."
+        },
+        {
+          "name": "schema_response_action_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the Schema Response Action example `61b9eae1a7d8ac025c4c46d3`."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/schema_responses/{schema_response_id}/schema_blocks/",
+      "method": "schemaResponseBlocksRead",
+      "httpMethod": "get",
+      "tag": "Registration Schema Blocks",
+      "description": "Retrieve a list of Registration Schema Blocks for a Schema Response",
+      "parameters": [
+        {
+          "name": "schema_response_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the Registration Schema example `6176c9d45e01f100091d4f94`."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/schema_responses/{schema_response_id}/schema_blocks/{schema_response_block_id}",
+      "method": "/schemaResponses/{schemaResponseId}/schemaBlocks/{schemaResponseBlockId}Get",
+      "httpMethod": "get",
+      "tag": "Registration Schema Blocks",
+      "description": "Retrieve a Registration Schema Block",
+      "parameters": [
+        {
+          "name": "schema_response_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the Registration Schema example `6176c9d45e01f100091d4f94`."
+        },
+        {
+          "name": "schema_response_block_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the Schema Response Block example `61b79f9eadbb5701424a2d5e`."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/schemas/registrations/",
+      "method": "registrationSchemasList",
+      "httpMethod": "get",
+      "tag": "Registration Schemas",
+      "description": "Retrieve a list of Registration Schemas",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/schemas/registrations/{registration_schema_id}",
+      "method": "registrationSchemaRead",
+      "httpMethod": "get",
+      "tag": "Registration Schemas",
+      "description": "Retrieve a Registration Schema",
+      "parameters": [
+        {
+          "name": "registration_schema_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the Registration Schema example `6176c9d45e01f100091d4f94`."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/taxonomies/",
+      "method": "taxonomiesList",
+      "httpMethod": "get",
+      "tag": "Taxonomies",
+      "description": "List all taxonomies",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/taxonomies/{taxonomy_id}/",
+      "method": "taxonomiesRead",
+      "httpMethod": "get",
+      "tag": "Taxonomies",
+      "description": "Retrieve a taxonomy",
+      "parameters": [
+        {
+          "name": "taxonomy_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the taxonomy."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/",
+      "method": "usersList",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "List all users",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/",
+      "method": "usersRead",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Retrieve a user",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the user."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/",
+      "method": "usersPartialUpdate",
+      "httpMethod": "patch",
+      "tag": "Users",
+      "description": "Update a user",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the user."
+        },
+        {
+          "name": "attributes",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "relationships",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/users/{user_id}/addons/",
+      "method": "usersAddonsList",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "List all user addons",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the user."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/addons/{provider}/",
+      "method": "usersAddonsRead",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Retrieve a user addon",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the user."
+        },
+        {
+          "name": "provider",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the addon provider."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/addons/{provider}/accounts/",
+      "method": "usersAddonAccountsList",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "List all addon accounts",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the user."
+        },
+        {
+          "name": "provider",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the addon provider."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/addons/{provider}/accounts/{account_id}/",
+      "method": "usersAddonAccountsRead",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Retrieve an addon account",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the user."
+        },
+        {
+          "name": "provider",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the addon provider."
+        },
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the addon account."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/institutions/",
+      "method": "usersInstitutionsList",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "List all institutions",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the user."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/nodes/",
+      "method": "usersNodesList",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "List all nodes",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the user."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/preprints/",
+      "method": "usersPreprintsList",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "List all preprints",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the user."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/registrations/",
+      "method": "usersRegistrationsList",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "List all registrations",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the user."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/view_only_links/{link_id}/",
+      "method": "viewOnlyLinksRead",
+      "httpMethod": "get",
+      "tag": "View Only Links",
+      "description": "Retrieve a view only link",
+      "parameters": [
+        {
+          "name": "link_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the view only link."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/view_only_links/{link_id}/nodes/",
+      "method": "viewOnlyLinksNodeList",
+      "httpMethod": "get",
+      "tag": "View Only Links",
+      "description": "List all nodes",
+      "parameters": [
+        {
+          "name": "link_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the view only link."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/wikis/{wiki_id}/",
+      "method": "wikiRead",
+      "httpMethod": "get",
+      "tag": "Wikis",
+      "description": "Retrieve a Wiki",
+      "parameters": [
+        {
+          "name": "wiki_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the wiki."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/wikis/{wiki_id}/content/",
+      "method": "wikiContent",
+      "httpMethod": "get",
+      "tag": "Wikis",
+      "description": "Retrieve the Content of a Wiki",
+      "parameters": [
+        {
+          "name": "wiki_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the wiki."
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://api.test.osf.io/v2",
   "apiTitle": "OSF APIv2 Documentation",
   "endpoints": 116,

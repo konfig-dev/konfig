@@ -4,6 +4,475 @@
   "homepage": "personio.de",
   "serviceName": "personnel",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/company/attendances",
+      "method": "/company/attendancesGet",
+      "httpMethod": "get",
+      "description": "This endpoint is responsible for fetching attendance data for the company employees. It is possible to paginate results, filter by period, the date and/or time it was updated, and/or specific employees. The result will contain a list of attendance periods, structured as defined here.",
+      "parameters": [
+        {
+          "name": "start_date",
+          "schema": "string",
+          "required": true,
+          "description": "First day of the period to be queried. It is inclusive, so the day specified as start_date will also be considered on the results"
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "required": true,
+          "description": "Last day of the period to be queried. It is inclusive, so the day specified as end_date will also be considered on the results."
+        },
+        {
+          "name": "updated_from",
+          "schema": "string",
+          "required": false,
+          "description": "Datetime from when the queried periods have been updated. Same format as updated_at. It is inclusive, so the day specified as updated_from will also be considered on the results. Can be just the date, or the date and the time, with or without the timezone."
+        },
+        {
+          "name": "updated_to",
+          "schema": "string",
+          "required": false,
+          "description": "Datetime until when the queried periods have been updated. Same format as updated_at. It is inclusive, so the day specified as updated_to will also be considered on the results. Can be just the date, or the date and the time, with or without the timezone."
+        },
+        {
+          "name": "employees",
+          "schema": "array",
+          "required": false,
+          "description": "A list of Personio employee identifiers to filter the results. Only those employees specified here will be returned."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Pagination attribute to limit how many attendances will be returned per page"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Pagination attribute to identify which page you are requesting, by the form of telling an offset from the first record that would be returned."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/company/attendances",
+      "method": "/company/attendancesPost",
+      "httpMethod": "post",
+      "description": "This endpoint is responsible for adding attendance data for the company employees. It is possible to add attendances for one or many employees at the same time. The payload sent on the request should be a list of attendance periods, in the form of an array containing attendance period objects.",
+      "parameters": [
+        {
+          "name": "attendances",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/company/attendances/{id}",
+      "method": "/company/attendances/{id}Delete",
+      "httpMethod": "delete",
+      "description": "This endpoint is responsible for deleting attendance data for the company employees.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the attendance period to delete"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/company/attendances/{id}",
+      "method": "/company/attendances/{id}Patch",
+      "httpMethod": "patch",
+      "description": "This endpoint is responsible for updating attendance data for the company employees. Attributes are not required and if not specified, the current value will be used. It is not possible to change the employee id.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the attendance period to update"
+        },
+        {
+          "name": "break",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "comment",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "end_time",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "start_time",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/company/employees",
+      "method": "/company/employeesGet",
+      "httpMethod": "get",
+      "description": "List Employees",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/company/employees",
+      "method": "/company/employeesPost",
+      "httpMethod": "post",
+      "description": "Create an employee",
+      "parameters": [
+        {
+          "name": "employee[department]",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "employee[email]",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "employee[first_name]",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "employee[gender]",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "employee[hire_date]",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "employee[last_name]",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "employee[position]",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "employee[weekly_hours]",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/company/employees/{employee_id}",
+      "method": "/company/employees/{employeeId}Get",
+      "httpMethod": "get",
+      "description": "Show employee by ID",
+      "parameters": [
+        {
+          "name": "employee_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Numeric `id` of the employee"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/company/employees/{employee_id}/profile-picture/{width}",
+      "method": "/company/employees/{employeeId}/profilePicture/{width}Get",
+      "httpMethod": "get",
+      "description": "Show employee profile picture",
+      "parameters": [
+        {
+          "name": "employee_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Numeric `id` of the employee"
+        },
+        {
+          "name": "width",
+          "schema": "integer",
+          "required": true,
+          "description": "Width of the image. Default 75x75"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/company/time-off-types",
+      "method": "/company/timeOffTypesGet",
+      "httpMethod": "get",
+      "description": "Provides a list of available time-off types, for example 'Paid vacation', 'Parental leave' or 'Home office'",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Pagination attribute to limit how many records will be returned per page"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Pagination attribute to identify which page you are requesting, by the form of telling an offset from the first record that would be returned."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/company/time-offs",
+      "method": "/company/timeOffsGet",
+      "httpMethod": "get",
+      "description": "This endpoint is responsible for fetching absence data for the company employees. It is possible to paginate results, filter by period and/or specific employees. The result will contain a list of absence periods, structured as defined here.",
+      "parameters": [
+        {
+          "name": "start_date",
+          "schema": "string",
+          "required": false,
+          "description": "First day of the period to be queried. It is inclusive, so the day specified as start_date will also be considered on the results"
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "required": false,
+          "description": "Last day of the period to be queried. It is inclusive, so the day specified as end_date will also be considered on the results."
+        },
+        {
+          "name": "updated_from",
+          "schema": "string",
+          "required": false,
+          "description": "Datetime from when the queried periods have been updated. It is inclusive, so the day specified as updated_from will also be considered on the results."
+        },
+        {
+          "name": "updated_to",
+          "schema": "string",
+          "required": false,
+          "description": "Datetime until when the queried periods have been updated. It is inclusive, so the day specified as updated_to will also be considered on the results."
+        },
+        {
+          "name": "employees",
+          "schema": "array",
+          "required": false,
+          "description": "A list of Personio employee identifiers to filter the results. Only those employees specified here will be returned."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Pagination attribute to limit how many attendances will be returned per page"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Pagination attribute to identify which page you are requesting, by the form of telling an offset from the first record that would be returned."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/company/time-offs",
+      "method": "/company/timeOffsPost",
+      "httpMethod": "post",
+      "description": "This endpoint is responsible for adding absence data for the company employees.",
+      "parameters": [
+        {
+          "name": "comment",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "employee_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "half_day_end",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "half_day_start",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "start_date",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "time_off_type_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/company/time-offs/{id}",
+      "method": "/company/timeOffs/{id}Delete",
+      "httpMethod": "delete",
+      "description": "This endpoint is responsible for deleting absence period data for the company employees.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the absence period to delete"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/company/time-offs/{id}",
+      "method": "/company/timeOffs/{id}Get",
+      "httpMethod": "get",
+      "description": "Absence Period",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Numeric `id` of the absence period"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.personio.de/v1",
   "apiDescription": "API for reading and writing personnel data incl. data about attendances and absences",
   "apiTitle": "Personnel Data",

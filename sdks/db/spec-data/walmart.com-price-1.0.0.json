@@ -4,6 +4,434 @@
   "homepage": "walmart.com",
   "serviceName": "price",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/v3/cppreference",
+      "method": "optCapProgramInPrice",
+      "httpMethod": "post",
+      "tag": "Prices",
+      "description": "Set up CAP SKU All",
+      "parameters": [
+        {
+          "name": "WM_SEC.ACCESS_TOKEN",
+          "schema": "string",
+          "required": true,
+          "description": "The access token retrieved in the Token API call"
+        },
+        {
+          "name": "WM_CONSUMER.CHANNEL.TYPE",
+          "schema": "string",
+          "required": false,
+          "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding"
+        },
+        {
+          "name": "WM_QOS.CORRELATION_ID",
+          "schema": "string",
+          "required": true,
+          "description": "A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID"
+        },
+        {
+          "name": "WM_SVC.NAME",
+          "schema": "string",
+          "required": true,
+          "description": "Walmart Service Name"
+        },
+        {
+          "name": "subsidyEnrolled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "subsidyPreference",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/feeds",
+      "method": "priceBulkUploads",
+      "httpMethod": "post",
+      "tag": "Prices",
+      "description": "Update bulk prices (Multiple)",
+      "parameters": [
+        {
+          "name": "feedType",
+          "schema": "string",
+          "required": true,
+          "description": "The feed Type"
+        },
+        {
+          "name": "WM_SEC.ACCESS_TOKEN",
+          "schema": "string",
+          "required": true,
+          "description": "The access token retrieved in the Token API call"
+        },
+        {
+          "name": "WM_CONSUMER.CHANNEL.TYPE",
+          "schema": "string",
+          "required": false,
+          "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding"
+        },
+        {
+          "name": "WM_QOS.CORRELATION_ID",
+          "schema": "string",
+          "required": true,
+          "description": "A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID"
+        },
+        {
+          "name": "WM_SVC.NAME",
+          "schema": "string",
+          "required": true,
+          "description": "Walmart Service Name"
+        },
+        {
+          "name": "file",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/price",
+      "method": "updatePrice",
+      "httpMethod": "put",
+      "tag": "Prices",
+      "description": "Update a price",
+      "parameters": [
+        {
+          "name": "WM_SEC.ACCESS_TOKEN",
+          "schema": "string",
+          "required": true,
+          "description": "The access token retrieved in the Token API call"
+        },
+        {
+          "name": "WM_CONSUMER.CHANNEL.TYPE",
+          "schema": "string",
+          "required": false,
+          "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding"
+        },
+        {
+          "name": "WM_QOS.CORRELATION_ID",
+          "schema": "string",
+          "required": true,
+          "description": "A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID"
+        },
+        {
+          "name": "WM_SVC.NAME",
+          "schema": "string",
+          "required": true,
+          "description": "Walmart Service Name"
+        },
+        {
+          "name": "definitions",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "offerId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pricing",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "replaceAll",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sku",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/repricer/strategies",
+      "method": "getStrategies",
+      "httpMethod": "get",
+      "tag": "Prices",
+      "description": "List of Repricer Strategies",
+      "parameters": [
+        {
+          "name": "WM_SEC.ACCESS_TOKEN",
+          "schema": "string",
+          "required": true,
+          "description": "The access token retrieved in the Token API call"
+        },
+        {
+          "name": "WM_CONSUMER.CHANNEL.TYPE",
+          "schema": "string",
+          "required": false,
+          "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding"
+        },
+        {
+          "name": "WM_QOS.CORRELATION_ID",
+          "schema": "string",
+          "required": true,
+          "description": "A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID"
+        },
+        {
+          "name": "WM_SVC.NAME",
+          "schema": "string",
+          "required": true,
+          "description": "Walmart Service Name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/repricer/strategy",
+      "method": "createStrategy",
+      "httpMethod": "post",
+      "tag": "Prices",
+      "description": "Create Repricer Strategy",
+      "parameters": [
+        {
+          "name": "WM_SEC.ACCESS_TOKEN",
+          "schema": "string",
+          "required": true,
+          "description": "The access token retrieved in the Token API call"
+        },
+        {
+          "name": "WM_CONSUMER.CHANNEL.TYPE",
+          "schema": "string",
+          "required": false,
+          "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding"
+        },
+        {
+          "name": "WM_QOS.CORRELATION_ID",
+          "schema": "string",
+          "required": true,
+          "description": "A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID"
+        },
+        {
+          "name": "WM_SVC.NAME",
+          "schema": "string",
+          "required": true,
+          "description": "Walmart Service Name"
+        },
+        {
+          "name": "enableRepricerForPromotion",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "repricerStrategy",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "strategies",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/repricer/strategy/{strategyCollectionId}",
+      "method": "deleteStrategy",
+      "httpMethod": "delete",
+      "tag": "Prices",
+      "description": "Delete Repricer Strategy",
+      "parameters": [
+        {
+          "name": "WM_SEC.ACCESS_TOKEN",
+          "schema": "string",
+          "required": true,
+          "description": "The access token retrieved in the Token API call"
+        },
+        {
+          "name": "WM_CONSUMER.CHANNEL.TYPE",
+          "schema": "string",
+          "required": false,
+          "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding"
+        },
+        {
+          "name": "WM_QOS.CORRELATION_ID",
+          "schema": "string",
+          "required": true,
+          "description": "A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID"
+        },
+        {
+          "name": "WM_SVC.NAME",
+          "schema": "string",
+          "required": true,
+          "description": "Walmart Service Name"
+        },
+        {
+          "name": "strategyCollectionId",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/repricer/strategy/{strategyCollectionId}",
+      "method": "updateStrategy",
+      "httpMethod": "put",
+      "tag": "Prices",
+      "description": "Update Repricer Strategy",
+      "parameters": [
+        {
+          "name": "WM_SEC.ACCESS_TOKEN",
+          "schema": "string",
+          "required": true,
+          "description": "The access token retrieved in the Token API call"
+        },
+        {
+          "name": "WM_CONSUMER.CHANNEL.TYPE",
+          "schema": "string",
+          "required": false,
+          "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding"
+        },
+        {
+          "name": "WM_QOS.CORRELATION_ID",
+          "schema": "string",
+          "required": true,
+          "description": "A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID"
+        },
+        {
+          "name": "WM_SVC.NAME",
+          "schema": "string",
+          "required": true,
+          "description": "Walmart Service Name"
+        },
+        {
+          "name": "strategyCollectionId",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "enableRepricerForPromotion",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "repricerStrategy",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "strategies",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/repricerFeeds",
+      "method": "getRepricerFeed",
+      "httpMethod": "post",
+      "tag": "Prices",
+      "description": "Assign/Unassign items to/from Repricer Strategy",
+      "parameters": [
+        {
+          "name": "WM_SEC.ACCESS_TOKEN",
+          "schema": "string",
+          "required": true,
+          "description": "The access token retrieved in the Token API call"
+        },
+        {
+          "name": "WM_CONSUMER.CHANNEL.TYPE",
+          "schema": "string",
+          "required": false,
+          "description": "A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding"
+        },
+        {
+          "name": "WM_QOS.CORRELATION_ID",
+          "schema": "string",
+          "required": true,
+          "description": "A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID"
+        },
+        {
+          "name": "WM_SVC.NAME",
+          "schema": "string",
+          "required": true,
+          "description": "Walmart Service Name"
+        },
+        {
+          "name": "Item",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "ItemFeedHeader",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://marketplace.walmartapis.com",
   "apiDescription": "The price is a fundamental building block for your listing on Walmart.com. You can use the price management APIs to set up and manage the price for a given item",
   "apiTitle": "Price Management",

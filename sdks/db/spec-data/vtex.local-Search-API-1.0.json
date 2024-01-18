@@ -4,6 +4,543 @@
   "homepage": "vtex.local",
   "serviceName": "Search-API",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/api/catalog_system/pub/facets/category/{categoryId}",
+      "method": "/api/catalogSystem/pub/facets/category/{categoryId}Get",
+      "httpMethod": "get",
+      "tag": "Facets",
+      "description": "Get Category Facets",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "categoryId",
+          "schema": "string",
+          "required": true,
+          "description": "Category unique number identifier."
+        },
+        {
+          "name": "_from",
+          "schema": "string",
+          "required": false,
+          "description": "Starter page range. These parameters allow the API to be paginated. Take into account that the initial and final pages cannot have a separation superior to 50 pages. Thus, it will be displayed 50 items per page."
+        },
+        {
+          "name": "_to",
+          "schema": "string",
+          "required": false,
+          "description": "Finisher page range. These parameters allow the API to be paginated. Take into account that the initial and final pages cannot have a separation superior to 50 pages. Thus, it will be displayed 50 items per page."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/catalog_system/pub/facets/search/{term}",
+      "method": "facetscategory",
+      "httpMethod": "get",
+      "tag": "Facets",
+      "description": "Search by Store Facets",
+      "parameters": [
+        {
+          "name": "map",
+          "schema": "string",
+          "required": true,
+          "description": "Mapping of the term. It can be `c` for a category, `b` for a brand, or `specificationFilter_{specificationId}` for a specification. You need to include a map for each term you are searching for in the same term's order."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "term",
+          "schema": "string",
+          "required": true,
+          "description": "Term used for the facet's search. You can search for as much term as you want. The term can be: `categoryId`, `brandId`, `specificationId`."
+        },
+        {
+          "name": "_from",
+          "schema": "string",
+          "required": false,
+          "description": "Starter page range. These parameters allow the API to be paginated. Take into account that the initial and final pages cannot have a separation superior to 50 pages. Thus, it will be displayed 50 items per page."
+        },
+        {
+          "name": "_to",
+          "schema": "string",
+          "required": false,
+          "description": "Finisher page range. These parameters allow the API to be paginated. Take into account that the initial and final pages cannot have a separation superior to 50 pages. Thus, it will be displayed 50 items per page."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/catalog_system/pub/products/crossselling/accessories/{productId}",
+      "method": "productSearchAccessories",
+      "httpMethod": "get",
+      "tag": "CrossSelling",
+      "description": "Get Product Search of Accessories",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "productId",
+          "schema": "integer",
+          "required": true,
+          "description": "Product's unique identifier"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/catalog_system/pub/products/crossselling/showtogether/{productId}",
+      "method": "productSearchShowTogether",
+      "httpMethod": "get",
+      "tag": "CrossSelling",
+      "description": "Get Product Search of Show Together",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "productId",
+          "schema": "integer",
+          "required": true,
+          "description": "Product's unique identifier"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/catalog_system/pub/products/crossselling/similars/{productId}",
+      "method": "productSearchSimilars",
+      "httpMethod": "get",
+      "tag": "CrossSelling",
+      "description": "Get Product Search of Similars",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "productId",
+          "schema": "integer",
+          "required": true,
+          "description": "Product's unique identifier"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/catalog_system/pub/products/crossselling/suggestions/{productId}",
+      "method": "productSearchSuggestions",
+      "httpMethod": "get",
+      "tag": "CrossSelling",
+      "description": "Get Product Search of Suggestions",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "productId",
+          "schema": "integer",
+          "required": true,
+          "description": "Product's unique identifier"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/catalog_system/pub/products/crossselling/whoboughtalsobought/{productId}",
+      "method": "productSearchWhoBoughtAlsoBought",
+      "httpMethod": "get",
+      "tag": "CrossSelling",
+      "description": "Get Product Search of Who Bought Also Bought",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "productId",
+          "schema": "string",
+          "required": true,
+          "description": "Product unique identifier."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/catalog_system/pub/products/crossselling/whosawalsobought/{productId}",
+      "method": "productSearchWhoSawAlsoBought",
+      "httpMethod": "get",
+      "tag": "CrossSelling",
+      "description": "Get Product Search of Who Saw Also Bought",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "productId",
+          "schema": "string",
+          "required": true,
+          "description": "Product unique identifier."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/catalog_system/pub/products/crossselling/whosawalsosaw/{productId}",
+      "method": "productSearchWhoSawAlsoSaw",
+      "httpMethod": "get",
+      "tag": "CrossSelling",
+      "description": "Get Product Search of Who Saw Also Saw",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "productId",
+          "schema": "integer",
+          "required": true,
+          "description": "Product unique identifier."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/catalog_system/pub/products/offers/{productId}",
+      "method": "/api/catalogSystem/pub/products/offers/{productId}Get",
+      "httpMethod": "get",
+      "tag": "Offers",
+      "description": "Search Product offers",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "productId",
+          "schema": "string",
+          "required": true,
+          "description": "Product unique number identifier."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/catalog_system/pub/products/offers/{productId}/sku/{skuId}",
+      "method": "/api/catalogSystem/pub/products/offers/{productId}/sku/{skuId}Get",
+      "httpMethod": "get",
+      "tag": "Offers",
+      "description": "Search SKU offers",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "productId",
+          "schema": "string",
+          "required": true,
+          "description": "Product unique number identifier."
+        },
+        {
+          "name": "skuId",
+          "schema": "string",
+          "required": true,
+          "description": "Product unique number identifier."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/catalog_system/pub/products/search",
+      "method": "productSearchFilteredandOrdered",
+      "httpMethod": "get",
+      "tag": "Search",
+      "description": "Search for Products with Filter, Order and Pagination",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "_from",
+          "schema": "string",
+          "required": false,
+          "description": "Starter page range. These parameters allow the API to be paginated. Take into account that the initial and final pages cannot have a separation superior to 50 pages. Thus, it will be displayed 50 items per page."
+        },
+        {
+          "name": "_to",
+          "schema": "string",
+          "required": false,
+          "description": "Finisher page range. These parameters allow the API to be paginated. Take into account that the initial and final pages cannot have a separation superior to 50 pages. Thus, it will be displayed 50 items per page."
+        },
+        {
+          "name": "ft",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by full text. The form is`ft={searchWord}`"
+        },
+        {
+          "name": "fq",
+          "schema": "string",
+          "required": false,
+          "description": "General filter. It can be by category (`fq=C:/{a}/{b}`), by specification (`fq=specificationFilter_{a}:{b}`),  by price range (`fq=P:[{a} TO {b}]`), by collection (`fq=productClusterIds:{{productClusterId}}`), by product ID (`fq=productId:{{productId}}`),  by SKU ID (`fq=skuId:{{skuId}}`), by Reference ID (`fq=alternateIds_RefId:{{referenceId}}`), by EAN13 (`fq=alternateIds_Ean:{{ean13}}`), by availability at a specific sales channel (`fq=isAvailablePerSalesChannel_{{sc}}:{{bool}}`), by available at a specific seller (`fq=sellerId:{{sellerId}}`)"
+        },
+        {
+          "name": "O",
+          "schema": "string",
+          "required": false,
+          "description": "Sorting method. It can be by Price (`O=OrderByPriceDESC` or `O=OrderByPriceASC`), by Top Selling Products (`O=OrderByTopSaleDESC`), by Best Reviews (`O=OrderByReviewRateDESC`), by Name (`O=OrderByNameASC` or `O=OrderByNameDESC`), by Release Date (`O=OrderByReleaseDateDESC`), by Best Discounts (`O=OrderByBestDiscountDESC`), by Score (`O=OrderByScoreDESC`)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/catalog_system/pub/products/search/{product-text-link}/p",
+      "method": "searchbyproducturl",
+      "httpMethod": "get",
+      "tag": "Search",
+      "description": "Search Product by Product URL",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "product-text-link",
+          "schema": "string",
+          "required": true,
+          "description": "Product URL"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/catalog_system/pub/products/search/{search}",
+      "method": "productSearch",
+      "httpMethod": "get",
+      "tag": "Search",
+      "description": "Search for Products",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "required": true,
+          "description": "Term used to search products"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/buscaautocomplete",
+      "method": "autoComplete",
+      "httpMethod": "get",
+      "tag": "Autocomplete",
+      "description": "Product Search Autocomplete",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand "
+        },
+        {
+          "name": "productNameContains",
+          "schema": "string",
+          "required": true,
+          "description": "Part of the string that will be searched."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The root schema comprises the entire JSON document."
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://vtex.local",
   "apiDescription": "\r\n> Check the new [Search onboarding guide](https://developers.vtex.com/vtex-rest-api/docs/search-onboarding). We created this guide to improve the onboarding experience for developers at VTEX. It assembles all documentation on our Developer Portal about Search and is organized by focusing on the developer's journey.\r\n\r\nThis API lets you search and sort products in the Catalog using Fulltext, Category and Brand search terms. \r\n\r\nRetrieve product data to create custom searches and product shelves.",
   "apiTitle": "Legacy Search API",

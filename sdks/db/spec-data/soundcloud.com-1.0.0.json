@@ -3,6 +3,2082 @@
   "openApiRaw": "https://gist.githubusercontent.com/MikeRalphson/a9eb3040cb611121b568844958564849/raw/d0996b827b9eb2ae4fa946b9aacf02b03dc3d933/openapi.json",
   "homepage": "soundcloud.com",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/connect",
+      "method": "/connectGet",
+      "httpMethod": "get",
+      "tag": "oauth",
+      "description": "The OAuth2 authorization endpoint. Your app redirects a user to this endpoint, allowing them to delegate access to their account.",
+      "parameters": [
+        {
+          "name": "client_id",
+          "schema": "string",
+          "required": true,
+          "description": "The client id belonging to your application"
+        },
+        {
+          "name": "redirect_uri",
+          "schema": "string",
+          "required": true,
+          "description": "The redirect uri you have configured for your application"
+        },
+        {
+          "name": "response_type",
+          "schema": "string",
+          "required": true,
+          "description": "It's recommended to use \"code\" here"
+        },
+        {
+          "name": "scope",
+          "schema": "string",
+          "required": true,
+          "description": "Scope"
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "required": false,
+          "description": "Any value included here will be appended to the redirect URI. Use this for CSRF protection."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "302",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/likes/playlists/{playlist_id}",
+      "method": "/likes/playlists/{playlistId}Delete",
+      "httpMethod": "delete",
+      "tag": "likes",
+      "description": "Unlikes a playlist.",
+      "parameters": [
+        {
+          "name": "playlist_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud playlist id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/likes/playlists/{playlist_id}",
+      "method": "/likes/playlists/{playlistId}Post",
+      "httpMethod": "post",
+      "tag": "likes",
+      "description": "Likes a playlist.",
+      "parameters": [
+        {
+          "name": "playlist_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud playlist id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/likes/tracks/{track_id}",
+      "method": "/likes/tracks/{trackId}Delete",
+      "httpMethod": "delete",
+      "tag": "likes",
+      "description": "Unlikes a track.",
+      "parameters": [
+        {
+          "name": "track_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud Track id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/likes/tracks/{track_id}",
+      "method": "/likes/tracks/{trackId}Post",
+      "httpMethod": "post",
+      "tag": "likes",
+      "description": "Likes a track.",
+      "parameters": [
+        {
+          "name": "track_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud Track id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/me",
+      "method": "/meGet",
+      "httpMethod": "get",
+      "tag": "me",
+      "description": "Returns the authenticated user’s information.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "SoundCloud Complete User object"
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/me/activities",
+      "method": "/me/activitiesGet",
+      "httpMethod": "get",
+      "tag": "me",
+      "description": "Returns the authenticated user's activities.",
+      "parameters": [
+        {
+          "name": "access",
+          "schema": "array",
+          "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return in the collection."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "User's activities."
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/me/activities/all/own",
+      "method": "/me/activities/all/ownGet",
+      "httpMethod": "get",
+      "tag": "me",
+      "description": "Recent the authenticated user's activities.",
+      "parameters": [
+        {
+          "name": "access",
+          "schema": "array",
+          "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return in the collection."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "User's activities."
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/me/activities/tracks",
+      "method": "/me/activities/tracksGet",
+      "httpMethod": "get",
+      "tag": "me",
+      "description": "Returns the authenticated user's recent track related activities.",
+      "parameters": [
+        {
+          "name": "access",
+          "schema": "array",
+          "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return in the collection."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "User's activities."
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/me/connections",
+      "method": "/me/connectionsGet",
+      "httpMethod": "get",
+      "tag": "me",
+      "description": "Returns a list of the authenticated user's connected social accounts.",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return in the collection."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Offset of first result. Deprecated, use `linked_partitioning` instead."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/me/connections/{connection_id}",
+      "method": "/me/connections/{connectionId}Get",
+      "httpMethod": "get",
+      "tag": "me",
+      "description": "Returns the authenticated user's connected social account.",
+      "parameters": [
+        {
+          "name": "connection_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud connection id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/me/favorites/ids",
+      "method": "/me/favorites/idsGet",
+      "httpMethod": "get",
+      "tag": "me",
+      "description": "Returns user’s favorites ids. (use /me/likes/tracks instead to fetch the authenticated user's likes)",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return in the collection."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/me/followers",
+      "method": "/me/followersGet",
+      "httpMethod": "get",
+      "tag": "me",
+      "description": "Returns a list of users who are following the authenticated user.",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return in the collection."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/me/followers/{follower_id}",
+      "method": "/me/followers/{followerId}Get",
+      "httpMethod": "get",
+      "tag": "me",
+      "description": "Returns a user who is following the authenticated user. (use /users/{user_id} instead, to fetch the user details)",
+      "parameters": [
+        {
+          "name": "follower_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud User id to denote a Follower"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "SoundCloud User object"
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/me/followings",
+      "method": "/me/followingsGet",
+      "httpMethod": "get",
+      "tag": "me",
+      "description": "Returns a list of users who are followed by the authenticated user.",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return in the collection."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Offset of first result. Deprecated, use `linked_partitioning` instead."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/me/followings/tracks",
+      "method": "/me/followings/tracksGet",
+      "httpMethod": "get",
+      "tag": "me",
+      "description": "Returns a list of recent tracks from users followed by the authenticated user.",
+      "parameters": [
+        {
+          "name": "access",
+          "schema": "array",
+          "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return in the collection."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Offset of first result. Deprecated, use `linked_partitioning` instead."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/me/followings/{user_id}",
+      "method": "/me/followings/{userId}Delete",
+      "httpMethod": "delete",
+      "tag": "me",
+      "description": "Deletes a user who is followed by the authenticated user.",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud User id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/me/followings/{user_id}",
+      "method": "/me/followings/{userId}Get",
+      "httpMethod": "get",
+      "tag": "me",
+      "description": "Returns a user who is followed by the authenticated user. (use /users/{user_id} instead, to fetch the user details)",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud User id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "SoundCloud User object"
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/me/followings/{user_id}",
+      "method": "/me/followings/{userId}Put",
+      "httpMethod": "put",
+      "tag": "me",
+      "description": "Follows a user.",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud User id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "201",
+          "description": "SoundCloud User object"
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/me/likes/tracks",
+      "method": "/me/likes/tracksGet",
+      "httpMethod": "get",
+      "tag": "me",
+      "description": "Returns a list of favorited or liked tracks of the authenticated user.",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return in the collection."
+        },
+        {
+          "name": "linked_partitioning",
+          "schema": "boolean",
+          "required": false,
+          "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/me/playlists",
+      "method": "/me/playlistsGet",
+      "httpMethod": "get",
+      "tag": "me",
+      "description": "Returns user’s playlists (sets).",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return in the collection."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/me/playlists/{playlist_id}",
+      "method": "/me/playlists/{playlistId}Get",
+      "httpMethod": "get",
+      "tag": "me",
+      "description": "Returns playlist. (use /playlists/{playlist_id} instead, to fetch the playlist details)",
+      "parameters": [
+        {
+          "name": "playlist_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud playlist id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Soundcloud Playlist Object"
+        }
+      ]
+    },
+    {
+      "url": "/me/tracks",
+      "method": "/me/tracksGet",
+      "httpMethod": "get",
+      "tag": "me",
+      "description": "Returns a list of user's tracks.",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return in the collection."
+        },
+        {
+          "name": "linked_partitioning",
+          "schema": "boolean",
+          "required": false,
+          "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/me/tracks/{track_id}",
+      "method": "/me/tracks/{trackId}Get",
+      "httpMethod": "get",
+      "tag": "me",
+      "description": "Returns a specified track. (use /tracks/{track_id} instead, to fetch the track details)",
+      "parameters": [
+        {
+          "name": "track_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud Track id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Soundcloud Track object."
+        }
+      ]
+    },
+    {
+      "url": "/oauth2/token",
+      "method": "/oauth2/tokenPost",
+      "httpMethod": "post",
+      "tag": "oauth",
+      "description": "This endpoint accepts POST requests and is used to provision access tokens once a user has authorized your application.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/playlists",
+      "method": "/playlistsGet",
+      "httpMethod": "get",
+      "tag": "search",
+      "description": "Performs a playlist search based on a query",
+      "parameters": [
+        {
+          "name": "q",
+          "schema": "string",
+          "required": true,
+          "description": "search"
+        },
+        {
+          "name": "access",
+          "schema": "array",
+          "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return in the collection."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Offset of first result. Deprecated, use `linked_partitioning` instead."
+        },
+        {
+          "name": "linked_partitioning",
+          "schema": "boolean",
+          "required": false,
+          "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/playlists",
+      "method": "/playlistsPost",
+      "httpMethod": "post",
+      "tag": "playlists",
+      "description": "Creates a playlist.",
+      "parameters": [
+        {
+          "name": "playlist",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Soundcloud Playlist Object"
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/playlists/{playlist_id}",
+      "method": "/playlists/{playlistId}Delete",
+      "httpMethod": "delete",
+      "tag": "playlists",
+      "description": "Deletes a playlist.",
+      "parameters": [
+        {
+          "name": "playlist_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud playlist id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/playlists/{playlist_id}",
+      "method": "/playlists/{playlistId}Get",
+      "httpMethod": "get",
+      "tag": "playlists",
+      "description": "Returns a playlist.",
+      "parameters": [
+        {
+          "name": "playlist_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud playlist id"
+        },
+        {
+          "name": "secret_token",
+          "schema": "string",
+          "required": false,
+          "description": "A secret token to fetch private playlists/tracks"
+        },
+        {
+          "name": "access",
+          "schema": "array",
+          "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Soundcloud Playlist Object"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/playlists/{playlist_id}",
+      "method": "/playlists/{playlistId}Put",
+      "httpMethod": "put",
+      "tag": "playlists",
+      "description": "Updates a playlist.",
+      "parameters": [
+        {
+          "name": "playlist_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud playlist id"
+        },
+        {
+          "name": "playlist",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Soundcloud Playlist Object"
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/playlists/{playlist_id}/reposters",
+      "method": "/playlists/{playlistId}/repostersGet",
+      "httpMethod": "get",
+      "tag": "playlists",
+      "description": "Returns a collection of playlist's reposters.",
+      "parameters": [
+        {
+          "name": "playlist_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud playlist id"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return in the collection."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/playlists/{playlist_id}/tracks",
+      "method": "/playlists/{playlistId}/tracksGet",
+      "httpMethod": "get",
+      "tag": "playlists",
+      "description": "Returns tracks under a playlist.",
+      "parameters": [
+        {
+          "name": "playlist_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud playlist id"
+        },
+        {
+          "name": "secret_token",
+          "schema": "string",
+          "required": false,
+          "description": "A secret token to fetch private playlists/tracks"
+        },
+        {
+          "name": "access",
+          "schema": "array",
+          "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n"
+        },
+        {
+          "name": "linked_partitioning",
+          "schema": "boolean",
+          "required": false,
+          "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reposts/playlists/{playlist_id}",
+      "method": "/reposts/playlists/{playlistId}Delete",
+      "httpMethod": "delete",
+      "tag": "reposts",
+      "description": "Removes a repost on a playlist as the authenticated user",
+      "parameters": [
+        {
+          "name": "playlist_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud playlist id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reposts/playlists/{playlist_id}",
+      "method": "/reposts/playlists/{playlistId}Post",
+      "httpMethod": "post",
+      "tag": "reposts",
+      "description": "Reposts a playlist as the authenticated user",
+      "parameters": [
+        {
+          "name": "playlist_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud playlist id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reposts/tracks/{track_id}",
+      "method": "/reposts/tracks/{trackId}Delete",
+      "httpMethod": "delete",
+      "tag": "reposts",
+      "description": "Removes a repost on a track as the authenticated user",
+      "parameters": [
+        {
+          "name": "track_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud Track id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reposts/tracks/{track_id}",
+      "method": "/reposts/tracks/{trackId}Post",
+      "httpMethod": "post",
+      "tag": "reposts",
+      "description": "Reposts a track as the authenticated user",
+      "parameters": [
+        {
+          "name": "track_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud Track id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resolve",
+      "method": "/resolveGet",
+      "httpMethod": "get",
+      "tag": "miscellaneous",
+      "description": "Resolves soundcloud.com URLs to Resource URLs to use with the API.",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": "SoundCloud URL"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "302",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tracks",
+      "method": "/tracksGet",
+      "httpMethod": "get",
+      "tag": "search",
+      "description": "Performs a track search based on a query",
+      "parameters": [
+        {
+          "name": "q",
+          "schema": "string",
+          "required": true,
+          "description": "search"
+        },
+        {
+          "name": "ids",
+          "schema": "string",
+          "required": false,
+          "description": "A comma separated list of track ids to filter on"
+        },
+        {
+          "name": "genres",
+          "schema": "string",
+          "required": false,
+          "description": "A comma separated list of genres"
+        },
+        {
+          "name": "tags",
+          "schema": "string",
+          "required": false,
+          "description": "A comma separated list of tags"
+        },
+        {
+          "name": "bpm",
+          "schema": "object",
+          "required": false,
+          "description": "Return tracks with a specified bpm[from], bpm[to]"
+        },
+        {
+          "name": "duration",
+          "schema": "object",
+          "required": false,
+          "description": "Return tracks within a specified duration range"
+        },
+        {
+          "name": "created_at",
+          "schema": "object",
+          "required": false,
+          "description": "(yyyy-mm-dd hh:mm:ss) return tracks created within the specified dates"
+        },
+        {
+          "name": "access",
+          "schema": "array",
+          "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return in the collection."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Offset of first result. Deprecated, use `linked_partitioning` instead."
+        },
+        {
+          "name": "linked_partitioning",
+          "schema": "boolean",
+          "required": false,
+          "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tracks",
+      "method": "/tracksPost",
+      "httpMethod": "post",
+      "tag": "tracks",
+      "description": "Uploads a new track.",
+      "parameters": [
+        {
+          "name": "track[artwork_data]",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "track[asset_data]",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "track[commentable]",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "track[description]",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "track[downloadable]",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "track[embeddable_by]",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "track[genre]",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "track[isrc]",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "track[label_name]",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "track[license]",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "track[permalink]",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "track[purchase_url]",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "track[release]",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "track[release_date]",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "track[sharing]",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "track[streamable]",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "track[tag_list]",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "track[title]",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Soundcloud Track object."
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tracks/{track_id}",
+      "method": "/tracks/{trackId}Delete",
+      "httpMethod": "delete",
+      "tag": "tracks",
+      "description": "Deletes a track.",
+      "parameters": [
+        {
+          "name": "track_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud Track id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tracks/{track_id}",
+      "method": "/tracks/{trackId}Get",
+      "httpMethod": "get",
+      "tag": "tracks",
+      "description": "Returns a track.",
+      "parameters": [
+        {
+          "name": "track_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud Track id"
+        },
+        {
+          "name": "secret_token",
+          "schema": "string",
+          "required": false,
+          "description": "A secret token to fetch private playlists/tracks"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Soundcloud Track object."
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tracks/{track_id}",
+      "method": "/tracks/{trackId}Put",
+      "httpMethod": "put",
+      "tag": "tracks",
+      "description": "Updates a track's information.",
+      "parameters": [
+        {
+          "name": "track_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud Track id"
+        },
+        {
+          "name": "track",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Soundcloud Track object."
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tracks/{track_id}/comments",
+      "method": "/tracks/{trackId}/commentsGet",
+      "httpMethod": "get",
+      "tag": "tracks",
+      "description": "Returns the comments posted on the track(track_id).",
+      "parameters": [
+        {
+          "name": "track_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud Track id"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return in the collection."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Offset of first result. Deprecated, use `linked_partitioning` instead."
+        },
+        {
+          "name": "linked_partitioning",
+          "schema": "boolean",
+          "required": false,
+          "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tracks/{track_id}/comments",
+      "method": "/tracks/{trackId}/commentsPost",
+      "httpMethod": "post",
+      "tag": "tracks",
+      "description": "Returns the newly created comment on success",
+      "parameters": [
+        {
+          "name": "track_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud Track id"
+        },
+        {
+          "name": "comment",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "User's Comment"
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tracks/{track_id}/favoriters",
+      "method": "/tracks/{trackId}/favoritersGet",
+      "httpMethod": "get",
+      "tag": "tracks",
+      "description": "Returns a list of users who have favorited or liked the track.",
+      "parameters": [
+        {
+          "name": "track_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud Track id"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return in the collection."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Offset of first result. Deprecated, use `linked_partitioning` instead."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tracks/{track_id}/related",
+      "method": "/tracks/{trackId}/relatedGet",
+      "httpMethod": "get",
+      "tag": "tracks",
+      "description": "Returns all related tracks of track on SoundCloud.",
+      "parameters": [
+        {
+          "name": "track_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud Track id"
+        },
+        {
+          "name": "access",
+          "schema": "array",
+          "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return in the collection."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Offset of first result. Deprecated, use `linked_partitioning` instead."
+        },
+        {
+          "name": "linked_partitioning",
+          "schema": "boolean",
+          "required": false,
+          "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tracks/{track_id}/reposters",
+      "method": "/tracks/{trackId}/repostersGet",
+      "httpMethod": "get",
+      "tag": "tracks",
+      "description": "Returns a collection of track's reposters.",
+      "parameters": [
+        {
+          "name": "track_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud Track id"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return in the collection."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tracks/{track_id}/streams",
+      "method": "/tracks/{trackId}/streamsGet",
+      "httpMethod": "get",
+      "tag": "tracks",
+      "description": "Returns a track's streamable URLs",
+      "parameters": [
+        {
+          "name": "track_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud Track id"
+        },
+        {
+          "name": "secret_token",
+          "schema": "string",
+          "required": false,
+          "description": "A secret token to fetch private playlists/tracks"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users",
+      "method": "/usersGet",
+      "httpMethod": "get",
+      "tag": "search",
+      "description": "Performs a user search based on a query",
+      "parameters": [
+        {
+          "name": "q",
+          "schema": "string",
+          "required": true,
+          "description": "search"
+        },
+        {
+          "name": "ids",
+          "schema": "string",
+          "required": false,
+          "description": "A comma separated list of track ids to filter on"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return in the collection."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Offset of first result. Deprecated, use `linked_partitioning` instead."
+        },
+        {
+          "name": "linked_partitioning",
+          "schema": "boolean",
+          "required": false,
+          "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}",
+      "method": "/users/{userId}Get",
+      "httpMethod": "get",
+      "tag": "users",
+      "description": "Returns a user.",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud User id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "SoundCloud Complete User object"
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/comments",
+      "method": "/users/{userId}/commentsGet",
+      "httpMethod": "get",
+      "tag": "users",
+      "description": "Returns a list of user's comments.",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud User id"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return in the collection."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Offset of first result. Deprecated, use `linked_partitioning` instead."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/favorites",
+      "method": "/users/{userId}/favoritesGet",
+      "httpMethod": "get",
+      "tag": "users",
+      "description": "Returns a list of user's favorited or liked tracks. (use /users/:userId/likes/tracks instead, to fetch a user's likes)",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud User id"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return in the collection."
+        },
+        {
+          "name": "linked_partitioning",
+          "schema": "boolean",
+          "required": false,
+          "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/followers",
+      "method": "/users/{userId}/followersGet",
+      "httpMethod": "get",
+      "tag": "users",
+      "description": "Returns a list of user’s followers.",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud User id"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return in the collection."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/followings",
+      "method": "/users/{userId}/followingsGet",
+      "httpMethod": "get",
+      "tag": "users",
+      "description": "Returns a list of user’s followings.",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud User id"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return in the collection."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/followings/{following_id}",
+      "method": "/users/{userId}/followings/{followingId}Get",
+      "httpMethod": "get",
+      "tag": "users",
+      "description": "Returns a user's following. (use /users/{user_id} instead, to fetch the user details)",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud User id"
+        },
+        {
+          "name": "following_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud User id to denote a Following of a user"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "SoundCloud Complete User object"
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/likes/tracks",
+      "method": "/users/{userId}/likes/tracksGet",
+      "httpMethod": "get",
+      "tag": "users",
+      "description": "Returns a list of user's liked tracks.",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud User id"
+        },
+        {
+          "name": "access",
+          "schema": "array",
+          "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return in the collection."
+        },
+        {
+          "name": "linked_partitioning",
+          "schema": "boolean",
+          "required": false,
+          "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/playlists",
+      "method": "/users/{userId}/playlistsGet",
+      "httpMethod": "get",
+      "tag": "users",
+      "description": "Returns a list of user's playlists.",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud User id"
+        },
+        {
+          "name": "access",
+          "schema": "array",
+          "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return in the collection."
+        },
+        {
+          "name": "linked_partitioning",
+          "schema": "boolean",
+          "required": false,
+          "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/tracks",
+      "method": "/users/{userId}/tracksGet",
+      "httpMethod": "get",
+      "tag": "users",
+      "description": "Returns a list of user's tracks.",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud User id"
+        },
+        {
+          "name": "access",
+          "schema": "array",
+          "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return in the collection."
+        },
+        {
+          "name": "linked_partitioning",
+          "schema": "boolean",
+          "required": false,
+          "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/web-profiles",
+      "method": "/users/{userId}/webProfilesGet",
+      "httpMethod": "get",
+      "tag": "users",
+      "description": "Returns list of user's links added to their profile (website, facebook, instagram).",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": true,
+          "description": "SoundCloud User id"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results to return in the collection."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "User's links added to their profile"
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.soundcloud.com",
   "apiTitle": "SoundCloud Public API Specification",
   "endpoints": 46,

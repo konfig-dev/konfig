@@ -4,6 +4,902 @@
   "homepage": "citrixonline.com",
   "serviceName": "gotomeeting",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/groups",
+      "method": "/groupsGet",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "Get groups",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{groupKey}/attendees",
+      "method": "/groups/{groupKey}/attendeesGet",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "Get attendees by group",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "groupKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the group"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "description": "Start of date range, in ISO8601 UTC format, e.g. 2015-07-01T22:00:00Z"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "description": "End of date range, in ISO8601 UTC format, e.g. 2015-07-01T23:00:00Z"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{groupKey}/historicalMeetings",
+      "method": "/groups/{groupKey}/historicalMeetingsGet",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "Get historical meetings by group",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "groupKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the group"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": true,
+          "description": "Required start of date range, in ISO8601 UTC format, e.g. 2015-07-01T22:00:00Z"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "required": true,
+          "description": "Required end of date range, in ISO8601 UTC format, e.g. 2015-07-01T23:00:00Z"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{groupKey}/meetings",
+      "method": "/groups/{groupKey}/meetingsGet",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "DEPRECATED: Get historical meetings by group",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "groupKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the group"
+        },
+        {
+          "name": "history",
+          "schema": "boolean",
+          "required": true,
+          "description": "When 'true', returns all past meetings within date range"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": true,
+          "description": "If history=true, required start of date range, in ISO8601 UTC format, e.g. 2015-07-01T22:00:00Z"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "required": true,
+          "description": "If history=true, required end of date range, in ISO8601 UTC format, e.g. 2015-07-01T23:00:00Z"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{groupKey}/organizers",
+      "method": "/groups/{groupKey}/organizersGet",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "Get organizers by group",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "groupKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the group"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{groupKey}/organizers",
+      "method": "/groups/{groupKey}/organizersPost",
+      "httpMethod": "post",
+      "tag": "Groups",
+      "description": "Create organizer in group",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "groupKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the group"
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "organizerEmail",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "productType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{groupKey}/upcomingMeetings",
+      "method": "/groups/{groupKey}/upcomingMeetingsGet",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "Get upcoming meetings by group",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "groupKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the group"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/historicalMeetings",
+      "method": "/historicalMeetingsGet",
+      "httpMethod": "get",
+      "tag": "Meetings",
+      "description": "Get historical meetings",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": true,
+          "description": "Required start of date range, in ISO8601 UTC format, e.g. 2015-07-01T22:00:00Z"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "required": true,
+          "description": "Required end of date range, in ISO8601 UTC format, e.g. 2015-07-01T23:00:00Z"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/meetings",
+      "method": "/meetingsGet",
+      "httpMethod": "get",
+      "tag": "Meetings",
+      "description": "DEPRECATED: Get historical meetings",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "history",
+          "schema": "boolean",
+          "description": "When 'true', returns all past meetings within date range"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "description": "If history=true, required start of date range, in ISO8601 UTC format, e.g. 2015-07-01T22:00:00Z"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "description": "If history=true, required end of date range, in ISO8601 UTC format, e.g. 2015-07-01T23:00:00Z"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/meetings",
+      "method": "/meetingsPost",
+      "httpMethod": "post",
+      "tag": "Meetings",
+      "description": "Create meeting",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "conferencecallinfo",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "endtime",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "meetingtype",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "passwordrequired",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "starttime",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "subject",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timezonekey",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/meetings/{meetingId}",
+      "method": "/meetings/{meetingId}Delete",
+      "httpMethod": "delete",
+      "tag": "Meetings",
+      "description": "Delete meeting",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "meetingId",
+          "schema": "integer",
+          "required": true,
+          "description": "The meeting ID"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/meetings/{meetingId}",
+      "method": "/meetings/{meetingId}Get",
+      "httpMethod": "get",
+      "tag": "Meetings",
+      "description": "Get meeting",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "meetingId",
+          "schema": "integer",
+          "required": true,
+          "description": "The meeting ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/meetings/{meetingId}",
+      "method": "/meetings/{meetingId}Put",
+      "httpMethod": "put",
+      "tag": "Meetings",
+      "description": "Update meeting",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "meetingId",
+          "schema": "integer",
+          "required": true,
+          "description": "The meeting ID"
+        },
+        {
+          "name": "conferencecallinfo",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "endtime",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "meetingtype",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "passwordrequired",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "starttime",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "subject",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timezonekey",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/meetings/{meetingId}/attendees",
+      "method": "/meetings/{meetingId}/attendeesGet",
+      "httpMethod": "get",
+      "tag": "Meetings",
+      "description": "Get attendees by meeting",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "meetingId",
+          "schema": "integer",
+          "required": true,
+          "description": "The meeting ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/meetings/{meetingId}/start",
+      "method": "/meetings/{meetingId}/startGet",
+      "httpMethod": "get",
+      "tag": "Meetings",
+      "description": "Start meeting",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "meetingId",
+          "schema": "integer",
+          "required": true,
+          "description": "The meeting ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Host URL that can be used to start a meeting"
+        }
+      ]
+    },
+    {
+      "url": "/organizers",
+      "method": "/organizersDelete",
+      "httpMethod": "delete",
+      "tag": "Organizers",
+      "description": "Delete organizer by email",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": "The email address of the organizer"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/organizers",
+      "method": "/organizersGet",
+      "httpMethod": "get",
+      "tag": "Organizers",
+      "description": "Get organizer by email / Get all organizers",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": false,
+          "description": "The email address of the organizer"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers",
+      "method": "/organizersPost",
+      "httpMethod": "post",
+      "tag": "Organizers",
+      "description": "Create organizer",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "organizerEmail",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "productType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}",
+      "method": "/organizers/{organizerKey}Delete",
+      "httpMethod": "delete",
+      "tag": "Organizers",
+      "description": "Delete organizer",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/organizers/{organizerKey}",
+      "method": "/organizers/{organizerKey}Get",
+      "httpMethod": "get",
+      "tag": "Organizers",
+      "description": "Get organizer",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}",
+      "method": "/organizers/{organizerKey}Put",
+      "httpMethod": "put",
+      "tag": "Organizers",
+      "description": "Update organizer",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "productType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/organizers/{organizerKey}/attendees",
+      "method": "/organizers/{organizerKey}/attendeesGet",
+      "httpMethod": "get",
+      "tag": "Organizers",
+      "description": "Get attendees by organizer",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": true,
+          "description": "A required start of date range in ISO8601 UTC format, e.g. 2015-07-01T22:00:00Z"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "required": true,
+          "description": "A required end of date range in ISO8601 UTC format, e.g. 2015-07-01T23:00:00Z"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/historicalMeetings",
+      "method": "/organizers/{organizerKey}/historicalMeetingsGet",
+      "httpMethod": "get",
+      "tag": "Organizers",
+      "description": "Get historical meetings by organizer",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": true,
+          "description": "Required start of date range, in ISO8601 UTC format, e.g. 2015-07-01T22:00:00Z"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "required": true,
+          "description": "Required end of date range, in ISO8601 UTC format, e.g. 2015-07-01T23:00:00Z"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/meetings",
+      "method": "/organizers/{organizerKey}/meetingsGet",
+      "httpMethod": "get",
+      "tag": "Organizers",
+      "description": "DEPRECATED: Get meetings by organizer",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "scheduled",
+          "schema": "boolean",
+          "description": "When 'true', returns all future meetings. Date range not supported."
+        },
+        {
+          "name": "history",
+          "schema": "boolean",
+          "description": "When 'true', returns all past meetings within date range"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "description": "If history is 'true', required start of date range, in ISO8601 UTC format, e.g. 2015-07-01T22:00:00Z"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "description": "If history is 'true', required end of date range, in ISO8601 UTC format, e.g. 2015-07-01T23:00:00Z"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/upcomingMeetings",
+      "method": "/organizers/{organizerKey}/upcomingMeetingsGet",
+      "httpMethod": "get",
+      "tag": "Organizers",
+      "description": "Get upcoming meetings by organizer",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/upcomingMeetings",
+      "method": "/upcomingMeetingsGet",
+      "httpMethod": "get",
+      "tag": "Meetings",
+      "description": "Get upcoming meetings",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.citrixonline.com/G2M/rest",
   "apiDescription": "<br>The GoToMeeting API provides seamless integration of GoToMeeting provisioning and meeting management into your existing infrastructure or third party applications.<br><br>For customers, the ability to add, suspend or delete an organizer in your GoToMeeting Corporate account from within your primary management systems simplifies and streamlines the entire process of account management. The ability to monitor meeting schedules, history and active meeting status allows managers to leverage GoToMeeting activities through your primary applications.<br><br>For third parties, the ability to create, update or delete a meeting from within your application makes real-time collaboration possible for your customers. The ability to update meeting schedules, view history and scheduled meetings, and view attendees from past meetings allows you to enhance your users' experience and the value of your applications.",
   "apiTitle": "GoToMeeting",

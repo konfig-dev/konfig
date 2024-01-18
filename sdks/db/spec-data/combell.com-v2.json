@@ -3,6 +3,2399 @@
   "openApiRaw": "https://api.combell.com/v2/documentation/swagger-v2.json",
   "homepage": "combell.com",
   "apiVersion": "v2",
+  "methods": [
+    {
+      "url": "/accounts",
+      "method": "getAccounts",
+      "httpMethod": "get",
+      "tag": "Accounts",
+      "description": "Overview of accounts",
+      "parameters": [
+        {
+          "name": "skip",
+          "schema": "integer",
+          "description": "The number of items to skip in the resultset."
+        },
+        {
+          "name": "take",
+          "schema": "integer",
+          "description": "The number of items to return in the resultset. The returned count can be equal or less than this number."
+        },
+        {
+          "name": "asset_type",
+          "schema": "string",
+          "description": "Filters the list, returning only accounts containing the specified asset type."
+        },
+        {
+          "name": "identifier",
+          "schema": "string",
+          "description": "Return only accounts, matching the specified identifier."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/accounts",
+      "method": "createAccount",
+      "httpMethod": "post",
+      "tag": "Accounts",
+      "description": "Create a new account",
+      "parameters": [
+        {
+          "name": "ftp_password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "identifier",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "servicepack_id",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{accountId}",
+      "method": "getAccount",
+      "httpMethod": "get",
+      "tag": "Accounts",
+      "description": "Get a specific account",
+      "parameters": [
+        {
+          "name": "account_id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the account."
+        },
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A detailed representation of an account."
+        }
+      ]
+    },
+    {
+      "url": "/dns/{domainName}/records",
+      "method": "/dns/{domainName}/recordsGet",
+      "httpMethod": "get",
+      "tag": "DNS records",
+      "description": "Get records",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "The domain name."
+        },
+        {
+          "name": "skip",
+          "schema": "integer",
+          "description": "The number of items to skip in the resultset."
+        },
+        {
+          "name": "take",
+          "schema": "integer",
+          "description": "The number of items to return in the resultset. The returned count can be equal or less than this number."
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": "Filters records matching the type. Most other filters only apply when this filter is specified."
+        },
+        {
+          "name": "record_name",
+          "schema": "string",
+          "description": "Filters records matching the record name. This filter only applies to lookups of A, CNAME, TXT, CAA, ALIAS and TLSA records."
+        },
+        {
+          "name": "service",
+          "schema": "string",
+          "description": "Filters records for the service. This filter only applies to lookups of SRV records."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dns/{domainName}/records",
+      "method": "/dns/{domainName}/recordsPost",
+      "httpMethod": "post",
+      "tag": "DNS records",
+      "description": "Create a record",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "The domain name."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "content",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "port",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "priority",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "protocol",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "record_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "service",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "target",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ttl",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "weight",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/dns/{domainName}/records/{recordId}",
+      "method": "/dns/{domainName}/records/{recordId}Delete",
+      "httpMethod": "delete",
+      "tag": "DNS records",
+      "description": "Delete a record",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "The domain name."
+        },
+        {
+          "name": "record_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the record."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "recordId",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/dns/{domainName}/records/{recordId}",
+      "method": "/dns/{domainName}/records/{recordId}Get",
+      "httpMethod": "get",
+      "tag": "DNS records",
+      "description": "Get specific record",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "The domain name."
+        },
+        {
+          "name": "record_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the record."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "recordId",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dns/{domainName}/records/{recordId}",
+      "method": "/dns/{domainName}/records/{recordId}Put",
+      "httpMethod": "put",
+      "tag": "DNS records",
+      "description": "Edit a record",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "The domain name."
+        },
+        {
+          "name": "record_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the record."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "recordId",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "content",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "port",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "priority",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "protocol",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "record_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "service",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "target",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ttl",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "weight",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/domains",
+      "method": "getDomains",
+      "httpMethod": "get",
+      "tag": "Domains",
+      "description": "Overviews of domains",
+      "parameters": [
+        {
+          "name": "skip",
+          "schema": "integer",
+          "description": "The number of items to skip in the resultset."
+        },
+        {
+          "name": "take",
+          "schema": "integer",
+          "description": "The number of items to return in the resultset. The returned count can be equal or less than this number."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/domains/registrations",
+      "method": "register",
+      "httpMethod": "post",
+      "tag": "Domains",
+      "description": "Register a domain",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name_servers",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "registrant",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/domains/transfers",
+      "method": "transfer",
+      "httpMethod": "post",
+      "tag": "Domains",
+      "description": "Transfer a domain",
+      "parameters": [
+        {
+          "name": "auth_code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name_servers",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "registrant",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/domains/{domainName}",
+      "method": "getDomain",
+      "httpMethod": "get",
+      "tag": "Domains",
+      "description": "Details of a domain",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "The domain name"
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/domains/{domainName}/nameservers",
+      "method": "editNameServers",
+      "httpMethod": "put",
+      "tag": "Domains",
+      "description": "Edit domain name servers",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "The domain name"
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name_servers",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/domains/{domainName}/renew",
+      "method": "configureDomain",
+      "httpMethod": "put",
+      "tag": "Domains",
+      "description": "Edit domain name renew state",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "The domain name"
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "will_renew",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/linuxhostings",
+      "method": "getLinuxHostings",
+      "httpMethod": "get",
+      "tag": "Linux hostings",
+      "description": "Overview of linux hostings",
+      "parameters": [
+        {
+          "name": "skip",
+          "schema": "integer",
+          "description": "The number of items to skip in the resultset."
+        },
+        {
+          "name": "take",
+          "schema": "integer",
+          "description": "The number of items to return in the resultset. The returned count can be equal or less than this number."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/linuxhostings/{domainName}",
+      "method": "getLinuxHosting",
+      "httpMethod": "get",
+      "tag": "Linux hostings",
+      "description": "Linux hosting detail",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "The Linux hosting domain name."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/linuxhostings/{domainName}/ftp/configuration",
+      "method": "configureFtp",
+      "httpMethod": "put",
+      "tag": "Linux hostings",
+      "description": "Configure FTP",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Linux hosting domain name."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/linuxhostings/{domainName}/phpsettings/apcu",
+      "method": "changeApcu",
+      "httpMethod": "put",
+      "tag": "Linux hostings",
+      "description": "Configure PHP APCu setting",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Linux hosting domain name"
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "apcu_size",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/linuxhostings/{domainName}/phpsettings/availableversions",
+      "method": "getAvailablePhpVersions",
+      "httpMethod": "get",
+      "tag": "Linux hostings",
+      "description": "Get the available PHP versions.",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Linux hosting domain name."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/linuxhostings/{domainName}/phpsettings/memorylimit",
+      "method": "changePhpMemoryLimit",
+      "httpMethod": "put",
+      "tag": "Linux hostings",
+      "description": "Configure PHP memory limit",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Linux hosting domain name."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "memory_limit",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/linuxhostings/{domainName}/phpsettings/version",
+      "method": "changePhpVersion",
+      "httpMethod": "put",
+      "tag": "Linux hostings",
+      "description": "Change the Linux hosting PHP version.",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Linux hosting domain name."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/linuxhostings/{domainName}/scheduledtasks",
+      "method": "getScheduledTasks",
+      "httpMethod": "get",
+      "tag": "Linux hostings",
+      "description": "Overview of scheduled tasks",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Linux hosting domain name."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/linuxhostings/{domainName}/scheduledtasks",
+      "method": "addScheduledTasks",
+      "httpMethod": "post",
+      "tag": "Linux hostings",
+      "description": "Add a scheduled task",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Linux hosting domain name."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "cron_expression",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "script_location",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/linuxhostings/{domainName}/scheduledtasks/{scheduledTaskId}",
+      "method": "deleteScheduledTask",
+      "httpMethod": "delete",
+      "tag": "Linux hostings",
+      "description": "Delete a scheduled task",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Linux hosting domain name."
+        },
+        {
+          "name": "scheduled_task_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the scheduled task."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "scheduledTaskId",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/linuxhostings/{domainName}/scheduledtasks/{scheduledTaskId}",
+      "method": "getScheduledTask",
+      "httpMethod": "get",
+      "tag": "Linux hostings",
+      "description": "Get scheduled task detail",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Linux hosting domain name."
+        },
+        {
+          "name": "scheduled_task_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the scheduled task."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "scheduledTaskId",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/linuxhostings/{domainName}/scheduledtasks/{scheduledTaskId}",
+      "method": "configureScheduledTask",
+      "httpMethod": "put",
+      "tag": "Linux hostings",
+      "description": "Configure a scheduled task",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Linux hosting domain name."
+        },
+        {
+          "name": "scheduled_task_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the scheduled task."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "scheduledTaskId",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "cron_expression",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "script_location",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/linuxhostings/{domainName}/settings/gzipcompression",
+      "method": "changeGzipCompression",
+      "httpMethod": "put",
+      "tag": "Linux hostings",
+      "description": "Enable/disable GZIP compression",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Linux hosting domain name"
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/linuxhostings/{domainName}/sites/{siteName}/hostheaders",
+      "method": "createHostHeader",
+      "httpMethod": "post",
+      "tag": "Linux hostings",
+      "description": "Create a host header",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Linux hosting domain name."
+        },
+        {
+          "name": "site_name",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the site on the linux hosting."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "siteName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/linuxhostings/{domainName}/sites/{siteName}/http2/configuration",
+      "method": "configureHttp2",
+      "httpMethod": "put",
+      "tag": "Linux hostings",
+      "description": "Configure HTTP/2",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Linux hosting domain name."
+        },
+        {
+          "name": "site_name",
+          "schema": "string",
+          "required": true,
+          "description": "Site name where HTTP/2 should be configured.<br />\r\nFor HTTP/2 to work correctly, the site must have ssl enabled."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "siteName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/linuxhostings/{domainName}/ssh/configuration",
+      "method": "configureSsh",
+      "httpMethod": "put",
+      "tag": "Linux hostings",
+      "description": "Configure SSH",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Linux hosting domain name."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/linuxhostings/{domainName}/ssh/keys",
+      "method": "getSshKeys",
+      "httpMethod": "get",
+      "tag": "Linux hostings",
+      "description": "Overview of SSH keys",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Linux hosting domain name."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/linuxhostings/{domainName}/ssh/keys",
+      "method": "addSshKey",
+      "httpMethod": "post",
+      "tag": "Linux hostings",
+      "description": "Add a SSH key",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Linux hosting domain name."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "public_key",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/linuxhostings/{domainName}/ssh/keys/{fingerprint}",
+      "method": "deleteSshKey",
+      "httpMethod": "delete",
+      "tag": "Linux hostings",
+      "description": "Delete a SSH key",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Linux hosting domain name."
+        },
+        {
+          "name": "fingerprint",
+          "schema": "string",
+          "required": true,
+          "description": "Fingerprint of public key."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/linuxhostings/{domainName}/sslsettings/{hostname}/autoredirect",
+      "method": "changeAutoRedirect",
+      "httpMethod": "put",
+      "tag": "Linux hostings",
+      "description": "Configure auto redirect",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Linux hosting domain name."
+        },
+        {
+          "name": "hostname",
+          "schema": "string",
+          "required": true,
+          "description": "Specific hostname."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/linuxhostings/{domainName}/sslsettings/{hostname}/letsencrypt",
+      "method": "changeLetsEncrypt",
+      "httpMethod": "put",
+      "tag": "Linux hostings",
+      "description": "Configure let's encrypt",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Linux hosting domain name."
+        },
+        {
+          "name": "hostname",
+          "schema": "string",
+          "required": true,
+          "description": "Specific hostname."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/linuxhostings/{domainName}/subsites",
+      "method": "createSubsite",
+      "httpMethod": "post",
+      "tag": "Linux hostings",
+      "description": "Create a subsite",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Linux hosting domain name."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "path",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/linuxhostings/{domainName}/subsites/{siteName}",
+      "method": "deleteSubsite",
+      "httpMethod": "delete",
+      "tag": "Linux hostings",
+      "description": "Delete a subsite",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Linux hosting domain name."
+        },
+        {
+          "name": "site_name",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the site on the linux hosting."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "siteName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/mailboxes",
+      "method": "getMailboxes",
+      "httpMethod": "get",
+      "tag": "Mailboxes",
+      "description": "Gets your mailboxes.",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "description": "Obligated domain name for getting mailboxes."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mailboxes",
+      "method": "createMailbox",
+      "httpMethod": "post",
+      "tag": "Mailboxes",
+      "description": "Create a new mailbox.",
+      "parameters": [
+        {
+          "name": "account_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "email_address",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/mailboxes/{mailboxName}",
+      "method": "deleteMailbox",
+      "httpMethod": "delete",
+      "tag": "Mailboxes",
+      "description": "Delete a mailbox",
+      "parameters": [
+        {
+          "name": "mailbox_name",
+          "schema": "string",
+          "required": true,
+          "description": "Mailbox name."
+        },
+        {
+          "name": "mailboxName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/mailboxes/{mailboxName}",
+      "method": "getMailbox",
+      "httpMethod": "get",
+      "tag": "Mailboxes",
+      "description": "Get a specific mailbox",
+      "parameters": [
+        {
+          "name": "mailbox_name",
+          "schema": "string",
+          "required": true,
+          "description": "Mailbox name."
+        },
+        {
+          "name": "mailboxName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mailboxes/{mailboxName}/autoforward",
+      "method": "configureMailboxAutoForward",
+      "httpMethod": "put",
+      "tag": "Mailboxes",
+      "description": "Configure auto-forward for mailbox",
+      "parameters": [
+        {
+          "name": "mailbox_name",
+          "schema": "string",
+          "required": true,
+          "description": "Mailbox name."
+        },
+        {
+          "name": "mailboxName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "copy_to_myself",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "email_addresses",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/mailboxes/{mailboxName}/autoreply",
+      "method": "configureMailboxAutoReply",
+      "httpMethod": "put",
+      "tag": "Mailboxes",
+      "description": "Configure auto-reply for mailbox",
+      "parameters": [
+        {
+          "name": "mailbox_name",
+          "schema": "string",
+          "required": true,
+          "description": "Mailbox name."
+        },
+        {
+          "name": "mailboxName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "subject",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/mailboxes/{mailboxName}/password",
+      "method": "changeMailboxPassword",
+      "httpMethod": "put",
+      "tag": "Mailboxes",
+      "description": "Change password for mailbox",
+      "parameters": [
+        {
+          "name": "mailbox_name",
+          "schema": "string",
+          "required": true,
+          "description": "Mailbox name."
+        },
+        {
+          "name": "mailboxName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/mailzones/{domainName}",
+      "method": "getMailZone",
+      "httpMethod": "get",
+      "tag": "Mail zones",
+      "description": "Get the mail zone.",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Mail zone domain name."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mailzones/{domainName}/aliases",
+      "method": "createAlias",
+      "httpMethod": "post",
+      "tag": "Mail zones",
+      "description": "Create a new alias",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Mail zone domain name."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "destinations",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "email_address",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mailzones/{domainName}/aliases/{emailAddress}",
+      "method": "deleteAlias",
+      "httpMethod": "delete",
+      "tag": "Mail zones",
+      "description": "Delete a alias",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Mail zone domain name."
+        },
+        {
+          "name": "email_address",
+          "schema": "string",
+          "required": true,
+          "description": "Alias e-mail address."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "emailAddress",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/mailzones/{domainName}/aliases/{emailAddress}",
+      "method": "configureAlias",
+      "httpMethod": "put",
+      "tag": "Mail zones",
+      "description": "Configure a alias",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Mail zone domain name."
+        },
+        {
+          "name": "email_address",
+          "schema": "string",
+          "required": true,
+          "description": "Alias e-mail address."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "emailAddress",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "destinations",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mailzones/{domainName}/antispam",
+      "method": "configureAntiSpam",
+      "httpMethod": "put",
+      "tag": "Mail zones",
+      "description": "Configure anti-spam for mail zone",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Mail zone domain name."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/mailzones/{domainName}/catchall",
+      "method": "createCatchAll",
+      "httpMethod": "post",
+      "tag": "Mail zones",
+      "description": "Create a catch-all on the mail zone",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Mail zone domain name."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "email_address",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/mailzones/{domainName}/catchall/{emailAddress}",
+      "method": "deleteCatchAll",
+      "httpMethod": "delete",
+      "tag": "Mail zones",
+      "description": "Delete a catch-all on the mail zone",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Mail zone domain name."
+        },
+        {
+          "name": "email_address",
+          "schema": "string",
+          "required": true,
+          "description": "E-mail address to which all e-mails are sent to inexistent mailboxes or aliases."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "emailAddress",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/mailzones/{domainName}/smtpdomains",
+      "method": "createSmtpDomain",
+      "httpMethod": "post",
+      "tag": "Mail zones",
+      "description": "Create an extra smtp domain",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Mail zone domain name."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "hostname",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mailzones/{domainName}/smtpdomains/{hostname}",
+      "method": "deleteSmtpDomain",
+      "httpMethod": "delete",
+      "tag": "Mail zones",
+      "description": "Delete an extra smtp domain",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Mail zone domain name."
+        },
+        {
+          "name": "hostname",
+          "schema": "string",
+          "required": true,
+          "description": "Smtp domain name."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/mailzones/{domainName}/smtpdomains/{hostname}",
+      "method": "configureSmtpDomain",
+      "httpMethod": "put",
+      "tag": "Mail zones",
+      "description": "Configure an extra smtp domain",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "Mail zone domain name."
+        },
+        {
+          "name": "hostname",
+          "schema": "string",
+          "required": true,
+          "description": "Smtp domain name."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mysqldatabases",
+      "method": "getMySqlDatabases",
+      "httpMethod": "get",
+      "tag": "MySql databases",
+      "description": "Overview of mysql databases",
+      "parameters": [
+        {
+          "name": "skip",
+          "schema": "integer",
+          "description": "The number of items to skip in the resultset."
+        },
+        {
+          "name": "take",
+          "schema": "integer",
+          "description": "The number of items to return in the resultset. The returned count can be equal or less than this number."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mysqldatabases",
+      "method": "createMySqlDatabase",
+      "httpMethod": "post",
+      "tag": "MySql databases",
+      "description": "Create a new mysql database",
+      "parameters": [
+        {
+          "name": "account_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "database_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mysqldatabases/{databaseName}",
+      "method": "deleteDatabase",
+      "httpMethod": "delete",
+      "tag": "MySql databases",
+      "description": "Delete a mysql database",
+      "parameters": [
+        {
+          "name": "database_name",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the database."
+        },
+        {
+          "name": "databaseName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/mysqldatabases/{databaseName}",
+      "method": "getMySqlDatabase",
+      "httpMethod": "get",
+      "tag": "MySql databases",
+      "description": "Get a specific database",
+      "parameters": [
+        {
+          "name": "database_name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "databaseName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mysqldatabases/{databaseName}/users",
+      "method": "getDatabaseUsers",
+      "httpMethod": "get",
+      "tag": "MySql databases",
+      "description": "Overview of mysql users",
+      "parameters": [
+        {
+          "name": "database_name",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the database."
+        },
+        {
+          "name": "databaseName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mysqldatabases/{databaseName}/users",
+      "method": "createMySqlUser",
+      "httpMethod": "post",
+      "tag": "MySql databases",
+      "description": "Create a new mysql user",
+      "parameters": [
+        {
+          "name": "database_name",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the database."
+        },
+        {
+          "name": "databaseName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/mysqldatabases/{databaseName}/users/{userName}",
+      "method": "deleteDatabaseUser",
+      "httpMethod": "delete",
+      "tag": "MySql databases",
+      "description": "Delete a mysql user",
+      "parameters": [
+        {
+          "name": "database_name",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the database."
+        },
+        {
+          "name": "user_name",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the user."
+        },
+        {
+          "name": "databaseName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "userName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/mysqldatabases/{databaseName}/users/{userName}/password",
+      "method": "changeDatabaseUserPassword",
+      "httpMethod": "put",
+      "tag": "MySql databases",
+      "description": "Change password for mysql user",
+      "parameters": [
+        {
+          "name": "database_name",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the database."
+        },
+        {
+          "name": "user_name",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the user."
+        },
+        {
+          "name": "databaseName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "userName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/mysqldatabases/{databaseName}/users/{userName}/status",
+      "method": "changeDatabaseUserStatus",
+      "httpMethod": "put",
+      "tag": "MySql databases",
+      "description": "Enable/disable mysql user",
+      "parameters": [
+        {
+          "name": "database_name",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the database."
+        },
+        {
+          "name": "user_name",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the user."
+        },
+        {
+          "name": "databaseName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "userName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/provisioningjobs/{jobId}",
+      "method": "/provisioningjobs/{jobId}Get",
+      "httpMethod": "get",
+      "tag": "Provisioning jobs",
+      "description": "Detail of a provisioning job",
+      "parameters": [
+        {
+          "name": "job_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "jobId",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/servicepacks",
+      "method": "servicepacks",
+      "httpMethod": "get",
+      "tag": "Servicepacks",
+      "description": "Overview of service packs",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ssh",
+      "method": "getAllSshKeys",
+      "httpMethod": "get",
+      "tag": "SSH",
+      "description": "Overview of SSH keys",
+      "parameters": [
+        {
+          "name": "skip",
+          "schema": "integer",
+          "description": "The number of items to skip in the resultset."
+        },
+        {
+          "name": "take",
+          "schema": "integer",
+          "description": "The number of items to return in the resultset. The returned count can be equal or less than this number."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sslcertificaterequests",
+      "method": "getSslCertificateRequests",
+      "httpMethod": "get",
+      "tag": "SSL certificate requests",
+      "description": "Overview of SSL certificate requests",
+      "parameters": [
+        {
+          "name": "skip",
+          "schema": "integer",
+          "description": "The number of items to skip in the resultset."
+        },
+        {
+          "name": "take",
+          "schema": "integer",
+          "description": "The number of items to return in the resultset. The returned count can be equal or less than this number."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sslcertificaterequests",
+      "method": "addSslCertificateRequest",
+      "httpMethod": "post",
+      "tag": "SSL certificate requests",
+      "description": "Add a SSL certificate request",
+      "parameters": [
+        {
+          "name": "additional_validation_attributes",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "certificate_type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "csr",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "validation_level",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/sslcertificaterequests/{id}",
+      "method": "getSslCertificateRequest",
+      "httpMethod": "get",
+      "tag": "SSL certificate requests",
+      "description": "Detail of a SSL certificate request",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the certificate request."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sslcertificaterequests/{id}",
+      "method": "verifySslCertificateRequestDomainValidations",
+      "httpMethod": "put",
+      "tag": "SSL certificate requests",
+      "description": "Verify the SSL certificate request domain validations",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the certificate request."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/sslcertificates",
+      "method": "getSslCertificates",
+      "httpMethod": "get",
+      "tag": "SSL certificates",
+      "description": "Overview of SSL certificates",
+      "parameters": [
+        {
+          "name": "skip",
+          "schema": "integer",
+          "description": "The number of items to skip in the resultset."
+        },
+        {
+          "name": "take",
+          "schema": "integer",
+          "description": "The number of items to return in the resultset. The returned count can be equal or less than this number."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sslcertificates/{sha1Fingerprint}",
+      "method": "getSslCertificate",
+      "httpMethod": "get",
+      "tag": "SSL certificates",
+      "description": "Detail of a SSL certificate",
+      "parameters": [
+        {
+          "name": "sha1_fingerprint",
+          "schema": "string",
+          "required": true,
+          "description": "The SHA-1 fingerprint of the certificate."
+        },
+        {
+          "name": "sha1Fingerprint",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sslcertificates/{sha1Fingerprint}/download",
+      "method": "downloadCertificate",
+      "httpMethod": "get",
+      "tag": "SSL certificates",
+      "description": "Download a SSL certificate",
+      "parameters": [
+        {
+          "name": "sha1_fingerprint",
+          "schema": "string",
+          "required": true,
+          "description": "The SHA-1 fingerprint of the certificate."
+        },
+        {
+          "name": "file_format",
+          "schema": "string",
+          "required": true,
+          "description": "The file format of the returned file stream:\r\n<ul><li>PFX: Also known as PKCS #12, is a single, password protected certificate archive that contains the entire certificate chain plus the matching private key.</li></ul>"
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": "The password used to protect the certificate file.<br />"
+        },
+        {
+          "name": "sha1Fingerprint",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/windowshostings",
+      "method": "getWindowsHostings",
+      "httpMethod": "get",
+      "tag": "Windows hostings",
+      "description": "Overview of windows hostings",
+      "parameters": [
+        {
+          "name": "skip",
+          "schema": "integer",
+          "description": "The number of items to skip in the resultset."
+        },
+        {
+          "name": "take",
+          "schema": "integer",
+          "description": "The number of items to return in the resultset. The returned count can be equal or less than this number."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/windowshostings/{domainName}",
+      "method": "getWindowsHosting",
+      "httpMethod": "get",
+      "tag": "Windows hostings",
+      "description": "Windows hosting detail",
+      "parameters": [
+        {
+          "name": "domain_name",
+          "schema": "string",
+          "required": true,
+          "description": "The Windows hosting domain name."
+        },
+        {
+          "name": "domainName",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "/v2",
   "apiDescription": "# Introduction\n\nThis API allows resellers to manage their resources in a simple, programmatic way using HTTP requests.\n\n# Conventions\n\n## Requests\n\nThe API supports different methods depending on the required action.\n\n| Method\t| Description\n| ---\t\t| ---\n| GET\t\t| Retrieve resources in a collection or get a single resource.<br/>Getters will never have any effect on the queried resources.\n| POST\t\t| Create a new resource in a collection.\n| PUT\t\t| Update an existing resource with its new representation.\n| DELETE\t| Delete an existing resource.\n\n## HTTP status codes\n\nThe API will reply with different HTTP statuscodes:\n\n| StatusCode\t\t\t\t| Description\n| ---\t\t\t\t\t\t| ---\n| 200 OK\t\t\t\t\t| The requests was processed and you receive data as a result.\n| 201 CREATED\t\t\t\t| The resource has been created. Either the Location header contains a link to the created resource, or links are being returned in the response body. The applied method will be indicated in the documentation.\n| 202 ACCEPTED\t\t\t\t| The request has been validated and accepted. Because we need to do some background processing prior to returning the result, we cannot send back a useful representation.\n| 204 NOCONTENT\t\t\t\t| The request has been processed, but no details can be returned.\n| 400 BADREQUEST\t\t\t| Your request is malformed.\n| 401 UNAUTHORIZED\t\t\t| You are not authorized. Follow the instructions in the Authorization documentation.\n| 403 FORBIDDEN\t\t\t\t| Access to the resource or operation is not allowed.\n| 404 NOTFOUND\t\t\t\t| The resource cannot be found.\n| 410 GONE                  | The resource is permanently no longer available.\n| 429 TOOMANYREQUESTS\t\t| The ratelimit has been exceeded. Please refer to the documentation on rate limiting for more details.\n| 500 INTERNALSERVERERROR\t| An error occurred during the processing of the request. The error is unexpected and most likely due to a bug in the api.\n\nIn the event of a problem, the body of the response will usually contain an errorcode and errormessage.\nIn rare cases additional details about the error are reported.\n\nErrorcodes 400-499 are considered to be client errors and indicate that there was an issue with the request.\nWe will not take any action besides monitoring. \n\nErrorcodes 500-599 are considered to be server errors. The errors are monitored AND action will be taken to resolve the error.\n\n## Formatting\n\nSnake casing is applied on resources and query parameters.\nThe API is strictly returning JSON. No other formats are supported.\n\nDatetimes are returned in ISO-8601 format.\n\n## Pagination\n\nPagination is on by default on collections and is controlled by specifying *skip* and *take* parameters.  \n**Skip** indicates the number of results to skip and where to start the new take.  \n**Take** indicates the number of records to return. The returned number of items can be smaller than the requested take.\n\nPaged results will have headers with useful information regarding the paging.\n\n| Header\t\t\t\t| Description\n| ---\t\t\t\t\t| ---\n| X-Paging-Skipped\t\t| The number of results that have been skipped.\n| X-Paging-Take\t\t\t| The number of items in the current take. The number might differ from the requested take. It represents the actual number of items returned in the response.\n| X-Paging-TotalResults | The total number of results regardless of paging.\n\n## Rate limiting\n\nThe number of requests per interval is limited. Detailed information on the rate limiting can be found in specific headers which will be sent on each request.\n\n| Header\t\t\t\t| Description\n| ---\t\t\t\t\t| ---\n| X-RateLimit-Limit\t\t| The number of requests that can be made in a specific time interval.\n| X-RateLimit-Usage\t\t| The number of requests already made in the current time interval.\n| X-RateLimit-Remaining\t| The number of requests remaining until the reset.\n| X-RateLimit-Reset\t\t| The number of seconds until the reset.<br />After the reset you are allowed to make as many requests as specified by the X-RateLimit-Limit header.\n| Retry-After\t\t\t| The number of seconds you have to wait until you can make new requests.<br />This header is only present when the rate limit has been reached. It is identical to X-RateLimit-Reset.\n\nWhen the ratelimit has been reached, all requests will return with a HTTP statuscode 429 and ReasonPhrase '*Too many requests, retry later.*'.\n\n# Authentication\n\nThe Api uses HMAC authentication.  \nHash-based message authentication code (HMAC) is a mechanism for calculating a message authentication code involving a hash function in combination with a secret key.  \nBoth the integrity and the authenticity of the message are verified this way.\n\n## Steps to generate the HMAC\n\n1. Get your api key and secret from your controlpanel.  \nIt is absolutely vital that the secret is never exposed. Once the secret is out, anyone would be able to generate hmacs to impersonate you.  \nIn case your secret is compromised, you can generate a new api key and secret on your controlpanel.\n2. Construct the input value for generating the hmac.  \nConcatenate:apikey, request method, path and querystring information, unix timestamp, nonce and content.\n\n|\t\t\t\t\t\t\t\t\t\t| Description\n| ---\t\t\t\t\t\t\t\t\t| ---\n| apikey\t\t\t\t\t\t\t\t| The key that is linked to your user.\n| request method\t\t\t\t\t\t| lowercased (eg: get, post, delete,...)\n| path and querystring information\t\t| urlencoding of the lowercased relative path and querystring.<br />The path **MUST start with the api version (/v2)**.<br />The hexadecimal codes (percent encoding) MUST be uppercased.\n| unix timestamp\t\t\t\t\t\t| the unix timestamp in **seconds**.\n| nonce\t\t\t\t\t\t\t\t\t| a\tunique string for each request. It should be a random string, not related to the request. The nonce (in combination with the unix timestamp) protects you from replay attacks in case anyone was able to intercept a request.\n| content\t\t\t\t\t\t\t\t| When the request body is not empty, this should be the Base64 encoded Md5 hash of the request body.<br />An empty body should not be encoded.\n\n3. Hash the concatenated string using your api secret and the SHA-256 algorithm.\n4. Base64 encode the result of the hash function. This is the hmac signature you will need to send an authorized request.\n\n## Sending an authorized request\n\nAn authorized request can be made by sending the generated HMAC in the authorization header.  \nA correct authorizationheader uses the hmac authorization scheme and a correctly formatted authorization parameter.\n\nCreate the authorization parameter by concatenating:\n  * apikey\n  * colon ':'\n  * generated HMAC signature (see above)\n  * colon ':'\n  * nonce (the one used to generate the signature)\n  * colon ':'\n  * unix timestamp (the one used to generate the signature)\n\nA sample (illustrated):\n\n* The first line is the string you create to feed to the hashing algorithm.\n* The second line is the authorization header that should be sent in the request.\n\n![hmac authorization header illustrated](/v2/images/authentication_illustration.jpg \"authorization header illustrated\")\n\n## IP whitelisting\n\nAccess is by default restricted for all IP addresses. You need to explicitly whitelist an IP or an IP range in your controlpanel.\n\n# Versioning\n\nBecause of breaking contract changes compared to v1, we released v2 of the API.  \nV1 will still be available, but you are strongly encouraged to migrate to the latest version.  \nNew features will only be available on v2.\n\n# Policy\n\n### Fair use policy\n\nPlease respect the rate limits and do not use the api for any purposes of abuse.  \nAll requests are being monitored and logged.  \nIntentional abuse might result in api key revocation.\n\n# Errors\n\nThe API attempts to return appropriate HTTP status codes for every request.  \nWhen the status code indicates failure, the API will also provide an error message in most cases.\n\nAn error message contains a machine-parseable error code accompanied by a descriptive error text.  \nThe text for an error message might change over time, but codes will stay the same.\n\n[An overview of error codes can be found here](/v2/documentation/errorcodes).\n\n# Change log\n\n[An overview of new changes can be found here](/v2/documentation/changelog).\n\n# Provisioning information\n\n## Terminology\n\n| Term\t\t\t| Definition\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n| ---\t\t\t| ---\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n| Servicepack\t| Defines a set of assets that belong together. An example is a hosting package which offers Linux hosting, a domain name, a couple of mailboxes and databases.<br/>It also limits the size of individual assets within the same account. |\n| Account\t\t| Represents an instance of the servicepack. It contains one or more assets. The number and size of assets is defined by the servicepack. |\n| Asset\t\t\t| A manageable service. For example: a mysql database, a linux hosting, a mailbox,...<br/>Some assets are created at the moment when the account is created. Other assets can be created afterwards.\n\t\n## Common provisioning scenario\n\n**Provisioning of an account with Linux hosting with one MySql database**\n\n*Without a pre-existing account:*\n\n1. Create a new account.<br/>Perform a POST on the accounts route and provide the desired servicepack id and identifier (domain name).\n2. Read the Location header from the response and perform a GET of the provided resource (a provisioning job).\n3. When the response returns 200(OK), you should repeat the GET operation after a certain interval (Repeat this step).<br/>\nWhen the response returns 201(Created), you should read the response body. This will contain links to the created resources.<br/>\nThis will usually hold only one link, but to be futureproof, this has been designed to return a collection.\n4. The created resource will point to an account. You now know the account's Id and can continue with the provisioning of a MySql database on this account.\n5. Perform a POST on the mysqldatabases route and provide the account id along with other requested information.\n6. Read the Location header from the response and perform a GET of the provided resource (a provisioning job).\n7. When the response returns 200(OK), you should repeat the GET operation after a certain interval (Repeat this step).<br/>\nWhen the response returns 201(Created), you should read the response body. This will contain links to the created resources.<br/>\nThis will usually hold only one link, but to be futureproof, this has been designed to return a collection.\n8. The created resource will point to a MySql database resource.\n\n## SSL certificate requests\n\n**Requesting an SSL certificate causes the purchase of a paying product.**\n\n1. A certificate is created by adding an ssl certificate request.\n2. Upon statuscode 201 you should query for certificate completion on the resource provided in the location response header.\n3. The resource request can respond with different statuscodes:\n<ul>\n    <li>200: the certificate request is ongoing.<br/>\nCheck the validations collection for validation values that are not auto_validated. Those should be set by you system.<br/>\nCall verify domain validations once all validation values are in place. It might take some time for verification to take place. It is not necessary to call this method more than once.</li>\n    <li>303: the certificate request is complete; there is no more certificate request resource available. Check the location header value to retrieve the representation of the resulting ssl certificate.</li>\n    <li>410: the certificate request does not exist anymore, there is no certificate created as a result of the request.</li>\n</ul>",
   "apiTitle": "Public Api",

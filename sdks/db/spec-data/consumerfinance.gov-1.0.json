@@ -3,6 +3,137 @@
   "openApiRaw": "https://api.consumerfinance.gov/api-docs",
   "homepage": "consumerfinance.gov",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/data",
+      "method": "getDatasets",
+      "httpMethod": "get",
+      "tag": "data",
+      "description": "Get a list of all datasets.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/data/hmda",
+      "method": "getDatasetHmda",
+      "httpMethod": "get",
+      "tag": "hmda",
+      "description": "Get metadata for this dataset.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/data/hmda/concept/{concept}",
+      "method": "getConceptHmda",
+      "httpMethod": "get",
+      "tag": "hmda",
+      "description": "Get information about a particular concept in this dataset.",
+      "parameters": [
+        {
+          "name": "concept",
+          "schema": "string",
+          "required": true,
+          "description": "Name of concept"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/data/hmda/slice/{slice}",
+      "method": "querySliceHmda",
+      "httpMethod": "get",
+      "tag": "hmda",
+      "description": "Query a slice in this dataset.",
+      "parameters": [
+        {
+          "name": "slice",
+          "schema": "string",
+          "required": true,
+          "description": "Name of slice"
+        },
+        {
+          "name": "$select",
+          "schema": "string",
+          "required": false,
+          "description": "Fields to return, separated by commas."
+        },
+        {
+          "name": "$where",
+          "schema": "string",
+          "required": false,
+          "description": "Conditions to search for in the slice, in SQL WHERE style."
+        },
+        {
+          "name": "$group",
+          "schema": "string",
+          "required": false,
+          "description": "Fields to group by, summarizing the data, separated by commas."
+        },
+        {
+          "name": "$limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of records to return, 100 by default. Enter 0 for no limit."
+        },
+        {
+          "name": "$offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of records to skip."
+        },
+        {
+          "name": "$orderBy",
+          "schema": "string",
+          "required": false,
+          "description": "Fields to order by, separated by commas. ASC and DESC can be used to modify the order."
+        },
+        {
+          "name": "$callback",
+          "schema": "string",
+          "required": false,
+          "description": "JavaScript callback to invoke. Only useful with JSONP requests."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response to a slice query."
+        }
+      ]
+    },
+    {
+      "url": "/data/hmda/slice/{slice}/metadata",
+      "method": "getSliceMetadataHmda",
+      "httpMethod": "get",
+      "tag": "hmda",
+      "description": "Get the metadata for a slice in this dataset.",
+      "parameters": [
+        {
+          "name": "slice",
+          "schema": "string",
+          "required": true,
+          "description": "Name of slice"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/data/{dataset}",
+      "method": "getDataset",
+      "httpMethod": "get",
+      "tag": "data",
+      "description": "Get metadata about a dataset.",
+      "parameters": [
+        {
+          "name": "dataset",
+          "schema": "string",
+          "required": true,
+          "description": "Name of dataset"
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://api.consumerfinance.gov:443",
   "apiDescription": "Learn more about home mortgage data, download the data yourself, or build new tools using our API.",
   "apiTitle": "The Consumer Financial Protection Bureau",

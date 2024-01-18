@@ -3,6 +3,787 @@
   "openApiRaw": "https://art19.com/swagger_json/external/content.json",
   "homepage": "art19.com",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/classification_inclusions",
+      "method": "/classificationInclusionsGet",
+      "httpMethod": "get",
+      "tag": "ClassificationInclusion",
+      "description": "Get ClassificationInclusion records",
+      "parameters": [
+        {
+          "name": "ids[]",
+          "schema": "array",
+          "required": false,
+          "description": "The list of IDs to filter by. Repeat this parameter for each ID you want to include in the filter.\nThe brackets *MUST* be percent-encoded, per the requirements in\n[RFC 3986 § 3.4](https://tools.ietf.org/html/rfc3986#section-3.4).\n"
+        },
+        {
+          "name": "page[number]",
+          "schema": "integer",
+          "description": "Select which page number to receive results for. Pages are numbered starting at 1.\n\n"
+        },
+        {
+          "name": "page[size]",
+          "schema": "integer",
+          "description": "Indicate how many records to return per page. The maximum is 100.\n\n"
+        },
+        {
+          "name": "classification_id",
+          "schema": "string",
+          "description": "Limit the result to classification inclusions linked to a classification with this ID."
+        },
+        {
+          "name": "classification_type",
+          "schema": "string",
+          "description": "The type of classification that the classification inclusions are linked to.\nDepending on the permissions of your credential, only a subset of these types are usable.\n"
+        },
+        {
+          "name": "classified_id",
+          "schema": "string",
+          "description": "Limit the result to classification inclusions linked to a resource with this ID.\nYou will have to use this filter together with either `classified_type` or `classification_type`.\n"
+        },
+        {
+          "name": "classified_type",
+          "schema": "string",
+          "description": "Limit the result to classification inclusions linked to this type of entity."
+        },
+        {
+          "name": "q",
+          "schema": "string",
+          "description": "Limit the result to classification inclusions linked to a classification containing\nthe parameter value disregarding case.\n"
+        },
+        {
+          "name": "sort",
+          "schema": "array",
+          "description": "Specify how to sort the result. Please refer to either the top section or the\n[JSON:API specification](https://jsonapi.org/format/#fetching-sorting) on how sorting works in general.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/classification_inclusions/{id}",
+      "method": "/classificationInclusions/{id}Get",
+      "httpMethod": "get",
+      "tag": "ClassificationInclusion",
+      "description": "Get a specific classification inclusion",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the classification inclusion resource to load."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/classifications",
+      "method": "/classificationsGet",
+      "httpMethod": "get",
+      "tag": "Classification",
+      "description": "Get a list of classifications",
+      "parameters": [
+        {
+          "name": "ids[]",
+          "schema": "array",
+          "required": false,
+          "description": "The list of IDs to filter by. Repeat this parameter for each ID you want to include in the filter.\nThe brackets *MUST* be percent-encoded, per the requirements in\n[RFC 3986 § 3.4](https://tools.ietf.org/html/rfc3986#section-3.4).\n"
+        },
+        {
+          "name": "page[number]",
+          "schema": "integer",
+          "description": "Select which page number to receive results for. Pages are numbered starting at 1.\n\n"
+        },
+        {
+          "name": "page[size]",
+          "schema": "integer",
+          "description": "Indicate how many records to return per page. The maximum is 100.\n\n"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": "Limit the result to classifications of this type. The possible values for types\ndepends on the privileges of the provided credential.\n"
+        },
+        {
+          "name": "q",
+          "schema": "string",
+          "description": "Limit the result to classifications with a value containing the parameter value\ndisregarding case.\n"
+        },
+        {
+          "name": "is_country",
+          "schema": "string",
+          "description": "If this parameter is provided and not empty, limit the result to classifications\nof type `Geography` representing countries. The credential must have at least one\nprivilege with a network, series, or advertiser profile.\n"
+        },
+        {
+          "name": "sort",
+          "schema": "array",
+          "description": "Specify how to sort the result. Please refer to either the top section or the\n[JSON:API specification](https://jsonapi.org/format/#fetching-sorting) on how sorting works in general.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/classifications/{id}",
+      "method": "/classifications/{id}Get",
+      "httpMethod": "get",
+      "tag": "Classification",
+      "description": "Get a specific classification",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the classification resource to load."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/credits",
+      "method": "/creditsGet",
+      "httpMethod": "get",
+      "tag": "Credit",
+      "description": "Get a list of credits",
+      "parameters": [
+        {
+          "name": "ids[]",
+          "schema": "array",
+          "required": false,
+          "description": "The list of IDs to filter by. Repeat this parameter for each ID you want to include in the filter.\nThe brackets *MUST* be percent-encoded, per the requirements in\n[RFC 3986 § 3.4](https://tools.ietf.org/html/rfc3986#section-3.4).\n"
+        },
+        {
+          "name": "page[number]",
+          "schema": "integer",
+          "description": "Select which page number to receive results for. Pages are numbered starting at 1.\n\n"
+        },
+        {
+          "name": "page[size]",
+          "schema": "integer",
+          "description": "Indicate how many records to return per page. The maximum is 100.\n\n"
+        },
+        {
+          "name": "creditable_id",
+          "schema": "string",
+          "description": "Limit the result to credits for the entity with this ID only. If the entity is not\npublished, the credential needs to have the right privilege to list the credits for it.\n"
+        },
+        {
+          "name": "creditable_type",
+          "schema": "string",
+          "description": "Limit the result to credits linked to this type of entity only.\nDepending on the privileges of the credential, this list might be further reduced to\nonly published entities.\n"
+        },
+        {
+          "name": "sort",
+          "schema": "array",
+          "description": "Specify how to sort the result. Please refer to either the top section or the\n[JSON:API specification](https://jsonapi.org/format/#fetching-sorting) on how sorting works in general.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/credits/{id}",
+      "method": "/credits/{id}Get",
+      "httpMethod": "get",
+      "tag": "Credit",
+      "description": "Get a specific credit",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the credit resource to load."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/episodes",
+      "method": "/episodesGet",
+      "httpMethod": "get",
+      "tag": "Episode",
+      "description": "Get a list of episodes",
+      "parameters": [
+        {
+          "name": "ids[]",
+          "schema": "array",
+          "required": false,
+          "description": "The list of IDs to filter by. Repeat this parameter for each ID you want to include in the filter.\nThe brackets *MUST* be percent-encoded, per the requirements in\n[RFC 3986 § 3.4](https://tools.ietf.org/html/rfc3986#section-3.4).\n"
+        },
+        {
+          "name": "page[number]",
+          "schema": "integer",
+          "required": true,
+          "description": "Select which page number to receive results for. Pages are numbered starting at 1.\n\n"
+        },
+        {
+          "name": "page[size]",
+          "schema": "integer",
+          "required": true,
+          "description": "Indicate how many records to return per page. The maximum is 100.\n\n"
+        },
+        {
+          "name": "included_in_inventory_calendar",
+          "schema": "string",
+          "description": "Limit the result to episodes usable with an inventory management calendar for the provided AdDeal ID."
+        },
+        {
+          "name": "month",
+          "schema": "string",
+          "description": "Limit the result to episodes released in this month."
+        },
+        {
+          "name": "published",
+          "schema": "boolean",
+          "description": "If `true`, limit the result to published episodes only.\nIf `false`, limit the result to _unpublished_ episodes only.\n"
+        },
+        {
+          "name": "q",
+          "schema": "string",
+          "description": "Limit the result to episodes with a title containing this parameter in a case-insensitive way."
+        },
+        {
+          "name": "released_after",
+          "schema": "string",
+          "description": "Limit the result to episodes released after this timestamp."
+        },
+        {
+          "name": "released_before",
+          "schema": "string",
+          "description": "Limit the result to episodes released before this timestamp."
+        },
+        {
+          "name": "rss",
+          "schema": "boolean",
+          "description": "If `true`, limit the result to published and released episodes holding an available media file.\nIf this is `true`, it also changes the default sort order to `-released_at`.\n"
+        },
+        {
+          "name": "season_id",
+          "schema": "string",
+          "description": "Limit result to episodes linked to this season."
+        },
+        {
+          "name": "series_id",
+          "schema": "string",
+          "description": "Limit the result to episodes linked to this series."
+        },
+        {
+          "name": "sort",
+          "schema": "array",
+          "description": "Specify how to sort the result. Please refer to either the top section or the\n[JSON:API specification](https://jsonapi.org/format/#fetching-sorting) on how sorting works in general.\n"
+        },
+        {
+          "name": "year",
+          "schema": "string",
+          "description": "Limit the result to episodes released in this year."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/episodes/{id}",
+      "method": "/episodes/{id}Get",
+      "httpMethod": "get",
+      "tag": "Episode",
+      "description": "Get a specific episode",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the episode resource to load."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/episodes/{id}/next_sibling",
+      "method": "/episodes/{id}/nextSiblingGet",
+      "httpMethod": "get",
+      "tag": "Episode",
+      "description": "Get the episode released right after the specified one",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the episode to find the one episode released right after it."
+        },
+        {
+          "name": "rss",
+          "schema": "boolean",
+          "description": "If `true`, get the next released and published episode with an available media file.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/episodes/{id}/previous_sibling",
+      "method": "/episodes/{id}/previousSiblingGet",
+      "httpMethod": "get",
+      "tag": "Episode",
+      "description": "Get the episode released right before the specified one",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the episode to find the one episode released right before it."
+        },
+        {
+          "name": "rss",
+          "schema": "boolean",
+          "description": "If `true`, get the previously released and published episode with an available media file.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/images",
+      "method": "/imagesGet",
+      "httpMethod": "get",
+      "tag": "Image",
+      "description": "Get a list of images",
+      "parameters": [
+        {
+          "name": "ids[]",
+          "schema": "array",
+          "required": true,
+          "description": "The list of IDs to filter by. Repeat this parameter for each ID you want to include in the filter.\nThe brackets *MUST* be percent-encoded, per the requirements in\n[RFC 3986 § 3.4](https://tools.ietf.org/html/rfc3986#section-3.4).\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/images/{id}",
+      "method": "/images/{id}Get",
+      "httpMethod": "get",
+      "tag": "Image",
+      "description": "Get a specific image",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the image resource to load."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/media_assets",
+      "method": "/mediaAssetsGet",
+      "httpMethod": "get",
+      "tag": "MediaAsset",
+      "description": "Get a list of media assets",
+      "parameters": [
+        {
+          "name": "ids[]",
+          "schema": "array",
+          "required": true,
+          "description": "The list of IDs to filter by. Repeat this parameter for each ID you want to include in the filter.\nThe brackets *MUST* be percent-encoded, per the requirements in\n[RFC 3986 § 3.4](https://tools.ietf.org/html/rfc3986#section-3.4).\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/media_assets/{id}",
+      "method": "/mediaAssets/{id}Get",
+      "httpMethod": "get",
+      "tag": "MediaAsset",
+      "description": "Get a specific media asset",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the media asset resource to load."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/networks",
+      "method": "/networksGet",
+      "httpMethod": "get",
+      "tag": "Network",
+      "description": "Get a list of networks",
+      "parameters": [
+        {
+          "name": "ids[]",
+          "schema": "array",
+          "required": false,
+          "description": "The list of IDs to filter by. Repeat this parameter for each ID you want to include in the filter.\nThe brackets *MUST* be percent-encoded, per the requirements in\n[RFC 3986 § 3.4](https://tools.ietf.org/html/rfc3986#section-3.4).\n"
+        },
+        {
+          "name": "page[number]",
+          "schema": "integer",
+          "description": "Select which page number to receive results for. Pages are numbered starting at 1.\n\n"
+        },
+        {
+          "name": "page[size]",
+          "schema": "integer",
+          "description": "Indicate how many records to return per page. The maximum is 100.\n\n"
+        },
+        {
+          "name": "q",
+          "schema": "string",
+          "description": "Limit the result to networks with a name containing this parameter in a case-insensitive way."
+        },
+        {
+          "name": "ad_rep_account_id",
+          "schema": "string",
+          "description": "Limit the result to networks containing at least one series with an ad deal of this Ad Ops profile.\n"
+        },
+        {
+          "name": "ad_deal_status",
+          "schema": "array",
+          "description": "Limit the result to networks containing at least one series with an ad deal matching one of the\nvalues in this parameter.\n"
+        },
+        {
+          "name": "sort",
+          "schema": "array",
+          "description": "Specify how to sort the result. Please refer to either the top section or the\n[JSON:API specification](https://jsonapi.org/format/#fetching-sorting) on how sorting works in general.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/networks/{id}",
+      "method": "/networks/{id}Get",
+      "httpMethod": "get",
+      "tag": "Network",
+      "description": "Get a specific network",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the network resource to load."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/people",
+      "method": "/peopleGet",
+      "httpMethod": "get",
+      "tag": "Person",
+      "description": "Get a list of people",
+      "parameters": [
+        {
+          "name": "ids[]",
+          "schema": "array",
+          "required": false,
+          "description": "The list of IDs to filter by. Repeat this parameter for each ID you want to include in the filter.\nThe brackets *MUST* be percent-encoded, per the requirements in\n[RFC 3986 § 3.4](https://tools.ietf.org/html/rfc3986#section-3.4).\n"
+        },
+        {
+          "name": "page[number]",
+          "schema": "integer",
+          "description": "Select which page number to receive results for. Pages are numbered starting at 1.\n\n"
+        },
+        {
+          "name": "page[size]",
+          "schema": "integer",
+          "description": "Indicate how many records to return per page. The maximum is 100.\n\n"
+        },
+        {
+          "name": "q",
+          "schema": "string",
+          "description": "Limit the result to people with a full name containing this parameter in a case-insensitive way."
+        },
+        {
+          "name": "sort",
+          "schema": "array",
+          "description": "Specify how to sort the result. Please refer to either the top section or the\n[JSON:API specification](https://jsonapi.org/format/#fetching-sorting) on how sorting works in general.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/people/{id}",
+      "method": "/people/{id}Get",
+      "httpMethod": "get",
+      "tag": "Person",
+      "description": "Get a specific person",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the person resource to load."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/seasons",
+      "method": "/seasonsGet",
+      "httpMethod": "get",
+      "tag": "Season",
+      "description": "Get a list of seasons",
+      "parameters": [
+        {
+          "name": "ids[]",
+          "schema": "array",
+          "required": false,
+          "description": "The list of IDs to filter by. Repeat this parameter for each ID you want to include in the filter.\nThe brackets *MUST* be percent-encoded, per the requirements in\n[RFC 3986 § 3.4](https://tools.ietf.org/html/rfc3986#section-3.4).\n"
+        },
+        {
+          "name": "page[number]",
+          "schema": "integer",
+          "description": "Select which page number to receive results for. Pages are numbered starting at 1.\n\n"
+        },
+        {
+          "name": "page[size]",
+          "schema": "integer",
+          "description": "Indicate how many records to return per page. The maximum is 100.\n\n"
+        },
+        {
+          "name": "series_id",
+          "schema": "string",
+          "description": "Limit the result to seasons owned by this series."
+        },
+        {
+          "name": "q",
+          "schema": "string",
+          "description": "Limit the result to seasons with a title containing this parameter in a case-insensitive way."
+        },
+        {
+          "name": "sort",
+          "schema": "array",
+          "description": "Specify how to sort the result. Please refer to either the top section or the\n[JSON:API specification](https://jsonapi.org/format/#fetching-sorting) on how sorting works in general.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/seasons/{id}",
+      "method": "/seasons/{id}Get",
+      "httpMethod": "get",
+      "tag": "Season",
+      "description": "Get a specific season",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the season resource to load."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/series",
+      "method": "/seriesGet",
+      "httpMethod": "get",
+      "tag": "Series",
+      "description": "Get a list of series",
+      "parameters": [
+        {
+          "name": "ids[]",
+          "schema": "array",
+          "required": false,
+          "description": "The list of IDs to filter by. Repeat this parameter for each ID you want to include in the filter.\nThe brackets *MUST* be percent-encoded, per the requirements in\n[RFC 3986 § 3.4](https://tools.ietf.org/html/rfc3986#section-3.4).\n"
+        },
+        {
+          "name": "page[number]",
+          "schema": "integer",
+          "description": "Select which page number to receive results for. Pages are numbered starting at 1.\n\n"
+        },
+        {
+          "name": "page[size]",
+          "schema": "integer",
+          "description": "Indicate how many records to return per page. The maximum is 100.\n\n"
+        },
+        {
+          "name": "ad_rep_account_id",
+          "schema": "string",
+          "description": "Limit the result to series with an ad deal of this Ad Ops profile.\n"
+        },
+        {
+          "name": "network_id",
+          "schema": "string",
+          "description": "Limit the result to series owned by this network."
+        },
+        {
+          "name": "q",
+          "schema": "string",
+          "description": "Limit the result to series with a title or slug containing this parameter in a case-insensitive way."
+        },
+        {
+          "name": "sort",
+          "schema": "array",
+          "description": "Specify how to sort the result. Please refer to either the top section or the\n[JSON:API specification](https://jsonapi.org/format/#fetching-sorting) on how sorting works in general.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/series/{id}",
+      "method": "/series/{id}Get",
+      "httpMethod": "get",
+      "tag": "Series",
+      "description": "Get a specific series",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the series resource to load."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://art19.com",
   "apiDescription": "The ART19 Content API conforms to the [JSON:API specification](http://jsonapi.org).\n\nAPI requests **MUST** use the HTTP Accept header:\n\n`Accept: application/vnd.api+json`\n\nAPI requests **MUST** be authenticated using the HTTP Authorization header:\n\n`Authorization: Token token=\"your-token\", credential=\"your-credential\"`\n\n## General Notes\n\nSome query parameters use unencoded [ and ] characters simply for readability. Defaults, examples, and\npossible values are additionally rendered in double quotes for readability. In practice, query parameters should\nnot have quotes around the values (e.g., `foo=bar` is valid, not `foo=\"bar\"`), and both query parameter keys\nand values must be percent-encoded, per the requirements in [RFC 3986 § 3.4](https://tools.ietf.org/html/rfc3986#section-3.4).\n\n## Rate Limiting\n\nIn order to provide a fair distribution of available resources, all API calls are subject to rate limits.\nIf you exceed the number of API calls per minute granted to your credential, a `429 Too Many Requests`\nerror response will be returned.\n\nIn that case, a `Retry-After` header MAY be included in the response, describing the number of seconds\nafter which a request can be retried.\n\nIf you run into a high number of 429 errors, please reach out to ART19 Support to adjust your rate limit.\n\n### Example\n\nIn the following example the request can be retried after waiting for 21 seconds:\n\n    HTTP/1.1 429 Too Many Requests\n    Content-Type: text/html\n    Retry-After: 21\n\n## Pagination\n\nRequests to collection endpoints **SHOULD** provide pagination parameters.\nSome endpoints **REQUIRE** pagination parameters to be provided.\nWhenever pagination is provided, it **MUST** be valid.\nFailing to provide pagination when it is required or providing wrong or incomplete pagination\nalways results in a `400 Bad Request` error response.\n\nThe page numbering starts with `1` and the maximum page size (if not otherwise documented\non an endpoint) is `100`. Pagination **MUST NOT** be specified if requesting a list of IDs (using an `ids[]` parameter).\n\nProviding invalid values for page number or page size, as well as providing only a page number or only a page size,\nis considered an error. Pagination is provided like this:\n\n`page[number]=1&page[size]=25`\n\nResponses conform to the [JSON:API specification's pagination section](https://jsonapi.org/format/#fetching-pagination)\nby including pagination links. Your requested page size will be carried into the pagination links.\n\n## Sorting\n\nRequests to collection endpoints usually accept a `sort` parameter. Please refer to the\n[JSON:API Specification's sorting section](https://jsonapi.org/format/#fetching-sorting) for further details.\n\n## Relationship Linking\n\nCurrently, resources return all of their relationships, in no particular order, pursuant to how relationships\nshould be returned [according to the JSON:API specification](https://jsonapi.org/format/#document-resource-object-relationships). Consumers of this API\n**MUST NOT** make assumptions about the order of these collections. Even though this data is not currently paginated, consumers **MUST** support\npaginating relationships per the JSON:API specification if this data is important for their application.\n",
   "apiTitle": "ART19 Content API Documentation",

@@ -4,6 +4,287 @@
   "homepage": "parliament.uk",
   "serviceName": "commonsvotes",
   "apiVersion": "v1",
+  "methods": [
+    {
+      "url": "/data/division/{divisionId}.{format}",
+      "method": "divisionsGetDivisionById",
+      "httpMethod": "get",
+      "tag": "Divisions",
+      "description": "Return a Division",
+      "parameters": [
+        {
+          "name": "divisionId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id number of a Division whose records are to be returned"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "xml or json"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/data/divisions.{format}/groupedbyparty",
+      "method": "divisionsGetDivisionsGroupsByParty",
+      "httpMethod": "get",
+      "tag": "Divisions",
+      "description": "Return Divisions results grouped by party",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "xml or json"
+        },
+        {
+          "name": "queryParameters.searchTerm",
+          "schema": "string",
+          "required": false,
+          "description": "Divisions containing search term within title or number"
+        },
+        {
+          "name": "queryParameters.memberId",
+          "schema": "integer",
+          "required": false,
+          "description": "Divisions returning Member with Member ID voting records"
+        },
+        {
+          "name": "queryParameters.includeWhenMemberWasTeller",
+          "schema": "boolean",
+          "required": false,
+          "description": "Divisions where member was a teller as well as if they actually voted"
+        },
+        {
+          "name": "queryParameters.startDate",
+          "schema": "string",
+          "required": false,
+          "description": "Divisions where division date in one or after date provided. Date format is yyyy-MM-dd"
+        },
+        {
+          "name": "queryParameters.endDate",
+          "schema": "string",
+          "required": false,
+          "description": "Divisions where division date in one or before date provided. Date format is yyyy-MM-dd"
+        },
+        {
+          "name": "queryParameters.divisionNumber",
+          "schema": "integer",
+          "required": false,
+          "description": "Division Number - as specified by the House, unique within a session. This is different to the division id which uniquely identifies a division in this system and is passed to the GET division endpoint"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/data/divisions.{format}/membervoting",
+      "method": "divisionsGetVotingRecordsForMember",
+      "httpMethod": "get",
+      "tag": "Divisions",
+      "description": "Return voting records for a Member",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "xml or json"
+        },
+        {
+          "name": "queryParameters.memberId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id number of a Member whose voting records are to be returned"
+        },
+        {
+          "name": "queryParameters.skip",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of records to skip. Default is 0"
+        },
+        {
+          "name": "queryParameters.take",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of records to return per page. Default is 25"
+        },
+        {
+          "name": "queryParameters.searchTerm",
+          "schema": "string",
+          "required": false,
+          "description": "Divisions containing search term within title or number"
+        },
+        {
+          "name": "queryParameters.includeWhenMemberWasTeller",
+          "schema": "boolean",
+          "required": false,
+          "description": "Divisions where member was a teller as well as if they actually voted"
+        },
+        {
+          "name": "queryParameters.startDate",
+          "schema": "string",
+          "required": false,
+          "description": "Divisions where division date in one or after date provided. Date format is yyyy-MM-dd"
+        },
+        {
+          "name": "queryParameters.endDate",
+          "schema": "string",
+          "required": false,
+          "description": "Divisions where division date in one or before date provided. Date format is yyyy-MM-dd"
+        },
+        {
+          "name": "queryParameters.divisionNumber",
+          "schema": "integer",
+          "required": false,
+          "description": "Division Number - as specified by the House, unique within a session. This is different to the division id which uniquely identifies a division in this system and is passed to the GET division endpoint"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/data/divisions.{format}/search",
+      "method": "divisionsSearchDivisions",
+      "httpMethod": "get",
+      "tag": "Divisions",
+      "description": "Return a list of Divisions",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "json or xml"
+        },
+        {
+          "name": "queryParameters.skip",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of records to skip. Default is 0"
+        },
+        {
+          "name": "queryParameters.take",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of records to return per page. Default is 25"
+        },
+        {
+          "name": "queryParameters.searchTerm",
+          "schema": "string",
+          "required": false,
+          "description": "Divisions containing search term within title or number"
+        },
+        {
+          "name": "queryParameters.memberId",
+          "schema": "integer",
+          "required": false,
+          "description": "Divisions returning Member with Member ID voting records"
+        },
+        {
+          "name": "queryParameters.includeWhenMemberWasTeller",
+          "schema": "boolean",
+          "required": false,
+          "description": "Divisions where member was a teller as well as if they actually voted"
+        },
+        {
+          "name": "queryParameters.startDate",
+          "schema": "string",
+          "required": false,
+          "description": "Divisions where division date in one or after date provided. Date format is yyyy-MM-dd"
+        },
+        {
+          "name": "queryParameters.endDate",
+          "schema": "string",
+          "required": false,
+          "description": "Divisions where division date in one or before date provided. Date format is yyyy-MM-dd"
+        },
+        {
+          "name": "queryParameters.divisionNumber",
+          "schema": "integer",
+          "required": false,
+          "description": "Division Number - as specified by the House, unique within a session. This is different to the division id which uniquely identifies a division in this system and is passed to the GET division endpoint"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/data/divisions.{format}/searchTotalResults",
+      "method": "divisionsSearchTotalResults",
+      "httpMethod": "get",
+      "tag": "Divisions",
+      "description": "Return total results count",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "json or xml"
+        },
+        {
+          "name": "queryParameters.searchTerm",
+          "schema": "string",
+          "required": false,
+          "description": "Divisions containing search term within title or number"
+        },
+        {
+          "name": "queryParameters.memberId",
+          "schema": "integer",
+          "required": false,
+          "description": "Divisions returning Member with Member ID voting records"
+        },
+        {
+          "name": "queryParameters.includeWhenMemberWasTeller",
+          "schema": "boolean",
+          "required": false,
+          "description": "Divisions where member was a teller as well as if they actually voted"
+        },
+        {
+          "name": "queryParameters.startDate",
+          "schema": "string",
+          "required": false,
+          "description": "Divisions where division date in one or after date provided. Date format is yyyy-MM-dd"
+        },
+        {
+          "name": "queryParameters.endDate",
+          "schema": "string",
+          "required": false,
+          "description": "Divisions where division date in one or before date provided. Date format is yyyy-MM-dd"
+        },
+        {
+          "name": "queryParameters.divisionNumber",
+          "schema": "integer",
+          "required": false,
+          "description": "Division Number - as specified by the House, unique within a session. This is different to the division id which uniquely identifies a division in this system and is passed to the GET division endpoint"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://commonsvotes-api.parliament.uk",
   "apiDescription": "An API that allows querying of Commons Votes data.",
   "apiTitle": "Commons Votes API",

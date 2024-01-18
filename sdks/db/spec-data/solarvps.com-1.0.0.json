@@ -3,6 +3,394 @@
   "openApiRaw": "http://api.ss.solarvps.com/api-docs",
   "homepage": "solarvps.com",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/contacts",
+      "method": "/contactsGet",
+      "httpMethod": "get",
+      "tag": "contacts",
+      "description": "View all contacts under your account",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/dns/{domain}",
+      "method": "/dns/{domain}Get",
+      "httpMethod": "get",
+      "tag": "dns",
+      "description": "View all your records for a given domain",
+      "parameters": [
+        {
+          "name": "domain",
+          "schema": "string",
+          "required": true,
+          "description": "Domain name you want to get records for"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/dns/{domain}/add",
+      "method": "/dns/{domain}/addPost",
+      "httpMethod": "post",
+      "tag": "dns",
+      "description": "Add dns record for given domain",
+      "parameters": [
+        {
+          "name": "domain",
+          "schema": "string",
+          "required": true,
+          "description": "Domain you want to add records for"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "Fully qualified DNS name"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of DNS record"
+        },
+        {
+          "name": "content",
+          "schema": "string",
+          "required": true,
+          "description": "Content for DNS record"
+        },
+        {
+          "name": "ttl",
+          "schema": "string",
+          "required": true,
+          "description": "Time To Live for DNS record"
+        },
+        {
+          "name": "prio",
+          "schema": "string",
+          "required": true,
+          "description": "Priority of DNS record"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/dns/{domain}/delete",
+      "method": "/dns/{domain}/deletePost",
+      "httpMethod": "post",
+      "tag": "dns",
+      "description": "Delete dns record for a given domain",
+      "parameters": [
+        {
+          "name": "domain",
+          "schema": "string",
+          "required": true,
+          "description": "Domain name you want to get records for"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the DNS Record"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/dns/{domain}/update",
+      "method": "/dns/{domain}/updatePost",
+      "httpMethod": "post",
+      "tag": "dns",
+      "description": "Update dns record for a given domain",
+      "parameters": [
+        {
+          "name": "domain",
+          "schema": "string",
+          "required": true,
+          "description": "Domain name to add record under"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of DNS record"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "Fully qualified name for the DNS record"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Type for DNS record"
+        },
+        {
+          "name": "content",
+          "schema": "string",
+          "required": false,
+          "description": "Content for the DNS Record"
+        },
+        {
+          "name": "ttl",
+          "schema": "string",
+          "required": false,
+          "description": "Time To Live for DNS record"
+        },
+        {
+          "name": "prio",
+          "schema": "string",
+          "required": false,
+          "description": "Priority of the DNS record"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/domains",
+      "method": "/domainsGet",
+      "httpMethod": "get",
+      "tag": "domains",
+      "description": "View all your domains managed by SolarVPS Distributed DNS",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/domains/add",
+      "method": "/domains/addPost",
+      "httpMethod": "post",
+      "tag": "domains",
+      "description": "Add domain to be managed by SolarVPS Distributed DNS",
+      "parameters": [
+        {
+          "name": "domain",
+          "schema": "string",
+          "required": true,
+          "description": "Domain to add to SolarVPS Distributed DNS"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/domains/delete",
+      "method": "/domains/deletePost",
+      "httpMethod": "post",
+      "tag": "domains",
+      "description": "Delete domain from SolarVPS Distributed DNS",
+      "parameters": [
+        {
+          "name": "domain",
+          "schema": "string",
+          "required": true,
+          "description": "Domain to delete from SolarVPS Distributed DNS"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/key/generate",
+      "method": "/key/generateGet",
+      "httpMethod": "get",
+      "tag": "key",
+      "description": "Generate API Key",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "Email address used to login to SolarSystem"
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": "Password used to login to SolarSystem"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/key/get",
+      "method": "/key/getGet",
+      "httpMethod": "get",
+      "tag": "key",
+      "description": "Get API Key",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "Email address used to login to SolarSystem"
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": "Password used to login to SolarSystem"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/pods",
+      "method": "/podsGet",
+      "httpMethod": "get",
+      "tag": "pods",
+      "description": "View all your pods",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/pods/{podId}",
+      "method": "/pods/{podId}Get",
+      "httpMethod": "get",
+      "tag": "pods",
+      "description": "View information on a specific pod",
+      "parameters": [
+        {
+          "name": "podId",
+          "schema": "number",
+          "required": true,
+          "description": "Id of the pod you want to perform actions on"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/pods/{podId}/ping",
+      "method": "/pods/{podId}/pingGet",
+      "httpMethod": "get",
+      "tag": "pods",
+      "description": "Ping your specified pod",
+      "parameters": [
+        {
+          "name": "podId",
+          "schema": "number",
+          "required": true,
+          "description": "Id of the pod you want to ping check"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/pods/{podId}/{action}",
+      "method": "/pods/{podId}/{action}Get",
+      "httpMethod": "get",
+      "tag": "pods",
+      "description": "Perform action on a specific pod",
+      "parameters": [
+        {
+          "name": "podId",
+          "schema": "number",
+          "required": true,
+          "description": "Id of the pod you want to perform actions on"
+        },
+        {
+          "name": "action",
+          "schema": "string",
+          "required": true,
+          "description": "Action to perform on selected pod"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/solarray",
+      "method": "/solarrayGet",
+      "httpMethod": "get",
+      "tag": "solarray",
+      "description": "View all your monitors",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/solarray/critical",
+      "method": "/solarray/criticalGet",
+      "httpMethod": "get",
+      "tag": "solarray",
+      "description": "View all your critical notifications",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/tickets",
+      "method": "/ticketsGet",
+      "httpMethod": "get",
+      "tag": "tickets",
+      "description": "View all your tickets",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/tickets/{department}/add",
+      "method": "/tickets/{department}/addPost",
+      "httpMethod": "post",
+      "tag": "tickets",
+      "description": "Open ticket with desired department",
+      "parameters": [
+        {
+          "name": "department",
+          "schema": "string",
+          "required": true,
+          "description": "Department you want to open a ticket with"
+        },
+        {
+          "name": "subject",
+          "schema": "string",
+          "required": true,
+          "description": "Subject of the ticket you are opening"
+        },
+        {
+          "name": "contents",
+          "schema": "string",
+          "required": true,
+          "description": "Message reply being sent"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/tickets/{ticketId}",
+      "method": "/tickets/{ticketId}Get",
+      "httpMethod": "get",
+      "tag": "tickets",
+      "description": "View details on a specific ticket",
+      "parameters": [
+        {
+          "name": "ticketId",
+          "schema": "number",
+          "required": true,
+          "description": "TicketId you want to see"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/tickets/{ticketid}/update",
+      "method": "/tickets/{ticketid}/updatePost",
+      "httpMethod": "post",
+      "tag": "tickets",
+      "description": "Post a reply to a ticket",
+      "parameters": [
+        {
+          "name": "ticketid",
+          "schema": "number",
+          "required": true,
+          "description": "TicketId of the ticket you want to post an update to"
+        },
+        {
+          "name": "contents",
+          "schema": "string",
+          "required": true,
+          "description": "Message reply being sent"
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "http://api.ss.solarvps.com",
   "apiDescription": "This is the Solar VPS Public API. You can find more at http://www.solarvps.com",
   "apiTitle": "Solar VPS",

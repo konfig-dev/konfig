@@ -4,6 +4,358 @@
   "homepage": "vtex.local",
   "serviceName": "Recurrence-(v1-",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/subscriptions",
+      "method": "getRecurrencebyemail",
+      "httpMethod": "get",
+      "tag": "Miscellaneous",
+      "description": "Get Subscriptions",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "required": false,
+          "description": "If you wish to list tasks by email, insert the desired user's email."
+        },
+        {
+          "name": "cycleStatus",
+          "schema": "string",
+          "required": false,
+          "description": "If you wish to list tasks by Subscriptions with failures on the last execution cycle, insert the desired cycleStatus."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/subscriptions",
+      "method": "updaterecurrence",
+      "httpMethod": "put",
+      "tag": "Miscellaneous",
+      "description": "Update Subscription",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "deliveryDay",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "deliveryWeekday",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "items",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "paymentAccountId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/subscriptions/me",
+      "method": "getselfrecurrence",
+      "httpMethod": "get",
+      "tag": "Miscellaneous",
+      "description": "Get self Subscription",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/subscriptions/settings",
+      "method": "getrecurrencesettings",
+      "httpMethod": "get",
+      "tag": "Miscellaneous",
+      "description": "Get Subscription settings",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/subscriptions/settings",
+      "method": "updaterecurrencesettings",
+      "httpMethod": "put",
+      "tag": "Miscellaneous",
+      "description": "Update Subscription settings",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "defaultSLA",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "salesChannel",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/subscriptions/{recurrenceId}",
+      "method": "getRecurrencebyrecurrenceId",
+      "httpMethod": "get",
+      "tag": "Miscellaneous",
+      "description": "Get Subscription by recurrenceId",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "recurrenceId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/subscriptions/{recurrenceId}",
+      "method": "updatepartialrecurrence",
+      "httpMethod": "patch",
+      "tag": "Miscellaneous",
+      "description": "Update partial Subscription",
+      "parameters": [
+        {
+          "name": "recurrenceId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "deliveryDay",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "deliveryWeekday",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/subscriptions/{recurrenceId}/addresses",
+      "method": "getrecurrenceaddresses",
+      "httpMethod": "get",
+      "tag": "Miscellaneous",
+      "description": "Get Subscription addresses",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "recurrenceId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/subscriptions/{recurrenceId}/items",
+      "method": "addrecurrenceitem",
+      "httpMethod": "post",
+      "tag": "Miscellaneous",
+      "description": "Add Subscription item",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "recurrenceId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/subscriptions/{recurrenceId}/reindex",
+      "method": "reindexrecurrence",
+      "httpMethod": "patch",
+      "tag": "Miscellaneous",
+      "description": "Reindex Subscription",
+      "parameters": [
+        {
+          "name": "recurrenceId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/subscriptions/{recurrenceid}/accounts",
+      "method": "getpaymentaccounts",
+      "httpMethod": "get",
+      "tag": "Miscellaneous",
+      "description": "Get payment accounts",
+      "parameters": [
+        {
+          "name": "recurrenceid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://vtex.local",
   "apiDescription": "",
   "apiTitle": "Subscription (v1 - deprecated)",

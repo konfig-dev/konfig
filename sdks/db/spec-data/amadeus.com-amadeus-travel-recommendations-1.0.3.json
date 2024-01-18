@@ -4,6 +4,47 @@
   "homepage": "amadeus.com",
   "serviceName": "amadeus-travel-recommendations",
   "apiVersion": "1.0.3",
+  "methods": [
+    {
+      "url": "/reference-data/recommended-locations",
+      "method": "getRecommendedLocation",
+      "httpMethod": "get",
+      "tag": "recommended-locations",
+      "description": "GET recommended destinations",
+      "parameters": [
+        {
+          "name": "cityCodes",
+          "schema": "string",
+          "required": true,
+          "description": "City used by the algorythm to recommend new destination. Several cities can be specified using comma.\n\nCity codes follow [IATA standard](http://www.iata.org/publications/Pages/code-search.aspx)"
+        },
+        {
+          "name": "travelerCountryCode",
+          "schema": "string",
+          "description": "Origin country of the traveler following [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code format (e.g. US)"
+        },
+        {
+          "name": "destinationCountryCodes",
+          "schema": "string",
+          "description": "List of country the traveler want to visit, separated with comma.\n\nCountry codes follow [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code format (e.g. US)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "A set of errors"
+        },
+        {
+          "statusCode": "500",
+          "description": "A set of errors"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://test.api.amadeus.com/v1",
   "apiDescription": "Before using this API, we recommend you read our **[Authorization Guide](https://developers.amadeus.com/self-service/apis-docs/guides/authorization-262)** for more information on how to generate an access token.",
   "apiTitle": "Travel Recommendations API",

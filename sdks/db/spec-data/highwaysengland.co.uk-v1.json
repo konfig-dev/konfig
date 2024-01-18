@@ -3,6 +3,356 @@
   "openApiRaw": "http://webtris.highwaysengland.co.uk/api/swagger/docs/v1",
   "homepage": "highwaysengland.co.uk",
   "apiVersion": "v1",
+  "methods": [
+    {
+      "url": "/v{version}/areas",
+      "method": "areasGet",
+      "httpMethod": "get",
+      "tag": "Areas",
+      "description": "Returns list of areas",
+      "parameters": [
+        {
+          "name": "version",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v{version}/areas/{area_Ids}",
+      "method": "/v{version}/areas/{areaIds}Get",
+      "httpMethod": "get",
+      "tag": "Areas",
+      "description": "Returns details of selected area",
+      "parameters": [
+        {
+          "name": "area_Ids",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v{version}/quality/daily",
+      "method": "qualityGetDailyDataQualityForSite",
+      "httpMethod": "get",
+      "tag": "Quality",
+      "description": "Get Site DailyQuality",
+      "parameters": [
+        {
+          "name": "siteId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "start_date",
+          "schema": "string",
+          "required": true,
+          "description": "The start date of the report in the format ddmmyyyy (i.e 31012016)"
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "required": true,
+          "description": "The end date of the report in the format ddmmyyyy (i.e 31012016)"
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v{version}/quality/overall",
+      "method": "qualityGetOverallDataQualityForSites",
+      "httpMethod": "get",
+      "tag": "Quality",
+      "description": "Get Site OverallQuality",
+      "parameters": [
+        {
+          "name": "sites",
+          "schema": "string",
+          "required": true,
+          "description": "Get site quality by site id delimited by ,"
+        },
+        {
+          "name": "start_date",
+          "schema": "string",
+          "required": true,
+          "description": "The start date of the report in the format ddmmyyyy (i.e 31012016)"
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "required": true,
+          "description": "The end date of the report in the format ddmmyyyy (i.e 31012016)"
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v{version}/reports/{report_type}",
+      "method": "reportsIndex",
+      "httpMethod": "get",
+      "tag": "Reports",
+      "description": "Gets the daily report.",
+      "parameters": [
+        {
+          "name": "report_type",
+          "schema": "string",
+          "required": true,
+          "description": "Report Type Id (i.e Daily, Monthly, Annual)"
+        },
+        {
+          "name": "sites",
+          "schema": "string",
+          "required": true,
+          "description": "Comma separated list of site Ids."
+        },
+        {
+          "name": "start_date",
+          "schema": "string",
+          "required": true,
+          "description": "The start date of the report in the format ddmmyyyy (i.e 31012016)"
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "required": true,
+          "description": "The end date of the report in the format ddmmyyyy (i.e 31012016)"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": true,
+          "description": "The page offset to return."
+        },
+        {
+          "name": "page_size",
+          "schema": "integer",
+          "required": true,
+          "description": "The number of rows to return."
+        },
+        {
+          "name": "reportSubTypeId",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v{version}/reports/{start_date}/to/{end_date}/{report_type}",
+      "method": "/v{version}/reports/{startDate}/to/{endDate}/{reportType}Get",
+      "httpMethod": "get",
+      "tag": "Reports",
+      "description": "Gets the daily report.",
+      "parameters": [
+        {
+          "name": "report_type",
+          "schema": "string",
+          "required": true,
+          "description": "Report Type Id (i.e Daily, Monthly, Annual)"
+        },
+        {
+          "name": "sites",
+          "schema": "string",
+          "required": true,
+          "description": "Comma separated list of site Ids."
+        },
+        {
+          "name": "start_date",
+          "schema": "string",
+          "required": true,
+          "description": "The start date of the report in the format ddmmyyyy (i.e 31012016)"
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "required": true,
+          "description": "The end date of the report in the format ddmmyyyy (i.e 31012016)"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": true,
+          "description": "The page offset to return."
+        },
+        {
+          "name": "page_size",
+          "schema": "integer",
+          "required": true,
+          "description": "The number of rows to return."
+        },
+        {
+          "name": "reportSubTypeId",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v{version}/sites",
+      "method": "sitesIndex",
+      "httpMethod": "get",
+      "tag": "Sites",
+      "description": "Get a list of sites",
+      "parameters": [
+        {
+          "name": "version",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v{version}/sites/{site_Ids}",
+      "method": "/v{version}/sites/{siteIds}Get",
+      "httpMethod": "get",
+      "tag": "Sites",
+      "description": "Get selected sites",
+      "parameters": [
+        {
+          "name": "site_Ids",
+          "schema": "string",
+          "required": true,
+          "description": "site id"
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v{version}/sitetypes",
+      "method": "siteTypesIndex",
+      "httpMethod": "get",
+      "tag": "SiteTypes",
+      "description": "Return list of site types",
+      "parameters": [
+        {
+          "name": "version",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v{version}/sitetypes/{siteType_Id}/sites",
+      "method": "siteTypesGetSitesForPublicFacingApi",
+      "httpMethod": "get",
+      "tag": "SiteTypes",
+      "description": "Returns the layer metadata for the LayerId specified.",
+      "parameters": [
+        {
+          "name": "siteType_Id",
+          "schema": "integer",
+          "required": true,
+          "description": "1 = MIDAS, 2 = TAME, 3 = TMU, 4 = TRADS Legacy"
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://webtris.highwaysengland.co.uk/api",
   "apiTitle": "Highways England API",
   "endpoints": 10,

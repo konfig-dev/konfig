@@ -4,6 +4,75 @@
   "homepage": "o2.cz",
   "serviceName": "mobility",
   "apiVersion": "1.2.0",
+  "methods": [
+    {
+      "url": "/info",
+      "method": "getInfo",
+      "httpMethod": "get",
+      "tag": "info",
+      "description": "Information about versions of application and data.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response to the info request"
+        }
+      ]
+    },
+    {
+      "url": "/transit/{from}/{to}",
+      "method": "transit",
+      "httpMethod": "get",
+      "tag": "transit",
+      "description": "Transit between basic residential units",
+      "parameters": [
+        {
+          "name": "from",
+          "schema": "string",
+          "required": true,
+          "description": "source basic residential unit"
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "required": true,
+          "description": "destination basic residential unit"
+        },
+        {
+          "name": "fromType",
+          "schema": "string",
+          "required": false,
+          "description": "occurence type in the source basic residential unit (1 - transit, 2 - visit, 0 - both)"
+        },
+        {
+          "name": "toType",
+          "schema": "string",
+          "required": false,
+          "description": "occurence type in the destination basic residential unit (1 - transit, 2 - visit, 0 - both)"
+        },
+        {
+          "name": "uniques",
+          "schema": "string",
+          "required": true,
+          "description": "all or only uniques (0 - all, 1 - uniques)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response with the result"
+        },
+        {
+          "statusCode": "400",
+          "description": "Response with error message"
+        },
+        {
+          "statusCode": "500",
+          "description": "Response with error message"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://developer.o2.cz/mobility/sandbox/api",
   "apiDescription": "Transit API can be used to obtain time-aggregated data representing moving the people between various spatial points within the Czech Republic. Having A - 'from' and B - 'to' points, the API can return count of people traveling from A to B or people that are from A and traveling to B, etc. The mobility data is based on moving mobile stations in O2 mobile network.",
   "apiTitle": "Mobility API",

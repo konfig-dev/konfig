@@ -4,6 +4,1611 @@
   "homepage": "onsched.com",
   "serviceName": "consumer",
   "apiVersion": "v1",
+  "methods": [
+    {
+      "url": "/consumer/v1/appointments",
+      "method": "/consumer/v1/appointmentsGet",
+      "httpMethod": "get",
+      "tag": "Appointments",
+      "description": "Get Appointments",
+      "parameters": [
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": "id of business location"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": "Filter by email address"
+        },
+        {
+          "name": "lastname",
+          "schema": "string",
+          "description": "Filter by lastname or part of it"
+        },
+        {
+          "name": "phone",
+          "schema": "string",
+          "description": "Filter by phone number or part of it"
+        },
+        {
+          "name": "serviceId",
+          "schema": "string",
+          "description": "Filter by service"
+        },
+        {
+          "name": "calendarId",
+          "schema": "string",
+          "description": "Filter by calendar"
+        },
+        {
+          "name": "resourceId",
+          "schema": "string",
+          "description": "Filter by resource"
+        },
+        {
+          "name": "customerId",
+          "schema": "string",
+          "description": "Filter by customer"
+        },
+        {
+          "name": "serviceAllocationId",
+          "schema": "string",
+          "description": "Filter by service allocation"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "description": "Format YYYY-MM-DD. Filter by on/after startDate"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "description": "Format YYYY-MM-DD. Filter on/before endDate"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": "Filter by status: IN, BK, CN, RE, RS"
+        },
+        {
+          "name": "bookedBy",
+          "schema": "string",
+          "description": "Filter by the email of who booked"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit, default 20, max 100"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/appointments",
+      "method": "/consumer/v1/appointmentsPost",
+      "httpMethod": "post",
+      "tag": "Appointments",
+      "description": "Create Appointment",
+      "parameters": [
+        {
+          "name": "completeBooking",
+          "schema": "string",
+          "description": "Options are \"BK\", \"RS\" or \"IN\""
+        },
+        {
+          "name": "appointmentBookingFields",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "bookedBy",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "bookingWindowId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "calendarId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "customFields",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "customerBookingFields",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "customerId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "customerMessage",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "endDateTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "groupSize",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "notes",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "phone",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "phoneType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "resourceGroupId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "resourceId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "resourceIds",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "serviceAllocationId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "serviceId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "startDateTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "timezoneName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "travelAppointmentId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "travelTimeMins",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/appointments/bookingfields",
+      "method": "/consumer/v1/appointments/bookingfieldsGet",
+      "httpMethod": "get",
+      "tag": "Appointments",
+      "description": "Get Custom Fields Labels",
+      "parameters": [
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": "id of business location"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/appointments/customfields",
+      "method": "/consumer/v1/appointments/customfieldsGet",
+      "httpMethod": "get",
+      "tag": "Appointments",
+      "description": "Get Custom Fields List",
+      "parameters": [
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": "id of business location"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/appointments/{id}",
+      "method": "/consumer/v1/appointments/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Appointments",
+      "description": "Delete Appointment",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "appointment id to delete"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/appointments/{id}",
+      "method": "/consumer/v1/appointments/{id}Get",
+      "httpMethod": "get",
+      "tag": "Appointments",
+      "description": "Get Appointment",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of appointment requested"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/appointments/{id}/book",
+      "method": "/consumer/v1/appointments/{id}/bookPut",
+      "httpMethod": "put",
+      "tag": "Appointments",
+      "description": "Book Appointment",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "appointment id to book"
+        },
+        {
+          "name": "appointmentBookingFields",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "customFields",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "customerBookingFields",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "customerMessage",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "groupSize",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "notes",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "phone",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "phoneExt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "phoneType",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/appointments/{id}/cancel",
+      "method": "/consumer/v1/appointments/{id}/cancelPut",
+      "httpMethod": "put",
+      "tag": "Appointments",
+      "description": "Cancel Appointment",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "appointment id to cancel"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/appointments/{id}/confirm",
+      "method": "/consumer/v1/appointments/{id}/confirmPut",
+      "httpMethod": "put",
+      "tag": "Appointments",
+      "description": "Confirm Appointment",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "appointment id to confirm"
+        },
+        {
+          "name": "undo",
+          "schema": "boolean",
+          "description": "Use this parameter to undo the confirmed status"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/consumer/v1/appointments/{id}/noshow",
+      "method": "/consumer/v1/appointments/{id}/noshowPut",
+      "httpMethod": "put",
+      "tag": "Appointments",
+      "description": "Set NoShow Status",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "appointment id to mark as NoShow"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/consumer/v1/appointments/{id}/reschedule",
+      "method": "/consumer/v1/appointments/{id}/reschedulePut",
+      "httpMethod": "put",
+      "tag": "Appointments",
+      "description": "Reschedule Appointment",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "appointment id to reschedule"
+        },
+        {
+          "name": "endDateTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "resourceId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "resourceIds",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "serviceId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "startDateTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "travelAppointmentId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "travelTimeMins",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/appointments/{id}/reserve",
+      "method": "/consumer/v1/appointments/{id}/reservePut",
+      "httpMethod": "put",
+      "tag": "Appointments",
+      "description": "Reserve Appointment",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "appointment id to reserve"
+        },
+        {
+          "name": "sendNotifications",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "appointmentBookingFields",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "customFields",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "customerBookingFields",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "customerMessage",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "notes",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "phone",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "phoneExt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "phoneType",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/consumer/v1/availability/{serviceId}/{startDate}/{endDate}",
+      "method": "/consumer/v1/availability/{serviceId}/{startDate}/{endDate}Get",
+      "httpMethod": "get",
+      "tag": "Availability",
+      "description": "Get Available Times",
+      "parameters": [
+        {
+          "name": "serviceId",
+          "schema": "string",
+          "required": true,
+          "description": "Service Id for availability search"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": true,
+          "description": "Format YYYY-MM-DD: Start Date for availability search"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "required": true,
+          "description": "Format YYYY-MM-DD: End Date for availability search"
+        },
+        {
+          "name": "startTime",
+          "schema": "integer",
+          "description": "Format Military Time Start Time for availability search. Defaults to Business Hours Start"
+        },
+        {
+          "name": "endTime",
+          "schema": "integer",
+          "description": "Format Military Time. End Time for availability search. Defaults to Business Hours End"
+        },
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": "Id of business location, defaults to primary business location"
+        },
+        {
+          "name": "resourceId",
+          "schema": "string",
+          "description": "Resource Id for availability search"
+        },
+        {
+          "name": "resourceGroupId",
+          "schema": "string",
+          "description": "Resource Group Id for availability search"
+        },
+        {
+          "name": "resourceIds",
+          "schema": "string",
+          "description": "Comma separated Resource Id's for availability search"
+        },
+        {
+          "name": "roundRobin",
+          "schema": "string",
+          "description": "Round robin choice 0=none, 1=random, 2=balanced"
+        },
+        {
+          "name": "duration",
+          "schema": "integer",
+          "description": "Duration of the service if different from default"
+        },
+        {
+          "name": "interval",
+          "schema": "integer",
+          "description": "Booking Interval if different than the default"
+        },
+        {
+          "name": "timezoneName",
+          "schema": "string",
+          "description": "Requested IANA timezone Id to view availability"
+        },
+        {
+          "name": "tzOffset",
+          "schema": "integer",
+          "description": "Request timezone offset to view availability"
+        },
+        {
+          "name": "destination",
+          "schema": "string",
+          "description": "For calculating travel based availability, requires distance scope"
+        },
+        {
+          "name": "dayAvailabilityStartDate",
+          "schema": "string",
+          "description": "Format YYYY-DD-YY: Start date for day availability, defaults to startDate"
+        },
+        {
+          "name": "dayAvailability",
+          "schema": "integer",
+          "description": "Number of days of day availability to return"
+        },
+        {
+          "name": "firstDayAvailable",
+          "schema": "boolean",
+          "description": "Return available times for the first available day"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/availability/{serviceId}/{startDate}/{endDate}/days",
+      "method": "/consumer/v1/availability/{serviceId}/{startDate}/{endDate}/daysGet",
+      "httpMethod": "get",
+      "tag": "Availability",
+      "description": "Get Available Days",
+      "parameters": [
+        {
+          "name": "serviceId",
+          "schema": "string",
+          "required": true,
+          "description": "Service Id for day availability search"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": true,
+          "description": "Format YYYY-MM-DD: Start Date for availability search"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "required": true,
+          "description": "Format YYYY-MM-DD: End Date for availability search"
+        },
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": "Id of business location, defaults to primary business location"
+        },
+        {
+          "name": "resourceId",
+          "schema": "string",
+          "description": "Resource Id to filter on"
+        },
+        {
+          "name": "tzOffset",
+          "schema": "integer",
+          "description": "Timezone offset to view availability for"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/availability/{serviceId}/{startDate}/{endDate}/unavailable",
+      "method": "/consumer/v1/availability/{serviceId}/{startDate}/{endDate}/unavailableGet",
+      "httpMethod": "get",
+      "tag": "Availability",
+      "description": "Get Unavailable Times",
+      "parameters": [
+        {
+          "name": "serviceId",
+          "schema": "string",
+          "required": true,
+          "description": "Service Id for availability search"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": true,
+          "description": "Format YYYY-MM-DD: Start Date for unavailable time search"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "required": true,
+          "description": "Format YYYY-MM-DD: End Date for unavailable time search"
+        },
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": "Id of business location, defaults to primary business location"
+        },
+        {
+          "name": "resourceId",
+          "schema": "string",
+          "description": "Resource Id to filter on"
+        },
+        {
+          "name": "duration",
+          "schema": "integer",
+          "description": "Duration of the service if different from default"
+        },
+        {
+          "name": "tzOffset",
+          "schema": "integer",
+          "description": "Request timezone offset to view unavailable times"
+        },
+        {
+          "name": "skipTimePastUnavailability",
+          "schema": "boolean",
+          "description": "Set as true to remove Time Past (TP) blocks in the response"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/customers",
+      "method": "/consumer/v1/customersGet",
+      "httpMethod": "get",
+      "tag": "Customers",
+      "description": "List Customers",
+      "parameters": [
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": "id of business location, defaults to primary business location"
+        },
+        {
+          "name": "groupId",
+          "schema": "string",
+          "description": "Filter by groupId"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": "Filter by email address"
+        },
+        {
+          "name": "lastname",
+          "schema": "string",
+          "description": "Filter by lastname"
+        },
+        {
+          "name": "deleted",
+          "schema": "boolean",
+          "description": "Filter by deleted status"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit default 20, max 100"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/customers",
+      "method": "/consumer/v1/customersPost",
+      "httpMethod": "post",
+      "tag": "Customers",
+      "description": "Create Customer",
+      "parameters": [
+        {
+          "name": "address",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "contact",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "customFields",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "firstname",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "lastname",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "notificationType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sendLeadNotification",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "stripeCustomerId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/customers/bookingfields",
+      "method": "/consumer/v1/customers/bookingfieldsGet",
+      "httpMethod": "get",
+      "tag": "Customers",
+      "description": "Get Customer Booking Fields",
+      "parameters": [
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": "id of business location, defaults to primary business location"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/customers/countries",
+      "method": "/consumer/v1/customers/countriesGet",
+      "httpMethod": "get",
+      "tag": "Customers",
+      "description": "List Country Codes",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/customers/customfields",
+      "method": "/consumer/v1/customers/customfieldsGet",
+      "httpMethod": "get",
+      "tag": "Customers",
+      "description": "Get Customer Custom Fields",
+      "parameters": [
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": "id of business location, defaults to primary business location"
+        },
+        {
+          "name": "leadQuestions",
+          "schema": "boolean",
+          "description": "A true/false indicator to filter on custom fields used for lead questions"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/customers/states",
+      "method": "/consumer/v1/customers/statesGet",
+      "httpMethod": "get",
+      "tag": "Customers",
+      "description": "List Country States",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/customers/{id}",
+      "method": "/consumer/v1/customers/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Customers",
+      "description": "Delete Customer",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of customer object"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/consumer/v1/customers/{id}",
+      "method": "/consumer/v1/customers/{id}Get",
+      "httpMethod": "get",
+      "tag": "Customers",
+      "description": "Get Customer",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of customer object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/customers/{id}",
+      "method": "/consumer/v1/customers/{id}Put",
+      "httpMethod": "put",
+      "tag": "Customers",
+      "description": "Update Customer",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of customer object"
+        },
+        {
+          "name": "address",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "contact",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "customFields",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "firstname",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "lastname",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "notificationType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "stripeCustomerId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/consumer/v1/locations",
+      "method": "/consumer/v1/locationsGet",
+      "httpMethod": "get",
+      "tag": "Locations",
+      "description": "List Locations",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "description": "Location name (full or partial)"
+        },
+        {
+          "name": "nearestTo",
+          "schema": "string",
+          "description": "Search by distance nearest Geocoords, City, Postal/Zip Code"
+        },
+        {
+          "name": "proximity",
+          "schema": "integer",
+          "description": "Maximum distance to display"
+        },
+        {
+          "name": "units",
+          "schema": "string",
+          "description": "Distance either imperial(miles), metric(kilometers)"
+        },
+        {
+          "name": "serviceId",
+          "schema": "string",
+          "description": "Locations that offer this service"
+        },
+        {
+          "name": "friendlyId",
+          "schema": "string",
+          "description": "Frienldy Id of location"
+        },
+        {
+          "name": "regionId",
+          "schema": "string",
+          "description": "Locations within a specific region"
+        },
+        {
+          "name": "ignorePrimary",
+          "schema": "boolean",
+          "description": "Don't include the Primary Location"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit, default 20, max 100"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/locations/{id}",
+      "method": "/consumer/v1/locations/{id}Get",
+      "httpMethod": "get",
+      "tag": "Locations",
+      "description": "Get Location",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of business location"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/resourcegroups",
+      "method": "/consumer/v1/resourcegroupsGet",
+      "httpMethod": "get",
+      "tag": "ResourceGroups",
+      "description": "List Resource Groups",
+      "parameters": [
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": "id of business location, defaults to primary business location"
+        },
+        {
+          "name": "deleted",
+          "schema": "boolean",
+          "description": "Filter results by deleted status"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit default 20, max 100"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/resourcegroups/{id}",
+      "method": "/consumer/v1/resourcegroups/{id}Get",
+      "httpMethod": "get",
+      "tag": "ResourceGroups",
+      "description": "Get Resource Group",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of the resourceGroup object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/resources",
+      "method": "/consumer/v1/resourcesGet",
+      "httpMethod": "get",
+      "tag": "Resources",
+      "description": "List Resources",
+      "parameters": [
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": "id of business location, defaults to primary business location"
+        },
+        {
+          "name": "resourceGroupId",
+          "schema": "integer",
+          "description": "Filter by groupId"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": "Filter by email address"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": "Search by name, supports Partial name search"
+        },
+        {
+          "name": "sortOrder",
+          "schema": "string",
+          "description": "Specify sort order of response"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit default 20, max 100"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/resources/{id}",
+      "method": "/consumer/v1/resources/{id}Get",
+      "httpMethod": "get",
+      "tag": "Resources",
+      "description": "Get Resource",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "id of resource object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/resources/{id}/services",
+      "method": "/consumer/v1/resources/{id}/servicesGet",
+      "httpMethod": "get",
+      "tag": "Resources",
+      "description": "Get Resource Linked Services",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "id of resource object"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit default 20, max 100"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/servicegroups",
+      "method": "/consumer/v1/servicegroupsGet",
+      "httpMethod": "get",
+      "tag": "ServiceGroups",
+      "description": "List Service Groups",
+      "parameters": [
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": "id of business location, defaults to primary business location"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit default 20, max 100"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/servicegroups/{id}",
+      "method": "/consumer/v1/servicegroups/{id}Get",
+      "httpMethod": "get",
+      "tag": "ServiceGroups",
+      "description": "Get Service Group",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "id of the serviceGroup object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/services",
+      "method": "/consumer/v1/servicesGet",
+      "httpMethod": "get",
+      "tag": "Services",
+      "description": "List Services",
+      "parameters": [
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": "id of business location, defaults to primary business location"
+        },
+        {
+          "name": "serviceGroupId",
+          "schema": "integer",
+          "description": "Filter by groupId"
+        },
+        {
+          "name": "defaultService",
+          "schema": "boolean",
+          "description": "Filter by default service, default is false"
+        },
+        {
+          "name": "allLocations",
+          "schema": "boolean",
+          "description": "Search All Locations, default is false"
+        },
+        {
+          "name": "scope",
+          "schema": "string",
+          "description": "Filter by scope, Company, Location or All, default is All"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": "Filter by Name, supports Partial name search"
+        },
+        {
+          "name": "serviceId",
+          "schema": "string",
+          "description": "Filter by ServiceId, using this parameter would ignore all other parameters"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit default 20, max 100"
+        },
+        {
+          "name": "sortOrder",
+          "schema": "string",
+          "description": "Sort results using Natural Sort or Sorted alphabetically by Service Names, default is natural"
+        },
+        {
+          "name": "sortDescending",
+          "schema": "boolean",
+          "description": "Sort results in Descending Order, default true"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/services/allocations/{id}",
+      "method": "/consumer/v1/services/allocations/{id}Get",
+      "httpMethod": "get",
+      "tag": "Services",
+      "description": "Get Service Allocation",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of serviceAllocation object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/services/{id}",
+      "method": "/consumer/v1/services/{id}Get",
+      "httpMethod": "get",
+      "tag": "Services",
+      "description": "Get Service",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "id of service object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/services/{id}/allocations",
+      "method": "/consumer/v1/services/{id}/allocationsGet",
+      "httpMethod": "get",
+      "tag": "Services",
+      "description": "List Service Allocations",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of service to list allocations for, 0 for all"
+        },
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": "id of the location, defaults to the primary location"
+        },
+        {
+          "name": "resourceId",
+          "schema": "string",
+          "description": "id of the resource to filter on"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "description": "Format YYYY-MM-DD: Filter allocations on/after startDate"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "description": "Format YYYY-MM-DD. Filter allocations on/before endDate"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit default 20, max 100"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/consumer/v1/services/{id}/resources",
+      "method": "/consumer/v1/services/{id}/resourcesGet",
+      "httpMethod": "get",
+      "tag": "Services",
+      "description": "List Resources for Service",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id of service object"
+        },
+        {
+          "name": "locationId",
+          "schema": "string",
+          "description": "id of business location, defaults to primary business location"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Starting row of page, default 0"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Page limit default 20, max 100"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://sandbox-api.onsched.com/",
   "apiDescription": "Build secure and scalable custom apps for Online Booking. Our flexible API provides many options for availability and booking.\r\n<br><br>\r\nTake the API for a test drive. Just click on the Authorize button below and authenticate. \r\nYou can access our demo company profile if you are not a customer, or your own profile by using your assigned ClientId and Secret.\r\n<br><br>\r\nThe API has two interfaces, consumer and setup. \r\n<ul>\r\n<li>\r\nThe consumer interface provides all the endpoints required for implementing consumer booking flows.\r\n</li>\r\n<li>\r\nThe setup interface provides endpoints for profile configuration and setup.\r\n</li>\r\n</ul>\r\nToggle freely between the two interfaces using the swagger tool bar option labelled 'Select a definition'.\r\n",
   "apiTitle": "OnSched Consumer API",

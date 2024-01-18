@@ -3,6 +3,249 @@
   "openApiRaw": "https://raw.githubusercontent.com/SkYNewZ/rest-fornite-api/develop/src/public/swagger.yaml",
   "homepage": "skynewz-api-fortnite.herokuapp.com",
   "apiVersion": "3.1.5",
+  "methods": [
+    {
+      "url": "/check",
+      "method": "/checkGet",
+      "httpMethod": "get",
+      "tag": "Check",
+      "description": "Get Fortnite game status",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/news",
+      "method": "/newsGet",
+      "httpMethod": "get",
+      "tag": "News",
+      "description": "Get Fortnite News",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/oauth/token",
+      "method": "/oauth/tokenPost",
+      "httpMethod": "post",
+      "tag": "Security",
+      "description": "Get a Bearer token",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/pve/info",
+      "method": "/pve/infoGet",
+      "httpMethod": "get",
+      "tag": "PVE",
+      "description": "Get Fortnite PVE Info (storm, etc)",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/pve/user/{username}",
+      "method": "/pve/user/{username}Get",
+      "httpMethod": "get",
+      "tag": "PVE",
+      "description": "Get PVE Stat by given username",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "Fortnite username"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/id/{plateform}/{id}",
+      "method": "/stats/id/{plateform}/{id}Get",
+      "httpMethod": "get",
+      "tag": "Stats",
+      "description": "Get user's stats by user id",
+      "parameters": [
+        {
+          "name": "plateform",
+          "schema": "string",
+          "required": true,
+          "description": "Playing plateform, can be xb1, ps4 or pc"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Player ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/{plateform}/{username}",
+      "method": "/stats/{plateform}/{username}Get",
+      "httpMethod": "get",
+      "tag": "Stats",
+      "description": "Get user's stats by username",
+      "parameters": [
+        {
+          "name": "plateform",
+          "schema": "string",
+          "required": true,
+          "description": "Playing plateform, can be xb1, ps4 or pc"
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "Player username"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/store",
+      "method": "/storeGet",
+      "httpMethod": "get",
+      "tag": "Store",
+      "description": "Get Fortnite Store",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/user/{plateform}/{username}",
+      "method": "/user/{plateform}/{username}Get",
+      "httpMethod": "get",
+      "tag": "User",
+      "description": "Get a user by username",
+      "parameters": [
+        {
+          "name": "plateform",
+          "schema": "string",
+          "required": true,
+          "description": "Playing plateform, can be xb1, ps4 or pc"
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "Player username"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://skynewz-api-fortnite.herokuapp.com/api",
   "apiDescription": "REST API about Fortnite game",
   "apiTitle": "FORTNITE REST API",

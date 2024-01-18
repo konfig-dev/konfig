@@ -3,6 +3,5080 @@
   "openApiRaw": "https://increase.com/openapi.json",
   "homepage": "increase.com",
   "apiVersion": "0.0.1",
+  "methods": [
+    {
+      "url": "/account_numbers",
+      "method": "listAccountNumbers",
+      "httpMethod": "get",
+      "description": "List Account Numbers",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of Account Number objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account_numbers",
+      "method": "createAnAccountNumber",
+      "httpMethod": "post",
+      "description": "Create an Account Number",
+      "parameters": [
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Each account can have multiple account and routing numbers. We recommend that you use a set per vendor. This is similar to how you use different passwords for different websites. Account numbers can also be used to seamlessly reconcile inbound payments. Generating a unique account number per vendor ensures you always know the originator of an incoming payment."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account_numbers/{account_number_id}",
+      "method": "retrieveAnAccountNumber",
+      "httpMethod": "get",
+      "description": "Retrieve an Account Number",
+      "parameters": [
+        {
+          "name": "account_number_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Each account can have multiple account and routing numbers. We recommend that you use a set per vendor. This is similar to how you use different passwords for different websites. Account numbers can also be used to seamlessly reconcile inbound payments. Generating a unique account number per vendor ensures you always know the originator of an incoming payment."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account_numbers/{account_number_id}",
+      "method": "updateAnAccountNumber",
+      "httpMethod": "patch",
+      "description": "Update an Account Number",
+      "parameters": [
+        {
+          "name": "account_number_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Each account can have multiple account and routing numbers. We recommend that you use a set per vendor. This is similar to how you use different passwords for different websites. Account numbers can also be used to seamlessly reconcile inbound payments. Generating a unique account number per vendor ensures you always know the originator of an incoming payment."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account_statements",
+      "method": "listAccountStatements",
+      "httpMethod": "get",
+      "description": "List Account Statements",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "statement_period_start.after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "statement_period_start.before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "statement_period_start.on_or_after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "statement_period_start.on_or_before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of Account Statement objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account_statements/{account_statement_id}",
+      "method": "retrieveAnAccountStatement",
+      "httpMethod": "get",
+      "description": "Retrieve an Account Statement",
+      "parameters": [
+        {
+          "name": "account_statement_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Account Statements are generated monthly for every active Account. You can access the statement's data via the API or retrieve a PDF with its details via its associated File."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account_transfers",
+      "method": "listAccountTransfers",
+      "httpMethod": "get",
+      "description": "List Account Transfers",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of Account Transfer objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account_transfers",
+      "method": "createAnAccountTransfer",
+      "httpMethod": "post",
+      "description": "Create an Account Transfer",
+      "parameters": [
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "amount",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "destination_account_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "require_approval",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Account transfers move funds between your own accounts at Increase."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account_transfers/{account_transfer_id}",
+      "method": "retrieveAnAccountTransfer",
+      "httpMethod": "get",
+      "description": "Retrieve an Account Transfer",
+      "parameters": [
+        {
+          "name": "account_transfer_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Account transfers move funds between your own accounts at Increase."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account_transfers/{account_transfer_id}/approve",
+      "method": "approveAnAccountTransfer",
+      "httpMethod": "post",
+      "description": "Approve an Account Transfer",
+      "parameters": [
+        {
+          "name": "account_transfer_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Account transfers move funds between your own accounts at Increase."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account_transfers/{account_transfer_id}/cancel",
+      "method": "cancelAnAccountTransfer",
+      "httpMethod": "post",
+      "description": "Cancel an Account Transfer",
+      "parameters": [
+        {
+          "name": "account_transfer_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Account transfers move funds between your own accounts at Increase."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/accounts",
+      "method": "listAccounts",
+      "httpMethod": "get",
+      "description": "List Accounts",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "entity_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of Account objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/accounts",
+      "method": "createAnAccount",
+      "httpMethod": "post",
+      "description": "Create an Account",
+      "parameters": [
+        {
+          "name": "entity_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "informational_entity_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "program_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Accounts are your bank accounts with Increase. They store money, receive transfers, and send payments. They earn interest and have depository insurance."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{account_id}",
+      "method": "retrieveAnAccount",
+      "httpMethod": "get",
+      "description": "Retrieve an Account",
+      "parameters": [
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Accounts are your bank accounts with Increase. They store money, receive transfers, and send payments. They earn interest and have depository insurance."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{account_id}",
+      "method": "updateAnAccount",
+      "httpMethod": "patch",
+      "description": "Update an Account",
+      "parameters": [
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Accounts are your bank accounts with Increase. They store money, receive transfers, and send payments. They earn interest and have depository insurance."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{account_id}/close",
+      "method": "closeAnAccount",
+      "httpMethod": "post",
+      "description": "Close an Account",
+      "parameters": [
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Accounts are your bank accounts with Increase. They store money, receive transfers, and send payments. They earn interest and have depository insurance."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ach_prenotifications",
+      "method": "listAchPrenotifications",
+      "httpMethod": "get",
+      "description": "List ACH Prenotifications",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of ACH Prenotification objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ach_prenotifications",
+      "method": "createAnAchPrenotification",
+      "httpMethod": "post",
+      "description": "Create an ACH Prenotification",
+      "parameters": [
+        {
+          "name": "account_number",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "addendum",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "company_descriptive_date",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "company_discretionary_data",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "company_entry_description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "company_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "credit_debit_indicator",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "effective_date",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "individual_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "individual_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "routing_number",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "standard_entry_class_code",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "ACH Prenotifications are one way you can verify account and routing numbers by Automated Clearing House (ACH)."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ach_prenotifications/{ach_prenotification_id}",
+      "method": "retrieveAnAchPrenotification",
+      "httpMethod": "get",
+      "description": "Retrieve an ACH Prenotification",
+      "parameters": [
+        {
+          "name": "ach_prenotification_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "ACH Prenotifications are one way you can verify account and routing numbers by Automated Clearing House (ACH)."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ach_transfers",
+      "method": "listAchTransfers",
+      "httpMethod": "get",
+      "description": "List ACH Transfers",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "external_account_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of ACH Transfer objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ach_transfers",
+      "method": "createAnAchTransfer",
+      "httpMethod": "post",
+      "description": "Create an ACH Transfer",
+      "parameters": [
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "account_number",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "addendum",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "amount",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "company_descriptive_date",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "company_discretionary_data",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "company_entry_description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "company_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "effective_date",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "external_account_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "funding",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "individual_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "individual_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "require_approval",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "routing_number",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "standard_entry_class_code",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "statement_descriptor",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "ACH transfers move funds between your Increase account and any other account accessible by the Automated Clearing House (ACH)."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ach_transfers/{ach_transfer_id}",
+      "method": "retrieveAnAchTransfer",
+      "httpMethod": "get",
+      "description": "Retrieve an ACH Transfer",
+      "parameters": [
+        {
+          "name": "ach_transfer_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "ACH transfers move funds between your Increase account and any other account accessible by the Automated Clearing House (ACH)."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ach_transfers/{ach_transfer_id}/approve",
+      "method": "approveAnAchTransfer",
+      "httpMethod": "post",
+      "description": "Approve an ACH Transfer",
+      "parameters": [
+        {
+          "name": "ach_transfer_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "ACH transfers move funds between your Increase account and any other account accessible by the Automated Clearing House (ACH)."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ach_transfers/{ach_transfer_id}/cancel",
+      "method": "cancelAPendingAchTransfer",
+      "httpMethod": "post",
+      "description": "Cancel a pending ACH Transfer",
+      "parameters": [
+        {
+          "name": "ach_transfer_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "ACH transfers move funds between your Increase account and any other account accessible by the Automated Clearing House (ACH)."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/balance_lookups",
+      "method": "lookUpTheBalanceForAnAccount",
+      "httpMethod": "post",
+      "description": "Look up the balance for an Account",
+      "parameters": [
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a request to lookup the balance of an Account at a given point in time."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/bookkeeping_accounts",
+      "method": "listBookkeepingAccounts",
+      "httpMethod": "get",
+      "description": "List Bookkeeping Accounts",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of Bookkeeping Account objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/bookkeeping_accounts",
+      "method": "createABookkeepingAccount",
+      "httpMethod": "post",
+      "description": "Create a Bookkeeping Account",
+      "parameters": [
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "compliance_category",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "entity_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Accounts are T-accounts. They can store accounting entries."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/bookkeeping_entries",
+      "method": "listBookkeepingEntries",
+      "httpMethod": "get",
+      "description": "List Bookkeeping Entries",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of Bookkeeping Entry objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/bookkeeping_entry_sets",
+      "method": "createABookkeepingEntrySet",
+      "httpMethod": "post",
+      "description": "Create a Bookkeeping Entry Set",
+      "parameters": [
+        {
+          "name": "date",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "entries",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "transaction_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Entry Sets are accounting entries that are transactionally applied."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/card_disputes",
+      "method": "listCardDisputes",
+      "httpMethod": "get",
+      "description": "List Card Disputes",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "status.in",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of Card Dispute objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/card_disputes",
+      "method": "createACardDispute",
+      "httpMethod": "post",
+      "description": "Create a Card Dispute",
+      "parameters": [
+        {
+          "name": "disputed_transaction_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "explanation",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "If unauthorized activity occurs on a card, you can create a Card Dispute and we'll return the funds if appropriate."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/card_disputes/{card_dispute_id}",
+      "method": "retrieveACardDispute",
+      "httpMethod": "get",
+      "description": "Retrieve a Card Dispute",
+      "parameters": [
+        {
+          "name": "card_dispute_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "If unauthorized activity occurs on a card, you can create a Card Dispute and we'll return the funds if appropriate."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/card_profiles",
+      "method": "listCardProfiles",
+      "httpMethod": "get",
+      "description": "List Card Profiles",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "status.in",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of Card Profile objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/card_profiles",
+      "method": "createACardProfile",
+      "httpMethod": "post",
+      "description": "Create a Card Profile",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "digital_wallets",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This contains artwork and metadata relating to a Card's appearance in digital wallet apps like Apple Pay and Google Pay. For more information, see our guide on [digital card artwork](https://increase.com/documentation/card-art)"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/card_profiles/{card_profile_id}",
+      "method": "retrieveACardProfile",
+      "httpMethod": "get",
+      "description": "Retrieve a Card Profile",
+      "parameters": [
+        {
+          "name": "card_profile_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This contains artwork and metadata relating to a Card's appearance in digital wallet apps like Apple Pay and Google Pay. For more information, see our guide on [digital card artwork](https://increase.com/documentation/card-art)"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cards",
+      "method": "listCards",
+      "httpMethod": "get",
+      "description": "List Cards",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of Card objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cards",
+      "method": "createACard",
+      "httpMethod": "post",
+      "description": "Create a Card",
+      "parameters": [
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "billing_address",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "digital_wallet",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Cards are commercial credit cards. They'll immediately work for online purchases after you create them. All cards maintain a credit limit of 100% of the Account’s available balance at the time of transaction. Funds are deducted from the Account upon transaction settlement."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cards/{card_id}",
+      "method": "retrieveACard",
+      "httpMethod": "get",
+      "description": "Retrieve a Card",
+      "parameters": [
+        {
+          "name": "card_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Cards are commercial credit cards. They'll immediately work for online purchases after you create them. All cards maintain a credit limit of 100% of the Account’s available balance at the time of transaction. Funds are deducted from the Account upon transaction settlement."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cards/{card_id}",
+      "method": "updateACard",
+      "httpMethod": "patch",
+      "description": "Update a Card",
+      "parameters": [
+        {
+          "name": "card_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "billing_address",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "digital_wallet",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Cards are commercial credit cards. They'll immediately work for online purchases after you create them. All cards maintain a credit limit of 100% of the Account’s available balance at the time of transaction. Funds are deducted from the Account upon transaction settlement."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cards/{card_id}/details",
+      "method": "retrieveSensitiveDetailsForACard",
+      "httpMethod": "get",
+      "description": "Retrieve sensitive details for a Card",
+      "parameters": [
+        {
+          "name": "card_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "An object containing the sensitive details (card number, cvc, etc) for a Card."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/check_deposits",
+      "method": "listCheckDeposits",
+      "httpMethod": "get",
+      "description": "List Check Deposits",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of Check Deposit objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/check_deposits",
+      "method": "createACheckDeposit",
+      "httpMethod": "post",
+      "description": "Create a Check Deposit",
+      "parameters": [
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "amount",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "back_image_file_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "currency",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "front_image_file_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Check Deposits allow you to deposit images of paper checks into your account."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/check_deposits/{check_deposit_id}",
+      "method": "retrieveACheckDeposit",
+      "httpMethod": "get",
+      "description": "Retrieve a Check Deposit",
+      "parameters": [
+        {
+          "name": "check_deposit_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Check Deposits allow you to deposit images of paper checks into your account."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/check_transfers",
+      "method": "listCheckTransfers",
+      "httpMethod": "get",
+      "description": "List Check Transfers",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of Check Transfer objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/check_transfers",
+      "method": "createACheckTransfer",
+      "httpMethod": "post",
+      "description": "Create a Check Transfer",
+      "parameters": [
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "address_city",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "address_line1",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "address_line2",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "address_state",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "address_zip",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "amount",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "note",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "recipient_name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "require_approval",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "return_address",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Check Transfers move funds from your Increase account by mailing a physical check."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/check_transfers/{check_transfer_id}",
+      "method": "retrieveACheckTransfer",
+      "httpMethod": "get",
+      "description": "Retrieve a Check Transfer",
+      "parameters": [
+        {
+          "name": "check_transfer_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Check Transfers move funds from your Increase account by mailing a physical check."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/check_transfers/{check_transfer_id}/approve",
+      "method": "approveACheckTransfer",
+      "httpMethod": "post",
+      "description": "Approve a Check Transfer",
+      "parameters": [
+        {
+          "name": "check_transfer_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Check Transfers move funds from your Increase account by mailing a physical check."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/check_transfers/{check_transfer_id}/cancel",
+      "method": "cancelAPendingCheckTransfer",
+      "httpMethod": "post",
+      "description": "Cancel a pending Check Transfer",
+      "parameters": [
+        {
+          "name": "check_transfer_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Check Transfers move funds from your Increase account by mailing a physical check."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/check_transfers/{check_transfer_id}/stop_payment",
+      "method": "requestAStopPaymentOnACheckTransfer",
+      "httpMethod": "post",
+      "description": "Request a stop payment on a Check Transfer",
+      "parameters": [
+        {
+          "name": "check_transfer_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Check Transfers move funds from your Increase account by mailing a physical check."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/declined_transactions",
+      "method": "listDeclinedTransactions",
+      "httpMethod": "get",
+      "description": "List Declined Transactions",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "route_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of Declined Transaction objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/declined_transactions/{declined_transaction_id}",
+      "method": "retrieveADeclinedTransaction",
+      "httpMethod": "get",
+      "description": "Retrieve a Declined Transaction",
+      "parameters": [
+        {
+          "name": "declined_transaction_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Declined Transactions are refused additions and removals of money from your bank account. For example, Declined Transactions are caused when your Account has an insufficient balance or your Limits are triggered."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/digital_wallet_tokens",
+      "method": "listDigitalWalletTokens",
+      "httpMethod": "get",
+      "description": "List Digital Wallet Tokens",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "card_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of Digital Wallet Token objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/digital_wallet_tokens/{digital_wallet_token_id}",
+      "method": "retrieveADigitalWalletToken",
+      "httpMethod": "get",
+      "description": "Retrieve a Digital Wallet Token",
+      "parameters": [
+        {
+          "name": "digital_wallet_token_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A Digital Wallet Token is created when a user adds a Card to their Apple Pay or Google Pay app. The Digital Wallet Token can be used for purchases just like a Card."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/documents",
+      "method": "listDocuments",
+      "httpMethod": "get",
+      "description": "List Documents",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "entity_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "category.in",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of Document objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/documents/{document_id}",
+      "method": "retrieveADocument",
+      "httpMethod": "get",
+      "description": "Retrieve a Document",
+      "parameters": [
+        {
+          "name": "document_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Increase generates certain documents / forms automatically for your application; they can be listed here. Currently the only supported document type is IRS Form 1099-INT."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/entities",
+      "method": "listEntities",
+      "httpMethod": "get",
+      "description": "List Entities",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of Entity objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/entities",
+      "method": "createAnEntity",
+      "httpMethod": "post",
+      "description": "Create an Entity",
+      "parameters": [
+        {
+          "name": "corporation",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "joint",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "natural_person",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "relationship",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "structure",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "supplemental_documents",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "trust",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Entities are the legal entities that own accounts. They can be people, corporations, partnerships, or trusts."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/entities/{entity_id}",
+      "method": "retrieveAnEntity",
+      "httpMethod": "get",
+      "description": "Retrieve an Entity",
+      "parameters": [
+        {
+          "name": "entity_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Entities are the legal entities that own accounts. They can be people, corporations, partnerships, or trusts."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/entities/{entity_id}/supplemental_documents",
+      "method": "createASupplementalDocumentForAnEntity",
+      "httpMethod": "post",
+      "description": "Create a supplemental document for an Entity",
+      "parameters": [
+        {
+          "name": "entity_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "file_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Entities are the legal entities that own accounts. They can be people, corporations, partnerships, or trusts."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/event_subscriptions",
+      "method": "listEventSubscriptions",
+      "httpMethod": "get",
+      "description": "List Event Subscriptions",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of Event Subscription objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/event_subscriptions",
+      "method": "createAnEventSubscription",
+      "httpMethod": "post",
+      "description": "Create an Event Subscription",
+      "parameters": [
+        {
+          "name": "selected_event_category",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "shared_secret",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Webhooks are event notifications we send to you by HTTPS POST requests. Event Subscriptions are how you configure your application to listen for them. You can create an Event Subscription through your [developer dashboard](https://dashboard.increase.com/developers/webhooks) or the API. For more information, see our [webhooks guide](https://increase.com/documentation/webhooks)."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/event_subscriptions/{event_subscription_id}",
+      "method": "retrieveAnEventSubscription",
+      "httpMethod": "get",
+      "description": "Retrieve an Event Subscription",
+      "parameters": [
+        {
+          "name": "event_subscription_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Webhooks are event notifications we send to you by HTTPS POST requests. Event Subscriptions are how you configure your application to listen for them. You can create an Event Subscription through your [developer dashboard](https://dashboard.increase.com/developers/webhooks) or the API. For more information, see our [webhooks guide](https://increase.com/documentation/webhooks)."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/event_subscriptions/{event_subscription_id}",
+      "method": "updateAnEventSubscription",
+      "httpMethod": "patch",
+      "description": "Update an Event Subscription",
+      "parameters": [
+        {
+          "name": "event_subscription_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Webhooks are event notifications we send to you by HTTPS POST requests. Event Subscriptions are how you configure your application to listen for them. You can create an Event Subscription through your [developer dashboard](https://dashboard.increase.com/developers/webhooks) or the API. For more information, see our [webhooks guide](https://increase.com/documentation/webhooks)."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/events",
+      "method": "listEvents",
+      "httpMethod": "get",
+      "description": "List Events",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "category.in",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "associated_object_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of Event objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/events/{event_id}",
+      "method": "retrieveAnEvent",
+      "httpMethod": "get",
+      "description": "Retrieve an Event",
+      "parameters": [
+        {
+          "name": "event_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Events are records of things that happened to objects in the API. They also result in webhooks being generated."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/exports",
+      "method": "listExports",
+      "httpMethod": "get",
+      "description": "List Exports",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of Export objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/exports",
+      "method": "createAnExport",
+      "httpMethod": "post",
+      "description": "Create an Export",
+      "parameters": [
+        {
+          "name": "balance_csv",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "category",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "transaction_csv",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Exports are batch summaries of your Increase data. You can make them from the API or dashboard. Since they can take a while, they are generated asynchronously. We send a webhook when they are ready. For more information, please read our [Exports documentation](https://increase.com/documentation/exports)."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/exports/{export_id}",
+      "method": "retrieveAnExport",
+      "httpMethod": "get",
+      "description": "Retrieve an Export",
+      "parameters": [
+        {
+          "name": "export_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Exports are batch summaries of your Increase data. You can make them from the API or dashboard. Since they can take a while, they are generated asynchronously. We send a webhook when they are ready. For more information, please read our [Exports documentation](https://increase.com/documentation/exports)."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/external_accounts",
+      "method": "listExternalAccounts",
+      "httpMethod": "get",
+      "description": "List External Accounts",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "status.in",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of External Account objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/external_accounts",
+      "method": "createAnExternalAccount",
+      "httpMethod": "post",
+      "description": "Create an External Account",
+      "parameters": [
+        {
+          "name": "account_number",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "funding",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "routing_number",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "External Accounts represent accounts at financial institutions other than Increase. You can use this API to store their details for reuse."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/external_accounts/{external_account_id}",
+      "method": "retrieveAnExternalAccount",
+      "httpMethod": "get",
+      "description": "Retrieve an External Account",
+      "parameters": [
+        {
+          "name": "external_account_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "External Accounts represent accounts at financial institutions other than Increase. You can use this API to store their details for reuse."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/external_accounts/{external_account_id}",
+      "method": "updateAnExternalAccount",
+      "httpMethod": "patch",
+      "description": "Update an External Account",
+      "parameters": [
+        {
+          "name": "external_account_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "External Accounts represent accounts at financial institutions other than Increase. You can use this API to store their details for reuse."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/files",
+      "method": "listFiles",
+      "httpMethod": "get",
+      "description": "List Files",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "purpose.in",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of File objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/files",
+      "method": "createAFile",
+      "httpMethod": "post",
+      "description": "Create a File",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "file",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "purpose",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Files are objects that represent a file hosted on Increase's servers. The file may have been uploaded by you (for example, when uploading a check image) or it may have been created by Increase (for example, an autogenerated statement PDF)."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/files/{file_id}",
+      "method": "retrieveAFile",
+      "httpMethod": "get",
+      "description": "Retrieve a File",
+      "parameters": [
+        {
+          "name": "file_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Files are objects that represent a file hosted on Increase's servers. The file may have been uploaded by you (for example, when uploading a check image) or it may have been created by Increase (for example, an autogenerated statement PDF)."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/current",
+      "method": "retrieveGroupDetails",
+      "httpMethod": "get",
+      "description": "Retrieve Group details",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Groups represent organizations using Increase. You can retrieve information about your own organization via the API, or (more commonly) OAuth platforms can retrieve information about the organizations that have granted them access."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/inbound_ach_transfer_returns",
+      "method": "listInboundAchTransferReturns",
+      "httpMethod": "get",
+      "description": "List Inbound ACH Transfer Returns",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of Inbound ACH Transfer Return objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/inbound_ach_transfer_returns",
+      "method": "createAnAchReturn",
+      "httpMethod": "post",
+      "description": "Create an ACH Return",
+      "parameters": [
+        {
+          "name": "reason",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "transaction_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "If unauthorized activity occurs via ACH, you can create an Inbound ACH Transfer Return and we'll reverse the transaction. You can create an Inbound ACH Transfer return the first two days after receiving an Inbound ACH Transfer."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/inbound_ach_transfer_returns/{inbound_ach_transfer_return_id}",
+      "method": "retrieveAnInboundAchTransferReturn",
+      "httpMethod": "get",
+      "description": "Retrieve an Inbound ACH Transfer Return",
+      "parameters": [
+        {
+          "name": "inbound_ach_transfer_return_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "If unauthorized activity occurs via ACH, you can create an Inbound ACH Transfer Return and we'll reverse the transaction. You can create an Inbound ACH Transfer return the first two days after receiving an Inbound ACH Transfer."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/inbound_wire_drawdown_requests",
+      "method": "listInboundWireDrawdownRequests",
+      "httpMethod": "get",
+      "description": "List Inbound Wire Drawdown Requests",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of Inbound Wire Drawdown Request objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/inbound_wire_drawdown_requests/{inbound_wire_drawdown_request_id}",
+      "method": "retrieveAnInboundWireDrawdownRequest",
+      "httpMethod": "get",
+      "description": "Retrieve an Inbound Wire Drawdown Request",
+      "parameters": [
+        {
+          "name": "inbound_wire_drawdown_request_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Inbound wire drawdown requests are requests from someone else to send them a wire. This feature is in beta; reach out to [support@increase.com](mailto:support@increase.com) to learn more."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/limits",
+      "method": "listLimits",
+      "httpMethod": "get",
+      "description": "List Limits",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "model_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of Limit objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/limits",
+      "method": "createALimit",
+      "httpMethod": "post",
+      "description": "Create a Limit",
+      "parameters": [
+        {
+          "name": "interval",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "metric",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "model_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "value",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "You can set limits at the Account, Account Number, or Card level. Limits applied to Accounts will apply to all Account Numbers and Cards in the Account. You can specify any number of Limits and they will all be applied to inbound debits and card authorizations. Volume and count Limits are designed to prevent unauthorized debits."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/limits/{limit_id}",
+      "method": "retrieveALimit",
+      "httpMethod": "get",
+      "description": "Retrieve a Limit",
+      "parameters": [
+        {
+          "name": "limit_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "You can set limits at the Account, Account Number, or Card level. Limits applied to Accounts will apply to all Account Numbers and Cards in the Account. You can specify any number of Limits and they will all be applied to inbound debits and card authorizations. Volume and count Limits are designed to prevent unauthorized debits."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/limits/{limit_id}",
+      "method": "updateALimit",
+      "httpMethod": "patch",
+      "description": "Update a Limit",
+      "parameters": [
+        {
+          "name": "limit_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "You can set limits at the Account, Account Number, or Card level. Limits applied to Accounts will apply to all Account Numbers and Cards in the Account. You can specify any number of Limits and they will all be applied to inbound debits and card authorizations. Volume and count Limits are designed to prevent unauthorized debits."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/oauth_connections",
+      "method": "listOauthConnections",
+      "httpMethod": "get",
+      "description": "List OAuth Connections",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of OAuth Connection objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/oauth_connections/{oauth_connection_id}",
+      "method": "retrieveAnOauthConnection",
+      "httpMethod": "get",
+      "description": "Retrieve an OAuth Connection",
+      "parameters": [
+        {
+          "name": "oauth_connection_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "When a user authorizes your OAuth application, an OAuth Connection object is created."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/pending_transactions",
+      "method": "listPendingTransactions",
+      "httpMethod": "get",
+      "description": "List Pending Transactions",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "route_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "source_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "status.in",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of Pending Transaction objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/pending_transactions/{pending_transaction_id}",
+      "method": "retrieveAPendingTransaction",
+      "httpMethod": "get",
+      "description": "Retrieve a Pending Transaction",
+      "parameters": [
+        {
+          "name": "pending_transaction_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Pending Transactions are potential future additions and removals of money from your bank account."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/programs",
+      "method": "listPrograms",
+      "httpMethod": "get",
+      "description": "List Programs",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of Program objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/programs/{program_id}",
+      "method": "retrieveAProgram",
+      "httpMethod": "get",
+      "description": "Retrieve a Program",
+      "parameters": [
+        {
+          "name": "program_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Programs determine the compliance and commercial terms of Accounts. By default, you have a Commercial Banking program for managing your own funds. If you are lending or managing funds on behalf of your customers, or otherwise engaged in regulated activity, we will work together to create additional Programs for you."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/real_time_decisions/{real_time_decision_id}",
+      "method": "retrieveARealTimeDecision",
+      "httpMethod": "get",
+      "description": "Retrieve a Real-Time Decision",
+      "parameters": [
+        {
+          "name": "real_time_decision_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Real Time Decisions are created when your application needs to take action in real-time to some event such as a card authorization. Real time decisions are currently in beta; please contact support@increase.com if you're interested in trying them out!"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/real_time_decisions/{real_time_decision_id}/action",
+      "method": "actionARealTimeDecision",
+      "httpMethod": "post",
+      "description": "Action a Real-Time Decision",
+      "parameters": [
+        {
+          "name": "real_time_decision_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "card_authorization",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "digital_wallet_authentication",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "digital_wallet_token",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Real Time Decisions are created when your application needs to take action in real-time to some event such as a card authorization. Real time decisions are currently in beta; please contact support@increase.com if you're interested in trying them out!"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/real_time_payments_transfers",
+      "method": "listRealTimePaymentsTransfers",
+      "httpMethod": "get",
+      "description": "List Real Time Payments Transfers",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "external_account_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of Real Time Payments Transfer objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/real_time_payments_transfers",
+      "method": "createARealTimePaymentsTransfer",
+      "httpMethod": "post",
+      "description": "Create a Real Time Payments Transfer",
+      "parameters": [
+        {
+          "name": "amount",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "creditor_name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "destination_account_number",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "destination_routing_number",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "external_account_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "remittance_information",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "require_approval",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "source_account_number_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Real Time Payments transfers move funds, within seconds, between your Increase account and any other account on the Real Time Payments network."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/real_time_payments_transfers/{real_time_payments_transfer_id}",
+      "method": "retrieveARealTimePaymentsTransfer",
+      "httpMethod": "get",
+      "description": "Retrieve a Real Time Payments Transfer",
+      "parameters": [
+        {
+          "name": "real_time_payments_transfer_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Real Time Payments transfers move funds, within seconds, between your Increase account and any other account on the Real Time Payments network."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/routing_numbers",
+      "method": "listRoutingNumbers",
+      "httpMethod": "get",
+      "description": "List Routing Numbers",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "routing_number",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of Routing Number objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/simulations/account_statements",
+      "method": "simulateAnAccountStatementBeingCreated",
+      "httpMethod": "post",
+      "description": "Simulate an Account Statement being created",
+      "parameters": [
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Account Statements are generated monthly for every active Account. You can access the statement's data via the API or retrieve a PDF with its details via its associated File."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/simulations/account_transfers/{account_transfer_id}/complete",
+      "method": "completeASandboxAccountTransfer",
+      "httpMethod": "post",
+      "description": "Complete a Sandbox Account Transfer",
+      "parameters": [
+        {
+          "name": "account_transfer_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Account transfers move funds between your own accounts at Increase."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/simulations/ach_transfers/{ach_transfer_id}/return",
+      "method": "returnASandboxAchTransfer",
+      "httpMethod": "post",
+      "description": "Return a Sandbox ACH Transfer",
+      "parameters": [
+        {
+          "name": "ach_transfer_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "ACH transfers move funds between your Increase account and any other account accessible by the Automated Clearing House (ACH)."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/simulations/ach_transfers/{ach_transfer_id}/submit",
+      "method": "submitASandboxAchTransfer",
+      "httpMethod": "post",
+      "description": "Submit a Sandbox ACH Transfer",
+      "parameters": [
+        {
+          "name": "ach_transfer_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "ACH transfers move funds between your Increase account and any other account accessible by the Automated Clearing House (ACH)."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/simulations/card_authorizations",
+      "method": "simulateAnAuthorizationOnACard",
+      "httpMethod": "post",
+      "description": "Simulate an authorization on a Card",
+      "parameters": [
+        {
+          "name": "amount",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "card_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "digital_wallet_token_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "event_subscription_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The results of a Card Authorization simulation."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/simulations/card_disputes/{card_dispute_id}/action",
+      "method": "simulatesAdvancingTheStateOfACardDispute",
+      "httpMethod": "post",
+      "description": "Simulates advancing the state of a card dispute",
+      "parameters": [
+        {
+          "name": "card_dispute_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "explanation",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "If unauthorized activity occurs on a card, you can create a Card Dispute and we'll return the funds if appropriate."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/simulations/card_refunds",
+      "method": "simulateARefundOnACard",
+      "httpMethod": "post",
+      "description": "Simulate a refund on a card",
+      "parameters": [
+        {
+          "name": "transaction_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Transactions are the immutable additions and removals of money from your bank account. They're the equivalent of line items on your bank statement."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/simulations/card_settlements",
+      "method": "simulateSettlingACardAuthorization",
+      "httpMethod": "post",
+      "description": "Simulate settling a card authorization",
+      "parameters": [
+        {
+          "name": "amount",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "card_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "pending_transaction_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Transactions are the immutable additions and removals of money from your bank account. They're the equivalent of line items on your bank statement."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/simulations/check_deposits/{check_deposit_id}/reject",
+      "method": "rejectASandboxCheckDeposit",
+      "httpMethod": "post",
+      "description": "Reject a Sandbox Check Deposit",
+      "parameters": [
+        {
+          "name": "check_deposit_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Check Deposits allow you to deposit images of paper checks into your account."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/simulations/check_deposits/{check_deposit_id}/return",
+      "method": "returnASandboxCheckDeposit",
+      "httpMethod": "post",
+      "description": "Return a Sandbox Check Deposit",
+      "parameters": [
+        {
+          "name": "check_deposit_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Check Deposits allow you to deposit images of paper checks into your account."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/simulations/check_deposits/{check_deposit_id}/submit",
+      "method": "submitASandboxCheckDeposit",
+      "httpMethod": "post",
+      "description": "Submit a Sandbox Check Deposit",
+      "parameters": [
+        {
+          "name": "check_deposit_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Check Deposits allow you to deposit images of paper checks into your account."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/simulations/check_transfers/{check_transfer_id}/deposit",
+      "method": "depositASandboxCheckTransfer",
+      "httpMethod": "post",
+      "description": "Deposit a Sandbox Check Transfer",
+      "parameters": [
+        {
+          "name": "check_transfer_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Check Transfers move funds from your Increase account by mailing a physical check."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/simulations/check_transfers/{check_transfer_id}/mail",
+      "method": "mailASandboxCheckTransfer",
+      "httpMethod": "post",
+      "description": "Mail a Sandbox Check Transfer",
+      "parameters": [
+        {
+          "name": "check_transfer_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Check Transfers move funds from your Increase account by mailing a physical check."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/simulations/check_transfers/{check_transfer_id}/return",
+      "method": "returnASandboxCheckTransfer",
+      "httpMethod": "post",
+      "description": "Return a Sandbox Check Transfer",
+      "parameters": [
+        {
+          "name": "check_transfer_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Check Transfers move funds from your Increase account by mailing a physical check."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/simulations/digital_wallet_token_requests",
+      "method": "simulateDigitalWalletProvisioningForACard",
+      "httpMethod": "post",
+      "description": "Simulate digital wallet provisioning for a card",
+      "parameters": [
+        {
+          "name": "card_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The results of a Digital Wallet Token simulation."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/simulations/documents",
+      "method": "simulateATaxDocumentBeingCreated",
+      "httpMethod": "post",
+      "description": "Simulate a tax document being created",
+      "parameters": [
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Increase generates certain documents / forms automatically for your application; they can be listed here. Currently the only supported document type is IRS Form 1099-INT."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/simulations/inbound_ach_transfers",
+      "method": "simulateAnAchTransferToYourAccount",
+      "httpMethod": "post",
+      "description": "Simulate an ACH Transfer to your account",
+      "parameters": [
+        {
+          "name": "account_number_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "amount",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "company_descriptive_date",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "company_discretionary_data",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "company_entry_description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "company_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "company_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The results of an inbound ACH Transfer simulation."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/simulations/inbound_real_time_payments_transfers",
+      "method": "simulateARealTimePaymentsTransferToYourAccount",
+      "httpMethod": "post",
+      "description": "Simulate a Real Time Payments Transfer to your account",
+      "parameters": [
+        {
+          "name": "account_number_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "amount",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "debtor_account_number",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "debtor_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "debtor_routing_number",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "remittance_information",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "request_for_payment_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The results of an inbound Real Time Payments Transfer simulation."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/simulations/inbound_wire_drawdown_requests",
+      "method": "simulateAnInboundWireDrawdownRequestBeingCreated",
+      "httpMethod": "post",
+      "description": "Simulate an Inbound Wire Drawdown request being created",
+      "parameters": [
+        {
+          "name": "amount",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "beneficiary_account_number",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "beneficiary_address_line1",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "beneficiary_address_line2",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "beneficiary_address_line3",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "beneficiary_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "beneficiary_routing_number",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "currency",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "message_to_recipient",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "originator_account_number",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "originator_address_line1",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "originator_address_line2",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "originator_address_line3",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "originator_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "originator_routing_number",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "originator_to_beneficiary_information_line1",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "originator_to_beneficiary_information_line2",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "originator_to_beneficiary_information_line3",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "originator_to_beneficiary_information_line4",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "recipient_account_number_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Inbound wire drawdown requests are requests from someone else to send them a wire. This feature is in beta; reach out to [support@increase.com](mailto:support@increase.com) to learn more."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/simulations/inbound_wire_transfers",
+      "method": "simulateAWireTransferToYourAccount",
+      "httpMethod": "post",
+      "description": "Simulate a Wire Transfer to your account",
+      "parameters": [
+        {
+          "name": "account_number_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "amount",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "beneficiary_address_line1",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "beneficiary_address_line2",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "beneficiary_address_line3",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "beneficiary_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "beneficiary_reference",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "originator_address_line1",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "originator_address_line2",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "originator_address_line3",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "originator_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "originator_to_beneficiary_information_line1",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "originator_to_beneficiary_information_line2",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "originator_to_beneficiary_information_line3",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "originator_to_beneficiary_information_line4",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The results of an inbound Wire Transfer simulation."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/simulations/interest_payment",
+      "method": "simulateAnInterestPaymentToYourAccount",
+      "httpMethod": "post",
+      "description": "Simulate an Interest Payment to your account",
+      "parameters": [
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "amount",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The results of an Interest Payment simulation."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/simulations/real_time_payments_transfers/{real_time_payments_transfer_id}/complete",
+      "method": "completeASandboxRealTimePaymentsTransfer",
+      "httpMethod": "post",
+      "description": "Complete a Sandbox Real Time Payments Transfer",
+      "parameters": [
+        {
+          "name": "real_time_payments_transfer_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "rejection",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Real Time Payments transfers move funds, within seconds, between your Increase account and any other account on the Real Time Payments network."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/simulations/wire_transfers/{wire_transfer_id}/reverse",
+      "method": "reverseASandboxWireTransfer",
+      "httpMethod": "post",
+      "description": "Reverse a Sandbox Wire Transfer",
+      "parameters": [
+        {
+          "name": "wire_transfer_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Wire transfers move funds between your Increase account and any other account accessible by Fedwire."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/simulations/wire_transfers/{wire_transfer_id}/submit",
+      "method": "submitASandboxWireTransfer",
+      "httpMethod": "post",
+      "description": "Submit a Sandbox Wire Transfer",
+      "parameters": [
+        {
+          "name": "wire_transfer_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Wire transfers move funds between your Increase account and any other account accessible by Fedwire."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/transactions",
+      "method": "listTransactions",
+      "httpMethod": "get",
+      "description": "List Transactions",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "category.in",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "route_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of Transaction objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/transactions/{transaction_id}",
+      "method": "retrieveATransaction",
+      "httpMethod": "get",
+      "description": "Retrieve a Transaction",
+      "parameters": [
+        {
+          "name": "transaction_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Transactions are the immutable additions and removals of money from your bank account. They're the equivalent of line items on your bank statement."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/wire_drawdown_requests",
+      "method": "listWireDrawdownRequests",
+      "httpMethod": "get",
+      "description": "List Wire Drawdown Requests",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of Wire Drawdown Request objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/wire_drawdown_requests",
+      "method": "createAWireDrawdownRequest",
+      "httpMethod": "post",
+      "description": "Create a Wire Drawdown Request",
+      "parameters": [
+        {
+          "name": "account_number_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "amount",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "message_to_recipient",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "recipient_account_number",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "recipient_address_line1",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "recipient_address_line2",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "recipient_address_line3",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "recipient_name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "recipient_routing_number",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Wire drawdown requests enable you to request that someone else send you a wire. This feature is in beta; reach out to [support@increase.com](mailto:support@increase.com) to learn more."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/wire_drawdown_requests/{wire_drawdown_request_id}",
+      "method": "retrieveAWireDrawdownRequest",
+      "httpMethod": "get",
+      "description": "Retrieve a Wire Drawdown Request",
+      "parameters": [
+        {
+          "name": "wire_drawdown_request_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Wire drawdown requests enable you to request that someone else send you a wire. This feature is in beta; reach out to [support@increase.com](mailto:support@increase.com) to learn more."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/wire_transfers",
+      "method": "listWireTransfers",
+      "httpMethod": "get",
+      "description": "List Wire Transfers",
+      "parameters": [
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "external_account_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at.on_or_before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of Wire Transfer objects"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/wire_transfers",
+      "method": "createAWireTransfer",
+      "httpMethod": "post",
+      "description": "Create a Wire Transfer",
+      "parameters": [
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "account_number",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "amount",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "beneficiary_address_line1",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "beneficiary_address_line2",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "beneficiary_address_line3",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "beneficiary_name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "external_account_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "message_to_recipient",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "require_approval",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "routing_number",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Wire transfers move funds between your Increase account and any other account accessible by Fedwire."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/wire_transfers/{wire_transfer_id}",
+      "method": "retrieveAWireTransfer",
+      "httpMethod": "get",
+      "description": "Retrieve a Wire Transfer",
+      "parameters": [
+        {
+          "name": "wire_transfer_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Wire transfers move funds between your Increase account and any other account accessible by Fedwire."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/wire_transfers/{wire_transfer_id}/approve",
+      "method": "approveAWireTransfer",
+      "httpMethod": "post",
+      "description": "Approve a Wire Transfer",
+      "parameters": [
+        {
+          "name": "wire_transfer_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Wire transfers move funds between your Increase account and any other account accessible by Fedwire."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/wire_transfers/{wire_transfer_id}/cancel",
+      "method": "cancelAPendingWireTransfer",
+      "httpMethod": "post",
+      "description": "Cancel a pending Wire Transfer",
+      "parameters": [
+        {
+          "name": "wire_transfer_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Wire transfers move funds between your Increase account and any other account accessible by Fedwire."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.increase.com",
   "apiTitle": "Increase API",
   "endpoints": 104,

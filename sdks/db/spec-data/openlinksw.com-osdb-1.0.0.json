@@ -4,6 +4,296 @@
   "homepage": "openlinksw.com",
   "serviceName": "osdb",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/api/v1/actions/{serviceId}",
+      "method": "listActions",
+      "httpMethod": "get",
+      "tag": "OSDB",
+      "description": "List actions",
+      "parameters": [
+        {
+          "name": "serviceId",
+          "schema": "string",
+          "required": true,
+          "description": "Service ID of the service for which actions are to be listed"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/actions/{serviceId}/{actionId}",
+      "method": "describeAction",
+      "httpMethod": "get",
+      "tag": "OSDB",
+      "description": "Describe action",
+      "parameters": [
+        {
+          "name": "serviceId",
+          "schema": "string",
+          "required": true,
+          "description": "Service ID of the service supporting the action."
+        },
+        {
+          "name": "actionId",
+          "schema": "string",
+          "required": true,
+          "description": "Action ID of the action to describe."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/actions/{serviceId}/{actionId}/exec",
+      "method": "executeAction",
+      "httpMethod": "post",
+      "tag": "OSDB",
+      "description": "Execute action",
+      "parameters": [
+        {
+          "name": "serviceId",
+          "schema": "string",
+          "required": true,
+          "description": "Service ID of the service supporting the action."
+        },
+        {
+          "name": "actionId",
+          "schema": "string",
+          "required": true,
+          "description": "Action ID of the action to execute."
+        },
+        {
+          "name": "action_specific_property1",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "action_specific_property2",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "osdb:body_data_encoding",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "osdb:body_data_raw",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "osdb:body_data_src_url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "osdb:output_type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "osdb:response_format",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "2XX",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/actions/{serviceId}/{actionId}/help",
+      "method": "actionHelp",
+      "httpMethod": "get",
+      "tag": "OSDB",
+      "description": "Action help",
+      "parameters": [
+        {
+          "name": "serviceId",
+          "schema": "string",
+          "required": true,
+          "description": "Service ID of the service supporting the action."
+        },
+        {
+          "name": "actionId",
+          "schema": "string",
+          "required": true,
+          "description": "Action ID of the action for which help text is being requested."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/login",
+      "method": "login",
+      "httpMethod": "get",
+      "tag": "OSDB",
+      "description": "Login",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/logout",
+      "method": "logout",
+      "httpMethod": "get",
+      "tag": "OSDB",
+      "description": "Logout",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/services",
+      "method": "listServices",
+      "httpMethod": "get",
+      "tag": "OSDB",
+      "description": "List services",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/services",
+      "method": "loadService",
+      "httpMethod": "post",
+      "tag": "OSDB",
+      "description": "Load service",
+      "parameters": [
+        {
+          "name": "service_description_url",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "service_moniker",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/services/{serviceId}",
+      "method": "unloadService",
+      "httpMethod": "delete",
+      "tag": "OSDB",
+      "description": "Unload service",
+      "parameters": [
+        {
+          "name": "serviceId",
+          "schema": "string",
+          "required": true,
+          "description": "Service ID of the service to be unloaded"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/services/{serviceId}",
+      "method": "describeService",
+      "httpMethod": "get",
+      "tag": "OSDB",
+      "description": "Describe service",
+      "parameters": [
+        {
+          "name": "serviceId",
+          "schema": "string",
+          "required": true,
+          "description": "Service ID of the service to describe."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://osdb.openlinksw.com/osdb",
   "apiDescription": "An OpenAPI description of the OpenLink Smart Data Bot REST API v1",
   "apiTitle": "OSDB REST API v1",

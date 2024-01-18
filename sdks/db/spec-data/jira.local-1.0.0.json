@@ -3,6 +3,4101 @@
   "openApiRaw": "https://docs.atlassian.com/jira/REST/server/jira-rest-plugin.wadl",
   "homepage": "jira.local",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/api/2/application-properties",
+      "method": "/api/2/applicationPropertiesGet",
+      "httpMethod": "get",
+      "description": "Returns an application property.",
+      "parameters": [
+        {
+          "name": "key",
+          "schema": "string",
+          "required": false,
+          "description": "a String containing the property key"
+        },
+        {
+          "name": "permissionLevel",
+          "schema": "string",
+          "required": false,
+          "description": "when fetching a list specifies the permission level of all items in the list\n                        see {@link com.atlassian.jira.bc.admin.ApplicationPropertiesService.EditPermissionLevel}"
+        },
+        {
+          "name": "keyFilter",
+          "schema": "string",
+          "required": false,
+          "description": "when fetching a list allows the list to be filtered by the property's start of key\n                        e.g. \"jira.lf.*\" whould fetch only those permissions that are editable and whose keys start with\n                        \"jira.lf.\". This is a regex."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/application-properties/advanced-settings",
+      "method": "getAdvancedSettings",
+      "httpMethod": "get",
+      "description": "Returns the properties that are displayed on the \"General Configuration > Advanced Settings\" page.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/application-properties/{id}",
+      "method": "setPropertyViaRestfulTable",
+      "httpMethod": "put",
+      "description": "Modify an application property via PUT. The \"value\" field present in the PUT will override the existing value.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/applicationrole",
+      "method": "getAll",
+      "httpMethod": "get",
+      "description": "Returns all ApplicationRoles in the system. Will also return an ETag header containing a version hash of the\n collection of ApplicationRoles.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/applicationrole",
+      "method": "putBulk",
+      "httpMethod": "put",
+      "description": "Updates the ApplicationRoles with the passed data if the version hash is the same as the server.\n Only the groups and default groups setting of the role may be updated. Requests to change the key\n or the name of the role will be silently ignored. It is acceptable to pass only the roles that are updated\n as roles that are present in the server but not in data to update with, will not be deleted.",
+      "parameters": [
+        {
+          "name": "If-Match",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/applicationrole/{key}",
+      "method": "get",
+      "httpMethod": "get",
+      "description": "Returns the ApplicationRole with passed key if it exists.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/applicationrole/{key}",
+      "method": "put",
+      "httpMethod": "put",
+      "description": "Updates the ApplicationRole with the passed data. Only the groups and default groups setting of the\n role may be updated. Requests to change the key or the name of the role will be silently ignored.\n <p>\n Optional: If versionHash is passed through the If-Match header the request will be rejected if not the\n same as server",
+      "parameters": [
+        {
+          "name": "If-Match",
+          "schema": "string",
+          "required": false,
+          "description": "the hash of the version to update. Optional Param"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/attachment/meta",
+      "method": "getAttachmentMeta",
+      "httpMethod": "get",
+      "description": "Returns the meta information for an attachments, specifically if they are enabled and the maximum upload size\n allowed.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/attachment/{id}",
+      "method": "removeAttachment",
+      "httpMethod": "delete",
+      "description": "Remove an attachment from an issue.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/attachment/{id}",
+      "method": "getAttachment",
+      "httpMethod": "get",
+      "description": "Returns the meta-data for an attachment, including the URI of the actual attached file.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/attachment/{id}/expand/human",
+      "method": "expandForHumans",
+      "httpMethod": "get",
+      "description": "Tries to expand an attachment. Output is human-readable and subject to change.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/attachment/{id}/expand/raw",
+      "method": "expandForMachines",
+      "httpMethod": "get",
+      "description": "Tries to expand an attachment. Output is raw and should be backwards-compatible through the course of time.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/auditing/record",
+      "method": "getRecords",
+      "httpMethod": "get",
+      "description": "Returns auditing records filtered using provided parameters",
+      "parameters": [
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "- the number of record from which search starts"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "- maximum number of returned results (if is limit is <= 0 or > 1000, it will be set do default value: 1000)"
+        },
+        {
+          "name": "filter",
+          "schema": "string",
+          "required": false,
+          "description": "- text query; each record that will be returned must contain the provided text in one of its fields"
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "required": false,
+          "description": "- timestamp in past; 'from' must be less or equal 'to', otherwise the result set will be empty\n               only records that where created in the same moment or after the 'from' timestamp will be provided in response"
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "required": false,
+          "description": "- timestamp in past; 'from' must be less or equal 'to', otherwise the result set will be empty\n               only records that where created in the same moment or earlier than the 'to' timestamp will be provided in response"
+        },
+        {
+          "name": "projectIds",
+          "schema": "string",
+          "required": false,
+          "description": "- list of project ids to look for"
+        },
+        {
+          "name": "userIds",
+          "schema": "string",
+          "required": false,
+          "description": "- list of user ids to look for"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/auditing/record",
+      "method": "addRecord",
+      "httpMethod": "post",
+      "description": "Store a record in Audit Log",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/avatar/{type}/system",
+      "method": "getAllSystemAvatars",
+      "httpMethod": "get",
+      "description": "Returns all system avatars of the given type.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/avatar/{type}/temporary",
+      "method": "storeTemporaryAvatar",
+      "httpMethod": "post",
+      "description": "Creates temporary avatar",
+      "parameters": [
+        {
+          "name": "filename",
+          "schema": "string",
+          "required": false,
+          "description": "name of file being uploaded"
+        },
+        {
+          "name": "size",
+          "schema": "integer",
+          "required": false,
+          "description": "size of file"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/avatar/{type}/temporaryCrop",
+      "method": "/api/2/avatar/{type}/temporaryCropPost",
+      "httpMethod": "post",
+      "description": "Updates the cropping instructions of the temporary avatar.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/cluster/zdu/approve",
+      "method": "approveUpgrade",
+      "httpMethod": "post",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/cluster/zdu/cancel",
+      "method": "cancelUpgrade",
+      "httpMethod": "post",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/cluster/zdu/retryUpgrade",
+      "method": "acknowledgeErrors",
+      "httpMethod": "post",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/cluster/zdu/start",
+      "method": "setReadyToUpgrade",
+      "httpMethod": "post",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/cluster/zdu/state",
+      "method": "getState",
+      "httpMethod": "get",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/comment/{commentId}/properties",
+      "method": "/api/2/comment/{commentId}/propertiesGet",
+      "httpMethod": "get",
+      "description": "Returns the keys of all properties for the comment identified by the key or by the id.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/comment/{commentId}/properties/{propertyKey}",
+      "method": "/api/2/comment/{commentId}/properties/{propertyKey}Delete",
+      "httpMethod": "delete",
+      "description": "Removes the property from the comment identified by the key or by the id. Ths user removing the property is required\n to have permissions to administer the comment.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/comment/{commentId}/properties/{propertyKey}",
+      "method": "/api/2/comment/{commentId}/properties/{propertyKey}Get",
+      "httpMethod": "get",
+      "description": "Returns the value of the property with a given key from the comment identified by the key or by the id. The user who retrieves\n the property is required to have permissions to read the comment.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/comment/{commentId}/properties/{propertyKey}",
+      "method": "/api/2/comment/{commentId}/properties/{propertyKey}Put",
+      "httpMethod": "put",
+      "description": "Sets the value of the specified comment's property.\n <p>\n You can use this resource to store a custom data against the comment identified by the key or by the id. The user\n who stores the data is required to have permissions to administer the comment.\n </p>",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/component",
+      "method": "createComponent",
+      "httpMethod": "post",
+      "description": "Create a component via POST.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/component/{id}",
+      "method": "/api/2/component/{id}Delete",
+      "httpMethod": "delete",
+      "description": "Delete a project component.",
+      "parameters": [
+        {
+          "name": "moveIssuesTo",
+          "schema": "string",
+          "required": false,
+          "description": "The new component applied to issues whose 'id' component will be deleted.\n                     If this value is null, then the 'id' component is simply removed from the related isues."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/component/{id}",
+      "method": "getComponent",
+      "httpMethod": "get",
+      "description": "Returns a project component.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/component/{id}",
+      "method": "updateComponent",
+      "httpMethod": "put",
+      "description": "Modify a component via PUT. Any fields present in the PUT will override existing values. As a convenience, if a field\n is not present, it is silently ignored.\n <p>\n If leadUserName is an empty string (\"\") the component lead will be removed.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/component/{id}/relatedIssueCounts",
+      "method": "getComponentRelatedIssues",
+      "httpMethod": "get",
+      "description": "Returns counts of issues related to this component.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/configuration",
+      "method": "getConfiguration",
+      "httpMethod": "get",
+      "description": "Returns the information if the optional features in JIRA are enabled or disabled. If the time tracking is enabled,\n it also returns the detailed information about time tracking configuration.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/customFieldOption/{id}",
+      "method": "getCustomFieldOption",
+      "httpMethod": "get",
+      "description": "Returns a full representation of the Custom Field Option that has the given id.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/dashboard",
+      "method": "list",
+      "httpMethod": "get",
+      "description": "Returns a list of all dashboards, optionally filtering them.",
+      "parameters": [
+        {
+          "name": "filter",
+          "schema": "string",
+          "required": false,
+          "description": "an optional filter that is applied to the list of dashboards. Valid values include\n                        <code>\"favourite\"</code> for returning only favourite dashboards, and <code>\"my\"</code> for returning\n                        dashboards that are owned by the calling user."
+        },
+        {
+          "name": "startAt",
+          "schema": "integer",
+          "required": false,
+          "description": "the index of the first dashboard to return (0-based). must be 0 or a multiple of\n                        <code>maxResults</code>"
+        },
+        {
+          "name": "maxResults",
+          "schema": "integer",
+          "required": false,
+          "description": "a hint as to the the maximum number of dashboards to return in each call. Note that the\n                        JIRA server reserves the right to impose a <code>maxResults</code> limit that is lower than the value that a\n                        client provides, dues to lack or resources or any other condition. When this happens, your results will be\n                        truncated. Callers should always check the returned <code>maxResults</code> to determine the value that is\n                        effectively being used."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/dashboard/{dashboardId}/items/{itemId}/properties",
+      "method": "/api/2/dashboard/{dashboardId}/items/{itemId}/propertiesGet",
+      "httpMethod": "get",
+      "description": "Returns the keys of all properties for the dashboard item identified by the id.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/dashboard/{dashboardId}/items/{itemId}/properties/{propertyKey}",
+      "method": "/api/2/dashboard/{dashboardId}/items/{itemId}/properties/{propertyKey}Delete",
+      "httpMethod": "delete",
+      "description": "Removes the property from the dashboard item identified by the key or by the id. Ths user removing the property is required\n to have permissions to administer the dashboard item.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/dashboard/{dashboardId}/items/{itemId}/properties/{propertyKey}",
+      "method": "/api/2/dashboard/{dashboardId}/items/{itemId}/properties/{propertyKey}Get",
+      "httpMethod": "get",
+      "description": "Returns the value of the property with a given key from the dashboard item identified by the id.\n The user who retrieves the property is required to have permissions to read the dashboard item.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/dashboard/{dashboardId}/items/{itemId}/properties/{propertyKey}",
+      "method": "/api/2/dashboard/{dashboardId}/items/{itemId}/properties/{propertyKey}Put",
+      "httpMethod": "put",
+      "description": "Sets the value of the specified dashboard item's property.\n <p>\n You can use this resource to store a custom data against the dashboard item identified by the id.\n The user who stores the data is required to have permissions to administer the dashboard item.\n </p>",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/dashboard/{id}",
+      "method": "getDashboard",
+      "httpMethod": "get",
+      "description": "Returns a single dashboard.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/field",
+      "method": "getFields",
+      "httpMethod": "get",
+      "description": "Returns a list of all fields, both System and Custom",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/field",
+      "method": "createCustomField",
+      "httpMethod": "post",
+      "description": "Creates a custom field using a definition (object encapsulating custom field data)",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/filter",
+      "method": "createFilter",
+      "httpMethod": "post",
+      "description": "Creates a new filter, and returns newly created filter.\n Currently sets permissions just using the users default sharing permissions",
+      "parameters": [
+        {
+          "name": "expand",
+          "schema": "string",
+          "required": false,
+          "description": "the parameters to expand"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/filter/defaultShareScope",
+      "method": "getDefaultShareScope",
+      "httpMethod": "get",
+      "description": "Returns the default share scope of the logged-in user.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/filter/defaultShareScope",
+      "method": "setDefaultShareScope",
+      "httpMethod": "put",
+      "description": "Sets the default share scope of the logged-in user. Available values are GLOBAL and PRIVATE.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/filter/favourite",
+      "method": "getFavouriteFilters",
+      "httpMethod": "get",
+      "description": "Returns the favourite filters of the logged-in user.",
+      "parameters": [
+        {
+          "name": "expand",
+          "schema": "string",
+          "required": false,
+          "description": "the parameters to expand"
+        },
+        {
+          "name": "enableSharedUsers",
+          "schema": "boolean",
+          "required": false,
+          "description": "enable calculating shared users collection"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/filter/{id}",
+      "method": "deleteFilter",
+      "httpMethod": "delete",
+      "description": "Delete a filter.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/filter/{id}",
+      "method": "getFilter",
+      "httpMethod": "get",
+      "description": "Returns a filter given an id",
+      "parameters": [
+        {
+          "name": "expand",
+          "schema": "string",
+          "required": false,
+          "description": "the parameters to expand"
+        },
+        {
+          "name": "enableSharedUsers",
+          "schema": "boolean",
+          "required": false,
+          "description": "enable calculating shared users collection"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/filter/{id}",
+      "method": "editFilter",
+      "httpMethod": "put",
+      "description": "Updates an existing filter, and returns its new value.",
+      "parameters": [
+        {
+          "name": "expand",
+          "schema": "string",
+          "required": false,
+          "description": "the parameters to expand"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/filter/{id}/columns",
+      "method": "/api/2/filter/{id}/columnsDelete",
+      "httpMethod": "delete",
+      "description": "Resets the columns for the given filter such that the filter no longer has its own column config.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/filter/{id}/columns",
+      "method": "/api/2/filter/{id}/columnsGet",
+      "httpMethod": "get",
+      "description": "Returns the default columns for the given filter. Currently logged in user will be used as\n the user making such request.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/filter/{id}/columns",
+      "method": "/api/2/filter/{id}/columnsPut",
+      "httpMethod": "put",
+      "description": "Sets the default columns for the given filter.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/filter/{id}/permission",
+      "method": "getSharePermissions",
+      "httpMethod": "get",
+      "description": "Returns all share permissions of the given filter.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/filter/{id}/permission",
+      "method": "addSharePermission",
+      "httpMethod": "post",
+      "description": "Adds a share permissions to the given filter. Adding a global permission removes all previous permissions from the filter.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/filter/{id}/permission/{permission-id}",
+      "method": "deleteSharePermission",
+      "httpMethod": "delete",
+      "description": "Removes a share permissions from the given filter.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/filter/{id}/permission/{permissionId}",
+      "method": "getSharePermission",
+      "httpMethod": "get",
+      "description": "Returns a single share permission of the given filter.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/group",
+      "method": "removeGroup",
+      "httpMethod": "delete",
+      "description": "Deletes a group by given group parameter.\n <p>\n Returns no content",
+      "parameters": [
+        {
+          "name": "groupname",
+          "schema": "string",
+          "required": false,
+          "description": "(mandatory) The name of the group to delete."
+        },
+        {
+          "name": "swapGroup",
+          "schema": "string",
+          "required": false,
+          "description": "If you delete a group and content is restricted to that group, the content will be hidden from all users. \n To prevent this, use this parameter to specify a different group to transfer the restrictions (comments and worklogs only) to."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/group",
+      "method": "getGroup",
+      "httpMethod": "get",
+      "description": "Returns REST representation for the requested group. Allows to get list of active users belonging to the\n specified group and its subgroups if \"users\" expand option is provided. You can page through users list by using\n indexes in expand param. For example to get users from index 10 to index 15 use \"users[10:15]\" expand value. This\n will return 6 users (if there are at least 16 users in this group). Indexes are 0-based and inclusive.\n <p>\n This resource is deprecated, please use group/member API instead.",
+      "parameters": [
+        {
+          "name": "groupname",
+          "schema": "string",
+          "required": false,
+          "description": "A name of requested group."
+        },
+        {
+          "name": "expand",
+          "schema": "string",
+          "required": false,
+          "description": "List of fields to expand. Currently only available expand is \"users\"."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/group",
+      "method": "createGroup",
+      "httpMethod": "post",
+      "description": "Creates a group by given group parameter\n <p>\n Returns REST representation for the requested group.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/group/member",
+      "method": "getUsersFromGroup",
+      "httpMethod": "get",
+      "description": "This resource returns a <a href=\"#pagination\">paginated</a> list of users who are members of the specified group and its subgroups.\n Users in the page are ordered by user names. User of this resource is required to have sysadmin or admin permissions.",
+      "parameters": [
+        {
+          "name": "groupname",
+          "schema": "string",
+          "required": false,
+          "description": "a name of the group for which members will be returned."
+        },
+        {
+          "name": "includeInactiveUsers",
+          "schema": "boolean",
+          "required": false,
+          "description": "inactive users will be included in the response if set to true."
+        },
+        {
+          "name": "startAt",
+          "schema": "integer",
+          "required": false,
+          "description": "the index of the first user in group to return (0 based)."
+        },
+        {
+          "name": "maxResults",
+          "schema": "integer",
+          "required": false,
+          "description": "the maximum number of users to return (max 50)."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/group/user",
+      "method": "removeUserFromGroup",
+      "httpMethod": "delete",
+      "description": "Removes given user from a group.\n <p>\n Returns no content",
+      "parameters": [
+        {
+          "name": "groupname",
+          "schema": "string",
+          "required": false,
+          "description": "A name of requested group."
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": "User to remove from a group"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/group/user",
+      "method": "addUserToGroup",
+      "httpMethod": "post",
+      "description": "Adds given user to a group.\n <p>\n Returns the current state of the group.",
+      "parameters": [
+        {
+          "name": "groupname",
+          "schema": "string",
+          "required": false,
+          "description": "A name of requested group."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/groups/picker",
+      "method": "findGroups",
+      "httpMethod": "get",
+      "description": "Returns groups with substrings matching a given query. This is mainly for use with\n the group picker, so the returned groups contain html to be used as picker suggestions.\n The groups are also wrapped in a single response object that also contains a header for\n use in the picker, specifically <i>Showing X of Y matching groups</i>.\n <p>\n The number of groups returned is limited by the system property \"jira.ajax.autocomplete.limit\"\n <p>\n The groups will be unique and sorted.",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "a String to match groups agains"
+        },
+        {
+          "name": "exclude",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "maxResults",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "userName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/groupuserpicker",
+      "method": "findUsersAndGroups",
+      "httpMethod": "get",
+      "description": "Returns a list of users and groups matching query with highlighting. This resource cannot be accessed\n anonymously.",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "A string used to search username, Name or e-mail address"
+        },
+        {
+          "name": "maxResults",
+          "schema": "integer",
+          "required": false,
+          "description": "the maximum number of users to return (defaults to 50). The maximum allowed value is 1000. If\n                    you specify a value that is higher than this number, your search results will be truncated."
+        },
+        {
+          "name": "showAvatar",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "fieldId",
+          "schema": "string",
+          "required": false,
+          "description": "The custom field id, if this request comes from a custom field, such as a user picker. Optional."
+        },
+        {
+          "name": "projectId",
+          "schema": "string",
+          "required": false,
+          "description": "The list of project ids to further restrict the search\n                    This parameter can occur multiple times to pass in multiple project ids.\n                    Comma separated value is not supported.\n                    This parameter is only used when fieldId is present."
+        },
+        {
+          "name": "issueTypeId",
+          "schema": "string",
+          "required": false,
+          "description": "The list of issue type ids to further restrict the search.\n                    This parameter can occur multiple times to pass in multiple issue type ids.\n                    Comma separated value is not supported.\n                    Special values such as -1 (all standard issue types), -2 (all subtask issue types) are supported.\n                    This parameter is only used when fieldId is present."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/index/summary",
+      "method": "getIndexSummary",
+      "httpMethod": "get",
+      "description": "Summarizes index condition of current node.\n <p/>\n Returned data consists of:\n <ul>\n <li><code>nodeId</code> - Node identifier.</li>\n <li><code>reportTime</code> - Time of this report creation.</li>\n <li><code>issueIndex</code> - Summary of issue index status.</li>\n <li><code>replicationQueues</code> - Map of index replication queues, where\n keys represent nodes from which replication operations came from.</li>\n </ul>\n <p/>\n <code>issueIndex</code> can contain:\n <ul>\n <li><code>indexReadable</code> - If <code>false</code> the end point failed to read data from issue index\n (check JIRA logs for detailed stack trace), otherwise <code>true</code>.\n When <code>false</code> other fields of <code>issueIndex</code> can be not visible.</li>\n <li><code>countInDatabase</code> - Count of issues found in database.</li>\n <li><code>countInIndex</code> - Count of issues found while querying index.</li>\n <li><code>lastUpdatedInDatabase</code> - Time of last update of issue found in database.</li>\n <li><code>lastUpdatedInIndex</code> - Time of last update of issue found while querying index.</li>\n </ul>\n <p/>\n <code>replicationQueues</code>'s map values can contain:\n <ul>\n <li><code>lastConsumedOperation</code> - Last executed index replication operation by current node from sending node's queue.</li>\n <li><code>lastConsumedOperation.id</code> - Identifier of the operation.</li>\n <li><code>lastConsumedOperation.replicationTime</code> - Time when the operation was sent to other nodes.</li>\n <li><code>lastOperationInQueue</code> - Last index replication operation in sending node's queue.</li>\n <li><code>lastOperationInQueue.id</code> - Identifier of the operation.</li>\n <li><code>lastOperationInQueue.replicationTime</code> - Time when the operation was sent to other nodes.</li>\n <li><code>queueSize</code> - Number of operations in queue from sending node to current node.</li>\n </ul>",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue",
+      "method": "createIssue",
+      "httpMethod": "post",
+      "description": "Creates an issue or a sub-task from a JSON representation.\n <p/>\n The fields that can be set on create, in either the fields parameter or the update parameter can be determined\n using the <b>/rest/api/2/issue/createmeta</b> resource.\n If a field is not configured to appear on the create screen, then it will not be in the createmeta, and a field\n validation error will occur if it is submitted.\n <p/>\n Creating a sub-task is similar to creating a regular issue, with two important differences:\n <ul>\n <li>the <code>issueType</code> field must correspond to a sub-task issue type (you can use\n <code>/issue/createmeta</code> to discover sub-task issue types), and</li>\n <li>you must provide a <code>parent</code> field in the issue create request containing the id or key of the\n parent issue.</li>\n </ul>",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/bulk",
+      "method": "createIssues",
+      "httpMethod": "post",
+      "description": "Creates issues or sub-tasks from a JSON representation.\n <p/>\n Creates many issues in one bulk operation.\n <p/>\n Creating a sub-task is similar to creating a regular issue. More details can be found in createIssue section:\n {@link IssueResource#createIssue(IssueUpdateBean)}}",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/createmeta",
+      "method": "getCreateIssueMeta",
+      "httpMethod": "get",
+      "description": "Returns the meta data for creating issues. This includes the available projects, issue types and fields,\n including field types and whether or not those fields are required.\n Projects will not be returned if the user does not have permission to create issues in that project.\n <p/>\n The fields in the createmeta correspond to the fields in the create screen for the project/issuetype.\n Fields not in the screen will not be in the createmeta.\n <p/>\n Fields will only be returned if <code>expand=projects.issuetypes.fields</code>.\n <p/>\n The results can be filtered by project and/or issue type, given by the query params.",
+      "parameters": [
+        {
+          "name": "projectIds",
+          "schema": "string",
+          "required": false,
+          "description": "combined with the projectKeys param, lists the projects with which to filter the results. If absent, all projects are returned.\n                       This parameter can be specified multiple times, and/or be a comma-separated list.\n                       Specifiying a project that does not exist (or that you cannot create issues in) is not an error, but it will not be in the results."
+        },
+        {
+          "name": "projectKeys",
+          "schema": "string",
+          "required": false,
+          "description": "combined with the projectIds param, lists the projects with which to filter the results. If null, all projects are returned.\n                       This parameter can be specified multiple times, and/or be a comma-separated list.\n                       Specifiying a project that does not exist (or that you cannot create issues in) is not an error, but it will not be in the results."
+        },
+        {
+          "name": "issuetypeIds",
+          "schema": "string",
+          "required": false,
+          "description": "combinded with issuetypeNames, lists the issue types with which to filter the results. If null, all issue types are returned.\n                       This parameter can be specified multiple times, and/or be a comma-separated list.\n                       Specifiying an issue type that does not exist is not an error."
+        },
+        {
+          "name": "issuetypeNames",
+          "schema": "string",
+          "required": false,
+          "description": "combinded with issuetypeIds, lists the issue types with which to filter the results. If null, all issue types are returned.\n                       This parameter can be specified multiple times, but is NOT interpreted as a comma-separated list.\n                       Specifiying an issue type that does not exist is not an error."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/picker",
+      "method": "getIssuePickerResource",
+      "httpMethod": "get",
+      "description": "Returns suggested issues which match the auto-completion query for the user which executes this request. This REST\n method will check the user's history and the user's browsing context and select this issues, which match the query.",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "the query."
+        },
+        {
+          "name": "currentJQL",
+          "schema": "string",
+          "required": false,
+          "description": "the JQL in context of which the request is executed. Only issues which match this JQL query will be included in results."
+        },
+        {
+          "name": "currentIssueKey",
+          "schema": "string",
+          "required": false,
+          "description": "the key of the issue in context of which the request is executed. The issue which is in context will not be included in the auto-completion result, even if it matches the query."
+        },
+        {
+          "name": "currentProjectId",
+          "schema": "string",
+          "required": false,
+          "description": "the id of the project in context of which the request is executed. Suggested issues will be only from this project."
+        },
+        {
+          "name": "showSubTasks",
+          "schema": "boolean",
+          "required": false,
+          "description": "if set to false, subtasks will not be included in the list."
+        },
+        {
+          "name": "showSubTaskParent",
+          "schema": "boolean",
+          "required": false,
+          "description": "if set to false and request is executed in context of a subtask, the parent issue will not be included in the auto-completion result, even if it matches the query."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}",
+      "method": "deleteIssue",
+      "httpMethod": "delete",
+      "description": "Delete an issue.\n <p/>\n If the issue has subtasks you must set the parameter deleteSubtasks=true to delete the issue.\n You cannot delete an issue without its subtasks also being deleted.",
+      "parameters": [
+        {
+          "name": "deleteSubtasks",
+          "schema": "string",
+          "required": false,
+          "description": "a String of true or false indicating that any subtasks should also be deleted.  If the\n                       issue has no subtasks this parameter is ignored.  If the issue has subtasks and this parameter is missing or false,\n                       then the issue will not be deleted and an error will be returned."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}",
+      "method": "getIssue",
+      "httpMethod": "get",
+      "description": "Returns a full representation of the issue for the given issue key.\n <p>\n An issue JSON consists of the issue key, a collection of fields,\n a link to the workflow transition sub-resource, and (optionally) the HTML rendered values of any fields that support it\n (e.g. if wiki syntax is enabled for the description or comments).\n <p>\n The <code>fields</code> param (which can be specified multiple times) gives a comma-separated list of fields\n to include in the response. This can be used to retrieve a subset of fields.\n A particular field can be excluded by prefixing it with a minus.\n <p>\n By default, all (<code>*all</code>) fields are returned in this get-issue resource. Note: the default is different\n when doing a jql search -- the default there is just navigable fields (<code>*navigable</code>).\n <ul>\n <li><code>*all</code> - include all fields</li>\n <li><code>*navigable</code> - include just navigable fields</li>\n <li><code>summary,comment</code> - include just the summary and comments</li>\n <li><code>-comment</code> - include everything except comments (the default is <code>*all</code> for get-issue)</li>\n <li><code>*all,-comment</code> - include everything except comments</li>\n </ul>\n <p>\n The {@code properties} param is similar to {@code fields} and specifies a comma-separated list of issue\n properties to include. Unlike {@code fields}, properties are not included by default. To include them all\n send {@code ?properties=*all}. You can also include only specified properties or exclude some properties\n with a minus (-) sign.\n <p>\n <ul>\n <li>{@code *all} - include all properties</li>\n <li>{@code *all, -prop1} - include all properties except {@code prop1} </li>\n <li>{@code prop1, prop1} - include {@code prop1} and {@code prop2} properties </li>\n </ul>\n </p>\n <p/>\n JIRA will attempt to identify the issue by the <code>issueIdOrKey</code> path parameter. This can be an issue id,\n or an issue key. If the issue cannot be found via an exact match, JIRA will also look for the issue in a case-insensitive way, or\n by looking to see if the issue was moved. In either of these cases, the request will proceed as normal (a 302 or other redirect\n will <b>not</b> be returned). The issue key contained in the response will indicate the current value of issue's key.\n <p/>\n The <code>expand</code> param is used to include, hidden by default, parts of response. This can be used to include:\n <ul>\n <li><code>renderedFields</code> - field values in HTML format</li>\n <li><code>names</code> - display name of each field</li>\n <li><code>schema</code> - schema for each field which describes a type of the field</li>\n <li><code>transitions</code> - all possible transitions for the given issue</li>\n <li><code>operations</code> - all possibles operations which may be applied on issue</li>\n <li><code>editmeta</code> - information about how each field may be edited. It contains field's schema as well.</li>\n <li><code>changelog</code> - history of all changes of the given issue</li>\n <li><code>versionedRepresentations</code> -\n REST representations of all fields. Some field may contain more recent versions. RESET representations are numbered.\n The greatest number always represents the most recent version. It is recommended that the most recent version is used.\n version for these fields which provide a more recent REST representation.\n After including <code>versionedRepresentations</code> \"fields\" field become hidden.</li>\n </ul>",
+      "parameters": [
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "the list of fields to return for the issue. By default, all fields are returned."
+        },
+        {
+          "name": "expand",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "string",
+          "required": false,
+          "description": "the list of properties to return for the issue. By default no properties are returned."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}",
+      "method": "editIssue",
+      "httpMethod": "put",
+      "description": "Edits an issue from a JSON representation.\n <p/>\n The issue can either be updated by setting explicit the field value(s)\n or by using an operation to change the field value.\n <p/>\n The fields that can be updated, in either the fields parameter or the update parameter, can be determined\n using the <b>/rest/api/2/issue/{issueIdOrKey}/editmeta</b> resource.<br>\n If a field is not configured to appear on the edit screen, then it will not be in the editmeta, and a field\n validation error will occur if it is submitted.\n <p/>\n Specifying a \"field_id\": field_value in the \"fields\" is a shorthand for a \"set\" operation in the \"update\" section.<br>\n Field should appear either in \"fields\" or \"update\", not in both.",
+      "parameters": [
+        {
+          "name": "notifyUsers",
+          "schema": "boolean",
+          "required": false,
+          "description": "send the email with notification that the issue was updated to users that watch it.\n                    Admin or project admin permissions are required to disable the notification."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/assignee",
+      "method": "assign",
+      "httpMethod": "put",
+      "description": "Assigns an issue to a user.\n You can use this resource to assign issues when the user submitting the request has the assign permission but not the\n edit issue permission.\n If the name is \"-1\" automatic assignee is used.  A null name will remove the assignee.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/attachments",
+      "method": "addAttachment",
+      "httpMethod": "post",
+      "description": "Add one or more attachments to an issue.\n <p>\n This resource expects a multipart post. The media-type multipart/form-data is defined in RFC 1867. Most client\n libraries have classes that make dealing with multipart posts simple. For instance, in Java the Apache HTTP Components\n library provides a\n <a href=\"http://hc.apache.org/httpcomponents-client-ga/httpmime/apidocs/org/apache/http/entity/mime/MultipartEntity.html\">MultiPartEntity</a>\n that makes it simple to submit a multipart POST.\n <p>\n In order to protect against XSRF attacks, because this method accepts multipart/form-data, it has XSRF protection\n on it.  This means you must submit a header of X-Atlassian-Token: no-check with the request, otherwise it will be\n blocked.\n <p>\n The name of the multipart/form-data parameter that contains attachments must be \"file\"\n <p>\n A simple example to upload a file called \"myfile.txt\" to issue REST-123:\n <pre>curl -D- -u admin:admin -X POST -H \"X-Atlassian-Token: no-check\" -F \"file=@myfile.txt\" http://myhost/rest/api/2/issue/TEST-123/attachments</pre>",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/comment",
+      "method": "getComments",
+      "httpMethod": "get",
+      "description": "Returns all comments for an issue.\n <p>\n Results can be ordered by the \"created\" field which means the date a comment was added.\n </p>",
+      "parameters": [
+        {
+          "name": "startAt",
+          "schema": "integer",
+          "required": false,
+          "description": "the page offset, if not specified then defaults to 0"
+        },
+        {
+          "name": "maxResults",
+          "schema": "integer",
+          "required": false,
+          "description": "how many results on the page should be included. Defaults to 50."
+        },
+        {
+          "name": "orderBy",
+          "schema": "string",
+          "required": false,
+          "description": "ordering of the results."
+        },
+        {
+          "name": "expand",
+          "schema": "string",
+          "required": false,
+          "description": "optional flags: renderedBody (provides body rendered in HTML)"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/comment",
+      "method": "addComment",
+      "httpMethod": "post",
+      "description": "Adds a new comment to an issue.",
+      "parameters": [
+        {
+          "name": "expand",
+          "schema": "string",
+          "required": false,
+          "description": "optional flags: renderedBody (provides body rendered in HTML)"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/comment/{id}",
+      "method": "deleteComment",
+      "httpMethod": "delete",
+      "description": "Deletes an existing comment .",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/comment/{id}",
+      "method": "getComment",
+      "httpMethod": "get",
+      "description": "Returns a single comment.",
+      "parameters": [
+        {
+          "name": "expand",
+          "schema": "string",
+          "required": false,
+          "description": "optional flags: renderedBody (provides body rendered in HTML)"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/comment/{id}",
+      "method": "updateComment",
+      "httpMethod": "put",
+      "description": "Updates an existing comment using its JSON representation.",
+      "parameters": [
+        {
+          "name": "expand",
+          "schema": "string",
+          "required": false,
+          "description": "optional flags: renderedBody (provides body rendered in HTML)"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/editmeta",
+      "method": "getEditIssueMeta",
+      "httpMethod": "get",
+      "description": "Returns the meta data for editing an issue.\n <p/>\n The fields in the editmeta correspond to the fields in the edit screen for the issue.\n Fields not in the screen will not be in the editmeta.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/notify",
+      "method": "notify",
+      "httpMethod": "post",
+      "description": "Sends a notification (email) to the list or recipients defined in the request.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/properties",
+      "method": "/api/2/issue/{issueIdOrKey}/propertiesGet",
+      "httpMethod": "get",
+      "description": "Returns the keys of all properties for the issue identified by the key or by the id.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/properties/{propertyKey}",
+      "method": "/api/2/issue/{issueIdOrKey}/properties/{propertyKey}Delete",
+      "httpMethod": "delete",
+      "description": "Removes the property from the issue identified by the key or by the id. Ths user removing the property is required\n to have permissions to edit the issue.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/properties/{propertyKey}",
+      "method": "/api/2/issue/{issueIdOrKey}/properties/{propertyKey}Get",
+      "httpMethod": "get",
+      "description": "Returns the value of the property with a given key from the issue identified by the key or by the id. The user who retrieves\n the property is required to have permissions to read the issue.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/properties/{propertyKey}",
+      "method": "/api/2/issue/{issueIdOrKey}/properties/{propertyKey}Put",
+      "httpMethod": "put",
+      "description": "Sets the value of the specified issue's property.\n <p>\n You can use this resource to store a custom data against the issue identified by the key or by the id. The user\n who stores the data is required to have permissions to edit the issue.\n </p>",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/remotelink",
+      "method": "deleteRemoteIssueLinkByGlobalId",
+      "httpMethod": "delete",
+      "description": "Delete the remote issue link with the given global id on the issue.",
+      "parameters": [
+        {
+          "name": "globalId",
+          "schema": "string",
+          "required": false,
+          "description": "the global id of the remote issue link"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/remotelink",
+      "method": "getRemoteIssueLinks",
+      "httpMethod": "get",
+      "description": "A REST sub-resource representing the remote issue links on the issue.",
+      "parameters": [
+        {
+          "name": "globalId",
+          "schema": "string",
+          "required": false,
+          "description": "The id of the remote issue link to be returned.  If null (not provided) all remote links for the\n                     issue are returned.\n                     <p>For a fullexplanation of Issue Link fields please refer to\n                     <a href=\"https://developer.atlassian.com/display/JIRADEV/Fields+in+Remote+Issue+Links\">https://developer.atlassian.com/display/JIRADEV/Fields+in+Remote+Issue+Links</a></p>"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/remotelink",
+      "method": "createOrUpdateRemoteIssueLink",
+      "httpMethod": "post",
+      "description": "Creates or updates a remote issue link from a JSON representation. If a globalId is provided and a remote issue link\n exists with that globalId, the remote issue link is updated. Otherwise, the remote issue link is created.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/remotelink/{linkId}",
+      "method": "deleteRemoteIssueLinkById",
+      "httpMethod": "delete",
+      "description": "Delete the remote issue link with the given id on the issue.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/remotelink/{linkId}",
+      "method": "getRemoteIssueLinkById",
+      "httpMethod": "get",
+      "description": "Get the remote issue link with the given id on the issue.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/remotelink/{linkId}",
+      "method": "updateRemoteIssueLink",
+      "httpMethod": "put",
+      "description": "Updates a remote issue link from a JSON representation. Any fields not provided are set to null.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/subtask",
+      "method": "getSubTasks",
+      "httpMethod": "get",
+      "description": "Returns an issue's subtask list",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/subtask/move",
+      "method": "canMoveSubTask",
+      "httpMethod": "get",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/subtask/move",
+      "method": "moveSubTasks",
+      "httpMethod": "post",
+      "description": "Reorders an issue's subtasks by moving the subtask at index \"from\"\n to index \"to\".",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/transitions",
+      "method": "getTransitions",
+      "httpMethod": "get",
+      "description": "Get a list of the transitions possible for this issue by the current user, along with fields that are required and their types.\n <p/>\n Fields will only be returned if <code>expand=transitions.fields</code>.\n <p/>\n The fields in the metadata correspond to the fields in the transition screen for that transition.\n Fields not in the screen will not be in the metadata.",
+      "parameters": [
+        {
+          "name": "transitionId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/transitions",
+      "method": "doTransition",
+      "httpMethod": "post",
+      "description": "Perform a transition on an issue.\n When performing the transition you can update or set other issue fields.\n <p/>\n The fields that can be set on transtion, in either the fields parameter or the update parameter can be determined\n using the <b>/rest/api/2/issue/{issueIdOrKey}/transitions?expand=transitions.fields</b> resource.\n If a field is not configured to appear on the transition screen, then it will not be in the transition metadata, and a field\n validation error will occur if it is submitted.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/votes",
+      "method": "removeVote",
+      "httpMethod": "delete",
+      "description": "Remove your vote from an issue. (i.e. \"unvote\")",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/votes",
+      "method": "getVotes",
+      "httpMethod": "get",
+      "description": "A REST sub-resource representing the voters on the issue.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/votes",
+      "method": "addVote",
+      "httpMethod": "post",
+      "description": "Cast your vote in favour of an issue.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/watchers",
+      "method": "removeWatcher",
+      "httpMethod": "delete",
+      "description": "Removes a user from an issue's watcher list.",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": "a String containing the name of the user to remove from the watcher list. Must not be null."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/watchers",
+      "method": "getIssueWatchers",
+      "httpMethod": "get",
+      "description": "Returns the list of watchers for the issue with the given key.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/watchers",
+      "method": "addWatcher",
+      "httpMethod": "post",
+      "description": "Adds a user to an issue's watcher list.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/worklog",
+      "method": "getIssueWorklog",
+      "httpMethod": "get",
+      "description": "Returns all work logs for an issue. <br/>\n <strong>Note:</strong> Work logs won't be returned if the Log work field is hidden for the project.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/worklog",
+      "method": "addWorklog",
+      "httpMethod": "post",
+      "description": "Adds a new worklog entry to an issue.",
+      "parameters": [
+        {
+          "name": "adjustEstimate",
+          "schema": "string",
+          "required": false,
+          "description": "(optional) allows you to provide specific instructions to update the remaining time estimate of the issue.  Valid values are\n                       <ul>\n                       <li>\"new\" - sets the estimate to a specific value</li>\n                       <li>\"leave\"- leaves the estimate as is</li>\n                       <li>\"manual\" - specify a specific amount to increase remaining estimate by</li>\n                       <li>\"auto\"- Default option.  Will automatically adjust the value based on the new timeSpent specified on the worklog</li> </ul>"
+        },
+        {
+          "name": "newEstimate",
+          "schema": "string",
+          "required": false,
+          "description": "(required when \"new\" is selected for adjustEstimate) the new value for the remaining estimate field. e.g. \"2d\""
+        },
+        {
+          "name": "reduceBy",
+          "schema": "string",
+          "required": false,
+          "description": "(required when \"manual\" is selected for adjustEstimate) the amount to reduce the remaining estimate by e.g. \"2d\""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/worklog/{id}",
+      "method": "deleteWorklog",
+      "httpMethod": "delete",
+      "description": "Deletes an existing worklog entry.",
+      "parameters": [
+        {
+          "name": "adjustEstimate",
+          "schema": "string",
+          "required": false,
+          "description": "(optional) allows you to provide specific instructions to update the remaining time estimate of the issue.  Valid values are\n                       <ul>\n                       <li>\"new\" - sets the estimate to a specific value</li>\n                       <li>\"leave\"- leaves the estimate as is</li>\n                       <li>\"manual\" - specify a specific amount to increase remaining estimate by</li>\n                       <li>\"auto\"- Default option.  Will automatically adjust the value based on the new timeSpent specified on the worklog</li> </ul>"
+        },
+        {
+          "name": "newEstimate",
+          "schema": "string",
+          "required": false,
+          "description": "(required when \"new\" is selected for adjustEstimate) the new value for the remaining estimate field. e.g. \"2d\""
+        },
+        {
+          "name": "increaseBy",
+          "schema": "string",
+          "required": false,
+          "description": "(required when \"manual\" is selected for adjustEstimate) the amount to increase the remaining estimate by e.g. \"2d\""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/worklog/{id}",
+      "method": "getWorklog",
+      "httpMethod": "get",
+      "description": "Returns a specific worklog. <br/>\n <strong>Note:</strong> The work log won't be returned if the Log work field is hidden for the project.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issue/{issueIdOrKey}/worklog/{id}",
+      "method": "updateWorklog",
+      "httpMethod": "put",
+      "description": "Updates an existing worklog entry.\n <p>Note that:</p>\n  <ul>\n      <li>Fields possible for editing are: comment, visibility, started, timeSpent and timeSpentSeconds.</li>\n      <li>Either timeSpent or timeSpentSeconds can be set.</li>\n      <li>Fields which are not set will not be updated.</li>\n      <li>For a request to be valid, it has to have at least one field change.</li>\n  </ul>",
+      "parameters": [
+        {
+          "name": "adjustEstimate",
+          "schema": "string",
+          "required": false,
+          "description": "(optional) allows you to provide specific instructions to update the remaining time estimate of the issue.  Valid values are\n                       <ul>\n                       <li>\"new\" - sets the estimate to a specific value</li>\n                       <li>\"leave\"- leaves the estimate as is</li>\n                       <li>\"auto\"- Default option.  Will automatically adjust the value based on the new timeSpent specified on the worklog</li> </ul>"
+        },
+        {
+          "name": "newEstimate",
+          "schema": "string",
+          "required": false,
+          "description": "(required when \"new\" is selected for adjustEstimate) the new value for the remaining estimate field."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issueLink",
+      "method": "linkIssues",
+      "httpMethod": "post",
+      "description": "Creates an issue link between two issues.\n The user requires the link issue permission for the issue which will be linked to another issue.\n The specified link type in the request is used to create the link and will create a link from the first issue\n to the second issue using the outward description. It also create a link from the second issue to the first issue using the\n inward description of the issue link type.\n It will add the supplied comment to the first issue. The comment can have a restriction who can view it.\n If group is specified, only users of this group can view this comment, if roleLevel is specified only users who have the specified role can view this comment.\n The user who creates the issue link needs to belong to the specified group or have the specified role.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issueLink/{linkId}",
+      "method": "deleteIssueLink",
+      "httpMethod": "delete",
+      "description": "Deletes an issue link with the specified id.\n To be able to delete an issue link you must be able to view both issues and must have the link issue permission\n for at least one of the issues.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issueLink/{linkId}",
+      "method": "getIssueLink",
+      "httpMethod": "get",
+      "description": "Returns an issue link with the specified id.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issueLinkType",
+      "method": "getIssueLinkTypes",
+      "httpMethod": "get",
+      "description": "Returns a list of available issue link types, if issue linking is enabled.\n Each issue link type has an id, a name and a label for the outward and inward link relationship.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issueLinkType",
+      "method": "createIssueLinkType",
+      "httpMethod": "post",
+      "description": "Create a new issue link type.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issueLinkType/{issueLinkTypeId}",
+      "method": "deleteIssueLinkType",
+      "httpMethod": "delete",
+      "description": "Delete the specified issue link type.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issueLinkType/{issueLinkTypeId}",
+      "method": "getIssueLinkType",
+      "httpMethod": "get",
+      "description": "Returns for a given issue link type id all information about this issue link type.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issueLinkType/{issueLinkTypeId}",
+      "method": "updateIssueLinkType",
+      "httpMethod": "put",
+      "description": "Update the specified issue link type.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issuesecurityschemes",
+      "method": "getIssueSecuritySchemes",
+      "httpMethod": "get",
+      "description": "Returns all issue security schemes that are defined.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issuesecurityschemes/{id}",
+      "method": "/api/2/issuesecurityschemes/{id}Get",
+      "httpMethod": "get",
+      "description": "Returns the issue security scheme along with that are defined.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issuetype",
+      "method": "getIssueAllTypes",
+      "httpMethod": "get",
+      "description": "Returns a list of all issue types visible to the user",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issuetype",
+      "method": "createIssueType",
+      "httpMethod": "post",
+      "description": "Creates an issue type from a JSON representation and adds the issue newly created issue type to the default issue\n type scheme.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issuetype/{id}",
+      "method": "/api/2/issuetype/{id}Delete",
+      "httpMethod": "delete",
+      "description": "Deletes the specified issue type. If the issue type has any associated issues, these issues will be migrated to\n the alternative issue type specified in the parameter. You can determine the alternative issue types by calling\n the <b>/rest/api/2/issuetype/{id}/alternatives</b> resource.",
+      "parameters": [
+        {
+          "name": "alternativeIssueTypeId",
+          "schema": "string",
+          "required": false,
+          "description": "the id of an issue type to which issues associated with the removed issue type will be migrated."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issuetype/{id}",
+      "method": "/api/2/issuetype/{id}Get",
+      "httpMethod": "get",
+      "description": "Returns a full representation of the issue type that has the given id.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issuetype/{id}",
+      "method": "updateIssueType",
+      "httpMethod": "put",
+      "description": "Updates the specified issue type from a JSON representation.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issuetype/{id}/alternatives",
+      "method": "getAlternativeIssueTypes",
+      "httpMethod": "get",
+      "description": "Returns a list of all alternative issue types for the given issue type id. The list will contain these issues types, to which\n issues assigned to the given issue type can be migrated. The suitable alternatives are issue types which are assigned\n to the same workflow, the same field configuration and the same screen scheme.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issuetype/{id}/avatar",
+      "method": "/api/2/issuetype/{id}/avatarPost",
+      "httpMethod": "post",
+      "description": "Converts temporary avatar into a real avatar",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issuetype/{id}/avatar/temporary",
+      "method": "/api/2/issuetype/{id}/avatar/temporaryPost",
+      "httpMethod": "post",
+      "description": "Creates temporary avatar using multipart. The response is sent back as JSON stored in a textarea. This is because\n the client uses remote iframing to submit avatars using multipart. So we must send them a valid HTML page back from\n which the client parses the JSON from.\n <p>\n Creating a temporary avatar is part of a 3-step process in uploading a new\n avatar for an issue type: upload, crop, confirm. This endpoint allows you to use a multipart upload\n instead of sending the image directly as the request body.\n </p>\n <p>\n You *must* use \"avatar\" as the name of the upload parameter:</p>\n <p>\n <pre>\n curl -c cookiejar.txt -X POST -u admin:admin -H \"X-Atlassian-Token: no-check\" \\\n   -F \"avatar=@mynewavatar.png;type=image/png\" \\\n   'http://localhost:8090/jira/rest/api/2/issuetype/1/avatar/temporary'\n </pre>",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issuetype/{issueTypeId}/properties",
+      "method": "getPropertyKeys",
+      "httpMethod": "get",
+      "description": "Returns the keys of all properties for the issue type identified by the id.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issuetype/{issueTypeId}/properties/{propertyKey}",
+      "method": "/api/2/issuetype/{issueTypeId}/properties/{propertyKey}Delete",
+      "httpMethod": "delete",
+      "description": "Removes the property from the issue type identified by the id. Ths user removing the property is required\n to have permissions to edit the issue type.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issuetype/{issueTypeId}/properties/{propertyKey}",
+      "method": "/api/2/issuetype/{issueTypeId}/properties/{propertyKey}Get",
+      "httpMethod": "get",
+      "description": "Returns the value of the property with a given key from the issue type identified by the id. The user who retrieves\n the property is required to have permissions to view the issue type.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/issuetype/{issueTypeId}/properties/{propertyKey}",
+      "method": "/api/2/issuetype/{issueTypeId}/properties/{propertyKey}Put",
+      "httpMethod": "put",
+      "description": "Sets the value of the specified issue type's property.\n <p>\n You can use this resource to store a custom data against an issue type identified by the id. The user\n who stores the data is required to have permissions to edit an issue type.\n </p>",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/jql/autocompletedata",
+      "method": "getAutoComplete",
+      "httpMethod": "get",
+      "description": "Returns the auto complete data required for JQL searches.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/jql/autocompletedata/suggestions",
+      "method": "getFieldAutoCompleteForQueryString",
+      "httpMethod": "get",
+      "description": "Returns auto complete suggestions for JQL search.",
+      "parameters": [
+        {
+          "name": "fieldName",
+          "schema": "string",
+          "required": false,
+          "description": "the field name for which the suggestions are generated."
+        },
+        {
+          "name": "fieldValue",
+          "schema": "string",
+          "required": false,
+          "description": "the portion of the field value that has already been provided by the user."
+        },
+        {
+          "name": "predicateName",
+          "schema": "string",
+          "required": false,
+          "description": "the predicate for which the suggestions are generated. Suggestions are generated only for: \"by\", \"from\" and \"to\"."
+        },
+        {
+          "name": "predicateValue",
+          "schema": "string",
+          "required": false,
+          "description": "the portion of the predicate value that has already been provided by the user."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/licenseValidator",
+      "method": "validate",
+      "httpMethod": "post",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/monitoring/jmx/areMetricsExposed",
+      "method": "areMetricsExposed",
+      "httpMethod": "get",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/monitoring/jmx/getAvailableMetrics",
+      "method": "getAvailableMetrics",
+      "httpMethod": "get",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/monitoring/jmx/startExposing",
+      "method": "start",
+      "httpMethod": "get",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/monitoring/jmx/stopExposing",
+      "method": "stop",
+      "httpMethod": "get",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/mypermissions",
+      "method": "getPermissions",
+      "httpMethod": "get",
+      "description": "Returns all permissions in the system and whether the currently logged in user has them. You can optionally provide a specific context to get permissions for\n (projectKey OR projectId OR issueKey OR issueId)\n <ul>\n <li> When no context supplied the project related permissions will return true if the user has that permission in ANY project </li>\n <li> If a project context is provided, project related permissions will return true if the user has the permissions in the specified project.\n For permissions that are determined using issue data (e.g Current Assignee), true will be returned if the user meets the permission criteria in ANY issue in that project </li>\n <li> If an issue context is provided, it will return whether or not the user has each permission in that specific issue</li>\n </ul>\n <p>\n NB: The above means that for issue-level permissions (EDIT_ISSUE for example), hasPermission may be true when no context is provided, or when a project context is provided,\n <b>but</b> may be false for any given (or all) issues. This would occur (for example) if Reporters were given the EDIT_ISSUE permission. This is because\n any user could be a reporter, except in the context of a concrete issue, where the reporter is known.\n </p>\n <p>\n Global permissions will still be returned for all scopes.\n </p>\n <p>\n Prior to version 6.4 this service returned project permissions with keys corresponding to com.atlassian.jira.security.Permissions.Permission constants.\n Since 6.4 those keys are considered deprecated and this service returns system project permission keys corresponding to constants defined in com.atlassian.jira.permission.ProjectPermissions.\n Permissions with legacy keys are still also returned for backwards compatibility, they are marked with an attribute deprecatedKey=true.\n The attribute is missing for project permissions with the current keys.\n </p>",
+      "parameters": [
+        {
+          "name": "projectKey",
+          "schema": "string",
+          "required": false,
+          "description": "- key of project to scope returned permissions for."
+        },
+        {
+          "name": "projectId",
+          "schema": "string",
+          "required": false,
+          "description": "- id of project to scope returned permissions for."
+        },
+        {
+          "name": "issueKey",
+          "schema": "string",
+          "required": false,
+          "description": "- key of the issue to scope returned permissions for."
+        },
+        {
+          "name": "issueId",
+          "schema": "string",
+          "required": false,
+          "description": "- id of the issue to scope returned permissions for."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/mypreferences",
+      "method": "removePreference",
+      "httpMethod": "delete",
+      "description": "Removes preference of the currently logged in user. Preference key must be provided as input parameters (key). If\n key parameter is not provided or wrong - status code 404. If preference is unset - status code 204.",
+      "parameters": [
+        {
+          "name": "key",
+          "schema": "string",
+          "required": false,
+          "description": "- key of the preference to be removed."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/mypreferences",
+      "method": "getPreference",
+      "httpMethod": "get",
+      "description": "Returns preference of the currently logged in user. Preference key must be provided as input parameter (key). The\n value is returned exactly as it is. If key parameter is not provided or wrong - status code 404. If value is\n found  - status code 200.",
+      "parameters": [
+        {
+          "name": "key",
+          "schema": "string",
+          "required": false,
+          "description": "- key of the preference to be returned."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/mypreferences",
+      "method": "setPreference",
+      "httpMethod": "put",
+      "description": "Sets preference of the currently logged in user. Preference key must be provided as input parameters (key). Value\n must be provided as post body. If key or value parameter is not provided - status code 404. If preference is set\n - status code 204.",
+      "parameters": [
+        {
+          "name": "key",
+          "schema": "string",
+          "required": false,
+          "description": "- key of the preference to be set."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/myself",
+      "method": "/api/2/myselfGet",
+      "httpMethod": "get",
+      "description": "Returns currently logged user. This resource cannot be accessed anonymously.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/myself",
+      "method": "/api/2/myselfPut",
+      "httpMethod": "put",
+      "description": "Modify currently logged user. The \"value\" fields present will override the existing value.\n Fields skipped in request will not be changed. Only email and display name can be change that way.\n Requires user password.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/myself/password",
+      "method": "changeMyPassword",
+      "httpMethod": "put",
+      "description": "Modify caller password.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/notificationscheme",
+      "method": "getNotificationSchemes",
+      "httpMethod": "get",
+      "description": "Returns a <a href=\"#pagination\">paginated</a> list of notification schemes. In order to access notification scheme, the calling user is\n required to have permissions to administer at least one project associated with the requested notification scheme. Each scheme contains\n a list of events and recipient configured to receive notifications for these events. Consumer should allow events without recipients to appear in response.\n The list is ordered by the scheme's name.\n Follow the documentation of /notificationscheme/{id} resource for all details about returned value.",
+      "parameters": [
+        {
+          "name": "startAt",
+          "schema": "integer",
+          "required": false,
+          "description": "the index of the first notification scheme to return (0 based)."
+        },
+        {
+          "name": "maxResults",
+          "schema": "integer",
+          "required": false,
+          "description": "the maximum number of notification schemes to return (max 50)."
+        },
+        {
+          "name": "expand",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/notificationscheme/{id}",
+      "method": "/api/2/notificationscheme/{id}Get",
+      "httpMethod": "get",
+      "description": "Returns a full representation of the notification scheme for the given id. This resource will return a\n notification scheme containing a list of events and recipient configured to receive notifications for these events. Consumer\n should allow events without recipients to appear in response. User accessing\n the data is required to have permissions to administer at least one project associated with the requested notification scheme.\n <p>\n Notification recipients can be:\n <ul>\n <li>current assignee - the value of the notificationType is CurrentAssignee</li>\n <li>issue reporter - the value of the notificationType is Reporter</li>\n <li>current user - the value of the notificationType is CurrentUser</li>\n <li>project lead - the value of the notificationType is ProjectLead</li>\n <li>component lead - the value of the notificationType is ComponentLead</li>\n <li>all watchers - the value of the notification type is AllWatchers</li>\n <li>configured user - the value of the notification type is User. Parameter will contain key of the user. Information about the user will be provided\n if <b>user</b> expand parameter is used. </li>\n <li>configured group - the value of the notification type is Group. Parameter will contain name of the group. Information about the group will be provided\n if <b>group</b> expand parameter is used. </li>\n <li>configured email address - the value of the notification type is EmailAddress, additionally information about the email will be provided.</li>\n <li>users or users in groups in the configured custom fields - the value of the notification type is UserCustomField or GroupCustomField. Parameter\n will contain id of the custom field. Information about the field will be provided if <b>field</b> expand parameter is used. </li>\n <li>configured project role - the value of the notification type is ProjectRole. Parameter will contain project role id. Information about the project role\n will be provided if <b>projectRole</b> expand parameter is used. </li>\n </ul>\n Please see the example for reference.\n </p>\n The events can be JIRA system events or events configured by administrator. In case of the system events, data about theirs\n ids, names and descriptions is provided. In case of custom events, the template event is included as well.",
+      "parameters": [
+        {
+          "name": "expand",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/password/policy",
+      "method": "getPasswordPolicy",
+      "httpMethod": "get",
+      "description": "Returns the list of requirements for the current password policy. For example, \"The password must have at least 10 characters.\",\n \"The password must not be similar to the user's name or email address.\", etc.",
+      "parameters": [
+        {
+          "name": "hasOldPassword",
+          "schema": "boolean",
+          "required": false,
+          "description": "whether or not the user will be required to enter their current password.  Use\n                       {@code false} (the default) if this is a new user or if an administrator is forcibly changing\n                       another user's password."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/password/policy/createUser",
+      "method": "policyCheckCreateUser",
+      "httpMethod": "post",
+      "description": "Returns a list of statements explaining why the password policy would disallow a proposed password for a new user.\n <p>\n You can use this method to test the password policy validation. This could be done prior to an action \n where a new user and related password are created, using methods like the ones in \n <a href=\"https://docs.atlassian.com/jira/latest/com/atlassian/jira/bc/user/UserService.html\">UserService</a>.      \n For example, you could use this to validate a password in a create user form in the user interface, as the user enters it.<br/>\n The username and new password must be not empty to perform the validation.<br/>\n Note, this method will help you validate against the policy only. It won't check any other validations that might be performed \n when creating a new user, e.g. checking whether a user with the same name already exists.\n </p>",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/password/policy/updateUser",
+      "method": "policyCheckUpdateUser",
+      "httpMethod": "post",
+      "description": "Returns a list of statements explaining why the password policy would disallow a proposed new password for a user with an existing password.\n <p>\n You can use this method to test the password policy validation. This could be done prior to an action where the password \n is actually updated, using methods like <a href=\"https://docs.atlassian.com/jira/latest/com/atlassian/jira/web/action/user/ChangePassword.html\">ChangePassword</a>      \n or <a href=\"https://docs.atlassian.com/jira/latest/com/atlassian/jira/web/action/user/ResetPassword.html\">ResetPassword</a>. \n For example, you could use this to validate a password in a change password form in the user interface, as the user enters it.<br/>\n The user must exist and the username and new password must be not empty, to perform the validation.<br/>\n Note, this method will help you validate against the policy only. It won't check any other validations that might be performed \n when submitting a password change/reset request, e.g. verifying whether the old password is valid.\n </p>",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/permissions",
+      "method": "getAllPermissions",
+      "httpMethod": "get",
+      "description": "Returns all permissions that are present in the JIRA instance - Global, Project and the global ones added by plugins",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/permissionscheme",
+      "method": "getPermissionSchemes",
+      "httpMethod": "get",
+      "description": "Returns a list of all permission schemes.\n <p>\n By default only shortened beans are returned. If you want to include permissions of all the schemes,\n then specify the <b>permissions</b> expand parameter. Permissions will be included also if you specify\n any other expand parameter.\n </p>",
+      "parameters": [
+        {
+          "name": "expand",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/permissionscheme",
+      "method": "createPermissionScheme",
+      "httpMethod": "post",
+      "description": "Create a new permission scheme.\n This method can create schemes with a defined permission set, or without.",
+      "parameters": [
+        {
+          "name": "expand",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/permissionscheme/{permissionSchemeId}/attribute/{attributeKey}",
+      "method": "getSchemeAttribute",
+      "httpMethod": "get",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/permissionscheme/{permissionSchemeId}/attribute/{key}",
+      "method": "setSchemeAttribute",
+      "httpMethod": "put",
+      "description": "Updates or inserts the attribute for a permission scheme specified by permission scheme id.\n The attribute consists of the key and the value. The value will be converted to Boolean using Boolean#valueOf.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/permissionscheme/{schemeId}",
+      "method": "deletePermissionScheme",
+      "httpMethod": "delete",
+      "description": "Deletes a permission scheme identified by the given id.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/permissionscheme/{schemeId}",
+      "method": "getPermissionScheme",
+      "httpMethod": "get",
+      "description": "Returns a permission scheme identified by the given id.",
+      "parameters": [
+        {
+          "name": "expand",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/permissionscheme/{schemeId}",
+      "method": "updatePermissionScheme",
+      "httpMethod": "put",
+      "description": "Updates a permission scheme.\n <p>\n If the permissions list is present then it will be set in the permission scheme, which basically means it will overwrite any permission grants that\n existed in the permission scheme. Sending an empty list will remove all permission grants from the permission scheme.\n </p>\n <p>\n To update just the name and description, do not send permissions list at all.\n </p>\n <p>\n To add or remove a single permission grant instead of updating the whole list at once use the <b>{schemeId}/permission/</b> resource.\n </p>",
+      "parameters": [
+        {
+          "name": "expand",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/permissionscheme/{schemeId}/permission",
+      "method": "getPermissionSchemeGrants",
+      "httpMethod": "get",
+      "description": "Returns all permission grants of the given permission scheme.",
+      "parameters": [
+        {
+          "name": "expand",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/permissionscheme/{schemeId}/permission",
+      "method": "createPermissionGrant",
+      "httpMethod": "post",
+      "description": "Creates a permission grant in a permission scheme.",
+      "parameters": [
+        {
+          "name": "expand",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/permissionscheme/{schemeId}/permission/{permissionId}",
+      "method": "deletePermissionSchemeEntity",
+      "httpMethod": "delete",
+      "description": "Deletes a permission grant from a permission scheme.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/permissionscheme/{schemeId}/permission/{permissionId}",
+      "method": "getPermissionSchemeGrant",
+      "httpMethod": "get",
+      "description": "Returns a permission grant identified by the given id.",
+      "parameters": [
+        {
+          "name": "expand",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/priority",
+      "method": "getPriorities",
+      "httpMethod": "get",
+      "description": "Returns a list of all issue priorities.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/priority/{id}",
+      "method": "getPriority",
+      "httpMethod": "get",
+      "description": "Returns an issue priority.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project",
+      "method": "getAllProjects",
+      "httpMethod": "get",
+      "description": "Returns all projects which are visible for the currently logged in user. If no user is logged in, it returns the\n list of projects that are visible when using anonymous access.",
+      "parameters": [
+        {
+          "name": "expand",
+          "schema": "string",
+          "required": false,
+          "description": "the parameters to expand"
+        },
+        {
+          "name": "recent",
+          "schema": "integer",
+          "required": false,
+          "description": "if this parameter is set then only projects recently accessed by the current user (if not logged in then based on HTTP session) will be returned (maximum count limited to the specified number but no more than 20)."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project",
+      "method": "createProject",
+      "httpMethod": "post",
+      "description": "Creates a new project.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/type",
+      "method": "getAllProjectTypes",
+      "httpMethod": "get",
+      "description": "Returns all the project types defined on the JIRA instance, not taking into account whether\n the license to use those project types is valid or not.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/type/{projectTypeKey}",
+      "method": "getProjectTypeByKey",
+      "httpMethod": "get",
+      "description": "Returns the project type with the given key.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/type/{projectTypeKey}/accessible",
+      "method": "getAccessibleProjectTypeByKey",
+      "httpMethod": "get",
+      "description": "Returns the project type with the given key, if it is accessible to the logged in user.\n This takes into account whether the user is licensed on the Application that defines the project type.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/{projectIdOrKey}",
+      "method": "deleteProject",
+      "httpMethod": "delete",
+      "description": "Deletes a project.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/{projectIdOrKey}",
+      "method": "/api/2/project/{projectIdOrKey}Get",
+      "httpMethod": "get",
+      "description": "Contains a full representation of a project in JSON format.\n <p>\n All project keys associated with the project will only be returned if <code>expand=projectKeys</code>.\n <p>",
+      "parameters": [
+        {
+          "name": "expand",
+          "schema": "string",
+          "required": false,
+          "description": "the parameters to expand"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/{projectIdOrKey}",
+      "method": "updateProject",
+      "httpMethod": "put",
+      "description": "Updates a project.\n <p>\n Only non null values sent in JSON will be updated in the project.</p>\n <p>\n Values available for the assigneeType field are: \"PROJECT_LEAD\" and \"UNASSIGNED\".</p>",
+      "parameters": [
+        {
+          "name": "expand",
+          "schema": "string",
+          "required": false,
+          "description": "the parameters to expand in returned project"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/{projectIdOrKey}/avatar",
+      "method": "/api/2/project/{projectIdOrKey}/avatarPost",
+      "httpMethod": "post",
+      "description": "Converts temporary avatar into a real avatar",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/{projectIdOrKey}/avatar",
+      "method": "/api/2/project/{projectIdOrKey}/avatarPut",
+      "httpMethod": "put",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/{projectIdOrKey}/avatar/temporary",
+      "method": "/api/2/project/{projectIdOrKey}/avatar/temporaryPost",
+      "httpMethod": "post",
+      "description": "Creates temporary avatar using multipart. The response is sent back as JSON stored in a textarea. This is because\n the client uses remote iframing to submit avatars using multipart. So we must send them a valid HTML page back from\n which the client parses the JSON.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/{projectIdOrKey}/avatar/{id}",
+      "method": "/api/2/project/{projectIdOrKey}/avatar/{id}Delete",
+      "httpMethod": "delete",
+      "description": "Deletes avatar",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/{projectIdOrKey}/avatars",
+      "method": "/api/2/project/{projectIdOrKey}/avatarsGet",
+      "httpMethod": "get",
+      "description": "Returns all avatars which are visible for the currently logged in user.  The avatars are grouped into\n system and custom.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/{projectIdOrKey}/components",
+      "method": "getProjectComponents",
+      "httpMethod": "get",
+      "description": "Contains a full representation of a the specified project's components.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/{projectIdOrKey}/properties",
+      "method": "/api/2/project/{projectIdOrKey}/propertiesGet",
+      "httpMethod": "get",
+      "description": "Returns the keys of all properties for the project identified by the key or by the id.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/{projectIdOrKey}/properties/{propertyKey}",
+      "method": "/api/2/project/{projectIdOrKey}/properties/{propertyKey}Delete",
+      "httpMethod": "delete",
+      "description": "Removes the property from the project identified by the key or by the id. Ths user removing the property is required\n to have permissions to administer the project.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/{projectIdOrKey}/properties/{propertyKey}",
+      "method": "/api/2/project/{projectIdOrKey}/properties/{propertyKey}Get",
+      "httpMethod": "get",
+      "description": "Returns the value of the property with a given key from the project identified by the key or by the id. The user who retrieves\n the property is required to have permissions to read the project.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/{projectIdOrKey}/properties/{propertyKey}",
+      "method": "/api/2/project/{projectIdOrKey}/properties/{propertyKey}Put",
+      "httpMethod": "put",
+      "description": "Sets the value of the specified project's property.\n <p>\n You can use this resource to store a custom data against the project identified by the key or by the id. The user\n who stores the data is required to have permissions to administer the project.\n </p>",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/{projectIdOrKey}/role",
+      "method": "/api/2/project/{projectIdOrKey}/roleGet",
+      "httpMethod": "get",
+      "description": "Returns all roles in the given project Id or key, with links to full details on each role.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/{projectIdOrKey}/role/{id}",
+      "method": "deleteActor",
+      "httpMethod": "delete",
+      "description": "Deletes actors (users or groups) from a project role.\n <p>\n <ul>\n <li>Delete a user from the role: <code>/rest/api/2/project/{projectIdOrKey}/role/{roleId}?user={username}</code></li>\n <li>Delete a group from the role: <code>/rest/api/2/project/{projectIdOrKey}/role/{roleId}?group={groupname}</code></li>\n </ul>",
+      "parameters": [
+        {
+          "name": "user",
+          "schema": "string",
+          "required": false,
+          "description": "the username to remove from the project role"
+        },
+        {
+          "name": "group",
+          "schema": "string",
+          "required": false,
+          "description": "the groupname to remove from the project role"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/{projectIdOrKey}/role/{id}",
+      "method": "getProjectRole",
+      "httpMethod": "get",
+      "description": "Returns the details for a given project role in a project.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/{projectIdOrKey}/role/{id}",
+      "method": "addActorUsers",
+      "httpMethod": "post",
+      "description": "Adds an actor (user or group) to a project role.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/{projectIdOrKey}/role/{id}",
+      "method": "setActors",
+      "httpMethod": "put",
+      "description": "Updates a project role to include the specified actors (users or groups).",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/{projectIdOrKey}/statuses",
+      "method": "getAllStatuses",
+      "httpMethod": "get",
+      "description": "Get all issue types with valid status values for a project",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/{projectIdOrKey}/type/{newProjectTypeKey}",
+      "method": "updateProjectType",
+      "httpMethod": "put",
+      "description": "Updates the type of a project.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/{projectIdOrKey}/version",
+      "method": "getProjectVersionsPaginated",
+      "httpMethod": "get",
+      "description": "Returns all versions for the specified project. Results are <a href=\"#pagination\">paginated</a>.\n <p>\n Results can be ordered by the following fields:\n <ul>\n <li>sequence</li>\n <li>name</li>\n <li>startDate</li>\n <li>releaseDate</li>\n </ul>\n </p>",
+      "parameters": [
+        {
+          "name": "startAt",
+          "schema": "integer",
+          "required": false,
+          "description": "the page offset, if not specified then defaults to 0"
+        },
+        {
+          "name": "maxResults",
+          "schema": "integer",
+          "required": false,
+          "description": "how many results on the page should be included. Defaults to 50."
+        },
+        {
+          "name": "orderBy",
+          "schema": "string",
+          "required": false,
+          "description": "ordering of the results."
+        },
+        {
+          "name": "expand",
+          "schema": "string",
+          "required": false,
+          "description": "the parameters to expand"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/{projectIdOrKey}/versions",
+      "method": "getProjectVersions",
+      "httpMethod": "get",
+      "description": "Contains a full representation of a the specified project's versions.",
+      "parameters": [
+        {
+          "name": "expand",
+          "schema": "string",
+          "required": false,
+          "description": "the parameters to expand"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/{projectKeyOrId}/issuesecuritylevelscheme",
+      "method": "/api/2/project/{projectKeyOrId}/issuesecuritylevelschemeGet",
+      "httpMethod": "get",
+      "description": "Returns the issue security scheme for project.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/{projectKeyOrId}/notificationscheme",
+      "method": "/api/2/project/{projectKeyOrId}/notificationschemeGet",
+      "httpMethod": "get",
+      "description": "Gets a notification scheme associated with the project.\n Follow the documentation of /notificationscheme/{id} resource for all details about returned value.",
+      "parameters": [
+        {
+          "name": "expand",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/{projectKeyOrId}/permissionscheme",
+      "method": "getAssignedPermissionScheme",
+      "httpMethod": "get",
+      "description": "Gets a permission scheme assigned with a project.",
+      "parameters": [
+        {
+          "name": "expand",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/{projectKeyOrId}/permissionscheme",
+      "method": "assignPermissionScheme",
+      "httpMethod": "put",
+      "description": "Assigns a permission scheme with a project.",
+      "parameters": [
+        {
+          "name": "expand",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/project/{projectKeyOrId}/securitylevel",
+      "method": "getSecurityLevelsForProject",
+      "httpMethod": "get",
+      "description": "Returns all security levels for the project that the current logged in user has access to.\n If the user does not have the Set Issue Security permission, the list will be empty.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/projectCategory",
+      "method": "getAllProjectCategories",
+      "httpMethod": "get",
+      "description": "Returns all project categories",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/projectCategory",
+      "method": "createProjectCategory",
+      "httpMethod": "post",
+      "description": "Create a project category via POST.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/projectCategory/{id}",
+      "method": "removeProjectCategory",
+      "httpMethod": "delete",
+      "description": "Delete a project category.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/projectCategory/{id}",
+      "method": "getProjectCategoryById",
+      "httpMethod": "get",
+      "description": "Contains a representation of a project category in JSON format.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/projectCategory/{id}",
+      "method": "updateProjectCategory",
+      "httpMethod": "put",
+      "description": "Modify a project category via PUT. Any fields present in the PUT will override existing values. As a convenience, if a field\n is not present, it is silently ignored.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/projectvalidate/key",
+      "method": "/api/2/projectvalidate/keyGet",
+      "httpMethod": "get",
+      "description": "Validates a project key.",
+      "parameters": [
+        {
+          "name": "key",
+          "schema": "string",
+          "required": false,
+          "description": "the project key"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/reindex",
+      "method": "getReindexInfo",
+      "httpMethod": "get",
+      "description": "Returns information on the system reindexes.  If a reindex is currently taking place then information about this reindex is returned.\n If there is no active index task, then returns information about the latest reindex task run, otherwise returns a 404\n indicating that no reindex has taken place.",
+      "parameters": [
+        {
+          "name": "taskId",
+          "schema": "integer",
+          "required": false,
+          "description": "the id of an indexing task you wish to obtain details on.  If omitted, then defaults to the standard behaviour and\n               returns information on the active reindex task, or the last task to run if no reindex is taking place. .  If there is no\n               reindexing task with that id then a 404 is returned."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/reindex",
+      "method": "reindex",
+      "httpMethod": "post",
+      "description": "Kicks off a reindex.  Need Admin permissions to perform this reindex.",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Case insensitive String indicating type of reindex.  If omitted, then defaults to BACKGROUND_PREFERRED."
+        },
+        {
+          "name": "indexComments",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates that comments should also be reindexed. Not relevant for foreground reindex, where comments are always reindexed."
+        },
+        {
+          "name": "indexChangeHistory",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates that changeHistory should also be reindexed. Not relevant for foreground reindex, where changeHistory is always reindexed."
+        },
+        {
+          "name": "indexWorklogs",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates that changeHistory should also be reindexed. Not relevant for foreground reindex, where changeHistory is always reindexed."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/reindex/issue",
+      "method": "reindexIssues",
+      "httpMethod": "post",
+      "description": "Reindexes one or more individual issues.  Indexing is performed synchronously - the call returns when indexing of\n the issues has completed or a failure occurs.\n <p>\n Use either explicitly specified issue IDs or a JQL query to select issues to reindex.",
+      "parameters": [
+        {
+          "name": "issueId",
+          "schema": "string",
+          "required": false,
+          "description": "the IDs or keys of one or more issues to reindex."
+        },
+        {
+          "name": "indexComments",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates that comments should also be reindexed."
+        },
+        {
+          "name": "indexChangeHistory",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates that changeHistory should also be reindexed."
+        },
+        {
+          "name": "indexWorklogs",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates that changeHistory should also be reindexed."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/reindex/progress",
+      "method": "getReindexProgress",
+      "httpMethod": "get",
+      "description": "Returns information on the system reindexes.  If a reindex is currently taking place then information about this reindex is returned.\n If there is no active index task, then returns information about the latest reindex task run, otherwise returns a 404\n indicating that no reindex has taken place.",
+      "parameters": [
+        {
+          "name": "taskId",
+          "schema": "integer",
+          "required": false,
+          "description": "the id of an indexing task you wish to obtain details on.  If omitted, then defaults to the standard behaviour and\n               returns information on the active reindex task, or the last task to run if no reindex is taking place. .  If there is no\n               reindexing task with that id then a 404 is returned."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/reindex/request",
+      "method": "processRequests",
+      "httpMethod": "post",
+      "description": "Executes any pending reindex requests.  Returns a JSON array containing the IDs of the reindex requests\n that are being processed.  Execution is asynchronous - progress of the returned tasks can be monitored through\n other REST calls.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/reindex/request/bulk",
+      "method": "getProgressBulk",
+      "httpMethod": "get",
+      "description": "Retrieves the progress of a multiple reindex requests.  Only reindex requests that actually exist will be returned\n in the results.",
+      "parameters": [
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": false,
+          "description": "the reindex request IDs."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/reindex/request/{requestId}",
+      "method": "getProgress",
+      "httpMethod": "get",
+      "description": "Retrieves the progress of a single reindex request.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/resolution",
+      "method": "getResolutions",
+      "httpMethod": "get",
+      "description": "Returns a list of all resolutions.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/resolution/{id}",
+      "method": "getResolution",
+      "httpMethod": "get",
+      "description": "Returns a resolution.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/role",
+      "method": "/api/2/roleGet",
+      "httpMethod": "get",
+      "description": "Get all the ProjectRoles available in JIRA. Currently this list is global.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/role",
+      "method": "createProjectRole",
+      "httpMethod": "post",
+      "description": "Creates a new ProjectRole to be available in JIRA.\n The created role does not have any default actors assigned.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/role/{id}",
+      "method": "deleteProjectRole",
+      "httpMethod": "delete",
+      "description": "Deletes a role. May return 403 in the future",
+      "parameters": [
+        {
+          "name": "swap",
+          "schema": "integer",
+          "required": false,
+          "description": "if given, removes a role even if it is used in scheme by replacing the role with the given one"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/role/{id}",
+      "method": "getProjectRolesById",
+      "httpMethod": "get",
+      "description": "Get a specific ProjectRole available in JIRA.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/role/{id}",
+      "method": "partialUpdateProjectRole",
+      "httpMethod": "post",
+      "description": "Partially updates a roles name or description.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/role/{id}",
+      "method": "fullyUpdateProjectRole",
+      "httpMethod": "put",
+      "description": "Fully updates a roles. Both name and description must be given.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/role/{id}/actors",
+      "method": "deleteProjectRoleActorsFromRole",
+      "httpMethod": "delete",
+      "description": "Removes default actor from the given role.",
+      "parameters": [
+        {
+          "name": "user",
+          "schema": "string",
+          "required": false,
+          "description": "if given, removes an actor from given role"
+        },
+        {
+          "name": "group",
+          "schema": "string",
+          "required": false,
+          "description": "if given, removes an actor from given role"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/role/{id}/actors",
+      "method": "getProjectRoleActorsForRole",
+      "httpMethod": "get",
+      "description": "Gets default actors for the given role.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/role/{id}/actors",
+      "method": "addProjectRoleActorsToRole",
+      "httpMethod": "post",
+      "description": "Adds default actors to the given role. The request data should contain a list of usernames or a list of groups to add.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/screens/addToDefault/{fieldId}",
+      "method": "addFieldToDefaultScreen",
+      "httpMethod": "post",
+      "description": "Adds field or custom field to the default tab",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/screens/{screenId}/availableFields",
+      "method": "getFieldsToAdd",
+      "httpMethod": "get",
+      "description": "Gets available fields for screen. i.e ones that haven't already been added.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/screens/{screenId}/tabs",
+      "method": "getAllTabs",
+      "httpMethod": "get",
+      "description": "Returns a list of all tabs for the given screen",
+      "parameters": [
+        {
+          "name": "projectKey",
+          "schema": "string",
+          "required": false,
+          "description": "the key of the project; this parameter is optional"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/screens/{screenId}/tabs",
+      "method": "addTab",
+      "httpMethod": "post",
+      "description": "Creates tab for given screen",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/screens/{screenId}/tabs/{tabId}",
+      "method": "deleteTab",
+      "httpMethod": "delete",
+      "description": "Deletes tab to give screen",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/screens/{screenId}/tabs/{tabId}",
+      "method": "renameTab",
+      "httpMethod": "put",
+      "description": "Renames tab on given screen",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/screens/{screenId}/tabs/{tabId}/fields",
+      "method": "getAllFields",
+      "httpMethod": "get",
+      "description": "Gets all fields for a given tab",
+      "parameters": [
+        {
+          "name": "projectKey",
+          "schema": "string",
+          "required": false,
+          "description": "the key of the project; this parameter is optional"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/screens/{screenId}/tabs/{tabId}/fields",
+      "method": "addField",
+      "httpMethod": "post",
+      "description": "Adds field to the given tab.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/screens/{screenId}/tabs/{tabId}/fields/{id}",
+      "method": "removeField",
+      "httpMethod": "delete",
+      "description": "Removes field from given tab",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/screens/{screenId}/tabs/{tabId}/fields/{id}/move",
+      "method": "moveField",
+      "httpMethod": "post",
+      "description": "Moves field on the given tab",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/screens/{screenId}/tabs/{tabId}/move/{pos}",
+      "method": "moveTab",
+      "httpMethod": "post",
+      "description": "Moves tab position",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/search",
+      "method": "search",
+      "httpMethod": "get",
+      "description": "Searches for issues using JQL.\n <p>\n <b>Sorting</b>\n the <code>jql</code> parameter is a full <a href=\"http://confluence.atlassian.com/display/JIRA/Advanced+Searching\">JQL</a>\n expression, and includes an <code>ORDER BY</code> clause.\n </p>\n <p>\n The <code>fields</code> param (which can be specified multiple times) gives a comma-separated list of fields\n to include in the response. This can be used to retrieve a subset of fields.\n A particular field can be excluded by prefixing it with a minus.\n <p>\n By default, only navigable (<code>*navigable</code>) fields are returned in this search resource. Note: the default is different\n in the get-issue resource -- the default there all fields (<code>*all</code>).\n <ul>\n <li><code>*all</code> - include all fields</li>\n <li><code>*navigable</code> - include just navigable fields</li>\n <li><code>summary,comment</code> - include just the summary and comments</li>\n <li><code>-description</code> - include navigable fields except the description (the default is <code>*navigable</code> for search)</li>\n <li><code>*all,-comment</code> - include everything except comments</li>\n </ul>\n <p>\n </p>\n <p><b>GET vs POST:</b>\n If the JQL query is too large to be encoded as a query param you should instead\n POST to this resource.\n </p>\n <p>\n <b>Expanding Issues in the Search Result:</b>\n It is possible to expand the issues returned by directly specifying the expansion on the expand parameter passed\n in to this resources.\n </p>\n <p>\n For instance, to expand the &quot;changelog&quot; for all the issues on the search result, it is neccesary to\n specify &quot;changelog&quot; as one of the values to expand.\n </p>",
+      "parameters": [
+        {
+          "name": "jql",
+          "schema": "string",
+          "required": false,
+          "description": "a JQL query string"
+        },
+        {
+          "name": "startAt",
+          "schema": "integer",
+          "required": false,
+          "description": "the index of the first issue to return (0-based)"
+        },
+        {
+          "name": "maxResults",
+          "schema": "integer",
+          "required": false,
+          "description": "the maximum number of issues to return (defaults to 50). The maximum allowable value is\n                      dictated by the JIRA property 'jira.search.views.default.max'. If you specify a value that is higher than this\n                      number, your search results will be truncated."
+        },
+        {
+          "name": "validateQuery",
+          "schema": "boolean",
+          "required": false,
+          "description": "whether to validate the JQL query"
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "the list of fields to return for each issue. By default, all navigable fields are returned."
+        },
+        {
+          "name": "expand",
+          "schema": "string",
+          "required": false,
+          "description": "A comma-separated list of the parameters to expand."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/search",
+      "method": "searchUsingSearchRequest",
+      "httpMethod": "post",
+      "description": "Performs a search using JQL.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/securitylevel/{id}",
+      "method": "getIssuesecuritylevel",
+      "httpMethod": "get",
+      "description": "Returns a full representation of the security level that has the given id.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/serverInfo",
+      "method": "getServerInfo",
+      "httpMethod": "get",
+      "description": "Returns general information about the current JIRA server.",
+      "parameters": [
+        {
+          "name": "doHealthCheck",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/settings/baseUrl",
+      "method": "setBaseUrl",
+      "httpMethod": "put",
+      "description": "Sets the base URL that is configured for this JIRA instance.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/settings/columns",
+      "method": "getIssueNavigatorDefaultColumns",
+      "httpMethod": "get",
+      "description": "Returns the default system columns for issue navigator. Admin permission will be required.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/settings/columns",
+      "method": "setIssueNavigatorDefaultColumns",
+      "httpMethod": "put",
+      "description": "Sets the default system columns for issue navigator. Admin permission will be required.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/status",
+      "method": "getStatuses",
+      "httpMethod": "get",
+      "description": "Returns a list of all statuses",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/status/{idOrName}",
+      "method": "getStatus",
+      "httpMethod": "get",
+      "description": "Returns a full representation of the Status having the given id or name.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/statuscategory",
+      "method": "getStatusCategories",
+      "httpMethod": "get",
+      "description": "Returns a list of all status categories",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/statuscategory/{idOrKey}",
+      "method": "getStatusCategory",
+      "httpMethod": "get",
+      "description": "Returns a full representation of the StatusCategory having the given id or key",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/universal_avatar/type/{type}/owner/{owningObjectId}",
+      "method": "getAvatars",
+      "httpMethod": "get",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/universal_avatar/type/{type}/owner/{owningObjectId}/avatar",
+      "method": "/api/2/universalAvatar/type/{type}/owner/{owningObjectId}/avatarPost",
+      "httpMethod": "post",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/universal_avatar/type/{type}/owner/{owningObjectId}/avatar/{id}",
+      "method": "/api/2/universalAvatar/type/{type}/owner/{owningObjectId}/avatar/{id}Delete",
+      "httpMethod": "delete",
+      "description": "Deletes avatar",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/universal_avatar/type/{type}/owner/{owningObjectId}/temp",
+      "method": "/api/2/universalAvatar/type/{type}/owner/{owningObjectId}/tempPost",
+      "httpMethod": "post",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/upgrade",
+      "method": "getUpgradeResult",
+      "httpMethod": "get",
+      "description": "Returns the result of the last upgrade task.\n\n Returns {@link javax.ws.rs.core.Response#seeOther(java.net.URI)} if still running.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/upgrade",
+      "method": "runUpgradesNow",
+      "httpMethod": "post",
+      "description": "Runs any pending delayed upgrade tasks.  Need Admin permissions to do this.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/user",
+      "method": "removeUser",
+      "httpMethod": "delete",
+      "description": "Removes user.",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": "the username"
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": false,
+          "description": "user key"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/user",
+      "method": "/api/2/userGet",
+      "httpMethod": "get",
+      "description": "Returns a user. This resource cannot be accessed anonymously.",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": "the username"
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": false,
+          "description": "user key"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/user",
+      "method": "createUser",
+      "httpMethod": "post",
+      "description": "Create user. By default created user will not be notified with email.\n If password field is not set then password will be randomly generated.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/user",
+      "method": "/api/2/userPut",
+      "httpMethod": "put",
+      "description": "Modify user. The \"value\" fields present will override the existing value.\n Fields skipped in request will not be changed.",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": "the username"
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": false,
+          "description": "user key"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/user/application",
+      "method": "removeUserFromApplication",
+      "httpMethod": "delete",
+      "description": "Remove user from given application. Admin permission will be required to perform this operation.",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": "username"
+        },
+        {
+          "name": "applicationKey",
+          "schema": "string",
+          "required": false,
+          "description": "application key"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/user/application",
+      "method": "addUserToApplication",
+      "httpMethod": "post",
+      "description": "Add user to given application. Admin permission will be required to perform this operation.",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": "username"
+        },
+        {
+          "name": "applicationKey",
+          "schema": "string",
+          "required": false,
+          "description": "application key"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/user/assignable/multiProjectSearch",
+      "method": "findBulkAssignableUsers",
+      "httpMethod": "get",
+      "description": "Returns a list of users that match the search string and can be assigned issues for all the given projects.\n This resource cannot be accessed anonymously.",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": "the username"
+        },
+        {
+          "name": "projectKeys",
+          "schema": "string",
+          "required": false,
+          "description": "the keys of the projects we are finding assignable users for, comma-separated"
+        },
+        {
+          "name": "startAt",
+          "schema": "integer",
+          "required": false,
+          "description": "the index of the first user to return (0-based)"
+        },
+        {
+          "name": "maxResults",
+          "schema": "integer",
+          "required": false,
+          "description": "the maximum number of users to return (defaults to 50). The maximum allowed value is 1000.\n                       If you specify a value that is higher than this number, your search results will be truncated."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/user/assignable/search",
+      "method": "findAssignableUsers",
+      "httpMethod": "get",
+      "description": "Returns a list of users that match the search string. This resource cannot be accessed anonymously.\n Please note that this resource should be called with an issue key when a list of assignable users is retrieved\n for editing.  For create only a project key should be supplied.  The list of assignable users may be incorrect\n if it's called with the project key for editing.",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": "the username"
+        },
+        {
+          "name": "project",
+          "schema": "string",
+          "required": false,
+          "description": "the key of the project we are finding assignable users for"
+        },
+        {
+          "name": "issueKey",
+          "schema": "string",
+          "required": false,
+          "description": "the issue key for the issue being edited we need to find assignable users for."
+        },
+        {
+          "name": "startAt",
+          "schema": "integer",
+          "required": false,
+          "description": "the index of the first user to return (0-based)"
+        },
+        {
+          "name": "maxResults",
+          "schema": "integer",
+          "required": false,
+          "description": "the maximum number of users to return (defaults to 50). The maximum allowed value is 1000.\n                   If you specify a value that is higher than this number, your search results will be truncated."
+        },
+        {
+          "name": "actionDescriptorId",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/user/avatar",
+      "method": "/api/2/user/avatarPost",
+      "httpMethod": "post",
+      "description": "Converts temporary avatar into a real avatar",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": "username"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/user/avatar",
+      "method": "/api/2/user/avatarPut",
+      "httpMethod": "put",
+      "description": "",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/user/avatar/temporary",
+      "method": "/api/2/user/avatar/temporaryPost",
+      "httpMethod": "post",
+      "description": "Creates temporary avatar using multipart. The response is sent back as JSON stored in a textarea. This is because\n the client uses remote iframing to submit avatars using multipart. So we must send them a valid HTML page back from\n which the client parses the JSON from.\n <p>\n Creating a temporary avatar is part of a 3-step process in uploading a new\n avatar for a user: upload, crop, confirm. This endpoint allows you to use a multipart upload\n instead of sending the image directly as the request body.\n </p>\n <p>\n You *must* use \"avatar\" as the name of the upload parameter:</p>\n <p/>\n <pre>\n curl -c cookiejar.txt -X POST -u admin:admin -H \"X-Atlassian-Token: no-check\" \\\n   -F \"avatar=@mynewavatar.png;type=image/png\" \\\n   'http://localhost:8090/jira/rest/api/2/user/avatar/temporary?username=admin'\n </pre>",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": "Username"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/user/avatar/{id}",
+      "method": "/api/2/user/avatar/{id}Delete",
+      "httpMethod": "delete",
+      "description": "Deletes avatar",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": "username"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/user/avatars",
+      "method": "/api/2/user/avatarsGet",
+      "httpMethod": "get",
+      "description": "Returns all avatars which are visible for the currently logged in user.",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": "username"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/user/columns",
+      "method": "/api/2/user/columnsDelete",
+      "httpMethod": "delete",
+      "description": "Reset the default columns for the given user to the system default. Admin permission will be required to get\n columns for a user other than the currently logged in user.",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": "username"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/user/columns",
+      "method": "/api/2/user/columnsGet",
+      "httpMethod": "get",
+      "description": "Returns the default columns for the given user. Admin permission will be required to get columns for a user\n other than the currently logged in user.",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": "username"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/user/columns",
+      "method": "/api/2/user/columnsPut",
+      "httpMethod": "put",
+      "description": "Sets the default columns for the given user.  Admin permission will be required to get columns for a user\n other than the currently logged in user.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/user/password",
+      "method": "changeUserPassword",
+      "httpMethod": "put",
+      "description": "Modify user password.",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": "the username"
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": false,
+          "description": "user key"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/user/permission/search",
+      "method": "findUsersWithAllPermissions",
+      "httpMethod": "get",
+      "description": "Returns a list of active users that match the search string and have all specified permissions for the project or issue.<br>\n This resource can be accessed by users with ADMINISTER_PROJECT permission for the project or global ADMIN or SYSADMIN rights.",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": "the username filter, list includes all users if unspecified"
+        },
+        {
+          "name": "permissions",
+          "schema": "string",
+          "required": false,
+          "description": "comma separated list of permissions for project or issue returned users must have, see\n                    <a href=\"https://developer.atlassian.com/static/javadoc/jira/6.0/reference/com/atlassian/jira/security/Permissions.Permission.html\">Permissions</a>\n                    JavaDoc for the list of all possible permissions."
+        },
+        {
+          "name": "issueKey",
+          "schema": "string",
+          "required": false,
+          "description": "the issue key for the issue for which returned users have specified permissions."
+        },
+        {
+          "name": "projectKey",
+          "schema": "string",
+          "required": false,
+          "description": "the optional project key to search for users with if no issueKey is supplied."
+        },
+        {
+          "name": "startAt",
+          "schema": "integer",
+          "required": false,
+          "description": "the index of the first user to return (0-based)"
+        },
+        {
+          "name": "maxResults",
+          "schema": "integer",
+          "required": false,
+          "description": "the maximum number of users to return (defaults to 50). The maximum allowed value is 1000.\n                    If you specify a value that is higher than this number, your search results will be truncated."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/user/picker",
+      "method": "findUsersForPicker",
+      "httpMethod": "get",
+      "description": "Returns a list of users matching query with highlighting. This resource cannot be accessed anonymously.",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "A string used to search username, Name or e-mail address"
+        },
+        {
+          "name": "maxResults",
+          "schema": "integer",
+          "required": false,
+          "description": "the maximum number of users to return (defaults to 50). The maximum allowed value is 1000.\n                   If you specify a value that is higher than this number, your search results will be truncated."
+        },
+        {
+          "name": "showAvatar",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "exclude",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/user/properties/",
+      "method": "/api/2/user/properties/Get",
+      "httpMethod": "get",
+      "description": "Returns the keys of all properties for the user identified by the key or by the id.",
+      "parameters": [
+        {
+          "name": "userKey",
+          "schema": "string",
+          "required": false,
+          "description": "key of the user whose properties are to be returned"
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": "username of the user whose properties are to be returned"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/user/properties/{propertyKey}",
+      "method": "/api/2/user/properties/{propertyKey}Delete",
+      "httpMethod": "delete",
+      "description": "Removes the property from the user identified by the key or by the id. Ths user removing the property is required\n to have permissions to administer the user.",
+      "parameters": [
+        {
+          "name": "userKey",
+          "schema": "string",
+          "required": false,
+          "description": "key of the user whose property is to be removed"
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": "username of the user whose property is to be removed"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/user/properties/{propertyKey}",
+      "method": "/api/2/user/properties/{propertyKey}Get",
+      "httpMethod": "get",
+      "description": "Returns the value of the property with a given key from the user identified by the key or by the id. The user who retrieves\n the property is required to have permissions to read the user.",
+      "parameters": [
+        {
+          "name": "userKey",
+          "schema": "string",
+          "required": false,
+          "description": "key of the user whose property is to be returned"
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": "username of the user whose property is to be returned"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/user/properties/{propertyKey}",
+      "method": "/api/2/user/properties/{propertyKey}Put",
+      "httpMethod": "put",
+      "description": "Sets the value of the specified user's property.\n <p>\n You can use this resource to store a custom data against the user identified by the key or by the id. The user\n who stores the data is required to have permissions to administer the user.\n </p>",
+      "parameters": [
+        {
+          "name": "userKey",
+          "schema": "string",
+          "required": false,
+          "description": "key of the user whose property is to be set"
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": "username of the user whose property is to be set"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/user/search",
+      "method": "findUsers",
+      "httpMethod": "get",
+      "description": "Returns a list of users that match the search string. This resource cannot be accessed anonymously.",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": "A query string used to search username, name or e-mail address"
+        },
+        {
+          "name": "startAt",
+          "schema": "integer",
+          "required": false,
+          "description": "the index of the first user to return (0-based)"
+        },
+        {
+          "name": "maxResults",
+          "schema": "integer",
+          "required": false,
+          "description": "the maximum number of users to return (defaults to 50). The maximum allowed value is 1000.\n                        If you specify a value that is higher than this number, your search results will be truncated."
+        },
+        {
+          "name": "includeActive",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, then active users are included in the results (default true)"
+        },
+        {
+          "name": "includeInactive",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, then inactive users are included in the results (default false)"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/user/viewissue/search",
+      "method": "findUsersWithBrowsePermission",
+      "httpMethod": "get",
+      "description": "Returns a list of active users that match the search string. This resource cannot be accessed anonymously \n and requires the Browse Users global permission.\n Given an issue key this resource will provide a list of users that match the search string and have\n the browse issue permission for the issue provided.",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": "the username filter, no users returned if left blank"
+        },
+        {
+          "name": "issueKey",
+          "schema": "string",
+          "required": false,
+          "description": "the issue key for the issue being edited we need to find viewable users for."
+        },
+        {
+          "name": "projectKey",
+          "schema": "string",
+          "required": false,
+          "description": "the optional project key to search for users with if no issueKey is supplied."
+        },
+        {
+          "name": "startAt",
+          "schema": "integer",
+          "required": false,
+          "description": "the index of the first user to return (0-based)"
+        },
+        {
+          "name": "maxResults",
+          "schema": "integer",
+          "required": false,
+          "description": "the maximum number of users to return (defaults to 50). The maximum allowed value is 1000.\n                   If you specify a value that is higher than this number, your search results will be truncated."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/version",
+      "method": "createVersion",
+      "httpMethod": "post",
+      "description": "Create a version via POST.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/version/remotelink",
+      "method": "getRemoteVersionLinks",
+      "httpMethod": "get",
+      "description": "Returns the remote version links for a given global ID.",
+      "parameters": [
+        {
+          "name": "globalId",
+          "schema": "string",
+          "required": false,
+          "description": "the global ID of the remote resource that is linked to the versions"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/version/{id}",
+      "method": "/api/2/version/{id}Delete",
+      "httpMethod": "delete",
+      "description": "Delete a project version.",
+      "parameters": [
+        {
+          "name": "moveFixIssuesTo",
+          "schema": "string",
+          "required": false,
+          "description": "The version to set fixVersion to on issues where the deleted version is the fix version,\n                             If null then the fixVersion is removed."
+        },
+        {
+          "name": "moveAffectedIssuesTo",
+          "schema": "string",
+          "required": false,
+          "description": "The version to set affectedVersion to on issues where the deleted version is the affected version,\n                             If null then the affectedVersion is removed."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/version/{id}",
+      "method": "getVersion",
+      "httpMethod": "get",
+      "description": "Returns a project version.",
+      "parameters": [
+        {
+          "name": "expand",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/version/{id}",
+      "method": "updateVersion",
+      "httpMethod": "put",
+      "description": "Modify a version via PUT. Any fields present in the PUT will override existing values. As a convenience, if a field\n is not present, it is silently ignored.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/version/{id}/mergeto/{moveIssuesTo}",
+      "method": "merge",
+      "httpMethod": "put",
+      "description": "Merge versions",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/version/{id}/move",
+      "method": "moveVersion",
+      "httpMethod": "post",
+      "description": "Modify a version's sequence within a project.\n <p/>\n The move version bean has 2 alternative field value pairs:\n <dl>\n <dt>position</dt><dd>An absolute position, which may have a value of 'First', 'Last', 'Earlier' or 'Later'</dd>\n <dt>after</dt><dd>A version to place this version after.  The value should be the self link of another version</dd>\n </dl>",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/version/{id}/relatedIssueCounts",
+      "method": "getVersionRelatedIssues",
+      "httpMethod": "get",
+      "description": "Returns a bean containing the number of fixed in and affected issues for the given version.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/version/{id}/removeAndSwap",
+      "method": "/api/2/version/{id}/removeAndSwapPost",
+      "httpMethod": "post",
+      "description": "Delete a project version.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/version/{id}/unresolvedIssueCount",
+      "method": "getVersionUnresolvedIssues",
+      "httpMethod": "get",
+      "description": "Returns the number of unresolved issues for the given version",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/version/{versionId}/remotelink",
+      "method": "deleteRemoteVersionLinksByVersionId",
+      "httpMethod": "delete",
+      "description": "Delete all remote version links for a given version ID.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/version/{versionId}/remotelink",
+      "method": "getRemoteVersionLinksByVersionId",
+      "httpMethod": "get",
+      "description": "Returns the remote version links associated with the given version ID.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/version/{versionId}/remotelink",
+      "method": "/api/2/version/{versionId}/remotelinkPost",
+      "httpMethod": "post",
+      "description": "Create a remote version link via POST.  The link's global ID will be taken from the\n JSON payload if provided; otherwise, it will be generated.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/version/{versionId}/remotelink/{globalId}",
+      "method": "deleteRemoteVersionLink",
+      "httpMethod": "delete",
+      "description": "Delete a specific remote version link with the given version ID and global ID.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/version/{versionId}/remotelink/{globalId}",
+      "method": "getRemoteVersionLink",
+      "httpMethod": "get",
+      "description": "A REST sub-resource representing a remote version link",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/version/{versionId}/remotelink/{globalId}",
+      "method": "/api/2/version/{versionId}/remotelink/{globalId}Post",
+      "httpMethod": "post",
+      "description": "Create a remote version link via POST.  The link's global ID will be taken from the\n JSON payload if provided; otherwise, it will be generated.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflow",
+      "method": "getAllWorkflows",
+      "httpMethod": "get",
+      "description": "Returns all workflows.",
+      "parameters": [
+        {
+          "name": "workflowName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflow/api/2/transitions/{id}/properties",
+      "method": "/api/2/workflow/api/2/transitions/{id}/propertiesDelete",
+      "httpMethod": "delete",
+      "description": "Delete a property from the passed transition on the passed workflow. It is not an error to delete a property that\n does not exist.",
+      "parameters": [
+        {
+          "name": "key",
+          "schema": "string",
+          "required": false,
+          "description": "the name of the property to add."
+        },
+        {
+          "name": "workflowName",
+          "schema": "string",
+          "required": false,
+          "description": "the name of the workflow to use."
+        },
+        {
+          "name": "workflowMode",
+          "schema": "string",
+          "required": false,
+          "description": "the type of workflow to use. Can either be \"live\" or \"draft\"."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflow/api/2/transitions/{id}/properties",
+      "method": "getProperties",
+      "httpMethod": "get",
+      "description": "Return the property or properties associated with a transition.",
+      "parameters": [
+        {
+          "name": "includeReservedKeys",
+          "schema": "boolean",
+          "required": false,
+          "description": "some keys under the \"jira.\" prefix are editable, some are not. Set this to true\n                            in order to include the non-editable keys in the response."
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": false,
+          "description": "the name of the property key to query. Can be left off the query to return all properties."
+        },
+        {
+          "name": "workflowName",
+          "schema": "string",
+          "required": false,
+          "description": "the name of the workflow to use."
+        },
+        {
+          "name": "workflowMode",
+          "schema": "string",
+          "required": false,
+          "description": "the type of workflow to use. Can either be \"live\" or \"draft\"."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflow/api/2/transitions/{id}/properties",
+      "method": "createProperty",
+      "httpMethod": "post",
+      "description": "Add a new property to a transition. Trying to add a property that already\n exists will fail.",
+      "parameters": [
+        {
+          "name": "key",
+          "schema": "string",
+          "required": false,
+          "description": "the name of the property to add."
+        },
+        {
+          "name": "workflowName",
+          "schema": "string",
+          "required": false,
+          "description": "the name of the workflow to use."
+        },
+        {
+          "name": "workflowMode",
+          "schema": "string",
+          "required": false,
+          "description": "the type of workflow to use. Can either be \"live\" or \"draft\"."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflow/api/2/transitions/{id}/properties",
+      "method": "updateProperty",
+      "httpMethod": "put",
+      "description": "Update/add new property to a transition. Trying to update a property that does\n not exist will result in a new property being added.",
+      "parameters": [
+        {
+          "name": "key",
+          "schema": "string",
+          "required": false,
+          "description": "the name of the property to add."
+        },
+        {
+          "name": "workflowName",
+          "schema": "string",
+          "required": false,
+          "description": "the name of the workflow to use."
+        },
+        {
+          "name": "workflowMode",
+          "schema": "string",
+          "required": false,
+          "description": "the type of workflow to use. Can either be \"live\" or \"draft\"."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflowscheme",
+      "method": "createScheme",
+      "httpMethod": "post",
+      "description": "Create a new workflow scheme.\n <p/>\n The body contains a representation of the new scheme. Values not passed are assumed to be set to their defaults.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflowscheme/{id}",
+      "method": "deleteScheme",
+      "httpMethod": "delete",
+      "description": "Delete the passed workflow scheme.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflowscheme/{id}",
+      "method": "getById",
+      "httpMethod": "get",
+      "description": "Returns the requested workflow scheme to the caller.",
+      "parameters": [
+        {
+          "name": "returnDraftIfExists",
+          "schema": "boolean",
+          "required": false,
+          "description": "when true indicates that a scheme's draft, if it exists, should be queried instead of\n                            the scheme itself."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflowscheme/{id}",
+      "method": "update",
+      "httpMethod": "put",
+      "description": "Update the passed workflow scheme.\n <p/>\n The body of the request is a representation of the workflow scheme. Values not passed are assumed to indicate\n no change for that field.\n <p/>\n The passed representation can have its updateDraftIfNeeded flag set to true to indicate that the draft\n should be created and/or updated when the actual scheme cannot be edited (e.g. when the scheme is being used by\n a project). Values not appearing the body will not be touched.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflowscheme/{id}/createdraft",
+      "method": "createDraftForParent",
+      "httpMethod": "post",
+      "description": "Create a draft for the passed scheme. The draft will be a copy of the state of the parent.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflowscheme/{id}/default",
+      "method": "deleteDefault",
+      "httpMethod": "delete",
+      "description": "Remove the default workflow from the passed workflow scheme.",
+      "parameters": [
+        {
+          "name": "updateDraftIfNeeded",
+          "schema": "boolean",
+          "required": false,
+          "description": "when true will create and return a draft when the workflow scheme cannot be edited\n                            (e.g. when it is being used by a project)."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflowscheme/{id}/default",
+      "method": "getDefault",
+      "httpMethod": "get",
+      "description": "Return the default workflow from the passed workflow scheme.",
+      "parameters": [
+        {
+          "name": "returnDraftIfExists",
+          "schema": "boolean",
+          "required": false,
+          "description": "when true indicates that a scheme's draft, if it exists, should be queried instead of\n                            the scheme itself."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflowscheme/{id}/default",
+      "method": "updateDefault",
+      "httpMethod": "put",
+      "description": "Set the default workflow for the passed workflow scheme.\n <p/>\n The passed representation can have its\n updateDraftIfNeeded flag set to true to indicate that the draft should be created/updated when the actual scheme\n cannot be edited.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflowscheme/{id}/draft",
+      "method": "deleteDraftById",
+      "httpMethod": "delete",
+      "description": "Delete the passed draft workflow scheme.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflowscheme/{id}/draft",
+      "method": "getDraftById",
+      "httpMethod": "get",
+      "description": "Returns the requested draft workflow scheme to the caller.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflowscheme/{id}/draft",
+      "method": "updateDraft",
+      "httpMethod": "put",
+      "description": "Update a draft workflow scheme. The draft will created if necessary.\n <p/>\n The body is a representation of the workflow scheme. Values not passed are assumed to indicate no change for that field.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflowscheme/{id}/draft/default",
+      "method": "deleteDraftDefault",
+      "httpMethod": "delete",
+      "description": "Remove the default workflow from the passed draft workflow scheme.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflowscheme/{id}/draft/default",
+      "method": "getDraftDefault",
+      "httpMethod": "get",
+      "description": "Return the default workflow from the passed draft workflow scheme to the caller.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflowscheme/{id}/draft/default",
+      "method": "updateDraftDefault",
+      "httpMethod": "put",
+      "description": "Set the default workflow for the passed draft workflow scheme.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflowscheme/{id}/draft/issuetype/{issueType}",
+      "method": "deleteDraftIssueType",
+      "httpMethod": "delete",
+      "description": "Remove the specified issue type mapping from the draft scheme.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflowscheme/{id}/draft/issuetype/{issueType}",
+      "method": "getDraftIssueType",
+      "httpMethod": "get",
+      "description": "Returns the issue type mapping for the passed draft workflow scheme.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflowscheme/{id}/draft/issuetype/{issueType}",
+      "method": "setDraftIssueType",
+      "httpMethod": "put",
+      "description": "Set the issue type mapping for the passed draft scheme.\n <p/>\n The passed representation can have its updateDraftIfNeeded flag set to true to indicate that\n the draft should be created/updated when the actual scheme cannot be edited.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflowscheme/{id}/draft/workflow",
+      "method": "deleteDraftWorkflowMapping",
+      "httpMethod": "delete",
+      "description": "Delete the passed workflow from the draft workflow scheme.",
+      "parameters": [
+        {
+          "name": "workflowName",
+          "schema": "string",
+          "required": false,
+          "description": "the name of the workflow to delete."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflowscheme/{id}/draft/workflow",
+      "method": "getDraftWorkflow",
+      "httpMethod": "get",
+      "description": "Returns the draft workflow mappings or requested mapping to the caller.",
+      "parameters": [
+        {
+          "name": "workflowName",
+          "schema": "string",
+          "required": false,
+          "description": "the workflow mapping to return. Null can be passed to return all mappings. Must be a valid workflow name."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflowscheme/{id}/draft/workflow",
+      "method": "updateDraftWorkflowMapping",
+      "httpMethod": "put",
+      "description": "Update the draft scheme to include the passed mapping.\n <p/>\n The body is a representation of the workflow mapping.\n Values not passed are assumed to indicate no change for that field.",
+      "parameters": [
+        {
+          "name": "workflowName",
+          "schema": "string",
+          "required": false,
+          "description": "the name of the workflow mapping to update."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflowscheme/{id}/issuetype/{issueType}",
+      "method": "/api/2/workflowscheme/{id}/issuetype/{issueType}Delete",
+      "httpMethod": "delete",
+      "description": "Remove the specified issue type mapping from the scheme.",
+      "parameters": [
+        {
+          "name": "updateDraftIfNeeded",
+          "schema": "boolean",
+          "required": false,
+          "description": "when true will create and return a draft when the workflow scheme cannot be edited\n                            (e.g. when it is being used by a project)."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflowscheme/{id}/issuetype/{issueType}",
+      "method": "/api/2/workflowscheme/{id}/issuetype/{issueType}Get",
+      "httpMethod": "get",
+      "description": "Returns the issue type mapping for the passed workflow scheme.",
+      "parameters": [
+        {
+          "name": "returnDraftIfExists",
+          "schema": "boolean",
+          "required": false,
+          "description": "when true indicates that a scheme's draft, if it exists, should be queried instead of\n                            the scheme itself."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflowscheme/{id}/issuetype/{issueType}",
+      "method": "setIssueType",
+      "httpMethod": "put",
+      "description": "Set the issue type mapping for the passed scheme.\n <p/>\n The passed representation can have its updateDraftIfNeeded flag set to true to indicate that\n the draft should be created/updated when the actual scheme cannot be edited.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflowscheme/{id}/workflow",
+      "method": "deleteWorkflowMapping",
+      "httpMethod": "delete",
+      "description": "Delete the passed workflow from the workflow scheme.",
+      "parameters": [
+        {
+          "name": "workflowName",
+          "schema": "string",
+          "required": false,
+          "description": "the name of the workflow to delete."
+        },
+        {
+          "name": "updateDraftIfNeeded",
+          "schema": "boolean",
+          "required": false,
+          "description": "flag to indicate if a draft should be created if necessary to delete the workflow\n                            from the scheme."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflowscheme/{id}/workflow",
+      "method": "getWorkflow",
+      "httpMethod": "get",
+      "description": "Returns the workflow mappings or requested mapping to the caller for the passed scheme.",
+      "parameters": [
+        {
+          "name": "workflowName",
+          "schema": "string",
+          "required": false,
+          "description": "the workflow mapping to return. Null can be passed to return all mappings. Must be a valid workflow name."
+        },
+        {
+          "name": "returnDraftIfExists",
+          "schema": "boolean",
+          "required": false,
+          "description": "when true indicates that a scheme's draft, if it exists, should be queried instead of\n                            the scheme itself."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/workflowscheme/{id}/workflow",
+      "method": "updateWorkflowMapping",
+      "httpMethod": "put",
+      "description": "Update the scheme to include the passed mapping.\n <p/>\n The body is a representation of the workflow mapping.\n Values not passed are assumed to indicate no change for that field.\n <p/>\n The passed representation can have its updateDraftIfNeeded flag set to true to indicate that the draft\n should be created/updated when the actual scheme cannot be edited.",
+      "parameters": [
+        {
+          "name": "workflowName",
+          "schema": "string",
+          "required": false,
+          "description": "the name of the workflow mapping to update."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/worklog/deleted",
+      "method": "getIdsOfWorklogsDeletedSince",
+      "httpMethod": "get",
+      "description": "Returns worklogs id and delete time of worklogs that was deleted since given time.\n The returns set of worklogs is limited to 1000 elements.\n This API will not return worklogs deleted during last minute.",
+      "parameters": [
+        {
+          "name": "since",
+          "schema": "integer",
+          "required": false,
+          "description": "a date time in unix timestamp format since when deleted worklogs will be returned."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/2/worklog/list",
+      "method": "getWorklogsForIds",
+      "httpMethod": "post",
+      "description": "Returns worklogs for given worklog ids. Only worklogs to which the calling user has permissions, will be included in the result.\n The returns set of worklogs is limited to 1000 elements.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/2/worklog/updated",
+      "method": "getIdsOfWorklogsModifiedSince",
+      "httpMethod": "get",
+      "description": "Returns worklogs id and update time of worklogs that was updated since given time.\n The returns set of worklogs is limited to 1000 elements.\n This API will not return worklogs updated during last minute.",
+      "parameters": [
+        {
+          "name": "since",
+          "schema": "integer",
+          "required": false,
+          "description": "a date time in unix timestamp format since when updated worklogs will be returned."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/auth/1/session",
+      "method": "logout",
+      "httpMethod": "delete",
+      "description": "Logs the current user out of JIRA, destroying the existing session, if any.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/auth/1/session",
+      "method": "currentUser",
+      "httpMethod": "get",
+      "description": "Returns information about the currently authenticated user's session. If the caller is not authenticated they\n will get a 401 Unauthorized status code.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/auth/1/session",
+      "method": "login",
+      "httpMethod": "post",
+      "description": "Creates a new session for a user in JIRA. Once a session has been successfully created it can be used to access\n any of JIRA's remote APIs and also the web UI by passing the appropriate HTTP Cookie header.\n <p>\n Note that it is generally preferrable to use HTTP BASIC authentication with the REST API. However, this resource\n may be used to mimic the behaviour of JIRA's log-in page (e.g. to display log-in errors to a user).",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/auth/1/websudo",
+      "method": "release",
+      "httpMethod": "delete",
+      "description": "This method invalidates the any current WebSudo session.",
+      "parameters": [],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "http://jira.local:8080/jira/rest",
   "apiTitle": "JIRA 7.6.1",
   "endpoints": 205,

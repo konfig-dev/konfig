@@ -4,6 +4,201 @@
   "homepage": "swagger.io",
   "serviceName": "generator",
   "apiVersion": "2.4.31",
+  "methods": [
+    {
+      "url": "/gen/clients",
+      "method": "clientOptions",
+      "httpMethod": "get",
+      "tag": "clients",
+      "description": "Gets languages supported by the client generator",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/gen/clients/{language}",
+      "method": "getClientOptions",
+      "httpMethod": "get",
+      "tag": "clients",
+      "description": "Returns options for a client library",
+      "parameters": [
+        {
+          "name": "language",
+          "schema": "string",
+          "required": true,
+          "description": "The target language for the client library"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/gen/clients/{language}",
+      "method": "generateClient",
+      "httpMethod": "post",
+      "tag": "clients",
+      "description": "Generates a client library",
+      "parameters": [
+        {
+          "name": "language",
+          "schema": "string",
+          "required": true,
+          "description": "The target language for the client library"
+        },
+        {
+          "name": "authorizationValue",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "options",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "securityDefinition",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "spec",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "swaggerUrl",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "usingFlattenSpec",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/gen/download/{fileId}",
+      "method": "downloadFile",
+      "httpMethod": "get",
+      "tag": "clients",
+      "description": "Downloads a pre-generated file",
+      "parameters": [
+        {
+          "name": "fileId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/gen/servers",
+      "method": "serverOptions",
+      "httpMethod": "get",
+      "tag": "servers",
+      "description": "Gets languages supported by the server generator",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/gen/servers/{framework}",
+      "method": "getServerOptions",
+      "httpMethod": "get",
+      "tag": "servers",
+      "description": "Returns options for a server framework",
+      "parameters": [
+        {
+          "name": "framework",
+          "schema": "string",
+          "required": true,
+          "description": "The target language for the server framework"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/gen/servers/{framework}",
+      "method": "generateServerForLanguage",
+      "httpMethod": "post",
+      "tag": "servers",
+      "description": "Generates a server library",
+      "parameters": [
+        {
+          "name": "framework",
+          "schema": "string",
+          "required": true,
+          "description": "framework"
+        },
+        {
+          "name": "authorizationValue",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "options",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "securityDefinition",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "spec",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "swaggerUrl",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "usingFlattenSpec",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://generator.swagger.io/api",
   "apiDescription": "This is an online swagger codegen server.  You can find out more at https://github.com/swagger-api/swagger-codegen or on [irc.freenode.net, #swagger](http://swagger.io/irc/).",
   "apiTitle": "Swagger Generator",

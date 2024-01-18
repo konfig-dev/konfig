@@ -4,6 +4,330 @@
   "homepage": "nexmo.com",
   "serviceName": "external-accounts",
   "apiVersion": "0.1.5",
+  "methods": [
+    {
+      "url": "/",
+      "method": "getAllAccounts",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Retrieve all accounts you own",
+      "parameters": [
+        {
+          "name": "provider",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by provider"
+        },
+        {
+          "name": "page_number",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number of the results"
+        },
+        {
+          "name": "page_size",
+          "schema": "integer",
+          "required": false,
+          "description": "Page size of the results"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/messenger",
+      "method": "createMessengerAccount",
+      "httpMethod": "post",
+      "tag": "Facebook Messenger",
+      "description": "Create a Messenger account",
+      "parameters": [
+        {
+          "name": "access_token",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "applications",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "external_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/messenger/{external_id}",
+      "method": "deleteMessengerAccount",
+      "httpMethod": "delete",
+      "tag": "Facebook Messenger",
+      "description": "Delete a Messenger account",
+      "parameters": [
+        {
+          "name": "external_id",
+          "schema": "string",
+          "required": true,
+          "description": "External id of the account you want to delete. In this case it is the Facebook Page ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/messenger/{external_id}",
+      "method": "getMessengerAccount",
+      "httpMethod": "get",
+      "tag": "Facebook Messenger",
+      "description": "Retrieve a Messenger account",
+      "parameters": [
+        {
+          "name": "external_id",
+          "schema": "string",
+          "required": true,
+          "description": "External id of the account you want to retrieve. In this case it is the Facebook Page ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/messenger/{external_id}",
+      "method": "updateMessengerAccount",
+      "httpMethod": "patch",
+      "tag": "Facebook Messenger",
+      "description": "Update a Messenger account",
+      "parameters": [
+        {
+          "name": "external_id",
+          "schema": "string",
+          "required": true,
+          "description": "External id of the account you want to update. In this case it is the Facebook Page ID."
+        },
+        {
+          "name": "access_token",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "applications",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/viber_service_msg/{external_id}",
+      "method": "getVsmAccount",
+      "httpMethod": "get",
+      "tag": "Viber Service Message",
+      "description": "Retrieve a Viber Service Message account",
+      "parameters": [
+        {
+          "name": "external_id",
+          "schema": "string",
+          "required": true,
+          "description": "External id of the account you want to retrieve. In this case it will be your Viber Service Message ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/whatsapp/{external_id}",
+      "method": "getWaAccount",
+      "httpMethod": "get",
+      "tag": "WhatsApp",
+      "description": "Retrieve a Whatsapp account",
+      "parameters": [
+        {
+          "name": "external_id",
+          "schema": "string",
+          "required": true,
+          "description": "External id of the account you want to retrieve. In this case it will be the WhatsApp number."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{provider}/{external_id}/applications",
+      "method": "linkApplication",
+      "httpMethod": "post",
+      "tag": "Application",
+      "description": "Link application to an account",
+      "parameters": [
+        {
+          "name": "provider",
+          "schema": "string",
+          "required": true,
+          "description": "Provider of the account you want to assign an application to"
+        },
+        {
+          "name": "external_id",
+          "schema": "string",
+          "required": true,
+          "description": "External id of the account you want to assign an application to. This is channel dependent. For Facebook it will be your Facebook Page ID, for Viber your Viber Service Message ID and for WhatsApp your WhatsApp number."
+        },
+        {
+          "name": "application",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{provider}/{external_id}/applications/{application_id}",
+      "method": "unliWithoutApplicationnkApplication",
+      "httpMethod": "delete",
+      "tag": "Application",
+      "description": "Unlink application from an account",
+      "parameters": [
+        {
+          "name": "provider",
+          "schema": "string",
+          "required": true,
+          "description": "Provider of the account you want to unlink an application from"
+        },
+        {
+          "name": "external_id",
+          "schema": "string",
+          "required": true,
+          "description": "External id of the account you want to unlink an application from"
+        },
+        {
+          "name": "application_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the application you want to unlink"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.nexmo.com/beta/chatapp-accounts",
   "apiDescription": "The External Accounts API is used to manage accounts for Viber Business Messages, Facebook Messenger and Whatsapp for use in the [Messages](https://developer.nexmo.com/messages/overview) and [Dispatch](https://developer.nexmo.com/dispatch/overview) APIs.",
   "apiTitle": "External Accounts API",

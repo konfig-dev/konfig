@@ -4,6 +4,2185 @@
   "homepage": "apigee.local",
   "serviceName": "registry",
   "apiVersion": "0.0.1",
+  "methods": [
+    {
+      "url": "/v1/projects/{project}/locations/{location}/apis",
+      "method": "registryListApis",
+      "httpMethod": "get",
+      "tag": "Registry",
+      "description": "ListApis returns matching APIs.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "description": "The maximum number of APIs to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000."
+        },
+        {
+          "name": "pageToken",
+          "schema": "string",
+          "description": "A page token, received from a previous `ListApis` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApis` must match the call that provided the page token."
+        },
+        {
+          "name": "filter",
+          "schema": "string",
+          "description": "An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response message for ListApis."
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/apis",
+      "method": "registryCreateApi",
+      "httpMethod": "post",
+      "tag": "Registry",
+      "description": "CreateApi creates a specified API.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "apiId",
+          "schema": "string",
+          "description": "Required. The ID to use for the api, which will become the final component of the api's resource name. This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/. Following AIP-162, IDs must not have the form of a UUID."
+        },
+        {
+          "name": "annotations",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "availability",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "createTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "displayName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "labels",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "recommendedDeployment",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "recommendedVersion",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "updateTime",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "An Api is a top-level description of an API. Apis are produced by producers and are commitments to provide services."
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/apis/{api}",
+      "method": "registryDeleteApi",
+      "httpMethod": "delete",
+      "tag": "Registry",
+      "description": "DeleteApi removes a specified API and all of the resources that it\n owns.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "api",
+          "schema": "string",
+          "required": true,
+          "description": "The api id."
+        },
+        {
+          "name": "force",
+          "schema": "boolean",
+          "description": "If set to true, any child resources will also be deleted. (Otherwise, the request will only work if there are no child resources.)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/apis/{api}",
+      "method": "registryGetApi",
+      "httpMethod": "get",
+      "tag": "Registry",
+      "description": "GetApi returns a specified API.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "api",
+          "schema": "string",
+          "required": true,
+          "description": "The api id."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "An Api is a top-level description of an API. Apis are produced by producers and are commitments to provide services."
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/apis/{api}",
+      "method": "registryUpdateApi",
+      "httpMethod": "patch",
+      "tag": "Registry",
+      "description": "UpdateApi can be used to modify a specified API.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "api",
+          "schema": "string",
+          "required": true,
+          "description": "The api id."
+        },
+        {
+          "name": "updateMask",
+          "schema": "string",
+          "description": "The list of fields to be updated. If omitted, all fields are updated that are set in the request message (fields set to default values are ignored). If a \"*\" is specified, all fields are updated, including fields that are unspecified/default in the request."
+        },
+        {
+          "name": "allowMissing",
+          "schema": "boolean",
+          "description": "If set to true, and the api is not found, a new api_versions will be created. In this situation, `update_mask` is ignored."
+        },
+        {
+          "name": "annotations",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "availability",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "createTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "displayName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "labels",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "recommendedDeployment",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "recommendedVersion",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "updateTime",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "An Api is a top-level description of an API. Apis are produced by producers and are commitments to provide services."
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/apis/{api}/deployments",
+      "method": "registryListApiDeployments",
+      "httpMethod": "get",
+      "tag": "Registry",
+      "description": "ListApiDeployments returns matching deployments.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "api",
+          "schema": "string",
+          "required": true,
+          "description": "The api id."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "description": "The maximum number of deployments to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000."
+        },
+        {
+          "name": "pageToken",
+          "schema": "string",
+          "description": "A page token, received from a previous `ListApiDeployments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiDeployments` must match the call that provided the page token."
+        },
+        {
+          "name": "filter",
+          "schema": "string",
+          "description": "An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response message for ListApiDeployments."
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/apis/{api}/deployments",
+      "method": "registryCreateApiDeployment",
+      "httpMethod": "post",
+      "tag": "Registry",
+      "description": "CreateApiDeployment creates a specified deployment.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "api",
+          "schema": "string",
+          "required": true,
+          "description": "The api id."
+        },
+        {
+          "name": "apiDeploymentId",
+          "schema": "string",
+          "description": "Required. The ID to use for the deployment, which will become the final component of the deployment's resource name. This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/. Following AIP-162, IDs must not have the form of a UUID."
+        },
+        {
+          "name": "accessGuidance",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "annotations",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "apiSpecRevision",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "createTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "displayName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "endpointUri",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "externalChannelUri",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "intendedAudience",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "labels",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "revisionCreateTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "revisionId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "revisionUpdateTime",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "An ApiDeployment describes a service running at particular address that provides a particular version of an API. ApiDeployments have revisions which correspond to different configurations of a single deployment in time. Revision identifiers should be updated whenever the served API spec or endpoint address changes."
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}",
+      "method": "registryDeleteApiDeployment",
+      "httpMethod": "delete",
+      "tag": "Registry",
+      "description": "DeleteApiDeployment removes a specified deployment, all revisions, and all\n child resources (e.g. artifacts).",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "api",
+          "schema": "string",
+          "required": true,
+          "description": "The api id."
+        },
+        {
+          "name": "deployment",
+          "schema": "string",
+          "required": true,
+          "description": "The deployment id."
+        },
+        {
+          "name": "force",
+          "schema": "boolean",
+          "description": "If set to true, any child resources will also be deleted. (Otherwise, the request will only work if there are no child resources.)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}",
+      "method": "registryGetApiDeployment",
+      "httpMethod": "get",
+      "tag": "Registry",
+      "description": "GetApiDeployment returns a specified deployment.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "api",
+          "schema": "string",
+          "required": true,
+          "description": "The api id."
+        },
+        {
+          "name": "deployment",
+          "schema": "string",
+          "required": true,
+          "description": "The deployment id."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "An ApiDeployment describes a service running at particular address that provides a particular version of an API. ApiDeployments have revisions which correspond to different configurations of a single deployment in time. Revision identifiers should be updated whenever the served API spec or endpoint address changes."
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}",
+      "method": "registryUpdateApiDeployment",
+      "httpMethod": "patch",
+      "tag": "Registry",
+      "description": "UpdateApiDeployment can be used to modify a specified deployment.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "api",
+          "schema": "string",
+          "required": true,
+          "description": "The api id."
+        },
+        {
+          "name": "deployment",
+          "schema": "string",
+          "required": true,
+          "description": "The deployment id."
+        },
+        {
+          "name": "updateMask",
+          "schema": "string",
+          "description": "The list of fields to be updated. If omitted, all fields are updated that are set in the request message (fields set to default values are ignored). If a \"*\" is specified, all fields are updated, including fields that are unspecified/default in the request."
+        },
+        {
+          "name": "allowMissing",
+          "schema": "boolean",
+          "description": "If set to true, and the deployment is not found, a new deployment will be created. In this situation, `update_mask` is ignored."
+        },
+        {
+          "name": "accessGuidance",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "annotations",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "apiSpecRevision",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "createTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "displayName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "endpointUri",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "externalChannelUri",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "intendedAudience",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "labels",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "revisionCreateTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "revisionId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "revisionUpdateTime",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "An ApiDeployment describes a service running at particular address that provides a particular version of an API. ApiDeployments have revisions which correspond to different configurations of a single deployment in time. Revision identifiers should be updated whenever the served API spec or endpoint address changes."
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}:deleteRevision",
+      "method": "registryDeleteApiDeploymentRevision",
+      "httpMethod": "delete",
+      "tag": "Registry",
+      "description": "DeleteApiDeploymentRevision deletes a revision of a deployment.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "api",
+          "schema": "string",
+          "required": true,
+          "description": "The api id."
+        },
+        {
+          "name": "deployment",
+          "schema": "string",
+          "required": true,
+          "description": "The deployment id."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "An ApiDeployment describes a service running at particular address that provides a particular version of an API. ApiDeployments have revisions which correspond to different configurations of a single deployment in time. Revision identifiers should be updated whenever the served API spec or endpoint address changes."
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}:listRevisions",
+      "method": "registryListApiDeploymentRevisions",
+      "httpMethod": "get",
+      "tag": "Registry",
+      "description": "ListApiDeploymentRevisions lists all revisions of a deployment.\n Revisions are returned in descending order of revision creation time.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "api",
+          "schema": "string",
+          "required": true,
+          "description": "The api id."
+        },
+        {
+          "name": "deployment",
+          "schema": "string",
+          "required": true,
+          "description": "The deployment id."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "description": "The maximum number of revisions to return per page."
+        },
+        {
+          "name": "pageToken",
+          "schema": "string",
+          "description": "The page token, received from a previous ListApiDeploymentRevisions call. Provide this to retrieve the subsequent page."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response message for ListApiDeploymentRevisionsResponse."
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}:rollback",
+      "method": "registryRollbackApiDeployment",
+      "httpMethod": "post",
+      "tag": "Registry",
+      "description": "RollbackApiDeployment sets the current revision to a specified prior\n revision. Note that this creates a new revision with a new revision ID.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "api",
+          "schema": "string",
+          "required": true,
+          "description": "The api id."
+        },
+        {
+          "name": "deployment",
+          "schema": "string",
+          "required": true,
+          "description": "The deployment id."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "revisionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "An ApiDeployment describes a service running at particular address that provides a particular version of an API. ApiDeployments have revisions which correspond to different configurations of a single deployment in time. Revision identifiers should be updated whenever the served API spec or endpoint address changes."
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}:tagRevision",
+      "method": "registryTagApiDeploymentRevision",
+      "httpMethod": "post",
+      "tag": "Registry",
+      "description": "TagApiDeploymentRevision adds a tag to a specified revision of a\n deployment.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "api",
+          "schema": "string",
+          "required": true,
+          "description": "The api id."
+        },
+        {
+          "name": "deployment",
+          "schema": "string",
+          "required": true,
+          "description": "The deployment id."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "An ApiDeployment describes a service running at particular address that provides a particular version of an API. ApiDeployments have revisions which correspond to different configurations of a single deployment in time. Revision identifiers should be updated whenever the served API spec or endpoint address changes."
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/apis/{api}/versions",
+      "method": "registryListApiVersions",
+      "httpMethod": "get",
+      "tag": "Registry",
+      "description": "ListApiVersions returns matching versions.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "api",
+          "schema": "string",
+          "required": true,
+          "description": "The api id."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "description": "The maximum number of versions to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000."
+        },
+        {
+          "name": "pageToken",
+          "schema": "string",
+          "description": "A page token, received from a previous `ListApiVersions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiVersions` must match the call that provided the page token."
+        },
+        {
+          "name": "filter",
+          "schema": "string",
+          "description": "An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response message for ListApiVersions."
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/apis/{api}/versions",
+      "method": "registryCreateApiVersion",
+      "httpMethod": "post",
+      "tag": "Registry",
+      "description": "CreateApiVersion creates a specified version.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "api",
+          "schema": "string",
+          "required": true,
+          "description": "The api id."
+        },
+        {
+          "name": "apiVersionId",
+          "schema": "string",
+          "description": "Required. The ID to use for the version, which will become the final component of the version's resource name. This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/. Following AIP-162, IDs must not have the form of a UUID."
+        },
+        {
+          "name": "annotations",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "createTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "displayName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "labels",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "updateTime",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "An ApiVersion describes a particular version of an API. ApiVersions are what consumers actually use."
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/apis/{api}/versions/{version}",
+      "method": "registryDeleteApiVersion",
+      "httpMethod": "delete",
+      "tag": "Registry",
+      "description": "DeleteApiVersion removes a specified version and all of the resources that\n it owns.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "api",
+          "schema": "string",
+          "required": true,
+          "description": "The api id."
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "required": true,
+          "description": "The version id."
+        },
+        {
+          "name": "force",
+          "schema": "boolean",
+          "description": "If set to true, any child resources will also be deleted. (Otherwise, the request will only work if there are no child resources.)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/apis/{api}/versions/{version}",
+      "method": "registryGetApiVersion",
+      "httpMethod": "get",
+      "tag": "Registry",
+      "description": "GetApiVersion returns a specified version.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "api",
+          "schema": "string",
+          "required": true,
+          "description": "The api id."
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "required": true,
+          "description": "The version id."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "An ApiVersion describes a particular version of an API. ApiVersions are what consumers actually use."
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/apis/{api}/versions/{version}",
+      "method": "registryUpdateApiVersion",
+      "httpMethod": "patch",
+      "tag": "Registry",
+      "description": "UpdateApiVersion can be used to modify a specified version.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "api",
+          "schema": "string",
+          "required": true,
+          "description": "The api id."
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "required": true,
+          "description": "The version id."
+        },
+        {
+          "name": "updateMask",
+          "schema": "string",
+          "description": "The list of fields to be updated. If omitted, all fields are updated that are set in the request message (fields set to default values are ignored). If a \"*\" is specified, all fields are updated, including fields that are unspecified/default in the request."
+        },
+        {
+          "name": "allowMissing",
+          "schema": "boolean",
+          "description": "If set to true, and the version is not found, a new version will be created. In this situation, `update_mask` is ignored."
+        },
+        {
+          "name": "annotations",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "createTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "displayName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "labels",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "updateTime",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "An ApiVersion describes a particular version of an API. ApiVersions are what consumers actually use."
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs",
+      "method": "registryListApiSpecs",
+      "httpMethod": "get",
+      "tag": "Registry",
+      "description": "ListApiSpecs returns matching specs.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "api",
+          "schema": "string",
+          "required": true,
+          "description": "The api id."
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "required": true,
+          "description": "The version id."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "description": "The maximum number of specs to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000."
+        },
+        {
+          "name": "pageToken",
+          "schema": "string",
+          "description": "A page token, received from a previous `ListApiSpecs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiSpecs` must match the call that provided the page token."
+        },
+        {
+          "name": "filter",
+          "schema": "string",
+          "description": "An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields except contents."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response message for ListApiSpecs."
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs",
+      "method": "registryCreateApiSpec",
+      "httpMethod": "post",
+      "tag": "Registry",
+      "description": "CreateApiSpec creates a specified spec.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "api",
+          "schema": "string",
+          "required": true,
+          "description": "The api id."
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "required": true,
+          "description": "The version id."
+        },
+        {
+          "name": "apiSpecId",
+          "schema": "string",
+          "description": "Required. The ID to use for the spec, which will become the final component of the spec's resource name. This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/. Following AIP-162, IDs must not have the form of a UUID."
+        },
+        {
+          "name": "annotations",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "contents",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "createTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "filename",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "hash",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "labels",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "mimeType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "revisionCreateTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "revisionId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "revisionUpdateTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sizeBytes",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "sourceUri",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "An ApiSpec describes a version of an API in a structured way. ApiSpecs provide formal descriptions that consumers can use to use a version. ApiSpec resources are intended to be fully-resolved descriptions of an ApiVersion. When specs consist of multiple files, these should be bundled together (e.g. in a zip archive) and stored as a unit. Multiple specs can exist to provide representations in different API description formats. Synchronization of these representations would be provided by tooling and background services."
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}",
+      "method": "registryDeleteApiSpec",
+      "httpMethod": "delete",
+      "tag": "Registry",
+      "description": "DeleteApiSpec removes a specified spec, all revisions, and all child\n resources (e.g. artifacts).",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "api",
+          "schema": "string",
+          "required": true,
+          "description": "The api id."
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "required": true,
+          "description": "The version id."
+        },
+        {
+          "name": "spec",
+          "schema": "string",
+          "required": true,
+          "description": "The spec id."
+        },
+        {
+          "name": "force",
+          "schema": "boolean",
+          "description": "If set to true, any child resources will also be deleted. (Otherwise, the request will only work if there are no child resources.)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}",
+      "method": "registryGetApiSpec",
+      "httpMethod": "get",
+      "tag": "Registry",
+      "description": "GetApiSpec returns a specified spec.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "api",
+          "schema": "string",
+          "required": true,
+          "description": "The api id."
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "required": true,
+          "description": "The version id."
+        },
+        {
+          "name": "spec",
+          "schema": "string",
+          "required": true,
+          "description": "The spec id."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "An ApiSpec describes a version of an API in a structured way. ApiSpecs provide formal descriptions that consumers can use to use a version. ApiSpec resources are intended to be fully-resolved descriptions of an ApiVersion. When specs consist of multiple files, these should be bundled together (e.g. in a zip archive) and stored as a unit. Multiple specs can exist to provide representations in different API description formats. Synchronization of these representations would be provided by tooling and background services."
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}",
+      "method": "registryUpdateApiSpec",
+      "httpMethod": "patch",
+      "tag": "Registry",
+      "description": "UpdateApiSpec can be used to modify a specified spec.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "api",
+          "schema": "string",
+          "required": true,
+          "description": "The api id."
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "required": true,
+          "description": "The version id."
+        },
+        {
+          "name": "spec",
+          "schema": "string",
+          "required": true,
+          "description": "The spec id."
+        },
+        {
+          "name": "updateMask",
+          "schema": "string",
+          "description": "The list of fields to be updated. If omitted, all fields are updated that are set in the request message (fields set to default values are ignored). If a \"*\" is specified, all fields are updated, including fields that are unspecified/default in the request."
+        },
+        {
+          "name": "allowMissing",
+          "schema": "boolean",
+          "description": "If set to true, and the spec is not found, a new spec will be created. In this situation, `update_mask` is ignored."
+        },
+        {
+          "name": "annotations",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "contents",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "createTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "filename",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "hash",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "labels",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "mimeType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "revisionCreateTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "revisionId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "revisionUpdateTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sizeBytes",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "sourceUri",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "An ApiSpec describes a version of an API in a structured way. ApiSpecs provide formal descriptions that consumers can use to use a version. ApiSpec resources are intended to be fully-resolved descriptions of an ApiVersion. When specs consist of multiple files, these should be bundled together (e.g. in a zip archive) and stored as a unit. Multiple specs can exist to provide representations in different API description formats. Synchronization of these representations would be provided by tooling and background services."
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}:deleteRevision",
+      "method": "registryDeleteApiSpecRevision",
+      "httpMethod": "delete",
+      "tag": "Registry",
+      "description": "DeleteApiSpecRevision deletes a revision of a spec.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "api",
+          "schema": "string",
+          "required": true,
+          "description": "The api id."
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "required": true,
+          "description": "The version id."
+        },
+        {
+          "name": "spec",
+          "schema": "string",
+          "required": true,
+          "description": "The spec id."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "An ApiSpec describes a version of an API in a structured way. ApiSpecs provide formal descriptions that consumers can use to use a version. ApiSpec resources are intended to be fully-resolved descriptions of an ApiVersion. When specs consist of multiple files, these should be bundled together (e.g. in a zip archive) and stored as a unit. Multiple specs can exist to provide representations in different API description formats. Synchronization of these representations would be provided by tooling and background services."
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}:getContents",
+      "method": "registryGetApiSpecContents",
+      "httpMethod": "get",
+      "tag": "Registry",
+      "description": "GetApiSpecContents returns the contents of a specified spec.\n If specs are stored with GZip compression, the default behavior\n is to return the spec uncompressed (the mime_type response field\n indicates the exact format returned).",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "api",
+          "schema": "string",
+          "required": true,
+          "description": "The api id."
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "required": true,
+          "description": "The version id."
+        },
+        {
+          "name": "spec",
+          "schema": "string",
+          "required": true,
+          "description": "The spec id."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}:listRevisions",
+      "method": "registryListApiSpecRevisions",
+      "httpMethod": "get",
+      "tag": "Registry",
+      "description": "ListApiSpecRevisions lists all revisions of a spec.\n Revisions are returned in descending order of revision creation time.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "api",
+          "schema": "string",
+          "required": true,
+          "description": "The api id."
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "required": true,
+          "description": "The version id."
+        },
+        {
+          "name": "spec",
+          "schema": "string",
+          "required": true,
+          "description": "The spec id."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "description": "The maximum number of revisions to return per page."
+        },
+        {
+          "name": "pageToken",
+          "schema": "string",
+          "description": "The page token, received from a previous ListApiSpecRevisions call. Provide this to retrieve the subsequent page."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response message for ListApiSpecRevisionsResponse."
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}:rollback",
+      "method": "registryRollbackApiSpec",
+      "httpMethod": "post",
+      "tag": "Registry",
+      "description": "RollbackApiSpec sets the current revision to a specified prior revision.\n Note that this creates a new revision with a new revision ID.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "api",
+          "schema": "string",
+          "required": true,
+          "description": "The api id."
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "required": true,
+          "description": "The version id."
+        },
+        {
+          "name": "spec",
+          "schema": "string",
+          "required": true,
+          "description": "The spec id."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "revisionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "An ApiSpec describes a version of an API in a structured way. ApiSpecs provide formal descriptions that consumers can use to use a version. ApiSpec resources are intended to be fully-resolved descriptions of an ApiVersion. When specs consist of multiple files, these should be bundled together (e.g. in a zip archive) and stored as a unit. Multiple specs can exist to provide representations in different API description formats. Synchronization of these representations would be provided by tooling and background services."
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}:tagRevision",
+      "method": "registryTagApiSpecRevision",
+      "httpMethod": "post",
+      "tag": "Registry",
+      "description": "TagApiSpecRevision adds a tag to a specified revision of a spec.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "api",
+          "schema": "string",
+          "required": true,
+          "description": "The api id."
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "required": true,
+          "description": "The version id."
+        },
+        {
+          "name": "spec",
+          "schema": "string",
+          "required": true,
+          "description": "The spec id."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "An ApiSpec describes a version of an API in a structured way. ApiSpecs provide formal descriptions that consumers can use to use a version. ApiSpec resources are intended to be fully-resolved descriptions of an ApiVersion. When specs consist of multiple files, these should be bundled together (e.g. in a zip archive) and stored as a unit. Multiple specs can exist to provide representations in different API description formats. Synchronization of these representations would be provided by tooling and background services."
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/artifacts",
+      "method": "registryListArtifacts",
+      "httpMethod": "get",
+      "tag": "Registry",
+      "description": "ListArtifacts returns matching artifacts.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "description": "The maximum number of artifacts to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000."
+        },
+        {
+          "name": "pageToken",
+          "schema": "string",
+          "description": "A page token, received from a previous `ListArtifacts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListArtifacts` must match the call that provided the page token."
+        },
+        {
+          "name": "filter",
+          "schema": "string",
+          "description": "An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields except contents."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response message for ListArtifacts."
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/artifacts",
+      "method": "registryCreateArtifact",
+      "httpMethod": "post",
+      "tag": "Registry",
+      "description": "CreateArtifact creates a specified artifact.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "artifactId",
+          "schema": "string",
+          "description": "Required. The ID to use for the artifact, which will become the final component of the artifact's resource name. This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/. Following AIP-162, IDs must not have the form of a UUID."
+        },
+        {
+          "name": "contents",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "createTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "hash",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "mimeType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sizeBytes",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "updateTime",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Artifacts of resources. Artifacts are unique (single-value) per resource and are used to store metadata that is too large or numerous to be stored directly on the resource. Since artifacts are stored separately from parent resources, they should generally be used for metadata that is needed infrequently, i.e. not for display in primary views of the resource but perhaps displayed or downloaded upon request. The ListArtifacts method allows artifacts to be quickly enumerated and checked for presence without downloading their (potentially-large) contents."
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/artifacts/{artifact}",
+      "method": "registryDeleteArtifact",
+      "httpMethod": "delete",
+      "tag": "Registry",
+      "description": "DeleteArtifact removes a specified artifact.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "artifact",
+          "schema": "string",
+          "required": true,
+          "description": "The artifact id."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/artifacts/{artifact}",
+      "method": "registryGetArtifact",
+      "httpMethod": "get",
+      "tag": "Registry",
+      "description": "GetArtifact returns a specified artifact.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "artifact",
+          "schema": "string",
+          "required": true,
+          "description": "The artifact id."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Artifacts of resources. Artifacts are unique (single-value) per resource and are used to store metadata that is too large or numerous to be stored directly on the resource. Since artifacts are stored separately from parent resources, they should generally be used for metadata that is needed infrequently, i.e. not for display in primary views of the resource but perhaps displayed or downloaded upon request. The ListArtifacts method allows artifacts to be quickly enumerated and checked for presence without downloading their (potentially-large) contents."
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/artifacts/{artifact}",
+      "method": "registryReplaceArtifact",
+      "httpMethod": "put",
+      "tag": "Registry",
+      "description": "ReplaceArtifact can be used to replace a specified artifact.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "artifact",
+          "schema": "string",
+          "required": true,
+          "description": "The artifact id."
+        },
+        {
+          "name": "contents",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "createTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "hash",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "mimeType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sizeBytes",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "updateTime",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Artifacts of resources. Artifacts are unique (single-value) per resource and are used to store metadata that is too large or numerous to be stored directly on the resource. Since artifacts are stored separately from parent resources, they should generally be used for metadata that is needed infrequently, i.e. not for display in primary views of the resource but perhaps displayed or downloaded upon request. The ListArtifacts method allows artifacts to be quickly enumerated and checked for presence without downloading their (potentially-large) contents."
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    },
+    {
+      "url": "/v1/projects/{project}/locations/{location}/artifacts/{artifact}:getContents",
+      "method": "registryGetArtifactContents",
+      "httpMethod": "get",
+      "tag": "Registry",
+      "description": "GetArtifactContents returns the contents of a specified artifact.\n If artifacts are stored with GZip compression, the default behavior\n is to return the artifact uncompressed (the mime_type response field\n indicates the exact format returned).",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "The project id."
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "The location id."
+        },
+        {
+          "name": "artifact",
+          "schema": "string",
+          "required": true,
+          "description": "The artifact id."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://apigee.local",
   "apiDescription": "The Registry service allows teams to manage descriptions of APIs.",
   "apiTitle": "Registry API",

@@ -3,6 +3,5156 @@
   "openApiRaw": "https://stream-openapi.s3.us-east-1.amazonaws.com/chat/openapi-latest.yaml",
   "homepage": "stream-io-api.com",
   "apiVersion": "v80.2.0",
+  "methods": [
+    {
+      "url": "/app",
+      "method": "getApp",
+      "httpMethod": "get",
+      "tag": "Settings",
+      "description": "Get App Settings",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/app",
+      "method": "updateApp",
+      "httpMethod": "patch",
+      "tag": "Settings",
+      "description": "Update App Settings",
+      "parameters": [
+        {
+          "name": "agora_options",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "apn_config",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "async_moderation_config",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "async_url_enrich_enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "auto_translation_enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "before_message_send_hook_url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "cdn_expiration_seconds",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "channel_hide_members_only",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "custom_action_handler_url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "disable_auth_checks",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "disable_permissions_checks",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "enforce_unique_usernames",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "file_upload_config",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "firebase_config",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "grants",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "hms_options",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "huawei_config",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "image_moderation_block_labels",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "image_moderation_enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "image_moderation_labels",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "image_upload_config",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "migrate_permissions_to_v2",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "multi_tenant_enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "permission_version",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "push_config",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "reminders_interval",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "revoke_tokens_issued_before",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sqs_key",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sqs_secret",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sqs_url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "user_search_disallowed_roles",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "video_provider",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "webhook_events",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "webhook_url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "xiaomi_config",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/blocklists",
+      "method": "listBlockLists",
+      "httpMethod": "get",
+      "tag": "Settings",
+      "description": "List block lists",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/blocklists",
+      "method": "createBlockList",
+      "httpMethod": "post",
+      "tag": "Settings",
+      "description": "Create block list",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "words",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/blocklists/{name}",
+      "method": "deleteBlockList",
+      "httpMethod": "delete",
+      "tag": "Settings",
+      "description": "Delete block list",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/blocklists/{name}",
+      "method": "getBlockList",
+      "httpMethod": "get",
+      "tag": "Settings",
+      "description": "Get block list",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/blocklists/{name}",
+      "method": "updateBlockList",
+      "httpMethod": "put",
+      "tag": "Settings",
+      "description": "Update block list",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "words",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/calls/",
+      "method": "getCallToken1",
+      "httpMethod": "post",
+      "description": "Get Call Token ()",
+      "parameters": [
+        {
+          "name": "user",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/calls/{call_id}",
+      "method": "getCallTokenCallId0",
+      "httpMethod": "post",
+      "description": "Get Call Token (call_id)",
+      "parameters": [
+        {
+          "name": "call_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/campaigns",
+      "method": "queryCampaigns",
+      "httpMethod": "get",
+      "tag": "Campaigns",
+      "description": "Query campaigns",
+      "parameters": [
+        {
+          "name": "payload",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/campaigns",
+      "method": "createCampaign",
+      "httpMethod": "post",
+      "tag": "Campaigns",
+      "description": "Create campaign",
+      "parameters": [
+        {
+          "name": "campaign",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/campaigns/{id}",
+      "method": "deleteCampaign",
+      "httpMethod": "delete",
+      "tag": "Campaigns",
+      "description": "Delete campaign",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "recipients",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/campaigns/{id}",
+      "method": "updateCampaign",
+      "httpMethod": "put",
+      "tag": "Campaigns",
+      "description": "Update campaign",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "campaign",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/campaigns/{id}/resume",
+      "method": "resumeCampaign",
+      "httpMethod": "patch",
+      "tag": "Campaigns",
+      "description": "Resume campaign",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/campaigns/{id}/schedule",
+      "method": "scheduleCampaign",
+      "httpMethod": "patch",
+      "tag": "Campaigns",
+      "description": "Schedule campaign",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "scheduled_for",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/campaigns/{id}/stop",
+      "method": "stopCampaign",
+      "httpMethod": "patch",
+      "tag": "Campaigns",
+      "description": "Stop campaign",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/campaigns/{id}/test",
+      "method": "testCampaign",
+      "httpMethod": "post",
+      "tag": "Campaigns",
+      "description": "Test campaign",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "users",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels",
+      "method": "queryChannels",
+      "httpMethod": "post",
+      "tag": "Channels",
+      "description": "Query channels",
+      "parameters": [
+        {
+          "name": "client_id",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "connection_id",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "client_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "connection_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "filter_conditions",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "member_limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "message_limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "presence",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "watch",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels/delete",
+      "method": "deleteChannels",
+      "httpMethod": "post",
+      "tag": "Channels",
+      "description": "Deletes channels asynchronously",
+      "parameters": [
+        {
+          "name": "cids",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "hard_delete",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels/read",
+      "method": "markChannelsRead",
+      "httpMethod": "post",
+      "tag": "Channels",
+      "description": "Mark channels as read",
+      "parameters": [
+        {
+          "name": "user",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels/{type}/query",
+      "method": "getOrCreateChannelType1",
+      "httpMethod": "post",
+      "tag": "Channels",
+      "description": "Get or create channel (type)",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "client_id",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "connection_id",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "client_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "connection_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "data",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "hide_for_creator",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "members",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "messages",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "presence",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "watch",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "watchers",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels/{type}/{id}",
+      "method": "deleteChannel",
+      "httpMethod": "delete",
+      "tag": "Channels",
+      "description": "Delete channel",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "hard_delete",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels/{type}/{id}",
+      "method": "updateChannelPartial",
+      "httpMethod": "patch",
+      "tag": "Channels",
+      "description": "Partially update channel",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "set",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "unset",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels/{type}/{id}",
+      "method": "updateChannel",
+      "httpMethod": "post",
+      "tag": "Channels",
+      "description": "Update channel",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "accept_invite",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "add_members",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "add_moderators",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "assign_roles",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "cooldown",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "data",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "demote_moderators",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "hide_history",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "invites",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "message",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reject_invite",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "remove_members",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "skip_push",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels/{type}/{id}/call",
+      "method": "createCall",
+      "httpMethod": "post",
+      "description": "Create a call",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "options",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels/{type}/{id}/event",
+      "method": "sendEvent",
+      "httpMethod": "post",
+      "tag": "Events",
+      "description": "Send event",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "event",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels/{type}/{id}/file",
+      "method": "deleteFile",
+      "httpMethod": "delete",
+      "tag": "Messages",
+      "description": "Delete file",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels/{type}/{id}/file",
+      "method": "uploadFile",
+      "httpMethod": "post",
+      "tag": "Messages",
+      "description": "Upload file",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "file",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels/{type}/{id}/hide",
+      "method": "hideChannel",
+      "httpMethod": "post",
+      "tag": "Channels",
+      "description": "Hide channel",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "clear_history",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels/{type}/{id}/image",
+      "method": "deleteImage",
+      "httpMethod": "delete",
+      "tag": "Messages",
+      "description": "Delete image",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels/{type}/{id}/image",
+      "method": "uploadImage",
+      "httpMethod": "post",
+      "tag": "Messages",
+      "description": "Upload image",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "file",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "upload_sizes",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels/{type}/{id}/message",
+      "method": "sendMessage",
+      "httpMethod": "post",
+      "tag": "Messages",
+      "description": "Send new message",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "force_moderation",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "is_pending_message",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "keep_channel_hidden",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "message",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "pending_message_metadata",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "skip_enrich_url",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "skip_push",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels/{type}/{id}/messages",
+      "method": "getManyMessages",
+      "httpMethod": "get",
+      "tag": "Messages",
+      "description": "Get many messages",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "ids",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels/{type}/{id}/query",
+      "method": "getOrCreateChannelTypeId0",
+      "httpMethod": "post",
+      "tag": "Channels",
+      "description": "Get or create channel (type, id)",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "client_id",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "connection_id",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "client_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "connection_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "data",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "hide_for_creator",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "members",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "messages",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "presence",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "watch",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "watchers",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels/{type}/{id}/read",
+      "method": "markRead",
+      "httpMethod": "post",
+      "tag": "Channels",
+      "description": "Mark read",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "message_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels/{type}/{id}/show",
+      "method": "showChannel",
+      "httpMethod": "post",
+      "tag": "Channels",
+      "description": "Show channel",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels/{type}/{id}/stop-watching",
+      "method": "stopWatchingChannel",
+      "httpMethod": "post",
+      "tag": "Channels",
+      "description": "Stop watching channel",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "client_id",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "connection_id",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "client_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "connection_id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels/{type}/{id}/truncate",
+      "method": "truncateChannel",
+      "httpMethod": "post",
+      "tag": "Channels",
+      "description": "Truncate channel",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "hard_delete",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "message",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "skip_push",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "truncated_at",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels/{type}/{id}/unread",
+      "method": "markUnread",
+      "httpMethod": "post",
+      "tag": "Channels",
+      "description": "Mark unread",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "message_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channeltypes",
+      "method": "listChannelTypes",
+      "httpMethod": "get",
+      "tag": "Settings",
+      "description": "List channel types",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channeltypes",
+      "method": "createChannelType",
+      "httpMethod": "post",
+      "tag": "Settings",
+      "description": "Create channel type",
+      "parameters": [
+        {
+          "name": "automod",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "automod_behavior",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "blocklist",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "blocklist_behavior",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "commands",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "connect_events",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "custom_events",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "grants",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "max_message_length",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "message_retention",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "mutes",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "permissions",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "push_notifications",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reactions",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "read_events",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "replies",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "search",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "typing_events",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "uploads",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "url_enrichment",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channeltypes/{name}",
+      "method": "deleteChannelType",
+      "httpMethod": "delete",
+      "tag": "Settings",
+      "description": "Delete channel type",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channeltypes/{name}",
+      "method": "getChannelType",
+      "httpMethod": "get",
+      "tag": "Settings",
+      "description": "Get channel type",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channeltypes/{name}",
+      "method": "updateChannelType",
+      "httpMethod": "put",
+      "tag": "Settings",
+      "description": "Update channel type",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "NameFromPath",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "automod",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "automod_behavior",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "automod_thresholds",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "blocklist",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "blocklist_behavior",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "commands",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "connect_events",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "custom_events",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "grants",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "max_message_length",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "message_retention",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "mutes",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "permissions",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "push_notifications",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "quotes",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reactions",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "read_events",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reminders",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "replies",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "search",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "typing_events",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "uploads",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "url_enrichment",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/check_push",
+      "method": "checkPush",
+      "httpMethod": "post",
+      "tag": "Settings",
+      "description": "Check push",
+      "parameters": [
+        {
+          "name": "apn_template",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "firebase_data_template",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "firebase_template",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "message_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "push_provider_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "push_provider_type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "skip_devices",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/check_sqs",
+      "method": "checkSqs",
+      "httpMethod": "post",
+      "tag": "Settings",
+      "description": "Check SQS",
+      "parameters": [
+        {
+          "name": "sqs_key",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sqs_secret",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sqs_url",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/commands",
+      "method": "listCommands",
+      "httpMethod": "get",
+      "tag": "Custom commands",
+      "description": "List commands",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/commands",
+      "method": "createCommand",
+      "httpMethod": "post",
+      "tag": "Custom commands",
+      "description": "Create command",
+      "parameters": [
+        {
+          "name": "args",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "set",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/commands/{name}",
+      "method": "deleteCommand",
+      "httpMethod": "delete",
+      "tag": "Custom commands",
+      "description": "Delete command",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/commands/{name}",
+      "method": "getCommand",
+      "httpMethod": "get",
+      "tag": "Custom commands",
+      "description": "Get command",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/commands/{name}",
+      "method": "updateCommand",
+      "httpMethod": "put",
+      "tag": "Custom commands",
+      "description": "Update command",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "args",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "set",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/connect",
+      "method": "connect",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Connect (WebSocket)",
+      "parameters": [
+        {
+          "name": "json",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/devices",
+      "method": "deleteDevice",
+      "httpMethod": "delete",
+      "tag": "Devices",
+      "description": "Delete device",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/devices",
+      "method": "listDevices",
+      "httpMethod": "get",
+      "tag": "Devices",
+      "description": "List devices",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/devices",
+      "method": "createDevice",
+      "httpMethod": "post",
+      "tag": "Devices",
+      "description": "Create device",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "push_provider",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "push_provider_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/export/users",
+      "method": "exportUser",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Export users",
+      "parameters": [
+        {
+          "name": "user_ids",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/export_channels",
+      "method": "exportChannels",
+      "httpMethod": "post",
+      "tag": "Channels",
+      "description": "Export channels",
+      "parameters": [
+        {
+          "name": "channels",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "clear_deleted_message_text",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "export_users",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "include_truncated_messages",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/export_channels/{id}",
+      "method": "getExportChannelsStatus",
+      "httpMethod": "get",
+      "tag": "Channels",
+      "description": "Export channels status",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/guest",
+      "method": "createGuest",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Create guest",
+      "parameters": [
+        {
+          "name": "user",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/import_urls",
+      "method": "createImportUrl",
+      "httpMethod": "post",
+      "tag": "Imports",
+      "description": "Create import URL",
+      "parameters": [
+        {
+          "name": "filename",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/imports",
+      "method": "listImports",
+      "httpMethod": "get",
+      "tag": "Imports",
+      "description": "Get import",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/imports",
+      "method": "createImport",
+      "httpMethod": "post",
+      "tag": "Imports",
+      "description": "Create import",
+      "parameters": [
+        {
+          "name": "mode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "path",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/imports/{id}",
+      "method": "getImport",
+      "httpMethod": "get",
+      "tag": "Imports",
+      "description": "Get import",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/longpoll",
+      "method": "longPoll",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Long Poll (Transport)",
+      "parameters": [
+        {
+          "name": "json",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "connection_id",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/members",
+      "method": "queryMembers",
+      "httpMethod": "get",
+      "tag": "Channels",
+      "description": "Query members",
+      "parameters": [
+        {
+          "name": "payload",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/messages/{id}",
+      "method": "deleteMessage",
+      "httpMethod": "delete",
+      "tag": "Messages",
+      "description": "Delete message",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "hard",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/messages/{id}",
+      "method": "getMessage",
+      "httpMethod": "get",
+      "tag": "Messages",
+      "description": "Get message",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/messages/{id}",
+      "method": "updateMessage",
+      "httpMethod": "post",
+      "tag": "Messages",
+      "description": "Update message",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "message",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "pending_message_metadata",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "skip_enrich_url",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/messages/{id}",
+      "method": "updateMessagePartial",
+      "httpMethod": "put",
+      "tag": "Messages",
+      "description": "Partially message update",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "set",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "skip_enrich_url",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "unset",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/messages/{id}/action",
+      "method": "runMessageAction",
+      "httpMethod": "post",
+      "tag": "Messages",
+      "description": "Run message command action",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "ID",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "form_data",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/messages/{id}/commit",
+      "method": "commitMessage",
+      "httpMethod": "post",
+      "description": "Commit message",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/messages/{id}/reaction",
+      "method": "sendReaction",
+      "httpMethod": "post",
+      "tag": "Messages",
+      "description": "Send reaction",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "ID",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "enforce_unique",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reaction",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "skip_push",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/messages/{id}/reaction/{type}",
+      "method": "deleteReaction",
+      "httpMethod": "delete",
+      "tag": "Messages",
+      "description": "Delete reaction",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/messages/{id}/reactions",
+      "method": "getReactions",
+      "httpMethod": "get",
+      "tag": "Messages",
+      "description": "Get reactions",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "offset",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/messages/{id}/translate",
+      "method": "translateMessage",
+      "httpMethod": "post",
+      "tag": "Messages",
+      "description": "Translate message",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/messages/{parent_id}/replies",
+      "method": "getReplies",
+      "httpMethod": "get",
+      "tag": "Messages",
+      "description": "Get replies",
+      "parameters": [
+        {
+          "name": "parent_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id_gte",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "id_gt",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "id_lte",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "id_lt",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "created_at_after_or_equal",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "created_at_after",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "created_at_before_or_equal",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "created_at_before",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "id_around",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "created_at_around",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/moderation/ban",
+      "method": "unban",
+      "httpMethod": "delete",
+      "tag": "Users",
+      "description": "Unban user",
+      "parameters": [
+        {
+          "name": "target_user_id",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/moderation/ban",
+      "method": "ban",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Ban user",
+      "parameters": [
+        {
+          "name": "banned_by",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "banned_by_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "ip_ban",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "shadow",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "target_user_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timeout",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/moderation/flag",
+      "method": "flag",
+      "httpMethod": "post",
+      "tag": "Moderation",
+      "description": "Flag",
+      "parameters": [
+        {
+          "name": "target_message_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "target_user_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/moderation/flags/message",
+      "method": "queryMessageFlags",
+      "httpMethod": "get",
+      "tag": "Messages",
+      "description": "Query Message Flags",
+      "parameters": [
+        {
+          "name": "payload",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/moderation/mute",
+      "method": "muteUser",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Mute user",
+      "parameters": [
+        {
+          "name": "target_ids",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timeout",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/moderation/mute/channel",
+      "method": "muteChannel",
+      "httpMethod": "post",
+      "tag": "Channels",
+      "description": "Mute channel",
+      "parameters": [
+        {
+          "name": "channel_cids",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "expiration",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/moderation/unflag",
+      "method": "unflag",
+      "httpMethod": "post",
+      "tag": "Moderation",
+      "description": "Unflag",
+      "parameters": [
+        {
+          "name": "target_message_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "target_user_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/moderation/unmute",
+      "method": "unmuteUser",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Unmute user",
+      "parameters": [
+        {
+          "name": "target_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "target_ids",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timeout",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/moderation/unmute/channel",
+      "method": "unmuteChannel",
+      "httpMethod": "post",
+      "tag": "Channels",
+      "description": "Unmute channel",
+      "parameters": [
+        {
+          "name": "channel_cid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "channel_cids",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "expiration",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/og",
+      "method": "getOg",
+      "httpMethod": "get",
+      "tag": "Messages",
+      "description": "Get OG",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/permissions",
+      "method": "listPermissions",
+      "httpMethod": "get",
+      "tag": "Permissions V2",
+      "description": "List permissions",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/permissions/{id}",
+      "method": "getPermission",
+      "httpMethod": "get",
+      "tag": "Permissions V2",
+      "description": "Get permission",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/push_providers",
+      "method": "listPushProviders",
+      "httpMethod": "get",
+      "tag": "Push",
+      "description": "List push providers",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/push_providers",
+      "method": "upsertPushProvider",
+      "httpMethod": "post",
+      "tag": "Push",
+      "description": "Upsert a push provider",
+      "parameters": [
+        {
+          "name": "push_provider",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/push_providers/{type}/{name}",
+      "method": "deletePushProvider",
+      "httpMethod": "delete",
+      "tag": "Push",
+      "description": "Delete a push provider",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/query_banned_users",
+      "method": "queryBannedUsers",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Query Banned Users",
+      "parameters": [
+        {
+          "name": "payload",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rate_limits",
+      "method": "getRateLimits",
+      "httpMethod": "get",
+      "tag": "Settings",
+      "description": "Get rate limits",
+      "parameters": [
+        {
+          "name": "server_side",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "android",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "ios",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "web",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "endpoints",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/recipients",
+      "method": "queryRecipients",
+      "httpMethod": "get",
+      "tag": "Campaigns",
+      "description": "Query recipients",
+      "parameters": [
+        {
+          "name": "payload",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/roles",
+      "method": "listRoles",
+      "httpMethod": "get",
+      "tag": "Permissions V2",
+      "description": "List roles",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/roles",
+      "method": "createRole",
+      "httpMethod": "post",
+      "tag": "Permissions V2",
+      "description": "Create role",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/roles/{name}",
+      "method": "deleteRole",
+      "httpMethod": "delete",
+      "tag": "Permissions V2",
+      "description": "Delete role",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/search",
+      "method": "search",
+      "httpMethod": "get",
+      "tag": "Channels",
+      "description": "Search messages",
+      "parameters": [
+        {
+          "name": "payload",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/segments",
+      "method": "querySegments",
+      "httpMethod": "get",
+      "tag": "Campaigns",
+      "description": "Query segments",
+      "parameters": [
+        {
+          "name": "payload",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/segments",
+      "method": "createSegment",
+      "httpMethod": "post",
+      "tag": "Campaigns",
+      "description": "Create segment",
+      "parameters": [
+        {
+          "name": "segment",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/segments/{id}",
+      "method": "deleteSegment",
+      "httpMethod": "delete",
+      "tag": "Campaigns",
+      "description": "Delete segment",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/segments/{id}",
+      "method": "updateSegment",
+      "httpMethod": "put",
+      "tag": "Campaigns",
+      "description": "Update segment",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "segment",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sync",
+      "method": "sync",
+      "httpMethod": "post",
+      "tag": "Channels",
+      "description": "Sync",
+      "parameters": [
+        {
+          "name": "with_inaccessible_cids",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "watch",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "client_id",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "connection_id",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "channel_cids",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "client_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "connection_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "last_sync_at",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "watch",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "with_inaccessible_cids",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tasks/{id}",
+      "method": "getTask",
+      "httpMethod": "get",
+      "tag": "Tasks",
+      "description": "Get status of a task",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users",
+      "method": "queryUsers",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Query users",
+      "parameters": [
+        {
+          "name": "payload",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users",
+      "method": "updateUsersPartial",
+      "httpMethod": "patch",
+      "tag": "Users",
+      "description": "Partially update user",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "set",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "unset",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users",
+      "method": "updateUsers",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Upsert users",
+      "parameters": [
+        {
+          "name": "users",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/deactivate",
+      "method": "deactivateUsers",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Deactivate users",
+      "parameters": [
+        {
+          "name": "created_by_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "mark_messages_deleted",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user_ids",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/delete",
+      "method": "deleteUsers",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Delete Users",
+      "parameters": [
+        {
+          "name": "conversations",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "messages",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "new_channel_owner_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user_ids",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/reactivate",
+      "method": "reactivateUsers",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Reactivate users",
+      "parameters": [
+        {
+          "name": "created_by_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "restore_messages",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user_ids",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/restore",
+      "method": "restoreUsers",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Restore users",
+      "parameters": [
+        {
+          "name": "user_ids",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}",
+      "method": "deleteUser",
+      "httpMethod": "delete",
+      "tag": "Users",
+      "description": "Delete user",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "mark_messages_deleted",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "hard_delete",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "delete_conversation_channels",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/deactivate",
+      "method": "deactivateUser",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Deactivate user",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "created_by_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "mark_messages_deleted",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/event",
+      "method": "sendUserCustomEvent",
+      "httpMethod": "post",
+      "tag": "Events",
+      "description": "Send user event",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "event",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/export",
+      "method": "/users/{userId}/exportGet",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Export user",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/reactivate",
+      "method": "reactivateUser",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Reactivate user",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "created_by_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "restore_messages",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://chat.stream-io-api.com",
   "apiTitle": "Stream Chat API",
   "endpoints": 87,

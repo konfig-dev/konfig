@@ -4,6 +4,1400 @@
   "homepage": "redhat.com",
   "serviceName": "catalog_inventory",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/graphql",
+      "method": "postGraphQl",
+      "httpMethod": "post",
+      "description": "Perform a GraphQL Query",
+      "parameters": [
+        {
+          "name": "operationName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "query",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "variables",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/openapi.json",
+      "method": "getDocumentation",
+      "httpMethod": "get",
+      "description": "Return this API document in JSON format",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/service_credential_types",
+      "method": "listServiceCredentialTypes",
+      "httpMethod": "get",
+      "tag": "ServiceCredentialType",
+      "description": "List ServiceCredentialTypes",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The numbers of items to return per page."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of items to skip before starting to collect the result set."
+        },
+        {
+          "name": "filter",
+          "schema": "object",
+          "required": false,
+          "description": "Filter for querying collections."
+        },
+        {
+          "name": "sort_by",
+          "schema": "object",
+          "required": false,
+          "description": "The list of attribute and order to sort the result set by."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/service_credential_types/{id}",
+      "method": "showServiceCredentialType",
+      "httpMethod": "get",
+      "tag": "ServiceCredentialType",
+      "description": "Show an existing ServiceCredentialType",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the resource"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/service_credentials",
+      "method": "listServiceCredentials",
+      "httpMethod": "get",
+      "tag": "ServiceCredential",
+      "description": "List ServiceCredentials",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The numbers of items to return per page."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of items to skip before starting to collect the result set."
+        },
+        {
+          "name": "filter",
+          "schema": "object",
+          "required": false,
+          "description": "Filter for querying collections."
+        },
+        {
+          "name": "sort_by",
+          "schema": "object",
+          "required": false,
+          "description": "The list of attribute and order to sort the result set by."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/service_credentials/{id}",
+      "method": "showServiceCredential",
+      "httpMethod": "get",
+      "tag": "ServiceCredential",
+      "description": "Show an existing ServiceCredential",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the resource"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/service_instances",
+      "method": "listServiceInstances",
+      "httpMethod": "get",
+      "tag": "ServiceInstance",
+      "description": "List ServiceInstances",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The numbers of items to return per page."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of items to skip before starting to collect the result set."
+        },
+        {
+          "name": "filter",
+          "schema": "object",
+          "required": false,
+          "description": "Filter for querying collections."
+        },
+        {
+          "name": "sort_by",
+          "schema": "object",
+          "required": false,
+          "description": "The list of attribute and order to sort the result set by."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/service_instances/{id}",
+      "method": "showServiceInstance",
+      "httpMethod": "get",
+      "tag": "ServiceInstance",
+      "description": "Show an existing ServiceInstance",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the resource"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/service_inventories",
+      "method": "listServiceInventories",
+      "httpMethod": "get",
+      "tag": "ServiceInventory",
+      "description": "List ServiceInventories",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The numbers of items to return per page."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of items to skip before starting to collect the result set."
+        },
+        {
+          "name": "filter",
+          "schema": "object",
+          "required": false,
+          "description": "Filter for querying collections."
+        },
+        {
+          "name": "sort_by",
+          "schema": "object",
+          "required": false,
+          "description": "The list of attribute and order to sort the result set by."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/service_inventories/{id}",
+      "method": "showServiceInventory",
+      "httpMethod": "get",
+      "tag": "ServiceInventory",
+      "description": "Show an existing ServiceInventory",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the resource"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/service_inventories/{id}/tag",
+      "method": "tagServiceInventory",
+      "httpMethod": "post",
+      "tag": "ServiceInventory",
+      "description": "Tag a ServiceInventory",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the resource"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/service_inventories/{id}/tags",
+      "method": "listServiceInventoryTags",
+      "httpMethod": "get",
+      "tag": "ServiceInventory",
+      "description": "List Tags for ServiceInventory",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The numbers of items to return per page."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of items to skip before starting to collect the result set."
+        },
+        {
+          "name": "filter",
+          "schema": "object",
+          "required": false,
+          "description": "Filter for querying collections."
+        },
+        {
+          "name": "sort_by",
+          "schema": "object",
+          "required": false,
+          "description": "The list of attribute and order to sort the result set by."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the resource"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/service_inventories/{id}/untag",
+      "method": "untagServiceInventory",
+      "httpMethod": "post",
+      "tag": "ServiceInventory",
+      "description": "Untag a ServiceInventory",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the resource"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/service_offering_nodes",
+      "method": "listServiceOfferingNodes",
+      "httpMethod": "get",
+      "tag": "ServiceOfferingNode",
+      "description": "List ServiceOfferingNodes",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The numbers of items to return per page."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of items to skip before starting to collect the result set."
+        },
+        {
+          "name": "filter",
+          "schema": "object",
+          "required": false,
+          "description": "Filter for querying collections."
+        },
+        {
+          "name": "sort_by",
+          "schema": "object",
+          "required": false,
+          "description": "The list of attribute and order to sort the result set by."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/service_offering_nodes/{id}",
+      "method": "showServiceOfferingNode",
+      "httpMethod": "get",
+      "tag": "ServiceOfferingNode",
+      "description": "Show an existing ServiceOfferingNode",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the resource"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/service_offerings",
+      "method": "listServiceOfferings",
+      "httpMethod": "get",
+      "tag": "ServiceOffering",
+      "description": "List ServiceOfferings",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The numbers of items to return per page."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of items to skip before starting to collect the result set."
+        },
+        {
+          "name": "filter",
+          "schema": "object",
+          "required": false,
+          "description": "Filter for querying collections."
+        },
+        {
+          "name": "sort_by",
+          "schema": "object",
+          "required": false,
+          "description": "The list of attribute and order to sort the result set by."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/service_offerings/{id}",
+      "method": "showServiceOffering",
+      "httpMethod": "get",
+      "tag": "ServiceOffering",
+      "description": "Show an existing ServiceOffering",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the resource"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/service_offerings/{id}/applied_inventories_tags",
+      "method": "appliedInventoriesTagsForServiceOffering",
+      "httpMethod": "post",
+      "tag": "ServiceOffering",
+      "description": "Invokes computing of ServiceInventories tags for given ServiceOffering",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the resource"
+        },
+        {
+          "name": "service_parameters",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/service_offerings/{id}/order",
+      "method": "orderServiceOffering",
+      "httpMethod": "post",
+      "tag": "ServiceOffering",
+      "description": "Order an existing ServiceOffering",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the resource"
+        },
+        {
+          "name": "provider_control_parameters",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "service_parameters",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "service_plan_id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/service_offerings/{id}/service_instances",
+      "method": "listServiceOfferingServiceInstances",
+      "httpMethod": "get",
+      "tag": "ServiceOffering",
+      "description": "List ServiceInstances for ServiceOffering",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The numbers of items to return per page."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of items to skip before starting to collect the result set."
+        },
+        {
+          "name": "filter",
+          "schema": "object",
+          "required": false,
+          "description": "Filter for querying collections."
+        },
+        {
+          "name": "sort_by",
+          "schema": "object",
+          "required": false,
+          "description": "The list of attribute and order to sort the result set by."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the resource"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/service_offerings/{id}/service_offering_nodes",
+      "method": "listServiceOfferingServiceOfferingNodes",
+      "httpMethod": "get",
+      "tag": "ServiceOffering",
+      "description": "List ServiceOfferingNodes for ServiceOffering",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The numbers of items to return per page."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of items to skip before starting to collect the result set."
+        },
+        {
+          "name": "filter",
+          "schema": "object",
+          "required": false,
+          "description": "Filter for querying collections."
+        },
+        {
+          "name": "sort_by",
+          "schema": "object",
+          "required": false,
+          "description": "The list of attribute and order to sort the result set by."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the resource"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/service_offerings/{id}/service_plans",
+      "method": "listServiceOfferingServicePlans",
+      "httpMethod": "get",
+      "tag": "ServiceOffering",
+      "description": "List ServicePlans for ServiceOffering",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The numbers of items to return per page."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of items to skip before starting to collect the result set."
+        },
+        {
+          "name": "filter",
+          "schema": "object",
+          "required": false,
+          "description": "Filter for querying collections."
+        },
+        {
+          "name": "sort_by",
+          "schema": "object",
+          "required": false,
+          "description": "The list of attribute and order to sort the result set by."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the resource"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/service_plans",
+      "method": "listServicePlans",
+      "httpMethod": "get",
+      "tag": "ServicePlan",
+      "description": "List ServicePlans",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The numbers of items to return per page."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of items to skip before starting to collect the result set."
+        },
+        {
+          "name": "filter",
+          "schema": "object",
+          "required": false,
+          "description": "Filter for querying collections."
+        },
+        {
+          "name": "sort_by",
+          "schema": "object",
+          "required": false,
+          "description": "The list of attribute and order to sort the result set by."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/service_plans/{id}",
+      "method": "showServicePlan",
+      "httpMethod": "get",
+      "tag": "ServicePlan",
+      "description": "Show an existing ServicePlan",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the resource"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sources",
+      "method": "listSources",
+      "httpMethod": "get",
+      "tag": "Source",
+      "description": "List Sources",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The numbers of items to return per page."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of items to skip before starting to collect the result set."
+        },
+        {
+          "name": "filter",
+          "schema": "object",
+          "required": false,
+          "description": "Filter for querying collections."
+        },
+        {
+          "name": "sort_by",
+          "schema": "object",
+          "required": false,
+          "description": "The list of attribute and order to sort the result set by."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sources/{id}",
+      "method": "showSource",
+      "httpMethod": "get",
+      "tag": "Source",
+      "description": "Show an existing Source",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the resource"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sources/{id}/incremental_refresh",
+      "method": "incrementalRefreshSource",
+      "httpMethod": "patch",
+      "tag": "Source",
+      "description": "Incremental Refresh an existing Source",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the resource"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/sources/{id}/refresh",
+      "method": "refreshSource",
+      "httpMethod": "patch",
+      "tag": "Source",
+      "description": " Refresh an existing Source",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the resource"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/sources/{id}/service_instances",
+      "method": "listSourceServiceInstances",
+      "httpMethod": "get",
+      "tag": "Source",
+      "description": "List ServiceInstances for Source",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The numbers of items to return per page."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of items to skip before starting to collect the result set."
+        },
+        {
+          "name": "filter",
+          "schema": "object",
+          "required": false,
+          "description": "Filter for querying collections."
+        },
+        {
+          "name": "sort_by",
+          "schema": "object",
+          "required": false,
+          "description": "The list of attribute and order to sort the result set by."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the resource"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sources/{id}/service_inventories",
+      "method": "listSourceServiceInventories",
+      "httpMethod": "get",
+      "tag": "Source",
+      "description": "List ServiceInventories for Source",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The numbers of items to return per page."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of items to skip before starting to collect the result set."
+        },
+        {
+          "name": "filter",
+          "schema": "object",
+          "required": false,
+          "description": "Filter for querying collections."
+        },
+        {
+          "name": "sort_by",
+          "schema": "object",
+          "required": false,
+          "description": "The list of attribute and order to sort the result set by."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the resource"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sources/{id}/service_offering_nodes",
+      "method": "listSourceServiceOfferingNodes",
+      "httpMethod": "get",
+      "tag": "Source",
+      "description": "List ServiceOfferingNodes for Source",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The numbers of items to return per page."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of items to skip before starting to collect the result set."
+        },
+        {
+          "name": "filter",
+          "schema": "object",
+          "required": false,
+          "description": "Filter for querying collections."
+        },
+        {
+          "name": "sort_by",
+          "schema": "object",
+          "required": false,
+          "description": "The list of attribute and order to sort the result set by."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the resource"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sources/{id}/service_offerings",
+      "method": "listSourceServiceOfferings",
+      "httpMethod": "get",
+      "tag": "Source",
+      "description": "List ServiceOfferings for Source",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The numbers of items to return per page."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of items to skip before starting to collect the result set."
+        },
+        {
+          "name": "filter",
+          "schema": "object",
+          "required": false,
+          "description": "Filter for querying collections."
+        },
+        {
+          "name": "sort_by",
+          "schema": "object",
+          "required": false,
+          "description": "The list of attribute and order to sort the result set by."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the resource"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sources/{id}/service_plans",
+      "method": "listSourceServicePlans",
+      "httpMethod": "get",
+      "tag": "Source",
+      "description": "List ServicePlans for Source",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The numbers of items to return per page."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of items to skip before starting to collect the result set."
+        },
+        {
+          "name": "filter",
+          "schema": "object",
+          "required": false,
+          "description": "Filter for querying collections."
+        },
+        {
+          "name": "sort_by",
+          "schema": "object",
+          "required": false,
+          "description": "The list of attribute and order to sort the result set by."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the resource"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sources/{id}/tasks",
+      "method": "listSourceTasks",
+      "httpMethod": "get",
+      "tag": "Source",
+      "description": "List Tasks for Source",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The numbers of items to return per page."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of items to skip before starting to collect the result set."
+        },
+        {
+          "name": "filter",
+          "schema": "object",
+          "required": false,
+          "description": "Filter for querying collections."
+        },
+        {
+          "name": "sort_by",
+          "schema": "object",
+          "required": false,
+          "description": "The list of attribute and order to sort the result set by."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the resource"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tags",
+      "method": "listTags",
+      "httpMethod": "get",
+      "tag": "Tags",
+      "description": "List Tags",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The numbers of items to return per page."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of items to skip before starting to collect the result set."
+        },
+        {
+          "name": "filter",
+          "schema": "object",
+          "required": false,
+          "description": "Filter for querying collections."
+        },
+        {
+          "name": "sort_by",
+          "schema": "object",
+          "required": false,
+          "description": "The list of attribute and order to sort the result set by."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tasks",
+      "method": "listTasks",
+      "httpMethod": "get",
+      "tag": "Task",
+      "description": "List Tasks",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The numbers of items to return per page."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of items to skip before starting to collect the result set."
+        },
+        {
+          "name": "filter",
+          "schema": "object",
+          "required": false,
+          "description": "Filter for querying collections."
+        },
+        {
+          "name": "sort_by",
+          "schema": "object",
+          "required": false,
+          "description": "The list of attribute and order to sort the result set by."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tasks/{id}",
+      "method": "showTask",
+      "httpMethod": "get",
+      "tag": "Task",
+      "description": "Show an existing Task",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of task"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tasks/{id}",
+      "method": "updateTask",
+      "httpMethod": "patch",
+      "tag": "Task",
+      "description": "Update an existing Task",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of task"
+        },
+        {
+          "name": "archived_at",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "child_task_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "completed_at",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "controller_message_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "created_at",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "input",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "output",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "owner",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "source_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "target_source_ref",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "target_type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "updated_at",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://cloud.redhat.com/{basePath}",
   "apiDescription": "Catalog Inventory",
   "apiTitle": "Catalog Inventory",

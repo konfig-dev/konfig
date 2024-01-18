@@ -3,6 +3,161 @@
   "openApiRaw": "https://crossbrowsertesting.com/apidocs/definitions/screenshot-comparisons.json",
   "homepage": "crossbrowsertesting.com",
   "apiVersion": "3.0.0",
+  "methods": [
+    {
+      "url": "/screenshots/{target_screenshot_test_id}/{target_version_id}/comparison/parallel/{base_version_id}",
+      "method": "/screenshots/{targetScreenshotTestId}/{targetVersionId}/comparison/parallel/{baseVersionId}Get",
+      "httpMethod": "get",
+      "description": "Compare Screenshot Test Versions",
+      "parameters": [
+        {
+          "name": "target_screenshot_test_id",
+          "schema": "integer",
+          "required": true,
+          "description": "test id of the target Screenshot Test"
+        },
+        {
+          "name": "target_version_id",
+          "schema": "integer",
+          "required": true,
+          "description": "version id of the target Screenshot Test"
+        },
+        {
+          "name": "base_version_id",
+          "schema": "integer",
+          "required": true,
+          "description": "version id of the base Screenshot Test"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": "The format of the returned data. Possible values are \"json\" or \"jsonp\"."
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "Name of callback method for JSONP requests."
+        },
+        {
+          "name": "tolerance",
+          "schema": "number",
+          "description": "Used as the basis for detecting box model differences in element positioning and dimensions that should be flagged and reported back to the comparison results. The default is 30px which is a good basis for finding notable layout differences."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/screenshots/{target_screenshot_test_id}/{target_version_id}/comparison/{base_result_id}",
+      "method": "/screenshots/{targetScreenshotTestId}/{targetVersionId}/comparison/{baseResultId}Get",
+      "httpMethod": "get",
+      "description": "Compare Full Screenshot Test",
+      "parameters": [
+        {
+          "name": "target_screenshot_test_id",
+          "schema": "integer",
+          "required": true,
+          "description": "test id of the target Screenshot Test"
+        },
+        {
+          "name": "target_version_id",
+          "schema": "integer",
+          "required": true,
+          "description": "version id of the target Screenshot Test"
+        },
+        {
+          "name": "base_result_id",
+          "schema": "integer",
+          "required": true,
+          "description": "result id of the base Screenshot Test"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": "The format of the returned data. Possible values are \"json\" or \"jsonp\"."
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "Name of callback method for JSONP requests."
+        },
+        {
+          "name": "tolerance",
+          "schema": "number",
+          "description": "Used as the basis for detecting box model differences in element positioning and dimensions that should be flagged and reported back to the comparison results. The default is 30px which is a good basis for finding notable layout differences."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/screenshots/{target_screenshot_test_id}/{target_version_id}/{target_result_id}/comparison/{base_result_id}",
+      "method": "/screenshots/{targetScreenshotTestId}/{targetVersionId}/{targetResultId}/comparison/{baseResultId}Get",
+      "httpMethod": "get",
+      "description": "Compare Single Screenshot",
+      "parameters": [
+        {
+          "name": "target_screenshot_test_id",
+          "schema": "integer",
+          "required": true,
+          "description": "test id of the target Screenshot Test"
+        },
+        {
+          "name": "target_version_id",
+          "schema": "integer",
+          "required": true,
+          "description": "version id of the target Screenshot Test"
+        },
+        {
+          "name": "target_result_id",
+          "schema": "integer",
+          "required": true,
+          "description": "result id of the target Screenshot Test"
+        },
+        {
+          "name": "base_result_id",
+          "schema": "integer",
+          "required": true,
+          "description": "result id of the base Screenshot Test"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": "The format of the returned data. Possible values are \"json\" or \"jsonp\"."
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "Name of callback method for JSONP requests."
+        },
+        {
+          "name": "tolerance",
+          "schema": "number",
+          "description": "Used as the basis for detecting box model differences in element positioning and dimensions that should be flagged and reported back to the comparison results. The default is 30px which is a good basis for finding notable layout differences."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://crossbrowsertesting.com/api/v3",
   "apiDescription": "What's in this version: \n 1. Compare two screenshots for layout differences \n 2. Compare a full screenshot test of browsers to a single baseline browser for layout differences. \n 3. Compare a screenshot test version to another test version - good for regression tests. \n 4. Get links to the Comparison UI for visual representation of layout differences",
   "apiTitle": "Crossbrowsertesting.com Screenshot Comparisons API",

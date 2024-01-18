@@ -4,6 +4,88 @@
   "homepage": "fungenerators.com",
   "serviceName": "namegen",
   "apiVersion": "1.5",
+  "methods": [
+    {
+      "url": "/name/categories",
+      "method": "/name/categoriesGet",
+      "httpMethod": "get",
+      "tag": "Names",
+      "description": "Get available name generation categories.",
+      "parameters": [
+        {
+          "name": "start",
+          "schema": "integer",
+          "required": false,
+          "description": "start"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "limit"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/name/generate",
+      "method": "/name/generateGet",
+      "httpMethod": "get",
+      "tag": "Names",
+      "description": "Generated names in the given category",
+      "parameters": [
+        {
+          "name": "category",
+          "schema": "string",
+          "required": true,
+          "description": "Category to generator names from"
+        },
+        {
+          "name": "suggest",
+          "schema": "string",
+          "required": false,
+          "description": "Suggestion string if supported by this category generator."
+        },
+        {
+          "name": "start",
+          "schema": "integer",
+          "required": false,
+          "description": "start. Controls pagination. Relevant only if suggestion is supported"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "limit. Controls pagination limit. Relevant only if suggestion is supported"
+        },
+        {
+          "name": "variation",
+          "schema": "string",
+          "required": false,
+          "description": "Variation if supported ( male/female/any )"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.fungenerators.com",
   "apiDescription": "Fungenerators name generation API generates random names relevant to the given category. Lots of categories are supported with many variations supported. [Click here to subscribe](http://fungenerators.com/api/namegen/)\n",
   "apiTitle": "Name Generation API",

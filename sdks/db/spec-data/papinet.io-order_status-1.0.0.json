@@ -4,6 +4,60 @@
   "homepage": "papinet.io",
   "serviceName": "order_status",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/orders",
+      "method": "/ordersGet",
+      "httpMethod": "get",
+      "description": "List `orders`",
+      "parameters": [
+        {
+          "name": "orderStatus",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by status"
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "required": false,
+          "description": "The number of items to skip before starting to collect the result set."
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": "The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/orders/{orderId}",
+      "method": "/orders/{orderId}Get",
+      "httpMethod": "get",
+      "description": "Get an `order`",
+      "parameters": [
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the `order` to get"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://papinet.papinet.io",
   "apiDescription": "papinet API is a global initiative for the Forst and Paper supply chain.",
   "apiTitle": "papiNet API",

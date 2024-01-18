@@ -3,6 +3,1122 @@
   "openApiRaw": "https://api.youneedabudget.com/papi/spec-v1-swagger.json",
   "homepage": "youneedabudget.com",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/budgets",
+      "method": "getBudgets",
+      "httpMethod": "get",
+      "tag": "Budgets",
+      "description": "List budgets",
+      "parameters": [
+        {
+          "name": "include_accounts",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to include the list of budget accounts"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/budgets/{budget_id}",
+      "method": "getBudgetById",
+      "httpMethod": "get",
+      "tag": "Budgets",
+      "description": "Single budget",
+      "parameters": [
+        {
+          "name": "budget_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        },
+        {
+          "name": "last_knowledge_of_server",
+          "schema": "integer",
+          "required": false,
+          "description": "The starting server knowledge.  If provided, only entities that have changed since `last_knowledge_of_server` will be included."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/budgets/{budget_id}/accounts",
+      "method": "getAccounts",
+      "httpMethod": "get",
+      "tag": "Accounts",
+      "description": "Account list",
+      "parameters": [
+        {
+          "name": "budget_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        },
+        {
+          "name": "last_knowledge_of_server",
+          "schema": "integer",
+          "required": false,
+          "description": "The starting server knowledge.  If provided, only entities that have changed since `last_knowledge_of_server` will be included."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/budgets/{budget_id}/accounts",
+      "method": "createAccount",
+      "httpMethod": "post",
+      "tag": "Accounts",
+      "description": "Create a new account",
+      "parameters": [
+        {
+          "name": "budget_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the budget (\"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)"
+        },
+        {
+          "name": "account",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/budgets/{budget_id}/accounts/{account_id}",
+      "method": "getAccountById",
+      "httpMethod": "get",
+      "tag": "Accounts",
+      "description": "Single account",
+      "parameters": [
+        {
+          "name": "budget_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        },
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the account"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/budgets/{budget_id}/accounts/{account_id}/transactions",
+      "method": "getTransactionsByAccount",
+      "httpMethod": "get",
+      "tag": "Transactions",
+      "description": "List account transactions",
+      "parameters": [
+        {
+          "name": "budget_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        },
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the account"
+        },
+        {
+          "name": "since_date",
+          "schema": "string",
+          "required": false,
+          "description": "If specified, only transactions on or after this date will be included.  The date should be ISO formatted (e.g. 2016-12-30)."
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "If specified, only transactions of the specified type will be included. \"uncategorized\" and \"unapproved\" are currently supported."
+        },
+        {
+          "name": "last_knowledge_of_server",
+          "schema": "integer",
+          "required": false,
+          "description": "The starting server knowledge.  If provided, only entities that have changed since `last_knowledge_of_server` will be included."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/budgets/{budget_id}/categories",
+      "method": "getCategories",
+      "httpMethod": "get",
+      "tag": "Categories",
+      "description": "List categories",
+      "parameters": [
+        {
+          "name": "budget_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        },
+        {
+          "name": "last_knowledge_of_server",
+          "schema": "integer",
+          "required": false,
+          "description": "The starting server knowledge.  If provided, only entities that have changed since `last_knowledge_of_server` will be included."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/budgets/{budget_id}/categories/{category_id}",
+      "method": "getCategoryById",
+      "httpMethod": "get",
+      "tag": "Categories",
+      "description": "Single category",
+      "parameters": [
+        {
+          "name": "budget_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        },
+        {
+          "name": "category_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the category"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/budgets/{budget_id}/categories/{category_id}/transactions",
+      "method": "getTransactionsByCategory",
+      "httpMethod": "get",
+      "tag": "Transactions",
+      "description": "List category transactions",
+      "parameters": [
+        {
+          "name": "budget_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        },
+        {
+          "name": "category_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the category"
+        },
+        {
+          "name": "since_date",
+          "schema": "string",
+          "required": false,
+          "description": "If specified, only transactions on or after this date will be included.  The date should be ISO formatted (e.g. 2016-12-30)."
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "If specified, only transactions of the specified type will be included. \"uncategorized\" and \"unapproved\" are currently supported."
+        },
+        {
+          "name": "last_knowledge_of_server",
+          "schema": "integer",
+          "required": false,
+          "description": "The starting server knowledge.  If provided, only entities that have changed since `last_knowledge_of_server` will be included."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/budgets/{budget_id}/months",
+      "method": "getBudgetMonths",
+      "httpMethod": "get",
+      "tag": "Months",
+      "description": "List budget months",
+      "parameters": [
+        {
+          "name": "budget_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        },
+        {
+          "name": "last_knowledge_of_server",
+          "schema": "integer",
+          "required": false,
+          "description": "The starting server knowledge.  If provided, only entities that have changed since `last_knowledge_of_server` will be included."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/budgets/{budget_id}/months/{month}",
+      "method": "getBudgetMonth",
+      "httpMethod": "get",
+      "tag": "Months",
+      "description": "Single budget month",
+      "parameters": [
+        {
+          "name": "budget_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        },
+        {
+          "name": "month",
+          "schema": "string",
+          "required": true,
+          "description": "The budget month in ISO format (e.g. 2016-12-01) (\"current\" can also be used to specify the current calendar month (UTC))"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/budgets/{budget_id}/months/{month}/categories/{category_id}",
+      "method": "getMonthCategoryById",
+      "httpMethod": "get",
+      "tag": "Categories",
+      "description": "Single category for a specific budget month",
+      "parameters": [
+        {
+          "name": "budget_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        },
+        {
+          "name": "month",
+          "schema": "string",
+          "required": true,
+          "description": "The budget month in ISO format (e.g. 2016-12-01) (\"current\" can also be used to specify the current calendar month (UTC))"
+        },
+        {
+          "name": "category_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the category"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/budgets/{budget_id}/months/{month}/categories/{category_id}",
+      "method": "updateMonthCategory",
+      "httpMethod": "patch",
+      "tag": "Categories",
+      "description": "Update a category for a specific month",
+      "parameters": [
+        {
+          "name": "budget_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        },
+        {
+          "name": "month",
+          "schema": "string",
+          "required": true,
+          "description": "The budget month in ISO format (e.g. 2016-12-01) (\"current\" can also be used to specify the current calendar month (UTC))"
+        },
+        {
+          "name": "category_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the category"
+        },
+        {
+          "name": "category",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/budgets/{budget_id}/payee_locations",
+      "method": "getPayeeLocations",
+      "httpMethod": "get",
+      "tag": "Payee Locations",
+      "description": "List payee locations",
+      "parameters": [
+        {
+          "name": "budget_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/budgets/{budget_id}/payee_locations/{payee_location_id}",
+      "method": "getPayeeLocationById",
+      "httpMethod": "get",
+      "tag": "Payee Locations",
+      "description": "Single payee location",
+      "parameters": [
+        {
+          "name": "budget_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        },
+        {
+          "name": "payee_location_id",
+          "schema": "string",
+          "required": true,
+          "description": "id of payee location"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/budgets/{budget_id}/payees",
+      "method": "getPayees",
+      "httpMethod": "get",
+      "tag": "Payees",
+      "description": "List payees",
+      "parameters": [
+        {
+          "name": "budget_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        },
+        {
+          "name": "last_knowledge_of_server",
+          "schema": "integer",
+          "required": false,
+          "description": "The starting server knowledge.  If provided, only entities that have changed since `last_knowledge_of_server` will be included."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/budgets/{budget_id}/payees/{payee_id}",
+      "method": "getPayeeById",
+      "httpMethod": "get",
+      "tag": "Payees",
+      "description": "Single payee",
+      "parameters": [
+        {
+          "name": "budget_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        },
+        {
+          "name": "payee_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the payee"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/budgets/{budget_id}/payees/{payee_id}/payee_locations",
+      "method": "getPayeeLocationsByPayee",
+      "httpMethod": "get",
+      "tag": "Payee Locations",
+      "description": "List locations for a payee",
+      "parameters": [
+        {
+          "name": "budget_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        },
+        {
+          "name": "payee_id",
+          "schema": "string",
+          "required": true,
+          "description": "id of payee"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/budgets/{budget_id}/payees/{payee_id}/transactions",
+      "method": "getTransactionsByPayee",
+      "httpMethod": "get",
+      "tag": "Transactions",
+      "description": "List payee transactions",
+      "parameters": [
+        {
+          "name": "budget_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        },
+        {
+          "name": "payee_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the payee"
+        },
+        {
+          "name": "since_date",
+          "schema": "string",
+          "required": false,
+          "description": "If specified, only transactions on or after this date will be included.  The date should be ISO formatted (e.g. 2016-12-30)."
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "If specified, only transactions of the specified type will be included. \"uncategorized\" and \"unapproved\" are currently supported."
+        },
+        {
+          "name": "last_knowledge_of_server",
+          "schema": "integer",
+          "required": false,
+          "description": "The starting server knowledge.  If provided, only entities that have changed since `last_knowledge_of_server` will be included."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/budgets/{budget_id}/scheduled_transactions",
+      "method": "getScheduledTransactions",
+      "httpMethod": "get",
+      "tag": "Scheduled Transactions",
+      "description": "List scheduled transactions",
+      "parameters": [
+        {
+          "name": "budget_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        },
+        {
+          "name": "last_knowledge_of_server",
+          "schema": "integer",
+          "required": false,
+          "description": "The starting server knowledge.  If provided, only entities that have changed since `last_knowledge_of_server` will be included."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/budgets/{budget_id}/scheduled_transactions/{scheduled_transaction_id}",
+      "method": "getScheduledTransactionById",
+      "httpMethod": "get",
+      "tag": "Scheduled Transactions",
+      "description": "Single scheduled transaction",
+      "parameters": [
+        {
+          "name": "budget_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        },
+        {
+          "name": "scheduled_transaction_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the scheduled transaction"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/budgets/{budget_id}/settings",
+      "method": "getBudgetSettingsById",
+      "httpMethod": "get",
+      "tag": "Budgets",
+      "description": "Budget Settings",
+      "parameters": [
+        {
+          "name": "budget_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/budgets/{budget_id}/transactions",
+      "method": "getTransactions",
+      "httpMethod": "get",
+      "tag": "Transactions",
+      "description": "List transactions",
+      "parameters": [
+        {
+          "name": "budget_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        },
+        {
+          "name": "since_date",
+          "schema": "string",
+          "required": false,
+          "description": "If specified, only transactions on or after this date will be included.  The date should be ISO formatted (e.g. 2016-12-30)."
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "If specified, only transactions of the specified type will be included. \"uncategorized\" and \"unapproved\" are currently supported."
+        },
+        {
+          "name": "last_knowledge_of_server",
+          "schema": "integer",
+          "required": false,
+          "description": "The starting server knowledge.  If provided, only entities that have changed since `last_knowledge_of_server` will be included."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/budgets/{budget_id}/transactions",
+      "method": "updateTransactions",
+      "httpMethod": "patch",
+      "tag": "Transactions",
+      "description": "Update multiple transactions",
+      "parameters": [
+        {
+          "name": "budget_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        },
+        {
+          "name": "transactions",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "209",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/budgets/{budget_id}/transactions",
+      "method": "createTransaction",
+      "httpMethod": "post",
+      "tag": "Transactions",
+      "description": "Create a single transaction or multiple transactions",
+      "parameters": [
+        {
+          "name": "budget_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        },
+        {
+          "name": "transaction",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "transactions",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/budgets/{budget_id}/transactions/bulk",
+      "method": "bulkCreateTransactions",
+      "httpMethod": "post",
+      "tag": "Deprecated",
+      "description": "Bulk create transactions",
+      "parameters": [
+        {
+          "name": "budget_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        },
+        {
+          "name": "transactions",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/budgets/{budget_id}/transactions/import",
+      "method": "importTransactions",
+      "httpMethod": "post",
+      "tag": "Transactions",
+      "description": "Import transactions",
+      "parameters": [
+        {
+          "name": "budget_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/budgets/{budget_id}/transactions/{transaction_id}",
+      "method": "deleteTransaction",
+      "httpMethod": "delete",
+      "tag": "Transactions",
+      "description": "Deletes an existing transaction",
+      "parameters": [
+        {
+          "name": "budget_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        },
+        {
+          "name": "transaction_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the transaction"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/budgets/{budget_id}/transactions/{transaction_id}",
+      "method": "getTransactionById",
+      "httpMethod": "get",
+      "tag": "Transactions",
+      "description": "Single transaction",
+      "parameters": [
+        {
+          "name": "budget_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        },
+        {
+          "name": "transaction_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the transaction"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/budgets/{budget_id}/transactions/{transaction_id}",
+      "method": "updateTransaction",
+      "httpMethod": "put",
+      "tag": "Transactions",
+      "description": "Updates an existing transaction",
+      "parameters": [
+        {
+          "name": "budget_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        },
+        {
+          "name": "transaction_id",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the transaction"
+        },
+        {
+          "name": "transaction",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/user",
+      "method": "getUser",
+      "httpMethod": "get",
+      "tag": "User",
+      "description": "User info",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.ynab.com/v1",
   "apiDescription": "Our API uses a REST based design, leverages the JSON data format, and relies upon HTTPS for transport. We respond with meaningful HTTP response codes and if an error occurs, we include error details in the response body.  API Documentation is at https://api.ynab.com",
   "apiTitle": "YNAB API Endpoints",

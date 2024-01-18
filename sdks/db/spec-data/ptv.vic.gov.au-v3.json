@@ -3,6 +3,1722 @@
   "openApiRaw": "http://timetableapi.ptv.vic.gov.au/swagger/docs/v3",
   "homepage": "ptv.vic.gov.au",
   "apiVersion": "v3",
+  "methods": [
+    {
+      "url": "/v3/departures/route_type/{route_type}/stop/{stop_id}",
+      "method": "departuresGetForStop",
+      "httpMethod": "get",
+      "tag": "Departures",
+      "description": "View departures for all routes from a stop",
+      "parameters": [
+        {
+          "name": "route_type",
+          "schema": "integer",
+          "required": true,
+          "description": "Number identifying transport mode; values returned via RouteTypes API"
+        },
+        {
+          "name": "stop_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Identifier of stop; values returned by Stops API"
+        },
+        {
+          "name": "platform_numbers",
+          "schema": "array",
+          "required": false,
+          "description": "Filter by platform number at stop"
+        },
+        {
+          "name": "direction_id",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by identifier of direction of travel; values returned by Directions API - /v3/directions/route/{route_id}"
+        },
+        {
+          "name": "gtfs",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates that stop_id parameter will accept \"GTFS stop_id\" data"
+        },
+        {
+          "name": "date_utc",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by the date and time of the request (ISO 8601 UTC format) (default = current date and time)"
+        },
+        {
+          "name": "max_results",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum number of results returned"
+        },
+        {
+          "name": "include_cancelled",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates if cancelled services (if they exist) are returned (default = false) - metropolitan train only"
+        },
+        {
+          "name": "look_backwards",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates if filtering runs (and their departures) to those that arrive at destination before date_utc (default = false). Requires max_results &gt; 0."
+        },
+        {
+          "name": "expand",
+          "schema": "array",
+          "required": false,
+          "description": "List of objects to be returned in full (i.e. expanded) - options include: All, Stop, Route, Run, Direction, Disruption, VehiclePosition, VehicleDescriptor or None.\r\n            Run must be expanded to receive VehiclePosition and VehicleDescriptor information."
+        },
+        {
+          "name": "include_geopath",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates if the route geopath should be returned"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": "Please ignore"
+        },
+        {
+          "name": "devid",
+          "schema": "string",
+          "required": false,
+          "description": "Your developer id"
+        },
+        {
+          "name": "signature",
+          "schema": "string",
+          "required": false,
+          "description": "Authentication signature for request"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "An error response"
+        }
+      ]
+    },
+    {
+      "url": "/v3/departures/route_type/{route_type}/stop/{stop_id}/route/{route_id}",
+      "method": "departuresGetForStopAndRoute",
+      "httpMethod": "get",
+      "tag": "Departures",
+      "description": "View departures for a specific route from a stop",
+      "parameters": [
+        {
+          "name": "route_type",
+          "schema": "integer",
+          "required": true,
+          "description": "Number identifying transport mode; values returned via RouteTypes API"
+        },
+        {
+          "name": "stop_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Identifier of stop; values returned by Stops API"
+        },
+        {
+          "name": "route_id",
+          "schema": "string",
+          "required": true,
+          "description": "Identifier of route; values returned by Routes API - v3/routes"
+        },
+        {
+          "name": "direction_id",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by identifier of direction of travel; values returned by Directions API - /v3/directions/route/{route_id}"
+        },
+        {
+          "name": "gtfs",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates that stop_id parameter will accept \"GTFS stop_id\" data"
+        },
+        {
+          "name": "date_utc",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by the date and time of the request (ISO 8601 UTC format) (default = current date and time)"
+        },
+        {
+          "name": "max_results",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum number of results returned"
+        },
+        {
+          "name": "include_cancelled",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates if cancelled services (if they exist) are returned (default = false) - metropolitan train only"
+        },
+        {
+          "name": "look_backwards",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates if filtering runs (and their departures) to those that arrive at destination before date_utc (default = false). Requires max_results &gt; 0."
+        },
+        {
+          "name": "expand",
+          "schema": "array",
+          "required": false,
+          "description": "List of objects to be returned in full (i.e. expanded) - options include: All, Stop, Route, Run, Direction, Disruption, VehiclePosition, VehicleDescriptor or None.\r\n            Run must be expanded to receive VehiclePosition and VehicleDescriptor information."
+        },
+        {
+          "name": "include_geopath",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates if the route geopath should be returned"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": "Please ignore"
+        },
+        {
+          "name": "devid",
+          "schema": "string",
+          "required": false,
+          "description": "Your developer id"
+        },
+        {
+          "name": "signature",
+          "schema": "string",
+          "required": false,
+          "description": "Authentication signature for request"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "An error response"
+        }
+      ]
+    },
+    {
+      "url": "/v3/directions/route/{route_id}",
+      "method": "directionsForRoute",
+      "httpMethod": "get",
+      "tag": "Directions",
+      "description": "View directions that a route travels in",
+      "parameters": [
+        {
+          "name": "route_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Identifier of route; values returned by Routes API - v3/routes"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": "Please ignore"
+        },
+        {
+          "name": "devid",
+          "schema": "string",
+          "required": false,
+          "description": "Your developer id"
+        },
+        {
+          "name": "signature",
+          "schema": "string",
+          "required": false,
+          "description": "Authentication signature for request"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "An error response"
+        }
+      ]
+    },
+    {
+      "url": "/v3/directions/{direction_id}",
+      "method": "directionsForDirection",
+      "httpMethod": "get",
+      "tag": "Directions",
+      "description": "View all routes for a direction of travel",
+      "parameters": [
+        {
+          "name": "direction_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Identifier of direction of travel; values returned by Directions API - /v3/directions/route/{route_id}"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": "Please ignore"
+        },
+        {
+          "name": "devid",
+          "schema": "string",
+          "required": false,
+          "description": "Your developer id"
+        },
+        {
+          "name": "signature",
+          "schema": "string",
+          "required": false,
+          "description": "Authentication signature for request"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "An error response"
+        }
+      ]
+    },
+    {
+      "url": "/v3/directions/{direction_id}/route_type/{route_type}",
+      "method": "directionsForDirectionAndType",
+      "httpMethod": "get",
+      "tag": "Directions",
+      "description": "View all routes of a particular type for a direction of travel",
+      "parameters": [
+        {
+          "name": "direction_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Identifier of direction of travel; values returned by Directions API - /v3/directions/route/{route_id}"
+        },
+        {
+          "name": "route_type",
+          "schema": "integer",
+          "required": true,
+          "description": "Number identifying transport mode; values returned via RouteTypes API"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": "Please ignore"
+        },
+        {
+          "name": "devid",
+          "schema": "string",
+          "required": false,
+          "description": "Your developer id"
+        },
+        {
+          "name": "signature",
+          "schema": "string",
+          "required": false,
+          "description": "Authentication signature for request"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "An error response"
+        }
+      ]
+    },
+    {
+      "url": "/v3/disruptions",
+      "method": "disruptionsGetAllDisruptions",
+      "httpMethod": "get",
+      "tag": "Disruptions",
+      "description": "View all disruptions for all route types",
+      "parameters": [
+        {
+          "name": "route_types",
+          "schema": "array",
+          "required": false,
+          "description": "Filter by route_type; values returned via RouteTypes API"
+        },
+        {
+          "name": "disruption_modes",
+          "schema": "array",
+          "required": false,
+          "description": "Filter by disruption_mode; values returned via v3/disruptions/modes API"
+        },
+        {
+          "name": "disruption_status",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by status of disruption"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": "Please ignore"
+        },
+        {
+          "name": "devid",
+          "schema": "string",
+          "required": false,
+          "description": "Your developer id"
+        },
+        {
+          "name": "signature",
+          "schema": "string",
+          "required": false,
+          "description": "Authentication signature for request"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "An error response"
+        }
+      ]
+    },
+    {
+      "url": "/v3/disruptions/modes",
+      "method": "disruptionsGetDisruptionModes",
+      "httpMethod": "get",
+      "tag": "Disruptions",
+      "description": "Get all disruption modes",
+      "parameters": [
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": "Please ignore"
+        },
+        {
+          "name": "devid",
+          "schema": "string",
+          "required": false,
+          "description": "Your developer id"
+        },
+        {
+          "name": "signature",
+          "schema": "string",
+          "required": false,
+          "description": "Authentication signature for request"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "An error response"
+        }
+      ]
+    },
+    {
+      "url": "/v3/disruptions/route/{route_id}",
+      "method": "disruptionsGetDisruptionsByRoute",
+      "httpMethod": "get",
+      "tag": "Disruptions",
+      "description": "View all disruptions for a particular route",
+      "parameters": [
+        {
+          "name": "route_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Identifier of route; values returned by Routes API - v3/routes"
+        },
+        {
+          "name": "disruption_status",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by status of disruption"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": "Please ignore"
+        },
+        {
+          "name": "devid",
+          "schema": "string",
+          "required": false,
+          "description": "Your developer id"
+        },
+        {
+          "name": "signature",
+          "schema": "string",
+          "required": false,
+          "description": "Authentication signature for request"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "An error response"
+        }
+      ]
+    },
+    {
+      "url": "/v3/disruptions/route/{route_id}/stop/{stop_id}",
+      "method": "disruptionsGetDisruptionsByRouteAndStop",
+      "httpMethod": "get",
+      "tag": "Disruptions",
+      "description": "View all disruptions for a particular route and stop",
+      "parameters": [
+        {
+          "name": "route_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Identifier of route; values returned by Routes API - v3/routes"
+        },
+        {
+          "name": "stop_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Identifier of stop; values returned by Stops API - v3/stops"
+        },
+        {
+          "name": "disruption_status",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by status of disruption"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": "Please ignore"
+        },
+        {
+          "name": "devid",
+          "schema": "string",
+          "required": false,
+          "description": "Your developer id"
+        },
+        {
+          "name": "signature",
+          "schema": "string",
+          "required": false,
+          "description": "Authentication signature for request"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "An error response"
+        }
+      ]
+    },
+    {
+      "url": "/v3/disruptions/stop/{stop_id}",
+      "method": "disruptionsGetDisruptionsByStop",
+      "httpMethod": "get",
+      "tag": "Disruptions",
+      "description": "View all disruptions for a particular stop",
+      "parameters": [
+        {
+          "name": "stop_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Identifier of stop; values returned by Stops API - v3/stops"
+        },
+        {
+          "name": "disruption_status",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by status of disruption"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": "Please ignore"
+        },
+        {
+          "name": "devid",
+          "schema": "string",
+          "required": false,
+          "description": "Your developer id"
+        },
+        {
+          "name": "signature",
+          "schema": "string",
+          "required": false,
+          "description": "Authentication signature for request"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "An error response"
+        }
+      ]
+    },
+    {
+      "url": "/v3/disruptions/{disruption_id}",
+      "method": "disruptionsGetDisruptionById",
+      "httpMethod": "get",
+      "tag": "Disruptions",
+      "description": "View a specific disruption",
+      "parameters": [
+        {
+          "name": "disruption_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Identifier of disruption; values returned by Disruptions API - /v3/disruptions OR /v3/disruptions/route/{route_id}"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": "Please ignore"
+        },
+        {
+          "name": "devid",
+          "schema": "string",
+          "required": false,
+          "description": "Your developer id"
+        },
+        {
+          "name": "signature",
+          "schema": "string",
+          "required": false,
+          "description": "Authentication signature for request"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "An error response"
+        }
+      ]
+    },
+    {
+      "url": "/v3/fare_estimate/min_zone/{minZone}/max_zone/{maxZone}",
+      "method": "fareEstimateGetFareEstimateByZone",
+      "httpMethod": "get",
+      "tag": "FareEstimate",
+      "description": "Estimate a fare by zone",
+      "parameters": [
+        {
+          "name": "minZone",
+          "schema": "integer",
+          "required": true,
+          "description": "Minimum Zone travelled through ie. 1"
+        },
+        {
+          "name": "maxZone",
+          "schema": "integer",
+          "required": true,
+          "description": "Maximum Zone travelled through id. 6"
+        },
+        {
+          "name": "journey_touch_on_utc",
+          "schema": "string",
+          "required": false,
+          "description": "JourneyTouchOnUtc in format yyyy-M-d h:m (e.g 2016-5-31 16:53)."
+        },
+        {
+          "name": "journey_touch_off_utc",
+          "schema": "string",
+          "required": false,
+          "description": "JourneyTouchOffUtc in format yyyy-M-d h:m (e.g 2016-5-31 16:53)."
+        },
+        {
+          "name": "is_journey_in_free_tram_zone",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "travelled_route_types",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": "Please ignore"
+        },
+        {
+          "name": "devid",
+          "schema": "string",
+          "required": false,
+          "description": "Your developer id"
+        },
+        {
+          "name": "signature",
+          "schema": "string",
+          "required": false,
+          "description": "Authentication signature for request"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "An error response"
+        }
+      ]
+    },
+    {
+      "url": "/v3/outlets",
+      "method": "outletsGetAllOutlets",
+      "httpMethod": "get",
+      "tag": "Outlets",
+      "description": "List all ticket outlets",
+      "parameters": [
+        {
+          "name": "max_results",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum number of results returned (default = 30)"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": "Please ignore"
+        },
+        {
+          "name": "devid",
+          "schema": "string",
+          "required": false,
+          "description": "Your developer id"
+        },
+        {
+          "name": "signature",
+          "schema": "string",
+          "required": false,
+          "description": "Authentication signature for request"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "An error response"
+        }
+      ]
+    },
+    {
+      "url": "/v3/outlets/location/{latitude},{longitude}",
+      "method": "outletsGetOutletsByGeolocation",
+      "httpMethod": "get",
+      "tag": "Outlets",
+      "description": "List ticket outlets near a specific location",
+      "parameters": [
+        {
+          "name": "latitude",
+          "schema": "number",
+          "required": true,
+          "description": "Geographic coordinate of latitude"
+        },
+        {
+          "name": "longitude",
+          "schema": "number",
+          "required": true,
+          "description": "Geographic coordinate of longitude"
+        },
+        {
+          "name": "max_distance",
+          "schema": "number",
+          "required": false,
+          "description": "Filter by maximum distance (in metres) from location specified via latitude and longitude parameters (default = 300)"
+        },
+        {
+          "name": "max_results",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum number of results returned (default = 30)"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": "Please ignore"
+        },
+        {
+          "name": "devid",
+          "schema": "string",
+          "required": false,
+          "description": "Your developer id"
+        },
+        {
+          "name": "signature",
+          "schema": "string",
+          "required": false,
+          "description": "Authentication signature for request"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "An error response"
+        }
+      ]
+    },
+    {
+      "url": "/v3/pattern/run/{run_ref}/route_type/{route_type}",
+      "method": "patternsGetPatternByRun",
+      "httpMethod": "get",
+      "tag": "Patterns",
+      "description": "View the stopping pattern for a specific trip/service run",
+      "parameters": [
+        {
+          "name": "run_ref",
+          "schema": "string",
+          "required": true,
+          "description": "The run_ref is the identifier of a run as returned by the departures/* and runs/* endpoints. WARNING, run_id is deprecated. Use run_ref instead."
+        },
+        {
+          "name": "route_type",
+          "schema": "integer",
+          "required": true,
+          "description": "Number identifying transport mode; values returned via RouteTypes API"
+        },
+        {
+          "name": "expand",
+          "schema": "array",
+          "required": true,
+          "description": "List of objects to be returned in full (i.e. expanded) - options include: All, Stop, Route, Run, Direction, Disruption, VehiclePosition, VehicleDescriptor and None. Default is Disruption. Run must be expanded to receive VehiclePosition and VehicleDescriptor information."
+        },
+        {
+          "name": "stop_id",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by stop_id; values returned by Stops API"
+        },
+        {
+          "name": "date_utc",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by the date and time of the request (ISO 8601 UTC format)"
+        },
+        {
+          "name": "include_skipped_stops",
+          "schema": "boolean",
+          "required": false,
+          "description": "Include any skipped stops in a stopping pattern. Defaults to false."
+        },
+        {
+          "name": "include_geopath",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates if geopath data will be returned (default = false)"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": "Please ignore"
+        },
+        {
+          "name": "devid",
+          "schema": "string",
+          "required": false,
+          "description": "Your developer id"
+        },
+        {
+          "name": "signature",
+          "schema": "string",
+          "required": false,
+          "description": "Authentication signature for request"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "An error response"
+        }
+      ]
+    },
+    {
+      "url": "/v3/route_types",
+      "method": "routeTypesGetRouteTypes",
+      "httpMethod": "get",
+      "tag": "RouteTypes",
+      "description": "View all route types and their names",
+      "parameters": [
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": "Please ignore"
+        },
+        {
+          "name": "devid",
+          "schema": "string",
+          "required": false,
+          "description": "Your developer id"
+        },
+        {
+          "name": "signature",
+          "schema": "string",
+          "required": false,
+          "description": "Authentication signature for request"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "An error response"
+        }
+      ]
+    },
+    {
+      "url": "/v3/routes",
+      "method": "routesOneOrMoreRoutes",
+      "httpMethod": "get",
+      "tag": "Routes",
+      "description": "View route names and numbers for all routes",
+      "parameters": [
+        {
+          "name": "route_types",
+          "schema": "array",
+          "required": false,
+          "description": "Filter by route_type; values returned via RouteTypes API"
+        },
+        {
+          "name": "route_name",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by name  of route (accepts partial route name matches)"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": "Please ignore"
+        },
+        {
+          "name": "devid",
+          "schema": "string",
+          "required": false,
+          "description": "Your developer id"
+        },
+        {
+          "name": "signature",
+          "schema": "string",
+          "required": false,
+          "description": "Authentication signature for request"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "An error response"
+        }
+      ]
+    },
+    {
+      "url": "/v3/routes/{route_id}",
+      "method": "routesRouteFromId",
+      "httpMethod": "get",
+      "tag": "Routes",
+      "description": "View route name and number for specific route ID",
+      "parameters": [
+        {
+          "name": "route_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Identifier of route; values returned by Departures, Directions and Disruptions APIs"
+        },
+        {
+          "name": "include_geopath",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates kif geopath data will be returned (default = false)"
+        },
+        {
+          "name": "geopath_utc",
+          "schema": "string",
+          "required": false,
+          "description": "Filter geopaths by date (ISO 8601 UTC format) (default = current date)"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": "Please ignore"
+        },
+        {
+          "name": "devid",
+          "schema": "string",
+          "required": false,
+          "description": "Your developer id"
+        },
+        {
+          "name": "signature",
+          "schema": "string",
+          "required": false,
+          "description": "Authentication signature for request"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "An error response"
+        }
+      ]
+    },
+    {
+      "url": "/v3/runs/route/{route_id}",
+      "method": "runsForRoute",
+      "httpMethod": "get",
+      "tag": "Runs",
+      "description": "View all trip/service runs for a specific route ID",
+      "parameters": [
+        {
+          "name": "route_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Identifier of route; values returned by Routes API - v3/routes."
+        },
+        {
+          "name": "expand",
+          "schema": "array",
+          "required": false,
+          "description": "List of objects to be returned in full (i.e. expanded) - options include: All, VehiclePosition, VehicleDescriptor, or None. Default is None."
+        },
+        {
+          "name": "date_utc",
+          "schema": "string",
+          "required": false,
+          "description": "Date of the request. (optional - defaults to now)"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": "Please ignore"
+        },
+        {
+          "name": "devid",
+          "schema": "string",
+          "required": false,
+          "description": "Your developer id"
+        },
+        {
+          "name": "signature",
+          "schema": "string",
+          "required": false,
+          "description": "Authentication signature for request"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "An error response"
+        }
+      ]
+    },
+    {
+      "url": "/v3/runs/route/{route_id}/route_type/{route_type}",
+      "method": "runsForRouteAndRouteType",
+      "httpMethod": "get",
+      "tag": "Runs",
+      "description": "View all trip/service runs for a specific route ID and route type",
+      "parameters": [
+        {
+          "name": "route_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Identifier of route; values returned by Routes API - v3/routes."
+        },
+        {
+          "name": "route_type",
+          "schema": "integer",
+          "required": true,
+          "description": "Number identifying transport mode; values returned via RouteTypes API"
+        },
+        {
+          "name": "expand",
+          "schema": "array",
+          "required": true,
+          "description": "List of objects to be returned in full (i.e. expanded) - options include: All, VehiclePosition, VehicleDescriptor, or None. Default is All."
+        },
+        {
+          "name": "date_utc",
+          "schema": "string",
+          "required": false,
+          "description": "Date of the request. (optional - defaults to now)"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": "Please ignore"
+        },
+        {
+          "name": "devid",
+          "schema": "string",
+          "required": false,
+          "description": "Your developer id"
+        },
+        {
+          "name": "signature",
+          "schema": "string",
+          "required": false,
+          "description": "Authentication signature for request"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "An error response"
+        }
+      ]
+    },
+    {
+      "url": "/v3/runs/{run_ref}",
+      "method": "runsForRun",
+      "httpMethod": "get",
+      "tag": "Runs",
+      "description": "View all trip/service runs for a specific run_ref",
+      "parameters": [
+        {
+          "name": "run_ref",
+          "schema": "string",
+          "required": true,
+          "description": "The run_ref is the identifier of a run as returned by the departures/* and runs/* endpoints. WARNING, run_id is deprecated. Use run_ref instead."
+        },
+        {
+          "name": "expand",
+          "schema": "array",
+          "required": true,
+          "description": "List of objects to be returned in full (i.e. expanded) - options include: All, VehiclePosition, VehicleDescriptor, or None. Default is None."
+        },
+        {
+          "name": "date_utc",
+          "schema": "string",
+          "required": false,
+          "description": "Date of the request. (optional - defaults to now)"
+        },
+        {
+          "name": "include_geopath",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates if geopath data will be returned (default = false)"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": "Please ignore"
+        },
+        {
+          "name": "devid",
+          "schema": "string",
+          "required": false,
+          "description": "Your developer id"
+        },
+        {
+          "name": "signature",
+          "schema": "string",
+          "required": false,
+          "description": "Authentication signature for request"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "An error response"
+        }
+      ]
+    },
+    {
+      "url": "/v3/runs/{run_ref}/route_type/{route_type}",
+      "method": "runsForRunAndRouteType",
+      "httpMethod": "get",
+      "tag": "Runs",
+      "description": "View the trip/service run for a specific run_ref and route type",
+      "parameters": [
+        {
+          "name": "run_ref",
+          "schema": "string",
+          "required": true,
+          "description": "The run_ref is the identifier of a run as returned by the departures/* and runs/* endpoints. WARNING, run_id is deprecated. Use run_ref instead."
+        },
+        {
+          "name": "route_type",
+          "schema": "integer",
+          "required": true,
+          "description": "Number identifying transport mode; values returned via RouteTypes API"
+        },
+        {
+          "name": "expand",
+          "schema": "array",
+          "required": true,
+          "description": "List of objects to be returned in full (i.e. expanded) - options include: All, VehiclePosition, VehicleDescriptor, or None. Default is None."
+        },
+        {
+          "name": "date_utc",
+          "schema": "string",
+          "required": false,
+          "description": "Date of the request. (optional - defaults to now)"
+        },
+        {
+          "name": "include_geopath",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates if geopath data will be returned (default = false)"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": "Please ignore"
+        },
+        {
+          "name": "devid",
+          "schema": "string",
+          "required": false,
+          "description": "Your developer id"
+        },
+        {
+          "name": "signature",
+          "schema": "string",
+          "required": false,
+          "description": "Authentication signature for request"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "An error response"
+        }
+      ]
+    },
+    {
+      "url": "/v3/search/{search_term}",
+      "method": "searchSearch",
+      "httpMethod": "get",
+      "tag": "Search",
+      "description": "View stops, routes and myki ticket outlets that match the search term",
+      "parameters": [
+        {
+          "name": "search_term",
+          "schema": "string",
+          "required": true,
+          "description": "Search text (note: if search text is numeric and/or less than 3 characters, the API will only return routes)"
+        },
+        {
+          "name": "route_types",
+          "schema": "array",
+          "required": false,
+          "description": "Filter by route_type; values returned via RouteTypes API (note: stops and routes are ordered by route_types specified)"
+        },
+        {
+          "name": "latitude",
+          "schema": "number",
+          "required": false,
+          "description": "Filter by geographic coordinate of latitude"
+        },
+        {
+          "name": "longitude",
+          "schema": "number",
+          "required": false,
+          "description": "Filter by geographic coordinate of longitude"
+        },
+        {
+          "name": "max_distance",
+          "schema": "number",
+          "required": false,
+          "description": "Filter by maximum distance (in metres) from location specified via latitude and longitude parameters"
+        },
+        {
+          "name": "include_addresses",
+          "schema": "boolean",
+          "required": false,
+          "description": "Placeholder for future development; currently unavailable"
+        },
+        {
+          "name": "include_outlets",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates if outlets will be returned in response (default = true)"
+        },
+        {
+          "name": "match_stop_by_suburb",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates whether to find stops by suburbs in the search term (default = true)"
+        },
+        {
+          "name": "match_route_by_suburb",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates whether to find routes by suburbs in the search term (default = true)"
+        },
+        {
+          "name": "match_stop_by_gtfs_stop_id",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates whether to search for stops according to a metlink stop ID (default = false)"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": "Please ignore"
+        },
+        {
+          "name": "devid",
+          "schema": "string",
+          "required": false,
+          "description": "Your developer id"
+        },
+        {
+          "name": "signature",
+          "schema": "string",
+          "required": false,
+          "description": "Authentication signature for request"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "An error response"
+        }
+      ]
+    },
+    {
+      "url": "/v3/stops/location/{latitude},{longitude}",
+      "method": "stopsStopsByGeolocation",
+      "httpMethod": "get",
+      "tag": "Stops",
+      "description": "View all stops near a specific location",
+      "parameters": [
+        {
+          "name": "latitude",
+          "schema": "number",
+          "required": true,
+          "description": "Geographic coordinate of latitude"
+        },
+        {
+          "name": "longitude",
+          "schema": "number",
+          "required": true,
+          "description": "Geographic coordinate of longitude"
+        },
+        {
+          "name": "route_types",
+          "schema": "array",
+          "required": false,
+          "description": "Filter by route_type; values returned via RouteTypes API"
+        },
+        {
+          "name": "max_results",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum number of results returned (default = 30)"
+        },
+        {
+          "name": "max_distance",
+          "schema": "number",
+          "required": false,
+          "description": "Filter by maximum distance (in metres) from location specified via latitude and longitude parameters (default = 300)"
+        },
+        {
+          "name": "stop_disruptions",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates if stop disruption information will be returned (default = false)"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": "Please ignore"
+        },
+        {
+          "name": "devid",
+          "schema": "string",
+          "required": false,
+          "description": "Your developer id"
+        },
+        {
+          "name": "signature",
+          "schema": "string",
+          "required": false,
+          "description": "Authentication signature for request"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "An error response"
+        }
+      ]
+    },
+    {
+      "url": "/v3/stops/route/{route_id}/route_type/{route_type}",
+      "method": "stopsStopsForRoute",
+      "httpMethod": "get",
+      "tag": "Stops",
+      "description": "View all stops on a specific route",
+      "parameters": [
+        {
+          "name": "route_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Identifier of route; values returned by Routes API - v3/routes"
+        },
+        {
+          "name": "route_type",
+          "schema": "integer",
+          "required": true,
+          "description": "Number identifying transport mode; values returned via RouteTypes API"
+        },
+        {
+          "name": "direction_id",
+          "schema": "integer",
+          "required": false,
+          "description": "An optional direction; values returned by Directions API. When this is set, stop sequence information is returned in the response."
+        },
+        {
+          "name": "stop_disruptions",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates if stop disruption information will be returned (default = false)"
+        },
+        {
+          "name": "include_geopath",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates if geopath data will be returned (default = false)"
+        },
+        {
+          "name": "geopath_utc",
+          "schema": "string",
+          "required": false,
+          "description": "Filter geopaths by date (ISO 8601 UTC format) (default = current date)"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": "Please ignore"
+        },
+        {
+          "name": "devid",
+          "schema": "string",
+          "required": false,
+          "description": "Your developer id"
+        },
+        {
+          "name": "signature",
+          "schema": "string",
+          "required": false,
+          "description": "Authentication signature for request"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "An error response"
+        }
+      ]
+    },
+    {
+      "url": "/v3/stops/{stop_id}/route_type/{route_type}",
+      "method": "stopsStopDetails",
+      "httpMethod": "get",
+      "tag": "Stops",
+      "description": "View facilities at a specific stop (Metro and V/Line stations only)",
+      "parameters": [
+        {
+          "name": "stop_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Identifier of stop; values returned by Stops API"
+        },
+        {
+          "name": "route_type",
+          "schema": "integer",
+          "required": true,
+          "description": "Number identifying transport mode; values returned via RouteTypes API"
+        },
+        {
+          "name": "stop_location",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates if stop location information will be returned (default = false)"
+        },
+        {
+          "name": "stop_amenities",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates if stop amenity information will be returned (default = false)"
+        },
+        {
+          "name": "stop_accessibility",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates if stop accessibility information will be returned (default = false)"
+        },
+        {
+          "name": "stop_contact",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates if stop contact information will be returned (default = false)"
+        },
+        {
+          "name": "stop_ticket",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates if stop ticket information will be returned (default = false)"
+        },
+        {
+          "name": "gtfs",
+          "schema": "boolean",
+          "required": false,
+          "description": "Incdicates whether the stop_id is a GTFS ID or not"
+        },
+        {
+          "name": "stop_staffing",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates if stop staffing information will be returned (default = false)"
+        },
+        {
+          "name": "stop_disruptions",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates if stop disruption information will be returned (default = false)"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": "Please ignore"
+        },
+        {
+          "name": "devid",
+          "schema": "string",
+          "required": false,
+          "description": "Your developer id"
+        },
+        {
+          "name": "signature",
+          "schema": "string",
+          "required": false,
+          "description": "Authentication signature for request"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "An error response"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://timetableapi.ptv.vic.gov.au",
   "apiDescription": "The PTV Timetable API provides direct access to Public Transport Victoria’s public transport timetable data.\r\n\r\nThe API returns scheduled timetable, route and stop data for all metropolitan and regional train, tram and bus services in Victoria, including Night Network(Night Train and Night Tram data are included in metropolitan train and tram services data, respectively, whereas Night Bus is a separate route type).\r\n\r\nThe API also returns real-time data for metropolitan train, tram and bus services (where this data is made available to PTV), as well as disruption information, stop facility information, and access to myki ticket outlet data.\r\n\r\nThis Swagger is for Version 3 of the PTV Timetable API. By using this documentation you agree to comply with the licence and terms of service.\r\n\r\nTrain timetable data is updated daily, while the remaining data is updated weekly, taking into account any planned timetable changes (for example, due to holidays or planned disruptions). The PTV timetable API is the same API used by PTV for its apps. To access the most up to date data PTV has (including real-time data) you must use the API dynamically.\r\n\r\nYou can access the PTV Timetable API through a HTTP or HTTPS interface, as follows:\r\n\r\n    base URL / version number / API name / query string\r\nThe base URL is either:\r\n  *  http://timetableapi.ptv.vic.gov.au\r\nor\r\n  *  https://timetableapi.ptv.vic.gov.au\r\n\r\nThe Swagger JSON file is available at http://timetableapi.ptv.vic.gov.au/swagger/docs/v3\r\n\r\nFrequently asked questions are available on the PTV website at http://ptv.vic.gov.au/apifaq\r\n\r\nLinks to the following information are also provided on the PTV website at http://ptv.vic.gov.au/ptv-timetable-api/\r\n* How to register for an API key and calculate a signature\r\n* PTV Timetable API V2 to V3 Migration Guide\r\n* Documentation for Version 2 of the PTV Timetable API\r\n* PTV Timetable API Data Quality Statement\r\n\r\nAll information about how to use the API is in this documentation. PTV cannot provide technical support for the API.\r\n\r\nCredits: This page has been based on Steve Bennett's http://opentransportdata.org/, used with permission.\r\n",
   "apiTitle": "PTV Timetable API - Version 3",

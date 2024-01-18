@@ -4,6 +4,107 @@
   "homepage": "circl.lu",
   "serviceName": "hashlookup",
   "apiVersion": "1.2",
+  "methods": [
+    {
+      "url": "/bulk/md5",
+      "method": "postBulkmd5",
+      "httpMethod": "post",
+      "tag": "default",
+      "description": "Bulk search of MD5 hashes in a JSON array with the key 'hashes'.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/bulk/sha1",
+      "method": "postBulksha1",
+      "httpMethod": "post",
+      "tag": "default",
+      "description": "Bulk search of SHA1 hashes in a JSON array with the 'hashes'.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/children/{sha1}/{count}/{cursor}",
+      "method": "getChildren",
+      "httpMethod": "get",
+      "tag": "default",
+      "description": "Return children from a given SHA1.  A number of element to return and an offset must be given. If not set it will be the 100 first elements. A cursor must be given to paginate over. The starting cursor is 0.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/info",
+      "method": "getInfo",
+      "httpMethod": "get",
+      "tag": "default",
+      "description": "Info about the hashlookup database",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/lookup/md5/{md5}",
+      "method": "getLookupMd5",
+      "httpMethod": "get",
+      "tag": "default",
+      "description": "Lookup MD5.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/lookup/sha1/{sha1}",
+      "method": "getLookupSha1",
+      "httpMethod": "get",
+      "tag": "default",
+      "description": "Lookup SHA-1.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/lookup/sha256/{sha256}",
+      "method": "getLookupSha256",
+      "httpMethod": "get",
+      "tag": "default",
+      "description": "Lookup SHA-256.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/parents/{sha1}/{count}/{cursor}",
+      "method": "getParents",
+      "httpMethod": "get",
+      "tag": "default",
+      "description": "Return parents from a given SHA1. A number of element to return and an offset must be given. If not set it will be the 100 first elements. A cursor must be given to paginate over. The starting cursor is 0.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/session/create/{name}",
+      "method": "getSessionCreate",
+      "httpMethod": "get",
+      "tag": "default",
+      "description": "Create a session key to keep search context. The session is attached to a name. After the session is created, the header `hashlookup_session` can be set to the session name.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/session/get/{name}",
+      "method": "getSessionMatches",
+      "httpMethod": "get",
+      "tag": "default",
+      "description": "Return set of matching and non-matching hashes from a session.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/stats/top",
+      "method": "getStattop",
+      "httpMethod": "get",
+      "tag": "default",
+      "description": "Return the top 100 of most queried values.",
+      "parameters": [],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "/",
   "apiDescription": "![](https://www.circl.lu/assets/images/circl-logo.png)\n[CIRCL hash lookup](https://hashlookup.circl.lu/) is a public API to lookup hash values against known database of files. For more details about all the datasets included [visit the website of the project](https://www.circl.lu/services/hashlookup/). The API is accessible via HTTP ReST API and the API is also [described as an OpenAPI](https://hashlookup.circl.lu/swagger.json). A [documentation is available with](https://www.circl.lu/services/hashlookup/) with sample queries and software using hashlookup. An offline version as Bloom filter is also [available](https://circl.lu/services/hashlookup/#how-to-quickly-check-a-set-of-files-in-a-local-directory). The API can be tested live in the interface below.",
   "apiTitle": "hashlookup CIRCL API",

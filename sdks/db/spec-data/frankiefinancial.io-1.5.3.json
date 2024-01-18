@@ -3,6 +3,4195 @@
   "openApiRaw": "https://app.swaggerhub.com/apiproxy/registry/FrankieFinancial/kycutility/1.5.3",
   "homepage": "frankiefinancial.io",
   "apiVersion": "1.5.3",
+  "methods": [
+    {
+      "url": "/business/international/profile",
+      "method": "internationalBusinessProfile",
+      "httpMethod": "post",
+      "tag": "Business",
+      "description": "Retrieve a business profile from any country (AUS included).",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "company_code",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This wraps the search response details from Kyckr\n"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/business/international/search",
+      "method": "internationalBusinessSearch",
+      "httpMethod": "post",
+      "tag": "Business",
+      "description": "Search for a business from any country (AUS included).",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "organisation_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "organisation_number",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This wraps the search response details from Kyckr\n"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/business/ownership/query",
+      "method": "businessOwnershipQuery",
+      "httpMethod": "post",
+      "tag": "Business",
+      "description": "Create Business Entity and Query UBO (AUS Only)",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "checkType",
+          "schema": "array",
+          "required": false,
+          "description": "When creating a new check, we need to define the checks we wish to run. If this parameter is not supplied then the check will be based on a configured check type for each entity category.\n  \nThe checkType is make up of a comma separated list of the types of check we wish to run.\n\nThe order is important, and must be of the form:\n  - Entity Check (if you're running this). Choose one from the available options\n  - ID Check (If you want this)\n  - PEP Checks (again if you want this, choose one of the options)\n\nEntity Checks - One of:\n  - \"one_plus\": Checks name, address and DoB against a minimum of 1 data source. (also known as a 1+1)\n  - \"two_plus\": Checks name, address and DoB against a minimum of 2 independent data sources (also known as a 2+2)\n\nID Checks - One of:\n  - \"id\": Checks all of the identity documents, but not necessarily the entity itself independently. Use this in conjunction with a one_plus or two_plus for more.\n  \nFraud Checks - One or more  of:\n  - \"fraudlist\": Checks to see if the identity appears on any known fraud lists. Should be run after KYC/ID checks have passed.\n  - \"fraudid\": Checks external ID services to see if details appear in fraud detection services (e.g. EmailAge or FraudNet)\n  \nPEP Checks - One of:\n  - \"pep\": Will only run PEP/Sanctions checks (no identity verification)\n  - \"pep_media\": Will run PEP/Sanctions checks, as well as watchlist and adverse media checks. (no identity verification)\n  \n  * NOTE: These checks will ONLY run if either the KYC/ID checks have been run prior, or it is the only check requested.\n  \nPre-defined combinations:\n  - \"full\": equivalent to \"two_plus,id,pep_media\" or \"pep_media\" if the target is an organisation.\n  - \"default\": Currently defined as \"two_plus,id\" or \"pep\" if the target is an organisation.\n\nCustom:\n  - By arrangement with Frankie you can define your own KYC check type.\n  \n  This will allow you to set the minimum number of matches for:\n    - name \n    - date of birth\n    - address\n    - government id\n  \n  This allows for alternatives to the \"standard\" two_plus or one_plus (note, these can be overridden too).\n  \nProfile:\n  - \"profile\": By arrangement with Frankie you can have a \"profile\" check type that applies checks according to a profile that you assign to the entity from a predefined set of profiles.\n  \n  The profile to use will be taken from the entity.entityProfile field if set, or be run through a set of configurable rules to determine which one to use.\n  \n  Profiles act a little like the Pre-defined combinations above in that they can map to a defined list. But they offer a lot more besides, including rules for determining default settings, inbuild data aging and other configurable features.\n  They also allow for a new result set top be returned that provides a more detailed and useful breakdown of the check/verification process.\n  \n  Entity Profiles are the future of checks with Frankie Financial.\n"
+        },
+        {
+          "name": "entityCategories",
+          "schema": "array",
+          "required": false,
+          "description": "A comma separated list that specifies the categories of entities associated with the target organisation that will be checked.\n\n  - organisation - Just the organisation itself.\n  - ubos - All ultimate beneficial owners.\n  - pseudo_ubos - Use an alterntive category when an organisation has no actual UBOs. The actual category to use is defined via configuration, default is no alterntive category.\n  - direct_owners - All direct owners of the company, both organisations and individuals, may include UBOs for for simple ownership.\n  - officers - All officers of the company\n  - officers_directors - All directors of the company\n  - officers_other - All non-director officers of the company\n  - all - All direct and indirect owners, both organisations and individuals (including UBOs), and officers of all organisations.\n"
+        },
+        {
+          "name": "resultLevel",
+          "schema": "string",
+          "required": false,
+          "description": "The result level allows you to specify the level of detail returned for the entity check. You can choose summary or full.\n"
+        },
+        {
+          "name": "validation",
+          "schema": "string",
+          "required": false,
+          "description": "Should a validation check be run before the ownership query. The default is specified via configuration. The validation checks to see if the provided organisation is suitable for an ownership query by looking for the ACN in public data sources. \nOptions are:\n- \"on\": Validate only when ACN is not provided. This is the typical default.\n- \"acn\": Validate even if ACN is provided.\n- \"only\": Like \"acn\" but only do validation query, don't proceed with ownership query. This option cannot be set as the default via configuration.\n- \"off\": Never validate. The Ownership query will then fail if an ACN is not provided.\n"
+        },
+        {
+          "name": "generateReport",
+          "schema": "string",
+          "required": false,
+          "description": "The type of human readable report, if any, to generate based on the ownership query results.\n"
+        },
+        {
+          "name": "includeHistorical",
+          "schema": "boolean",
+          "required": false,
+          "description": "If set to true, historical ownership data will be requested.\n"
+        },
+        {
+          "name": "onlyProfile",
+          "schema": "boolean",
+          "required": false,
+          "description": "If set to true, a full UBO report will not be requested.\n"
+        },
+        {
+          "name": "organisation",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The result of an /business/ownership/query call retrieved via GET /retrieve/response/{requestId} after you receive a notification that the result is ready.\n"
+        },
+        {
+          "statusCode": "202",
+          "description": "The following fields represent the data you need in order to retrieve the results of the requested function. See the details of the notification API for more.\n"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/business/reports",
+      "method": "runBusinessReports",
+      "httpMethod": "post",
+      "tag": "Business",
+      "description": "Run Report(s) against a new or existing organisation entity (AUS Only).",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "reportTypes",
+          "schema": "string",
+          "required": true,
+          "description": "Define the report(s) you wish to run.\n\nYou can request more than one as a comma separated list. \nDuplicates will be ignored.\n\nNote: These reports are different to the business details and UBO queries and are meant to provide deeper detail and background on a business or organisation.\n  \nCurrent valid report types are:\n  - creditScore\n  - creditReport\n"
+        },
+        {
+          "name": "addresses",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "dateOfBirth",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "entityId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "entityProfile",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "entityType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "extraData",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "flags",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "gender",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "identityDocs",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "organisationData",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Results of the entity create or update along with the results of the requested reports.\n"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/business/{entityId}/verify",
+      "method": "checkOrganisation",
+      "httpMethod": "post",
+      "tag": "Business",
+      "description": "Run KYC/AML Checks on Organisation and/or Associated Individuals.",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "entityId",
+          "schema": "string",
+          "required": true,
+          "description": "The entityId returned previously from an earlier call to /check or /entity"
+        },
+        {
+          "name": "checkType",
+          "schema": "array",
+          "required": false,
+          "description": "When creating a new check, we need to define the checks we wish to run. If this parameter is not supplied then the check will be based on a configured check type for each entity category.\n  \nThe checkType is make up of a comma separated list of the types of check we wish to run.\n\nThe order is important, and must be of the form:\n  - Entity Check (if you're running this). Choose one from the available options\n  - ID Check (If you want this)\n  - PEP Checks (again if you want this, choose one of the options)\n\nEntity Checks - One of:\n  - \"one_plus\": Checks name, address and DoB against a minimum of 1 data source. (also known as a 1+1)\n  - \"two_plus\": Checks name, address and DoB against a minimum of 2 independent data sources (also known as a 2+2)\n\nID Checks - One of:\n  - \"id\": Checks all of the identity documents, but not necessarily the entity itself independently. Use this in conjunction with a one_plus or two_plus for more.\n  \nFraud Checks - One or more  of:\n  - \"fraudlist\": Checks to see if the identity appears on any known fraud lists. Should be run after KYC/ID checks have passed.\n  - \"fraudid\": Checks external ID services to see if details appear in fraud detection services (e.g. EmailAge or FraudNet)\n  \nPEP Checks - One of:\n  - \"pep\": Will only run PEP/Sanctions checks (no identity verification)\n  - \"pep_media\": Will run PEP/Sanctions checks, as well as watchlist and adverse media checks. (no identity verification)\n  \n  * NOTE: These checks will ONLY run if either the KYC/ID checks have been run prior, or it is the only check requested.\n  \nPre-defined combinations:\n  - \"full\": equivalent to \"two_plus,id,pep_media\" or \"pep_media\" if the target is an organisation.\n  - \"default\": Currently defined as \"two_plus,id\" or \"pep\" if the target is an organisation.\n\nCustom:\n  - By arrangement with Frankie you can define your own KYC check type.\n  \n  This will allow you to set the minimum number of matches for:\n    - name \n    - date of birth\n    - address\n    - government id\n  \n  This allows for alternatives to the \"standard\" two_plus or one_plus (note, these can be overridden too).\n  \nProfile:\n  - \"profile\": By arrangement with Frankie you can have a \"profile\" check type that applies checks according to a profile that you assign to the entity from a predefined set of profiles.\n  \n  The profile to use will be taken from the entity.entityProfile field if set, or be run through a set of configurable rules to determine which one to use.\n  \n  Profiles act a little like the Pre-defined combinations above in that they can map to a defined list. But they offer a lot more besides, including rules for determining default settings, inbuild data aging and other configurable features.\n  They also allow for a new result set top be returned that provides a more detailed and useful breakdown of the check/verification process.\n  \n  Entity Profiles are the future of checks with Frankie Financial.\n"
+        },
+        {
+          "name": "entityCategories",
+          "schema": "array",
+          "required": false,
+          "description": "A comma separated list that specifies the categories of entities associated with the target organisation that will be checked.\n\n  - organisation - Just the organisation itself.\n  - ubos - All ultimate beneficial owners.\n  - pseudo_ubos - Use an alterntive category when an organisation has no actual UBOs. The actual category to use is defined via configuration, default is no alterntive category.\n  - direct_owners - All direct owners of the company, both organisations and individuals, may include UBOs for for simple ownership.\n  - officers - All officers of the company\n  - officers_directors - All directors of the company\n  - officers_other - All non-director officers of the company\n  - all - All direct and indirect owners, both organisations and individuals (including UBOs), and officers of all organisations.\n"
+        },
+        {
+          "name": "resultLevel",
+          "schema": "string",
+          "required": false,
+          "description": "The result level allows you to specify the level of detail returned for the entity check. You can choose summary or full.\n"
+        },
+        {
+          "name": "generateReport",
+          "schema": "string",
+          "required": false,
+          "description": "The type of human readable report, if any, to generate based on the ownership query results.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": "The following fields represent the data you need in order to retrieve the results of the requested function. See the details of the notification API for more.\n"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/document",
+      "method": "createDocument",
+      "httpMethod": "post",
+      "tag": "Document",
+      "description": "Create New Document.",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "createdFromScan",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "docScan",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "documentId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "documentStatus",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "extraData",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idExpiry",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idIssued",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idNumber",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idSubType",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "manuallyModified",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "region",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Contains the results of a given document upload."
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/document/new/compare",
+      "method": "compareDocument",
+      "httpMethod": "post",
+      "tag": "Document",
+      "description": "Create Document and Compare to Original.",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "X-Frankie-Background",
+          "schema": "integer",
+          "required": false,
+          "description": "If this header parameter is supplied and set to 1, then the request will not wait for the process to finish, and will return a 202 if there are no obvious errors in the input. The request will then run in the background and send a notification back to the customer. See out callback API for details on this.\n\nSee more details here:\n  https://apidocs.frankiefinancial.com/docs/asynchronous-calls-backgrounding-processes\n"
+        },
+        {
+          "name": "compareDocument",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "toDocument",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Contains the results of a given document upload."
+        },
+        {
+          "statusCode": "202",
+          "description": "The following fields represent the data you need in order to retrieve the results of the requested function. See the details of the notification API for more.\n"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/document/new/scan",
+      "method": "createScanDocument",
+      "httpMethod": "post",
+      "tag": "Document",
+      "description": "Create and OCR Scan Document.",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "X-Frankie-Background",
+          "schema": "integer",
+          "required": false,
+          "description": "If this header parameter is supplied and set to 1, then the request will not wait for the process to finish, and will return a 202 if there are no obvious errors in the input. The request will then run in the background and send a notification back to the customer. See out callback API for details on this.\n\nSee more details here:\n  https://apidocs.frankiefinancial.com/docs/asynchronous-calls-backgrounding-processes\n"
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "createdFromScan",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "docScan",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "documentId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "documentStatus",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "extraData",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idExpiry",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idIssued",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idNumber",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idSubType",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "manuallyModified",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "region",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The result of a scan will contain 4 parts\n\n* The requestid - that's always there, and is the same that was passed in in the header.\n\n* The results of the process and the meta data around it, including confidence levels, service used and the like\n\n* extractedDocument - this will be an updated version of the document object passed in for scanning with results of the scan inserted. You can subsequently update this data as needed (say after confirmation with the end-consumer) through the various update functions. \n\n  * Any additional data extracted from the service that does not fit into the standard identity document fields will be placed into the extraData KVPs.\n  \n* extractedEntity - the service will attempt to create the basics of an entity's name, address, DoB, gender from the data returned from the scan. \n  You can then use this entity data to create a new entity for a wider check if needed.\n  \n  * Note if you plan on doing this, make sure you include the extractedDocument reference in the \"new\" entity.\n  \n* EXTRA SPECIAL NOTE: If no useful data was returned in the scan, extractedDocument will be left unchanged, and extractedEntity will be left out\n"
+        },
+        {
+          "statusCode": "202",
+          "description": "The following fields represent the data you need in order to retrieve the results of the requested function. See the details of the notification API for more.\n"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/document/new/utility/process/compare",
+      "method": "createProcessIndustryUtilityDocument",
+      "httpMethod": "post",
+      "tag": "Industry",
+      "description": "Create Document and Run Utility Price Comparison.",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "X-Frankie-Background",
+          "schema": "integer",
+          "required": false,
+          "description": "If this header parameter is supplied and set to 1, then the request will not wait for the process to finish, and will return a 202 if there are no obvious errors in the input. The request will then run in the background and send a notification back to the customer. See out callback API for details on this.\n\nSee more details here:\n  https://apidocs.frankiefinancial.com/docs/asynchronous-calls-backgrounding-processes\n"
+        },
+        {
+          "name": "planLimit",
+          "schema": "integer",
+          "required": false,
+          "description": "The maximum number of plans to return"
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "createdFromScan",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "docScan",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "documentId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "documentStatus",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "extraData",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idExpiry",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idIssued",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idNumber",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idSubType",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "manuallyModified",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "region",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Utility industry comparison process result object. Used to wrap up industry-specific resultsets."
+        },
+        {
+          "statusCode": "202",
+          "description": "The following fields represent the data you need in order to retrieve the results of the requested function. See the details of the notification API for more.\n"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/document/new/verify",
+      "method": "verifyDocument",
+      "httpMethod": "post",
+      "tag": "Document",
+      "description": "Create and Verify Document.",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "X-Frankie-Background",
+          "schema": "integer",
+          "required": false,
+          "description": "If this header parameter is supplied and set to 1, then the request will not wait for the process to finish, and will return a 202 if there are no obvious errors in the input. The request will then run in the background and send a notification back to the customer. See out callback API for details on this.\n\nSee more details here:\n  https://apidocs.frankiefinancial.com/docs/asynchronous-calls-backgrounding-processes\n"
+        },
+        {
+          "name": "document",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "entityData",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Contains the results of a given document upload."
+        },
+        {
+          "statusCode": "202",
+          "description": "The following fields represent the data you need in order to retrieve the results of the requested function. See the details of the notification API for more.\n"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/document/search",
+      "method": "searchDocument",
+      "httpMethod": "post",
+      "tag": "Document",
+      "description": "Search For a Document !! EXPERIMENTAL !!",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "createdFromScan",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "docScan",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "documentId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "documentStatus",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "extraData",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idExpiry",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idIssued",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idNumber",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idSubType",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "manuallyModified",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "region",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Contains the results of a given document search."
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/document/{documentId}",
+      "method": "deleteDocument",
+      "httpMethod": "delete",
+      "tag": "Document",
+      "description": "Delete Document.",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "X-Frankie-Background",
+          "schema": "integer",
+          "required": false,
+          "description": "If this header parameter is supplied and set to 1, then the request will not wait for the process to finish, and will return a 202 if there are no obvious errors in the input. The request will then run in the background and send a notification back to the customer. See out callback API for details on this.\n\nSee more details here:\n  https://apidocs.frankiefinancial.com/docs/asynchronous-calls-backgrounding-processes\n"
+        },
+        {
+          "name": "documentId",
+          "schema": "string",
+          "required": true,
+          "description": "The documentId returned previously from an earlier call to /check or /entity or /document"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "202",
+          "description": "The following fields represent the data you need in order to retrieve the results of the requested function. See the details of the notification API for more.\n"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/document/{documentId}",
+      "method": "queryDocument",
+      "httpMethod": "get",
+      "tag": "Document",
+      "description": "Retrieve Document Details",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "documentId",
+          "schema": "string",
+          "required": true,
+          "description": "The documentId returned previously from an earlier call to /check or /entity or /document"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Contains the results of a given document upload."
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/document/{documentId}",
+      "method": "updateDocument",
+      "httpMethod": "post",
+      "tag": "Document",
+      "description": "Update Existing Document.",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "X-Frankie-Background",
+          "schema": "integer",
+          "required": false,
+          "description": "If this header parameter is supplied and set to 1, then the request will not wait for the process to finish, and will return a 202 if there are no obvious errors in the input. The request will then run in the background and send a notification back to the customer. See out callback API for details on this.\n\nSee more details here:\n  https://apidocs.frankiefinancial.com/docs/asynchronous-calls-backgrounding-processes\n"
+        },
+        {
+          "name": "documentId",
+          "schema": "string",
+          "required": true,
+          "description": "The documentId returned previously from an earlier call to /check or /entity or /document"
+        },
+        {
+          "name": "noInvalidate",
+          "schema": "boolean",
+          "required": false,
+          "description": "Disable check result invalidation for this update request.\n"
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "createdFromScan",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "docScan",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "documentId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "documentStatus",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "extraData",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idExpiry",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idIssued",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idNumber",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idSubType",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "manuallyModified",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "region",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Contains the results of a given document upload."
+        },
+        {
+          "statusCode": "202",
+          "description": "The following fields represent the data you need in order to retrieve the results of the requested function. See the details of the notification API for more.\n"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/document/{documentId}/checks",
+      "method": "queryDocumentChecks",
+      "httpMethod": "get",
+      "tag": "Document",
+      "description": "Retrieve Document Verification Check Details.\n",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "X-Frankie-Background",
+          "schema": "integer",
+          "required": false,
+          "description": "If this header parameter is supplied and set to 1, then the request will not wait for the process to finish, and will return a 202 if there are no obvious errors in the input. The request will then run in the background and send a notification back to the customer. See out callback API for details on this.\n\nSee more details here:\n  https://apidocs.frankiefinancial.com/docs/asynchronous-calls-backgrounding-processes\n"
+        },
+        {
+          "name": "documentId",
+          "schema": "string",
+          "required": true,
+          "description": "The documentId returned previously from an earlier call to /check or /entity or /document"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Contains the results of a given document upload."
+        },
+        {
+          "statusCode": "202",
+          "description": "The following fields represent the data you need in order to retrieve the results of the requested function. See the details of the notification API for more.\n"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/document/{documentId}/compare",
+      "method": "updateCompareDocument",
+      "httpMethod": "post",
+      "tag": "Document",
+      "description": "Update Document and Compare to Original.",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "X-Frankie-Background",
+          "schema": "integer",
+          "required": false,
+          "description": "If this header parameter is supplied and set to 1, then the request will not wait for the process to finish, and will return a 202 if there are no obvious errors in the input. The request will then run in the background and send a notification back to the customer. See out callback API for details on this.\n\nSee more details here:\n  https://apidocs.frankiefinancial.com/docs/asynchronous-calls-backgrounding-processes\n"
+        },
+        {
+          "name": "documentId",
+          "schema": "string",
+          "required": true,
+          "description": "The documentId returned previously from an earlier call to /check or /entity or /document"
+        },
+        {
+          "name": "compareDocument",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "toDocument",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Contains the results of a given document upload."
+        },
+        {
+          "statusCode": "202",
+          "description": "The following fields represent the data you need in order to retrieve the results of the requested function. See the details of the notification API for more.\n"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/document/{documentId}/full",
+      "method": "queryDocumentFull",
+      "httpMethod": "get",
+      "tag": "Document",
+      "description": "Retrieve Document and Scan Data",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "documentId",
+          "schema": "string",
+          "required": true,
+          "description": "The documentId returned previously from an earlier call to /check or /entity or /document"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Contains the results of a given document upload."
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/document/{documentId}/scan",
+      "method": "updateScanDocument",
+      "httpMethod": "post",
+      "tag": "Document",
+      "description": "Update and OCR Scan Document",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "X-Frankie-Background",
+          "schema": "integer",
+          "required": false,
+          "description": "If this header parameter is supplied and set to 1, then the request will not wait for the process to finish, and will return a 202 if there are no obvious errors in the input. The request will then run in the background and send a notification back to the customer. See out callback API for details on this.\n\nSee more details here:\n  https://apidocs.frankiefinancial.com/docs/asynchronous-calls-backgrounding-processes\n"
+        },
+        {
+          "name": "documentId",
+          "schema": "string",
+          "required": true,
+          "description": "The documentId returned previously from an earlier call to /check or /entity or /document"
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "createdFromScan",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "docScan",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "documentId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "documentStatus",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "extraData",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idExpiry",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idIssued",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idNumber",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idSubType",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "manuallyModified",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "region",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The result of a scan will contain 4 parts\n\n* The requestid - that's always there, and is the same that was passed in in the header.\n\n* The results of the process and the meta data around it, including confidence levels, service used and the like\n\n* extractedDocument - this will be an updated version of the document object passed in for scanning with results of the scan inserted. You can subsequently update this data as needed (say after confirmation with the end-consumer) through the various update functions. \n\n  * Any additional data extracted from the service that does not fit into the standard identity document fields will be placed into the extraData KVPs.\n  \n* extractedEntity - the service will attempt to create the basics of an entity's name, address, DoB, gender from the data returned from the scan. \n  You can then use this entity data to create a new entity for a wider check if needed.\n  \n  * Note if you plan on doing this, make sure you include the extractedDocument reference in the \"new\" entity.\n  \n* EXTRA SPECIAL NOTE: If no useful data was returned in the scan, extractedDocument will be left unchanged, and extractedEntity will be left out\n"
+        },
+        {
+          "statusCode": "202",
+          "description": "The following fields represent the data you need in order to retrieve the results of the requested function. See the details of the notification API for more.\n"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/document/{documentId}/utility/process/compare",
+      "method": "updateProcessIndustryUtilityDocument",
+      "httpMethod": "post",
+      "tag": "Industry",
+      "description": "Update Document and Run Utility Price Comparison.",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "X-Frankie-Background",
+          "schema": "integer",
+          "required": false,
+          "description": "If this header parameter is supplied and set to 1, then the request will not wait for the process to finish, and will return a 202 if there are no obvious errors in the input. The request will then run in the background and send a notification back to the customer. See out callback API for details on this.\n\nSee more details here:\n  https://apidocs.frankiefinancial.com/docs/asynchronous-calls-backgrounding-processes\n"
+        },
+        {
+          "name": "documentId",
+          "schema": "string",
+          "required": true,
+          "description": "The documentId returned previously from an earlier call to /check or /entity or /document"
+        },
+        {
+          "name": "planLimit",
+          "schema": "integer",
+          "required": false,
+          "description": "The maximum number of plans to return"
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "createdFromScan",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "docScan",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "documentId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "documentStatus",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "extraData",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idExpiry",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idIssued",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idNumber",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idSubType",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "idType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "manuallyModified",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "region",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Utility industry comparison process result object. Used to wrap up industry-specific resultsets."
+        },
+        {
+          "statusCode": "202",
+          "description": "The following fields represent the data you need in order to retrieve the results of the requested function. See the details of the notification API for more.\n"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/document/{documentId}/utility/process/consent",
+      "method": "updateProcessIndustryUtilityDocumentConsent",
+      "httpMethod": "post",
+      "tag": "Industry",
+      "description": "Provide Explicit Consent to Switch Utility Plans.",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "X-Frankie-Background",
+          "schema": "integer",
+          "required": false,
+          "description": "If this header parameter is supplied and set to 1, then the request will not wait for the process to finish, and will return a 202 if there are no obvious errors in the input. The request will then run in the background and send a notification back to the customer. See out callback API for details on this.\n\nSee more details here:\n  https://apidocs.frankiefinancial.com/docs/asynchronous-calls-backgrounding-processes\n"
+        },
+        {
+          "name": "documentId",
+          "schema": "string",
+          "required": true,
+          "description": "The documentId returned previously from an earlier call to /check or /entity or /document"
+        },
+        {
+          "name": "correlationId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "details",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "planId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Utility industry explicit consent response object. Used to wrap up industry-specific resultsets."
+        },
+        {
+          "statusCode": "202",
+          "description": "The following fields represent the data you need in order to retrieve the results of the requested function. See the details of the notification API for more.\n"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/document/{documentId}/utility/process/switch",
+      "method": "updateProcessIndustryUtilityDocumentSwitch",
+      "httpMethod": "post",
+      "tag": "Industry",
+      "description": "Initiate Switching of Utility Plan.",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "X-Frankie-Background",
+          "schema": "integer",
+          "required": false,
+          "description": "If this header parameter is supplied and set to 1, then the request will not wait for the process to finish, and will return a 202 if there are no obvious errors in the input. The request will then run in the background and send a notification back to the customer. See out callback API for details on this.\n\nSee more details here:\n  https://apidocs.frankiefinancial.com/docs/asynchronous-calls-backgrounding-processes\n"
+        },
+        {
+          "name": "documentId",
+          "schema": "string",
+          "required": true,
+          "description": "The documentId returned previously from an earlier call to /check or /entity or /document"
+        },
+        {
+          "name": "confirmation",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "correlationId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "details",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Utility industry comparison process result object. Used to wrap up industry-specific resultsets."
+        },
+        {
+          "statusCode": "202",
+          "description": "The following fields represent the data you need in order to retrieve the results of the requested function. See the details of the notification API for more.\n"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/document/{documentId}/verify",
+      "method": "updateVerifyDocument",
+      "httpMethod": "post",
+      "tag": "Document",
+      "description": "Update and Verify Document.",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "X-Frankie-Background",
+          "schema": "integer",
+          "required": false,
+          "description": "If this header parameter is supplied and set to 1, then the request will not wait for the process to finish, and will return a 202 if there are no obvious errors in the input. The request will then run in the background and send a notification back to the customer. See out callback API for details on this.\n\nSee more details here:\n  https://apidocs.frankiefinancial.com/docs/asynchronous-calls-backgrounding-processes\n"
+        },
+        {
+          "name": "documentId",
+          "schema": "string",
+          "required": true,
+          "description": "The documentId returned previously from an earlier call to /check or /entity or /document"
+        },
+        {
+          "name": "document",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "entityData",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Contains the results of a given document upload."
+        },
+        {
+          "statusCode": "202",
+          "description": "The following fields represent the data you need in order to retrieve the results of the requested function. See the details of the notification API for more.\n"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/entity",
+      "method": "createEntity",
+      "httpMethod": "post",
+      "tag": "Entity",
+      "description": "Create New Entity.",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "addresses",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "dateOfBirth",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "entityId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "entityProfile",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "entityType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "extraData",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "flags",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "gender",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "identityDocs",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "organisationData",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Contains the results of a given document entity create/update or GET request."
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/entity/new/idvalidate/getToken",
+      "method": "createEntityGetIdvToken",
+      "httpMethod": "post",
+      "tag": "Entity",
+      "description": "Create Entity and Get IDV Token",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "applicantId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "applicationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "entity",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "referrer",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Contains the results of a given document entity create/update and IDV token details."
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/entity/new/verify/pushToMobile",
+      "method": "createCheckEntityPushToMobile",
+      "httpMethod": "post",
+      "tag": "Entity",
+      "description": "Create Entity and Push Self-Verification Link",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "X-Frankie-Background",
+          "schema": "integer",
+          "required": false,
+          "description": "If this header parameter is supplied and set to 1, then the request will not wait for the process to finish, and will return a 202 if there are no obvious errors in the input. The request will then run in the background and send a notification back to the customer. See out callback API for details on this.\n\nSee more details here:\n  https://apidocs.frankiefinancial.com/docs/asynchronous-calls-backgrounding-processes\n"
+        },
+        {
+          "name": "nopush",
+          "schema": "boolean",
+          "required": false,
+          "description": "If set to true, then no SMS/email will be pushed. It will be up to the API caller to manage the delivery of the link.\n"
+        },
+        {
+          "name": "deviceCheckDetails",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "entity",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": "The following fields represent the data you need in order to retrieve the results of the requested function. See the details of the notification API for more.\n"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/entity/new/verify/{checkType}/{resultLevel}",
+      "method": "createCheckEntity",
+      "httpMethod": "post",
+      "tag": "Entity",
+      "description": "Create and Verify Entity",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "X-Frankie-Background",
+          "schema": "integer",
+          "required": false,
+          "description": "If this header parameter is supplied and set to 1, then the request will not wait for the process to finish, and will return a 202 if there are no obvious errors in the input. The request will then run in the background and send a notification back to the customer. See out callback API for details on this.\n\nSee more details here:\n  https://apidocs.frankiefinancial.com/docs/asynchronous-calls-backgrounding-processes\n"
+        },
+        {
+          "name": "checkType",
+          "schema": "string",
+          "required": true,
+          "description": "When creating a new check, you need to define the checks you wish to run.\n  \nThe checkType is make up of a comma separated list of the types of check you wish to run. The order of the requested checks is not important, they will be re-ordered by the service and in some cases, depending on your account configuration, may be skipped.\n\n  The validation that is performed on the requested checks is to:\n  - ensure the check type is known\n  - is suitable for the type of entity (no KYC for organisations)\n  - disallow manual (mKYC) check with any other kind of KYC\n  - disallow mixing the \"profile\" check with any other kind of check.\n\nThe supported check types are:\n\nProfile:\n  - \"profile\": By arrangement with Frankie we will create a \"profile\" check type that applies checks according to a recipe that you assign to the entity from a predefined set of profiles.\n  \n  The profile to use will be taken from the entity.entityProfile field if set, or be run through a set of configurable rules to determine which one to use.\n  \n  Profiles provide a pre-defined combination of individual checkTypes (see the list below). But they offer a lot more besides, including rules for determining default settings, inbuilt data aging and other configurable features.\n  They also allow for a new result set top be returned that provides a more detailed and useful breakdown of the check/verification process.\n  \n  Entity Profiles are a recent feature (since v1.4.0) but are now the default checkType to use with Frankie Financial.\n\n**Individual Check Types**\n\nWhilst we strongly recommend the use of the \"profile\" checktype, it does map of any combination of the types below. If you wish to use these individually, please contact developer support for more details on how to use these effectively.\n\nEntity Checks - One of:\n  - \"one_plus\": Checks name, address and DoB against a minimum of 1 data source. (also known as a 1+1)\n  - \"two_plus\": Checks name, address and DoB against a minimum of 2 independent data sources (also known as a 2+2)\n\nID Checks - One of:\n  - \"id\": Checks all of the identity documents, but not necessarily the entity itself independently. Use this in conjunction with a one_plus or two_plus for more.\n  - \"visa\":\n  \nID Validate - One of:\n  - \"idvalidate\": Checks to see if photo ID has had OCR scanning, ID document validation and photo comparison run against it. Can be used in conjunction with any of the KYC/ID/AML checks.\n  \nManual Check:\n  - \"manual\": (mKYC) Checks user has a sufficient amount of operator verified ID and will then \"pass\" all Entity and ID related checks.\n  \nFraud Checks - One or more of:\n  - \"fraudlist\": Checks to see if the identity appears on any known fraud lists. Should be run after KYC/ID checks have passed.\n  - \"fraudcheck\": Checks external ID services to see if details appear in fraud detection services (e.g. EmailAge or FraudNet)\n  \nPEP Checks - One of:\n  - \"pep\": Will only run PEP/Sanctions checks (no identity verification)\n  - \"pep_media\": Will run PEP/Sanctions checks, as well as watchlist and adverse media checks. (no identity verification)\n  \n  * NOTE: These checks will ONLY run if either the KYC/ID checks have been run prior, or it is the only check requested.\n  \nCustom:\n  - By arrangement with Frankie you can define your own KYC check type.\n  \n  This will allow you to set the minimum number of matches for:\n    - name \n    - date of birth\n    - address\n    - government id\n  \n  This allows for alternatives to the \"standard\" two_plus or one_plus (note, these can be overridden too).\n"
+        },
+        {
+          "name": "resultLevel",
+          "schema": "string",
+          "required": true,
+          "description": "How much detail we return. \n\nAcceptable values are:\n  * simple - Only available with \"profile\" check type. Returns just an EntityProfileResultObject (which is also included for \"profile\" checks at the other result levels), and a CheckEntityCheckResultObjectEntityResult with just the entity details but no separate results.\n  * summary\n  * full - You need to have your account configured for this.\n"
+        },
+        {
+          "name": "deviceCheckDetails",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "entity",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Describes all of the checks that were carried out against an entity as part of our cascading check process. Because there are a number of steps involved in checking an entity, (including the use of past checks done by you or others), there is an overall summary check result that will tell you the final disposition of the the check you requested.\n\nSo if you requested a 2+2+governmentID+pep/sanctions/etc (i.e. everything) then there would have been several checks done in order to meet this requirement. Some may have even failed, but eventually we got there. The summary gives the final assessment, based on all available data.\n\nDetailed writeups on how this all works can be found here:\n  https://apidocs.frankiefinancial.com/docs/understanding-checksummary-results\n"
+        },
+        {
+          "statusCode": "202",
+          "description": "The following fields represent the data you need in order to retrieve the results of the requested function. See the details of the notification API for more.\n"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/entity/search",
+      "method": "searchEntity",
+      "httpMethod": "post",
+      "tag": "Entity",
+      "description": "Search for Entity",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "addresses",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "dateOfBirth",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "entityId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "entityProfile",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "entityType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "extraData",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "flags",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "gender",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "identityDocs",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "organisationData",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Contains the results of a given entity search."
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/entity/{entityId}",
+      "method": "deleteEntity",
+      "httpMethod": "delete",
+      "tag": "Entity",
+      "description": "Delete Entity",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "X-Frankie-Background",
+          "schema": "integer",
+          "required": false,
+          "description": "If this header parameter is supplied and set to 1, then the request will not wait for the process to finish, and will return a 202 if there are no obvious errors in the input. The request will then run in the background and send a notification back to the customer. See out callback API for details on this.\n\nSee more details here:\n  https://apidocs.frankiefinancial.com/docs/asynchronous-calls-backgrounding-processes\n"
+        },
+        {
+          "name": "entityId",
+          "schema": "string",
+          "required": true,
+          "description": "The entityId returned previously from an earlier call to /check or /entity"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "202",
+          "description": "The following fields represent the data you need in order to retrieve the results of the requested function. See the details of the notification API for more.\n"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/entity/{entityId}",
+      "method": "queryEntity",
+      "httpMethod": "get",
+      "tag": "Entity",
+      "description": "Retrieve Entity Details",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "entityId",
+          "schema": "string",
+          "required": true,
+          "description": "The entityId returned previously from an earlier call to /check or /entity"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Contains the results of a given document entity create/update or GET request."
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/entity/{entityId}",
+      "method": "updateEntity",
+      "httpMethod": "post",
+      "tag": "Entity",
+      "description": "Update Existing Entity.",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "X-Frankie-Background",
+          "schema": "integer",
+          "required": false,
+          "description": "If this header parameter is supplied and set to 1, then the request will not wait for the process to finish, and will return a 202 if there are no obvious errors in the input. The request will then run in the background and send a notification back to the customer. See out callback API for details on this.\n\nSee more details here:\n  https://apidocs.frankiefinancial.com/docs/asynchronous-calls-backgrounding-processes\n"
+        },
+        {
+          "name": "entityId",
+          "schema": "string",
+          "required": true,
+          "description": "The entityId returned previously from an earlier call to /check or /entity"
+        },
+        {
+          "name": "noInvalidate",
+          "schema": "boolean",
+          "required": false,
+          "description": "Disable check result invalidation for this update request.\n"
+        },
+        {
+          "name": "addresses",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "dateOfBirth",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "entityId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "entityProfile",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "entityType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "extraData",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "flags",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "gender",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "identityDocs",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "organisationData",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Contains the results of a given document entity create/update or GET request."
+        },
+        {
+          "statusCode": "202",
+          "description": "The following fields represent the data you need in order to retrieve the results of the requested function. See the details of the notification API for more.\n"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/entity/{entityId}/check/{checkId}/{checkClass}",
+      "method": "updateCheckClassResults",
+      "httpMethod": "post",
+      "tag": "Entity",
+      "description": "Update Check Result States (Batch)",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "entityId",
+          "schema": "string",
+          "required": true,
+          "description": "The entityId returned previously from an earlier call to /check or /entity"
+        },
+        {
+          "name": "checkId",
+          "schema": "string",
+          "required": true,
+          "description": "The checkId returned previously from an earlier call to */verify"
+        },
+        {
+          "name": "checkClass",
+          "schema": "string",
+          "required": true,
+          "description": "Specify which check Class this action will apply to (PRO, BCRO etc.).\nValid values are:\n  - \"pro\": Update a Process Result Object\n  - \"bcro\": Update a Background Check Result Object. The class IDs in the request must be the IDs from Background Check Result Object Containers.\n  - \"fraudlist\": Update a fraud list Process Result Object. The class IDs in the request must be check sources from fraudlist Process Result Objects.\n"
+        },
+        {
+          "name": "checkClassIds",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "comment",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Describes all of the checks that were carried out against an entity as part of our cascading check process. Because there are a number of steps involved in checking an entity, (including the use of past checks done by you or others), there is an overall summary check result that will tell you the final disposition of the the check you requested.\n\nSo if you requested a 2+2+governmentID+pep/sanctions/etc (i.e. everything) then there would have been several checks done in order to meet this requirement. Some may have even failed, but eventually we got there. The summary gives the final assessment, based on all available data.\n\nDetailed writeups on how this all works can be found here:\n  https://apidocs.frankiefinancial.com/docs/understanding-checksummary-results\n"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/entity/{entityId}/check/{checkId}/{checkClass}/{checkClassId}",
+      "method": "updateCheckClassResult",
+      "httpMethod": "post",
+      "tag": "Entity",
+      "description": "Update Check Result State",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "entityId",
+          "schema": "string",
+          "required": true,
+          "description": "The entityId returned previously from an earlier call to /check or /entity"
+        },
+        {
+          "name": "checkId",
+          "schema": "string",
+          "required": true,
+          "description": "The checkId returned previously from an earlier call to */verify"
+        },
+        {
+          "name": "checkClass",
+          "schema": "string",
+          "required": true,
+          "description": "Specify which check Class this action will apply to (PRO, BCRO etc.).\nValid values are:\n  - \"pro\": Update a Process Result Object\n  - \"bcro\": Update a Background Check Result Object. The class IDs in the request must be the IDs from Background Check Result Object Containers.\n  - \"fraudlist\": Update a fraud list Process Result Object. The class IDs in the request must be check sources from fraudlist Process Result Objects.\n"
+        },
+        {
+          "name": "checkClassId",
+          "schema": "string",
+          "required": true,
+          "description": "A PRO/BCRO ID\n"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": true,
+          "description": "Set the new status of the Check Class (PRO/BCRO).\nValid values are:\n  - \"unknown\"\n  - \"true_positive\"\n  - \"true_positive_accept\"\n  - \"true_positive_reject\"\n  - \"false_positive\"\n  - \"stale\"\n"
+        },
+        {
+          "name": "undo",
+          "schema": "boolean",
+          "required": false,
+          "description": "Undo a prior operation.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Describes all of the checks that were carried out against an entity as part of our cascading check process. Because there are a number of steps involved in checking an entity, (including the use of past checks done by you or others), there is an overall summary check result that will tell you the final disposition of the the check you requested.\n\nSo if you requested a 2+2+governmentID+pep/sanctions/etc (i.e. everything) then there would have been several checks done in order to meet this requirement. Some may have even failed, but eventually we got there. The summary gives the final assessment, based on all available data.\n\nDetailed writeups on how this all works can be found here:\n  https://apidocs.frankiefinancial.com/docs/understanding-checksummary-results\n"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/entity/{entityId}/checks",
+      "method": "queryEntityChecks",
+      "httpMethod": "get",
+      "tag": "Entity",
+      "description": "Retrieve Entity Verication Check Details\n",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "entityId",
+          "schema": "string",
+          "required": true,
+          "description": "The entityId returned previously from an earlier call to /check or /entity"
+        },
+        {
+          "name": "alldata",
+          "schema": "boolean",
+          "required": false,
+          "description": "Requests that literally all data should be included in the response to a \"get checks\" request. This is as opposed to a filtered view where expired results are by default not included for entities that have an assigned profile.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Describes all of the checks that were carried out against an entity as part of our cascading check process. Because there are a number of steps involved in checking an entity, (including the use of past checks done by you or others), there is an overall summary check result that will tell you the final disposition of the the check you requested.\n\nSo if you requested a 2+2+governmentID+pep/sanctions/etc (i.e. everything) then there would have been several checks done in order to meet this requirement. Some may have even failed, but eventually we got there. The summary gives the final assessment, based on all available data.\n\nDetailed writeups on how this all works can be found here:\n  https://apidocs.frankiefinancial.com/docs/understanding-checksummary-results\n"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/entity/{entityId}/flag/blacklist",
+      "method": "blacklistEntity",
+      "httpMethod": "post",
+      "tag": "Flag",
+      "description": "Set Entity Blacklist State.",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "entityId",
+          "schema": "string",
+          "required": true,
+          "description": "The entityId returned previously from an earlier call to /check or /entity"
+        },
+        {
+          "name": "set",
+          "schema": "boolean",
+          "required": true,
+          "description": "Set the value of an entity flag.\n"
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "required": false,
+          "description": "Set the reason for blacklisting.\nValid values are:\n  - \"NO_REASON_SUPPLIED\"\n  - \"FABRICATED_IDENTITY\"\n  - \"IDENTITY_TAKEOVER\"\n  - \"FALSIFIED_ID_DOCUMENTS\"\n  - \"STOLEN_ID_DOCUMENTS\"\n  - \"MERCHANT_FRAUD\"\n  - \"NEVER_PAY_BUST_OUT\"\n  - \"CONFLICTING_DATA_PROVIDED\"\n  - \"MONEY_MULE\"\n  - \"FALSE_FRAUD_CLAIM\"\n  - \"FRAUDULENT_3RD_PARTY\"\n  - \"COMPANY_TAKEOVER\"\n  - \"FICTITIOUS_EMPLOYER\"\n  - \"COLLUSIVE_EMPLOYER\"\n  - \"OVER_VALUATION_OF_ASSETS\"\n  - \"FALSIFIED_EMPLOYMENT_DETAILS\"\n  - \"MANIPULATED_IDENTITY\"\n  - \"SYNDICATED_FRAUD\"\n  - \"INTERNAL_FRAUD\"\n  - \"BANK_FRAUD\"\n  - \"UNDISCLOSED_DATA\"\n  - \"FALSE_HARDSHIP\"\n  - \"SMR_REPORT_LODGED\"\n  - \"2X_SMR_REPORTS_LODGED\"\n"
+        },
+        {
+          "name": "blockedBy",
+          "schema": "string",
+          "required": false,
+          "description": "Specify who is setting the entity as blacklisted.\n"
+        },
+        {
+          "name": "attribute",
+          "schema": "string",
+          "required": false,
+          "description": "Specify the blacklisted attribute.\nValid values are:\n  - \"ENTIRE_PROFILE\"\n  - \"FULL_NAME\"\n  - \"EMAIL_ADDRESS\"\n  - \"PHONE_NUMBER\"\n  - \"ID_DOCUMENT\"\n  - \"MAILING_ADDRESS\"\n  - \"RESIDENTIAL_ADDRESS\"\n  \n"
+        },
+        {
+          "name": "originalId",
+          "schema": "string",
+          "required": false,
+          "description": "Specify the Id of the matching blacklisted entity or single data-point.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Contains the results of a given document entity create/update or GET request."
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/entity/{entityId}/flag/duplicate/{otherId}",
+      "method": "flagDuplicateEntity",
+      "httpMethod": "post",
+      "tag": "Flag",
+      "description": "Resolve Duplicate States.",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "entityId",
+          "schema": "string",
+          "required": true,
+          "description": "The entityId returned previously from an earlier call to /check or /entity"
+        },
+        {
+          "name": "otherId",
+          "schema": "string",
+          "required": true,
+          "description": "An entityId returned previously from an earlier call to /check or /entity. Used when an operation requires two entityIds"
+        },
+        {
+          "name": "set",
+          "schema": "boolean",
+          "required": true,
+          "description": "Set the value of an entity flag.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Contains the results of a given document entity create/update or GET request."
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/entity/{entityId}/flag/monitor",
+      "method": "entityMonitoring",
+      "httpMethod": "post",
+      "tag": "Flag",
+      "description": "Set Entity Ongoing AML Monitoring Status.",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "entityId",
+          "schema": "string",
+          "required": true,
+          "description": "The entityId returned previously from an earlier call to /check or /entity"
+        },
+        {
+          "name": "set",
+          "schema": "boolean",
+          "required": true,
+          "description": "Set the value of an entity flag.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Contains the results of a given document entity create/update or GET request."
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/entity/{entityId}/flag/watchlist",
+      "method": "watchlistEntity",
+      "httpMethod": "post",
+      "tag": "Flag",
+      "description": "Set Entity Watchlist State.",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "entityId",
+          "schema": "string",
+          "required": true,
+          "description": "The entityId returned previously from an earlier call to /check or /entity"
+        },
+        {
+          "name": "set",
+          "schema": "boolean",
+          "required": true,
+          "description": "Set the value of an entity flag.\n"
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "required": false,
+          "description": "Set the reason for watchlisting.\nValid values are:\n - \"WAS_BLACKLISTED\"\n"
+        },
+        {
+          "name": "comment",
+          "schema": "string",
+          "required": false,
+          "description": "A comment describing the reason for a request.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Contains the results of a given document entity create/update or GET request."
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/entity/{entityId}/full",
+      "method": "queryEntityFull",
+      "httpMethod": "get",
+      "tag": "Entity",
+      "description": "Retrieve Entity Details and Document Scan Data\n",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "entityId",
+          "schema": "string",
+          "required": true,
+          "description": "The entityId returned previously from an earlier call to /check or /entity"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Contains the results of a given document entity create/update or GET request."
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/entity/{entityId}/idvalidate/getToken",
+      "method": "updateEntityGetIdvToken",
+      "httpMethod": "post",
+      "tag": "Entity",
+      "description": "Update Entity and Get IDV Token",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "entityId",
+          "schema": "string",
+          "required": true,
+          "description": "The entityId returned previously from an earlier call to /check or /entity"
+        },
+        {
+          "name": "applicantId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "applicationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "entity",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "referrer",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Contains the results of a given document entity create/update and IDV token details."
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/entity/{entityId}/idvalidate/initProcess",
+      "method": "updateEntityInitIdvProcess",
+      "httpMethod": "post",
+      "tag": "Entity",
+      "description": "Update Entity and Initiate IDV Process",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "entityId",
+          "schema": "string",
+          "required": true,
+          "description": "The entityId returned previously from an earlier call to /check or /entity"
+        },
+        {
+          "name": "deviceCheckDetails",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "entity",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Contains the results of a given document entity create/update and IDV token details."
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/entity/{entityId}/status",
+      "method": "updateEntityState",
+      "httpMethod": "post",
+      "tag": "Entity",
+      "description": "Update Entity States",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "entityId",
+          "schema": "string",
+          "required": true,
+          "description": "The entityId returned previously from an earlier call to /check or /entity"
+        },
+        {
+          "name": "set",
+          "schema": "string",
+          "required": false,
+          "description": "The status of an entity.\nValid values are:\n  - \"wait\": Waiting for new details from entity.\n  - \"fail\": Manually fail the onboarding process.\n  - \"archived\": Hide entity from on onboarding.\n  - \"clear\": Remove any of the above manual states as well as any manual risk.\n  - \"inactive\": Hide entity and prevent any further operations on it. Cannot be cleared.\n"
+        },
+        {
+          "name": "risk",
+          "schema": "string",
+          "required": false,
+          "description": "The risk override setting for an entity. This value will be used until a verify result updates a real risk factor.\nValid values are:\n  - \"low\"\n  - \"medium\"\n  - \"high\"\n  - \"unacceptable\"\n  - \"significant\"\n"
+        },
+        {
+          "name": "comment",
+          "schema": "string",
+          "required": false,
+          "description": "A comment describing the reason for a request.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Describes all of the checks that were carried out against an entity as part of our cascading check process. Because there are a number of steps involved in checking an entity, (including the use of past checks done by you or others), there is an overall summary check result that will tell you the final disposition of the the check you requested.\n\nSo if you requested a 2+2+governmentID+pep/sanctions/etc (i.e. everything) then there would have been several checks done in order to meet this requirement. Some may have even failed, but eventually we got there. The summary gives the final assessment, based on all available data.\n\nDetailed writeups on how this all works can be found here:\n  https://apidocs.frankiefinancial.com/docs/understanding-checksummary-results\n"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/entity/{entityId}/verify/pushToMobile",
+      "method": "updateCheckEntityPushToMobile",
+      "httpMethod": "post",
+      "tag": "Entity",
+      "description": "Update Entity and Push Self-Verification Link",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "X-Frankie-Background",
+          "schema": "integer",
+          "required": false,
+          "description": "If this header parameter is supplied and set to 1, then the request will not wait for the process to finish, and will return a 202 if there are no obvious errors in the input. The request will then run in the background and send a notification back to the customer. See out callback API for details on this.\n\nSee more details here:\n  https://apidocs.frankiefinancial.com/docs/asynchronous-calls-backgrounding-processes\n"
+        },
+        {
+          "name": "entityId",
+          "schema": "string",
+          "required": true,
+          "description": "The entityId returned previously from an earlier call to /check or /entity"
+        },
+        {
+          "name": "nopush",
+          "schema": "boolean",
+          "required": false,
+          "description": "If set to true, then no SMS/email will be pushed. It will be up to the API caller to manage the delivery of the link.\n"
+        },
+        {
+          "name": "phase",
+          "schema": "integer",
+          "required": false,
+          "description": "Set the Push To Mobile phase.\n\nCurrently supported values:\n- 2\n"
+        },
+        {
+          "name": "deviceCheckDetails",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "entity",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": "The following fields represent the data you need in order to retrieve the results of the requested function. See the details of the notification API for more.\n"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/entity/{entityId}/verify/{checkType}/{resultLevel}",
+      "method": "updateCheckEntity",
+      "httpMethod": "post",
+      "tag": "Entity",
+      "description": "Update Entity and Verify Details",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "X-Frankie-Background",
+          "schema": "integer",
+          "required": false,
+          "description": "If this header parameter is supplied and set to 1, then the request will not wait for the process to finish, and will return a 202 if there are no obvious errors in the input. The request will then run in the background and send a notification back to the customer. See out callback API for details on this.\n\nSee more details here:\n  https://apidocs.frankiefinancial.com/docs/asynchronous-calls-backgrounding-processes\n"
+        },
+        {
+          "name": "entityId",
+          "schema": "string",
+          "required": true,
+          "description": "The entityId returned previously from an earlier call to /check or /entity"
+        },
+        {
+          "name": "checkType",
+          "schema": "string",
+          "required": true,
+          "description": "When creating a new check, you need to define the checks you wish to run.\n  \nThe checkType is make up of a comma separated list of the types of check you wish to run. The order of the requested checks is not important, they will be re-ordered by the service and in some cases, depending on your account configuration, may be skipped.\n\n  The validation that is performed on the requested checks is to:\n  - ensure the check type is known\n  - is suitable for the type of entity (no KYC for organisations)\n  - disallow manual (mKYC) check with any other kind of KYC\n  - disallow mixing the \"profile\" check with any other kind of check.\n\nThe supported check types are:\n\nProfile:\n  - \"profile\": By arrangement with Frankie we will create a \"profile\" check type that applies checks according to a recipe that you assign to the entity from a predefined set of profiles.\n  \n  The profile to use will be taken from the entity.entityProfile field if set, or be run through a set of configurable rules to determine which one to use.\n  \n  Profiles provide a pre-defined combination of individual checkTypes (see the list below). But they offer a lot more besides, including rules for determining default settings, inbuilt data aging and other configurable features.\n  They also allow for a new result set top be returned that provides a more detailed and useful breakdown of the check/verification process.\n  \n  Entity Profiles are a recent feature (since v1.4.0) but are now the default checkType to use with Frankie Financial.\n\n**Individual Check Types**\n\nWhilst we strongly recommend the use of the \"profile\" checktype, it does map of any combination of the types below. If you wish to use these individually, please contact developer support for more details on how to use these effectively.\n\nEntity Checks - One of:\n  - \"one_plus\": Checks name, address and DoB against a minimum of 1 data source. (also known as a 1+1)\n  - \"two_plus\": Checks name, address and DoB against a minimum of 2 independent data sources (also known as a 2+2)\n\nID Checks - One of:\n  - \"id\": Checks all of the identity documents, but not necessarily the entity itself independently. Use this in conjunction with a one_plus or two_plus for more.\n  - \"visa\":\n  \nID Validate - One of:\n  - \"idvalidate\": Checks to see if photo ID has had OCR scanning, ID document validation and photo comparison run against it. Can be used in conjunction with any of the KYC/ID/AML checks.\n  \nManual Check:\n  - \"manual\": (mKYC) Checks user has a sufficient amount of operator verified ID and will then \"pass\" all Entity and ID related checks.\n  \nFraud Checks - One or more of:\n  - \"fraudlist\": Checks to see if the identity appears on any known fraud lists. Should be run after KYC/ID checks have passed.\n  - \"fraudcheck\": Checks external ID services to see if details appear in fraud detection services (e.g. EmailAge or FraudNet)\n  \nPEP Checks - One of:\n  - \"pep\": Will only run PEP/Sanctions checks (no identity verification)\n  - \"pep_media\": Will run PEP/Sanctions checks, as well as watchlist and adverse media checks. (no identity verification)\n  \n  * NOTE: These checks will ONLY run if either the KYC/ID checks have been run prior, or it is the only check requested.\n  \nCustom:\n  - By arrangement with Frankie you can define your own KYC check type.\n  \n  This will allow you to set the minimum number of matches for:\n    - name \n    - date of birth\n    - address\n    - government id\n  \n  This allows for alternatives to the \"standard\" two_plus or one_plus (note, these can be overridden too).\n"
+        },
+        {
+          "name": "resultLevel",
+          "schema": "string",
+          "required": true,
+          "description": "How much detail we return. \n\nAcceptable values are:\n  * simple - Only available with \"profile\" check type. Returns just an EntityProfileResultObject (which is also included for \"profile\" checks at the other result levels), and a CheckEntityCheckResultObjectEntityResult with just the entity details but no separate results.\n  * summary\n  * full - You need to have your account configured for this.\n"
+        },
+        {
+          "name": "force",
+          "schema": "boolean",
+          "required": false,
+          "description": "Force the verification to run, overriding any data aging or past check\n"
+        },
+        {
+          "name": "noInvalidate",
+          "schema": "boolean",
+          "required": false,
+          "description": "Disable check result invalidation for this update request.\n"
+        },
+        {
+          "name": "deviceCheckDetails",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "entity",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Describes all of the checks that were carried out against an entity as part of our cascading check process. Because there are a number of steps involved in checking an entity, (including the use of past checks done by you or others), there is an overall summary check result that will tell you the final disposition of the the check you requested.\n\nSo if you requested a 2+2+governmentID+pep/sanctions/etc (i.e. everything) then there would have been several checks done in order to meet this requirement. Some may have even failed, but eventually we got there. The summary gives the final assessment, based on all available data.\n\nDetailed writeups on how this all works can be found here:\n  https://apidocs.frankiefinancial.com/docs/understanding-checksummary-results\n"
+        },
+        {
+          "statusCode": "202",
+          "description": "The following fields represent the data you need in order to retrieve the results of the requested function. See the details of the notification API for more.\n"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/retrieve/response/{requestId}",
+      "method": "retrieveResult",
+      "httpMethod": "get",
+      "tag": "Retrieve",
+      "description": "(Re)retrieve Response Result.",
+      "parameters": [
+        {
+          "name": "X-Frankie-CustomerID",
+          "schema": "string",
+          "required": true,
+          "description": "Customer ID issued by Frankie Financial. This will never change. Your API key, which is mapped to this identity, will change over time.\n"
+        },
+        {
+          "name": "X-Frankie-CustomerChildID",
+          "schema": "string",
+          "required": false,
+          "description": "If, as a Frankie Customer, you are acting on behalf of your own customers, then you can populate this field with a Frankie-assigned ID.\n\nNote: If using a CustomerChildID, you will also need a separate api_key for each child.\n\nAny documents, checks, entities that are created when this field has been populated will now be tied to this CustomerID + CustomerChildID combination. Just as Customers cannot see data created by other Customers, so too a Customer's Children will not be able to see each other's data.\n\nA Customer can see the documents/entities and checks of all their Children.\n"
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": "This will be the same RequestId that was sent in the 202 acceptance response.\n"
+        },
+        {
+          "name": "payload",
+          "schema": "string",
+          "description": "Specifies the type of the payload field in the retrieved response. Default is 'string'.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "When sent a notification or alert, you'll call the /retrive/response/{requestId} function\n\nThis will return the original response\n"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ruok",
+      "method": "statusCheck",
+      "httpMethod": "get",
+      "tag": "Status",
+      "description": "Service Status",
+      "parameters": [
+        {
+          "name": "askingNicely",
+          "schema": "boolean",
+          "required": false,
+          "description": "If set to true, the request is being made politely.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "All valid customers get a puppy. Otherwise, no puppy for you!"
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/your/configured/path/{requestId}",
+      "method": "notifyResult",
+      "httpMethod": "post",
+      "tag": "Push Notification",
+      "description": "Push Notification Payload",
+      "parameters": [
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": "This will be the same RequestId that was sent in the 202 acceptance response.\n"
+        },
+        {
+          "name": "checkId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "documentId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "entityCustomerReference",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "entityId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "function",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "functionResult",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "linkReference",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "notificationType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://api.demo.frankiefinancial.io/compliance/v1.2",
   "apiDescription": "------  \nThis API allows developers to integrate the Frankie Financial Compliance Utility into their applications. The API allows:\n  - Checking name, address, date of birth against national databases\n  - Validating Australian driver's licences, passports, medicare, visas and other Australian national ID documents\n  - Validating Australian electricity bills\n  - Validating NZ driver's licences\n  - Validating Chinese bank cards and national ID card\n  - Validating International passports and national ID documents\n  - PEP, Sanctions, Watchlist and adverse media checking\n  - Australian visa checks \n  - Fraud list and fraud background checks\n  - ID validation and selfie check comparisons.\n  \n------  \n \nIndustry specific services\n\n  - Comparing Australian electricity retailers for a better deal.\n\n------  \n \nKYB specific services\n\n  - Query organisation ownership\n  - Perform KYC & AML checks on shareholders, beneficial owners and office bearers.\n  - Query credit score and credit reports\n  - International company searches\n  - International company profiles\n  \n------  \nThe full version of this documentation along with supplemental articles can be found here:\n  - https://apidocs.frankiefinancial.com/\n\nThe traditional Swagger view of this documentation can be found here:\n  - https://app.swaggerhub.com/apis-docs/FrankieFinancial/kycutility\n\n------  \nSandbox base URL is:\n  - https://api.demo.frankiefinancial.io/compliance/v1.2\n  \n  - We do have an old sandbox at https://sandbox.frankiefinancial.com/compliance/v1.2 but this has been retired.\n\n  - All calls are the same as production, only with canned data. \n\n  - Full Swagger definition, along with test data for playing in the sandbox can be obtained once initial commercial discussions have commenced.\n\n  - Production and optional UAT access will be opened up only to those with a signed commercial contract.\n  \n------  \nContact us at hello@frankiefinancial.com to speak with a sales rep about issuing a Customer ID and Sandbox api key.\n",
   "apiTitle": "Frankie Financial API",

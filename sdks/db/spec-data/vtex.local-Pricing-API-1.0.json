@@ -4,6 +4,499 @@
   "homepage": "vtex.local",
   "serviceName": "Pricing-API",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/pricing/config",
+      "method": "getPricingConfig",
+      "httpMethod": "get",
+      "tag": "Pricing Configuration",
+      "description": "Get Pricing Configuration",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/pricing/migration",
+      "method": "getPricingv2Status",
+      "httpMethod": "get",
+      "tag": "Pricing Configuration",
+      "description": "Get Pricing v2 Status",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/pricing/pipeline/catalog",
+      "method": "getallpricetablesandrules",
+      "httpMethod": "get",
+      "tag": "Price Tables",
+      "description": "Get all price tables and their rules",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/pricing/pipeline/catalog/{priceTableId}",
+      "method": "getrulesforapricetable",
+      "httpMethod": "get",
+      "tag": "Price Tables",
+      "description": "Get rules for a price table",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "priceTableId",
+          "schema": "string",
+          "required": true,
+          "description": "Price Table Name."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/pricing/pipeline/catalog/{priceTableId}",
+      "method": "/pricing/pipeline/catalog/{priceTableId}Put",
+      "httpMethod": "put",
+      "tag": "Price Tables",
+      "description": "Update rules for a price table",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "priceTableId",
+          "schema": "string",
+          "required": true,
+          "description": "Price Table Name."
+        },
+        {
+          "name": "rules",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/pricing/prices/{itemId}",
+      "method": "deletePrice",
+      "httpMethod": "delete",
+      "tag": "Prices and Fixed Prices",
+      "description": "Delete Price",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "itemId",
+          "schema": "integer",
+          "required": true,
+          "description": "SKU ID."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/pricing/prices/{itemId}",
+      "method": "getPrice",
+      "httpMethod": "get",
+      "tag": "Prices and Fixed Prices",
+      "description": "Get Price",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "itemId",
+          "schema": "integer",
+          "required": true,
+          "description": "SKU ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/pricing/prices/{itemId}",
+      "method": "createUpdatePriceOrFixedPrice",
+      "httpMethod": "put",
+      "tag": "Prices and Fixed Prices",
+      "description": "Create or Update Base Price or Fixed Prices",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "itemId",
+          "schema": "integer",
+          "required": true,
+          "description": "SKU unique identifier number."
+        },
+        {
+          "name": "basePrice",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "costPrice",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "fixedPrices",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "listPrice",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "markup",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/pricing/prices/{itemId}/computed/{priceTableId}",
+      "method": "getComputedPricebypricetable",
+      "httpMethod": "get",
+      "tag": "Prices and Fixed Prices",
+      "description": "Get Computed Price by price table or trade policy",
+      "parameters": [
+        {
+          "name": "categoryIds",
+          "schema": "integer",
+          "required": true,
+          "description": "Category ID."
+        },
+        {
+          "name": "brandId",
+          "schema": "integer",
+          "required": true,
+          "description": "Brand ID."
+        },
+        {
+          "name": "quantity",
+          "schema": "integer",
+          "required": true,
+          "description": "SKU quantity."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "itemId",
+          "schema": "integer",
+          "required": true,
+          "description": "SKU ID."
+        },
+        {
+          "name": "priceTableId",
+          "schema": "string",
+          "required": true,
+          "description": "SKU Price Table Name."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/pricing/prices/{itemId}/fixed",
+      "method": "getFixedPrices",
+      "httpMethod": "get",
+      "tag": "Prices and Fixed Prices",
+      "description": "Get Fixed Prices",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "itemId",
+          "schema": "integer",
+          "required": true,
+          "description": "SKU ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/pricing/prices/{itemId}/fixed/{priceTableId}",
+      "method": "deletefixedpricesonapricetableortradepolicy",
+      "httpMethod": "delete",
+      "tag": "Prices and Fixed Prices",
+      "description": "Delete Fixed Prices on a price table or trade policy",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "itemId",
+          "schema": "integer",
+          "required": true,
+          "description": "SKU ID."
+        },
+        {
+          "name": "priceTableId",
+          "schema": "string",
+          "required": true,
+          "description": "Price Table or Trade Policy Name."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/pricing/prices/{itemId}/fixed/{priceTableId}",
+      "method": "getFixedPricesonapricetable",
+      "httpMethod": "get",
+      "tag": "Prices and Fixed Prices",
+      "description": "Get Fixed Prices on a price table or trade policy",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "itemId",
+          "schema": "integer",
+          "required": true,
+          "description": "SKU ID."
+        },
+        {
+          "name": "priceTableId",
+          "schema": "string",
+          "required": true,
+          "description": "Price Table Name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/pricing/prices/{itemId}/fixed/{priceTableId}",
+      "method": "createorupdatefixedpricesonpricetableortradepolicy",
+      "httpMethod": "post",
+      "tag": "Prices and Fixed Prices",
+      "description": "Create or Update Fixed Prices on a price table or trade policy",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "itemId",
+          "schema": "integer",
+          "required": true,
+          "description": "SKU ID."
+        },
+        {
+          "name": "priceTableId",
+          "schema": "string",
+          "required": true,
+          "description": "SKU **price table** name or **trade policy** ID."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/pricing/tables",
+      "method": "listpricetables",
+      "httpMethod": "get",
+      "tag": "Price Tables",
+      "description": "List price tables",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Array of price tables."
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://vtex.local",
   "apiDescription": "\r\n> Check the new [Pricing onboarding guide](https://developers.vtex.com/vtex-rest-api/docs/pricing-overview). We created this guide to improve the onboarding experience for developers at VTEX. It assembles all documentation on our Developer Portal about Pricing and is organized by focusing on the developer's journey.\r\n\r\nPricing is the VTEX module responsible for the SKU's price list. At this module we have the base price of each SKU, some optional fixed prices by trade policy, and some rules that can be applied to generate dynamically different final prices according to the purchase context and the trade policy. The variables used in this collection are:\r\n\r\n  * **{{accountName}}** = You VTEX account name.\r\n  * **{{tradePolicyId}}** = Current Trade Policy ID.\r\n  * **{{itemId}}** = SKU ID.\r\n  * **{{X-VTEX-API-AppKey}}** and **{{X-VTEX-API-AppToken}}** = Credentials.\r\n\r\nYou can get more information about how to use this module and its business logic at [VTEX Help](http://help.vtex.com).\r\n\r\n## Rate Limits\r\n\r\n### Limits per route\r\n\r\n- `GET`:  routes are not rate limited at the moment\r\n- `PUT or POST`: `40 requests/second/account` in any **price insert/update route** with 1000 *Burst Credits*\r\n- `DELETE`: `16 requests/second/account` in any **price deletion route**, with 300 *Burst Credits*.\r\n\r\n### What are Burst Credits?\r\n\r\nIn case the account exceeds the limit frequency for a  `Rate Limiter` (for instance, when one account makes `41 requests/second` in any `price insert/update route`), we decrease from the *Burst Credit* count the exceeding (in this example, *1 Credit*).\r\n\r\nIn the event of the *Burst Credits* reaching **0 (zero)**, the request is blocked with a `Status 429` response.\r\n\r\nThe credits fill up over time when the route is not being used, in the same rate as the route's `Rate Limiter`. In our example, for each second not sending a **PUT or POST request**, we increase *40 Burst Credits* to this `Rate Limiter`\r\n\r\n### New Response Headers\r\n\r\nIn the response headers of any request to Pricing v2 there are some new headers indicating the current status of the Rate Limiting.\r\nThis information may be useful to evaluate the ideal frequency to send requests to a route, and when to send a new request in the event of reaching a Rate Limit.\r\n\r\n- `Ratelimit-Limit` - Total *Burst Credits* offered to a route\r\n- `Ratelimit-Remaining` - How many *Burst Credits* are still available to use\r\n- `Ratelimit-Reset` - How long (in seconds) it will take to the *Burst Credits* to fill up completely (It will fill up to the `Ratelimit-Limit`)\r\n- `Retry-After` - Indicates how many seconds you will need to wait until the `Rate Limiter` accepts a new request to this route again. If this header response exists, this means your current request has been rate limited and has not been processed.\r\n\r\n### How to integrate with Pricing v2 considering our Rate Limits\r\n\r\nIntegrate considering the limits of **requests/route/account** specified in the [*Limits per route*](#rate-limits) section, avoiding to surpass this frequency.\r\n\r\nIf you happen to be Rate Limited, wait the time in seconds specified in `Retry-After` before making another request to the service, and reduce the rate of requests per second that your integration is making.",
   "apiTitle": "Pricing API",

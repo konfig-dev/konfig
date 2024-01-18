@@ -3,6 +3,493 @@
   "openApiRaw": "https://www.meteosource.com/api/v1/premium/openapi.json",
   "homepage": "meteosource.com",
   "apiVersion": "v1",
+  "methods": [
+    {
+      "url": "/air_quality",
+      "method": "airQualityAirQualityGet",
+      "httpMethod": "get",
+      "tag": "Point weather",
+      "description": "Returns air quality data for a single point (geographic name or GPS)",
+      "parameters": [
+        {
+          "name": "place_id",
+          "schema": "string",
+          "required": false,
+          "description": "Identifier of a place. To obtain the `place_id` for the location you want, please use endpoints `/find_places_prefix` (search by prefix) or `/find_places` (search by full name)."
+        },
+        {
+          "name": "lat",
+          "schema": "string",
+          "required": false,
+          "description": "Latitude in format 12N, 12.3N, 12.3, or 13S, 13.2S, -13.4"
+        },
+        {
+          "name": "lon",
+          "schema": "string",
+          "required": false,
+          "description": "Longitude in format 12E, 12.3E, 12.3, or 13W, 13.2W, -13.4"
+        },
+        {
+          "name": "timezone",
+          "schema": "string",
+          "required": false,
+          "description": "Timezone to be used for the date fields. If not specified, local timezone of the forecast location will be used.\nThe format is according to the tzinfo database, so values like `Europe/Prague` or `UTC` can be used.\nAlternatively you may use the value ``auto`` in which case the local timezone of the location is used.\nThe full list of valid timezone strings can be found [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).\n"
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": false,
+          "description": "Your unique API key. You can either specify it in this parameter, or set it in `X-API-Key` header."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/find_places",
+      "method": "findPlacesFindPlacesGet",
+      "httpMethod": "get",
+      "tag": "Location endpoints",
+      "description": "Search for places. Complete words required.",
+      "parameters": [
+        {
+          "name": "text",
+          "schema": "string",
+          "required": true,
+          "description": "Place name or ZIP code"
+        },
+        {
+          "name": "language",
+          "schema": "undefined",
+          "required": false,
+          "description": "The language of text summaries and place names (variable names are never translated). Available languages are:\n\n   * ``en``: English\n   * ``es``: Spanish\n   * ``fr``: French\n   * ``de``: German\n   * ``pl``: Polish\n   * ``pt``: Portuguese\n   * ``cs``: Czech\n"
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": false,
+          "description": "Your unique API key. You can either specify it in this parameter, or set it in `X-API-Key` header."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/find_places_prefix",
+      "method": "findPlacesPrefixFindPlacesPrefixGet",
+      "httpMethod": "get",
+      "tag": "Location endpoints",
+      "description": "Prefix search for places. Useful for autocomplete forms.",
+      "parameters": [
+        {
+          "name": "text",
+          "schema": "string",
+          "required": true,
+          "description": "Place name or ZIP code"
+        },
+        {
+          "name": "language",
+          "schema": "undefined",
+          "required": false,
+          "description": "The language of text summaries and place names (variable names are never translated). Available languages are:\n\n   * ``en``: English\n   * ``es``: Spanish\n   * ``fr``: French\n   * ``de``: German\n   * ``pl``: Polish\n   * ``pt``: Portuguese\n   * ``cs``: Czech\n"
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": false,
+          "description": "Your unique API key. You can either specify it in this parameter, or set it in `X-API-Key` header."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/map",
+      "method": "mapMapGet",
+      "httpMethod": "get",
+      "tag": "Weather maps",
+      "description": "Returns PNG weather map for given area and variable",
+      "parameters": [
+        {
+          "name": "tile_x",
+          "schema": "integer",
+          "required": false,
+          "description": "The X coordinate of Google Maps tile"
+        },
+        {
+          "name": "tile_y",
+          "schema": "integer",
+          "required": false,
+          "description": "The Y coordinate of Google Maps tile"
+        },
+        {
+          "name": "tile_zoom",
+          "schema": "integer",
+          "required": false,
+          "description": "The zoom level of Google Maps tile"
+        },
+        {
+          "name": "min_lat",
+          "schema": "string",
+          "required": false,
+          "description": "Minimal latitude in format 12N, 12.3N, 12.3, or 13S, 13.2S, -13.2\n"
+        },
+        {
+          "name": "min_lon",
+          "schema": "string",
+          "required": false,
+          "description": "Minimal longitude in format 12E, 12.3E, 12.3, or 13W, 13.2W, -13.2\n"
+        },
+        {
+          "name": "max_lat",
+          "schema": "string",
+          "required": false,
+          "description": "Maximal latitude in format 12N, 12.3N, 12.3, or 13S, 13.2S, -13.2.\n"
+        },
+        {
+          "name": "max_lon",
+          "schema": "string",
+          "required": false,
+          "description": "Maximal longitude in format 12E, 12.3E, 12.3, or 13W, 13.2W, -13.2\n"
+        },
+        {
+          "name": "variable",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the variable for your map. Available values are:\n\n* `temperature`: Temperature 2 metres above ground\n* `feels_like_temperature`: Feels like temperature\n* `clouds`: Percentage of sky covered by clouds\n* `precipitation`: Total precipitation amount accumulated since last hour\n* `wind_speed`: Wind speed 10 metres above the ground\n* `wind_gust`: Wind gust speed\n* `pressure`: Atmospheric pressure at mean sea level\n* `humidity`: Relative humidity\n* `wave_height`: Wave height\n* `wave_period`: Wave period\n* `sea_temperature`: Sea temperature (available only for +-24 hours)\n* `air_quality`: Air quality index\n* `ozone_surface`: Ozone at surface level\n* `ozone_total`: Total column ozone\n* `no2`: Nitrogen dioxide at surface level\n* `pm2.5`: Particulate matter d < 2.5 µm (PM2.5)\n"
+        },
+        {
+          "name": "datetime",
+          "schema": "string",
+          "required": true,
+          "description": "There are two ways to specify date and time for your map:\n\n1. Datetime in `YYYY-MM-DDTHH:MM` format and `UTC` timezone, e.g. `2021-08-24T12:00`\n2. Offset from current time in `[+-]<minutes|hours|days>` format, e.g. `+10minutes`, `-2hours` or `+1days`\n"
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": false,
+          "description": "Your unique API key. You can either specify it in this parameter, or set it in `X-API-Key` header."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nearest_place",
+      "method": "nearestPlaceNearestPlaceGet",
+      "httpMethod": "get",
+      "tag": "Location endpoints",
+      "description": "Returns the nearest named location for a given GPS coordinates.",
+      "parameters": [
+        {
+          "name": "lat",
+          "schema": "string",
+          "required": true,
+          "description": "Latitude in format 12N, 12.3N, 12.3, or 13S, 13.2S, -13.4"
+        },
+        {
+          "name": "lon",
+          "schema": "string",
+          "required": true,
+          "description": "Longitude in format 12E, 12.3E, 12.3, or 13W, 13.2W, -13.4"
+        },
+        {
+          "name": "language",
+          "schema": "undefined",
+          "required": false,
+          "description": "The language of text summaries and place names (variable names are never translated). Available languages are:\n\n   * ``en``: English\n   * ``es``: Spanish\n   * ``fr``: French\n   * ``de``: German\n   * ``pl``: Polish\n   * ``pt``: Portuguese\n   * ``cs``: Czech\n"
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": false,
+          "description": "Your unique API key. You can either specify it in this parameter, or set it in `X-API-Key` header."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/point",
+      "method": "pointPointGet",
+      "httpMethod": "get",
+      "tag": "Point weather",
+      "description": "Returns weather data for a single point (geographic name or GPS)",
+      "parameters": [
+        {
+          "name": "place_id",
+          "schema": "string",
+          "required": false,
+          "description": "Identifier of a place. To obtain the `place_id` for the location you want, please use endpoints `/find_places_prefix` (search by prefix) or `/find_places` (search by full name)."
+        },
+        {
+          "name": "lat",
+          "schema": "string",
+          "required": false,
+          "description": "Latitude in format 12N, 12.3N, 12.3, or 13S, 13.2S, -13.4"
+        },
+        {
+          "name": "lon",
+          "schema": "string",
+          "required": false,
+          "description": "Longitude in format 12E, 12.3E, 12.3, or 13W, 13.2W, -13.4"
+        },
+        {
+          "name": "sections",
+          "schema": "string",
+          "required": false,
+          "description": "Sections to be included in the response. You can specify more section by separating the values with a comma. The available values are:\n\n* ``current``: Current weather situation\n* ``daily``: Forecasts for each whole day, without the daily parts\n* ``daily-parts``: Forecasts for each whole day, morning, afternoon and evening\n    * Important: forecast for the morning, afternoon and evening is available only for the first\n      7 days in the forecast\n* ``hourly``: Forecasts with hourly resolution\n* ``minutely``: Precipitation forecast with 1 minute resolution\n* ``alerts``: The weather alerts\n* ``all``: All sections\n"
+        },
+        {
+          "name": "timezone",
+          "schema": "string",
+          "required": false,
+          "description": "Timezone to be used for the date fields. If not specified, local timezone of the forecast location will be used.\nThe format is according to the tzinfo database, so values like `Europe/Prague` or `UTC` can be used.\nAlternatively you may use the value ``auto`` in which case the local timezone of the location is used.\nThe full list of valid timezone strings can be found [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).\n"
+        },
+        {
+          "name": "language",
+          "schema": "undefined",
+          "required": false,
+          "description": "The language of text summaries and place names (variable names are never translated). Available languages are:\n\n   * ``en``: English\n   * ``es``: Spanish\n   * ``fr``: French\n   * ``de``: German\n   * ``pl``: Polish\n   * ``pt``: Portuguese\n   * ``cs``: Czech\n"
+        },
+        {
+          "name": "units",
+          "schema": "undefined",
+          "required": false,
+          "description": "Unit system to be used. The available values are:\n\n* `auto`: Select the system automatically, based on the forecast location.\n* `metric`: Metric (SI) units (`°C`, `mm/h`, `m/s`, `cm`, `km`, `hPa`).\n* `us`: Imperial units (`°F`, `in/h`, `mph`, `in`, `mi`, `Hg`).\n* `uk`: Same as ``metric``, except that visibility is in `miles` and wind speeds are in `mph`.\n* `ca`: Same as ``metric``, except that wind speeds are in `km/h` and pressure is in `kPa`.\n"
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": false,
+          "description": "Your unique API key. You can either specify it in this parameter, or set it in `X-API-Key` header."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/time_machine",
+      "method": "timeMachineTimeMachineGet",
+      "httpMethod": "get",
+      "tag": "Time machine - historical weather",
+      "description": "Returns weather data for a single location and given day in the past",
+      "parameters": [
+        {
+          "name": "place_id",
+          "schema": "string",
+          "required": false,
+          "description": "Identifier of a place. To obtain the `place_id` for the location you want, please use endpoints `/find_places_prefix` (search by prefix) or `/find_places` (search by full name)."
+        },
+        {
+          "name": "lat",
+          "schema": "string",
+          "required": false,
+          "description": "Latitude in format 12N, 12.3N, 12.3, or 13S, 13.2S, -13.4"
+        },
+        {
+          "name": "lon",
+          "schema": "string",
+          "required": false,
+          "description": "Longitude in format 12E, 12.3E, 12.3, or 13W, 13.2W, -13.4"
+        },
+        {
+          "name": "date",
+          "schema": "string",
+          "required": true,
+          "description": "The day of the data in the past. Specify in `YYYY-MM-DD` format, e.g. `2021-08-24`.\n"
+        },
+        {
+          "name": "timezone",
+          "schema": "string",
+          "required": false,
+          "description": "Timezone to be used for the date fields. If not specified, local timezone of the location will be used.\nThe format is according to the tzinfo database, so values like `Europe/Prague` or `UTC` can be used.\nAlternatively you may use the value ``auto`` in which case the local timezone of the location is used.\nThe full list of valid timezone strings can be found [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).\n"
+        },
+        {
+          "name": "units",
+          "schema": "undefined",
+          "required": false,
+          "description": "Unit system to be used. The available values are:\n\n* `auto`: Select the system automatically, based on the forecast location.\n* `metric`: Metric (SI) units (`°C`, `mm/h`, `m/s`, `cm`, `km`, `hPa`).\n* `us`: Imperial units (`°F`, `in/h`, `mph`, `in`, `mi`, `Hg`).\n* `uk`: Same as ``metric``, except that visibility is in `miles` and wind speeds are in `mph`.\n* `ca`: Same as ``metric``, except that wind speeds are in `km/h` and pressure is in `kPa`.\n"
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": false,
+          "description": "Your unique API key. You can either specify it in this parameter, or set it in `X-API-Key` header."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "/api/v1/premium",
   "apiDescription": "\n\nThis interactive documentation is using your API key which is filled in automatically, you can find and change this in [your dashboard](https://www.meteosource.com/client).\n\nUsing the `GET` button, open your selected endpoint and read the introduction. You will find a detailed description of available parameters. You can complete the `Parameters` section and hit `Execute` to view a full API response. You can then inspect the JSON response, copy the `curl` command to run it on your machine, or obtain a URL of the request. In this way, you can easily build request command for the data you need.\n",
   "apiTitle": "Interactive documentation for your Premium plan",

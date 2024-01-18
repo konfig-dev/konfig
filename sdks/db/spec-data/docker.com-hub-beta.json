@@ -4,6 +4,1026 @@
   "homepage": "docker.com",
   "serviceName": "hub",
   "apiVersion": "beta",
+  "methods": [
+    {
+      "url": "/v2/access-tokens",
+      "method": "/v2/accessTokensGet",
+      "httpMethod": "get",
+      "tag": "access-tokens",
+      "description": "Get a list of personal access tokens",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "page_size",
+          "schema": "number",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "Used to error if input validation fails."
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/access-tokens",
+      "method": "/v2/accessTokensPost",
+      "httpMethod": "post",
+      "tag": "access-tokens",
+      "description": "Create a personal access token",
+      "parameters": [
+        {
+          "name": "scopes",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "token_label",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "Used to error if input validation fails."
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/access-tokens/{uuid}",
+      "method": "/v2/accessTokens/{uuid}Delete",
+      "httpMethod": "delete",
+      "tag": "access-tokens",
+      "description": "Delete a personal access token",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/access-tokens/{uuid}",
+      "method": "/v2/accessTokens/{uuid}Get",
+      "httpMethod": "get",
+      "tag": "access-tokens",
+      "description": "Get a personal access token",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/access-tokens/{uuid}",
+      "method": "/v2/accessTokens/{uuid}Patch",
+      "httpMethod": "patch",
+      "tag": "access-tokens",
+      "description": "Update a personal access token",
+      "parameters": [
+        {
+          "name": "is_active",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "token_label",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "Used to error if input validation fails."
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/auditlogs/{account}",
+      "method": "auditLogsGetAuditLogs",
+      "httpMethod": "get",
+      "tag": "audit-logs",
+      "description": "Returns list of audit log  events.",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Namespace to query audit logs for."
+        },
+        {
+          "name": "action",
+          "schema": "string",
+          "required": false,
+          "description": "action name one of [\"repo.tag.push\", ...]. Optional parameter to filter specific audit log actions."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "name. Optional parameter to filter audit log events to a specific name. For repository events, this is the name of the repository. For organization events, this is the name of the organization. For team member events, this is the username of the team member."
+        },
+        {
+          "name": "actor",
+          "schema": "string",
+          "required": false,
+          "description": "actor name. Optional parameter to filter audit log events to the specific user who triggered the event."
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "required": false,
+          "description": "Start of the time window you wish to query audit events for."
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "required": false,
+          "description": "End of the time window you wish to query audit events for."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "page - specify page number. Page number to get."
+        },
+        {
+          "name": "page_size",
+          "schema": "integer",
+          "required": false,
+          "description": "page_size - specify page size. Number of events to return per page."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "GetAuditLogs response."
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/auditlogs/{account}/actions",
+      "method": "auditLogsGetAuditActions",
+      "httpMethod": "get",
+      "tag": "audit-logs",
+      "description": "Returns list of audit log actions.",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Namespace to query audit log actions for."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "GetAuditActions response."
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/namespaces/{namespace}/delete-images",
+      "method": "postNamespacesDeleteImages",
+      "httpMethod": "post",
+      "tag": "images",
+      "description": "Delete images",
+      "parameters": [
+        {
+          "name": "namespace",
+          "schema": "string",
+          "required": true,
+          "description": "Namespace of the repository."
+        },
+        {
+          "name": "active_from",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "dry_run",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "ignore_warnings",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "manifests",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Successful delete images response."
+        },
+        {
+          "statusCode": "400",
+          "description": "Deletion not possible."
+        },
+        {
+          "statusCode": "403",
+          "description": "Represents an error."
+        }
+      ]
+    },
+    {
+      "url": "/v2/namespaces/{namespace}/repositories/{repository}/images",
+      "method": "getNamespacesRepositoriesImages",
+      "httpMethod": "get",
+      "tag": "images",
+      "description": "Get details of repository's images",
+      "parameters": [
+        {
+          "name": "namespace",
+          "schema": "string",
+          "required": true,
+          "description": "Namespace of the repository."
+        },
+        {
+          "name": "repository",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the repository."
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Filters to only show images of this status."
+        },
+        {
+          "name": "currently_tagged",
+          "schema": "boolean",
+          "required": false,
+          "description": "Filters to only show images with:\n- `true`: at least 1 current tag.\n- `false`: no current tags.\n"
+        },
+        {
+          "name": "ordering",
+          "schema": "string",
+          "required": false,
+          "description": "Orders the results by this property.\n\nPrefixing with `-` sorts by descending order.\n"
+        },
+        {
+          "name": "active_from",
+          "schema": "string",
+          "required": false,
+          "description": "Sets the time from which an image must have been pushed or pulled to\nbe counted as active.\n\nDefaults to 1 month before the current time.\n"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number to get. Defaults to 1."
+        },
+        {
+          "name": "page_size",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of images to get per page. Defaults to 10. Max of 100."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Paginated list of images in a repository."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error."
+        },
+        {
+          "statusCode": "403",
+          "description": "Represents an error."
+        }
+      ]
+    },
+    {
+      "url": "/v2/namespaces/{namespace}/repositories/{repository}/images-summary",
+      "method": "getNamespacesRepositoriesImagesSummary",
+      "httpMethod": "get",
+      "tag": "images",
+      "description": "Get summary of repository's images",
+      "parameters": [
+        {
+          "name": "namespace",
+          "schema": "string",
+          "required": true,
+          "description": "Namespace of the repository."
+        },
+        {
+          "name": "repository",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the repository."
+        },
+        {
+          "name": "active_from",
+          "schema": "string",
+          "required": false,
+          "description": "Sets the time from which an image must have been pushed or pulled to\nbe counted as active.\n\nDefaults to 1 month before the current time.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Summary information for images in a repository."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error."
+        }
+      ]
+    },
+    {
+      "url": "/v2/namespaces/{namespace}/repositories/{repository}/images/{digest}/tags",
+      "method": "getNamespacesRepositoriesImagesTags",
+      "httpMethod": "get",
+      "tag": "images",
+      "description": "Get image's tags",
+      "parameters": [
+        {
+          "name": "namespace",
+          "schema": "string",
+          "required": true,
+          "description": "Namespace of the repository."
+        },
+        {
+          "name": "repository",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the repository."
+        },
+        {
+          "name": "digest",
+          "schema": "string",
+          "required": true,
+          "description": "Digest of the image."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number to get. Defaults to 1."
+        },
+        {
+          "name": "page_size",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of images to get per page. Defaults to 10. Max of 100."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Paginated list of tags for this repository."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error."
+        },
+        {
+          "statusCode": "403",
+          "description": "Represents an error."
+        }
+      ]
+    },
+    {
+      "url": "/v2/namespaces/{namespace}/repositories/{repository}/tags",
+      "method": "/v2/namespaces/{namespace}/repositories/{repository}/tagsGet",
+      "httpMethod": "get",
+      "tag": "repositories",
+      "description": "List repository tags",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number to get. Defaults to 1."
+        },
+        {
+          "name": "page_size",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of items to get per page. Defaults to 10. Max of 100."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/namespaces/{namespace}/repositories/{repository}/tags",
+      "method": "/v2/namespaces/{namespace}/repositories/{repository}/tagsHead",
+      "httpMethod": "head",
+      "tag": "repositories",
+      "description": "Check repository tags",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/namespaces/{namespace}/repositories/{repository}/tags/{tag}",
+      "method": "/v2/namespaces/{namespace}/repositories/{repository}/tags/{tag}Get",
+      "httpMethod": "get",
+      "tag": "repositories",
+      "description": "Read repository tag",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/namespaces/{namespace}/repositories/{repository}/tags/{tag}",
+      "method": "/v2/namespaces/{namespace}/repositories/{repository}/tags/{tag}Head",
+      "httpMethod": "head",
+      "tag": "repositories",
+      "description": "Check repository tag",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/orgs/{name}/settings",
+      "method": "/v2/orgs/{name}/settingsGet",
+      "httpMethod": "get",
+      "tag": "org-settings",
+      "description": "Get organization settings",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/orgs/{name}/settings",
+      "method": "/v2/orgs/{name}/settingsPut",
+      "httpMethod": "put",
+      "tag": "org-settings",
+      "description": "Update organization settings",
+      "parameters": [
+        {
+          "name": "restricted_images",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/scim/2.0/ResourceTypes",
+      "method": "/v2/scim/20/resourceTypesGet",
+      "httpMethod": "get",
+      "tag": "scim",
+      "description": "List resource types",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/scim/2.0/ResourceTypes/{name}",
+      "method": "/v2/scim/20/resourceTypes/{name}Get",
+      "httpMethod": "get",
+      "tag": "scim",
+      "description": "Get a resource type",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/scim/2.0/Schemas",
+      "method": "/v2/scim/20/schemasGet",
+      "httpMethod": "get",
+      "tag": "scim",
+      "description": "List schemas",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/scim/2.0/Schemas/{id}",
+      "method": "/v2/scim/20/schemas/{id}Get",
+      "httpMethod": "get",
+      "tag": "scim",
+      "description": "Get a schema",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/scim/2.0/ServiceProviderConfig",
+      "method": "/v2/scim/20/serviceProviderConfigGet",
+      "httpMethod": "get",
+      "tag": "scim",
+      "description": "Get service provider config",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/scim/2.0/Users",
+      "method": "/v2/scim/20/usersGet",
+      "httpMethod": "get",
+      "tag": "scim",
+      "description": "List users",
+      "parameters": [
+        {
+          "name": "startIndex",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "filter",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "attributes",
+          "schema": "string",
+          "description": "Comma delimited list of attributes to limit to in the response."
+        },
+        {
+          "name": "sortOrder",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sortBy",
+          "schema": "string",
+          "description": "User attribute to sort by."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/scim/2.0/Users",
+      "method": "/v2/scim/20/usersPost",
+      "httpMethod": "post",
+      "tag": "scim",
+      "description": "Create user",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "schemas",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "userName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/scim/2.0/Users/{id}",
+      "method": "/v2/scim/20/users/{id}Get",
+      "httpMethod": "get",
+      "tag": "scim",
+      "description": "Get a user",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/scim/2.0/Users/{id}",
+      "method": "/v2/scim/20/users/{id}Put",
+      "httpMethod": "put",
+      "tag": "scim",
+      "description": "Update a user",
+      "parameters": [
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "schemas",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/users/2fa-login",
+      "method": "postUsers2FaLogin",
+      "httpMethod": "post",
+      "tag": "authentication",
+      "description": "Second factor authentication.",
+      "parameters": [
+        {
+          "name": "code",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "login_2fa_token",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "successful user login response"
+        },
+        {
+          "statusCode": "401",
+          "description": "failed second factor login response."
+        }
+      ]
+    },
+    {
+      "url": "/v2/users/login",
+      "method": "postUsersLogin",
+      "httpMethod": "post",
+      "tag": "authentication",
+      "description": "Create an authentication token",
+      "parameters": [
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "successful user login response"
+        },
+        {
+          "statusCode": "401",
+          "description": "failed user login response or second factor required"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://hub.docker.com/",
   "apiDescription": "Docker Hub is a service provided by Docker for finding and sharing container\nimages with your team.\n\nIt is the world's largest library and community for container images.\n\nIn addition to the [Docker Hub UI](https://docs.docker.com/docker-hub/) and [Docker Hub CLI tool](https://github.com/docker/hub-tool#readme) (currently experimental),\n\nDocker provides an API that allows you to interact with Docker Hub.\n\nBrowse through the Docker Hub API documentation to explore the supported endpoints.\n",
   "apiTitle": "Docker HUB API",

@@ -4,6 +4,251 @@
   "homepage": "npr.org",
   "serviceName": "identity",
   "apiVersion": "2",
+  "methods": [
+    {
+      "url": "/v2/following",
+      "method": "postFollowing",
+      "httpMethod": "post",
+      "tag": "identity",
+      "description": "Update the following status of the logged-in user for a particular aggregation",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Your access token from the Authorization Service. Should start with `Bearer`, followed by a space, followed by the token."
+        },
+        {
+          "name": "daysSinceLastListen",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "following",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "href",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "notif_following",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "notif_rated",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "rating",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "401",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "429",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "500",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "503",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        }
+      ]
+    },
+    {
+      "url": "/v2/stations",
+      "method": "updateStations",
+      "httpMethod": "put",
+      "tag": "identity",
+      "description": "Update the logged-in user's favorite station(s)",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Your access token from the Authorization Service. Should start with `Bearer`, followed by a space, followed by the token."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "401",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "429",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "500",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "503",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        }
+      ]
+    },
+    {
+      "url": "/v2/user",
+      "method": "deleteUser",
+      "httpMethod": "delete",
+      "tag": "identity",
+      "description": "Delete the user's account",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Your access token from the Authorization Service. Should start with `Bearer`, followed by a space, followed by the token."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "500",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "503",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        }
+      ]
+    },
+    {
+      "url": "/v2/user",
+      "method": "getUser",
+      "httpMethod": "get",
+      "tag": "identity",
+      "description": "Get the latest state information about the logged-in user",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Your access token from the Authorization Service. Should start with `Bearer`, followed by a space, followed by the token."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "429",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "500",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "503",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        }
+      ]
+    },
+    {
+      "url": "/v2/user/inherit",
+      "method": "inheritFromTempUser",
+      "httpMethod": "post",
+      "tag": "identity",
+      "description": "Copy listening data from a temporary user account to the logged-in user's account",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Your access token from the Authorization Service. Should start with `Bearer`, followed by a space, followed by the token."
+        },
+        {
+          "name": "temp_user",
+          "schema": "integer",
+          "required": true,
+          "description": "The temporary user's ID before the user registered or logged in"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "429",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "500",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "503",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://identity.api.npr.org",
   "apiDescription": "The entry point to user-specific information",
   "apiTitle": "NPR Identity Service",

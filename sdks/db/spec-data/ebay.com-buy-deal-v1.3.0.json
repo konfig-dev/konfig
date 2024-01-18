@@ -4,6 +4,170 @@
   "homepage": "ebay.com",
   "serviceName": "buy-deal",
   "apiVersion": "v1.3.0",
+  "methods": [
+    {
+      "url": "/deal_item",
+      "method": "getDealItems",
+      "httpMethod": "get",
+      "tag": "deal_item",
+      "description": "This method retrieves a paginated set of deal items. The result set contains all deal items associated with the specified search criteria and marketplace ID. Request headers This method uses the X-EBAY-C-ENDUSERCTX request header to support revenue sharing for eBay Partner Networks and to improve the accuracy of shipping and delivery time estimations. For details see, Request headers in the Buying Integration Guide. Restrictions This method can return a maximum of 10,000 items. For a list of supported sites and other restrictions, see API Restrictions. eBay Partner Network: In order to receive a commission for your sales, you must use the URL returned in the itemAffiliateWebUrl field to forward your buyer to the ebay.com site.",
+      "parameters": [
+        {
+          "name": "category_ids",
+          "schema": "string",
+          "required": false,
+          "description": "The unique identifier of the eBay category for the search."
+        },
+        {
+          "name": "commissionable",
+          "schema": "string",
+          "required": false,
+          "description": "A filter for commissionable deals. Restriction: This filter is currently only supported for the US marketplace."
+        },
+        {
+          "name": "delivery_country",
+          "schema": "string",
+          "required": false,
+          "description": "A filter for items that can be shipped to the specified country."
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": "The maximum number of items, from the current result set, returned on a single page."
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "required": false,
+          "description": "The number of items that will be skipped in the result set. This is used with the limit field to control the pagination of the output. For example, if the offset is set to 0 and the limit is set to 10, the method will retrieve items 1 through 10 from the list of items returned. If the offset is set to 10 and the limit is set to 10, the method will retrieve items 11 through 20 from the list of items returned. Default: 0"
+        },
+        {
+          "name": "X-EBAY-C-MARKETPLACE-ID",
+          "schema": "string",
+          "required": true,
+          "description": "A header used to specify the eBay marketplace ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The result set for the deal item search."
+        }
+      ]
+    },
+    {
+      "url": "/event",
+      "method": "getEvents",
+      "httpMethod": "get",
+      "tag": "event",
+      "description": "This method returns paginated results containing all eBay events for the specified marketplace. Request headers This method uses the X-EBAY-C-ENDUSERCTX request header to support revenue sharing for eBay Partner Networks and to improve the accuracy of shipping and delivery time estimations. For details see, Request headers in the Buying Integration Guide. Restrictions This method can return a maximum of 10,000 items. For a list of supported sites and other restrictions, see API Restrictions. eBay Partner Network: In order to receive a commission for your sales, you must use the URL returned in the itemAffiliateWebUrl field to forward your buyer to the ebay.com site.",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": "The maximum number of items, from the current result set, returned on a single page. Default: 20 Maximum Value: 100"
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "required": false,
+          "description": "The number of items that will be skipped in the result set. This is used with the limit field to control the pagination of the output. For example, if the offset is set to 0 and the limit is set to 10, the method will retrieve items 1 through 10 from the list of items returned. If the offset is set to 10 and the limit is set to 10, the method will retrieve items 11 through 20 from the list of items returned. Default: 0"
+        },
+        {
+          "name": "X-EBAY-C-MARKETPLACE-ID",
+          "schema": "string",
+          "required": true,
+          "description": "A header used to specify the eBay marketplace ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The result set for the specified event search criteria."
+        }
+      ]
+    },
+    {
+      "url": "/event/{event_id}",
+      "method": "getEvent",
+      "httpMethod": "get",
+      "tag": "event",
+      "description": "This method retrieves the details for an eBay event. The result set contains detailed information associated with the specified event ID, such as applicable coupons, start and end dates, and event terms. Request headers This method uses the X-EBAY-C-ENDUSERCTX request header to support revenue sharing for eBay Partner Networks and to improve the accuracy of shipping and delivery time estimations. For details see, Request headers in the Buying Integration Guide. Restrictions This method can return a maximum of 10,000 items. For a list of supported sites and other restrictions, see API Restrictions. eBay Partner Network: In order to receive a commission for your sales, you must use the URL returned in the itemAffiliateWebUrl field to forward your buyer to the ebay.com site.",
+      "parameters": [
+        {
+          "name": "X-EBAY-C-MARKETPLACE-ID",
+          "schema": "string",
+          "required": true,
+          "description": "A header used to specify the eBay marketplace ID."
+        },
+        {
+          "name": "event_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the eBay event."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The result set for the event search."
+        }
+      ]
+    },
+    {
+      "url": "/event_item",
+      "method": "getEventItems",
+      "httpMethod": "get",
+      "tag": "event_item",
+      "description": "This method returns a paginated set of event items. The result set contains all event items associated with the specified search criteria and marketplace ID. Request headers This method uses the X-EBAY-C-ENDUSERCTX request header to support revenue sharing for eBay Partner Networks and to improve the accuracy of shipping and delivery time estimations. For details see, Request headers in the Buying Integration Guide. Restrictions This method can return a maximum of 10,000 items. For a list of supported sites and other restrictions, see API Restrictions. eBay Partner Network: In order to receive a commission for your sales, you must use the URL returned in the itemAffiliateWebUrl field to forward your buyer to the ebay.com site.",
+      "parameters": [
+        {
+          "name": "category_ids",
+          "schema": "string",
+          "required": false,
+          "description": "The unique identifier of the eBay category for the search. Maximum Value: 1"
+        },
+        {
+          "name": "delivery_country",
+          "schema": "string",
+          "required": false,
+          "description": "A filter for items that can be shipped to the specified country."
+        },
+        {
+          "name": "event_ids",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifiers for the eBay events. Maximum Value: 1"
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": "The maximum number of items, from the current result set, returned on a single page. Default: 20"
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "required": false,
+          "description": "The number of items that will be skipped in the result set. This is used with the limit field to control the pagination of the output. For example, if the offset is set to 0 and the limit is set to 10, the method will retrieve items 1 through 10 from the list of items returned. If the offset is set to 10 and the limit is set to 10, the method will retrieve items 11 through 20 from the list of items returned. Default: 0"
+        },
+        {
+          "name": "X-EBAY-C-MARKETPLACE-ID",
+          "schema": "string",
+          "required": true,
+          "description": "A header used to specify the eBay marketplace ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The result set for the event item search."
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.ebay.com{basePath}",
   "apiDescription": "<span class=\"tablenote\"><b>Note:</b> This is a <a href=\"https://developer.ebay.com/api-docs/static/versioning.html#limited\" target=\"_blank\"> <img src=\"/cms/img/docs/partners-api.svg\" class=\"legend-icon partners-icon\" title=\"Limited Release\"  alt=\"Limited Release\" />(Limited Release)</a> API available only to select developers approved by business units.</span><br /><br />This API allows third-party developers to search for and retrieve details about eBay deals and events, as well as the items associated with those deals and events.",
   "apiTitle": "Deal API",

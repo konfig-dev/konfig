@@ -4,6 +4,715 @@
   "homepage": "vtex.local",
   "serviceName": "MasterData-API-",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/api/dataentities",
+      "method": "listdataentities",
+      "httpMethod": "get",
+      "tag": "Data Entities",
+      "description": "List data entities",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/dataentities/{acronym}",
+      "method": "getdataentitystructure",
+      "httpMethod": "get",
+      "tag": "Data Entities",
+      "description": "Get data entity structure",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand "
+        },
+        {
+          "name": "acronym",
+          "schema": "string",
+          "required": true,
+          "description": "Identifies the kind of data"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/dataentities/{acronym}/documents",
+      "method": "createorupdatepartialdocument",
+      "httpMethod": "patch",
+      "tag": "Documents",
+      "description": "Create or update partial document",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand "
+        },
+        {
+          "name": "acronym",
+          "schema": "string",
+          "required": true,
+          "description": "Identifies the kind of data"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/dataentities/{acronym}/documents",
+      "method": "createnewdocument",
+      "httpMethod": "post",
+      "tag": "Documents",
+      "description": "Create new document",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand "
+        },
+        {
+          "name": "acronym",
+          "schema": "string",
+          "required": true,
+          "description": "Identifies the kind of data"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/dataentities/{acronym}/documents",
+      "method": "createorupdateentiredocument",
+      "httpMethod": "put",
+      "tag": "Documents",
+      "description": "Create or update entire document",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand "
+        },
+        {
+          "name": "acronym",
+          "schema": "string",
+          "required": true,
+          "description": "Identifies the kind of data"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/dataentities/{acronym}/documents/{id}",
+      "method": "deletedocument",
+      "httpMethod": "delete",
+      "tag": "Documents",
+      "description": "Delete document",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand "
+        },
+        {
+          "name": "acronym",
+          "schema": "string",
+          "required": true,
+          "description": "Two letter word that identifies the data structure"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the document"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/dataentities/{acronym}/documents/{id}",
+      "method": "getdocument",
+      "httpMethod": "get",
+      "tag": "Documents",
+      "description": "Get document",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand "
+        },
+        {
+          "name": "acronym",
+          "schema": "string",
+          "required": true,
+          "description": "Two letter word that identifies the data structure"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the document"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/dataentities/{acronym}/documents/{id}",
+      "method": "updatepartialdocument",
+      "httpMethod": "patch",
+      "tag": "Documents",
+      "description": "Update partial document",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand "
+        },
+        {
+          "name": "acronym",
+          "schema": "string",
+          "required": true,
+          "description": "Two letter word that identifies the data structure"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the document"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/dataentities/{acronym}/documents/{id}",
+      "method": "updateentiredocument",
+      "httpMethod": "put",
+      "tag": "Documents",
+      "description": "Update entire document",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand "
+        },
+        {
+          "name": "acronym",
+          "schema": "string",
+          "required": true,
+          "description": "Two letter word that identifies the data structure"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the document"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/dataentities/{acronym}/documents/{id}/clusters",
+      "method": "validateDocumentbyClusters",
+      "httpMethod": "post",
+      "tag": "Clusters",
+      "description": "Validate Document by Clusters",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand "
+        },
+        {
+          "name": "acronym",
+          "schema": "string",
+          "required": true,
+          "description": "Two letter word that identifies the data structure"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the document"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/dataentities/{acronym}/documents/{id}/score",
+      "method": "putscores",
+      "httpMethod": "put",
+      "tag": "Score",
+      "description": "Put scores",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand "
+        },
+        {
+          "name": "acronym",
+          "schema": "string",
+          "required": true,
+          "description": "Two letter word that identifies the data structure"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the document"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/dataentities/{acronym}/documents/{id}/score/{field-name}",
+      "method": "deletescorebyfield",
+      "httpMethod": "delete",
+      "tag": "Score",
+      "description": "Delete score by field",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand "
+        },
+        {
+          "name": "acronym",
+          "schema": "string",
+          "required": true,
+          "description": "Two letter word that identifies the data structure"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the document"
+        },
+        {
+          "name": "field-name",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the field to remove score from"
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/dataentities/{acronym}/documents/{id}/score/{field-name}",
+      "method": "putscorebyfield",
+      "httpMethod": "put",
+      "tag": "Score",
+      "description": "Put score by field",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand "
+        },
+        {
+          "name": "acronym",
+          "schema": "string",
+          "required": true,
+          "description": "Two letter word that identifies the data structure"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the document"
+        },
+        {
+          "name": "field-name",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the field to score"
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "point",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "until",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/dataentities/{acronym}/documents/{id}/versions",
+      "method": "listversions",
+      "httpMethod": "get",
+      "tag": "Versions",
+      "description": "List versions",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand "
+        },
+        {
+          "name": "acronym",
+          "schema": "string",
+          "required": true,
+          "description": "Two letter word that identifies the data structure"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the document"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/dataentities/{acronym}/documents/{id}/versions/{versionId}",
+      "method": "getversion",
+      "httpMethod": "get",
+      "tag": "Versions",
+      "description": "Get version",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand "
+        },
+        {
+          "name": "acronym",
+          "schema": "string",
+          "required": true,
+          "description": "Two letter word that identifies the data structure"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the document"
+        },
+        {
+          "name": "versionId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the version to get"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/dataentities/{acronym}/documents/{id}/versions/{versionId}",
+      "method": "putversion",
+      "httpMethod": "put",
+      "tag": "Versions",
+      "description": "Put version",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand "
+        },
+        {
+          "name": "acronym",
+          "schema": "string",
+          "required": true,
+          "description": "Two letter word that identifies the data structure"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the document"
+        },
+        {
+          "name": "versionId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the version to update"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/dataentities/{acronym}/documents/{id}/{field}/attachments",
+      "method": "saveattachment",
+      "httpMethod": "post",
+      "tag": "Attachments",
+      "description": "Save attachment",
+      "parameters": [
+        {
+          "name": "acronym",
+          "schema": "string",
+          "required": true,
+          "description": "Two letter word that identifies the data structure"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the document"
+        },
+        {
+          "name": "field",
+          "schema": "string",
+          "required": true,
+          "description": "Field to attach the file to, as described in admin"
+        },
+        {
+          "name": "file",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/dataentities/{acronym}/documents/{id}/{field}/attachments/{file-name}",
+      "method": "retrieveattachment",
+      "httpMethod": "get",
+      "tag": "Attachments",
+      "description": "Retrieve attachment",
+      "parameters": [
+        {
+          "name": "acronym",
+          "schema": "string",
+          "required": true,
+          "description": "Two letter word that identifies the data structure"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the document"
+        },
+        {
+          "name": "field",
+          "schema": "string",
+          "required": true,
+          "description": "Field to attach the file to, as described in admin"
+        },
+        {
+          "name": "file-name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/dataentities/{acronym}/scroll",
+      "method": "scrolldocuments",
+      "httpMethod": "get",
+      "tag": "Scroll",
+      "description": "Scroll documents",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand "
+        },
+        {
+          "name": "acronym",
+          "schema": "string",
+          "required": true,
+          "description": "Identifies the kind of data"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "429",
+          "description": "Wildcard queries temporarily blocked due to excessive usage. Consider adjusting your code to remove them or reduce the rate of search requests with wildcards (*). This temporary block may also be due to excessive use of requests with the parameter `keyword`."
+        }
+      ]
+    },
+    {
+      "url": "/api/dataentities/{acronym}/search",
+      "method": "searchdocuments",
+      "httpMethod": "get",
+      "tag": "Search",
+      "description": "Search documents",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand "
+        },
+        {
+          "name": "REST-Range",
+          "schema": "string",
+          "required": true,
+          "description": "Range of documents to show"
+        },
+        {
+          "name": "acronym",
+          "schema": "string",
+          "required": true,
+          "description": "Identifies the kind of data"
+        },
+        {
+          "name": "_fields",
+          "schema": "string",
+          "required": false,
+          "description": "Fields that will be returned by document"
+        },
+        {
+          "name": "_where",
+          "schema": "string",
+          "required": false,
+          "description": "Specification of filters. As seen below"
+        },
+        {
+          "name": "_schema",
+          "schema": "string",
+          "required": false,
+          "description": "Enter with the name of the schema to filter documents by compatibility of the schema."
+        },
+        {
+          "name": "_keyword",
+          "schema": "string",
+          "required": false,
+          "description": "String to search"
+        },
+        {
+          "name": "_sort",
+          "schema": "string",
+          "required": false,
+          "description": "Use ASC value to sort ascending or DESC value to sort descending. "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "503",
+          "description": "Wildcard queries temporarily blocked due to excessive usage. Consider adjusting your code to remove them or reduce the rate of search requests with wildcards (*). This temporary block may also be due to excessive use of requests with the parameter `keyword`."
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://vtex.local",
   "apiDescription": "",
   "apiTitle": "MasterData API - v1",

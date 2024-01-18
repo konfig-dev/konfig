@@ -4,6 +4,207 @@
   "homepage": "npr.org",
   "serviceName": "authorization",
   "apiVersion": "2",
+  "methods": [
+    {
+      "url": "/v2/device",
+      "method": "generateDeviceCode",
+      "httpMethod": "post",
+      "tag": "authorization",
+      "description": "Initiate an OAuth2 login flow for limited input devices",
+      "parameters": [
+        {
+          "name": "client_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "client_secret",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "scope",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "A simple representation of an error result from an API call, rarely used; in most cases we still return a Collection.doc+JSON document for errors"
+        },
+        {
+          "statusCode": "401",
+          "description": "A simple representation of an error result from an API call, rarely used; in most cases we still return a Collection.doc+JSON document for errors"
+        },
+        {
+          "statusCode": "500",
+          "description": "A simple representation of an error result from an API call, rarely used; in most cases we still return a Collection.doc+JSON document for errors"
+        },
+        {
+          "statusCode": "503",
+          "description": "A simple representation of an error result from an API call, rarely used; in most cases we still return a Collection.doc+JSON document for errors"
+        }
+      ]
+    },
+    {
+      "url": "/v2/token",
+      "method": "createToken",
+      "httpMethod": "post",
+      "tag": "authorization",
+      "description": "Create a new OAuth2 access token",
+      "parameters": [
+        {
+          "name": "grant_type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "client_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "client_secret",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "code",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "redirect_uri",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "service",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "refresh_token",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "scope",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "token_type_hint",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "A simple representation of an error result from an API call, rarely used; in most cases we still return a Collection.doc+JSON document for errors"
+        },
+        {
+          "statusCode": "401",
+          "description": "A simple representation of an error result from an API call, rarely used; in most cases we still return a Collection.doc+JSON document for errors"
+        },
+        {
+          "statusCode": "500",
+          "description": "A simple representation of an error result from an API call, rarely used; in most cases we still return a Collection.doc+JSON document for errors"
+        },
+        {
+          "statusCode": "503",
+          "description": "A simple representation of an error result from an API call, rarely used; in most cases we still return a Collection.doc+JSON document for errors"
+        }
+      ]
+    },
+    {
+      "url": "/v2/token/revoke",
+      "method": "revokeToken",
+      "httpMethod": "post",
+      "tag": "authorization",
+      "description": "Revoke an existing OAuth2 access token",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "A `client_credentials` access token from the same client application as the token being revoked. Should start with `Bearer`, followed by a space, followed by the token."
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "token_type_hint",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "An empty JSON object"
+        },
+        {
+          "statusCode": "400",
+          "description": "A simple representation of an error result from an API call, rarely used; in most cases we still return a Collection.doc+JSON document for errors"
+        },
+        {
+          "statusCode": "401",
+          "description": "A simple representation of an error result from an API call, rarely used; in most cases we still return a Collection.doc+JSON document for errors"
+        },
+        {
+          "statusCode": "403",
+          "description": "A simple representation of an error result from an API call, rarely used; in most cases we still return a Collection.doc+JSON document for errors"
+        },
+        {
+          "statusCode": "500",
+          "description": "A simple representation of an error result from an API call, rarely used; in most cases we still return a Collection.doc+JSON document for errors"
+        },
+        {
+          "statusCode": "503",
+          "description": "A simple representation of an error result from an API call, rarely used; in most cases we still return a Collection.doc+JSON document for errors"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://authorization.api.npr.org",
   "apiDescription": "The interface to our OAuth2 server",
   "apiTitle": "NPR Authorization Service",

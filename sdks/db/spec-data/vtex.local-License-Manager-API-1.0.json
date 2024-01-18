@@ -4,6 +4,342 @@
   "homepage": "vtex.local",
   "serviceName": "License-Manager-API",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/api/license-manager/site/pvt/logins/list/paged",
+      "method": "getListUsers",
+      "httpMethod": "get",
+      "tag": "User",
+      "description": "Get List of Users",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "The media type of the body of the request. Default value for license manager protocol is application/json"
+        },
+        {
+          "name": "numItems",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of items in the returned page"
+        },
+        {
+          "name": "pageNumber",
+          "schema": "integer",
+          "required": false,
+          "description": "Which page from the whole list will be returned"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "Chooses the field that the list will be sorted by"
+        },
+        {
+          "name": "sortType",
+          "schema": "string",
+          "required": false,
+          "description": "Defines the sorting order. `ASC` is used for ascendant order. `DSC` is used for descendant order"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response body for listing all users"
+        }
+      ]
+    },
+    {
+      "url": "/api/license-manager/site/pvt/roles/list/paged",
+      "method": "getListRoles",
+      "httpMethod": "get",
+      "tag": "Roles",
+      "description": "Get List of Roles",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "The media type of the body of the request. Default value for license manager protocol is application/json"
+        },
+        {
+          "name": "numItems",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of items in the returned page"
+        },
+        {
+          "name": "pageNumber",
+          "schema": "integer",
+          "required": false,
+          "description": "Which page from the whole list will be returned"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "Chooses the field that the list will be sorted by"
+        },
+        {
+          "name": "sortType",
+          "schema": "string",
+          "required": false,
+          "description": "Defines the sorting order. ASC is used for ascendant order. DSC is used for descendant order"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response body for listing all roles"
+        }
+      ]
+    },
+    {
+      "url": "/api/license-manager/users",
+      "method": "createUser",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "Create User",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/license-manager/users/{userId}",
+      "method": "getUser",
+      "httpMethod": "get",
+      "tag": "User",
+      "description": "Get User",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "The media type of the body of the request. Default value for license manager protocol is application/json"
+        },
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": "ID from queried user."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/license-manager/users/{userId}/roles",
+      "method": "getRolesbyUser",
+      "httpMethod": "get",
+      "tag": "Roles",
+      "description": "Get Roles by User/appKey",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "The media type of the body of the request. Default value for license manager protocol is application/json"
+        },
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": "ID corresponding to the user"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Array of role objects"
+        }
+      ]
+    },
+    {
+      "url": "/api/license-manager/users/{userId}/roles",
+      "method": "putRolesinUser",
+      "httpMethod": "put",
+      "tag": "Roles",
+      "description": "Put Roles in User/appKey",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": "ID corresponding to the user"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/license-manager/users/{userId}/roles/{roleId}",
+      "method": "removeRolefromUser",
+      "httpMethod": "delete",
+      "tag": "Roles",
+      "description": "Remove Role from User/appKey",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "The media type of the body of the request. Default value for license manager protocol is application/json"
+        },
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": "ID corresponding to the user"
+        },
+        {
+          "name": "roleId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the role which will be removed from the user"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/vlm/account",
+      "method": "getAccount",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Get information about account",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Successful response for `/api/vlm/account`"
+        }
+      ]
+    },
+    {
+      "url": "/api/vlm/account/stores",
+      "method": "getByAccount",
+      "httpMethod": "get",
+      "tag": "Store",
+      "description": "Get Stores",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Array of store objects"
+        }
+      ]
+    },
+    {
+      "url": "/api/vlm/appkeys",
+      "method": "getappkeysfromaccount",
+      "httpMethod": "get",
+      "tag": "App Keys",
+      "description": "Get appKeys from account",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "The media type of the body of the request. Default value for license manager protocol is application/json"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Array of AppKeys object"
+        }
+      ]
+    },
+    {
+      "url": "/api/vlm/appkeys",
+      "method": "createnewappkey",
+      "httpMethod": "post",
+      "tag": "App Keys",
+      "description": "Create new appkey",
+      "parameters": [
+        {
+          "name": "label",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response body of sucessful call to /api/vlm/appkeys"
+        }
+      ]
+    },
+    {
+      "url": "/api/vlm/appkeys/{id}",
+      "method": "updateappkey",
+      "httpMethod": "put",
+      "tag": "App Keys",
+      "description": "Update appkey",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID from the appKey which will be updated"
+        },
+        {
+          "name": "isActive",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": "Object representing VLMError"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://vtex.local",
   "apiDescription": "## Welcome!\r\n\r\nThe License Manager API allows you to create users, modify their names and emails, as well as add and remove roles from users.\r\n\r\n### ATTRIBUTES\r\n\r\n|Attribute name | Description |\r\n|:------------|--------------|\r\n|accountName | Account name in VTEX License Manager |\r\n|environment | Environment on which you want to run the query e.g. vtexcommercestable |\r\n|userId      | Unique user identification string |\r\n|roleId      | Integer that represents a role, can be looked up on the License Manager UI |",
   "apiTitle": "License Manager API",

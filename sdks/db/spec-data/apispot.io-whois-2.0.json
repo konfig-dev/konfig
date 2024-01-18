@@ -4,6 +4,168 @@
   "homepage": "apispot.io",
   "serviceName": "whois",
   "apiVersion": "2.0",
+  "methods": [
+    {
+      "url": "/batch",
+      "method": "getBatches",
+      "httpMethod": "get",
+      "description": "Get your batches",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/batch",
+      "method": "createBatch",
+      "httpMethod": "post",
+      "description": "Create batch. Batch is then being processed until all provided items have been completed. At any time it can be `get` to provide current status with results optionally.",
+      "parameters": [
+        {
+          "name": "domains",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "operation",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "options",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/batch/{id}",
+      "method": "deleteBatch",
+      "httpMethod": "delete",
+      "description": "Delete batch",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Batch ID"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/batch/{id}",
+      "method": "getBatch",
+      "httpMethod": "get",
+      "description": "Get batch",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Batch ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/db",
+      "method": "queryDb",
+      "httpMethod": "get",
+      "description": "Query domain database",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": true,
+          "description": "Query (contact name, dns, domain etc)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/domains/{domain}/check",
+      "method": "checkDomain",
+      "httpMethod": "get",
+      "description": "Check domain availability",
+      "parameters": [
+        {
+          "name": "domain",
+          "schema": "string",
+          "required": true,
+          "description": "Domain"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/domains/{domain}/rank",
+      "method": "domainRank",
+      "httpMethod": "get",
+      "description": "Check domain rank (authority).",
+      "parameters": [
+        {
+          "name": "domain",
+          "schema": "string",
+          "required": true,
+          "description": "Domain"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/domains/{domain}/whois",
+      "method": "whois",
+      "httpMethod": "get",
+      "description": "WHOIS query for a domain",
+      "parameters": [
+        {
+          "name": "domain",
+          "schema": "string",
+          "required": true,
+          "description": "Domain"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://apispot.io/api/v2",
   "apiDescription": "Domain API (WHOIS, Check, Batch)",
   "apiTitle": "Bulk WHOIS API",

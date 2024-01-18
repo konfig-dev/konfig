@@ -3,6 +3,204 @@
   "openApiRaw": "http://devui.magick.nu/api/api-docs",
   "homepage": "magick.nu",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/strategies/strategyId/{strategyId}",
+      "method": "getStrategiesStrategyIdStrategyId",
+      "httpMethod": "get",
+      "tag": "strategies",
+      "description": "Get Strategy by ID",
+      "parameters": [
+        {
+          "name": "strategyId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/strategies/templates",
+      "method": "getStrategiesTemplates",
+      "httpMethod": "get",
+      "tag": "strategies",
+      "description": "Get all Template Strategies",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/tradingAccounts",
+      "method": "postTradingAccounts",
+      "httpMethod": "post",
+      "tag": "tradingAccounts",
+      "description": "Add a Trading Account",
+      "parameters": [
+        {
+          "name": "brokerServer",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "magickUsername",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/tradingAccounts/password/{username}/{brokerserver}/{mt4username}",
+      "method": "putTradingAccountsPasswordUsernameBrokerserverMt4Username",
+      "httpMethod": "put",
+      "tag": "tradingAccounts",
+      "description": "Update MT4 Account Password",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "brokerserver",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "mt4username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "newPassword",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "oldPassword",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/users",
+      "method": "postUsers",
+      "httpMethod": "post",
+      "tag": "users",
+      "description": "Create a new Tradeworks User",
+      "parameters": [
+        {
+          "name": "affiliateId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "subscriptionType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/users/email/{email}",
+      "method": "getUsersEmailEmail",
+      "httpMethod": "get",
+      "tag": "users",
+      "description": "Check if email is available",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/users/password/{username}",
+      "method": "putUsersPasswordUsername",
+      "httpMethod": "put",
+      "tag": "users",
+      "description": "Update user's password",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "newPassword",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "oldPassword",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/users/username/{username}",
+      "method": "getUsersUsernameUsername",
+      "httpMethod": "get",
+      "tag": "users",
+      "description": "Check if username is available",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "http://devui.magick.nu/rest",
   "apiDescription": "Authentication is required to access all methods of the API. Enter username and password.\n                Credentials are automatically set as you type.",
   "apiTitle": "Tradeworks",

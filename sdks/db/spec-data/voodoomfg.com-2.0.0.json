@@ -3,6 +3,306 @@
   "openApiRaw": "https://api.voodoomfg.com/voodoo.yaml",
   "homepage": "voodoomfg.com",
   "apiVersion": "2.0.0",
+  "methods": [
+    {
+      "url": "/materials",
+      "method": "/materialsGet",
+      "httpMethod": "get",
+      "tag": "materials",
+      "description": "Voodoo Manufacturing offers printing in a number of different materials, with different color options for each. Your organization can expose as many or as few material options as you want to your end-customer.\n",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/model",
+      "method": "/modelGet",
+      "httpMethod": "get",
+      "tag": "model",
+      "description": "Retrieve the models you've created.\n",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/model",
+      "method": "/modelPost",
+      "httpMethod": "post",
+      "tag": "model",
+      "description": "Models represent 3D design files that you'd like to produce. Creating models is generally the first step in creating an order.\n",
+      "parameters": [
+        {
+          "name": "file_url",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/model/quote",
+      "method": "/model/quoteGet",
+      "httpMethod": "get",
+      "tag": "model",
+      "description": "Get a quote a given model id.\n",
+      "parameters": [
+        {
+          "name": "model_id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique id of the model you'd like to quote."
+        },
+        {
+          "name": "material_id",
+          "schema": "number",
+          "required": true,
+          "description": "The unique id of the desired material."
+        },
+        {
+          "name": "quantity",
+          "schema": "number",
+          "required": true,
+          "description": "The number of units in this quote."
+        },
+        {
+          "name": "units",
+          "schema": "string",
+          "required": true,
+          "description": "The units of the model file. Either \"mm\", \"cm\", or \"in\". The correct value to pass here depends on which design program you're using. Defaults to \"mm\"."
+        },
+        {
+          "name": "options[orientation]",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates whether or not this model needs to be oriented prior to printing. If your model is already oriented for 3D printing, you can omit this flag (or set it to false) and it will not be re-oriented prior to printing. If true, it will be re-oriented prior to printing. If you're not sure if your model is oriented, you should set this flag to true. There is an additional charge for orientation."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Quote for a model in the given material_id, units, and quantity."
+        }
+      ]
+    },
+    {
+      "url": "/model/quote_attrs",
+      "method": "/model/quoteAttrsGet",
+      "httpMethod": "get",
+      "tag": "model",
+      "description": "Get a quote for a model with the given attributes.\n",
+      "parameters": [
+        {
+          "name": "x",
+          "schema": "number",
+          "required": true,
+          "description": "The calculated unitless x dimension of this model's bounding box."
+        },
+        {
+          "name": "y",
+          "schema": "number",
+          "required": true,
+          "description": "The calculated unitless y dimension of this model's bounding box."
+        },
+        {
+          "name": "z",
+          "schema": "number",
+          "required": true,
+          "description": "The calculated unitless z dimension of this model's bounding box."
+        },
+        {
+          "name": "volume",
+          "schema": "number",
+          "required": true,
+          "description": "The calculated unitless volume of the model."
+        },
+        {
+          "name": "surface_area",
+          "schema": "number",
+          "required": true,
+          "description": "The calculated unitless surface area of the model."
+        },
+        {
+          "name": "material_id",
+          "schema": "number",
+          "required": true,
+          "description": "The unique id of the desired material."
+        },
+        {
+          "name": "quantity",
+          "schema": "number",
+          "required": true,
+          "description": "The number of units in this quote."
+        },
+        {
+          "name": "units",
+          "schema": "string",
+          "required": true,
+          "description": "The units of the model file. Either \"mm\", \"cm\", or \"in\". The correct value to pass here depends on which design program you're using. Defaults to \"mm\"."
+        },
+        {
+          "name": "options[orientation]",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates whether or not this model needs to be oriented prior to printing. If your model is already oriented for 3D printing, you can omit this flag (or set it to false) and it will not be re-oriented prior to printing. If true, it will be re-oriented prior to printing. If you're not sure if your model is oriented, you should set this flag to true. There is an additional charge for orientation."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Quote for a model in the given material_id, units, and quantity."
+        }
+      ]
+    },
+    {
+      "url": "/model/{model_id}",
+      "method": "/model/{modelId}Get",
+      "httpMethod": "get",
+      "tag": "model",
+      "description": "Retrieve a previously created model by its id.\n",
+      "parameters": [
+        {
+          "name": "model_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/order",
+      "method": "/orderGet",
+      "httpMethod": "get",
+      "tag": "order",
+      "description": "Lists all orders.\n",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/order/confirm",
+      "method": "/order/confirmPost",
+      "httpMethod": "post",
+      "tag": "order",
+      "description": "Confirms an order from a quote_id and submits it to the Voodoo factory.\n",
+      "parameters": [
+        {
+          "name": "quote_id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/order/create",
+      "method": "/order/createPost",
+      "httpMethod": "post",
+      "tag": "order",
+      "description": "Quotes an order and returns a quote_id that is used to confirm the order.\n",
+      "parameters": [
+        {
+          "name": "models",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "notes",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "shipping_address",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "shipping_service",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/order/shipping",
+      "method": "/order/shippingPost",
+      "httpMethod": "post",
+      "tag": "order",
+      "description": "List shipping options and prices for a given shipment.\n",
+      "parameters": [
+        {
+          "name": "models",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "shipping_address",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/order/{order_id}",
+      "method": "/order/{orderId}Get",
+      "httpMethod": "get",
+      "tag": "order",
+      "description": "Retrieve a previously created model by its id.\n",
+      "parameters": [
+        {
+          "name": "order_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "An order contains all of the relevant information about a confirmed order."
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "/api/2",
   "apiDescription": "Welcome to the Voodoo Manufacturing API docs!\n\nYour Voodoo Manufacturing API key must be included with each request to the API. The API will look for the key in the \"api_key\" header of the request. <a href=\"https://voodoomfg.com/3d-print-api#get-access\" target=\"_blank\">You can request a key here.</a>\n\nThis API provides a programmatic interface for submitting printing orders to Voodoo Manufacturing. The general process for creating an order is as follows:\n  - Get a list of the available materials with the /materials endpoint\n  - Upload models to the API with the /models endpoint\n  - Get quotes for shipping methods with the /order/shipping endpoint\n  - Get a quote for an order with the /order/create endpoint\n  - Confirm the order with the /order/confirm endpoint\n\nUploaded models and orders can be retrieved either in bulk or by id at the /model and /order endpoints, respectively.\n\nIn some cases, you may wish to get a quote for a specific model without the context of an order. In this case, you may use the /model/quote (if you've already uploaded the model to the API) or the /model/quote_attrs (lets you quote based on calculated model attributes) endpoints.\n",
   "apiTitle": "Voodoo Manufacturing 3D Print API",

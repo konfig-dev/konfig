@@ -3,6 +3,1178 @@
   "openApiRaw": "https://raw.githubusercontent.com/meshery/meshery/master/helpers/swagger.yaml",
   "homepage": "meshery.local",
   "apiVersion": "0.4.27",
+  "methods": [
+    {
+      "url": "/api/application/",
+      "method": "idGetApplicationFileRequest",
+      "httpMethod": "get",
+      "tag": "ApplicationsAPI",
+      "description": "Handle GET request for Application Files",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "ApplicationsAPIResponse response retruned by patternfile endpoint on meshery server"
+        }
+      ]
+    },
+    {
+      "url": "/api/application/",
+      "method": "idPostApplicationFileRequest",
+      "httpMethod": "post",
+      "tag": "ApplicationsAPI",
+      "description": "Handle POST request for Application Files",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "MesheryApplication represents the applications that needs to be saved"
+        }
+      ]
+    },
+    {
+      "url": "/api/application/deploy",
+      "method": "idDeleteApplicationFile",
+      "httpMethod": "delete",
+      "tag": "ApplicationsAPI",
+      "description": "Handle DELETE request for Application File Deploy",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/application/deploy",
+      "method": "idPostDeployApplicationFile",
+      "httpMethod": "post",
+      "tag": "ApplicationsAPI",
+      "description": "Handle POST request for Application File Deploy",
+      "parameters": [
+        {
+          "name": "Upload Yaml/Yml File",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "MesheryApplication represents the applications that needs to be saved"
+        }
+      ]
+    },
+    {
+      "url": "/api/application/{id}",
+      "method": "idDeleteMesheryApplicationFile",
+      "httpMethod": "delete",
+      "tag": "ApplicationsAPI",
+      "description": "Handle Delete for a Meshery Application File",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id for a specific"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/application/{id}",
+      "method": "idGetMesheryApplication",
+      "httpMethod": "get",
+      "tag": "ApplicationsAPI",
+      "description": "Handle GET request for Meshery Application with the given id",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id for a specific"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "MesheryApplication represents the applications that needs to be saved"
+        }
+      ]
+    },
+    {
+      "url": "/api/filter",
+      "method": "idGetFilterFile",
+      "httpMethod": "get",
+      "tag": "FiltersAPI",
+      "description": "Handle GET request for all filters",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "FiltersAPIResponse response retruned by filterfile endpoint on meshery server"
+        }
+      ]
+    },
+    {
+      "url": "/api/filter",
+      "method": "idPostFilterFile",
+      "httpMethod": "post",
+      "tag": "FiltersAPI",
+      "description": "Handle POST requests for Meshery Filters",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "MesheryFilter represents the filters that needs to be saved"
+        }
+      ]
+    },
+    {
+      "url": "/api/filter/file/{id}",
+      "method": "idGetFilterFiles",
+      "httpMethod": "get",
+      "tag": "FiltersAPI",
+      "description": "Handle GET request for filter file with given id",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "MesheryFilter represents the filters that needs to be saved"
+        }
+      ]
+    },
+    {
+      "url": "/api/filter/{id}",
+      "method": "idDeleteMesheryFilter",
+      "httpMethod": "delete",
+      "tag": "FiltersAPI",
+      "description": "Handle Delete for a Meshery Filter",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id for a specific"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/filter/{id}",
+      "method": "idGetMesheryFilter",
+      "httpMethod": "get",
+      "tag": "FiltersAPI",
+      "description": "Handle GET request for a Meshery Filter",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id for a specific"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "MesheryFilter represents the filters that needs to be saved"
+        }
+      ]
+    },
+    {
+      "url": "/api/oam/{type}",
+      "method": "idGetoamMesheryPattern",
+      "httpMethod": "get",
+      "tag": "PatternsAPI",
+      "description": "Handles the get requests for the OAM objects",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/oam/{type}",
+      "method": "idPostoamMesheryPattern",
+      "httpMethod": "post",
+      "tag": "PatternsAPI",
+      "description": "Handles registering OMA objects",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/pattern",
+      "method": "idGetPatternFiles",
+      "httpMethod": "get",
+      "tag": "PatternsAPI",
+      "description": "Handle GET request for patterns",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "PatternsAPIResponse response retruned by patternfile endpoint on meshery server"
+        }
+      ]
+    },
+    {
+      "url": "/api/pattern",
+      "method": "idPostPatternFile",
+      "httpMethod": "post",
+      "tag": "PatternsAPI",
+      "description": "Handle POST requests for patterns",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "MesheryPattern represents the patterns that needs to be saved"
+        }
+      ]
+    },
+    {
+      "url": "/api/pattern/deploy",
+      "method": "idDeleteDeployPattern",
+      "httpMethod": "delete",
+      "tag": "PatternsAPI",
+      "description": "Handle DELETE request for Pattern Deploy",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/pattern/deploy",
+      "method": "idPostDeployPattern",
+      "httpMethod": "post",
+      "tag": "PatternsAPI",
+      "description": "Handle POST request for Pattern Deploy",
+      "parameters": [
+        {
+          "name": "Upload Yaml/Yml File",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/pattern/{id}",
+      "method": "idDeleteMesheryPattern",
+      "httpMethod": "delete",
+      "tag": "PatternsAPI",
+      "description": "Handle Delete for a Meshery Pattern",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id for a specific"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/pattern/{id}",
+      "method": "idGetMesheryPattern",
+      "httpMethod": "get",
+      "tag": "PatternsAPI",
+      "description": "Handle GET for a Meshery Pattern",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id for a specific"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "MesheryPattern represents the patterns that needs to be saved"
+        }
+      ]
+    },
+    {
+      "url": "/api/perf/profile",
+      "method": "idRunPerfTest",
+      "httpMethod": "get",
+      "tag": "PerfAPI",
+      "description": "Handle GET request to run a test",
+      "parameters": [
+        {
+          "name": "clients",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "duration",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "labels",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "smp_version",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/perf/profile/result",
+      "method": "idGetAllPerfResults",
+      "httpMethod": "get",
+      "tag": "PerfAPI",
+      "description": "Handles GET requests for perf results",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "PerformanceResultsAPIResponse response retruned by performance endpoint on meshery server"
+        }
+      ]
+    },
+    {
+      "url": "/api/perf/profile/result/{id}",
+      "method": "idGetSinglePerfResult",
+      "httpMethod": "get",
+      "tag": "PerfAPI",
+      "description": "Handles GET requests for perf result",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "PerformanceSpec - represents SMP, see here https://github.com/layer5io/service-mesh-performance-specification"
+        }
+      ]
+    },
+    {
+      "url": "/api/provider",
+      "method": "idChoiceProvider",
+      "httpMethod": "get",
+      "tag": "ProvidersAPI",
+      "description": "Handle GET request for the choice of provider",
+      "parameters": [
+        {
+          "name": "provider",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/provider/capabilities",
+      "method": "idGetProviderCapabilities",
+      "httpMethod": "get",
+      "tag": "ProvidersAPI",
+      "description": "Handle GET requests for Provider",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/provider/extension",
+      "method": "idReactComponents",
+      "httpMethod": "get",
+      "tag": "ProvidersAPI",
+      "description": "Handle GET request for React Components",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/providers",
+      "method": "idGetProvidersList",
+      "httpMethod": "get",
+      "tag": "ProvidersAPI",
+      "description": "Handle GET request for list of providers",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/system/adapter/manage",
+      "method": "idDeleteAdapterConfig",
+      "httpMethod": "delete",
+      "tag": "SystemAPI",
+      "description": "Handle DELETE requests to delete adapter config",
+      "parameters": [
+        {
+          "name": "adapter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/system/adapter/manage",
+      "method": "idPostAdapterConfig",
+      "httpMethod": "post",
+      "tag": "SystemAPI",
+      "description": "Handle POST requests to persist adapter config",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/system/adapter/operation",
+      "method": "idPostAdapterOperation",
+      "httpMethod": "post",
+      "tag": "SystemAPI",
+      "description": "Handle POST requests for Adapter Operations",
+      "parameters": [
+        {
+          "name": "adapter",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "query",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "customBody",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "namespace",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "deleteOp",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/system/adapters",
+      "method": "idGetSystemAdapters",
+      "httpMethod": "get",
+      "tag": "SystemAPI",
+      "description": "Handle GET request for adapters",
+      "parameters": [
+        {
+          "name": "adapter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/system/kubernetes",
+      "method": "idDeleteK8SConfig",
+      "httpMethod": "delete",
+      "tag": "SystemAPI",
+      "description": "Handle DELETE request for Kubernetes Config",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/system/kubernetes",
+      "method": "idPostK8SConfig",
+      "httpMethod": "post",
+      "tag": "SystemAPI",
+      "description": "Handle POST request for Kubernetes Config",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "K8SConfig represents all the k8s session config"
+        }
+      ]
+    },
+    {
+      "url": "/api/system/kubernetes/contexts",
+      "method": "idPostK8SContexts",
+      "httpMethod": "post",
+      "tag": "SystemAPI",
+      "description": "Handle POST requests for Kubernetes Context list",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/system/kubernetes/ping",
+      "method": "idGetKubernetesPing",
+      "httpMethod": "get",
+      "tag": "SystemAPI",
+      "description": "Handle GET request for Kubernetes ping",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/system/meshsync/grafana",
+      "method": "idMeshSyncGrafana",
+      "httpMethod": "get",
+      "tag": "SystemAPI",
+      "description": "Handle GET request for mesh-sync grafana",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/system/meshsync/prometheus",
+      "method": "idMeshSyncPrometheus",
+      "httpMethod": "get",
+      "tag": "SystemAPI",
+      "description": "Handle GET request for fetching prometheus",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/system/sync",
+      "method": "idSystemSync",
+      "httpMethod": "get",
+      "tag": "SystemAPI",
+      "description": "Handle GET request for config sync",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Preference represents the data stored in session / local DB"
+        }
+      ]
+    },
+    {
+      "url": "/api/system/version",
+      "method": "idGetSystemVersion",
+      "httpMethod": "get",
+      "tag": "SystemAPI",
+      "description": "Handle GET request for system/server version",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/telemetry/metrics/board_import",
+      "method": "idPostPrometheusBoardImport",
+      "httpMethod": "post",
+      "tag": "PrometheusAPI",
+      "description": "Handle POST request for Prometheus board import",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "GrafanaBoard represents a Grafana board"
+        }
+      ]
+    },
+    {
+      "url": "/api/telemetry/metrics/boards",
+      "method": "idPostPrometheusBoard",
+      "httpMethod": "post",
+      "tag": "PrometheusAPI",
+      "description": "Handle POST request for Prometheus board",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/telemetry/metrics/config",
+      "method": "idDeletePrometheusConfig",
+      "httpMethod": "delete",
+      "tag": "PrometheusAPI",
+      "description": "Handle DELETE for Prometheus configuration",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/telemetry/metrics/config",
+      "method": "idGetPrometheusConfig",
+      "httpMethod": "get",
+      "tag": "PrometheusAPI",
+      "description": "Handle GET for Prometheus configuration",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Prometheus represents the prometheus session config"
+        }
+      ]
+    },
+    {
+      "url": "/api/telemetry/metrics/config",
+      "method": "idPostPrometheusConfig",
+      "httpMethod": "post",
+      "tag": "PrometheusAPI",
+      "description": "Handle POST for Prometheus configuration",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/telemetry/metrics/grafana/boards",
+      "method": "idGetGrafanaBoards",
+      "httpMethod": "get",
+      "tag": "GrafanaAPI",
+      "description": "Handle GET request for Grafana boards",
+      "parameters": [
+        {
+          "name": "dashboardSearch",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/telemetry/metrics/grafana/boards",
+      "method": "idPostGrafanaBoards",
+      "httpMethod": "post",
+      "tag": "GrafanaAPI",
+      "description": "Handle POST request for Grafana boards",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/telemetry/metrics/grafana/config",
+      "method": "idDeleteGrafanaConfig",
+      "httpMethod": "delete",
+      "tag": "GrafanaAPI",
+      "description": "Handle DELETE request for Grafana configuration",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/telemetry/metrics/grafana/config",
+      "method": "idGetGrafanaConfig",
+      "httpMethod": "get",
+      "tag": "GrafanaAPI",
+      "description": "Handle GET request for Grafana configuration",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Grafana represents the Grafana session config"
+        }
+      ]
+    },
+    {
+      "url": "/api/telemetry/metrics/grafana/config",
+      "method": "idPostGrafanaConfig",
+      "httpMethod": "post",
+      "tag": "GrafanaAPI",
+      "description": "Handle POST request for Grafana configuration",
+      "parameters": [
+        {
+          "name": "grafanaAPIKey",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "grafanaURL",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/telemetry/metrics/grafana/ping",
+      "method": "idGetGrafanaPing",
+      "httpMethod": "get",
+      "tag": "GrafanaAPI",
+      "description": "Handle GET request for Grafana ping",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/telemetry/metrics/grafana/query",
+      "method": "idGetGrafanaQuery",
+      "httpMethod": "get",
+      "tag": "GrafanaAPI",
+      "description": "Handle GET request for Grafana queries",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/telemetry/metrics/grafana/scan",
+      "method": "idGetGrafana",
+      "httpMethod": "get",
+      "tag": "GrafanaAPI",
+      "description": "Handle GET request for Grafana",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/telemetry/metrics/ping",
+      "method": "idGetPrometheusPing",
+      "httpMethod": "get",
+      "tag": "PrometheusAPI",
+      "description": "Handle GET request for Prometheus Ping",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/telemetry/metrics/query",
+      "method": "idGetPrometheusQuery",
+      "httpMethod": "get",
+      "tag": "PrometheusAPI",
+      "description": "Handle GET request for Prometheus Query",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/telemetry/metrics/static-board",
+      "method": "idGetPrometheusStaticBoard",
+      "httpMethod": "get",
+      "tag": "PrometheusAPI",
+      "description": "Handle GET request for Prometheus static board",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/user/login",
+      "method": "idGetUserLogin",
+      "httpMethod": "get",
+      "tag": "UserAPI",
+      "description": "Handlers GET request for User login",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/user/logout",
+      "method": "idGetUserLogout",
+      "httpMethod": "get",
+      "tag": "UserAPI",
+      "description": "Handlers GET request for User logout",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/user/performance/profiles",
+      "method": "idGetPerformanceProfiles",
+      "httpMethod": "get",
+      "tag": "PerformanceAPI",
+      "description": "Handle GET requests for performance profiles",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "PerformanceProfilesAPIResponse response retruned by performance endpoint on meshery server"
+        }
+      ]
+    },
+    {
+      "url": "/api/user/performance/profiles",
+      "method": "idSavePerformanceProfile",
+      "httpMethod": "post",
+      "tag": "PerformanceAPI",
+      "description": "Handle POST requests for saving performance profile",
+      "parameters": [
+        {
+          "name": "concurrent_request",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "duration",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "endpoints",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "load_generators",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "qps",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "service_mesh",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "PerformanceProfile represents the performance profile that needs\nto be saved"
+        }
+      ]
+    },
+    {
+      "url": "/api/user/performance/profiles/results",
+      "method": "idGetAllPerformanceResults",
+      "httpMethod": "get",
+      "tag": "PerformanceAPI",
+      "description": "Handles GET requests for performance results",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "PerformanceResultsAPIResponse response retruned by performance endpoint on meshery server"
+        }
+      ]
+    },
+    {
+      "url": "/api/user/performance/profiles/{id}",
+      "method": "idDeletePerformanceProfile",
+      "httpMethod": "delete",
+      "tag": "PerformanceAPI",
+      "description": "Handle Delete requests for performance profiles",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id for a specific"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/user/performance/profiles/{id}",
+      "method": "idGetSinglePerformanceProfile",
+      "httpMethod": "get",
+      "tag": "PerformanceAPI",
+      "description": "Handle GET requests for performance results of a profile",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id for a specific"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "PerformanceProfile represents the performance profile that needs\nto be saved"
+        }
+      ]
+    },
+    {
+      "url": "/api/user/performance/profiles/{id}/results",
+      "method": "idGetProfileResults",
+      "httpMethod": "get",
+      "tag": "PerformanceAPI",
+      "description": "Handle GET request for results of a profile",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id for a specific"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "PerformanceResultsAPIResponse response retruned by performance endpoint on meshery server"
+        }
+      ]
+    },
+    {
+      "url": "/api/user/performance/profiles/{id}/run",
+      "method": "idRunPerformanceTest",
+      "httpMethod": "get",
+      "tag": "PerformanceAPI",
+      "description": "Handle GET request to run a performance test",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Automatically added"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/user/prefs",
+      "method": "idGetUserTestPrefs",
+      "httpMethod": "get",
+      "tag": "UserAPI",
+      "description": "Handle GET for User Load Test Preferences",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Preference represents the data stored in session / local DB"
+        }
+      ]
+    },
+    {
+      "url": "/api/user/prefs",
+      "method": "idPostUserTestPrefs",
+      "httpMethod": "post",
+      "tag": "UserAPI",
+      "description": "Handle GET for User Load Test Preferences",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Preference represents the data stored in session / local DB"
+        }
+      ]
+    },
+    {
+      "url": "/api/user/prefs/perf",
+      "method": "idDeleteLoadPreferences",
+      "httpMethod": "delete",
+      "tag": "UserAPI",
+      "description": "Handle DELETE request for load test preferences",
+      "parameters": [
+        {
+          "name": "uuid",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/user/prefs/perf",
+      "method": "idGetLoadPreferences",
+      "httpMethod": "get",
+      "tag": "UserAPI",
+      "description": "Handle GET request for load test preferences",
+      "parameters": [
+        {
+          "name": "uuid",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/user/prefs/perf",
+      "method": "idPostLoadPreferences",
+      "httpMethod": "post",
+      "tag": "UserAPI",
+      "description": "Handle POST request for load test preferences",
+      "parameters": [
+        {
+          "name": "clients",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "duration",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "labels",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "smp_version",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/user/schedules",
+      "method": "idGetSchedules",
+      "httpMethod": "get",
+      "tag": "SchedulesAPI",
+      "description": "Handle GET reqeuest for Schedules",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "API response model for SchedulesAPI"
+        }
+      ]
+    },
+    {
+      "url": "/api/user/schedules",
+      "method": "idPostSchedules",
+      "httpMethod": "post",
+      "tag": "SchedulesAPI",
+      "description": "Handle POST reqeuest for Schedules",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Schedule is the struct for representing schedules"
+        }
+      ]
+    },
+    {
+      "url": "/api/user/schedules/{id}",
+      "method": "idDeleteSchedules",
+      "httpMethod": "delete",
+      "tag": "SchedulesAPI",
+      "description": "Handle DELETE reqeuest for Schedules",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id for a specific"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "API response model for SchedulesAPI"
+        }
+      ]
+    },
+    {
+      "url": "/api/user/schedules/{id}",
+      "method": "idGetSingleSchedule",
+      "httpMethod": "get",
+      "tag": "SchedulesAPI",
+      "description": "Handle GET reqeuest for Schedules",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "id for a specific"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Schedule is the struct for representing schedules"
+        }
+      ]
+    },
+    {
+      "url": "/api/user/token",
+      "method": "idGetTokenProvider",
+      "httpMethod": "get",
+      "tag": "UserAPI",
+      "description": "Handle GET request for tokens",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/user/token",
+      "method": "idPostTokenProvider",
+      "httpMethod": "post",
+      "tag": "UserAPI",
+      "description": "Handle POST request for tokens",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/provider",
+      "method": "idProvider",
+      "httpMethod": "get",
+      "tag": "ProvidersAPI",
+      "description": "Handle GET request to provider UI",
+      "parameters": [],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "http://meshery.local",
   "apiDescription": "the purpose of this application is to provide an application\nthat is using plain go code to define an API\n\nThis should demonstrate all the possible comment annotations\nthat are available to turn go code into a fully compliant swagger 2.0 spec",
   "apiTitle": "Meshery API.",

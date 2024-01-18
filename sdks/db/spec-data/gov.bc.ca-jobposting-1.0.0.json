@@ -4,6 +4,124 @@
   "homepage": "gov.bc.ca",
   "serviceName": "jobposting",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/Industries",
+      "method": "/industriesGet",
+      "httpMethod": "get",
+      "tag": "Job Feed",
+      "description": "Industries",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/jobTypes",
+      "method": "/jobTypesGet",
+      "httpMethod": "get",
+      "tag": "Job Feed",
+      "description": "Job Types",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/jobs",
+      "method": "/jobsPost",
+      "httpMethod": "post",
+      "tag": "Job Feed",
+      "description": "Job Feed",
+      "parameters": [
+        {
+          "name": "city",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "jobTypes",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "lastRequestDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "majorProjects",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "region",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/majorProjects",
+      "method": "/majorProjectsGet",
+      "httpMethod": "get",
+      "tag": "Job Feed",
+      "description": "Major Projects",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/regions",
+      "method": "/regionsGet",
+      "httpMethod": "get",
+      "tag": "Job Feed",
+      "description": "Regions",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://workbcjobs.api.gov.bc.ca/v1",
   "apiDescription": "This API allows you to receive a feed of jobs from WorkBC's Job Board. Please see our <a href=\"https://github.com/bcgov/api-specs/blob/master/COLLECTION_NOTICE.md#collection-notice\" target=\"_blank\">data collection notice</a>. Please note that you may experience issues when submitting requests to the delivery or test environment if using this [OpenAPI specification](https://github.com/bcgov/api-specs) in other API console viewers.",
   "apiTitle": "WorkBC Job Posting API",

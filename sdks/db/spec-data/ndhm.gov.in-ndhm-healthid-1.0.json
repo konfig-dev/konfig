@@ -4,6 +4,2852 @@
   "homepage": "ndhm.gov.in",
   "serviceName": "ndhm-healthid",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/v1/account/aadhaar/generateOTP",
+      "method": "generatereKycAadharOtpUsingPost",
+      "httpMethod": "post",
+      "tag": "Profile",
+      "description": "Generate Aadhaar OTP on registrered for link account with aadhar number",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "X-Token",
+          "schema": "string",
+          "required": true,
+          "description": "Auth Token"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/account/aadhaar/verifyOTP",
+      "method": "verifyAadharOtpOnlyUsingPost1",
+      "httpMethod": "post",
+      "tag": "Profile",
+      "description": "Verify Aadhaar OTP to complete KYC/re-KYC verification.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "X-Token",
+          "schema": "string",
+          "required": true,
+          "description": "Auth Token"
+        },
+        {
+          "name": "otp",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "restrictions",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "txnId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/account/benefits",
+      "method": "getBenefitsUsingGet",
+      "httpMethod": "get",
+      "tag": "Profile",
+      "description": "Get List of Benefits associated with HealthID.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "X-Token",
+          "schema": "string",
+          "required": true,
+          "description": "Auth Token"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/account/change/passwd/byAadhaar",
+      "method": "changePasswordViaAadharUsingPost",
+      "httpMethod": "post",
+      "tag": "Profile",
+      "description": "Change password via Aadhar for heath id.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "X-Token",
+          "schema": "string",
+          "required": true,
+          "description": "Auth Token"
+        },
+        {
+          "name": "newPassword",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "otp",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "txnId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/account/change/passwd/byMobile",
+      "method": "changePasswordViaMobileUsingPost",
+      "httpMethod": "post",
+      "tag": "Profile",
+      "description": "Change password via mobile for heath id.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "X-Token",
+          "schema": "string",
+          "required": true,
+          "description": "Auth Token"
+        },
+        {
+          "name": "newPassword",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "otp",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "txnId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/account/change/passwd/generateAadhaarOTP",
+      "method": "generateAadharOtpUsingGet",
+      "httpMethod": "get",
+      "tag": "Profile",
+      "description": "Generate Aadhaar OTP on registrered mobile number.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "X-Token",
+          "schema": "string",
+          "required": true,
+          "description": "Auth Token"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/account/change/passwd/generateMobileOTP",
+      "method": "generateMobileOtpUsingGet",
+      "httpMethod": "get",
+      "tag": "Profile",
+      "description": "Generate Mobile OTP to start registration.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "X-Token",
+          "schema": "string",
+          "required": true,
+          "description": "Auth Token"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/account/change/password",
+      "method": "changePasswordViaUsingPost",
+      "httpMethod": "post",
+      "tag": "Profile",
+      "description": "Change password via password for heath id.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "X-Token",
+          "schema": "string",
+          "required": true,
+          "description": "Auth Token"
+        },
+        {
+          "name": "newPassword",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "oldPassword",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/account/getCard",
+      "method": "generateCardUsingGet",
+      "httpMethod": "get",
+      "tag": "Profile",
+      "description": "Generate Health ID card in PDF format",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "X-Token",
+          "schema": "string",
+          "required": true,
+          "description": "Auth Token"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/account/getPngCard",
+      "method": "generatePngCardUsingGet",
+      "httpMethod": "get",
+      "tag": "Profile",
+      "description": "Generate Health ID card PNG",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "X-Token",
+          "schema": "string",
+          "required": true,
+          "description": "Auth Token"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/account/getSvgCard",
+      "method": "generateSvgCardUsingGet",
+      "httpMethod": "get",
+      "tag": "Profile",
+      "description": "Generate Health ID card SVG",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "X-Token",
+          "schema": "string",
+          "required": true,
+          "description": "Auth Token"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/account/profile",
+      "method": "deleteAccountUsingDelete",
+      "httpMethod": "delete",
+      "tag": "Profile",
+      "description": "Delete account",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "X-Token",
+          "schema": "string",
+          "required": true,
+          "description": "Auth Token"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/account/profile",
+      "method": "getAccountInformationUsingGet",
+      "httpMethod": "get",
+      "tag": "Profile",
+      "description": "Get account information.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "X-Token",
+          "schema": "string",
+          "required": true,
+          "description": "Auth Token"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/account/profile",
+      "method": "updateAccountInformationUsingPost",
+      "httpMethod": "post",
+      "tag": "Profile",
+      "description": "Update account information",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "X-Token",
+          "schema": "string",
+          "required": true,
+          "description": "Auth Token"
+        },
+        {
+          "name": "address",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "dayOfBirth",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "districtCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "healthId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "middleName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "monthOfBirth",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "pincode",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "profilePhoto",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "stateCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "subdistrictCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "townCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "villageCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "wardCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "yearOfBirth",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/account/qrCode",
+      "method": "getQrCodeUsingGet",
+      "httpMethod": "get",
+      "tag": "Profile",
+      "description": "Get Quick Response code in PNG format for this account.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "X-Token",
+          "schema": "string",
+          "required": true,
+          "description": "Auth Token"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/account/token",
+      "method": "validateTokenUsingPost",
+      "httpMethod": "post",
+      "tag": "Profile",
+      "description": "Validate auth token",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "authToken",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/auth/authPassword",
+      "method": "authenticateWithPasswordUsingPost",
+      "httpMethod": "post",
+      "tag": "Authentication",
+      "description": "Authenticate using Health ID number / Health ID and password",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "healthId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/auth/authWithMobile",
+      "method": "authenticateUserUsingPost",
+      "httpMethod": "post",
+      "tag": "Authentication",
+      "description": "Authenticate request to generate Mobile OTP using Health ID number / Health ID",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "healthid",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/auth/authWithMobileToken",
+      "method": "authWithMobileTokenUsingPost",
+      "httpMethod": "post",
+      "tag": "Authentication",
+      "description": "Authenticate using verified Mobile Number and user data",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "gender",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "healthId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "txnId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "yearOfBirth",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/auth/cert",
+      "method": "certUsingGet",
+      "httpMethod": "get",
+      "tag": "Authentication",
+      "description": "Auth token public key.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/auth/confirmWithAadhaarBio",
+      "method": "confirmWithAadhaarBioUsingPost",
+      "httpMethod": "post",
+      "tag": "Authentication",
+      "description": "Authentication with Aadhaar Biometric based auth transaction.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "authType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "bioType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "pid",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "txnId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/auth/confirmWithAadhaarOtp",
+      "method": "confirmWithAadhaarOtpUsingPost",
+      "httpMethod": "post",
+      "tag": "Authentication",
+      "description": "Authentication with Aadhaar OTP based auth transaction.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "otp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "txnId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/auth/confirmWithDemographics",
+      "method": "confirmWithDemographicsUsingPost",
+      "httpMethod": "post",
+      "tag": "Authentication",
+      "description": "Authenticate using demographic data of user.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "gender",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "txnId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "yearOfBirth",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/auth/confirmWithMobileOTP",
+      "method": "confirmWithMobileUsingPost",
+      "httpMethod": "post",
+      "tag": "Authentication",
+      "description": "Authentication with Mobile OTP based auth transaction.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "otp",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "txnId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/auth/confirmWithPassword",
+      "method": "authAccountPasswordRequestUsingPost",
+      "httpMethod": "post",
+      "tag": "Authentication",
+      "description": "Authentication with PASSWORD based auth transaction.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "txnId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/auth/init",
+      "method": "initiateAuthUsingPost",
+      "httpMethod": "post",
+      "tag": "Authentication",
+      "description": "Initiate authentication process for given Health ID",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "authMethod",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "healthid",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/auth/resendAuthOTP",
+      "method": "resendAuthMobileOtpUsingPost",
+      "httpMethod": "post",
+      "tag": "Authentication",
+      "description": "Resend Aadhaar/Mobile OTP for Authentication Transaction.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "txnId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/forgot/healthId/aadhaar",
+      "method": "retrievalHealthIdByAadharUsingPost",
+      "httpMethod": "post",
+      "tag": "Forgot health id/number",
+      "description": "Verify aadhar OTP sent as part of forgetHealth id.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "otp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "txnId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/forgot/healthId/aadhaar/generateOtp",
+      "method": "generateAadharOtpUsingPost1",
+      "httpMethod": "post",
+      "tag": "Forgot health id/number",
+      "description": "Generate Aadhaar OTP on registrered mobile number",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "aadhaar",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/forgot/healthId/mobile",
+      "method": "retrievalHealthIdByMobileUsingPost",
+      "httpMethod": "post",
+      "tag": "Forgot health id/number",
+      "description": "Verify Mobile OTP sent as  part of forgetHealth id.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "dayOfBirth",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "gender",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "middleName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "monthOfBirth",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "otp",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "txnId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "yearOfBirth",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/forgot/healthId/mobile/generateOtp",
+      "method": "generateMobileOtpUsingPost",
+      "httpMethod": "post",
+      "tag": "Forgot health id/number",
+      "description": "Generate Mobile OTP to start registration",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "mobile",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/ha/lgd/districts",
+      "method": "getDistrictsInStateUsingGet",
+      "httpMethod": "get",
+      "tag": "Utility",
+      "description": "Get a list of districts in a given  State as per LGD.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "stateCode",
+          "schema": "string",
+          "required": true,
+          "description": "stateCode"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/ha/lgd/states",
+      "method": "getStatesUsingGet",
+      "httpMethod": "get",
+      "tag": "Utility",
+      "description": "Get a list of states as per LGD.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/ha/tags",
+      "method": "deleteTagUsingDelete",
+      "httpMethod": "delete",
+      "tag": "Tags",
+      "description": "Delete tag against HealthId.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "healthId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/ha/tags",
+      "method": "getTagsUsingGet",
+      "httpMethod": "get",
+      "tag": "Tags",
+      "description": "Get list of Tags against HealthID.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "X-Token",
+          "schema": "string",
+          "required": true,
+          "description": "Auth Token"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/ha/tags",
+      "method": "addTagUsingPost",
+      "httpMethod": "post",
+      "tag": "Tags",
+      "description": "Add tag against HealthId.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "healthId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/health/facility/authenticate",
+      "method": "authenticateHealthFacilityUsingPost",
+      "httpMethod": "post",
+      "tag": "Health Facility",
+      "description": "Generate token for heath facility id.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "hfrUid",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/health/facility/change/password",
+      "method": "changePasswordUsingPost",
+      "httpMethod": "post",
+      "tag": "Health Facility",
+      "description": "Change password for heath facility id.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "hfrUid",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "newPassword",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "oldPassword",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/health/facility/createHealthIdWithPreVerified",
+      "method": "createAadhaarAccountUsingPost1",
+      "httpMethod": "post",
+      "tag": "Health Facility",
+      "description": "Generate Health ID card SVG",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "healthId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "middleName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "profilePhoto",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "txnId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/health/facility/generate/password",
+      "method": "generatePasswordUsingPost",
+      "httpMethod": "post",
+      "tag": "Health Facility",
+      "description": "Generates password for heath facility id.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "hfrUid",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/health/facility/generateOtp",
+      "method": "generateFacilityOtpUsingPost",
+      "httpMethod": "post",
+      "tag": "Health Facility",
+      "description": "Generate health hacility OTP on registrered mobile number",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "X-Token",
+          "schema": "string",
+          "required": true,
+          "description": "Auth Token"
+        },
+        {
+          "name": "aadhaar",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/health/facility/getSvgCard",
+      "method": "generateSvgCardUsingGet1",
+      "httpMethod": "get",
+      "tag": "Health Facility",
+      "description": "generateSvgCard",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Health-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Your health id"
+        },
+        {
+          "name": "X-Token",
+          "schema": "string",
+          "required": true,
+          "description": "Auth Token"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/health/facility/reset/password",
+      "method": "resetPasswordUsingPost",
+      "httpMethod": "post",
+      "tag": "Health Facility",
+      "description": "Reset password for heath facility id.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "hfrUid",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/hid/benefit/aadhaar/generateOtp",
+      "method": "generateAadharOtpUsingPost2",
+      "httpMethod": "post",
+      "tag": "Integrated Programs",
+      "description": "Generate Aadhaar OTP on registrered mobile number",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "aadhaar",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/hid/benefit/aadhaar/verifyAadharOtp",
+      "method": "verifyAadharOtpUsingPost",
+      "httpMethod": "post",
+      "tag": "Integrated Programs",
+      "description": "Create health id using Aadhaar Number Otp.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "autoGeneratedBenefitId",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "benefitId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "benefitName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "consentHealthId",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "mobileNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "otp",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "txnId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "validity",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/hid/benefit/aadhaar/verifyBio",
+      "method": "verifyBioUsingPost",
+      "httpMethod": "post",
+      "tag": "Integrated Programs",
+      "description": "Create health id using Biometric Authentication.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "aadhaar",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "autoGeneratedBenefitId",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "benefitId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "benefitName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "bioType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "consentHealthId",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "mobileNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "pid",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "validity",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/hid/benefit/createHealthId/demo/auth",
+      "method": "createHealthIdByDemoAuthUsingPost",
+      "httpMethod": "post",
+      "tag": "Integrated Programs",
+      "description": "Create health id using Aadhaar Demo Auth.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "aadharNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "autoGeneratedBenefitId",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "benefitId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "benefitName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "consentHealthId",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "dateOfBirth",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "gender",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "mobileNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "validity",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/hid/benefit/delink",
+      "method": "delinkHidBenefitUsingPost",
+      "httpMethod": "post",
+      "tag": "Integrated Programs",
+      "description": "De-Linked with hid.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "benefitName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "uidToken",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/hid/benefit/link",
+      "method": "linkHidBenefitUsingPost",
+      "httpMethod": "post",
+      "tag": "Integrated Programs",
+      "description": "Linked with hid.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "benefitId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "benefitName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "stateCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "uidToken",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "validity",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/hid/benefit/mobile/createHealthId",
+      "method": "createHealthIdByMobileUsingPost",
+      "httpMethod": "post",
+      "tag": "Integrated Programs",
+      "description": "Create health id using mobile Authentication.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "autoGeneratedBenefitId",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "benefitDocType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "benefitId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "benefitName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "consentHealthId",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "dateOfBirth",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "docNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "fileType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "gender",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "otp",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "txnId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "uploadedDoc",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "validity",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/hid/benefit/mobile/generateOtp",
+      "method": "generateMobileOtpUsingPost",
+      "httpMethod": "post",
+      "tag": "Integrated Programs",
+      "description": "Generate mobile OTP on registrered mobile number",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "mobile",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/hid/benefit/notify/benefit",
+      "method": "notifyBenefitUsingPost",
+      "httpMethod": "post",
+      "tag": "Integrated Programs",
+      "description": "Create health id using notify Benefit.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "aadharNumberOrUidToken",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "autoGeneratedBenefitId",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "benefitId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "benefitName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "consentHealthId",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "dateOfBirth",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "gender",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "mobileNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "stateCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "validity",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/hid/benefit/search/aadhaar",
+      "method": "findByAadharUsingPost",
+      "httpMethod": "post",
+      "tag": "Integrated Programs",
+      "description": "Search health id number using aadhar or aadhar token.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "aadhaar",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/hid/benefit/search/healthIdNumber",
+      "method": "findByHealthIdUsingPost",
+      "httpMethod": "post",
+      "tag": "Integrated Programs",
+      "description": "Search benefit using health id number.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "benefitId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "healthId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/hid/benefit/update/mobile",
+      "method": "updateMobileInformationUsingPost",
+      "httpMethod": "post",
+      "tag": "Integrated Programs",
+      "description": "Update mobile number for account.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "healthIdNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "mobile",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/hid/benefit/update/profile",
+      "method": "updateAccountInformationUsingPost1",
+      "httpMethod": "post",
+      "tag": "Integrated Programs",
+      "description": "Update account information",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "address",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "dayOfBirth",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "districtCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "healthId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "healthIdNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "middleName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "monthOfBirth",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "pincode",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "profilePhoto",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "stateCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "subdistrictCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "townCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "villageCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "wardCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "yearOfBirth",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/hid/benefit/update/status",
+      "method": "updateStatusUsingPost",
+      "httpMethod": "post",
+      "tag": "Integrated Programs",
+      "description": "Update health id status .",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "healthIdNumber",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/registration/aadhaar/createHealthIdWithAadhaarOtp",
+      "method": "verifyAadharOtpUsingPost",
+      "httpMethod": "post",
+      "tag": "Registration with Aadhaar",
+      "description": "Verify Aadhaar OTP on registrered mobile number to create Health ID.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "middleName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "mobile",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "otp",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "profilePhoto",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "restrictions",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "txnId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/registration/aadhaar/createHealthIdWithPreVerified",
+      "method": "createAadhaarAccountUsingPost",
+      "httpMethod": "post",
+      "tag": "Registration with Aadhaar",
+      "description": "Create Health ID using pre-verified Aadhaar & Mobile.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "healthId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "middleName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "profilePhoto",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "txnId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/registration/aadhaar/generateMobileOTP",
+      "method": "generateMobileOtpForTxnUsingPost",
+      "httpMethod": "post",
+      "tag": "Registration with Aadhaar",
+      "description": "Generate Mobile OTP for verification.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "mobile",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "txnId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/registration/aadhaar/generateOtp",
+      "method": "generateAadharOtpUsingPost",
+      "httpMethod": "post",
+      "tag": "Registration with Aadhaar",
+      "description": "Generate Aadhaar OTP on registrered mobile number",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "aadhaar",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/registration/aadhaar/resendAadhaarOtp",
+      "method": "resendAadharOtpUsingPost",
+      "httpMethod": "post",
+      "tag": "Registration with Aadhaar",
+      "description": "Resend Aadhaar OTP on registrered mobile number to create Health ID.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "txnId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/registration/aadhaar/search/aadhar",
+      "method": "getHealthIdNumbersByAadharUsingPost",
+      "httpMethod": "post",
+      "tag": "Registration with Aadhaar",
+      "description": "Search health id number using aadhar.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "aadhaar",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/registration/aadhaar/verifyBio",
+      "method": "verifyAadharBioUsingPost",
+      "httpMethod": "post",
+      "tag": "Registration with Aadhaar",
+      "description": "Verify Aadhaar using biometrics.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "aadhaar",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "bioType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "pid",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "restrictions",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/registration/aadhaar/verifyMobileOTP",
+      "method": "verifyMobileOtpForTxnUsingPost",
+      "httpMethod": "post",
+      "tag": "Registration with Aadhaar",
+      "description": "Verify Mobile OTP in an existing transaction.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "otp",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "txnId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/registration/aadhaar/verifyOTP",
+      "method": "verifyAadharOtpOnlyUsingPost",
+      "httpMethod": "post",
+      "tag": "Registration with Aadhaar",
+      "description": "Verify Aadhaar OTP and continue for mobile verification.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "otp",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "restrictions",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "txnId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/registration/mobile/createHealthId",
+      "method": "verifyUserViaMobileUsingPost",
+      "httpMethod": "post",
+      "tag": "Registration with mobile number",
+      "description": "Create Health ID with verified mobile token",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "address",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dayOfBirth",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "districtCode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "gender",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "healthId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "middleName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "monthOfBirth",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pincode",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "profilePhoto",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "restrictions",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "stateCode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "subdistrictCode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "townCode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "txnId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "villageCode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "wardCode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "yearOfBirth",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/registration/mobile/generateOtp",
+      "method": "generateMobileOtpUsingPost1",
+      "httpMethod": "post",
+      "tag": "Registration with mobile number",
+      "description": "Generate Mobile OTP to start registration",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "mobile",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/registration/mobile/resendOtp",
+      "method": "resentOtpUsingPost",
+      "httpMethod": "post",
+      "tag": "Registration with mobile number",
+      "description": "Resend Mobile OTP for Health ID registration",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "txnId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/registration/mobile/verifyOtp",
+      "method": "verifyMobileOtpUsingPost",
+      "httpMethod": "post",
+      "tag": "Registration with mobile number",
+      "description": "Verify Mobile OTP sent as part of registration transaction.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "otp",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "txnId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/search/existsByHealthId",
+      "method": "searchUserByUseridUsingPost",
+      "httpMethod": "post",
+      "tag": "Search",
+      "description": "Search a user by Health IDs.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "healthId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/search/searchByHealthId",
+      "method": "searchUserByAccountUsingPost",
+      "httpMethod": "post",
+      "tag": "Search",
+      "description": "Search a user by Health ID Number.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "healthId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/search/searchByMobile",
+      "method": "searchUserByMobileUsingPost",
+      "httpMethod": "post",
+      "tag": "Search",
+      "description": "Search users with a mobile number.",
+      "parameters": [
+        {
+          "name": "Accept-Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "gender",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "mobile",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "yearOfBirth",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://healthidsbx.ndhm.gov.in/api",
   "apiDescription": "It is important to standardize the process of identification of an individual across healthcare providers, to ensure that the created medical records are issued to the right individual or accessed by a Health Information User through appropriate consent. \nIn order to issue a Health ID to an individual, one only needs basic demographic details like Name, Year of Birth, Gender. In addition, citizens should be able to update contact information easily.",
   "apiTitle": "Health ID Service",

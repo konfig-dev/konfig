@@ -3,6 +3,181 @@
   "openApiRaw": "http://api.openapi-generator.tech/api-docs",
   "homepage": "openapi-generator.tech",
   "apiVersion": "6.5.0",
+  "methods": [
+    {
+      "url": "/api/gen/clients",
+      "method": "clientOptions",
+      "httpMethod": "get",
+      "tag": "clients",
+      "description": "Gets languages supported by the client generator",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/gen/clients/{language}",
+      "method": "getClientOptions",
+      "httpMethod": "get",
+      "tag": "clients",
+      "description": "Returns options for a client library",
+      "parameters": [
+        {
+          "name": "language",
+          "schema": "string",
+          "required": true,
+          "description": "The target language for the client library"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/gen/clients/{language}",
+      "method": "generateClient",
+      "httpMethod": "post",
+      "tag": "clients",
+      "description": "Generates a client library",
+      "parameters": [
+        {
+          "name": "language",
+          "schema": "string",
+          "required": true,
+          "description": "The target language for the client library"
+        },
+        {
+          "name": "authorizationValue",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "openAPIUrl",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "options",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "spec",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/gen/download/{fileId}",
+      "method": "downloadFile",
+      "httpMethod": "get",
+      "tag": "clients",
+      "description": "Downloads a pre-generated file",
+      "parameters": [
+        {
+          "name": "fileId",
+          "schema": "string",
+          "required": true,
+          "description": "fileId"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/gen/servers",
+      "method": "serverOptions",
+      "httpMethod": "get",
+      "tag": "servers",
+      "description": "Gets languages supported by the server generator",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/gen/servers/{framework}",
+      "method": "getServerOptions",
+      "httpMethod": "get",
+      "tag": "servers",
+      "description": "Returns options for a server framework",
+      "parameters": [
+        {
+          "name": "framework",
+          "schema": "string",
+          "required": true,
+          "description": "The target language for the server framework"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/gen/servers/{framework}",
+      "method": "generateServerForLanguage",
+      "httpMethod": "post",
+      "tag": "servers",
+      "description": "Generates a server library",
+      "parameters": [
+        {
+          "name": "framework",
+          "schema": "string",
+          "required": true,
+          "description": "framework"
+        },
+        {
+          "name": "authorizationValue",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "openAPIUrl",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "options",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "spec",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "//api.openapi-generator.tech",
   "apiDescription": "This is an online openapi generator server.  You can find out more at https://github.com/OpenAPITools/openapi-generator.",
   "apiTitle": "OpenAPI Generator Online",

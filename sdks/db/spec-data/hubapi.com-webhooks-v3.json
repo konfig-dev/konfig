@@ -4,6 +4,288 @@
   "homepage": "hubapi.com",
   "serviceName": "webhooks",
   "apiVersion": "v3",
+  "methods": [
+    {
+      "url": "/webhooks/v3/{appId}/settings",
+      "method": "delete-/webhooks/v3/{appId}/settingsClear",
+      "httpMethod": "delete",
+      "tag": "Settings",
+      "description": "",
+      "parameters": [
+        {
+          "name": "appId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/webhooks/v3/{appId}/settings",
+      "method": "get-/webhooks/v3/{appId}/settingsGetAll",
+      "httpMethod": "get",
+      "tag": "Settings",
+      "description": "",
+      "parameters": [
+        {
+          "name": "appId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Webhook settings for an app."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/webhooks/v3/{appId}/settings",
+      "method": "put-/webhooks/v3/{appId}/settingsConfigure",
+      "httpMethod": "put",
+      "tag": "Settings",
+      "description": "",
+      "parameters": [
+        {
+          "name": "appId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "targetUrl",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "throttling",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Webhook settings for an app."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/webhooks/v3/{appId}/subscriptions",
+      "method": "get-/webhooks/v3/{appId}/subscriptionsGetAll",
+      "httpMethod": "get",
+      "tag": "Subscriptions",
+      "description": "",
+      "parameters": [
+        {
+          "name": "appId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "List of event subscriptions for your app"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/webhooks/v3/{appId}/subscriptions",
+      "method": "post-/webhooks/v3/{appId}/subscriptionsCreate",
+      "httpMethod": "post",
+      "tag": "Subscriptions",
+      "description": "",
+      "parameters": [
+        {
+          "name": "appId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "active",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "eventType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "propertyName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Complete details for an event subscription."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/webhooks/v3/{appId}/subscriptions/batch/update",
+      "method": "post-/webhooks/v3/{appId}/subscriptions/batch/updateUpdateBatch",
+      "httpMethod": "post",
+      "tag": "Subscriptions",
+      "description": "",
+      "parameters": [
+        {
+          "name": "appId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "inputs",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "207",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/webhooks/v3/{appId}/subscriptions/{subscriptionId}",
+      "method": "delete-/webhooks/v3/{appId}/subscriptions/{subscriptionId}Archive",
+      "httpMethod": "delete",
+      "tag": "Subscriptions",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "appId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/webhooks/v3/{appId}/subscriptions/{subscriptionId}",
+      "method": "get-/webhooks/v3/{appId}/subscriptions/{subscriptionId}GetById",
+      "httpMethod": "get",
+      "tag": "Subscriptions",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "appId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Complete details for an event subscription."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/webhooks/v3/{appId}/subscriptions/{subscriptionId}",
+      "method": "patch-/webhooks/v3/{appId}/subscriptions/{subscriptionId}Update",
+      "httpMethod": "patch",
+      "tag": "Subscriptions",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "appId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "active",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Complete details for an event subscription."
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.hubapi.com",
   "apiDescription": "Provides a way for apps to subscribe to certain change events in HubSpot. Once configured, apps will receive event payloads containing details about the changes at a specified target URL. There can only be one target URL for receiving event notifications per app.",
   "apiTitle": "Webhooks Webhooks",

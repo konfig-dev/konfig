@@ -4,6 +4,3437 @@
   "homepage": "opensuse.org",
   "serviceName": "obs",
   "apiVersion": "2.10.50",
+  "methods": [
+    {
+      "url": "/about",
+      "method": "/aboutGet",
+      "httpMethod": "get",
+      "tag": "General Information",
+      "description": "Get information about API.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/architectures",
+      "method": "/architecturesGet",
+      "httpMethod": "get",
+      "tag": "General Information",
+      "description": "List all known architectures.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/architectures/{architecture_name}",
+      "method": "/architectures/{architectureName}Get",
+      "httpMethod": "get",
+      "tag": "General Information",
+      "description": "Show one architecture.",
+      "parameters": [
+        {
+          "name": "architecture_name",
+          "schema": "string",
+          "required": true,
+          "description": "Architecture name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/attribute",
+      "method": "/attributeGet",
+      "httpMethod": "get",
+      "tag": "Attribute Namespaces",
+      "description": "List all attribute namespaces.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/attribute/{namespace}",
+      "method": "/attribute/{namespace}Delete",
+      "httpMethod": "delete",
+      "tag": "Attribute Namespaces",
+      "description": "Delete an attribute namespace and all attributes below.",
+      "parameters": [
+        {
+          "name": "namespace",
+          "schema": "string",
+          "required": true,
+          "description": "The namespace"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/attribute/{namespace}",
+      "method": "/attribute/{namespace}Get",
+      "httpMethod": "get",
+      "tag": "Attribute Namespaces",
+      "description": "List all attributes below a namespace.",
+      "parameters": [
+        {
+          "name": "namespace",
+          "schema": "string",
+          "required": true,
+          "description": "The namespace"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/attribute/{namespace}/_meta",
+      "method": "/attribute/{namespace}/MetaDelete",
+      "httpMethod": "delete",
+      "tag": "Attribute Namespaces",
+      "description": "Delete an attribute namespace and all attributes below.",
+      "parameters": [
+        {
+          "name": "namespace",
+          "schema": "string",
+          "required": true,
+          "description": "The namespace"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/attribute/{namespace}/_meta",
+      "method": "/attribute/{namespace}/MetaGet",
+      "httpMethod": "get",
+      "tag": "Attribute Namespaces",
+      "description": "Show attribute namespace.",
+      "parameters": [
+        {
+          "name": "namespace",
+          "schema": "string",
+          "required": true,
+          "description": "The namespace"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/attribute/{namespace}/_meta",
+      "method": "/attribute/{namespace}/MetaPost",
+      "httpMethod": "post",
+      "tag": "Attribute Namespaces",
+      "description": "Change attribute namespace. Create an attribute namespace if it doesn't exist.",
+      "parameters": [
+        {
+          "name": "namespace",
+          "schema": "string",
+          "required": true,
+          "description": "The namespace"
+        },
+        {
+          "name": "modifiable_by",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/attribute/{namespace}/_meta",
+      "method": "/attribute/{namespace}/MetaPut",
+      "httpMethod": "put",
+      "tag": "Attribute Namespaces",
+      "description": "Change attribute namespace. Create an attribute namespace if it doesn't exist.",
+      "parameters": [
+        {
+          "name": "namespace",
+          "schema": "string",
+          "required": true,
+          "description": "The namespace"
+        },
+        {
+          "name": "modifiable_by",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/attribute/{namespace}/{attribute_name}",
+      "method": "/attribute/{namespace}/{attributeName}Delete",
+      "httpMethod": "delete",
+      "tag": "Attributes",
+      "description": "Delete an attribute and all its values in projects or packages.",
+      "parameters": [
+        {
+          "name": "namespace",
+          "schema": "string",
+          "required": true,
+          "description": "The namespace"
+        },
+        {
+          "name": "attribute_name",
+          "schema": "string",
+          "required": true,
+          "description": "The name of the attribute"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/attribute/{namespace}/{attribute_name}/_meta",
+      "method": "/attribute/{namespace}/{attributeName}/MetaDelete",
+      "httpMethod": "delete",
+      "tag": "Attributes",
+      "description": "Delete an attribute and all its values in projects or packages.",
+      "parameters": [
+        {
+          "name": "namespace",
+          "schema": "string",
+          "required": true,
+          "description": "The namespace"
+        },
+        {
+          "name": "attribute_name",
+          "schema": "string",
+          "required": true,
+          "description": "The name of the attribute"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/attribute/{namespace}/{attribute_name}/_meta",
+      "method": "/attribute/{namespace}/{attributeName}/MetaGet",
+      "httpMethod": "get",
+      "tag": "Attributes",
+      "description": "Shows attribute.",
+      "parameters": [
+        {
+          "name": "namespace",
+          "schema": "string",
+          "required": true,
+          "description": "The namespace"
+        },
+        {
+          "name": "attribute_name",
+          "schema": "string",
+          "required": true,
+          "description": "The name of the attribute"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/attribute/{namespace}/{attribute_name}/_meta",
+      "method": "/attribute/{namespace}/{attributeName}/MetaPost",
+      "httpMethod": "post",
+      "tag": "Attributes",
+      "description": "Change attribute data. Create an attribute if it doesn't exist.",
+      "parameters": [
+        {
+          "name": "namespace",
+          "schema": "string",
+          "required": true,
+          "description": "The namespace"
+        },
+        {
+          "name": "attribute_name",
+          "schema": "string",
+          "required": true,
+          "description": "The name of the attribute"
+        },
+        {
+          "name": "allowed",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "modifiable_by",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "namespace",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/attribute/{namespace}/{attribute_name}/_meta",
+      "method": "/attribute/{namespace}/{attributeName}/MetaPut",
+      "httpMethod": "put",
+      "tag": "Attributes",
+      "description": "Change attribute data. Create an attribute if it doesn't exist.",
+      "parameters": [
+        {
+          "name": "namespace",
+          "schema": "string",
+          "required": true,
+          "description": "The namespace"
+        },
+        {
+          "name": "attribute_name",
+          "schema": "string",
+          "required": true,
+          "description": "The name of the attribute"
+        },
+        {
+          "name": "allowed",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "modifiable_by",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "namespace",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/build",
+      "method": "/buildGet",
+      "httpMethod": "get",
+      "tag": "Build",
+      "description": "Get a simple directory listing of all projects",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/build/{project_name}",
+      "method": "/build/{projectName}Get",
+      "httpMethod": "get",
+      "tag": "Build",
+      "description": "Get a simple directory listing of all repositories for the specified project",
+      "parameters": [
+        {
+          "name": "project_name",
+          "schema": "string",
+          "required": true,
+          "description": "Project name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/build/{project_name}",
+      "method": "/build/{projectName}Post",
+      "httpMethod": "post",
+      "tag": "Build",
+      "description": "Apply different actions on builds/build processes of the specified project",
+      "parameters": [
+        {
+          "name": "project_name",
+          "schema": "string",
+          "required": true,
+          "description": "Project name"
+        },
+        {
+          "name": "package",
+          "schema": "string",
+          "description": "Name of the package. Scope the commands to the specified package."
+        },
+        {
+          "name": "arch",
+          "schema": "string",
+          "description": "Name of the build architecture. Scope the commands to the specified architectures."
+        },
+        {
+          "name": "repository",
+          "schema": "string",
+          "description": "Name of the repository. Scope the commands to the specified repository."
+        },
+        {
+          "name": "cmd",
+          "schema": "string",
+          "required": true,
+          "description": "**NOTE**: All commands described below, can be scoped to a package within the project by setting the `package`\nparameter.\n\n* `wipe`: Delete all binaries build by the project.\n* `restartbuild`: Restart all running build processes inside the project.\n* `rebuild`: Trigger a rebuild of all packages inside the project.\n* `abortbuild`: Abort all running build processes for the specified project, marking them as failed.\n* `killbuild`: Alias for `abortbuild`.\n* `unpublish`: Delete all published package binaries, for the specified project, from the download repository.\n* `sendsysrq`: Send a single sysrq character to the kernel of a running build. Character need to be specified\n               through the `sysrq` parameter. Only a subset of debugging requests are supported (eg. 9, t or w).\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/build/{project_name}/_result",
+      "method": "/build/{projectName}/ResultGet",
+      "httpMethod": "get",
+      "tag": "Build",
+      "description": "Get the build results for packages, architectures and repositories of the specified project.",
+      "parameters": [
+        {
+          "name": "project_name",
+          "schema": "string",
+          "required": true,
+          "description": "Project name"
+        },
+        {
+          "name": "view",
+          "schema": "string",
+          "description": "Specify which sections should be included in the result list.\n\n* `status`: Include detailed infos about the build status. **Default**\n* `summary`: Include the summary of the status values.\n* `binarylist`: Include a list of generated binary files.\n"
+        },
+        {
+          "name": "package",
+          "schema": "string",
+          "description": "Name of the package. Limit results to the specified package."
+        },
+        {
+          "name": "arch",
+          "schema": "string",
+          "description": "Name of the build architecture. Limit results to the specified build architecture."
+        },
+        {
+          "name": "repository",
+          "schema": "string",
+          "description": "Name of the repository. Limit results to the specified repository."
+        },
+        {
+          "name": "lastbuild",
+          "schema": "boolean",
+          "description": "Show the last build result (excludes current building job states)."
+        },
+        {
+          "name": "locallink",
+          "schema": "boolean",
+          "description": "Include build results from packages with project local links."
+        },
+        {
+          "name": "multibuild",
+          "schema": "boolean",
+          "description": "Include build results from _multibuild definitions."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/build/{project_name}/{repository_name}",
+      "method": "/build/{projectName}/{repositoryName}Get",
+      "httpMethod": "get",
+      "tag": "Build",
+      "description": "List of all architectures the specified project builds against a given repository.",
+      "parameters": [
+        {
+          "name": "project_name",
+          "schema": "string",
+          "required": true,
+          "description": "Project name"
+        },
+        {
+          "name": "repository_name",
+          "schema": "string",
+          "required": true,
+          "description": "Repository name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/build/{project_name}/{repository_name}/_buildconfig",
+      "method": "/build/{projectName}/{repositoryName}/BuildconfigGet",
+      "httpMethod": "get",
+      "tag": "Build",
+      "description": "Show the build configuration for the specified repository.",
+      "parameters": [
+        {
+          "name": "project_name",
+          "schema": "string",
+          "required": true,
+          "description": "Project name"
+        },
+        {
+          "name": "repository_name",
+          "schema": "string",
+          "required": true,
+          "description": "Repository name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/build/{project_name}/{repository_name}/{architecture_name}/_builddepinfo",
+      "method": "/build/{projectName}/{repositoryName}/{architectureName}/BuilddepinfoGet",
+      "httpMethod": "get",
+      "tag": "Build",
+      "description": "Show the build dependencies of packages that are part of the project.",
+      "parameters": [
+        {
+          "name": "project_name",
+          "schema": "string",
+          "required": true,
+          "description": "Project name"
+        },
+        {
+          "name": "repository_name",
+          "schema": "string",
+          "required": true,
+          "description": "Repository name"
+        },
+        {
+          "name": "architecture_name",
+          "schema": "string",
+          "required": true,
+          "description": "Architecture name"
+        },
+        {
+          "name": "package",
+          "schema": "string",
+          "description": "Name of the package. Limit results to the specified package."
+        },
+        {
+          "name": "view",
+          "schema": "string",
+          "description": "* `pkgnames`: Show whole package dependencies, instead of individual binaries.\n* `revpkgnames`: Show which packages depend on the provided project/package for\n  the given repository/architecture, and therefore a rebuild gets triggered on change.\n* `order`: Show packages ordered by dependencies.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/build/{project_name}/{repository_name}/{architecture_name}/_repository",
+      "method": "/build/{projectName}/{repositoryName}/{architectureName}/RepositoryGet",
+      "httpMethod": "get",
+      "tag": "Build",
+      "description": "List all binaries (produced by all packages of the given project).",
+      "parameters": [
+        {
+          "name": "project_name",
+          "schema": "string",
+          "required": true,
+          "description": "Project name"
+        },
+        {
+          "name": "repository_name",
+          "schema": "string",
+          "required": true,
+          "description": "Repository name"
+        },
+        {
+          "name": "architecture_name",
+          "schema": "string",
+          "required": true,
+          "description": "Architecture name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/build/{project_name}/{repository_name}/{architecture_name}/{package_name}",
+      "method": "/build/{projectName}/{repositoryName}/{architectureName}/{packageName}Get",
+      "httpMethod": "get",
+      "tag": "Build",
+      "description": "List binaries built by the sources of the specified package.",
+      "parameters": [
+        {
+          "name": "project_name",
+          "schema": "string",
+          "required": true,
+          "description": "Project name"
+        },
+        {
+          "name": "repository_name",
+          "schema": "string",
+          "required": true,
+          "description": "Repository name"
+        },
+        {
+          "name": "architecture_name",
+          "schema": "string",
+          "required": true,
+          "description": "Architecture name"
+        },
+        {
+          "name": "package_name",
+          "schema": "string",
+          "required": true,
+          "description": "Package name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/build/{project_name}/{repository_name}/{architecture_name}/{package_name}/_buildinfo",
+      "method": "getBuildProjectRepositoryArchPackageBuildinfo",
+      "httpMethod": "get",
+      "tag": "Build",
+      "description": "This endpoint returns information about some specific artifact",
+      "parameters": [
+        {
+          "name": "project_name",
+          "schema": "string",
+          "required": true,
+          "description": "Project name"
+        },
+        {
+          "name": "repository_name",
+          "schema": "string",
+          "required": true,
+          "description": "Repository name"
+        },
+        {
+          "name": "architecture_name",
+          "schema": "string",
+          "required": true,
+          "description": "Architecture name"
+        },
+        {
+          "name": "package_name",
+          "schema": "string",
+          "required": true,
+          "description": "Package name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/build/{project_name}/{repository_name}/{architecture_name}/{package_name}/_history",
+      "method": "getBuildProjectRepositoryArchPackageHistory",
+      "httpMethod": "get",
+      "tag": "Build",
+      "description": "This endpoint returns the build history for a specific artifact",
+      "parameters": [
+        {
+          "name": "project_name",
+          "schema": "string",
+          "required": true,
+          "description": "Project name"
+        },
+        {
+          "name": "repository_name",
+          "schema": "string",
+          "required": true,
+          "description": "Repository name"
+        },
+        {
+          "name": "architecture_name",
+          "schema": "string",
+          "required": true,
+          "description": "Architecture name"
+        },
+        {
+          "name": "package_name",
+          "schema": "string",
+          "required": true,
+          "description": "Package name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/build/{project_name}/{repository_name}/{architecture_name}/{package_name}/_jobstatus",
+      "method": "/build/{projectName}/{repositoryName}/{architectureName}/{packageName}/JobstatusGet",
+      "httpMethod": "get",
+      "tag": "Build",
+      "description": "Show the build status of a currently running build job.",
+      "parameters": [
+        {
+          "name": "project_name",
+          "schema": "string",
+          "required": true,
+          "description": "Project name"
+        },
+        {
+          "name": "repository_name",
+          "schema": "string",
+          "required": true,
+          "description": "Repository name"
+        },
+        {
+          "name": "architecture_name",
+          "schema": "string",
+          "required": true,
+          "description": "Architecture name"
+        },
+        {
+          "name": "package_name",
+          "schema": "string",
+          "required": true,
+          "description": "Package name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/build/{project_name}/{repository_name}/{architecture_name}/{package_name}/_log",
+      "method": "getBuildProjectRepositoryArchPackageLog",
+      "httpMethod": "get",
+      "tag": "Build",
+      "description": "This endpoint returns the last log file for a specific build artifact",
+      "parameters": [
+        {
+          "name": "project_name",
+          "schema": "string",
+          "required": true,
+          "description": "Project name"
+        },
+        {
+          "name": "repository_name",
+          "schema": "string",
+          "required": true,
+          "description": "Repository name"
+        },
+        {
+          "name": "architecture_name",
+          "schema": "string",
+          "required": true,
+          "description": "Architecture name"
+        },
+        {
+          "name": "package_name",
+          "schema": "string",
+          "required": true,
+          "description": "Package name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/build/{project_name}/{repository_name}/{architecture_name}/{package_name}/_reason",
+      "method": "/build/{projectName}/{repositoryName}/{architectureName}/{packageName}/ReasonGet",
+      "httpMethod": "get",
+      "tag": "Build",
+      "description": "Show the reason for the lastly triggered build.",
+      "parameters": [
+        {
+          "name": "project_name",
+          "schema": "string",
+          "required": true,
+          "description": "Project name"
+        },
+        {
+          "name": "repository_name",
+          "schema": "string",
+          "required": true,
+          "description": "Repository name"
+        },
+        {
+          "name": "architecture_name",
+          "schema": "string",
+          "required": true,
+          "description": "Architecture name"
+        },
+        {
+          "name": "package_name",
+          "schema": "string",
+          "required": true,
+          "description": "Package name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/build/{project_name}/{repository_name}/{architecture_name}/{package_name}/_status",
+      "method": "getBuildProjectRepositoryArchPackageStatus",
+      "httpMethod": "get",
+      "tag": "Build",
+      "description": "This endpoint returns the building status for a specific artifact",
+      "parameters": [
+        {
+          "name": "project_name",
+          "schema": "string",
+          "required": true,
+          "description": "Project name"
+        },
+        {
+          "name": "repository_name",
+          "schema": "string",
+          "required": true,
+          "description": "Repository name"
+        },
+        {
+          "name": "architecture_name",
+          "schema": "string",
+          "required": true,
+          "description": "Architecture name"
+        },
+        {
+          "name": "package_name",
+          "schema": "string",
+          "required": true,
+          "description": "Package name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/build/{project_name}/{repository_name}/{architecture_name}/{package_name}/{file_name}",
+      "method": "getBuildProjectRepositoryArchitecturePackageFile",
+      "httpMethod": "get",
+      "tag": "Build",
+      "description": "Return a specific artifact file contents",
+      "parameters": [
+        {
+          "name": "project_name",
+          "schema": "string",
+          "required": true,
+          "description": "Project name"
+        },
+        {
+          "name": "repository_name",
+          "schema": "string",
+          "required": true,
+          "description": "Repository name"
+        },
+        {
+          "name": "architecture_name",
+          "schema": "string",
+          "required": true,
+          "description": "Architecture name"
+        },
+        {
+          "name": "package_name",
+          "schema": "string",
+          "required": true,
+          "description": "Package name"
+        },
+        {
+          "name": "file_name",
+          "schema": "string",
+          "required": true,
+          "description": "The file name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/build/{project_name}/{repository_name}/{architecture_name}/{package_name}/{file_name}",
+      "method": "putBuildProjectRepositoryArchitecturePackageFile",
+      "httpMethod": "put",
+      "tag": "Build",
+      "description": "Update a specific artifact file contents",
+      "parameters": [
+        {
+          "name": "project_name",
+          "schema": "string",
+          "required": true,
+          "description": "Project name"
+        },
+        {
+          "name": "repository_name",
+          "schema": "string",
+          "required": true,
+          "description": "Repository name"
+        },
+        {
+          "name": "architecture_name",
+          "schema": "string",
+          "required": true,
+          "description": "Architecture name"
+        },
+        {
+          "name": "package_name",
+          "schema": "array",
+          "required": true,
+          "description": "Package name"
+        },
+        {
+          "name": "file_name",
+          "schema": "string",
+          "required": true,
+          "description": "The file name"
+        },
+        {
+          "name": "file",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/build/{project_name}/{repository_name}/{architecture_name}/{package_name}/{file_name}?view=fileinfo",
+      "method": "getBuildProjectRepositoryArchitecturePackageFileViewFileinfo",
+      "httpMethod": "get",
+      "tag": "Build",
+      "description": "This endpoint returns details about an specific artifact",
+      "parameters": [
+        {
+          "name": "project_name",
+          "schema": "string",
+          "required": true,
+          "description": "Project name"
+        },
+        {
+          "name": "repository_name",
+          "schema": "string",
+          "required": true,
+          "description": "Repository name"
+        },
+        {
+          "name": "architecture_name",
+          "schema": "string",
+          "required": true,
+          "description": "Architecture name"
+        },
+        {
+          "name": "package_name",
+          "schema": "string",
+          "required": true,
+          "description": "Package name"
+        },
+        {
+          "name": "file_name",
+          "schema": "string",
+          "required": true,
+          "description": "The file name"
+        },
+        {
+          "name": "view",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/configuration",
+      "method": "/configurationGet",
+      "httpMethod": "get",
+      "tag": "Configuration",
+      "description": "Display the configuration of this Open Build Service instance",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/configuration",
+      "method": "/configurationPut",
+      "httpMethod": "put",
+      "tag": "Configuration",
+      "description": "Update the configuration of this Open Build Service instance",
+      "parameters": [
+        {
+          "name": "admin_email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "allow_user_to_create_home_project",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "anonymous",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "change_password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "cleanup_empty_projects",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "default_access_disabled",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "disable_publish_for_branches",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "disallow_group_creation",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "download_on_demand",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "enforce_project_keys",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "gravatar",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "hide_private_options",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "obs_url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "registration",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "schedulers",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tos_url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "unlisted_projects_filter",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "unlisted_projects_filter_description",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/distributions",
+      "method": "/distributionsGet",
+      "httpMethod": "get",
+      "tag": "Distributions",
+      "description": "List all distributions.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/distributions",
+      "method": "/distributionsPost",
+      "httpMethod": "post",
+      "tag": "Distributions",
+      "description": "Create a distribution.",
+      "parameters": [
+        {
+          "name": "architecture",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "icon",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "link",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "project",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "reponame",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "repository",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "vendor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/distributions/bulk_replace",
+      "method": "/distributions/bulkReplacePut",
+      "httpMethod": "put",
+      "tag": "Distributions",
+      "description": "Bulk replace all distributions.",
+      "parameters": [
+        {
+          "name": "distribution",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/distributions/include_remotes",
+      "method": "/distributions/includeRemotesGet",
+      "httpMethod": "get",
+      "tag": "Distributions",
+      "description": "List all distributions including remote.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/distributions/{distribution_id}",
+      "method": "/distributions/{distributionId}Delete",
+      "httpMethod": "delete",
+      "tag": "Distributions",
+      "description": "Delete a distribution.",
+      "parameters": [
+        {
+          "name": "distribution_id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the distribution"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/distributions/{distribution_id}",
+      "method": "/distributions/{distributionId}Get",
+      "httpMethod": "get",
+      "tag": "Distributions",
+      "description": "Show a distribution.",
+      "parameters": [
+        {
+          "name": "distribution_id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the distribution"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/distributions/{distribution_id}",
+      "method": "/distributions/{distributionId}Put",
+      "httpMethod": "put",
+      "tag": "Distributions",
+      "description": "Update a distribution.",
+      "parameters": [
+        {
+          "name": "distribution_id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the distribution"
+        },
+        {
+          "name": "architecture",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "icon",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "link",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "project",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "reponame",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "repository",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "vendor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/group",
+      "method": "/groupGet",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "List available groups.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/group/{group_title}",
+      "method": "/group/{groupTitle}Delete",
+      "httpMethod": "delete",
+      "tag": "Groups",
+      "description": "Delete a group.",
+      "parameters": [
+        {
+          "name": "group_title",
+          "schema": "string",
+          "required": true,
+          "description": "Group title"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/group/{group_title}",
+      "method": "/group/{groupTitle}Get",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "Read group data.",
+      "parameters": [
+        {
+          "name": "group_title",
+          "schema": "string",
+          "required": true,
+          "description": "Group title"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/group/{group_title}",
+      "method": "/group/{groupTitle}Post",
+      "httpMethod": "post",
+      "tag": "Groups",
+      "description": "Modify group data.",
+      "parameters": [
+        {
+          "name": "group_title",
+          "schema": "string",
+          "required": true,
+          "description": "Group title"
+        },
+        {
+          "name": "cmd",
+          "schema": "string",
+          "description": "Command to be executed. It takes one of these available values:\n* `add_user`: add a user to a group. `userid` query parameter must be also used.\n* `remove_user`: remove a user from a group. `userid` query parameter must be also used.\n* `set_email`: set email adress of group. `email` query parameter must be also used.\n"
+        },
+        {
+          "name": "userid",
+          "schema": "string",
+          "description": "User login. Used with `cmd=add_user` or `cmd=remove_user`."
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": "Group email. Used with `cmd=set_email`."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/group/{group_title}",
+      "method": "/group/{groupTitle}Put",
+      "httpMethod": "put",
+      "tag": "Groups",
+      "description": "Write group data.",
+      "parameters": [
+        {
+          "name": "group_title",
+          "schema": "string",
+          "required": true,
+          "description": "Group title"
+        },
+        {
+          "name": "maintainer",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "person",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/issue_trackers",
+      "method": "/issueTrackersGet",
+      "httpMethod": "get",
+      "tag": "Issue Trackers",
+      "description": "Get the list of issue trackers.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/issue_trackers",
+      "method": "/issueTrackersPost",
+      "httpMethod": "post",
+      "tag": "Issue Trackers",
+      "description": "Create an issue tracker.",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "enable-fetch",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "kind",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "label",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "regex",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "show-url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/issue_trackers/{issue_tracker_name}",
+      "method": "/issueTrackers/{issueTrackerName}Delete",
+      "httpMethod": "delete",
+      "tag": "Issue Trackers",
+      "description": "Delete an issue tracker.",
+      "parameters": [
+        {
+          "name": "issue_tracker_name",
+          "schema": "string",
+          "required": true,
+          "description": "Issue tracker name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/issue_trackers/{issue_tracker_name}",
+      "method": "/issueTrackers/{issueTrackerName}Get",
+      "httpMethod": "get",
+      "tag": "Issue Trackers",
+      "description": "Show an issue tracker.",
+      "parameters": [
+        {
+          "name": "issue_tracker_name",
+          "schema": "string",
+          "required": true,
+          "description": "Issue tracker name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/issue_trackers/{issue_tracker_name}",
+      "method": "/issueTrackers/{issueTrackerName}Put",
+      "httpMethod": "put",
+      "tag": "Issue Trackers",
+      "description": "Update or create an issue tracker.",
+      "parameters": [
+        {
+          "name": "issue_tracker_name",
+          "schema": "string",
+          "required": true,
+          "description": "Issue tracker name"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "enable-fetch",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "kind",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "label",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "regex",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "show-url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/issue_trackers/{issue_tracker_name}/issues/{issue_name}",
+      "method": "/issueTrackers/{issueTrackerName}/issues/{issueName}Get",
+      "httpMethod": "get",
+      "tag": "Issue Trackers",
+      "description": "Show an issue of an issue tracker.",
+      "parameters": [
+        {
+          "name": "issue_tracker_name",
+          "schema": "string",
+          "required": true,
+          "description": "Issue tracker name"
+        },
+        {
+          "name": "issue_name",
+          "schema": "string",
+          "required": true,
+          "description": "Issue name."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/person",
+      "method": "/personGet",
+      "httpMethod": "get",
+      "tag": "Person",
+      "description": "List all people.",
+      "parameters": [
+        {
+          "name": "prefix",
+          "schema": "string",
+          "required": false,
+          "description": "A prefix to filter the people to look for"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/person",
+      "method": "/personPost",
+      "httpMethod": "post",
+      "tag": "Person",
+      "description": "Executes a command on the person endpoint.",
+      "parameters": [
+        {
+          "name": "cmd",
+          "schema": "string",
+          "required": true,
+          "description": "The command to execute"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "login",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "note",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "realname",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/person/register",
+      "method": "/person/registerPost",
+      "httpMethod": "post",
+      "tag": "Person",
+      "description": "Registers a new person",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "login",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "note",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "realname",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/person/{login}",
+      "method": "/person/{login}Get",
+      "httpMethod": "get",
+      "tag": "Person",
+      "description": "Get details about a person",
+      "parameters": [
+        {
+          "name": "login",
+          "schema": "string",
+          "required": true,
+          "description": "Person login."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/person/{login}",
+      "method": "/person/{login}Post",
+      "httpMethod": "post",
+      "tag": "Person",
+      "description": "Perform changes on a registered person",
+      "parameters": [
+        {
+          "name": "login",
+          "schema": "string",
+          "required": true,
+          "description": "Person login."
+        },
+        {
+          "name": "cmd",
+          "schema": "string",
+          "required": true,
+          "description": "The command to execute against the provided person."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/person/{login}",
+      "method": "/person/{login}Put",
+      "httpMethod": "put",
+      "tag": "Person",
+      "description": "Update person",
+      "parameters": [
+        {
+          "name": "login",
+          "schema": "string",
+          "required": true,
+          "description": "Person login."
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "login",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "note",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "realname",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/person/{login}/group",
+      "method": "/person/{login}/groupGet",
+      "httpMethod": "get",
+      "tag": "Person",
+      "description": "List the groups of a person",
+      "parameters": [
+        {
+          "name": "login",
+          "schema": "string",
+          "required": true,
+          "description": "Person login."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/person/{login}/token",
+      "method": "/person/{login}/tokenGet",
+      "httpMethod": "get",
+      "tag": "Person",
+      "description": "List the authentication tokens of a person.",
+      "parameters": [
+        {
+          "name": "login",
+          "schema": "string",
+          "required": true,
+          "description": "Person login."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/person/{login}/token",
+      "method": "/person/{login}/tokenPost",
+      "httpMethod": "post",
+      "tag": "Person",
+      "description": "Create a new authentication token for a person.",
+      "parameters": [
+        {
+          "name": "login",
+          "schema": "string",
+          "required": true,
+          "description": "Person login."
+        },
+        {
+          "name": "project",
+          "schema": "string",
+          "description": "Project name. Should be provided, together with the package query parameter,\nto limit the token to a specific package.\n"
+        },
+        {
+          "name": "package",
+          "schema": "string",
+          "description": "Package name. Should be provided, together with the project query parameter,\nto limit the token to a specific package.\n"
+        },
+        {
+          "name": "operation",
+          "schema": "string",
+          "description": "Operation indicates the kind of token that is going to be created.\n\nWhen operation is not specified, 'runservice' is the default value.\n"
+        },
+        {
+          "name": "scm_token",
+          "schema": "string",
+          "description": "**(Beta/Unstable)**\n\nSCM token used in OBS workflows to report back the workflow status, when the operation is workflow.\n\nIt's normally possible to generate SCM tokens directly on the SCM's website like GitHub or GitLab.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/person/{login}/token/{id}",
+      "method": "/person/{login}/token/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Person",
+      "description": "Delete a token of a person.",
+      "parameters": [
+        {
+          "name": "login",
+          "schema": "string",
+          "required": true,
+          "description": "Person login."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the token to be removed."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/published",
+      "method": "/publishedGet",
+      "httpMethod": "get",
+      "tag": "Published Binaries",
+      "description": "List all the published projects.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/published/{project_name}",
+      "method": "/published/{projectName}Get",
+      "httpMethod": "get",
+      "tag": "Published Binaries",
+      "description": "List the repositories of a project with published binaries",
+      "parameters": [
+        {
+          "name": "project_name",
+          "schema": "string",
+          "required": true,
+          "description": "Project name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/published/{project_name}/{repository_name}",
+      "method": "/published/{projectName}/{repositoryName}Get",
+      "httpMethod": "get",
+      "tag": "Published Binaries",
+      "description": "List the content of the directory tree where the binaries are published at the level project/repository.",
+      "parameters": [
+        {
+          "name": "project_name",
+          "schema": "string",
+          "required": true,
+          "description": "Project name"
+        },
+        {
+          "name": "repository_name",
+          "schema": "string",
+          "required": true,
+          "description": "Repository name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/published/{project_name}/{repository_name}/{architecture_name}",
+      "method": "/published/{projectName}/{repositoryName}/{architectureName}Get",
+      "httpMethod": "get",
+      "tag": "Published Binaries",
+      "description": "List the content of the directory tree where the binaries are published at the level project/repository/architecture.",
+      "parameters": [
+        {
+          "name": "project_name",
+          "schema": "string",
+          "required": true,
+          "description": "Project name"
+        },
+        {
+          "name": "repository_name",
+          "schema": "string",
+          "required": true,
+          "description": "Repository name"
+        },
+        {
+          "name": "architecture_name",
+          "schema": "string",
+          "required": true,
+          "description": "Architecture name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/published/{project_name}/{repository_name}/{architecture_name}/{binary_filename}",
+      "method": "/published/{projectName}/{repositoryName}/{architectureName}/{binaryFilename}Get",
+      "httpMethod": "get",
+      "tag": "Published Binaries",
+      "description": "Return the binary file itself.",
+      "parameters": [
+        {
+          "name": "project_name",
+          "schema": "string",
+          "required": true,
+          "description": "Project name"
+        },
+        {
+          "name": "repository_name",
+          "schema": "string",
+          "required": true,
+          "description": "Repository name"
+        },
+        {
+          "name": "architecture_name",
+          "schema": "string",
+          "required": true,
+          "description": "Architecture name"
+        },
+        {
+          "name": "binary_filename",
+          "schema": "string",
+          "required": true,
+          "description": "Binary filename"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/published/{project_name}/{repository_name}/{architecture_name}/{binary_filename}?view=ymp",
+      "method": "/published/{projectName}/{repositoryName}/{architectureName}/{binaryFilename}?view=ympGet",
+      "httpMethod": "get",
+      "tag": "Published Binaries",
+      "description": "Generate a ymp pattern that includes the needed repositories to install the given binary.",
+      "parameters": [
+        {
+          "name": "project_name",
+          "schema": "string",
+          "required": true,
+          "description": "Project name"
+        },
+        {
+          "name": "repository_name",
+          "schema": "string",
+          "required": true,
+          "description": "Repository name"
+        },
+        {
+          "name": "architecture_name",
+          "schema": "string",
+          "required": true,
+          "description": "Architecture name"
+        },
+        {
+          "name": "binary_filename",
+          "schema": "string",
+          "required": true,
+          "description": "Binary filename"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/published/{project_name}/{repository_name}?view=status",
+      "method": "/published/{projectName}/{repositoryName}?view=statusGet",
+      "httpMethod": "get",
+      "tag": "Published Binaries",
+      "description": "Present information about the last publication of the pair project and repository.",
+      "parameters": [
+        {
+          "name": "project_name",
+          "schema": "string",
+          "required": true,
+          "description": "Project name"
+        },
+        {
+          "name": "repository_name",
+          "schema": "string",
+          "required": true,
+          "description": "Repository name"
+        },
+        {
+          "name": "view",
+          "schema": "string",
+          "description": "Set this parameter to status in order to get details about the last publication."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/request",
+      "method": "/requestGet",
+      "httpMethod": "get",
+      "tag": "Request",
+      "description": "Get a simple directory listing of all requests",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/request",
+      "method": "/requestPost",
+      "httpMethod": "post",
+      "tag": "Request",
+      "description": "Create a request",
+      "parameters": [
+        {
+          "name": "cmd",
+          "schema": "string",
+          "required": true,
+          "description": "This endpoint will refuse the creation of a new request if this parameter is not set."
+        },
+        {
+          "name": "addrevision",
+          "schema": "string",
+          "description": "Ask the server to add revisions of the current sources to the request."
+        },
+        {
+          "name": "ignore_delegate",
+          "schema": "string",
+          "description": "Enforce a new package instance in a project which has OBS:DelegateRequestTarget set"
+        },
+        {
+          "name": "ignore_build_state",
+          "schema": "string",
+          "description": "Skip the build state check"
+        },
+        {
+          "name": "action",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "creator",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "history",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "review",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/request/{id}",
+      "method": "/request/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Request",
+      "description": "Delete a given request.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the choosen request."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/request/{id}",
+      "method": "/request/{id}Get",
+      "httpMethod": "get",
+      "tag": "Request",
+      "description": "Show details about a specified request.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the choosen request."
+        },
+        {
+          "name": "withhistory",
+          "schema": "string",
+          "description": "Include the request history in the results."
+        },
+        {
+          "name": "withfullhistory",
+          "schema": "string",
+          "description": "Includes both, request and review history in the results."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/request/{id}",
+      "method": "/request/{id}Post",
+      "httpMethod": "post",
+      "tag": "Request",
+      "description": "Apply certain actions on a specified request.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the choosen request."
+        },
+        {
+          "name": "cmd",
+          "schema": "string",
+          "description": "- `addreview`:\n  Add a review to a request. **NOTE:** You need to specify who has to address\n  the review by providing an additional paramter. Possible options are:\n  * by_user\n  * by_group\n  * by_project\n\n- `assignreview`:\n  Accept a review for a given group and assign a new review to a specific user.\n  **NOTE:** You need to pass the group name in the `by_group` parameter\n  and the new reviewer in the `reviewer` parameter.\n\n- `changestate`: Modify the state of a given request.\n  **NOTE:** You need to pass the new state throug the `newstate` parameter. Changing\n  from one state to another is in certain cases not allowed. You can still force\n  the operation by using the `force=1` parameter.\n\n- `changereviewstate`:\n  Change the state of a review inside a given request.\n\n- `setpriority`:\n  Change the priority of a given request. You have to pass the choosen priority through\n  the `priority` parameter. Possible values are:\n  * low\n  * moderate\n  * important\n  * critical\n\n- `setincident`: Change the target incident for maintenance_incident actions\n  **NOTE:** You need to provide the incident number through the `incident`\n  parameter.\n\n- `setacceptat`: Set or modify the accept_at time. Either specified by the `time`\n  parameter or by default set to now.\n\n- `approve`: Pre-approve a request in the review state. It will turn into state `accepted`\n  after the last review.\n\n- `cancelapproval`: Reset the approval of a request\n"
+        },
+        {
+          "name": "newstate",
+          "schema": "string",
+          "description": "Define the new state"
+        },
+        {
+          "name": "priority",
+          "schema": "string",
+          "description": "Define the new priority"
+        },
+        {
+          "name": "by_user",
+          "schema": "string",
+          "description": "Specify the user of a new review"
+        },
+        {
+          "name": "by_group",
+          "schema": "string",
+          "description": "Specify the group of the new review"
+        },
+        {
+          "name": "by_project",
+          "schema": "string",
+          "description": "Specify the project of the new review"
+        },
+        {
+          "name": "by_package",
+          "schema": "string",
+          "description": "Specify the package of the new review"
+        },
+        {
+          "name": "incident",
+          "schema": "string",
+          "description": "Specify the incident number for `setincident`"
+        },
+        {
+          "name": "time",
+          "schema": "string",
+          "description": "Specify the time for `setacceptat`"
+        },
+        {
+          "name": "comment",
+          "schema": "string",
+          "description": "Add a comment to one of the actions"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/request/{id}",
+      "method": "/request/{id}Put",
+      "httpMethod": "put",
+      "tag": "Request",
+      "description": "Modify a given request.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the choosen request."
+        },
+        {
+          "name": "action",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "creator",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "history",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "review",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/request/{id}?cmd=diff",
+      "method": "/request/{id}?cmd=diffPost",
+      "httpMethod": "post",
+      "tag": "Request",
+      "description": "Get the diff for all packages affected by the request.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the choosen request."
+        },
+        {
+          "name": "diff_to_superseded",
+          "schema": "string",
+          "description": "Diff relative to a given superseded request. State the id of the corresponding superseded request.\n"
+        },
+        {
+          "name": "view",
+          "schema": "string",
+          "description": "Set this parameter to xml in order to receive a structured diff instead of plain text."
+        },
+        {
+          "name": "withissues",
+          "schema": "string",
+          "description": "Include parsed issues"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/request?view=collection",
+      "method": "/request?view=collectionGet",
+      "httpMethod": "get",
+      "tag": "Request",
+      "description": "Get a collection of requests for a specified target",
+      "parameters": [
+        {
+          "name": "user",
+          "schema": "string",
+          "description": "Filter the results of requests and open reviews for a certain user. If no other parameters are\napplied, it will include requests where the user is maintainer of the target or the creator of\nthe request.\n"
+        },
+        {
+          "name": "project",
+          "schema": "string",
+          "description": "Limit the results of requests and open review requests to the specified target project."
+        },
+        {
+          "name": "package",
+          "schema": "string",
+          "description": "Limit the results of requests and open review requests to the specified target package."
+        },
+        {
+          "name": "states",
+          "schema": "string",
+          "description": "Limit results to a given request state. Multiple states can be provided as a comma separated list."
+        },
+        {
+          "name": "types",
+          "schema": "string",
+          "description": "Limit the results to certain action types. Multiple types can be provided as a comma separated list."
+        },
+        {
+          "name": "roles",
+          "schema": "string",
+          "description": "Limit the results to a given role. Multiple roles can be provided as a comma separated list."
+        },
+        {
+          "name": "withhistory",
+          "schema": "string",
+          "description": "Include the request history in the results."
+        },
+        {
+          "name": "withfullhistory",
+          "schema": "string",
+          "description": "Includes both, request and review history in the results."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Limit the results to the specified amount of requests."
+        },
+        {
+          "name": "ids",
+          "schema": "string",
+          "description": "Limit the result to specified request id's. Multiple id's can be provided as a comma separated list."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/worker/status",
+      "method": "/worker/statusGet",
+      "httpMethod": "get",
+      "tag": "Workers",
+      "description": "Lists status of workers, jobs, backend services and general statistics.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/worker/{architecture_name}:{worker_id}",
+      "method": "/worker/{architectureName}:{workerId}Get",
+      "httpMethod": "get",
+      "tag": "Workers",
+      "description": "Lists capabilites of a worker.",
+      "parameters": [
+        {
+          "name": "architecture_name",
+          "schema": "string",
+          "required": true,
+          "description": "Architecture name"
+        },
+        {
+          "name": "worker_id",
+          "schema": "string",
+          "required": true,
+          "description": "Worker id."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/worker?cmd=checkconstraints",
+      "method": "/worker?cmd=checkconstraintsPost",
+      "httpMethod": "post",
+      "tag": "Workers",
+      "description": "Lists workers which match a constraints filter.",
+      "parameters": [
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": "Project name."
+        },
+        {
+          "name": "repository",
+          "schema": "string",
+          "required": true,
+          "description": "Repository name."
+        },
+        {
+          "name": "arch",
+          "schema": "string",
+          "required": true,
+          "description": "Architecture name."
+        },
+        {
+          "name": "package",
+          "schema": "string",
+          "required": true,
+          "description": "Package name."
+        },
+        {
+          "name": "hardware",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "hostlabel",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "linux",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "sandbox",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "/",
   "apiDescription": "The _Open Build Service API_ is a XML API.\n\nTo authenticate, use [HTTP basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) by passing the _Authorization_ header in the form of `Authorization: Basic <credentials>`.\n\nThere is no API versioning as there is no need for it right now.\n\nOnly rudimentary rate limiting is implemented, so please be gentle when using the API concurrently, especially with potentially expensive operations.\nIn case of abuse, we will limit/remove your access.\n\nFor command-line users, we recommend using [osc](https://github.com/openSUSE/osc) with its _api_ command to interact with the API.\nIt's as simple as this example: `osc api /about` (_about_ is one of the endpoints documented below)\n",
   "apiTitle": "Open Build Service API",

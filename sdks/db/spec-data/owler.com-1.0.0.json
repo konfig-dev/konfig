@@ -3,6 +3,443 @@
   "openApiRaw": "https://developers.owler.com/swagger/spec.json",
   "homepage": "owler.com",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/v1/company/basicsearch",
+      "method": "basicCompanySearch",
+      "httpMethod": "get",
+      "tag": "CompanyAPI",
+      "description": "Basic Search Company by Ticker or Website or Name or PermID",
+      "parameters": [
+        {
+          "name": "q",
+          "schema": "string",
+          "required": true,
+          "description": "Search term"
+        },
+        {
+          "name": "fields",
+          "schema": "array",
+          "required": false,
+          "description": "Fields to be searched - name, website, ticker, permid. If not specfied, will be searched against all fields"
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": "Number of results to be displayed - 10 (by default, if not specified) to 30"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": "Format of the response content - json (by default if not specified), xml"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/company/competitor/id/{companyId}",
+      "method": "/v1/company/competitor/id/{companyId}Get",
+      "httpMethod": "get",
+      "tag": "CompetitorAPI",
+      "description": "Get Competitor information by Id",
+      "parameters": [
+        {
+          "name": "companyId",
+          "schema": "string",
+          "required": true,
+          "description": "Company Id"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": "Format of the response content - json (by default if not specified), xml"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/company/competitor/url/{website}",
+      "method": "/v1/company/competitor/url/{website}Get",
+      "httpMethod": "get",
+      "tag": "CompetitorAPI",
+      "description": "Get Competitor information by URL",
+      "parameters": [
+        {
+          "name": "website",
+          "schema": "string",
+          "required": true,
+          "description": "Company Id"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": "Format of the response content - json (by default if not specified), xml"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/company/competitorpremium/id/{companyId}",
+      "method": "/v1/company/competitorpremium/id/{companyId}Get",
+      "httpMethod": "get",
+      "tag": "CompetitorPremiumAPI",
+      "description": "Get Competitor information by Id",
+      "parameters": [
+        {
+          "name": "companyId",
+          "schema": "string",
+          "required": true,
+          "description": "Company Id"
+        },
+        {
+          "name": "pagination_id",
+          "schema": "string",
+          "required": false,
+          "description": "Pass pagination_id as * in the first API request. The API response will return top competitors along with the next pagination_id which can be passed in the subsequent API request to get the next set of competitors. Repeat this process until needed or till the pagination_id returned is blank. Note:Every response will have maximum of 50 competitors."
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": "Format of the response content - json (by default if not specified), xml"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/company/competitorpremium/url/{website}",
+      "method": "/v1/company/competitorpremium/url/{website}Get",
+      "httpMethod": "get",
+      "tag": "CompetitorPremiumAPI",
+      "description": "Get Competitor information by Url",
+      "parameters": [
+        {
+          "name": "website",
+          "schema": "string",
+          "required": true,
+          "description": "Company Id"
+        },
+        {
+          "name": "pagination_id",
+          "schema": "string",
+          "required": false,
+          "description": "Pass pagination_id as * in the first API request. The API response will return top competitors along with the next pagination_id which can be passed in the subsequent API request to get the next set of competitors. Repeat this process until needed or till the pagination_id returned is blank. Note:Every response will have maximum of 50 competitors."
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": "Format of the response content - json (by default if not specified), xml"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/company/fuzzysearch",
+      "method": "fuzzyCompanySearch",
+      "httpMethod": "get",
+      "tag": "CompanyAPI",
+      "description": "Fuzzy Search Company by Name or Address or Phone",
+      "parameters": [
+        {
+          "name": "q",
+          "schema": "string",
+          "required": true,
+          "description": "Search term"
+        },
+        {
+          "name": "fields",
+          "schema": "array",
+          "required": true,
+          "description": "Fields to be searched - name, website, ticker, permid, address, phone. Each field and its corresponding value has to be specified"
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": "Number of results to be displayed - 10 (by default, if not specified) to 30"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": "Format of the response content - json (by default if not specified), xml"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/company/id/{companyId}",
+      "method": "/v1/company/id/{companyId}Get",
+      "httpMethod": "get",
+      "tag": "CompanyAPI",
+      "description": "Get Company by Id",
+      "parameters": [
+        {
+          "name": "companyId",
+          "schema": "string",
+          "required": true,
+          "description": "Company Id"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": "Format of the response content - json (by default if not specified), xml"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/company/search",
+      "method": "searchCompany",
+      "httpMethod": "get",
+      "tag": "CompanyAPI",
+      "description": "Search Company by Ticker or Website or Name or PermID",
+      "parameters": [
+        {
+          "name": "q",
+          "schema": "string",
+          "required": true,
+          "description": "Search term"
+        },
+        {
+          "name": "fields",
+          "schema": "array",
+          "required": false,
+          "description": "Fields to be searched - name, website, ticker. If not specified, will be searched against all fields"
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": "Number of results to be displayed - 10 (by default, if not specified) to 30"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": "Format of the response content - json (by default if not specified), xml"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/company/url/{website}",
+      "method": "/v1/company/url/{website}Get",
+      "httpMethod": "get",
+      "tag": "CompanyAPI",
+      "description": "Get Company by URL",
+      "parameters": [
+        {
+          "name": "website",
+          "schema": "string",
+          "required": true,
+          "description": "Company Domain"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": "Format of the response content - json (by default if not specified), xml"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/companypremium/id/{companyId}",
+      "method": "/v1/companypremium/id/{companyId}Get",
+      "httpMethod": "get",
+      "tag": "CompanyPremiumAPI",
+      "description": "Get Complete Company Info by Id",
+      "parameters": [
+        {
+          "name": "companyId",
+          "schema": "string",
+          "required": true,
+          "description": "Company Id"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": "Format of the response content - json (by default if not specified), xml"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/companypremium/url/{website}",
+      "method": "/v1/companypremium/url/{website}Get",
+      "httpMethod": "get",
+      "tag": "CompanyPremiumAPI",
+      "description": "Get Basic Company Info by Url",
+      "parameters": [
+        {
+          "name": "website",
+          "schema": "string",
+          "required": true,
+          "description": "Company Domain"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": "Format of the response content - json (by default if not specified), xml"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/feed",
+      "method": "/v1/feedGet",
+      "httpMethod": "get",
+      "tag": "FeedAPI",
+      "description": "Get Feeds for given Company Ids",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": "Format of the response content - json (by default if not specified), xml"
+        },
+        {
+          "name": "company_id",
+          "schema": "array",
+          "required": true,
+          "description": "Company Ids separated by comma (Maximum of 150 Company Ids)"
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": "Number of results to be displayed - 10 (by default, if not specified) to 100"
+        },
+        {
+          "name": "pagination_id",
+          "schema": "string",
+          "required": false,
+          "description": "Pass pagination_id as blank in the first API request. The API response will return the latest feeds along with the next pagination_id which can be passed in the subsequent API request to get the next set of feeds. Repeat this process until needed or till the pagination_id returned is blank"
+        },
+        {
+          "name": "category",
+          "schema": "array",
+          "required": false,
+          "description": "Categories separated by comma. If not specified, will search against all categories"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/feed/url",
+      "method": "/v1/feed/urlGet",
+      "httpMethod": "get",
+      "tag": "FeedAPI",
+      "description": "Get Feeds for given Company Websites",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": "Format of the response content - json (by default if not specified), xml"
+        },
+        {
+          "name": "domain",
+          "schema": "array",
+          "required": true,
+          "description": "Company Websites separated by comma (Maximum of 10 Company Websites)"
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": "Number of results to be displayed - 10 (by default, if not specified) to 100"
+        },
+        {
+          "name": "pagination_id",
+          "schema": "string",
+          "required": false,
+          "description": "Pass pagination_id as blank in the first API request. The API response will return the latest feeds along with the next pagination_id which can be passed in the subsequent API request to get the next set of feeds. Repeat this process until needed or till the pagination_id returned is blank"
+        },
+        {
+          "name": "category",
+          "schema": "array",
+          "required": false,
+          "description": "Categories separated by comma. If not specified, will search against all categories"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.owler.com",
   "apiDescription": "Search for information on companies using a website or company name and get access to Company Data, News, Blog Posts, Competitor Lists and much more.",
   "apiTitle": "Owler",

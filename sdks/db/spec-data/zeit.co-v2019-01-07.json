@@ -3,6 +3,130 @@
   "openApiRaw": "https://unpkg.com/@zeit/openapi",
   "homepage": "zeit.co",
   "apiVersion": "v2019-01-07",
+  "methods": [
+    {
+      "url": "/v1/integrations/webhooks",
+      "method": "getWebhooks",
+      "httpMethod": "get",
+      "tag": "webhooks",
+      "description": "Get a list of existent webhooks",
+      "parameters": [
+        {
+          "name": "teamId",
+          "schema": "string",
+          "required": false,
+          "description": "A team id in case you want to act on behalf of a team"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "An Array of webhooks for the given account"
+        }
+      ]
+    },
+    {
+      "url": "/v1/integrations/webhooks",
+      "method": "createWebhook",
+      "httpMethod": "post",
+      "tag": "webhooks",
+      "description": "Create a new webhook",
+      "parameters": [
+        {
+          "name": "teamId",
+          "schema": "string",
+          "required": false,
+          "description": "A team id in case you want to act on behalf of a team"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "A webhook subscription with an URL where ZEIT will POST events."
+        }
+      ]
+    },
+    {
+      "url": "/v1/integrations/webhooks/:id",
+      "method": "deleteWebhooks",
+      "httpMethod": "delete",
+      "tag": "webhooks",
+      "description": "Remove a webhook by id",
+      "parameters": [
+        {
+          "name": "teamId",
+          "schema": "string",
+          "required": false,
+          "description": "A team id in case you want to act on behalf of a team"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v4/domains",
+      "method": "getDomains",
+      "httpMethod": "get",
+      "tag": "domains",
+      "description": "Gets a list of domains registered for the authenticating user.",
+      "parameters": [
+        {
+          "name": "teamId",
+          "schema": "string",
+          "required": false,
+          "description": "A team id in case you want to act on behalf of a team"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/domains/{name}",
+      "method": "getDomain",
+      "httpMethod": "get",
+      "tag": "domains",
+      "description": "Get a domain for the authenticated user by name",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "A team id in case you want to act on behalf of a team"
+        },
+        {
+          "name": "teamId",
+          "schema": "string",
+          "required": false,
+          "description": "A team id in case you want to act on behalf of a team"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.zeit.co",
   "apiTitle": "ZEIT API",
   "endpoints": 4,

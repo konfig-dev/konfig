@@ -3,6 +3,806 @@
   "openApiRaw": "http://webservice.wikipathways.org/index.php?swagger",
   "homepage": "wikipathways.org",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/createPathway",
+      "method": "/createPathwayPost",
+      "httpMethod": "post",
+      "tag": "All functions",
+      "description": "createPathwayCreate a new pathway on the wiki with the given GPML code.<br>Note: To create/modify pathways via the web service, you need to have an account with web service write permissions. Please contact us to request write access for the web service.",
+      "parameters": [
+        {
+          "name": "gpml",
+          "schema": "string",
+          "required": true,
+          "description": "The GPML code for the new pathway"
+        },
+        {
+          "name": "auth",
+          "schema": "string",
+          "required": true,
+          "description": "The authentication info"
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "The user name"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/findInteractions",
+      "method": "/findInteractionsGet",
+      "httpMethod": "get",
+      "tag": "Search",
+      "description": "findInteractionsFind interactions defined in WikiPathways pathways.",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": true,
+          "description": "The name of an entity to find interactions for (e.g. 'P53')"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/findPathwaysByLiterature",
+      "method": "/findPathwaysByLiteratureGet",
+      "httpMethod": "get",
+      "tag": "Search",
+      "description": "findPathwaysByLiterature",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": true,
+          "description": "The query, can be a pubmed id, author name or title keyword."
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/findPathwaysByText",
+      "method": "/findPathwaysByTextGet",
+      "httpMethod": "get",
+      "tag": "All functions",
+      "description": "findPathwaysByText",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": true,
+          "description": "The query, e.g. 'apoptosis'"
+        },
+        {
+          "name": "species",
+          "schema": "string",
+          "required": false,
+          "description": "Optional, limit the query by species. Leave"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/findPathwaysByXref",
+      "method": "/findPathwaysByXrefGet",
+      "httpMethod": "get",
+      "tag": "All functions",
+      "description": "findPathwaysByXref",
+      "parameters": [
+        {
+          "name": "ids",
+          "schema": "array",
+          "required": true,
+          "description": "string"
+        },
+        {
+          "name": "codes",
+          "schema": "array",
+          "required": false,
+          "description": "string"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/getColoredPathway",
+      "method": "/getColoredPathwayGet",
+      "httpMethod": "get",
+      "tag": "All functions",
+      "description": "getColoredPathwayGet a colored image version of the pathway.",
+      "parameters": [
+        {
+          "name": "pwId",
+          "schema": "string",
+          "required": true,
+          "description": "The pathway identifier"
+        },
+        {
+          "name": "revision",
+          "schema": "string",
+          "required": true,
+          "description": "The revision of the pathway (use '0' for most recent)"
+        },
+        {
+          "name": "graphId",
+          "schema": "array",
+          "required": true,
+          "description": "string"
+        },
+        {
+          "name": "color",
+          "schema": "array",
+          "required": true,
+          "description": "string"
+        },
+        {
+          "name": "fileType",
+          "schema": "string",
+          "required": true,
+          "description": "The image type (One of 'svg', 'pdf' or 'png')."
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/getCurationTagHistory",
+      "method": "/getCurationTagHistoryGet",
+      "httpMethod": "get",
+      "tag": "All functions",
+      "description": "getCurationTagHistory",
+      "parameters": [
+        {
+          "name": "pwId",
+          "schema": "string",
+          "required": true,
+          "description": "The pathway identifier"
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": false,
+          "description": "Only include history from after the given date"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/getCurationTags",
+      "method": "/getCurationTagsGet",
+      "httpMethod": "get",
+      "tag": "All functions",
+      "description": "getCurationTagsGet all curation tags for the given tag name. Use this method if you want to find all pathways that are tagged with a specific curation tag.",
+      "parameters": [
+        {
+          "name": "pwId",
+          "schema": "string",
+          "required": true,
+          "description": "The pathway identifier"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/getCurationTagsByName",
+      "method": "/getCurationTagsByNameGet",
+      "httpMethod": "get",
+      "tag": "All functions",
+      "description": "getCurationTagsByNameGet all curation tags for the given tag name. Use this method if you want to find all pathways that are tagged with a specific curation tag.",
+      "parameters": [
+        {
+          "name": "tagName",
+          "schema": "string",
+          "required": true,
+          "description": "The tag name"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/getOntologyTermsByPathway",
+      "method": "/getOntologyTermsByPathwayGet",
+      "httpMethod": "get",
+      "tag": "Pathway information",
+      "description": "getOntologyTermsByPathway",
+      "parameters": [
+        {
+          "name": "pwId",
+          "schema": "string",
+          "required": true,
+          "description": "The pathway identifier"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/getPathway",
+      "method": "/getPathwayGet",
+      "httpMethod": "get",
+      "tag": "Pathway information",
+      "description": "getPathway",
+      "parameters": [
+        {
+          "name": "pwId",
+          "schema": "string",
+          "required": true,
+          "description": "The pathway identifier"
+        },
+        {
+          "name": "revision",
+          "schema": "integer",
+          "required": false,
+          "description": "The revision number of the pathway (use 0 for most recent)"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/getPathwayAs",
+      "method": "/getPathwayAsGet",
+      "httpMethod": "get",
+      "tag": "Download",
+      "description": "getPathwayAsDownload a pathway in the specified file format.",
+      "parameters": [
+        {
+          "name": "fileType",
+          "schema": "string",
+          "required": true,
+          "description": "The file type to convert to, e.g."
+        },
+        {
+          "name": "pwId",
+          "schema": "string",
+          "required": true,
+          "description": "The pathway identifier"
+        },
+        {
+          "name": "revision",
+          "schema": "integer",
+          "required": false,
+          "description": "The revision number of the pathway (use 0 for most recent)"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/getPathwayHistory",
+      "method": "/getPathwayHistoryGet",
+      "httpMethod": "get",
+      "tag": "History",
+      "description": "getPathwayHistoryGet the revision history of a pathway.",
+      "parameters": [
+        {
+          "name": "pwId",
+          "schema": "string",
+          "required": true,
+          "description": "The pathway identifier"
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": "Limit by time, only history items after the given"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/getPathwayInfo",
+      "method": "/getPathwayInfoGet",
+      "httpMethod": "get",
+      "tag": "Pathway information",
+      "description": "getPathwayInfoGet some general info about the pathway, such as the name, species, without downloading the GPML.",
+      "parameters": [
+        {
+          "name": "pwId",
+          "schema": "string",
+          "required": true,
+          "description": "The pathway identifier"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/getPathwaysByOntologyTerm",
+      "method": "/getPathwaysByOntologyTermGet",
+      "httpMethod": "get",
+      "tag": "Pathway list",
+      "description": "getPathwaysByOntologyTerm",
+      "parameters": [
+        {
+          "name": "term",
+          "schema": "string",
+          "required": true,
+          "description": "The Ontology term"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/getPathwaysByParentOntologyTerm",
+      "method": "/getPathwaysByParentOntologyTermGet",
+      "httpMethod": "get",
+      "tag": "Pathway list",
+      "description": "getPathwaysByParentOntologyTerm",
+      "parameters": [
+        {
+          "name": "term",
+          "schema": "string",
+          "required": true,
+          "description": "The Ontology term"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/getRecentChanges",
+      "method": "/getRecentChangesGet",
+      "httpMethod": "get",
+      "tag": "History",
+      "description": "getRecentChangesGet the recently changed pathways.<br>Note: the recent changes table only retains items for a limited time (2 months), so there is no guarantee that you will get all changes when the timestamp points to a date that is more than 2 months in the past.",
+      "parameters": [
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": "Get the changes after this time"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/getUserByOrcid",
+      "method": "/getUserByOrcidGet",
+      "httpMethod": "get",
+      "tag": "User management",
+      "description": "getUserByOrcid",
+      "parameters": [
+        {
+          "name": "orcid",
+          "schema": "string",
+          "required": true,
+          "description": "string"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/getXrefList",
+      "method": "/getXrefListGet",
+      "httpMethod": "get",
+      "tag": "Download",
+      "description": "getXrefList",
+      "parameters": [
+        {
+          "name": "pwId",
+          "schema": "string",
+          "required": true,
+          "description": "The pathway identifier."
+        },
+        {
+          "name": "code",
+          "schema": "string",
+          "required": true,
+          "description": "The database code to translate to (e.g. 'S' for UniProt)."
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/listOrganisms",
+      "method": "/listOrganismsGet",
+      "httpMethod": "get",
+      "tag": "Organism list",
+      "description": "listOrganisms",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/listPathways",
+      "method": "/listPathwaysGet",
+      "httpMethod": "get",
+      "tag": "Pathway list",
+      "description": "listPathways",
+      "parameters": [
+        {
+          "name": "organism",
+          "schema": "string",
+          "required": false,
+          "description": "The organism to filter by (optional)"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/login",
+      "method": "/loginGet",
+      "httpMethod": "get",
+      "tag": "User management",
+      "description": "loginStart a logged in session, using an existing WikiPathways account. This function will return an authentication code that can be used to excecute methods that need authentication (e.g. updatePathway).",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "The usernameset_include_path(get_include_path().PATH_SEPARATOR.realpath('../includes').PATH_SEPARATOR.realpath('../').PATH_SEPARATOR);"
+        },
+        {
+          "name": "pass",
+          "schema": "string",
+          "required": true,
+          "description": "The password"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/removeCurationTag",
+      "method": "/removeCurationTagGet",
+      "httpMethod": "get",
+      "tag": "All functions",
+      "description": "removeCurationTagRemove a curation tag from a pathway.",
+      "parameters": [
+        {
+          "name": "pwId",
+          "schema": "string",
+          "required": true,
+          "description": "The pathway identifier"
+        },
+        {
+          "name": "tagName",
+          "schema": "string",
+          "required": true,
+          "description": "The name of the tag to apply"
+        },
+        {
+          "name": "auth",
+          "schema": "string",
+          "required": true,
+          "description": "The authentication data"
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "The user name"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/removeOntologyTag",
+      "method": "/removeOntologyTagGet",
+      "httpMethod": "get",
+      "tag": "Write (create/update/delete)",
+      "description": "removeOntologyTag",
+      "parameters": [
+        {
+          "name": "pwId",
+          "schema": "string",
+          "required": true,
+          "description": "The pathway identifier"
+        },
+        {
+          "name": "termId",
+          "schema": "string",
+          "required": true,
+          "description": "The ontology term identifier in the ontology"
+        },
+        {
+          "name": "auth",
+          "schema": "string",
+          "required": true,
+          "description": "The authentication key"
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "required": true,
+          "description": "The username"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/saveCurationTag",
+      "method": "/saveCurationTagGet",
+      "httpMethod": "get",
+      "tag": "All functions",
+      "description": "saveCurationTag",
+      "parameters": [
+        {
+          "name": "pwId",
+          "schema": "string",
+          "required": true,
+          "description": "The pathway identifier"
+        },
+        {
+          "name": "tagName",
+          "schema": "string",
+          "required": true,
+          "description": "The name of the tag to apply"
+        },
+        {
+          "name": "text",
+          "schema": "string",
+          "required": true,
+          "description": "string"
+        },
+        {
+          "name": "revision",
+          "schema": "integer",
+          "required": true,
+          "description": "The revision this tag applies to"
+        },
+        {
+          "name": "auth",
+          "schema": "string",
+          "required": true,
+          "description": "The authentication key"
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "The user name"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/saveOntologyTag",
+      "method": "/saveOntologyTagGet",
+      "httpMethod": "get",
+      "tag": "Write (create/update/delete)",
+      "description": "saveOntologyTag",
+      "parameters": [
+        {
+          "name": "pwId",
+          "schema": "string",
+          "required": true,
+          "description": "The pathway identifier"
+        },
+        {
+          "name": "term",
+          "schema": "string",
+          "required": true,
+          "description": "The ontology term to apply"
+        },
+        {
+          "name": "termId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the term in the ontology"
+        },
+        {
+          "name": "auth",
+          "schema": "string",
+          "required": true,
+          "description": "The authentication key"
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "required": true,
+          "description": "The username"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/updatePathway",
+      "method": "/updatePathwayGet",
+      "httpMethod": "get",
+      "tag": "Write (create/update/delete)",
+      "description": "updatePathwayUpdate a pathway on the wiki with the given GPML code.<br>Note: To create/modify pathways via the web service, you need to have an account with web service write permissions. Please contact us to request write access for the web service.",
+      "parameters": [
+        {
+          "name": "pwId",
+          "schema": "string",
+          "required": true,
+          "description": "The pathway identifier"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": "A description of the modifications"
+        },
+        {
+          "name": "gpml",
+          "schema": "string",
+          "required": true,
+          "description": "The updated GPML code"
+        },
+        {
+          "name": "revision",
+          "schema": "integer",
+          "required": true,
+          "description": "The revision the GPML code is based on"
+        },
+        {
+          "name": "auth",
+          "schema": "string",
+          "required": true,
+          "description": "The authentication key"
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "The username"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://webservice.wikipathways.org",
   "apiTitle": "WikiPathways Webservices",
   "endpoints": 27,

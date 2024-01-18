@@ -4,6 +4,257 @@
   "homepage": "nytimes.com",
   "serviceName": "books_api",
   "apiVersion": "3.0.0",
+  "methods": [
+    {
+      "url": "/lists.{format}",
+      "method": "getListsFormat",
+      "httpMethod": "get",
+      "description": "Best Seller List",
+      "parameters": [
+        {
+          "name": "list",
+          "schema": "string",
+          "description": "The name of the Times best-seller list. To get valid values, use a list names request.\n\nBe sure to replace spaces with hyphens (e.g., e-book-fiction or hardcover-fiction, not E-Book Fiction or Hardcover Fiction). (The parameter is not case sensitive.)"
+        },
+        {
+          "name": "weeks-on-list",
+          "schema": "integer",
+          "description": "The number of weeks that the best seller has been on list-name, as of bestsellers-date"
+        },
+        {
+          "name": "bestsellers-date",
+          "schema": "string",
+          "description": "YYYY-MM-DD\n\nThe week-ending date for the sales reflected on list-name. Times best-seller lists are compiled using available book sale data. The bestsellers-date may be significantly earlier than published-date. For additional information, see the explanation at the bottom of any best-seller list page on NYTimes.com (example: Hardcover Fiction, published Dec. 5 but reflecting sales to Nov. 29)."
+        },
+        {
+          "name": "date",
+          "schema": "string",
+          "description": "YYYY-MM-DD  The date the best-seller list was published on NYTimes.com (compare bestsellers-date)"
+        },
+        {
+          "name": "isbn",
+          "schema": "string",
+          "description": "International Standard Book Number, 10 or 13 digits"
+        },
+        {
+          "name": "published-date",
+          "schema": "string",
+          "description": "YYYY-MM-DD\n\nThe date the best-seller list was published on NYTimes.com (compare bestsellers-date)"
+        },
+        {
+          "name": "rank",
+          "schema": "integer",
+          "description": "The rank of the best seller on list-name as of bestsellers-date"
+        },
+        {
+          "name": "rank-last-week",
+          "schema": "integer",
+          "description": "The rank of the best seller on list-name one week prior to bestsellers-date"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Sets the starting point of the result set"
+        },
+        {
+          "name": "sort-order",
+          "schema": "string",
+          "description": "Sets the sort order of the result set"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lists/best-sellers/history.json",
+      "method": "getListsBestSellersHistoryJson",
+      "httpMethod": "get",
+      "description": "Best Seller History List",
+      "parameters": [
+        {
+          "name": "age-group",
+          "schema": "string",
+          "description": "The target age group for the best seller."
+        },
+        {
+          "name": "author",
+          "schema": "string",
+          "description": "The author of the best seller. The author field does not include additional contributors (see Data Structure for more details about the author and contributor fields).\n\nWhen searching the author field, you can specify any combination of first, middle and last names.\n\nWhen sort-by is set to author, the results will be sorted by author's first name. "
+        },
+        {
+          "name": "contributor",
+          "schema": "string",
+          "description": "The author of the best seller, as well as other contributors such as the illustrator (to search or sort by author name only, use author instead).\n\nWhen searching, you can specify any combination of first, middle and last names of any of the contributors.\n\nWhen sort-by is set to contributor, the results will be sorted by the first name of the first contributor listed. "
+        },
+        {
+          "name": "isbn",
+          "schema": "string",
+          "description": "International Standard Book Number, 10 or 13 digits\n\nA best seller may have both 10-digit and 13-digit ISBNs, and may have multiple ISBNs of each type. To search on multiple ISBNs, separate the ISBNs with semicolons (example: 9780446579933;0061374229)."
+        },
+        {
+          "name": "price",
+          "schema": "string",
+          "description": "The publisher's list price of the best seller, including decimal point"
+        },
+        {
+          "name": "publisher",
+          "schema": "string",
+          "description": "The standardized name of the publisher"
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": "The title of the best seller\n\nWhen searching, you can specify a portion of a title or a full title."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lists/names.{format}",
+      "method": "getListsNamesFormat",
+      "httpMethod": "get",
+      "description": "Best Seller List Names",
+      "parameters": [
+        {
+          "name": "api-key",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lists/overview.{format}",
+      "method": "getListsOverviewFormat",
+      "httpMethod": "get",
+      "description": "Best Seller List Overview",
+      "parameters": [
+        {
+          "name": "published_date",
+          "schema": "string",
+          "description": "The best-seller list publication date. YYYY-MM-DD\n\nYou do not have to specify the exact date the list was published. The service will search forward (into the future) for the closest publication date to the date you specify. For example, a request for lists/overview/2013-05-22 will retrieve the list that was published on 05-26.\n\nIf you do not include a published_date, the current week's best-sellers lists will be returned."
+        },
+        {
+          "name": "api-key",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lists/{date}/{list}.json",
+      "method": "getListsDateListJson",
+      "httpMethod": "get",
+      "description": "Best Seller List by Date",
+      "parameters": [
+        {
+          "name": "isbn",
+          "schema": "integer",
+          "description": "International Standard Book Number, 10 or 13 digits"
+        },
+        {
+          "name": "list-name",
+          "schema": "string",
+          "description": "The name of the Times best-seller list. To get valid values, use a list names request.\n\nBe sure to replace spaces with hyphens (e.g., e-book-fiction or hardcover-fiction, not E-Book Fiction or Hardcover Fiction). (The parameter is not case sensitive.)"
+        },
+        {
+          "name": "published-date",
+          "schema": "string",
+          "description": "YYYY-MM-DD\n\nThe date the best-seller list was published on NYTimes.com (compare bestsellers-date)"
+        },
+        {
+          "name": "bestsellers-date",
+          "schema": "string",
+          "description": "YYYY-MM-DD\n\nThe week-ending date for the sales reflected on list-name. Times best-seller lists are compiled using available book sale data. The bestsellers-date may be significantly earlier than published-date. For additional information, see the explanation at the bottom of any best-seller list page on NYTimes.com (example: Hardcover Fiction, published Dec. 5 but reflecting sales to Nov. 29)."
+        },
+        {
+          "name": "weeks-on-list",
+          "schema": "integer",
+          "description": "The number of weeks that the best seller has been on list-name, as of bestsellers-date"
+        },
+        {
+          "name": "rank",
+          "schema": "string",
+          "description": "The rank of the best seller on list-name as of bestsellers-date"
+        },
+        {
+          "name": "rank-last-week",
+          "schema": "integer",
+          "description": "The rank of the best seller on list-name one week prior to bestsellers-date"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Sets the starting point of the result set"
+        },
+        {
+          "name": "sort-order",
+          "schema": "string",
+          "description": "The default is ASC (ascending). The sort-order parameter is used with the sort-by parameter — for details, see each request type."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reviews.{format}",
+      "method": "getReviewsFormat",
+      "httpMethod": "get",
+      "description": "Reviews",
+      "parameters": [
+        {
+          "name": "isbn",
+          "schema": "integer",
+          "description": "Searching by ISBN is the recommended method. You can enter 10- or 13-digit ISBNs."
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": "You’ll need to enter the full title of the book. Spaces in the title will be converted into the characters %20."
+        },
+        {
+          "name": "author",
+          "schema": "string",
+          "description": "You’ll need to enter the author’s first and last name, separated by a space. This space will be converted into the characters %20."
+        },
+        {
+          "name": "api-key",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.nytimes.com/svc/books/v3",
   "apiDescription": "The Books API provides information about book reviews and The New York Times bestsellers lists.",
   "apiTitle": "Books API",

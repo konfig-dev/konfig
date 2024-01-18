@@ -4,6 +4,1517 @@
   "homepage": "presalytics.io",
   "serviceName": "story",
   "apiVersion": "0.3.1",
+  "methods": [
+    {
+      "url": "/",
+      "method": "storyGet",
+      "httpMethod": "get",
+      "tag": "Story",
+      "description": "Story: Get List of User Stories",
+      "parameters": [
+        {
+          "name": "include_relationships",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicate whether the returned object should include child relationships"
+        },
+        {
+          "name": "include_outline",
+          "schema": "boolean",
+          "required": false,
+          "description": "Determines whether a repsonse including story objects should include the story outline.  Defaults to true. Useful for speeding up processing times."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/",
+      "method": "storyPost",
+      "httpMethod": "post",
+      "tag": "Story",
+      "description": "Story: Upload",
+      "parameters": [
+        {
+          "name": "include_outline",
+          "schema": "boolean",
+          "required": false,
+          "description": "Determines whether a repsonse including story objects should include the story outline.  Defaults to true. Useful for speeding up processing times."
+        },
+        {
+          "name": "outline",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Model for story objects"
+        },
+        {
+          "statusCode": "415",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "422",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/cache",
+      "method": "cachePost",
+      "httpMethod": "post",
+      "tag": "Cache",
+      "description": "Cache: Store Subdocument",
+      "parameters": [
+        {
+          "name": "current_user_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "nonce",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "subdocument",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/cache/{nonce}",
+      "method": "cacheNonceGet",
+      "httpMethod": "get",
+      "tag": "Cache",
+      "description": "Cache: Get Subdocument",
+      "parameters": [
+        {
+          "name": "nonce",
+          "schema": "string",
+          "required": true,
+          "description": "A one-time use token for retieving items in the users cache"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "html document with a link to the login page"
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "403",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/collaborators",
+      "method": "collaboratorsPost",
+      "httpMethod": "post",
+      "tag": "Restricted",
+      "description": "Collborators: Bulk Update (Admin Only)",
+      "parameters": [
+        {
+          "name": "active",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "lead_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "403",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/environment/",
+      "method": "getEnvironment",
+      "httpMethod": "get",
+      "description": "Environment: Get",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/file",
+      "method": "storyPostFile",
+      "httpMethod": "post",
+      "tag": "Story",
+      "description": "Story: Upload a File",
+      "parameters": [
+        {
+          "name": "include_outline",
+          "schema": "boolean",
+          "required": false,
+          "description": "Determines whether a repsonse including story objects should include the story outline.  Defaults to true. Useful for speeding up processing times."
+        },
+        {
+          "name": "file",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Model for story objects"
+        },
+        {
+          "statusCode": "415",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "422",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/file/json",
+      "method": "storyPostFileJson",
+      "httpMethod": "post",
+      "tag": "Story",
+      "description": "Story: Upload a File (base64)",
+      "parameters": [
+        {
+          "name": "include_outline",
+          "schema": "boolean",
+          "required": false,
+          "description": "Determines whether a repsonse including story objects should include the story outline.  Defaults to true. Useful for speeding up processing times."
+        },
+        {
+          "name": "content_length",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "file",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "file_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "mimetype",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Model for story objects"
+        },
+        {
+          "statusCode": "415",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "422",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/no_tags_spec",
+      "method": "specNoTags",
+      "httpMethod": "get",
+      "description": "Specification: No tags",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/outline-schema/{schema_version}/story-outline.json",
+      "method": "storyOutlineSchema",
+      "httpMethod": "get",
+      "tag": "Schemas",
+      "description": "Story Outline Schema",
+      "parameters": [
+        {
+          "name": "schema_version",
+          "schema": "string",
+          "required": true,
+          "description": "The semanitic version of a schema (e.g. '0.3.1')"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/permission_types",
+      "method": "storyPermissionTypesGet",
+      "httpMethod": "get",
+      "tag": "Permissions",
+      "description": "Permissions: List Permission Types",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "403",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/sessions/{session_id}",
+      "method": "sessionIdDelete",
+      "httpMethod": "delete",
+      "tag": "Sessions",
+      "description": "Sessions: Delete by Id",
+      "parameters": [
+        {
+          "name": "session_id",
+          "schema": "string",
+          "required": true,
+          "description": "The primary key for a view session"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/sessions/{session_id}",
+      "method": "sessionIdGet",
+      "httpMethod": "get",
+      "tag": "Sessions",
+      "description": "Sessions: Get",
+      "parameters": [
+        {
+          "name": "session_id",
+          "schema": "string",
+          "required": true,
+          "description": "The primary key for a view session"
+        },
+        {
+          "name": "include_relationships",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicate whether the returned object should include child relationships"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A user session with an open story"
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "403",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/sessions/{session_id}/views",
+      "method": "sessionsIdViewsGet",
+      "httpMethod": "get",
+      "tag": "Views",
+      "description": "Views: List Session Views",
+      "parameters": [
+        {
+          "name": "session_id",
+          "schema": "string",
+          "required": true,
+          "description": "The primary key for a view session"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "403",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/sessions/{session_id}/views",
+      "method": "sessionsIdViewsPost",
+      "httpMethod": "post",
+      "tag": "Views",
+      "description": "Views: Create A Session View",
+      "parameters": [
+        {
+          "name": "session_id",
+          "schema": "string",
+          "required": true,
+          "description": "The primary key for a view session"
+        },
+        {
+          "name": "activeMSecs",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "additional",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "endTime",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "pageNumber",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "startTime",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A Page view within a session-create"
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "403",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/views/{view_id}",
+      "method": "viewsIdDelete",
+      "httpMethod": "delete",
+      "tag": "Views",
+      "description": "Views: Delete by Id",
+      "parameters": [
+        {
+          "name": "view_id",
+          "schema": "string",
+          "required": true,
+          "description": "The primary key for a page view within a session"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/views/{view_id}",
+      "method": "viewsIdGet",
+      "httpMethod": "get",
+      "tag": "Views",
+      "description": "Views: Get View",
+      "parameters": [
+        {
+          "name": "view_id",
+          "schema": "string",
+          "required": true,
+          "description": "The primary key for a page view within a session"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A Page view within a session-create"
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "403",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/{id}",
+      "method": "storyIdDelete",
+      "httpMethod": "delete",
+      "tag": "Story",
+      "description": "Story: Delete by Id",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "the id from the story object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/{id}",
+      "method": "storyIdGet",
+      "httpMethod": "get",
+      "tag": "Story",
+      "description": "Story: Get by Id",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "the id from the story object"
+        },
+        {
+          "name": "include_relationships",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicate whether the returned object should include child relationships"
+        },
+        {
+          "name": "include_outline",
+          "schema": "boolean",
+          "required": false,
+          "description": "Determines whether a repsonse including story objects should include the story outline.  Defaults to true. Useful for speeding up processing times."
+        },
+        {
+          "name": "full",
+          "schema": "boolean",
+          "required": false,
+          "description": "Pull a story object with associated collaborator user, permission, and session data(faster if cached from prior api call)"
+        },
+        {
+          "name": "refresh_cache",
+          "schema": "boolean",
+          "required": false,
+          "description": "Force the api reload the `Story full` object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Model for story objects"
+        },
+        {
+          "statusCode": "400",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/{id}",
+      "method": "storyIdPut",
+      "httpMethod": "put",
+      "tag": "Story",
+      "description": "Story: Modify",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "the id from the story object"
+        },
+        {
+          "name": "include_outline",
+          "schema": "boolean",
+          "required": false,
+          "description": "Determines whether a repsonse including story objects should include the story outline.  Defaults to true. Useful for speeding up processing times."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Model for story objects"
+        },
+        {
+          "statusCode": "400",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/{id}/analytics",
+      "method": "storyIdAnalytics",
+      "httpMethod": "get",
+      "tag": "Story",
+      "description": "Story: View Analytics",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "the id from the story object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "html document with reveal.js presenation of story"
+        },
+        {
+          "statusCode": "400",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "401",
+          "description": "html document with a link to the login page"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/{id}/collaborators",
+      "method": "storyIdCollaboratorsGet",
+      "httpMethod": "get",
+      "tag": "Story Collaborators",
+      "description": "Story Collaborators: List",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "the id from the story object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/{id}/collaborators",
+      "method": "storyIdCollaboratorsPost",
+      "httpMethod": "post",
+      "tag": "Story Collaborators",
+      "description": "Story Collaborators: Add New User",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "the id from the story object"
+        },
+        {
+          "name": "collaborator_type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "user_email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Description of a user that can collaborate on a story"
+        },
+        {
+          "statusCode": "400",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/{id}/collaborators/authorize/{story_collaborator_userid}/{permissiontype}",
+      "method": "storyIdCollaboratorsUseridPermissiontypeGet",
+      "httpMethod": "get",
+      "tag": "Permissions",
+      "description": "Permissions: Story Authorization for a User",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "the id from the story object"
+        },
+        {
+          "name": "story_collaborator_userid",
+          "schema": "string",
+          "required": true,
+          "description": "The presalytics userid (NOT the Id of the story_collaborator object)"
+        },
+        {
+          "name": "permissiontype",
+          "schema": "string",
+          "required": true,
+          "description": "the type of permission requested.  can be a permission_type object name (e.g., owner, editor, create, viewer, admin) or a permission type field (e.g., can_edit, can_view, can_add_collaborators, can_delete)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "403",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/{id}/collaborators/inactive",
+      "method": "storyIdCollaboratorsInactivePost",
+      "httpMethod": "post",
+      "tag": "Story Collaborators",
+      "description": "Story Collaborators: Edit Inactive User Permission",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "the id from the story object"
+        },
+        {
+          "name": "action",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "lead_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Description of a user that can collaborate on a story"
+        },
+        {
+          "statusCode": "400",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/{id}/collaborators/{story_collaborator_userid}",
+      "method": "storyIdCollaboratorsUseridDelete",
+      "httpMethod": "delete",
+      "tag": "Story Collaborators",
+      "description": "Story Collaborators: Remove User",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "the id from the story object"
+        },
+        {
+          "name": "story_collaborator_userid",
+          "schema": "string",
+          "required": true,
+          "description": "The presalytics userid (NOT the Id of the story_collaborator object)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/{id}/collaborators/{story_collaborator_userid}",
+      "method": "storyIdCollaboratorsUseridGet",
+      "httpMethod": "get",
+      "tag": "Story Collaborators",
+      "description": "Story Collaborators: Access Permissions",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "the id from the story object"
+        },
+        {
+          "name": "story_collaborator_userid",
+          "schema": "string",
+          "required": true,
+          "description": "The presalytics userid (NOT the Id of the story_collaborator object)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Description of a user that can collaborate on a story"
+        },
+        {
+          "statusCode": "400",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/{id}/collaborators/{story_collaborator_userid}",
+      "method": "storyIdCollaboratorsUseridPut",
+      "httpMethod": "put",
+      "tag": "Story Collaborators",
+      "description": "Story Collaborators: Edit Access Rights",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "the id from the story object"
+        },
+        {
+          "name": "story_collaborator_userid",
+          "schema": "string",
+          "required": true,
+          "description": "The presalytics userid (NOT the Id of the story_collaborator object)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Description of a user that can collaborate on a story"
+        },
+        {
+          "statusCode": "400",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/{id}/events",
+      "method": "storyIdEventsGet",
+      "httpMethod": "get",
+      "tag": "Events",
+      "description": "Events: List Events",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "the id from the story object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/{id}/events",
+      "method": "storyIdEventsPost",
+      "httpMethod": "post",
+      "tag": "Events",
+      "description": "Events: Manage Events",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "the id from the story object"
+        },
+        {
+          "name": "action",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "action_params",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/{id}/file",
+      "method": "storyIdFilePost",
+      "httpMethod": "post",
+      "tag": "Story",
+      "description": "Story: Upload a File To Existing Story",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "the id from the story object"
+        },
+        {
+          "name": "replace_existing",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates whether a put or post method would replace the existing contents"
+        },
+        {
+          "name": "obsolete_id",
+          "schema": "string",
+          "required": false,
+          "description": "A primary key pointing to an obsolete item in the story. Item type is context-dependent"
+        },
+        {
+          "name": "include_outline",
+          "schema": "boolean",
+          "required": false,
+          "description": "Determines whether a repsonse including story objects should include the story outline.  Defaults to true. Useful for speeding up processing times."
+        },
+        {
+          "name": "file",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Model for story objects"
+        },
+        {
+          "statusCode": "415",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "422",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/{id}/file/{ooxml_automation_id}",
+      "method": "storyIdFileOoxmlautomationidDelete",
+      "httpMethod": "delete",
+      "tag": "Story",
+      "description": "Story: Delete Subdocument",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "the id from the story object"
+        },
+        {
+          "name": "ooxml_automation_id",
+          "schema": "string",
+          "required": true,
+          "description": "the id of the ooxml_automation object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/{id}/file/{ooxml_automation_id}",
+      "method": "storyIdFileOoxmlautomationidGet",
+      "httpMethod": "get",
+      "tag": "Story",
+      "description": "Story: Download Updated File",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "the id from the story object"
+        },
+        {
+          "name": "ooxml_automation_id",
+          "schema": "string",
+          "required": true,
+          "description": "the id of the ooxml_automation object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/{id}/messages",
+      "method": "storyIdMessagesGet",
+      "httpMethod": "get",
+      "tag": "Conversation",
+      "description": "Conversation: List Conversation Messages",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "the id from the story object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/{id}/messages",
+      "method": "storyIdMessagesPost",
+      "httpMethod": "post",
+      "tag": "Conversation",
+      "description": "Conversation: Send a Message",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "the id from the story object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/{id}/outline",
+      "method": "storyIdOutlineGet",
+      "httpMethod": "get",
+      "tag": "Story",
+      "description": "Story: Get Story Outline",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "the id from the story object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "202",
+          "description": "Status response when returning 202s"
+        },
+        {
+          "statusCode": "400",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/{id}/outline",
+      "method": "storyIdOutlinePost",
+      "httpMethod": "post",
+      "tag": "Story",
+      "description": "Story: Post Story Outline",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "the id from the story object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/{id}/public/",
+      "method": "storyIdPublic",
+      "httpMethod": "get",
+      "tag": "Story",
+      "description": "Story: Public Link to Story Reveal.js Document",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "the id from the story object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "html document with reveal.js presenation of story"
+        },
+        {
+          "statusCode": "400",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/{id}/reveal",
+      "method": "storyIdReveal",
+      "httpMethod": "get",
+      "tag": "Story",
+      "description": "Story: Get Story at Reveal.js Document",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "the id from the story object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "html document with reveal.js presenation of story"
+        },
+        {
+          "statusCode": "400",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "401",
+          "description": "html document with a link to the login page"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/{id}/sessions",
+      "method": "storyIdSessionsGet",
+      "httpMethod": "get",
+      "tag": "Sessions",
+      "description": "Sessions: List Story Sessions",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "the id from the story object"
+        },
+        {
+          "name": "include_relationships",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicate whether the returned object should include child relationships"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "403",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/{id}/sessions",
+      "method": "storyIdSessionPost",
+      "httpMethod": "post",
+      "tag": "Sessions",
+      "description": "Sessions: Create a Session",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "the id from the story object"
+        },
+        {
+          "name": "collaboratorUserId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "host",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A user session with an open story"
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "403",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    },
+    {
+      "url": "/{id}/status",
+      "method": "storyIdStatusGet",
+      "httpMethod": "get",
+      "tag": "Story",
+      "description": "Story: Get Story Status",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "the id from the story object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Status response when returning 202s"
+        },
+        {
+          "statusCode": "400",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "401",
+          "description": "Error reponse model"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error reponse model"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "/story",
   "apiDescription": "This API is the main entry point for creating, editing and publishing analytics throught the Presalytics API",
   "apiTitle": "Story",

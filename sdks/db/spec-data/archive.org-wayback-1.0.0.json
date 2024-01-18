@@ -4,6 +4,128 @@
   "homepage": "archive.org",
   "serviceName": "wayback",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/wayback/v1/available",
+      "method": "/wayback/v1/availableGet",
+      "httpMethod": "get",
+      "description": "",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": "A single URL to query."
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": false,
+          "description": "Timestamp requested in ISO 8601 format. The following formats are acceptable:\n - YYYY\n - YYYY-MM\n - YYYY-MM-DD\n - YYYY-MM-DDTHH:mm:SSz\n - YYYY-MM-DD:HH:mm+00:00\n"
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "Specifies a JavaScript function func, for a JSON-P response. When provided, results are wrapped as `callback(data)`, and the returned MIME type is application/javascript. This causes the caller to automatically run the func with the JSON results as its argument.\n"
+        },
+        {
+          "name": "timeout",
+          "schema": "number",
+          "required": false,
+          "description": "Timeout is the maximum number of seconds to wait for the availability API to get its underlying results from the CDX server. The default value is 5.0.\n"
+        },
+        {
+          "name": "closest",
+          "schema": "string",
+          "required": false,
+          "description": "The direction specifies whether to match archived timestamps that are before the provided one, after, or the default either (closest in either direction). Must be before, after, or either. May be overidden by individual requests.\n"
+        },
+        {
+          "name": "status_code",
+          "schema": "integer",
+          "required": false,
+          "description": "HTTP status codes to filter by. Only results with these codes will be returned\n"
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "required": false,
+          "description": "The optional tag can have any value, and is returned with the results; it can be used to help collate input and output values.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/wayback/v1/available",
+      "method": "/wayback/v1/availablePost",
+      "httpMethod": "post",
+      "description": "",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": "A single URL to query."
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": false,
+          "description": "Timestamp requested in ISO 8601 format. The following formats are acceptable:\n - YYYY\n - YYYY-MM\n - YYYY-MM-DD\n - YYYY-MM-DDTHH:mm:SSz\n - YYYY-MM-DD:HH:mm+00:00\n"
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "Specifies a JavaScript function func, for a JSON-P response. When provided, results are wrapped as `callback(data)`, and the returned MIME type is application/javascript. This causes the caller to automatically run the func with the JSON results as its argument.\n"
+        },
+        {
+          "name": "timeout",
+          "schema": "number",
+          "required": false,
+          "description": "Timeout is the maximum number of seconds to wait for the availability API to get its underlying results from the CDX server. The default value is 5.0.\n"
+        },
+        {
+          "name": "closest",
+          "schema": "string",
+          "required": false,
+          "description": "The direction specifies whether to match archived timestamps that are before the provided one, after, or the default either (closest in either direction). Must be before, after, or either. May be overidden by individual requests.\n"
+        },
+        {
+          "name": "status_code",
+          "schema": "integer",
+          "required": false,
+          "description": "HTTP status codes to filter by. Only results with these codes will be returned\n"
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "required": false,
+          "description": "The optional tag can have any value, and is returned with the results; it can be used to help collate input and output values.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.archive.org",
   "apiDescription": "API for Internet Archive's Wayback Machine",
   "apiTitle": "Wayback API",

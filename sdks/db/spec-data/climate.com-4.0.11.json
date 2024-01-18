@@ -3,6 +3,1498 @@
   "openApiRaw": "https://dev.fieldview.com/openapi/platform.yaml",
   "homepage": "climate.com",
   "apiVersion": "4.0.11",
+  "methods": [
+    {
+      "url": "/v4/boundaries",
+      "method": "uploadBoundary",
+      "httpMethod": "post",
+      "tag": "Boundaries",
+      "description": "Upload a boundary",
+      "parameters": [
+        {
+          "name": "geometry",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Unique identifier of a successfully uploaded boundary"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/boundaries/query",
+      "method": "fetchBoundaries",
+      "httpMethod": "post",
+      "tag": "Boundaries",
+      "description": "Retrieve Boundaries in batch",
+      "parameters": [
+        {
+          "name": "ids",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A batch of boundary results"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/boundaries/{boundaryId}",
+      "method": "fetchBoundaryById",
+      "httpMethod": "get",
+      "tag": "Boundaries",
+      "description": "Retrieve a Boundary by ID",
+      "parameters": [
+        {
+          "name": "boundaryId",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier of the Boundary"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Arbitrary boundary.  GeoJSON Feature."
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/exports",
+      "method": "postExport",
+      "httpMethod": "post",
+      "tag": "Exports",
+      "description": "Initiate a new export request.",
+      "parameters": [
+        {
+          "name": "contentType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "definition",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/exports/{exportId}/contents",
+      "method": "fetchExportContentsById",
+      "httpMethod": "get",
+      "tag": "Exports",
+      "description": "Retrieve the binary contents of a processed export request.",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "Must be either \\*/* or application/octet-stream,application/json"
+        },
+        {
+          "name": "exportId",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier of an Export."
+        },
+        {
+          "name": "Range",
+          "schema": "string",
+          "required": true,
+          "description": "Byte range `bytes=start-end` (https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35.1). e.g. bytes=0-1048576. Currently only single range value is supported. Both start and end need to be specified, end value should be greater than start and end - start should not be greater than 5MiB."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "206",
+          "description": ""
+        },
+        {
+          "statusCode": "304",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "410",
+          "description": ""
+        },
+        {
+          "statusCode": "416",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/exports/{exportId}/status",
+      "method": "fetchExportStatusById",
+      "httpMethod": "get",
+      "tag": "Exports",
+      "description": "Retrieve the status of an Export.",
+      "parameters": [
+        {
+          "name": "exportId",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier of an Export."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/farmOrganizations/{farmOrganizationType}/{farmOrganizationId}",
+      "method": "fetchFarmOrganizationByTypeAndId",
+      "httpMethod": "get",
+      "tag": "FarmOrganizations",
+      "description": "Retrieve a specific farm organization by organization type and ID",
+      "parameters": [
+        {
+          "name": "farmOrganizationType",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the farm organization."
+        },
+        {
+          "name": "farmOrganizationId",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier of the farm organization."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Logical representation of a farm organization with a name and type."
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/fields",
+      "method": "fetchFields",
+      "httpMethod": "get",
+      "tag": "Fields",
+      "description": "Retrieve list of Fields",
+      "parameters": [
+        {
+          "name": "X-Next-Token",
+          "schema": "string",
+          "required": false,
+          "description": "Opaque string which allows for fetching the next batch of results.  Can be used to poll for changes."
+        },
+        {
+          "name": "X-Limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Max number of results to return per batch.  Must be between 1 and 100 inclusive.  Defaults to 100."
+        },
+        {
+          "name": "fieldName",
+          "schema": "string",
+          "required": false,
+          "description": "Optional prefix filter for field name. Must be at least 3 characters."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A batch of field results"
+        },
+        {
+          "statusCode": "206",
+          "description": "A batch of field results"
+        },
+        {
+          "statusCode": "304",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/fields/all",
+      "method": "fetchAllFields",
+      "httpMethod": "get",
+      "tag": "Fields",
+      "description": "Retrieve list of all Fields the user has access to.",
+      "parameters": [
+        {
+          "name": "X-Next-Token",
+          "schema": "string",
+          "required": false,
+          "description": "Opaque string which allows for fetching the next batch of results.  Can be used to poll for changes."
+        },
+        {
+          "name": "X-Limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Max number of results to return per batch.  Must be between 1 and 100 inclusive.  Defaults to 100."
+        },
+        {
+          "name": "fieldName",
+          "schema": "string",
+          "required": false,
+          "description": "Optional prefix filter for field name. Must be at least 3 characters."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A batch of field results"
+        },
+        {
+          "statusCode": "206",
+          "description": "A batch of field results"
+        },
+        {
+          "statusCode": "304",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/fields/{fieldId}",
+      "method": "fetchFieldById",
+      "httpMethod": "get",
+      "tag": "Fields",
+      "description": "Retrieve a specific Field by ID",
+      "parameters": [
+        {
+          "name": "fieldId",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier of the Field."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Logical representation of a Field with a name.  Spatial attributes of the Field are provided in the Boundary."
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/layers/asApplied",
+      "method": "/v4/layers/asAppliedGet",
+      "httpMethod": "get",
+      "tag": "Layers",
+      "description": "Retrieve a list of application activities",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "Must be either \\*/* or application/octet-stream,application/json"
+        },
+        {
+          "name": "X-Next-Token",
+          "schema": "string",
+          "required": false,
+          "description": "Opaque string which allows for fetching the next batch of results.  Can be used to poll for changes."
+        },
+        {
+          "name": "X-Limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Max number of results to return per batch.  Must be between 1 and 100 inclusive.  Defaults to 100."
+        },
+        {
+          "name": "resourceOwnerId",
+          "schema": "string",
+          "required": false,
+          "description": "Optional unique identifier of the resource owner.  If resourceOwnerId is not specified, it defaults to the x-authenticated-user-uuid."
+        },
+        {
+          "name": "occurredAfter",
+          "schema": "string",
+          "required": false,
+          "description": "Optional start time by which to filter layer results. Time must be in ISO 8601 format with time zone, e.g. 2016-05-13T00:00:00Z (https://tools.ietf.org/html/rfc3339). Layers with an end time at or after (inclusive) the specified time will match this filter. If both occurredAfter and occurredBefore are populated, occurredAfter must be <= occurredBefore."
+        },
+        {
+          "name": "occurredBefore",
+          "schema": "string",
+          "required": false,
+          "description": "Optional end time by which to filter layer results. Time must be in ISO 8601 format with time zone, e.g. 2016-05-13T00:00:00Z (https://tools.ietf.org/html/rfc3339). Layers with a start time at or before (inclusive) the specified time. If both occurredAfter and occurredBefore are populated, occurredAfter must be <= occurredBefore."
+        },
+        {
+          "name": "updatedAfter",
+          "schema": "string",
+          "required": false,
+          "description": "Optional updated time by which to filter layer results. Time must be in ISO 8601 format with time zone, e.g. 2016-05-13T00:00:00Z (https://tools.ietf.org/html/rfc3339). Layers with a modification time at or after (inclusive) the specified time."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A batch of application activities"
+        },
+        {
+          "statusCode": "206",
+          "description": "A batch of application activities"
+        },
+        {
+          "statusCode": "304",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/layers/asApplied/{activityId}/contents",
+      "method": "/v4/layers/asApplied/{activityId}/contentsGet",
+      "httpMethod": "get",
+      "tag": "Layers",
+      "description": "Retrieve the raw application activity",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "Must be either \\*/* or application/octet-stream,application/json"
+        },
+        {
+          "name": "activityId",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier of the Application Activity."
+        },
+        {
+          "name": "Range",
+          "schema": "string",
+          "required": true,
+          "description": "Byte range `bytes=start-end` (https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35.1). e.g. bytes=0-1048576. Currently only single range value is supported. Both start and end need to be specified, end value should be greater than start and end - start should not be greater than 5MiB."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "206",
+          "description": ""
+        },
+        {
+          "statusCode": "304",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "416",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/layers/asHarvested",
+      "method": "/v4/layers/asHarvestedGet",
+      "httpMethod": "get",
+      "tag": "Layers",
+      "description": "Retrieve a list of harvest activities",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "Must be either \\*/* or application/octet-stream,application/json"
+        },
+        {
+          "name": "X-Next-Token",
+          "schema": "string",
+          "required": false,
+          "description": "Opaque string which allows for fetching the next batch of results.  Can be used to poll for changes."
+        },
+        {
+          "name": "X-Limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Max number of results to return per batch.  Must be between 1 and 100 inclusive.  Defaults to 100."
+        },
+        {
+          "name": "resourceOwnerId",
+          "schema": "string",
+          "required": false,
+          "description": "Optional unique identifier of the resource owner.  If resourceOwnerId is not specified, it defaults to the x-authenticated-user-uuid."
+        },
+        {
+          "name": "occurredAfter",
+          "schema": "string",
+          "required": false,
+          "description": "Optional start time by which to filter layer results. Time must be in ISO 8601 format with time zone, e.g. 2016-05-13T00:00:00Z (https://tools.ietf.org/html/rfc3339). Layers with an end time at or after (inclusive) the specified time will match this filter. If both occurredAfter and occurredBefore are populated, occurredAfter must be <= occurredBefore."
+        },
+        {
+          "name": "occurredBefore",
+          "schema": "string",
+          "required": false,
+          "description": "Optional end time by which to filter layer results. Time must be in ISO 8601 format with time zone, e.g. 2016-05-13T00:00:00Z (https://tools.ietf.org/html/rfc3339). Layers with a start time at or before (inclusive) the specified time. If both occurredAfter and occurredBefore are populated, occurredAfter must be <= occurredBefore."
+        },
+        {
+          "name": "updatedAfter",
+          "schema": "string",
+          "required": false,
+          "description": "Optional updated time by which to filter layer results. Time must be in ISO 8601 format with time zone, e.g. 2016-05-13T00:00:00Z (https://tools.ietf.org/html/rfc3339). Layers with a modification time at or after (inclusive) the specified time."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A batch of harvest activities"
+        },
+        {
+          "statusCode": "206",
+          "description": "A batch of harvest activities"
+        },
+        {
+          "statusCode": "304",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/layers/asHarvested/{activityId}/contents",
+      "method": "/v4/layers/asHarvested/{activityId}/contentsGet",
+      "httpMethod": "get",
+      "tag": "Layers",
+      "description": "Retrieve the raw harvest activity",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "Must be either \\*/* or application/octet-stream,application/json"
+        },
+        {
+          "name": "activityId",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier of the Harvest Activity."
+        },
+        {
+          "name": "Range",
+          "schema": "string",
+          "required": true,
+          "description": "Byte range `bytes=start-end` (https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35.1). e.g. bytes=0-1048576. Currently only single range value is supported. Both start and end need to be specified, end value should be greater than start and end - start should not be greater than 5MiB."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "206",
+          "description": ""
+        },
+        {
+          "statusCode": "304",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "416",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/layers/asPlanted",
+      "method": "/v4/layers/asPlantedGet",
+      "httpMethod": "get",
+      "tag": "Layers",
+      "description": "Retrieve a list of planting activities",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "Must be either \\*/* or application/octet-stream,application/json"
+        },
+        {
+          "name": "X-Next-Token",
+          "schema": "string",
+          "required": false,
+          "description": "Opaque string which allows for fetching the next batch of results.  Can be used to poll for changes."
+        },
+        {
+          "name": "X-Limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Max number of results to return per batch.  Must be between 1 and 100 inclusive.  Defaults to 100."
+        },
+        {
+          "name": "resourceOwnerId",
+          "schema": "string",
+          "required": false,
+          "description": "Optional unique identifier of the resource owner.  If resourceOwnerId is not specified, it defaults to the x-authenticated-user-uuid."
+        },
+        {
+          "name": "occurredAfter",
+          "schema": "string",
+          "required": false,
+          "description": "Optional start time by which to filter layer results. Time must be in ISO 8601 format with time zone, e.g. 2016-05-13T00:00:00Z (https://tools.ietf.org/html/rfc3339). Layers with an end time at or after (inclusive) the specified time will match this filter. If both occurredAfter and occurredBefore are populated, occurredAfter must be <= occurredBefore."
+        },
+        {
+          "name": "occurredBefore",
+          "schema": "string",
+          "required": false,
+          "description": "Optional end time by which to filter layer results. Time must be in ISO 8601 format with time zone, e.g. 2016-05-13T00:00:00Z (https://tools.ietf.org/html/rfc3339). Layers with a start time at or before (inclusive) the specified time. If both occurredAfter and occurredBefore are populated, occurredAfter must be <= occurredBefore."
+        },
+        {
+          "name": "updatedAfter",
+          "schema": "string",
+          "required": false,
+          "description": "Optional updated time by which to filter layer results. Time must be in ISO 8601 format with time zone, e.g. 2016-05-13T00:00:00Z (https://tools.ietf.org/html/rfc3339). Layers with a modification time at or after (inclusive) the specified time."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A batch of planting activities"
+        },
+        {
+          "statusCode": "206",
+          "description": "A batch of planting activities"
+        },
+        {
+          "statusCode": "304",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/layers/asPlanted/{activityId}/contents",
+      "method": "/v4/layers/asPlanted/{activityId}/contentsGet",
+      "httpMethod": "get",
+      "tag": "Layers",
+      "description": "Retrieve the raw planting activity",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "Must be either \\*/* or application/octet-stream,application/json"
+        },
+        {
+          "name": "activityId",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier of the Planting Activity."
+        },
+        {
+          "name": "Range",
+          "schema": "string",
+          "required": true,
+          "description": "Byte range `bytes=start-end` (https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35.1). e.g. bytes=0-1048576. Currently only single range value is supported. Both start and end need to be specified, end value should be greater than start and end - start should not be greater than 5MiB."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "206",
+          "description": ""
+        },
+        {
+          "statusCode": "304",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "416",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/layers/scoutingObservations",
+      "method": "/v4/layers/scoutingObservationsGet",
+      "httpMethod": "get",
+      "tag": "Layers",
+      "description": "Retrieve a list of scouting observations",
+      "parameters": [
+        {
+          "name": "X-Next-Token",
+          "schema": "string",
+          "required": false,
+          "description": "Opaque string which allows for fetching the next batch of results.  Can be used to poll for changes."
+        },
+        {
+          "name": "X-Limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Max number of results to return per batch.  Must be between 1 and 100 inclusive.  Defaults to 100."
+        },
+        {
+          "name": "occurredAfter",
+          "schema": "string",
+          "required": false,
+          "description": "Optional start time by which to filter layer results. Time must be in ISO 8601 format with time zone, e.g. 2016-05-13T00:00:00Z (https://tools.ietf.org/html/rfc3339). Layers with an end time at or after (inclusive) the specified time will match this filter. If both occurredAfter and occurredBefore are populated, occurredAfter must be <= occurredBefore."
+        },
+        {
+          "name": "occurredBefore",
+          "schema": "string",
+          "required": false,
+          "description": "Optional end time by which to filter layer results. Time must be in ISO 8601 format with time zone, e.g. 2016-05-13T00:00:00Z (https://tools.ietf.org/html/rfc3339). Layers with a start time at or before (inclusive) the specified time. If both occurredAfter and occurredBefore are populated, occurredAfter must be <= occurredBefore."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A batch of scouting observations"
+        },
+        {
+          "statusCode": "206",
+          "description": "A batch of scouting observations"
+        },
+        {
+          "statusCode": "304",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/layers/scoutingObservations/{scoutingObservationId}",
+      "method": "/v4/layers/scoutingObservations/{scoutingObservationId}Get",
+      "httpMethod": "get",
+      "tag": "Layers",
+      "description": "Retrieve individual scouting observation",
+      "parameters": [
+        {
+          "name": "scoutingObservationId",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier of the Scouting Observation."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/layers/scoutingObservations/{scoutingObservationId}/attachments",
+      "method": "/v4/layers/scoutingObservations/{scoutingObservationId}/attachmentsGet",
+      "httpMethod": "get",
+      "tag": "Layers",
+      "description": "Retrieve attachments associated with a given scouting observation.",
+      "parameters": [
+        {
+          "name": "scoutingObservationId",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier of the Scouting Observation."
+        },
+        {
+          "name": "X-Next-Token",
+          "schema": "string",
+          "required": false,
+          "description": "Opaque string which allows for fetching the next batch of results.  Can be used to poll for changes."
+        },
+        {
+          "name": "X-Limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Max number of results to return per batch.  Must be between 1 and 100 inclusive.  Defaults to 100."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A batch of scouting attachments"
+        },
+        {
+          "statusCode": "206",
+          "description": "A batch of scouting attachments"
+        },
+        {
+          "statusCode": "304",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/layers/scoutingObservations/{scoutingObservationId}/attachments/{attachmentId}/contents",
+      "method": "/v4/layers/scoutingObservations/{scoutingObservationId}/attachments/{attachmentId}/contentsGet",
+      "httpMethod": "get",
+      "tag": "Layers",
+      "description": "Retrieve the binary contents of a scouting observation’s attachment.",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "Must be either \\*/* or application/octet-stream,application/json"
+        },
+        {
+          "name": "scoutingObservationId",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier of the Scouting Observation."
+        },
+        {
+          "name": "attachmentId",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier of the attachment."
+        },
+        {
+          "name": "Range",
+          "schema": "string",
+          "required": true,
+          "description": "Byte range `bytes=start-end` (https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35.1). e.g. bytes=0-1048576. Currently only single range value is supported. Both start and end need to be specified, end value should be greater than start and end - start should not be greater than 5MiB."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "206",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "416",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/operations/all",
+      "method": "fetchOperations",
+      "httpMethod": "get",
+      "tag": "Operations",
+      "description": "Retrieve the operations accessible to a a given user.",
+      "parameters": [
+        {
+          "name": "resourceOwnerId",
+          "schema": "string",
+          "required": false,
+          "description": "Optional comma-separated list of resource owner unique identifiers by which to filter results."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A batch of operation results."
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/resourceOwners/{resourceOwnerId}",
+      "method": "getResourceOwner",
+      "httpMethod": "get",
+      "tag": "ResourceOwners",
+      "description": "Retrieve a resource owner by ID",
+      "parameters": [
+        {
+          "name": "resourceOwnerId",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier of the resource owner."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/uploads",
+      "method": "postUpload",
+      "httpMethod": "post",
+      "tag": "Uploads",
+      "description": "Initiate a new upload",
+      "parameters": [
+        {
+          "name": "X-Recipient-Email",
+          "schema": "string",
+          "required": false,
+          "description": "Email address associated with a Climate account, used when to sending to another user."
+        },
+        {
+          "name": "contentType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "length",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "md5",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Successfully created upload request"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/uploads/status/query",
+      "method": "fetchUploadStatuses",
+      "httpMethod": "post",
+      "tag": "Uploads",
+      "description": "Retrieve Upload statuses in batch",
+      "parameters": [
+        {
+          "name": "ids",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/uploads/{uploadId}",
+      "method": "chunkedUpload",
+      "httpMethod": "put",
+      "tag": "Uploads",
+      "description": "Chunked upload of data",
+      "parameters": [
+        {
+          "name": "Content-Range",
+          "schema": "string",
+          "required": true,
+          "description": "Byte range `bytes start-end/total` (https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.16). e.g. bytes 0-5242880/10242880. Downloads larger than 5MiB (5242880 bytes) in size must be downloaded in chunks no larger than 5MiB (5242880 bytes) and no smaller than 1MiB (1048576 bytes). The last chunk could be less than 1MiB (1048576 bytes)."
+        },
+        {
+          "name": "uploadId",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier of an Upload."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Must be `application/octet-stream`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/uploads/{uploadId}/status",
+      "method": "fetchUploadStatusById",
+      "httpMethod": "get",
+      "tag": "Uploads",
+      "description": "Retrieve Upload status",
+      "parameters": [
+        {
+          "name": "uploadId",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier of an Upload."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://platform.climate.com/",
   "apiDescription": "**Last Modified**: Wed Jan  4 12:47:29 UTC 2023\n\n\nAll endpoints are only accessible via HTTPS.\n\n* All API endpoints are located at `https://platform.climate.com` (e.g.\n`https://platform.climate.com/v4/fields`).\n\n* The authorization token endpoint is located at\n`https://api.climate.com/api/oauth/token`.\n\n## Troubleshooting\n\n`X-Http-Request-Id` response header will be returned on every call,\nsuccessful or not. If you experience an issue with our api and need\nto contact technical support, please supply the value of the `X-Http-Request-Id`\nheader along with an approximate time of when the request was made.\n\n## Request Limits\n\nWhen you’re onboarded to Climate’s API platform, your `x-api-key` is assigned a custom usage plan. Usage plans are unique to each partner and have the following key attributes: \n\n1. Throttling information\n    * burstLimit: Maximum rate limit over a period ranging from 1 second to a few seconds\n    * rateLimit: A steady-state rate limit\n\n2. Quota information\n    * Limit: The maximum number of requests that can be made in a given month\n\nWhen the request rate threshold is exceeded, a `429` response code is returned. Optionally, the [`Retry-After`](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.37) header may be returned: \n\nFollowing are examples of rate limit errors:\n\n1. Rate limit exceeded:\n\n<br>HTTP/1.1 429 \n<br>Content-Type: application/json\n<br>Content-Length: 32\n\n   {\"message\":\"Too Many Requests\"}\n\n2. Quota exhausted:\n<br>HTTP/1.1 429 \n<br>Content-Type: application/json\n<br>Content-Length: 29\n\n    {\"message\":\"Limit Exceeded\"}\n\n## Pagination\n\nPagination is performed via headers. Any request which returns a `\"results\"`\narray may be paginated. The following figure shows how query results are laid out with\nX-Limit=4 and no filter applied.\n\n<img style=\"width:70%;height:auto;\" src=\"https://s3-us-west-2.amazonaws.com/climate-com/images/svg_upload_tests/paging.png\">\n\n* If there are no results, a response code of `304` will be returned.\n\n* If the response is the last set of results, a response code of `200` or\n`206` will be returned.\n\n* If there are more results, a response code of `206` will be returned.\n\n* If `X-Next-Token` is provided in the request headers but the token has\nexpired, a response code of `409` will be returned. This is only applicable\nfor some endpoints; see specific endpoint documentation below.\n\n#### X-Limit\n\nThe page size can be controlled with the `X-Limit` header. Valid values are\n`1-100` and defaults to `100`.\n\n#### X-Next-Token\n\nIf the results are paginated, a response header of `X-Next-Token` will be\nreturned. Use the associated value in the subsequent request (via the `X-Next-Token`\nrequest header) to retrieve the next page. The following sequence diagram shows how to\nuse `X-Next-Token` to fetch all the records.\n\n<img src=\"https://s3-us-west-2.amazonaws.com/climate-com/images/svg_upload_tests/x-next-token.svg\">\n\n\n## Chunked Uploads\n\nUploads larger than `5MiB` (`5242880 bytes`) must be done in `5MiB` chunks\n(with the exception of the final chunk). Each chunk request MUST contain a\n`Content-Range` header specifying the portion of the upload, and a `Content-Type`\nheader specifying binary content type (`application/octet-stream`). Range\nuploads must be contiguous. The maximum upload size is capped at `500MiB` (`524288000 bytes`).\n\n## Chunked Downloads\n\nDownloads larger than `5MiB` (`5242880 bytes`) must be done in `1-5MiB`\nchunks (with the exception of the final chunk, which may be less than `1MiB`).\nEach chunk request MUST contain a `Range` header specifying the requested portion of the download,\nand an `Accept` header specifying binary and json content types  (`application/octet-stream,application/json`)\nor all content types (`*/*`).\n\n## Drivers\n\nIf you need drivers to process agronomic data, download the ADAPT plugin below. We only support the plugin in the Windows environment, minimum is Windows 7 SP1.\n\nFor asPlanted, asHarvested and asApplied data:\n* [ADAPT Plugin](https://dev.fieldview.com/drivers/ClimateADAPTPlugin_latest.exe)\n<br>Release notes can be found [here](https://dev.fieldview.com/drivers/adapt-release-notes.txt).\n<br>Download and use of the ADAPT plugin means that you agree to the EULA for use of the ADAPT plugin. \n<br>Please review the [EULA](https://dev.fieldview.com/EULA/ADAPT%20Plugin%20EULA-06-19.pdf) (last updated on June 6th, 2019) before download and use of the ADAPT plugin.\n<br>For more information, please refer to:\n  * [ADAPT Resources](https://adaptframework.org/)\n  * [ADAPT Overview](https://aggateway.atlassian.net/wiki/spaces/ADM/overview)\n  * [ADAPT FAQ](https://aggateway.atlassian.net/wiki/spaces/ADM/pages/165942474/ADAPT+Frequently-Asked+Questions+FAQ)\n  * [ADAPT Videos](https://adaptframework.org/adapt-videos/)\n\n## Sample Test Data\n\nSample agronomic data:\n* [asPlanted and asHarvested data](https://dev.fieldview.com/sample-agronomic-data/Planting_Harvesting_data_04_18_2018_21_46_18.zip)\n* [asApplied data set 1](https://dev.fieldview.com/sample-agronomic-data/as-applied-data1.zip)\n* [asApplied data set 2](https://dev.fieldview.com/sample-agronomic-data/as-applied-data2.zip)\n<br>To upload the sample data to your account, please follow the instructions in this [link](https://support.climate.com/kt#/kA02A000000AaxzSAC/en_US).\n\nSample soil data:\n* [Sample soil data](https://dev.fieldview.com/sample-soil-data/soil-sample.xml)\n---\n",
   "apiTitle": "Climate FieldView Platform APIs",

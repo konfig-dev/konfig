@@ -3,6 +3,976 @@
   "openApiRaw": "http://support.beanstream.com/restapi/swagger.json",
   "homepage": "beanstream.com",
   "apiVersion": "1.0.1",
+  "methods": [
+    {
+      "url": "/payments",
+      "method": "/paymentsPost",
+      "httpMethod": "post",
+      "tag": "Payments",
+      "description": "Make Payment",
+      "parameters": [
+        {
+          "name": "amount",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "billing",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "card",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "comments",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "custom",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "customer_ip",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "order_number",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "payment_method",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "payment_profile",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "shipping",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "term_url",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "token",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/payments/{transId}",
+      "method": "/payments/{transId}Get",
+      "httpMethod": "get",
+      "tag": "Payments",
+      "description": "Get payment",
+      "parameters": [
+        {
+          "name": "transId",
+          "schema": "number",
+          "required": true,
+          "description": "The transaction id."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/payments/{transId}/completions",
+      "method": "/payments/{transId}/completionsPost",
+      "httpMethod": "post",
+      "tag": "Payments",
+      "description": "Complete pre-auth",
+      "parameters": [
+        {
+          "name": "transId",
+          "schema": "number",
+          "required": true,
+          "description": "The transaction id."
+        },
+        {
+          "name": "amount",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "billing",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "card",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "comments",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "custom",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "customer_ip",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "order_number",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "payment_method",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "payment_profile",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "shipping",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "term_url",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "token",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/payments/{transId}/returns",
+      "method": "/payments/{transId}/returnsPost",
+      "httpMethod": "post",
+      "tag": "Payments",
+      "description": "Return payment",
+      "parameters": [
+        {
+          "name": "transId",
+          "schema": "number",
+          "required": true,
+          "description": "The transaction id."
+        },
+        {
+          "name": "amount",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "order_number",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/payments/{transId}/void",
+      "method": "/payments/{transId}/voidPost",
+      "httpMethod": "post",
+      "tag": "Payments",
+      "description": "Void Transaction",
+      "parameters": [
+        {
+          "name": "transId",
+          "schema": "number",
+          "required": true,
+          "description": "The transaction id to void."
+        },
+        {
+          "name": "amount",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/profiles",
+      "method": "/profilesPost",
+      "httpMethod": "post",
+      "tag": "Profiles",
+      "description": "Create Profile",
+      "parameters": [
+        {
+          "name": "billing",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "card",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "comment",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "custom",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "token",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/profiles/{profileId}",
+      "method": "/profiles/{profileId}Delete",
+      "httpMethod": "delete",
+      "tag": "Profiles",
+      "description": "Delete profile",
+      "parameters": [
+        {
+          "name": "profileId",
+          "schema": "string",
+          "required": true,
+          "description": "The profile id. (aka CustomerCode)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/profiles/{profileId}",
+      "method": "/profiles/{profileId}Get",
+      "httpMethod": "get",
+      "tag": "Profiles",
+      "description": "Get profile",
+      "parameters": [
+        {
+          "name": "profileId",
+          "schema": "string",
+          "required": true,
+          "description": "The profile id. (aka CustomerCode)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/profiles/{profileId}",
+      "method": "/profiles/{profileId}Put",
+      "httpMethod": "put",
+      "tag": "Profiles",
+      "description": "Update Profile",
+      "parameters": [
+        {
+          "name": "profileId",
+          "schema": "string",
+          "required": true,
+          "description": "The profile id. (aka CustomerCode)"
+        },
+        {
+          "name": "billing",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "card",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "comment",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "custom",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/profiles/{profileId}/cards",
+      "method": "/profiles/{profileId}/cardsGet",
+      "httpMethod": "get",
+      "tag": "Profiles",
+      "description": "Get cards",
+      "parameters": [
+        {
+          "name": "profileId",
+          "schema": "string",
+          "required": true,
+          "description": "The profile id. (aka CustomerCode)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/profiles/{profileId}/cards",
+      "method": "/profiles/{profileId}/cardsPost",
+      "httpMethod": "post",
+      "tag": "Profiles",
+      "description": "Add card",
+      "parameters": [
+        {
+          "name": "profileId",
+          "schema": "string",
+          "required": true,
+          "description": "The profile id. (aka CustomerCode)"
+        },
+        {
+          "name": "expiry_month",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "expiry_year",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "number",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/profiles/{profileId}/cards/{cardId}",
+      "method": "/profiles/{profileId}/cards/{cardId}Delete",
+      "httpMethod": "delete",
+      "tag": "Profiles",
+      "description": "Delete card",
+      "parameters": [
+        {
+          "name": "profileId",
+          "schema": "string",
+          "required": true,
+          "description": "The profile id. (aka CustomerCode)"
+        },
+        {
+          "name": "cardId",
+          "schema": "number",
+          "required": true,
+          "description": "The card id."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/profiles/{profileId}/cards/{cardId}",
+      "method": "/profiles/{profileId}/cards/{cardId}Put",
+      "httpMethod": "put",
+      "tag": "Profiles",
+      "description": "Update card",
+      "parameters": [
+        {
+          "name": "profileId",
+          "schema": "string",
+          "required": true,
+          "description": "The profile id. (aka CustomerCode)"
+        },
+        {
+          "name": "cardId",
+          "schema": "number",
+          "required": true,
+          "description": "The card id."
+        },
+        {
+          "name": "expiry_month",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "expiry_year",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "number",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reports",
+      "method": "/reportsPost",
+      "httpMethod": "post",
+      "tag": "Reporting",
+      "description": "Search Query",
+      "parameters": [
+        {
+          "name": "criteria",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "end_row",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "start_date",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "start_row",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/scripts/tokenization/tokens",
+      "method": "/scripts/tokenization/tokensPost",
+      "httpMethod": "post",
+      "tag": "Tokenization",
+      "description": "Tokenize credit card",
+      "parameters": [
+        {
+          "name": "cvd",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "expiry_month",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "expiry_year",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "number",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://www.beanstream.com/api/v1",
   "apiDescription": "https://www.beanstream.com/api/v1",
   "apiTitle": "Beanstream Payments",

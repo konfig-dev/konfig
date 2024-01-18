@@ -3,6 +3,342 @@
   "openApiRaw": "https://dweet.io/play/definition",
   "homepage": "dweet.io",
   "apiVersion": "2.0",
+  "methods": [
+    {
+      "url": "/alert/{who}/when/{thing}/{condition}",
+      "method": "createAlertGet",
+      "httpMethod": "get",
+      "tag": "alerts",
+      "description": "Create an alert for a thing. A thing must be locked before an alert can be set.",
+      "parameters": [
+        {
+          "name": "who",
+          "schema": "string",
+          "required": true,
+          "description": "A comma separated list of Email addresses to send the alert to."
+        },
+        {
+          "name": "thing",
+          "schema": "string",
+          "required": true,
+          "description": "A unique name of a thing. It is recommended that you use a GUID as to avoid name collisions."
+        },
+        {
+          "name": "condition",
+          "schema": "string",
+          "required": true,
+          "description": "A condition that returns a string or a true value if a condition is met."
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": "A valid key for a locked thing. If the thing is not locked, this can be ignored."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/dweet/for/{thing}",
+      "method": "/dweet/for/{thing}Post",
+      "httpMethod": "post",
+      "tag": "dweets",
+      "description": "Create a dweet for a thing.",
+      "parameters": [
+        {
+          "name": "thing",
+          "schema": "string",
+          "required": true,
+          "description": "A unique name of a thing. It is recommended that you use a GUID as to avoid name collisions."
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": false,
+          "description": "A valid key for a locked thing. If the thing is not locked, this can be ignored."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/dweet/quietly/for/{thing}",
+      "method": "/dweet/quietly/for/{thing}Post",
+      "httpMethod": "post",
+      "tag": "dweets",
+      "description": "Create a dweet for a thing.  This method differs from /dweet/for/{thing} only in that successful dweets result in an HTTP 204 response rather than the typical verbose response.",
+      "parameters": [
+        {
+          "name": "thing",
+          "schema": "string",
+          "required": true,
+          "description": "A unique name of a thing. It is recommended that you use a GUID as to avoid name collisions."
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": false,
+          "description": "A valid key for a locked thing. If the thing is not locked, this can be ignored."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/get/alert/for/{thing}",
+      "method": "getAlert",
+      "httpMethod": "get",
+      "tag": "alerts",
+      "description": "Get the alert attached to a thing.",
+      "parameters": [
+        {
+          "name": "thing",
+          "schema": "string",
+          "required": true,
+          "description": "A unique name of a thing."
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": "A valid key for a locked thing. If the thing is not locked, this can be ignored."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/get/dweets/for/{thing}",
+      "method": "/get/dweets/for/{thing}Get",
+      "httpMethod": "get",
+      "tag": "dweets",
+      "description": "Read the last 5 cached dweets for a thing.",
+      "parameters": [
+        {
+          "name": "thing",
+          "schema": "string",
+          "required": true,
+          "description": "A unique name of a thing."
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": false,
+          "description": "A valid key for a locked thing. If the thing is not locked, this can be ignored."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/get/latest/dweet/for/{thing}",
+      "method": "getLatestDweet",
+      "httpMethod": "get",
+      "tag": "dweets",
+      "description": "Read the latest dweet for a thing.",
+      "parameters": [
+        {
+          "name": "thing",
+          "schema": "string",
+          "required": true,
+          "description": "A unique name of a thing."
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": false,
+          "description": "A valid key for a locked thing. If the thing is not locked, this can be ignored."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/get/stored/alerts/for/{thing}",
+      "method": "getStoredAlerts",
+      "httpMethod": "get",
+      "tag": "storage",
+      "description": "Read all the saved alerts for a thing from long term storage.  You can query a maximum of 1 day per request and a granularly of 1 hour.",
+      "parameters": [
+        {
+          "name": "thing",
+          "schema": "string",
+          "required": true,
+          "description": "A unique name of a thing."
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": "A valid key for a locked thing. If the thing is not locked, this can be ignored."
+        },
+        {
+          "name": "date",
+          "schema": "string",
+          "required": true,
+          "description": "The calendar date (YYYY-MM-DD) from which you'd like to start your query.  The response will be a maximum of one day."
+        },
+        {
+          "name": "hour",
+          "schema": "string",
+          "required": false,
+          "description": "The hour of the day represented in the date parameter in 24-hour (00-23) format.  If this parameter is included, a maximum of 1 hour will be returned starting at this hour."
+        },
+        {
+          "name": "responseType",
+          "schema": "string",
+          "required": false,
+          "description": "Current valid parameters for this are 'csv' and 'json'.  If this parameter is left blank, all responses default to hapi-json dweet-speak."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/get/stored/dweets/for/{thing}",
+      "method": "/get/stored/dweets/for/{thing}Get",
+      "httpMethod": "get",
+      "tag": "storage",
+      "description": "Read all the saved dweets for a thing from long term storage.  You can query a maximum of 1 day per request and a granularly of 1 hour.",
+      "parameters": [
+        {
+          "name": "thing",
+          "schema": "string",
+          "required": true,
+          "description": "A unique name of a thing."
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": "A valid key for a locked thing. If the thing is not locked, this can be ignored."
+        },
+        {
+          "name": "date",
+          "schema": "string",
+          "required": true,
+          "description": "The calendar date (YYYY-MM-DD) from which you'd like to start your query.  The response will be a maximum of one day."
+        },
+        {
+          "name": "hour",
+          "schema": "string",
+          "required": false,
+          "description": "The hour of the day represented in the date parameter in 24-hour (00-23) format.  If this parameter is included, a maximum of 1 hour will be returned starting at this hour."
+        },
+        {
+          "name": "responseType",
+          "schema": "string",
+          "required": false,
+          "description": "Current valid parameters for this are 'csv' and 'json'.  If this parameter is left blank, all responses default to hapi-json dweet-speak."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/listen/for/dweets/from/{thing}",
+      "method": "listenForDweets",
+      "httpMethod": "get",
+      "tag": "dweets",
+      "description": "Listen for dweets from a thing.",
+      "parameters": [
+        {
+          "name": "thing",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/lock/{thing}",
+      "method": "lockThing",
+      "httpMethod": "get",
+      "tag": "locks",
+      "description": "Reserve and lock a thing.",
+      "parameters": [
+        {
+          "name": "thing",
+          "schema": "string",
+          "required": true,
+          "description": "A unique name of a thing."
+        },
+        {
+          "name": "lock",
+          "schema": "string",
+          "required": true,
+          "description": "A valid dweet.io lock."
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": "A valid dweet.io master key."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/remove/alert/for/{thing}",
+      "method": "removeAlert",
+      "httpMethod": "get",
+      "tag": "alerts",
+      "description": "Remove an alert for a thing.",
+      "parameters": [
+        {
+          "name": "thing",
+          "schema": "string",
+          "required": true,
+          "description": "A unique name of a thing."
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": "A valid key for a locked thing. If the thing is not locked, this can be ignored."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/remove/lock/{lock}",
+      "method": "removeLock",
+      "httpMethod": "get",
+      "tag": "locks",
+      "description": "Remove a lock from thing.",
+      "parameters": [
+        {
+          "name": "lock",
+          "schema": "string",
+          "required": true,
+          "description": "A valid dweet.io lock."
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": "A valid dweet.io master key."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/unlock/{thing}",
+      "method": "unlockThing",
+      "httpMethod": "get",
+      "tag": "locks",
+      "description": "Unlock a thing.",
+      "parameters": [
+        {
+          "name": "thing",
+          "schema": "string",
+          "required": true,
+          "description": "A unique name of a thing."
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": "A valid dweet.io master key."
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://dweet.io",
   "apiDescription": "Dweet.io allows users to share data from mobile, tablets, and pcs, and them to other devices and accounts across social media platforms. Dweet.io provides an API to access the different functionality of the Dweet.io service. Users can make REST calls to read and create dweets, lock and unlock things, and perform other calls. The API returns JSON and JSONP.",
   "apiTitle": "dweet.io",

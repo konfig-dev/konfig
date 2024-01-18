@@ -4,6 +4,279 @@
   "homepage": "xero.com",
   "serviceName": "xero_assets",
   "apiVersion": "2.9.4",
+  "methods": [
+    {
+      "url": "/AssetTypes",
+      "method": "getAssetTypes",
+      "httpMethod": "get",
+      "tag": "Asset",
+      "description": "searches fixed asset types",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/AssetTypes",
+      "method": "createAssetType",
+      "httpMethod": "post",
+      "tag": "Asset",
+      "description": "adds a fixed asset type",
+      "parameters": [
+        {
+          "name": "accumulatedDepreciationAccountId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "assetTypeId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "assetTypeName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "bookDepreciationSetting",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "depreciationExpenseAccountId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "fixedAssetAccountId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "locks",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Assets",
+      "method": "getAssets",
+      "httpMethod": "get",
+      "tag": "Asset",
+      "description": "searches fixed asset",
+      "parameters": [
+        {
+          "name": "status",
+          "schema": "string",
+          "required": true,
+          "description": "Required when retrieving a collection of assets. See Asset Status Codes"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": "Results are paged. This specifies which page of the results to return. The default page is 1."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "description": "The number of records returned per page. By default the number of records returned is 10."
+        },
+        {
+          "name": "orderBy",
+          "schema": "string",
+          "description": "Requests can be ordered by AssetType, AssetName, AssetNumber, PurchaseDate and PurchasePrice. If the asset status is DISPOSED it also allows DisposalDate and DisposalPrice."
+        },
+        {
+          "name": "sortDirection",
+          "schema": "string",
+          "description": "ASC or DESC"
+        },
+        {
+          "name": "filterBy",
+          "schema": "string",
+          "description": "A string that can be used to filter the list to only return assets containing the text. Checks it against the AssetName, AssetNumber, Description and AssetTypeName fields."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Assets",
+      "method": "createAsset",
+      "httpMethod": "post",
+      "tag": "Asset",
+      "description": "adds a fixed asset",
+      "parameters": [
+        {
+          "name": "accountingBookValue",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "assetId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "assetName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "assetNumber",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "assetStatus",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "assetTypeId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "bookDepreciationDetail",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "bookDepreciationSetting",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "canRollback",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "disposalDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "disposalPrice",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isDeleteEnabledForDate",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "purchaseDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "purchasePrice",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "serialNumber",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "warrantyExpiryDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Assets/{id}",
+      "method": "getAssetById",
+      "httpMethod": "get",
+      "tag": "Asset",
+      "description": "Retrieves fixed asset by id",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "fixed asset id for single object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Settings",
+      "method": "getAssetSettings",
+      "httpMethod": "get",
+      "tag": "Asset",
+      "description": "searches fixed asset settings",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.xero.com/assets.xro/1.0",
   "apiDescription": "The Assets API exposes fixed asset related functions of the Xero Accounting application and can be used for a variety of purposes such as creating assets, retrieving asset valuations etc.",
   "apiTitle": "Xero Assets API",

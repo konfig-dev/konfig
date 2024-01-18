@@ -4,6 +4,112 @@
   "homepage": "nexmo.com",
   "serviceName": "media",
   "apiVersion": "1.0.2",
+  "methods": [
+    {
+      "url": "/",
+      "method": "listAndSearchMediaItems",
+      "httpMethod": "get",
+      "description": "List and search media items",
+      "parameters": [
+        {
+          "name": "order",
+          "schema": "string",
+          "description": "The order of search results."
+        },
+        {
+          "name": "page_index",
+          "schema": "integer",
+          "description": "Which page to retrieve in pagination"
+        },
+        {
+          "name": "page_size",
+          "schema": "integer",
+          "description": "How many items at most per page"
+        },
+        {
+          "name": "start_time",
+          "schema": "string",
+          "description": "Retrieve results created on or after this timestap."
+        },
+        {
+          "name": "end_time",
+          "schema": "string",
+          "description": "Retrieve results created on or before this timestamp."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/:id",
+      "method": "deleteAMediaItem",
+      "httpMethod": "delete",
+      "description": "Delete a media item",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/:id/info",
+      "method": "retrieveAMediaItem",
+      "httpMethod": "get",
+      "description": "Retrieve a media item",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/:id/info",
+      "method": "updateAMediaItem",
+      "httpMethod": "put",
+      "description": "Update a media item",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "max_downloads_allowed",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "metadata_primary",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "metadata_secondary",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "mime_type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "public",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://api.nexmo.com/v3/media",
   "apiDescription": "The Media API can be used to query, download and delete media items such as audio files for use with other Nexmo APIs.",
   "apiTitle": "Media API",

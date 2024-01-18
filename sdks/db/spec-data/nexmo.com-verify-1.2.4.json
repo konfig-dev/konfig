@@ -4,6 +4,366 @@
   "homepage": "nexmo.com",
   "serviceName": "verify",
   "apiVersion": "1.2.4",
+  "methods": [
+    {
+      "url": "/check/{format}",
+      "method": "verifyCheck",
+      "httpMethod": "post",
+      "description": "Verify Check",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "The response format."
+        },
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "api_secret",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "code",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "ip_address",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "request_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/control/{format}",
+      "method": "verifyControl",
+      "httpMethod": "post",
+      "description": "Verify Control",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "The response format."
+        },
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "api_secret",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "cmd",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "request_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/network-unblock",
+      "method": "networkUnblock",
+      "httpMethod": "post",
+      "tag": "Fraud Management",
+      "description": "Request a network unblock",
+      "parameters": [
+        {
+          "name": "network",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "unblock_duration",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": "Success"
+        },
+        {
+          "statusCode": "403",
+          "description": "Forbidden"
+        },
+        {
+          "statusCode": "404",
+          "description": "Not Found"
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/psd2/{format}",
+      "method": "verifyRequestWithPsd2",
+      "httpMethod": "post",
+      "description": "PSD2 (Payment Services Directive 2) Request",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "The response format."
+        },
+        {
+          "name": "amount",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "api_secret",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "code_length",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "lg",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "next_event_wait",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "number",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "payee",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "pin_expiry",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "workflow_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/search/{format}",
+      "method": "verifySearch",
+      "httpMethod": "get",
+      "description": "Verify Search",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "The response format."
+        },
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "api_secret",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "request_id",
+          "schema": "string",
+          "required": true,
+          "description": "The `request_id` you received in the Verify Request Response. Required if `request_ids` not provided."
+        },
+        {
+          "name": "request_ids",
+          "schema": "array",
+          "required": false,
+          "description": "More than one `request_id`. Each `request_id` is a new parameter in the Verify Search request. Required if `request_id` not provided."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}",
+      "method": "verifyRequest",
+      "httpMethod": "post",
+      "tag": "Requests",
+      "description": "Request a Verification",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "The response format."
+        },
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "api_secret",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "brand",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "code_length",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "lg",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "next_event_wait",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "number",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "pin_code",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pin_expiry",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sender_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "workflow_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.nexmo.com/verify",
   "apiDescription": "The Verify API helps you to implement 2FA (two-factor authentication) in your applications. This is useful for:\n\n* Protecting against spam, by preventing spammers from creating multiple accounts\n* Monitoring suspicious activity, by forcing an account user to verify ownership of a number\n* Ensuring that you can reach your users at any time because you have their correct phone number\nMore information is available at <https://developer.nexmo.com/verify>",
   "apiTitle": "Verify API",

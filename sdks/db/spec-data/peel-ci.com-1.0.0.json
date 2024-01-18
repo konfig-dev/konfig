@@ -3,6 +3,105 @@
   "openApiRaw": "https://s3-us-west-2.amazonaws.com/tuneinapi.peel-ci.com/resources.json",
   "homepage": "peel-ci.com",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/hashtag/related",
+      "method": "getRelatedHashtags",
+      "httpMethod": "get",
+      "tag": "hashtag",
+      "description": "Gets related hashtags for a show.",
+      "parameters": [
+        {
+          "name": "showID",
+          "schema": "string",
+          "required": true,
+          "description": "Unique ID for a show"
+        },
+        {
+          "name": "timeWindow",
+          "schema": "string",
+          "required": false,
+          "description": "Time window in seconds (default is 2 hours)"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/hashtag/trendingShows",
+      "method": "getTrendingShows",
+      "httpMethod": "get",
+      "tag": "hashtag",
+      "description": "Gets trending shows.",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": "Number of trending shows (default is 20)"
+        },
+        {
+          "name": "timeWindow",
+          "schema": "string",
+          "required": false,
+          "description": "Time window in seconds (default is 2 hours)"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/hashtag/tuneinlinks",
+      "method": "getTuneinLinks",
+      "httpMethod": "get",
+      "tag": "hashtag",
+      "description": "Gets tunein URLs (links) from either a tweet, hashtags, @mentions, or show ID.",
+      "parameters": [
+        {
+          "name": "tweet",
+          "schema": "string",
+          "required": false,
+          "description": "Text from a social networking conversation"
+        },
+        {
+          "name": "hashtags",
+          "schema": "string",
+          "required": false,
+          "description": "Comma separated list of hashtags and @mentions"
+        },
+        {
+          "name": "showID",
+          "schema": "string",
+          "required": false,
+          "description": "Unique ID for a show"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/health",
+      "method": "getHealth",
+      "httpMethod": "get",
+      "tag": "health",
+      "description": "Get health of Tune-in service (which includes its uptime).",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/status/{showID}",
+      "method": "getStatuses",
+      "httpMethod": "get",
+      "tag": "status",
+      "description": "Gets the last 100 statuses for this show.",
+      "parameters": [
+        {
+          "name": "showID",
+          "schema": "string",
+          "required": true,
+          "description": "Unique ID for a show"
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "http://hashtag.peel-ci.com",
   "apiDescription": "The machine learning service APIs utilize hashtags from Twitter to find related, trending shows, related Twitter hashtags in real time and to generate direct tune-in URLs.",
   "apiTitle": "Peel Tune-in API",

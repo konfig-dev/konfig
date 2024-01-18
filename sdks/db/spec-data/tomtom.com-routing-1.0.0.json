@@ -4,6 +4,855 @@
   "homepage": "tomtom.com",
   "serviceName": "routing",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/routing/{versionNumber}/calculateReachableRange/{origin}/{contentType}",
+      "method": "/routing/{versionNumber}/calculateReachableRange/{origin}/{contentType}Get",
+      "httpMethod": "get",
+      "tag": "Routing",
+      "description": "Reachable Range",
+      "parameters": [
+        {
+          "name": "versionNumber",
+          "schema": "integer",
+          "required": true,
+          "description": "Service version number. The current value is 1."
+        },
+        {
+          "name": "origin",
+          "schema": "string",
+          "required": true,
+          "description": "Point from which the range calculation should start."
+        },
+        {
+          "name": "contentType",
+          "schema": "string",
+          "required": true,
+          "description": "The content type of the response structure. If the content type is jsonp, a callback method can be specified in the query parameters."
+        },
+        {
+          "name": "fuelBudgetInLiters",
+          "schema": "number",
+          "description": "Fuel budget in liters. Determines the maximum vehicle range using the specified Combustion Consumption Model."
+        },
+        {
+          "name": "energyBudgetInkWh",
+          "schema": "number",
+          "description": "Electric energy budget in kilowatt hours (kWh). Determines the maximum vehicle range using the specified Electric Consumption Model."
+        },
+        {
+          "name": "timeBudgetInSec",
+          "schema": "number",
+          "description": "Time budget in seconds. Determines the maximum vehicle range using the specified driving time. The consumption parameters in the request will only affect eco-routes, and thereby indirectly the driving time."
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "description": "Specifies the jsonp callback method."
+        },
+        {
+          "name": "report",
+          "schema": "string",
+          "description": "Specifies which data should be reported for diagnosis purposes."
+        },
+        {
+          "name": "departAt",
+          "schema": "string",
+          "description": "The date and time of departure from the origin point. Departure times apart from <i>now</i> must be specified as a dateTime."
+        },
+        {
+          "name": "arriveAt",
+          "schema": "string",
+          "description": "The date and time of arrival at the destination point. It must be specified as a dateTime."
+        },
+        {
+          "name": "routeType",
+          "schema": "string",
+          "description": "The type of route requested."
+        },
+        {
+          "name": "traffic",
+          "schema": "boolean",
+          "description": "Determines whether current traffic is used in route calculations. Note that information on historic road speeds is always used."
+        },
+        {
+          "name": "avoid",
+          "schema": "string",
+          "description": "Specifies whether the routing engine should try to avoid specific types of road segment when calculating the route. Can be specified multiple times.\nPossible values:\n  - tollRoads\n  - motorways\n  - ferries\n  - unpavedRoads\n  - carpools"
+        },
+        {
+          "name": "travelMode",
+          "schema": "string",
+          "description": "The mode of travel for the requested route."
+        },
+        {
+          "name": "hilliness",
+          "schema": "string",
+          "description": "Degree of hilliness for calculating a thrilling route."
+        },
+        {
+          "name": "windingness",
+          "schema": "string",
+          "description": "Amount that a thrilling route should wind."
+        },
+        {
+          "name": "vehicleMaxSpeed",
+          "schema": "integer",
+          "description": "Maximum speed of the vehicle in km/hour."
+        },
+        {
+          "name": "vehicleWeight",
+          "schema": "integer",
+          "description": "Weight of the vehicle in kilograms."
+        },
+        {
+          "name": "vehicleAxleWeight",
+          "schema": "integer",
+          "description": "Weight per axle of the vehicle in kg."
+        },
+        {
+          "name": "vehicleLength",
+          "schema": "number",
+          "description": "Length of the vehicle in meters."
+        },
+        {
+          "name": "vehicleWidth",
+          "schema": "number",
+          "description": "Width of the vehicle in meters."
+        },
+        {
+          "name": "vehicleHeight",
+          "schema": "number",
+          "description": "Height of the vehicle in meters."
+        },
+        {
+          "name": "vehicleCommercial",
+          "schema": "boolean",
+          "description": "Indicates that the vehicle is used for commercial purposes. This means it may not be allowed on certain roads."
+        },
+        {
+          "name": "vehicleLoadType",
+          "schema": "string",
+          "description": "Indicates what kinds of hazardous materials the vehicle is carrying (if any). This means it may not be allowed on certain roads.\nUse these for routing in the US:\n\n  - <i>USHazmatClass1</i> Explosives\n  - <i>USHazmatClass2</i> Compressed gas\n  - <i>USHazmatClass3</i> Flammable liquids\n  - <i>USHazmatClass4</i> Flammable solids\n  - <i>USHazmatClass5</i> Oxidizers\n  - <i>USHazmatClass6</i> Poisons\n  - <i>USHazmatClass7</i> Radioactive\n  - <i>USHazmatClass8</i> Corrosives\n  - <i>USHazmatClass9</i> Miscellaneous\n\nUse these for routing in all other countries:\n\n  - <i>otherHazmatExplosive</i> Explosives\n  - <i>otherHazmatGeneral</i> Miscellaneous\n  - <i>otherHazmatHarmfulToWater</i> Harmful to water\n\nvehicleLoadType can be specified multiple times. This parameter is currently only considered for <b>travelMode</b>=<i>truck</i>."
+        },
+        {
+          "name": "constantSpeedConsumptionInLitersPerHundredkm",
+          "schema": "string",
+          "description": "Specifies the speed-dependent component of consumption. Provided as an unordered list of speed/consumption-rate pairs."
+        },
+        {
+          "name": "currentFuelInLiters",
+          "schema": "number",
+          "description": "Specifies the current supply of fuel in liters."
+        },
+        {
+          "name": "auxiliaryPowerInLitersPerHour",
+          "schema": "number",
+          "description": "Specifies the amount of fuel consumed for sustaining auxiliary systems of the vehicle, in liters per hour."
+        },
+        {
+          "name": "fuelEnergyDensityInMJoulesPerLiter",
+          "schema": "number",
+          "description": "Specifies the amount of chemical energy stored in one liter of fuel in megajoules (MJ)."
+        },
+        {
+          "name": "accelerationEfficiency",
+          "schema": "number",
+          "description": "Specifies the efficiency of converting chemical energy stored in fuel to kinetic energy when the vehicle accelerates (i.e. KineticEnergyGained/ChemicalEnergyConsumed)."
+        },
+        {
+          "name": "decelerationEfficiency",
+          "schema": "number",
+          "description": "Specifies the efficiency of converting kinetic energy to saved (not consumed) fuel when the vehicle decelerates (i.e. ChemicalEnergySaved/KineticEnergyLost)."
+        },
+        {
+          "name": "uphillEfficiency",
+          "schema": "number",
+          "description": "Specifies the efficiency of converting chemical energy stored in fuel to potential energy when the vehicle gains elevation (i.e. PotentialEnergyGained/ChemicalEnergyConsumed)."
+        },
+        {
+          "name": "downhillEfficiency",
+          "schema": "number",
+          "description": "Specifies the efficiency of converting potential energy to saved (not consumed) fuel when the vehicle loses elevation (i.e. ChemicalEnergySaved/PotentialEnergyLost)."
+        },
+        {
+          "name": "vehicleEngineType",
+          "schema": "string",
+          "description": "Engine type of the vehicle."
+        },
+        {
+          "name": "constantSpeedConsumptionInkWhPerHundredkm",
+          "schema": "string",
+          "description": "Specifies the speed-dependent component of consumption. Provided as an unordered list of speed/consumption-rate pairs."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/routing/{versionNumber}/calculateReachableRange/{origin}/{contentType}",
+      "method": "/routing/{versionNumber}/calculateReachableRange/{origin}/{contentType}Post",
+      "httpMethod": "post",
+      "tag": "Routing",
+      "description": "Reachable Range",
+      "parameters": [
+        {
+          "name": "versionNumber",
+          "schema": "integer",
+          "required": true,
+          "description": "Service version number. The current value is 1."
+        },
+        {
+          "name": "origin",
+          "schema": "string",
+          "required": true,
+          "description": "Point from which the range calculation should start."
+        },
+        {
+          "name": "contentType",
+          "schema": "string",
+          "required": true,
+          "description": "The content type of the response structure. If the content type is jsonp, a callback method can be specified in the query parameters."
+        },
+        {
+          "name": "fuelBudgetInLiters",
+          "schema": "number",
+          "description": "Fuel budget in liters. Determines the maximum vehicle range using the specified Combustion Consumption Model."
+        },
+        {
+          "name": "energyBudgetInkWh",
+          "schema": "number",
+          "description": "Electric energy budget in kilowatt hours (kWh). Determines the maximum vehicle range using the specified Electric Consumption Model."
+        },
+        {
+          "name": "timeBudgetInSec",
+          "schema": "number",
+          "description": "Time budget in seconds. Determines the maximum vehicle range using the specified driving time. The consumption parameters in the request will only affect eco-routes, and thereby indirectly the driving time."
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "description": "Specifies the jsonp callback method."
+        },
+        {
+          "name": "report",
+          "schema": "string",
+          "description": "Specifies which data should be reported for diagnosis purposes."
+        },
+        {
+          "name": "departAt",
+          "schema": "string",
+          "description": "The date and time of departure from the origin point. Departure times apart from <i>now</i> must be specified as a dateTime."
+        },
+        {
+          "name": "arriveAt",
+          "schema": "string",
+          "description": "The date and time of arrival at the destination point. It must be specified as a dateTime."
+        },
+        {
+          "name": "routeType",
+          "schema": "string",
+          "description": "The type of route requested."
+        },
+        {
+          "name": "traffic",
+          "schema": "boolean",
+          "description": "Determines whether current traffic is used in route calculations. Note that information on historic road speeds is always used."
+        },
+        {
+          "name": "avoid",
+          "schema": "string",
+          "description": "Specifies whether the routing engine should try to avoid specific types of road segment when calculating the route. Can be specified multiple times.\nPossible values:\n  - tollRoads\n  - motorways\n  - ferries\n  - unpavedRoads\n  - carpools"
+        },
+        {
+          "name": "travelMode",
+          "schema": "string",
+          "description": "The mode of travel for the requested route."
+        },
+        {
+          "name": "hilliness",
+          "schema": "string",
+          "description": "Degree of hilliness for calculating a thrilling route."
+        },
+        {
+          "name": "windingness",
+          "schema": "string",
+          "description": "Amount that a thrilling route should wind."
+        },
+        {
+          "name": "vehicleMaxSpeed",
+          "schema": "integer",
+          "description": "Maximum speed of the vehicle in km/hour."
+        },
+        {
+          "name": "vehicleWeight",
+          "schema": "integer",
+          "description": "Weight of the vehicle in kilograms."
+        },
+        {
+          "name": "vehicleAxleWeight",
+          "schema": "integer",
+          "description": "Weight per axle of the vehicle in kg."
+        },
+        {
+          "name": "vehicleLength",
+          "schema": "number",
+          "description": "Length of the vehicle in meters."
+        },
+        {
+          "name": "vehicleWidth",
+          "schema": "number",
+          "description": "Width of the vehicle in meters."
+        },
+        {
+          "name": "vehicleHeight",
+          "schema": "number",
+          "description": "Height of the vehicle in meters."
+        },
+        {
+          "name": "vehicleCommercial",
+          "schema": "boolean",
+          "description": "Indicates that the vehicle is used for commercial purposes. This means it may not be allowed on certain roads."
+        },
+        {
+          "name": "vehicleLoadType",
+          "schema": "string",
+          "description": "Indicates what kinds of hazardous materials the vehicle is carrying (if any). This means it may not be allowed on certain roads.\nUse these for routing in the US:\n\n  - <i>USHazmatClass1</i> Explosives\n  - <i>USHazmatClass2</i> Compressed gas\n  - <i>USHazmatClass3</i> Flammable liquids\n  - <i>USHazmatClass4</i> Flammable solids\n  - <i>USHazmatClass5</i> Oxidizers\n  - <i>USHazmatClass6</i> Poisons\n  - <i>USHazmatClass7</i> Radioactive\n  - <i>USHazmatClass8</i> Corrosives\n  - <i>USHazmatClass9</i> Miscellaneous\n\nUse these for routing in all other countries:\n\n  - <i>otherHazmatExplosive</i> Explosives\n  - <i>otherHazmatGeneral</i> Miscellaneous\n  - <i>otherHazmatHarmfulToWater</i> Harmful to water\n\nvehicleLoadType can be specified multiple times. This parameter is currently only considered for <b>travelMode</b>=<i>truck</i>."
+        },
+        {
+          "name": "constantSpeedConsumptionInLitersPerHundredkm",
+          "schema": "string",
+          "description": "Specifies the speed-dependent component of consumption. Provided as an unordered list of speed/consumption-rate pairs."
+        },
+        {
+          "name": "currentFuelInLiters",
+          "schema": "number",
+          "description": "Specifies the current supply of fuel in liters."
+        },
+        {
+          "name": "auxiliaryPowerInLitersPerHour",
+          "schema": "number",
+          "description": "Specifies the amount of fuel consumed for sustaining auxiliary systems of the vehicle, in liters per hour."
+        },
+        {
+          "name": "fuelEnergyDensityInMJoulesPerLiter",
+          "schema": "number",
+          "description": "Specifies the amount of chemical energy stored in one liter of fuel in megajoules (MJ)."
+        },
+        {
+          "name": "accelerationEfficiency",
+          "schema": "number",
+          "description": "Specifies the efficiency of converting chemical energy stored in fuel to kinetic energy when the vehicle accelerates (i.e. KineticEnergyGained/ChemicalEnergyConsumed)."
+        },
+        {
+          "name": "decelerationEfficiency",
+          "schema": "number",
+          "description": "Specifies the efficiency of converting kinetic energy to saved (not consumed) fuel when the vehicle decelerates (i.e. ChemicalEnergySaved/KineticEnergyLost)."
+        },
+        {
+          "name": "uphillEfficiency",
+          "schema": "number",
+          "description": "Specifies the efficiency of converting chemical energy stored in fuel to potential energy when the vehicle gains elevation (i.e. PotentialEnergyGained/ChemicalEnergyConsumed)."
+        },
+        {
+          "name": "downhillEfficiency",
+          "schema": "number",
+          "description": "Specifies the efficiency of converting potential energy to saved (not consumed) fuel when the vehicle loses elevation (i.e. ChemicalEnergySaved/PotentialEnergyLost)."
+        },
+        {
+          "name": "vehicleEngineType",
+          "schema": "string",
+          "description": "Engine type of the vehicle."
+        },
+        {
+          "name": "constantSpeedConsumptionInkWhPerHundredkm",
+          "schema": "string",
+          "description": "Specifies the speed-dependent component of consumption. Provided as an unordered list of speed/consumption-rate pairs."
+        },
+        {
+          "name": "allowVignette",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "avoidAreas",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "avoidVignette",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/routing/{versionNumber}/calculateRoute/{locations}/{contentType}",
+      "method": "/routing/{versionNumber}/calculateRoute/{locations}/{contentType}Get",
+      "httpMethod": "get",
+      "tag": "Routing",
+      "description": "Calculate Route",
+      "parameters": [
+        {
+          "name": "versionNumber",
+          "schema": "integer",
+          "required": true,
+          "description": "Service version number. The current value is 1."
+        },
+        {
+          "name": "locations",
+          "schema": "string",
+          "required": true,
+          "description": "Locations through which the calculated route must pass."
+        },
+        {
+          "name": "contentType",
+          "schema": "string",
+          "required": true,
+          "description": "The content type of the response structure. If the content type is jsonp, a callback method can be specified in the query parameters."
+        },
+        {
+          "name": "maxAlternatives",
+          "schema": "integer",
+          "description": "Number of alternative routes to be calculated."
+        },
+        {
+          "name": "alternativeType",
+          "schema": "string",
+          "description": "Determines whether the alternative routes to be calculated should be better with respect to the planning criteria provided than the reference route."
+        },
+        {
+          "name": "minDeviationDistance",
+          "schema": "integer",
+          "description": "All alternative routes will follow the reference route for the specified minimum number of meters starting from the origin point."
+        },
+        {
+          "name": "minDeviationTime",
+          "schema": "integer",
+          "description": "All alternative routes will follow the reference route for the specified minimum number of seconds starting from the origin point."
+        },
+        {
+          "name": "instructionsType",
+          "schema": "string",
+          "description": "If specified, guidance instructions will be returned (if available)."
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "description": "The language parameter determines the language of the guidance messages."
+        },
+        {
+          "name": "computeBestOrder",
+          "schema": "boolean",
+          "description": "Re-order the route waypoints to reduce the route length."
+        },
+        {
+          "name": "routeRepresentation",
+          "schema": "string",
+          "description": "Specifies the representation of the set of routes provided as a response."
+        },
+        {
+          "name": "computeTravelTimeFor",
+          "schema": "string",
+          "description": "Specifies whether to return additional travel times using different types of traffic information (none, historic, live) as well as the default best-estimate travel time."
+        },
+        {
+          "name": "vehicleHeading",
+          "schema": "integer",
+          "description": "The directional heading of the vehicle in degrees. Entered in degrees, measured clockwise from north (so north is 0, east is 90, etc.)."
+        },
+        {
+          "name": "sectionType",
+          "schema": "string",
+          "description": "Specifies which section types are explicitly reported in the route response. Can be specified multiple times.\n  - carTrain, ferry, tunnel or motorway\n  - pedestrian\n  - tollRoad\n  - tollVignette\n  - country\n  - travelMode\n  - traffic"
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "description": "Specifies the jsonp callback method."
+        },
+        {
+          "name": "report",
+          "schema": "string",
+          "description": "Specifies which data should be reported for diagnosis purposes."
+        },
+        {
+          "name": "departAt",
+          "schema": "string",
+          "description": "The date and time of departure from the origin point. Departure times apart from <i>now</i> must be specified as a dateTime."
+        },
+        {
+          "name": "arriveAt",
+          "schema": "string",
+          "description": "The date and time of arrival at the destination point. It must be specified as a dateTime."
+        },
+        {
+          "name": "routeType",
+          "schema": "string",
+          "description": "The type of route requested."
+        },
+        {
+          "name": "traffic",
+          "schema": "boolean",
+          "description": "Determines whether current traffic is used in route calculations. Note that information on historic road speeds is always used."
+        },
+        {
+          "name": "avoid",
+          "schema": "string",
+          "description": "Specifies whether the routing engine should try to avoid specific types of road segment when calculating the route. Can be specified multiple times.\nPossible values:\n  - tollRoads\n  - motorways\n  - ferries\n  - unpavedRoads\n  - carpools\n  - alreadyUsedRoads"
+        },
+        {
+          "name": "travelMode",
+          "schema": "string",
+          "description": "The mode of travel for the requested route."
+        },
+        {
+          "name": "hilliness",
+          "schema": "string",
+          "description": "Degree of hilliness for calculating a thrilling route."
+        },
+        {
+          "name": "windingness",
+          "schema": "string",
+          "description": "Amount that a thrilling route should wind."
+        },
+        {
+          "name": "vehicleMaxSpeed",
+          "schema": "integer",
+          "description": "Maximum speed of the vehicle in km/hour."
+        },
+        {
+          "name": "vehicleWeight",
+          "schema": "integer",
+          "description": "Weight of the vehicle in kilograms."
+        },
+        {
+          "name": "vehicleAxleWeight",
+          "schema": "integer",
+          "description": "Weight per axle of the vehicle in kg."
+        },
+        {
+          "name": "vehicleLength",
+          "schema": "number",
+          "description": "Length of the vehicle in meters."
+        },
+        {
+          "name": "vehicleWidth",
+          "schema": "number",
+          "description": "Width of the vehicle in meters."
+        },
+        {
+          "name": "vehicleHeight",
+          "schema": "number",
+          "description": "Height of the vehicle in meters."
+        },
+        {
+          "name": "vehicleCommercial",
+          "schema": "boolean",
+          "description": "Indicates that the vehicle is used for commercial purposes. This means it may not be allowed on certain roads."
+        },
+        {
+          "name": "vehicleLoadType",
+          "schema": "string",
+          "description": "Indicates what kinds of hazardous materials the vehicle is carrying (if any). This means it may not be allowed on certain roads.\nUse these for routing in the US:\n\n  - <i>USHazmatClass1</i> Explosives\n  - <i>USHazmatClass2</i> Compressed gas\n  - <i>USHazmatClass3</i> Flammable liquids\n  - <i>USHazmatClass4</i> Flammable solids\n  - <i>USHazmatClass5</i> Oxidizers\n  - <i>USHazmatClass6</i> Poisons\n  - <i>USHazmatClass7</i> Radioactive\n  - <i>USHazmatClass8</i> Corrosives\n  - <i>USHazmatClass9</i> Miscellaneous\n\nUse these for routing in all other countries:\n\n  - <i>otherHazmatExplosive</i> Explosives\n  - <i>otherHazmatGeneral</i> Miscellaneous\n  - <i>otherHazmatHarmfulToWater</i> Harmful to water\n\nvehicleLoadType can be specified multiple times. This parameter is currently only considered for <b>travelMode</b>=<i>truck</i>."
+        },
+        {
+          "name": "vehicleEngineType",
+          "schema": "string",
+          "description": "Engine type of the vehicle."
+        },
+        {
+          "name": "constantSpeedConsumptionInLitersPerHundredkm",
+          "schema": "string",
+          "description": "Specifies the speed-dependent component of consumption. Provided as an unordered list of speed/consumption-rate pairs."
+        },
+        {
+          "name": "currentFuelInLiters",
+          "schema": "number",
+          "description": "Specifies the current supply of fuel in liters."
+        },
+        {
+          "name": "auxiliaryPowerInLitersPerHour",
+          "schema": "number",
+          "description": "Specifies the amount of fuel consumed for sustaining auxiliary systems of the vehicle, in liters per hour."
+        },
+        {
+          "name": "fuelEnergyDensityInMJoulesPerLiter",
+          "schema": "number",
+          "description": "Specifies the amount of chemical energy stored in one liter of fuel in megajoules (MJ)."
+        },
+        {
+          "name": "accelerationEfficiency",
+          "schema": "number",
+          "description": "Specifies the efficiency of converting chemical energy stored in fuel to kinetic energy when the vehicle accelerates (i.e. KineticEnergyGained/ChemicalEnergyConsumed)."
+        },
+        {
+          "name": "decelerationEfficiency",
+          "schema": "number",
+          "description": "Specifies the efficiency of converting kinetic energy to saved (not consumed) fuel when the vehicle decelerates (i.e. ChemicalEnergySaved/KineticEnergyLost)."
+        },
+        {
+          "name": "uphillEfficiency",
+          "schema": "number",
+          "description": "Specifies the efficiency of converting chemical energy stored in fuel to potential energy when the vehicle gains elevation (i.e. PotentialEnergyGained/ChemicalEnergyConsumed)."
+        },
+        {
+          "name": "downhillEfficiency",
+          "schema": "number",
+          "description": "Specifies the efficiency of converting potential energy to saved (not consumed) fuel when the vehicle loses elevation (i.e. ChemicalEnergySaved/PotentialEnergyLost)."
+        },
+        {
+          "name": "constantSpeedConsumptionInkWhPerHundredkm",
+          "schema": "string",
+          "description": "Specifies the speed-dependent component of consumption. Provided as an unordered list of speed/consumption-rate pairs."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/routing/{versionNumber}/calculateRoute/{locations}/{contentType}",
+      "method": "/routing/{versionNumber}/calculateRoute/{locations}/{contentType}Post",
+      "httpMethod": "post",
+      "tag": "Routing",
+      "description": "Calculate Route",
+      "parameters": [
+        {
+          "name": "versionNumber",
+          "schema": "integer",
+          "required": true,
+          "description": "Service version number. The current value is 1."
+        },
+        {
+          "name": "locations",
+          "schema": "string",
+          "required": true,
+          "description": "Locations through which the calculated route must pass."
+        },
+        {
+          "name": "contentType",
+          "schema": "string",
+          "required": true,
+          "description": "The content type of the response structure. If the content type is jsonp, a callback method can be specified in the query parameters."
+        },
+        {
+          "name": "maxAlternatives",
+          "schema": "integer",
+          "description": "Number of alternative routes to be calculated."
+        },
+        {
+          "name": "alternativeType",
+          "schema": "string",
+          "description": "Determines whether the alternative routes to be calculated should be better with respect to the planning criteria provided than the reference route."
+        },
+        {
+          "name": "minDeviationDistance",
+          "schema": "integer",
+          "description": "All alternative routes will follow the reference route for the specified minimum number of meters starting from the origin point."
+        },
+        {
+          "name": "minDeviationTime",
+          "schema": "integer",
+          "description": "All alternative routes will follow the reference route for the specified minimum number of seconds starting from the origin point."
+        },
+        {
+          "name": "instructionsType",
+          "schema": "string",
+          "description": "If specified, guidance instructions will be returned (if available)."
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "description": "The language parameter determines the language of the guidance messages."
+        },
+        {
+          "name": "computeBestOrder",
+          "schema": "boolean",
+          "description": "Re-order the route waypoints to reduce the route length."
+        },
+        {
+          "name": "routeRepresentation",
+          "schema": "string",
+          "description": "Specifies the representation of the set of routes provided as a response."
+        },
+        {
+          "name": "computeTravelTimeFor",
+          "schema": "string",
+          "description": "Specifies whether to return additional travel times using different types of traffic information (none, historic, live) as well as the default best-estimate travel time."
+        },
+        {
+          "name": "vehicleHeading",
+          "schema": "integer",
+          "description": "The directional heading of the vehicle in degrees. Entered in degrees, measured clockwise from north (so north is 0, east is 90, etc.)."
+        },
+        {
+          "name": "sectionType",
+          "schema": "string",
+          "description": "Specifies which section types are explicitly reported in the route response. Can be specified multiple times.\n  - carTrain, ferry, tunnel or motorway\n  - pedestrian\n  - tollRoad\n  - tollVignette\n  - country\n  - travelMode\n  - traffic"
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "description": "Specifies the jsonp callback method."
+        },
+        {
+          "name": "report",
+          "schema": "string",
+          "description": "Specifies which data should be reported for diagnosis purposes."
+        },
+        {
+          "name": "departAt",
+          "schema": "string",
+          "description": "The date and time of departure from the origin point. Departure times apart from <i>now</i> must be specified as a dateTime."
+        },
+        {
+          "name": "arriveAt",
+          "schema": "string",
+          "description": "The date and time of arrival at the destination point. It must be specified as a dateTime."
+        },
+        {
+          "name": "routeType",
+          "schema": "string",
+          "description": "The type of route requested."
+        },
+        {
+          "name": "traffic",
+          "schema": "boolean",
+          "description": "Determines whether current traffic is used in route calculations. Note that information on historic road speeds is always used."
+        },
+        {
+          "name": "avoid",
+          "schema": "string",
+          "description": "Specifies whether the routing engine should try to avoid specific types of road segment when calculating the route. Can be specified multiple times.\nPossible values:\n  - tollRoads\n  - motorways\n  - ferries\n  - unpavedRoads\n  - carpools\n  - alreadyUsedRoads"
+        },
+        {
+          "name": "travelMode",
+          "schema": "string",
+          "description": "The mode of travel for the requested route."
+        },
+        {
+          "name": "hilliness",
+          "schema": "string",
+          "description": "Degree of hilliness for calculating a thrilling route."
+        },
+        {
+          "name": "windingness",
+          "schema": "string",
+          "description": "Amount that a thrilling route should wind."
+        },
+        {
+          "name": "vehicleMaxSpeed",
+          "schema": "integer",
+          "description": "Maximum speed of the vehicle in km/hour."
+        },
+        {
+          "name": "vehicleWeight",
+          "schema": "integer",
+          "description": "Weight of the vehicle in kilograms."
+        },
+        {
+          "name": "vehicleAxleWeight",
+          "schema": "integer",
+          "description": "Weight per axle of the vehicle in kg."
+        },
+        {
+          "name": "vehicleLength",
+          "schema": "number",
+          "description": "Length of the vehicle in meters."
+        },
+        {
+          "name": "vehicleWidth",
+          "schema": "number",
+          "description": "Width of the vehicle in meters."
+        },
+        {
+          "name": "vehicleHeight",
+          "schema": "number",
+          "description": "Height of the vehicle in meters."
+        },
+        {
+          "name": "vehicleCommercial",
+          "schema": "boolean",
+          "description": "Indicates that the vehicle is used for commercial purposes. This means it may not be allowed on certain roads."
+        },
+        {
+          "name": "vehicleLoadType",
+          "schema": "string",
+          "description": "Indicates what kinds of hazardous materials the vehicle is carrying (if any). This means it may not be allowed on certain roads.\nUse these for routing in the US:\n\n  - <i>USHazmatClass1</i> Explosives\n  - <i>USHazmatClass2</i> Compressed gas\n  - <i>USHazmatClass3</i> Flammable liquids\n  - <i>USHazmatClass4</i> Flammable solids\n  - <i>USHazmatClass5</i> Oxidizers\n  - <i>USHazmatClass6</i> Poisons\n  - <i>USHazmatClass7</i> Radioactive\n  - <i>USHazmatClass8</i> Corrosives\n  - <i>USHazmatClass9</i> Miscellaneous\n\nUse these for routing in all other countries:\n\n  - <i>otherHazmatExplosive</i> Explosives\n  - <i>otherHazmatGeneral</i> Miscellaneous\n  - <i>otherHazmatHarmfulToWater</i> Harmful to water\n\nvehicleLoadType can be specified multiple times. This parameter is currently only considered for <b>travelMode</b>=<i>truck</i>."
+        },
+        {
+          "name": "vehicleEngineType",
+          "schema": "string",
+          "description": "Engine type of the vehicle."
+        },
+        {
+          "name": "constantSpeedConsumptionInLitersPerHundredkm",
+          "schema": "string",
+          "description": "Specifies the speed-dependent component of consumption. Provided as an unordered list of speed/consumption-rate pairs."
+        },
+        {
+          "name": "currentFuelInLiters",
+          "schema": "number",
+          "description": "Specifies the current supply of fuel in liters."
+        },
+        {
+          "name": "auxiliaryPowerInLitersPerHour",
+          "schema": "number",
+          "description": "Specifies the amount of fuel consumed for sustaining auxiliary systems of the vehicle, in liters per hour."
+        },
+        {
+          "name": "fuelEnergyDensityInMJoulesPerLiter",
+          "schema": "number",
+          "description": "Specifies the amount of chemical energy stored in one liter of fuel in megajoules (MJ)."
+        },
+        {
+          "name": "accelerationEfficiency",
+          "schema": "number",
+          "description": "Specifies the efficiency of converting chemical energy stored in fuel to kinetic energy when the vehicle accelerates (i.e. KineticEnergyGained/ChemicalEnergyConsumed)."
+        },
+        {
+          "name": "decelerationEfficiency",
+          "schema": "number",
+          "description": "Specifies the efficiency of converting kinetic energy to saved (not consumed) fuel when the vehicle decelerates (i.e. ChemicalEnergySaved/KineticEnergyLost)."
+        },
+        {
+          "name": "uphillEfficiency",
+          "schema": "number",
+          "description": "Specifies the efficiency of converting chemical energy stored in fuel to potential energy when the vehicle gains elevation (i.e. PotentialEnergyGained/ChemicalEnergyConsumed)."
+        },
+        {
+          "name": "downhillEfficiency",
+          "schema": "number",
+          "description": "Specifies the efficiency of converting potential energy to saved (not consumed) fuel when the vehicle loses elevation (i.e. ChemicalEnergySaved/PotentialEnergyLost)."
+        },
+        {
+          "name": "constantSpeedConsumptionInkWhPerHundredkm",
+          "schema": "string",
+          "description": "Specifies the speed-dependent component of consumption. Provided as an unordered list of speed/consumption-rate pairs."
+        },
+        {
+          "name": "allowVignette",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "avoidAreas",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "avoidVignette",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "supportingPoints",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://api.tomtom.com",
   "apiDescription": "Routing consists of the following service:\n<b>Calculate Route</b>\nCalculates a route between an origin and a destination, passing through waypoints (if specified). Additional routing parameters like traffic, avoidance conditions, departure/arrival time etc. can be taken into account.\n<b>Calculate Reachable Range</b>\nCalculates a set of locations that can be reached from the origin point, subject to the available fuel or energy budget that is specified in the request.",
   "apiTitle": "Routing",

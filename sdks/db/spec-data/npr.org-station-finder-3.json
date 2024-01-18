@@ -4,6 +4,130 @@
   "homepage": "npr.org",
   "serviceName": "station-finder",
   "apiVersion": "3",
+  "methods": [
+    {
+      "url": "/v3/stations",
+      "method": "searchStations",
+      "httpMethod": "get",
+      "tag": "stationfinder",
+      "description": "List stations close to you or filter by search criteria",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Your access token from the Authorization Service. Should start with `Bearer`, followed by a space, followed by the token."
+        },
+        {
+          "name": "q",
+          "schema": "string",
+          "required": false,
+          "description": "Search terms to search on; can be a station name, network name, call letters, or zipcode"
+        },
+        {
+          "name": "city",
+          "schema": "string",
+          "required": false,
+          "description": "A city to look for stations from; intended to be paired with `state`"
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "required": false,
+          "description": "A state to look for stations from (using the 2-letter abbreviation); intended to be paired with `city`"
+        },
+        {
+          "name": "lat",
+          "schema": "number",
+          "required": false,
+          "description": "A latitude value from a geographic coordinate system; only works if paired with `lon`"
+        },
+        {
+          "name": "lon",
+          "schema": "number",
+          "required": false,
+          "description": "A longitude value from a geographic coordinate system; only works if paired with `lat`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A collection of stations close to you or filtered by search criteria"
+        },
+        {
+          "statusCode": "400",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "401",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "429",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "500",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "503",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        }
+      ]
+    },
+    {
+      "url": "/v3/stations/{stationId}",
+      "method": "getStationById",
+      "httpMethod": "get",
+      "tag": "stationfinder",
+      "description": "Retrieve metadata for the station with the given numeric ID",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Your access token from the Authorization Service. Should start with `Bearer`, followed by a space, followed by the token."
+        },
+        {
+          "name": "stationId",
+          "schema": "integer",
+          "required": true,
+          "description": "The numeric ID of a station"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "401",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "404",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "429",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "500",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "503",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://station.api.npr.org",
   "apiDescription": "Allows clients to look up NPR member station information",
   "apiTitle": "NPR Station Finder Service",

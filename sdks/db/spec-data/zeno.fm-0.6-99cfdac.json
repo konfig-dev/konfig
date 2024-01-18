@@ -3,6 +3,446 @@
   "openApiRaw": "https://api.zeno.fm/v3/api-docs",
   "homepage": "zeno.fm",
   "apiVersion": "0.6-99cfdac",
+  "methods": [
+    {
+      "url": "/api/v2/podcasts/categories",
+      "method": "getPodcastCategories",
+      "httpMethod": "get",
+      "tag": "API-v2",
+      "description": "Get the list of Categories that can be used to filter podcasts in the search podcasts request",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/podcasts/countries",
+      "method": "getPodcastCountries",
+      "httpMethod": "get",
+      "tag": "API-v2",
+      "description": "Get the list of Countries that can be used to filter podcasts in the search podcasts request",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/podcasts/create",
+      "method": "createPodcast",
+      "httpMethod": "post",
+      "tag": "API-v2",
+      "description": "Create podcast",
+      "parameters": [
+        {
+          "name": "file_logo",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "podcast",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Podcast model"
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/podcasts/languages",
+      "method": "getPodcastLanguages",
+      "httpMethod": "get",
+      "tag": "API-v2",
+      "description": "Get the list of Languages that can be used to filter podcasts in the search podcasts request",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/podcasts/search",
+      "method": "searchPodcasts",
+      "httpMethod": "post",
+      "tag": "API-v2",
+      "description": "Search podcasts",
+      "parameters": [
+        {
+          "name": "filters",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "hitsPerPage",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "query",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Podcast search results"
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/podcasts/{podcastKey}",
+      "method": "deletePodcast",
+      "httpMethod": "delete",
+      "tag": "API-v2",
+      "description": "Delete podcast",
+      "parameters": [
+        {
+          "name": "podcastKey",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v2/podcasts/{podcastKey}",
+      "method": "getPodcast",
+      "httpMethod": "get",
+      "tag": "API-v2",
+      "description": "Get podcast",
+      "parameters": [
+        {
+          "name": "podcastKey",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Podcast model"
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/podcasts/{podcastKey}",
+      "method": "updatePodcast",
+      "httpMethod": "put",
+      "tag": "API-v2",
+      "description": "Update podcast",
+      "parameters": [
+        {
+          "name": "podcastKey",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "file_logo",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "podcast",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Podcast model"
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/podcasts/{podcastKey}/episodes",
+      "method": "getPodcastEpisodes",
+      "httpMethod": "get",
+      "tag": "API-v2",
+      "description": "Get podcast episodes",
+      "parameters": [
+        {
+          "name": "podcastKey",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "List of PodcastEpisode"
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/podcasts/{podcastKey}/episodes/create",
+      "method": "createPodcastEpisode",
+      "httpMethod": "post",
+      "tag": "API-v2",
+      "description": "Create podcast episode",
+      "parameters": [
+        {
+          "name": "podcastKey",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "episode",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "file_logo",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "file_media",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "PodcastEpisode model"
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/podcasts/{podcastKey}/episodes/{episodeKey}",
+      "method": "deletePodcast1",
+      "httpMethod": "delete",
+      "tag": "API-v2",
+      "description": "Delete podcast episode",
+      "parameters": [
+        {
+          "name": "podcastKey",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "episodeKey",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v2/podcasts/{podcastKey}/episodes/{episodeKey}",
+      "method": "getPodcastEpisode",
+      "httpMethod": "get",
+      "tag": "API-v2",
+      "description": "Get podcast episode",
+      "parameters": [
+        {
+          "name": "podcastKey",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "episodeKey",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "PodcastEpisode model"
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/podcasts/{podcastKey}/episodes/{episodeKey}",
+      "method": "updatePodcastEpisode",
+      "httpMethod": "put",
+      "tag": "API-v2",
+      "description": "Update podcast episode",
+      "parameters": [
+        {
+          "name": "podcastKey",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "episodeKey",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "episode",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "file_logo",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "PodcastEpisode model"
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/stations/countries",
+      "method": "getStationCountries",
+      "httpMethod": "get",
+      "tag": "API-v2",
+      "description": "Get the list of Countries that can be used to filter stations in the search stations request",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/stations/genres",
+      "method": "getStationGenres",
+      "httpMethod": "get",
+      "tag": "API-v2",
+      "description": "Get the list of Genres that can be used to filter stations in the search stations request",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/stations/languages",
+      "method": "getStationLanguages",
+      "httpMethod": "get",
+      "tag": "API-v2",
+      "description": "Get the list of Languages that can be used to filter stations in the search stations request",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/stations/list",
+      "method": "getPartnerAggregatorStations",
+      "httpMethod": "get",
+      "tag": "API-v2",
+      "description": "List stations",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "hitsPerPage",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "List of Station"
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/stations/search",
+      "method": "searchStations",
+      "httpMethod": "post",
+      "tag": "API-v2",
+      "description": "Search stations",
+      "parameters": [
+        {
+          "name": "filters",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "hitsPerPage",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "query",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Station search results"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.zeno.fm",
   "apiDescription": "Aggregators API",
   "apiTitle": "Aggregators API Service",

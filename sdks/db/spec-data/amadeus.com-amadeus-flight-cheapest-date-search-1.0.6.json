@@ -4,6 +4,83 @@
   "homepage": "amadeus.com",
   "serviceName": "amadeus-flight-cheapest-date-search",
   "apiVersion": "1.0.6",
+  "methods": [
+    {
+      "url": "/shopping/flight-dates",
+      "method": "getFlightDates",
+      "httpMethod": "get",
+      "tag": "flight-dates",
+      "description": "Find the cheapest flight dates from an origin to a destination.",
+      "parameters": [
+        {
+          "name": "origin",
+          "schema": "string",
+          "required": true,
+          "description": "IATA code of the city from which the flight will depart\n\n[IATA table codes](http://www.iata.org/publications/Pages/code-search.aspx) - e.g. MAD for Madrid\n"
+        },
+        {
+          "name": "destination",
+          "schema": "string",
+          "required": true,
+          "description": "IATA code of the city to which the flight is going.\n\n[IATA table codes](http://www.iata.org/publications/Pages/code-search.aspx) - e.g. MUC for Munich\n"
+        },
+        {
+          "name": "departureDate",
+          "schema": "string",
+          "required": false,
+          "description": "the date, or range of dates, on which the flight will depart from the origin. Dates are specified in the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) YYYY-MM-DD format, e.g. 2017-12-25. Ranges are specified with a comma and are inclusive"
+        },
+        {
+          "name": "oneWay",
+          "schema": "boolean",
+          "required": false,
+          "description": "if this parameter is set to true, only one-way flights are considered. If this parameter is not set or set to false, only round-trip flights are considered"
+        },
+        {
+          "name": "duration",
+          "schema": "string",
+          "required": false,
+          "description": "exact duration or range of durations of the travel, in days. This parameter must not be set if oneWay is true. Ranges are specified with a comma and are inclusive, e.g. 2,8"
+        },
+        {
+          "name": "nonStop",
+          "schema": "boolean",
+          "required": false,
+          "description": "if this parameter is set to true, only flights going from the origin to the destination with no stop in-between are considered"
+        },
+        {
+          "name": "maxPrice",
+          "schema": "integer",
+          "required": false,
+          "description": "defines the price limit for each offer returned. The value should be a positive number, without decimals"
+        },
+        {
+          "name": "viewBy",
+          "schema": "string",
+          "required": false,
+          "description": "view the flight dates by DATE, DURATION, or WEEK. View by DATE (default when oneWay is true) to get the cheapest flight dates for every departure date in the given range. View by DURATION (default when oneWay is false) to get the cheapest flight dates for every departure date and for every duration in the given ranges. View by WEEK to get the cheapest flight destination for every week in the given range of departure dates. Note that specifying a detailed view but large ranges may result in a huge number of flight dates being returned. For some very large numbers of flight dates, the API may refuse to provide a response"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://test.api.amadeus.com/v1",
   "apiDescription": "\nBefore using this API, we recommend you read our **[Authorization Guide](https://developers.amadeus.com/self-service/apis-docs/guides/authorization-262)** for more information on how to generate an access token.\n\nPlease also be aware that our test environment is based on a subset of the production, to see what is included in test please refer to our **[data collection](https://github.com/amadeus4dev/data-collection)**.\n",
   "apiTitle": "Flight Cheapest Date Search",

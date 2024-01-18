@@ -4,6 +4,112 @@
   "homepage": "hubapi.com",
   "serviceName": "cms",
   "apiVersion": "v3",
+  "methods": [
+    {
+      "url": "/cms/v3/domains/",
+      "method": "get-/cms/v3/domains/GetPage",
+      "httpMethod": "get",
+      "tag": "Domains",
+      "description": "Get current domains",
+      "parameters": [
+        {
+          "name": "createdAt",
+          "schema": "string",
+          "required": false,
+          "description": "Only return domains created at this date."
+        },
+        {
+          "name": "createdAfter",
+          "schema": "string",
+          "required": false,
+          "description": "Only return domains created after this date."
+        },
+        {
+          "name": "createdBefore",
+          "schema": "string",
+          "required": false,
+          "description": "Only return domains created before this date."
+        },
+        {
+          "name": "updatedAt",
+          "schema": "string",
+          "required": false,
+          "description": "Only return domains updated at this date."
+        },
+        {
+          "name": "updatedAfter",
+          "schema": "string",
+          "required": false,
+          "description": "Only return domains updated after this date."
+        },
+        {
+          "name": "updatedBefore",
+          "schema": "string",
+          "required": false,
+          "description": "Only return domains updated before this date."
+        },
+        {
+          "name": "sort",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "after",
+          "schema": "string",
+          "required": false,
+          "description": "The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum number of results per page."
+        },
+        {
+          "name": "archived",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to return only results that have been archived."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cms/v3/domains/{domainId}",
+      "method": "get-/cms/v3/domains/{domainId}GetById",
+      "httpMethod": "get",
+      "tag": "Domains",
+      "description": "Get a single domain",
+      "parameters": [
+        {
+          "name": "domainId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the domain."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.hubapi.com",
   "apiTitle": "CMS Domains",
   "endpoints": 2,

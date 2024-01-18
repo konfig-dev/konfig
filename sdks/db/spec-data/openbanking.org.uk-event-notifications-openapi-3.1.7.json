@@ -4,6 +4,30 @@
   "homepage": "openbanking.org.uk",
   "serviceName": "event-notifications-openapi",
   "apiVersion": "3.1.7",
+  "methods": [
+    {
+      "url": "/event-notifications",
+      "method": "createEventNotification",
+      "httpMethod": "post",
+      "tag": "Event Notification",
+      "description": "Send an event notification",
+      "parameters": [
+        {
+          "name": "x-fapi-financial-id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique id of the ASPSP to which the request is issued. The unique id will be issued by OB."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://openbanking.org.uk",
   "apiDescription": "Swagger for Event Notification API Specification - TPP Endpoints",
   "apiTitle": "Event Notification API Specification - TPP Endpoints",

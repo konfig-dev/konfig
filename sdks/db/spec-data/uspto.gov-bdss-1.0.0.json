@@ -4,6 +4,213 @@
   "homepage": "uspto.gov",
   "serviceName": "bdss",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/products/all/latest",
+      "method": "getProductsWithLatestProductFiles",
+      "httpMethod": "get",
+      "tag": "products",
+      "description": "Returns all products with Latest Files.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/products/byname/{productName}",
+      "method": "getProductsByName",
+      "httpMethod": "get",
+      "tag": "products",
+      "description": "Returns files associated with products (of level PRODUCT) based on their full or partial names.",
+      "parameters": [
+        {
+          "name": "productName",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the product, for example, \"Trademark\""
+        },
+        {
+          "name": "fromYear",
+          "schema": "integer",
+          "required": false,
+          "description": "Year from when the product files are needed, for example, 1999."
+        },
+        {
+          "name": "toYear",
+          "schema": "integer",
+          "required": false,
+          "description": "Year until when the product files are needed, for example, 2000."
+        },
+        {
+          "name": "fromMonth",
+          "schema": "integer",
+          "required": false,
+          "description": "Month from when the product files are needed, for example, 01."
+        },
+        {
+          "name": "toMonth",
+          "schema": "integer",
+          "required": false,
+          "description": "Month until when the product files are needed, for example, 12."
+        },
+        {
+          "name": "fromDay",
+          "schema": "integer",
+          "required": false,
+          "description": "Day from when the product files are needed, for example, 01."
+        },
+        {
+          "name": "toDay",
+          "schema": "integer",
+          "required": false,
+          "description": "Day until when the product files are needed, for example, 31."
+        },
+        {
+          "name": "hierarchy",
+          "schema": "string",
+          "required": false,
+          "description": "Boolean flag to indicate if product hierarchy needs to be return in the response. By default it doesn't return the hierarchy in the response."
+        },
+        {
+          "name": "maxFiles",
+          "schema": "integer",
+          "required": false,
+          "description": "Max. number of files to retrieve, per product. Set value to -1 to get all files"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/products/popular",
+      "method": "getPopulartProducts",
+      "httpMethod": "get",
+      "tag": "products",
+      "description": "Returns popular products along with latest files.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/products/tree",
+      "method": "getProductsTree",
+      "httpMethod": "get",
+      "tag": "products",
+      "description": "Returns products' hierarchical tree.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/products/tree/{shortName}",
+      "method": "getProductSubTree",
+      "httpMethod": "get",
+      "tag": "products",
+      "description": "Returns products' hierarchical subtree.",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "Short name of the product, for example, \"PTISSD\""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/products/{shortName}",
+      "method": "getProductsByShortName",
+      "httpMethod": "get",
+      "tag": "products",
+      "description": "Returns products along with their associated files by short names.",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "Short name  of the product, for example, \"PTGRSP\""
+        },
+        {
+          "name": "fromYear",
+          "schema": "integer",
+          "required": false,
+          "description": "Year from when the product files are needed, for example, 1999."
+        },
+        {
+          "name": "toYear",
+          "schema": "integer",
+          "required": false,
+          "description": "Year until when the product files are needed, for example, 2000."
+        },
+        {
+          "name": "fromMonth",
+          "schema": "integer",
+          "required": false,
+          "description": "Month from when the product files are needed, for example, 01."
+        },
+        {
+          "name": "toMonth",
+          "schema": "integer",
+          "required": false,
+          "description": "Month until when the product files are needed, for example, 12."
+        },
+        {
+          "name": "fromDay",
+          "schema": "integer",
+          "required": false,
+          "description": "Day from when the product files are needed, for example, 01."
+        },
+        {
+          "name": "toDay",
+          "schema": "integer",
+          "required": false,
+          "description": "Day until when the product files are needed, for example, 31."
+        },
+        {
+          "name": "fromDate",
+          "schema": "string",
+          "required": false,
+          "description": "Year from when the product files are needed, for example, 1999-01-01."
+        },
+        {
+          "name": "toDate",
+          "schema": "string",
+          "required": false,
+          "description": "Year until when the product files are needed, for example, 2001-12-31."
+        },
+        {
+          "name": "hierarchy",
+          "schema": "string",
+          "required": false,
+          "description": "Boolean flag (possible values: true and false) to indicate if product hierarchy needs to be return in the response. By default it doesn't return the hierarchy in the response."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/products/{shortName}/latest",
+      "method": "getLatestProductFilesByProductIdAndTime",
+      "httpMethod": "get",
+      "tag": "products",
+      "description": "Returns products along with their latest files by short names.",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "Short name of the product, for example, \"PTGRSP\""
+        },
+        {
+          "name": "year",
+          "schema": "integer",
+          "required": false,
+          "description": "Year of the product files  needed, for example, 2001."
+        },
+        {
+          "name": "hierarchy",
+          "schema": "string",
+          "required": false,
+          "description": "Boolean flag (possible values: true and false) to indicate if product hierarchy needs to be return in the response. By default it doesn't return the hierarchy in the response."
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "/BDSS-API",
   "apiDescription": "Bulk Data Storage System (BDSS) allows the public to discover, search, and download patent and trademark data in bulk form.",
   "apiTitle": "Bulk Data Storage System Services",

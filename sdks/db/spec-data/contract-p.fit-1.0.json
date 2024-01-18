@@ -3,6 +3,3242 @@
   "openApiRaw": "https://cfportal.contract-p.fit/swagger.json",
   "homepage": "contract-p.fit",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/about/release_notes",
+      "method": "getReleaseNotes",
+      "httpMethod": "get",
+      "tag": "about",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/about/version",
+      "method": "getVersion",
+      "httpMethod": "get",
+      "tag": "about",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/auth",
+      "method": "postAuth",
+      "httpMethod": "post",
+      "tag": "auth",
+      "description": "Login and retrieve a JWT Token",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/auth/api-key",
+      "method": "getApiKeysResource",
+      "httpMethod": "get",
+      "tag": "auth",
+      "description": "Get all API-Key",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/auth/api-key",
+      "method": "postApiKeysResource",
+      "httpMethod": "post",
+      "tag": "auth",
+      "description": "Create a new API Key",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        },
+        {
+          "name": "active",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "expire_at",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "roles",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/auth/api-key/inbox/{inbox_id}",
+      "method": "getApiKeysInboxResource",
+      "httpMethod": "get",
+      "tag": "auth",
+      "description": "Get all API-Keys for this inbox",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/auth/api-key/inbox/{inbox_id}",
+      "method": "postApiKeysInboxResource",
+      "httpMethod": "post",
+      "tag": "auth",
+      "description": "Create a new API Key on inbox level",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        },
+        {
+          "name": "active",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "expire_at",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "roles",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/auth/api-key/{key}",
+      "method": "deleteApiKeyResource",
+      "httpMethod": "delete",
+      "tag": "auth",
+      "description": "Delete an API Key",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/auth/api-key/{key}",
+      "method": "getApiKeyResource",
+      "httpMethod": "get",
+      "tag": "auth",
+      "description": "Get details of an API-Key",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/auth/api-key/{key}",
+      "method": "patchApiKeyResource",
+      "httpMethod": "patch",
+      "tag": "auth",
+      "description": "Edit an API-Key",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/auth/ephemeral",
+      "method": "postEphemeralTokenResource",
+      "httpMethod": "post",
+      "tag": "auth",
+      "description": "Create a new ephemeral token",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/auth/get_JWT",
+      "method": "postGetJwtResource",
+      "httpMethod": "post",
+      "tag": "auth",
+      "description": "Create a new JWT Token",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        },
+        {
+          "name": "roles",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/auth/logout",
+      "method": "postLogoutResource",
+      "httpMethod": "post",
+      "tag": "auth",
+      "description": "Revoke the current token, effectively logging out the user",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/auth/reset_password",
+      "method": "postResetPassword",
+      "httpMethod": "post",
+      "tag": "auth",
+      "description": "Reset the user password",
+      "parameters": [
+        {
+          "name": "new_password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "user_name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/auth/token",
+      "method": "postTokenResource",
+      "httpMethod": "post",
+      "tag": "auth",
+      "description": "Create a new token",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        },
+        {
+          "name": "roles",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/connections",
+      "method": "getConnectionsResource",
+      "httpMethod": "get",
+      "tag": "connections",
+      "description": "Get all Connections",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/connections",
+      "method": "postConnectionsResource",
+      "httpMethod": "post",
+      "tag": "connections",
+      "description": "Create connection",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        },
+        {
+          "name": "event",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "integration",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "routing",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "scope",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "what",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/connections/{connection_id}",
+      "method": "deleteConnectionResource",
+      "httpMethod": "delete",
+      "tag": "connections",
+      "description": "Delete a connection",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/connections/{connection_id}",
+      "method": "getConnectionResource",
+      "httpMethod": "get",
+      "tag": "connections",
+      "description": "Get connection",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/connections/{connection_id}",
+      "method": "patchConnectionResource",
+      "httpMethod": "patch",
+      "tag": "connections",
+      "description": "Update connection",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        },
+        {
+          "name": "event",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "integration",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "routing",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "scope",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "what",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/data_retention_settings",
+      "method": "getDataRetentionResource",
+      "httpMethod": "get",
+      "tag": "data_retention_settings",
+      "description": "Get all data retention settings",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/data_retention_settings/{level}/{id}",
+      "method": "deleteDataRetentionResource",
+      "httpMethod": "delete",
+      "tag": "data_retention_settings",
+      "description": "Delete scoped sampling settings",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/data_retention_settings/{level}/{id}",
+      "method": "/dataRetentionSettings/{level}/{id}Get",
+      "httpMethod": "get",
+      "tag": "data_retention_settings",
+      "description": "Get scoped data retention settings",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/data_retention_settings/{level}/{id}",
+      "method": "patchDataRetentionResource",
+      "httpMethod": "patch",
+      "tag": "data_retention_settings",
+      "description": "Update scoped data retention settings",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        },
+        {
+          "name": "settings",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/documents/",
+      "method": "postSimpleDocumentsResource",
+      "httpMethod": "post",
+      "tag": "documents",
+      "description": "Upload a new document",
+      "parameters": [
+        {
+          "name": "experimental",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "file",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "inbox_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "key_value_flag",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/documents/custom_output",
+      "method": "postDocumentCustomOutputResource",
+      "httpMethod": "post",
+      "tag": "documents",
+      "description": "Generate custom output for documents",
+      "parameters": [
+        {
+          "name": "custom",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "excel",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "filter",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/documents/enrich",
+      "method": "postEnrichmentResource",
+      "httpMethod": "post",
+      "tag": "documents",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/documents/file_query/{data_type}",
+      "method": "postDocumentDataResource",
+      "httpMethod": "post",
+      "tag": "documents",
+      "description": "",
+      "parameters": [
+        {
+          "name": "document_ids",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/documents/query/{query_type}",
+      "method": "postDocumentQuery",
+      "httpMethod": "post",
+      "tag": "documents",
+      "description": "",
+      "parameters": [
+        {
+          "name": "filter",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/documents/{document_id}",
+      "method": "deleteDocumentDeleteResource",
+      "httpMethod": "delete",
+      "tag": "documents",
+      "description": "Delete the document",
+      "parameters": [
+        {
+          "name": "how",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/documents/{document_id}",
+      "method": "getDocumentDeleteResource",
+      "httpMethod": "get",
+      "tag": "documents",
+      "description": "Get the document",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/documents/{document_id}/custom_output",
+      "method": "getDocumentTransformResource",
+      "httpMethod": "get",
+      "tag": "documents",
+      "description": "Get custom output formatted document",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/documents/{document_id}/feedback",
+      "method": "postDocumentSubmitEvalResource",
+      "httpMethod": "post",
+      "tag": "documents",
+      "description": "Submit a feedback",
+      "parameters": [
+        {
+          "name": "annotations",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "cmp_version",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "evaluate",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "lines",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sections",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/documents/{document_id}/last_version",
+      "method": "getDocumentLastVersionResource",
+      "httpMethod": "get",
+      "tag": "documents",
+      "description": "Get latest version",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "description": "Return a specific named version, default is latest"
+        },
+        {
+          "name": "source",
+          "schema": "string",
+          "description": "human or machine (default either)"
+        },
+        {
+          "name": "is_evaluated",
+          "schema": "boolean",
+          "description": "Do you want to receive unevaluated version (for display, default) or evaluated (for stats)"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/documents/{document_id}/original_file",
+      "method": "getDocumentOriginalFileResource",
+      "httpMethod": "get",
+      "tag": "documents",
+      "description": "Get document original file",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/documents/{document_id}/page/{page_range}",
+      "method": "getDocumentPageImageResource",
+      "httpMethod": "get",
+      "tag": "documents",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/documents/{document_id}/page_thumbnail/{page_range}",
+      "method": "getDocumentPageImageThumbnailResource",
+      "httpMethod": "get",
+      "tag": "documents",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/documents/{document_id}/process_table_annotation",
+      "method": "postDocumentProcessTableAnnotation",
+      "httpMethod": "post",
+      "tag": "documents",
+      "description": "Process a table-level annotation",
+      "parameters": [
+        {
+          "name": "bottom_right",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "columns",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "first_row_y_bounds",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "header_bottom_y",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "top_left",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/documents/{document_id}/reprocess",
+      "method": "postReprocessDocumentResource",
+      "httpMethod": "post",
+      "tag": "documents",
+      "description": "Schedule document reprocessing",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "reviewer",
+          "schema": "string",
+          "description": "If human repcrocessing is triggered, the last version will become the passed version. No processing is done."
+        },
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/documents/{document_id}/reverse/{page_range}",
+      "method": "getDocumentReverseResource",
+      "httpMethod": "get",
+      "tag": "documents",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/documents/{document_id}/status_data",
+      "method": "postDocumentStatusDataResource",
+      "httpMethod": "post",
+      "tag": "documents",
+      "description": "Update document status",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        },
+        {
+          "name": "escalate",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "last_version",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "lock",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "opened_by",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "reject",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "status_data",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "submitted",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "timings",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/documents/{document_id}/text",
+      "method": "getDocumentTextResource",
+      "httpMethod": "get",
+      "tag": "documents",
+      "description": "Get the document text",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/documents/{document_id}/workflow",
+      "method": "getDocumentWorkflowResource",
+      "httpMethod": "get",
+      "tag": "documents",
+      "description": "Get the document Workflow",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/documents/{inbox_id}",
+      "method": "postDocumentsResource",
+      "httpMethod": "post",
+      "tag": "documents",
+      "description": "Upload a new doc to the inbox",
+      "parameters": [
+        {
+          "name": "experimental",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "file",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "key_value_flag",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sync",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/documents/{inbox_id}/copy_inbox",
+      "method": "patchDocumentCopyResource",
+      "httpMethod": "patch",
+      "tag": "documents",
+      "description": "Copy documents to another inbox",
+      "parameters": [
+        {
+          "name": "document_ids",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/documents/{inbox_id}/move_inbox",
+      "method": "patchDocumentMoveResource",
+      "httpMethod": "patch",
+      "tag": "documents",
+      "description": "Move documents to another inbox",
+      "parameters": [
+        {
+          "name": "document_ids",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/formats",
+      "method": "getFormatsResource",
+      "httpMethod": "get",
+      "tag": "formats",
+      "description": "Get lists of format",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/formats",
+      "method": "postFormatsResource",
+      "httpMethod": "post",
+      "tag": "formats",
+      "description": "Create format",
+      "parameters": [
+        {
+          "name": "display_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "document_types",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "labels",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "separators",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "table_types",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/formats/document_types",
+      "method": "getFormatsDocTypesResource",
+      "httpMethod": "get",
+      "tag": "formats",
+      "description": "Get supported document_types",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/formats/{format_id}",
+      "method": "deleteFormatResource",
+      "httpMethod": "delete",
+      "tag": "formats",
+      "description": "Delete the format",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/formats/{format_id}",
+      "method": "getFormatResource",
+      "httpMethod": "get",
+      "tag": "formats",
+      "description": "Get format attributes",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/formats/{format_id}",
+      "method": "patchFormatResource",
+      "httpMethod": "patch",
+      "tag": "formats",
+      "description": "Update the format",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        },
+        {
+          "name": "display_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "document_types",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "labels",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "separators",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "table_types",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/formats/{scope}/tag_fields",
+      "method": "getFormatTagFieldsResource",
+      "httpMethod": "get",
+      "tag": "formats",
+      "description": "Get tags values",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/inboxes",
+      "method": "getInboxesResource",
+      "httpMethod": "get",
+      "tag": "inboxes",
+      "description": "Get list of inboxes",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/inboxes",
+      "method": "postInboxesResource",
+      "httpMethod": "post",
+      "tag": "inboxes",
+      "description": "Create an inbox",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "project",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/inboxes/{inbox_id}",
+      "method": "deleteInboxResource",
+      "httpMethod": "delete",
+      "tag": "inboxes",
+      "description": "Delete an inbox",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/inboxes/{inbox_id}",
+      "method": "getInboxResource",
+      "httpMethod": "get",
+      "tag": "inboxes",
+      "description": "Get Inbox attributes",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/inboxes/{inbox_id}",
+      "method": "patchInboxResource",
+      "httpMethod": "patch",
+      "tag": "inboxes",
+      "description": "Update inbox",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "project",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/inboxes/{inbox_id}/compare_versions",
+      "method": "postInboxCompareResource",
+      "httpMethod": "post",
+      "tag": "inboxes",
+      "description": "",
+      "parameters": [
+        {
+          "name": "cmp_version_1",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "cmp_version_2",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "new_version_name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/inboxes/{inbox_id}/document_versions",
+      "method": "getInboxDocumentVersionsResource",
+      "httpMethod": "get",
+      "tag": "inboxes",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/inboxes/{inbox_id}/documents",
+      "method": "deleteInboxDocumentResource",
+      "httpMethod": "delete",
+      "tag": "inboxes",
+      "description": "Delete documents",
+      "parameters": [
+        {
+          "name": "how",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "what",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "start_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/inboxes/{inbox_id}/documents",
+      "method": "getInboxDocumentResource",
+      "httpMethod": "get",
+      "tag": "inboxes",
+      "description": "Get documents in the inbox",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/inboxes/{inbox_id}/paginated",
+      "method": "getInboxPaginatedResource",
+      "httpMethod": "get",
+      "tag": "inboxes",
+      "description": "Get paginated list of documents in the inbox",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": "Page number to fetch"
+        },
+        {
+          "name": "per_page",
+          "schema": "integer",
+          "description": "Results per page"
+        },
+        {
+          "name": "start_receive_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "end_receive_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "order_by",
+          "schema": "string",
+          "description": "comma seperated list of fields to order by"
+        },
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/inboxes/{inbox_id}/reprocess",
+      "method": "postInboxReprocessResource",
+      "httpMethod": "post",
+      "tag": "inboxes",
+      "description": "Schedule inbox reprocessing",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "reviewer",
+          "schema": "string",
+          "description": "If human repcrocessing is triggered, the last version will become the passed version. No processing is done."
+        },
+        {
+          "name": "hints",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/integrations/",
+      "method": "getIntegrationResources",
+      "httpMethod": "get",
+      "tag": "integrations",
+      "description": "Get all integrations",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/integrations/",
+      "method": "postIntegrationResources",
+      "httpMethod": "post",
+      "tag": "integrations",
+      "description": "Create integration",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/integrations/{integration_id}",
+      "method": "deleteIntegrationResource",
+      "httpMethod": "delete",
+      "tag": "integrations",
+      "description": "Delete an integration",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/integrations/{integration_id}",
+      "method": "getIntegrationResource",
+      "httpMethod": "get",
+      "tag": "integrations",
+      "description": "Get integration attributes",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/integrations/{integration_id}",
+      "method": "patchIntegrationResource",
+      "httpMethod": "patch",
+      "tag": "integrations",
+      "description": "Update integration",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/integrations/{integration_id}/activate",
+      "method": "getEmailIntegrationActivationResource",
+      "httpMethod": "get",
+      "tag": "integrations",
+      "description": "",
+      "parameters": [
+        {
+          "name": "secret",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/predictor_settings",
+      "method": "getPredictorSettingsResource",
+      "httpMethod": "get",
+      "tag": "predictor_settings",
+      "description": "Get all predictor settings",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/predictor_settings/{scope}",
+      "method": "deletePredictorSettingResource",
+      "httpMethod": "delete",
+      "tag": "predictor_settings",
+      "description": "Delete scoped predictor settings",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/predictor_settings/{scope}",
+      "method": "getPredictorSettingResource",
+      "httpMethod": "get",
+      "tag": "predictor_settings",
+      "description": "Get scoped predictor settings",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/predictor_settings/{scope}",
+      "method": "patchPredictorSettingResource",
+      "httpMethod": "patch",
+      "tag": "predictor_settings",
+      "description": "Update scoped predictor settings",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        },
+        {
+          "name": "blacklist",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "expected_values",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "fallback",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "key_value_pairs",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "table_extraction_settings",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "whitelist",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects",
+      "method": "getProjectsResource",
+      "httpMethod": "get",
+      "tag": "projects",
+      "description": "Get the list of projects",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/projects",
+      "method": "postProjectsResource",
+      "httpMethod": "post",
+      "tag": "projects",
+      "description": "Create a project",
+      "parameters": [
+        {
+          "name": "default_document_type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "default_format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "formats",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "split_into_sections",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "sub_page_splitting",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timeout",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/projects/{project_id}",
+      "method": "deleteProjectResource",
+      "httpMethod": "delete",
+      "tag": "projects",
+      "description": "Delete project",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/projects/{project_id}",
+      "method": "getProjectResource",
+      "httpMethod": "get",
+      "tag": "projects",
+      "description": "Get project attributes",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/projects/{project_id}",
+      "method": "patchProjectResource",
+      "httpMethod": "patch",
+      "tag": "projects",
+      "description": "Update project",
+      "parameters": [
+        {
+          "name": "default_document_type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "default_format",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "formats",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "split_into_sections",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "sub_page_splitting",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "timeout",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/reports",
+      "method": "getReportsResource",
+      "httpMethod": "get",
+      "tag": "reports",
+      "description": "Get all reports",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reports",
+      "method": "postReportsResource",
+      "httpMethod": "post",
+      "tag": "reports",
+      "description": "Create report",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        },
+        {
+          "name": "annotations",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "automation_blockers",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "automation_score",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "automation_what_if",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "cover",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "documents",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "elapse_time",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "evaluations",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "field_automation",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "inboxes",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "lines",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "page_classification",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "projects",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "sections",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "separator",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sources",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "text",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "version_name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reports/generate",
+      "method": "postGenerateReportResource",
+      "httpMethod": "post",
+      "tag": "reports",
+      "description": "Generate report based on input",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/reports/{report_id}",
+      "method": "deleteReportResource",
+      "httpMethod": "delete",
+      "tag": "reports",
+      "description": "Delete a report",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/reports/{report_id}",
+      "method": "getReportResource",
+      "httpMethod": "get",
+      "tag": "reports",
+      "description": "Get report",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reports/{report_id}",
+      "method": "patchReportResource",
+      "httpMethod": "patch",
+      "tag": "reports",
+      "description": "Update report",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        },
+        {
+          "name": "annotations",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "automation_blockers",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "automation_score",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "automation_what_if",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "cover",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "documents",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "elapse_time",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "evaluations",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "field_automation",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "inboxes",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "lines",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "page_classification",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "projects",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "sections",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "separator",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sources",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "text",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "version_name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reports/{report_id}/generate",
+      "method": "postGenerateReportIdResource",
+      "httpMethod": "post",
+      "tag": "reports",
+      "description": "Generate report based on report id",
+      "parameters": [
+        {
+          "name": "delivery_method",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "start_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/roles",
+      "method": "getRolesResource",
+      "httpMethod": "get",
+      "tag": "roles",
+      "description": "Get all roles",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/roles",
+      "method": "postRolesResource",
+      "httpMethod": "post",
+      "tag": "roles",
+      "description": "Create role",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "permissions",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/roles/{role_id}",
+      "method": "deleteRoleResource",
+      "httpMethod": "delete",
+      "tag": "roles",
+      "description": "Delete a role",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/roles/{role_id}",
+      "method": "getRoleResource",
+      "httpMethod": "get",
+      "tag": "roles",
+      "description": "Get role",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/roles/{role_id}",
+      "method": "patchRoleResource",
+      "httpMethod": "patch",
+      "tag": "roles",
+      "description": "Update role",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "permissions",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rule_config",
+      "method": "getRuleConfigsResource",
+      "httpMethod": "get",
+      "tag": "rule_config",
+      "description": "Get all rule configs",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rule_config/rule_entity/",
+      "method": "postDebugRuleEntityResource",
+      "httpMethod": "post",
+      "tag": "rule_config",
+      "description": "Get the regexes that are generated by the rule",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rule_config/rule_entity/{document_id}",
+      "method": "postDebugRuleEntityDocumentResource",
+      "httpMethod": "post",
+      "tag": "rule_config",
+      "description": "Evaluate a rule on a document",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rule_config/where_to_search/{document_id}",
+      "method": "postDebugWhereToSearch",
+      "httpMethod": "post",
+      "tag": "rule_config",
+      "description": "Get the text a where_to_search specification will generate",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rule_config/{scope}",
+      "method": "deleteRuleConfigResource",
+      "httpMethod": "delete",
+      "tag": "rule_config",
+      "description": "Delete scoped rule config",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rule_config/{scope}",
+      "method": "getRuleConfigResource",
+      "httpMethod": "get",
+      "tag": "rule_config",
+      "description": "Get scoped rule config",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rule_config/{scope}",
+      "method": "patchRuleConfigResource",
+      "httpMethod": "patch",
+      "tag": "rule_config",
+      "description": "Update scoped rule config",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        },
+        {
+          "name": "rule_config",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sampling_settings",
+      "method": "getSettingSamplingsResource",
+      "httpMethod": "get",
+      "tag": "sampling_settings",
+      "description": "Get all sampling settings",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sampling_settings/{scope}",
+      "method": "deleteSettingSamplingResource",
+      "httpMethod": "delete",
+      "tag": "sampling_settings",
+      "description": "Delete scoped sampling settings",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/sampling_settings/{scope}",
+      "method": "getSettingSamplingResource",
+      "httpMethod": "get",
+      "tag": "sampling_settings",
+      "description": "Get scoped sampling settings",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sampling_settings/{scope}",
+      "method": "patchSettingSamplingResource",
+      "httpMethod": "patch",
+      "tag": "sampling_settings",
+      "description": "Update scoped sampling settings",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        },
+        {
+          "name": "auto_reject_FFR",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "auto_submit_FFR",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "second_pass_FFR",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "second_pass_STP",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/settings/dashboard",
+      "method": "getDashboardSettingsAtomicResource",
+      "httpMethod": "get",
+      "tag": "settings",
+      "description": "Get scoped dashboard setting",
+      "parameters": [
+        {
+          "name": "scope",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "full",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/settings/dashboard",
+      "method": "patchDashboardSettingsAtomicResource",
+      "httpMethod": "patch",
+      "tag": "settings",
+      "description": "Update scoped dashboard setting",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        },
+        {
+          "name": "scope",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "settings",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/settings/review",
+      "method": "getReviewSettingsAtomicResource",
+      "httpMethod": "get",
+      "tag": "settings",
+      "description": "Get scoped review setting",
+      "parameters": [
+        {
+          "name": "scope",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "full",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/settings/review",
+      "method": "patchReviewSettingsAtomicResource",
+      "httpMethod": "patch",
+      "tag": "settings",
+      "description": "Update scoped review setting",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        },
+        {
+          "name": "scope",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "settings",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sso/config",
+      "method": "getSsoConfigResources",
+      "httpMethod": "get",
+      "tag": "sso",
+      "description": "",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sso/config",
+      "method": "postSsoConfigResources",
+      "httpMethod": "post",
+      "tag": "sso",
+      "description": "",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        },
+        {
+          "name": "extra",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "provider",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/sso/config/{sso_config_id}",
+      "method": "deleteSsoConfigResources",
+      "httpMethod": "delete",
+      "tag": "sso",
+      "description": "Get integration attributes",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/sso/login",
+      "method": "postOauthLoginResource",
+      "httpMethod": "post",
+      "tag": "sso",
+      "description": "",
+      "parameters": [
+        {
+          "name": "token",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/stats/usage",
+      "method": "getUsageStatsResource",
+      "httpMethod": "get",
+      "tag": "stats",
+      "description": "",
+      "parameters": [
+        {
+          "name": "inbox_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "start_date",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "excel_output",
+          "schema": "boolean",
+          "description": "Set to 'true' to get data in an excel. (Default output format: JSON)"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/stats/{inbox_id}",
+      "method": "getStatsResource",
+      "httpMethod": "get",
+      "tag": "stats",
+      "description": "Get inbox statistics",
+      "parameters": [
+        {
+          "name": "field_name",
+          "schema": "string",
+          "description": "The field names to include in the stats. If left empty, all fields are included.Additionally, `__all_fields__` field name is also added, and aggregates the stats for all fields"
+        },
+        {
+          "name": "start_date",
+          "schema": "string",
+          "description": "The minimum upload time of the file. If left empty, no filter is applied. "
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "description": "The maximum upload time of the file. If left empty, no filter is applied. "
+        },
+        {
+          "name": "version_name",
+          "schema": "string",
+          "description": "The name of the version to evaluate. If left empty, latest evaluated version is chosen. "
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/stats/{inbox_id}/automation_blockers",
+      "method": "getAutomationBlockersStats",
+      "httpMethod": "get",
+      "tag": "stats",
+      "description": "Get summary or details of automation blockers",
+      "parameters": [
+        {
+          "name": "start_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "version_name",
+          "schema": "string",
+          "description": "provide the version name to evaluate"
+        },
+        {
+          "name": "include_detail",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/stats/{inbox_id}/blue_dots",
+      "method": "postBlueDotsResource",
+      "httpMethod": "post",
+      "tag": "stats",
+      "description": "Get the Blue Dots statistics for the inbox",
+      "parameters": [
+        {
+          "name": "end_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "fields_to_exclude",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "level",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "option_level_fields",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "start_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "version_name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/stats/{inbox_id}/evaluated_versions",
+      "method": "getEvaluatedVersions",
+      "httpMethod": "get",
+      "tag": "stats",
+      "description": "Get the documents with evaluated versions",
+      "parameters": [
+        {
+          "name": "start_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "filter_versions",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "last_one_only",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "version_name",
+          "schema": "string",
+          "description": "filter the version by name. If not specified, all version names are considered"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/stats/{inbox_id}/processing",
+      "method": "getProcessingStats",
+      "httpMethod": "get",
+      "tag": "stats",
+      "description": "Get processing runtime stats",
+      "parameters": [
+        {
+          "name": "start_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "group_by",
+          "schema": "string",
+          "description": "Group stats per this given attribute. Only **pages** is supported"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/stats/{inbox_id}/volume",
+      "method": "getVolumeStats",
+      "httpMethod": "get",
+      "tag": "stats",
+      "description": "**Permission required:** view_statistics",
+      "parameters": [
+        {
+          "name": "start_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/stats/{scope}/accuracy",
+      "method": "getAccuracyResource",
+      "httpMethod": "get",
+      "tag": "stats",
+      "description": "Get the Accuracy counts on documents, sections and fields in the given inbox",
+      "parameters": [
+        {
+          "name": "start_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "stp_files_only",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "stp_fields_only",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "version_name",
+          "schema": "string",
+          "description": "provide the version name to evaluate"
+        },
+        {
+          "name": "filter_by",
+          "schema": "string",
+          "description": "Choose to filter the results by doctype, process label, ..."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/stats/{scope}/stp",
+      "method": "getStpResource",
+      "httpMethod": "get",
+      "tag": "stats",
+      "description": "Get the STP counts on documents, sections and fields in the given inbox",
+      "parameters": [
+        {
+          "name": "start_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "version_name",
+          "schema": "string",
+          "description": "Provide the evaluated version name to inspect automation (of the predictions) for"
+        },
+        {
+          "name": "filter_by",
+          "schema": "string",
+          "description": "Choose to filter the results by doctype, process label, ..."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/style/custom.css",
+      "method": "deleteStyleSheetResource",
+      "httpMethod": "delete",
+      "tag": "style",
+      "description": "Delete the custom CSS file",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/style/custom.css",
+      "method": "getStyleSheetResource",
+      "httpMethod": "get",
+      "tag": "style",
+      "description": "Get the custom CSS file",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/style/custom.css",
+      "method": "postStyleSheetResource",
+      "httpMethod": "post",
+      "tag": "style",
+      "description": "Upload the custom CSS file",
+      "parameters": [
+        {
+          "name": "file",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/style/logo.png",
+      "method": "deleteStyleLogoResource",
+      "httpMethod": "delete",
+      "tag": "style",
+      "description": "Delete the custom logo",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/style/logo.png",
+      "method": "getStyleLogoResource",
+      "httpMethod": "get",
+      "tag": "style",
+      "description": "Get the custom logo",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/style/logo.png",
+      "method": "postStyleLogoResource",
+      "httpMethod": "post",
+      "tag": "style",
+      "description": "Upload the custom logo",
+      "parameters": [
+        {
+          "name": "file",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/tenant",
+      "method": "deleteTenantResource",
+      "httpMethod": "delete",
+      "tag": "tenant",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/tenant/activate",
+      "method": "patchActivateTenantResource",
+      "httpMethod": "patch",
+      "tag": "tenant",
+      "description": "",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        },
+        {
+          "name": "code",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/threshold_settings",
+      "method": "getSettingsThresholdResource",
+      "httpMethod": "get",
+      "tag": "threshold_settings",
+      "description": "Get all thresholds settings",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/threshold_settings/{scope}",
+      "method": "deleteSettingThresholdResource",
+      "httpMethod": "delete",
+      "tag": "threshold_settings",
+      "description": "Delete the thresholds settings",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/threshold_settings/{scope}",
+      "method": "getSettingThresholdResource",
+      "httpMethod": "get",
+      "tag": "threshold_settings",
+      "description": "Get the scoped thresholds settings",
+      "parameters": [
+        {
+          "name": "default",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/threshold_settings/{scope}",
+      "method": "patchSettingThresholdResource",
+      "httpMethod": "patch",
+      "tag": "threshold_settings",
+      "description": "Update the scoped thresholds settings",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        },
+        {
+          "name": "thresholds",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users",
+      "method": "getUsersResource",
+      "httpMethod": "get",
+      "tag": "users",
+      "description": "Get all users",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users",
+      "method": "postUsersResource",
+      "httpMethod": "post",
+      "tag": "users",
+      "description": "Create user",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        },
+        {
+          "name": "active",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "roles",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/me",
+      "method": "getMe",
+      "httpMethod": "get",
+      "tag": "users",
+      "description": "Return info on the current user",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/me/change_password",
+      "method": "postChangePassword",
+      "httpMethod": "post",
+      "tag": "users",
+      "description": "Change the current user password",
+      "parameters": [
+        {
+          "name": "new_password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "old_password",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/users/{user_id}",
+      "method": "deleteUserResource",
+      "httpMethod": "delete",
+      "tag": "users",
+      "description": "Delete a user",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/users/{user_id}",
+      "method": "getUserResource",
+      "httpMethod": "get",
+      "tag": "users",
+      "description": "Get user",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}",
+      "method": "patchUserResource",
+      "httpMethod": "patch",
+      "tag": "users",
+      "description": "Update user",
+      "parameters": [
+        {
+          "name": "X-Fields",
+          "schema": "string",
+          "description": "An optional fields mask"
+        },
+        {
+          "name": "roles",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "//cfportal.contract-p.fit/api",
   "apiDescription": "This OpenAPI describes the API exposed by the contract.fit backend.\n\n## Security\n\n### Authentication\n\nAll endpoints are protected: you need to make authenticated calls. There are 3 authentication mechanisms:\n- HTTP Basic (Username + Password)\n- JWT Token\n- API-Key\n\nBy default you should have an account allowing you to bootstrap your tenant and create users and roles, using Basic Auth or after creating a Token  - see */auth* endpoints.\n\nIf you are missing credentials or permissions, please [contact us](https://contract.fit/contact-us).\n\n### Authorization\n\nThe security system is RBAC based: users must be granted scoped roles, allowing them to access resources.\nEach role grants a defined set of permissions, which can be restricted to a given inbox or document - see */roles* endpoints.\n\n## Upload and Processing\n\nBelow is a short description of common use cases of the API.\n\n### Simple Upload\n\nThe easiest and simplest way to get started is to use POST /documents : it will make a synchronous upload of your file and wait for the result.\n\nThis is a simplified version of POST /documents/{inbox_id} with less arguments and settings; it may not be suitable for real workload as it offers less capabilities.\n\n### Upload to Inbox\n\nThe favored endpoint to upload files is POST /documents/{inbox_id}: it is also highly recommended to make async call using sync=false.\n\n**Sync / Async**\n\nFor convenience uploads can be synchronous: it will make the request blocks until the document is processed.\n\nIt is however discouraged to rely on sync requests, as our service is designed to process documents asynchronously. You might run into timeouts and unprocessed document depending on factors such as server load and number of pending documents.\n\nAsynchronous calls will only schedule the processing and directly return the document ID without waiting: the document will be processed as soon as possible. You can then wait for the processed result using GET */documents/{document_id}*.\n\n### Reprocessing\n\nYou can reprocess a document using POST */documents/{document_id}/reprocess* : it will schedule an async processing of the document (note: it is not possible to make a sync reprocessing)\n",
   "apiTitle": "Contract.fit API",

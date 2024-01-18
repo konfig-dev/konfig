@@ -4,6 +4,1583 @@
   "homepage": "getgo.com",
   "serviceName": "gotowebinar",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/accounts/{accountKey}/webinars",
+      "method": "getAllAccountWebinars",
+      "httpMethod": "get",
+      "tag": "Webinars",
+      "description": "Get all webinars for an account",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "accountKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the account"
+        },
+        {
+          "name": "fromTime",
+          "schema": "string",
+          "required": true,
+          "description": "A required start of datetime range in ISO8601 UTC format, e.g. 2015-07-13T10:00:00Z"
+        },
+        {
+          "name": "toTime",
+          "schema": "string",
+          "required": true,
+          "description": "A required end of datetime range in ISO8601 UTC format, e.g. 2015-07-13T22:00:00Z"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "The page number to be displayed. The first page is 0."
+        },
+        {
+          "name": "size",
+          "schema": "integer",
+          "required": false,
+          "description": "The size of the page."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Describes a list of webinars for an account within a given date range"
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/historicalWebinars",
+      "method": "getHistoricalWebinars",
+      "httpMethod": "get",
+      "tag": "Webinars",
+      "description": "Get historical webinars",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "fromTime",
+          "schema": "string",
+          "required": true,
+          "description": "A required start of datetime range in ISO8601 UTC format, e.g. 2015-07-13T10:00:00Z"
+        },
+        {
+          "name": "toTime",
+          "schema": "string",
+          "required": true,
+          "description": "A required end of datetime range in ISO8601 UTC format, e.g. 2015-07-13T22:00:00Z"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/sessions",
+      "method": "getOrganizerSessions",
+      "httpMethod": "get",
+      "tag": "Sessions",
+      "description": "Get organizer sessions",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "fromTime",
+          "schema": "string",
+          "required": true,
+          "description": "A required start of datetime range in ISO8601 UTC format, e.g. 2015-07-13T10:00:00Z"
+        },
+        {
+          "name": "toTime",
+          "schema": "string",
+          "required": true,
+          "description": "A required end of datetime range in ISO8601 UTC format, e.g. 2015-07-13T22:00:00Z"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/upcomingWebinars",
+      "method": "getUpcomingWebinars",
+      "httpMethod": "get",
+      "tag": "Webinars",
+      "description": "Get upcoming webinars",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars",
+      "method": "getAllWebinars",
+      "httpMethod": "get",
+      "tag": "Webinars",
+      "description": "Get all webinars",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars",
+      "method": "createWebinar",
+      "httpMethod": "post",
+      "tag": "Webinars",
+      "description": "Create webinar",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isPasswordProtected",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "subject",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timeZone",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "times",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Describes a newly created webinar."
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}",
+      "method": "cancelWebinar",
+      "httpMethod": "delete",
+      "tag": "Webinars",
+      "description": "Cancel webinar",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        },
+        {
+          "name": "sendCancellationEmails",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates whether cancellation notice emails should be sent. The default value is false"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}",
+      "method": "getWebinar",
+      "httpMethod": "get",
+      "tag": "Webinars",
+      "description": "Get webinar",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Describes a completed webinar"
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}",
+      "method": "updateWebinar",
+      "httpMethod": "put",
+      "tag": "Webinars",
+      "description": "Update webinar",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        },
+        {
+          "name": "notifyParticipants",
+          "schema": "boolean",
+          "required": false,
+          "description": "Defines whether to send notifications to participants"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "locale",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "subject",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "timeZone",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "times",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}/attendees",
+      "method": "getAttendeesForAllWebinarSessions",
+      "httpMethod": "get",
+      "tag": "Webinars",
+      "description": "Get attendees for all webinar sessions",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}/audio",
+      "method": "getAudioInformation",
+      "httpMethod": "get",
+      "tag": "Webinars",
+      "description": "Get audio information",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Describes the audio/conferencing information for a webinar."
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}/audio",
+      "method": "updateAudioInformation",
+      "httpMethod": "post",
+      "tag": "Webinars",
+      "description": "Update audio information",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        },
+        {
+          "name": "notifyParticipants",
+          "schema": "boolean",
+          "required": false,
+          "description": "Defines whether to send notifications to participants"
+        },
+        {
+          "name": "privateInfo",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pstnInfo",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}/coorganizers",
+      "method": "getCoorganizers",
+      "httpMethod": "get",
+      "tag": "Co-organizers",
+      "description": "Get co-organizers",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}/coorganizers",
+      "method": "createCoorganizers",
+      "httpMethod": "post",
+      "tag": "Co-organizers",
+      "description": "Create co-organizers",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}/coorganizers/{coorganizerKey}",
+      "method": "deleteCoorganizer",
+      "httpMethod": "delete",
+      "tag": "Co-organizers",
+      "description": "Delete co-organizer",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        },
+        {
+          "name": "coorganizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the internal or external co-organizer (memberKey)"
+        },
+        {
+          "name": "external",
+          "schema": "boolean",
+          "required": false,
+          "description": "By default only internal co-organizers (with a GoToWebinar account) can be deleted. If you want to use this call for external co-organizers you have to set this parameter to 'true'."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}/coorganizers/{coorganizerKey}/resendInvitation",
+      "method": "resendCoorganizerInvitation",
+      "httpMethod": "post",
+      "tag": "Co-organizers",
+      "description": "Resend invitation",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        },
+        {
+          "name": "coorganizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the internal or external co-organizer (memberKey)"
+        },
+        {
+          "name": "external",
+          "schema": "boolean",
+          "required": false,
+          "description": "By default only internal co-organizers (with a GoToWebinar account) will retrieve the resent invitation email. If you want to use this call for external co-organizers you have to set this parameter to 'true'."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}/meetingtimes",
+      "method": "getWebinarMeetingTimes",
+      "httpMethod": "get",
+      "tag": "Webinars",
+      "description": "Get webinar meeting times",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}/panelists",
+      "method": "getPanelists",
+      "httpMethod": "get",
+      "tag": "Panelists",
+      "description": "Get webinar panelists",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}/panelists",
+      "method": "createPanelists",
+      "httpMethod": "post",
+      "tag": "Panelists",
+      "description": "Create Panelists",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}/panelists/{panelistKey}",
+      "method": "deleteWebinarPanelist",
+      "httpMethod": "delete",
+      "tag": "Panelists",
+      "description": "Delete webinar panelist",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        },
+        {
+          "name": "panelistKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar panelist"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}/panelists/{panelistKey}/resendInvitation",
+      "method": "resendPanelistInvitation",
+      "httpMethod": "post",
+      "tag": "Panelists",
+      "description": "Resend panelist invitation",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        },
+        {
+          "name": "panelistKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar panelist"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}/performance",
+      "method": "getPerformanceForAllWebinarSessions",
+      "httpMethod": "get",
+      "tag": "Webinars",
+      "description": "Get performance for all webinar sessions",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Describes performance details for webinars"
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}/registrants",
+      "method": "getAllRegistrantsForWebinar",
+      "httpMethod": "get",
+      "tag": "Registrants",
+      "description": "Get registrants",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}/registrants",
+      "method": "createRegistrant",
+      "httpMethod": "post",
+      "tag": "Registrants",
+      "description": "Create registrant",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": false,
+          "description": "Set to 'application/vnd.citrix.g2wapi-v1.1+json' to make a registration using fields (custom or default) additional to the basic ones."
+        },
+        {
+          "name": "resendConfirmation",
+          "schema": "boolean",
+          "required": false,
+          "description": "Indicates whether the confirmation email should be resent when a registrant is re-registered. The default value is false."
+        },
+        {
+          "name": "address",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "city",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "industry",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "jobTitle",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "numberOfEmployees",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "organization",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "phone",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "purchasingRole",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "purchasingTimeFrame",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "questionsAndComments",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "responses",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "source",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "zipCode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Describes a newly created webinar registrant."
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}/registrants/fields",
+      "method": "getRegistrationFields",
+      "httpMethod": "get",
+      "tag": "Registrants",
+      "description": "Get registration fields",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The fields to be completed on the webinar registration form."
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}/registrants/{registrantKey}",
+      "method": "deleteRegistrant",
+      "httpMethod": "delete",
+      "tag": "Registrants",
+      "description": "Delete registrant",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        },
+        {
+          "name": "registrantKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the registrant"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}/registrants/{registrantKey}",
+      "method": "getRegistrant",
+      "httpMethod": "get",
+      "tag": "Registrants",
+      "description": "Get registrant",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        },
+        {
+          "name": "registrantKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the registrant"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Detailed description of a webinar registrant with all registration fields."
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}/sessions",
+      "method": "getAllSessions",
+      "httpMethod": "get",
+      "tag": "Sessions",
+      "description": "Get webinar sessions",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}",
+      "method": "getWebinarSession",
+      "httpMethod": "get",
+      "tag": "Sessions",
+      "description": "Get webinar session",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        },
+        {
+          "name": "sessionKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar session"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/attendees",
+      "method": "getAttendees",
+      "httpMethod": "get",
+      "tag": "Attendees",
+      "description": "Get session attendees",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        },
+        {
+          "name": "sessionKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar session"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/attendees/{registrantKey}",
+      "method": "getAttendee",
+      "httpMethod": "get",
+      "tag": "Attendees",
+      "description": "Get attendee",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        },
+        {
+          "name": "sessionKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar session"
+        },
+        {
+          "name": "registrantKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the registrant"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Describes a webinar registrant"
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/attendees/{registrantKey}/polls",
+      "method": "getAttendeePollAnswers",
+      "httpMethod": "get",
+      "tag": "Attendees",
+      "description": "Get attendee poll answers",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        },
+        {
+          "name": "sessionKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar session"
+        },
+        {
+          "name": "registrantKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the registrant"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/attendees/{registrantKey}/questions",
+      "method": "getAttendeeQuestions",
+      "httpMethod": "get",
+      "tag": "Attendees",
+      "description": "Get attendee questions",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        },
+        {
+          "name": "sessionKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar session"
+        },
+        {
+          "name": "registrantKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the registrant"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/attendees/{registrantKey}/surveys",
+      "method": "getAttendeeSurveyAnswers",
+      "httpMethod": "get",
+      "tag": "Attendees",
+      "description": "Get attendee survey answers",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        },
+        {
+          "name": "sessionKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar session"
+        },
+        {
+          "name": "registrantKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the registrant"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/performance",
+      "method": "getPerformance",
+      "httpMethod": "get",
+      "tag": "Sessions",
+      "description": "Get session performance",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        },
+        {
+          "name": "sessionKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar session"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Describes performance details for webinar sessions"
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/polls",
+      "method": "getPolls",
+      "httpMethod": "get",
+      "tag": "Sessions",
+      "description": "Get session polls",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        },
+        {
+          "name": "sessionKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar session"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/questions",
+      "method": "getQuestions",
+      "httpMethod": "get",
+      "tag": "Sessions",
+      "description": "Get session questions",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        },
+        {
+          "name": "sessionKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar session"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/webinars/{webinarKey}/sessions/{sessionKey}/surveys",
+      "method": "getSurveys",
+      "httpMethod": "get",
+      "tag": "Sessions",
+      "description": "Get session surveys",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the organizer"
+        },
+        {
+          "name": "webinarKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar"
+        },
+        {
+          "name": "sessionKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the webinar session"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.getgo.com/G2W/rest",
   "apiDescription": "The GoToWebinar API provides seamless integration of webinar registrant and attendee data into your existing infrastructure or third-party applications. The ability to register participants, as well as pull lists of registrants and attendees for a webinar, allows organizers to manage the flow of information between their primary applications without manual intervention.",
   "apiTitle": "GoToWebinar",

@@ -4,6 +4,898 @@
   "homepage": "ticketmaster.com",
   "serviceName": "publish",
   "apiVersion": "v2",
+  "methods": [
+    {
+      "url": "/publish/v2/attractions",
+      "method": "publishAttraction",
+      "httpMethod": "post",
+      "description": "Publish an attractions",
+      "parameters": [
+        {
+          "name": "TMPS-Correlation-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique correlation id to be able to trace the request in our system"
+        },
+        {
+          "name": "active",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "additionalInfos",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "classifications",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "descriptions",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "discoverable",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "images",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "names",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "references",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "relationships",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "source",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "test",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "version",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This class defines the IngestionResult on the Publish API"
+        }
+      ]
+    },
+    {
+      "url": "/publish/v2/attractions/{id}",
+      "method": "patchAttraction",
+      "httpMethod": "patch",
+      "description": "Publish a patch on an attraction",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the attraction the patch will be applied"
+        },
+        {
+          "name": "TMPS-Correlation-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique correlation id to be able to trace the request in our system"
+        },
+        {
+          "name": "changes",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "relatedEntityId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "relatedEntityType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "score",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "source",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "versionNumber",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This class defines the IngestionResult on the Publish API"
+        }
+      ]
+    },
+    {
+      "url": "/publish/v2/attractions/{id}/videos",
+      "method": "publishAttractionVideos",
+      "httpMethod": "post",
+      "description": "Publish a video on an attraction",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the attraction the video is linked to"
+        },
+        {
+          "name": "TMPS-Correlation-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique correlation id to be able to trace the request in our system"
+        },
+        {
+          "name": "embedUrl",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "licensingInformation",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "source",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This class defines the IngestionResult on the Publish API"
+        }
+      ]
+    },
+    {
+      "url": "/publish/v2/entitlements",
+      "method": "publishEntitlements",
+      "httpMethod": "post",
+      "description": "Publish entitlements on an entity",
+      "parameters": [
+        {
+          "name": "TMPS-Correlation-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique correlation id to be able to trace the request in our system"
+        },
+        {
+          "name": "data",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "relatedEntityId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "relatedEntitySource",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "relatedEntityType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "source",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "versionNumber",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This class defines the IngestionResult on the Publish API"
+        }
+      ]
+    },
+    {
+      "url": "/publish/v2/events",
+      "method": "publishEvent",
+      "httpMethod": "post",
+      "description": "Publish an event",
+      "parameters": [
+        {
+          "name": "TMPS-Correlation-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique correlation id to be able to trace the request in our system"
+        },
+        {
+          "name": "active",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "additionalInfos",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "attractions",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "classifications",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dates",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "descriptions",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "discoverable",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "distance",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "images",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "infos",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "names",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "place",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pleaseNotes",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "priceRanges",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "promoter",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "publicVisibility",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "references",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "relationships",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sales",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "source",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "test",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "units",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "venue",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "version",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This class defines the IngestionResult on the Publish API"
+        }
+      ]
+    },
+    {
+      "url": "/publish/v2/events/{id}",
+      "method": "patchEvent",
+      "httpMethod": "patch",
+      "description": "Publish a patch on an event",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the event the patch will be applied"
+        },
+        {
+          "name": "TMPS-Correlation-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique correlation id to be able to trace the request in our system"
+        },
+        {
+          "name": "changes",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "relatedEntityId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "relatedEntityType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "score",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "source",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "versionNumber",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This class defines the IngestionResult on the Publish API"
+        }
+      ]
+    },
+    {
+      "url": "/publish/v2/events/{id}/videos",
+      "method": "publishEventVideos",
+      "httpMethod": "post",
+      "description": "Publish a video on an event",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the event the video is linked to"
+        },
+        {
+          "name": "TMPS-Correlation-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique correlation id to be able to trace the request in our system"
+        },
+        {
+          "name": "embedUrl",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "licensingInformation",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "source",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This class defines the IngestionResult on the Publish API"
+        }
+      ]
+    },
+    {
+      "url": "/publish/v2/extensions",
+      "method": "publishExtension",
+      "httpMethod": "post",
+      "description": "Publish extension on an entity",
+      "parameters": [
+        {
+          "name": "TMPS-Correlation-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique correlation id to be able to trace the request in our system"
+        },
+        {
+          "name": "data",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "relatedEntityId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "relatedEntitySource",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "relatedEntityType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "source",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "versionNumber",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This class defines the IngestionResult on the Publish API"
+        }
+      ]
+    },
+    {
+      "url": "/publish/v2/venues",
+      "method": "publishVenue",
+      "httpMethod": "post",
+      "description": "Publish a venue",
+      "parameters": [
+        {
+          "name": "TMPS-Correlation-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique correlation id to be able to trace the request in our system"
+        },
+        {
+          "name": "accessibleSeatingDetails",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "active",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "additionalInfos",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "address",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "boxOfficeInfo",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "city",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "country",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "currency",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "descriptions",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "discoverable",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "distance",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dma",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "generalInfo",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "images",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "markets",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "names",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parkingDetails",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "postalCode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "references",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "relationships",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "social",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "source",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "test",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "timezone",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "units",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "version",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This class defines the IngestionResult on the Publish API"
+        }
+      ]
+    },
+    {
+      "url": "/publish/v2/venues/{id}",
+      "method": "patchVenue",
+      "httpMethod": "patch",
+      "description": "Publish a patch on a venue",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the venue the patch will be applied"
+        },
+        {
+          "name": "TMPS-Correlation-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique correlation id to be able to trace the request in our system"
+        },
+        {
+          "name": "changes",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "relatedEntityId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "relatedEntityType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "score",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "source",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "versionNumber",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This class defines the IngestionResult on the Publish API"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "//www.ticketmaster.com/publish/v2",
   "apiDescription": "Publish API",
   "apiTitle": "ticketmaster publish api",

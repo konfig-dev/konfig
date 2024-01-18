@@ -3,6 +3,132 @@
   "openApiRaw": "https://orghunter.3scale.net/swagger/spec.json",
   "homepage": "orghunter.com",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/v1/categories",
+      "method": "getCategories",
+      "httpMethod": "post",
+      "tag": "categories",
+      "description": "Get categories!",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/v1/charitybasic",
+      "method": "/v1/charitybasicPost",
+      "httpMethod": "post",
+      "tag": "details",
+      "description": "Get details!",
+      "parameters": [
+        {
+          "name": "ein",
+          "schema": "string",
+          "description": "ein (Employer Identification Number)"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/charityfinancial",
+      "method": "/v1/charityfinancialPost",
+      "httpMethod": "post",
+      "tag": "CharityFinancial",
+      "description": "Get details!",
+      "parameters": [
+        {
+          "name": "ein",
+          "schema": "string",
+          "description": "ein (Employer Identification Number)"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/charitygeolocation",
+      "method": "/v1/charitygeolocationPost",
+      "httpMethod": "post",
+      "tag": "GeoLocation",
+      "description": "Get details!",
+      "parameters": [
+        {
+          "name": "ein",
+          "schema": "string",
+          "description": "ein (Employer Identification Number)"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/charitypremium",
+      "method": "/v1/charitypremiumPost",
+      "httpMethod": "post",
+      "tag": "CharityPremium",
+      "description": "Get details!",
+      "parameters": [
+        {
+          "name": "ein",
+          "schema": "string",
+          "description": "ein (Employer Identification Number)"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/charitysearch",
+      "method": "getSummary",
+      "httpMethod": "post",
+      "tag": "summary",
+      "description": "Get summary data!",
+      "parameters": [
+        {
+          "name": "ein",
+          "schema": "string",
+          "description": "Employer Identification Number (EIN)"
+        },
+        {
+          "name": "searchTerm",
+          "schema": "string",
+          "description": "Charity Name or Keyword. Example: humane society or cancer"
+        },
+        {
+          "name": "city",
+          "schema": "string",
+          "description": "City Name. Example: Miami"
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "description": "State Name - Two letter state abbreviation"
+        },
+        {
+          "name": "zipCode",
+          "schema": "string",
+          "description": "Zipcode Value - 5 digit zipcode value"
+        },
+        {
+          "name": "category",
+          "schema": "string",
+          "description": "Category Value Selected from Categories API"
+        },
+        {
+          "name": "eligible",
+          "schema": "string",
+          "description": "eligible=1 will return only organizations that are tax deductible and in good standing with the IRS"
+        },
+        {
+          "name": "start",
+          "schema": "string",
+          "description": "Record Set Start Position"
+        },
+        {
+          "name": "rows",
+          "schema": "string",
+          "description": "Records Per Page. Default Value = 20"
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "http://data.orghunter.com",
   "apiDescription": "Get the latest IRS data and most up to date charity information for your website or application",
   "apiTitle": "OrgHunter",

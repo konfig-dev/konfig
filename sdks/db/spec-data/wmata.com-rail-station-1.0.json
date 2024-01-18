@@ -4,6 +4,346 @@
   "homepage": "wmata.com",
   "serviceName": "rail-station",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/Lines",
+      "method": "5476364F031F5909E4Fe3314",
+      "httpMethod": "get",
+      "description": "XML - Lines",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Path",
+      "method": "5476364F031F5909E4Fe3316",
+      "httpMethod": "get",
+      "description": "XML - Path Between Stations",
+      "parameters": [
+        {
+          "name": "FromStationCode",
+          "schema": "string",
+          "required": true,
+          "description": "Station code for the origin station.  Use the Station List method to return a list of all station codes."
+        },
+        {
+          "name": "ToStationCode",
+          "schema": "string",
+          "required": true,
+          "description": "Station code for the origin station.  Use the Station List method to return a list of all station codes."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/SrcStationToDstStationInfo",
+      "method": "5476364F031F5909E4Fe331B",
+      "httpMethod": "get",
+      "description": "XML - Station to Station Information",
+      "parameters": [
+        {
+          "name": "FromStationCode",
+          "schema": "string",
+          "description": "Station code for the origin station.  Use the Station List method to return a list of all station codes."
+        },
+        {
+          "name": "ToStationCode",
+          "schema": "string",
+          "description": "Station code for the destination station.  Use the Station List method to return a list of all station codes."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/StationEntrances",
+      "method": "5476364F031F5909E4Fe3317",
+      "httpMethod": "get",
+      "description": "XML - Station Entrances",
+      "parameters": [
+        {
+          "name": "Lat",
+          "schema": "number",
+          "description": "Center point Latitude, required if Longitude and Radius are specified."
+        },
+        {
+          "name": "Lon",
+          "schema": "number",
+          "description": "Center point Longitude, required if Latitude and Radius are specified."
+        },
+        {
+          "name": "Radius",
+          "schema": "number",
+          "description": "Radius (meters) to include in the search area, required if Latitude and Longitude are specified."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/StationInfo",
+      "method": "5476364F031F5909E4Fe3318",
+      "httpMethod": "get",
+      "description": "XML - Station Information",
+      "parameters": [
+        {
+          "name": "StationCode",
+          "schema": "string",
+          "required": true,
+          "description": "Station code.  Use the Station List method to return a list of all station codes."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/StationParking",
+      "method": "5476364F031F5909E4Fe3315",
+      "httpMethod": "get",
+      "description": "XML - Parking Information",
+      "parameters": [
+        {
+          "name": "StationCode",
+          "schema": "string",
+          "description": "Station code.  Use the Station List method to return a list of all station codes."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/StationTimes",
+      "method": "5476364F031F5909E4Fe331A",
+      "httpMethod": "get",
+      "description": "XML - Station Timings",
+      "parameters": [
+        {
+          "name": "StationCode",
+          "schema": "string",
+          "description": "Station code.  Use the Station List method to return a list of all station codes."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Stations",
+      "method": "5476364F031F5909E4Fe3319",
+      "httpMethod": "get",
+      "description": "XML - Station List",
+      "parameters": [
+        {
+          "name": "LineCode",
+          "schema": "string",
+          "description": "Two-letter line code abbreviation:\n\n<ul>\n<li>RD - Red</li>\n<li>YL - Yellow</li>\n<li>GR - Green</li>\n<li>BL - Blue</li>\n<li>OR - Orange</li>\n<li>SV - Silver</li>\n</ul>"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/json/jLines",
+      "method": "5476364F031F5909E4Fe330C",
+      "httpMethod": "get",
+      "description": "JSON - Lines",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/json/jPath",
+      "method": "5476364F031F5909E4Fe330E",
+      "httpMethod": "get",
+      "description": "JSON - Path Between Stations",
+      "parameters": [
+        {
+          "name": "FromStationCode",
+          "schema": "string",
+          "required": true,
+          "description": "Station code for the origin station.  Use the Station List method to return a list of all station codes."
+        },
+        {
+          "name": "ToStationCode",
+          "schema": "string",
+          "required": true,
+          "description": "Station code for the destination station.  Use the Station List method to return a list of all station codes."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/json/jSrcStationToDstStationInfo",
+      "method": "5476364F031F5909E4Fe3313",
+      "httpMethod": "get",
+      "description": "JSON - Station to Station Information",
+      "parameters": [
+        {
+          "name": "FromStationCode",
+          "schema": "string",
+          "description": "Station code for the origin station.  Use the Station List method to return a list of all station codes."
+        },
+        {
+          "name": "ToStationCode",
+          "schema": "string",
+          "description": "Station code for the destination station.  Use the Station List method to return a list of all station codes."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/json/jStationEntrances",
+      "method": "5476364F031F5909E4Fe330F",
+      "httpMethod": "get",
+      "description": "JSON - Station Entrances",
+      "parameters": [
+        {
+          "name": "Lat",
+          "schema": "number",
+          "description": "Center point Latitude, required if Longitude and Radius are specified."
+        },
+        {
+          "name": "Lon",
+          "schema": "number",
+          "description": "Center point Longitude, required if Latitude and Radius are specified."
+        },
+        {
+          "name": "Radius",
+          "schema": "number",
+          "description": "Radius (meters) to include in the search area, required if Latitude and Longitude are specified."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/json/jStationInfo",
+      "method": "5476364F031F5909E4Fe3310",
+      "httpMethod": "get",
+      "description": "JSON - Station Information",
+      "parameters": [
+        {
+          "name": "StationCode",
+          "schema": "string",
+          "required": true,
+          "description": "Station code.  Use the Station List method to return a list of all station codes."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/json/jStationParking",
+      "method": "5476364F031F5909E4Fe330D",
+      "httpMethod": "get",
+      "description": "JSON - Parking Information",
+      "parameters": [
+        {
+          "name": "StationCode",
+          "schema": "string",
+          "description": "Station code.  Use the Station List method to return a list of all station codes."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/json/jStationTimes",
+      "method": "5476364F031F5909E4Fe3312",
+      "httpMethod": "get",
+      "description": "JSON - Station Timings",
+      "parameters": [
+        {
+          "name": "StationCode",
+          "schema": "string",
+          "description": "Station code.  Use the Station List method to return a list of all station codes."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/json/jStations",
+      "method": "5476364F031F5909E4Fe3311",
+      "httpMethod": "get",
+      "description": "JSON - Station List",
+      "parameters": [
+        {
+          "name": "LineCode",
+          "schema": "string",
+          "description": "Two-letter line code abbreviation:\n\n<ul>\n<li>RD - Red</li>\n<li>YL - Yellow</li>\n<li>GR - Green</li>\n<li>BL - Blue</li>\n<li>OR - Orange</li>\n<li>SV - Silver</li>\n</ul>"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://api.wmata.com/Rail.svc",
   "apiDescription": "Rail line and station information, including locations, fares, times, and parking.",
   "apiTitle": "Rail Station Information",

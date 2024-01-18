@@ -4,6 +4,2713 @@
   "homepage": "ndhm.gov.in",
   "serviceName": "ndhm-gateway",
   "apiVersion": "0.5",
+  "methods": [
+    {
+      "url": "/v0.5/.well-known/openid-configuration",
+      "method": "/v05/WellKnown/openidConfigurationGet",
+      "httpMethod": "get",
+      "tag": "sessions",
+      "description": "Get openid configuration",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/care-contexts/discover",
+      "method": "/v05/careContexts/discoverPost",
+      "httpMethod": "post",
+      "tag": "discovery",
+      "description": "Discover patient's accounts",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-HIP-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Identifier of the health information provider to which the request was intended."
+        },
+        {
+          "name": "patient",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "transactionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/care-contexts/on-discover",
+      "method": "/v05/careContexts/onDiscoverPost",
+      "httpMethod": "post",
+      "tag": "discovery",
+      "description": "Response to patient's account discovery request",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-CM-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Suffix of the consent manager to which the request was intended."
+        },
+        {
+          "name": "error",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "patient",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resp",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "transactionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/certs",
+      "method": "/v05/certsGet",
+      "httpMethod": "get",
+      "tag": "sessions",
+      "description": "Get certs for JWT verification",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/consent-requests/init",
+      "method": "/v05/consentRequests/initPost",
+      "httpMethod": "post",
+      "tag": "consent flow",
+      "description": "Create consent request",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-CM-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Suffix of the consent manager to which the request was intended."
+        },
+        {
+          "name": "consent",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/consent-requests/on-init",
+      "method": "/v05/consentRequests/onInitPost",
+      "httpMethod": "post",
+      "tag": "consent flow",
+      "description": "Response to consent request",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-HIU-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Identifier of the health information user to which the request was intended."
+        },
+        {
+          "name": "consentRequest",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "error",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resp",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/consent-requests/on-status",
+      "method": "/v05/consentRequests/onStatusPost",
+      "httpMethod": "post",
+      "tag": "consent flow",
+      "description": "Result of consent request status",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-HIU-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Identifier of the health information user to which the request was intended."
+        },
+        {
+          "name": "consentRequest",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "error",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resp",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/consent-requests/status",
+      "method": "/v05/consentRequests/statusPost",
+      "httpMethod": "post",
+      "tag": "consent flow",
+      "description": "Get consent request status",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-CM-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Suffix of the consent manager to which the request was intended."
+        },
+        {
+          "name": "consentRequestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/consents/fetch",
+      "method": "/v05/consents/fetchPost",
+      "httpMethod": "post",
+      "tag": "consent flow",
+      "description": "Get consent artefact",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-CM-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Suffix of the consent manager to which the request was intended."
+        },
+        {
+          "name": "consentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/consents/hip/notify",
+      "method": "/v05/consents/hip/notifyPost",
+      "httpMethod": "post",
+      "tag": "consent flow",
+      "description": "Consent notification",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-HIP-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Identifier of the health information provider to which the request was intended."
+        },
+        {
+          "name": "notification",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/consents/hip/on-notify",
+      "method": "/v05/consents/hip/onNotifyPost",
+      "httpMethod": "post",
+      "tag": "consent flow",
+      "description": "Consent notification",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-CM-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Suffix of the consent manager to which the request was intended."
+        },
+        {
+          "name": "acknowledgement",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "error",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resp",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/consents/hiu/notify",
+      "method": "/v05/consents/hiu/notifyPost",
+      "httpMethod": "post",
+      "tag": "consent flow",
+      "description": "Consent notification",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-HIU-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Identifier of the health information user to which the request was intended."
+        },
+        {
+          "name": "notification",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/consents/hiu/on-notify",
+      "method": "/v05/consents/hiu/onNotifyPost",
+      "httpMethod": "post",
+      "tag": "consent flow",
+      "description": "Consent notification",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-CM-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Suffix of the consent manager to which the request was intended."
+        },
+        {
+          "name": "acknowledgement",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "error",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resp",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/consents/on-fetch",
+      "method": "/v05/consents/onFetchPost",
+      "httpMethod": "post",
+      "tag": "consent flow",
+      "description": "Result of fetch request for a consent artefact",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-HIU-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Identifier of the health information user to which the request was intended."
+        },
+        {
+          "name": "consent",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "error",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resp",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/health-information/cm/on-request",
+      "method": "/v05/healthInformation/cm/onRequestPost",
+      "httpMethod": "post",
+      "tag": "data flow",
+      "description": "Health information data request",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-HIU-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Identifier of the health information user to which the request was intended."
+        },
+        {
+          "name": "error",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "hiRequest",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resp",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/health-information/cm/request",
+      "method": "/v05/healthInformation/cm/requestPost",
+      "httpMethod": "post",
+      "tag": "data flow",
+      "description": "Health information data request",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-CM-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Suffix of the consent manager to which the request was intended."
+        },
+        {
+          "name": "hiRequest",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/health-information/hip/on-request",
+      "method": "/v05/healthInformation/hip/onRequestPost",
+      "httpMethod": "post",
+      "tag": "data flow",
+      "description": "Health information data request",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-CM-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Suffix of the consent manager to which the request was intended."
+        },
+        {
+          "name": "error",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "hiRequest",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resp",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/health-information/hip/request",
+      "method": "/v05/healthInformation/hip/requestPost",
+      "httpMethod": "post",
+      "tag": "data flow",
+      "description": "Health information data request",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-HIP-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Identifier of the health information provider to which the request was intended."
+        },
+        {
+          "name": "hiRequest",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "transactionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/health-information/notify",
+      "method": "/v05/healthInformation/notifyPost",
+      "httpMethod": "post",
+      "tag": "data flow",
+      "description": "Notifications corresponding to events during data flow",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-CM-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Suffix of the consent manager to which the request was intended."
+        },
+        {
+          "name": "notification",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/heartbeat",
+      "method": "/v05/heartbeatGet",
+      "httpMethod": "get",
+      "tag": "monitoring",
+      "description": "Get consent request status",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/hi-services/{service-id}",
+      "method": "/v05/hiServices/{serviceId}Get",
+      "httpMethod": "get",
+      "tag": "services",
+      "description": "Get bridge service details/profile by the serviceId provided.",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "service-id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/links/link/add-contexts",
+      "method": "/v05/links/link/addContextsPost",
+      "httpMethod": "post",
+      "tag": "link",
+      "description": "API for HIP initiated care-context linking for patient",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-CM-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Suffix of the consent manager to which the request was intended."
+        },
+        {
+          "name": "link",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/links/link/confirm",
+      "method": "/v05/links/link/confirmPost",
+      "httpMethod": "post",
+      "tag": "link",
+      "description": "Token submission by Consent Manager for link confirmation",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-HIP-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Identifier of the health information provider to which the request was intended."
+        },
+        {
+          "name": "confirmation",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/links/link/init",
+      "method": "/v05/links/link/initPost",
+      "httpMethod": "post",
+      "tag": "link",
+      "description": "Link patient's care contexts",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-HIP-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Identifier of the health information provider to which the request was intended."
+        },
+        {
+          "name": "patient",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "transactionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/links/link/on-add-contexts",
+      "method": "/v05/links/link/onAddContextsPost",
+      "httpMethod": "post",
+      "tag": "link",
+      "description": "callback API for HIP initiated patient linking /link/add-context",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-HIP-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Identifier of the health information provider to which the request was intended."
+        },
+        {
+          "name": "acknowledgement",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "error",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resp",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/links/link/on-confirm",
+      "method": "/v05/links/link/onConfirmPost",
+      "httpMethod": "post",
+      "tag": "link",
+      "description": "Token authenticated by HIP, indicating completion of linkage of care-contexts",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-CM-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Suffix of the consent manager to which the request was intended."
+        },
+        {
+          "name": "error",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "patient",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resp",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/links/link/on-init",
+      "method": "/v05/links/link/onInitPost",
+      "httpMethod": "post",
+      "tag": "link",
+      "description": "Response to patient's care context link request",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-CM-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Suffix of the consent manager to which the request was intended."
+        },
+        {
+          "name": "error",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "link",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resp",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "transactionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/patients/find",
+      "method": "/v05/patients/findPost",
+      "httpMethod": "post",
+      "tag": "identification",
+      "description": "Identify a patient by her consent-manager user-id",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-CM-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Suffix of the consent manager to which the request was intended."
+        },
+        {
+          "name": "query",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/patients/on-find",
+      "method": "/v05/patients/onFindPost",
+      "httpMethod": "post",
+      "tag": "identification",
+      "description": "Identification result for a consent-manager user-id",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "error",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "patient",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resp",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/patients/profile/on-share",
+      "method": "/v05/patients/profile/onSharePost",
+      "httpMethod": "post",
+      "tag": "profile",
+      "description": "Response to patient's share profile request",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-CM-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Suffix of the consent manager to which the request was intended."
+        },
+        {
+          "name": "acknowledgement",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "error",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resp",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/patients/profile/share",
+      "method": "/v05/patients/profile/sharePost",
+      "httpMethod": "post",
+      "tag": "profile",
+      "description": "Share patient profile details",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-HIP-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Identifier of the health information provider to which the request was intended."
+        },
+        {
+          "name": "patient",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/patients/sms/notify",
+      "method": "/v05/patients/sms/notifyPost",
+      "httpMethod": "post",
+      "tag": "hip facing",
+      "description": "API for HIP to send SMS notifications to patients",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-CM-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Suffix of the consent manager to which the request was intended."
+        },
+        {
+          "name": "notification",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/patients/sms/on-notify",
+      "method": "/v05/patients/sms/onNotifyPost",
+      "httpMethod": "post",
+      "tag": "cm facing",
+      "description": "Acknowledgment response for SMS notification sent to patient by HIP",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-HIP-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Identifier of the health information provider to which the request was intended."
+        },
+        {
+          "name": "error",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resp",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/sessions",
+      "method": "/v05/sessionsPost",
+      "httpMethod": "post",
+      "tag": "sessions",
+      "description": "Get access token",
+      "parameters": [
+        {
+          "name": "clientId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "clientSecret",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "grantType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "refreshToken",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/subscription-requests/cm/init",
+      "method": "/v05/subscriptionRequests/cm/initPost",
+      "httpMethod": "post",
+      "tag": "subscriptions",
+      "description": "Request for subscription",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-CM-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Suffix of the consent manager to which the request was intended."
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "subscription",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/subscription-requests/cm/on-init",
+      "method": "/v05/subscriptionRequests/cm/onInitPost",
+      "httpMethod": "post",
+      "tag": "subscriptions",
+      "description": "callback API for the /subscription-requests/cm/init to notify a HIU on acceptance/acknowledgement of the request for subscription.",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-HIU-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Identifier of the health information user to which the request was intended."
+        },
+        {
+          "name": "error",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resp",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "subscriptionRequest",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/subscription-requests/hiu/notify",
+      "method": "/v05/subscriptionRequests/hiu/notifyPost",
+      "httpMethod": "post",
+      "tag": "subscriptions",
+      "description": "Notification for subscription grant/deny/revoke",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-HIU-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Identifier of the health information user to which the request was intended."
+        },
+        {
+          "name": "notification",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/subscription-requests/hiu/on-notify",
+      "method": "/v05/subscriptionRequests/hiu/onNotifyPost",
+      "httpMethod": "post",
+      "tag": "subscriptions",
+      "description": "Callback API for /subscription-requests/hiu/notify to acknowledge receipt of notification.",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-CM-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Suffix of the consent manager to which the request was intended."
+        },
+        {
+          "name": "acknowledgement",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "error",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resp",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/subscriptions/hiu/notify",
+      "method": "/v05/subscriptions/hiu/notifyPost",
+      "httpMethod": "post",
+      "tag": "subscriptions",
+      "description": "Notification to HIU on basis of a granted subscription",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-HIU-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Identifier of the health information user to which the request was intended."
+        },
+        {
+          "name": "event",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/subscriptions/hiu/on-notify",
+      "method": "/v05/subscriptions/hiu/onNotifyPost",
+      "httpMethod": "post",
+      "tag": "subscriptions",
+      "description": "Callback API for /subscriptions/hiu/notify to acknowledge receipt of notification.",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-CM-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Suffix of the consent manager to which the request was intended."
+        },
+        {
+          "name": "acknowledgement",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "error",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resp",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/users/auth/confirm",
+      "method": "/v05/users/auth/confirmPost",
+      "httpMethod": "post",
+      "tag": "user auth",
+      "description": "Confirmation request sending token, otp or other authentication details from HIP/HIU for confirmation",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-CM-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Suffix of the consent manager to which the request was intended."
+        },
+        {
+          "name": "credential",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "transactionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/users/auth/fetch-modes",
+      "method": "/v05/users/auth/fetchModesPost",
+      "httpMethod": "post",
+      "tag": "user auth",
+      "description": "Get a patient's authentication modes relevant to specified purpose",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-CM-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Suffix of the consent manager to which the request was intended."
+        },
+        {
+          "name": "query",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/users/auth/init",
+      "method": "/v05/users/auth/initPost",
+      "httpMethod": "post",
+      "tag": "user auth",
+      "description": "Initialize authentication from HIP",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-CM-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Suffix of the consent manager to which the request was intended."
+        },
+        {
+          "name": "query",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/users/auth/notify",
+      "method": "/v05/users/auth/notifyPost",
+      "httpMethod": "post",
+      "tag": "user auth",
+      "description": "notification API in case of DIRECT mode of authentication by the CM",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-HIP-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Identifier of the health information provider to which the request was intended."
+        },
+        {
+          "name": "X-HIU-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Identifier of the health information user to which the request was intended."
+        },
+        {
+          "name": "auth",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/users/auth/on-confirm",
+      "method": "/v05/users/auth/onConfirmPost",
+      "httpMethod": "post",
+      "tag": "user auth",
+      "description": "callback API for /auth/confirm (in case of MEDIATED auth) to confirm user authentication or not",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-HIP-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Identifier of the health information provider to which the request was intended."
+        },
+        {
+          "name": "X-HIU-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Identifier of the health information user to which the request was intended."
+        },
+        {
+          "name": "auth",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "error",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resp",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/users/auth/on-fetch-modes",
+      "method": "/v05/users/auth/onFetchModesPost",
+      "httpMethod": "post",
+      "tag": "user auth",
+      "description": "Identification result for a consent-manager user-id",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-HIP-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Identifier of the health information provider to which the request was intended."
+        },
+        {
+          "name": "X-HIU-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Identifier of the health information user to which the request was intended."
+        },
+        {
+          "name": "auth",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "error",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resp",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/users/auth/on-init",
+      "method": "/v05/users/auth/onInitPost",
+      "httpMethod": "post",
+      "tag": "user auth",
+      "description": "Response to user authentication initialization from HIP",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-HIP-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Identifier of the health information provider to which the request was intended."
+        },
+        {
+          "name": "X-HIU-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Identifier of the health information user to which the request was intended."
+        },
+        {
+          "name": "auth",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "error",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resp",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v0.5/users/auth/on-notify",
+      "method": "/v05/users/auth/onNotifyPost",
+      "httpMethod": "post",
+      "tag": "user auth",
+      "description": "callback API by HIU/HIPs as acknowledgement of auth notification",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token which was issued after successful login with gateway auth server."
+        },
+        {
+          "name": "X-CM-ID",
+          "schema": "string",
+          "required": true,
+          "description": "Suffix of the consent manager to which the request was intended."
+        },
+        {
+          "name": "acknowledgement",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "error",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "requestId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resp",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://dev.ndhm.gov.in/gateway",
   "apiDescription": "Gateway is the hub that routes/orchestrates the interaction between consent managers and API bridges. There are 5 categories of APIs; discovery, link, consent flow, data flow and  monitoring. To reflect the consumers of APIs, the above apis are also categorized under cm facing, hiu facing and hip facing \n",
   "apiTitle": "Gateway",

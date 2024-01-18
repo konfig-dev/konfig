@@ -3,6 +3,1083 @@
   "openApiRaw": "https://raw.githubusercontent.com/meilisearch/documentation/master/.vuepress/public/postman/meilisearch-collection.json",
   "homepage": "meilisearch.com",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/dumps",
+      "method": "createADump",
+      "httpMethod": "post",
+      "tag": "Dumps",
+      "description": "Create a dump",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/health",
+      "method": "health",
+      "httpMethod": "get",
+      "tag": "Stats",
+      "description": "Health",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes",
+      "method": "getIndexes",
+      "httpMethod": "get",
+      "tag": "Indexes",
+      "description": "Get indexes",
+      "parameters": [
+        {
+          "name": "offset",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/indexes",
+      "method": "createIndexWithPrimaryKey",
+      "httpMethod": "post",
+      "tag": "Indexes",
+      "description": "Create index with primary key",
+      "parameters": [
+        {
+          "name": "primaryKey",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "uid",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books",
+      "method": "deleteAnIndex",
+      "httpMethod": "delete",
+      "tag": "Indexes",
+      "description": "Delete an index",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books",
+      "method": "showIndex",
+      "httpMethod": "get",
+      "tag": "Indexes",
+      "description": "Show index",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books",
+      "method": "updateIndex",
+      "httpMethod": "patch",
+      "tag": "Indexes",
+      "description": "Update index",
+      "parameters": [
+        {
+          "name": "primaryKey",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/documents",
+      "method": "deleteAllDocuments",
+      "httpMethod": "delete",
+      "tag": "Documents",
+      "description": "Delete all documents",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/documents",
+      "method": "getDocuments",
+      "httpMethod": "get",
+      "tag": "Documents",
+      "description": "Get documents",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/documents",
+      "method": "addOrReplaceDocuments",
+      "httpMethod": "post",
+      "tag": "Documents",
+      "description": "Add or replace documents",
+      "parameters": [
+        {
+          "name": "primaryKey",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "csvDelimiter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/documents",
+      "method": "addOrUpdateDocuments",
+      "httpMethod": "put",
+      "tag": "Documents",
+      "description": "Add or update documents",
+      "parameters": [
+        {
+          "name": "primaryKey",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "csvDelimiter",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/documents/1",
+      "method": "deleteOneDocument",
+      "httpMethod": "delete",
+      "tag": "Documents",
+      "description": "Delete one document",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/documents/2",
+      "method": "getOneDocument",
+      "httpMethod": "get",
+      "tag": "Documents",
+      "description": "Get one document",
+      "parameters": [
+        {
+          "name": "fields",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/documents/delete-batch",
+      "method": "deleteDocuments",
+      "httpMethod": "post",
+      "tag": "Documents",
+      "description": "Delete documents",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/search",
+      "method": "searchInIndex",
+      "httpMethod": "get",
+      "tag": "Search",
+      "description": "Search in index",
+      "parameters": [
+        {
+          "name": "q",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "attributesToRetrieve",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "attributesToCrop",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "attributesToHighlight",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "cropLength",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "cropMarker",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "filter",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "showMatchesPosition",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "facets",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "highlightPreTag",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "highlightPostTag",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "matchingStrategy",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "page",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "hitsPerPage",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/search",
+      "method": "searchInIndex1",
+      "httpMethod": "post",
+      "tag": "Search",
+      "description": "Search in index",
+      "parameters": [
+        {
+          "name": "attributesToHighlight",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "q",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings",
+      "method": "resetAllSettings",
+      "httpMethod": "delete",
+      "tag": "Settings",
+      "description": "Reset all settings",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings",
+      "method": "getAllSettings",
+      "httpMethod": "get",
+      "tag": "Settings",
+      "description": "Get all settings",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings",
+      "method": "updateSettings",
+      "httpMethod": "patch",
+      "tag": "Settings",
+      "description": "Update settings",
+      "parameters": [
+        {
+          "name": "displayedAttributes",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "filterableAttributes",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "searchableAttributes",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "sortableAttributes",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "stopWords",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/displayed-attributes",
+      "method": "resetDisplayedAttributes",
+      "httpMethod": "delete",
+      "tag": "Settings",
+      "description": "Reset displayed attributes",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/displayed-attributes",
+      "method": "getDisplayedAttributes",
+      "httpMethod": "get",
+      "tag": "Settings",
+      "description": "Get displayed attributes",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/displayed-attributes",
+      "method": "updateDisplayedAttributes",
+      "httpMethod": "put",
+      "tag": "Settings",
+      "description": "Update displayed attributes",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/distinct-attribute",
+      "method": "resetDistinctAttribute",
+      "httpMethod": "delete",
+      "tag": "Settings",
+      "description": "Reset distinct attribute",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/distinct-attribute",
+      "method": "getDistinctAttribute",
+      "httpMethod": "get",
+      "tag": "Settings",
+      "description": "Get distinct attribute",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/distinct-attribute",
+      "method": "updateDistinctAttribute",
+      "httpMethod": "put",
+      "tag": "Settings",
+      "description": "Update distinct attribute",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/faceting",
+      "method": "resetFaceting",
+      "httpMethod": "delete",
+      "tag": "Settings",
+      "description": "Reset faceting",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/faceting",
+      "method": "getFaceting",
+      "httpMethod": "get",
+      "tag": "Settings",
+      "description": "Get faceting",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/faceting",
+      "method": "updateFaceting",
+      "httpMethod": "patch",
+      "tag": "Settings",
+      "description": "Update faceting",
+      "parameters": [
+        {
+          "name": "maxValuesPerFacet",
+          "schema": "number",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/filterable-attributes",
+      "method": "resetFilterableAttributes",
+      "httpMethod": "delete",
+      "tag": "Settings",
+      "description": "Reset filterable attributes",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/filterable-attributes",
+      "method": "getFilterableAttributes",
+      "httpMethod": "get",
+      "tag": "Settings",
+      "description": "Get filterable attributes",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/filterable-attributes",
+      "method": "updateFilterableAttributes",
+      "httpMethod": "put",
+      "tag": "Settings",
+      "description": "Update filterable attributes",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/pagination",
+      "method": "resetPagination",
+      "httpMethod": "delete",
+      "tag": "Settings",
+      "description": "Reset pagination",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/pagination",
+      "method": "getPagination",
+      "httpMethod": "get",
+      "tag": "Settings",
+      "description": "Get pagination",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/pagination",
+      "method": "updatePagination",
+      "httpMethod": "patch",
+      "tag": "Settings",
+      "description": "Update pagination",
+      "parameters": [
+        {
+          "name": "maxTotalHits",
+          "schema": "number",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/ranking-rules",
+      "method": "resetRankingRules",
+      "httpMethod": "delete",
+      "tag": "Settings",
+      "description": "Reset ranking rules",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/ranking-rules",
+      "method": "getRankingRules",
+      "httpMethod": "get",
+      "tag": "Settings",
+      "description": "Get ranking rules",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/ranking-rules",
+      "method": "updateRankingRules",
+      "httpMethod": "put",
+      "tag": "Settings",
+      "description": "Update ranking rules",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/searchable-attributes",
+      "method": "resetSearchableAttributes",
+      "httpMethod": "delete",
+      "tag": "Settings",
+      "description": "Reset searchable attributes",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/searchable-attributes",
+      "method": "getSearchableAttributes",
+      "httpMethod": "get",
+      "tag": "Settings",
+      "description": "Get searchable attributes",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/searchable-attributes",
+      "method": "updateSearchableAttributes",
+      "httpMethod": "put",
+      "tag": "Settings",
+      "description": "Update searchable attributes",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/sortable-attributes",
+      "method": "resetSortableAttributes",
+      "httpMethod": "delete",
+      "tag": "Settings",
+      "description": "Reset sortable attributes",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/sortable-attributes",
+      "method": "getSortableAttributes",
+      "httpMethod": "get",
+      "tag": "Settings",
+      "description": "Get sortable attributes",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/sortable-attributes",
+      "method": "updateSortableAttributes",
+      "httpMethod": "put",
+      "tag": "Settings",
+      "description": "Update sortable attributes",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/stop-words",
+      "method": "resetStopWords",
+      "httpMethod": "delete",
+      "tag": "Settings",
+      "description": "Reset stop-words",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/stop-words",
+      "method": "getStopWords",
+      "httpMethod": "get",
+      "tag": "Settings",
+      "description": "Get stop-words",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/stop-words",
+      "method": "updateStopWords",
+      "httpMethod": "put",
+      "tag": "Settings",
+      "description": "Update stop-words",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/synonyms",
+      "method": "resetSynonyms",
+      "httpMethod": "delete",
+      "tag": "Settings",
+      "description": "Reset synonyms",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/synonyms",
+      "method": "getSynonyms",
+      "httpMethod": "get",
+      "tag": "Settings",
+      "description": "Get synonyms",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/synonyms",
+      "method": "updateSynonyms",
+      "httpMethod": "put",
+      "tag": "Settings",
+      "description": "Update synonyms",
+      "parameters": [
+        {
+          "name": "harry potter",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "hp",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/typo-tolerance",
+      "method": "resetTypoTolerance",
+      "httpMethod": "delete",
+      "tag": "Settings",
+      "description": "Reset typo-tolerance",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/typo-tolerance",
+      "method": "getTypoTolerance",
+      "httpMethod": "get",
+      "tag": "Settings",
+      "description": "Get typo-tolerance",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/settings/typo-tolerance",
+      "method": "updateTypoTolerance",
+      "httpMethod": "patch",
+      "tag": "Settings",
+      "description": "Update typo-tolerance",
+      "parameters": [
+        {
+          "name": "disableOnAttributes",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "disableOnWords",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "minWordSizeForTypos",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/indexes/books/stats",
+      "method": "statsOfAnIndex",
+      "httpMethod": "get",
+      "tag": "Stats",
+      "description": "Stats of an index",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/indexes/swap-indexes",
+      "method": "swapIndexes",
+      "httpMethod": "post",
+      "tag": "Indexes",
+      "description": "Swap indexes",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/keys",
+      "method": "getKeys",
+      "httpMethod": "get",
+      "tag": "Key Management",
+      "description": "Get keys",
+      "parameters": [
+        {
+          "name": "offset",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/keys",
+      "method": "createAKey",
+      "httpMethod": "post",
+      "tag": "Key Management",
+      "description": "Create a key",
+      "parameters": [
+        {
+          "name": "actions",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "expiresAt",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "indexes",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/keys/L8l05tFb188aab693735bbaf1f898b9902fb39f865160d39dddba2b47b940115a0430705",
+      "method": "getOneKey",
+      "httpMethod": "get",
+      "tag": "Key Management",
+      "description": "Get one key",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/keys/kN2aK9EO8a7b627e425717d9196c8081552ca004e513545ed178f8a56981dbd3080d4a5b",
+      "method": "deleteAKey",
+      "httpMethod": "delete",
+      "tag": "Key Management",
+      "description": "Delete a key",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/keys/wYZjGJyBcdb0621b97999c233246a8ec0a35d0fcd9a6417ef8ccee0c8978b64b123af2dd",
+      "method": "updateAKey",
+      "httpMethod": "patch",
+      "tag": "Key Management",
+      "description": "Update a key",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/multi-search",
+      "method": "searchOneOrMoreIndexes",
+      "httpMethod": "post",
+      "tag": "Multi-search",
+      "description": "Search one or more indexes",
+      "parameters": [
+        {
+          "name": "queries",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/stats",
+      "method": "globalStats",
+      "httpMethod": "get",
+      "tag": "Stats",
+      "description": "Global stats",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/tasks",
+      "method": "deleteTasks",
+      "httpMethod": "delete",
+      "tag": "Tasks",
+      "description": "Delete tasks",
+      "parameters": [
+        {
+          "name": "uids",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "indexUids",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "types",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "statuses",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "beforeEnqueuedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "afterEnqueuedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "beforeStartedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "afterStartedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "beforeFinishedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "afterFinishedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "canceledBy",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/tasks",
+      "method": "getAllTasks",
+      "httpMethod": "get",
+      "tag": "Tasks",
+      "description": "Get all tasks",
+      "parameters": [
+        {
+          "name": "uids",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "indexUids",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "types",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "statuses",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "beforeEnqueuedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "afterEnqueuedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "beforeStartedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "afterStartedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "beforeFinishedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "afterFinishedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "canceledBy",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/tasks/0",
+      "method": "getOneTask",
+      "httpMethod": "get",
+      "tag": "Tasks",
+      "description": "Get one task",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/tasks/cancel",
+      "method": "cancelTasks",
+      "httpMethod": "post",
+      "tag": "Tasks",
+      "description": "Cancel tasks",
+      "parameters": [
+        {
+          "name": "uids",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "indexUids",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "types",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "statuses",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "beforeEnqueuedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "afterEnqueuedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "beforeStartedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "afterStartedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "beforeFinishedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "afterFinishedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "canceledBy",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/version",
+      "method": "version",
+      "httpMethod": "get",
+      "tag": "Stats",
+      "description": "Version",
+      "parameters": [],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "http://localhost:7700/",
   "apiTitle": "Meilisearch v1.1",
   "endpoints": 33,

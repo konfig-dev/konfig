@@ -4,6 +4,432 @@
   "homepage": "npr.org",
   "serviceName": "listening",
   "apiVersion": "2",
+  "methods": [
+    {
+      "url": "/v2/aggregation/{aggId}/recommendations",
+      "method": "getAggRecommendations",
+      "httpMethod": "get",
+      "description": "Get a set of recommendations for an aggregation independent of the user's listening history",
+      "parameters": [
+        {
+          "name": "aggId",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of an aggregation such as a program or podcast. If the specified ID is a program that publishes rundowns, the latest rundown will be returned."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Your access token from the Authorization Service. Should start with `Bearer`, followed by a space, followed by the token."
+        },
+        {
+          "name": "startNum",
+          "schema": "integer",
+          "required": false,
+          "description": "The result to start with. Allows paging through the episodes of a podcast or program, with the default, `startNum=0`, being the most recent episode. Ignored for programs that publish a rundown."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "An array of audio recommendations with additional metadata about the aggregation they are associated with"
+        },
+        {
+          "statusCode": "401",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "404",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "429",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "500",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "503",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        }
+      ]
+    },
+    {
+      "url": "/v2/channels",
+      "method": "getChannels",
+      "httpMethod": "get",
+      "description": "Get the list of available channels",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Your access token from the Authorization Service. Should start with `Bearer`, followed by a space, followed by the token."
+        },
+        {
+          "name": "exploreOnly",
+          "schema": "boolean",
+          "required": false,
+          "description": "If set to `true`, this call will return only channels that should be shown in the client's `Explore` view"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "429",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "503",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        }
+      ]
+    },
+    {
+      "url": "/v2/history",
+      "method": "getHistory",
+      "httpMethod": "get",
+      "description": "Get recent ratings the logged-in user has submitted",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Your access token from the Authorization Service. Should start with `Bearer`, followed by a space, followed by the token."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "429",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "500",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "503",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        }
+      ]
+    },
+    {
+      "url": "/v2/organizations/{orgId}/categories/{category}/recommendations",
+      "method": "getOrganizationCategory",
+      "httpMethod": "get",
+      "description": "Get a list of recommendations from a category of content from an organization",
+      "parameters": [
+        {
+          "name": "orgId",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of an organization, such as an NPR One station"
+        },
+        {
+          "name": "category",
+          "schema": "string",
+          "required": true,
+          "description": "One of the three categories of content - newscast, story, or podcast"
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Your access token from the Authorization Service. Should start with `Bearer`, followed by a space, followed by the token."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "An array of a certain category of audio recommendations from a provider"
+        },
+        {
+          "statusCode": "401",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "404",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "429",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "500",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "503",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        }
+      ]
+    },
+    {
+      "url": "/v2/organizations/{orgId}/recommendations",
+      "method": "getOrganizationOverview",
+      "httpMethod": "get",
+      "description": "Get a variety of details about an organization including various lists of recent audio items",
+      "parameters": [
+        {
+          "name": "orgId",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of an organization, such as an NPR One station"
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Your access token from the Authorization Service. Should start with `Bearer`, followed by a space, followed by the token."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "a variety of details about an organization including various lists of recent audio items"
+        },
+        {
+          "statusCode": "401",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "404",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "429",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "500",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "503",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        }
+      ]
+    },
+    {
+      "url": "/v2/promo/recommendations",
+      "method": "getPromo",
+      "httpMethod": "get",
+      "description": "Retrieve the most recent promo audio heard by the logged-in user",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Your access token from the Authorization Service. Should start with `Bearer`, followed by a space, followed by the token."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "429",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "500",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "503",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        }
+      ]
+    },
+    {
+      "url": "/v2/ratings",
+      "method": "postRating",
+      "httpMethod": "post",
+      "description": "Collect new ratings for media previously recommended to the logged-in user",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Your access token from the Authorization Service. Should start with `Bearer`, followed by a space, followed by the token."
+        },
+        {
+          "name": "X-Advertising-ID",
+          "schema": "string",
+          "required": false,
+          "description": "A device-specific advertising identifier, if possible. Apple's IDFA is an example."
+        },
+        {
+          "name": "channel",
+          "schema": "string",
+          "required": false,
+          "description": "Determines the focus of the recommendations returned. Channel `npr` is recommended for most use cases."
+        },
+        {
+          "name": "recommend",
+          "schema": "boolean",
+          "required": false,
+          "description": "If set to `false`, this call will return a blank document; otherwise it will return a new recommendation object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "401",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "429",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "500",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "503",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        }
+      ]
+    },
+    {
+      "url": "/v2/recommendations",
+      "method": "getRecommendations",
+      "httpMethod": "get",
+      "description": "Get a list of media for the logged-in user from NPR's recommendation engine",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Your access token from the Authorization Service. Should start with `Bearer`, followed by a space, followed by the token."
+        },
+        {
+          "name": "X-Advertising-ID",
+          "schema": "string",
+          "required": false,
+          "description": "A device-specific advertising identifier, if possible. Apple's IDFA is an example."
+        },
+        {
+          "name": "channel",
+          "schema": "string",
+          "required": false,
+          "description": "Determines the focus of the recommendations returned. Channel `npr` is recommended for most use cases."
+        },
+        {
+          "name": "sharedMediaId",
+          "schema": "string",
+          "required": false,
+          "description": "This media was shared directly with the user; if provided, the service will add this recommendation to the top of the list"
+        },
+        {
+          "name": "notifiedMediaId",
+          "schema": "string",
+          "required": false,
+          "description": "The user received a push notification about this media; if provided, the service will add this recommendation to the top of the list"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "401",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "429",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "500",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "503",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        }
+      ]
+    },
+    {
+      "url": "/v2/search/recommendations",
+      "method": "getSearchRecommendations",
+      "httpMethod": "get",
+      "description": "Get a list of recent audio and aggregation items associated with search terms",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Your access token from the Authorization Service. Should start with `Bearer`, followed by a space, followed by the token."
+        },
+        {
+          "name": "searchTerms",
+          "schema": "string",
+          "required": true,
+          "description": "Search terms to search on; can include URL-encoded punctuation"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "An array of aggregation or audio recommendations"
+        },
+        {
+          "statusCode": "401",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "429",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "500",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        },
+        {
+          "statusCode": "503",
+          "description": "A Collection.doc+JSON representation of an error result from an API call"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://listening.api.npr.org",
   "apiDescription": "Audio recommendations tailored to a user's preferences",
   "apiTitle": "NPR Listening Service",

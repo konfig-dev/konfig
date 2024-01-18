@@ -3,6 +3,98 @@
   "openApiRaw": "https://api.swaggerhub.com/apis/pcraig3/groundhog-day-api/1.2.1",
   "homepage": "groundhog-day.com",
   "apiVersion": "1.2.1",
+  "methods": [
+    {
+      "url": "/api/v1",
+      "method": "root",
+      "httpMethod": "get",
+      "tag": "info",
+      "description": "Root",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/groundhogs",
+      "method": "groundhogs",
+      "httpMethod": "get",
+      "tag": "groundhogs",
+      "description": "Get all groundhogs",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "description": "Filter groundhogs by country of origin (USA or Canada)."
+        },
+        {
+          "name": "isGroundhog",
+          "schema": "string",
+          "description": "Filter groundhogs by type (actual, alive groundhogs, or other prognosticators)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/groundhogs/{slug}",
+      "method": "groundhog",
+      "httpMethod": "get",
+      "tag": "groundhogs",
+      "description": "Get a groundhog by slug",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/predictions",
+      "method": "predictions",
+      "httpMethod": "get",
+      "tag": "predictions",
+      "description": "Get predictions for a given year",
+      "parameters": [
+        {
+          "name": "year",
+          "schema": "integer",
+          "description": "A calendar year"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/spec",
+      "method": "spec",
+      "httpMethod": "get",
+      "tag": "info",
+      "description": "Get JSON schema",
+      "parameters": [],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://virtserver.swaggerhub.com/pcraig3/groundhog-day-api/1.2.1",
   "apiDescription": "This API returns all of North America’s prognosticating animals and their yearly weather predictions.",
   "apiTitle": "Groundhog Day API",

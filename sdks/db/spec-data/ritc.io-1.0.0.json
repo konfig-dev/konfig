@@ -3,6 +3,2186 @@
   "openApiRaw": "http://www.ritc.io/openapi/ritc.swagger.json",
   "homepage": "ritc.io",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/actions",
+      "method": "listActions",
+      "httpMethod": "get",
+      "tag": "Actions",
+      "description": "List actions",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/actions",
+      "method": "addAction",
+      "httpMethod": "post",
+      "tag": "Actions",
+      "description": "Create a new action",
+      "parameters": [
+        {
+          "name": "channelId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "codes",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "desc",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "functionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "parameters",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/actions/{action_id}",
+      "method": "removeAction",
+      "httpMethod": "delete",
+      "tag": "Actions",
+      "description": "Delete an action",
+      "parameters": [
+        {
+          "name": "action_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of action"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/actions/{action_id}",
+      "method": "getAction",
+      "httpMethod": "get",
+      "tag": "Actions",
+      "description": "Get an action",
+      "parameters": [
+        {
+          "name": "action_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of action_id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/actions/{action_id}",
+      "method": "updateAction",
+      "httpMethod": "patch",
+      "tag": "Actions",
+      "description": "Update information about a specific action",
+      "parameters": [
+        {
+          "name": "action_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of user"
+        },
+        {
+          "name": "channelId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "codes",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "desc",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "functionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "parameters",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/admin",
+      "method": "admin",
+      "httpMethod": "get",
+      "tag": "admin",
+      "description": "Ping the server",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/admin/log",
+      "method": "logInRitc",
+      "httpMethod": "post",
+      "tag": "admin",
+      "description": "Log a message",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/admin/ping",
+      "method": "pingRitc",
+      "httpMethod": "get",
+      "tag": "admin",
+      "description": "Ping the server",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps",
+      "method": "listApps",
+      "httpMethod": "get",
+      "tag": "Apps",
+      "description": "Get apps information",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps",
+      "method": "addApp",
+      "httpMethod": "post",
+      "tag": "Apps",
+      "description": "Create a new app",
+      "parameters": [
+        {
+          "name": "desc",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/channels/users",
+      "method": "listAppChannels",
+      "httpMethod": "get",
+      "tag": "Apps",
+      "description": "Get app channels",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/channels/{channel_id}/users",
+      "method": "listAppChannelUsers",
+      "httpMethod": "get",
+      "tag": "Apps",
+      "description": "Get users of a specified channel",
+      "parameters": [
+        {
+          "name": "channel_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of Channel"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/channels/{channel_id}/users/{user_id}",
+      "method": "getAppChannelUser",
+      "httpMethod": "get",
+      "tag": "Apps",
+      "description": "Get user of a specified channel",
+      "parameters": [
+        {
+          "name": "channel_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of Channel"
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of User"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/channels/{channel_id}/users/{user_id}",
+      "method": "addAppChannelUser",
+      "httpMethod": "post",
+      "tag": "Apps",
+      "description": "Create user channel",
+      "parameters": [
+        {
+          "name": "channel_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of Channel"
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of User"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/ext/api/credentials",
+      "method": "listChannelExternalCredentials",
+      "httpMethod": "get",
+      "tag": "Apps",
+      "description": "Get external credentials",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/ext/api/credentials",
+      "method": "addChannelExternalCredentials",
+      "httpMethod": "post",
+      "tag": "Apps",
+      "description": "Create new external credentials",
+      "parameters": [
+        {
+          "name": "authType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "channel_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "credentials",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/ext/api/credentials/{channel_id}",
+      "method": "removeChannelExternalCredentials",
+      "httpMethod": "delete",
+      "tag": "Apps",
+      "description": "Delete credentials for a channel",
+      "parameters": [
+        {
+          "name": "channel_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of Channel"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/ext/api/credentials/{channel_id}",
+      "method": "getChannelExternalCredentials",
+      "httpMethod": "get",
+      "tag": "Apps",
+      "description": "Get credentials for a channel in an app",
+      "parameters": [
+        {
+          "name": "channel_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of Channel"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/ext/api/credentials/{channel_id}",
+      "method": "updateChannelExternalCredentials",
+      "httpMethod": "patch",
+      "tag": "Apps",
+      "description": "Update credentials for a channel",
+      "parameters": [
+        {
+          "name": "channel_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of Channel"
+        },
+        {
+          "name": "authType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "channel_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "credentials",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/rulegroup/run/{rule_id_list}",
+      "method": "runRuleGroup",
+      "httpMethod": "post",
+      "tag": "Apps",
+      "description": "Run specified rule group in the app",
+      "parameters": [
+        {
+          "name": "rule_id_list",
+          "schema": "string",
+          "required": true,
+          "description": "Ids of rules in the group, separated by commas, no spaces"
+        },
+        {
+          "name": "break_when_rule_fires",
+          "schema": "boolean",
+          "required": false,
+          "description": "Do not continue with remaining rules after a rule fires"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/rules/run",
+      "method": "runApp",
+      "httpMethod": "post",
+      "tag": "Apps",
+      "description": "Run active app rules",
+      "parameters": [
+        {
+          "name": "break_when_rule_fires",
+          "schema": "boolean",
+          "required": false,
+          "description": "Do not continue with remaining rules after a rule fires"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/{app_id}",
+      "method": "removeApp",
+      "httpMethod": "delete",
+      "tag": "Apps",
+      "description": "Delete an app",
+      "parameters": [
+        {
+          "name": "app_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of App"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/{app_id}",
+      "method": "getApp",
+      "httpMethod": "get",
+      "tag": "Apps",
+      "description": "Get app information",
+      "parameters": [
+        {
+          "name": "app_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of App"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apps/{app_id}",
+      "method": "updateApp",
+      "httpMethod": "patch",
+      "tag": "Apps",
+      "description": "Update an app",
+      "parameters": [
+        {
+          "name": "app_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of app"
+        },
+        {
+          "name": "desc",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels",
+      "method": "listChannels",
+      "httpMethod": "get",
+      "tag": "Channels",
+      "description": "Retrieve Channels",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels",
+      "method": "addChannel",
+      "httpMethod": "post",
+      "tag": "Channels",
+      "description": "Create a channel",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "functions",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels/anonymous",
+      "method": "listAnonymousChannels",
+      "httpMethod": "get",
+      "tag": "Channels",
+      "description": "Retrieve Channels anonymously",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels/{channel_id}",
+      "method": "removeChannel",
+      "httpMethod": "delete",
+      "tag": "Channels",
+      "description": "Delete a channel",
+      "parameters": [
+        {
+          "name": "channel_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of Channel"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels/{channel_id}",
+      "method": "getChannel",
+      "httpMethod": "get",
+      "tag": "Channels",
+      "description": "Get channel information",
+      "parameters": [
+        {
+          "name": "channel_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of Channel"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels/{channel_id}",
+      "method": "updateChannel",
+      "httpMethod": "patch",
+      "tag": "Channels",
+      "description": "Update a channel",
+      "parameters": [
+        {
+          "name": "channel_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of Channel"
+        },
+        {
+          "name": "actionIds",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "triggerIds",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels/{channel_id}/functions",
+      "method": "listChannelFunctions",
+      "httpMethod": "get",
+      "tag": "Channels",
+      "description": "Retrieve Channel Functions",
+      "parameters": [
+        {
+          "name": "channel_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of Channel"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels/{channel_id}/functions",
+      "method": "addChannelFunction",
+      "httpMethod": "post",
+      "tag": "Channels",
+      "description": "Create a channel function",
+      "parameters": [
+        {
+          "name": "channel_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of Channel"
+        },
+        {
+          "name": "apiType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "desc",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "endpoint",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "httpMethod",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "requestParameters",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "responseFormat",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/channels/{channel_id}/functions/{function_id}",
+      "method": "getChannelFunction",
+      "httpMethod": "get",
+      "tag": "Channels",
+      "description": "Get channel function information",
+      "parameters": [
+        {
+          "name": "channel_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of Channel"
+        },
+        {
+          "name": "function_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of Channel Function"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/orgs",
+      "method": "addOrganization",
+      "httpMethod": "post",
+      "tag": "Orgs",
+      "description": "Create an org",
+      "parameters": [
+        {
+          "name": "desc",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/orgs/me",
+      "method": "getMyOrganization",
+      "httpMethod": "get",
+      "tag": "Orgs",
+      "description": "Get org information",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rules",
+      "method": "listRules",
+      "httpMethod": "get",
+      "tag": "Rules",
+      "description": "List rules",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rules",
+      "method": "addRule",
+      "httpMethod": "post",
+      "tag": "Rules",
+      "description": "Create a new rule",
+      "parameters": [
+        {
+          "name": "actionIds",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "triggerIds",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rules/{rule_id}",
+      "method": "removeRule",
+      "httpMethod": "delete",
+      "tag": "Rules",
+      "description": "Delete a rule",
+      "parameters": [
+        {
+          "name": "rule_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of rule"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rules/{rule_id}",
+      "method": "getRule",
+      "httpMethod": "get",
+      "tag": "Rules",
+      "description": "Get a rule",
+      "parameters": [
+        {
+          "name": "rule_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of rule"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rules/{rule_id}",
+      "method": "updateRule",
+      "httpMethod": "patch",
+      "tag": "Rules",
+      "description": "Update information about a specific rule",
+      "parameters": [
+        {
+          "name": "rule_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of user"
+        },
+        {
+          "name": "actionIds",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "triggerIds",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rules/{rule_id}/run",
+      "method": "runRule",
+      "httpMethod": "post",
+      "tag": "Rules",
+      "description": "Run a rule",
+      "parameters": [
+        {
+          "name": "rule_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of rule"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/triggers",
+      "method": "listTriggers",
+      "httpMethod": "get",
+      "tag": "Triggers",
+      "description": "Triggers in an app",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/triggers",
+      "method": "addTrigger",
+      "httpMethod": "post",
+      "tag": "Triggers",
+      "description": "Create a new trigger in an app",
+      "parameters": [
+        {
+          "name": "channelId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "codes",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "desc",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "functionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "parameters",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/triggers/{trigger_id}",
+      "method": "removeTrigger",
+      "httpMethod": "delete",
+      "tag": "Triggers",
+      "description": "Delete a trigger",
+      "parameters": [
+        {
+          "name": "trigger_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of Trigger"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/triggers/{trigger_id}",
+      "method": "getTrigger",
+      "httpMethod": "get",
+      "tag": "Triggers",
+      "description": "Get a trigger",
+      "parameters": [
+        {
+          "name": "trigger_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of Trigger"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/triggers/{trigger_id}",
+      "method": "updateTrigger",
+      "httpMethod": "patch",
+      "tag": "Triggers",
+      "description": "Update a trigger",
+      "parameters": [
+        {
+          "name": "trigger_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of user"
+        },
+        {
+          "name": "channelId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "codes",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "desc",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "functionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "parameters",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users",
+      "method": "listAppUsers",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Users",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users",
+      "method": "addAppUser",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Create a new App User",
+      "parameters": [
+        {
+          "name": "config",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/admin",
+      "method": "listAdminUsers",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Admin users",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/admin",
+      "method": "addAdminUser",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Create a new admin user",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/admin/{user_id}",
+      "method": "removeAdminUser",
+      "httpMethod": "delete",
+      "tag": "Users",
+      "description": "Remove an admin user",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of Admin_User"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/admin/{user_id}",
+      "method": "getAdminUser",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Get an admin user",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of Admin_User"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/admin/{user_id}",
+      "method": "updateAdminUser",
+      "httpMethod": "patch",
+      "tag": "Users",
+      "description": "Update information about an admin user",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of user"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/authenticate/{user_id}/channel/{channel_id}",
+      "method": "authenticateAppUserForChannel",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Authenticate a user for a channel",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of User"
+        },
+        {
+          "name": "channel_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of Channel"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}",
+      "method": "removeAppUser",
+      "httpMethod": "delete",
+      "tag": "Users",
+      "description": "Remove a user",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of user"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}",
+      "method": "getAppUser",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Get an App User",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of App User"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}",
+      "method": "updateAppUser",
+      "httpMethod": "patch",
+      "tag": "Users",
+      "description": "Update information about an App User",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of user"
+        },
+        {
+          "name": "config",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/channels",
+      "method": "listAppUserChannels",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Channels available to a User",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of user"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/channels",
+      "method": "addAppUserToChannel",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Assign a channel to a user",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of user"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/channels/{channel_id}",
+      "method": "removeAppUserFromChannel",
+      "httpMethod": "delete",
+      "tag": "Users",
+      "description": "Remove a user channel assignment",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of User"
+        },
+        {
+          "name": "channel_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of Channel"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/channels/{channel_id}",
+      "method": "getAppUserChannel",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Get a user channel",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of User"
+        },
+        {
+          "name": "channel_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of Channel"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/rules",
+      "method": "listAppUserRules",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Rules for a User",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of user"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/rules/{rule_id}",
+      "method": "removeAppUserFromRule",
+      "httpMethod": "delete",
+      "tag": "Users",
+      "description": "Remove a rule user",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of User"
+        },
+        {
+          "name": "rule_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of Rule"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/rules/{rule_id}",
+      "method": "getAppUserRule",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Get a user",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of User"
+        },
+        {
+          "name": "rule_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of Rule"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/rules/{rule_id}",
+      "method": "addAppUserToRule",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Assign a user to a rule",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of User"
+        },
+        {
+          "name": "rule_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of Rule"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/rules/{rule_id}/run",
+      "method": "runRuleForAppUser",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Run rule for a user",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of User"
+        },
+        {
+          "name": "rule_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of Rule"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.ritc.io",
   "apiDescription": "Rules in the Cloud",
   "apiTitle": "Ritc",

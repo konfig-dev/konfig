@@ -3,6 +3,4135 @@
   "openApiRaw": "https://uk.api.just-eat.io/docs/openapi.json",
   "homepage": "just-eat.co.uk",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/acceptance-requested",
+      "method": "/acceptanceRequestedPost",
+      "httpMethod": "post",
+      "tag": "Order Acceptance Webhooks",
+      "description": "Acceptance requested",
+      "parameters": [
+        {
+          "name": "Currency",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Customer",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "CustomerNotes",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "FriendlyOrderReference",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Fulfilment",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "IsTest",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "Items",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "OrderId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Payment",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "PlacedDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "PriceBreakdown",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "Restaurant",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "Restrictions",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "TotalPrice",
+          "schema": "number",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/attempted-delivery-query-resolved",
+      "method": "/attemptedDeliveryQueryResolvedPut",
+      "httpMethod": "put",
+      "tag": "Attempted Delivery Webhooks",
+      "description": "Attempted delivery query resolved",
+      "parameters": [
+        {
+          "name": "OrderId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Resolution",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "Tenant",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/checkout/{tenant}/{checkoutId}",
+      "method": "/checkout/{tenant}/{checkoutId}Get",
+      "httpMethod": "get",
+      "tag": "Checkout",
+      "description": "Get Checkout",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "A two-character country code. \n\nThe following countries are supported:\n  - United Kingdom (UK)\n  - Australia (AU)\n  - New Zealand (NZ)\n"
+        },
+        {
+          "name": "checkoutId",
+          "schema": "string",
+          "required": true,
+          "description": "A unique identifier for a checkout. This is currently a Basket Id."
+        },
+        {
+          "name": "User-Agent",
+          "schema": "string",
+          "required": true,
+          "description": "Allows the server to identify the application making the request."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Properties apply to all supported country codes, except where specified."
+        },
+        {
+          "statusCode": "400",
+          "description": "An HTTP 400 error response"
+        },
+        {
+          "statusCode": "401",
+          "description": "A default HTTP error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "A default HTTP error response"
+        },
+        {
+          "statusCode": "404",
+          "description": "An HTTP 404 error response"
+        },
+        {
+          "statusCode": "409",
+          "description": "An HTTP 409 error response"
+        },
+        {
+          "statusCode": "429",
+          "description": "A default HTTP error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A default HTTP error response"
+        },
+        {
+          "statusCode": "503",
+          "description": "A default HTTP error response"
+        }
+      ]
+    },
+    {
+      "url": "/checkout/{tenant}/{checkoutId}",
+      "method": "/checkout/{tenant}/{checkoutId}Patch",
+      "httpMethod": "patch",
+      "tag": "Checkout",
+      "description": "Update Checkout",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "A two-character country code. \n\nThe following countries are supported:\n  - United Kingdom (UK)\n  - Australia (AU)\n  - New Zealand (NZ)\n"
+        },
+        {
+          "name": "checkoutId",
+          "schema": "string",
+          "required": true,
+          "description": "A unique identifier for a checkout. This is currently a Basket Id."
+        },
+        {
+          "name": "User-Agent",
+          "schema": "string",
+          "required": true,
+          "description": "Allows the server to identify the application making the request."
+        },
+        {
+          "name": "customer",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "fulfilment",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "notes",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An HTTP 400 error response"
+        },
+        {
+          "statusCode": "401",
+          "description": "A default HTTP error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "A default HTTP error response"
+        },
+        {
+          "statusCode": "404",
+          "description": "An HTTP 404 error response"
+        },
+        {
+          "statusCode": "409",
+          "description": "An HTTP 409 error response"
+        },
+        {
+          "statusCode": "429",
+          "description": "A default HTTP error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A default HTTP error response"
+        },
+        {
+          "statusCode": "503",
+          "description": "A default HTTP error response"
+        }
+      ]
+    },
+    {
+      "url": "/checkout/{tenant}/{checkoutId}/fulfilment/availabletimes",
+      "method": "/checkout/{tenant}/{checkoutId}/fulfilment/availabletimesGet",
+      "httpMethod": "get",
+      "tag": "Checkout",
+      "description": "Get Available Fulfilment Times",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "A two-character country code. \n\nThe following countries are supported:\n  - United Kingdom (UK)\n  - Australia (AU)\n  - New Zealand (NZ)\n"
+        },
+        {
+          "name": "checkoutId",
+          "schema": "string",
+          "required": true,
+          "description": "A unique identifier for a checkout. This is currently a Basket Id."
+        },
+        {
+          "name": "User-Agent",
+          "schema": "string",
+          "required": true,
+          "description": "Allows the server to identify the application making the request."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An HTTP 400 error response"
+        },
+        {
+          "statusCode": "404",
+          "description": "An HTTP 404 error response"
+        },
+        {
+          "statusCode": "409",
+          "description": "An HTTP 409 error response"
+        },
+        {
+          "statusCode": "429",
+          "description": "A default HTTP error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A default HTTP error response"
+        },
+        {
+          "statusCode": "503",
+          "description": "A default HTTP error response"
+        }
+      ]
+    },
+    {
+      "url": "/consumers/{tenant}",
+      "method": "/consumers/{tenant}Get",
+      "httpMethod": "get",
+      "tag": "Consumers",
+      "description": "Get consumers details",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier for the tenant."
+        },
+        {
+          "name": "emailAddress",
+          "schema": "string",
+          "required": true,
+          "description": "Email address of the consumer."
+        },
+        {
+          "name": "accountType",
+          "schema": "string",
+          "required": true,
+          "description": "The account type of the consumer - currently only 'registered' accounts are supported."
+        },
+        {
+          "name": "count",
+          "schema": "string",
+          "required": true,
+          "description": "Returns the number of consumers that matches the `emailAddress` and `accountType`. The query value should be empty, e.g. `/consumers/uk/?emailAddress=someone@email.com&accountType=registered&count`."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "404",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        },
+        {
+          "statusCode": "501",
+          "description": "A HTTP 5xx error response"
+        }
+      ]
+    },
+    {
+      "url": "/consumers/{tenant}",
+      "method": "/consumers/{tenant}Post",
+      "httpMethod": "post",
+      "tag": "Consumers",
+      "description": "Create consumer",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier for the tenant. The only supported tenants are `uk`, `au` and `nz`"
+        },
+        {
+          "name": "emailAddress",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "marketingPreferences",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "registrationSource",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "404",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "409",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/consumers/{tenant}/me/communication-preferences",
+      "method": "/consumers/{tenant}/me/communicationPreferencesGet",
+      "httpMethod": "get",
+      "tag": "Consumers",
+      "description": "Get communication preferences",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "Request tenant."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "404",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/consumers/{tenant}/me/communication-preferences/{type}",
+      "method": "/consumers/{tenant}/me/communicationPreferences/{type}Get",
+      "httpMethod": "get",
+      "tag": "Consumers",
+      "description": "Get channel subscriptions for a given consumer's communication preference type",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "Request tenant."
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": "The type of communication preferences."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "404",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/consumers/{tenant}/me/communication-preferences/{type}",
+      "method": "/consumers/{tenant}/me/communicationPreferences/{type}Put",
+      "httpMethod": "put",
+      "tag": "Consumers",
+      "description": "Set only the channel subscriptions for a given consumer's communication preference type",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "Request tenant."
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": "The type of communication preferences."
+        },
+        {
+          "name": "subscribedChannels",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "404",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/consumers/{tenant}/me/communication-preferences/{type}/subscribedChannels/{channel}",
+      "method": "/consumers/{tenant}/me/communicationPreferences/{type}/subscribedChannels/{channel}Delete",
+      "httpMethod": "delete",
+      "tag": "Consumers",
+      "description": "Remove subscription of a specific communication preference channel",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "Request tenant."
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": "The type of communication preference."
+        },
+        {
+          "name": "channel",
+          "schema": "string",
+          "required": true,
+          "description": "The channel."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "404",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/consumers/{tenant}/me/communication-preferences/{type}/subscribedChannels/{channel}",
+      "method": "/consumers/{tenant}/me/communicationPreferences/{type}/subscribedChannels/{channel}Post",
+      "httpMethod": "post",
+      "tag": "Consumers",
+      "description": "Subscribe to a specific communication preference channel",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "Request tenant."
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": "The type of communication preferences."
+        },
+        {
+          "name": "channel",
+          "schema": "string",
+          "required": true,
+          "description": "The channel."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "404",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/delivery-failed",
+      "method": "/deliveryFailedPut",
+      "httpMethod": "put",
+      "tag": "Attempted Delivery Webhooks",
+      "description": "Delivery Attempt Failed",
+      "parameters": [
+        {
+          "name": "OrderId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Reason",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "RestaurantId",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "Tenant",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/delivery-fees/{tenant}",
+      "method": "/deliveryFees/{tenant}Get",
+      "httpMethod": "get",
+      "tag": "DeliveryFee",
+      "description": "Get restaurant delivery fees",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "Tenant containing the restaurants."
+        },
+        {
+          "name": "restaurantIds",
+          "schema": "array",
+          "required": true,
+          "description": "Restaurant IDs which fees are requested for. e.g. `?restaurantIds=1,2,3,4`"
+        },
+        {
+          "name": "deliveryTime",
+          "schema": "string",
+          "required": true,
+          "description": "Delivery date/time when fees are required (ISO8601 format)."
+        },
+        {
+          "name": "zone",
+          "schema": "string",
+          "required": false,
+          "description": "Postcode or other location name identifying the location to which delivery is required. For use when precise location is not available. This will be removed in future in favour of location."
+        },
+        {
+          "name": "latlong",
+          "schema": "array",
+          "required": false,
+          "description": "Point to which delivery is required (latitude, longitude). Supply this where possible as support for zone-only based lookups will be removed in future."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/delivery/estimate",
+      "method": "/delivery/estimateGet",
+      "httpMethod": "get",
+      "tag": "Order Delivery API",
+      "description": "Get delivery estimate",
+      "parameters": [
+        {
+          "name": "restaurantReference",
+          "schema": "string",
+          "required": true,
+          "description": "The reference of the restaurant to estimate the delivery time from."
+        },
+        {
+          "name": "toLat",
+          "schema": "string",
+          "required": false,
+          "description": "The latitude of the position to estimate the delivery time to."
+        },
+        {
+          "name": "toLon",
+          "schema": "string",
+          "required": false,
+          "description": "The longitude of the position to estimate the delivery time to."
+        },
+        {
+          "name": "toPostcode",
+          "schema": "string",
+          "required": false,
+          "description": "The postcode to estimate the delivery time to."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/delivery/pools",
+      "method": "/delivery/poolsGet",
+      "httpMethod": "get",
+      "tag": "Delivery Pools API",
+      "description": "Get your delivery pools",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/delivery/pools",
+      "method": "/delivery/poolsPost",
+      "httpMethod": "post",
+      "tag": "Delivery Pools API",
+      "description": "Create a new delivery pool",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "restaurants",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/delivery/pools/{deliveryPoolId}",
+      "method": "/delivery/pools/{deliveryPoolId}Delete",
+      "httpMethod": "delete",
+      "tag": "Delivery Pools API",
+      "description": "Delete a delivery pool",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/delivery/pools/{deliveryPoolId}",
+      "method": "/delivery/pools/{deliveryPoolId}Get",
+      "httpMethod": "get",
+      "tag": "Delivery Pools API",
+      "description": "Get an individual delivery pool",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/delivery/pools/{deliveryPoolId}",
+      "method": "/delivery/pools/{deliveryPoolId}Patch",
+      "httpMethod": "patch",
+      "tag": "Delivery Pools API",
+      "description": "Modify a delivery pool",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "restaurants",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/delivery/pools/{deliveryPoolId}",
+      "method": "/delivery/pools/{deliveryPoolId}Put",
+      "httpMethod": "put",
+      "tag": "Delivery Pools API",
+      "description": "Replace an existing delivery pool",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "restaurants",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/delivery/pools/{deliveryPoolId}/availability/relative",
+      "method": "/delivery/pools/{deliveryPoolId}/availability/relativeGet",
+      "httpMethod": "get",
+      "tag": "Delivery Pools API",
+      "description": "Get availability for pickup",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/delivery/pools/{deliveryPoolId}/availability/relative",
+      "method": "/delivery/pools/{deliveryPoolId}/availability/relativePut",
+      "httpMethod": "put",
+      "tag": "Delivery Pools API",
+      "description": "Set availability for pickup",
+      "parameters": [
+        {
+          "name": "bestGuess",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/delivery/pools/{deliveryPoolId}/hours",
+      "method": "/delivery/pools/{deliveryPoolId}/hoursPut",
+      "httpMethod": "put",
+      "tag": "Delivery Pools API",
+      "description": "Set the delivery pools daily start and end times",
+      "parameters": [
+        {
+          "name": "friday",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "monday",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "saturday",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "sunday",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "thursday",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "tuesday",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "wednesday",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/delivery/pools/{deliveryPoolId}/restaurants",
+      "method": "/delivery/pools/{deliveryPoolId}/restaurantsDelete",
+      "httpMethod": "delete",
+      "tag": "Delivery Pools API",
+      "description": "Remove restaurants from a delivery pool",
+      "parameters": [
+        {
+          "name": "restaurants",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/delivery/pools/{deliveryPoolId}/restaurants",
+      "method": "/delivery/pools/{deliveryPoolId}/restaurantsPut",
+      "httpMethod": "put",
+      "tag": "Delivery Pools API",
+      "description": "Add restaurants to an existing delivery pool",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/driver-assigned-to-delivery",
+      "method": "/driverAssignedToDeliveryPut",
+      "httpMethod": "put",
+      "tag": "Order Delivery Webhooks",
+      "description": "Driver Assigned to Delivery",
+      "parameters": [
+        {
+          "name": "DriverContactNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "DriverName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "EstimatedDeliveryTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "EstimatedPickupTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Event",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "OrderId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "TimeStamp",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/driver-at-delivery-address",
+      "method": "/driverAtDeliveryAddressPut",
+      "httpMethod": "put",
+      "tag": "Order Delivery Webhooks",
+      "description": "Driver at delivery address",
+      "parameters": [
+        {
+          "name": "DriverContactNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "DriverName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "EstimatedDeliveryTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "EstimatedPickupTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Event",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "OrderId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "TimeStamp",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/driver-at-restaurant",
+      "method": "/driverAtRestaurantPut",
+      "httpMethod": "put",
+      "tag": "Order Delivery Webhooks",
+      "description": "Driver at restaurant",
+      "parameters": [
+        {
+          "name": "DriverContactNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "DriverName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "EstimatedDeliveryTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "EstimatedPickupTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Event",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "OrderId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "TimeStamp",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/driver-has-delivered-order",
+      "method": "/driverHasDeliveredOrderPut",
+      "httpMethod": "put",
+      "tag": "Order Delivery Webhooks",
+      "description": "Driver has delivered order",
+      "parameters": [
+        {
+          "name": "DriverContactNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "DriverName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "EstimatedDeliveryTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "EstimatedPickupTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Event",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "OrderId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "TimeStamp",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/driver-location",
+      "method": "/driverLocationPut",
+      "httpMethod": "put",
+      "tag": "Order Delivery Webhooks",
+      "description": "Driver Location",
+      "parameters": [
+        {
+          "name": "Location",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "OrderId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "TimeStamp",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/driver-on-their-way-to-delivery-address",
+      "method": "/driverOnTheirWayToDeliveryAddressPut",
+      "httpMethod": "put",
+      "tag": "Order Delivery Webhooks",
+      "description": "Driver on their way to delivery address",
+      "parameters": [
+        {
+          "name": "DriverContactNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "DriverName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "EstimatedDeliveryTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "EstimatedPickupTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Event",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "OrderId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "TimeStamp",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/late-order-compensation-query",
+      "method": "/lateOrderCompensationQueryPost",
+      "httpMethod": "post",
+      "tag": "Consumer Queries Webhooks",
+      "description": "late order compensation query, restaurant response required",
+      "parameters": [
+        {
+          "name": "compensationOptions",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "orderId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "restaurantId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tenant",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/late-order-query",
+      "method": "/lateOrderQueryPost",
+      "httpMethod": "post",
+      "tag": "Consumer Queries Webhooks",
+      "description": "late order query, restaurant response required",
+      "parameters": [
+        {
+          "name": "orderId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "restaurantId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tenant",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/menu-ingestion-complete",
+      "method": "/menuIngestionCompletePost",
+      "httpMethod": "post",
+      "tag": "Restaurant Webhooks",
+      "description": "Menu ingestion complete",
+      "parameters": [
+        {
+          "name": "correlationId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "fault",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "restaurantId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "result",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tenant",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/order-accepted",
+      "method": "/orderAcceptedPost",
+      "httpMethod": "post",
+      "tag": "Order Acceptance Webhooks",
+      "description": "Order accepted",
+      "parameters": [
+        {
+          "name": "AcceptedFor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Event",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "OrderId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/order-cancelled",
+      "method": "/orderCancelledPost",
+      "httpMethod": "post",
+      "tag": "Order Acceptance Webhooks",
+      "description": "Order cancelled",
+      "parameters": [
+        {
+          "name": "Event",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "OrderId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Reason",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/order-eligible-for-restaurant-compensation",
+      "method": "/orderEligibleForRestaurantCompensationPost",
+      "httpMethod": "post",
+      "tag": "RestaurantQueries Webhooks",
+      "description": "Order Eligible For Restaurant Compensation",
+      "parameters": [
+        {
+          "name": "IsEligible",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "OrderId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/order-is-ready-for-pickup",
+      "method": "/orderIsReadyForPickupPut",
+      "httpMethod": "put",
+      "tag": "Order Delivery Webhooks",
+      "description": "Order ready for pickup",
+      "parameters": [
+        {
+          "name": "Event",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Timestamp",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/order-ready-for-preparation-async",
+      "method": "/orderReadyForPreparationAsyncPost",
+      "httpMethod": "post",
+      "tag": "Order Webhooks",
+      "description": "Order ready for preparation (async)",
+      "parameters": [
+        {
+          "name": "Currency",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Customer",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "CustomerNotes",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "Fulfilment",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "IsTest",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "Items",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "OrderId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Payment",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "PlacedDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "PriceBreakdown",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "Restaurant",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "TotalPrice",
+          "schema": "number",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/order-ready-for-preparation-sync",
+      "method": "/orderReadyForPreparationSyncPost",
+      "httpMethod": "post",
+      "tag": "Order Webhooks",
+      "description": "Order ready for preparation (sync)",
+      "parameters": [
+        {
+          "name": "Currency",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Customer",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "CustomerNotes",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "Fulfilment",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "IsTest",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "Items",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "OrderId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Payment",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "PlacedDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "PriceBreakdown",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "Restaurant",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "TotalPrice",
+          "schema": "number",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/order-rejected",
+      "method": "/orderRejectedPost",
+      "httpMethod": "post",
+      "tag": "Order Acceptance Webhooks",
+      "description": "Order rejected",
+      "parameters": [
+        {
+          "name": "Event",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "RejectedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "RejectedBy",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "RejectedReason",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/order-requires-delivery-acceptance",
+      "method": "/orderRequiresDeliveryAcceptancePut",
+      "httpMethod": "put",
+      "tag": "Order Delivery Webhooks",
+      "description": "Order requires delivery acceptance",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/order-time-updated",
+      "method": "/orderTimeUpdatedPost",
+      "httpMethod": "post",
+      "tag": "Restaurant Webhooks",
+      "description": "Order time updated",
+      "parameters": [
+        {
+          "name": "dayOfWeek",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "lowerBoundMinutes",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "restaurantId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "serviceType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "upperBoundMinutes",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/orders",
+      "method": "/ordersPost",
+      "httpMethod": "post",
+      "tag": "Order API",
+      "description": "Create order",
+      "parameters": [
+        {
+          "name": "x-je-api-version",
+          "schema": "number",
+          "required": false,
+          "description": "The api version to use. Version 2.0 is the only available version."
+        },
+        {
+          "name": "Customer",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "CustomerNotes",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "FriendlyOrderReference",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Fulfilment",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "IsTest",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Items",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "OrderReference",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Payment",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Restaurant",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "TotalPrice",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/orders/deliverystate/driverlocation",
+      "method": "/orders/deliverystate/driverlocationPut",
+      "httpMethod": "put",
+      "tag": "Order Delivery API",
+      "description": "Update current driver locations (bulk upload)",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/orders/{orderId}/accept",
+      "method": "/orders/{orderId}/acceptPut",
+      "httpMethod": "put",
+      "tag": "Order Acceptance API",
+      "description": "Accept order",
+      "parameters": [
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "TimeAcceptedFor",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/orders/{orderId}/cancel",
+      "method": "/orders/{orderId}/cancelPut",
+      "httpMethod": "put",
+      "tag": "Order Acceptance API",
+      "description": "Cancel order",
+      "parameters": [
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Message",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/orders/{orderId}/complete",
+      "method": "/orders/{orderId}/completePost",
+      "httpMethod": "post",
+      "tag": "Order Acceptance API",
+      "description": "Complete order",
+      "parameters": [
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the order to mark as complete"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "409",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/orders/{orderId}/deliverystate/atdeliveryaddress",
+      "method": "/orders/{orderId}/deliverystate/atdeliveryaddressPut",
+      "httpMethod": "put",
+      "tag": "Order Delivery API",
+      "description": "Update order with driver at delivery address details",
+      "parameters": [
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": "Just Eat order identifier"
+        },
+        {
+          "name": "Location",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "TimeStampWithUtcOffset",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/orders/{orderId}/deliverystate/atrestaurant",
+      "method": "/orders/{orderId}/deliverystate/atrestaurantPut",
+      "httpMethod": "put",
+      "tag": "Order Delivery API",
+      "description": "Update order with driver at restaurant details",
+      "parameters": [
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": "Just Eat order identifier"
+        },
+        {
+          "name": "EtaAtDeliveryAddress",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Location",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "TimeStampWithUtcOffset",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/orders/{orderId}/deliverystate/atrestauranteta",
+      "method": "/orders/{orderId}/deliverystate/atrestaurantetaPut",
+      "httpMethod": "put",
+      "tag": "Order Delivery API",
+      "description": "Update the driver's estimated time to arrive at the Restaurant",
+      "parameters": [
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": "Just Eat order identifier"
+        },
+        {
+          "name": "bestGuess",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "estimatedAt",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/orders/{orderId}/deliverystate/delivered",
+      "method": "/orders/{orderId}/deliverystate/deliveredPut",
+      "httpMethod": "put",
+      "tag": "Order Delivery API",
+      "description": "Update order with delivered details",
+      "parameters": [
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": "Just Eat order identifier"
+        },
+        {
+          "name": "Location",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "TimeStampWithUtcOffset",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/orders/{orderId}/deliverystate/driverassigned",
+      "method": "/orders/{orderId}/deliverystate/driverassignedPut",
+      "httpMethod": "put",
+      "tag": "Order Delivery API",
+      "description": "Update order with driver assigned details",
+      "parameters": [
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": "Just Eat order identifier"
+        },
+        {
+          "name": "DriverContactNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "DriverName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "EtaAtDeliveryAddress",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "EtaAtRestaurant",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Location",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "TimeStampWithUtcOffset",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "VehicleDetails",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/orders/{orderId}/deliverystate/driverlocation",
+      "method": "/orders/{orderId}/deliverystate/driverlocationPut",
+      "httpMethod": "put",
+      "tag": "Order Delivery API",
+      "description": "Update the driver's current location",
+      "parameters": [
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": "Just Eat order identifier"
+        },
+        {
+          "name": "EtaAtDeliveryAddress",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "EtaAtRestaurant",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Location",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "TimeStampWithUtcOffset",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/orders/{orderId}/deliverystate/driverunassigned",
+      "method": "/orders/{orderId}/deliverystate/driverunassignedPut",
+      "httpMethod": "put",
+      "tag": "Order Delivery API",
+      "description": "Update order with driver unassigned details",
+      "parameters": [
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": "Just Eat order identifier"
+        },
+        {
+          "name": "Comment",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "DriverContactNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "DriverName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "EtaAtDeliveryAddress",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "EtaAtRestaurant",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Location:",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "Reason",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "TimeStampWithUtcOffset",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "UnassignedBy",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/orders/{orderId}/deliverystate/onitsway",
+      "method": "/orders/{orderId}/deliverystate/onitswayPut",
+      "httpMethod": "put",
+      "tag": "Order Delivery API",
+      "description": "Update order with driver on its way details",
+      "parameters": [
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "EstimatedArrivalTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Location",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "TimeStampWithUtcOffset",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/orders/{orderId}/duedate",
+      "method": "/orders/{orderId}/duedatePut",
+      "httpMethod": "put",
+      "tag": "Order Acceptance API",
+      "description": "Update order ETA",
+      "parameters": [
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "DueDate",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/orders/{orderId}/ignore",
+      "method": "/orders/{orderId}/ignorePut",
+      "httpMethod": "put",
+      "tag": "Order Acceptance API",
+      "description": "Ignore order",
+      "parameters": [
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/orders/{orderId}/readyforcollection",
+      "method": "/orders/{orderId}/readyforcollectionPost",
+      "httpMethod": "post",
+      "tag": "Order Acceptance API",
+      "description": "Mark order as ready for collection",
+      "parameters": [
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the order to mark as ready for collection"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "404",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "409",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/orders/{orderId}/reject",
+      "method": "/orders/{orderId}/rejectPut",
+      "httpMethod": "put",
+      "tag": "Order Acceptance API",
+      "description": "Reject order",
+      "parameters": [
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Message",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/orders/{tenant}/{orderId}/consumerqueries/lateorder/restaurantresponse",
+      "method": "/orders/{tenant}/{orderId}/consumerqueries/lateorder/restaurantresponsePost",
+      "httpMethod": "post",
+      "tag": "ConsumerQueries",
+      "description": "Response to Late Order Update Request",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "Request tenant."
+        },
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": "Id for the order."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Containing a partner issued API key e.g. `JE-API-KEY ABCDE123456789`"
+        },
+        {
+          "name": "additionalDeliveryTimeToAddMinutes",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "lateOrderStatus",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "401",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "404",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "409",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/orders/{tenant}/{orderId}/consumerqueries/lateordercompensation/restaurantresponse",
+      "method": "/orders/{tenant}/{orderId}/consumerqueries/lateordercompensation/restaurantresponsePost",
+      "httpMethod": "post",
+      "tag": "ConsumerQueries",
+      "description": "Update late order compensation request with Restaurant response",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "Request tenant."
+        },
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": "Id for the order."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Containing a partner issued API key e.g. `JE-API-KEY ABCDE123456789`"
+        },
+        {
+          "name": "acceptedAmount",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "isAccepted",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "orderId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "rejectedReasonCode",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "401",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "404",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "409",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/orders/{tenant}/{orderId}/restaurantqueries/compensation",
+      "method": "/orders/{tenant}/{orderId}/restaurantqueries/compensationPost",
+      "httpMethod": "post",
+      "tag": "RestaurantQueries",
+      "description": "Create Compensation requests",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "Request tenant."
+        },
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": "Id for the order."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Containing a partner issued API key e.g. `JE-API-KEY ABCDE123456789`"
+        },
+        {
+          "name": "Comments",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ReasonCode",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "401",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "404",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "409",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/redelivery-requested",
+      "method": "/redeliveryRequestedPut",
+      "httpMethod": "put",
+      "tag": "Order Acceptance Webhooks",
+      "description": "Customer Requested Redelivery",
+      "parameters": [
+        {
+          "name": "Notes",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "OrderId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Tenant",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Update",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/restaurant-offline-status",
+      "method": "/restaurantOfflineStatusPut",
+      "httpMethod": "put",
+      "tag": "Restaurant Events Webhooks",
+      "description": "Restaurant Offline Status",
+      "parameters": [
+        {
+          "name": "AllowRestaurantOverride",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "IsOffline",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "RestaurantId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Tenant",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/restaurant-online-status",
+      "method": "/restaurantOnlineStatusPut",
+      "httpMethod": "put",
+      "tag": "Restaurant Events Webhooks",
+      "description": "Restaurant Online Status",
+      "parameters": [
+        {
+          "name": "AllowRestaurantOverride",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "IsOffline",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "RestaurantId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Tenant",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/restaurants/bylatlong",
+      "method": "searchByLocation",
+      "httpMethod": "get",
+      "tag": "Restaurants",
+      "description": "Get restaurants by location",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "OAuth2 token issued for logged in consumer or API key issued to partner"
+        },
+        {
+          "name": "Accept-Tenant",
+          "schema": "string",
+          "required": false,
+          "description": "A valid country code, e.g. \"uk\". Filter search results to only include restaurants for the specified country. Required when using OAuth for authentication."
+        },
+        {
+          "name": "latitude",
+          "schema": "number",
+          "required": true,
+          "description": "Filter search results to only include restaurants that deliver to the specified location"
+        },
+        {
+          "name": "longitude",
+          "schema": "number",
+          "required": true,
+          "description": "Filter search results to only include restaurants that deliver to the specified location"
+        },
+        {
+          "name": "cuisine",
+          "schema": "string",
+          "required": false,
+          "description": "Filter search results to only include restaurants that offer the specified cuisine"
+        },
+        {
+          "name": "restaurantName",
+          "schema": "string",
+          "required": false,
+          "description": "Filter search results to only include restaurants that have a name that matches the specified value"
+        },
+        {
+          "name": "brandName",
+          "schema": "string",
+          "required": false,
+          "description": "Filter search results to only include restaurants of the specified brand"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restaurants/bypostcode/{postcode}",
+      "method": "searchByPostcode",
+      "httpMethod": "get",
+      "tag": "Restaurants",
+      "description": "Get restaurants by postcode",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": false,
+          "description": "OAuth2 token issued for logged in consumer or API key issued to partner"
+        },
+        {
+          "name": "Accept-Tenant",
+          "schema": "string",
+          "required": false,
+          "description": "A valid country code, e.g. \"uk\". Filter search results to only include restaurants for the specified country. Required when using OAuth for authentication."
+        },
+        {
+          "name": "postcode",
+          "schema": "string",
+          "required": true,
+          "description": "Filter search results to only include restaurants that deliver to the specified postcode"
+        },
+        {
+          "name": "cuisine",
+          "schema": "string",
+          "required": false,
+          "description": "Filter search results to only include restaurants that offer the specified cuisine"
+        },
+        {
+          "name": "restaurantName",
+          "schema": "string",
+          "required": false,
+          "description": "Filter search results to only include restaurants that have a name that matches the specified value"
+        },
+        {
+          "name": "brandName",
+          "schema": "string",
+          "required": false,
+          "description": "Filter search results to only include restaurants of the specified brand"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restaurants/driver/eta",
+      "method": "/restaurants/driver/etaPut",
+      "httpMethod": "put",
+      "tag": "Restaurants",
+      "description": "Set ETA for pickup",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restaurants/{tenant}/{restaurantId}/catalogue",
+      "method": "/restaurants/{tenant}/{restaurantId}/catalogueGet",
+      "httpMethod": "get",
+      "tag": "Restaurants",
+      "description": "Get product catalogue",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "Request tenant."
+        },
+        {
+          "name": "restaurantId",
+          "schema": "string",
+          "required": true,
+          "description": "The restaurant Id."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/restaurants/{tenant}/{restaurantId}/catalogue/availabilities",
+      "method": "/restaurants/{tenant}/{restaurantId}/catalogue/availabilitiesGet",
+      "httpMethod": "get",
+      "tag": "Restaurants",
+      "description": "Get all availabilities",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "Request tenant."
+        },
+        {
+          "name": "restaurantId",
+          "schema": "string",
+          "required": true,
+          "description": "The restaurant Id."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of availabilities to fetch."
+        },
+        {
+          "name": "after",
+          "schema": "string",
+          "required": false,
+          "description": "Value representing a cursor - position to use when retrieving the next page of data. If provided, the value of this parameter must be URL encoded."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "404",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/restaurants/{tenant}/{restaurantId}/catalogue/categories",
+      "method": "/restaurants/{tenant}/{restaurantId}/catalogue/categoriesGet",
+      "httpMethod": "get",
+      "tag": "Restaurants",
+      "description": "Get all categories",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "Request tenant."
+        },
+        {
+          "name": "restaurantId",
+          "schema": "string",
+          "required": true,
+          "description": "The restaurant Id."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of categories to fetch."
+        },
+        {
+          "name": "after",
+          "schema": "string",
+          "required": false,
+          "description": "Value representing a cursor - position to use when retrieving the next page of data. If provided, the value of this parameter must be URL encoded."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "404",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/restaurants/{tenant}/{restaurantId}/catalogue/categories/{categoryId}/items",
+      "method": "/restaurants/{tenant}/{restaurantId}/catalogue/categories/{categoryId}/itemsGet",
+      "httpMethod": "get",
+      "tag": "Restaurants",
+      "description": "Get all category item IDs",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "Request tenant."
+        },
+        {
+          "name": "restaurantId",
+          "schema": "string",
+          "required": true,
+          "description": "The restaurant ID."
+        },
+        {
+          "name": "categoryId",
+          "schema": "string",
+          "required": true,
+          "description": "The category ID."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of item IDs to fetch."
+        },
+        {
+          "name": "after",
+          "schema": "string",
+          "required": false,
+          "description": "Value representing a cursor - position to use when retrieving the next page of data. If provided, the value of this parameter must be URL encoded."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "404",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/restaurants/{tenant}/{restaurantId}/catalogue/items",
+      "method": "/restaurants/{tenant}/{restaurantId}/catalogue/itemsGet",
+      "httpMethod": "get",
+      "tag": "Restaurants",
+      "description": "Get all menu items",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "Request tenant."
+        },
+        {
+          "name": "restaurantId",
+          "schema": "string",
+          "required": true,
+          "description": "The restaurant Id."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of menu items to fetch."
+        },
+        {
+          "name": "after",
+          "schema": "string",
+          "required": false,
+          "description": "Value representing a cursor - position to use when retrieving the next page of data. If provided, the value of this parameter must be URL encoded."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "404",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/restaurants/{tenant}/{restaurantId}/catalogue/items/{itemId}/dealgroups",
+      "method": "/restaurants/{tenant}/{restaurantId}/catalogue/items/{itemId}/dealgroupsGet",
+      "httpMethod": "get",
+      "tag": "Restaurants",
+      "description": "Get all menu item deal groups",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "Request tenant"
+        },
+        {
+          "name": "restaurantId",
+          "schema": "string",
+          "required": true,
+          "description": "The restaurant ID"
+        },
+        {
+          "name": "itemId",
+          "schema": "string",
+          "required": true,
+          "description": "The menu item ID"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of menu items to fetch."
+        },
+        {
+          "name": "after",
+          "schema": "string",
+          "required": false,
+          "description": "Value representing a cursor - position to use when retrieving the next page of data. If provided, the value of this parameter must be URL encoded."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "404",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/restaurants/{tenant}/{restaurantId}/catalogue/items/{itemId}/dealgroups/{dealGroupId}/dealitemvariations",
+      "method": "/restaurants/{tenant}/{restaurantId}/catalogue/items/{itemId}/dealgroups/{dealGroupId}/dealitemvariationsGet",
+      "httpMethod": "get",
+      "tag": "Restaurants",
+      "description": "Get all deal item variations for a deal group",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "Request tenant"
+        },
+        {
+          "name": "restaurantId",
+          "schema": "string",
+          "required": true,
+          "description": "The restaurant ID"
+        },
+        {
+          "name": "itemId",
+          "schema": "string",
+          "required": true,
+          "description": "The menu item ID"
+        },
+        {
+          "name": "dealGroupId",
+          "schema": "string",
+          "required": true,
+          "description": "The menu item ID"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of menu items to fetch."
+        },
+        {
+          "name": "after",
+          "schema": "string",
+          "required": false,
+          "description": "Value representing a cursor - position to use when retrieving the next page of data. If provided, the value of this parameter must be URL encoded."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "404",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/restaurants/{tenant}/{restaurantId}/catalogue/items/{itemId}/modifiergroups",
+      "method": "/restaurants/{tenant}/{restaurantId}/catalogue/items/{itemId}/modifiergroupsGet",
+      "httpMethod": "get",
+      "tag": "Restaurants",
+      "description": "Get all menu item modifier groups",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "Request tenant"
+        },
+        {
+          "name": "restaurantId",
+          "schema": "string",
+          "required": true,
+          "description": "The restaurant ID"
+        },
+        {
+          "name": "itemId",
+          "schema": "string",
+          "required": true,
+          "description": "The menu item ID"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of menu items to fetch."
+        },
+        {
+          "name": "after",
+          "schema": "string",
+          "required": false,
+          "description": "Value representing a cursor - position to use when retrieving the next page of data. If provided, the value of this parameter must be URL encoded."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "404",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/restaurants/{tenant}/{restaurantId}/catalogue/items/{itemId}/variations",
+      "method": "/restaurants/{tenant}/{restaurantId}/catalogue/items/{itemId}/variationsGet",
+      "httpMethod": "get",
+      "tag": "Restaurants",
+      "description": "Get all menu item variations",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "Request tenant"
+        },
+        {
+          "name": "restaurantId",
+          "schema": "string",
+          "required": true,
+          "description": "The restaurant ID"
+        },
+        {
+          "name": "itemId",
+          "schema": "string",
+          "required": true,
+          "description": "The menu item ID"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of menu items to fetch."
+        },
+        {
+          "name": "after",
+          "schema": "string",
+          "required": false,
+          "description": "Value representing a cursor - position to use when retrieving the next page of data. If provided, the value of this parameter must be URL encoded."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "404",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/restaurants/{tenant}/{restaurantId}/customerclaims",
+      "method": "/restaurants/{tenant}/{restaurantId}/customerclaimsGet",
+      "httpMethod": "get",
+      "tag": "Restaurant Claims",
+      "description": "Get claims",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "Two letter code indicating the tenant"
+        },
+        {
+          "name": "restaurantId",
+          "schema": "string",
+          "required": true,
+          "description": "Just Eat restaurant identifier"
+        },
+        {
+          "name": "fromDate",
+          "schema": "string",
+          "required": false,
+          "description": "Start date limiter"
+        },
+        {
+          "name": "toDate",
+          "schema": "string",
+          "required": false,
+          "description": "End date limiter"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Pagination limit"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Pagination offset"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates what type of response client understands and is also used for content type negotiation (if version is specified), otherwise tells the server to return the latest version"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response containing claims for a restaurant which match the given filter"
+        },
+        {
+          "statusCode": "400",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "401",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/restaurants/{tenant}/{restaurantId}/customerclaims/{id}",
+      "method": "/restaurants/{tenant}/{restaurantId}/customerclaims/{id}Get",
+      "httpMethod": "get",
+      "tag": "Restaurant Claims",
+      "description": "Get order claim",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "Two letter code indicating the tenant"
+        },
+        {
+          "name": "restaurantId",
+          "schema": "string",
+          "required": true,
+          "description": "Just Eat restaurant identifier"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Claim identifier"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates what type of response client understands and is also used for content type negotiation (if version is specified), otherwise tells the server to return the latest version"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Claim information"
+        },
+        {
+          "statusCode": "401",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "404",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/restaurants/{tenant}/{restaurantId}/customerclaims/{id}/restaurantresponse",
+      "method": "/restaurants/{tenant}/{restaurantId}/customerclaims/{id}/restaurantresponsePost",
+      "httpMethod": "post",
+      "tag": "Restaurant Claims",
+      "description": "Submit a restaurant response for the claim",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "Two letter code indicating the tenant"
+        },
+        {
+          "name": "restaurantId",
+          "schema": "string",
+          "required": true,
+          "description": "Just Eat restaurant identifier"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Claim identifier"
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Indicates the representation of the request body the client is sending (including version)"
+        },
+        {
+          "name": "decision",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "items",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "justification",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "401",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "404",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "409",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "422",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/restaurants/{tenant}/{restaurantId}/customerclaims/{id}/restaurantresponse/justification",
+      "method": "/restaurants/{tenant}/{restaurantId}/customerclaims/{id}/restaurantresponse/justificationPut",
+      "httpMethod": "put",
+      "tag": "Restaurant Claims",
+      "description": "Add reason and comments to the response",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "Two letter code indicating the tenant"
+        },
+        {
+          "name": "restaurantId",
+          "schema": "string",
+          "required": true,
+          "description": "Just Eat restaurant identifier"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Claim identifier"
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Indicates the representation of the request body the client is sending (including version)"
+        },
+        {
+          "name": "comments",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "401",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "404",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "409",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/restaurants/{tenant}/{restaurantId}/fees",
+      "method": "/restaurants/{tenant}/{restaurantId}/feesGet",
+      "httpMethod": "get",
+      "tag": "Restaurants",
+      "description": "Get Restaurant Fees",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "A two-character country code for which country the restaurant resides in."
+        },
+        {
+          "name": "restaurantId",
+          "schema": "string",
+          "required": true,
+          "description": "A unique identifier for a restaurant"
+        },
+        {
+          "name": "User-Agent",
+          "schema": "string",
+          "required": false,
+          "description": "Request header string that allows the server to identify the application making the request."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "An object encapsulating all possible fees which a restaurant can apply to itself"
+        },
+        {
+          "statusCode": "400",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "401",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "404",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/restaurants/{tenant}/{restaurantId}/fees",
+      "method": "/restaurants/{tenant}/{restaurantId}/feesPut",
+      "httpMethod": "put",
+      "tag": "Restaurants",
+      "description": "Create or Update Restaurant Fees",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "A two-character country code for which country the restaurant resides in."
+        },
+        {
+          "name": "restaurantId",
+          "schema": "string",
+          "required": true,
+          "description": "A unique identifier for a restaurant"
+        },
+        {
+          "name": "User-Agent",
+          "schema": "string",
+          "required": false,
+          "description": "Request header string that allows the server to identify the application making the request."
+        },
+        {
+          "name": "bagFee",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "An object encapsulating all possible fees which a restaurant can apply to itself"
+        },
+        {
+          "statusCode": "400",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "401",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "404",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/restaurants/{tenant}/{restaurantId}/menu",
+      "method": "/restaurants/{tenant}/{restaurantId}/menuGet",
+      "httpMethod": "get",
+      "tag": "Restaurants",
+      "description": "Get the latest version of the restaurant's full menu",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "The tenant of the restaurant in which to put a menu"
+        },
+        {
+          "name": "restaurantId",
+          "schema": "string",
+          "required": true,
+          "description": "The restaurant identifier to associated with the menu"
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Containing a partner issued API key e.g. Bearer ABCDE123456789"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "301",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restaurants/{tenant}/{restaurantId}/menu",
+      "method": "putMenuForIngestion",
+      "httpMethod": "put",
+      "tag": "Restaurants",
+      "description": "Create or update a menu",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "The tenant of the restaurant in which to put a menu"
+        },
+        {
+          "name": "restaurantId",
+          "schema": "string",
+          "required": true,
+          "description": "The restaurant identifier to associated with the menu"
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Containing a partner issued API key e.g. `JE-API-KEY ABCDE123456789`"
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": false,
+          "description": "Used to denote the version of the menu payload within the body, will default to latest if not supplied e.g. application/=1.0"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restaurants/{tenant}/{restaurantId}/ordertimes",
+      "method": "getOrderTimes",
+      "httpMethod": "get",
+      "tag": "publicly-accessible",
+      "description": "Get the restaurant's delivery and collection lead times",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "A valid country code, e.g. \"uk\"."
+        },
+        {
+          "name": "restaurantId",
+          "schema": "string",
+          "required": true,
+          "description": "The restaurant Id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "OAuth2 token issued for logged in restaurant"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/restaurants/{tenant}/{restaurantId}/ordertimes/{dayOfWeek}/{serviceType}",
+      "method": "updateOrderTime",
+      "httpMethod": "put",
+      "tag": "publicly-accessible",
+      "description": "Update the restaurant's delivery and collection lead times",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "A valid country code, e.g. \"uk\"."
+        },
+        {
+          "name": "restaurantId",
+          "schema": "string",
+          "required": true,
+          "description": "The restaurant Id."
+        },
+        {
+          "name": "dayOfWeek",
+          "schema": "string",
+          "required": true,
+          "description": "Day of week for order time"
+        },
+        {
+          "name": "serviceType",
+          "schema": "string",
+          "required": true,
+          "description": "Service type of the order time"
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "OAuth2 token issued for logged in restaurant OR API token for third party, in the format `Bearer {api_key}`"
+        },
+        {
+          "name": "lowerBoundMinutes",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "upperBoundMinutes",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "401",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "403",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/restaurants/{tenant}/{restaurantId}/servicetimes",
+      "method": "getRestaurantServiceTimes",
+      "httpMethod": "get",
+      "tag": "Restaurants",
+      "description": "Get service times",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "Two letter code of restaurant's tenant"
+        },
+        {
+          "name": "restaurantId",
+          "schema": "string",
+          "required": true,
+          "description": "The restaurant identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/restaurants/{tenant}/{restaurantId}/servicetimes",
+      "method": "putRestaurantServiceTimes",
+      "httpMethod": "put",
+      "tag": "Restaurants",
+      "description": "Create or update service times",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "Two letter code of restaurant's tenant"
+        },
+        {
+          "name": "restaurantId",
+          "schema": "string",
+          "required": true,
+          "description": "The restaurant identifier"
+        },
+        {
+          "name": "serviceTimes",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        }
+      ]
+    },
+    {
+      "url": "/search/autocomplete/{tenant}",
+      "method": "/search/autocomplete/{tenant}Get",
+      "httpMethod": "get",
+      "tag": "Search",
+      "description": "Get auto-completed search terms",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "A valid country code, e.g. \"uk\"."
+        },
+        {
+          "name": "searchTerm",
+          "schema": "string",
+          "required": true,
+          "description": "User's search term - at least one character required"
+        },
+        {
+          "name": "latlong",
+          "schema": "array",
+          "required": true,
+          "description": "The latitude and longitude coordinates of the location in which to search.\r\nSpecify the coordinates as latitude,longitude."
+        },
+        {
+          "name": "limit",
+          "schema": "number",
+          "required": false,
+          "description": "Limit the number of auto-completed terms returned by the API. Defaults to 7. Valid values 1 - 10"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "401",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        },
+        {
+          "statusCode": "503",
+          "description": "Service Unavailable"
+        }
+      ]
+    },
+    {
+      "url": "/search/restaurants/{tenant}",
+      "method": "/search/restaurants/{tenant}Get",
+      "httpMethod": "get",
+      "tag": "Search",
+      "description": "Search restaurants",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "A valid country code, e.g. \"uk\"."
+        },
+        {
+          "name": "searchTerm",
+          "schema": "string",
+          "required": true,
+          "description": "User's search term."
+        },
+        {
+          "name": "latlong",
+          "schema": "array",
+          "required": true,
+          "description": "The latitude and longitude coordinates of the location in which to search.\r\nSpecify the coordinates as latitude,longitude."
+        },
+        {
+          "name": "limit",
+          "schema": "number",
+          "required": false,
+          "description": "Limit the number of restaurants returned by the API.\r\nValid values are numbers between 1 and 500.\r\nIf not provided, the limit defaults to 300."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "401",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "422",
+          "description": "A HTTP 4xx error response"
+        },
+        {
+          "statusCode": "500",
+          "description": "A HTTP 500 error response"
+        },
+        {
+          "statusCode": "503",
+          "description": "Service Unavailable"
+        }
+      ]
+    },
+    {
+      "url": "/send-to-pos-failed",
+      "method": "/sendToPosFailedPost",
+      "httpMethod": "post",
+      "tag": "Order Webhooks",
+      "description": "Send to POS failed",
+      "parameters": [
+        {
+          "name": "OrderId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/{tenant}/restaurants/event/offline",
+      "method": "/v1/{tenant}/restaurants/event/offlinePost",
+      "httpMethod": "post",
+      "tag": "Restaurant Events",
+      "description": "Create Offline Event",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier for the tenant"
+        },
+        {
+          "name": "X-JE-Requester",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the user or system creating the event. Used for auditing purposes"
+        },
+        {
+          "name": "X-JE-User-Role",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "allowRestaurantOverride",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "category",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "duration",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "legacyTempOfflineType",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "restaurantIds",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/{tenant}/restaurants/{id}/event/offline",
+      "method": "/v1/{tenant}/restaurants/{id}/event/offlineDelete",
+      "httpMethod": "delete",
+      "tag": "Restaurant Events",
+      "description": "Delete Offline Event",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier for the tenant"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier for the restaurant"
+        },
+        {
+          "name": "X-JE-Requester",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the user or system creating the event. Used for auditing purposes"
+        },
+        {
+          "name": "X-JE-User-Role",
+          "schema": "string",
+          "required": true,
+          "description": "The role the user or system creating the event has assumed."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{tenant}/orders/{orderId}/queries/attempteddelivery",
+      "method": "/{tenant}/orders/{orderId}/queries/attempteddeliveryPost",
+      "httpMethod": "post",
+      "tag": "Attempted Delivery API",
+      "description": "Delivery Attempt Failed",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "Request tenant e.g. uk."
+        },
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": "Id for the order."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Containing a partner issued API key e.g. `JE-API-KEY ABCDE123456789`"
+        },
+        {
+          "name": "ReasonCode",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/{tenant}/orders/{orderId}/queries/attempteddelivery/resolution/redeliverorder",
+      "method": "/{tenant}/orders/{orderId}/queries/attempteddelivery/resolution/redeliverorderPost",
+      "httpMethod": "post",
+      "tag": "Attempted Delivery API",
+      "description": "Request Redelivery of the Order",
+      "parameters": [
+        {
+          "name": "tenant",
+          "schema": "string",
+          "required": true,
+          "description": "Request tenant e.g. uk."
+        },
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": "Id for the order."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Containing a partner issued API key e.g. `JE-API-KEY ABCDE123456789`"
+        },
+        {
+          "name": "NewDueDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Status",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://uk.api.just-eat.io",
   "apiDescription": "# Just Eat API\nJust Eat offers services for our various business partners and our consumer applications.\nHow you interact with the API depends on the services you wish to interact with.\n## Security\n### HTTPS\nAll api calls and callbacks require HTTPS. Your service will need a valid SSL certificate and be accessible via the standard SSL port (port 443).\n## Making an API request\nSome API calls require an API key, to authenticate the partner calling the API.\n```\nPUT https://uk-partnerapi.just-eat.io/orders/abcd1234 HTTP/1.1\nAuthorization: JE-API-KEY abcd123456789\n```\nOther calls require a user token in the form of a JWT.\n```\nGET https://uk.api.just-eat.io/consumer/me/orders/uk HTTP/1.1\nAuthorization: Bearer abcd123456789\n```\n\n## Date Formats\n### Date and time formats\nAll dates and times should use the [ISO 8601 standard for representation of dates and times](https://en.wikipedia.org/wiki/ISO_8601).\n\n#### For instance:\n* DueDateWithUtcOffset: `\"2015-05-26T14:52:35.5444292+01:00\"`\n  - Local time: `14:52`\n  - UTC time: `13:52`\n  - UTC offset: `+1hr` (due to daylight time saving)\n* DueDateWithUtcOffset: `\"2015-02-03T11:10:00.0000000+00:00\"`\n  - Local time: `11:10`\n  - UTC time: `11:10`\n  - UTC offset: `0` (no daylight time saving, local time is equivalent to UTC)\n\nNote that the offset may be for a timezone different to your own, so you should alway convert to your own local time for display purposes (e.g. on receipts and terminals).\n\n### Callback timestamps\nTimestamps sent to Just Eat should be recorded as the current local time (including any changes needed to account for daylight saving) with an accompanying offset that shows the difference between the recorded local time and the current UTC time.\n\nIf it is not possible to record timestamps in local time, timestamps may be recorded in UTC time with a 00:00 offset.\n## Async Webhooks\nSome of the webhooks on the platform are configured as being 'async' webhooks. These are for long-running operations, and work as follows:\n  1. Your webhook is invoked with a `?callback={returnUrl}` query string parameter. The `returnUrl` is a unique URL that you will need to send the async response to.\n  2. Return an immediate `202 Accepted` response from the webhook endpoint, to indicate that you have received the request.\n  3. Perform the long-running operation. This can be deemed either a _success_; or a _failure_.\n  4. If the result is a _**success**_, return the following:\n  ```\n  POST {returnUrl} HTTP/1.1\n\n  {\n        \"status\": \"Success\",\n        \"message\": \"{successMessage}\",\n        \"data\": {}   // webhook-specific response object\n  }\n  ```\n  5. Otherwise, if the result is a _**failure**_, return the following:\n  ```\n  POST {returnUrl} HTTP/1.1\n\n  {\n        \"status\": \"Failure\",\n        \"message\": \"{failureMessage}\",\n        \"data\": {}   // webhook-specific response object\n  }\n  ```",
   "apiTitle": "Just Eat UK",

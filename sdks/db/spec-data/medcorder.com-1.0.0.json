@@ -3,6 +3,46 @@
   "openApiRaw": "https://static.medcorder.com/openapi.yaml",
   "homepage": "medcorder.com",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/doctors",
+      "method": "doctors",
+      "httpMethod": "get",
+      "description": "Fetch a list of nearby medical providers",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "The search text so far for autocomplete"
+        },
+        {
+          "name": "latitude",
+          "schema": "number",
+          "required": false,
+          "description": "The latitude of the client, around which to search"
+        },
+        {
+          "name": "longitude",
+          "schema": "number",
+          "required": false,
+          "description": "The longitude of the client, around which to search"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results desired"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.medcorder.com",
   "apiDescription": "Returns doctors near a client given a lat/lon and autocomplete text.",
   "apiTitle": "Medcorder Nearby Doctor API",

@@ -3,6 +3,2791 @@
   "openApiRaw": "https://exavault-website.cdn.prismic.io/exavault-website/2d2d871e-394d-433e-9305-f38b6656f279_evapi_2.0_public.yaml",
   "homepage": "exavault.com",
   "apiVersion": "2.0",
+  "methods": [
+    {
+      "url": "/account",
+      "method": "getAccount",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Get account settings",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required for the request"
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access Token for the request"
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "description": "Related records to include in the response. Valid option is **masterUser**"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account",
+      "method": "updateAccount",
+      "httpMethod": "patch",
+      "tag": "Account",
+      "description": "Update account settings",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "accountOnboarding",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "allowedIpRanges",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "brandingSettings",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "complexPasswords",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "customSignature",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "emailContent",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "emailSubject",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "externalDomain",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "quota",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "secureOnly",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "showReferralLinks",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/activity/session",
+      "method": "getSessionLogs",
+      "httpMethod": "get",
+      "tag": "Activity",
+      "description": "Get activity logs",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key"
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access Token"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "description": "Start date of the filter data range"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "description": "End date of the filter data range"
+        },
+        {
+          "name": "ipAddress",
+          "schema": "string",
+          "description": "Used to filter session logs by ip address."
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "description": "Username used for filtering a list"
+        },
+        {
+          "name": "path",
+          "schema": "string",
+          "description": "Path used to filter records"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": "Filter session logs for operation type (see table above for acceptable values)"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Offset of the records list"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Limit of the records list"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Comma separated list sort params"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Session activity list response"
+        }
+      ]
+    },
+    {
+      "url": "/activity/webhooks",
+      "method": "getWebhookLogs",
+      "httpMethod": "get",
+      "tag": "Activity",
+      "description": "Get webhook logs",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key"
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access Token"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "description": "Earliest date of entries to include in list"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "description": "Latest date of entries to include in list"
+        },
+        {
+          "name": "endpointUrl",
+          "schema": "string",
+          "description": "Webhook listener endpoint"
+        },
+        {
+          "name": "event",
+          "schema": "string",
+          "description": "Type of activity that triggered the webhook attempt"
+        },
+        {
+          "name": "statusCode",
+          "schema": "integer",
+          "description": "Response code from the webhook endpoint"
+        },
+        {
+          "name": "resourcePath",
+          "schema": "string",
+          "description": "Path of the resource that triggered the webhook attempt"
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "description": "Filter by triggering username."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Records to skip before returning results."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Limit of the records list"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Comma separated list sort params"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Session activity list response"
+        }
+      ]
+    },
+    {
+      "url": "/email-lists",
+      "method": "getEmailLists",
+      "httpMethod": "get",
+      "tag": "Email Lists",
+      "description": "Get all email groups",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "description": "Related record types to include in the response. Valid option is `ownerUser`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response object for list of email lists"
+        }
+      ]
+    },
+    {
+      "url": "/email-lists",
+      "method": "addEmailList",
+      "httpMethod": "post",
+      "tag": "Email Lists",
+      "description": "Create new email list",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "emails",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Response object for a single email list."
+        }
+      ]
+    },
+    {
+      "url": "/email-lists/{id}",
+      "method": "deleteEmailListById",
+      "httpMethod": "delete",
+      "tag": "Email Lists",
+      "description": "Delete an email group with given id",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the email list to delete"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/email-lists/{id}",
+      "method": "getEmailListById",
+      "httpMethod": "get",
+      "tag": "Email Lists",
+      "description": "Get individual email group",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the email list to return."
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "description": "Related record types to include in the response. Valid option is `ownerUser`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response object for a single email list."
+        }
+      ]
+    },
+    {
+      "url": "/email-lists/{id}",
+      "method": "updateEmailListById",
+      "httpMethod": "patch",
+      "tag": "Email Lists",
+      "description": "Update an email group",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the email list to update."
+        },
+        {
+          "name": "emails",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response object for a single email list."
+        }
+      ]
+    },
+    {
+      "url": "/email/referral",
+      "method": "sendReferralEmail",
+      "httpMethod": "post",
+      "tag": "Email",
+      "description": "Send referral email to a given address",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "emails",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/email/welcome/{username}",
+      "method": "sendWelcomeEmail",
+      "httpMethod": "post",
+      "tag": "Email",
+      "description": "Resend welcome email to specific user",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "A username to send the welcome email to."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/forms",
+      "method": "getFormByShareHash",
+      "httpMethod": "get",
+      "tag": "Form",
+      "description": "Get receive folder form settings",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access Token required to make the API call."
+        },
+        {
+          "name": "shareHash",
+          "schema": "string",
+          "required": true,
+          "description": "Share hash to retrieve the form for."
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "description": "Related record types to include in the response. Valid option is **share**"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response object for forms."
+        }
+      ]
+    },
+    {
+      "url": "/forms/entries/{id}",
+      "method": "deleteFormMessageById",
+      "httpMethod": "delete",
+      "tag": "Form",
+      "description": "Delete a receive form submission",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call. "
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the entry to be deleted data for"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/forms/entries/{id}",
+      "method": "getFormEntries",
+      "httpMethod": "get",
+      "tag": "Form",
+      "description": "Get form data entries for a receive",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call. "
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the form to retrieve entries for."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Limit of records to be returned (for pagination)"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Current offset of records (for pagination)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response object of the form data."
+        }
+      ]
+    },
+    {
+      "url": "/forms/{id}",
+      "method": "getFormById",
+      "httpMethod": "get",
+      "tag": "Form",
+      "description": "Get receive folder form by Id",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access Token required to make the API call."
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "description": "Enter \"**share**\" to get information about associated receive folder."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response object for forms."
+        }
+      ]
+    },
+    {
+      "url": "/forms/{id}",
+      "method": "updateFormById",
+      "httpMethod": "patch",
+      "tag": "Form",
+      "description": "Updates a form with given parameters",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "cssStyles",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "elements",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "formDescription",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "submitButtonText",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "successMessage",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response object for forms."
+        }
+      ]
+    },
+    {
+      "url": "/notifications",
+      "method": "listNotifications",
+      "httpMethod": "get",
+      "tag": "Notifications",
+      "description": "Get a list of notifications",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call. "
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": "Type of notification include in the list. Valid options are **file**, **folder**, **send_receipt**, **share_receipt**, **file_drop**\n\nIf this parameter is not used, only **file** and **folder** type notifications are included in the list."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Starting notification record in the result set. Can be used for pagination."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "What order the list of matches should be in. Valid sort fields are **resourcename**, **date**, **action** and **type**. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending.\n\nYou can chose multiple options for the sort by separating them with commmas, such as \"type,-date\" to sort by type, then most recent."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of notification records to return. Can be used for pagination."
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "description": "Related records to include in the response. Valid options are **ownerUser**, **resource**, **share**"
+        },
+        {
+          "name": "action",
+          "schema": "string",
+          "description": "The kind of action which triggers the notification. Valid choices are **connect** (only for delivery receipts), **download**, **upload**, **delete**, or **all** \n\n**Note** The **all** action matches notifications set to \"all\", not all notifications. For example, notifications set to trigger only on delete are not included if you filter for action=all"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response object for notifications collection."
+        }
+      ]
+    },
+    {
+      "url": "/notifications",
+      "method": "addNotification",
+      "httpMethod": "post",
+      "tag": "Notifications",
+      "description": "Create a new notification",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make API call. "
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "action",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "recipients",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "resource",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "sendEmail",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "usernames",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Response object for notifications."
+        }
+      ]
+    },
+    {
+      "url": "/notifications/{id}",
+      "method": "deleteNotificationById",
+      "httpMethod": "delete",
+      "tag": "Notifications",
+      "description": "Delete a notification",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the notification. Use [GET /notifications](#operation/listNotifications) if you need to lookup an ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/notifications/{id}",
+      "method": "getNotificationById",
+      "httpMethod": "get",
+      "tag": "Notifications",
+      "description": "Get notification details",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the notification. Use [GET /notifications](#operation/listNotifications) if you need to lookup an ID."
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "description": "Related record types to include in the response. You can include multiple types by separating them with commas. Valid options are **ownerUser**, **resource**, and **share**."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response object for notifications."
+        }
+      ]
+    },
+    {
+      "url": "/notifications/{id}",
+      "method": "updateNotificationById",
+      "httpMethod": "patch",
+      "tag": "Notifications",
+      "description": "Update a notification",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the notification. Use [GET /notifications](#operation/listNotifications) if you need to lookup an ID."
+        },
+        {
+          "name": "action",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "recipients",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "sendEmail",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "usernames",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response object for notifications."
+        }
+      ]
+    },
+    {
+      "url": "/recipients/shares/invites/{shareId}",
+      "method": "resendInvitationsForShare",
+      "httpMethod": "post",
+      "tag": "Recipients",
+      "description": "Resend invitations to share recipients",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "shareId",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the share to resend invites for."
+        },
+        {
+          "name": "recipientId",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources",
+      "method": "deleteResources",
+      "httpMethod": "delete",
+      "tag": "Resources",
+      "description": "Delete Resources",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key"
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access Token"
+        },
+        {
+          "name": "resources",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "207",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources",
+      "method": "getResourceInfo",
+      "httpMethod": "get",
+      "tag": "Resources",
+      "description": "Get Resource Properties",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "resource",
+          "schema": "string",
+          "required": true,
+          "description": "Resource identifier of the file or folder to get metadata for."
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "description": "Comma separated list of relationships to include in response. Possible values are **share**, **notifications**, **directFile**, **parentResource**, **ownerUser**, **ownerUser**."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response object for resources."
+        }
+      ]
+    },
+    {
+      "url": "/resources",
+      "method": "addFolder",
+      "httpMethod": "post",
+      "tag": "Resources",
+      "description": "Create a folder",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "parentResource",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "path",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Response object for resources."
+        }
+      ]
+    },
+    {
+      "url": "/resources/compress",
+      "method": "compressFiles",
+      "httpMethod": "post",
+      "tag": "Resources",
+      "description": "Compress resources",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "archiveName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parentResource",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "resources",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Response object for resources."
+        }
+      ]
+    },
+    {
+      "url": "/resources/copy",
+      "method": "copyResources",
+      "httpMethod": "post",
+      "tag": "Resources",
+      "description": "Copy resources",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "parentResource",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resources",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Resource which was successfully copied or moved."
+        },
+        {
+          "statusCode": "207",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/download",
+      "method": "download",
+      "httpMethod": "get",
+      "tag": "Resources",
+      "description": "Download a file",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "resources[]",
+          "schema": "array",
+          "required": true,
+          "description": "Path of file or folder to be downloaded, starting from the root. Can also be an array of paths."
+        },
+        {
+          "name": "downloadArchiveName",
+          "schema": "string",
+          "required": false,
+          "description": "When downloading multiple files, this will be used as the name of the zip file that is created."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/extract",
+      "method": "extractFiles",
+      "httpMethod": "post",
+      "tag": "Resources",
+      "description": "Extract resources",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "parentResource",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resource",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Response object for collection of resources."
+        }
+      ]
+    },
+    {
+      "url": "/resources/list",
+      "method": "listResources",
+      "httpMethod": "get",
+      "tag": "Resources",
+      "description": "Get a list of all resources",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "resource",
+          "schema": "string",
+          "required": true,
+          "description": "Resource identifier to get resources for. Can be path/id/name."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list. e.g, setting `offset=200` would trigger the server to skip the first 200 matching entries when returning the results."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of files to limit the result. If you have more files in your directory than this limit, make multiple calls, incrementing the `offset` parameter, above."
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Limit types of resources returned to \"file\" or \"dir\" only. This is ignored if you are using the `name` parameter to trigger a search."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": "Text to match resource names. This allows you to filter the results returned. For example, to locate only zip archive files, you can enter `*zip` and only resources ending in \"zip\" will be included in the list of results."
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "description": "Comma separated list of relationships to include in response. Possible values are **share**, **notifications**, **directFile**, **parentResource**, **ownerUser**, **ownerAccount**."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response object for collection of resources."
+        }
+      ]
+    },
+    {
+      "url": "/resources/list/{id}",
+      "method": "listResourceContents",
+      "httpMethod": "get",
+      "tag": "Resources",
+      "description": "List contents of folder",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call. "
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the parent resource to get a list of resources for."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Endpoint support multiple sort fields by allowing array of sort params. Sort fields should be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of files to limit the result. Cannot be set higher than 100. If you have more than one hundred files in your directory, make multiple calls, incrementing the `offset parameter, above."
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Limit types of resources returned to \"file\" or \"dir\" only."
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "description": "Comma separated list of relationships to include in response. Possible values are **share**, **notifications**, **directFile**, **parentResource**, **ownerUser**, **ownerUser**."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response object for collection of resources."
+        }
+      ]
+    },
+    {
+      "url": "/resources/move",
+      "method": "moveResources",
+      "httpMethod": "post",
+      "tag": "Resources",
+      "description": "Move resources",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "parentResource",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resources",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Resource which was successfully copied or moved."
+        },
+        {
+          "statusCode": "207",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/preview",
+      "method": "getPreviewImage",
+      "httpMethod": "get",
+      "tag": "Resources",
+      "description": "Preview a file",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key"
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access Token"
+        },
+        {
+          "name": "resource",
+          "schema": "string",
+          "required": true,
+          "description": "Resource identifier for the image file."
+        },
+        {
+          "name": "size",
+          "schema": "string",
+          "required": true,
+          "description": "The size of the image."
+        },
+        {
+          "name": "width",
+          "schema": "integer",
+          "required": false,
+          "description": "Overrides sizes. Sets to a specific width."
+        },
+        {
+          "name": "height",
+          "schema": "integer",
+          "required": false,
+          "description": "Overrides sizes. Sets to a specific height."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number to extract from a multi-page document (0 is the first page). Vaild for **.pdf** or **.doc** files."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response object for preview file"
+        }
+      ]
+    },
+    {
+      "url": "/resources/upload",
+      "method": "uploadFile",
+      "httpMethod": "post",
+      "tag": "Resources",
+      "description": "Upload a file",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "offsetBytes",
+          "schema": "integer",
+          "required": false,
+          "description": "Allows a file upload to resume at a certain number of bytes."
+        },
+        {
+          "name": "path",
+          "schema": "string",
+          "required": true,
+          "description": "Destination path for the file being uploaded, including the file name."
+        },
+        {
+          "name": "fileSize",
+          "schema": "integer",
+          "required": true,
+          "description": "File size, in bits, of the file being uploaded."
+        },
+        {
+          "name": "resume",
+          "schema": "boolean",
+          "description": "True if upload resume is supported, false if it isn't.\n"
+        },
+        {
+          "name": "allowOverwrite",
+          "schema": "boolean",
+          "description": "True if a file with the same name is found in the designated path, should be overwritten. False if different file names should be generated. "
+        },
+        {
+          "name": "file",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Response object for resources."
+        }
+      ]
+    },
+    {
+      "url": "/resources/{id}",
+      "method": "deleteResourceById",
+      "httpMethod": "delete",
+      "tag": "Resources",
+      "description": "Delete a Resource",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/{id}",
+      "method": "getResourceInfoById",
+      "httpMethod": "get",
+      "tag": "Resources",
+      "description": "Get resource metadata",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "description": "Comma separated list of relationships to include in response. Possible values are **share**, **notifications**, **directFile**, **parentResource**, **ownerUser**, **ownerAccount**."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response object for resources."
+        }
+      ]
+    },
+    {
+      "url": "/resources/{id}",
+      "method": "updateResourceById",
+      "httpMethod": "patch",
+      "tag": "Resources",
+      "description": "Rename a resource.",
+      "parameters": [
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API key required to make the API call."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response object for resources."
+        }
+      ]
+    },
+    {
+      "url": "/shares",
+      "method": "listShares",
+      "httpMethod": "get",
+      "tag": "Shares",
+      "description": "Get a list of shares",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Current offset of records (for pagination)"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Limit of records to be returned (for pagination)"
+        },
+        {
+          "name": "scope",
+          "schema": "string",
+          "description": "Set of shares to return. (**all**=all of them, **active**=shares that are currently active, **curentUser**=shares created by you)"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "What order the list of matches should be in."
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": "Limit the list of matches to only certain types of shares."
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "description": "Comma separated list of relationships to include in response. Possible values are **owner**, **resources**, **notifications**, **activity**."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": "When provided, only shares whose names include this value will be in the list. Supports wildcards, such as **send\\*** to return everything starting with \"send\".\n\nUse this parameter if you are searching for shares or receives for a specific folder name. For example **/Clients/ACME/To Be Processed**."
+        },
+        {
+          "name": "recipient",
+          "schema": "string",
+          "description": "Filter the results to include only shares that invited a certain email address. Supports wildcard matching so that **\\*@example.com** will give back entries shared with addresses ending in \"@example.com\". "
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "description": "When provided, only shares with a message that contains the text will be included in the list of matches. Both the subject and the body of all messages will be checked for matches. This will always be a wildcard match, so that searching for **taxes** will return any shares with a message that contains the word \"taxes\"."
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "description": "When provided, only shares created by the user with that `username` will be included in the list. Does not support wildcard searching."
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "description": "Searches the share name, username, recipients, share messages fields for the provided value. Supports wildcard searches."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/shares",
+      "method": "addShare",
+      "httpMethod": "post",
+      "tag": "Shares",
+      "description": "Creates a share",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "accessMode",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "embed",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "expiration",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "fileDropCreateFolders",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "hasNotification",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isPublic",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "messageBody",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "messageSubject",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "notificationEmails",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "recipients",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "requireEmail",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "resources",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sendingLocalFiles",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Response object for shares."
+        }
+      ]
+    },
+    {
+      "url": "/shares/complete-send/{id}",
+      "method": "completeDirectSend",
+      "httpMethod": "post",
+      "tag": "Shares",
+      "description": "Complete send files",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key"
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access Token"
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the share to trigger invitations for."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response object for shares."
+        }
+      ]
+    },
+    {
+      "url": "/shares/{id}",
+      "method": "deleteShareById",
+      "httpMethod": "delete",
+      "tag": "Shares",
+      "description": "Deactivate a share",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/shares/{id}",
+      "method": "getShareById",
+      "httpMethod": "get",
+      "tag": "Shares",
+      "description": "Get a share",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key"
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access Token"
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "description": "Comma separated list of relationships to include in response. Possible values are **owner**, **resources**, **notifications**, **activity**."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response object for shares."
+        }
+      ]
+    },
+    {
+      "url": "/shares/{id}",
+      "method": "updateShareById",
+      "httpMethod": "patch",
+      "tag": "Shares",
+      "description": "Update a share",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key"
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access Token"
+        },
+        {
+          "name": "accessMode",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "embed",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "expiration",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "fileDropCreateFolders",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "hasNotification",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "isPublic",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "messageBody",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "messageSubject",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "notificationEmails",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "recipients",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "requireEmail",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "resources",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response object for shares."
+        }
+      ]
+    },
+    {
+      "url": "/ssh-keys",
+      "method": "getSshKeysList",
+      "httpMethod": "get",
+      "tag": "SSH Keys",
+      "description": "Get metadata for a list of SSH Keys",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "userId",
+          "schema": "string",
+          "description": " Only return results for the given user ID. This is not the username, but the numeric ID of the user."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": " Limits the results by the given number. Cannot be set higher than 100."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": " Determines which item to start on for pagination. Use zero (0) to start at the beginning of the list."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ssh-keys",
+      "method": "addSshKey",
+      "httpMethod": "post",
+      "tag": "SSH Keys",
+      "description": "Create a new SSH Key",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "publicKey",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ssh-keys/{id}",
+      "method": "deleteSshKey",
+      "httpMethod": "delete",
+      "tag": "SSH Keys",
+      "description": "Delete an SSH Key",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/ssh-keys/{id}",
+      "method": "getSshKey",
+      "httpMethod": "get",
+      "tag": "SSH Keys",
+      "description": "Get metadata for an SSH Key",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users",
+      "method": "listUsers",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Get a list of users",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": "The username of the user you are looking for. Only entries with the same username as this will be in the list of results. Does not support wildcard searches."
+        },
+        {
+          "name": "homeResource",
+          "schema": "string",
+          "description": "Resource identifier for user's home directory. Does not support wildcard searches."
+        },
+        {
+          "name": "nickname",
+          "schema": "string",
+          "description": "Nickname to search for. Ignored if `username` is provided. Supports wildcard searches."
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": "Email to search for. Ignored if `username` is provided. Supports wildcard searches"
+        },
+        {
+          "name": "role",
+          "schema": "string",
+          "description": "Types of users to include the list. Ignored if `username` is provided. Valid options are **admin**, **master** and **user**"
+        },
+        {
+          "name": "status",
+          "schema": "integer",
+          "description": "Whether a user is locked. Ignored if `username` is provided. **0** means user is locked, **1** means user is not locked. "
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "description": "Searches the nickname, email, role and homeDir fields for the provided value. Ignored if `username` is provided. Supports wildcard searches."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Starting user record in the result set. Can be used for pagination."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "Sort order or matching users. You can sort by multiple columns by separating sort options with a comma; the sort will be applied in the order specified. The sort order for each sort field is ascending unless it is prefixed with a minus (“-“), in which case it will be descending.\n\nValid sort fields are: **nickname**, **username**, **email**, **homeDir** and **modified**"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of users to return. Can be used for pagination."
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "description": "Comma separated list of relationships to include in response. Valid options are **homeResource** and **ownerAccount**."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users",
+      "method": "addUser",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Create a user",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API key required to make the API call"
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "expiration",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "homeResource",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "locked",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "nickname",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "onboarding",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "permissions",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "role",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timeZone",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "welcomeEmail",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Response object for users."
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}",
+      "method": "deleteUser",
+      "httpMethod": "delete",
+      "tag": "Users",
+      "description": "Delete a user",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}",
+      "method": "getUserById",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Get info for a user",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API Key"
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "description": "Comma-separated list of relationships to include in response. Possible values include **homeResource** and **ownerAccount**."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response object for users."
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}",
+      "method": "updateUser",
+      "httpMethod": "patch",
+      "tag": "Users",
+      "description": "Update a user",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "expiration",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "homeResource",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "locked",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "nickname",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "onboarding",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "permissions",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "role",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "timeZone",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response object for users."
+        }
+      ]
+    },
+    {
+      "url": "/webhooks",
+      "method": "getWehooksList",
+      "httpMethod": "get",
+      "tag": "Webhooks",
+      "description": "Get Webhooks List",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "description": "List of related record types to include. Valid options are `owningAccount` and `resource`"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Records to skip before returning results."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Limit of the records list"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/webhooks",
+      "method": "addWebhook",
+      "httpMethod": "post",
+      "tag": "Webhooks",
+      "description": "Add A New Webhook",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "endpointUrl",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resource",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "responseVersion",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "triggers",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/webhooks/regenerate-token/{id}",
+      "method": "regenerateWebhookToken",
+      "httpMethod": "post",
+      "tag": "Webhooks",
+      "description": "Regenerate security token",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/webhooks/resend/{activityId}",
+      "method": "resendWebhookActivityEntry",
+      "httpMethod": "post",
+      "tag": "Webhooks",
+      "description": "Resend a webhook message",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/webhooks/{id}",
+      "method": "deleteWebhook",
+      "httpMethod": "delete",
+      "tag": "Webhooks",
+      "description": "Delete a webhook",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/webhooks/{id}",
+      "method": "getWebhookById",
+      "httpMethod": "get",
+      "tag": "Webhooks",
+      "description": "Get info for a webhook",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "description": " Include metadata for related items; `ownerAccount` and/or `resource` "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/webhooks/{id}",
+      "method": "updateWebhook",
+      "httpMethod": "patch",
+      "tag": "Webhooks",
+      "description": "Update a webhook",
+      "parameters": [
+        {
+          "name": "ev-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "API key required to make the API call."
+        },
+        {
+          "name": "ev-access-token",
+          "schema": "string",
+          "required": true,
+          "description": "Access token required to make the API call."
+        },
+        {
+          "name": "endpointUrl",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "resource",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "responseVersion",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "triggers",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://accountname.exavault.com/api/v2",
   "apiDescription": "ExaVaults API allows you to incorporate ExaVaults suite of file transfer and user management tools into your own application.\\nExaVault supports both POST (recommended when requesting large data sets) and GET operations, and requires an API key in order to use.",
   "apiTitle": "ExaVault",

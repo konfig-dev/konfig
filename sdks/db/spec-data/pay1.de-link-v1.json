@@ -4,6 +4,392 @@
   "homepage": "pay1.de",
   "serviceName": "link",
   "apiVersion": "v1",
+  "methods": [
+    {
+      "url": "/v1/payment-links",
+      "method": "getPaymentLinks",
+      "httpMethod": "get",
+      "tag": "Link Management",
+      "description": "List all payment links.",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "merchantId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "portalId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "mode",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/payment-links",
+      "method": "createPaymentLink",
+      "httpMethod": "post",
+      "tag": "Link Management",
+      "description": "Create a payment link.",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "active",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "backgroundImage",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "billing",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "currency",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "errorUrl",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "expiration",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "intent",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "invoiceInformation",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "logo",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "merchantId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "mode",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "notifyUrl",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "paymentMethods",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "portalId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "reference",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "shipping",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "shoppingCart",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "successUrl",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/payment-links/{linkId}",
+      "method": "getPaymentLink",
+      "httpMethod": "get",
+      "tag": "Link Management",
+      "description": "Get payment link by id.",
+      "parameters": [
+        {
+          "name": "linkId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/payment-links/{linkId}",
+      "method": "updatePaymentLink",
+      "httpMethod": "put",
+      "tag": "Link Management",
+      "description": "Update a payment link.",
+      "parameters": [
+        {
+          "name": "linkId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "active",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "backgroundImage",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "billing",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "currency",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "errorUrl",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "expiration",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "intent",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "invoiceInformation",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "logo",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "merchantId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "mode",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "notifyUrl",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "paymentMethods",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "portalId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "reference",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "shipping",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "shoppingCart",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "successUrl",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://onelink.pay1.de/api",
   "apiTitle": "PAYONE Link API",
   "endpoints": 2,

@@ -3,6 +3,366 @@
   "openApiRaw": "https://api.cloudrf.com/swagger-ui/Cloud-RF_API2.0.yaml",
   "homepage": "cloudrf.com",
   "apiVersion": "2.0.0",
+  "methods": [
+    {
+      "url": "/archive/delete",
+      "method": "delete",
+      "httpMethod": "get",
+      "tag": "Manage",
+      "description": "Delete a calculation from the database.",
+      "parameters": [
+        {
+          "name": "cid",
+          "schema": "integer",
+          "required": true,
+          "description": "Unique calculation ID number"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/archive/delete/network",
+      "method": "deleteNetwork",
+      "httpMethod": "get",
+      "tag": "Manage",
+      "description": "Delete an entire network",
+      "parameters": [
+        {
+          "name": "nid",
+          "schema": "string",
+          "required": true,
+          "description": "Network name"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/archive/export",
+      "method": "export",
+      "httpMethod": "get",
+      "tag": "Manage",
+      "description": "Export a calculation in a GIS file format",
+      "parameters": [
+        {
+          "name": "file",
+          "schema": "string",
+          "required": true,
+          "description": "Calculation file name"
+        },
+        {
+          "name": "fmt",
+          "schema": "string",
+          "required": true,
+          "description": "Raster/Vector file format: KML, KMZ, SHP, GeoTIFF"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/archive/list",
+      "method": "list",
+      "httpMethod": "get",
+      "tag": "Manage",
+      "description": "List calculations from your archive",
+      "parameters": [
+        {
+          "name": "n",
+          "schema": "number",
+          "required": false,
+          "description": "North bounding box"
+        },
+        {
+          "name": "e",
+          "schema": "number",
+          "required": false,
+          "description": "East bounding box"
+        },
+        {
+          "name": "s",
+          "schema": "number",
+          "required": false,
+          "description": "South bounding box"
+        },
+        {
+          "name": "w",
+          "schema": "number",
+          "required": false,
+          "description": "West bounding box"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/area",
+      "method": "area",
+      "httpMethod": "post",
+      "tag": "Create",
+      "description": "Create a point-to-multipoint heatmap",
+      "parameters": [
+        {
+          "name": "antenna",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "environment",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "model",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "network",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "output",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "receiver",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "site",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "transmitter",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/clutter/add",
+      "method": "addClutter",
+      "httpMethod": "post",
+      "tag": "Manage",
+      "description": "Upload clutter data as GeoJSON",
+      "parameters": [
+        {
+          "name": "features",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/interference",
+      "method": "interference",
+      "httpMethod": "get",
+      "tag": "Analyse",
+      "description": "Find the best server for overlapping coverage",
+      "parameters": [
+        {
+          "name": "network",
+          "schema": "string",
+          "required": true,
+          "description": "Network name eg. Overlapping broadcast stations"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "Interference layer name eg. QRM_map"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/mesh",
+      "method": "mesh",
+      "httpMethod": "get",
+      "tag": "Analyse",
+      "description": "Merge sites into a super layer.",
+      "parameters": [
+        {
+          "name": "network",
+          "schema": "string",
+          "required": true,
+          "description": "Network name eg. 100_BLUE_repeaters_nationwide"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "Super layer name eg. National_map"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/network",
+      "method": "network",
+      "httpMethod": "get",
+      "tag": "Analyse",
+      "description": "Find the best server for somewhere",
+      "parameters": [
+        {
+          "name": "net",
+          "schema": "string",
+          "required": true,
+          "description": "Network name"
+        },
+        {
+          "name": "nam",
+          "schema": "string",
+          "required": true,
+          "description": "Super layer name"
+        },
+        {
+          "name": "lat",
+          "schema": "number",
+          "required": true,
+          "description": "Latitude in decimal degrees"
+        },
+        {
+          "name": "lon",
+          "schema": "number",
+          "required": true,
+          "description": "Longitude in decimal degrees"
+        },
+        {
+          "name": "alt",
+          "schema": "integer",
+          "required": true,
+          "description": "Height above ground level in metres"
+        },
+        {
+          "name": "rxg",
+          "schema": "number",
+          "required": false,
+          "description": "Receiver gain in dBi"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/path",
+      "method": "path",
+      "httpMethod": "post",
+      "tag": "Create",
+      "description": "Point-to-point path profile analysis (Tx to Rx)",
+      "parameters": [
+        {
+          "name": "antenna",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "environment",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "model",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "network",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "output",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "receiver",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "site",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "transmitter",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/points",
+      "method": "points",
+      "httpMethod": "post",
+      "tag": "Create",
+      "description": "Point-to-multipoint path profile analysis (Many Tx, one Rx)",
+      "parameters": [
+        {
+          "name": "antenna",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "environment",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "model",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "network",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "output",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "points",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "receiver",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "site",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "transmitter",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://api.cloudrf.com",
   "apiDescription": "Use this JSON API to build and test radio links for any radio, anywhere. Authenticate with your API2.0 key in the request header as key",
   "apiTitle": "Cloud-RF API",

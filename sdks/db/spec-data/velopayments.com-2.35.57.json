@@ -3,6 +3,4814 @@
   "openApiRaw": "https://raw.githubusercontent.com/velopaymentsapi/VeloOpenApi/master/spec/openapi.yaml",
   "homepage": "velopayments.com",
   "apiVersion": "2.35.57",
+  "methods": [
+    {
+      "url": "/v1/authenticate",
+      "method": "veloAuth",
+      "httpMethod": "post",
+      "tag": "Login",
+      "description": "Authentication endpoint",
+      "parameters": [
+        {
+          "name": "grant_type",
+          "schema": "string",
+          "description": "OAuth grant type. Should use 'client_credentials'"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/deltas/fundings",
+      "method": "listFundingAuditDeltas",
+      "httpMethod": "get",
+      "tag": "Funding",
+      "description": "Get Funding Audit Delta",
+      "parameters": [
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "updatedSince",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Default is 1."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to return in a page"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/deltas/payments",
+      "method": "listPaymentChanges",
+      "httpMethod": "get",
+      "tag": "Payment Audit Service (Deprecated)",
+      "description": "V1 List Payment Changes",
+      "parameters": [
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": true,
+          "description": "The Payor ID to find associated Payments"
+        },
+        {
+          "name": "updatedSince",
+          "schema": "string",
+          "required": true,
+          "description": "The updatedSince filter in the format YYYY-MM-DDThh:mm:ss+hh:mm"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Default is 1."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to return in a page"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "List Payment Changes Response Object"
+        }
+      ]
+    },
+    {
+      "url": "/v1/fundings/{fundingId}",
+      "method": "getFundingByIdV1",
+      "httpMethod": "get",
+      "tag": "Funding",
+      "description": "Get Funding",
+      "parameters": [
+        {
+          "name": "fundingId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/logout",
+      "method": "logout",
+      "httpMethod": "post",
+      "tag": "Login",
+      "description": "Logout",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/password/reset",
+      "method": "resetPassword",
+      "httpMethod": "post",
+      "tag": "Login",
+      "description": "Reset password",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/paymentChannelRules",
+      "method": "listPaymentChannelRulesV1",
+      "httpMethod": "get",
+      "tag": "Countries",
+      "description": "List Payment Channel Country Rules",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/paymentaudit/fundings",
+      "method": "getFundingsV1",
+      "httpMethod": "get",
+      "tag": "Payment Audit Service (Deprecated)",
+      "description": "V1 Get Fundings for Payor",
+      "parameters": [
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": true,
+          "description": "The account owner Payor ID"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Default is 1."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to return in a page"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "List of sort fields. Example: ```?sort=destinationCurrency:asc,destinationAmount:asc```\nDefault is no sort. The supported sort fields are: dateTime and amount.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "List Users Response Object"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/paymentaudit/payoutStatistics",
+      "method": "getPayoutStatsV1",
+      "httpMethod": "get",
+      "tag": "Payment Audit Service (Deprecated)",
+      "description": "V1 Get Payout Statistics",
+      "parameters": [
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": false,
+          "description": "The account owner Payor ID. Required for external users."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/payments/{paymentId}/withdraw",
+      "method": "withdrawPayment",
+      "httpMethod": "post",
+      "tag": "Payouts",
+      "description": "Withdraw a Payment",
+      "parameters": [
+        {
+          "name": "paymentId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the Payment"
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/payorLinks",
+      "method": "payorLinksV1",
+      "httpMethod": "get",
+      "tag": "Payor Hierarchy",
+      "description": "List Payor Links",
+      "parameters": [
+        {
+          "name": "descendantsOfPayor",
+          "schema": "string",
+          "required": false,
+          "description": "The Payor ID from which to start the query to show all descendants"
+        },
+        {
+          "name": "parentOfPayor",
+          "schema": "string",
+          "required": false,
+          "description": "Query for the parent payor details for this payor id"
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "<p>List of additional Payor fields to include in the response for each Payor</p>\n<p>The values of payorId and payorName are always included for each Payor by default</p>\n<p>You can add fields to the response for each payor by including them in the fields parameter separated by commas</p>\n<p>The supported fields are any combination of: primaryContactEmail,kycState</p>\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "List Payor Links Response Object"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/payorLinks",
+      "method": "createPayorLinks",
+      "httpMethod": "post",
+      "tag": "Payors Private",
+      "description": "Create a Payor Link",
+      "parameters": [
+        {
+          "name": "fromPayorId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "linkType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "toPayorId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/payors/{payorId}",
+      "method": "getPayorByIdV1",
+      "httpMethod": "get",
+      "tag": "Payors",
+      "description": "Get Payor",
+      "parameters": [
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": true,
+          "description": "The Payor Id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": "Error response returned by all error conditions in Velo Services"
+        }
+      ]
+    },
+    {
+      "url": "/v1/payors/{payorId}/applications",
+      "method": "payorCreateApplicationV1",
+      "httpMethod": "post",
+      "tag": "Payors",
+      "description": "Create Application",
+      "parameters": [
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": true,
+          "description": "The Payor Id"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/payors/{payorId}/applications/{applicationId}/keys",
+      "method": "payorCreateApiKeyV1",
+      "httpMethod": "post",
+      "tag": "Payors",
+      "description": "Create API Key",
+      "parameters": [
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": true,
+          "description": "The Payor Id"
+        },
+        {
+          "name": "applicationId",
+          "schema": "string",
+          "required": true,
+          "description": "Application ID"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "roles",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/payors/{payorId}/branding",
+      "method": "payorGetBranding",
+      "httpMethod": "get",
+      "tag": "Payors",
+      "description": "Get Branding",
+      "parameters": [
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": true,
+          "description": "The Payor Id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": "Error response returned by all error conditions in Velo Services"
+        }
+      ]
+    },
+    {
+      "url": "/v1/payors/{payorId}/branding/logos",
+      "method": "payorAddPayorLogoV1",
+      "httpMethod": "post",
+      "tag": "Payors",
+      "description": "Add Logo",
+      "parameters": [
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": true,
+          "description": "The Payor Id"
+        },
+        {
+          "name": "logo",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/payors/{payorId}/reminderEmailsUpdate",
+      "method": "payorEmailOptOut",
+      "httpMethod": "post",
+      "tag": "Payors",
+      "description": "Reminder Email Opt-Out",
+      "parameters": [
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": true,
+          "description": "The Payor Id"
+        },
+        {
+          "name": "reminderEmailsOptOut",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": "Error response returned by all error conditions in Velo Services"
+        }
+      ]
+    },
+    {
+      "url": "/v1/sourceAccounts/{sourceAccountId}/notifications",
+      "method": "setNotificationsRequest",
+      "httpMethod": "post",
+      "tag": "Source Accounts",
+      "description": "Set notifications",
+      "parameters": [
+        {
+          "name": "sourceAccountId",
+          "schema": "string",
+          "required": true,
+          "description": "Source account id"
+        },
+        {
+          "name": "minimumBalance",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/supportedCountries",
+      "method": "listSupportedCountriesV1",
+      "httpMethod": "get",
+      "tag": "Countries",
+      "description": "List Supported Countries",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/validate",
+      "method": "validateAccessToken",
+      "httpMethod": "post",
+      "tag": "Login",
+      "description": "validate",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": false,
+          "description": "Bearer token authorization leg of validate"
+        },
+        {
+          "name": "otp",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/webhooks",
+      "method": "listWebhooksV1",
+      "httpMethod": "get",
+      "tag": "Webhooks",
+      "description": "List the details about the webhooks for the given payor.",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Default is 1."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to return in a page"
+        },
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": true,
+          "description": "The Payor ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "List Webhooks Object"
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/webhooks",
+      "method": "createWebhookV1",
+      "httpMethod": "post",
+      "tag": "Webhooks",
+      "description": "Create Webhook",
+      "parameters": [
+        {
+          "name": "authorizationHeader",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "categories",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "webhookUrl",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/webhooks/{webhookId}",
+      "method": "getWebhookV1",
+      "httpMethod": "get",
+      "tag": "Webhooks",
+      "description": "Get details about the given webhook.",
+      "parameters": [
+        {
+          "name": "webhookId",
+          "schema": "string",
+          "required": true,
+          "description": "Webhook id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/webhooks/{webhookId}",
+      "method": "updateWebhookV1",
+      "httpMethod": "post",
+      "tag": "Webhooks",
+      "description": "Update Webhook",
+      "parameters": [
+        {
+          "name": "webhookId",
+          "schema": "string",
+          "required": true,
+          "description": "Webhook id"
+        },
+        {
+          "name": "authorizationHeader",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "categories",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "webhookUrl",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/webhooks/{webhookId}/ping",
+      "method": "pingWebhookV1",
+      "httpMethod": "post",
+      "tag": "Webhooks",
+      "description": "",
+      "parameters": [
+        {
+          "name": "webhookId",
+          "schema": "string",
+          "required": true,
+          "description": "Webhook id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/currencies",
+      "method": "listSupportedCurrenciesV2",
+      "httpMethod": "get",
+      "tag": "Currencies",
+      "description": "List Supported Currencies",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/fundingAccounts",
+      "method": "getFundingAccountsV2",
+      "httpMethod": "get",
+      "tag": "Funding",
+      "description": "Get Funding Accounts",
+      "parameters": [
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "The descriptive funding account name"
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "required": false,
+          "description": "The 2 letter ISO 3166-1 country code (upper case)"
+        },
+        {
+          "name": "currency",
+          "schema": "string",
+          "required": false,
+          "description": "The ISO 4217 currency code"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "The type of funding account."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Default is 1."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to return in a page"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "List of sort fields (e.g. ?sort=accountName:asc,name:asc) Default is accountName:asc The supported sort fields are - accountName, name."
+        },
+        {
+          "name": "sensitive",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "List Funding Accounts Response Object"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/fundingAccounts",
+      "method": "createFundingAccountV2",
+      "httpMethod": "post",
+      "tag": "Funding Manager Private",
+      "description": "Create Funding Account",
+      "parameters": [
+        {
+          "name": "accountName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "accountNumber",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "currency",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "routingNumber",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/fundingAccounts/{fundingAccountId}",
+      "method": "getFundingAccountV2",
+      "httpMethod": "get",
+      "tag": "Funding",
+      "description": "Get Funding Account",
+      "parameters": [
+        {
+          "name": "fundingAccountId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "sensitive",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/payors/{payorId}",
+      "method": "getPayorByIdV2",
+      "httpMethod": "get",
+      "tag": "Payors",
+      "description": "Get Payor",
+      "parameters": [
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": true,
+          "description": "The Payor Id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": "Error response returned by all error conditions in Velo Services"
+        }
+      ]
+    },
+    {
+      "url": "/v2/sourceAccounts",
+      "method": "getSourceAccountsV2",
+      "httpMethod": "get",
+      "tag": "Source Accounts",
+      "description": "Get list of source accounts",
+      "parameters": [
+        {
+          "name": "physicalAccountName",
+          "schema": "string",
+          "required": false,
+          "description": "Physical Account Name"
+        },
+        {
+          "name": "physicalAccountId",
+          "schema": "string",
+          "required": false,
+          "description": "The physical account ID"
+        },
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": false,
+          "description": "The account owner Payor ID"
+        },
+        {
+          "name": "fundingAccountId",
+          "schema": "string",
+          "required": false,
+          "description": "The funding account ID"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Default is 1."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to return in a page"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "List of sort fields e.g. ?sort=name:asc\nDefault is name:asc\nThe supported sort fields are - fundingRef, name, balance\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "List Source Accounts Response Object"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/sourceAccounts/{sourceAccountId}",
+      "method": "getSourceAccountV2",
+      "httpMethod": "get",
+      "tag": "Source Accounts",
+      "description": "Get Source Account",
+      "parameters": [
+        {
+          "name": "sourceAccountId",
+          "schema": "string",
+          "required": true,
+          "description": "Source account id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/sourceAccounts/{sourceAccountId}/fundingRequest",
+      "method": "createFundingRequestV2",
+      "httpMethod": "post",
+      "tag": "Funding",
+      "description": "Create Funding Request",
+      "parameters": [
+        {
+          "name": "sourceAccountId",
+          "schema": "string",
+          "required": true,
+          "description": "Source account id"
+        },
+        {
+          "name": "amount",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/sourceAccounts/{sourceAccountId}/transfers",
+      "method": "transferFundsV2",
+      "httpMethod": "post",
+      "tag": "Source Accounts",
+      "description": "Transfer Funds between source accounts",
+      "parameters": [
+        {
+          "name": "sourceAccountId",
+          "schema": "string",
+          "required": true,
+          "description": "The 'from' source account id, which will be debited"
+        },
+        {
+          "name": "amount",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "currency",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "toSourceAccountId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/supportedCountries",
+      "method": "listSupportedCountriesV2",
+      "httpMethod": "get",
+      "tag": "Countries",
+      "description": "List Supported Countries",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/users",
+      "method": "listUsers",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "List Users",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "The Type of the User."
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "The status of the User."
+        },
+        {
+          "name": "entityId",
+          "schema": "string",
+          "required": false,
+          "description": "The entityId of the User."
+        },
+        {
+          "name": "payeeType",
+          "schema": "string",
+          "required": false,
+          "description": "The Type of the Payee entity. Either COMPANY or INDIVIDUAL."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Default is 1."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to return in a page"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "List of sort fields (e.g. ?sort=email:asc,lastName:asc)\nDefault is email:asc 'name'\nThe supported sort fields are - email, lastNmae.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "List Users Response Object"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/users/invite",
+      "method": "inviteUser",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Invite a User",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "entityId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "mfaType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "primaryContactNumber",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "roles",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "secondaryContactNumber",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "smsNumber",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "userType",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "verificationCode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "412",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/users/registration/sms",
+      "method": "registerSms",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Register SMS Number",
+      "parameters": [
+        {
+          "name": "smsNumber",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/users/self",
+      "method": "getSelf",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Get Self",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/users/self/mfa/unregister",
+      "method": "unregisterMfaForSelf",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Unregister MFA for Self",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": false,
+          "description": "Bearer token authorization leg of validate"
+        },
+        {
+          "name": "mfaType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/users/self/password",
+      "method": "updatePasswordSelf",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Update Password for self",
+      "parameters": [
+        {
+          "name": "newPassword",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "oldPassword",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/users/self/password/validate",
+      "method": "validatePasswordSelf",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Validate the proposed password",
+      "parameters": [
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/users/self/userDetailsUpdate",
+      "method": "userDetailsUpdateForSelf",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Update User Details for self",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "primaryContactNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "secondaryContactNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "smsNumber",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/users/{userId}",
+      "method": "deleteUserByIdV2",
+      "httpMethod": "delete",
+      "tag": "Users",
+      "description": "Delete a User",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": "The UUID of the User."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/users/{userId}",
+      "method": "getUserByIdV2",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Get User",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": "The UUID of the User."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/users/{userId}/disable",
+      "method": "disableUserV2",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Disable a User",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": "The UUID of the User."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/users/{userId}/enable",
+      "method": "enableUserV2",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Enable a User",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": "The UUID of the User."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/users/{userId}/mfa/unregister",
+      "method": "unregisterMfa",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Unregister MFA for the user",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": "The UUID of the User."
+        },
+        {
+          "name": "mfaType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "verificationCode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/users/{userId}/roleUpdate",
+      "method": "roleUpdate",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Update User Role",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": "The UUID of the User."
+        },
+        {
+          "name": "roles",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "verificationCode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/users/{userId}/tokens",
+      "method": "resendToken",
+      "httpMethod": "post",
+      "tag": "Tokens",
+      "description": "Resend a token",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": "The UUID of the User."
+        },
+        {
+          "name": "tokenType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "verificationCode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/users/{userId}/unlock",
+      "method": "unlockUserV2",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Unlock a User",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": "The UUID of the User."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/users/{userId}/userDetailsUpdate",
+      "method": "userDetailsUpdate",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Update User Details",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": "The UUID of the User."
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "mfaType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "primaryContactNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "secondaryContactNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "smsNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "verificationCode",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/payees",
+      "method": "listPayeesV3",
+      "httpMethod": "get",
+      "tag": "Payees",
+      "description": "List Payees",
+      "parameters": [
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": true,
+          "description": "The account owner Payor ID"
+        },
+        {
+          "name": "watchlistStatus",
+          "schema": "string",
+          "required": false,
+          "description": "The watchlistStatus of the payees."
+        },
+        {
+          "name": "disabled",
+          "schema": "boolean",
+          "required": false,
+          "description": "Payee disabled"
+        },
+        {
+          "name": "onboardedStatus",
+          "schema": "string",
+          "required": false,
+          "description": "The onboarded status of the payees."
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": false,
+          "description": "Email address"
+        },
+        {
+          "name": "displayName",
+          "schema": "string",
+          "required": false,
+          "description": "The display name of the payees."
+        },
+        {
+          "name": "remoteId",
+          "schema": "string",
+          "required": false,
+          "description": "The remote id of the payees."
+        },
+        {
+          "name": "payeeType",
+          "schema": "string",
+          "required": false,
+          "description": "The onboarded status of the payees."
+        },
+        {
+          "name": "payeeCountry",
+          "schema": "string",
+          "required": false,
+          "description": "The country of the payee - 2 letter ISO 3166-1 country code (upper case)"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Default is 1."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "Page size. Default is 25. Max allowable is 100."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "List of sort fields (e.g. ?sort=onboardedStatus:asc,name:asc) Default is name:asc 'name' is treated as company name for companies - last name + ',' + firstName for individuals The supported sort fields are - payeeId, displayName, payoutStatus, onboardedStatus.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "List Payees Response Object"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/payees",
+      "method": "createPayeeV3",
+      "httpMethod": "post",
+      "tag": "Payee Invitation",
+      "description": "Initiate Payee Creation",
+      "parameters": [
+        {
+          "name": "payees",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/payees/batch/{batchId}",
+      "method": "queryBatchStatusV3",
+      "httpMethod": "get",
+      "tag": "Payee Invitation",
+      "description": "Query Batch Status",
+      "parameters": [
+        {
+          "name": "batchId",
+          "schema": "string",
+          "required": true,
+          "description": "Batch Id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/payees/deltas",
+      "method": "listPayeeChangesV3",
+      "httpMethod": "get",
+      "tag": "Payees",
+      "description": "List Payee Changes",
+      "parameters": [
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": true,
+          "description": "The Payor ID to find associated Payees"
+        },
+        {
+          "name": "updatedSince",
+          "schema": "string",
+          "required": true,
+          "description": "The updatedSince filter in the format YYYY-MM-DDThh:mm:ss+hh:mm"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Default is 1."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "Page size. Default is 100. Max allowable is 1000."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "List Payee Changes Response Object"
+        }
+      ]
+    },
+    {
+      "url": "/v3/payees/payors/{payorId}/invitationStatus",
+      "method": "getPayeesInvitationStatusV3",
+      "httpMethod": "get",
+      "tag": "Payee Invitation",
+      "description": "Get Payee Invitation Status",
+      "parameters": [
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": true,
+          "description": "The account owner Payor ID"
+        },
+        {
+          "name": "payeeId",
+          "schema": "string",
+          "required": false,
+          "description": "The UUID of the payee."
+        },
+        {
+          "name": "invitationStatus",
+          "schema": "string",
+          "required": false,
+          "description": "The invitation status of the payees."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Default is 1."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "Page size. Default is 25. Max allowable is 100."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "List Payees Invitation Status Object"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/payees/{payeeId}",
+      "method": "deletePayeeByIdV3",
+      "httpMethod": "delete",
+      "tag": "Payees",
+      "description": "Delete Payee by Id",
+      "parameters": [
+        {
+          "name": "payeeId",
+          "schema": "string",
+          "required": true,
+          "description": "The UUID of the payee."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v3/payees/{payeeId}",
+      "method": "getPayeeByIdV3",
+      "httpMethod": "get",
+      "tag": "Payees",
+      "description": "Get Payee by Id",
+      "parameters": [
+        {
+          "name": "payeeId",
+          "schema": "string",
+          "required": true,
+          "description": "The UUID of the payee."
+        },
+        {
+          "name": "sensitive",
+          "schema": "boolean",
+          "required": false,
+          "description": "Optional. If omitted or set to false, any Personal Identifiable Information (PII) values are returned masked.\nIf set to true, and you have permission, the PII values will be returned as their original unmasked values.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/payees/{payeeId}/invite",
+      "method": "resendPayeeInviteV3",
+      "httpMethod": "post",
+      "tag": "Payee Invitation",
+      "description": "Resend Payee Invite",
+      "parameters": [
+        {
+          "name": "payeeId",
+          "schema": "string",
+          "required": true,
+          "description": "The UUID of the payee."
+        },
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/payees/{payeeId}/payeeDetailsUpdate",
+      "method": "payeeDetailsUpdateV3",
+      "httpMethod": "post",
+      "tag": "Payees",
+      "description": "Update Payee Details",
+      "parameters": [
+        {
+          "name": "payeeId",
+          "schema": "string",
+          "required": true,
+          "description": "The UUID of the payee."
+        },
+        {
+          "name": "address",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "challenge",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "company",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "individual",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "payeeType",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/payees/{payeeId}/remoteIdUpdate",
+      "method": "/v3/payees/{payeeId}/remoteIdUpdatePost",
+      "httpMethod": "post",
+      "tag": "Payees",
+      "description": "Update Payee Remote Id",
+      "parameters": [
+        {
+          "name": "payeeId",
+          "schema": "string",
+          "required": true,
+          "description": "The UUID of the payee."
+        },
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "remoteId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/paymentaudit/payments",
+      "method": "listPaymentsAuditV3",
+      "httpMethod": "get",
+      "tag": "Payment Audit Service (Deprecated)",
+      "description": "V3 Get List of Payments",
+      "parameters": [
+        {
+          "name": "payeeId",
+          "schema": "string",
+          "required": false,
+          "description": "The UUID of the payee."
+        },
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": false,
+          "description": "The account owner Payor Id. Required for external users."
+        },
+        {
+          "name": "payorName",
+          "schema": "string",
+          "required": false,
+          "description": "The payor’s name. This filters via a case insensitive substring match."
+        },
+        {
+          "name": "remoteId",
+          "schema": "string",
+          "required": false,
+          "description": "The remote id of the payees."
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Payment Status"
+        },
+        {
+          "name": "sourceAccountName",
+          "schema": "string",
+          "required": false,
+          "description": "The source account name filter. This filters via a case insensitive substring match."
+        },
+        {
+          "name": "sourceAmountFrom",
+          "schema": "integer",
+          "required": false,
+          "description": "The source amount from range filter. Filters for sourceAmount >= sourceAmountFrom"
+        },
+        {
+          "name": "sourceAmountTo",
+          "schema": "integer",
+          "required": false,
+          "description": "The source amount to range filter. Filters for sourceAmount ⇐ sourceAmountTo"
+        },
+        {
+          "name": "sourceCurrency",
+          "schema": "string",
+          "required": false,
+          "description": "The source currency filter. Filters based on an exact match on the currency."
+        },
+        {
+          "name": "paymentAmountFrom",
+          "schema": "integer",
+          "required": false,
+          "description": "The payment amount from range filter. Filters for paymentAmount >= paymentAmountFrom"
+        },
+        {
+          "name": "paymentAmountTo",
+          "schema": "integer",
+          "required": false,
+          "description": "The payment amount to range filter. Filters for paymentAmount ⇐ paymentAmountTo"
+        },
+        {
+          "name": "paymentCurrency",
+          "schema": "string",
+          "required": false,
+          "description": "The payment currency filter. Filters based on an exact match on the currency."
+        },
+        {
+          "name": "submittedDateFrom",
+          "schema": "string",
+          "required": false,
+          "description": "The submitted date from range filter. Format is yyyy-MM-dd."
+        },
+        {
+          "name": "submittedDateTo",
+          "schema": "string",
+          "required": false,
+          "description": "The submitted date to range filter. Format is yyyy-MM-dd."
+        },
+        {
+          "name": "paymentMemo",
+          "schema": "string",
+          "required": false,
+          "description": "The payment memo filter. This filters via a case insensitive substring match."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Default is 1."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to return in a page"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "List of sort fields (e.g. ?sort=submittedDateTime:asc,status:asc). Default is sort by remoteId\nThe supported sort fields are: sourceAmount, sourceCurrency, paymentAmount, paymentCurrency,\nroutingNumber, accountNumber, remoteId, submittedDateTime and status\n"
+        },
+        {
+          "name": "sensitive",
+          "schema": "boolean",
+          "required": false,
+          "description": "Optional. If omitted or set to false, any Personal Identifiable Information (PII) values are returned masked.\nIf set to true, and you have permission, the PII values will be returned as their original unmasked values.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "List Payments Response Object"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/paymentaudit/payments/{paymentId}",
+      "method": "getPaymentDetailsV3",
+      "httpMethod": "get",
+      "tag": "Payment Audit Service (Deprecated)",
+      "description": "V3 Get Payment",
+      "parameters": [
+        {
+          "name": "paymentId",
+          "schema": "string",
+          "required": true,
+          "description": "Payment Id"
+        },
+        {
+          "name": "sensitive",
+          "schema": "boolean",
+          "required": false,
+          "description": "Optional. If omitted or set to false, any Personal Identifiable Information (PII) values are returned masked.\nIf set to true, and you have permission, the PII values will be returned as their original unmasked values.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/paymentaudit/payouts",
+      "method": "getPayoutsForPayorV3",
+      "httpMethod": "get",
+      "tag": "Payment Audit Service (Deprecated)",
+      "description": "V3 Get Payouts for Payor",
+      "parameters": [
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": true,
+          "description": "The account owner Payor ID"
+        },
+        {
+          "name": "payoutMemo",
+          "schema": "string",
+          "required": false,
+          "description": "Payout Memo filter - case insensitive sub-string match"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Payout Status"
+        },
+        {
+          "name": "submittedDateFrom",
+          "schema": "string",
+          "required": false,
+          "description": "The submitted date from range filter. Format is yyyy-MM-dd."
+        },
+        {
+          "name": "submittedDateTo",
+          "schema": "string",
+          "required": false,
+          "description": "The submitted date to range filter. Format is yyyy-MM-dd."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Default is 1."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to return in a page"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "List of sort fields (e.g. ?sort=submittedDateTime:asc,instructedDateTime:asc,status:asc)\nDefault is submittedDateTime:asc\nThe supported sort fields are: submittedDateTime, instructedDateTime, status.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "List Payouts Response"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/paymentaudit/payouts/{payoutId}",
+      "method": "getPaymentsForPayoutPaV3",
+      "httpMethod": "get",
+      "tag": "Payment Audit Service (Deprecated)",
+      "description": "V3 Get Payments for Payout",
+      "parameters": [
+        {
+          "name": "payoutId",
+          "schema": "string",
+          "required": true,
+          "description": "The id (UUID) of the payout."
+        },
+        {
+          "name": "remoteId",
+          "schema": "string",
+          "required": false,
+          "description": "The remote id of the payees."
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Payment Status"
+        },
+        {
+          "name": "sourceAmountFrom",
+          "schema": "integer",
+          "required": false,
+          "description": "The source amount from range filter. Filters for sourceAmount >= sourceAmountFrom"
+        },
+        {
+          "name": "sourceAmountTo",
+          "schema": "integer",
+          "required": false,
+          "description": "The source amount to range filter. Filters for sourceAmount ⇐ sourceAmountTo"
+        },
+        {
+          "name": "paymentAmountFrom",
+          "schema": "integer",
+          "required": false,
+          "description": "The payment amount from range filter. Filters for paymentAmount >= paymentAmountFrom"
+        },
+        {
+          "name": "paymentAmountTo",
+          "schema": "integer",
+          "required": false,
+          "description": "The payment amount to range filter. Filters for paymentAmount ⇐ paymentAmountTo"
+        },
+        {
+          "name": "submittedDateFrom",
+          "schema": "string",
+          "required": false,
+          "description": "The submitted date from range filter. Format is yyyy-MM-dd."
+        },
+        {
+          "name": "submittedDateTo",
+          "schema": "string",
+          "required": false,
+          "description": "The submitted date to range filter. Format is yyyy-MM-dd."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Default is 1."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to return in a page"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "<p>List of sort fields (e.g. ?sort=submittedDateTime:asc,status:asc). Default is sort by remoteId</p>\n<p>The supported sort fields are: sourceAmount, sourceCurrency, paymentAmount, paymentCurrency,\nroutingNumber, accountNumber, remoteId, submittedDateTime and status</p>\n"
+        },
+        {
+          "name": "sensitive",
+          "schema": "boolean",
+          "required": false,
+          "description": "Optional. If omitted or set to false, any Personal Identifiable Information (PII) values are returned masked.\nIf set to true, and you have permission, the PII values will be returned as their original unmasked values.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "List Payments for payout"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/paymentaudit/transactions",
+      "method": "exportTransactionsCsvv3",
+      "httpMethod": "get",
+      "tag": "Payment Audit Service (Deprecated)",
+      "description": "V3 Export Transactions",
+      "parameters": [
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": false,
+          "description": "The Payor ID for whom you wish to run the report.\nFor a Payor requesting the report, this could be their exact Payor, or it could be a child/descendant Payor.\n"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": false,
+          "description": "Start date, inclusive. Format is YYYY-MM-DD"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "required": false,
+          "description": "End date, inclusive. Format is YYYY-MM-DD"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/payouts",
+      "method": "submitPayoutV3",
+      "httpMethod": "post",
+      "tag": "Payouts",
+      "description": "Submit Payout",
+      "parameters": [
+        {
+          "name": "payments",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "payoutFromPayorId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "payoutMemo",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "payoutToPayorId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/payouts/{payoutId}",
+      "method": "withdrawPayoutV3",
+      "httpMethod": "delete",
+      "tag": "Payouts",
+      "description": "Withdraw Payout",
+      "parameters": [
+        {
+          "name": "payoutId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the payout"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/payouts/{payoutId}",
+      "method": "getPayoutSummaryV3",
+      "httpMethod": "get",
+      "tag": "Payouts",
+      "description": "Get Payout Summary",
+      "parameters": [
+        {
+          "name": "payoutId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the payout"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/payouts/{payoutId}",
+      "method": "instructPayoutV3",
+      "httpMethod": "post",
+      "tag": "Payouts",
+      "description": "Instruct Payout",
+      "parameters": [
+        {
+          "name": "payoutId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the payout"
+        },
+        {
+          "name": "fxRateDegredationThresholdPercentage",
+          "schema": "number",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/payouts/{payoutId}/payments",
+      "method": "getPaymentsForPayoutV3",
+      "httpMethod": "get",
+      "tag": "Payouts",
+      "description": "Retrieve payments for a payout",
+      "parameters": [
+        {
+          "name": "payoutId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the payout"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Payment Status\n* ACCEPTED: any payment which was accepted at submission time (status may have changed since)\n* REJECTED: any payment rejected by initial submission processing\n* WITHDRAWN: any payment which has been withdrawn\n* WITHDRAWABLE: any payment eligible for withdrawal\n"
+        },
+        {
+          "name": "remoteId",
+          "schema": "string",
+          "required": false,
+          "description": "The remote id of the payees."
+        },
+        {
+          "name": "payorPaymentId",
+          "schema": "string",
+          "required": false,
+          "description": "Payor's Id of the Payment"
+        },
+        {
+          "name": "sourceAccountName",
+          "schema": "string",
+          "required": false,
+          "description": "Physical Account Name"
+        },
+        {
+          "name": "transmissionType",
+          "schema": "string",
+          "required": false,
+          "description": "Transmission Type\n* ACH\n* SAME_DAY_ACH\n* WIRE\n"
+        },
+        {
+          "name": "paymentMemo",
+          "schema": "string",
+          "required": false,
+          "description": "Payment Memo of the Payment"
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to return in a page"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Default is 1."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "List Payees Response Object"
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/payouts/{payoutId}/quote",
+      "method": "createQuoteForPayoutV3",
+      "httpMethod": "post",
+      "tag": "Payouts",
+      "description": "Create a quote for the payout",
+      "parameters": [
+        {
+          "name": "payoutId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the payout"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/payouts/{payoutId}/schedule",
+      "method": "deschedulePayout",
+      "httpMethod": "delete",
+      "tag": "Payouts",
+      "description": "Deschedule a payout",
+      "parameters": [
+        {
+          "name": "payoutId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the payout"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/payouts/{payoutId}/schedule",
+      "method": "scheduleForPayout",
+      "httpMethod": "post",
+      "tag": "Payouts",
+      "description": "Schedule a payout",
+      "parameters": [
+        {
+          "name": "payoutId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the payout"
+        },
+        {
+          "name": "notificationsEnabled",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "scheduledFor",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/sourceAccounts",
+      "method": "getSourceAccountsV3",
+      "httpMethod": "get",
+      "tag": "Source Accounts",
+      "description": "Get list of source accounts",
+      "parameters": [
+        {
+          "name": "physicalAccountName",
+          "schema": "string",
+          "required": false,
+          "description": "Physical Account Name"
+        },
+        {
+          "name": "physicalAccountId",
+          "schema": "string",
+          "required": false,
+          "description": "The physical account ID"
+        },
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": false,
+          "description": "The account owner Payor ID"
+        },
+        {
+          "name": "fundingAccountId",
+          "schema": "string",
+          "required": false,
+          "description": "The funding account ID"
+        },
+        {
+          "name": "includeUserDeleted",
+          "schema": "string",
+          "required": false,
+          "description": "A filter for retrieving both active accounts and user deleted ones"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "The type of source account."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Default is 1."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to return in a page"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "List of sort fields e.g. ?sort=name:asc\nDefault is name:asc\nThe supported sort fields are - fundingRef, name, balance\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "List Source Accounts Response Object"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/sourceAccounts/{sourceAccountId}",
+      "method": "deleteSourceAccountV3",
+      "httpMethod": "delete",
+      "tag": "Funding Manager Private",
+      "description": "Delete a source account by ID",
+      "parameters": [
+        {
+          "name": "sourceAccountId",
+          "schema": "string",
+          "required": true,
+          "description": "Source account id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/sourceAccounts/{sourceAccountId}",
+      "method": "getSourceAccountV3",
+      "httpMethod": "get",
+      "tag": "Source Accounts",
+      "description": "Get details about given source account.",
+      "parameters": [
+        {
+          "name": "sourceAccountId",
+          "schema": "string",
+          "required": true,
+          "description": "Source account id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/sourceAccounts/{sourceAccountId}/fundingRequest",
+      "method": "createFundingRequestV3",
+      "httpMethod": "post",
+      "tag": "Funding",
+      "description": "Create Funding Request",
+      "parameters": [
+        {
+          "name": "sourceAccountId",
+          "schema": "string",
+          "required": true,
+          "description": "Source account id"
+        },
+        {
+          "name": "amount",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "fundingAccountId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/sourceAccounts/{sourceAccountId}/notifications",
+      "method": "setNotificationsRequestV3",
+      "httpMethod": "post",
+      "tag": "Source Accounts",
+      "description": "Set notifications",
+      "parameters": [
+        {
+          "name": "sourceAccountId",
+          "schema": "string",
+          "required": true,
+          "description": "Source account id"
+        },
+        {
+          "name": "minimumBalance",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/sourceAccounts/{sourceAccountId}/transfers",
+      "method": "transferFundsV3",
+      "httpMethod": "post",
+      "tag": "Source Accounts",
+      "description": "Transfer Funds between source accounts",
+      "parameters": [
+        {
+          "name": "sourceAccountId",
+          "schema": "string",
+          "required": true,
+          "description": "The 'from' source account id, which will be debited"
+        },
+        {
+          "name": "amount",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "currency",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "toSourceAccountId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/payees",
+      "method": "listPayeesV4",
+      "httpMethod": "get",
+      "tag": "Payees",
+      "description": "List Payees",
+      "parameters": [
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": true,
+          "description": "The account owner Payor ID"
+        },
+        {
+          "name": "watchlistStatus",
+          "schema": "string",
+          "required": false,
+          "description": "The watchlistStatus of the payees."
+        },
+        {
+          "name": "disabled",
+          "schema": "boolean",
+          "required": false,
+          "description": "Payee disabled"
+        },
+        {
+          "name": "onboardedStatus",
+          "schema": "string",
+          "required": false,
+          "description": "The onboarded status of the payees."
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": false,
+          "description": "Email address"
+        },
+        {
+          "name": "displayName",
+          "schema": "string",
+          "required": false,
+          "description": "The display name of the payees."
+        },
+        {
+          "name": "remoteId",
+          "schema": "string",
+          "required": false,
+          "description": "The remote id of the payees."
+        },
+        {
+          "name": "payeeType",
+          "schema": "string",
+          "required": false,
+          "description": "The onboarded status of the payees."
+        },
+        {
+          "name": "payeeCountry",
+          "schema": "string",
+          "required": false,
+          "description": "The country of the payee - 2 letter ISO 3166-1 country code (upper case)"
+        },
+        {
+          "name": "ofacStatus",
+          "schema": "string",
+          "required": false,
+          "description": "The ofacStatus of the payees."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Default is 1."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "Page size. Default is 25. Max allowable is 100."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "List of sort fields (e.g. ?sort=onboardedStatus:asc,name:asc) Default is name:asc 'name' is treated as company name for companies - last name + ',' + firstName for individuals The supported sort fields are - payeeId, displayName, payoutStatus, onboardedStatus.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "List Payees Response Object"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/payees",
+      "method": "v4CreatePayee",
+      "httpMethod": "post",
+      "tag": "Payee Invitation",
+      "description": "Initiate Payee Creation",
+      "parameters": [
+        {
+          "name": "payees",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/payees/batch/{batchId}",
+      "method": "queryBatchStatusV4",
+      "httpMethod": "get",
+      "tag": "Payee Invitation",
+      "description": "Query Batch Status",
+      "parameters": [
+        {
+          "name": "batchId",
+          "schema": "string",
+          "required": true,
+          "description": "Batch Id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/payees/deltas",
+      "method": "listPayeeChangesV4",
+      "httpMethod": "get",
+      "tag": "Payees",
+      "description": "List Payee Changes",
+      "parameters": [
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": true,
+          "description": "The Payor ID to find associated Payees"
+        },
+        {
+          "name": "updatedSince",
+          "schema": "string",
+          "required": true,
+          "description": "The updatedSince filter in the format YYYY-MM-DDThh:mm:ss+hh:mm"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Default is 1."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "Page size. Default is 100. Max allowable is 1000."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "List Payee Changes Response Object"
+        }
+      ]
+    },
+    {
+      "url": "/v4/payees/payors/{payorId}/invitationStatus",
+      "method": "getPayeesInvitationStatusV4",
+      "httpMethod": "get",
+      "tag": "Payee Invitation",
+      "description": "Get Payee Invitation Status",
+      "parameters": [
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": true,
+          "description": "The account owner Payor ID"
+        },
+        {
+          "name": "payeeId",
+          "schema": "string",
+          "required": false,
+          "description": "The UUID of the payee."
+        },
+        {
+          "name": "invitationStatus",
+          "schema": "string",
+          "required": false,
+          "description": "The invitation status of the payees."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Default is 1."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "Page size. Default is 25. Max allowable is 100."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "List Payees Invitation Status Object"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/payees/{payeeId}",
+      "method": "deletePayeeByIdV4",
+      "httpMethod": "delete",
+      "tag": "Payees",
+      "description": "Delete Payee by Id",
+      "parameters": [
+        {
+          "name": "payeeId",
+          "schema": "string",
+          "required": true,
+          "description": "The UUID of the payee."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v4/payees/{payeeId}",
+      "method": "getPayeeByIdV4",
+      "httpMethod": "get",
+      "tag": "Payees",
+      "description": "Get Payee by Id",
+      "parameters": [
+        {
+          "name": "payeeId",
+          "schema": "string",
+          "required": true,
+          "description": "The UUID of the payee."
+        },
+        {
+          "name": "sensitive",
+          "schema": "boolean",
+          "required": false,
+          "description": "Optional. If omitted or set to false, any Personal Identifiable Information (PII) values are returned masked.\nIf set to true, and you have permission, the PII values will be returned as their original unmasked values.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/payees/{payeeId}/invite",
+      "method": "resendPayeeInviteV4",
+      "httpMethod": "post",
+      "tag": "Payee Invitation",
+      "description": "Resend Payee Invite",
+      "parameters": [
+        {
+          "name": "payeeId",
+          "schema": "string",
+          "required": true,
+          "description": "The UUID of the payee."
+        },
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/payees/{payeeId}/payeeDetailsUpdate",
+      "method": "payeeDetailsUpdateV4",
+      "httpMethod": "post",
+      "tag": "Payees",
+      "description": "Update Payee Details",
+      "parameters": [
+        {
+          "name": "payeeId",
+          "schema": "string",
+          "required": true,
+          "description": "The UUID of the payee."
+        },
+        {
+          "name": "address",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "challenge",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "company",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "contactSmsNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "individual",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "payeeType",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/payees/{payeeId}/remoteIdUpdate",
+      "method": "/v4/payees/{payeeId}/remoteIdUpdatePost",
+      "httpMethod": "post",
+      "tag": "Payees",
+      "description": "Update Payee Remote Id",
+      "parameters": [
+        {
+          "name": "payeeId",
+          "schema": "string",
+          "required": true,
+          "description": "The UUID of the payee."
+        },
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "remoteId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/paymentaudit/fundings",
+      "method": "getFundingsV4",
+      "httpMethod": "get",
+      "tag": "Payment Audit Service",
+      "description": "Get Fundings for Payor",
+      "parameters": [
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": true,
+          "description": "The account owner Payor ID"
+        },
+        {
+          "name": "sourceAccountName",
+          "schema": "string",
+          "required": false,
+          "description": "The source account name"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Default is 1."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to return in a page"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "List of sort fields. Example: ```?sort=destinationCurrency:asc,destinationAmount:asc```\nDefault is no sort. The supported sort fields are: dateTime and amount.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "List Users Response Object"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/paymentaudit/payments",
+      "method": "listPaymentsAuditV4",
+      "httpMethod": "get",
+      "tag": "Payment Audit Service",
+      "description": "Get List of Payments",
+      "parameters": [
+        {
+          "name": "payeeId",
+          "schema": "string",
+          "required": false,
+          "description": "The UUID of the payee."
+        },
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": false,
+          "description": "The account owner Payor Id. Required for external users."
+        },
+        {
+          "name": "payorName",
+          "schema": "string",
+          "required": false,
+          "description": "The payor’s name. This filters via a case insensitive substring match."
+        },
+        {
+          "name": "remoteId",
+          "schema": "string",
+          "required": false,
+          "description": "The remote id of the payees."
+        },
+        {
+          "name": "remoteSystemId",
+          "schema": "string",
+          "required": false,
+          "description": "The id of the remote system that is orchestrating payments"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Payment Status"
+        },
+        {
+          "name": "transmissionType",
+          "schema": "string",
+          "required": false,
+          "description": "Transmission Type\n* ACH\n* SAME_DAY_ACH\n* WIRE\n* GACHO\n"
+        },
+        {
+          "name": "sourceAccountName",
+          "schema": "string",
+          "required": false,
+          "description": "The source account name filter. This filters via a case insensitive substring match."
+        },
+        {
+          "name": "sourceAmountFrom",
+          "schema": "integer",
+          "required": false,
+          "description": "The source amount from range filter. Filters for sourceAmount >= sourceAmountFrom"
+        },
+        {
+          "name": "sourceAmountTo",
+          "schema": "integer",
+          "required": false,
+          "description": "The source amount to range filter. Filters for sourceAmount ⇐ sourceAmountTo"
+        },
+        {
+          "name": "sourceCurrency",
+          "schema": "string",
+          "required": false,
+          "description": "The source currency filter. Filters based on an exact match on the currency."
+        },
+        {
+          "name": "paymentAmountFrom",
+          "schema": "integer",
+          "required": false,
+          "description": "The payment amount from range filter. Filters for paymentAmount >= paymentAmountFrom"
+        },
+        {
+          "name": "paymentAmountTo",
+          "schema": "integer",
+          "required": false,
+          "description": "The payment amount to range filter. Filters for paymentAmount ⇐ paymentAmountTo"
+        },
+        {
+          "name": "paymentCurrency",
+          "schema": "string",
+          "required": false,
+          "description": "The payment currency filter. Filters based on an exact match on the currency."
+        },
+        {
+          "name": "submittedDateFrom",
+          "schema": "string",
+          "required": false,
+          "description": "The submitted date from range filter. Format is yyyy-MM-dd."
+        },
+        {
+          "name": "submittedDateTo",
+          "schema": "string",
+          "required": false,
+          "description": "The submitted date to range filter. Format is yyyy-MM-dd."
+        },
+        {
+          "name": "paymentMemo",
+          "schema": "string",
+          "required": false,
+          "description": "The payment memo filter. This filters via a case insensitive substring match."
+        },
+        {
+          "name": "railsId",
+          "schema": "string",
+          "required": false,
+          "description": "Payout Rails ID filter - case insensitive match.\nAny value is allowed, but you should use one of the supported railsId values.\nTo get this list of values, you should call the 'Get Supported Rails' endpoint.\n"
+        },
+        {
+          "name": "scheduledForDateFrom",
+          "schema": "string",
+          "required": false,
+          "description": "Filter payouts scheduled to run on or after the given date. Format is yyyy-MM-dd."
+        },
+        {
+          "name": "scheduledForDateTo",
+          "schema": "string",
+          "required": false,
+          "description": "Filter payouts scheduled to run on or before the given date. Format is yyyy-MM-dd."
+        },
+        {
+          "name": "scheduleStatus",
+          "schema": "string",
+          "required": false,
+          "description": "Payout Schedule Status"
+        },
+        {
+          "name": "postInstructFxStatus",
+          "schema": "string",
+          "required": false,
+          "description": "The status of the post instruct FX step if one was required for the payment"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Default is 1."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to return in a page"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "List of sort fields (e.g. ?sort=submittedDateTime:asc,status:asc). Default is sort by submittedDateTime:desc,paymentId:asc\nThe supported sort fields are: sourceAmount, sourceCurrency, paymentAmount, paymentCurrency,\nroutingNumber, accountNumber, remoteId, submittedDateTime, status and paymentId\n"
+        },
+        {
+          "name": "sensitive",
+          "schema": "boolean",
+          "required": false,
+          "description": "Optional. If omitted or set to false, any Personal Identifiable Information (PII) values are returned masked.\nIf set to true, and you have permission, the PII values will be returned as their original unmasked values.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "List Payments Response Object"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/paymentaudit/payments/{paymentId}",
+      "method": "getPaymentDetailsV4",
+      "httpMethod": "get",
+      "tag": "Payment Audit Service",
+      "description": "Get Payment",
+      "parameters": [
+        {
+          "name": "paymentId",
+          "schema": "string",
+          "required": true,
+          "description": "Payment Id"
+        },
+        {
+          "name": "sensitive",
+          "schema": "boolean",
+          "required": false,
+          "description": "Optional. If omitted or set to false, any Personal Identifiable Information (PII) values are returned masked.\nIf set to true, and you have permission, the PII values will be returned as their original unmasked values.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/paymentaudit/payoutStatistics",
+      "method": "getPayoutStatsV4",
+      "httpMethod": "get",
+      "tag": "Payment Audit Service",
+      "description": "Get Payout Statistics",
+      "parameters": [
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": false,
+          "description": "The account owner Payor ID. Required for external users."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/paymentaudit/payouts",
+      "method": "getPayoutsForPayorV4",
+      "httpMethod": "get",
+      "tag": "Payment Audit Service",
+      "description": "Get Payouts for Payor",
+      "parameters": [
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": false,
+          "description": "The id (UUID) of the payor funding the payout or the payor whose payees are being paid."
+        },
+        {
+          "name": "payoutMemo",
+          "schema": "string",
+          "required": false,
+          "description": "Payout Memo filter - case insensitive sub-string match"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Payout Status"
+        },
+        {
+          "name": "submittedDateFrom",
+          "schema": "string",
+          "required": false,
+          "description": "The submitted date from range filter. Format is yyyy-MM-dd."
+        },
+        {
+          "name": "submittedDateTo",
+          "schema": "string",
+          "required": false,
+          "description": "The submitted date to range filter. Format is yyyy-MM-dd."
+        },
+        {
+          "name": "fromPayorName",
+          "schema": "string",
+          "required": false,
+          "description": "The name of the payor whose payees are being paid. This filters via a case insensitive substring match."
+        },
+        {
+          "name": "scheduledForDateFrom",
+          "schema": "string",
+          "required": false,
+          "description": "Filter payouts scheduled to run on or after the given date. Format is yyyy-MM-dd."
+        },
+        {
+          "name": "scheduledForDateTo",
+          "schema": "string",
+          "required": false,
+          "description": "Filter payouts scheduled to run on or before the given date. Format is yyyy-MM-dd."
+        },
+        {
+          "name": "scheduleStatus",
+          "schema": "string",
+          "required": false,
+          "description": "Payout Schedule Status"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Default is 1."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to return in a page"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "List of sort fields (e.g. ?sort=submittedDateTime:asc,instructedDateTime:asc,status:asc)\nDefault is submittedDateTime:asc\nThe supported sort fields are: submittedDateTime, instructedDateTime, status, totalPayments, payoutId, scheduledFor\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "List Payouts Response"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/paymentaudit/payouts/{payoutId}",
+      "method": "getPaymentsForPayoutV4",
+      "httpMethod": "get",
+      "tag": "Payment Audit Service",
+      "description": "Get Payments for Payout",
+      "parameters": [
+        {
+          "name": "railsId",
+          "schema": "string",
+          "required": false,
+          "description": "Payout Rails ID filter - case insensitive match.\nAny value is allowed, but you should use one of the supported railsId values.\nTo get this list of values, you should call the 'Get Supported Rails' endpoint.\n"
+        },
+        {
+          "name": "payoutId",
+          "schema": "string",
+          "required": true,
+          "description": "The id (UUID) of the payout."
+        },
+        {
+          "name": "remoteId",
+          "schema": "string",
+          "required": false,
+          "description": "The remote id of the payees."
+        },
+        {
+          "name": "remoteSystemId",
+          "schema": "string",
+          "required": false,
+          "description": "The id of the remote system that is orchestrating payments"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Payment Status"
+        },
+        {
+          "name": "sourceAmountFrom",
+          "schema": "integer",
+          "required": false,
+          "description": "The source amount from range filter. Filters for sourceAmount >= sourceAmountFrom"
+        },
+        {
+          "name": "sourceAmountTo",
+          "schema": "integer",
+          "required": false,
+          "description": "The source amount to range filter. Filters for sourceAmount ⇐ sourceAmountTo"
+        },
+        {
+          "name": "paymentAmountFrom",
+          "schema": "integer",
+          "required": false,
+          "description": "The payment amount from range filter. Filters for paymentAmount >= paymentAmountFrom"
+        },
+        {
+          "name": "paymentAmountTo",
+          "schema": "integer",
+          "required": false,
+          "description": "The payment amount to range filter. Filters for paymentAmount ⇐ paymentAmountTo"
+        },
+        {
+          "name": "submittedDateFrom",
+          "schema": "string",
+          "required": false,
+          "description": "The submitted date from range filter. Format is yyyy-MM-dd."
+        },
+        {
+          "name": "submittedDateTo",
+          "schema": "string",
+          "required": false,
+          "description": "The submitted date to range filter. Format is yyyy-MM-dd."
+        },
+        {
+          "name": "transmissionType",
+          "schema": "string",
+          "required": false,
+          "description": "Transmission Type\n* ACH\n* SAME_DAY_ACH\n* WIRE\n* GACHO\n"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Default is 1."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to return in a page"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "List of sort fields (e.g. ?sort=submittedDateTime:asc,status:asc). Default is sort by remoteId\nThe supported sort fields are: sourceAmount, sourceCurrency, paymentAmount, paymentCurrency,\nroutingNumber, accountNumber, remoteId, submittedDateTime and status\n"
+        },
+        {
+          "name": "sensitive",
+          "schema": "boolean",
+          "required": false,
+          "description": "Optional. If omitted or set to false, any Personal Identifiable Information (PII) values are returned masked.\nIf set to true, and you have permission, the PII values will be returned as their original unmasked values.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "List Payments for payout"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/paymentaudit/transactions",
+      "method": "exportTransactionsCsvv4",
+      "httpMethod": "get",
+      "tag": "Payment Audit Service",
+      "description": "Export Transactions",
+      "parameters": [
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": false,
+          "description": "<p>The Payor ID for whom you wish to run the report.</p>\n<p>For a Payor requesting the report, this could be their exact Payor, or it could be a child/descendant Payor.</p>\n"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": false,
+          "description": "Start date, inclusive. Format is YYYY-MM-DD"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "required": false,
+          "description": "End date, inclusive. Format is YYYY-MM-DD"
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "required": false,
+          "description": "<p>Mode to determine whether to include other Payor's data in the results.</p>\n<p>May only be used if payorId is specified.</p>\n<p>Can be omitted or set to 'payorOnly' or 'payorAndDescendants'.</p>\n<p>payorOnly: Only include results for the specified Payor. This is the default if 'include' is omitted.</p>\n<p>payorAndDescendants: Aggregate results for all descendant Payors of the specified Payor. Should only be used if the Payor with the specified payorId has at least one child Payor.</p>\n<p>Note when a Payor requests the report and include=payorAndDescendants is used, the following additional columns are included in the CSV: Payor Name, Payor Id</p>\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v4/payments/deltas",
+      "method": "listPaymentChangesV4",
+      "httpMethod": "get",
+      "tag": "Payment Audit Service",
+      "description": "List Payment Changes",
+      "parameters": [
+        {
+          "name": "payorId",
+          "schema": "string",
+          "required": true,
+          "description": "The Payor ID to find associated Payments"
+        },
+        {
+          "name": "updatedSince",
+          "schema": "string",
+          "required": true,
+          "description": "The updatedSince filter in the format YYYY-MM-DDThh:mm:ss+hh:mm"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Default is 1."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to return in a page"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "List Payment Changes Response Object"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.sandbox.velopayments.com/",
   "apiDescription": "## Terms and Definitions\n\nThroughout this document and the Velo platform the following terms are used:\n\n* **Payor.** An entity (typically a corporation) which wishes to pay funds to one or more payees via a payout.\n* **Payee.** The recipient of funds paid out by a payor.\n* **Payment.** A single transfer of funds from a payor to a payee.\n* **Payout.** A batch of Payments, typically used by a payor to logically group payments (e.g. by business day). Technically there need be no relationship between the payments in a payout - a single payout can contain payments to multiple payees and/or multiple payments to a single payee.\n* **Sandbox.** An integration environment provided by Velo Payments which offers a similar API experience to the production environment, but all funding and payment events are simulated, along with many other services such as OFAC sanctions list checking.\n\n## Overview\n\nThe Velo Payments API allows a payor to perform a number of operations. The following is a list of the main capabilities in a natural order of execution:\n\n* Authenticate with the Velo platform\n* Maintain a collection of payees\n* Query the payor’s current balance of funds within the platform and perform additional funding\n* Issue payments to payees\n* Query the platform for a history of those payments\n\nThis document describes the main concepts and APIs required to get up and running with the Velo Payments platform. It is not an exhaustive API reference. For that, please see the separate Velo Payments API Reference.\n\n## API Considerations\n\nThe Velo Payments API is REST based and uses the JSON format for requests and responses.\n\nMost calls are secured using OAuth 2 security and require a valid authentication access token for successful operation. See the Authentication section for details.\n\nWhere a dynamic value is required in the examples below, the {token} format is used, suggesting that the caller needs to supply the appropriate value of the token in question (without including the { or } characters).\n\nWhere curl examples are given, the –d @filename.json approach is used, indicating that the request body should be placed into a file named filename.json in the current directory. Each of the curl examples in this document should be considered a single line on the command-line, regardless of how they appear in print.\n\n## Authenticating with the Velo Platform\n\nOnce Velo backoffice staff have added your organization as a payor within the Velo platform sandbox, they will create you a payor Id, an API key and an API secret and share these with you in a secure manner.\n\nYou will need to use these values to authenticate with the Velo platform in order to gain access to the APIs. The steps to take are explained in the following:\n\ncreate a string comprising the API key (e.g. 44a9537d-d55d-4b47-8082-14061c2bcdd8) and API secret (e.g. c396b26b-137a-44fd-87f5-34631f8fd529) with a colon between them. E.g. 44a9537d-d55d-4b47-8082-14061c2bcdd8:c396b26b-137a-44fd-87f5-34631f8fd529\n\nbase64 encode this string. E.g.: NDRhOTUzN2QtZDU1ZC00YjQ3LTgwODItMTQwNjFjMmJjZGQ4OmMzOTZiMjZiLTEzN2EtNDRmZC04N2Y1LTM0NjMxZjhmZDUyOQ==\n\ncreate an HTTP **Authorization** header with the value set to e.g. Basic NDRhOTUzN2QtZDU1ZC00YjQ3LTgwODItMTQwNjFjMmJjZGQ4OmMzOTZiMjZiLTEzN2EtNDRmZC04N2Y1LTM0NjMxZjhmZDUyOQ==\n\nperform the Velo authentication REST call using the HTTP header created above e.g. via curl:\n\n```\n  curl -X POST \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Authorization: Basic NDRhOTUzN2QtZDU1ZC00YjQ3LTgwODItMTQwNjFjMmJjZGQ4OmMzOTZiMjZiLTEzN2EtNDRmZC04N2Y1LTM0NjMxZjhmZDUyOQ==\" \\\n  'https://api.sandbox.velopayments.com/v1/authenticate?grant_type=client_credentials'\n```\n\nIf successful, this call will result in a **200** HTTP status code and a response body such as:\n\n```\n  {\n    \"access_token\":\"19f6bafd-93fd-4747-b229-00507bbc991f\",\n    \"token_type\":\"bearer\",\n    \"expires_in\":1799,\n    \"scope\":\"...\"\n  }\n```\n## API access following authentication\nFollowing successful authentication, the value of the access_token field in the response (indicated in green above) should then be presented with all subsequent API calls to allow the Velo platform to validate that the caller is authenticated.\n\nThis is achieved by setting the HTTP Authorization header with the value set to e.g. Bearer 19f6bafd-93fd-4747-b229-00507bbc991f such as the curl example below:\n\n```\n  -H \"Authorization: Bearer 19f6bafd-93fd-4747-b229-00507bbc991f \"\n```\n\nIf you make other Velo API calls which require authorization but the Authorization header is missing or invalid then you will get a **401** HTTP status response.\n",
   "apiTitle": "Velo Payments APIs",

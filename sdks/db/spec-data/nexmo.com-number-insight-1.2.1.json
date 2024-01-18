@@ -4,6 +4,145 @@
   "homepage": "nexmo.com",
   "serviceName": "number-insight",
   "apiVersion": "1.2.1",
+  "methods": [
+    {
+      "url": "/advanced/async/{format}",
+      "method": "getNumberInsightAsync",
+      "httpMethod": "get",
+      "description": "Advanced Number Insight (async)",
+      "parameters": [
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": true,
+          "description": "The callback URL"
+        },
+        {
+          "name": "number",
+          "schema": "string",
+          "required": true,
+          "description": "A single phone number that you need insight about in national or international format."
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "description": "If a number does not have a country code or is uncertain, set the two-character country code. This code must be in ISO 3166-1 alpha-2 format and in upper case. For example, GB or US. If you set country and number is already in [E.164](https://en.wikipedia.org/wiki/E.164) format, country must match the country code in number."
+        },
+        {
+          "name": "cnam",
+          "schema": "boolean",
+          "description": "Indicates if the name of the person who owns the phone number should be looked up and returned in the response. Set to true to receive phone number owner name in the response. This features is available for US numbers only and incurs an additional charge."
+        },
+        {
+          "name": "ip",
+          "schema": "string",
+          "description": "This parameter is deprecated as we are no longer able to retrieve reliable IP data globally from carriers. "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/advanced/{format}",
+      "method": "getNumberInsightAdvanced",
+      "httpMethod": "get",
+      "description": "Advanced Number Insight (sync)",
+      "parameters": [
+        {
+          "name": "real_time_data",
+          "schema": "boolean",
+          "required": false,
+          "description": "A boolean to choose whether to get real time data back in the response."
+        },
+        {
+          "name": "number",
+          "schema": "string",
+          "required": true,
+          "description": "A single phone number that you need insight about in national or international format."
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "description": "If a number does not have a country code or is uncertain, set the two-character country code. This code must be in ISO 3166-1 alpha-2 format and in upper case. For example, GB or US. If you set country and number is already in [E.164](https://en.wikipedia.org/wiki/E.164) format, country must match the country code in number."
+        },
+        {
+          "name": "cnam",
+          "schema": "boolean",
+          "description": "Indicates if the name of the person who owns the phone number should be looked up and returned in the response. Set to true to receive phone number owner name in the response. This features is available for US numbers only and incurs an additional charge."
+        },
+        {
+          "name": "ip",
+          "schema": "string",
+          "description": "This parameter is deprecated as we are no longer able to retrieve reliable IP data globally from carriers. "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/basic/{format}",
+      "method": "getNumberInsightBasic",
+      "httpMethod": "get",
+      "description": "Basic Number Insight",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "string",
+          "required": true,
+          "description": "A single phone number that you need insight about in national or international format."
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "description": "If a number does not have a country code or is uncertain, set the two-character country code. This code must be in ISO 3166-1 alpha-2 format and in upper case. For example, GB or US. If you set country and number is already in [E.164](https://en.wikipedia.org/wiki/E.164) format, country must match the country code in number."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/standard/{format}",
+      "method": "getNumberInsightStandard",
+      "httpMethod": "get",
+      "description": "Standard Number Insight",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "string",
+          "required": true,
+          "description": "A single phone number that you need insight about in national or international format."
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "description": "If a number does not have a country code or is uncertain, set the two-character country code. This code must be in ISO 3166-1 alpha-2 format and in upper case. For example, GB or US. If you set country and number is already in [E.164](https://en.wikipedia.org/wiki/E.164) format, country must match the country code in number."
+        },
+        {
+          "name": "cnam",
+          "schema": "boolean",
+          "description": "Indicates if the name of the person who owns the phone number should be looked up and returned in the response. Set to true to receive phone number owner name in the response. This features is available for US numbers only and incurs an additional charge."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.nexmo.com/ni",
   "apiDescription": "The Number Insight API delivers real-time intelligence about the validity, reachability and roaming status of a phone number and tells you how to format the number correctly in your application. There are three levels of Number Insight API available: [Basic, Standard and Advanced](https://developer.nexmo.com/number-insight/overview#basic-standard-and-advanced-apis). The advanced API is available asynchronously as well as synchronously.",
   "apiTitle": "Number Insight API",

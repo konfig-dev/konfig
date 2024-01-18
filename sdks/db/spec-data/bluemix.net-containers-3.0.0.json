@@ -4,6 +4,1631 @@
   "homepage": "bluemix.net",
   "serviceName": "containers",
   "apiVersion": "3.0.0",
+  "methods": [
+    {
+      "url": "/build",
+      "method": "/buildPost",
+      "httpMethod": "post",
+      "tag": "Images",
+      "description": "Build a Docker image from a Dockerfile",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "t",
+          "schema": "string",
+          "required": true,
+          "description": "Tag the image with the full path to your private Bluemix registry in the following format: `t=registry.ng.bluemix.net/<namespace>/<image_name>:<tag>`. This path is used to push the image to the private Bluemix registry after it is built."
+        },
+        {
+          "name": "q",
+          "schema": "boolean",
+          "required": false,
+          "description": "You can choose whether or not to show the verbose build output to review every step during the container image build. If you set the query parameter to `q=false`, `q=False`, or `q=0`, the verbose build output is suppressed. To show the verbose build output, enter `q=true`, `q=True`, or `q=1`."
+        },
+        {
+          "name": "nocache",
+          "schema": "boolean",
+          "required": false,
+          "description": "If you set the query parameter to `nocache=true`, `nocache=True`, or `nocache=1`, the cache will not be used to build your image. To use the cache, enter `nocache=false`, `nocache=False`, or `nocache=0`."
+        },
+        {
+          "name": "pull",
+          "schema": "boolean",
+          "required": false,
+          "description": "If set to pull=true, pull=True, or pull=1, then a newer version of the image is always attempted to be pulled even though an older version of the image exists locally. If set to pull=false, pull=False, or pull=0, then the local image will be used if one exists."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/containers/create",
+      "method": "/containers/createPost",
+      "httpMethod": "post",
+      "tag": "Single containers",
+      "description": "Create and start a single container",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "Choose a name for your container. The characters in the name can include uppercase letters, lowercase letters, numbers, periods (.), underscores (_), or hyphens (-), but the name must start with a letter."
+        },
+        {
+          "name": "BluemixApp",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Cmd",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Cpuset",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Env",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "ExposedPorts",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "HostConfig",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Image",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Memory",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "NumberCpus",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Volumes",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/containers/floating-ips",
+      "method": "/containers/floatingIpsGet",
+      "httpMethod": "get",
+      "tag": "Public IP addresses",
+      "description": "List available public IP addresses in a space",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "all",
+          "schema": "boolean",
+          "required": false,
+          "description": "If this option is set to `all=1`, `all=True`, or `all=true`, all public IP addresses that are allocated to a space are returned. If this option is set to `all=0`, `all=False`, or `all=false`, only available public IP addresses that are allocated but not bound to a container are returned. By default, only available public IP addresses are returned."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/containers/floating-ips/request",
+      "method": "/containers/floatingIps/requestPost",
+      "httpMethod": "post",
+      "tag": "Public IP addresses",
+      "description": "Request a public IP address for a space",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "New public IP address that is allocated to your space."
+        }
+      ]
+    },
+    {
+      "url": "/containers/floating-ips/{ip}/release",
+      "method": "/containers/floatingIps/{ip}/releasePost",
+      "httpMethod": "post",
+      "tag": "Public IP addresses",
+      "description": "Release public IP address",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "ip",
+          "schema": "string",
+          "required": true,
+          "description": "The public IP address that you want to release. Run `cf ic ip list` or call the `GET /containers/floating-ips?all=true` endpoint to review all public IP address that are allocated to your space. After a public IP address is released, it will no longer be allocated to your space."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/containers/groups",
+      "method": "/containers/groupsGet",
+      "httpMethod": "get",
+      "tag": "Container Groups",
+      "description": "List all container groups in a space",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/containers/groups",
+      "method": "/containers/groupsPost",
+      "httpMethod": "post",
+      "tag": "Container Groups",
+      "description": "Create and start a container group.",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "Autorecovery",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "BluemixApp",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Cmd",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Env",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Image",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Memory",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "NumberInstances",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Port",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Route",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Volumes",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/containers/groups/{name_or_id}",
+      "method": "/containers/groups/{nameOrId}Delete",
+      "httpMethod": "delete",
+      "tag": "Container Groups",
+      "description": "Stop and delete all container instances in a container group.",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "name_or_id",
+          "schema": "string",
+          "required": true,
+          "description": "The name or unique ID of the container group that you want to delete. Run `cf ic group list` or call the `GET /containers/groups` endpoint to retrieve a list of container groups in your space."
+        },
+        {
+          "name": "force",
+          "schema": "string",
+          "required": false,
+          "description": "If you want to force the deletion of a container group that has running container instances, use the force option. This parameter needs to be set to either true or false. If set to `force=true`, `force=True`, or `force=1`, running container instances are deleted. If set to `force=false`, `force=False`, or `force=0`, running container instances are not deleted. If you do not specify this paramater, running container instances are not deleted by default. "
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/containers/groups/{name_or_id}",
+      "method": "/containers/groups/{nameOrId}Get",
+      "httpMethod": "get",
+      "tag": "Container Groups",
+      "description": "Inspect a container group.",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "name_or_id",
+          "schema": "string",
+          "required": true,
+          "description": "The name or unique ID of the container group that you want to inspect. Run `cf ic group list` or call the `GET /containers/groups` endpoint to retrieve a list of container groups in your space."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/containers/groups/{name_or_id}",
+      "method": "/containers/groups/{nameOrId}Patch",
+      "httpMethod": "patch",
+      "tag": "Container Groups",
+      "description": "Update a container group.",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "name_or_id",
+          "schema": "string",
+          "required": true,
+          "description": "The name or unique ID of the container group that you want to update."
+        },
+        {
+          "name": "Autorecovery",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Environment",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "NumberInstances",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/containers/groups/{name_or_id}/maproute",
+      "method": "/containers/groups/{nameOrId}/maproutePost",
+      "httpMethod": "post",
+      "tag": "Container Groups",
+      "description": "Map a public route to a container group.",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "name_or_id",
+          "schema": "string",
+          "required": true,
+          "description": "The name or unique ID of the container group to which you want to map a public route. Run `cf ic group list` or call the `GET /containers/groups` endpoint to retrieve a list of container groups in your space."
+        },
+        {
+          "name": "domain",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "host",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/containers/groups/{name_or_id}/unmaproute",
+      "method": "/containers/groups/{nameOrId}/unmaproutePost",
+      "httpMethod": "post",
+      "tag": "Container Groups",
+      "description": "Unmap a public route from a container group",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "name_or_id",
+          "schema": "string",
+          "required": true,
+          "description": "The name or unique ID (UUID) of the container group that you want to inspect."
+        },
+        {
+          "name": "domain",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "host",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/containers/json",
+      "method": "/containers/jsonGet",
+      "httpMethod": "get",
+      "tag": "Single containers",
+      "description": "List single containers in a space.",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "all",
+          "schema": "string",
+          "required": false,
+          "description": "By default, the `GET /containers/json` endpoint returns a list of all single containers in a space that are in a running state. To request a list of all containers independent of their current state, set the `all` query parameter to true. Allowed values are: `all=true`, `all=True`, and `all=1`. "
+        },
+        {
+          "name": "filters",
+          "schema": "string",
+          "required": false,
+          "description": "You can filter your containers by any environment variable key or value that is listed in the `Env` section of your CLI/ API response when you run the `cf ic inspect <container>` command, or call the `GET /containers/{id}/json` endpoint. Your search criteria does not need to be an exact match. It can also be a part of the key or value you are looking for. For example, to filter all containers with an environment variable that contains `id` in one of their environment variables, use `filter=id`."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/containers/messages",
+      "method": "/containers/messagesGet",
+      "httpMethod": "get",
+      "tag": "API info",
+      "description": "List messages for the user",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. To retrieve your space ID, run `cf space <space_name> --guid` and replace `<space_name>` with the name of the space where you want to create or work with your container. "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/containers/quota",
+      "method": "/containers/quotaGet",
+      "httpMethod": "get",
+      "tag": "Quota",
+      "description": "Retrieve organization and space specific quota",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/containers/quota",
+      "method": "/containers/quotaPut",
+      "httpMethod": "put",
+      "tag": "Quota",
+      "description": "Update space quota",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "floating_ips",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "ram",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/containers/usage",
+      "method": "/containers/usageGet",
+      "httpMethod": "get",
+      "tag": "Quota",
+      "description": "List container sizes and quota limits",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/containers/version",
+      "method": "/containers/versionGet",
+      "httpMethod": "get",
+      "tag": "API info",
+      "description": "List latest API version",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/containers/{id}/status",
+      "method": "/containers/{id}/statusGet",
+      "httpMethod": "get",
+      "tag": "Single containers",
+      "description": "List the current state of a container.",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier that represents the container. Run `cf ic ps`, or call the `GET /containers/json` endpoint to retrieve the ID of the container."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/containers/{name_or_id}",
+      "method": "/containers/{nameOrId}Delete",
+      "httpMethod": "delete",
+      "tag": "Single containers",
+      "description": "Remove a single container",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "name_or_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier or name of the container that you want to delete. Run `cf ic ps -a` or call the `GET /containers/json?all=true` endpoint to review all containers in your space."
+        },
+        {
+          "name": "force",
+          "schema": "boolean",
+          "required": false,
+          "description": "Use the `force` query parameter if you want to delete the container independent of their current state. The container does not need to be stopped first. To force the deletion of a container, enter `force=true`, `force=True`, or `force=1`. If you want to delete containers that are in a non-running state only, do either not set this query parameter, or enter `force=false`, `force=False`, or `force=0`."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/containers/{name_or_id}/floating-ips/{ip}/bind",
+      "method": "/containers/{nameOrId}/floatingIps/{ip}/bindPost",
+      "httpMethod": "post",
+      "tag": "Public IP addresses",
+      "description": "Bind a public IP address to a single container",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "name_or_id",
+          "schema": "string",
+          "required": true,
+          "description": "The name or ID of the container that you want to bind to the public IP address. Run the `cf ic ps` command or call the `GET /containers/json` endpoint to retrieve a list of containers in your space."
+        },
+        {
+          "name": "ip",
+          "schema": "string",
+          "required": true,
+          "description": "The public IP address that you want to bind to your container. \n\nNote: The public IP address must be available in the space and not bound to a container. Run `cf ic ip list` or call the `GET /containers/floating-ips` endpoint."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/containers/{name_or_id}/floating-ips/{ip}/unbind",
+      "method": "/containers/{nameOrId}/floatingIps/{ip}/unbindPost",
+      "httpMethod": "post",
+      "tag": "Public IP addresses",
+      "description": "Unbind a public IP address from a container",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "name_or_id",
+          "schema": "string",
+          "required": true,
+          "description": "The name or ID of the container that you want to bind to the public IP address. Run the `cf ic ps` command or call the `GET /containers/json` endpoint to retrieve a list of containers in your space. "
+        },
+        {
+          "name": "ip",
+          "schema": "string",
+          "required": true,
+          "description": "The public IP address that you want to unbind from your container. \n\n Note: After unbinding a public IP address, this IP address will still be allocated to the space and can be used to be bound to other containers."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/containers/{name_or_id}/json",
+      "method": "/containers/{nameOrId}/jsonGet",
+      "httpMethod": "get",
+      "tag": "Single containers",
+      "description": "Inspect a single container",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "name_or_id",
+          "schema": "string",
+          "required": true,
+          "description": "The name or ID of the container that you want to inspect. Run the `cf ic ps` command or call the `GET /containers/json` endpoint to retrieve a list of containers in your space."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/containers/{name_or_id}/pause",
+      "method": "/containers/{nameOrId}/pausePost",
+      "httpMethod": "post",
+      "tag": "Single containers",
+      "description": "Pause a single container",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "name_or_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier or name of the container that you want to pause. Run `cf ic ps` or call the `GET /containers/json` endpoint to review all containers in your space that are currently in a running state."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/containers/{name_or_id}/rename",
+      "method": "/containers/{nameOrId}/renamePost",
+      "httpMethod": "post",
+      "tag": "Single containers",
+      "description": "Rename a single container",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "name_or_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier or name of the container that you want to rename. Run `cf ic ps -a` or call the `GET /containers/json?all=true` endpoint to review all containers in your space."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "The new name for the container. The characters in the name can include uppercase letters, lowercase letters, numbers, periods (.), underscores (_), or hyphens (-), but the name must start with a letter."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/containers/{name_or_id}/restart",
+      "method": "/containers/{nameOrId}/restartPost",
+      "httpMethod": "post",
+      "tag": "Single containers",
+      "description": "Restart a single container",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "name_or_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier or name of the container that you want to restart. Run `cf ic ps` or call the `GET /containers/json` endpoint to review all containers in your space."
+        },
+        {
+          "name": "t",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of seconds to wait before the container is restarted. For example, if you want a container to restart after 10 seconds, enter `t=10`."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/containers/{name_or_id}/start",
+      "method": "/containers/{nameOrId}/startPost",
+      "httpMethod": "post",
+      "tag": "Single containers",
+      "description": "Start a single container",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "name_or_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier or name of the container that you want to start. Run `cf ic ps -a` or call the `GET /containers/json?all=true` endpoint to review the containers in your space that are currently not in a running state."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/containers/{name_or_id}/stop",
+      "method": "/containers/{nameOrId}/stopPost",
+      "httpMethod": "post",
+      "tag": "Single containers",
+      "description": "Stop a single container",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "name_or_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier or name of the container that you want to stop. Run `cf ic ps` or call the `GET /containers/json` endpoint to review the containers in your space that are currently in a running state."
+        },
+        {
+          "name": "t",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of seconds to wait before the container is stopped. For example, if you want a container to stop after 10 seconds, enter `t=10`."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/containers/{name_or_id}/unpause",
+      "method": "/containers/{nameOrId}/unpausePost",
+      "httpMethod": "post",
+      "tag": "Single containers",
+      "description": "Unpause a single container",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "name_or_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier or name of the container that you want to unpause. Run `cf ic ps -a` or call the `GET /containers/json?all=true` endpoint to review all containers in your space."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/images/json",
+      "method": "/images/jsonGet",
+      "httpMethod": "get",
+      "tag": "Images",
+      "description": "List all Docker images that are available in your private Bluemix registry.",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/images/{id}",
+      "method": "/images/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Images",
+      "description": "Remove a Docker image.",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier representing a Docker image. Run `cf ic images`, or call the `GET /images/json` endpoint to review the Docker images that are available in your private Bluemix registry."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/images/{name_or_id}/json",
+      "method": "/images/{nameOrId}/jsonGet",
+      "httpMethod": "get",
+      "tag": "Images",
+      "description": "Inspect a Docker image in private Bluemix registry",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "name_or_id",
+          "schema": "string",
+          "required": true,
+          "description": "The full private Bluemix registry path to your image or the unique ID of the image that you want to inspect. Run `cf ic images` or call the `GET /images/json` endpoint to review the images in your private Bluemix registry. "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/registry/namespaces",
+      "method": "/registry/namespacesGet",
+      "httpMethod": "get",
+      "tag": "Private Docker images registry",
+      "description": "Retrieve the namespace of an organization.",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/registry/namespaces/{namespace}",
+      "method": "/registry/namespaces/{namespace}Get",
+      "httpMethod": "get",
+      "tag": "Private Docker images registry",
+      "description": "Check the availability of a namespace",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "namespace",
+          "schema": "string",
+          "required": true,
+          "description": "The name of the namespace that you would like to use for your organization and for which you would like to check availability in Bluemix."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/registry/namespaces/{namespace}",
+      "method": "/registry/namespaces/{namespace}Put",
+      "httpMethod": "put",
+      "tag": "Private Docker images registry",
+      "description": "Set a namespace for your private Bluemix registry.",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "namespace",
+          "schema": "string",
+          "required": true,
+          "description": "The name for your namespace to create your private Docker images registry in Bluemix. You cannot change the name afterward. The namespace can be 4-30 characters long, must start with at least one letter or number, and can only contain lowercase letters, numbers or underscores (_). You can test the availability of your namespace by calling the `GET /registry/namespaces/<namespace>` endpoint. When a HTTP code `404 Not Found` is returned, the namespace is available in Bluemix. "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tlskey",
+      "method": "/tlskeyGet",
+      "httpMethod": "get",
+      "tag": "Authentication",
+      "description": "Retrieve the TLS Certificate",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tlskey/refresh",
+      "method": "/tlskey/refreshPut",
+      "httpMethod": "put",
+      "tag": "Authentication",
+      "description": "Refresh the TLS Certificate",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token. "
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/volumes/create",
+      "method": "/volumes/createPost",
+      "httpMethod": "post",
+      "tag": "Volumes",
+      "description": "Create a volume in a space",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "The name of the volume. The name must be unique for a space and can contain uppercase letters, lowercase letters, numbers, underscores (_), and hyphens (-)."
+        },
+        {
+          "name": "fsName",
+          "schema": "string",
+          "required": false,
+          "description": "The name of the file share that the volume is hosted on. File shares can have different storage sizes and IOPS based on the required workload. If this field is left blank, the volume is hosted on the default file share."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/volumes/fs/create",
+      "method": "/volumes/fs/createPost",
+      "httpMethod": "post",
+      "tag": "File shares",
+      "description": "Create a file share in a space",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "fsIOPS",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "fsName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "fsSize",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/volumes/fs/flavors/json",
+      "method": "/volumes/fs/flavors/jsonGet",
+      "httpMethod": "get",
+      "tag": "File shares",
+      "description": "List available file share sizes",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/volumes/fs/json",
+      "method": "/volumes/fs/jsonGet",
+      "httpMethod": "get",
+      "tag": "File shares",
+      "description": "List available file shares in a space",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/volumes/fs/{name}",
+      "method": "/volumes/fs/{name}Delete",
+      "httpMethod": "delete",
+      "tag": "File shares",
+      "description": "Delete a file share",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "The name of the file share that you want to delete. Run `cf ic volume fs-list` or call the `GET /volumes/fs/json` API endpoint to retrieve a list of available file shares in your space."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/volumes/fs/{name}/json",
+      "method": "/volumes/fs/{name}/jsonGet",
+      "httpMethod": "get",
+      "tag": "File shares",
+      "description": "Inspect a file share",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "The name of the file share that you want to inspect. Run `cf ic volume fs-list` or call the `GET /volumes/fs/json` endpoint to retrieve a list of available file shares in your space."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/volumes/json",
+      "method": "/volumes/jsonGet",
+      "httpMethod": "get",
+      "tag": "Volumes",
+      "description": "List all volumes for a space",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/volumes/{name}",
+      "method": "/volumes/{name}Delete",
+      "httpMethod": "delete",
+      "tag": "Volumes",
+      "description": "Delete a volume",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "The name of the volume that you want to delete. Run `cf ic volume list` or call the `GET /volumes/json` endpoint to retrieve a list of all volumes that are available in your space."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/volumes/{name}",
+      "method": "/volumes/{name}Post",
+      "httpMethod": "post",
+      "tag": "Volumes",
+      "description": "Share a volume with another space",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "The name of the volume that you want to share with another space in your organization."
+        },
+        {
+          "name": "addSpaces",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "removeSpaces",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/volumes/{name}/json",
+      "method": "/volumes/{name}/jsonGet",
+      "httpMethod": "get",
+      "tag": "Volumes",
+      "description": "Retrieve detailed information about a volume. ",
+      "parameters": [
+        {
+          "name": "X-Auth-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The Bluemix JSON web token that you receive when logging into Bluemix. Run `cf oauth-token` to retrieve your access token."
+        },
+        {
+          "name": "X-Auth-Project-Id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "The name of the volume, for which you want to retrieve detailed information. Run `cf ic volume list` or call the `GET /volumes/json` endpoint to retrieve a list of all volumes that are available in your space."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://containers-api.ng.bluemix.net/v3",
   "apiDescription": "Containers are virtual software objects that include all the elements that an app needs to run. A container has the benefits of resource isolation and allocation but is more portable and efficient than, for example, a virtual machine.\n\n This documentation describes the IBM Containers API, which is based on the Docker Remote API. The API provides endpoints that you can use to create and manage your single containers and container groups in Bluemix. Endpoints are summarized under the following tags: \n\n- **Authentication**: Retrieve and refresh your TLS certificates. \n- **Private Docker images registry**: Create your own private Docker images registry in Bluemix by setting a namespace for your organization. \n- **Images**: View, build, and push your images to your private Bluemix registry so you can use them with IBM Containers. You can also scan your container images with the Vulnerability Advisor against standard policies set by the organization manager and a database of known Ubuntu issues. \n- **Single Containers**: Create and manage single containers in Bluemix. Use a single container to implement short-lived processes or to run simple tests as you develop an app or service. To make your single container available from the internet, review the `Public IP addresses` endpoints. \n- **Container Groups**: Create and manage your container groups in Bluemix. A container group consists of multiple single containers that are all created from the same container image and as a consequence are configured in the same way. Container groups offer further options at no cost to make your app highly available. These options include in-built load balancing, auto-recovery of unhealthy container instances, and auto-scaling of container instances based on CPU and memory usage. Map a public route to your container group to make your app accessible from the internet.  \n- **Public IP addresses**: Use these endpoints to request public IP addresses for your space. You can bind this IP address to your container to make your container accessible from the internet. \n- **File shares**: Create, list and delete file shares in a space. A file share is a NFS storage system that hosts Docker volumes.  \n- **Volumes**: Create and manage container volumes in your space to persist the data of your containers.  \n\n\n Each API request requires an HTTP header that includes the 'X-Auth-Token’ and 'X-Auth-Project-Id’ parameter. \n\n- **X-Auth-Token**: The JSON web token (JWT) that you receive when logging into the Bluemix platform. It allows you to use the IBM Containers REST API, access services, and resources. Run `cf oauth-token` to retrieve your access token information.\n- **X-Auth-Project-Id**: The unique ID of your organization space where you want to create or work with your containers. Run `cf space <space_name> --guid`, where `<space_name>` is the name of your space, to retrieve your space ID.\n\n\n For further information about how containers work in the IBM Containers service, review the documentation under https://new-console.ng.bluemix.net/docs/containers/container_index.html. ",
   "apiTitle": "IBM Containers API",

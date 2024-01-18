@@ -3,6 +3,2349 @@
   "openApiRaw": "https://raw.githubusercontent.com/tananaev/traccar/master/swagger.json",
   "homepage": "traccar.org",
   "apiVersion": "5.6",
+  "methods": [
+    {
+      "url": "/attributes/computed",
+      "method": "/attributes/computedGet",
+      "httpMethod": "get",
+      "tag": "Attributes",
+      "description": "Fetch a list of Attributes",
+      "parameters": [
+        {
+          "name": "all",
+          "schema": "boolean",
+          "description": "Can only be used by admins or managers to fetch all entities"
+        },
+        {
+          "name": "userId",
+          "schema": "integer",
+          "description": "Standard users can use this only with their own _userId_"
+        },
+        {
+          "name": "deviceId",
+          "schema": "integer",
+          "description": "Standard users can use this only with _deviceId_s, they have access to"
+        },
+        {
+          "name": "groupId",
+          "schema": "integer",
+          "description": "Standard users can use this only with _groupId_s, they have access to"
+        },
+        {
+          "name": "refresh",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/attributes/computed",
+      "method": "/attributes/computedPost",
+      "httpMethod": "post",
+      "tag": "Attributes",
+      "description": "Create an Attribute",
+      "parameters": [
+        {
+          "name": "attribute",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "expression",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/attributes/computed/{id}",
+      "method": "/attributes/computed/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Attributes",
+      "description": "Delete an Attribute",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/attributes/computed/{id}",
+      "method": "/attributes/computed/{id}Put",
+      "httpMethod": "put",
+      "tag": "Attributes",
+      "description": "Update an Attribute",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "attribute",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "expression",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/calendars",
+      "method": "/calendarsGet",
+      "httpMethod": "get",
+      "tag": "Calendars",
+      "description": "Fetch a list of Calendars",
+      "parameters": [
+        {
+          "name": "all",
+          "schema": "boolean",
+          "description": "Can only be used by admins or managers to fetch all entities"
+        },
+        {
+          "name": "userId",
+          "schema": "integer",
+          "description": "Standard users can use this only with their own _userId_"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/calendars",
+      "method": "/calendarsPost",
+      "httpMethod": "post",
+      "tag": "Calendars",
+      "description": "Create a Calendar",
+      "parameters": [
+        {
+          "name": "attributes",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "data",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/calendars/{id}",
+      "method": "/calendars/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Calendars",
+      "description": "Delete a Calendar",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/calendars/{id}",
+      "method": "/calendars/{id}Put",
+      "httpMethod": "put",
+      "tag": "Calendars",
+      "description": "Update a Calendar",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "attributes",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "data",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/commands",
+      "method": "/commandsGet",
+      "httpMethod": "get",
+      "tag": "Commands",
+      "description": "Fetch a list of Saved Commands",
+      "parameters": [
+        {
+          "name": "all",
+          "schema": "boolean",
+          "description": "Can only be used by admins or managers to fetch all entities"
+        },
+        {
+          "name": "userId",
+          "schema": "integer",
+          "description": "Standard users can use this only with their own _userId_"
+        },
+        {
+          "name": "deviceId",
+          "schema": "integer",
+          "description": "Standard users can use this only with _deviceId_s, they have access to"
+        },
+        {
+          "name": "groupId",
+          "schema": "integer",
+          "description": "Standard users can use this only with _groupId_s, they have access to"
+        },
+        {
+          "name": "refresh",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/commands",
+      "method": "/commandsPost",
+      "httpMethod": "post",
+      "tag": "Commands",
+      "description": "Create a Saved Command",
+      "parameters": [
+        {
+          "name": "attributes",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "deviceId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/commands/send",
+      "method": "/commands/sendGet",
+      "httpMethod": "get",
+      "tag": "Commands",
+      "description": "Fetch a list of Saved Commands supported by Device at the moment",
+      "parameters": [
+        {
+          "name": "deviceId",
+          "schema": "integer",
+          "description": "Standard users can use this only with _deviceId_s, they have access to"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/commands/send",
+      "method": "/commands/sendPost",
+      "httpMethod": "post",
+      "tag": "Commands",
+      "description": "Dispatch commands to device",
+      "parameters": [
+        {
+          "name": "attributes",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "deviceId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "202",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/commands/types",
+      "method": "/commands/typesGet",
+      "httpMethod": "get",
+      "tag": "Commands",
+      "description": "Fetch a list of available Commands for the Device or all possible Commands if Device ommited",
+      "parameters": [
+        {
+          "name": "deviceId",
+          "schema": "integer",
+          "description": "Internal device identifier. Only works if device has already reported some locations"
+        },
+        {
+          "name": "protocol",
+          "schema": "string",
+          "description": "Protocol name. Can be used instead of device id"
+        },
+        {
+          "name": "textChannel",
+          "schema": "boolean",
+          "description": "When `true` return SMS commands. If not specified or `false` return data commands"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/commands/{id}",
+      "method": "/commands/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Commands",
+      "description": "Delete a Saved Command",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/commands/{id}",
+      "method": "/commands/{id}Put",
+      "httpMethod": "put",
+      "tag": "Commands",
+      "description": "Update a Saved Command",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "attributes",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "deviceId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/devices",
+      "method": "/devicesGet",
+      "httpMethod": "get",
+      "tag": "Devices",
+      "description": "Fetch a list of Devices",
+      "parameters": [
+        {
+          "name": "all",
+          "schema": "boolean",
+          "description": "Can only be used by admins or managers to fetch all entities"
+        },
+        {
+          "name": "userId",
+          "schema": "integer",
+          "description": "Standard users can use this only with their own _userId_"
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": "To fetch one or more devices. Multiple params can be passed like `id=31&id=42`"
+        },
+        {
+          "name": "uniqueId",
+          "schema": "string",
+          "description": "To fetch one or more devices. Multiple params can be passed like `uniqueId=333331&uniqieId=44442`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/devices",
+      "method": "/devicesPost",
+      "httpMethod": "post",
+      "tag": "Devices",
+      "description": "Create a Device",
+      "parameters": [
+        {
+          "name": "attributes",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "category",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "contact",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "disabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "geofenceIds",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "groupId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "lastUpdate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "model",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "phone",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "positionId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "uniqueId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/devices/{id}",
+      "method": "/devices/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Devices",
+      "description": "Delete a Device",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/devices/{id}",
+      "method": "/devices/{id}Put",
+      "httpMethod": "put",
+      "tag": "Devices",
+      "description": "Update a Device",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "attributes",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "category",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "contact",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "disabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "geofenceIds",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "groupId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "lastUpdate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "model",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "phone",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "positionId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "uniqueId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/devices/{id}/accumulators",
+      "method": "/devices/{id}/accumulatorsPut",
+      "httpMethod": "put",
+      "tag": "Devices",
+      "description": "Update total distance and hours of the Device",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "deviceId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "hours",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "totalDistance",
+          "schema": "number",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/drivers",
+      "method": "/driversGet",
+      "httpMethod": "get",
+      "tag": "Drivers",
+      "description": "Fetch a list of Drivers",
+      "parameters": [
+        {
+          "name": "all",
+          "schema": "boolean",
+          "description": "Can only be used by admins or managers to fetch all entities"
+        },
+        {
+          "name": "userId",
+          "schema": "integer",
+          "description": "Standard users can use this only with their own _userId_"
+        },
+        {
+          "name": "deviceId",
+          "schema": "integer",
+          "description": "Standard users can use this only with _deviceId_s, they have access to"
+        },
+        {
+          "name": "groupId",
+          "schema": "integer",
+          "description": "Standard users can use this only with _groupId_s, they have access to"
+        },
+        {
+          "name": "refresh",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/drivers",
+      "method": "/driversPost",
+      "httpMethod": "post",
+      "tag": "Drivers",
+      "description": "Create a Driver",
+      "parameters": [
+        {
+          "name": "attributes",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "uniqueId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/drivers/{id}",
+      "method": "/drivers/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Drivers",
+      "description": "Delete a Driver",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/drivers/{id}",
+      "method": "/drivers/{id}Put",
+      "httpMethod": "put",
+      "tag": "Drivers",
+      "description": "Update a Driver",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "attributes",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "uniqueId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/events/{id}",
+      "method": "/events/{id}Get",
+      "httpMethod": "get",
+      "tag": "Events",
+      "description": "",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/geofences",
+      "method": "/geofencesGet",
+      "httpMethod": "get",
+      "tag": "Geofences",
+      "description": "Fetch a list of Geofences",
+      "parameters": [
+        {
+          "name": "all",
+          "schema": "boolean",
+          "description": "Can only be used by admins or managers to fetch all entities"
+        },
+        {
+          "name": "userId",
+          "schema": "integer",
+          "description": "Standard users can use this only with their own _userId_"
+        },
+        {
+          "name": "deviceId",
+          "schema": "integer",
+          "description": "Standard users can use this only with _deviceId_s, they have access to"
+        },
+        {
+          "name": "groupId",
+          "schema": "integer",
+          "description": "Standard users can use this only with _groupId_s, they have access to"
+        },
+        {
+          "name": "refresh",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/geofences",
+      "method": "/geofencesPost",
+      "httpMethod": "post",
+      "tag": "Geofences",
+      "description": "Create a Geofence",
+      "parameters": [
+        {
+          "name": "area",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "attributes",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "calendarId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/geofences/{id}",
+      "method": "/geofences/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Geofences",
+      "description": "Delete a Geofence",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/geofences/{id}",
+      "method": "/geofences/{id}Put",
+      "httpMethod": "put",
+      "tag": "Geofences",
+      "description": "Update a Geofence",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "area",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "attributes",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "calendarId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups",
+      "method": "/groupsGet",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "Fetch a list of Groups",
+      "parameters": [
+        {
+          "name": "all",
+          "schema": "boolean",
+          "description": "Can only be used by admins or managers to fetch all entities"
+        },
+        {
+          "name": "userId",
+          "schema": "integer",
+          "description": "Standard users can use this only with their own _userId_"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups",
+      "method": "/groupsPost",
+      "httpMethod": "post",
+      "tag": "Groups",
+      "description": "Create a Group",
+      "parameters": [
+        {
+          "name": "attributes",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "groupId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{id}",
+      "method": "/groups/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Groups",
+      "description": "Delete a Group",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/groups/{id}",
+      "method": "/groups/{id}Put",
+      "httpMethod": "put",
+      "tag": "Groups",
+      "description": "Update a Group",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "attributes",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "groupId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/maintenance",
+      "method": "/maintenanceGet",
+      "httpMethod": "get",
+      "tag": "Maintenance",
+      "description": "Fetch a list of Maintenance",
+      "parameters": [
+        {
+          "name": "all",
+          "schema": "boolean",
+          "description": "Can only be used by admins or managers to fetch all entities"
+        },
+        {
+          "name": "userId",
+          "schema": "integer",
+          "description": "Standard users can use this only with their own _userId_"
+        },
+        {
+          "name": "deviceId",
+          "schema": "integer",
+          "description": "Standard users can use this only with _deviceId_s, they have access to"
+        },
+        {
+          "name": "groupId",
+          "schema": "integer",
+          "description": "Standard users can use this only with _groupId_s, they have access to"
+        },
+        {
+          "name": "refresh",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/maintenance",
+      "method": "/maintenancePost",
+      "httpMethod": "post",
+      "tag": "Maintenance",
+      "description": "Create a Maintenance",
+      "parameters": [
+        {
+          "name": "attributes",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "period",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "start",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/maintenance/{id}",
+      "method": "/maintenance/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Maintenance",
+      "description": "Delete a Maintenance",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/maintenance/{id}",
+      "method": "/maintenance/{id}Put",
+      "httpMethod": "put",
+      "tag": "Maintenance",
+      "description": "Update a Maintenance",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "attributes",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "period",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "start",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/notifications",
+      "method": "/notificationsGet",
+      "httpMethod": "get",
+      "tag": "Notifications",
+      "description": "Fetch a list of Notifications",
+      "parameters": [
+        {
+          "name": "all",
+          "schema": "boolean",
+          "description": "Can only be used by admins or managers to fetch all entities"
+        },
+        {
+          "name": "userId",
+          "schema": "integer",
+          "description": "Standard users can use this only with their own _userId_"
+        },
+        {
+          "name": "deviceId",
+          "schema": "integer",
+          "description": "Standard users can use this only with _deviceId_s, they have access to"
+        },
+        {
+          "name": "groupId",
+          "schema": "integer",
+          "description": "Standard users can use this only with _groupId_s, they have access to"
+        },
+        {
+          "name": "refresh",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/notifications",
+      "method": "/notificationsPost",
+      "httpMethod": "post",
+      "tag": "Notifications",
+      "description": "Create a Notification",
+      "parameters": [
+        {
+          "name": "always",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "attributes",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "calendarId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "mail",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "sms",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "web",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/notifications/test",
+      "method": "/notifications/testPost",
+      "httpMethod": "post",
+      "tag": "Notifications",
+      "description": "Send test notification to current user via Email and SMS",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/notifications/types",
+      "method": "/notifications/typesGet",
+      "httpMethod": "get",
+      "tag": "Notifications",
+      "description": "Fetch a list of available Notification types",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/notifications/{id}",
+      "method": "/notifications/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Notifications",
+      "description": "Delete a Notification",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/notifications/{id}",
+      "method": "/notifications/{id}Put",
+      "httpMethod": "put",
+      "tag": "Notifications",
+      "description": "Update a Notification",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "always",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "attributes",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "calendarId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "mail",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "sms",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "web",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/permissions",
+      "method": "/permissionsDelete",
+      "httpMethod": "delete",
+      "tag": "Permissions",
+      "description": "Unlink an Object from another Object",
+      "parameters": [
+        {
+          "name": "attributeId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "calendarId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "deviceId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "driverId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "geofenceId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "groupId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "managedUserId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "notificationId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "userId",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/permissions",
+      "method": "/permissionsPost",
+      "httpMethod": "post",
+      "tag": "Permissions",
+      "description": "Link an Object to another Object",
+      "parameters": [
+        {
+          "name": "attributeId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "calendarId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "deviceId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "driverId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "geofenceId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "groupId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "managedUserId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "notificationId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "userId",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This is a permission map that contain two object indexes. It is used to link/unlink objects. Order is important. Example: { deviceId:8, geofenceId: 16 }"
+        }
+      ]
+    },
+    {
+      "url": "/positions",
+      "method": "/positionsGet",
+      "httpMethod": "get",
+      "tag": "Positions",
+      "description": "Fetches a list of Positions",
+      "parameters": [
+        {
+          "name": "deviceId",
+          "schema": "integer",
+          "description": "_deviceId_ is optional, but requires the _from_ and _to_ parameters when used"
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "description": "in IS0 8601 format. eg. `1963-11-22T18:30:00Z`"
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "description": "in IS0 8601 format. eg. `1963-11-22T18:30:00Z`"
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": "To fetch one or more positions. Multiple params can be passed like `id=31&id=42`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reports/events",
+      "method": "/reports/eventsGet",
+      "httpMethod": "get",
+      "tag": "Reports",
+      "description": "Fetch a list of Events within the time period for the Devices or Groups",
+      "parameters": [
+        {
+          "name": "deviceId",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "groupId",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "array",
+          "description": "% can be used to return events of all types"
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "required": true,
+          "description": "in IS0 8601 format. eg. `1963-11-22T18:30:00Z`"
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "required": true,
+          "description": "in IS0 8601 format. eg. `1963-11-22T18:30:00Z`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reports/route",
+      "method": "/reports/routeGet",
+      "httpMethod": "get",
+      "tag": "Reports",
+      "description": "Fetch a list of Positions within the time period for the Devices or Groups",
+      "parameters": [
+        {
+          "name": "deviceId",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "groupId",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "required": true,
+          "description": "in IS0 8601 format. eg. `1963-11-22T18:30:00Z`"
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "required": true,
+          "description": "in IS0 8601 format. eg. `1963-11-22T18:30:00Z`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reports/stops",
+      "method": "/reports/stopsGet",
+      "httpMethod": "get",
+      "tag": "Reports",
+      "description": "Fetch a list of ReportStops within the time period for the Devices or Groups",
+      "parameters": [
+        {
+          "name": "deviceId",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "groupId",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "required": true,
+          "description": "in IS0 8601 format. eg. `1963-11-22T18:30:00Z`"
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "required": true,
+          "description": "in IS0 8601 format. eg. `1963-11-22T18:30:00Z`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reports/summary",
+      "method": "/reports/summaryGet",
+      "httpMethod": "get",
+      "tag": "Reports",
+      "description": "Fetch a list of ReportSummary within the time period for the Devices or Groups",
+      "parameters": [
+        {
+          "name": "deviceId",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "groupId",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "required": true,
+          "description": "in IS0 8601 format. eg. `1963-11-22T18:30:00Z`"
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "required": true,
+          "description": "in IS0 8601 format. eg. `1963-11-22T18:30:00Z`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reports/trips",
+      "method": "/reports/tripsGet",
+      "httpMethod": "get",
+      "tag": "Reports",
+      "description": "Fetch a list of ReportTrips within the time period for the Devices or Groups",
+      "parameters": [
+        {
+          "name": "deviceId",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "groupId",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "required": true,
+          "description": "in IS0 8601 format. eg. `1963-11-22T18:30:00Z`"
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "required": true,
+          "description": "in IS0 8601 format. eg. `1963-11-22T18:30:00Z`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/server",
+      "method": "/serverGet",
+      "httpMethod": "get",
+      "tag": "Server",
+      "description": "Fetch Server information",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/server",
+      "method": "/serverPut",
+      "httpMethod": "put",
+      "tag": "Server",
+      "description": "Update Server information",
+      "parameters": [
+        {
+          "name": "attributes",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "bingKey",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "coordinateFormat",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "deviceReadonly",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "forceSettings",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "latitude",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "limitCommands",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "longitude",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "map",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "mapUrl",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "poiLayer",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "readonly",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "registration",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "twelveHourFormat",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "zoom",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/session",
+      "method": "/sessionDelete",
+      "httpMethod": "delete",
+      "tag": "Session",
+      "description": "Close the Session",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/session",
+      "method": "/sessionGet",
+      "httpMethod": "get",
+      "tag": "Session",
+      "description": "Fetch Session information",
+      "parameters": [
+        {
+          "name": "token",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/session",
+      "method": "/sessionPost",
+      "httpMethod": "post",
+      "tag": "Session",
+      "description": "Create a new Session",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/statistics",
+      "method": "/statisticsGet",
+      "httpMethod": "get",
+      "tag": "Statistics",
+      "description": "Fetch server Statistics",
+      "parameters": [
+        {
+          "name": "from",
+          "schema": "string",
+          "required": true,
+          "description": "in IS0 8601 format. eg. `1963-11-22T18:30:00Z`"
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "required": true,
+          "description": "in IS0 8601 format. eg. `1963-11-22T18:30:00Z`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users",
+      "method": "/usersGet",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Fetch a list of Users",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "string",
+          "description": "Can only be used by admin or manager users"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users",
+      "method": "/usersPost",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Create a User",
+      "parameters": [
+        {
+          "name": "administrator",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "attributes",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "coordinateFormat",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "deviceLimit",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "deviceReadonly",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "disabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "expirationTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "latitude",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "limitCommands",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "longitude",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "map",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "phone",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "poiLayer",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "readonly",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "twelveHourFormat",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "userLimit",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "zoom",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}",
+      "method": "/users/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Users",
+      "description": "Delete a User",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/users/{id}",
+      "method": "/users/{id}Put",
+      "httpMethod": "put",
+      "tag": "Users",
+      "description": "Update a User",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "administrator",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "attributes",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "coordinateFormat",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "deviceLimit",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "deviceReadonly",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "disabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "expirationTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "latitude",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "limitCommands",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "longitude",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "map",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "phone",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "poiLayer",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "readonly",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "twelveHourFormat",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "userLimit",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "zoom",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://demo.traccar.org/api",
   "apiDescription": "Open Source GPS Tracking Platform",
   "apiTitle": "Traccar",

@@ -3,6 +3,556 @@
   "openApiRaw": "https://raw.githubusercontent.com/AuthentiqID/authentiq-docs/master/docs/swagger/issuer.yaml",
   "homepage": "6-dot-authentiqio.appspot.com",
   "apiVersion": "6",
+  "methods": [
+    {
+      "url": "/key",
+      "method": "keyRevokeNosecret",
+      "httpMethod": "delete",
+      "tag": "key",
+      "description": "Revoke an Authentiq ID using email & phone.\n\nIf called with `email` and `phone` only, a verification code \nwill be sent by email. Do a second call adding `code` to \ncomplete the revocation.\n",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": "primary email associated to Key (ID)"
+        },
+        {
+          "name": "phone",
+          "schema": "string",
+          "required": true,
+          "description": "primary phone number, international representation"
+        },
+        {
+          "name": "code",
+          "schema": "string",
+          "required": false,
+          "description": "verification code sent by email"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/key",
+      "method": "keyRegister",
+      "httpMethod": "post",
+      "tag": "key",
+      "description": "Register a new ID `JWT(sub, devtoken)`\n\nv5: `JWT(sub, pk, devtoken, ...)`\n\nSee: https://github.com/skion/authentiq/wiki/JWT-Examples\n",
+      "parameters": [
+        {
+          "name": "devtoken",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sub",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/key/{PK}",
+      "method": "keyRevoke",
+      "httpMethod": "delete",
+      "tag": "key",
+      "description": "Revoke an Identity (Key) with a revocation secret",
+      "parameters": [
+        {
+          "name": "PK",
+          "schema": "string",
+          "required": true,
+          "description": "Public Signing Key - Authentiq ID (43 chars)"
+        },
+        {
+          "name": "secret",
+          "schema": "string",
+          "required": true,
+          "description": "revokation secret"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/key/{PK}",
+      "method": "keyRetrieve",
+      "httpMethod": "get",
+      "tag": "key",
+      "description": "Get public details of an Authentiq ID.\n",
+      "parameters": [
+        {
+          "name": "PK",
+          "schema": "string",
+          "required": true,
+          "description": "Public Signing Key - Authentiq ID (43 chars)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "410",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/key/{PK}",
+      "method": "/key/{pk}Head",
+      "httpMethod": "head",
+      "tag": "key",
+      "description": "HEAD info on Authentiq ID\n",
+      "parameters": [
+        {
+          "name": "PK",
+          "schema": "string",
+          "required": true,
+          "description": "Public Signing Key - Authentiq ID (43 chars)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "410",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/key/{PK}",
+      "method": "keyUpdate",
+      "httpMethod": "post",
+      "tag": "key",
+      "description": "update properties of an Authentiq ID.\n(not operational in v4; use PUT for now)\n\nv5: POST issuer-signed email & phone scopes in\na self-signed JWT\n\nSee: https://github.com/skion/authentiq/wiki/JWT-Examples\n",
+      "parameters": [
+        {
+          "name": "PK",
+          "schema": "string",
+          "required": true,
+          "description": "Public Signing Key - Authentiq ID (43 chars)"
+        },
+        {
+          "name": "devtoken",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sub",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/key/{PK}",
+      "method": "keyBind",
+      "httpMethod": "put",
+      "tag": "key",
+      "description": "Update Authentiq ID by replacing the object.\n\nv4: `JWT(sub,email,phone)` to bind email/phone hash; \n\nv5: POST issuer-signed email & phone scopes\nand PUT to update registration `JWT(sub, pk, devtoken, ...)`\n\nSee: https://github.com/skion/authentiq/wiki/JWT-Examples\n",
+      "parameters": [
+        {
+          "name": "PK",
+          "schema": "string",
+          "required": true,
+          "description": "Public Signing Key - Authentiq ID (43 chars)"
+        },
+        {
+          "name": "devtoken",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sub",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/login",
+      "method": "pushLoginRequest",
+      "httpMethod": "post",
+      "tag": "login",
+      "description": "push sign-in request\nSee: https://github.com/skion/authentiq/wiki/JWT-Examples\n",
+      "parameters": [
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": true,
+          "description": "URI App will connect to"
+        },
+        {
+          "name": "aud",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "exp",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "iat",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "iss",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "nbf",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sub",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/scope",
+      "method": "signRequest",
+      "httpMethod": "post",
+      "tag": "scope",
+      "description": "scope verification request\nSee: https://github.com/skion/authentiq/wiki/JWT-Examples\n",
+      "parameters": [
+        {
+          "name": "test",
+          "schema": "integer",
+          "required": false,
+          "description": "test only mode, using test issuer"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "phone",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "scope",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "sub",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/scope/{job}",
+      "method": "signDelete",
+      "httpMethod": "delete",
+      "tag": "scope",
+      "description": "delete a verification job",
+      "parameters": [
+        {
+          "name": "job",
+          "schema": "string",
+          "required": true,
+          "description": "Job ID (20 chars)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/scope/{job}",
+      "method": "signRetrieve",
+      "httpMethod": "get",
+      "tag": "scope",
+      "description": "get the status / current content of a verification job",
+      "parameters": [
+        {
+          "name": "job",
+          "schema": "string",
+          "required": true,
+          "description": "Job ID (20 chars)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/scope/{job}",
+      "method": "signRetrieveHead",
+      "httpMethod": "head",
+      "tag": "scope",
+      "description": "HEAD to get the status of a verification job",
+      "parameters": [
+        {
+          "name": "job",
+          "schema": "string",
+          "required": true,
+          "description": "Job ID (20 chars)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/scope/{job}",
+      "method": "signConfirm",
+      "httpMethod": "post",
+      "tag": "scope",
+      "description": "this is a scope confirmation",
+      "parameters": [
+        {
+          "name": "job",
+          "schema": "string",
+          "required": true,
+          "description": "Job ID (20 chars)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/scope/{job}",
+      "method": "signUpdate",
+      "httpMethod": "put",
+      "tag": "scope",
+      "description": "authority updates a JWT with its signature\nSee: https://github.com/skion/authentiq/wiki/JWT-Examples\n",
+      "parameters": [
+        {
+          "name": "job",
+          "schema": "string",
+          "required": true,
+          "description": "Job ID (20 chars)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://6-dot-authentiqio.appspot.com",
   "apiDescription": "Strong authentication, without the passwords.",
   "apiTitle": "Authentiq API",

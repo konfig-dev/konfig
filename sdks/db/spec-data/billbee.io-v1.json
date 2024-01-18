@@ -3,6 +3,3500 @@
   "openApiRaw": "https://app.billbee.io/swagger/docs/v1",
   "homepage": "billbee.io",
   "apiVersion": "v1",
+  "methods": [
+    {
+      "url": "/api/v1/automaticprovision/createaccount",
+      "method": "automaticProvisioningCreateAccount",
+      "httpMethod": "post",
+      "tag": "Provisioning",
+      "description": "Creates a new Billbee user account with the data passed",
+      "parameters": [
+        {
+          "name": "AcceptTerms",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Address",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "AffiliateCouponCode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "DefaultCurrrency",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "DefaultVatIndex",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "DefaultVatMode",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "EMail",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Password",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Vat1Rate",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Vat2Rate",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/automaticprovision/termsinfo",
+      "method": "automaticProvisioningTermsInfo",
+      "httpMethod": "get",
+      "tag": "Provisioning",
+      "description": "Returns infos about Billbee terms and conditions",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/cloudstorages",
+      "method": "cloudStorageApiGetList",
+      "httpMethod": "get",
+      "tag": "CloudStorage",
+      "description": "Gets a list of all connected cloud storage devices",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/customer-addresses",
+      "method": "customerAddressesGetAll",
+      "httpMethod": "get",
+      "tag": "CustomerAddresses",
+      "description": "Get a list of all customer addresses",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "The current page to request starting with 1 (default is 1)"
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "The page size for the result list. Values between 1 and 250 are allowed. (default is 50)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/customer-addresses",
+      "method": "customerAddressesCreate",
+      "httpMethod": "post",
+      "tag": "CustomerAddresses",
+      "description": "Creates a new customer address",
+      "parameters": [
+        {
+          "name": "AddressAddition",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "AddressType",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "ArchivedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "City",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Company",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "CountryCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "CustomerId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "Email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Fax",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "FirstName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Housenumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "LastName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Name2",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "RestoredAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "State",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Street",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Tel1",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Tel2",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Zip",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/customer-addresses/{id}",
+      "method": "customerAddressesGetOne",
+      "httpMethod": "get",
+      "tag": "CustomerAddresses",
+      "description": "Queries a single customer address by id",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the address to query"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/customer-addresses/{id}",
+      "method": "customerAddressesUpdate",
+      "httpMethod": "put",
+      "tag": "CustomerAddresses",
+      "description": "Updates a customer address by id",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the address"
+        },
+        {
+          "name": "AddressAddition",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "AddressType",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "ArchivedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "City",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Company",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "CountryCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "CustomerId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "Email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Fax",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "FirstName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Housenumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "LastName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Name2",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "RestoredAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "State",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Street",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Tel1",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Tel2",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Zip",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/customers",
+      "method": "customerGetAll",
+      "httpMethod": "get",
+      "tag": "Customers",
+      "description": "Get a list of all customers",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "The current page to request starting with 1"
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "The pagesize for the result list. Values between 1 and 250 are allowed"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/customers",
+      "method": "customerCreate",
+      "httpMethod": "post",
+      "tag": "Customers",
+      "description": "Creates a new customer",
+      "parameters": [
+        {
+          "name": "Address",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "ArchivedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "DefaultCommercialMailAddress",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "DefaultFax",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "DefaultMailAddress",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "DefaultPhone1",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "DefaultPhone2",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "DefaultStatusUpdatesMailAddress",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "Email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "LanguageId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "MetaData",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "Name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Number",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "PriceGroupId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "RestoredAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Tel1",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Tel2",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Type",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "VatId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/customers/addresses/{id}",
+      "method": "customerGetCustomerAddress",
+      "httpMethod": "get",
+      "tag": "Customers",
+      "description": "Queries a single address from a customer",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the address"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/customers/addresses/{id}",
+      "method": "customerPatchAddress",
+      "httpMethod": "patch",
+      "tag": "Customers",
+      "description": "Updates one or more fields of an address",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the address"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/customers/addresses/{id}",
+      "method": "customerUpdateAddress",
+      "httpMethod": "put",
+      "tag": "Customers",
+      "description": "Updates all fields of an address",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the address"
+        },
+        {
+          "name": "AddressAddition",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "AddressType",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "ArchivedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "City",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Company",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "CountryCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "CustomerId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "Email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Fax",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "FirstName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Housenumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "LastName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Name2",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "RestoredAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "State",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Street",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Tel1",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Tel2",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Zip",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/customers/{id}",
+      "method": "customerGetOne",
+      "httpMethod": "get",
+      "tag": "Customers",
+      "description": "Queries a single customer by id",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the customer to query"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/customers/{id}",
+      "method": "customerUpdate",
+      "httpMethod": "put",
+      "tag": "Customers",
+      "description": "Updates a customer by id",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the customer"
+        },
+        {
+          "name": "ArchivedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "DefaultCommercialMailAddress",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "DefaultFax",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "DefaultMailAddress",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "DefaultPhone1",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "DefaultPhone2",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "DefaultStatusUpdatesMailAddress",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "Email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "LanguageId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "MetaData",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "Name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Number",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "PriceGroupId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "RestoredAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Tel1",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Tel2",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Type",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "VatId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/customers/{id}/addresses",
+      "method": "customerGetCustomerAddresses",
+      "httpMethod": "get",
+      "tag": "Customers",
+      "description": "Queries a list of addresses from a customer",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the customer"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "The current page to request starting with 1"
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "The pagesize for the result list. Values between 1 and 250 are allowed"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/customers/{id}/addresses",
+      "method": "customerAddCustomerAddress",
+      "httpMethod": "post",
+      "tag": "Customers",
+      "description": "Adds a new address to a customer",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "CustomerId to attach the new address to."
+        },
+        {
+          "name": "AddressAddition",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "AddressType",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "ArchivedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "City",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Company",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "CountryCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "CustomerId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "Email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Fax",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "FirstName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Housenumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "LastName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Name2",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "RestoredAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "State",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Street",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Tel1",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Tel2",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Zip",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/customers/{id}/orders",
+      "method": "customerGetCustomerOrders",
+      "httpMethod": "get",
+      "tag": "Customers",
+      "description": "Queries a list of orders from a customer",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the customer"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "The current page to request starting with 1"
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "The pagesize for the result list. Values between 1 and 250 are allowed"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/enums/orderstates",
+      "method": "enumApiGetOrderStates",
+      "httpMethod": "get",
+      "tag": "EnumApi",
+      "description": "Returns a list with all defined orderstates",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/enums/paymenttypes",
+      "method": "enumApiGetPaymentTypes",
+      "httpMethod": "get",
+      "tag": "EnumApi",
+      "description": "Returns a list with all defined paymenttypes",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/enums/shipmenttypes",
+      "method": "enumApiGetShipmentTypes",
+      "httpMethod": "get",
+      "tag": "EnumApi",
+      "description": "Returns a list with all defined shipmenttypes",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/enums/shippingcarriers",
+      "method": "enumApiGetShippingCarriers",
+      "httpMethod": "get",
+      "tag": "EnumApi",
+      "description": "Returns a list with all defined shippingcarriers",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/events",
+      "method": "eventApiGetList",
+      "httpMethod": "get",
+      "tag": "Events",
+      "description": "Get a list of all events optionally filtered by date. This request is extra throttled to 2 calls per page per hour.",
+      "parameters": [
+        {
+          "name": "minDate",
+          "schema": "string",
+          "required": false,
+          "description": "Specifies the oldest date to include in the response"
+        },
+        {
+          "name": "maxDate",
+          "schema": "string",
+          "required": false,
+          "description": "Specifies the newest date to include in the response"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Specifies the page to request"
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "Specifies the pagesize. Defaults to 50, max value is 250"
+        },
+        {
+          "name": "typeId",
+          "schema": "array",
+          "required": false,
+          "description": "Filter for specific event types"
+        },
+        {
+          "name": "orderId",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter for specific order id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/layouts",
+      "method": "layoutApiGetList",
+      "httpMethod": "get",
+      "tag": "Orders",
+      "description": "",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/orders",
+      "method": "orderApiGetList",
+      "httpMethod": "get",
+      "tag": "Orders",
+      "description": "Get a list of all orders optionally filtered by date",
+      "parameters": [
+        {
+          "name": "minOrderDate",
+          "schema": "string",
+          "required": false,
+          "description": "Specifies the oldest order date to include in the response"
+        },
+        {
+          "name": "maxOrderDate",
+          "schema": "string",
+          "required": false,
+          "description": "Specifies the newest order date to include in the response"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Specifies the page to request"
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "Specifies the pagesize. Defaults to 50, max value is 250"
+        },
+        {
+          "name": "shopId",
+          "schema": "array",
+          "required": false,
+          "description": "Specifies a list of shop ids for which invoices should be included"
+        },
+        {
+          "name": "orderStateId",
+          "schema": "array",
+          "required": false,
+          "description": "Specifies a list of state ids to include in the response"
+        },
+        {
+          "name": "tag",
+          "schema": "array",
+          "required": false,
+          "description": "Specifies a list of tags the order must have attached to be included in the response"
+        },
+        {
+          "name": "minimumBillBeeOrderId",
+          "schema": "integer",
+          "required": false,
+          "description": "If given, all delivered orders have an Id greater than or equal to the given minimumOrderId"
+        },
+        {
+          "name": "modifiedAtMin",
+          "schema": "string",
+          "required": false,
+          "description": "If given, the last modification has to be newer than the given date"
+        },
+        {
+          "name": "modifiedAtMax",
+          "schema": "string",
+          "required": false,
+          "description": "If given, the last modification has to be older or equal than the given date."
+        },
+        {
+          "name": "articleTitleSource",
+          "schema": "integer",
+          "required": false,
+          "description": "The source field for the article title. 0 = Order Position (default), 1 = Article Title, 2 = Article Invoice Text"
+        },
+        {
+          "name": "excludeTags",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true the list of tags passed to the call are used to filter orders to not include these tags"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/orders",
+      "method": "orderApiPostNewOrder",
+      "httpMethod": "post",
+      "tag": "Orders",
+      "description": "Creates a new order in the Billbee account",
+      "parameters": [
+        {
+          "name": "shopId",
+          "schema": "integer",
+          "required": false,
+          "description": "Deprecated, if orderData.ApiAccountId is set, it will be used instead of 'shopId'"
+        },
+        {
+          "name": "AcceptLossOfReturnRight",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "AdjustmentCost",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "AdjustmentReason",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ApiAccountId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "ApiAccountName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ArchivedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "BillBeeOrderId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "BillBeeParentOrderId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "Buyer",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "Comments",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "ConfirmedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "CreatedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Currency",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "CustomInvoiceNote",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Customer",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "CustomerNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "CustomerVatId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "DeliverySourceCountryCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "DistributionCenter",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "History",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "Id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "InvoiceAddress",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "InvoiceDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "InvoiceNumber",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "InvoiceNumberPostfix",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "InvoiceNumberPrefix",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "IsCancelationFor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "IsFromBillbeeApi",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "LanguageCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "LastModifiedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "MerchantVatId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "OrderItems",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "OrderNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "PaidAmount",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "PayedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "PaymentInstruction",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "PaymentMethod",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "PaymentReference",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "PaymentTransactionId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Payments",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "RebateDifference",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "RestoredAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Seller",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "SellerComment",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ShipWeightKg",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "ShippedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ShippingAddress",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "ShippingCost",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "ShippingIds",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "ShippingProfileId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ShippingProfileName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ShippingProviderId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "ShippingProviderName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ShippingProviderProductId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "ShippingProviderProductName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ShippingServices",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "State",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "Tags",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "TaxRate1",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "TaxRate2",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "TotalCost",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "UpdatedAt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "VatId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "VatMode",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/orders/CreateDeliveryNote/{id}",
+      "method": "orderApiCreateDeliveryNote",
+      "httpMethod": "post",
+      "tag": "Orders",
+      "description": "Create an delivery note for an existing order. This request is extra throttled by order and api key to a maximum of 1 per 5 minutes.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The internal billbee id of the order"
+        },
+        {
+          "name": "includePdf",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, the PDF is included in the response as base64 encoded string"
+        },
+        {
+          "name": "sendToCloudId",
+          "schema": "integer",
+          "required": false,
+          "description": "Optionally specify the id of a billbee connected cloud device to send the pdf to"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/orders/CreateInvoice/{id}",
+      "method": "orderApiCreateInvoice",
+      "httpMethod": "post",
+      "tag": "Orders",
+      "description": "Create an invoice for an existing order. This request is extra throttled by order and api key to a maximum of 1 per 5 minutes.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The internal billbee id of the order"
+        },
+        {
+          "name": "includeInvoicePdf",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, the PDF is included in the response as base64 encoded string"
+        },
+        {
+          "name": "templateId",
+          "schema": "integer",
+          "required": false,
+          "description": "You can pass the id of an invoice template to overwrite the assigned template for invoice creation"
+        },
+        {
+          "name": "sendToCloudId",
+          "schema": "integer",
+          "required": false,
+          "description": "You can pass the id of a connected cloud printer/storage to send the invoice to it"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/orders/PatchableFields",
+      "method": "orderApiGetPatchableFields",
+      "httpMethod": "get",
+      "tag": "Orders",
+      "description": "Returns a list of fields which can be updated with the orders/{id} patch call",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/orders/find/{id}/{partner}",
+      "method": "orderApiFind",
+      "httpMethod": "get",
+      "tag": "Orders",
+      "description": "Find a single order by its external id (order number)",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The order id from the external system"
+        },
+        {
+          "name": "partner",
+          "schema": "string",
+          "required": true,
+          "description": "Optional the name of the shop/marketplace the order was imported from"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/orders/findbyextref/{extRef}",
+      "method": "orderApiGetByExtRef",
+      "httpMethod": "get",
+      "tag": "Orders",
+      "description": "Get a single order by its external order number",
+      "parameters": [
+        {
+          "name": "extRef",
+          "schema": "string",
+          "required": true,
+          "description": "The extern order number of the order"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/orders/invoices",
+      "method": "orderApiGetInvoiceList",
+      "httpMethod": "get",
+      "tag": "Orders",
+      "description": "Get a list of all invoices optionally filtered by date. This request ist throttled to 1 per 1 minute for same page and minInvoiceDate",
+      "parameters": [
+        {
+          "name": "minInvoiceDate",
+          "schema": "string",
+          "required": false,
+          "description": "Specifies the oldest invoice date to include"
+        },
+        {
+          "name": "maxInvoiceDate",
+          "schema": "string",
+          "required": false,
+          "description": "Specifies the newest invoice date to include"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Specifies the page to request"
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "Specifies the pagesize. Defaults to 50, max value is 250"
+        },
+        {
+          "name": "shopId",
+          "schema": "array",
+          "required": false,
+          "description": "Specifies a list of shop ids for which invoices should be included"
+        },
+        {
+          "name": "orderStateId",
+          "schema": "array",
+          "required": false,
+          "description": "Specifies a list of state ids to include in the response"
+        },
+        {
+          "name": "tag",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "minPayDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "maxPayDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "includePositions",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "excludeTags",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true the list of tags passed to the call are used to filter orders to not include these tags"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/orders/{id}",
+      "method": "orderApiGet",
+      "httpMethod": "get",
+      "tag": "Orders",
+      "description": "Get a single order by its internal billbee id. This request is throttled to 6 calls per order in one minute",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The internal billbee id of the order"
+        },
+        {
+          "name": "articleTitleSource",
+          "schema": "integer",
+          "required": false,
+          "description": "The source field for the article title. 0 = Order Position (default), 1 = Article Title, 2 = Article Invoice Text"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/orders/{id}",
+      "method": "orderApiPatchOrder",
+      "httpMethod": "patch",
+      "tag": "Orders",
+      "description": "Updates one or more fields of an order",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/orders/{id}/orderstate",
+      "method": "orderApiUpdateState",
+      "httpMethod": "put",
+      "tag": "Orders",
+      "description": "Changes the main state of a single order",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The internal id of the order"
+        },
+        {
+          "name": "NewStateId",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/orders/{id}/parse-placeholders",
+      "method": "orderApiParsePlaceholders",
+      "httpMethod": "post",
+      "tag": "Orders",
+      "description": "Parses a text and replaces all placeholders",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the order"
+        },
+        {
+          "name": "IsHtml",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "Language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "TextToParse",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Trim",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/orders/{id}/send-message",
+      "method": "orderApiSendMessage",
+      "httpMethod": "post",
+      "tag": "Orders",
+      "description": "Sends a message to the buyer",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the order"
+        },
+        {
+          "name": "AlternativeMail",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Body",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "SendMode",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "Subject",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/orders/{id}/shipment",
+      "method": "orderApiAddShipment",
+      "httpMethod": "post",
+      "tag": "Orders",
+      "description": "Add a shipment to a given order",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The internal billbee id of the order"
+        },
+        {
+          "name": "CarrierId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "Comment",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "OrderId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ShipmentType",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "ShippingId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ShippingProviderId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "ShippingProviderProductId",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/orders/{id}/tags",
+      "method": "orderApiTagsCreate",
+      "httpMethod": "post",
+      "tag": "Orders",
+      "description": "Attach one or more tags to an order",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The internal id of the order"
+        },
+        {
+          "name": "Tags",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/orders/{id}/tags",
+      "method": "orderApiTagsUpdate",
+      "httpMethod": "put",
+      "tag": "Orders",
+      "description": "Sets the tags attached to an order",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The internal id of the order"
+        },
+        {
+          "name": "Tags",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/orders/{id}/trigger-event",
+      "method": "orderApiTriggerEvent",
+      "httpMethod": "post",
+      "tag": "Orders",
+      "description": "Triggers a rule event",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the order"
+        },
+        {
+          "name": "DelayInMinutes",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "Name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/products",
+      "method": "articleGetList",
+      "httpMethod": "get",
+      "tag": "Products",
+      "description": "Get a list of all products",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "The current page to request starting with 1"
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "The pagesize for the result list. Values between 1 and 250 are allowed"
+        },
+        {
+          "name": "minCreatedAt",
+          "schema": "string",
+          "required": false,
+          "description": "Optional the oldest create date of the articles to be returned"
+        },
+        {
+          "name": "minimumBillBeeArticleId",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "maximumBillBeeArticleId",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/products",
+      "method": "articleCreateArticle",
+      "httpMethod": "post",
+      "tag": "Products",
+      "description": "Creates a new product",
+      "parameters": [
+        {
+          "name": "BasicAttributes",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "BillOfMaterial",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Category1",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Category2",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Category3",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Condition",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "CostPrice",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "CountryOfOrigin",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "CustomFields",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "DeliveryTime",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Description",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "EAN",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "ExportDescription",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "ExportDescriptionMultiLanguage",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "HeightCm",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Images",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "InvoiceText",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "IsCustomizable",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "IsDeactivated",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "IsDigital",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "LengthCm",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "LowStock",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Manufacturer",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Materials",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Occasion",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Price",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Recipient",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "SKU",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "ShippingProductId",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "ShortDescription",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "SoldAmount",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "SoldAmountLast30Days",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "SoldSumGross",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "SoldSumGrossLast30Days",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "SoldSumNet",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "SoldSumNetLast30Days",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Sources",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "StockCode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "StockCurrent",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "StockDesired",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "StockReduceItemsPerSale",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "StockWarning",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Stocks",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Tags",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "TaricNumber",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Title",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Type",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Unit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "UnitsPerItem",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Vat1Rate",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Vat2Rate",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "VatIndex",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Weight",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "WeightNet",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "WidthCm",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/products/PatchableFields",
+      "method": "articleGetPatchableFields",
+      "httpMethod": "get",
+      "tag": "Products",
+      "description": "Returns a list of fields which can be updated with the patch call",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/products/category",
+      "method": "articleGetCategory",
+      "httpMethod": "get",
+      "tag": "Products",
+      "description": "GEts a list of all defined categories",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/products/custom-fields",
+      "method": "articleGetCustomFields",
+      "httpMethod": "get",
+      "tag": "Products",
+      "description": "Queries a list of all custom fields",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/products/custom-fields/{id}",
+      "method": "articleGetCustomField",
+      "httpMethod": "get",
+      "tag": "Products",
+      "description": "Queries a single custom field",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the custom field to query"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/products/images/delete",
+      "method": "articleDeleteImages",
+      "httpMethod": "post",
+      "tag": "Products",
+      "description": "Delete multiple images by id",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/products/images/{imageId}",
+      "method": "articleDeleteImage",
+      "httpMethod": "delete",
+      "tag": "Products",
+      "description": "Deletes a single image by id",
+      "parameters": [
+        {
+          "name": "imageId",
+          "schema": "integer",
+          "required": true,
+          "description": "The image id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/products/images/{imageId}",
+      "method": "articleGetImage",
+      "httpMethod": "get",
+      "tag": "Products",
+      "description": "Returns a single image by id",
+      "parameters": [
+        {
+          "name": "imageId",
+          "schema": "integer",
+          "required": true,
+          "description": "The Id of the image"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/products/reservedamount",
+      "method": "articleGetReservedAmount",
+      "httpMethod": "get",
+      "tag": "Products",
+      "description": "Queries the reserved amount for a single article by id or by sku",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The id or the sku of the article to query"
+        },
+        {
+          "name": "lookupBy",
+          "schema": "string",
+          "required": false,
+          "description": "Either the value id or the value sku to specify the meaning of the id parameter"
+        },
+        {
+          "name": "stockId",
+          "schema": "integer",
+          "required": false,
+          "description": "Optional the stock id if the multi stock feature is enabled"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/products/stocks",
+      "method": "articleGetStocks",
+      "httpMethod": "get",
+      "tag": "Products",
+      "description": "Query all defined stock locations",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/products/updatestock",
+      "method": "articleUpdateStock",
+      "httpMethod": "post",
+      "tag": "Products",
+      "description": "Update the stock qty of an article",
+      "parameters": [
+        {
+          "name": "AutosubtractReservedAmount",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "BillbeeId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "DeltaQuantity",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "ForceSendStockToShops",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "NewQuantity",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "OldQuantity",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "Reason",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Sku",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "StockId",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/products/updatestockcode",
+      "method": "articleUpdateStockCode",
+      "httpMethod": "post",
+      "tag": "Products",
+      "description": "Update the stock code of an article",
+      "parameters": [
+        {
+          "name": "BillbeeId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "Sku",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "StockCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "StockId",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/products/updatestockmultiple",
+      "method": "articleUpdateStockMultiple",
+      "httpMethod": "post",
+      "tag": "Products",
+      "description": "Update the stock qty for multiple articles at once",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/products/{id}",
+      "method": "articleDeleteArticle",
+      "httpMethod": "delete",
+      "tag": "Products",
+      "description": "Deletes a product",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the Product"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/products/{id}",
+      "method": "articleGetArticle",
+      "httpMethod": "get",
+      "tag": "Products",
+      "description": "Queries a single article by id or by sku",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The id or the sku of the article to query"
+        },
+        {
+          "name": "lookupBy",
+          "schema": "string",
+          "required": false,
+          "description": "Either the value id, ean or the value sku to specify the meaning of the id parameter."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/products/{id}",
+      "method": "articlePatchArticle",
+      "httpMethod": "patch",
+      "tag": "Products",
+      "description": "Updates one or more fields of a product",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the Product"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/products/{productId}/images",
+      "method": "articleGetImages",
+      "httpMethod": "get",
+      "tag": "Products",
+      "description": "Returns a list of all images of the product",
+      "parameters": [
+        {
+          "name": "productId",
+          "schema": "integer",
+          "required": true,
+          "description": "The Id of the product"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/products/{productId}/images",
+      "method": "articlePutImages",
+      "httpMethod": "put",
+      "tag": "Products",
+      "description": "Add multiple images to a product or replace the product images by the given images",
+      "parameters": [
+        {
+          "name": "productId",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the product"
+        },
+        {
+          "name": "replace",
+          "schema": "boolean",
+          "required": false,
+          "description": "If you pass true, the images will be replaced by the passed images. Otherwise the passed images will be appended to the product."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/products/{productId}/images/{imageId}",
+      "method": "articleDeleteImageFromProduct",
+      "httpMethod": "delete",
+      "tag": "Products",
+      "description": "Deletes a single image from a product",
+      "parameters": [
+        {
+          "name": "productId",
+          "schema": "integer",
+          "required": true,
+          "description": "The product id"
+        },
+        {
+          "name": "imageId",
+          "schema": "integer",
+          "required": true,
+          "description": "The image id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/products/{productId}/images/{imageId}",
+      "method": "articleGetImageFromProduct",
+      "httpMethod": "get",
+      "tag": "Products",
+      "description": "Returns a single image by id",
+      "parameters": [
+        {
+          "name": "productId",
+          "schema": "integer",
+          "required": true,
+          "description": "The Id of the product"
+        },
+        {
+          "name": "imageId",
+          "schema": "integer",
+          "required": true,
+          "description": "The Id of the image"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/products/{productId}/images/{imageId}",
+      "method": "articlePutImage",
+      "httpMethod": "put",
+      "tag": "Products",
+      "description": "Add or update an existing image of a product",
+      "parameters": [
+        {
+          "name": "productId",
+          "schema": "integer",
+          "required": true,
+          "description": "The product id"
+        },
+        {
+          "name": "imageId",
+          "schema": "integer",
+          "required": true,
+          "description": "The image id. If you pass 0, the image will be added"
+        },
+        {
+          "name": "ArticleId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "Id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "IsDefault",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "Position",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "ThumbPathExt",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ThumbUrl",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Url",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/search",
+      "method": "searchSearch",
+      "httpMethod": "post",
+      "tag": "Products",
+      "description": "Search for products, customers and orders.\r\nType can be \"order\", \"product\" and / or \"customer\"\r\nTerm can contains lucene query syntax",
+      "parameters": [
+        {
+          "name": "SearchMode",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "Term",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Type",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/shipment/ping",
+      "method": "shipmentGetPing",
+      "httpMethod": "get",
+      "tag": "Shipments",
+      "description": "",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/shipment/shipment",
+      "method": "shipmentPostShipment",
+      "httpMethod": "post",
+      "tag": "Shipments",
+      "description": "Creates a new shipment with the selected Shippingprovider",
+      "parameters": [
+        {
+          "name": "ClientReference",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Content",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "CustomerNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Dimension",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "OrderCurrencyCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "OrderSum",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "PrinterIdForExportDocs",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "PrinterName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ProductCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ProviderName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ReceiverAddress",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "Services",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "ShipDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "TotalNet",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "WeightInGram",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "shippingCarrier",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/shipment/shipments",
+      "method": "shipmentGetList",
+      "httpMethod": "get",
+      "tag": "Shipments",
+      "description": "Get a list of all shipments optionally filtered by date. All parameters are optional.",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Specifies the page to request."
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "Specifies the pagesize. Defaults to 50, max value is 250"
+        },
+        {
+          "name": "createdAtMin",
+          "schema": "string",
+          "required": false,
+          "description": "Specifies the oldest shipment date to include in the response"
+        },
+        {
+          "name": "createdAtMax",
+          "schema": "string",
+          "required": false,
+          "description": "Specifies the newest shipment date to include in the response"
+        },
+        {
+          "name": "orderId",
+          "schema": "integer",
+          "required": false,
+          "description": "Get shipments for this order only."
+        },
+        {
+          "name": "minimumShipmentId",
+          "schema": "integer",
+          "required": false,
+          "description": "Get Shipments with a shipment greater or equal than this id. New shipments have a greater id than older shipments."
+        },
+        {
+          "name": "shippingProviderId",
+          "schema": "integer",
+          "required": false,
+          "description": "Get Shippings for the specified shipping provider only. <seealso cref=\"M:Rechnungsdruck.WebApp.Controllers.Api.ShipmentController.GetShippingproviders\" />"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/shipment/shippingcarriers",
+      "method": "shipmentGetShippingCarrier",
+      "httpMethod": "get",
+      "tag": "Shipments",
+      "description": "Queries the currently available shipping carriers.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/shipment/shippingproviders",
+      "method": "shipmentGetShippingproviders",
+      "httpMethod": "get",
+      "tag": "Shipments",
+      "description": "Query all defined shipping providers",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/shipment/shipwithlabel",
+      "method": "shipmentShipWithLabel",
+      "httpMethod": "post",
+      "tag": "Shipments",
+      "description": "Creates a shipment for an order in billbee",
+      "parameters": [
+        {
+          "name": "ChangeStateToSend",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "ClientReference",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Dimension",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "OrderId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "PrinterName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ProductId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "ProviderId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "ShipDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "WeightInGram",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/webhooks",
+      "method": "webHookManagementDeleteAll",
+      "httpMethod": "delete",
+      "tag": "Webhooks",
+      "description": "Deletes all existing WebHook registrations.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/webhooks",
+      "method": "webHookManagementGet",
+      "httpMethod": "get",
+      "tag": "Webhooks",
+      "description": "Gets all registered WebHooks for a given user.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/webhooks",
+      "method": "webHookManagementPost",
+      "httpMethod": "post",
+      "tag": "Webhooks",
+      "description": "Registers a new WebHook for a given user.",
+      "parameters": [
+        {
+          "name": "Description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Filters",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Headers",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "IsPaused",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Properties",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Secret",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "WebHookUri",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/webhooks/filters",
+      "method": "webHookManagementGetFilters",
+      "httpMethod": "get",
+      "tag": "Webhooks",
+      "description": "Returns a list of all known filters you can use to register webhooks",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/webhooks/{id}",
+      "method": "webHookManagementDelete",
+      "httpMethod": "delete",
+      "tag": "Webhooks",
+      "description": "Deletes an existing WebHook registration.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The WebHook ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/webhooks/{id}",
+      "method": "webHookManagementLookup",
+      "httpMethod": "get",
+      "tag": "Webhooks",
+      "description": "Looks up a registered WebHook with the given {id} for a given user.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/webhooks/{id}",
+      "method": "webHookManagementPut",
+      "httpMethod": "put",
+      "tag": "Webhooks",
+      "description": "Updates an existing WebHook registration.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The WebHook ID."
+        },
+        {
+          "name": "Description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Filters",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Headers",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "IsPaused",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Properties",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Secret",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "WebHookUri",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://app.billbee.io",
   "apiDescription": "Documentation of the Billbee REST API to connect a Billbee account to external aplications.\n\n## Endpoint\n\nThe Billbee API endpoint base url is https://api.billbee.io/api/v1 \n\n## Activation\n\nYou have to enable the API in the settings of your Billbee account. In addition you need a Billbee API Key identifying the application you develop. To get an API key, send a mail to support@billbee.io and send us a short note about what you are building.\n\n## Authorization & security\n\nBecause you can access private data with the Billbee API, every request has to be sent over https and must\n\n* Contain a valid API Key identifying the application/developer. It has to be sent as the HTTP header X-Billbee-Api-Key\n* Contain a valid user login with billbee username and api password in form of a basic auth HTTP header\n\n## Throttling\n\nEach endpoint has a throttle of max 2 requests per second per combination of API Key and Billbee user.\n\nWhen you exceed these 2 calls, the API will return a HTTP 429 status code\n\n",
   "apiTitle": "Billbee API",

@@ -3,6 +3,1501 @@
   "openApiRaw": "https://api.kumpeapps.com/python/swagger/swagger.yaml",
   "homepage": "kumpeapps.com",
   "apiVersion": "5.0.0",
+  "methods": [
+    {
+      "url": "/appkey",
+      "method": "appkeyPatch",
+      "httpMethod": "patch",
+      "tag": "authentication",
+      "description": "Compromise app key",
+      "parameters": [
+        {
+          "name": "app_key",
+          "schema": "string",
+          "required": true,
+          "description": "compromised app key"
+        },
+        {
+          "name": "comments",
+          "schema": "string",
+          "required": false,
+          "description": "Comments (like how was this compromised)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/appkey",
+      "method": "appkeyPost",
+      "httpMethod": "post",
+      "tag": "authentication",
+      "description": "Request app key",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "Username assigned to your app"
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": "Password assigned to your app"
+        },
+        {
+          "name": "supportsYubikey",
+          "schema": "boolean",
+          "required": true,
+          "description": "App supports YubiKey OTP"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/appkey",
+      "method": "appkeyPut",
+      "httpMethod": "put",
+      "tag": "authentication",
+      "description": "Deactivate app key",
+      "parameters": [
+        {
+          "name": "app_key",
+          "schema": "string",
+          "required": true,
+          "description": "app key to deactivate"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/authentication/appkey",
+      "method": "authAppkeyPatch",
+      "httpMethod": "patch",
+      "tag": "authentication",
+      "description": "Compromise app key",
+      "parameters": [
+        {
+          "name": "app_key",
+          "schema": "string",
+          "required": true,
+          "description": "compromised app key"
+        },
+        {
+          "name": "comments",
+          "schema": "string",
+          "required": false,
+          "description": "Comments (like how was this compromised)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/authentication/appkey",
+      "method": "authAppkeyPost",
+      "httpMethod": "post",
+      "tag": "authentication",
+      "description": "Request app key",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "Username assigned to your app"
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": "Password assigned to your app"
+        },
+        {
+          "name": "supportsYubikey",
+          "schema": "boolean",
+          "required": true,
+          "description": "App supports YubiKey OTP"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/authentication/appkey",
+      "method": "authAppkeyPut",
+      "httpMethod": "put",
+      "tag": "authentication",
+      "description": "Deactivate app key",
+      "parameters": [
+        {
+          "name": "app_key",
+          "schema": "string",
+          "required": true,
+          "description": "app key to deactivate"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/authentication/authkey",
+      "method": "authAuthkeyGet",
+      "httpMethod": "get",
+      "tag": "authentication",
+      "description": "Request auth key for user (login user)",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "Authenticated username"
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": "Authenticated password"
+        },
+        {
+          "name": "otp",
+          "schema": "string",
+          "required": false,
+          "description": "YubiKey OTP (if configured for user)"
+        },
+        {
+          "name": "deviceName",
+          "schema": "string",
+          "required": false,
+          "description": "User's device name"
+        },
+        {
+          "name": "identifierForVendor",
+          "schema": "string",
+          "required": false,
+          "description": "identifierForVendor for User's Device (if app is iOS)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": "Access Denied"
+        },
+        {
+          "statusCode": "449",
+          "description": "OTP Required is configured for this User. Retry login with OTP"
+        }
+      ]
+    },
+    {
+      "url": "/authentication/authkey",
+      "method": "authAuthkeyPatch",
+      "httpMethod": "patch",
+      "tag": "authentication",
+      "description": "Compromise auth key",
+      "parameters": [
+        {
+          "name": "auth_key",
+          "schema": "string",
+          "required": true,
+          "description": "auth key to mark as compromised"
+        },
+        {
+          "name": "comments",
+          "schema": "string",
+          "required": false,
+          "description": "Comments (like how was this compromised)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/authentication/authkey",
+      "method": "authAuthkeyPost",
+      "httpMethod": "post",
+      "tag": "authentication",
+      "description": "Request auth key for user (login user)",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "Authenticated username"
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": "Authenticated password"
+        },
+        {
+          "name": "otp",
+          "schema": "string",
+          "required": false,
+          "description": "YubiKey OTP (if configured for user)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": "Access Denied"
+        },
+        {
+          "statusCode": "449",
+          "description": "OTP Required is configured for this User. Retry login with OTP"
+        }
+      ]
+    },
+    {
+      "url": "/authentication/authkey",
+      "method": "authAuthkeyPut",
+      "httpMethod": "put",
+      "tag": "authentication",
+      "description": "Deactivate auth key (logout)",
+      "parameters": [
+        {
+          "name": "auth_key",
+          "schema": "string",
+          "required": true,
+          "description": "auth key to logout"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/authentication/verifyotp",
+      "method": "authVerifyotpGet",
+      "httpMethod": "get",
+      "tag": "authentication",
+      "description": "Verifies YubiKey OTP for authenticated user",
+      "parameters": [
+        {
+          "name": "otp",
+          "schema": "string",
+          "required": true,
+          "description": "YubiKey OTP code"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": "Access Denied"
+        }
+      ]
+    },
+    {
+      "url": "/authkey",
+      "method": "authkeyGet",
+      "httpMethod": "get",
+      "tag": "authentication",
+      "description": "Request auth key for user (login user)",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "Authenticated username"
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": "Authenticated password"
+        },
+        {
+          "name": "otp",
+          "schema": "string",
+          "required": false,
+          "description": "YubiKey OTP (if configured for user)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": "Access Denied"
+        },
+        {
+          "statusCode": "449",
+          "description": "OTP Required is configured for this User. Retry login with OTP"
+        }
+      ]
+    },
+    {
+      "url": "/authkey",
+      "method": "authkeyPatch",
+      "httpMethod": "patch",
+      "tag": "authentication",
+      "description": "Compromise auth key",
+      "parameters": [
+        {
+          "name": "auth_key",
+          "schema": "string",
+          "required": true,
+          "description": "auth key to mark as compromised"
+        },
+        {
+          "name": "comments",
+          "schema": "string",
+          "required": false,
+          "description": "Comments (like how was this compromised)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/authkey",
+      "method": "authkeyPost",
+      "httpMethod": "post",
+      "tag": "authentication",
+      "description": "Request auth key for user (login user)",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "Authenticated username"
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": "Authenticated password"
+        },
+        {
+          "name": "otp",
+          "schema": "string",
+          "required": false,
+          "description": "YubiKey OTP (if configured for user)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": "Access Denied"
+        },
+        {
+          "statusCode": "449",
+          "description": "OTP Required is configured for this User. Retry login with OTP"
+        }
+      ]
+    },
+    {
+      "url": "/authkey",
+      "method": "authkeyPut",
+      "httpMethod": "put",
+      "tag": "authentication",
+      "description": "Deactivate auth key (logout)",
+      "parameters": [
+        {
+          "name": "auth_key",
+          "schema": "string",
+          "required": true,
+          "description": "auth key to logout"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/kkid/allowance",
+      "method": "kkidAllowanceGet",
+      "httpMethod": "get",
+      "tag": "KKid",
+      "description": "returns allowance balance and allowance transactions",
+      "parameters": [
+        {
+          "name": "kidUserId",
+          "schema": "integer",
+          "required": true,
+          "description": "userID of the kid"
+        },
+        {
+          "name": "transactionDays",
+          "schema": "integer",
+          "required": false,
+          "description": "number of days you wish to search allowance transactions (default is 90 days)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Allowance"
+        },
+        {
+          "statusCode": "206",
+          "description": "nodata"
+        },
+        {
+          "statusCode": "405",
+          "description": "API Access Denied"
+        },
+        {
+          "statusCode": "412",
+          "description": "API Key invalid"
+        }
+      ]
+    },
+    {
+      "url": "/kkid/allowance",
+      "method": "kkidAllowancePost",
+      "httpMethod": "post",
+      "tag": "KKid",
+      "description": "adds new allowance transaction to kidUserID",
+      "parameters": [
+        {
+          "name": "kidUserId",
+          "schema": "integer",
+          "required": true,
+          "description": "userID of the kid"
+        },
+        {
+          "name": "amount",
+          "schema": "number",
+          "required": true,
+          "description": "amount you wish to Add/Subtract (subtract value should be a negative value)"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": "Description (reason) of allowance transaction"
+        },
+        {
+          "name": "transactionType",
+          "schema": "string",
+          "required": true,
+          "description": "Transaction Type (Add/Subtract)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Success"
+        },
+        {
+          "statusCode": "206",
+          "description": "nodata"
+        },
+        {
+          "statusCode": "405",
+          "description": "API Access Denied"
+        },
+        {
+          "statusCode": "412",
+          "description": "API Key invalid"
+        }
+      ]
+    },
+    {
+      "url": "/kkid/apns",
+      "method": "kkidApnsPost",
+      "httpMethod": "post",
+      "tag": "KKid",
+      "description": "subscribes/unsubscribes/registers for apns push notifications",
+      "parameters": [
+        {
+          "name": "kidUserId",
+          "schema": "integer",
+          "required": true,
+          "description": "userID of the kid"
+        },
+        {
+          "name": "tool",
+          "schema": "string",
+          "required": true,
+          "description": "tool you wish to talk to"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": "device APNS token (required for register)"
+        },
+        {
+          "name": "devicename",
+          "schema": "string",
+          "required": false,
+          "description": "Name of device to associate to token (required for register)"
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "required": false,
+          "description": "title of APNS message (required for send)"
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "required": false,
+          "description": "APNS message body (required for send)"
+        },
+        {
+          "name": "badge",
+          "schema": "integer",
+          "required": false,
+          "description": "Number for badge icon (optional for send)"
+        },
+        {
+          "name": "sound",
+          "schema": "string",
+          "required": false,
+          "description": "Name of sound file to play for send notification (optional for send)"
+        },
+        {
+          "name": "section",
+          "schema": "string",
+          "required": false,
+          "description": "Notification section name (required for send/subscribe/unsubscribe)"
+        },
+        {
+          "name": "priority",
+          "schema": "string",
+          "required": false,
+          "description": "Notification section name (optional for send, default is active)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Success"
+        },
+        {
+          "statusCode": "206",
+          "description": "nodata"
+        },
+        {
+          "statusCode": "405",
+          "description": "API Access Denied"
+        },
+        {
+          "statusCode": "412",
+          "description": "API Key invalid"
+        }
+      ]
+    },
+    {
+      "url": "/kkid/chorelist",
+      "method": "kkidChorelistDelete",
+      "httpMethod": "delete",
+      "tag": "KKid",
+      "description": "deletes chore for given chore id",
+      "parameters": [
+        {
+          "name": "idChoreList",
+          "schema": "integer",
+          "required": true,
+          "description": "id of the chore you wish to delete"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Success"
+        },
+        {
+          "statusCode": "206",
+          "description": "nodata"
+        },
+        {
+          "statusCode": "405",
+          "description": "API Access Denied"
+        },
+        {
+          "statusCode": "412",
+          "description": "API Key invalid"
+        }
+      ]
+    },
+    {
+      "url": "/kkid/chorelist",
+      "method": "kkidChorelistGet",
+      "httpMethod": "get",
+      "tag": "KKid",
+      "description": "returns list of chores for given user",
+      "parameters": [
+        {
+          "name": "kidUsername",
+          "schema": "string",
+          "required": false,
+          "description": "Username of kid you wish to search"
+        },
+        {
+          "name": "day",
+          "schema": "string",
+          "required": false,
+          "description": "Day of week for chores (Weekly for weekly chores)"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Status of Chore to search"
+        },
+        {
+          "name": "blockDash",
+          "schema": "boolean",
+          "required": false,
+          "description": "Filter results by blockDash parameter"
+        },
+        {
+          "name": "optional",
+          "schema": "boolean",
+          "required": false,
+          "description": "Filter results by optional parameter"
+        },
+        {
+          "name": "canSteal",
+          "schema": "boolean",
+          "required": false,
+          "description": "Filter results by canSteal parameter"
+        },
+        {
+          "name": "includeCalendar",
+          "schema": "boolean",
+          "required": false,
+          "description": "include calendar notations (default is false)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "chorelist"
+        },
+        {
+          "statusCode": "206",
+          "description": "nodata"
+        },
+        {
+          "statusCode": "405",
+          "description": "API Access Denied"
+        },
+        {
+          "statusCode": "412",
+          "description": "API Key invalid"
+        }
+      ]
+    },
+    {
+      "url": "/kkid/chorelist",
+      "method": "kkidChorelistPost",
+      "httpMethod": "post",
+      "tag": "KKid",
+      "description": "adds chore for given user",
+      "parameters": [
+        {
+          "name": "kidUsername",
+          "schema": "string",
+          "required": true,
+          "description": "username of kid to assign the chore to."
+        },
+        {
+          "name": "day",
+          "schema": "string",
+          "required": false,
+          "description": "day of week (Monday, Tuesday....) for the chore. For weekly chores put Weekly or leave blank"
+        },
+        {
+          "name": "nfcTag",
+          "schema": "string",
+          "required": false,
+          "description": "text field of nfc tag required to check off chore"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "status of chore (default is todo)"
+        },
+        {
+          "name": "choreName",
+          "schema": "string",
+          "required": true,
+          "description": "name of chore"
+        },
+        {
+          "name": "choreDescription",
+          "schema": "string",
+          "required": false,
+          "description": "optional chore description"
+        },
+        {
+          "name": "choreNumber",
+          "schema": "integer",
+          "required": false,
+          "description": "number priority of chore (default is 5)"
+        },
+        {
+          "name": "blockDash",
+          "schema": "boolean",
+          "required": false,
+          "description": "block dash option on this chore"
+        },
+        {
+          "name": "oneTime",
+          "schema": "boolean",
+          "required": false,
+          "description": "mark as one time chore (does not repeat each week)"
+        },
+        {
+          "name": "extraAllowance",
+          "schema": "integer",
+          "required": false,
+          "description": "ammount of allowance added at end of week for completing this chore"
+        },
+        {
+          "name": "optional",
+          "schema": "boolean",
+          "required": false,
+          "description": "mark as optional chore"
+        },
+        {
+          "name": "reassignable",
+          "schema": "boolean",
+          "required": false,
+          "description": "mark as reassignable (default is true)"
+        },
+        {
+          "name": "canSteal",
+          "schema": "boolean",
+          "required": false,
+          "description": "mark as sibling can steal chore"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": false,
+          "description": "date (yyyy-mm-dd) that you wish the chore to start showing up. (default is today)"
+        },
+        {
+          "name": "notes",
+          "schema": "string",
+          "required": false,
+          "description": "notes added to chore (visable only on reports, kids do not see this note, this is mostly just for the developer)"
+        },
+        {
+          "name": "requireObjectDetection",
+          "schema": "boolean",
+          "required": false,
+          "description": "require use of camera to detect object detection tag order to check off chore"
+        },
+        {
+          "name": "objectDetectionTag",
+          "schema": "string",
+          "required": false,
+          "description": "tag for object detection to search for (required if requireObjectDetection is true)"
+        },
+        {
+          "name": "updatedByAutomation",
+          "schema": "boolean",
+          "required": false,
+          "description": "true if chore updated via API from an Automation System"
+        },
+        {
+          "name": "aiIcon",
+          "schema": "string",
+          "required": false,
+          "description": "Notes if AI Icons should be used (n for no, y for yes, e for yes- error)"
+        },
+        {
+          "name": "isCalendar",
+          "schema": "boolean",
+          "required": false,
+          "description": "True if this is a calendar note instead of a chore."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Success"
+        },
+        {
+          "statusCode": "206",
+          "description": "nodata"
+        },
+        {
+          "statusCode": "405",
+          "description": "API Access Denied"
+        },
+        {
+          "statusCode": "412",
+          "description": "API Key invalid"
+        }
+      ]
+    },
+    {
+      "url": "/kkid/chorelist",
+      "method": "kkidChorelistPut",
+      "httpMethod": "put",
+      "tag": "KKid",
+      "description": "updates chore for given chore id",
+      "parameters": [
+        {
+          "name": "idChoreList",
+          "schema": "integer",
+          "required": true,
+          "description": "id number of chore you wish to update"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "new status of chore"
+        },
+        {
+          "name": "stolen",
+          "schema": "boolean",
+          "required": false,
+          "description": "mark chore as stolen by sibling"
+        },
+        {
+          "name": "stolenBy",
+          "schema": "string",
+          "required": false,
+          "description": "username of sibling that stole the chore (required if stolen is true)"
+        },
+        {
+          "name": "nfcTag",
+          "schema": "string",
+          "required": false,
+          "description": "text field of NFC tag that is required to be scanned to check off this chore (normally null)"
+        },
+        {
+          "name": "notes",
+          "schema": "string",
+          "required": false,
+          "description": "notes field for chore"
+        },
+        {
+          "name": "latitude",
+          "schema": "integer",
+          "required": false,
+          "description": "GPS latitude of where the chore was marked"
+        },
+        {
+          "name": "longitude",
+          "schema": "integer",
+          "required": false,
+          "description": "GPS longitude of where the chore was marked"
+        },
+        {
+          "name": "altitude",
+          "schema": "integer",
+          "required": false,
+          "description": "GPS altitude of where the chore was marked"
+        },
+        {
+          "name": "updatedByAutomation",
+          "schema": "boolean",
+          "required": false,
+          "description": "true if updated via API by automation system"
+        },
+        {
+          "name": "whereDay",
+          "schema": "string",
+          "required": false,
+          "description": "Where day equals..."
+        },
+        {
+          "name": "whereStatus",
+          "schema": "string",
+          "required": false,
+          "description": "Where status equals..."
+        },
+        {
+          "name": "whereName",
+          "schema": "string",
+          "required": false,
+          "description": "Where chore name equals..."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Success"
+        },
+        {
+          "statusCode": "206",
+          "description": "nodata"
+        },
+        {
+          "statusCode": "405",
+          "description": "API Access Denied"
+        },
+        {
+          "statusCode": "412",
+          "description": "API Key invalid"
+        }
+      ]
+    },
+    {
+      "url": "/kkid/masteruser",
+      "method": "kkidMasteruserPost",
+      "httpMethod": "post",
+      "tag": "KKid",
+      "description": "adds new master user account",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "username of user to create"
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": "password of user to create"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": "email address of user to create"
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "required": true,
+          "description": "First Name of user to create"
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "required": true,
+          "description": "Last Name of user to create"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "add user"
+        },
+        {
+          "statusCode": "405",
+          "description": "API Access Denied"
+        }
+      ]
+    },
+    {
+      "url": "/kkid/share",
+      "method": "kkidShareGet",
+      "httpMethod": "get",
+      "tag": "KKid",
+      "description": "Create Share Link",
+      "parameters": [
+        {
+          "name": "linkUserId",
+          "schema": "string",
+          "required": true,
+          "description": "User ID that the link should be authenticated to"
+        },
+        {
+          "name": "link",
+          "schema": "string",
+          "required": true,
+          "description": "Link to share"
+        },
+        {
+          "name": "scope",
+          "schema": "string",
+          "required": true,
+          "description": "Authentication scope for link"
+        },
+        {
+          "name": "scope2",
+          "schema": "string",
+          "required": false,
+          "description": "Authentication scope for link"
+        },
+        {
+          "name": "scope3",
+          "schema": "string",
+          "required": false,
+          "description": "Authentication scope for link"
+        },
+        {
+          "name": "scope4",
+          "schema": "string",
+          "required": false,
+          "description": "Authentication scope for link"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/kkid/user",
+      "method": "kkidUserGet",
+      "httpMethod": "get",
+      "tag": "KKid",
+      "description": "Gets user info",
+      "parameters": [
+        {
+          "name": "enableBool",
+          "schema": "boolean",
+          "required": false,
+          "description": "Use bool values instead of Int 0/1"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "userlist"
+        }
+      ]
+    },
+    {
+      "url": "/kkid/userlist",
+      "method": "kkidUserlistDelete",
+      "httpMethod": "delete",
+      "tag": "KKid",
+      "description": "deletes user",
+      "parameters": [
+        {
+          "name": "userID",
+          "schema": "integer",
+          "required": true,
+          "description": "userID of the user you wish to delete"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "405",
+          "description": "API Access Denied"
+        },
+        {
+          "statusCode": "412",
+          "description": "API Key invalid"
+        }
+      ]
+    },
+    {
+      "url": "/kkid/userlist",
+      "method": "kkidUserlistGet",
+      "httpMethod": "get",
+      "tag": "KKid",
+      "description": "returns list of users",
+      "parameters": [
+        {
+          "name": "isChild",
+          "schema": "boolean",
+          "required": false,
+          "description": "Filter Search by isChild flag"
+        },
+        {
+          "name": "isActive",
+          "schema": "boolean",
+          "required": false,
+          "description": "Filter Search by isActive flag"
+        },
+        {
+          "name": "isAdmin",
+          "schema": "boolean",
+          "required": false,
+          "description": "Filter Search by isAdmin flag"
+        },
+        {
+          "name": "enableAllowance",
+          "schema": "boolean",
+          "required": false,
+          "description": "Filter Search by enableAllowance flag"
+        },
+        {
+          "name": "enableChores",
+          "schema": "boolean",
+          "required": false,
+          "description": "Filter Search by enableChores flag"
+        },
+        {
+          "name": "userID",
+          "schema": "integer",
+          "required": false,
+          "description": "userID of user to search"
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": "Username of user to search"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": false,
+          "description": "Email address of user to search"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "userlist"
+        },
+        {
+          "statusCode": "204",
+          "description": "nodata"
+        },
+        {
+          "statusCode": "405",
+          "description": "API Access Denied"
+        },
+        {
+          "statusCode": "412",
+          "description": "API Key invalid"
+        }
+      ]
+    },
+    {
+      "url": "/kkid/userlist",
+      "method": "kkidUserlistPost",
+      "httpMethod": "post",
+      "tag": "KKid",
+      "description": "adds new child user",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "username of user to create"
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": "password of user to create"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": "email address of user to create"
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "required": true,
+          "description": "First Name of user to create"
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "required": true,
+          "description": "Last Name of user to create"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "add user"
+        },
+        {
+          "statusCode": "405",
+          "description": "API Access Denied"
+        },
+        {
+          "statusCode": "412",
+          "description": "API Key invalid"
+        }
+      ]
+    },
+    {
+      "url": "/kkid/userlist",
+      "method": "kkidUserlistPut",
+      "httpMethod": "put",
+      "tag": "KKid",
+      "description": "updates user",
+      "parameters": [
+        {
+          "name": "userID",
+          "schema": "integer",
+          "required": true,
+          "description": "userID of the user you wish to update"
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "username of user to create"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": "email address of user to create"
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "required": true,
+          "description": "First Name of user to create"
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "required": true,
+          "description": "Last Name of user to create"
+        },
+        {
+          "name": "emoji",
+          "schema": "string",
+          "required": false,
+          "description": "emoji character for user"
+        },
+        {
+          "name": "tmdbKey",
+          "schema": "string",
+          "required": false,
+          "description": "User's TMdB Session Key"
+        },
+        {
+          "name": "enableWishList",
+          "schema": "boolean",
+          "required": false,
+          "description": "set status of Wish List module enabled"
+        },
+        {
+          "name": "enableChores",
+          "schema": "boolean",
+          "required": false,
+          "description": "set status of chores module enabled"
+        },
+        {
+          "name": "enableAllowance",
+          "schema": "boolean",
+          "required": false,
+          "description": "set status of allowance module enabled"
+        },
+        {
+          "name": "enableAdmin",
+          "schema": "boolean",
+          "required": false,
+          "description": "set status of isAdmin"
+        },
+        {
+          "name": "enableTmdb",
+          "schema": "boolean",
+          "required": false,
+          "description": "set status of enableTmdb (movie and tv search)"
+        },
+        {
+          "name": "enableObjectDetection",
+          "schema": "boolean",
+          "required": false,
+          "description": "set status of enableObjectDetection"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "add user"
+        },
+        {
+          "statusCode": "405",
+          "description": "API Access Denied"
+        },
+        {
+          "statusCode": "412",
+          "description": "API Key invalid"
+        }
+      ]
+    },
+    {
+      "url": "/kkid/wishlist",
+      "method": "kkidWishlistDelete",
+      "httpMethod": "delete",
+      "tag": "KKid",
+      "description": "Delete item from wishlist",
+      "parameters": [
+        {
+          "name": "wishId",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of wishlist item to delete"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Success"
+        }
+      ]
+    },
+    {
+      "url": "/kkid/wishlist",
+      "method": "kkidWishlistGet",
+      "httpMethod": "get",
+      "tag": "KKid",
+      "description": "Get list of wishlist items",
+      "parameters": [
+        {
+          "name": "kidUserId",
+          "schema": "integer",
+          "required": false,
+          "description": "userID of the kid"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Allowance"
+        }
+      ]
+    },
+    {
+      "url": "/kkid/wishlist",
+      "method": "kkidWishlistPost",
+      "httpMethod": "post",
+      "tag": "KKid",
+      "description": "Add item to kid's wishlist",
+      "parameters": [
+        {
+          "name": "kidUserId",
+          "schema": "integer",
+          "required": true,
+          "description": "userID of the kid"
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "required": true,
+          "description": "Item title"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": "Item Description"
+        },
+        {
+          "name": "priority",
+          "schema": "integer",
+          "required": false,
+          "description": "Item Priority"
+        },
+        {
+          "name": "link",
+          "schema": "string",
+          "required": false,
+          "description": "URL Link to item"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Success"
+        }
+      ]
+    },
+    {
+      "url": "/kkid/wishlist",
+      "method": "kkidWishlistPut",
+      "httpMethod": "put",
+      "tag": "KKid",
+      "description": "Update item on kid's wishlist",
+      "parameters": [
+        {
+          "name": "wishId",
+          "schema": "integer",
+          "required": true,
+          "description": "Wish list item ID to update"
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "required": false,
+          "description": "Item title"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": "Item Description"
+        },
+        {
+          "name": "priority",
+          "schema": "integer",
+          "required": false,
+          "description": "Item Priority"
+        },
+        {
+          "name": "link",
+          "schema": "string",
+          "required": false,
+          "description": "URL Link to item"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Success"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://restapi.kumpeapps.com/{version}",
   "apiDescription": "KKid API. Due to security concerns all calls to this API requires authentication. If you have access then you may use your KumpeApps username/password to authenticate. To gain access please use the contact developer link below.",
   "apiTitle": "KumpeApps API",

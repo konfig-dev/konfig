@@ -3,6 +3,494 @@
   "openApiRaw": "https://vatapi.com/api-docs.json",
   "homepage": "vatapi.com",
   "apiVersion": "1",
+  "methods": [
+    {
+      "url": "/country-code-check",
+      "method": "countryCodeCheck",
+      "httpMethod": "get",
+      "tag": "api",
+      "description": "Retrieve a countries VAT rates by its 2 digit country code",
+      "parameters": [
+        {
+          "name": "Response-Type",
+          "schema": "string",
+          "description": "The default response type is application/json if you would like to receive an XML response then set this to XML"
+        },
+        {
+          "name": "code",
+          "schema": "string",
+          "required": true,
+          "description": "The 2 digit country code"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/currency-conversion",
+      "method": "currencyConversion",
+      "httpMethod": "get",
+      "tag": "api",
+      "description": "Convert a currency",
+      "parameters": [
+        {
+          "name": "Response-Type",
+          "schema": "string",
+          "description": "The default response type is application/json if you would like to receive an XML response then set this to XML"
+        },
+        {
+          "name": "currency_from",
+          "schema": "string",
+          "required": true,
+          "description": "The currency code you are converting from"
+        },
+        {
+          "name": "currency_to",
+          "schema": "string",
+          "required": true,
+          "description": "The currency code you are converting to"
+        },
+        {
+          "name": "amount",
+          "schema": "integer",
+          "required": false,
+          "description": "Optional, an amount you are wanting to convert. Leave blank to just get the current rate"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/invoice",
+      "method": "createInvoice",
+      "httpMethod": "post",
+      "tag": "api",
+      "description": "Create a VAT invoice",
+      "parameters": [
+        {
+          "name": "Response-Type",
+          "schema": "string",
+          "description": "The default response type is application/json if you would like to receive an XML response then set this to XML"
+        },
+        {
+          "name": "business_address",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "business_name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "conversion_rate",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "currency_code",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "currency_code_conversion",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "customer_address",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "customer_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "customer_vat_number",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "date",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "discount_rate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "items",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "notes",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "price_type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "tax_point",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "vat_number",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "zero_rated",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/invoice/{id}",
+      "method": "invoiceDelete",
+      "httpMethod": "delete",
+      "tag": "api",
+      "description": "Delete an invoice",
+      "parameters": [
+        {
+          "name": "Response-Type",
+          "schema": "string",
+          "description": "The default response type is application/json if you would like to receive an XML response then set this to XML"
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Enter an invoice id"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/invoice/{id}",
+      "method": "getInvoice",
+      "httpMethod": "get",
+      "tag": "api",
+      "description": "Retrieve an invoice",
+      "parameters": [
+        {
+          "name": "Response-Type",
+          "schema": "string",
+          "description": "The default response type is application/json if you would like to receive an XML response then set this to XML"
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Enter the invoice id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/invoice/{id}",
+      "method": "invoiceUpdate",
+      "httpMethod": "put",
+      "tag": "api",
+      "description": "Update an existing invoice",
+      "parameters": [
+        {
+          "name": "Response-Type",
+          "schema": "string",
+          "description": "The default response type is application/json if you would like to receive an XML response then set this to XML"
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Enter an invoice id"
+        },
+        {
+          "name": "business_address",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "business_name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "conversion_rate",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "currency_code",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "currency_code_conversion",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "customer_address",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "customer_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "customervat_number",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "date",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "discount_rate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "items",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "logo_url",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "notes",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "tax_point",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "vat_number",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ip-check",
+      "method": "ipCheck",
+      "httpMethod": "get",
+      "tag": "api",
+      "description": "Retrieve a countries VAT rates from an IP address",
+      "parameters": [
+        {
+          "name": "Response-Type",
+          "schema": "string",
+          "description": "The default response type is application/json if you would like to receive an XML response then set this to XML"
+        },
+        {
+          "name": "address",
+          "schema": "string",
+          "required": true,
+          "description": "The IP address to search against"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/usage-check",
+      "method": "apiUsage",
+      "httpMethod": "get",
+      "tag": "api",
+      "description": "Check api requests remaining on current subscription plan",
+      "parameters": [
+        {
+          "name": "Response-Type",
+          "schema": "string",
+          "description": "The default response type is application/json if you would like to receive an XML response then set this to XML"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/vat-number-check",
+      "method": "vatNumberValidate",
+      "httpMethod": "get",
+      "tag": "api",
+      "description": "Validate a VAT number",
+      "parameters": [
+        {
+          "name": "Response-Type",
+          "schema": "string",
+          "description": "The default response type is application/json if you would like to receive an XML response then set this to XML"
+        },
+        {
+          "name": "vatid",
+          "schema": "string",
+          "required": true,
+          "description": "The VAT number to validate"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/vat-price",
+      "method": "convertPrice",
+      "httpMethod": "get",
+      "tag": "api",
+      "description": "Convert a price to or from VAT price.",
+      "parameters": [
+        {
+          "name": "Response-Type",
+          "schema": "string",
+          "description": "The default response type is application/json if you would like to receive an XML response then set this to XML"
+        },
+        {
+          "name": "code",
+          "schema": "string",
+          "required": true,
+          "description": "The 2 digit country code"
+        },
+        {
+          "name": "country_rate",
+          "schema": "string",
+          "required": false,
+          "description": "The VAT rate to get the price for. Default: standard"
+        },
+        {
+          "name": "price",
+          "schema": "integer",
+          "required": true,
+          "description": "The price you want converting"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Optional, if the price is including VAT set the type to 'incl'. Otherwise the default is assumed as excluding VAT already, 'excl'"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/vat-rates",
+      "method": "vatRates",
+      "httpMethod": "get",
+      "tag": "api",
+      "description": "Retrieve all current EU VAT rates",
+      "parameters": [
+        {
+          "name": "Response-Type",
+          "schema": "string",
+          "description": "The default response type is application/json if you would like to receive an XML response then set this to XML"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://vatapi.com/v1",
   "apiDescription": "A developer friendly API to help your business achieve VAT compliance",
   "apiTitle": "VAT API",

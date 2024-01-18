@@ -3,6 +3,348 @@
   "openApiRaw": "https://api.inboxroute.com/api/api-docs",
   "homepage": "inboxroute.com",
   "apiVersion": "0.9",
+  "methods": [
+    {
+      "url": "/contacts",
+      "method": "/contactsGet",
+      "httpMethod": "get",
+      "tag": "contacts",
+      "description": "Get a paged result of contacts from a list",
+      "parameters": [
+        {
+          "name": "listid",
+          "schema": "string",
+          "description": "Unique 16 characters ID of the contact list to get contacts of"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Skip that many records"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Maximum number of items in page"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Property to sort by. Append '-' for descending order."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/contacts/lists",
+      "method": "/contacts/listsGet",
+      "httpMethod": "get",
+      "tag": "lists",
+      "description": "Get a paged result of contact lists.",
+      "parameters": [
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Skip that many records"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Maximum number of items in page"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Property to sort by. Append '-' for descending order."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/contacts/lists",
+      "method": "/contacts/listsPost",
+      "httpMethod": "post",
+      "tag": "lists",
+      "description": "Add a new contact list",
+      "parameters": [
+        {
+          "name": "customfields",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "eventcustomizations",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/contacts/lists/{listid}",
+      "method": "/contacts/lists/{listid}Delete",
+      "httpMethod": "delete",
+      "tag": "lists",
+      "description": "Delete an existing contact list",
+      "parameters": [
+        {
+          "name": "listid",
+          "schema": "string",
+          "required": true,
+          "description": "Unique 16 characters ID of the contact list"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/contacts/lists/{listid}",
+      "method": "/contacts/lists/{listid}Put",
+      "httpMethod": "put",
+      "tag": "lists",
+      "description": "Update an existing contact list",
+      "parameters": [
+        {
+          "name": "listid",
+          "schema": "string",
+          "required": true,
+          "description": "Unique 16 characters ID of the contact list"
+        },
+        {
+          "name": "customfields",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "eventcustomizations",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/contacts/{contactid}",
+      "method": "/contacts/{contactid}Delete",
+      "httpMethod": "delete",
+      "tag": "contacts",
+      "description": "Delete an existing contact",
+      "parameters": [
+        {
+          "name": "contactid",
+          "schema": "string",
+          "required": true,
+          "description": "Unique 16 characters ID of the contact"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/contacts/{contactid}",
+      "method": "/contacts/{contactid}Put",
+      "httpMethod": "put",
+      "tag": "contacts",
+      "description": "Update an existing contact",
+      "parameters": [
+        {
+          "name": "contactid",
+          "schema": "string",
+          "required": true,
+          "description": "Unique 16 characters ID of the contact"
+        },
+        {
+          "name": "confirmed",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "customfields",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ip",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/subscription/{listid}",
+      "method": "/subscription/{listid}Post",
+      "httpMethod": "post",
+      "tag": "subscription",
+      "description": "Subscribe an email address to a list. This api call has the same behavior as\na regular subscribe form. However, single opt-in is allowed for system integration\npurposes.\n\n- If email address does not exist, a new contact will be added to the list.\n- If email address exists custom fields will be updated and status will be put\n  to unconfirmed or active depending of singleoptin value.\n- If current status if Active, this operation will only update the custom fields.\n- If singleoptin is true, no email confirmation will be sent. In that case,\n  you must provide the subscribe's origin ip and confirmation date-time.\n",
+      "parameters": [
+        {
+          "name": "listid",
+          "schema": "string",
+          "required": true,
+          "description": "Unique 16 characters ID of the contact list"
+        },
+        {
+          "name": "confirmed",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "fullname",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "ip",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "lang",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "singleoptin",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.inboxroute.com/api",
   "apiDescription": "MailSquad offers an affordable and super easy way to create, send and track delightful emails.",
   "apiTitle": "Mailsquad",

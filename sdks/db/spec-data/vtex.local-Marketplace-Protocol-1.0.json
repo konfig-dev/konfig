@@ -4,6 +4,1095 @@
   "homepage": "vtex.local",
   "serviceName": "Marketplace-Protocol",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/api/checkout/pub/orderForms/simulation",
+      "method": "fulfillmentSimulationExternalMarketplace",
+      "httpMethod": "post",
+      "tag": "External Marketplace",
+      "description": "Fulfillment simulation - External Marketplace",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "affiliateId",
+          "schema": "string",
+          "required": false,
+          "description": "The affiliate ID code created by the seller."
+        },
+        {
+          "name": "sc",
+          "schema": "integer",
+          "required": false,
+          "description": "Trade Policy (Sales Channel) identification."
+        },
+        {
+          "name": "clientProfileData",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "geoCoordinates",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isCheckedIn",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "items",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "marketingData",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "postalCode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "selectedSla",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "storeId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/portal.vtexcommercestable.com.br/api/mkp-category-mapper/categories/marketplace/{id}",
+      "method": "sendCategoryMappingVtexMapper",
+      "httpMethod": "post",
+      "tag": "External Marketplace",
+      "description": "Send Category Mapping to VTEX Mapper",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Code identifying returned in the *VTEX Mapper Registration* endpoint."
+        },
+        {
+          "name": "categories",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/portal.vtexcommercestable.com.br/api/mkp-category-mapper/connector/register",
+      "method": "vtexMapperRegistration",
+      "httpMethod": "post",
+      "tag": "External Marketplace",
+      "description": "VTEX Mapper Registration",
+      "parameters": [
+        {
+          "name": "an",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the VTEX account. Used as part of the URL."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "CategoryTreeProcessingNotificationEndpoint",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "categoryTreeEndPoint",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "displayName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "mappingEndPoint",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/{accountName}.vtexcommercestable.com.br/api/order-integration/orders",
+      "method": "enqueueNewOrder",
+      "httpMethod": "post",
+      "tag": "External Marketplace",
+      "description": "New Order Integration",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "an",
+          "schema": "string",
+          "required": false,
+          "description": "Parameter should indicate the name of the VTEX account where the order is being integrated or updated, meaning the seller responsible for the order."
+        },
+        {
+          "name": "accountName",
+          "schema": "string",
+          "required": true,
+          "description": "Parameter should indicate the name of the VTEX account where the order is being integrated or updated, meaning the seller responsible for the order."
+        },
+        {
+          "name": "affiliateId",
+          "schema": "string",
+          "required": true,
+          "description": "ID identifying the marketplace where the order originates. This ID is configured in the seller's VTEX account, and should be informed to the marketplace."
+        },
+        {
+          "name": "allowFranchises",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "clientProfileData",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "connectorEndpoint",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "connectorName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "customData",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "invoiceData",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "items",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "marketplaceOrderId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "marketplaceOrderStatus",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "marketplacePaymentValue",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "pickupAccountName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "shippingData",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{accountName}.vtexcommercestable.com.br/api/order-integration/orders/status",
+      "method": "updateOrderStatus",
+      "httpMethod": "put",
+      "tag": "External Marketplace",
+      "description": "Update Order Status",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "an",
+          "schema": "string",
+          "required": false,
+          "description": "Parameter should indicate the name of the VTEX account where the order is being integrated or updated, meaning the seller responsible for the order."
+        },
+        {
+          "name": "accountName",
+          "schema": "string",
+          "required": true,
+          "description": "Parameter should indicate the name of the VTEX account where the order is being integrated or updated, meaning the seller responsible for the order."
+        },
+        {
+          "name": "connectorEndpoint",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "connectorName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "marketplaceOrderId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "marketplaceOrderStatus",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{accountName}.{environment}.com.br/api/fulfillment/pvt/orders",
+      "method": "placeFulfillmentOrder",
+      "httpMethod": "post",
+      "tag": "External Marketplace",
+      "description": "Place fulfillment order",
+      "parameters": [
+        {
+          "name": "accountName",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the VTEX account. Used as part of the URL."
+        },
+        {
+          "name": "environment",
+          "schema": "string",
+          "required": true,
+          "description": "Environment to be used. It is passed as part of the URL."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "sc",
+          "schema": "string",
+          "required": false,
+          "description": "Sales channel."
+        },
+        {
+          "name": "affiliateId",
+          "schema": "string",
+          "required": true,
+          "description": "ID identifying the marketplace where the order originates. This ID is configured in the seller's VTEX account, and should be informed to the marketplace."
+        },
+        {
+          "name": "clientProfileData",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "isCreatedAsync",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "items",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "marketingData",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "marketplaceOrderId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "marketplacePaymentValue",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "marketplaceServicesEndpoint",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "openTextField",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "paymentData",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "shippingData",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{accountName}.{environment}.com.br/api/fulfillment/pvt/orders/{orderId}/fulfill",
+      "method": "authorizeDispatchForFulfillmentOrder",
+      "httpMethod": "post",
+      "tag": "External Marketplace",
+      "description": "Authorize dispatch for fulfillment order",
+      "parameters": [
+        {
+          "name": "accountName",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the VTEX account. Used as part of the URL."
+        },
+        {
+          "name": "environment",
+          "schema": "string",
+          "required": true,
+          "description": "Environment to be used. It is passed as part of the URL."
+        },
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the order that is to be authorized. It is composed of the `afilliateId` and the `marketplaceOrderId` joined with a `-`. For instance, an order with an ID `\"123\"` coming from the marketplace `\"MKP\"` has an `orderId` of `\"MKP-123\"`."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "sc",
+          "schema": "string",
+          "required": false,
+          "description": "Sales channel."
+        },
+        {
+          "name": "affiliateId",
+          "schema": "string",
+          "required": true,
+          "description": "ID identifying the marketplace where the order originates. This ID is configured in the seller's VTEX account, and should be informed to the marketplace."
+        },
+        {
+          "name": "marketplaceOrderId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{fulfillmentEndpoint}/pvt/orderForms/simulation",
+      "method": "fulfillmentSimulation",
+      "httpMethod": "post",
+      "tag": "External Seller",
+      "description": "Fulfillment simulation - External Seller",
+      "parameters": [
+        {
+          "name": "fulfillmentEndpoint",
+          "schema": "string",
+          "required": true,
+          "description": "This is the fulfillment endpoint registered for each specific external seller in the **seller management** section of VTEX's admin panel."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "geoCoordinates",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "items",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "postalCode",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "sc",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Expected response body of fulfillment simulation"
+        }
+      ]
+    },
+    {
+      "url": "/{fulfillmentEndpoint}/pvt/orders",
+      "method": "orderPlacement",
+      "httpMethod": "post",
+      "tag": "External Seller",
+      "description": "Order placement",
+      "parameters": [
+        {
+          "name": "fulfillmentEndpoint",
+          "schema": "string",
+          "required": true,
+          "description": "This is the fulfillment endpoint registered for each specific external seller in the **seller management** section of VTEX's admin panel."
+        },
+        {
+          "name": "content-length",
+          "schema": "string",
+          "required": true,
+          "description": "Length of the request body."
+        },
+        {
+          "name": "authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Indicates authorization."
+        },
+        {
+          "name": "x-vtex-api-appkey",
+          "schema": "string",
+          "required": true,
+          "description": "VTEX API app key."
+        },
+        {
+          "name": "x-vtex-api-apptoken",
+          "schema": "string",
+          "required": true,
+          "description": "VTEX API app token."
+        },
+        {
+          "name": "accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "accept-enconding",
+          "schema": "string",
+          "required": true,
+          "description": "Indicates the types of response enconding the client can understand."
+        },
+        {
+          "name": "x-vtex-operation-id",
+          "schema": "string",
+          "required": true,
+          "description": "VTEX operation ID."
+        },
+        {
+          "name": "x-forwarded-proto",
+          "schema": "string",
+          "required": true,
+          "description": "Determines the protocol used by the client in the request."
+        },
+        {
+          "name": "x-forwarded-for",
+          "schema": "string",
+          "required": true,
+          "description": "Identifies the originating IP address of the HTTP client."
+        },
+        {
+          "name": "x-vtex-cache-client-bypass",
+          "schema": "string",
+          "required": true,
+          "description": "VTEX cache client bypass."
+        },
+        {
+          "name": "content-type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "traceparent",
+          "schema": "string",
+          "required": true,
+          "description": "Identifies the incoming request in a tracing system."
+        },
+        {
+          "name": "clientProfileData",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "items",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "marketingData",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "marketplaceOrderId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "marketplacePaymentValue",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "marketplaceServicesEndpoint",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "openTextField",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "paymentData",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "shippingData",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{fulfillmentEndpoint}/pvt/orders/{orderId}/cancel",
+      "method": "mkpOrderCancellation",
+      "httpMethod": "post",
+      "tag": "External Seller",
+      "description": "Marketplace order cancellation",
+      "parameters": [
+        {
+          "name": "fulfillmentEndpoint",
+          "schema": "string",
+          "required": true,
+          "description": "This is the fulfillment endpoint registered for each specific external seller in the **seller management** section of VTEX's admin panel."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the order being fulfilled"
+        },
+        {
+          "name": "marketplaceOrderId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{fulfillmentEndpoint}/pvt/orders/{sellerOrderId}/fulfill",
+      "method": "authorizeFulfillment",
+      "httpMethod": "post",
+      "tag": "External Seller",
+      "description": "Authorize fulfillment",
+      "parameters": [
+        {
+          "name": "fulfillmentEndpoint",
+          "schema": "string",
+          "required": true,
+          "description": "This is the fulfillment endpoint registered for each specific external seller in the **seller management** section of VTEX's admin panel."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "sellerOrderId",
+          "schema": "string",
+          "required": true,
+          "description": "Seller's order ID of the order ready for fulfillment. The seller can be a VTEX seller or an external one."
+        },
+        {
+          "name": "marketplaceOrderId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{marketplaceServicesEndpoint}/pvt/orders/{marketplaceOrderId}/cancel",
+      "method": "cancelOrderInMarketplace",
+      "httpMethod": "post",
+      "tag": "External Seller",
+      "description": "Cancel order in marketplace",
+      "parameters": [
+        {
+          "name": "marketplaceServicesEndpoint",
+          "schema": "string",
+          "required": true,
+          "description": "This is an endpoint sent from VTEX to the external seller in the [Order placement request](https://developers.vtex.com/vtex-rest-api/reference/external-seller#order-placement)."
+        },
+        {
+          "name": "marketplaceOrderId",
+          "schema": "string",
+          "required": true,
+          "description": "Identifies the order in the marketplace."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{marketplaceServicesEndpoint}/pvt/orders/{marketplaceOrderId}/invoice",
+      "method": "sendInvoice",
+      "httpMethod": "post",
+      "tag": "External Seller",
+      "description": "Send invoice",
+      "parameters": [
+        {
+          "name": "marketplaceServicesEndpoint",
+          "schema": "string",
+          "required": true,
+          "description": "This is an endpoint sent from VTEX to the external seller in the [Order placement request](https://developers.vtex.com/vtex-rest-api/reference/external-seller#order-placement)."
+        },
+        {
+          "name": "marketplaceOrderId",
+          "schema": "string",
+          "required": true,
+          "description": "Identifies the order in the marketplace."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "courier",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "invoiceNumber",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "invoiceValue",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "issuanceDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "items",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "trackingNumber",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "trackingUrl",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{marketplaceServicesEndpoint}/pvt/orders/{marketplaceOrderId}/invoice/{invoiceNumber}",
+      "method": "sendTrackingInformation",
+      "httpMethod": "post",
+      "tag": "External Seller",
+      "description": "Send tracking information",
+      "parameters": [
+        {
+          "name": "marketplaceServicesEndpoint",
+          "schema": "string",
+          "required": true,
+          "description": "This is an endpoint sent from VTEX to the external seller in the [Order placement request](https://developers.vtex.com/vtex-rest-api/reference/external-seller#order-placement)."
+        },
+        {
+          "name": "marketplaceOrderId",
+          "schema": "string",
+          "required": true,
+          "description": "Identifies the order in the marketplace."
+        },
+        {
+          "name": "invoiceNumber",
+          "schema": "string",
+          "required": true,
+          "description": "Invoice number."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "courier",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "dispatchedDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "trackingNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "trackingUrl",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{marketplaceServicesEndpoint}/pvt/orders/{marketplaceOrderId}/invoice/{invoiceNumber}/tracking",
+      "method": "updateTrackingStatus",
+      "httpMethod": "post",
+      "tag": "External Seller",
+      "description": "Update tracking status",
+      "parameters": [
+        {
+          "name": "marketplaceServicesEndpoint",
+          "schema": "string",
+          "required": true,
+          "description": "This is an endpoint sent from VTEX to the external seller in the [Order placement request](https://developers.vtex.com/vtex-rest-api/reference/external-seller#order-placement)."
+        },
+        {
+          "name": "marketplaceOrderId",
+          "schema": "string",
+          "required": true,
+          "description": "Identifies the order in the marketplace."
+        },
+        {
+          "name": "invoiceNumber",
+          "schema": "string",
+          "required": true,
+          "description": "Invoice number."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "events",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isDelivered",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://vtex.local",
   "apiDescription": "\r\nThe _Marketplace Protocol_ is a set of API requests and definitions to help you integrate external sellers into a VTEX marketplace as well as external marketplaces into VTEX sellers.\r\n\r\n## External Seller\r\n\r\nHere you will find the endpoints involved in the integration between a VTEX marketplace and an external seller. Note that some of these requests are typically sent by the seller while others are received.\r\n\r\n| **Request** | **From** | **To** |\r\n|-|-|-|\r\n| [Fulfillment simulation](https://developers.vtex.com/vtex-rest-api/reference/fulfillment-simulation) | Marketplace | Seller |\r\n| [Order placement](https://developers.vtex.com/vtex-rest-api/reference/order-placement) | Marketplace | Seller |\r\n| [Authorize fulfillment](https://developers.vtex.com/vtex-rest-api/reference/authorize-fulfillment) | Marketplace | Seller |\r\n| [Marketplace order cancellation](https://developers.vtex.com/vtex-rest-api/reference/marketplace-order-cancellation) | Marketplace | Seller |\r\n| [Send invoice](https://developers.vtex.com/vtex-rest-api/reference/send-invoice) | Seller | Marketplace |\r\n| [Send tracking information](https://developers.vtex.com/vtex-rest-api/reference/send-tracking-information) | Seller      | Marketplace |\r\n| [Update tracking status](https://developers.vtex.com/vtex-rest-api/reference/update-tracking-status) | Seller | Marketplace |\r\n| [Cancel order in marketplace](https://developers.vtex.com/vtex-rest-api/reference/cancel-order-in-marketplace) | Seller | Marketplace |\r\n\r\nFor a detailed explanation of the steps required to develop a custom connector to sell products from an external seller in your storefront, check out our complete [External Seller Integration Guide](https://developers.vtex.com/docs/guides/external-seller-integration-guide).\r\n\r\n\r\n## External Marketplace\r\n\r\nIn this section, you will find the endpoints involved in the VTEX integration between an external marketplace and a VTEX seller.\r\n\r\n\r\n| **Request** | **From** | **To** |\r\n|-|-|-|\r\n| [VTEX Mapper Registration](https://developers.vtex.com/vtex-rest-api/reference/vtex-mapper-registration) | External marketplace | VTEX system |\r\n| [Send Category Mapping to VTEX Mapper](https://developers.vtex.com/vtex-rest-api/reference/send-category-mapping-to-vtex-mapper) |  External marketplace | VTEX system |\r\n| [Authorize fulfillment](https://developers.vtex.com/vtex-rest-api/reference/authorize-fulfillment) | Marketplace | Seller |\r\n| [Place fulfillment order](https://developers.vtex.com/vtex-rest-api/reference/place-fulfillment-order)   | External marketplace | VTEX Seller |\r\n| [Authorize dispatch for fulfillment order](https://developers.vtex.com/vtex-rest-api/reference/authorize-dispatch-for-fulfillment-order) | External marketplace | VTEX Seller |\r\n\r\n\r\nFor a detailed explanation of the steps required to develop a custom connector to become an external marketplace for VTEX sellers, check out our complete [External Marketplace Integration Guide](https://developers.vtex.com/docs/guides/external-marketplace-integration-guide).",
   "apiTitle": "Marketplace Protocol",

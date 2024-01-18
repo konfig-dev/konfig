@@ -4,6 +4,56 @@
   "homepage": "api.gov.uk",
   "serviceName": "vehicle-enquiry",
   "apiVersion": "1.1.0",
+  "methods": [
+    {
+      "url": "/v1/vehicles",
+      "method": "getVehicleDetailsByRegistrationNumber",
+      "httpMethod": "post",
+      "tag": "vehicle",
+      "description": "Get vehicle details by registration number",
+      "parameters": [
+        {
+          "name": "x-api-key",
+          "schema": "string",
+          "required": true,
+          "description": "Client Specific API Key"
+        },
+        {
+          "name": "X-Correlation-Id",
+          "schema": "string",
+          "required": false,
+          "description": "Consumer Correlation ID"
+        },
+        {
+          "name": "registrationNumber",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "Error Response"
+        },
+        {
+          "statusCode": "404",
+          "description": "Error Response"
+        },
+        {
+          "statusCode": "500",
+          "description": "Error Response"
+        },
+        {
+          "statusCode": "503",
+          "description": "Error Response"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://driver-vehicle-licensing.api.gov.uk/vehicle-enquiry",
   "apiDescription": "Interface specification for the DVLA Vehicle Enquiry API",
   "apiTitle": "Vehicle Enquiry API",

@@ -4,6 +4,1665 @@
   "homepage": "hillbillysoftware.com",
   "serviceName": "shinobi",
   "apiVersion": "v1",
+  "methods": [
+    {
+      "url": "/Actors/Search/{accesstoken}/{Query}",
+      "method": "actorGet",
+      "httpMethod": "get",
+      "tag": "Cast & Crew (Cast & Crew in Movies & Television Shows)",
+      "description": "Returns data on queried actor/actress. Result set limited to 5 records",
+      "parameters": [
+        {
+          "name": "accesstoken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Query",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/AddActor",
+      "method": "addActorPost",
+      "httpMethod": "post",
+      "tag": "Cast & Crew (Cast & Crew in Movies & Television Shows)",
+      "description": "Add new actor or actress to database",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Bio",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "BirthYear",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "DeathYear",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Gender",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "PopularityIndex",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ProfileImage",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "204",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/AddTVShow",
+      "method": "addTvShowPost",
+      "httpMethod": "post",
+      "tag": "Television (Shows, Episodes, & Statuses)",
+      "description": "Add new show to database",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "EpisodeCount",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "EpisodeRuntime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Genres",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ImdbID",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "PremierYear",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Seasons",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ShowImage",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ShowStatus",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Synopsis",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Title",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "204",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Aliases/ByID/{AccessToken}/{imdbID}",
+      "method": "aliasesByIdGet",
+      "httpMethod": "get",
+      "tag": "Aliases (Movie & Television Show Aliases)",
+      "description": "Get known aliases for Movies or Television shows from passed imdbID",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "imdbID",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Aliases/ByName/{AccessToken}/{Title}",
+      "method": "aliasesGet",
+      "httpMethod": "get",
+      "tag": "Aliases (Movie & Television Show Aliases)",
+      "description": "Get known aliases for Movies or Television shows",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Title",
+          "schema": "string",
+          "required": true,
+          "description": "Title of movie or television show"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Awards/ByWinner/{AccessToken}/{Nominee}",
+      "method": "awardsbyWinnerGet",
+      "httpMethod": "get",
+      "tag": "Awards (Television & Movies)",
+      "description": "Gets all awards by nominiee",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Nominee",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Awards/ByYear/{Year}",
+      "method": "awardsGet",
+      "httpMethod": "get",
+      "tag": "Awards (Television & Movies)",
+      "description": "Gets all awards for requested year",
+      "parameters": [
+        {
+          "name": "Year",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Calendar/ByDate/{AccessToken}/{Date}/{Country}",
+      "method": "scheduleByDateGet",
+      "httpMethod": "get",
+      "tag": "Calendar (Television Show Schedules)",
+      "description": "Gets TV Schedule for selected data",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Date",
+          "schema": "string",
+          "required": true,
+          "description": "date format year-month-day"
+        },
+        {
+          "name": "Country",
+          "schema": "string",
+          "required": true,
+          "description": "US / CA / NL / BE / DE / GB or FR"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Calendar/Countries/{AccessToken}",
+      "method": "calendarCountriesGet",
+      "httpMethod": "get",
+      "tag": "Calendar (Television Show Schedules)",
+      "description": "Returns list of available countries in calendar database",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Calendar/Networks/{AccessToken}",
+      "method": "calendarNetworksGet",
+      "httpMethod": "get",
+      "tag": "Calendar (Television Show Schedules)",
+      "description": "Gets a list of available networks",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Calendar/Seasons/{AccessToken}/{Name}",
+      "method": "calendarShowSeasonsGet",
+      "httpMethod": "get",
+      "tag": "Calendar (Television Show Schedules)",
+      "description": "Returns list of seasons available in the calendar for show",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Calendar/Show/Season/{AccessToken}/{Name}/{Season}",
+      "method": "calendarbyShownameSeasonGet",
+      "httpMethod": "get",
+      "tag": "Calendar (Television Show Schedules)",
+      "description": "Get Calendar by showname and season",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Season",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Calendar/Show/{AccessToken}/{Name}/{Year}",
+      "method": "calendarByShowNameGet",
+      "httpMethod": "get",
+      "tag": "Calendar (Television Show Schedules)",
+      "description": "Will return show schedule for queried showname and year",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Year",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Calendar/Today/{AccessToken}",
+      "method": "calendarTodayGet",
+      "httpMethod": "get",
+      "tag": "Calendar (Television Show Schedules)",
+      "description": "Will return show schedule for today for all countries in database",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Cast/ActorBySearch/{AccessToken}/{Actor}",
+      "method": "actorInShowsGet",
+      "httpMethod": "get",
+      "tag": "Cast & Crew (Cast & Crew in Movies & Television Shows)",
+      "description": "Returns all shows queried actor/actress is or has been in",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Actor",
+          "schema": "string",
+          "required": true,
+          "description": "Part of, or full name of actor"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Cast/ByActor/{AccessToken}/{Actor}",
+      "method": "castByActorGet",
+      "httpMethod": "get",
+      "tag": "Cast & Crew (Cast & Crew in Movies & Television Shows)",
+      "description": "Returns list of show actor is appearing in",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Actor",
+          "schema": "string",
+          "required": true,
+          "description": "Full name of actor"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Cast/ByTVShow/{accesstoken}/{ShowName}",
+      "method": "actorsInTvShowGet",
+      "httpMethod": "get",
+      "tag": "Cast & Crew (Cast & Crew in Movies & Television Shows)",
+      "description": "Returns all actors in queried tvshow",
+      "parameters": [
+        {
+          "name": "accesstoken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "ShowName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Crew/ByID/{AccessToken}/{ID}",
+      "method": "crewByIdGet",
+      "httpMethod": "get",
+      "tag": "Cast & Crew (Cast & Crew in Movies & Television Shows)",
+      "description": "Get crew list by ID",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "ID",
+          "schema": "string",
+          "required": true,
+          "description": "IMDBID, TVmazeID, or TVDBID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Crew/ByPerson/{AccessToken}/{PersonName}",
+      "method": "crewByPersonGet",
+      "httpMethod": "get",
+      "tag": "Cast & Crew (Cast & Crew in Movies & Television Shows)",
+      "description": "Gets list of productions searched person is/was involved in.",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "PersonName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Crew/ByShowName/{AccessToken}/{ShowName}",
+      "method": "crewbyShownameGet",
+      "httpMethod": "get",
+      "tag": "Cast & Crew (Cast & Crew in Movies & Television Shows)",
+      "description": "Get crew list by showname",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "ShowName",
+          "schema": "string",
+          "required": true,
+          "description": "Full exact showname"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Crew/Search/{AccessToken}/{Phrase}",
+      "method": "crewGet",
+      "httpMethod": "get",
+      "tag": "Cast & Crew (Cast & Crew in Movies & Television Shows)",
+      "description": "Returns crew for queried show.",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Phrase",
+          "schema": "string",
+          "required": true,
+          "description": "Part of, or full showname to search for"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Episodes/ByID/{AccessToken}/{ID}",
+      "method": "episodesByIdGet",
+      "httpMethod": "get",
+      "tag": "Television (Shows, Episodes, & Statuses)",
+      "description": "Gets all episodes for selected ID",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "ID",
+          "schema": "string",
+          "required": true,
+          "description": "imdbID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Episodes/BySeason/{AccessToken}/{ID}/{Season}",
+      "method": "episodesBySeasonGet",
+      "httpMethod": "get",
+      "tag": "Television (Shows, Episodes, & Statuses)",
+      "description": "Gets list of episodes for specified imdbID and Season number",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "ID",
+          "schema": "string",
+          "required": true,
+          "description": "imdbID"
+        },
+        {
+          "name": "Season",
+          "schema": "string",
+          "required": true,
+          "description": "Season number"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Episodes/ByShowName/{AccessToken}/{Showname}",
+      "method": "episodesGet",
+      "httpMethod": "get",
+      "tag": "Television (Shows, Episodes, & Statuses)",
+      "description": "Gets all episodes for selected show",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Showname",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Episodes/LatestSeason/Show/{AccessToken}/{Name}",
+      "method": "episodesLastAvailableSeasonbyNameGet",
+      "httpMethod": "get",
+      "tag": "Television (Shows, Episodes, & Statuses)",
+      "description": "Gets latest season number based on show name",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Episodes/LatestSeason/{AccessToken}/{ID}",
+      "method": "episodesLastAvailableSeasonGet",
+      "httpMethod": "get",
+      "tag": "Television (Shows, Episodes, & Statuses)",
+      "description": "Returns last available season number in database, based on passed imdbID",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "ID",
+          "schema": "string",
+          "required": true,
+          "description": "imdbID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Episodes/SeasonCount/{AccessToken}/{ID}",
+      "method": "episodesSeasonCountGet",
+      "httpMethod": "get",
+      "tag": "Television (Shows, Episodes, & Statuses)",
+      "description": "Returns number of available seasons and episodes",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "ID",
+          "schema": "string",
+          "required": true,
+          "description": "imdbID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/GetIMDBid/ByID/{AccessToken}/{Query}",
+      "method": "getImdBidGetAsync",
+      "httpMethod": "get",
+      "tag": "Miscellaneous (Conversion & other Utilities)",
+      "description": "Gets list of avaiable IMDB ids from Movies and TV Show databases, you can use those to query other end points that need ID's",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Query",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Images/ByID/{AccessToken}/{imdbID}",
+      "method": "imagesGet",
+      "httpMethod": "get",
+      "tag": "Images (Movie & Television Show Images)",
+      "description": "Get images available for movie/tv show with passed imdbID",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "imdbID",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Images/Search/{Accesstoken}/{Query}",
+      "method": "imageSearchGet",
+      "httpMethod": "get",
+      "tag": "Images (Movie & Television Show Images)",
+      "description": "Get images available for movie/tv show with passed query",
+      "parameters": [
+        {
+          "name": "Accesstoken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Query",
+          "schema": "string",
+          "required": true,
+          "description": "Name or part of name from Movie or Show"
+        },
+        {
+          "name": "Strictmatch",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Magnets/ByDate/{AccessToken}/{Date}",
+      "method": "magnetsByDateGetAsync",
+      "httpMethod": "get",
+      "tag": "Magnets (Magnet hashes of Movies & Television Shows)",
+      "description": "Gets available magnet hashes on passed date (yyyy-mm-dd).  Feature not available on free plan, please donate to be able to use this feature.",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Date",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Magnets/ByIMDB/{AccessToken}/{imdbID}",
+      "method": "magnetsByimdbIdGetAsync",
+      "httpMethod": "get",
+      "tag": "Magnets (Magnet hashes of Movies & Television Shows)",
+      "description": "Returns list of magnet hashes for passed IMDBID.  Feature not available on free plan, please donate to be able to use this feature.",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "imdbID",
+          "schema": "string",
+          "required": true,
+          "description": "ID with or without tt prefix"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Magnets/Search/{AccessToken}/{Query}",
+      "method": "magnetsMovieByIdGetAsync",
+      "httpMethod": "get",
+      "tag": "Magnets (Magnet hashes of Movies & Television Shows)",
+      "description": "Try and find magnet links for queried movie.  Feature not available on free plan, please donate to be able to use this feature",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Query",
+          "schema": "string",
+          "required": true,
+          "description": "Name or part of name of movie or tv show"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Magnets/TVShow/{AccessToken}/{TVShow}",
+      "method": "tvShowsearchGet",
+      "httpMethod": "get",
+      "tag": "Magnets (Magnet hashes of Movies & Television Shows)",
+      "description": "Returns results based on query, Feature not available on free plan, please donate to be able to use this feature.",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "TVShow",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Movie/ByID/{accesstoken}/{imdbID}",
+      "method": "movieIdGet",
+      "httpMethod": "get",
+      "tag": "Movies (Movies, Documentaries, & made for Television Movies)",
+      "description": "",
+      "parameters": [
+        {
+          "name": "accesstoken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "imdbID",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Movie/Search/{AccessToken}/{Query}",
+      "method": "movieSearchGetAsync",
+      "httpMethod": "get",
+      "tag": "Movies (Movies, Documentaries, & made for Television Movies)",
+      "description": "Searches for movies, result set limited to 5 records",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Query",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Music/Albums/Art/{AccessToken}/{AlbumID}",
+      "method": "musicAlbumArtGet",
+      "httpMethod": "get",
+      "tag": "Music (Artists ,Bands, Tracks, AlbumArt, CoverArt, & Videos)",
+      "description": "Returns Albumart for passed AlbumID",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "AlbumID",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Music/Albums/CoverArt/{AccessToken}/{MBID}",
+      "method": "musicCdCoversGet",
+      "httpMethod": "get",
+      "tag": "Music (Artists ,Bands, Tracks, AlbumArt, CoverArt, & Videos)",
+      "description": "Gets CD art for passed MusicBrainzID",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "MBID",
+          "schema": "string",
+          "required": true,
+          "description": "MusicBrainzID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Music/Albums/MusicBrainzID/{AccessToken}/{MBID}",
+      "method": "musicByMusicBrainzGet",
+      "httpMethod": "get",
+      "tag": "Music (Artists ,Bands, Tracks, AlbumArt, CoverArt, & Videos)",
+      "description": "Get Artist / Band information on MusicBrainzID",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "MBID",
+          "schema": "string",
+          "required": true,
+          "description": "MusicBrainzID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Music/Albums/{AccessToken}/{ArtistID}",
+      "method": "musicAlbumsGet",
+      "httpMethod": "get",
+      "tag": "Music (Artists ,Bands, Tracks, AlbumArt, CoverArt, & Videos)",
+      "description": "Get albums from passed ArtistID",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "ArtistID",
+          "schema": "string",
+          "required": true,
+          "description": "ID of artist or band to retrieve albums from"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Music/Artist/Art/ID/{AccessToken}/{ArtistID}",
+      "method": "musicCoverArtGet",
+      "httpMethod": "get",
+      "tag": "Music (Artists ,Bands, Tracks, AlbumArt, CoverArt, & Videos)",
+      "description": "Retrieves artist / band Banner and logo based on ArtistID",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "ArtistID",
+          "schema": "string",
+          "required": true,
+          "description": "ArtistID of artist or band"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Music/Artist/Art/Name/{AccessToken}/{Name}",
+      "method": "musicCoverArtByNameGet",
+      "httpMethod": "get",
+      "tag": "Music (Artists ,Bands, Tracks, AlbumArt, CoverArt, & Videos)",
+      "description": "Retrieves artist / band Banner and logo based on artist or bandname",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Name",
+          "schema": "string",
+          "required": true,
+          "description": "Name of artist or band"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Music/Artist/Extended/{AccessToken}/{Name}",
+      "method": "musicArtistExtendedGet",
+      "httpMethod": "get",
+      "tag": "Music (Artists ,Bands, Tracks, AlbumArt, CoverArt, & Videos)",
+      "description": "Provides extended information, which includes all known albums and music videos of artist / band",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Music/Artist/{AccessToken}/{Name}",
+      "method": "musicGet",
+      "httpMethod": "get",
+      "tag": "Music (Artists ,Bands, Tracks, AlbumArt, CoverArt, & Videos)",
+      "description": "Get information about passed band name or artist",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Name",
+          "schema": "string",
+          "required": true,
+          "description": "Name (or part) of band or artist name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Music/Lyrics/AlbumID/{AccessToken}/{AlbumID}",
+      "method": "musicLyricsbyAlbumIdGet",
+      "httpMethod": "get",
+      "tag": "Music (Artists ,Bands, Tracks, AlbumArt, CoverArt, & Videos)",
+      "description": "Returns all lyrics for requested AlbumID",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "AlbumID",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Music/Lyrics/ByName/{AccessToken}/{Name}",
+      "method": "musicLyricsGet",
+      "httpMethod": "get",
+      "tag": "Music (Artists ,Bands, Tracks, AlbumArt, CoverArt, & Videos)",
+      "description": "Get lyrics for band or artist (record set limited to 25)",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Name",
+          "schema": "string",
+          "required": true,
+          "description": "Name (or partial) of band or artist (record set limited to 25)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Music/Lyrics/BySong/{AccessToken}/{Song}",
+      "method": "musicLyricsBySongGet",
+      "httpMethod": "get",
+      "tag": "Music (Artists ,Bands, Tracks, AlbumArt, CoverArt, & Videos)",
+      "description": "Get lyrics on song title",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Song",
+          "schema": "string",
+          "required": true,
+          "description": "Name or part of song name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Music/Tracks/{AccessToken}/{AlbumID}",
+      "method": "musicTracksGet",
+      "httpMethod": "get",
+      "tag": "Music (Artists ,Bands, Tracks, AlbumArt, CoverArt, & Videos)",
+      "description": "Get all tracks from requested album",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "AlbumID",
+          "schema": "string",
+          "required": true,
+          "description": "AlbumID (can be retrieved via album endpoint)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Music/Videos/{AccessToken}/{ArtistID}",
+      "method": "musiVideosGet",
+      "httpMethod": "get",
+      "tag": "Music (Artists ,Bands, Tracks, AlbumArt, CoverArt, & Videos)",
+      "description": "Lists all videos available for this Artist / Band",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "ArtistID",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Rating/ByID/{AccessToken}/{imdbID}",
+      "method": "ratingGet",
+      "httpMethod": "get",
+      "tag": "Ratings  (Movie & Television Show Ratings)",
+      "description": "Returns ratings from various resources(IMDB,Rotten Tomatoes, metaCritics, TVMaze etc) of passed IMDBid",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "imdbID",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Rating/ByName/{AccessToken}/{Name}",
+      "method": "ratingByNameGet",
+      "httpMethod": "get",
+      "tag": "Ratings  (Movie & Television Show Ratings)",
+      "description": "",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Status/{AccessToken}/{Query}",
+      "method": "showStatusGet",
+      "httpMethod": "get",
+      "tag": "Television (Shows, Episodes, & Statuses)",
+      "description": "Returns status of queried show (query can be IMDB, TVDB, or showname)",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Query",
+          "schema": "string",
+          "required": true,
+          "description": "Query can be IMDB, TVDB, or Show name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/TV/ByID/{accesstoken}/{imdbID}",
+      "method": "tvShowIdGet",
+      "httpMethod": "get",
+      "tag": "Television (Shows, Episodes, & Statuses)",
+      "description": "Returns TVShow information based on IMDBid",
+      "parameters": [
+        {
+          "name": "accesstoken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "imdbID of show you want info on"
+        },
+        {
+          "name": "imdbID",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/TV/ByName/{AccessToken}/{Query}",
+      "method": "tvShowByNameGet",
+      "httpMethod": "get",
+      "tag": "Television (Shows, Episodes, & Statuses)",
+      "description": "Returns results based on query, result set limited to 5 records",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Query",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Trailers/ByID/{AccessToken}/{imdbID}",
+      "method": "trailersbyIdGet",
+      "httpMethod": "get",
+      "tag": "Trailers (Movie & Television Show Trailers)",
+      "description": "Get Trailers for passed imdbID",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "imdbID",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Trailers/CountByID/{AccessToken}/{imdbID}",
+      "method": "trailerCountByIdGet",
+      "httpMethod": "get",
+      "tag": "Trailers (Movie & Television Show Trailers)",
+      "description": "Get trailer count for passed ID",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "imdbID",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Trailers/CountByName/{AccessToken}/{Name}",
+      "method": "trailerCountByNameGet",
+      "httpMethod": "get",
+      "tag": "Trailers (Movie & Television Show Trailers)",
+      "description": "Get trailer count for passed name (Movie title or TVShow name)",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Trailers/Search/{AccessToken}/{Phrase}",
+      "method": "trailerSearchGet",
+      "httpMethod": "get",
+      "tag": "Trailers (Movie & Television Show Trailers)",
+      "description": "Gets trailers by search phrase (limited to 10 records)",
+      "parameters": [
+        {
+          "name": "AccessToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Phrase",
+          "schema": "string",
+          "required": true,
+          "description": "Trailer you like to search for"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.hillbillysoftware.com",
   "apiTitle": "shinobiapi",
   "endpoints": 58,

@@ -4,6 +4,233 @@
   "homepage": "nexmo.com",
   "serviceName": "voice",
   "apiVersion": "1.3.10",
+  "methods": [
+    {
+      "url": "/",
+      "method": "getCalls",
+      "httpMethod": "get",
+      "tag": "Calls",
+      "description": "Get details of your calls",
+      "parameters": [
+        {
+          "name": "status",
+          "schema": "string",
+          "description": "Filter by call status"
+        },
+        {
+          "name": "date_start",
+          "schema": "string",
+          "description": "Return the records that occurred after this point in time"
+        },
+        {
+          "name": "date_end",
+          "schema": "string",
+          "description": "Return the records that occurred before this point in time"
+        },
+        {
+          "name": "page_size",
+          "schema": "integer",
+          "description": "Return this amount of records in the response"
+        },
+        {
+          "name": "record_index",
+          "schema": "integer",
+          "description": "Return calls from this index in the response"
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "description": "Either ascending or  descending order."
+        },
+        {
+          "name": "conversation_uuid",
+          "schema": "string",
+          "description": "Return all the records associated with a specific conversation."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/",
+      "method": "createCall",
+      "httpMethod": "post",
+      "tag": "Calls",
+      "description": "Create an outbound call",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{uuid}",
+      "method": "getCall",
+      "httpMethod": "get",
+      "tag": "Calls",
+      "description": "Get detail of a specific call",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{uuid}",
+      "method": "updateCall",
+      "httpMethod": "put",
+      "tag": "Calls",
+      "description": "Modify an in progress call",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/{uuid}/dtmf",
+      "method": "startDtmf",
+      "httpMethod": "put",
+      "tag": "Play DTMF",
+      "description": "Play DTMF tones into a call",
+      "parameters": [
+        {
+          "name": "digits",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{uuid}/stream",
+      "method": "stopStream",
+      "httpMethod": "delete",
+      "tag": "Stream Audio",
+      "description": "Stop playing an audio file into a call",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{uuid}/stream",
+      "method": "startStream",
+      "httpMethod": "put",
+      "tag": "Stream Audio",
+      "description": "Play an audio file into a call",
+      "parameters": [
+        {
+          "name": "level",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "loop",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "stream_url",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{uuid}/talk",
+      "method": "stopTalk",
+      "httpMethod": "delete",
+      "tag": "Play TTS",
+      "description": "Stop text to speech in a call",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{uuid}/talk",
+      "method": "startTalk",
+      "httpMethod": "put",
+      "tag": "Play TTS",
+      "description": "Play text to speech into a call",
+      "parameters": [
+        {
+          "name": "language",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "level",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "loop",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "premium",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "style",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "text",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "voice_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.nexmo.com/v1/calls",
   "apiDescription": "The Voice API lets you create outbound calls, control in-progress calls and get information about historical calls. More information about the Voice API can be found at <https://developer.nexmo.com/voice/voice-api/overview>.",
   "apiTitle": "Voice API",

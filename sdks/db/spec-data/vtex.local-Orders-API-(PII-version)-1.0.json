@@ -4,6 +4,315 @@
   "homepage": "vtex.local",
   "serviceName": "Orders-API-(PII-version)",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/api/orders/extendsearch/orders",
+      "method": "listOrders2",
+      "httpMethod": "post",
+      "tag": "Orders",
+      "description": "List orders",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "f_hasInputInvoice",
+          "schema": "boolean",
+          "required": false,
+          "description": "Filters list to return only orders with non `null` values for the `invoiceInput` field."
+        },
+        {
+          "name": "f_creationDate",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "per_page",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "q",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/orders/pvt/document/{orderId}",
+      "method": "getOrder2",
+      "httpMethod": "get",
+      "tag": "Orders",
+      "description": "Get order",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the order."
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "required": false,
+          "description": "Reason for requesting unmasked data."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/orders/pvt/document/{orderId}/actions/start-handling",
+      "method": "startHandling2",
+      "httpMethod": "post",
+      "tag": "Orders",
+      "description": "Start handling order",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the order."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/orders/pvt/document/{orderId}/cancel",
+      "method": "cancelOrder2",
+      "httpMethod": "post",
+      "tag": "Orders",
+      "description": "Cancel order",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the order."
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/orders/pvt/document/{orderId}/invoices",
+      "method": "invoiceNotification2",
+      "httpMethod": "post",
+      "tag": "Invoice",
+      "description": "Order invoice notification",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the order."
+        },
+        {
+          "name": "cfop",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "courier",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "extraValue",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "invoiceKey",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "invoiceNumber",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "invoiceUrl",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "invoiceValue",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "issuedDate",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "items",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "trackingNumber",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "trackingUrl",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "volumes",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/orders/pvt/document/{orderId}/payment/{paymentId}/notify-payment",
+      "method": "sendPaymentNotification2",
+      "httpMethod": "post",
+      "tag": "Payment",
+      "description": "Send payment notification",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "orderId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the order."
+        },
+        {
+          "name": "paymentId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the payment."
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://vtex.local",
   "apiDescription": "Endpoints that deal with order management. New version of the orders API.",
   "apiTitle": "Orders API (PII version)",

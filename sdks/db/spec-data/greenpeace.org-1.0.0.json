@@ -3,6 +3,163 @@
   "openApiRaw": "https://raw.githubusercontent.com/greenpeace/ggw_api_test/master/swagger.yaml",
   "homepage": "greenpeace.org",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/events",
+      "method": "/eventsGet",
+      "httpMethod": "get",
+      "description": "Return the upcoming events (e.g. start date >= today). Gets an array of `Event` object. Mandatory query param of **domain** determines the site / country the event belongs to.",
+      "parameters": [
+        {
+          "name": "domain",
+          "schema": "string",
+          "required": true,
+          "description": "the site the groups belongs to, example: netherlands"
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": "the number of desired records"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/events/{UUID}",
+      "method": "/events/{uuid}Get",
+      "httpMethod": "get",
+      "description": "Get one `Event` object by specifying its UUID in the url path.",
+      "parameters": [
+        {
+          "name": "UUID",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups",
+      "method": "/groupsGet",
+      "httpMethod": "get",
+      "description": "Gets an array of `Group` object. Mandatory query param of **domain** determines the site / country the group belongs to.",
+      "parameters": [
+        {
+          "name": "domain",
+          "schema": "string",
+          "required": true,
+          "description": "the site the groups belongs to, example: netherlands"
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": "the number of desired records"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{UUID}",
+      "method": "/groups/{uuid}Get",
+      "httpMethod": "get",
+      "description": "Get one `Group` object by specifying its UUID in the url path.",
+      "parameters": [
+        {
+          "name": "UUID",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/volunteers",
+      "method": "/volunteersGet",
+      "httpMethod": "get",
+      "description": "Gets an array of `Volunteer` object. Mandatory query param of **domain** determines the site / country the volunteers are from.",
+      "parameters": [
+        {
+          "name": "domain",
+          "schema": "string",
+          "required": true,
+          "description": "the site the users are registered on, example: netherlands"
+        },
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": "the number of desired records. Default is 5."
+        },
+        {
+          "name": "must_have_default_avatar",
+          "schema": "boolean",
+          "description": "1 or 0. filter on people that have the default avatar or not."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/volunteers/{UUID}",
+      "method": "/volunteers/{uuid}Get",
+      "httpMethod": "get",
+      "description": "Get one specific `Volunteer` object by specifying its UUID in the url path.",
+      "parameters": [
+        {
+          "name": "UUID",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://greenwire.greenpeace.org/api/public",
   "apiDescription": "Greenpeace Greenwire allows you connect with other volunteers, activists and groups working on environmental campaigns all across the world!",
   "apiTitle": "Greenwire Public API",

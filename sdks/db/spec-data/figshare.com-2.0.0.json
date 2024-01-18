@@ -3,6 +3,4555 @@
   "openApiRaw": "http://docs.figshare.com/swagger.json",
   "homepage": "figshare.com",
   "apiVersion": "2.0.0",
+  "methods": [
+    {
+      "url": "/account",
+      "method": "privateAccount",
+      "httpMethod": "get",
+      "tag": "other",
+      "description": "Private Account information",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles",
+      "method": "privateArticlesList",
+      "httpMethod": "get",
+      "tag": "articles",
+      "description": "Private Articles",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Used for pagination with page_size"
+        },
+        {
+          "name": "page_size",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results included on a page. Used for pagination with page"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results included on a page. Used for pagination with query"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Where to start the listing(the offset of the first result). Used for pagination with limit"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles",
+      "method": "privateArticleCreate",
+      "httpMethod": "post",
+      "tag": "articles",
+      "description": "Create new Article",
+      "parameters": [
+        {
+          "name": "authors",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "categories",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "categories_by_source_id",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "custom_fields",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "custom_fields_list",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "defined_type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "doi",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "funding",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "funding_list",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "group_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "handle",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "is_metadata_record",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "keywords",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "license",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "metadata_reason",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "references",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "resource_doi",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "resource_title",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "timeline",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/export",
+      "method": "accountArticleReport",
+      "httpMethod": "get",
+      "tag": "articles",
+      "description": "Account Article Report",
+      "parameters": [
+        {
+          "name": "group_id",
+          "schema": "integer",
+          "required": false,
+          "description": "A group ID to filter by"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/export",
+      "method": "accountArticleReportGenerate",
+      "httpMethod": "post",
+      "tag": "articles",
+      "description": "Initiate a new Report",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/search",
+      "method": "privateArticlesSearch",
+      "httpMethod": "post",
+      "tag": "articles",
+      "description": "Private Articles search",
+      "parameters": [
+        {
+          "name": "resource_id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}",
+      "method": "privateArticleDelete",
+      "httpMethod": "delete",
+      "tag": "articles",
+      "description": "Delete article",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}",
+      "method": "privateArticleDetails",
+      "httpMethod": "get",
+      "tag": "articles",
+      "description": "Article details",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}",
+      "method": "privateArticleUpdate",
+      "httpMethod": "put",
+      "tag": "articles",
+      "description": "Update article",
+      "parameters": [
+        {
+          "name": "authors",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "categories",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "categories_by_source_id",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "custom_fields",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "custom_fields_list",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "defined_type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "doi",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "funding",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "funding_list",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "group_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "handle",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "is_metadata_record",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "keywords",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "license",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "metadata_reason",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "references",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "resource_doi",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "resource_title",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "timeline",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "205",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}/authors",
+      "method": "privateArticleAuthorsList",
+      "httpMethod": "get",
+      "tag": "articles",
+      "description": "List article authors",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}/authors",
+      "method": "privateArticleAuthorsAdd",
+      "httpMethod": "post",
+      "tag": "articles",
+      "description": "Add article authors",
+      "parameters": [
+        {
+          "name": "authors",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}/authors",
+      "method": "privateArticleAuthorsReplace",
+      "httpMethod": "put",
+      "tag": "articles",
+      "description": "Replace article authors",
+      "parameters": [
+        {
+          "name": "authors",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}/authors/{author_id}",
+      "method": "privateArticleAuthorDelete",
+      "httpMethod": "delete",
+      "tag": "articles",
+      "description": "Delete article author",
+      "parameters": [
+        {
+          "name": "article_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Article unique identifier"
+        },
+        {
+          "name": "author_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Article Author unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}/categories",
+      "method": "privateArticleCategoriesList",
+      "httpMethod": "get",
+      "tag": "articles",
+      "description": "List article categories",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}/categories",
+      "method": "privateArticleCategoriesAdd",
+      "httpMethod": "post",
+      "tag": "articles",
+      "description": "Add article categories",
+      "parameters": [
+        {
+          "name": "categories",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}/categories",
+      "method": "privateArticleCategoriesReplace",
+      "httpMethod": "put",
+      "tag": "articles",
+      "description": "Replace article categories",
+      "parameters": [
+        {
+          "name": "categories",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}/categories/{category_id}",
+      "method": "privateArticleCategoryDelete",
+      "httpMethod": "delete",
+      "tag": "articles",
+      "description": "Delete article category",
+      "parameters": [
+        {
+          "name": "article_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Article unique identifier"
+        },
+        {
+          "name": "category_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Category unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}/confidentiality",
+      "method": "privateArticleConfidentialityDelete",
+      "httpMethod": "delete",
+      "tag": "articles",
+      "description": "Delete article confidentiality",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}/confidentiality",
+      "method": "privateArticleConfidentialityDetails",
+      "httpMethod": "get",
+      "tag": "articles",
+      "description": "Article confidentiality details",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}/confidentiality",
+      "method": "privateArticleConfidentialityUpdate",
+      "httpMethod": "put",
+      "tag": "articles",
+      "description": "Update article confidentiality",
+      "parameters": [
+        {
+          "name": "reason",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}/embargo",
+      "method": "privateArticleEmbargoDelete",
+      "httpMethod": "delete",
+      "tag": "articles",
+      "description": "Delete Article Embargo",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}/embargo",
+      "method": "privateArticleEmbargoDetails",
+      "httpMethod": "get",
+      "tag": "articles",
+      "description": "Article Embargo Details",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}/embargo",
+      "method": "privateArticleEmbargoUpdate",
+      "httpMethod": "put",
+      "tag": "articles",
+      "description": "Update Article Embargo",
+      "parameters": [
+        {
+          "name": "embargo_date",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "embargo_options",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "embargo_reason",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "embargo_title",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "embargo_type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "is_embargoed",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}/files",
+      "method": "privateArticleFilesList",
+      "httpMethod": "get",
+      "tag": "articles",
+      "description": "List article files",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}/files",
+      "method": "privateArticleUploadInitiate",
+      "httpMethod": "post",
+      "tag": "articles",
+      "description": "Initiate Upload",
+      "parameters": [
+        {
+          "name": "link",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "md5",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "size",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}/files/{file_id}",
+      "method": "privateArticleFileDelete",
+      "httpMethod": "delete",
+      "tag": "articles",
+      "description": "File Delete",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}/files/{file_id}",
+      "method": "privateArticleFile",
+      "httpMethod": "get",
+      "tag": "articles",
+      "description": "Single File",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}/files/{file_id}",
+      "method": "privateArticleUploadComplete",
+      "httpMethod": "post",
+      "tag": "articles",
+      "description": "Complete Upload",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}/private_links",
+      "method": "privateArticlePrivateLink",
+      "httpMethod": "get",
+      "tag": "articles",
+      "description": "List private links",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}/private_links",
+      "method": "privateArticlePrivateLinkCreate",
+      "httpMethod": "post",
+      "tag": "articles",
+      "description": "Create private link",
+      "parameters": [
+        {
+          "name": "expires_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "read_only",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}/private_links/{link_id}",
+      "method": "privateArticlePrivateLinkDelete",
+      "httpMethod": "delete",
+      "tag": "articles",
+      "description": "Disable private link",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}/private_links/{link_id}",
+      "method": "privateArticlePrivateLinkUpdate",
+      "httpMethod": "put",
+      "tag": "articles",
+      "description": "Update private link",
+      "parameters": [
+        {
+          "name": "expires_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "read_only",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}/publish",
+      "method": "privateArticlePublish",
+      "httpMethod": "post",
+      "tag": "articles",
+      "description": "Private Article Publish",
+      "parameters": [
+        {
+          "name": "article_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Article unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}/reserve_doi",
+      "method": "privateArticleReserveDoi",
+      "httpMethod": "post",
+      "tag": "articles",
+      "description": "Private Article Reserve DOI",
+      "parameters": [
+        {
+          "name": "article_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Article unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}/reserve_handle",
+      "method": "privateArticleReserveHandle",
+      "httpMethod": "post",
+      "tag": "articles",
+      "description": "Private Article Reserve Handle",
+      "parameters": [
+        {
+          "name": "article_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Article unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}/resource",
+      "method": "privateArticleResource",
+      "httpMethod": "post",
+      "tag": "articles",
+      "description": "Private Article Resource",
+      "parameters": [
+        {
+          "name": "article_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Article unique identifier"
+        },
+        {
+          "name": "doi",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "link",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "version",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "205",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}/versions/{version_id}/",
+      "method": "articleVersionUpdate",
+      "httpMethod": "put",
+      "tag": "articles",
+      "description": "Update article version",
+      "parameters": [
+        {
+          "name": "article_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Article unique identifier"
+        },
+        {
+          "name": "version_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Article version identifier"
+        },
+        {
+          "name": "authors",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "categories",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "categories_by_source_id",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "custom_fields",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "custom_fields_list",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "defined_type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "doi",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "funding",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "funding_list",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "group_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "handle",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "is_metadata_record",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "keywords",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "license",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "metadata_reason",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "references",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "resource_doi",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "resource_title",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "timeline",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "205",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/articles/{article_id}/versions/{version_id}/update_thumb",
+      "method": "articleVersionUpdateThumb",
+      "httpMethod": "put",
+      "tag": "articles",
+      "description": "Update article version thumbnail",
+      "parameters": [
+        {
+          "name": "article_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Article unique identifier"
+        },
+        {
+          "name": "version_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Article version identifier"
+        },
+        {
+          "name": "file_id",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/authors/search",
+      "method": "privateAuthorsSearch",
+      "httpMethod": "post",
+      "tag": "authors",
+      "description": "Search Authors",
+      "parameters": [
+        {
+          "name": "group_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "institution_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "is_active",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "is_public",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "orcid",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "order_direction",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "page_size",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "search_for",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/authors/{author_id}",
+      "method": "privateAuthorDetails",
+      "httpMethod": "get",
+      "tag": "authors",
+      "description": "Author details",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/categories",
+      "method": "privateCategoriesList",
+      "httpMethod": "get",
+      "tag": "institutions",
+      "description": "Private Account Categories",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/collections",
+      "method": "privateCollectionsList",
+      "httpMethod": "get",
+      "tag": "collections",
+      "description": "Private Collections List",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Used for pagination with page_size"
+        },
+        {
+          "name": "page_size",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results included on a page. Used for pagination with page"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results included on a page. Used for pagination with query"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Where to start the listing(the offset of the first result). Used for pagination with limit"
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "required": false,
+          "description": "The field by which to order. Default varies by endpoint/resource."
+        },
+        {
+          "name": "order_direction",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/collections",
+      "method": "privateCollectionCreate",
+      "httpMethod": "post",
+      "tag": "collections",
+      "description": "Create collection",
+      "parameters": [
+        {
+          "name": "articles",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "authors",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "categories",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "categories_by_source_id",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "custom_fields",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "custom_fields_list",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "doi",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "funding",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "funding_list",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "group_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "handle",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "keywords",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "references",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "resource_doi",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "resource_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "resource_link",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "resource_title",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "resource_version",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "timeline",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/collections/search",
+      "method": "privateCollectionsSearch",
+      "httpMethod": "post",
+      "tag": "collections",
+      "description": "Private Collections Search",
+      "parameters": [
+        {
+          "name": "resource_id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/collections/{collection_id}",
+      "method": "privateCollectionDelete",
+      "httpMethod": "delete",
+      "tag": "collections",
+      "description": "Delete collection",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/collections/{collection_id}",
+      "method": "privateCollectionDetails",
+      "httpMethod": "get",
+      "tag": "collections",
+      "description": "Collection details",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/collections/{collection_id}",
+      "method": "privateCollectionUpdate",
+      "httpMethod": "put",
+      "tag": "collections",
+      "description": "Update collection",
+      "parameters": [
+        {
+          "name": "articles",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "authors",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "categories",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "categories_by_source_id",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "custom_fields",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "custom_fields_list",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "doi",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "funding",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "funding_list",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "group_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "handle",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "keywords",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "references",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "resource_doi",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "resource_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "resource_link",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "resource_title",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "resource_version",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "timeline",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "205",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/collections/{collection_id}/articles",
+      "method": "privateCollectionArticlesList",
+      "httpMethod": "get",
+      "tag": "collections",
+      "description": "List collection articles",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Used for pagination with page_size"
+        },
+        {
+          "name": "page_size",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results included on a page. Used for pagination with page"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results included on a page. Used for pagination with query"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Where to start the listing(the offset of the first result). Used for pagination with limit"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/collections/{collection_id}/articles",
+      "method": "privateCollectionArticlesAdd",
+      "httpMethod": "post",
+      "tag": "collections",
+      "description": "Add collection articles",
+      "parameters": [
+        {
+          "name": "articles",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/collections/{collection_id}/articles",
+      "method": "privateCollectionArticlesReplace",
+      "httpMethod": "put",
+      "tag": "collections",
+      "description": "Replace collection articles",
+      "parameters": [
+        {
+          "name": "articles",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/collections/{collection_id}/articles/{article_id}",
+      "method": "privateCollectionArticleDelete",
+      "httpMethod": "delete",
+      "tag": "collections",
+      "description": "Delete collection article",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Collection unique identifier"
+        },
+        {
+          "name": "article_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Collection article unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/collections/{collection_id}/authors",
+      "method": "privateCollectionAuthorsList",
+      "httpMethod": "get",
+      "tag": "collections",
+      "description": "List collection authors",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/collections/{collection_id}/authors",
+      "method": "privateCollectionAuthorsAdd",
+      "httpMethod": "post",
+      "tag": "collections",
+      "description": "Add collection authors",
+      "parameters": [
+        {
+          "name": "authors",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/collections/{collection_id}/authors",
+      "method": "privateCollectionAuthorsReplace",
+      "httpMethod": "put",
+      "tag": "collections",
+      "description": "Replace collection authors",
+      "parameters": [
+        {
+          "name": "authors",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/collections/{collection_id}/authors/{author_id}",
+      "method": "privateCollectionAuthorDelete",
+      "httpMethod": "delete",
+      "tag": "collections",
+      "description": "Delete collection author",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Collection unique identifier"
+        },
+        {
+          "name": "author_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Collection Author unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/collections/{collection_id}/categories",
+      "method": "privateCollectionCategoriesList",
+      "httpMethod": "get",
+      "tag": "collections",
+      "description": "List collection categories",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/collections/{collection_id}/categories",
+      "method": "privateCollectionCategoriesAdd",
+      "httpMethod": "post",
+      "tag": "collections",
+      "description": "Add collection categories",
+      "parameters": [
+        {
+          "name": "categories",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/collections/{collection_id}/categories",
+      "method": "privateCollectionCategoriesReplace",
+      "httpMethod": "put",
+      "tag": "collections",
+      "description": "Replace collection categories",
+      "parameters": [
+        {
+          "name": "categories",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/collections/{collection_id}/categories/{category_id}",
+      "method": "privateCollectionCategoryDelete",
+      "httpMethod": "delete",
+      "tag": "collections",
+      "description": "Delete collection category",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Collection unique identifier"
+        },
+        {
+          "name": "category_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Collection category unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/collections/{collection_id}/private_links",
+      "method": "privateCollectionPrivateLinksList",
+      "httpMethod": "get",
+      "tag": "collections",
+      "description": "List collection private links",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/collections/{collection_id}/private_links",
+      "method": "privateCollectionPrivateLinkCreate",
+      "httpMethod": "post",
+      "tag": "collections",
+      "description": "Create collection private link",
+      "parameters": [
+        {
+          "name": "expires_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "read_only",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/collections/{collection_id}/private_links/{link_id}",
+      "method": "privateCollectionPrivateLinkDelete",
+      "httpMethod": "delete",
+      "tag": "collections",
+      "description": "Disable private link",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/collections/{collection_id}/private_links/{link_id}",
+      "method": "privateCollectionPrivateLinkUpdate",
+      "httpMethod": "put",
+      "tag": "collections",
+      "description": "Update collection private link",
+      "parameters": [
+        {
+          "name": "expires_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "read_only",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/collections/{collection_id}/publish",
+      "method": "privateCollectionPublish",
+      "httpMethod": "post",
+      "tag": "collections",
+      "description": "Private Collection Publish",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Collection Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/collections/{collection_id}/reserve_doi",
+      "method": "privateCollectionReserveDoi",
+      "httpMethod": "post",
+      "tag": "collections",
+      "description": "Private Collection Reserve DOI",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Collection Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/collections/{collection_id}/reserve_handle",
+      "method": "privateCollectionReserveHandle",
+      "httpMethod": "post",
+      "tag": "collections",
+      "description": "Private Collection Reserve Handle",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Collection Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/collections/{collection_id}/resource",
+      "method": "privateCollectionResource",
+      "httpMethod": "post",
+      "tag": "collections",
+      "description": "Private Collection Resource",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Collection unique identifier"
+        },
+        {
+          "name": "doi",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "link",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "version",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "205",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/funding/search",
+      "method": "privateFundingSearch",
+      "httpMethod": "post",
+      "tag": "other",
+      "description": "Search Funding",
+      "parameters": [
+        {
+          "name": "search_for",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/institution",
+      "method": "privateInstitutionDetails",
+      "httpMethod": "get",
+      "tag": "institutions",
+      "description": "Private Account Institutions",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/institution/accounts",
+      "method": "privateInstitutionAccountsList",
+      "httpMethod": "get",
+      "tag": "institutions",
+      "description": "Private Account Institution Accounts",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Used for pagination with page_size"
+        },
+        {
+          "name": "page_size",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results included on a page. Used for pagination with page"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results included on a page. Used for pagination with query"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Where to start the listing(the offset of the first result). Used for pagination with limit"
+        },
+        {
+          "name": "is_active",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by active status"
+        },
+        {
+          "name": "institution_user_id",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by institution_user_id"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by email"
+        },
+        {
+          "name": "id_lte",
+          "schema": "integer",
+          "required": false,
+          "description": "Retrieve accounts with an ID lower or equal to the specified value"
+        },
+        {
+          "name": "id_gte",
+          "schema": "integer",
+          "required": false,
+          "description": "Retrieve accounts with an ID greater or equal to the specified value"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/institution/accounts",
+      "method": "privateInstitutionAccountsCreate",
+      "httpMethod": "post",
+      "tag": "institutions",
+      "description": "Create new Institution Account",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "first_name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "group_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "institution_user_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "is_active",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "last_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "quota",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "symplectic_user_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/institution/accounts/search",
+      "method": "privateInstitutionAccountsSearch",
+      "httpMethod": "post",
+      "tag": "institutions",
+      "description": "Private Account Institution Accounts Search",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "institution_user_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "is_active",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "page_size",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "search_for",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/institution/accounts/{account_id}",
+      "method": "privateInstitutionAccountsUpdate",
+      "httpMethod": "put",
+      "tag": "institutions",
+      "description": "Update Institution Account",
+      "parameters": [
+        {
+          "name": "account_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Account identifier the user is associated to"
+        },
+        {
+          "name": "group_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "is_active",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/institution/articles",
+      "method": "privateInstitutionArticles",
+      "httpMethod": "get",
+      "tag": "institutions",
+      "description": "Private Institution Articles",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Used for pagination with page_size"
+        },
+        {
+          "name": "page_size",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results included on a page. Used for pagination with page"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results included on a page. Used for pagination with query"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Where to start the listing(the offset of the first result). Used for pagination with limit"
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "required": false,
+          "description": "The field by which to order. Default varies by endpoint/resource."
+        },
+        {
+          "name": "order_direction",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "published_since",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by article publishing date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD"
+        },
+        {
+          "name": "modified_since",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD"
+        },
+        {
+          "name": "status",
+          "schema": "integer",
+          "required": false,
+          "description": "only return collections with this status"
+        },
+        {
+          "name": "resource_doi",
+          "schema": "string",
+          "required": false,
+          "description": "only return collections with this resource_doi"
+        },
+        {
+          "name": "item_type",
+          "schema": "integer",
+          "required": false,
+          "description": "Only return articles with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 5 - Poster, 6 - Journal contribution, 7 - Presentation, 8 - Thesis, 9 - Software, 11 - Online resource, 12 - Preprint, 13 - Book, 14 - Conference contribution, 15 - Chapter, 16 - Peer review, 17 - Educational resource, 18 - Report, 19 - Standard, 20 - Composition, 21 - Funding, 22 - Physical object, 23 - Data management plan, 24 - Workflow, 25 - Monograph, 26 - Performance, 27 - Event, 28 - Service, 29 - Model"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/institution/custom_fields",
+      "method": "customFieldsList",
+      "httpMethod": "get",
+      "tag": "institutions",
+      "description": "Private account institution group custom fields",
+      "parameters": [
+        {
+          "name": "group_id",
+          "schema": "integer",
+          "required": false,
+          "description": "Group_id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/institution/custom_fields/{custom_field_id}/items/upload",
+      "method": "customFieldsUpload",
+      "httpMethod": "post",
+      "tag": "institutions",
+      "description": "Custom fields values files upload",
+      "parameters": [
+        {
+          "name": "custom_field_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Custom field identifier"
+        },
+        {
+          "name": "external_file",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/institution/embargo_options",
+      "method": "privateInstitutionEmbargoOptionsDetails",
+      "httpMethod": "get",
+      "tag": "institutions",
+      "description": "Private Account Institution embargo options",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/institution/groups",
+      "method": "privateInstitutionGroupsList",
+      "httpMethod": "get",
+      "tag": "institutions",
+      "description": "Private Account Institution Groups",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/institution/groups/{group_id}/embargo_options",
+      "method": "privateGroupEmbargoOptionsDetails",
+      "httpMethod": "get",
+      "tag": "institutions",
+      "description": "Private Account Institution Group Embargo Options",
+      "parameters": [
+        {
+          "name": "group_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Group identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/institution/review/{curation_id}",
+      "method": "accountInstitutionCuration",
+      "httpMethod": "get",
+      "tag": "institutions",
+      "description": "Institution Curation Review",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/institution/review/{curation_id}/comments",
+      "method": "accountInstitutionCurationComments",
+      "httpMethod": "get",
+      "tag": "institutions",
+      "description": "Institution Curation Review Comments",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results included on a page. Used for pagination with query"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Where to start the listing(the offset of the first result). Used for pagination with limit"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/institution/review/{curation_id}/comments",
+      "method": "/account/institution/review/{curationId}/commentsPost",
+      "httpMethod": "post",
+      "tag": "institutions",
+      "description": "POST Institution Curation Review Comment",
+      "parameters": [
+        {
+          "name": "text",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/institution/reviews",
+      "method": "accountInstitutionCurations",
+      "httpMethod": "get",
+      "tag": "institutions",
+      "description": "Institution Curation Reviews",
+      "parameters": [
+        {
+          "name": "group_id",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by the group ID"
+        },
+        {
+          "name": "article_id",
+          "schema": "integer",
+          "required": false,
+          "description": "Retrieve the reviews for this article"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by the status of the review"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results included on a page. Used for pagination with query"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Where to start the listing(the offset of the first result). Used for pagination with limit"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/institution/roles",
+      "method": "privateInstitutionRolesList",
+      "httpMethod": "get",
+      "tag": "institutions",
+      "description": "Private Account Institution Roles",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/institution/roles/{account_id}",
+      "method": "privateInstitutionAccountGroupRoles",
+      "httpMethod": "get",
+      "tag": "institutions",
+      "description": "List Institution Account Group Roles",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/institution/roles/{account_id}",
+      "method": "privateInstitutionAccountGroupRolesCreate",
+      "httpMethod": "post",
+      "tag": "institutions",
+      "description": "Add Institution Account Group Roles",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/institution/roles/{account_id}/{group_id}/{role_id}",
+      "method": "privateInstitutionAccountGroupRoleDelete",
+      "httpMethod": "delete",
+      "tag": "institutions",
+      "description": "Delete Institution Account Group Role",
+      "parameters": [
+        {
+          "name": "account_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Account identifier for which to remove the role"
+        },
+        {
+          "name": "group_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Group identifier for which to remove the role"
+        },
+        {
+          "name": "role_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Role identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/institution/users/{account_id}",
+      "method": "privateAccountInstitutionUser",
+      "httpMethod": "get",
+      "tag": "institutions",
+      "description": "Private Account Institution User",
+      "parameters": [
+        {
+          "name": "account_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Account identifier the user is associated to"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/licenses",
+      "method": "privateLicensesList",
+      "httpMethod": "get",
+      "tag": "other",
+      "description": "Private Account Licenses",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/projects",
+      "method": "privateProjectsList",
+      "httpMethod": "get",
+      "tag": "projects",
+      "description": "Private Projects",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Used for pagination with page_size"
+        },
+        {
+          "name": "page_size",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results included on a page. Used for pagination with page"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results included on a page. Used for pagination with query"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Where to start the listing(the offset of the first result). Used for pagination with limit"
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "required": false,
+          "description": "The field by which to order."
+        },
+        {
+          "name": "order_direction",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "storage",
+          "schema": "string",
+          "required": false,
+          "description": "only return collections from this institution"
+        },
+        {
+          "name": "roles",
+          "schema": "string",
+          "required": false,
+          "description": "Any combination of owner, collaborator, viewer separated by comma. Examples: \"owner\" or \"owner,collaborator\"."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/projects",
+      "method": "privateProjectCreate",
+      "httpMethod": "post",
+      "tag": "projects",
+      "description": "Create project",
+      "parameters": [
+        {
+          "name": "custom_fields",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "custom_fields_list",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "funding",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "funding_list",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "group_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/projects/search",
+      "method": "privateProjectsSearch",
+      "httpMethod": "post",
+      "tag": "projects",
+      "description": "Private Projects search",
+      "parameters": [
+        {
+          "name": "order",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/projects/{project_id}",
+      "method": "privateProjectDelete",
+      "httpMethod": "delete",
+      "tag": "projects",
+      "description": "Delete project",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/projects/{project_id}",
+      "method": "privateProjectDetails",
+      "httpMethod": "get",
+      "tag": "projects",
+      "description": "View project details",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/projects/{project_id}",
+      "method": "privateProjectUpdate",
+      "httpMethod": "put",
+      "tag": "projects",
+      "description": "Update project",
+      "parameters": [
+        {
+          "name": "custom_fields",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "custom_fields_list",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "funding",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "funding_list",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/projects/{project_id}/articles",
+      "method": "privateProjectArticlesList",
+      "httpMethod": "get",
+      "tag": "projects",
+      "description": "List project articles",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/projects/{project_id}/articles",
+      "method": "privateProjectArticlesCreate",
+      "httpMethod": "post",
+      "tag": "projects",
+      "description": "Create project article",
+      "parameters": [
+        {
+          "name": "authors",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "categories",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "categories_by_source_id",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "custom_fields",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "custom_fields_list",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "defined_type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "doi",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "funding",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "funding_list",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "handle",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "keywords",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "license",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "references",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "resource_doi",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "resource_title",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "timeline",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/projects/{project_id}/articles/{article_id}",
+      "method": "privateProjectArticleDelete",
+      "httpMethod": "delete",
+      "tag": "projects",
+      "description": "Delete project article",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/projects/{project_id}/articles/{article_id}",
+      "method": "privateProjectArticleDetails",
+      "httpMethod": "get",
+      "tag": "projects",
+      "description": "Project article details",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/projects/{project_id}/articles/{article_id}/files",
+      "method": "privateProjectArticleFiles",
+      "httpMethod": "get",
+      "tag": "projects",
+      "description": "Project article list files",
+      "parameters": [
+        {
+          "name": "project_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project unique identifier"
+        },
+        {
+          "name": "article_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project Article unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/projects/{project_id}/articles/{article_id}/files/{file_id}",
+      "method": "privateProjectArticleFile",
+      "httpMethod": "get",
+      "tag": "projects",
+      "description": "Project article file details",
+      "parameters": [
+        {
+          "name": "project_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project unique identifier"
+        },
+        {
+          "name": "article_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project Article unique identifier"
+        },
+        {
+          "name": "file_id",
+          "schema": "integer",
+          "required": true,
+          "description": "File unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/projects/{project_id}/collaborators",
+      "method": "privateProjectCollaboratorsList",
+      "httpMethod": "get",
+      "tag": "projects",
+      "description": "List project collaborators",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/projects/{project_id}/collaborators",
+      "method": "privateProjectCollaboratorsInvite",
+      "httpMethod": "post",
+      "tag": "projects",
+      "description": "Invite project collaborators",
+      "parameters": [
+        {
+          "name": "comment",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "role_name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/projects/{project_id}/collaborators/{user_id}",
+      "method": "privateProjectCollaboratorDelete",
+      "httpMethod": "delete",
+      "tag": "projects",
+      "description": "Remove project collaborator",
+      "parameters": [
+        {
+          "name": "project_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project unique identifier"
+        },
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": true,
+          "description": "User unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/projects/{project_id}/leave",
+      "method": "privateProjectLeave",
+      "httpMethod": "post",
+      "tag": "projects",
+      "description": "Private Project Leave",
+      "parameters": [
+        {
+          "name": "project_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/projects/{project_id}/notes",
+      "method": "privateProjectNotesList",
+      "httpMethod": "get",
+      "tag": "projects",
+      "description": "List project notes",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Used for pagination with page_size"
+        },
+        {
+          "name": "page_size",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results included on a page. Used for pagination with page"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results included on a page. Used for pagination with query"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Where to start the listing(the offset of the first result). Used for pagination with limit"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/projects/{project_id}/notes",
+      "method": "privateProjectNotesCreate",
+      "httpMethod": "post",
+      "tag": "projects",
+      "description": "Create project note",
+      "parameters": [
+        {
+          "name": "text",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/projects/{project_id}/notes/{note_id}",
+      "method": "privateProjectNoteDelete",
+      "httpMethod": "delete",
+      "tag": "projects",
+      "description": "Delete project note",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/projects/{project_id}/notes/{note_id}",
+      "method": "privateProjectNote",
+      "httpMethod": "get",
+      "tag": "projects",
+      "description": "Project note details",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/projects/{project_id}/notes/{note_id}",
+      "method": "privateProjectNoteUpdate",
+      "httpMethod": "put",
+      "tag": "projects",
+      "description": "Update project note",
+      "parameters": [
+        {
+          "name": "text",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/projects/{project_id}/publish",
+      "method": "privateProjectPublish",
+      "httpMethod": "post",
+      "tag": "projects",
+      "description": "Private Project Publish",
+      "parameters": [
+        {
+          "name": "project_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/articles",
+      "method": "articlesList",
+      "httpMethod": "get",
+      "tag": "articles",
+      "description": "Public Articles",
+      "parameters": [
+        {
+          "name": "X-Cursor",
+          "schema": "string",
+          "required": false,
+          "description": "Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Used for pagination with page_size"
+        },
+        {
+          "name": "page_size",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results included on a page. Used for pagination with page"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results included on a page. Used for pagination with query"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Where to start the listing(the offset of the first result). Used for pagination with limit"
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "required": false,
+          "description": "The field by which to order. Default varies by endpoint/resource."
+        },
+        {
+          "name": "order_direction",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "institution",
+          "schema": "integer",
+          "required": false,
+          "description": "only return articles from this institution"
+        },
+        {
+          "name": "published_since",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by article publishing date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD"
+        },
+        {
+          "name": "modified_since",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD"
+        },
+        {
+          "name": "group",
+          "schema": "integer",
+          "required": false,
+          "description": "only return articles from this group"
+        },
+        {
+          "name": "resource_doi",
+          "schema": "string",
+          "required": false,
+          "description": "only return articles with this resource_doi"
+        },
+        {
+          "name": "item_type",
+          "schema": "integer",
+          "required": false,
+          "description": "Only return articles with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 5 - Poster, 6 - Journal contribution, 7 - Presentation, 8 - Thesis, 9 - Software, 11 - Online resource, 12 - Preprint, 13 - Book, 14 - Conference contribution, 15 - Chapter, 16 - Peer review, 17 - Educational resource, 18 - Report, 19 - Standard, 20 - Composition, 21 - Funding, 22 - Physical object, 23 - Data management plan, 24 - Workflow, 25 - Monograph, 26 - Performance, 27 - Event, 28 - Service, 29 - Model"
+        },
+        {
+          "name": "doi",
+          "schema": "string",
+          "required": false,
+          "description": "only return articles with this doi"
+        },
+        {
+          "name": "handle",
+          "schema": "string",
+          "required": false,
+          "description": "only return articles with this handle"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/articles/search",
+      "method": "articlesSearch",
+      "httpMethod": "post",
+      "tag": "articles",
+      "description": "Public Articles Search",
+      "parameters": [
+        {
+          "name": "X-Cursor",
+          "schema": "string",
+          "required": false,
+          "description": "Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected."
+        },
+        {
+          "name": "doi",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "handle",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "item_type",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "project_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "resource_doi",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/articles/{article_id}",
+      "method": "articleDetails",
+      "httpMethod": "get",
+      "tag": "articles",
+      "description": "View article details",
+      "parameters": [
+        {
+          "name": "article_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Article Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/articles/{article_id}/files",
+      "method": "articleFiles",
+      "httpMethod": "get",
+      "tag": "articles",
+      "description": "List article files",
+      "parameters": [
+        {
+          "name": "article_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Article Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/articles/{article_id}/files/{file_id}",
+      "method": "articleFileDetails",
+      "httpMethod": "get",
+      "tag": "articles",
+      "description": "Article file details",
+      "parameters": [
+        {
+          "name": "article_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Article Unique identifier"
+        },
+        {
+          "name": "file_id",
+          "schema": "integer",
+          "required": true,
+          "description": "File Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/articles/{article_id}/versions",
+      "method": "articleVersions",
+      "httpMethod": "get",
+      "tag": "articles",
+      "description": "List article versions",
+      "parameters": [
+        {
+          "name": "article_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Article Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/articles/{article_id}/versions/{v_number}",
+      "method": "articleVersionDetails",
+      "httpMethod": "get",
+      "tag": "articles",
+      "description": "Article details for version",
+      "parameters": [
+        {
+          "name": "article_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Article Unique identifier"
+        },
+        {
+          "name": "v_number",
+          "schema": "integer",
+          "required": true,
+          "description": "Article Version Number"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/articles/{article_id}/versions/{v_number}/confidentiality",
+      "method": "articleVersionConfidentiality",
+      "httpMethod": "get",
+      "tag": "articles",
+      "description": "Public Article Confidentiality for article version",
+      "parameters": [
+        {
+          "name": "article_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Article Unique identifier"
+        },
+        {
+          "name": "v_number",
+          "schema": "integer",
+          "required": true,
+          "description": "Version Number"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/articles/{article_id}/versions/{v_number}/embargo",
+      "method": "articleVersionEmbargo",
+      "httpMethod": "get",
+      "tag": "articles",
+      "description": "Public Article Embargo for article version",
+      "parameters": [
+        {
+          "name": "article_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Article Unique identifier"
+        },
+        {
+          "name": "v_number",
+          "schema": "integer",
+          "required": true,
+          "description": "Version Number"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/categories",
+      "method": "categoriesList",
+      "httpMethod": "get",
+      "tag": "other",
+      "description": "Public Categories",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections",
+      "method": "collectionsList",
+      "httpMethod": "get",
+      "tag": "collections",
+      "description": "Public Collections",
+      "parameters": [
+        {
+          "name": "X-Cursor",
+          "schema": "string",
+          "required": false,
+          "description": "Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Used for pagination with page_size"
+        },
+        {
+          "name": "page_size",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results included on a page. Used for pagination with page"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results included on a page. Used for pagination with query"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Where to start the listing(the offset of the first result). Used for pagination with limit"
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "required": false,
+          "description": "The field by which to order. Default varies by endpoint/resource."
+        },
+        {
+          "name": "order_direction",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "institution",
+          "schema": "integer",
+          "required": false,
+          "description": "only return collections from this institution"
+        },
+        {
+          "name": "published_since",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by collection publishing date. Will only return collections published after the date. date(ISO 8601) YYYY-MM-DD"
+        },
+        {
+          "name": "modified_since",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by collection modified date. Will only return collections published after the date. date(ISO 8601) YYYY-MM-DD"
+        },
+        {
+          "name": "group",
+          "schema": "integer",
+          "required": false,
+          "description": "only return collections from this group"
+        },
+        {
+          "name": "resource_doi",
+          "schema": "string",
+          "required": false,
+          "description": "only return collections with this resource_doi"
+        },
+        {
+          "name": "doi",
+          "schema": "string",
+          "required": false,
+          "description": "only return collections with this doi"
+        },
+        {
+          "name": "handle",
+          "schema": "string",
+          "required": false,
+          "description": "only return collections with this handle"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections/search",
+      "method": "collectionsSearch",
+      "httpMethod": "post",
+      "tag": "collections",
+      "description": "Public Collections Search",
+      "parameters": [
+        {
+          "name": "X-Cursor",
+          "schema": "string",
+          "required": false,
+          "description": "Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected."
+        },
+        {
+          "name": "doi",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "handle",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "resource_doi",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections/{collection_id}",
+      "method": "collectionDetails",
+      "httpMethod": "get",
+      "tag": "collections",
+      "description": "Collection details",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Collection Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections/{collection_id}/articles",
+      "method": "collectionArticles",
+      "httpMethod": "get",
+      "tag": "collections",
+      "description": "Public Collection Articles",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Collection Unique identifier"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Used for pagination with page_size"
+        },
+        {
+          "name": "page_size",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results included on a page. Used for pagination with page"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results included on a page. Used for pagination with query"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Where to start the listing(the offset of the first result). Used for pagination with limit"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections/{collection_id}/versions",
+      "method": "collectionVersions",
+      "httpMethod": "get",
+      "tag": "collections",
+      "description": "Collection Versions list",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Collection Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections/{collection_id}/versions/{version_id}",
+      "method": "collectionVersionDetails",
+      "httpMethod": "get",
+      "tag": "collections",
+      "description": "Collection Version details",
+      "parameters": [
+        {
+          "name": "collection_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Collection Unique identifier"
+        },
+        {
+          "name": "version_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Version Number"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/file/download/{file_id}",
+      "method": "fileDownload",
+      "httpMethod": "get",
+      "tag": "other",
+      "description": "Public File Download",
+      "parameters": [
+        {
+          "name": "file_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/institution/hrfeed/upload",
+      "method": "institutionHrfeedUpload",
+      "httpMethod": "post",
+      "tag": "institutions",
+      "description": "Private Institution HRfeed Upload",
+      "parameters": [
+        {
+          "name": "hrfeed",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/institutions/{institution_string_id}/articles/filter-by",
+      "method": "institutionArticles",
+      "httpMethod": "get",
+      "tag": "institutions",
+      "description": "Public Licenses",
+      "parameters": [
+        {
+          "name": "institution_string_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resource_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "filename",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/item_types",
+      "method": "itemTypesList",
+      "httpMethod": "get",
+      "tag": "other",
+      "description": "Item Types",
+      "parameters": [
+        {
+          "name": "group_id",
+          "schema": "integer",
+          "required": false,
+          "description": "Identifier of the group for which the item types are requested"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/licenses",
+      "method": "licensesList",
+      "httpMethod": "get",
+      "tag": "other",
+      "description": "Public Licenses",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects",
+      "method": "projectsList",
+      "httpMethod": "get",
+      "tag": "projects",
+      "description": "Public Projects",
+      "parameters": [
+        {
+          "name": "X-Cursor",
+          "schema": "string",
+          "required": false,
+          "description": "Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number. Used for pagination with page_size"
+        },
+        {
+          "name": "page_size",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results included on a page. Used for pagination with page"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of results included on a page. Used for pagination with query"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Where to start the listing(the offset of the first result). Used for pagination with limit"
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "required": false,
+          "description": "The field by which to order. Default varies by endpoint/resource."
+        },
+        {
+          "name": "order_direction",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "institution",
+          "schema": "integer",
+          "required": false,
+          "description": "only return collections from this institution"
+        },
+        {
+          "name": "published_since",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by article publishing date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD"
+        },
+        {
+          "name": "group",
+          "schema": "integer",
+          "required": false,
+          "description": "only return collections from this group"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/search",
+      "method": "projectsSearch",
+      "httpMethod": "post",
+      "tag": "projects",
+      "description": "Public Projects Search",
+      "parameters": [
+        {
+          "name": "X-Cursor",
+          "schema": "string",
+          "required": false,
+          "description": "Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected."
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{project_id}",
+      "method": "projectDetails",
+      "httpMethod": "get",
+      "tag": "projects",
+      "description": "Public Project",
+      "parameters": [
+        {
+          "name": "project_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{project_id}/articles",
+      "method": "projectArticles",
+      "httpMethod": "get",
+      "tag": "projects",
+      "description": "Public Project Articles",
+      "parameters": [
+        {
+          "name": "project_id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.figshare.com/v2",
   "apiDescription": "Figshare apiv2. Using Swagger 2.0",
   "apiTitle": "Figshare API",

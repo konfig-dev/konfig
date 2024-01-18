@@ -4,6 +4,88 @@
   "homepage": "mastercard.com",
   "serviceName": "CurrencyConversionCalculator",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/conversion-rate",
+      "method": "getConversionDetailUsingGet",
+      "httpMethod": "get",
+      "tag": "Conversion Rate",
+      "description": "Get the currency conversion rate details.",
+      "parameters": [
+        {
+          "name": "fxDate",
+          "schema": "string",
+          "required": true,
+          "description": "Date of the requested FX rates."
+        },
+        {
+          "name": "transCurr",
+          "schema": "string",
+          "required": true,
+          "description": "Currency of the transaction."
+        },
+        {
+          "name": "crdhldBillCurr",
+          "schema": "string",
+          "required": true,
+          "description": "Cardholder billing currency."
+        },
+        {
+          "name": "bankFee",
+          "schema": "number",
+          "required": false,
+          "description": "Additional fees imposed by the bank."
+        },
+        {
+          "name": "transAmt",
+          "schema": "number",
+          "required": true,
+          "description": "Amount in the transaction currency."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversion-rate-issued",
+      "method": "isRateIssuedUsingGet",
+      "httpMethod": "get",
+      "tag": "Rate Issued",
+      "description": "Determine if the settlement rate has been issued.",
+      "parameters": [
+        {
+          "name": "date",
+          "schema": "string",
+          "required": false,
+          "description": "The date by which the rate would have been issued."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/settlement-currencies",
+      "method": "getCurrencyRateDataUsingGet",
+      "httpMethod": "get",
+      "tag": "Currencies",
+      "description": "getCurrencyRateData",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "api.mastercard.com/mcapi/settlement/currencyrate",
   "apiDescription": "This API provides a range of functions to get back currency conversion rates and amounts based on current Mastercard currency conversion values.",
   "apiTitle": "API for the Settlement Currency Rate converter",

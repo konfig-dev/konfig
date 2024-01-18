@@ -3,6 +3,156 @@
   "openApiRaw": "http://spinbot.net/spinbot_api_swagger.yaml",
   "homepage": "spinbot.net",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/api/acc",
+      "method": "getInfo",
+      "httpMethod": "get",
+      "description": "Return the user credit information.",
+      "parameters": [
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": "Your api key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/article",
+      "method": "postArticle",
+      "httpMethod": "post",
+      "description": "Extracting the main article of the given URL.",
+      "parameters": [
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "faster_mode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/pretty-spinner",
+      "method": "postPrettySpinner",
+      "httpMethod": "post",
+      "description": "Human readable auto rewrite your article.",
+      "parameters": [
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "text",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "keep",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "accuracy",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/spinner",
+      "method": "postSpinner",
+      "httpMethod": "post",
+      "description": "Rewriting (spinning) your input article.",
+      "parameters": [
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "text",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/spintax",
+      "method": "postSpintax",
+      "httpMethod": "post",
+      "description": "Generate Spintax format for the input article",
+      "parameters": [
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "text",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "full_mode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.spinbot.net",
   "apiDescription": "Spinbot.net propose a new solution based on high technologies for faster article spinner and extractor that you will love to use it. ",
   "apiTitle": "Article Rewriter and Article Extractor API",

@@ -3,6 +3,701 @@
   "openApiRaw": "https://raw.githubusercontent.com/botify-labs/botify-sdk-js/master/swagger.json",
   "homepage": "botify.com",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/analyses/{username}/{project_slug}",
+      "method": "getProjectAnalyses",
+      "httpMethod": "get",
+      "tag": "Project",
+      "description": "List all analyses for a project",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": "Page Number"
+        },
+        {
+          "name": "size",
+          "schema": "integer",
+          "description": "Page Size"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": "default payload for object for all HTTP codes that are not covered individually"
+        }
+      ]
+    },
+    {
+      "url": "/analyses/{username}/{project_slug}/{analysis_slug}",
+      "method": "getAnalysisSummary",
+      "httpMethod": "get",
+      "tag": "Analysis",
+      "description": "Get an Analysis detail",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": "default payload for object for all HTTP codes that are not covered individually"
+        }
+      ]
+    },
+    {
+      "url": "/analyses/{username}/{project_slug}/{analysis_slug}/crawl_statistics",
+      "method": "getCrawlStatistics",
+      "httpMethod": "get",
+      "tag": "Analysis",
+      "description": "Return global statistics for an analysis",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": "default payload for object for all HTTP codes that are not covered individually"
+        }
+      ]
+    },
+    {
+      "url": "/analyses/{username}/{project_slug}/{analysis_slug}/crawl_statistics/time",
+      "method": "getCrawlStatisticsByFrequency",
+      "httpMethod": "get",
+      "tag": "Analysis",
+      "description": "Return crawl statistics grouped by time frequency (1 min, 5 mins or 60 min)",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "max number of elements to retrieve"
+        },
+        {
+          "name": "frequency",
+          "schema": "string",
+          "required": true,
+          "description": "Aggregation frequency"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": "default payload for object for all HTTP codes that are not covered individually"
+        }
+      ]
+    },
+    {
+      "url": "/analyses/{username}/{project_slug}/{analysis_slug}/crawl_statistics/urls/{list_type}",
+      "method": "getCrawlStatisticsUrls",
+      "httpMethod": "get",
+      "tag": "Analysis",
+      "description": "Return a list of 1000 latest URLs crawled (all crawled URLs or only URLS with HTTP errors)",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": "default payload for object for all HTTP codes that are not covered individually"
+        }
+      ]
+    },
+    {
+      "url": "/analyses/{username}/{project_slug}/{analysis_slug}/features/ganalytics/orphan_urls/{medium}/{source}",
+      "method": "getGanalyticsOrphanUrLs",
+      "httpMethod": "get",
+      "tag": "Analysis",
+      "description": "List of Orphan URLs",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": "Page Number"
+        },
+        {
+          "name": "size",
+          "schema": "integer",
+          "description": "Page Size"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": "default payload for object for all HTTP codes that are not covered individually"
+        }
+      ]
+    },
+    {
+      "url": "/analyses/{username}/{project_slug}/{analysis_slug}/features/links/percentiles",
+      "method": "getLinksPercentiles",
+      "httpMethod": "get",
+      "tag": "Analysis",
+      "description": "Get inlinks percentiles",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": "default payload for object for all HTTP codes that are not covered individually"
+        }
+      ]
+    },
+    {
+      "url": "/analyses/{username}/{project_slug}/{analysis_slug}/features/pagerank/lost",
+      "method": "getPageRankLost",
+      "httpMethod": "get",
+      "tag": "Analysis",
+      "description": "Lost pagerank",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": "default payload for object for all HTTP codes that are not covered individually"
+        }
+      ]
+    },
+    {
+      "url": "/analyses/{username}/{project_slug}/{analysis_slug}/features/sitemaps/report",
+      "method": "getSitemapsReport",
+      "httpMethod": "get",
+      "tag": "Analysis",
+      "description": "Get global information of the sitemaps found (sitemaps indexes, invalid sitemaps urls, etc",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": "default payload for object for all HTTP codes that are not covered individually"
+        }
+      ]
+    },
+    {
+      "url": "/analyses/{username}/{project_slug}/{analysis_slug}/features/sitemaps/samples/out_of_config",
+      "method": "getSitemapsSamplesOutOfConfig",
+      "httpMethod": "get",
+      "tag": "Analysis",
+      "description": "Sample list of URLs which were found in your sitemaps but outside of the",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": "Page Number"
+        },
+        {
+          "name": "size",
+          "schema": "integer",
+          "description": "Page Size"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": "default payload for object for all HTTP codes that are not covered individually"
+        }
+      ]
+    },
+    {
+      "url": "/analyses/{username}/{project_slug}/{analysis_slug}/features/sitemaps/samples/sitemap_only",
+      "method": "getSitemapsSamplesSitemapsOnly",
+      "httpMethod": "get",
+      "tag": "Analysis",
+      "description": "Sample list of URLs which were found in your sitemaps, within the project",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": "Page Number"
+        },
+        {
+          "name": "size",
+          "schema": "integer",
+          "description": "Page Size"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": "default payload for object for all HTTP codes that are not covered individually"
+        }
+      ]
+    },
+    {
+      "url": "/analyses/{username}/{project_slug}/{analysis_slug}/features/top_domains/domains",
+      "method": "getLinksTopDomains",
+      "httpMethod": "get",
+      "tag": "Analysis",
+      "description": "Top domains",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": "Page Number"
+        },
+        {
+          "name": "size",
+          "schema": "integer",
+          "description": "Page Size"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": "default payload for object for all HTTP codes that are not covered individually"
+        }
+      ]
+    },
+    {
+      "url": "/analyses/{username}/{project_slug}/{analysis_slug}/features/top_domains/subdomains",
+      "method": "getLinksTopSubdomains",
+      "httpMethod": "get",
+      "tag": "Analysis",
+      "description": "Top subddomains",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": "Page Number"
+        },
+        {
+          "name": "size",
+          "schema": "integer",
+          "description": "Page Size"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": "default payload for object for all HTTP codes that are not covered individually"
+        }
+      ]
+    },
+    {
+      "url": "/analyses/{username}/{project_slug}/{analysis_slug}/urls",
+      "method": "getUrls",
+      "httpMethod": "post",
+      "tag": "Analysis",
+      "description": "Executes a query and returns a paginated response",
+      "parameters": [
+        {
+          "name": "area",
+          "schema": "string",
+          "required": false,
+          "description": "Analysis context to execute the query"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Page Number"
+        },
+        {
+          "name": "size",
+          "schema": "integer",
+          "required": false,
+          "description": "Page Size"
+        },
+        {
+          "name": "fields",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "filters",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": "default payload for object for all HTTP codes that are not covered individually"
+        }
+      ]
+    },
+    {
+      "url": "/analyses/{username}/{project_slug}/{analysis_slug}/urls/aggs",
+      "method": "getUrlsAggs",
+      "httpMethod": "post",
+      "tag": "Analysis",
+      "description": "Query aggregator",
+      "parameters": [
+        {
+          "name": "area",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": "default payload for object for all HTTP codes that are not covered individually"
+        }
+      ]
+    },
+    {
+      "url": "/analyses/{username}/{project_slug}/{analysis_slug}/urls/datamodel",
+      "method": "getUrlsDatamodel",
+      "httpMethod": "get",
+      "tag": "Analysis",
+      "description": "Gets an Analysis datamodel",
+      "parameters": [
+        {
+          "name": "area",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": "default payload for object for all HTTP codes that are not covered individually"
+        }
+      ]
+    },
+    {
+      "url": "/analyses/{username}/{project_slug}/{analysis_slug}/urls/export",
+      "method": "getUrlsExports",
+      "httpMethod": "get",
+      "tag": "Analysis",
+      "description": "A list of the CSV Exports requests and their current status",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": "Page Number"
+        },
+        {
+          "name": "size",
+          "schema": "integer",
+          "description": "Page Size"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": "default payload for object for all HTTP codes that are not covered individually"
+        }
+      ]
+    },
+    {
+      "url": "/analyses/{username}/{project_slug}/{analysis_slug}/urls/export",
+      "method": "createUrlsExport",
+      "httpMethod": "post",
+      "tag": "Analysis",
+      "description": "Creates a new UrlExport object and starts a task that will export the results into a csv",
+      "parameters": [
+        {
+          "name": "area",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "fields",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "filters",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": "default payload for object for all HTTP codes that are not covered individually"
+        }
+      ]
+    },
+    {
+      "url": "/analyses/{username}/{project_slug}/{analysis_slug}/urls/export/{url_export_id}",
+      "method": "getUrlsExportStatus",
+      "httpMethod": "get",
+      "tag": "Analysis",
+      "description": "Checks the status of an CSVUrlExportJob object",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": "default payload for object for all HTTP codes that are not covered individually"
+        }
+      ]
+    },
+    {
+      "url": "/analyses/{username}/{project_slug}/{analysis_slug}/urls/suggested_filters",
+      "method": "getUrlsSuggestedFilters",
+      "httpMethod": "post",
+      "tag": "Analysis",
+      "description": "Return most frequent segments (= suggested patterns in the previous version)",
+      "parameters": [
+        {
+          "name": "area",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "aggs",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "filters",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": "default payload for object for all HTTP codes that are not covered individually"
+        }
+      ]
+    },
+    {
+      "url": "/analyses/{username}/{project_slug}/{analysis_slug}/urls/{url}",
+      "method": "getUrlDetail",
+      "httpMethod": "get",
+      "tag": "Analysis",
+      "description": "Gets the detail of an URL for an analysis",
+      "parameters": [
+        {
+          "name": "fields",
+          "schema": "array",
+          "required": false,
+          "description": "comma separated list of fields to return (c.f. URLs Datamodel)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": "default payload for object for all HTTP codes that are not covered individually"
+        }
+      ]
+    },
+    {
+      "url": "/projects/{username}",
+      "method": "getUserProjects",
+      "httpMethod": "get",
+      "tag": "User",
+      "description": "List all active projects for the user",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": "Page Number"
+        },
+        {
+          "name": "size",
+          "schema": "integer",
+          "description": "Page Size"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": "default payload for object for all HTTP codes that are not covered individually"
+        }
+      ]
+    },
+    {
+      "url": "/projects/{username}/{project_slug}/features/url_rewriting/rules_validator",
+      "method": "testUrlRewritingRules",
+      "httpMethod": "post",
+      "tag": "Project",
+      "description": "Match and replace parts of a URL based on rules passed in POST data",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": "default payload for object for all HTTP codes that are not covered individually"
+        }
+      ]
+    },
+    {
+      "url": "/projects/{username}/{project_slug}/filters",
+      "method": "getSavedFilters",
+      "httpMethod": "get",
+      "tag": "Project",
+      "description": "List all the project's saved filters (each filter's name, ID and filter value)",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": "Page Number"
+        },
+        {
+          "name": "size",
+          "schema": "integer",
+          "description": "Page Size"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": "default payload for object for all HTTP codes that are not covered individually"
+        }
+      ]
+    },
+    {
+      "url": "/projects/{username}/{project_slug}/filters/{identifier}",
+      "method": "getSavedFilter",
+      "httpMethod": "get",
+      "tag": "Project",
+      "description": "Retrieves a specific saved filter's name, ID and filter value",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": "default payload for object for all HTTP codes that are not covered individually"
+        }
+      ]
+    },
+    {
+      "url": "/projects/{username}/{project_slug}/urls/aggs",
+      "method": "getProjectUrlsAggs",
+      "httpMethod": "post",
+      "tag": "Project",
+      "description": "Project Query aggregator",
+      "parameters": [
+        {
+          "name": "area",
+          "schema": "string",
+          "required": false,
+          "description": "Analysis context to execute the queries"
+        },
+        {
+          "name": "last_analysis_slug",
+          "schema": "string",
+          "required": false,
+          "description": "Last analysis on the trend"
+        },
+        {
+          "name": "nb_analyses",
+          "schema": "integer",
+          "required": false,
+          "description": "Max number of analysis to return"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": "default payload for object for all HTTP codes that are not covered individually"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.botify.com/v1",
   "apiDescription": "Botify Saas API",
   "apiTitle": "Botify API",

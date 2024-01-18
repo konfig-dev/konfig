@@ -3,6 +3,151 @@
   "openApiRaw": "http://api.aucklandmuseum.com/apidoc",
   "homepage": "aucklandmuseum.com",
   "apiVersion": "2.0.0",
+  "methods": [
+    {
+      "url": "/id/media/{path}",
+      "method": "getMedia",
+      "httpMethod": "get",
+      "tag": "media",
+      "description": "Retrieve media associated with Collections and Cenotaph subjects in Auckland Museum",
+      "parameters": [
+        {
+          "name": "path",
+          "schema": "string",
+          "required": true,
+          "description": "The media `identifier`\n"
+        },
+        {
+          "name": "rendering",
+          "schema": "string",
+          "required": false,
+          "description": "The desired media `rendering`\n\nPossible values:\n* `original.jpg`\n* `original.pdf`\n* `thumbnail.jpg` (fixed with 70px)\n* `standard.jpg` (fixed width 440px and height 440px)\n* `preview.jpg` (fixed height 100px)\n"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/id/{identifier}",
+      "method": "getSubject",
+      "httpMethod": "get",
+      "tag": "subject",
+      "description": "Explore details about a given subject node",
+      "parameters": [
+        {
+          "name": "identifier",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier path of the `subject` you're looking for\n"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/search/{index}/{operation}",
+      "method": "getSearch",
+      "httpMethod": "get",
+      "tag": "search",
+      "description": "Perform simple search queries over Auckland Museum Collections and Cenotaph data",
+      "parameters": [
+        {
+          "name": "index",
+          "schema": "string",
+          "required": true,
+          "description": "search index name\nPossible values:\n* `collectionsonline`\n* `cenotaph`\n"
+        },
+        {
+          "name": "operation",
+          "schema": "string",
+          "required": true,
+          "description": "One of the supported elasticsearch operations like `_search` or `_suggest`"
+        },
+        {
+          "name": "q",
+          "schema": "string",
+          "required": false,
+          "description": "One of the supported elasticsearch query parameter values for key `q`"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/search/{index}/{operation}",
+      "method": "postSearch",
+      "httpMethod": "post",
+      "tag": "search",
+      "description": "Perform complex search queries over Auckland Museum Collections and Cenotaph data",
+      "parameters": [
+        {
+          "name": "index",
+          "schema": "string",
+          "required": true,
+          "description": "search index name\nPossible values:\n* `collectionsonline`\n* `cenotaph`\n"
+        },
+        {
+          "name": "operation",
+          "schema": "string",
+          "required": true,
+          "description": "One of the supported elasticsearch operations like `_search` or `_suggest`"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/sparql",
+      "method": "getSparql",
+      "httpMethod": "get",
+      "tag": "sparql",
+      "description": "Auckland Museum SPARQL endpoint",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": true,
+          "description": "sparql query"
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "The [JSON-P](http://json-p.org/) callback parameter"
+        },
+        {
+          "name": "infer",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to get inferred results in the response"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sparql",
+      "method": "postSparql",
+      "httpMethod": "post",
+      "tag": "sparql",
+      "description": "Auckland Museum SPARQL endpoint",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "infer",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "api.aucklandmuseum.com",
   "apiDescription": "This is technical documentation for the Auckland Museum API\n",
   "apiTitle": "Auckland Museum API",

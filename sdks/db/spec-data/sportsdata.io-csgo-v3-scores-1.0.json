@@ -4,6 +4,382 @@
   "homepage": "sportsdata.io",
   "serviceName": "csgo-v3-scores",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/{format}/ActiveMemberships",
+      "method": "membershipsActive",
+      "httpMethod": "get",
+      "description": "Memberships (Active)",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/Areas",
+      "method": "areasCountries",
+      "httpMethod": "get",
+      "description": "Areas (Countries)",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/CompetitionDetails/{competitionid}",
+      "method": "competitionFixturesLeagueDetails",
+      "httpMethod": "get",
+      "description": "Competition Fixtures (League Details)",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        },
+        {
+          "name": "competitionid",
+          "schema": "string",
+          "required": true,
+          "description": "A CS:GO competition/league unique CompetitionId. Possible values include: <code>100000009</code>, etc."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/Competitions",
+      "method": "competitionsLeagues",
+      "httpMethod": "get",
+      "description": "Competitions (Leagues)",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/GamesByDate/{date}",
+      "method": "gamesByDate",
+      "httpMethod": "get",
+      "description": "Games by Date",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        },
+        {
+          "name": "date",
+          "schema": "string",
+          "required": true,
+          "description": "The date of the game(s).\n<br>Examples: <code>2018-01-13</code>, <code>2018-06-13</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/HistoricalMemberships",
+      "method": "membershipsHistorical",
+      "httpMethod": "get",
+      "description": "Memberships (Historical)",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/HistoricalMembershipsByTeam/{teamid}",
+      "method": "membershipsByTeamHistorical",
+      "httpMethod": "get",
+      "description": "Memberships by Team (Historical)",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        },
+        {
+          "name": "teamid",
+          "schema": "string",
+          "required": true,
+          "description": "Unique FantasyData Team ID. \nExample:<code>100000001</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/MembershipsByTeam/{teamid}",
+      "method": "membershipsByTeamActive",
+      "httpMethod": "get",
+      "description": "Memberships by Team (Active)",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        },
+        {
+          "name": "teamid",
+          "schema": "string",
+          "required": true,
+          "description": "Unique FantasyData Team ID. \nExample:<code>100000001</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/Player/{playerid}",
+      "method": "player",
+      "httpMethod": "get",
+      "description": "Player",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        },
+        {
+          "name": "playerid",
+          "schema": "string",
+          "required": true,
+          "description": "Unique FantasyData Player ID.\nExample:<code>100000576</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/Players",
+      "method": "players",
+      "httpMethod": "get",
+      "description": "Players",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/PlayersByTeam/{teamid}",
+      "method": "playersByTeam",
+      "httpMethod": "get",
+      "description": "Players by Team",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        },
+        {
+          "name": "teamid",
+          "schema": "string",
+          "required": true,
+          "description": "Unique FantasyData Team ID. \nExample:<code>100000001</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/Schedule/{roundid}",
+      "method": "schedule",
+      "httpMethod": "get",
+      "description": "Schedule",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        },
+        {
+          "name": "roundid",
+          "schema": "string",
+          "required": true,
+          "description": "Unique FantasyData Round ID. RoundIDs can be found in the Competitions and Competition Details endpoints. \nExamples: <code>100000138</code>, <code>1000001412</code>, etc"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/SeasonTeams/{seasonid}",
+      "method": "seasonTeams",
+      "httpMethod": "get",
+      "description": "Season Teams",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        },
+        {
+          "name": "seasonid",
+          "schema": "string",
+          "required": true,
+          "description": "Unique FantasyData Season ID. SeasonIDs can be found in the Competitions and Competition Details endpoints. \nExamples: <code>100000023</code>, <code>100000024</code>, etc"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/Standings/{roundid}",
+      "method": "standings",
+      "httpMethod": "get",
+      "description": "Standings",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        },
+        {
+          "name": "roundid",
+          "schema": "string",
+          "required": true,
+          "description": "Unique FantasyData Round ID. RoundIDs can be found in the Competitions and Competition Details endpoints. \nExample: <code>100000138</code>, etc"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/Teams",
+      "method": "teams",
+      "httpMethod": "get",
+      "description": "Teams",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/Venues",
+      "method": "venues",
+      "httpMethod": "get",
+      "description": "Venues",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://azure-api.sportsdata.io/v3/csgo/scores",
   "apiDescription": "CS:GO v3 Scores",
   "apiTitle": "CS:GO v3 Scores",

@@ -3,6 +3,741 @@
   "openApiRaw": "https://raw.githubusercontent.com/darklynx/swagger-api-collection/master/api/yaml/instagram.yaml",
   "homepage": "instagram.com",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/geographies/{geo-id}/media/recent",
+      "method": "/geographies/{geoId}/media/recentGet",
+      "httpMethod": "get",
+      "tag": "geographies",
+      "description": "Get recent media from a custom geo-id.",
+      "parameters": [
+        {
+          "name": "geo-id",
+          "schema": "string",
+          "required": true,
+          "description": "The geography ID."
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": false,
+          "description": "Max number of media to return."
+        },
+        {
+          "name": "min_id",
+          "schema": "string",
+          "required": false,
+          "description": "Return media before this `min_id`."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/locations/search",
+      "method": "/locations/searchGet",
+      "httpMethod": "get",
+      "tag": "locations",
+      "description": "Search for a location by geographic coordinate.",
+      "parameters": [
+        {
+          "name": "distance",
+          "schema": "integer",
+          "required": false,
+          "description": "Default is 1000m (distance=1000), max distance is 5000."
+        },
+        {
+          "name": "facebook_places_id",
+          "schema": "string",
+          "required": false,
+          "description": "Returns a location mapped off of a Facebook places id. If used, a Foursquare id and `lat`, `lng` are not required."
+        },
+        {
+          "name": "foursquare_id",
+          "schema": "string",
+          "required": false,
+          "description": "Returns a location mapped off of a foursquare v1 api location id. If used, you are not required to use\n`lat` and `lng`. Note that this method is deprecated; you should use the new foursquare IDs with V2 of their API.\n"
+        },
+        {
+          "name": "lat",
+          "schema": "number",
+          "required": false,
+          "description": "Latitude of the center search coordinate. If used, `lng` is required."
+        },
+        {
+          "name": "lng",
+          "schema": "number",
+          "required": false,
+          "description": "Longitude of the center search coordinate. If used, `lat` is required."
+        },
+        {
+          "name": "foursquare_v2_id",
+          "schema": "string",
+          "required": false,
+          "description": "Returns a location mapped off of a foursquare v2 api location id. If used, you are not required to use\n`lat` and `lng`.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/locations/{location-id}",
+      "method": "/locations/{locationId}Get",
+      "httpMethod": "get",
+      "tag": "locations",
+      "description": "Get information about a location.",
+      "parameters": [
+        {
+          "name": "location-id",
+          "schema": "string",
+          "required": true,
+          "description": "The location ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/locations/{location-id}/media/recent",
+      "method": "/locations/{locationId}/media/recentGet",
+      "httpMethod": "get",
+      "tag": "locations",
+      "description": "Get a list of recent media objects from a given location.",
+      "parameters": [
+        {
+          "name": "location-id",
+          "schema": "string",
+          "required": true,
+          "description": "The location ID."
+        },
+        {
+          "name": "min_timestamp",
+          "schema": "integer",
+          "required": false,
+          "description": "Return media after this UNIX timestamp."
+        },
+        {
+          "name": "max_timestamp",
+          "schema": "integer",
+          "required": false,
+          "description": "Return media before this UNIX timestamp."
+        },
+        {
+          "name": "min_id",
+          "schema": "string",
+          "required": false,
+          "description": "Return media before this `min_id`."
+        },
+        {
+          "name": "max_id",
+          "schema": "string",
+          "required": false,
+          "description": "Return media after this `max_id`."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/media/popular",
+      "method": "/media/popularGet",
+      "httpMethod": "get",
+      "tag": "media",
+      "description": "Get a list of currently popular media.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/media/search",
+      "method": "/media/searchGet",
+      "httpMethod": "get",
+      "tag": "media",
+      "description": "Search for media in a given area.",
+      "parameters": [
+        {
+          "name": "lat",
+          "schema": "number",
+          "required": true,
+          "description": "Latitude of the center search coordinate. If used, `lng` is required."
+        },
+        {
+          "name": "lng",
+          "schema": "number",
+          "required": true,
+          "description": "Longitude of the center search coordinate. If used, `lat` is required."
+        },
+        {
+          "name": "min_timestamp",
+          "schema": "integer",
+          "required": false,
+          "description": "A unix timestamp. All media returned will be taken later than this timestamp."
+        },
+        {
+          "name": "max_timestamp",
+          "schema": "integer",
+          "required": false,
+          "description": "A unix timestamp. All media returned will be taken earlier than this timestamp."
+        },
+        {
+          "name": "distance",
+          "schema": "integer",
+          "required": false,
+          "description": "Default is 1km (distance=1000), max distance is 5km."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/media/shortcode/{shortcode}",
+      "method": "/media/shortcode/{shortcode}Get",
+      "httpMethod": "get",
+      "tag": "media",
+      "description": "Get information about a media object.",
+      "parameters": [
+        {
+          "name": "shortcode",
+          "schema": "string",
+          "required": true,
+          "description": "The short code of the media resource."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/media/{media-id}",
+      "method": "/media/{mediaId}Get",
+      "httpMethod": "get",
+      "tag": "media",
+      "description": "Get information about a media object.",
+      "parameters": [
+        {
+          "name": "media-id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the media resource."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/media/{media-id}/comments",
+      "method": "/media/{mediaId}/commentsGet",
+      "httpMethod": "get",
+      "tag": "comments",
+      "description": "Get a list of recent comments on a media object.",
+      "parameters": [
+        {
+          "name": "media-id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the media resource."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/media/{media-id}/comments",
+      "method": "/media/{mediaId}/commentsPost",
+      "httpMethod": "post",
+      "tag": "comments",
+      "description": "Create a comment on a media object.",
+      "parameters": [
+        {
+          "name": "media-id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the media resource."
+        },
+        {
+          "name": "text",
+          "schema": "string",
+          "required": true,
+          "description": "Text to post as a comment on the media object as specified in `media-id`."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/media/{media-id}/comments/{comment-id}",
+      "method": "/media/{mediaId}/comments/{commentId}Delete",
+      "httpMethod": "delete",
+      "tag": "comments",
+      "description": "Remove a comment.",
+      "parameters": [
+        {
+          "name": "media-id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the media resource."
+        },
+        {
+          "name": "comment-id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the comment entry."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/media/{media-id}/likes",
+      "method": "/media/{mediaId}/likesDelete",
+      "httpMethod": "delete",
+      "tag": "likes",
+      "description": "Remove a like on this media by the current user.",
+      "parameters": [
+        {
+          "name": "media-id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the media resource."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/media/{media-id}/likes",
+      "method": "/media/{mediaId}/likesGet",
+      "httpMethod": "get",
+      "tag": "likes",
+      "description": "Get a list of users who have liked this media.",
+      "parameters": [
+        {
+          "name": "media-id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the media resource."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/media/{media-id}/likes",
+      "method": "/media/{mediaId}/likesPost",
+      "httpMethod": "post",
+      "tag": "likes",
+      "description": "Set a like on this media by the current user.",
+      "parameters": [
+        {
+          "name": "media-id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the media resource."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tags/search",
+      "method": "/tags/searchGet",
+      "httpMethod": "get",
+      "tag": "tags",
+      "description": "Search for tags by name.",
+      "parameters": [
+        {
+          "name": "q",
+          "schema": "string",
+          "required": true,
+          "description": "A valid tag name without a leading \\#. (eg. snowy, nofilter)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tags/{tag-name}",
+      "method": "/tags/{tagName}Get",
+      "httpMethod": "get",
+      "tag": "tags",
+      "description": "Get information about a tag object.",
+      "parameters": [
+        {
+          "name": "tag-name",
+          "schema": "string",
+          "required": true,
+          "description": "The tag name."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tags/{tag-name}/media/recent",
+      "method": "/tags/{tagName}/media/recentGet",
+      "httpMethod": "get",
+      "tag": "tags",
+      "description": "Get a list of recently tagged media.",
+      "parameters": [
+        {
+          "name": "tag-name",
+          "schema": "string",
+          "required": true,
+          "description": "The tag name."
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": false,
+          "description": "Count of tagged media to return."
+        },
+        {
+          "name": "min_tag_id",
+          "schema": "string",
+          "required": false,
+          "description": "Return media before this `min_tag_id`."
+        },
+        {
+          "name": "max_tag_id",
+          "schema": "string",
+          "required": false,
+          "description": "Return media after this `max_tag_id`."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/search",
+      "method": "/users/searchGet",
+      "httpMethod": "get",
+      "tag": "users",
+      "description": "Search for a user by name.",
+      "parameters": [
+        {
+          "name": "q",
+          "schema": "string",
+          "required": true,
+          "description": "A query string."
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of users to return."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/self/feed",
+      "method": "/users/self/feedGet",
+      "httpMethod": "get",
+      "tag": "users",
+      "description": "See the authenticated user's feed.",
+      "parameters": [
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": false,
+          "description": "Count of media to return."
+        },
+        {
+          "name": "min_id",
+          "schema": "string",
+          "required": false,
+          "description": "Return media later than this `min_id`."
+        },
+        {
+          "name": "max_id",
+          "schema": "string",
+          "required": false,
+          "description": "Return media earlier than this `max_id`."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/self/media/liked",
+      "method": "/users/self/media/likedGet",
+      "httpMethod": "get",
+      "tag": "users",
+      "description": "See the list of media liked by the authenticated user.",
+      "parameters": [
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": false,
+          "description": "Count of media to return."
+        },
+        {
+          "name": "max_like_id",
+          "schema": "string",
+          "required": false,
+          "description": "Return media liked before this id."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/self/requested-by",
+      "method": "/users/self/requestedByGet",
+      "httpMethod": "get",
+      "tag": "relationships",
+      "description": "List the users who have requested this user's permission to follow.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user-id}",
+      "method": "/users/{userId}Get",
+      "httpMethod": "get",
+      "tag": "users",
+      "description": "Get basic information about a user.",
+      "parameters": [
+        {
+          "name": "user-id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of a user to get information about, or **self** to retrieve information about authenticated user."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user-id}/followed-by",
+      "method": "/users/{userId}/followedByGet",
+      "httpMethod": "get",
+      "tag": "relationships",
+      "description": "Get the list of users this user is followed by.",
+      "parameters": [
+        {
+          "name": "user-id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of a user, or **self** to retrieve information about authenticated user."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user-id}/follows",
+      "method": "/users/{userId}/followsGet",
+      "httpMethod": "get",
+      "tag": "relationships",
+      "description": "Get the list of users this user follows.",
+      "parameters": [
+        {
+          "name": "user-id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of a user, or **self** to retrieve information about authenticated user."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user-id}/media/recent",
+      "method": "/users/{userId}/media/recentGet",
+      "httpMethod": "get",
+      "tag": "users",
+      "description": "Get the most recent media published by a user.",
+      "parameters": [
+        {
+          "name": "user-id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of a user to get recent media of, or **self** to retrieve media of authenticated user."
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": false,
+          "description": "Count of media to return."
+        },
+        {
+          "name": "max_timestamp",
+          "schema": "integer",
+          "required": false,
+          "description": "Return media before this UNIX timestamp."
+        },
+        {
+          "name": "min_timestamp",
+          "schema": "integer",
+          "required": false,
+          "description": "Return media after this UNIX timestamp."
+        },
+        {
+          "name": "min_id",
+          "schema": "string",
+          "required": false,
+          "description": "Return media later than this `min_id`."
+        },
+        {
+          "name": "max_id",
+          "schema": "string",
+          "required": false,
+          "description": "Return media earlier than this `max_id`."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user-id}/relationship",
+      "method": "/users/{userId}/relationshipGet",
+      "httpMethod": "get",
+      "tag": "relationships",
+      "description": "Get information about a relationship to another user.",
+      "parameters": [
+        {
+          "name": "user-id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of a user to get information about."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user-id}/relationship",
+      "method": "/users/{userId}/relationshipPost",
+      "httpMethod": "post",
+      "tag": "relationships",
+      "description": "Modify the relationship between the current user and the target user.",
+      "parameters": [
+        {
+          "name": "user-id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the target user."
+        },
+        {
+          "name": "action",
+          "schema": "string",
+          "required": true,
+          "description": "Type of action to apply for relationship with the user."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.instagram.com/v1",
   "apiDescription": "Description of Instagram RESTful API.\n\nCurrent limitations:\n  * Instagram service does not support [cross origin headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS)\n  for security reasons, therefore it is not possible to use Swagger UI and make API calls directly from browser.\n  * Modification API requests (`POST`, `DELETE`) require additional security [scopes](https://instagram.com/developer/authorization/)\n  that are available for Apps [created on or after Nov 17, 2015](http://instagram.com/developer/review/) and\n  started in [Sandbox Mode](http://instagram.com/developer/sandbox/).\n  * Consider the [Instagram limitations](https://instagram.com/developer/limits/) for API calls that depends on App Mode.\n\n**Warning:** For Apps [created on or after Nov 17, 2015](http://instagram.com/developer/changelog/) API responses\ncontaining media objects no longer return the `data` field in `comments` and `likes` nodes.\n\nLast update: 2015-11-28\n",
   "apiTitle": "Instagram API",

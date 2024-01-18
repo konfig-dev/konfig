@@ -4,6 +4,1146 @@
   "homepage": "ebay.com",
   "serviceName": "sell-account",
   "apiVersion": "v1.9.0",
+  "methods": [
+    {
+      "url": "/advertising_eligibility",
+      "method": "getAdvertisingEligibility",
+      "httpMethod": "get",
+      "tag": "advertising_eligibility",
+      "description": "This method allows developers to check the seller eligibility status for eBay advertising programs.",
+      "parameters": [
+        {
+          "name": "program_types",
+          "schema": "string",
+          "required": false,
+          "description": "A comma-separated list of eBay advertising programs.<br /><br /><span class=\"tablenote\"><b>Tip:</b> See the <a href=\"/api-docs/sell/account/types/plser:AdvertisingProgramEnum\"> AdvertisingProgramEnum</a> type for possible values.</span><br /><br />If no programs are specified, the results will be returned for all programs."
+        },
+        {
+          "name": "X-EBAY-C-MARKETPLACE-ID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the eBay marketplace for which the seller eligibility status shall be checked.<br /><br /><span class=\"tablenote\"><b>Note:</b> This value is case-sensitive.</span>"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The base response of the <b>getAdvertisingEligibility</b> method that contains the seller eligibility information for one or more advertising programs."
+        }
+      ]
+    },
+    {
+      "url": "/custom_policy/",
+      "method": "getCustomPolicies",
+      "httpMethod": "get",
+      "tag": "custom_policy",
+      "description": "This method retrieves the list of custom policies specified by the <b>policy_types</b> query parameter for the selected eBay marketplace.<br/> <br/> <span class=\"tablenote\"><strong>Note:</strong> The following eBay marketplaces support Custom Policies: <ul><li>Germany (EBAY_DE)</li> <li>Canada (EBAY_CA)</li> <li>Australia (EBAY_AU)</li> <li>United States (EBAY_US)</li> <li>France (EBAY_FR)</li></ul></span><br/><div class=\"msgbox_important\"><p class=\"msgbox_importantInDiv\" data-mc-autonum=\"&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important! &lt;/span&gt;&lt;/b&gt;\"><span class=\"autonumber\"><span><b><span style=\"color: #dd1e31;\" class=\"mcFormatColor\">Important!</span></b></span></span>As a part of Digital Services Act (DSA) requirements, all custom policies will become global (and no longer marketplace-specific) on April 3, 2023. A seller will be able to apply any custom policy to listings on any eBay marketplace where they sell.<br/><br/>Due to this change, the X-EBAY-C-MARKETPLACE-ID request header is no longer relevant. If this header is passed in after April 3, it will just be ignored in all four methods.</p></div><br/><br/>For details on header values, see <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank\">HTTP request headers</a>.",
+      "parameters": [
+        {
+          "name": "policy_types",
+          "schema": "string",
+          "required": false,
+          "description": "This query parameter specifies the type of custom policies to be returned.<br /><br />Multiple policy types may be requested in a single call by providing a comma-delimited set of all policy types to be returned.<br/><br/><span class=\"tablenote\"><strong>Note:</strong> Omitting this query parameter from a request will also return policies of all policy types.</span><br/><br/>Two Custom Policy types are supported: <ul><li>Product Compliance (PRODUCT_COMPLIANCE)</li> <li>Takeback (TAKE_BACK)</li></ul>"
+        },
+        {
+          "name": "X-EBAY-C-MARKETPLACE-ID",
+          "schema": "string",
+          "required": true,
+          "description": "This header parameter specifies the eBay marketplace for the custom policy that is being created. Supported values for this header can be found in the <a href=\"/api-docs/sell/account/types/ba:MarketplaceIdEnum\" target=\"_blank\">MarketplaceIdEnum</a> type definition.<br/> <br/> <span class=\"tablenote\"><strong>Note:</strong> The following eBay marketplaces support Custom Policies: <ul><li>Germany (EBAY_DE)</li> <li>Canada (EBAY_CA)</li> <li>Australia (EBAY_AU)</li> <li>United States (EBAY_US)</li> <li>France (EBAY_FR)</li></ul></span></br><div class=\"msgbox_important\"><p class=\"msgbox_importantInDiv\" data-mc-autonum=\"&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important! &lt;/span&gt;&lt;/b&gt;\"><span class=\"autonumber\"><span><b><span style=\"color: #dd1e31;\" class=\"mcFormatColor\">Important!</span></b></span></span>As a part of Digital Services Act (DSA) requirements, all custom policies will become global (and no longer marketplace-specific) on April 3, 2023. A seller will be able to apply any custom policy to listings on any eBay marketplace where they sell.<br/><br/>Due to this change, the X-EBAY-C-MARKETPLACE-ID request header is no longer relevant. If this header is passed in after April 3, it will just be ignored in all four methods.</p></div>"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/custom_policy/",
+      "method": "createCustomPolicy",
+      "httpMethod": "post",
+      "tag": "custom_policy",
+      "description": "This method creates a new custom policy in which a seller specifies their terms for complying with local governmental regulations. <br/><br/>Two Custom Policy types are supported: <ul><li>Product Compliance (PRODUCT_COMPLIANCE)</li> <li>Takeback (TAKE_BACK)</li></ul>Each Custom Policy targets a <b>policyType</b> and <b>eBay marketplace</b> combination. Multiple policies may be created as follows: <ul><li><b>Product Compliance</b>: a maximum of 10 policies per eBay marketplace may be created</li> <li><b>Takeback</b>: a maximum of 3 policies per eBay marketplace may be created</li></ul>A successful create policy call returns an HTTP status code of <b>201 Created</b> with the system-generated policy ID included in the <b>Location</b> response header.<br/><br/><b>Product Compliance Policy</b><br/><br/>Product Compliance policies disclose product information as required for regulatory compliance.<br/><br/><span class=\"tablenote\"><strong>Note:</strong> A maximum of 10 Product Compliance policies per eBay marketplace may be created.</span> <br/><br/> <b>Takeback Policy</b><br/><br/>Takeback policies describe the seller's legal obligation to take back a previously purchased item when the buyer purchases a new one.<br/><br/><span class=\"tablenote\"><strong>Note:</strong> A maximum of 3 Takeback policies per eBay marketplace may be created.</span><br/><div class=\"msgbox_important\"><p class=\"msgbox_importantInDiv\" data-mc-autonum=\"&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important! &lt;/span&gt;&lt;/b&gt;\"><span class=\"autonumber\"><span><b><span style=\"color: #dd1e31;\" class=\"mcFormatColor\">Important!</span></b></span></span>As a part of Digital Services Act (DSA) requirements, all custom policies will become global (and no longer marketplace-specific) on April 3, 2023. A seller will be able to apply any custom policy to listings on any eBay marketplace where they sell.<br/><br/>Due to this change, the X-EBAY-C-MARKETPLACE-ID request header is no longer relevant. If this header is passed in after April 3, it will just be ignored in all four methods.</p></div>",
+      "parameters": [
+        {
+          "name": "X-EBAY-C-MARKETPLACE-ID",
+          "schema": "string",
+          "required": true,
+          "description": "This header parameter specifies the eBay marketplace for the custom policy that is being created. Supported values for this header can be found in the <a href=\"/api-docs/sell/account/types/ba:MarketplaceIdEnum\" target=\"_blank\">MarketplaceIdEnum</a> type definition.<br/> <br/> <span class=\"tablenote\"><strong>Note:</strong> The following eBay marketplaces support Custom Policies: <ul><li>Germany (EBAY_DE)</li> <li>Canada (EBAY_CA)</li> <li>Australia (EBAY_AU)</li> <li>United States (EBAY_US)</li> <li>France (EBAY_FR)</li></ul></span><br/><div class=\"msgbox_important\"><p class=\"msgbox_importantInDiv\" data-mc-autonum=\"&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important! &lt;/span&gt;&lt;/b&gt;\"><span class=\"autonumber\"><span><b><span style=\"color: #dd1e31;\" class=\"mcFormatColor\">Important!</span></b></span></span>As a part of Digital Services Act (DSA) requirements, all custom policies will become global (and no longer marketplace-specific) on April 3, 2023. A seller will be able to apply any custom policy to listings on any eBay marketplace where they sell.<br/><br/>Due to this change, the X-EBAY-C-MARKETPLACE-ID request header is no longer relevant. If this header is passed in after April 3, it will just be ignored in all four methods.</p></div>"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "label",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "policyType",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/custom_policy/{custom_policy_id}",
+      "method": "getCustomPolicy",
+      "httpMethod": "get",
+      "tag": "custom_policy",
+      "description": "This method retrieves the custom policy specified by the <b>custom_policy_id</b> path parameter for the selected eBay marketplace.<br/> <br/> <span class=\"tablenote\"><strong>Note:</strong> The following eBay marketplaces support Custom Policies: <ul><li>Germany (EBAY_DE)</li> <li>Canada (EBAY_CA)</li> <li>Australia (EBAY_AU)</li> <li>United States (EBAY_US)</li> <li>France (EBAY_FR)</li></ul></span><br/><div class=\"msgbox_important\"><p class=\"msgbox_importantInDiv\" data-mc-autonum=\"&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important! &lt;/span&gt;&lt;/b&gt;\"><span class=\"autonumber\"><span><b><span style=\"color: #dd1e31;\" class=\"mcFormatColor\">Important!</span></b></span></span>As a part of Digital Services Act (DSA) requirements, all custom policies will become global (and no longer marketplace-specific) on April 3, 2023. A seller will be able to apply any custom policy to listings on any eBay marketplace where they sell.<br/><br/>Due to this change, the X-EBAY-C-MARKETPLACE-ID request header is no longer relevant. If this header is passed in after April 3, it will just be ignored in all four methods.</p></div><br/><br/>For details on header values, see <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank\">HTTP request headers</a>.",
+      "parameters": [
+        {
+          "name": "custom_policy_id",
+          "schema": "string",
+          "required": true,
+          "description": "This path parameter is the unique custom policy identifier for the policy to be returned.<br/><br/><span class=\"tablenote\"><strong>Note:</strong> This value is automatically assigned by the system when the policy is created.</span>"
+        },
+        {
+          "name": "X-EBAY-C-MARKETPLACE-ID",
+          "schema": "string",
+          "required": true,
+          "description": "This header parameter specifies the eBay marketplace for the custom policy that is being created. Supported values for this header can be found in the <a href=\"/api-docs/sell/account/types/ba:MarketplaceIdEnum\" target=\"_blank\">MarketplaceIdEnum</a> type definition.<br/> <br/> <span class=\"tablenote\"><strong>Note:</strong> The following eBay marketplaces support Custom Policies: <ul><li>Germany (EBAY_DE)</li> <li>Canada (EBAY_CA)</li> <li>Australia (EBAY_AU)</li> <li>United States (EBAY_US)</li> <li>France (EBAY_FR)</li></ul></span><br/><div class=\"msgbox_important\"><p class=\"msgbox_importantInDiv\" data-mc-autonum=\"&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important! &lt;/span&gt;&lt;/b&gt;\"><span class=\"autonumber\"><span><b><span style=\"color: #dd1e31;\" class=\"mcFormatColor\">Important!</span></b></span></span>As a part of Digital Services Act (DSA) requirements, all custom policies will become global (and no longer marketplace-specific) on April 3, 2023. A seller will be able to apply any custom policy to listings on any eBay marketplace where they sell.<br/><br/>Due to this change, the X-EBAY-C-MARKETPLACE-ID request header is no longer relevant. If this header is passed in after April 3, it will just be ignored in all four methods.</p></div>"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This container defines a seller's custom policy identified by policy ID for the selected eBay marketplace. A successful call returns the requested policy information."
+        }
+      ]
+    },
+    {
+      "url": "/custom_policy/{custom_policy_id}",
+      "method": "updateCustomPolicy",
+      "httpMethod": "put",
+      "tag": "custom_policy",
+      "description": "This method updates an existing custom policy specified by the <b>custom_policy_id</b> path parameter for the selected marketplace. This method overwrites the policy's <b>Name</b>, <b>Label</b>, and <b>Description</b> fields. Therefore, the complete, current text of all three policy fields must be included in the request payload even when one or two of these fields will not actually be updated.<br/> <br/>For example, the value for the <b>Label</b> field is to be updated, but the <b>Name</b> and <b>Description</b> values will remain unchanged. The existing <b>Name</b> and <b>Description</b> values, as they are defined in the current policy, must also be passed in. <br/><br/>A successful policy update call returns an HTTP status code of <b>204 No Content</b>.<br/><br/><span class=\"tablenote\"><strong>Note:</strong> The following eBay marketplaces support Custom Policies: <ul><li>Germany (EBAY_DE)</li> <li>Canada (EBAY_CA)</li> <li>Australia (EBAY_AU)</li> <li>United States (EBAY_US)</li> <li>France (EBAY_FR)</li></ul></span><br/><div class=\"msgbox_important\"><p class=\"msgbox_importantInDiv\" data-mc-autonum=\"&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important! &lt;/span&gt;&lt;/b&gt;\"><span class=\"autonumber\"><span><b><span style=\"color: #dd1e31;\" class=\"mcFormatColor\">Important!</span></b></span></span>As a part of Digital Services Act (DSA) requirements, all custom policies will become global (and no longer marketplace-specific) on April 3, 2023. A seller will be able to apply any custom policy to listings on any eBay marketplace where they sell.<br/><br/>Due to this change, the X-EBAY-C-MARKETPLACE-ID request header is no longer relevant. If this header is passed in after April 3, it will just be ignored in all four methods.</p></div><br/><br/>For details on header values, see <a href=\"/api-docs/static/rest-request-components.html#HTTP\">HTTP request headers</a>.",
+      "parameters": [
+        {
+          "name": "custom_policy_id",
+          "schema": "string",
+          "required": true,
+          "description": "This path parameter is the unique custom policy identifier for the policy to be returned.<br/><br/><span class=\"tablenote\"><strong>Note:</strong> This value is automatically assigned by the system when the policy is created.</span>"
+        },
+        {
+          "name": "X-EBAY-C-MARKETPLACE-ID",
+          "schema": "string",
+          "required": true,
+          "description": "This header parameter specifies the eBay marketplace for the custom policy that is being created. Supported values for this header can be found in the <a href=\"/api-docs/sell/account/types/ba:MarketplaceIdEnum\" target=\"_blank\">MarketplaceIdEnum</a> type definition.<br/> <br/> <span class=\"tablenote\"><strong>Note:</strong> The following eBay marketplaces support Custom Policies: <ul><li>Germany (EBAY_DE)</li> <li>Canada (EBAY_CA)</li> <li>Australia (EBAY_AU)</li> <li>United States (EBAY_US)</li> <li>France (EBAY_FR)</li></ul></span><br/><div class=\"msgbox_important\"><p class=\"msgbox_importantInDiv\" data-mc-autonum=\"&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important! &lt;/span&gt;&lt;/b&gt;\"><span class=\"autonumber\"><span><b><span style=\"color: #dd1e31;\" class=\"mcFormatColor\">Important!</span></b></span></span>As a part of Digital Services Act (DSA) requirements, all custom policies will become global (and no longer marketplace-specific) on April 3, 2023. A seller will be able to apply any custom policy to listings on any eBay marketplace where they sell.<br/><br/>Due to this change, the X-EBAY-C-MARKETPLACE-ID request header is no longer relevant. If this header is passed in after April 3, it will just be ignored in all four methods.</p></div>"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "label",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/fulfillment_policy",
+      "method": "getFulfillmentPolicies",
+      "httpMethod": "get",
+      "tag": "fulfillment_policy",
+      "description": "This method retrieves all the fulfillment policies configured for the marketplace you specify using the <code>marketplace_id</code> query parameter.  <br/><br/><b>Marketplaces and locales</b>  <br/><br/>Get the correct policies for a marketplace that supports multiple locales using the <code>Content-Language</code> request header. For example, get the policies for the French locale of the Canadian marketplace by specifying <code>fr-CA</code> for the <code>Content-Language</code> header. Likewise, target the Dutch locale of the Belgium marketplace by setting <code>Content-Language: nl-BE</code>. For details on header values, see <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank\">HTTP request headers</a>.",
+      "parameters": [
+        {
+          "name": "marketplace_id",
+          "schema": "string",
+          "required": true,
+          "description": "This query parameter specifies the eBay marketplace of the policies you want to retrieve. For implementation help, refer to eBay API documentation at https://developer.ebay.com/api-docs/sell/account/types/ba:MarketplaceIdEnum"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The response payload for the <b>getFulfillmentPolicies</b> method.<br /><br /><span class=\"tablenote\"><b>Note</b>: Pagination has not yet been enabled for <b>getFulfillmentPolicies</b>, so all of the pagination-related fields are for future use.</span>"
+        }
+      ]
+    },
+    {
+      "url": "/fulfillment_policy/",
+      "method": "createFulfillmentPolicy",
+      "httpMethod": "post",
+      "tag": "fulfillment_policy",
+      "description": "This method creates a new fulfillment policy where the policy encapsulates seller's terms for fulfilling item purchases. Fulfillment policies include the shipment options that the seller offers to buyers.  <br/><br/>Each policy targets a specific eBay marketplace and a category group type, and you can create multiple policies for each combination. <br/><br/>A successful request returns the <b>getFulfillmentPolicy</b> URI to the new policy in the <b>Location</b> response header and the ID for the new policy is returned in the response payload.  <p class=\"tablenote\"><b>Tip:</b> For details on creating and using the business policies supported by the Account API, see <a href=\"/api-docs/sell/static/seller-accounts/business-policies.html\">eBay business policies</a>.</p>  <p><b>Using the eBay standard envelope service (eSE)</b></p>  <p>The eBay standard envelope service (eSE) is a domestic envelope service with tracking through eBay. This service applies to specific Trading Cards categories (not all categories are supported), and to Coins & Paper Money, Postcards, and Stamps. See <a href=\"/api-docs/sell/static/seller-accounts/using-the-ebay-standard-envelope-service.html\" target=\"_blank\">Using the eBay standard envelope (eSE) service</a>.</p>",
+      "parameters": [
+        {
+          "name": "categoryTypes",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "freightShipping",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "globalShipping",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "handlingTime",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "localPickup",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "marketplaceId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "pickupDropOff",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "shipToLocations",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "shippingOptions",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Complex type that that gets populated with a response containing a fulfillment policy."
+        }
+      ]
+    },
+    {
+      "url": "/fulfillment_policy/get_by_policy_name",
+      "method": "getFulfillmentPolicyByName",
+      "httpMethod": "get",
+      "tag": "fulfillment_policy",
+      "description": "This method retrieves the details for a specific fulfillment policy. In the request, supply both the policy <code>name</code> and its associated <code>marketplace_id</code> as query parameters.   <br/><br/><b>Marketplaces and locales</b>  <br/><br/>Get the correct policy for a marketplace that supports multiple locales using the <code>Content-Language</code> request header. For example, get a policy for the French locale of the Canadian marketplace by specifying <code>fr-CA</code> for the <code>Content-Language</code> header. Likewise, target the Dutch locale of the Belgium marketplace by setting <code>Content-Language: nl-BE</code>. For details on header values, see <a href=\"/api-docs/static/rest-request-components.html#HTTP\">HTTP request headers</a>.",
+      "parameters": [
+        {
+          "name": "marketplace_id",
+          "schema": "string",
+          "required": true,
+          "description": "This query parameter specifies the eBay marketplace of the policy you want to retrieve. For implementation help, refer to eBay API documentation at https://developer.ebay.com/api-docs/sell/account/types/ba:MarketplaceIdEnum"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "This query parameter specifies the seller-defined name of the fulfillment policy you want to retrieve."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This type is used by the <b>fulfillmentPolicy</b> response container, a container which defines a seller's fulfillment policy for a specific marketplace."
+        }
+      ]
+    },
+    {
+      "url": "/fulfillment_policy/{fulfillmentPolicyId}",
+      "method": "deleteFulfillmentPolicy",
+      "httpMethod": "delete",
+      "tag": "fulfillment_policy",
+      "description": "This method deletes a fulfillment policy. Supply the ID of the policy you want to delete in the <b>fulfillmentPolicyId</b> path parameter.",
+      "parameters": [
+        {
+          "name": "fulfillmentPolicyId",
+          "schema": "string",
+          "required": true,
+          "description": "This path parameter specifies the ID of the fulfillment policy to delete."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/fulfillment_policy/{fulfillmentPolicyId}",
+      "method": "getFulfillmentPolicy",
+      "httpMethod": "get",
+      "tag": "fulfillment_policy",
+      "description": "This method retrieves the complete details of a fulfillment policy. Supply the ID of the policy you want to retrieve using the <b>fulfillmentPolicyId</b> path parameter.",
+      "parameters": [
+        {
+          "name": "fulfillmentPolicyId",
+          "schema": "string",
+          "required": true,
+          "description": "This path parameter specifies the ID of the fulfillment policy you want to retrieve."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This type is used by the <b>fulfillmentPolicy</b> response container, a container which defines a seller's fulfillment policy for a specific marketplace."
+        }
+      ]
+    },
+    {
+      "url": "/fulfillment_policy/{fulfillmentPolicyId}",
+      "method": "updateFulfillmentPolicy",
+      "httpMethod": "put",
+      "tag": "fulfillment_policy",
+      "description": "This method updates an existing fulfillment policy. Specify the policy you want to update using the <b>fulfillment_policy_id</b> path parameter. Supply a complete policy payload with the updates you want to make; this call overwrites the existing policy with the new details specified in the payload.",
+      "parameters": [
+        {
+          "name": "fulfillmentPolicyId",
+          "schema": "string",
+          "required": true,
+          "description": "This path parameter specifies the ID of the fulfillment policy you want to update."
+        },
+        {
+          "name": "categoryTypes",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "freightShipping",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "globalShipping",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "handlingTime",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "localPickup",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "marketplaceId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "pickupDropOff",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "shipToLocations",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "shippingOptions",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Complex type that that gets populated with a response containing a fulfillment policy."
+        }
+      ]
+    },
+    {
+      "url": "/kyc",
+      "method": "getKyc",
+      "httpMethod": "get",
+      "tag": "kyc",
+      "description": "<span class=\"tablenote\"><b>Note:</b>This method was originally created to see which onboarding requirements were still pending for sellers being onboarded for eBay managed payments, but now that all seller accounts are onboarded globally, this method should now just returne an empty payload with a <code>204 No Content</code> HTTP status code. </span>",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This is the base response type of the <b>getKYC</b> method."
+        }
+      ]
+    },
+    {
+      "url": "/payment_policy",
+      "method": "getPaymentPolicies",
+      "httpMethod": "get",
+      "tag": "payment_policy",
+      "description": "This method retrieves all the payment policies configured for the marketplace you specify using the <code>marketplace_id</code> query parameter.  <br/><br/><b>Marketplaces and locales</b>  <br/><br/>Get the correct policies for a marketplace that supports multiple locales using the <code>Content-Language</code> request header. For example, get the policies for the French locale of the Canadian marketplace by specifying <code>fr-CA</code> for the <code>Content-Language</code> header. Likewise, target the Dutch locale of the Belgium marketplace by setting <code>Content-Language: nl-BE</code>. For details on header values, see <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank\">HTTP request headers</a>.",
+      "parameters": [
+        {
+          "name": "marketplace_id",
+          "schema": "string",
+          "required": true,
+          "description": "This query parameter specifies the eBay marketplace of the policies you want to retrieve. For implementation help, refer to eBay API documentation at https://developer.ebay.com/api-docs/sell/account/types/ba:MarketplaceIdEnum"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The response payload for the <b>getPaymentPolicies</b> method. <br /><br /><span class=\"tablenote\"><b>Note</b>: Pagination has not yet been enabled for <b>getPaymentPolicies</b>, so all of the pagination-related fields are for future use.</span>"
+        }
+      ]
+    },
+    {
+      "url": "/payment_policy",
+      "method": "createPaymentPolicy",
+      "httpMethod": "post",
+      "tag": "payment_policy",
+      "description": "This method creates a new payment policy where the policy encapsulates seller's terms for order payments.  <br/><br/>Each policy targets a specific eBay marketplace and category group, and you can create multiple policies for each combination.  <br/><br/>A successful request returns the <b>getPaymentPolicy</b> URI to the new policy in the <b>Location</b> response header and the ID for the new policy is returned in the response payload.  <p class=\"tablenote\"><b>Tip:</b> For details on creating and using the business policies supported by the Account API, see <a href=\"/api-docs/sell/static/seller-accounts/business-policies.html\">eBay business policies</a>.</p>",
+      "parameters": [
+        {
+          "name": "categoryTypes",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "deposit",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "fullPaymentDueIn",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "immediatePay",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "marketplaceId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "paymentInstructions",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "paymentMethods",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Complex type that that gets populated with a response containing a payment policy."
+        }
+      ]
+    },
+    {
+      "url": "/payment_policy/get_by_policy_name",
+      "method": "getPaymentPolicyByName",
+      "httpMethod": "get",
+      "tag": "payment_policy",
+      "description": "This method retrieves the details of a specific payment policy. Supply both the policy <code>name</code> and its associated <code>marketplace_id</code> in the request query parameters.   <br/><br/><b>Marketplaces and locales</b>  <br/><br/>Get the correct policy for a marketplace that supports multiple locales using the <code>Content-Language</code> request header. For example, get a policy for the French locale of the Canadian marketplace by specifying <code>fr-CA</code> for the <code>Content-Language</code> header. Likewise, target the Dutch locale of the Belgium marketplace by setting <code>Content-Language: nl-BE</code>. For details on header values, see <a href=\"/api-docs/static/rest-request-components.html#HTTP\">HTTP request headers</a>.",
+      "parameters": [
+        {
+          "name": "marketplace_id",
+          "schema": "string",
+          "required": true,
+          "description": "This query parameter specifies the eBay marketplace of the policy you want to retrieve. For implementation help, refer to eBay API documentation at https://developer.ebay.com/api-docs/sell/account/types/ba:MarketplaceIdEnum"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "This query parameter specifies the seller-defined name of the payment policy you want to retrieve."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This type is used by the <b>paymentPolicy</b> response container, a container which defines a seller's payment business policy for a specific marketplace."
+        }
+      ]
+    },
+    {
+      "url": "/payment_policy/{payment_policy_id}",
+      "method": "deletePaymentPolicy",
+      "httpMethod": "delete",
+      "tag": "payment_policy",
+      "description": "This method deletes a payment policy. Supply the ID of the policy you want to delete in the <b>paymentPolicyId</b> path parameter. ",
+      "parameters": [
+        {
+          "name": "payment_policy_id",
+          "schema": "string",
+          "required": true,
+          "description": "This path parameter specifies the ID of the payment policy you want to delete."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/payment_policy/{payment_policy_id}",
+      "method": "getPaymentPolicy",
+      "httpMethod": "get",
+      "tag": "payment_policy",
+      "description": "This method retrieves the complete details of a payment policy. Supply the ID of the policy you want to retrieve using the <b>paymentPolicyId</b> path parameter.",
+      "parameters": [
+        {
+          "name": "payment_policy_id",
+          "schema": "string",
+          "required": true,
+          "description": "This path parameter specifies the ID of the payment policy you want to retrieve."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This type is used by the <b>paymentPolicy</b> response container, a container which defines a seller's payment business policy for a specific marketplace."
+        }
+      ]
+    },
+    {
+      "url": "/payment_policy/{payment_policy_id}",
+      "method": "updatePaymentPolicy",
+      "httpMethod": "put",
+      "tag": "payment_policy",
+      "description": "This method updates an existing payment policy. Specify the policy you want to update using the <b>payment_policy_id</b> path parameter. Supply a complete policy payload with the updates you want to make; this call overwrites the existing policy with the new details specified in the payload.",
+      "parameters": [
+        {
+          "name": "payment_policy_id",
+          "schema": "string",
+          "required": true,
+          "description": "This path parameter specifies the ID of the payment policy you want to update."
+        },
+        {
+          "name": "categoryTypes",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "deposit",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "fullPaymentDueIn",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "immediatePay",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "marketplaceId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "paymentInstructions",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "paymentMethods",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Complex type that that gets populated with a response containing a payment policy."
+        }
+      ]
+    },
+    {
+      "url": "/payments_program/{marketplace_id}/{payments_program_type}",
+      "method": "getPaymentsProgram",
+      "httpMethod": "get",
+      "tag": "payments_program",
+      "description": "<span class=\"tablenote\"><b>Note:</b> This method is no longer applicable, as all seller accounts globally have been enabled for the new eBay payment and checkout flow.</span><br/><br/>This method returns whether or not the user is opted-in to the specified payments program. Sellers opt-in to payments programs by marketplace and you use the <b>marketplace_id</b> path parameter to specify the marketplace of the status flag you want returned.",
+      "parameters": [
+        {
+          "name": "marketplace_id",
+          "schema": "string",
+          "required": true,
+          "description": "This path parameter specifies the eBay marketplace of the payments program for which you want to retrieve the seller's status."
+        },
+        {
+          "name": "payments_program_type",
+          "schema": "string",
+          "required": true,
+          "description": "This path parameter specifies the payments program whose status is returned by the call."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The response object containing the sellers status with regards to the specified payment program."
+        }
+      ]
+    },
+    {
+      "url": "/payments_program/{marketplace_id}/{payments_program_type}/onboarding",
+      "method": "getPaymentsProgramOnboarding",
+      "httpMethod": "get",
+      "tag": "onboarding",
+      "description": "<span class=\"tablenote\"><b>Note:</b> This method is no longer applicable, as all seller accounts globally have been enabled for the new eBay payment and checkout flow.</span><br/><br/>This method retrieves a seller's onboarding status for a payments program for a specified marketplace. The overall onboarding status of the seller and the status of each onboarding step is returned.",
+      "parameters": [
+        {
+          "name": "marketplace_id",
+          "schema": "string",
+          "required": true,
+          "description": "The eBay marketplace ID associated with the onboarding status to retrieve."
+        },
+        {
+          "name": "payments_program_type",
+          "schema": "string",
+          "required": true,
+          "description": "The type of payments program whose status is returned by the method."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Type used by the payments program onboarding response"
+        }
+      ]
+    },
+    {
+      "url": "/privilege",
+      "method": "getPrivileges",
+      "httpMethod": "get",
+      "tag": "privilege",
+      "description": "This method retrieves the seller's current set of privileges, including whether or not the seller's eBay registration has been completed, as well as the details of their site-wide <b>sellingLimt</b> (the amount and quantity they can sell on a given day).",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This type is used by the base response of the <b>getPrivileges</b> method."
+        }
+      ]
+    },
+    {
+      "url": "/program/get_opted_in_programs",
+      "method": "getOptedInPrograms",
+      "httpMethod": "get",
+      "tag": "program",
+      "description": "This method gets a list of the seller programs that the seller has opted-in to.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The base response type of the <b>getOptedInPrograms</b> method."
+        }
+      ]
+    },
+    {
+      "url": "/program/opt_in",
+      "method": "optInToProgram",
+      "httpMethod": "post",
+      "tag": "program",
+      "description": "This method opts the seller in to an eBay seller program. Refer to the <a href=\"/api-docs/sell/account/overview.html#opt-in\" target=\"_blank\">Account API overview</a> for information about available eBay seller programs.<br /><br /><span class=\"tablenote\"><b>Note:</b> It can take up to 24-hours for eBay to process your request to opt-in to a Seller Program. Use the <a href=\"/api-docs/sell/account/resources/program/methods/getOptedInPrograms\" target=\"_blank\">getOptedInPrograms</a> call to check the status of your request after the processing period has passed.</span>",
+      "parameters": [
+        {
+          "name": "programType",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/program/opt_out",
+      "method": "optOutOfProgram",
+      "httpMethod": "post",
+      "tag": "program",
+      "description": "This method opts the seller out of a seller program to which you have previously opted-in to. Get a list of the seller programs you have opted-in to using the <b>getOptedInPrograms</b> call.",
+      "parameters": [
+        {
+          "name": "programType",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rate_table",
+      "method": "getRateTables",
+      "httpMethod": "get",
+      "tag": "rate_table",
+      "description": "This method retrieves a seller's <i>shipping rate tables</i> for the country specified in the <b>country_code</b> query parameter. If you call this method without specifying a country code, the call returns all of the seller's shipping rate tables.  <br/><br/>The method's response includes a <b>rateTableId</b> for each table defined by the seller. This <b>rateTableId</b> value is used in add/revise item call or in create/update fulfillment business policy call to specify the shipping rate table to use for that policy's domestic or international shipping options. <br/><br/>This call currently supports getting rate tables related to the following marketplaces:<ul><li><code>EBAY_AU</code></li> <li><code>EBAY_CA</code></li> <li><code>EBAY_DE</code></li> <li><code>EBAY_ES</code></li> <li><code>EBAY_FR</code></li> <li><code>EBAY_GB</code></li> <li><code>EBAY_IT</code></li> <li><code>EBAY_US</code></li></ul>  <span class=\"tablenote\"><b>Note:</b> Rate tables created with the Trading API might not have been assigned a <b>rateTableId</b> at the time of their creation. This method can assign and return <b>rateTableId</b> values for rate tables with missing IDs if you make a request using the <b>country_code</b> where the seller has defined rate tables.</span>  <br/><br/>Sellers can define up to 40 shipping rate tables for their account, which lets them set up different rate tables for each of the marketplaces they sell into. Go to <a href=\"https://www.ebay.com/ship/rt \">Shipping rate tables</a> in  <b>My eBay</b> to create and update rate tables.",
+      "parameters": [
+        {
+          "name": "country_code",
+          "schema": "string",
+          "required": false,
+          "description": "This query parameter specifies the two-letter <a href=\"https://www.iso.org/iso-3166-country-codes.html \" title=\"https://www.iso.org \" target=\"_blank\">ISO 3166</a> code of country for which you want shipping rate table information. If you do not specify a country code, the request returns all of the seller's defined shipping rate tables for all eBay marketplaces. For implementation help, refer to eBay API documentation at https://developer.ebay.com/api-docs/sell/account/types/ba:CountryCodeEnum"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This type is the base response of the <b>getRateTables</b> method."
+        }
+      ]
+    },
+    {
+      "url": "/return_policy",
+      "method": "getReturnPolicies",
+      "httpMethod": "get",
+      "tag": "return_policy",
+      "description": "This method retrieves all the return policies configured for the marketplace you specify using the <code>marketplace_id</code> query parameter.  <br/><br/><b>Marketplaces and locales</b>  <br/><br/>Get the correct policies for a marketplace that supports multiple locales using the <code>Content-Language</code> request header. For example, get the policies for the French locale of the Canadian marketplace by specifying <code>fr-CA</code> for the <code>Content-Language</code> header. Likewise, target the Dutch locale of the Belgium marketplace by setting <code>Content-Language: nl-BE</code>. For details on header values, see <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank\">HTTP request headers</a>.",
+      "parameters": [
+        {
+          "name": "marketplace_id",
+          "schema": "string",
+          "required": true,
+          "description": "This query parameter specifies the ID of the eBay marketplace of the policy you want to retrieve. For implementation help, refer to eBay API documentation at https://developer.ebay.com/api-docs/sell/account/types/ba:MarketplaceIdEnum"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The response payload for the <b>getReturnPolicies</b> method. <br /><br /><span class=\"tablenote\"><b>Note</b>: Pagination has not yet been enabled for <b>getReturnPolicies</b>, so all of the pagination-related fields are for future use.</span>"
+        }
+      ]
+    },
+    {
+      "url": "/return_policy",
+      "method": "createReturnPolicy",
+      "httpMethod": "post",
+      "tag": "return_policy",
+      "description": "This method creates a new return policy where the policy encapsulates seller's terms for returning items.  <br/><br/>Each policy targets a specific marketplace, and you can create multiple policies for each marketplace. Return policies are not applicable to motor-vehicle listings.<br/><br/>A successful request returns the <b>getReturnPolicy</b> URI to the new policy in the <b>Location</b> response header and the ID for the new policy is returned in the response payload.  <p class=\"tablenote\"><b>Tip:</b> For details on creating and using the business policies supported by the Account API, see <a href=\"/api-docs/sell/static/seller-accounts/business-policies.html\">eBay business policies</a>.</p>",
+      "parameters": [
+        {
+          "name": "categoryTypes",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "extendedHolidayReturnsOffered",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "internationalOverride",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "marketplaceId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "refundMethod",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "restockingFeePercentage",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "returnInstructions",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "returnMethod",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "returnPeriod",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "returnShippingCostPayer",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "returnsAccepted",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "A complex type that is populated with a response containing a return policies."
+        }
+      ]
+    },
+    {
+      "url": "/return_policy/get_by_policy_name",
+      "method": "getReturnPolicyByName",
+      "httpMethod": "get",
+      "tag": "return_policy",
+      "description": "This method retrieves the details of a specific return policy. Supply both the policy <code>name</code> and its associated <code>marketplace_id</code> in the request query parameters.   <br/><br/><b>Marketplaces and locales</b>  <br/><br/>Get the correct policy for a marketplace that supports multiple locales using the <code>Content-Language</code> request header. For example, get a policy for the French locale of the Canadian marketplace by specifying <code>fr-CA</code> for the <code>Content-Language</code> header. Likewise, target the Dutch locale of the Belgium marketplace by setting <code>Content-Language: nl-BE</code>. For details on header values, see <a href=\"/api-docs/static/rest-request-components.html#HTTP\">HTTP request headers</a>.",
+      "parameters": [
+        {
+          "name": "marketplace_id",
+          "schema": "string",
+          "required": true,
+          "description": "This query parameter specifies the ID of the eBay marketplace of the policy you want to retrieve. For implementation help, refer to eBay API documentation at https://developer.ebay.com/api-docs/sell/account/types/ba:MarketplaceIdEnum"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "This query parameter specifies the seller-defined name of the return policy you want to retrieve."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This type is used by the <b>returnPolicy</b> response container, a container which defines a seller's return business policy for a specific marketplace."
+        }
+      ]
+    },
+    {
+      "url": "/return_policy/{return_policy_id}",
+      "method": "deleteReturnPolicy",
+      "httpMethod": "delete",
+      "tag": "return_policy",
+      "description": "This method deletes a return policy. Supply the ID of the policy you want to delete in the <b>returnPolicyId</b> path parameter.",
+      "parameters": [
+        {
+          "name": "return_policy_id",
+          "schema": "string",
+          "required": true,
+          "description": "This path parameter specifies the ID of the return policy you want to delete."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/return_policy/{return_policy_id}",
+      "method": "getReturnPolicy",
+      "httpMethod": "get",
+      "tag": "return_policy",
+      "description": "This method retrieves the complete details of the return policy specified by the <b>returnPolicyId</b> path parameter.",
+      "parameters": [
+        {
+          "name": "return_policy_id",
+          "schema": "string",
+          "required": true,
+          "description": "This path parameter specifies the of the return policy you want to retrieve."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This type is used by the <b>returnPolicy</b> response container, a container which defines a seller's return business policy for a specific marketplace."
+        }
+      ]
+    },
+    {
+      "url": "/return_policy/{return_policy_id}",
+      "method": "updateReturnPolicy",
+      "httpMethod": "put",
+      "tag": "return_policy",
+      "description": "This method updates an existing return policy. Specify the policy you want to update using the <b>return_policy_id</b> path parameter. Supply a complete policy payload with the updates you want to make; this call overwrites the existing policy with the new details specified in the payload.",
+      "parameters": [
+        {
+          "name": "return_policy_id",
+          "schema": "string",
+          "required": true,
+          "description": "This path parameter specifies the ID of the return policy you want to update."
+        },
+        {
+          "name": "categoryTypes",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "extendedHolidayReturnsOffered",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "internationalOverride",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "marketplaceId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "refundMethod",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "restockingFeePercentage",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "returnInstructions",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "returnMethod",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "returnPeriod",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "returnShippingCostPayer",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "returnsAccepted",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A complex type that is populated with a response containing a return policies."
+        }
+      ]
+    },
+    {
+      "url": "/sales_tax",
+      "method": "getSalesTaxes",
+      "httpMethod": "get",
+      "tag": "sales_tax",
+      "description": "Use this call to retrieve all sales tax table entries that the seller has defined for a specific country. All four response fields will be returned for each tax jurisdiction that matches the search criteria. <br/><br/><span class=\"tablenote\"><b>Important!</b> In most US states and territories, eBay now 'collects and remits' sales tax, so sellers can no longer configure sales tax rates for these states/territories.</span>",
+      "parameters": [
+        {
+          "name": "country_code",
+          "schema": "string",
+          "required": true,
+          "description": "This path parameter specifies the two-letter <a href=\"https://www.iso.org/iso-3166-country-codes.html \" title=\"https://www.iso.org \" target=\"_blank\">ISO 3166</a> code for the country whose tax table you want to retrieve. For implementation help, refer to eBay API documentation at https://developer.ebay.com/api-docs/sell/account/types/ba:CountryCodeEnum"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This type is used by the root response of the <b>getSalesTaxes</b> method."
+        }
+      ]
+    },
+    {
+      "url": "/sales_tax/{countryCode}/{jurisdictionId}",
+      "method": "deleteSalesTax",
+      "httpMethod": "delete",
+      "tag": "sales_tax",
+      "description": "This call deletes a sales tax table entry for a jurisdiction. Specify the jurisdiction to delete using the <b>countryCode</b> and <b>jurisdictionId</b> path parameters.",
+      "parameters": [
+        {
+          "name": "countryCode",
+          "schema": "string",
+          "required": true,
+          "description": "This path parameter specifies the two-letter <a href=\"https://www.iso.org/iso-3166-country-codes.html \" title=\"https://www.iso.org \" target=\"_blank\">ISO 3166</a> code for the country whose sales tax table entry you want to delete."
+        },
+        {
+          "name": "jurisdictionId",
+          "schema": "string",
+          "required": true,
+          "description": "This path parameter specifies the ID of the sales tax jurisdiction whose table entry you want to delete. Retrieve valid jurisdiction IDs using <b>getSalesTaxJurisdictions</b> in the Metadata API."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/sales_tax/{countryCode}/{jurisdictionId}",
+      "method": "getSalesTax",
+      "httpMethod": "get",
+      "tag": "sales_tax",
+      "description": "This call gets the current sales tax table entry for a specific tax jurisdiction. Specify the jurisdiction to retrieve using the <b>countryCode</b> and <b>jurisdictionId</b> path parameters. All four response fields will be returned if a sales tax entry exists for the tax jurisdiction. Otherwise, the response will be returned as empty.<br/><br/><span class=\"tablenote\"><b>Important!</b> In most US states and territories, eBay now 'collects and remits' sales tax, so sellers can no longer configure sales tax rates for these states/territories.</span>",
+      "parameters": [
+        {
+          "name": "countryCode",
+          "schema": "string",
+          "required": true,
+          "description": "This path parameter specifies the two-letter <a href=\"https://www.iso.org/iso-3166-country-codes.html \" title=\"https://www.iso.org \" target=\"_blank\">ISO 3166</a> code for the country whose sales tax table you want to retrieve."
+        },
+        {
+          "name": "jurisdictionId",
+          "schema": "string",
+          "required": true,
+          "description": "This path parameter specifies the ID of the sales tax jurisdiction for the tax table entry you want to retrieve. Retrieve valid jurisdiction IDs using <b>getSalesTaxJurisdictions</b> in the Metadata API."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This type is used to provide sales tax settings for a specific tax jurisdiction."
+        }
+      ]
+    },
+    {
+      "url": "/sales_tax/{countryCode}/{jurisdictionId}",
+      "method": "createOrReplaceSalesTax",
+      "httpMethod": "put",
+      "tag": "sales_tax",
+      "description": "This method creates or updates a sales tax table entry for a jurisdiction. Specify the tax table entry you want to configure using the two path parameters: <b>countryCode</b> and <b>jurisdictionId</b>.  <br/><br/>A tax table entry for a jurisdiction is comprised of two fields: one for the jurisdiction's sales-tax rate and another that's a boolean value indicating whether or not shipping and handling are taxed in the jurisdiction.  <br/><br/>You can set up <i>tax tables</i> for countries that support different <i>tax jurisdictions</i>. Currently, only Canada, India, and the US support separate tax jurisdictions. If you sell into any of these countries, you can set up tax tables for any of the country's jurisdictions. Retrieve valid jurisdiction IDs using <b>getSalesTaxJurisdictions</b> in the Metadata API.  <br/><br/>For details on using this call, see <a href=\"/api-docs/sell/static/seller-accounts/tax-tables.html\">Establishing sales-tax tables</a>. <br/><br/><span class=\"tablenote\"><b>Important!</b> In the US, eBay now 'collects and remits' sales tax for every US state except for Missouri (and a few US territories), so sellers can no longer configure sales tax rates for any states except Missouri. With eBay 'collect and remit', eBay calculates the sales tax, collects the sales tax from the buyer, and remits the sales tax to the tax authorities at the buyer's location.</span>",
+      "parameters": [
+        {
+          "name": "countryCode",
+          "schema": "string",
+          "required": true,
+          "description": "This path parameter specifies the two-letter <a href=\"https://www.iso.org/iso-3166-country-codes.html \" title=\"https://www.iso.org \" target=\"_blank\">ISO 3166</a> code for the country for which you want to create a sales tax table entry."
+        },
+        {
+          "name": "jurisdictionId",
+          "schema": "string",
+          "required": true,
+          "description": "This path parameter specifies the ID of the tax jurisdiction for the table entry you want to create. Retrieve valid jurisdiction IDs using <b>getSalesTaxJurisdictions</b> in the Metadata API."
+        },
+        {
+          "name": "salesTaxPercentage",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "shippingAndHandlingTaxed",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/subscription",
+      "method": "getSubscription",
+      "httpMethod": "get",
+      "tag": "subscription",
+      "description": "This method retrieves a list of subscriptions associated with the seller account.",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": "This field is for future use."
+        },
+        {
+          "name": "continuation_token",
+          "schema": "string",
+          "required": false,
+          "description": "This field is for future use."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This type is used by the response payload for the <b>getSubscription</b> method.<br /><br /><span class=\"tablenote\"><b>Note</b>: Pagination has not yet been enabled for <b>getSubscription</b>, so all of the pagination-related fields are for future use.</span>"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.ebay.com{basePath}",
   "apiDescription": "The <b>Account API</b> gives sellers the ability to configure their eBay seller accounts, including the seller's policies (eBay business policies and seller-defined custom policies), opt in and out of eBay seller programs, configure sales tax tables, and get account information.  <br/><br/>For details on the availability of the methods in this API, see <a href=\"/api-docs/sell/account/overview.html#requirements\">Account API requirements and restrictions</a>.",
   "apiTitle": "Account API",

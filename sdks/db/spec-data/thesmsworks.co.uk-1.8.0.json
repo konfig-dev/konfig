@@ -3,6 +3,851 @@
   "openApiRaw": "https://api.thesmsworks.co.uk/api/swagger/swagger.yaml",
   "homepage": "thesmsworks.co.uk",
   "apiVersion": "1.8.0",
+  "methods": [
+    {
+      "url": "/batch/any",
+      "method": "/batch/anyPost",
+      "httpMethod": "post",
+      "tag": "batch messages",
+      "description": "Sends a collection of unique SMS messages. Batches may contain up to 5000 messages at a time.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/batch/schedule",
+      "method": "/batch/schedulePost",
+      "httpMethod": "post",
+      "tag": "batch messages",
+      "description": "Schedules a batch of SMS messages to be sent at the date time you specify",
+      "parameters": [
+        {
+          "name": "content",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "deliveryreporturl",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "destinations",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "schedule",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sender",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "ttl",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "validity",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/batch/send",
+      "method": "/batch/sendPost",
+      "httpMethod": "post",
+      "tag": "batch messages",
+      "description": "Send a single SMS message to multiple recipients.  Batches may contain up to 5000 messages at a time.",
+      "parameters": [
+        {
+          "name": "content",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "deliveryreporturl",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "destinations",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "schedule",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sender",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "ttl",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "validity",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/batch/{batchid}",
+      "method": "/batch/{batchid}Get",
+      "httpMethod": "get",
+      "tag": "batch messages",
+      "description": "Retrieve all messages in a batch with the given batch ID",
+      "parameters": [
+        {
+          "name": "batchid",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the batch you would like returned"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/batches/schedule/{batchid}",
+      "method": "/batches/schedule/{batchid}Delete",
+      "httpMethod": "delete",
+      "tag": "batch messages",
+      "description": "Cancels a scheduled SMS message",
+      "parameters": [
+        {
+          "name": "batchid",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the batch you would like returned"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/credits/balance",
+      "method": "/credits/balanceGet",
+      "httpMethod": "get",
+      "tag": "credits",
+      "description": "Returns the number of credits currently available on the account",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/message/flash",
+      "method": "sendFlashMessage",
+      "httpMethod": "post",
+      "tag": "messages",
+      "description": "Sends an SMS flash message, which appears on the recipients lock screen",
+      "parameters": [
+        {
+          "name": "content",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "deliveryreporturl",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "destination",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "responseemail",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "schedule",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sender",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "ttl",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "validity",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/message/schedule",
+      "method": "/message/schedulePost",
+      "httpMethod": "post",
+      "tag": "messages",
+      "description": "Schedules an SMS message to be sent at the date-time you specify",
+      "parameters": [
+        {
+          "name": "content",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "deliveryreporturl",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "destination",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "responseemail",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "schedule",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sender",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "ttl",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "validity",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/message/send",
+      "method": "/message/sendPost",
+      "httpMethod": "post",
+      "tag": "messages",
+      "description": "Send an SMS Message",
+      "parameters": [
+        {
+          "name": "content",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "deliveryreporturl",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "destination",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "responseemail",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "schedule",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sender",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "ttl",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "validity",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/messages",
+      "method": "/messagesPost",
+      "httpMethod": "post",
+      "tag": "messages",
+      "description": "Retrieve up to 1000 messages matching your search criteria",
+      "parameters": [
+        {
+          "name": "credits",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "destination",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "keyword",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "sender",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "skip",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "unread",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/messages/failed",
+      "method": "/messages/failedPost",
+      "httpMethod": "post",
+      "tag": "messages",
+      "description": "Get failed messages matching your search criteria",
+      "parameters": [
+        {
+          "name": "credits",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "destination",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "keyword",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "sender",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "skip",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "unread",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/messages/inbox",
+      "method": "/messages/inboxPost",
+      "httpMethod": "post",
+      "tag": "messages",
+      "description": "Get unread uncoming messages matching your search criteria",
+      "parameters": [
+        {
+          "name": "credits",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "destination",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "keyword",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "sender",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "skip",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "unread",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/messages/schedule",
+      "method": "/messages/scheduleGet",
+      "httpMethod": "get",
+      "tag": "messages",
+      "description": "Returns a list of messages scheduled from your account, comprising any messages scheduled in the last 3 months and any scheduled to send in the future",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "details of a message scheduled to be sent at a specified date and time"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/messages/schedule/{messageid}",
+      "method": "/messages/schedule/{messageid}Delete",
+      "httpMethod": "delete",
+      "tag": "messages",
+      "description": "Cancels a scheduled SMS message",
+      "parameters": [
+        {
+          "name": "messageid",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the message you would like returned"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/messages/{messageid}",
+      "method": "/messages/{messageid}Delete",
+      "httpMethod": "delete",
+      "tag": "messages",
+      "description": "Delete the message with the mathcing messageid",
+      "parameters": [
+        {
+          "name": "messageid",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the message you would like returned"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/messages/{messageid}",
+      "method": "/messages/{messageid}Get",
+      "httpMethod": "get",
+      "tag": "messages",
+      "description": "Retrieve a logged message by the message ID",
+      "parameters": [
+        {
+          "name": "messageid",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the message you would like returned"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/utils/errors/{errorcode}",
+      "method": "/utils/errors/{errorcode}Get",
+      "httpMethod": "get",
+      "tag": "utils",
+      "description": "Returns a sample error object for the given error code. Useful for designing code to react to errors when they occur for real.",
+      "parameters": [
+        {
+          "name": "errorcode",
+          "schema": "string",
+          "required": true,
+          "description": "The code of the error you would like returned"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/utils/test",
+      "method": "/utils/testGet",
+      "httpMethod": "get",
+      "tag": "utils",
+      "description": "Returns the customer ID to the caller",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.thesmsworks.co.uk/v1",
   "apiDescription": "The SMS Works provides a low-cost, reliable SMS API for developers. Pay only for delivered texts, all failed messages are refunded.",
   "apiTitle": "The SMS Works API",

@@ -3,6 +3,381 @@
   "openApiRaw": "https://weber-gesamtausgabe.de/api/v1/swagger.json",
   "homepage": "weber-gesamtausgabe.de",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/application/newID",
+      "method": "/application/newIdGet",
+      "httpMethod": "get",
+      "tag": "Application",
+      "description": "Create a new WeGA ID",
+      "parameters": [
+        {
+          "name": "docType",
+          "schema": "array",
+          "required": true,
+          "description": "The WeGA document type"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/application/status",
+      "method": "/application/statusGet",
+      "httpMethod": "get",
+      "tag": "Application",
+      "description": "Get status information about the running WeGA-WebApp",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/code/findByElement/{element}",
+      "method": "/code/findByElement/{element}Get",
+      "httpMethod": "get",
+      "tag": "Code Samples",
+      "description": "Finds code samples by XML element",
+      "parameters": [
+        {
+          "name": "element",
+          "schema": "string",
+          "required": true,
+          "description": "The XML element to search for"
+        },
+        {
+          "name": "namespace",
+          "schema": "string",
+          "required": false,
+          "description": "The element namespace. Defaults to the TEI namespace"
+        },
+        {
+          "name": "docType",
+          "schema": "array",
+          "description": "The WeGA document type"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Position of first item to retrieve (starting from 1)"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Number of items to retrieve (200 max)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/documents",
+      "method": "/documentsGet",
+      "httpMethod": "get",
+      "tag": "Documents",
+      "description": "Lists all documents",
+      "parameters": [
+        {
+          "name": "docType",
+          "schema": "array",
+          "description": "The WeGA document type"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Position of first item to retrieve (starting from 1)"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Number of items to retrieve (200 max)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/documents/findByAuthor/{authorID}",
+      "method": "/documents/findByAuthor/{authorId}Get",
+      "httpMethod": "get",
+      "tag": "Documents",
+      "description": "Finds documents by author",
+      "parameters": [
+        {
+          "name": "authorID",
+          "schema": "string",
+          "required": true,
+          "description": "The author ID to search for. Accepted ID formats are WeGA, e.g. A002068 or http://weber-gesamtausgabe.de/A002068, VIAF, e.g. http://viaf.org/viaf/14959938, or  GND, e.g. http://d-nb.info/gnd/118629662\n"
+        },
+        {
+          "name": "docType",
+          "schema": "array",
+          "description": "The WeGA document type"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Position of first item to retrieve (starting from 1)"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Number of items to retrieve (200 max)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/documents/findByDate",
+      "method": "/documents/findByDateGet",
+      "httpMethod": "get",
+      "tag": "Documents",
+      "description": "Finds documents by date",
+      "parameters": [
+        {
+          "name": "fromDate",
+          "schema": "string",
+          "required": true,
+          "description": "The min date to search for"
+        },
+        {
+          "name": "toDate",
+          "schema": "string",
+          "required": false,
+          "description": "The max date to search for"
+        },
+        {
+          "name": "docType",
+          "schema": "array",
+          "description": "The WeGA document type"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Position of first item to retrieve (starting from 1)"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Number of items to retrieve (200 max)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/documents/findByMention/{docID}",
+      "method": "/documents/findByMention/{docId}Get",
+      "httpMethod": "get",
+      "tag": "Documents",
+      "description": "Finds documents by reference",
+      "parameters": [
+        {
+          "name": "docID",
+          "schema": "string",
+          "required": true,
+          "description": "The document ID that is to be mentioned. Accepted ID formats are WeGA, e.g. A002068 or http://weber-gesamtausgabe.de/A002068, VIAF, e.g. http://viaf.org/viaf/14959938, or  GND, e.g. http://d-nb.info/gnd/118629662\n"
+        },
+        {
+          "name": "docType",
+          "schema": "array",
+          "description": "The WeGA document type"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Position of first item to retrieve (starting from 1)"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Number of items to retrieve (200 max)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/documents/{docID}",
+      "method": "/documents/{docId}Get",
+      "httpMethod": "get",
+      "tag": "Documents",
+      "description": "Returns documents by ID",
+      "parameters": [
+        {
+          "name": "docID",
+          "schema": "string",
+          "required": true,
+          "description": "The document identifier to search for"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/facets/{facet}",
+      "method": "/facets/{facet}Get",
+      "httpMethod": "get",
+      "tag": "Facets",
+      "description": "Returns facets",
+      "parameters": [
+        {
+          "name": "facet",
+          "schema": "string",
+          "required": true,
+          "description": "The facet to search for"
+        },
+        {
+          "name": "scope",
+          "schema": "string",
+          "required": true,
+          "description": "The scope of the result set, i.e. 'indices' or a WeGA ID"
+        },
+        {
+          "name": "term",
+          "schema": "string",
+          "description": "The search term to be looked for in the facet's label"
+        },
+        {
+          "name": "docType",
+          "schema": "array",
+          "required": true,
+          "description": "The WeGA document type"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Position of first item to retrieve (starting from 1)"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Number of items to retrieve (200 max)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/search/entity",
+      "method": "/search/entityGet",
+      "httpMethod": "get",
+      "tag": "Search",
+      "description": "Search for a WeGA entity",
+      "parameters": [
+        {
+          "name": "docType",
+          "schema": "array",
+          "description": "The WeGA document type"
+        },
+        {
+          "name": "q",
+          "schema": "string",
+          "description": "The query string"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Position of first item to retrieve (starting from 1)"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Number of items to retrieve (200 max)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://localhost:8080/exist/apps/WeGA-WebApp/api/v1",
   "apiDescription": "⚠️<b>DEPRECATION WARNING</b>⚠️<br/>This version of the WeGA API specification is outdated and superseded by [version 1.1.0](https://weber-gesamtausgabe.de/api/v1/openapi.json).  <br/> <br/> For feedback or requests about this API please contact stadler@weber-gesamtausgabe.de or start the discussion at https://github.com/Edirom/WeGA-WebApp",
   "apiTitle": "WeGA API",

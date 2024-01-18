@@ -3,6 +3,597 @@
   "openApiRaw": "https://api.slideroom.com/schema/v2",
   "homepage": "slideroom.com",
   "apiVersion": "v2",
+  "methods": [
+    {
+      "url": "/api/v2/applicant/attributes",
+      "method": "applicantDeleteAttributesV2",
+      "httpMethod": "delete",
+      "tag": "Applicant",
+      "description": "Deletes a custom attribute for an applicant.",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": "The email address of the applicant."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "The name of the attribute to be deleted."
+        },
+        {
+          "name": "pool",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "commonAppYear",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/applicant/attributes",
+      "method": "applicantGetAttributesV2",
+      "httpMethod": "get",
+      "tag": "Applicant",
+      "description": "Gets the custom attributes for an applicant.",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": "The email address of the applicant."
+        },
+        {
+          "name": "pool",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "commonAppYear",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/applicant/attributes",
+      "method": "applicantPostAttributesV2",
+      "httpMethod": "post",
+      "tag": "Applicant",
+      "description": "Updates the custom attributes for an applicant.",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": "The email address of the applicant."
+        },
+        {
+          "name": "pool",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "commonAppYear",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/applicant/attributes/names",
+      "method": "applicantGetAttributeNamesV2",
+      "httpMethod": "get",
+      "tag": "Applicant",
+      "description": "Gets the custom applicant attributes used by the organization.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/application/attributes/names",
+      "method": "applicationGetAttributeNamesV2",
+      "httpMethod": "get",
+      "tag": "Application",
+      "description": "Gets the custom application attributes used by the organization.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/application/request-export",
+      "method": "applicationRequestExportV2",
+      "httpMethod": "post",
+      "tag": "Application",
+      "description": "Requests the generation of application export files (tabular, pdf, zip).",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "roundType",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "roundName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "tab.export",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pdf.includeForms",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pdf.includeReferences",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pdf.includeMedia",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pdf.includeApplicantAttachments",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pdf.includeOrganizationAttachments",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pdf.includeRatings",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pdf.includeFullPageMedia",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pdf.includeHighlights",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pdf.includeComments",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pdf.includeCommonApp",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "zip.originalMedia",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "zip.includeForms",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "zip.includeReferences",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "zip.includeMedia",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "zip.includeApplicantAttachments",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "zip.includeOrganizationAttachments",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "zip.includeRatings",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "zip.includeComments",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "zip.includeCommonApp",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "delivery.account",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "delivery.folder",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "since",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pool",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "searchName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/application/{applicationId}/attributes",
+      "method": "applicationDeleteAttributesV2",
+      "httpMethod": "delete",
+      "tag": "Application",
+      "description": "Deletes a custom attribute for an application.",
+      "parameters": [
+        {
+          "name": "applicationId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the application."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "The name of the attribute to be deleted."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/application/{applicationId}/attributes",
+      "method": "applicationGetAttributesV2",
+      "httpMethod": "get",
+      "tag": "Application",
+      "description": "Gets the custom attributes for an application.",
+      "parameters": [
+        {
+          "name": "applicationId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the application."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/application/{applicationId}/attributes",
+      "method": "applicationPostAttributesV2",
+      "httpMethod": "post",
+      "tag": "Application",
+      "description": "Updates the custom attributes for an application. API Import is available in the Advanced Plan.",
+      "parameters": [
+        {
+          "name": "applicationId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the application."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/application/{applicationId}/request-export",
+      "method": "applicationRequestExportByApplicationIdV2",
+      "httpMethod": "post",
+      "tag": "Application",
+      "description": "Requests the generation of a single application export file (tabular, pdf, zip).",
+      "parameters": [
+        {
+          "name": "applicationId",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the application to export"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "roundType",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "roundName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "tab.export",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pdf.includeForms",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pdf.includeReferences",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pdf.includeMedia",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pdf.includeApplicantAttachments",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pdf.includeOrganizationAttachments",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pdf.includeRatings",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pdf.includeFullPageMedia",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pdf.includeHighlights",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pdf.includeComments",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pdf.includeCommonApp",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "zip.originalMedia",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "zip.includeForms",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "zip.includeReferences",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "zip.includeMedia",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "zip.includeApplicantAttachments",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "zip.includeOrganizationAttachments",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "zip.includeRatings",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "zip.includeComments",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "zip.includeCommonApp",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "delivery.account",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "delivery.folder",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/export/{token}",
+      "method": "exportGetV2",
+      "httpMethod": "get",
+      "tag": "Export",
+      "description": "Gets the status/result of a requested export.",
+      "parameters": [
+        {
+          "name": "token",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.slideroom.com",
   "apiDescription": "SlideRoom provides a RESTful API for exporting data out of your organizations SlideRoom account.",
   "apiTitle": "SlideRoom API V2",

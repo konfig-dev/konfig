@@ -3,6 +3,1095 @@
   "openApiRaw": "https://docs.truora.com/openapi.json",
   "homepage": "truora.com",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/v1/behavior",
+      "method": "reportBehavior",
+      "httpMethod": "post",
+      "tag": "behavior",
+      "description": "Report Behavior",
+      "parameters": [
+        {
+          "name": "birth_date",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "country",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "document_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "document_type",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "feedback_date",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "first_name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "last_name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "phone_number",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reason",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Represents behaviour search results"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/checks",
+      "method": "listChecks",
+      "httpMethod": "get",
+      "tag": "checks",
+      "description": "List Checks",
+      "parameters": [
+        {
+          "name": "start_key",
+          "schema": "string",
+          "required": false,
+          "description": "Start key value for the pagination"
+        },
+        {
+          "name": "report_id",
+          "schema": "string",
+          "description": "Report id checks to be returned"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents the results of a background check search"
+        }
+      ]
+    },
+    {
+      "url": "/v1/checks",
+      "method": "createCheck",
+      "httpMethod": "post",
+      "tag": "checks",
+      "description": "Create a background check",
+      "parameters": [
+        {
+          "name": "Truora-Priority",
+          "schema": "string",
+          "required": false,
+          "description": "Describes the background check priority. The amount of high priority checks is limited by country. Medium priority is used by default"
+        },
+        {
+          "name": "birth_certificate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "company_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "date_of_birth",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "diplomatic_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "driver_license",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "escrow",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "first_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "force_creation",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "foreign_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "issue_date",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "last_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "license_plate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "national_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "native_country",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "owner_document_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "owner_document_type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "passport",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "payment_date",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pep",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "phone_number",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "professional_card",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "ptp",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "region",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "report_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "state_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "tax_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user_authorized",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "vehicle_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "verification_code",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "watch",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Represents the result of a background check search"
+        },
+        {
+          "statusCode": "400",
+          "description": "The error type is returned when an error occurred in the platform.\n\nError codes include:\n\n- 10404: resource was not found"
+        },
+        {
+          "statusCode": "429",
+          "description": "The error type is returned when an error occurred in the platform.\n\nError codes include:\n\n- 10404: resource was not found"
+        }
+      ]
+    },
+    {
+      "url": "/v1/checks/health",
+      "method": "getHealthDashboard",
+      "httpMethod": "get",
+      "tag": "checks",
+      "description": "Get Health Dashboard",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "description": "Country in ISO 3166, uppercase"
+        },
+        {
+          "name": "unixTimestampSeconds",
+          "schema": "string",
+          "description": "Unix timestamp in seconds. Send a day timestamp to view the database hourly status for that day or send the current time to know the current database status"
+        },
+        {
+          "name": "unixtimezoneOffsetSeconds",
+          "schema": "string",
+          "description": "Offset between the local time and the UTC time in seconds. (e.g., Colombia is at UTC -18000 seconds)\r\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/checks/{check_id}",
+      "method": "getCheck",
+      "httpMethod": "get",
+      "tag": "checks",
+      "description": "Get Background Check",
+      "parameters": [
+        {
+          "name": "check_id",
+          "schema": "string",
+          "required": true,
+          "description": "Check ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents the result of a background check search"
+        },
+        {
+          "statusCode": "404",
+          "description": "The error type is returned when an error occurred in the platform.\n\nError codes include:\n\n- 10404: resource was not found"
+        }
+      ]
+    },
+    {
+      "url": "/v1/checks/{check_id}/details",
+      "method": "listCheckDetails",
+      "httpMethod": "get",
+      "tag": "checks",
+      "description": "List Check Details",
+      "parameters": [
+        {
+          "name": "start_key",
+          "schema": "string",
+          "required": false,
+          "description": "Start key value for the pagination"
+        },
+        {
+          "name": "lang",
+          "schema": "string",
+          "description": "This parameter is used to specify the language wanted for details, if not specified details will come in their original language."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a list of background check details"
+        }
+      ]
+    },
+    {
+      "url": "/v1/checks/{check_id}/pdf",
+      "method": "getPdf",
+      "httpMethod": "get",
+      "tag": "pdf",
+      "description": "Get PDF",
+      "parameters": [
+        {
+          "name": "lang",
+          "schema": "string",
+          "description": "Used to specify the language for the PDF, if not specified the PDF will be downloaded in Spanish."
+        },
+        {
+          "name": "check_id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the check"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/checks/{check_id}/pdf",
+      "method": "createPdf",
+      "httpMethod": "post",
+      "tag": "pdf",
+      "description": "Create PDF",
+      "parameters": [
+        {
+          "name": "check_id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the check"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/config",
+      "method": "deleteCustomType",
+      "httpMethod": "delete",
+      "tag": "custom-type",
+      "description": "Delete Custom Type",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the custom type to be deleted"
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "description": "Country where the custom type is valid"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/config",
+      "method": "listScoreConfigs",
+      "httpMethod": "get",
+      "tag": "custom-type",
+      "description": "List Score Configurations",
+      "parameters": [
+        {
+          "name": "start_key",
+          "schema": "string",
+          "description": "The key to start the pagination"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The result of an operation that returns multiple score configs"
+        }
+      ]
+    },
+    {
+      "url": "/v1/config",
+      "method": "createScoreConfig",
+      "httpMethod": "post",
+      "tag": "custom-type",
+      "description": "Create Score Configurations",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "dataset_affiliations_and_insurances",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dataset_alert_in_media",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dataset_business_background",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dataset_criminal_record",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dataset_driving_licenses",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dataset_international_background",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dataset_legal_background",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dataset_personal_identity",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dataset_professional_background",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dataset_taxes_and_finances",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dataset_traffic_fines",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dataset_vehicle_information",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dataset_vehicle_permits",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Represents a list of score configurations that apply in the country"
+        },
+        {
+          "statusCode": "400",
+          "description": "The error type is returned when an error occurred in the platform.\n\nError codes include:\n\n- 10404: resource was not found"
+        }
+      ]
+    },
+    {
+      "url": "/v1/config",
+      "method": "updateCustomType",
+      "httpMethod": "put",
+      "tag": "custom-type",
+      "description": "Update Custom Type",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "dataset_affiliations_and_insurances",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dataset_alert_in_media",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dataset_business_background",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dataset_criminal_record",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dataset_driving_licenses",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dataset_international_background",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dataset_legal_background",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dataset_personal_identity",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dataset_professional_background",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dataset_taxes_and_finances",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dataset_traffic_fines",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dataset_vehicle_information",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dataset_vehicle_permits",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/continuous-checks",
+      "method": "listContinuousChecks",
+      "httpMethod": "get",
+      "tag": "continuous",
+      "description": "Lists all continuous checks",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents to ListContinuousChecksOutput"
+        }
+      ]
+    },
+    {
+      "url": "/v1/continuous-checks",
+      "method": "createContinuousCheck",
+      "httpMethod": "post",
+      "tag": "continuous",
+      "description": "Creates a continuous check that will run background checks recurrently according to the frequency provided.",
+      "parameters": [
+        {
+          "name": "check_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "frequency",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Continuous check allows for background checks to be performed on the same people or vehicles periodically and notifies if new information is found. Allowing companies to keep an eye on their workforce or vehicle fleet for any recent wrongdoing they might be involved in."
+        },
+        {
+          "statusCode": "400",
+          "description": "The error type is returned when an error occurred in the platform.\n\nError codes include:\n\n- 10404: resource was not found"
+        }
+      ]
+    },
+    {
+      "url": "/v1/continuous-checks/{continuous_check_id}",
+      "method": "getContinuousCheck",
+      "httpMethod": "get",
+      "tag": "continuous",
+      "description": "Lists history associated with a Check. It can be paginated",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Continuous check allows for background checks to be performed on the same people or vehicles periodically and notifies if new information is found. Allowing companies to keep an eye on their workforce or vehicle fleet for any recent wrongdoing they might be involved in."
+        }
+      ]
+    },
+    {
+      "url": "/v1/continuous-checks/{continuous_check_id}",
+      "method": "updateContinuousCheck",
+      "httpMethod": "put",
+      "tag": "continuous",
+      "description": "Updates a continuous check",
+      "parameters": [
+        {
+          "name": "frequency",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Continuous check allows for background checks to be performed on the same people or vehicles periodically and notifies if new information is found. Allowing companies to keep an eye on their workforce or vehicle fleet for any recent wrongdoing they might be involved in."
+        }
+      ]
+    },
+    {
+      "url": "/v1/continuous-checks/{continuous_check_id}/history",
+      "method": "/v1/continuousChecks/{continuousCheckId}/historyGet",
+      "httpMethod": "get",
+      "tag": "continuous",
+      "description": "Lists background check logs. It can be paginated\r\n",
+      "parameters": [
+        {
+          "name": "continuous_check_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "GetContiuousCheckHistoryOutput"
+        }
+      ]
+    },
+    {
+      "url": "/v1/hooks",
+      "method": "listHook",
+      "httpMethod": "get",
+      "tag": "hooks",
+      "description": "Lists all hooks",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents the output of lists hooks request."
+        }
+      ]
+    },
+    {
+      "url": "/v1/hooks",
+      "method": "createHook",
+      "httpMethod": "post",
+      "tag": "hooks",
+      "description": "Creates a hook subscription",
+      "parameters": [
+        {
+          "name": "actions",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "event_type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "subscriber_address",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "subscriber_language",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "subscriber_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "subscriber_type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "subscriber_url",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Represents a hook configuration"
+        }
+      ]
+    },
+    {
+      "url": "/v1/hooks/{hook_id}",
+      "method": "deletHook",
+      "httpMethod": "delete",
+      "tag": "hooks",
+      "description": "Deletes hook",
+      "parameters": [
+        {
+          "name": "hook_id",
+          "schema": "string",
+          "required": true,
+          "description": "Hook ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/hooks/{hook_id}",
+      "method": "updateHook",
+      "httpMethod": "put",
+      "tag": "hooks",
+      "description": "Updates hook",
+      "parameters": [
+        {
+          "name": "hook_id",
+          "schema": "string",
+          "required": true,
+          "description": "Hook ID"
+        },
+        {
+          "name": "actions",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "event_type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "subscriber_address",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "subscriber_language",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "subscriber_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "subscriber_type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "subscriber_url",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a hook configuration"
+        },
+        {
+          "statusCode": "400",
+          "description": "The error type is returned when an error occurred in the platform.\n\nError codes include:\n\n- 10404: resource was not found"
+        }
+      ]
+    },
+    {
+      "url": "/v1/reports",
+      "method": "listReports",
+      "httpMethod": "get",
+      "tag": "reports",
+      "description": "List Reports",
+      "parameters": [
+        {
+          "name": "start_key",
+          "schema": "string",
+          "required": false,
+          "description": "Start value for pagination."
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "description": "filter reports created by the specified username"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents the result of report searches"
+        }
+      ]
+    },
+    {
+      "url": "/v1/reports",
+      "method": "createReport",
+      "httpMethod": "post",
+      "tag": "reports",
+      "description": "Create Report",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Reprents the report creation result"
+        },
+        {
+          "statusCode": "400",
+          "description": "Reprents the report creation result"
+        }
+      ]
+    },
+    {
+      "url": "/v1/reports/{report_id}",
+      "method": "getReport",
+      "httpMethod": "get",
+      "tag": "reports",
+      "description": "Get Report",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Reprents the report creation result"
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/reports/{report_id}/upload",
+      "method": "batchUpload",
+      "httpMethod": "post",
+      "tag": "reports",
+      "description": "Batch Upload",
+      "parameters": [
+        {
+          "name": "file",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Reprents the report creation result"
+        },
+        {
+          "statusCode": "400",
+          "description": "The error type is returned when an error occurred in the platform.\n\nError codes include:\n\n- 10404: resource was not found"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.truora.com",
   "apiDescription": "**NOTE:** This is a preview of the API and it is not considered stable since refinements are still being made.\n\n# Introduction\n\nWelcome to the  **Truora Check** [**RESTful API**](https://en.wikipedia.org/wiki/Representational_state_transfer) reference. You may also want to check out our [**Validations API docs**](https://docs.validations.truora.com/) or our [**Signals API docs**](https://docs.signals.truora.com/).\n\nTruora Check API allows performing full background checks on people, vehicles and companies. There are three main types of background checks:\n\n- **Personal background check**: Verifies national IDs in multiple databases of public and legal entities in the LATAM region. For every national ID, returns information on: personal identity, criminal records, international background check, and professional background.\n\n- **Vehicle background check**: Verifies the vehicle documents and the owner identity in multiple databases of public and legal entities in the LATAM region. For every vehicle and owner type, returns information on: personal identity, driving records, criminal records, and vehicle information.  \n\n- **Company background check**: Verifies the tax ID or a company name in multiple databases of public and legal entities in the LATAM region. For every company, returns the associated: business status, legal and criminal records, and media reports.\n\n# API Key V1 is live!\n\nAPI key version 1 is now live. Users with version 0 API keys are not immediately required to upgrade to V1 but should plan to do so at their earliest convenience. The changes for integration with API keys v1 are as follows:\n\n- The field ``user_authorized`` is now required to perform person checks. This field indicates the API user has authorization to perform the check in compliance with data protection law.\n- The field ``homonym_scores`` is no longer included in our person check response as its results are already included in the body of the check and keeping them duplicated is generating unnecessary confusion.\n\n\n# API composition\n\n## Endpoints\n\n- **Check endpoints**: Provide an easy way to create and search for a background check. They also allow inserting groups of checks into reports. Each check contains scores, datasets and databases.\n \n```plain\nhttps://api.truora.com/v1/checks\n```\n\n- **Report endpoints**: Support batch uploads and grouping multiple checks together. Excel and .csv files are supported for batch uploads.\n \n```plain\nhttps://api.truora.com/v1/reports\n```\n\n- **Configuration endpoints**: Allows personalizing data sets and scores for customized background checks.\n\n```plain\nhttps://api.truora.com/v1/config\n```\n\n- **Continuous check endpoints**: Allows creating recurring checks and get notified whenever a change in the check score occurs.\n\n```plain\nhttps://api.truora.com/v1/continuous_checks\n```\n\n- **Behavior endpoints**: Allows sharing anonymous feedback about a person behavior when interacting with the company.\n\n```plain\nhttps://api.truora.com/v1/behaviour\n```\n\n- **Hooks endpoints**: Allows sending notifications via requests to your service or another third-party service whenever certain events occur.\n\n```plain\nhttps://api.truora.com/v1/hooks\n```\n\n## Datasets\n\nCategories that group the resulting information for background checks from databases are called datasets. Datasets are divided in:\n\n- **Personal identity**: Corroborates the existence and validates personal identity documents. \n\n- **Criminal record**: Checks for crimes according to each country penal code or criminal code. Keep in mind that data aged less than 10 years is usually more consistent.\n\n- **Legal background**: Checks for lawsuits filed. Keep in mind that data aged less than 10 years is usually more consistent.\n\n- **International background**: Checks international lists for crimes related to identity theft, money laundering, terrorist financing, and high crimes.\n\n- **Professional background**: Checks professional regulatory entities for relevant information.\n\n- **Affiliations and insurances**: Checks the history and status of social security affiliations.\n\n- **Alert in media**: Checks major media agencies for relevant news related to violent actions.    \n\n- **Vehicle information**: Checks for the physical characteristics of the vehicle, technical status, insurance history, and other relevant information.\n\n- **Traffic fines**: Checks for outstanding traffic fines.\n\n- **Driving licenses**: Shows information relevant to the driver. Such as license status and driver certificates.\n\n- **Business background**: Checks for business status, legal and criminal history, and other relevant information.\n\n- **Taxes and Finances**: Checks for the information related to personal finances, liabilities, and taxes.\n\n## Requests Format\n\nThe POST requests receive a body that must be encoded in `www-x-form-urlencoded`, for instance:\n\n```plain\ntype=person&national_id=123456&country=CO\n```\n\nThe responses are always encoded in `JSON` format.\n\n## Errors\n\nWhenever there is an error, a JSON with the following format is returned:\n\n```json\n{\n    \"code\": <Truora error code>,\n    \"http_code\": <The HTTP status of the response>,\n    \"message\": <The error message>\n}\n```\n\nfor instance:\n\n```json\n{\n    \"code\": 10404,\n    \"http_code\": 404,\n    \"message\": \"The Check was not found\"\n}\n```\n\n## SDKs\n\nIf your favorite language was not on the next list, You can use our [OpenAPI 3 spec](https://docs.truora.com/openapi.json) to generate it using the [Open API Generator](https://openapi-generator.tech/docs/installation).\n\nTo download the SDK click on the desired programming language:\n\n- [C# .Net Core](https://truora-sdk.s3.amazonaws.com/checks/checks_csharp-netcore_latest.zip)\n\n- [Elixir](https://truora-sdk.s3.amazonaws.com/checks/checks_elixir_latest.zip)\n\n- [Go](https://truora-sdk.s3.amazonaws.com/checks/checks_go_latest.zip)\n\n- [Java](https://truora-sdk.s3.amazonaws.com/checks/checks_java_latest.zip)\n\n- [JavaScript](https://truora-sdk.s3.amazonaws.com/checks/checks_javascript_latest.zip)\n\n- [Objc](https://truora-sdk.s3.amazonaws.com/checks/checks_objc_latest.zip)\n\n- [Php](https://truora-sdk.s3.amazonaws.com/checks/checks_php_latest.zip)\n\n- [Python](https://truora-sdk.s3.amazonaws.com/checks/checks_python_latest.zip)\n\n- [Ruby](https://truora-sdk.s3.amazonaws.com/checks/checks_ruby_latest.zip)\n\nYou can see the full list of supported platforms here:\n\nhttps://openapi-generator.tech/docs/generators\n\n\n",
   "apiTitle": "Checks API",

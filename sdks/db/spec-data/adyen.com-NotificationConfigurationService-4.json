@@ -4,6 +4,253 @@
   "homepage": "adyen.com",
   "serviceName": "NotificationConfigurationService",
   "apiVersion": "4",
+  "methods": [
+    {
+      "url": "/createNotificationConfiguration",
+      "method": "postCreateNotificationConfiguration",
+      "httpMethod": "post",
+      "tag": "General",
+      "description": "Subscribe to notifications",
+      "parameters": [
+        {
+          "name": "configurationDetails",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/deleteNotificationConfigurations",
+      "method": "postDeleteNotificationConfigurations",
+      "httpMethod": "post",
+      "tag": "General",
+      "description": "Delete a notification subscription configuration",
+      "parameters": [
+        {
+          "name": "notificationIds",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/getNotificationConfiguration",
+      "method": "postGetNotificationConfiguration",
+      "httpMethod": "post",
+      "tag": "General",
+      "description": "Get a notification subscription configuration",
+      "parameters": [
+        {
+          "name": "notificationId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/getNotificationConfigurationList",
+      "method": "postGetNotificationConfigurationList",
+      "httpMethod": "post",
+      "tag": "General",
+      "description": "Get a list of notification subscription configurations",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/testNotificationConfiguration",
+      "method": "postTestNotificationConfiguration",
+      "httpMethod": "post",
+      "tag": "General",
+      "description": "Test a notification configuration",
+      "parameters": [
+        {
+          "name": "eventTypes",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "notificationId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/updateNotificationConfiguration",
+      "method": "postUpdateNotificationConfiguration",
+      "httpMethod": "post",
+      "tag": "General",
+      "description": "Update a notification subscription configuration",
+      "parameters": [
+        {
+          "name": "configurationDetails",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://cal-test.adyen.com/cal/services/Notification/v4",
   "apiDescription": "This API is used for the classic integration. If you are just starting your implementation, refer to our [new integration guide](https://docs.adyen.com/marketplaces-and-platforms) instead.\n\nThe Notification Configuration API provides endpoints for setting up and testing notifications that inform you of events on your platform, for example when a verification check or a payout has been completed.\n\nFor more information, refer to our [documentation](https://docs.adyen.com/marketplaces-and-platforms/classic/notifications).\n## Authentication\nYour Adyen contact will provide your API credential and an API key. To connect to the API, add an `X-API-Key` header with the API key as the value, for example:\n\n ```\ncurl\n-H \"Content-Type: application/json\" \\\n-H \"X-API-Key: YOUR_API_KEY\" \\\n...\n```\n\nAlternatively, you can use the username and password to connect to the API using basic authentication. For example:\n\n```\ncurl\n-U \"ws@MarketPlace.YOUR_PLATFORM_ACCOUNT\":\"YOUR_WS_PASSWORD\" \\\n-H \"Content-Type: application/json\" \\\n...\n```\nWhen going live, you need to generate new web service user credentials to access the [live endpoints](https://docs.adyen.com/development-resources/live-endpoints).\n\n## Versioning\nThe Notification Configuration API supports [versioning](https://docs.adyen.com/development-resources/versioning) using a version suffix in the endpoint URL. This suffix has the following format: \"vXX\", where XX is the version number.\n\nFor example:\n```\nhttps://cal-test.adyen.com/cal/services/Notification/v4/createNotificationConfiguration\n```",
   "apiTitle": "Notification Configuration API",

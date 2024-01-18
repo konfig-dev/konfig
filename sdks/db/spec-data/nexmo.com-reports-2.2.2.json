@@ -4,6 +4,238 @@
   "homepage": "nexmo.com",
   "serviceName": "reports",
   "apiVersion": "2.2.2",
+  "methods": [
+    {
+      "url": "/v2/reports",
+      "method": "listReports",
+      "httpMethod": "get",
+      "description": "List reports",
+      "parameters": [
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": true,
+          "description": "The account for which the list of reports will be queried."
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": true,
+          "description": "A comma-separated list of report status values. Reports with any of the statuses specified are returned. The values in the comma-seperated list specified for `status` can be any of `PENDING`, `PROCESSING`, `SUCCESS`, `ABORTED`, `FAILED`, `TRUNCATED`."
+        },
+        {
+          "name": "date_from",
+          "schema": "string",
+          "description": "ISO-8601 extended time zone offset or ISO-8601 UTC zone offset formatted date from which the list of reports will be queried. Format `yyyy-mm-ddThh:mm:ss[.sss]±hh:mm` or `yyyy-mm-ddThh:mm:ss[.sss]Z`."
+        },
+        {
+          "name": "date_to",
+          "schema": "string",
+          "description": "ISO-8601 extended time zone offset or ISO-8601 UTC zone offset formatted date until which the list of reports will be queried. Format `yyyy-mm-ddThh:mm:ss[.sss]±hh:mm` or `yyyy-mm-ddThh:mm:ss[.sss]Z`."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/reports",
+      "method": "createAsyncReport",
+      "httpMethod": "post",
+      "description": "Create an asynchronous report",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/reports/records",
+      "method": "getRecords",
+      "httpMethod": "get",
+      "description": "Load records synchronously",
+      "parameters": [
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": true,
+          "description": "The account for which the list of reports will be queried."
+        },
+        {
+          "name": "product",
+          "schema": "string",
+          "required": true,
+          "description": "The product to return records for"
+        },
+        {
+          "name": "direction",
+          "schema": "string",
+          "description": "Direction of the communication, either `inbound` (received by our services), or `outbound` (originated from our services). Required for products `SMS` and `MESSAGES`. Optional for `VOICE-CALL`. Invalid for `IN-APP-VOICE`, `CONVERSATIONS`, `NUMBER-INSIGHT`, `VERIFY-API`."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": "The UUID of the message or call to be searched for. You can specify a comma-separated list of UUIDs. If UUIDs are not found they are listed in the response in the `ids_not_found` field.\n\nIf you specify `id`, you must not specify `status`, `date_start` or `date_end`.\n"
+        },
+        {
+          "name": "date_start",
+          "schema": "string",
+          "description": "ISO-8601 extended time zone offset or ISO-8601 UTC zone offset formatted date (format `yyyy-mm-ddThh:mm:ss[.sss]±hh:mm` or `yyyy-mm-ddThh:mm:ss[.sss]Z`) for when reports should begin. \n\nIt filters on the time the API call was received by Vonage and corresponds to the field `date_received` (`date_start` for Voice) in the report file. It is inclusive, i.e. the provided value is less than or equal to the value in the field `date_received` (`date_start` for Voice) in the CDR.\n\nIf you provide this, you must provide `date_end` and must not provide `id`.\n"
+        },
+        {
+          "name": "date_end",
+          "schema": "string",
+          "description": "**Must be no more than 24 hours later than `date_start`**\n\nISO-8601 extended time zone offset or ISO-8601 UTC zone offset formatted date (format `yyyy-mm-ddThh:mm:ss[.sss]±hh:mm` or `yyyy-mm-ddThh:mm:ss[.sss]Z`) for when report should end.\n\nIt is exclusive, i.e. the provided value is strictly greater than the value in the field `date_received` in the CDR.\n\nIf you provide this, you must provide `date_start` and must not provide `id`.\n"
+        },
+        {
+          "name": "include_message",
+          "schema": "boolean",
+          "description": "Include the message contents in the records. Only applicable for use with products `SMS` and `MESSAGES`, where it is optional."
+        },
+        {
+          "name": "show_concatenated",
+          "schema": "boolean",
+          "description": "Indicates whether the SMS was split up into multiple parts (due to its length)."
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": "The SMS status to search for. Optional where product is `SMS`."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/reports/{report_id}",
+      "method": "cancelReport",
+      "httpMethod": "delete",
+      "description": "Cancel the execution of a report",
+      "parameters": [
+        {
+          "name": "report_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the report"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/reports/{report_id}",
+      "method": "getReport",
+      "httpMethod": "get",
+      "description": "Get status of report",
+      "parameters": [
+        {
+          "name": "report_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the report request (`request_id` in response)."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v3/media/{file_id}",
+      "method": "downloadReport",
+      "httpMethod": "get",
+      "description": "Get report data",
+      "parameters": [
+        {
+          "name": "file_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the file."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.nexmo.com",
   "apiDescription": "The [Reports API](/reports/overview) enables you to request a report of activity for your Vonage account.\n\nDepending on your query pattern, you can choose from one of the two versions of the Reports API: asynchronous and synchronous. The asynchronous version is optimized for infrequent and large data queries (from several records to tens of millions). The synchronous version is optimized for frequent and periodic retrievals of small batches of data records (from one record to tens of thousand per query).\n\nOnly synchronous version supports retrival of data records by message/record ID.\n\nVonage recommends that you limit asynchronous queries to a maximum of 20 million records, by setting the start and end dates accordingly. On average, the asynchronous Reports API takes 5 - 10 minutes to generate 1 million records.\n",
   "apiTitle": "Reports API",

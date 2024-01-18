@@ -3,6 +3,1098 @@
   "openApiRaw": "https://docs.atlassian.com/fisheye-crucible/latest_backup/wadl/fecru.wadl",
   "homepage": "fecru.local",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/rest-service-fecru/admin/groups/",
+      "method": "/restServiceFecru/admin/groups/Get",
+      "httpMethod": "get",
+      "description": "Retrieve a page of groups.",
+      "parameters": [
+        {
+          "name": "prefix",
+          "schema": "string",
+          "required": false,
+          "description": "filter groups by name prefix"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/groups/",
+      "method": "/restServiceFecru/admin/groups/Post",
+      "httpMethod": "post",
+      "description": "Creates a new user group.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/groups/{name}",
+      "method": "/restServiceFecru/admin/groups/{name}Delete",
+      "httpMethod": "delete",
+      "description": "Deletes a group by name",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/groups/{name}",
+      "method": "/restServiceFecru/admin/groups/{name}Get",
+      "httpMethod": "get",
+      "description": "Retrieve a group by name.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/groups/{name}",
+      "method": "/restServiceFecru/admin/groups/{name}Put",
+      "httpMethod": "put",
+      "description": "Updates an existing group.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/groups/{name}/users",
+      "method": "/restServiceFecru/admin/groups/{name}/usersDelete",
+      "httpMethod": "delete",
+      "description": "Removes user from group",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/groups/{name}/users",
+      "method": "listGroupUsers",
+      "httpMethod": "get",
+      "description": "Lists group's user names",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/groups/{name}/users",
+      "method": "/restServiceFecru/admin/groups/{name}/usersPut",
+      "httpMethod": "put",
+      "description": "Adds user to group",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/permission-schemes",
+      "method": "/restServiceFecru/admin/permissionSchemesGet",
+      "httpMethod": "get",
+      "description": "Retrieve a page of permission schemes.",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "permission scheme name part filter, case insensitive, optional"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/permission-schemes",
+      "method": "/restServiceFecru/admin/permissionSchemesPost",
+      "httpMethod": "post",
+      "description": "Creates a new permission scheme. The new permission scheme is blank or can be created from another existing permission scheme.",
+      "parameters": [
+        {
+          "name": "copyFrom",
+          "schema": "string",
+          "required": false,
+          "description": "if set, the new permission scheme will be a copy of permissionSchemeName"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/permission-schemes/{name}",
+      "method": "/restServiceFecru/admin/permissionSchemes/{name}Delete",
+      "httpMethod": "delete",
+      "description": "Deletes a permission scheme by name",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/permission-schemes/{name}",
+      "method": "/restServiceFecru/admin/permissionSchemes/{name}Get",
+      "httpMethod": "get",
+      "description": "Retrieve a permission scheme by name",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/permission-schemes/{name}",
+      "method": "/restServiceFecru/admin/permissionSchemes/{name}Put",
+      "httpMethod": "put",
+      "description": "Updates an existing permission scheme.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/permission-schemes/{name}/anonymous-users",
+      "method": "deletePermissionSchemeAnonymousUsers",
+      "httpMethod": "delete",
+      "description": "Removes anonymous-user permission [action name] from given permission scheme",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/permission-schemes/{name}/anonymous-users",
+      "method": "listAnonymousUsersPrincipalAssociation",
+      "httpMethod": "get",
+      "description": "Retrieve a page of anonymous users permissions [action name] for given permission scheme.",
+      "parameters": [
+        {
+          "name": "action",
+          "schema": "string",
+          "required": false,
+          "description": "action name"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/permission-schemes/{name}/anonymous-users",
+      "method": "addPermissionSchemeAnonymousUsers",
+      "httpMethod": "put",
+      "description": "Add anonymous-user permission [action name] to given permission scheme\n List of available action names:",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/permission-schemes/{name}/groups",
+      "method": "deletePermissionSchemeGroup",
+      "httpMethod": "delete",
+      "description": "Removes group permission [group name, action name] from given permission scheme",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/permission-schemes/{name}/groups",
+      "method": "listGroupPrincipalAssociation",
+      "httpMethod": "get",
+      "description": "Retrieve a page of group permissions [group name, action name] for given permission scheme.",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "group name"
+        },
+        {
+          "name": "action",
+          "schema": "string",
+          "required": false,
+          "description": "action name"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/permission-schemes/{name}/groups",
+      "method": "addPermissionSchemeGroup",
+      "httpMethod": "put",
+      "description": "Add group permission [group name, action name] to given permission scheme\n List of available action names:",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/permission-schemes/{name}/logged-in-users",
+      "method": "deletePermissionSchemeLoggedUsers",
+      "httpMethod": "delete",
+      "description": "Removes logged-in-users permission [action name] from given permission scheme",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/permission-schemes/{name}/logged-in-users",
+      "method": "listLoggedUsersPrincipalAssociation",
+      "httpMethod": "get",
+      "description": "Retrieve a page of logged in users permissions [action name] for given permission scheme.",
+      "parameters": [
+        {
+          "name": "action",
+          "schema": "string",
+          "required": false,
+          "description": "action name"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/permission-schemes/{name}/logged-in-users",
+      "method": "addPermissionSchemeLoggedUsers",
+      "httpMethod": "put",
+      "description": "Add logged-in-users permission [action name] to given permission scheme\n List of available action names:",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/permission-schemes/{name}/projects",
+      "method": "listProjects",
+      "httpMethod": "get",
+      "description": "Retrieve a page of projects for given permission scheme.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/permission-schemes/{name}/review-roles",
+      "method": "deletePermissionSchemeRole",
+      "httpMethod": "delete",
+      "description": "Removes review-role permission [role name, action name] from given permission scheme",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/permission-schemes/{name}/review-roles",
+      "method": "listRolesPrincipalAssociation",
+      "httpMethod": "get",
+      "description": "Retrieve a page of review-roles permissions [role name, action name] for given permission scheme.",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "role name"
+        },
+        {
+          "name": "action",
+          "schema": "string",
+          "required": false,
+          "description": "action name"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/permission-schemes/{name}/review-roles",
+      "method": "addPermissionSchemeReviewRole",
+      "httpMethod": "put",
+      "description": "Add review-role permission [role name, action name] to given permission scheme\n List of available action names:\n \n\n List of available role names:",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/permission-schemes/{name}/users",
+      "method": "deletePermissionSchemeUser",
+      "httpMethod": "delete",
+      "description": "Removes user permission [username, action name] from given permission scheme",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/permission-schemes/{name}/users",
+      "method": "listUserPrincipalAssociation",
+      "httpMethod": "get",
+      "description": "Retrieve a page of user permissions [username, action name] for given permission scheme.",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "permission scheme name"
+        },
+        {
+          "name": "action",
+          "schema": "string",
+          "required": false,
+          "description": "action name"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/permission-schemes/{name}/users",
+      "method": "addPermissionSchemeUser",
+      "httpMethod": "put",
+      "description": "Add user permission [username, action name] to given permission scheme\n List of available action names:",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/projects",
+      "method": "/restServiceFecru/admin/projectsGet",
+      "httpMethod": "get",
+      "description": "Retrieve a page of projects.",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "project's name part filter, optional"
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": false,
+          "description": "project's key part filter, optional"
+        },
+        {
+          "name": "defaultRepositoryName",
+          "schema": "string",
+          "required": false,
+          "description": "project's default repository key part filter, optional"
+        },
+        {
+          "name": "permissionSchemeName",
+          "schema": "string",
+          "required": false,
+          "description": "project's permission scheme pare name filter, optional"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/projects",
+      "method": "/restServiceFecru/admin/projectsPost",
+      "httpMethod": "post",
+      "description": "Creates a new project.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/projects/{key}",
+      "method": "/restServiceFecru/admin/projects/{key}Delete",
+      "httpMethod": "delete",
+      "description": "Deletes a project by key (including all reviews in this project).\n Use \n to move reviews to another project.",
+      "parameters": [
+        {
+          "name": "deleteProjectReviews",
+          "schema": "boolean",
+          "required": false,
+          "description": "if true deletes reviews in project"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/projects/{key}",
+      "method": "/restServiceFecru/admin/projects/{key}Get",
+      "httpMethod": "get",
+      "description": "Retrieve a project by key.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/projects/{key}",
+      "method": "/restServiceFecru/admin/projects/{key}Put",
+      "httpMethod": "put",
+      "description": "Updates an existing project.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/projects/{key}/allowed-reviewer-groups",
+      "method": "deleteAllowedReviewerGroup",
+      "httpMethod": "delete",
+      "description": "Delete group from project's allowed reviewer group list",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/projects/{key}/allowed-reviewer-groups",
+      "method": "allowedReviewerGroups",
+      "httpMethod": "get",
+      "description": "Retrieves project's allowed reviewer groups",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/projects/{key}/allowed-reviewer-groups",
+      "method": "addAllowedReviewerGroup",
+      "httpMethod": "put",
+      "description": "Add group to project's allowed reviewer group list",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/projects/{key}/allowed-reviewer-users",
+      "method": "deleteAllowedReviewerUser",
+      "httpMethod": "delete",
+      "description": "Remove user from project's allowed reviewer users list",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/projects/{key}/allowed-reviewer-users",
+      "method": "allowedReviewerUsers",
+      "httpMethod": "get",
+      "description": "Retrieves project's allowed reviewer users",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/projects/{key}/allowed-reviewer-users",
+      "method": "addAllowedReviewerUser",
+      "httpMethod": "put",
+      "description": "Add user to project's allowed reviewer users list",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/projects/{key}/default-reviewer-groups",
+      "method": "deleteDefaultReviewerGroup",
+      "httpMethod": "delete",
+      "description": "Delete group from project's default reviewer group list",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/projects/{key}/default-reviewer-groups",
+      "method": "defaultReviewerGroups",
+      "httpMethod": "get",
+      "description": "Retrieves project's default reviewer groups",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/projects/{key}/default-reviewer-groups",
+      "method": "addDefaultReviewerGroup",
+      "httpMethod": "put",
+      "description": "Add group to project's default reviewer group list",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/projects/{key}/default-reviewer-users",
+      "method": "deleteDefaultReviewerUser",
+      "httpMethod": "delete",
+      "description": "Remove user from project's default reviewer users list",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/projects/{key}/default-reviewer-users",
+      "method": "listDefaultReviewerUsers",
+      "httpMethod": "get",
+      "description": "Retrieves project's default reviewer users",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/projects/{key}/default-reviewer-users",
+      "method": "addDefaultReviewerUser",
+      "httpMethod": "put",
+      "description": "Add user to project's default reviewer users list",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/projects/{sourceProjectKey}/move-reviews/{destinationProjectKey}",
+      "method": "moveAllReviews",
+      "httpMethod": "put",
+      "description": "Move reviews and snippets from source project to destination project",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories",
+      "method": "/restServiceFecru/admin/repositoriesGet",
+      "httpMethod": "get",
+      "description": "Retrieve a page of repositories. Repository properties with default values may not be returned.",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "filter repositories by repository type: svn, git, hg, cvs, p4, ..."
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "required": false,
+          "description": "filter repositories by enabled flag"
+        },
+        {
+          "name": "started",
+          "schema": "boolean",
+          "required": false,
+          "description": "filter repositories by started flag"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories",
+      "method": "/restServiceFecru/admin/repositoriesPost",
+      "httpMethod": "post",
+      "description": "Creates a repository.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories-v1",
+      "method": "addRepository",
+      "httpMethod": "post",
+      "description": "Adds repository",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories-v1/{repository}",
+      "method": "/restServiceFecru/admin/repositoriesV1/{repository}Get",
+      "httpMethod": "get",
+      "description": "Returns information about the status of the repository and the current indexing status",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories-v1/{repository}/",
+      "method": "deleteRepository",
+      "httpMethod": "delete",
+      "description": "Deletes repository.\n Warning: you can not undo this operation",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories-v1/{repository}/disable",
+      "method": "disableRepository",
+      "httpMethod": "post",
+      "description": "Disables repository.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories-v1/{repository}/enable",
+      "method": "enableRepository",
+      "httpMethod": "post",
+      "description": "Enables repository.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories-v1/{repository}/reindex-discussions",
+      "method": "reindexChangesetComments",
+      "httpMethod": "post",
+      "description": "Rebuilds the changeset discussion index for the specified repository. The index is used to display changeset\n discussions in activity streams.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories-v1/{repository}/reindex-linecount",
+      "method": "/restServiceFecru/admin/repositoriesV1/{repository}/reindexLinecountPost",
+      "httpMethod": "post",
+      "description": "Re-indexes the linecount data used to generate the LOC graphs. The linecount data will be recalculated in daily\n buckets based on the server timezone.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories-v1/{repository}/reindex-reviews",
+      "method": "doReviewRevisionReindex",
+      "httpMethod": "post",
+      "description": "Re-indexes all the Crucible revision data (which revisions have been reviewed)",
+      "parameters": [
+        {
+          "name": "synchronous",
+          "schema": "boolean",
+          "required": false,
+          "description": "if true will wait for the indexing to finish before returning"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories-v1/{repository}/reindex-search",
+      "method": "rebuildSearchIndex",
+      "httpMethod": "post",
+      "description": "Rebuilds the search index data for the given repository. This will rebuild the data used to search by path,\n commit message and comitter, also used for activity streams and JIRA integration.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories-v1/{repository}/reindex-source",
+      "method": "/restServiceFecru/admin/repositoriesV1/{repository}/reindexSourcePost",
+      "httpMethod": "post",
+      "description": "Deletes the existing cache and re-indexes the repository from scratch.\n For large or slow repositories this may take some time, during which some functionality will be unavailable.\n This action will also restart the repository.",
+      "parameters": [
+        {
+          "name": "clone",
+          "schema": "boolean",
+          "required": false,
+          "description": "if true and the repository is a dvcs repository (git or mercurial) it will re-clone the repository\n before re-indexing"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories-v1/{repository}/rescan-metadata",
+      "method": "/restServiceFecru/admin/repositoriesV1/{repository}/rescanMetadataPost",
+      "httpMethod": "post",
+      "description": "Re-scans the repository metadata for SVN and Perforce repositories. Only valid for Perforce and SVN repositories.",
+      "parameters": [
+        {
+          "name": "from",
+          "schema": "integer",
+          "required": false,
+          "description": "the revision number to start at"
+        },
+        {
+          "name": "to",
+          "schema": "integer",
+          "required": false,
+          "description": "the revision number to end at"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories-v1/{repository}/scan",
+      "method": "scan",
+      "httpMethod": "post",
+      "description": "Runs an incremental repository index now.  This is the same operation as triggered by scheduled indexing.\n Can be called using the REST Api Token to authorize.",
+      "parameters": [
+        {
+          "name": "synchronous",
+          "schema": "boolean",
+          "required": false,
+          "description": "if true will wait for the indexing to finish before returning"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories-v1/{repository}/scan-cvs",
+      "method": "scanCvs",
+      "httpMethod": "post",
+      "description": "Scans the whole CVS repository for any changes since the last scan. Only valid for CVS repositories.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories-v1/{repository}/start",
+      "method": "startRepository",
+      "httpMethod": "post",
+      "description": "Starts the repository.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories-v1/{repository}/stop",
+      "method": "stopRepository",
+      "httpMethod": "post",
+      "description": "Stops the repository. Does not wait for the repository to stop before returning.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories/{repository}",
+      "method": "/restServiceFecru/admin/repositories/{repository}Delete",
+      "httpMethod": "delete",
+      "description": "Deletes a repository by key",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories/{repository}",
+      "method": "/restServiceFecru/admin/repositories/{repository}Get",
+      "httpMethod": "get",
+      "description": "Retrieve a repository by key. Repository properties with default values may not be returned.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories/{repository}",
+      "method": "/restServiceFecru/admin/repositories/{repository}Put",
+      "httpMethod": "put",
+      "description": "Updates an existing repository.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories/{repository}/full-incremental-index",
+      "method": "fullIncrementalIndex",
+      "httpMethod": "put",
+      "description": "Runs an full incremental repository index.\n For CVS: scans the whole CVS repository for any changes since the last scan.\n For other repository types will trigger an incremental index.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories/{repository}/incremental-index",
+      "method": "incrementalIndex",
+      "httpMethod": "put",
+      "description": "Runs an incremental repository index.  This is the same operation as triggered by scheduled indexing.\n Can be called using the REST API Token to authorize.",
+      "parameters": [
+        {
+          "name": "wait",
+          "schema": "boolean",
+          "required": false,
+          "description": "if true will wait for the indexing to finish before returning"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories/{repository}/permissions",
+      "method": "permissions",
+      "httpMethod": "get",
+      "description": "Retrieve repository permissions properties.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories/{repository}/permissions",
+      "method": "updatePermissions",
+      "httpMethod": "put",
+      "description": "Updates repository permissions properties.\n\n Valid permission settings: any combination of useDefaults, allowAnonymous, allowLoggedIn.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories/{repository}/permissions/groups",
+      "method": "removeGroupToPermissions",
+      "httpMethod": "delete",
+      "description": "Delete group from repository allowed groups",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories/{repository}/permissions/groups",
+      "method": "permissionsGroups",
+      "httpMethod": "get",
+      "description": "Note: use /rest-service-fecru/admin/repository-permissions/ endpoint for full repository permission administration functionality\n Lists groups allowed to access repository.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories/{repository}/permissions/groups",
+      "method": "addGroupToPermissions",
+      "httpMethod": "put",
+      "description": "Note: use /rest-service-fecru/admin/repository-permissions/ endpoint for full repository permission administration functionality\n Adds group to repository allowed groups",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories/{repository}/reindex-changeset-discussion",
+      "method": "reindexChangesetDiscussion",
+      "httpMethod": "put",
+      "description": "Rebuilds the changeset discussion index for the specified repository. The index is used to display changeset\n discussions in activity streams.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories/{repository}/reindex-linecount",
+      "method": "/restServiceFecru/admin/repositories/{repository}/reindexLinecountPut",
+      "httpMethod": "put",
+      "description": "Re-indexes the linecount data used to generate the LOC graphs. The linecount data will be recalculated in daily\n buckets based on the server timezone.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories/{repository}/reindex-reviews",
+      "method": "reindexReviews",
+      "httpMethod": "put",
+      "description": "Re-indexes all the Crucible revision data (which revisions have been reviewed)",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories/{repository}/reindex-search",
+      "method": "reindexSearch",
+      "httpMethod": "put",
+      "description": "Rebuilds the search index data for the given repository. This will rebuild the data used to search by path,\n commit message and committer, also used for activity streams and JIRA integration.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories/{repository}/reindex-source",
+      "method": "/restServiceFecru/admin/repositories/{repository}/reindexSourcePut",
+      "httpMethod": "put",
+      "description": "Deletes the existing cache and re-indexes the repository from scratch.\n For large or slow repositories this may take some time, during which some functionality will be unavailable.\n This action will also restart the repository.",
+      "parameters": [
+        {
+          "name": "clone",
+          "schema": "boolean",
+          "required": false,
+          "description": "if true and the repository is a dvcs repository (git or mercurial) it will re-clone the repository before re-indexing"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories/{repository}/rescan-metadata",
+      "method": "/restServiceFecru/admin/repositories/{repository}/rescanMetadataPut",
+      "httpMethod": "put",
+      "description": "Re-scans the repository metadata. Only valid for Perforce and SVN repositories.",
+      "parameters": [
+        {
+          "name": "from",
+          "schema": "string",
+          "required": false,
+          "description": "the revision number to start at"
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "required": false,
+          "description": "the revision number to end at"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories/{repository}/start",
+      "method": "start",
+      "httpMethod": "put",
+      "description": "Starts repository. Does not wait for the repository to start before returning.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories/{repository}/stop",
+      "method": "stop",
+      "httpMethod": "put",
+      "description": "Stops repository. Does not wait for the repository to stop before returning.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories/{repository}/updates",
+      "method": "repositoryUpdates",
+      "httpMethod": "get",
+      "description": "Retrieves repository updates properties.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories/{repository}/updates",
+      "method": "updateRepositoryUpdates",
+      "httpMethod": "put",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories/~defaults/permissions",
+      "method": "defaultPermissions",
+      "httpMethod": "get",
+      "description": "Retrieve default repository permissions properties.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/repositories/~defaults/permissions",
+      "method": "updateDefaultPermissions",
+      "httpMethod": "put",
+      "description": "Updates default repository permissions properties.\n\n Valid permission settings: any combination of allowAnonymous, allowLoggedIn",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/users/",
+      "method": "/restServiceFecru/admin/users/Get",
+      "httpMethod": "get",
+      "description": "Retrieve a page of users.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/users/",
+      "method": "/restServiceFecru/admin/users/Post",
+      "httpMethod": "post",
+      "description": "Creates a new user. Tries to add the user to fisheye-users and crucible-users groups if those exist.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/users/{name}",
+      "method": "/restServiceFecru/admin/users/{name}Delete",
+      "httpMethod": "delete",
+      "description": "Deletes a user by name",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/users/{name}",
+      "method": "/restServiceFecru/admin/users/{name}Get",
+      "httpMethod": "get",
+      "description": "Retrieve a user by name.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/users/{name}",
+      "method": "/restServiceFecru/admin/users/{name}Put",
+      "httpMethod": "put",
+      "description": "Updates an existing user.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/users/{name}/groups",
+      "method": "/restServiceFecru/admin/users/{name}/groupsDelete",
+      "httpMethod": "delete",
+      "description": "Removes user from group",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/users/{name}/groups",
+      "method": "listUserGroups",
+      "httpMethod": "get",
+      "description": "Lists user's group names",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/admin/users/{name}/groups",
+      "method": "/restServiceFecru/admin/users/{name}/groupsPut",
+      "httpMethod": "put",
+      "description": "Adds user to group",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/auth/login",
+      "method": "login",
+      "httpMethod": "post",
+      "description": "Get the user authentication token.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/indexing-status-v1/status/{repository}",
+      "method": "/restServiceFecru/indexingStatusV1/status/{repository}Get",
+      "httpMethod": "get",
+      "description": "Returns indexing status of given repository.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/recently-visited-v1",
+      "method": "getRecent",
+      "httpMethod": "get",
+      "description": "Get a list of recently visited items for the currently logged in user.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/recently-visited-v1/detailed",
+      "method": "getRecentDetailed",
+      "httpMethod": "get",
+      "description": "Get a list of recently visisted items for the currently logged in user, including the detailed entities.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/recently-visited-v1/projects",
+      "method": "getRecentProjects",
+      "httpMethod": "get",
+      "description": "Get a list of recently visited projects for the currently logged in user.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/recently-visited-v1/projects/detailed",
+      "method": "getRecentProjectsDetailed",
+      "httpMethod": "get",
+      "description": "Get a list of recently visited projects for the currently logged in Project, including the detailed entities.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/recently-visited-v1/repositories",
+      "method": "getRecentRepositories",
+      "httpMethod": "get",
+      "description": "Get a list of recently visited repositories for the currently logged in user.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/recently-visited-v1/repositories/detailed",
+      "method": "getRecentRepositoriesDetailed",
+      "httpMethod": "get",
+      "description": "Get a list of recently visisted repositories for the currently logged in user, including the detailed entities.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/recently-visited-v1/reviews",
+      "method": "getRecentReviews",
+      "httpMethod": "get",
+      "description": "Get a list of recently visited reviews for the currently logged in user.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/recently-visited-v1/reviews/detailed",
+      "method": "getRecentReviewsDetailed",
+      "httpMethod": "get",
+      "description": "Get a list of recently visited reviews for the currently logged in user, including the detailed entities.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/recently-visited-v1/snippets",
+      "method": "getRecentSnippets",
+      "httpMethod": "get",
+      "description": "Get a list of recently visited snippets for the currently logged in user.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/recently-visited-v1/snippets/detailed",
+      "method": "getRecentSnippetsDetailed",
+      "httpMethod": "get",
+      "description": "Get a list of recently visited snippets for the currently logged in user, including the detailed entities.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/recently-visited-v1/users",
+      "method": "getRecentUsers",
+      "httpMethod": "get",
+      "description": "Get a list of recently visited users for the currently logged in user.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/recently-visited-v1/users/detailed",
+      "method": "getRecentUsersDetailed",
+      "httpMethod": "get",
+      "description": "Get a list of recently visited users for the currently logged in user, including the detailed entities.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/server-v1",
+      "method": "getInfo",
+      "httpMethod": "get",
+      "description": "Provides general information about the server's configuration.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/share-content-v1/share",
+      "method": "doShareContent",
+      "httpMethod": "post",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/user-prefs-v1",
+      "method": "setPref",
+      "httpMethod": "post",
+      "description": "Using POST method to set a user preference.\n If repo is not set, the preference will be recognised as a global preference.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/user-prefs-v1/{property}",
+      "method": "getGlobalPref",
+      "httpMethod": "get",
+      "description": "Getting user's global preference",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service-fecru/user-prefs-v1/{repository}/{property}",
+      "method": "getRepoPref",
+      "httpMethod": "get",
+      "description": "Getting user's preference related to a certain repository",
+      "parameters": [],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "http://fecru.local/context",
   "apiTitle": "Fisheye Crucible",
   "endpoints": 71,

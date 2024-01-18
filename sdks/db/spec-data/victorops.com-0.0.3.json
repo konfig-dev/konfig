@@ -3,6 +3,2914 @@
   "openApiRaw": "https://portal.victorops.com/public/api-docs/victorops-api-v1.yaml",
   "homepage": "victorops.com",
   "apiVersion": "0.0.3",
+  "methods": [
+    {
+      "url": "/api-public/v1/alerts/{uuid}",
+      "method": "/apiPublic/v1/alerts/{uuid}Get",
+      "httpMethod": "get",
+      "tag": "Alerts",
+      "description": "Retrieve alert details.",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "uuid",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps uuid of the alert"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Alert details. All fields should be considered optional."
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/incidents",
+      "method": "/apiPublic/v1/incidentsGet",
+      "httpMethod": "get",
+      "tag": "Incidents",
+      "description": "Get current incident information",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The list of incidents in various states"
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/incidents",
+      "method": "/apiPublic/v1/incidentsPost",
+      "httpMethod": "post",
+      "tag": "Incidents",
+      "description": "Create a new incident",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "details",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "summary",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "targets",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "userName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/incidents/ack",
+      "method": "/apiPublic/v1/incidents/ackPatch",
+      "httpMethod": "patch",
+      "tag": "Incidents",
+      "description": "Acknowledge an incident or list of incidents",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "incidentNames",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "userName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The results of ack/resolve for each incident"
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/incidents/byUser/ack",
+      "method": "/apiPublic/v1/incidents/byUser/ackPatch",
+      "httpMethod": "patch",
+      "tag": "Incidents",
+      "description": "Acknowledge all incidents for which a user was paged.",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "userName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The results of ack/resolve for each incident"
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/incidents/byUser/resolve",
+      "method": "/apiPublic/v1/incidents/byUser/resolvePatch",
+      "httpMethod": "patch",
+      "tag": "Incidents",
+      "description": "Resolve all incidents for which a user was paged.",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "userName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The results of ack/resolve for each incident"
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/incidents/reroute",
+      "method": "/apiPublic/v1/incidents/reroutePost",
+      "httpMethod": "post",
+      "tag": "Incidents",
+      "description": "Reroute one or more incidents to one or more new routable destinations.",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "reroutes",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "userName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/incidents/resolve",
+      "method": "/apiPublic/v1/incidents/resolvePatch",
+      "httpMethod": "patch",
+      "tag": "Incidents",
+      "description": "Resolve an incident or list of incidents",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "incidentNames",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "userName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The results of ack/resolve for each incident"
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/maintenancemode",
+      "method": "/apiPublic/v1/maintenancemodeGet",
+      "httpMethod": "get",
+      "tag": "Maintenance Mode",
+      "description": "Get an organization's current maintenance mode state",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/maintenancemode/start",
+      "method": "/apiPublic/v1/maintenancemode/startPost",
+      "httpMethod": "post",
+      "tag": "Maintenance Mode",
+      "description": "Start maintenance mode for routing keys",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "names",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "purpose",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/maintenancemode/{maintenancemodeid}/end",
+      "method": "/apiPublic/v1/maintenancemode/{maintenancemodeid}/endPut",
+      "httpMethod": "put",
+      "tag": "Maintenance Mode",
+      "description": "End maintenance mode for routing keys",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "maintenancemodeid",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the maintenance mode found in the active maintenance mode object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/oncall/current",
+      "method": "/apiPublic/v1/oncall/currentGet",
+      "httpMethod": "get",
+      "tag": "On-call",
+      "description": "Get an organization's on-call users",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/org/routing-keys",
+      "method": "/apiPublic/v1/org/routingKeysGet",
+      "httpMethod": "get",
+      "tag": "Routing Keys",
+      "description": "List routing keys with associated teams",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Info about routing keys in the org"
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/overrides",
+      "method": "/apiPublic/v1/overridesGet",
+      "httpMethod": "get",
+      "tag": "Scheduled Overrides",
+      "description": "List the scheduled overrides",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/overrides",
+      "method": "/apiPublic/v1/overridesPost",
+      "httpMethod": "post",
+      "tag": "Scheduled Overrides",
+      "description": "Creates a new scheduled override",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "end",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "start",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "timezone",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/overrides/{publicId}",
+      "method": "/apiPublic/v1/overrides/{publicId}Delete",
+      "httpMethod": "delete",
+      "tag": "Scheduled Overrides",
+      "description": "Deletes a scheduled override",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "publicId",
+          "schema": "string",
+          "required": true,
+          "description": "The publicId of the scheduled override"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api-public/v1/overrides/{publicId}",
+      "method": "/apiPublic/v1/overrides/{publicId}Get",
+      "httpMethod": "get",
+      "tag": "Scheduled Overrides",
+      "description": "Get the specified scheduled override",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "publicId",
+          "schema": "string",
+          "required": true,
+          "description": "The publicId of the scheduled override"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/overrides/{publicId}/assignments",
+      "method": "/apiPublic/v1/overrides/{publicId}/assignmentsGet",
+      "httpMethod": "get",
+      "tag": "Scheduled Overrides",
+      "description": "Get the specified scheduled override",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "publicId",
+          "schema": "string",
+          "required": true,
+          "description": "The publicId of the scheduled override"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/overrides/{publicId}/assignments/{policySlug}",
+      "method": "/apiPublic/v1/overrides/{publicId}/assignments/{policySlug}Delete",
+      "httpMethod": "delete",
+      "tag": "Scheduled Overrides",
+      "description": "Delete the scheduled override assignment",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "publicId",
+          "schema": "string",
+          "required": true,
+          "description": "The publicId of the scheduled override"
+        },
+        {
+          "name": "policySlug",
+          "schema": "string",
+          "required": true,
+          "description": "The policySlug of the assignment"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/overrides/{publicId}/assignments/{policySlug}",
+      "method": "/apiPublic/v1/overrides/{publicId}/assignments/{policySlug}Get",
+      "httpMethod": "get",
+      "tag": "Scheduled Overrides",
+      "description": "Get the specified scheduled override assignment",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "publicId",
+          "schema": "string",
+          "required": true,
+          "description": "The publicId of the scheduled override"
+        },
+        {
+          "name": "policySlug",
+          "schema": "string",
+          "required": true,
+          "description": "The policySlug of the assignment"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/overrides/{publicId}/assignments/{policySlug}",
+      "method": "/apiPublic/v1/overrides/{publicId}/assignments/{policySlug}Put",
+      "httpMethod": "put",
+      "tag": "Scheduled Overrides",
+      "description": "Update the scheduled override assignment",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "publicId",
+          "schema": "string",
+          "required": true,
+          "description": "The publicId of the scheduled override"
+        },
+        {
+          "name": "policySlug",
+          "schema": "string",
+          "required": true,
+          "description": "The policySlug of the assignment"
+        },
+        {
+          "name": "policy",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/policies",
+      "method": "/apiPublic/v1/policiesGet",
+      "httpMethod": "get",
+      "tag": "Escalation Policies",
+      "description": "Get escalation policy info",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/policies/types/contacts",
+      "method": "/apiPublic/v1/policies/types/contactsGet",
+      "httpMethod": "get",
+      "tag": "Personal Paging Policy Values",
+      "description": "Get the available contact types",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/policies/types/notifications",
+      "method": "/apiPublic/v1/policies/types/notificationsGet",
+      "httpMethod": "get",
+      "tag": "Personal Paging Policy Values",
+      "description": "Get the available notification types",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/policies/types/timeouts",
+      "method": "/apiPublic/v1/policies/types/timeoutsGet",
+      "httpMethod": "get",
+      "tag": "Personal Paging Policy Values",
+      "description": "Get the available timeout values",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/policies/{policy}/oncall/user",
+      "method": "/apiPublic/v1/policies/{policy}/oncall/userPatch",
+      "httpMethod": "patch",
+      "tag": "On-call",
+      "description": "Create an on-call override (take on-call)",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "policy",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps policy 'slug'"
+        },
+        {
+          "name": "fromUser",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "toUser",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/profile/{username}/policies",
+      "method": "/apiPublic/v1/profile/{username}/policiesGet",
+      "httpMethod": "get",
+      "tag": "Personal Paging Policies",
+      "description": "Get the user's paging policy",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "Your username"
+        },
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/profile/{username}/policies",
+      "method": "/apiPublic/v1/profile/{username}/policiesPost",
+      "httpMethod": "post",
+      "tag": "Personal Paging Policies",
+      "description": "Create a paging policy step",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "Your username"
+        },
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "rules",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "timeout",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/profile/{username}/policies/{step}",
+      "method": "/apiPublic/v1/profile/{username}/policies/{step}Get",
+      "httpMethod": "get",
+      "tag": "Personal Paging Policies",
+      "description": "Get a paging policy step",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "Your username"
+        },
+        {
+          "name": "step",
+          "schema": "number",
+          "required": true,
+          "description": "Paging policy step"
+        },
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/profile/{username}/policies/{step}",
+      "method": "/apiPublic/v1/profile/{username}/policies/{step}Post",
+      "httpMethod": "post",
+      "tag": "Personal Paging Policies",
+      "description": "Create a rule for a paging policy step",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "Your username"
+        },
+        {
+          "name": "step",
+          "schema": "number",
+          "required": true,
+          "description": "Paging policy step"
+        },
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "contact",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/profile/{username}/policies/{step}",
+      "method": "/apiPublic/v1/profile/{username}/policies/{step}Put",
+      "httpMethod": "put",
+      "tag": "Personal Paging Policies",
+      "description": "Update a paging policy step",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "Your username"
+        },
+        {
+          "name": "step",
+          "schema": "number",
+          "required": true,
+          "description": "Paging policy step"
+        },
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "rules",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "timeout",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/profile/{username}/policies/{step}/{rule}",
+      "method": "/apiPublic/v1/profile/{username}/policies/{step}/{rule}Delete",
+      "httpMethod": "delete",
+      "tag": "Personal Paging Policies",
+      "description": "Delete a rule from a paging policy step",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "Your username"
+        },
+        {
+          "name": "step",
+          "schema": "number",
+          "required": true,
+          "description": "Paging policy step"
+        },
+        {
+          "name": "rule",
+          "schema": "number",
+          "required": true,
+          "description": "Rule for a paging policy step"
+        },
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/profile/{username}/policies/{step}/{rule}",
+      "method": "/apiPublic/v1/profile/{username}/policies/{step}/{rule}Get",
+      "httpMethod": "get",
+      "tag": "Personal Paging Policies",
+      "description": "Get a rule from a paging policy step",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "Your username"
+        },
+        {
+          "name": "step",
+          "schema": "number",
+          "required": true,
+          "description": "Paging policy step"
+        },
+        {
+          "name": "rule",
+          "schema": "number",
+          "required": true,
+          "description": "Rule for a paging policy step"
+        },
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/profile/{username}/policies/{step}/{rule}",
+      "method": "/apiPublic/v1/profile/{username}/policies/{step}/{rule}Put",
+      "httpMethod": "put",
+      "tag": "Personal Paging Policies",
+      "description": "Update a rule for a paging policy step",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "Your username"
+        },
+        {
+          "name": "step",
+          "schema": "number",
+          "required": true,
+          "description": "Paging policy step"
+        },
+        {
+          "name": "rule",
+          "schema": "number",
+          "required": true,
+          "description": "Rule for a paging policy step"
+        },
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "contact",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/team",
+      "method": "/apiPublic/v1/teamGet",
+      "httpMethod": "get",
+      "tag": "Teams",
+      "description": "List teams",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/team",
+      "method": "/apiPublic/v1/teamPost",
+      "httpMethod": "post",
+      "tag": "Teams",
+      "description": "Add a team",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Some info about the team"
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/team/{team}",
+      "method": "/apiPublic/v1/team/{team}Delete",
+      "httpMethod": "delete",
+      "tag": "Teams",
+      "description": "Remove a team",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "team",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps team to be deleted"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api-public/v1/team/{team}",
+      "method": "/apiPublic/v1/team/{team}Get",
+      "httpMethod": "get",
+      "tag": "Teams",
+      "description": "Retrieve information for a team",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "team",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps team to fetch"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Some info about the team"
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/team/{team}",
+      "method": "/apiPublic/v1/team/{team}Put",
+      "httpMethod": "put",
+      "tag": "Teams",
+      "description": "Update a team",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "team",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps team to be updated"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Some info about the team"
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/team/{team}/admins",
+      "method": "/apiPublic/v1/team/{team}/adminsGet",
+      "httpMethod": "get",
+      "tag": "Teams",
+      "description": "Retrieve a list of team admins for a team",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "team",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps team"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of team admins for the team"
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/team/{team}/members",
+      "method": "/apiPublic/v1/team/{team}/membersGet",
+      "httpMethod": "get",
+      "tag": "Teams",
+      "description": "Retrieve a list of members for a team",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "team",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps team to fetch"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of members for the team"
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/team/{team}/members",
+      "method": "/apiPublic/v1/team/{team}/membersPost",
+      "httpMethod": "post",
+      "tag": "Teams",
+      "description": "Add a team member",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "team",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps team to fetch"
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of members for the team"
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/team/{team}/members/{user}",
+      "method": "/apiPublic/v1/team/{team}/members/{user}Delete",
+      "httpMethod": "delete",
+      "tag": "Teams",
+      "description": "Remove a team member",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "team",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps team to be deleted"
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "required": true,
+          "description": "The team member username"
+        },
+        {
+          "name": "replacement",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api-public/v1/team/{team}/oncall/schedule",
+      "method": "/apiPublic/v1/team/{team}/oncall/scheduleGet",
+      "httpMethod": "get",
+      "tag": "On-call",
+      "description": "Get a team's on-call schedule",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "team",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps team 'slug'"
+        },
+        {
+          "name": "daysForward",
+          "schema": "number",
+          "required": false,
+          "description": "Days to include in returned schedule (30 max)"
+        },
+        {
+          "name": "daysSkip",
+          "schema": "number",
+          "required": false,
+          "description": "Days to skip before computing schedule to return (90 max)"
+        },
+        {
+          "name": "step",
+          "schema": "number",
+          "required": false,
+          "description": "Step of escalation policy (3 max)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/team/{team}/oncall/user",
+      "method": "/apiPublic/v1/team/{team}/oncall/userPatch",
+      "httpMethod": "patch",
+      "tag": "On-call",
+      "description": "Create an on-call override (take on-call)",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "team",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps team 'slug'"
+        },
+        {
+          "name": "fromUser",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "toUser",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/team/{team}/policies",
+      "method": "/apiPublic/v1/team/{team}/policiesGet",
+      "httpMethod": "get",
+      "tag": "Escalation Policies",
+      "description": "Retrieve a list of escalation policies for a team",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "team",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps team to fetch"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/user",
+      "method": "/apiPublic/v1/userGet",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "List users",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Some info about the user"
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/user",
+      "method": "/apiPublic/v1/userPost",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Add a user",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "admin",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "expirationHours",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Some info about the user"
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/user/{user}",
+      "method": "/apiPublic/v1/user/{user}Delete",
+      "httpMethod": "delete",
+      "tag": "Users",
+      "description": "Remove a user",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps user to be deleted"
+        },
+        {
+          "name": "replacement",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api-public/v1/user/{user}",
+      "method": "/apiPublic/v1/user/{user}Get",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Retrieve information for a user",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps user to fetch"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Some info about the user"
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/user/{user}",
+      "method": "/apiPublic/v1/user/{user}Put",
+      "httpMethod": "put",
+      "tag": "Users",
+      "description": "Update a user",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps user to be updated"
+        },
+        {
+          "name": "admin",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "expirationHours",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Some info about the user"
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/user/{user}/contact-methods",
+      "method": "/apiPublic/v1/user/{user}/contactMethodsGet",
+      "httpMethod": "get",
+      "tag": "User Contact Methods",
+      "description": "Get a list of all contact methods for a user",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps user ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/user/{user}/contact-methods/devices",
+      "method": "/apiPublic/v1/user/{user}/contactMethods/devicesGet",
+      "httpMethod": "get",
+      "tag": "User Contact Methods",
+      "description": "Get a list of all contact devices for a user",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps user ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/user/{user}/contact-methods/devices/{contactId}",
+      "method": "/apiPublic/v1/user/{user}/contactMethods/devices/{contactId}Delete",
+      "httpMethod": "delete",
+      "tag": "User Contact Methods",
+      "description": "Delete a contact device for a user",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps user ID"
+        },
+        {
+          "name": "contactId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique contact identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/user/{user}/contact-methods/devices/{contactId}",
+      "method": "/apiPublic/v1/user/{user}/contactMethods/devices/{contactId}Get",
+      "httpMethod": "get",
+      "tag": "User Contact Methods",
+      "description": "Get the indicated contact device for a user",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps user ID"
+        },
+        {
+          "name": "contactId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique contact identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/user/{user}/contact-methods/devices/{contactId}",
+      "method": "/apiPublic/v1/user/{user}/contactMethods/devices/{contactId}Put",
+      "httpMethod": "put",
+      "tag": "User Contact Methods",
+      "description": "Update a contact device for a user",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps user ID"
+        },
+        {
+          "name": "contactId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique contact identifier"
+        },
+        {
+          "name": "chat_escalation_sound",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "device_label",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "escalation_notification_sound",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "resolved_notification_sound",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/user/{user}/contact-methods/emails",
+      "method": "/apiPublic/v1/user/{user}/contactMethods/emailsGet",
+      "httpMethod": "get",
+      "tag": "User Contact Methods",
+      "description": "Get a list of all contact emails for a user",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps user ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/user/{user}/contact-methods/emails",
+      "method": "/apiPublic/v1/user/{user}/contactMethods/emailsPost",
+      "httpMethod": "post",
+      "tag": "User Contact Methods",
+      "description": "Create a contact emails for a user",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps user ID"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "label",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "rank",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/user/{user}/contact-methods/emails/{contactId}",
+      "method": "/apiPublic/v1/user/{user}/contactMethods/emails/{contactId}Delete",
+      "httpMethod": "delete",
+      "tag": "User Contact Methods",
+      "description": "Delete a contact email for a user",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps user ID"
+        },
+        {
+          "name": "contactId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique contact identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/user/{user}/contact-methods/emails/{contactId}",
+      "method": "/apiPublic/v1/user/{user}/contactMethods/emails/{contactId}Get",
+      "httpMethod": "get",
+      "tag": "User Contact Methods",
+      "description": "Get the indicated contact email for a user",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps user ID"
+        },
+        {
+          "name": "contactId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique contact identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/user/{user}/contact-methods/phones",
+      "method": "/apiPublic/v1/user/{user}/contactMethods/phonesGet",
+      "httpMethod": "get",
+      "tag": "User Contact Methods",
+      "description": "Get a list of all contact phones for a user",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps user ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/user/{user}/contact-methods/phones",
+      "method": "/apiPublic/v1/user/{user}/contactMethods/phonesPost",
+      "httpMethod": "post",
+      "tag": "User Contact Methods",
+      "description": "Create a contact phones for a user",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps user ID"
+        },
+        {
+          "name": "label",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "phone",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "rank",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/user/{user}/contact-methods/phones/{contactId}",
+      "method": "/apiPublic/v1/user/{user}/contactMethods/phones/{contactId}Delete",
+      "httpMethod": "delete",
+      "tag": "User Contact Methods",
+      "description": "Delete a contact phone for a user",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps user ID"
+        },
+        {
+          "name": "contactId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique contact identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/user/{user}/contact-methods/phones/{contactId}",
+      "method": "/apiPublic/v1/user/{user}/contactMethods/phones/{contactId}Get",
+      "httpMethod": "get",
+      "tag": "User Contact Methods",
+      "description": "Get the indicated contact phone for a user",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps user ID"
+        },
+        {
+          "name": "contactId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique contact identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/user/{user}/oncall/schedule",
+      "method": "/apiPublic/v1/user/{user}/oncall/scheduleGet",
+      "httpMethod": "get",
+      "tag": "On-call",
+      "description": "Get a user's on-call schedule",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps user ID"
+        },
+        {
+          "name": "daysForward",
+          "schema": "number",
+          "required": false,
+          "description": "Days to include in returned schedule (30 max)"
+        },
+        {
+          "name": "daysSkip",
+          "schema": "number",
+          "required": false,
+          "description": "Days to skip before computing schedule to return (90 max)"
+        },
+        {
+          "name": "step",
+          "schema": "number",
+          "required": false,
+          "description": "Step of escalation policy (3 max)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/user/{user}/policies",
+      "method": "/apiPublic/v1/user/{user}/policiesGet",
+      "httpMethod": "get",
+      "tag": "User Paging Policies",
+      "description": "Get a list of paging policies for a user",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps user ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Paging policies accociated which this user"
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v1/user/{user}/teams",
+      "method": "/apiPublic/v1/user/{user}/teamsGet",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Retrieve the user's team membership",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps user"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list of teams to which the user belongs"
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v2/team/{team}/oncall/schedule",
+      "method": "/apiPublic/v2/team/{team}/oncall/scheduleGet",
+      "httpMethod": "get",
+      "tag": "On-call",
+      "description": "Get a team's on-call schedule",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "team",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps team 'slug'"
+        },
+        {
+          "name": "daysForward",
+          "schema": "number",
+          "required": false,
+          "description": "Days to include in returned schedule (30 max)"
+        },
+        {
+          "name": "daysSkip",
+          "schema": "number",
+          "required": false,
+          "description": "Days to skip before computing schedule to return (90 max)"
+        },
+        {
+          "name": "step",
+          "schema": "number",
+          "required": false,
+          "description": "Step of escalation policy (3 max)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-public/v2/user/{user}/oncall/schedule",
+      "method": "/apiPublic/v2/user/{user}/oncall/scheduleGet",
+      "httpMethod": "get",
+      "tag": "On-call",
+      "description": "Get a user's on-call schedule",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps user ID"
+        },
+        {
+          "name": "daysForward",
+          "schema": "number",
+          "required": false,
+          "description": "Days to include in returned schedule (30 max)"
+        },
+        {
+          "name": "daysSkip",
+          "schema": "number",
+          "required": false,
+          "description": "Days to skip before computing schedule to return (90 max)"
+        },
+        {
+          "name": "step",
+          "schema": "number",
+          "required": false,
+          "description": "Step of escalation policy (3 max)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-reporting/v1/incidents",
+      "method": "/apiReporting/v1/incidentsGet",
+      "httpMethod": "get",
+      "tag": "Reporting",
+      "description": "Get/search incident history",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "offset",
+          "schema": "number",
+          "required": false,
+          "description": "The offset within the set of matching incidents"
+        },
+        {
+          "name": "limit",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum number of matching incidents to return (100 max)"
+        },
+        {
+          "name": "entityId",
+          "schema": "string",
+          "required": false,
+          "description": "The entity ID involved  This is the unique identifier for the entity causing the incident."
+        },
+        {
+          "name": "incidentNumber",
+          "schema": "string",
+          "required": false,
+          "description": "The incident number as shown in VictorOps Multiple values and ranges are allowed: 4,5,20:50\n"
+        },
+        {
+          "name": "startedAfter",
+          "schema": "string",
+          "required": false,
+          "description": "Return incidents started after this timestamp Specify the timestamp in ISO8601 format"
+        },
+        {
+          "name": "startedBefore",
+          "schema": "string",
+          "required": false,
+          "description": "Find incidents started before this timestamp  Specify the timestamp in ISO8601 format"
+        },
+        {
+          "name": "host",
+          "schema": "string",
+          "required": false,
+          "description": "The host involved in the incident Multiple values can be separated with commas."
+        },
+        {
+          "name": "service",
+          "schema": "string",
+          "required": false,
+          "description": "The service involved in the incident (if any) Multiple values can be separated with commas."
+        },
+        {
+          "name": "currentPhase",
+          "schema": "string",
+          "required": false,
+          "description": "The current phase of the incident \"resolved\", \"triggered\" or \"acknowledged\". Multiple values can be separated with commas."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-reporting/v1/team/{team}/oncall/log",
+      "method": "/apiReporting/v1/team/{team}/oncall/logGet",
+      "httpMethod": "get",
+      "tag": "Reporting",
+      "description": "A list of shift changes for a team",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "team",
+          "schema": "string",
+          "required": true,
+          "description": "The VictorOps team 'slug'"
+        },
+        {
+          "name": "start",
+          "schema": "string",
+          "required": false,
+          "description": "Return shift changes occurring after this timestamp. The default is the start of the day at midnight. Specify the timestamp in ISO8601 format"
+        },
+        {
+          "name": "end",
+          "schema": "string",
+          "required": false,
+          "description": "Return shift changes occurring before this timestamp. The default is the end of the day at 11:59:59. Specify the timestamp in ISO8601 format"
+        },
+        {
+          "name": "userName",
+          "schema": "string",
+          "required": false,
+          "description": "The VictorOps user ID. Return shift changes occurring during the interval specified for this user. Without this parameter, all relevant users (with respect to the specified interval) are returned"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api-reporting/v2/incidents",
+      "method": "/apiReporting/v2/incidentsGet",
+      "httpMethod": "get",
+      "tag": "Reporting",
+      "description": "Get/search incident history",
+      "parameters": [
+        {
+          "name": "X-VO-Api-Id",
+          "schema": "string",
+          "required": true,
+          "description": "Your API ID"
+        },
+        {
+          "name": "X-VO-Api-Key",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key"
+        },
+        {
+          "name": "offset",
+          "schema": "number",
+          "required": false,
+          "description": "The offset within the set of matching incidents"
+        },
+        {
+          "name": "limit",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum number of matching incidents to return (100 max)"
+        },
+        {
+          "name": "entityId",
+          "schema": "string",
+          "required": false,
+          "description": "The entity ID involved  This is the unique identifier for the entity causing the incident."
+        },
+        {
+          "name": "incidentNumber",
+          "schema": "string",
+          "required": false,
+          "description": "The incident number as shown in VictorOps Multiple values and ranges are allowed: 4,5,20:50\n"
+        },
+        {
+          "name": "startedAfter",
+          "schema": "string",
+          "required": false,
+          "description": "Return incidents started after this timestamp Specify the timestamp in ISO8601 format"
+        },
+        {
+          "name": "startedBefore",
+          "schema": "string",
+          "required": false,
+          "description": "Find incidents started before this timestamp  Specify the timestamp in ISO8601 format"
+        },
+        {
+          "name": "host",
+          "schema": "string",
+          "required": false,
+          "description": "The host involved in the incident Multiple values can be separated with commas."
+        },
+        {
+          "name": "service",
+          "schema": "string",
+          "required": false,
+          "description": "The service involved in the incident (if any) Multiple values can be separated with commas."
+        },
+        {
+          "name": "currentPhase",
+          "schema": "string",
+          "required": false,
+          "description": "The current phase of the incident \"resolved\", \"triggered\" or \"acknowledged\". Multiple values can be separated with commas. By default, response contains only \"resolved\" incidents"
+        },
+        {
+          "name": "routingKey",
+          "schema": "string",
+          "required": false,
+          "description": "The original routing of the incident"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The list of incidents in various states"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.victorops.com",
   "apiDescription": "This API allows you to interact with the VictorOps platform in various ways. Your account may be limited\nto a total number of API calls per month. Also, some of these API calls have rate limits.\n\nNOTE: In this documentation when creating a sample curl request (clicking the TRY IT OUT! button), in some API\nviewing interfaces, the '@' in an email address may be encoded. Please note that the REST endpoints will not\nprocess the encoded version. Make sure that the encoded character '%40' is changed to its unencoded form before\nsubmitting the curl request.\n",
   "apiTitle": "VictorOps",

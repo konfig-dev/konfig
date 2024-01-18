@@ -3,6 +3,1047 @@
   "openApiRaw": "https://api.swaggerhub.com/apis/Handwrytten/handwrytten/1.0.0",
   "homepage": "handwrytten.com",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/auth/authorization",
+      "method": "login",
+      "httpMethod": "post",
+      "tag": "auth",
+      "description": "Logs in to an existing account",
+      "parameters": [
+        {
+          "name": "login",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/auth/changePassword",
+      "method": "changePassword",
+      "httpMethod": "post",
+      "tag": "auth",
+      "description": "changes a user's password",
+      "parameters": [
+        {
+          "name": "new_password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "old_password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "uid",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/auth/logout",
+      "method": "logout",
+      "httpMethod": "post",
+      "tag": "auth",
+      "description": "logs out a session uid",
+      "parameters": [
+        {
+          "name": "uid",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/auth/register",
+      "method": "register",
+      "httpMethod": "post",
+      "tag": "auth",
+      "description": "Registers a new account",
+      "parameters": [
+        {
+          "name": "discount_code",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "fname",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "lname",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "login",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/auth/resetPasswordRequest",
+      "method": "resetPasswordRequest",
+      "httpMethod": "post",
+      "tag": "auth",
+      "description": "resets a user's password",
+      "parameters": [
+        {
+          "name": "login",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cards/createCustomCard",
+      "method": "createCustomCard",
+      "httpMethod": "post",
+      "tag": "customizer",
+      "description": "Create a new custom card",
+      "parameters": [
+        {
+          "name": "card_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "cover_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "cover_size_percent",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "footer_align",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "footer_font_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "footer_font_size",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "footer_text",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "header_align",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "header_auto_size",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "header_font_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "header_font_size",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "header_text",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "logo_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "logo_size_percent",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "uid",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cards/list",
+      "method": "simpleListCards",
+      "httpMethod": "get",
+      "tag": "cards",
+      "description": "Lists information on cards",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cards/list",
+      "method": "listCards",
+      "httpMethod": "post",
+      "tag": "cards",
+      "description": "Lists information on cards",
+      "parameters": [
+        {
+          "name": "category_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "uid",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cards/uploadCustomLogo",
+      "method": "uploadCustomLogo",
+      "httpMethod": "post",
+      "tag": "customizer",
+      "description": "upload logo or cover image for card",
+      "parameters": [
+        {
+          "name": "file",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "uid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cards/view",
+      "method": "filterableCardDetails",
+      "httpMethod": "post",
+      "tag": "cards",
+      "description": "Provides full information on a specific card",
+      "parameters": [
+        {
+          "name": "card_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "uid",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/countries/list",
+      "method": "/countries/listGet",
+      "httpMethod": "get",
+      "tag": "countries",
+      "description": "Lists the countries to which Handwritten can mail, their associated country ID and any costs",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/fonts/list",
+      "method": "fontsList",
+      "httpMethod": "get",
+      "tag": "fonts",
+      "description": "Lists Handwryting styles available for use",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/fonts/listForCustomizer",
+      "method": "fontsListForCustomizer",
+      "httpMethod": "get",
+      "tag": "customizer",
+      "description": "Lists fonts available for use with the card customizer",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/giftCards/view",
+      "method": "getGiftCardDetails",
+      "httpMethod": "get",
+      "tag": "giftCards",
+      "description": "Lists information on gift cards",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/giftCards/view",
+      "method": "giftCardDetails",
+      "httpMethod": "post",
+      "tag": "giftCards",
+      "description": "Lists information on gift cards",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/orders/singleStepOrder",
+      "method": "singleStepOrder",
+      "httpMethod": "post",
+      "tag": "orders",
+      "description": "sends an order in a single step.  This is much easier than using other order commands",
+      "parameters": [
+        {
+          "name": "card_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "credit_card_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "denomination_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "font_label",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "recipient_address1",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "recipient_address2",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "recipient_business_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "recipient_city",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "recipient_country",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "recipient_country_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "recipient_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "recipient_state",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "recipient_zip",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sender_address1",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sender_address2",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sender_business_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sender_city",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sender_country",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sender_country_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sender_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sender_state",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sender_zip",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "uid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/profile/address",
+      "method": "userAddress",
+      "httpMethod": "post",
+      "tag": "profile",
+      "description": "gets the user's return address information",
+      "parameters": [
+        {
+          "name": "uid",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/profile/deleteRecipient",
+      "method": "deleteRecipient",
+      "httpMethod": "post",
+      "tag": "address",
+      "description": "deletes an existing recipient address",
+      "parameters": [
+        {
+          "name": "address_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "uid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/profile/profileAddRecipient",
+      "method": "addRecipientAddress",
+      "httpMethod": "post",
+      "tag": "address",
+      "description": "add a new recipient address",
+      "parameters": [
+        {
+          "name": "address1",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "address2",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "business_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "city",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "country_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "uid",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "zip",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/profile/recipientsList",
+      "method": "recipientsList",
+      "httpMethod": "post",
+      "tag": "address",
+      "description": "list the addresses in the user's account",
+      "parameters": [
+        {
+          "name": "uid",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/profile/updateAddress",
+      "method": "updateUserAddress",
+      "httpMethod": "post",
+      "tag": "profile",
+      "description": "update the user's return address information",
+      "parameters": [
+        {
+          "name": "address1",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "address2",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "address_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "business_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "city",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "country_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "uid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "zip",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/profile/updateRecipient",
+      "method": "updateRecipient",
+      "httpMethod": "post",
+      "tag": "address",
+      "description": "updates an existing new recipient address",
+      "parameters": [
+        {
+          "name": "address1",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "address2",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "business_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "city",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "country_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "uid",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "zip",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/templateCategories/list",
+      "method": "getTemplateCategories",
+      "httpMethod": "get",
+      "tag": "templates",
+      "description": "List template categories",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/templateCategories/list",
+      "method": "getTemplateCategoriesAuthorized",
+      "httpMethod": "post",
+      "tag": "templates",
+      "description": "List template categories",
+      "parameters": [
+        {
+          "name": "uid",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/templates/create",
+      "method": "createTemplate",
+      "httpMethod": "post",
+      "tag": "templates",
+      "description": "Creates a New Template in the User’s Account",
+      "parameters": [
+        {
+          "name": "message",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "uid",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/templates/delete",
+      "method": "deleteTemplate",
+      "httpMethod": "post",
+      "tag": "templates",
+      "description": "Deletes a users template",
+      "parameters": [
+        {
+          "name": "template_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "uid",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/templates/list",
+      "method": "getTemplates",
+      "httpMethod": "get",
+      "tag": "templates",
+      "description": "List template categories",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/templates/list",
+      "method": "getTemplatessAuthorized",
+      "httpMethod": "post",
+      "tag": "templates",
+      "description": "List template categories",
+      "parameters": [
+        {
+          "name": "category_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "uid",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/templates/update",
+      "method": "updateTemplate",
+      "httpMethod": "post",
+      "tag": "templates",
+      "description": "Updates an Existing Template in the User’s Account",
+      "parameters": [
+        {
+          "name": "message",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "template_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "uid",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/templates/view",
+      "method": "getTemplateDetail",
+      "httpMethod": "post",
+      "tag": "templates",
+      "description": "Get all info on a template",
+      "parameters": [
+        {
+          "name": "template_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "uid",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.handwrytten.com/v1",
   "apiDescription": "This is the Handwrytten API for sending cards written in the handwriting of your choice.\nUsing this api, you can send cards to users.  You can also customize cards with logos, which\ncan be saved and then used like any other card in the system.\nFor a \"sandbox\" account, please contact contact@handwrytten.com\nTo move from credit card per-transaction to monthly invoicing, also contact us.\n[https://www.handwrytten.com](https://www.handwrytten.com)\n",
   "apiTitle": "Handwrytten API",

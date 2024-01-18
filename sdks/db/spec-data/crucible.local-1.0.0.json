@@ -3,6 +3,1005 @@
   "openApiRaw": "https://docs.atlassian.com/fisheye-crucible/latest_backup/wadl/crucible.wadl",
   "homepage": "crucible.local",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/rest-service/auth-v1/login",
+      "method": "login",
+      "httpMethod": "get",
+      "description": "Get the user authentication token.\n \n This is a legacy version of the login request. Using GET is deprecated as your password is likely to appear in logs which record request URLs.\n Use the POST version instead.",
+      "parameters": [
+        {
+          "name": "userName",
+          "schema": "string",
+          "required": false,
+          "description": "the username of the user to get the token for"
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": false,
+          "description": "the password for the user to get the token for"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/auth-v1/login",
+      "method": "loginPost",
+      "httpMethod": "post",
+      "description": "Get the user authentication token.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/projects-v1",
+      "method": "getAllProjects",
+      "httpMethod": "get",
+      "description": "Get the list of projects that the authenticated user is entitled to access.",
+      "parameters": [
+        {
+          "name": "excludeAllowedReviewers",
+          "schema": "boolean",
+          "required": false,
+          "description": "if set to true, user data (e.g. allowedReviewers) which is expensive\n to compute, will not be included in the response data. Defaults to false so allowedReviewers are included in the response."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/projects-v1/{key}",
+      "method": "getProject",
+      "httpMethod": "get",
+      "description": "Returns a project description.",
+      "parameters": [
+        {
+          "name": "excludeAllowedReviewers",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/repositories-v1",
+      "method": "getAllRepositories",
+      "httpMethod": "get",
+      "description": "Returns a list of all repositories. This includes plugin provided repositories",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "filter repositories by the repository key, only repositories of keys containing this value\n would be returned if value was provided.  Case insensitive."
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "required": false,
+          "description": "filter repositories by enabled flag.  Only enabled/disabled repositories would be returned\n accordingly if value was provided."
+        },
+        {
+          "name": "available",
+          "schema": "boolean",
+          "required": false,
+          "description": "filter repositories by its availability.  Only available/unavailable repositories would be returned\n accordingly if value was provided."
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "filter repositories by type.  Allowed values: cvs, svn, p4, git, hg, plugin (for light SCM repositories).\n Parameter can be specified more than once."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "maximum number of repositories to be returned."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/repositories-v1/browse/{repository}/{path}",
+      "method": "browse",
+      "httpMethod": "get",
+      "description": "Lists the contents of the specified directory.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/repositories-v1/change/{repository}/{revision}",
+      "method": "change",
+      "httpMethod": "get",
+      "description": "Represents a particular changeset.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/repositories-v1/changes/{repository}/{path}",
+      "method": "changes",
+      "httpMethod": "get",
+      "description": "Represents a sorted list of changesets, newest first.",
+      "parameters": [
+        {
+          "name": "oldestCsid",
+          "schema": "string",
+          "required": false,
+          "description": "only return change sets after this change set. If omitted there is no restriction."
+        },
+        {
+          "name": "includeOldest",
+          "schema": "boolean",
+          "required": false,
+          "description": "include the change set with id \"from\" in the change sets returned."
+        },
+        {
+          "name": "newestCsid",
+          "schema": "string",
+          "required": false,
+          "description": "only return change sets before this change set. If omitted there is no restriction."
+        },
+        {
+          "name": "includeNewest",
+          "schema": "boolean",
+          "required": false,
+          "description": "include the change set with id \"to\" in the change sets returned."
+        },
+        {
+          "name": "max",
+          "schema": "integer",
+          "required": false,
+          "description": "return only the newest change sets, to a maximum of maxChangesets."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/repositories-v1/content/{repository}/{revision}/{path}",
+      "method": "getContents",
+      "httpMethod": "get",
+      "description": "Returns the raw content of the specified file revision as a binary\n stream. No attempt is made to identify the content type and no mime\n type is provided.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/repositories-v1/history/{repository}/{revision}/{path}",
+      "method": "history",
+      "httpMethod": "get",
+      "description": "Represents the history of a versioned entity.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/repositories-v1/{repository}",
+      "method": "getRepositoryDetails",
+      "httpMethod": "get",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/repositories-v1/{repository}/svn",
+      "method": "getSvnRepositoryDetails",
+      "httpMethod": "get",
+      "description": "For backward compatibility we provide this method, but repositories should be referred to just by their key.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/repositories-v1/{repository}/{revision}/{path}",
+      "method": "details",
+      "httpMethod": "get",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1",
+      "method": "getAllReviews",
+      "httpMethod": "get",
+      "description": "",
+      "parameters": [
+        {
+          "name": "state",
+          "schema": "string",
+          "required": false,
+          "description": "only return reviews that are in these states."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1",
+      "method": "createReview",
+      "httpMethod": "post",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/details",
+      "method": "getAllDetailedReviews",
+      "httpMethod": "get",
+      "description": "Retrieves all reviews that are in one of the the specified states. For each review all details are included (review items + comments). The\n wiki rendered comments will be available via the <messageAsHtml> element",
+      "parameters": [
+        {
+          "name": "state",
+          "schema": "string",
+          "required": false,
+          "description": "the review states to match."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/filter",
+      "method": "getCustomFilterReviews",
+      "httpMethod": "get",
+      "description": "To ignore a property, omit it from the query string.",
+      "parameters": [
+        {
+          "name": "title",
+          "schema": "string",
+          "required": false,
+          "description": "a string that will be searched for in review titles."
+        },
+        {
+          "name": "author",
+          "schema": "string",
+          "required": false,
+          "description": "reviews authored by this user."
+        },
+        {
+          "name": "moderator",
+          "schema": "string",
+          "required": false,
+          "description": "reviews moderated by this user."
+        },
+        {
+          "name": "creator",
+          "schema": "string",
+          "required": false,
+          "description": "reviews created by this user."
+        },
+        {
+          "name": "states",
+          "schema": "string",
+          "required": false,
+          "description": "comma-separated list of amy of the following strings: (Draft,\n Approval, Review, Summarize, Closed, Dead, Rejected, Unknown)."
+        },
+        {
+          "name": "reviewer",
+          "schema": "string",
+          "required": false,
+          "description": "reviews reviewed by this user."
+        },
+        {
+          "name": "orRoles",
+          "schema": "boolean",
+          "required": false,
+          "description": "whether the value of , ,\n  and  should be OR'd\n () or AND'd ()\n together."
+        },
+        {
+          "name": "complete",
+          "schema": "boolean",
+          "required": false,
+          "description": "reviews that the specified reviewer has completed."
+        },
+        {
+          "name": "allReviewersComplete",
+          "schema": "boolean",
+          "required": false,
+          "description": "Reviews that all reviewers have completed."
+        },
+        {
+          "name": "project",
+          "schema": "string",
+          "required": false,
+          "description": "reviews for the specified project."
+        },
+        {
+          "name": "fromDate",
+          "schema": "integer",
+          "required": false,
+          "description": "reviews with last activity date after the specified timestamp, in milliseconds. Inclusive."
+        },
+        {
+          "name": "toDate",
+          "schema": "integer",
+          "required": false,
+          "description": "reviews with last activity date before the specified timestamp, in milliseconds. Inclusive."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/filter",
+      "method": "postCustomFilterReviews",
+      "httpMethod": "post",
+      "description": "This method should no longer be used, as it uses a POST for a read-only\n retrieval operation and is provided for backward compatibility only.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/filter/details",
+      "method": "getDetailedCustomFilterReviews",
+      "httpMethod": "get",
+      "description": "To ignore a property, omit it from the query string.",
+      "parameters": [
+        {
+          "name": "title",
+          "schema": "string",
+          "required": false,
+          "description": "a string that will be searched for in review titles."
+        },
+        {
+          "name": "author",
+          "schema": "string",
+          "required": false,
+          "description": "reviews authored by this user."
+        },
+        {
+          "name": "moderator",
+          "schema": "string",
+          "required": false,
+          "description": "reviews moderated by this user."
+        },
+        {
+          "name": "creator",
+          "schema": "string",
+          "required": false,
+          "description": "reviews created by this user."
+        },
+        {
+          "name": "states",
+          "schema": "string",
+          "required": false,
+          "description": "comma-separated list of amy of the following strings: (Draft,\n Approval, Review, Summarize, Closed, Dead, Rejected, Unknown)."
+        },
+        {
+          "name": "reviewer",
+          "schema": "string",
+          "required": false,
+          "description": "reviews reviewed by this user."
+        },
+        {
+          "name": "orRoles",
+          "schema": "boolean",
+          "required": false,
+          "description": "whether the value of , ,\n  and  should be OR'd\n () or AND'd ()\n together."
+        },
+        {
+          "name": "complete",
+          "schema": "boolean",
+          "required": false,
+          "description": "reviews that the specified reviewer has completed."
+        },
+        {
+          "name": "allReviewersComplete",
+          "schema": "boolean",
+          "required": false,
+          "description": "Reviews that all reviewers have completed."
+        },
+        {
+          "name": "project",
+          "schema": "string",
+          "required": false,
+          "description": "reviews for the specified project."
+        },
+        {
+          "name": "fromDate",
+          "schema": "integer",
+          "required": false,
+          "description": "reviews with last activity date after the specified timestamp, in milliseconds. Inclusive."
+        },
+        {
+          "name": "toDate",
+          "schema": "integer",
+          "required": false,
+          "description": "reviews with last activity date before the specified timestamp, in milliseconds. Inclusive."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/filter/details",
+      "method": "postDetailedCustomFilterReviews",
+      "httpMethod": "post",
+      "description": "This method should no longer be used, as it uses a POST for a read-only\n retrieval operation and is provided for backward compatibility only.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/filter/{filter}",
+      "method": "getFilteredReviewsForUser",
+      "httpMethod": "get",
+      "description": "Get all the reviews which match the given filter, for the current user.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/filter/{filter}/details",
+      "method": "getDetailedFilteredReviewsForUser",
+      "httpMethod": "get",
+      "description": "Gets a list of all the reviews that match the specified filter criteria.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/metrics/{version}",
+      "method": "getMetrics",
+      "httpMethod": "get",
+      "description": "Get comment metrics metadata for the specified metrics version.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/search/{repository}",
+      "method": "getReviewsForPath",
+      "httpMethod": "get",
+      "description": "Return a list of Reviews which include a particular file.",
+      "parameters": [
+        {
+          "name": "path",
+          "schema": "string",
+          "required": false,
+          "description": "path to find in reviews"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/search/{repository}/details",
+      "method": "getReviewsDetailsForPath",
+      "httpMethod": "get",
+      "description": "Return a list of Reviews which include a particular file.",
+      "parameters": [
+        {
+          "name": "path",
+          "schema": "string",
+          "required": false,
+          "description": "path to find in reviews."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/versionInfo",
+      "method": "getVersionInfo",
+      "httpMethod": "get",
+      "description": "Returns Crucible version information.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}",
+      "method": "deleteReview",
+      "httpMethod": "delete",
+      "description": "Permanently deletes the specified review.\n The review must have been abandoned.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}",
+      "method": "getReview",
+      "httpMethod": "get",
+      "description": "Get a single review by its permId (e.g. \"CR-45\").\n If the review does not exist, a 404 is returned.\n \n The moderator element may not exist if the review does not have a Moderator.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/actions",
+      "method": "getAvailableActions",
+      "httpMethod": "get",
+      "description": "Get a list of the actions which the current user is allowed to perform\n on the review.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/addChangeset",
+      "method": "addChangesetToReview",
+      "httpMethod": "post",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/addFile",
+      "method": "addFile",
+      "httpMethod": "post",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/addPatch",
+      "method": "addPatchReview0",
+      "httpMethod": "post",
+      "description": "Old, non-restful name. Kept for backwards compatibility. Exactly the same as POSTing to /{id}/patch",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/close",
+      "method": "closeReviewWithComment",
+      "httpMethod": "post",
+      "description": "Closes the given review with the summary given.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/comments",
+      "method": "getAllComments",
+      "httpMethod": "get",
+      "description": "Return all the comments visible to the requesting user for the review.",
+      "parameters": [
+        {
+          "name": "render",
+          "schema": "boolean",
+          "required": false,
+          "description": "indicate whether to render the wiki text in the returned comments. If set to \"true\", the comments will contain a\n <messageAsHtml> element containing the wiki rendered html."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/comments",
+      "method": "addGeneralComment",
+      "httpMethod": "post",
+      "description": "Add a general comment to the review.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/comments/general",
+      "method": "getGeneralComments",
+      "httpMethod": "get",
+      "description": "",
+      "parameters": [
+        {
+          "name": "render",
+          "schema": "boolean",
+          "required": false,
+          "description": "indicate whether to render the wiki text in the returned comments. If set to \"true\", the comments will contain a\n <messageAsHtml> element containing the wiki rendered html."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/comments/markAllAsRead",
+      "method": "markAllCommentsAsRead",
+      "httpMethod": "post",
+      "description": "For the effective user, mark all comments in a review as read (except\n those marked as leave unread).",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/comments/versioned",
+      "method": "getVersionedComments",
+      "httpMethod": "get",
+      "description": "",
+      "parameters": [
+        {
+          "name": "render",
+          "schema": "boolean",
+          "required": false,
+          "description": "indicate whether to render the wiki text in the returned comments. If set to \"true\", the comments will contain a\n <messageAsHtml> element containing the wiki rendered html."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/comments/{cId}",
+      "method": "removeComment",
+      "httpMethod": "delete",
+      "description": "Deletes the given comment.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/comments/{cId}",
+      "method": "getComment",
+      "httpMethod": "get",
+      "description": "Gets the given comment.",
+      "parameters": [
+        {
+          "name": "render",
+          "schema": "boolean",
+          "required": false,
+          "description": "true if the wiki text should be rendered into html, into the field <messageAsHtml>."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/comments/{cId}",
+      "method": "updateComment",
+      "httpMethod": "post",
+      "description": "Updates the comment given by the perma id to the new comment posted.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/comments/{cId}/markAsLeaveUnread",
+      "method": "markCommentAsLeaveUnread",
+      "httpMethod": "post",
+      "description": "Marks the comment as leave unread to the current user - it will not automatically be marked as read by crucible.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/comments/{cId}/markAsRead",
+      "method": "markCommentAsRead",
+      "httpMethod": "post",
+      "description": "Mark the given comment as read for the user used to make this POST.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/comments/{cId}/replies",
+      "method": "getReplies",
+      "httpMethod": "get",
+      "description": "Gets the replies to the given comment.",
+      "parameters": [
+        {
+          "name": "render",
+          "schema": "boolean",
+          "required": false,
+          "description": "true if the comments should also be rendered into html, into the element <messageAsHtml>"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/comments/{cId}/replies",
+      "method": "addReply",
+      "httpMethod": "post",
+      "description": "Adds a reply to the given comment. This call includes the  repsonse header that\n contains the URL of the newly created entity.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/comments/{cId}/replies/{rId}",
+      "method": "removeReply",
+      "httpMethod": "delete",
+      "description": "Deletes the reply.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/comments/{cId}/replies/{rId}",
+      "method": "updateReply",
+      "httpMethod": "post",
+      "description": "Updates a reply with the given newComment.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/complete",
+      "method": "completeReview",
+      "httpMethod": "post",
+      "description": "Completes the review for the current user",
+      "parameters": [
+        {
+          "name": "ignoreWarnings",
+          "schema": "boolean",
+          "required": false,
+          "description": "if {@code ignoreWarnings==true} then condition failure warnings will be ignored"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/details",
+      "method": "getDetailedReview",
+      "httpMethod": "get",
+      "description": "Returns the specified review.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/patch",
+      "method": "getReviewPatches",
+      "httpMethod": "get",
+      "description": "Get a list of patches and their details for the given review",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/patch",
+      "method": "addPatchToReview",
+      "httpMethod": "post",
+      "description": "Add the revisions in a patch to an existing review.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/patch/{patchId}",
+      "method": "removePatch",
+      "httpMethod": "delete",
+      "description": "Removes the patch with the given id from the review. All of the revisions provided by the patch will be removed as well.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/publish",
+      "method": "publishAllComments",
+      "httpMethod": "post",
+      "description": "Publishes all the draft comments of the current user.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/publish/{cId}",
+      "method": "publishComment",
+      "httpMethod": "post",
+      "description": "publishes the given draft comment.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/remind",
+      "method": "remindIncompleteReviewers",
+      "httpMethod": "post",
+      "description": "Immediately send a reminder to incomplete reviewers about the given review.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/reviewers",
+      "method": "getReviewers",
+      "httpMethod": "get",
+      "description": "Get a list of reviewers in the review given by the permaid id.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/reviewers",
+      "method": "addReviewers",
+      "httpMethod": "post",
+      "description": "Adds the given list of reviewers to the review.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/reviewers/completed",
+      "method": "getCompletedReviewers",
+      "httpMethod": "get",
+      "description": "Gets a list of completed reviewers.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/reviewers/uncompleted",
+      "method": "getUncompletedReviewers",
+      "httpMethod": "get",
+      "description": "Gets a list of reviewers that have not completed the review.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/reviewers/{username}",
+      "method": "removeReviewer",
+      "httpMethod": "delete",
+      "description": "Removes the reviewer from the review.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/reviewitems",
+      "method": "getReviewItemsForReview",
+      "httpMethod": "get",
+      "description": "Returns a list of all the items in a review.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/reviewitems",
+      "method": "addFisheyeReviewItem",
+      "httpMethod": "post",
+      "description": "Add the changes between two files in a fisheye repository to the review.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/reviewitems/details",
+      "method": "addReviewItem",
+      "httpMethod": "post",
+      "description": "Adds the given review item to the review. This will always create a new review item, even if there is an existing\n one with the same data in the review (in which case the existing item will be replaced).",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/reviewitems/revisions",
+      "method": "addReviewItems",
+      "httpMethod": "post",
+      "description": "Adds a review item for each of the supplied crucibleRevisionData elements.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/reviewitems/{riId}",
+      "method": "removeReviewItem",
+      "httpMethod": "delete",
+      "description": "Removes an item from a review.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/reviewitems/{riId}",
+      "method": "getReviewItem",
+      "httpMethod": "get",
+      "description": "Returns detailed information for a specific review item.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/reviewitems/{riId}/comments",
+      "method": "getReviewItemsComments",
+      "httpMethod": "get",
+      "description": "",
+      "parameters": [
+        {
+          "name": "render",
+          "schema": "boolean",
+          "required": false,
+          "description": "indicate whether to render the wiki text in the returned comments. If set to \"true\", the comments will contain a\n <messageAsHtml> element containing the wiki rendered html."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/reviewitems/{riId}/comments",
+      "method": "addVersionedComment",
+      "httpMethod": "post",
+      "description": "This call includes the  repsonse header that contains the URL of the newly created entity.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/reviewitems/{riId}/details",
+      "method": "setReviewItem",
+      "httpMethod": "put",
+      "description": "Sets the review item specified by itemId with the given reviewItem. The old review item is discarded. Can only\n perform this operation if the old review item specified by itemId can be deleted. The old review item's permId is\n not changed.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/reviewitems/{riId}/revisions",
+      "method": "removeReviewItemRevisions",
+      "httpMethod": "delete",
+      "description": "Removes the revisions given from the review item in the review specified by the id. If the review item has no\n more revisions left, it is automatically deleted.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/reviewitems/{riId}/revisions",
+      "method": "addReviewItemRevisions",
+      "httpMethod": "post",
+      "description": "Adds the given list of revisions to the supplied review item, merging if required. For example, if the review\n item for  contains revisions 3 to 6, and if:",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/transition",
+      "method": "changeState",
+      "httpMethod": "post",
+      "description": "Change the state of a review by performing an action on it.",
+      "parameters": [
+        {
+          "name": "action",
+          "schema": "string",
+          "required": false,
+          "description": "the string representation of the action to perform. Valid actions are:\n \n Note:"
+        },
+        {
+          "name": "ignoreWarnings",
+          "schema": "boolean",
+          "required": false,
+          "description": "if  then condition failure warnings will be ignored"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/transitions",
+      "method": "getAvailableTransitions",
+      "httpMethod": "get",
+      "description": "Get a list of the actions which the current user can perform on this\n review, given its current state and the user's permissions.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/reviews-v1/{id}/uncomplete",
+      "method": "uncompleteReview",
+      "httpMethod": "post",
+      "description": "Uncompletes the review for the current user.",
+      "parameters": [
+        {
+          "name": "ignoreWarnings",
+          "schema": "boolean",
+          "required": false,
+          "description": "if {@code ignoreWarnings==true} then condition failure warnings will be ignored"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/search-v1/reviews",
+      "method": "getReviewsForTerm",
+      "httpMethod": "get",
+      "description": "Search for reviews where the name, description, state or permaId contain the specified term.",
+      "parameters": [
+        {
+          "name": "term",
+          "schema": "string",
+          "required": false,
+          "description": "a search term."
+        },
+        {
+          "name": "maxReturn",
+          "schema": "string",
+          "required": false,
+          "description": "the maximum number of reviews to return."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/search-v1/reviewsForIssue",
+      "method": "getReviewsForIssueKey",
+      "httpMethod": "get",
+      "description": "Get a list of all reviews that have been linked to the specified JIRA issue key.",
+      "parameters": [
+        {
+          "name": "jiraKey",
+          "schema": "string",
+          "required": false,
+          "description": "a Jira issue key (e.g. \"FOO-3453\")"
+        },
+        {
+          "name": "maxReturn",
+          "schema": "string",
+          "required": false,
+          "description": "the maximum number of reviews to return."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/users-v1",
+      "method": "getUsers",
+      "httpMethod": "get",
+      "description": "Get a list of all the users. You can also ask for a set of users.",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": "a username (or a few) to limit the number of returned entries. It will return only existing users."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/users-v1/{repository}/{username}",
+      "method": "getMappedUser",
+      "httpMethod": "get",
+      "description": "Returns the user details of the user mapped to a committer in a repository.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/rest-service/users-v1/{username}",
+      "method": "getUserProfile",
+      "httpMethod": "get",
+      "description": "Returns the user's profile details.",
+      "parameters": [],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "http://crucible.local/context",
   "apiTitle": "Crucible",
   "endpoints": 63,

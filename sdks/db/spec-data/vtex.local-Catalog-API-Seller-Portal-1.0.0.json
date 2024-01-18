@@ -4,6 +4,768 @@
   "homepage": "vtex.local",
   "serviceName": "Catalog-API-Seller-Portal",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/api/catalog-seller-portal/brands",
+      "method": "listBrand",
+      "httpMethod": "get",
+      "tag": "Brand",
+      "description": "Get List of Brands",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "q",
+          "schema": "string",
+          "required": false,
+          "description": "Search word."
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "required": false,
+          "description": "The first page of the interval of the brand list."
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "required": false,
+          "description": "The last page of the interval of the brand list."
+        },
+        {
+          "name": "orderBy",
+          "schema": "string",
+          "required": false,
+          "description": "The order that the list is displayed. You can select `name`, or `updated_at` to select the order criteria. Then you can add `,` , `asc` or `desc` to define the brands order."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "Brand name."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/catalog-seller-portal/brands",
+      "method": "postBrand",
+      "httpMethod": "post",
+      "tag": "Brand",
+      "description": "Create Brand",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "isActive",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/catalog-seller-portal/brands/{brandId}",
+      "method": "getBrand",
+      "httpMethod": "get",
+      "tag": "Brand",
+      "description": "Get Brand by ID",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "brandId",
+          "schema": "string",
+          "required": true,
+          "description": "Brand unique identifier number."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/catalog-seller-portal/brands/{brandId}",
+      "method": "putBrand",
+      "httpMethod": "put",
+      "tag": "Brand",
+      "description": "Update Brand",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "brandId",
+          "schema": "string",
+          "required": true,
+          "description": "Brand unique identifier number."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "isActive",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/catalog-seller-portal/category-tree",
+      "method": "getCategoryTree",
+      "httpMethod": "get",
+      "tag": "Category",
+      "description": "Get Category Tree",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "depth",
+          "schema": "integer",
+          "required": false,
+          "description": "Category tree level."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/catalog-seller-portal/category-tree",
+      "method": "updateCategoryTree",
+      "httpMethod": "put",
+      "tag": "Category",
+      "description": "Update Category Tree",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "roots",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/catalog-seller-portal/category-tree/categories",
+      "method": "createCategory",
+      "httpMethod": "post",
+      "tag": "Category",
+      "description": "Create Category",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "Name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "parentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/catalog-seller-portal/category-tree/categories/{categoryId}",
+      "method": "getbyid",
+      "httpMethod": "get",
+      "tag": "Category",
+      "description": "Get Category by ID",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "categoryId",
+          "schema": "string",
+          "required": true,
+          "description": "Category unique identifier number."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/catalog-seller-portal/products",
+      "method": "postProduct",
+      "httpMethod": "post",
+      "tag": "Product",
+      "description": "Create Product",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "attributes",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "brandId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "categoryIds",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "externalId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "images",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "origin",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "skus",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "specs",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "taxCode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "transportModal",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/catalog-seller-portal/products/{param}",
+      "method": "getProductQuery",
+      "httpMethod": "get",
+      "tag": "Product",
+      "description": "Get Product by external ID,  SKU ID, SKU external ID or slug",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "param",
+          "schema": "string",
+          "required": true,
+          "description": "This part of the path must follow this format: `{param}={value}`. Replace `{param}` with the name of the parameter used to fetch a product, which can be one of the following: `external-id` (product reference unique identifier number in the store), `sku-id` (SKU unique identifier number), `sku-external-id` (SKU reference unique identifier number in the store) or `slug` (reference of the product in the URL of the store). Replace `{value}` with the value of the selected param. Make sure there is a `=` between them."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/catalog-seller-portal/products/{productId}",
+      "method": "getProduct",
+      "httpMethod": "get",
+      "tag": "Product",
+      "description": "Get Product by ID",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "productId",
+          "schema": "string",
+          "required": true,
+          "description": "Product unique identifier number."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/catalog-seller-portal/products/{productId}",
+      "method": "putProduct",
+      "httpMethod": "put",
+      "tag": "Product",
+      "description": "Update Product",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "productId",
+          "schema": "string",
+          "required": true,
+          "description": "Product unique identifier number."
+        },
+        {
+          "name": "attributes",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "brandId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "categoryIds",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "externalId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "images",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "origin",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "skus",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "specs",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "taxCode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "transportModal",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/catalog-seller-portal/products/{productId}/description",
+      "method": "getProductDescription",
+      "httpMethod": "get",
+      "tag": "Product",
+      "description": "Get Product Description by Product ID",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "productId",
+          "schema": "string",
+          "required": true,
+          "description": "Product unique identifier number."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/catalog-seller-portal/products/{productId}/description",
+      "method": "putProductDescription",
+      "httpMethod": "put",
+      "tag": "Product",
+      "description": "Update Product Description by Product ID",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "productId",
+          "schema": "string",
+          "required": true,
+          "description": "Product unique identifier number."
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "productId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/catalog-seller-portal/skus/_search",
+      "method": "searchSku",
+      "httpMethod": "get",
+      "tag": "SKU",
+      "description": "Search for SKU",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "required": false,
+          "description": "The first page of the interval of the product list."
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "required": false,
+          "description": "The last page of the interval of the product list."
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": false,
+          "description": "SKU unique idenfier number."
+        },
+        {
+          "name": "externalid",
+          "schema": "integer",
+          "required": false,
+          "description": "SKU reference unique identifier number in the store."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/catalog-seller-portal/skus/ids",
+      "method": "listSku",
+      "httpMethod": "get",
+      "tag": "SKU",
+      "description": "Get List of SKUs",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "required": false,
+          "description": "The first page of the interval of the product list."
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "required": false,
+          "description": "The last page of the interval of the product list."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://vtex.local",
   "apiDescription": "\r\nWith the Catalog API for Seller Portal, you will be able to create, edit and consult products and their variations, brands, and categories.\r\n\r\n> This API is part of the [Seller Portal Catalog](https://help.vtex.com/en/tutorial/how-the-seller-portal-catalog-works--7pMB6YOt6YQDQQbzFB4Pxp). This functionality is in the Beta stage and can be discontinued at any moment at VTEX's discretion. VTEX will not be responsible for any instabilities caused by its use or discontinuity. If you have any questions, please contact [our Support Center](https://support.vtex.com/hc/en-us/requests).\r\n\r\n## Index\r\n\r\n### Product\r\n\r\n`GET` [Get Product by ID](https://developers.vtex.com/docs/api-reference/catalog-api-seller-portal#get-/api/catalog-seller-portal/products/-productId-)\r\n`PUT` [Update Product](https://developers.vtex.com/docs/api-reference/catalog-api-seller-portal#put-/api/catalog-seller-portal/products/-productId-)\r\n`GET` [Get Product Description by Product ID](https://developers.vtex.com/docs/api-reference/catalog-api-seller-portal#get-/api/catalog-seller-portal/products/-productId-/description)\r\n`PUT` [Update Product Description by Product ID](https://developers.vtex.com/docs/api-reference/catalog-api-seller-portal#put-/api/catalog-seller-portal/products/-productId-/description)\r\n`GET` [Get Product by external ID, SKU ID, SKU external ID or slug](https://developers.vtex.com/docs/api-reference/catalog-api-seller-portal#get-/api/catalog-seller-portal/products/-param-)\r\n`POST` [Create Product](https://developers.vtex.com/docs/api-reference/catalog-api-seller-portal#post-/api/catalog-seller-portal/products)\r\n\r\n### SKU\r\n\r\n`GET` [Search for SKU](https://developers.vtex.com/docs/api-reference/catalog-api-seller-portal#get-/api/catalog-seller-portal/skus/_search)\r\n`GET` [Get List of SKUs](https://developers.vtex.com/docs/api-reference/catalog-api-seller-portal#get-/api/catalog-seller-portal/skus/ids)\r\n\r\n### Brand\r\n\r\n`GET` [Get List of Brands](https://developers.vtex.com/docs/api-reference/catalog-api-seller-portal#get-/api/catalog-seller-portal/brands)\r\n`POST` [Create a Brand](https://developers.vtex.com/docs/api-reference/catalog-api-seller-portal#post-/api/catalog-seller-portal/brands)\r\n`GET` [Get Brand by ID](https://developers.vtex.com/docs/api-reference/catalog-api-seller-portal#get-/api/catalog-seller-portal/brands/-brandId-)\r\n`PUT` [Update Brand](https://developers.vtex.com/docs/api-reference/catalog-api-seller-portal#put-/api/catalog-seller-portal/brands/-brandId-)\r\n\r\n### Category\r\n\r\n`GET` [Get Category Tree](https://developers.vtex.com/docs/api-reference/catalog-api-seller-portal#get-/api/catalog-seller-portal/category-tree)\r\n`PUT` [Update Category Tree](https://developers.vtex.com/docs/api-reference/catalog-api-seller-portal#put-/api/catalog-seller-portal/category-tree)\r\n`GET` [Get Category by ID](https://developers.vtex.com/docs/api-reference/catalog-api-seller-portal#get-/api/catalog-seller-portal/category-tree/categories/-categoryId-)\r\n`POST` [Create a Category](https://developers.vtex.com/docs/api-reference/catalog-api-seller-portal#post-/api/catalog-seller-portal/category-tree/categories)",
   "apiTitle": "Catalog API - Seller Portal",

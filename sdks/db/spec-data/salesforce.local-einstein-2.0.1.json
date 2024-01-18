@@ -4,6 +4,1385 @@
   "homepage": "salesforce.local",
   "serviceName": "einstein",
   "apiVersion": "2.0.1",
+  "methods": [
+    {
+      "url": "/v2/apiusage",
+      "method": "getApiUsagePlansV2",
+      "httpMethod": "get",
+      "tag": "Check API Usage",
+      "description": "Get API Isage",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/language/datasets",
+      "method": "listDatasets",
+      "httpMethod": "get",
+      "tag": "Language Datasets",
+      "description": "Get All Datasets",
+      "parameters": [
+        {
+          "name": "offset",
+          "schema": "string",
+          "description": "Index of the dataset from which you want to start paging"
+        },
+        {
+          "name": "count",
+          "schema": "string",
+          "description": "Number of datsets to return. Maximum valid value is 25. If you specify a number greater than 25, the call returns 25 datasets."
+        },
+        {
+          "name": "global",
+          "schema": "boolean",
+          "description": "If true, returns all global datasets. Global datasets are public datasets that Salesforce provides."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/language/datasets/upload",
+      "method": "uploadDatasetAsync",
+      "httpMethod": "post",
+      "tag": "Language Datasets",
+      "description": "Create a Dataset From a File Asynchronously",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "path",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/language/datasets/upload/sync",
+      "method": "uploadDatasetSync",
+      "httpMethod": "post",
+      "tag": "Language Datasets",
+      "description": "Create a Dataset From a File Synchronously",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "path",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/language/datasets/{datasetId}",
+      "method": "deleteDataset",
+      "httpMethod": "delete",
+      "tag": "Language Datasets",
+      "description": "Delete a Dataset",
+      "parameters": [
+        {
+          "name": "datasetId",
+          "schema": "string",
+          "required": true,
+          "description": "Dataset Id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/language/datasets/{datasetId}",
+      "method": "getDataset",
+      "httpMethod": "get",
+      "tag": "Language Datasets",
+      "description": "Get a Dataset",
+      "parameters": [
+        {
+          "name": "datasetId",
+          "schema": "string",
+          "required": true,
+          "description": "Dataset Id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/language/datasets/{datasetId}/examples",
+      "method": "getExamples",
+      "httpMethod": "get",
+      "tag": "Language Examples",
+      "description": "Get All Examples",
+      "parameters": [
+        {
+          "name": "datasetId",
+          "schema": "string",
+          "required": true,
+          "description": "Dataset Id"
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "description": "Index of the example from which you want to start paging."
+        },
+        {
+          "name": "count",
+          "schema": "string",
+          "description": "Number of examples to return."
+        },
+        {
+          "name": "source",
+          "schema": "string",
+          "description": "return examples that were created in the dataset as feedback"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/language/datasets/{datasetId}/models",
+      "method": "getTrainedModels",
+      "httpMethod": "get",
+      "tag": "Language Models",
+      "description": "Get All Models",
+      "parameters": [
+        {
+          "name": "offset",
+          "schema": "string",
+          "description": "Index of the model from which you want to start paging."
+        },
+        {
+          "name": "count",
+          "schema": "string",
+          "description": "Number of models to return."
+        },
+        {
+          "name": "datasetId",
+          "schema": "string",
+          "required": true,
+          "description": "Dataset Id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/language/datasets/{datasetId}/upload",
+      "method": "updateDatasetAsync",
+      "httpMethod": "put",
+      "tag": "Language Examples",
+      "description": "Create Examples From a File",
+      "parameters": [
+        {
+          "name": "datasetId",
+          "schema": "string",
+          "required": true,
+          "description": "Dataset Id"
+        },
+        {
+          "name": "data",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/language/deletion/{id}",
+      "method": "get",
+      "httpMethod": "get",
+      "tag": "Language Datasets",
+      "description": "Get Deletion Status",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Deletion Id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/language/examples",
+      "method": "getExamplesByLabel",
+      "httpMethod": "get",
+      "tag": "Language Examples",
+      "description": "Get All Examples for Label",
+      "parameters": [
+        {
+          "name": "labelId",
+          "schema": "string",
+          "description": "Label Id"
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "description": "Index of the example from which you want to start paging."
+        },
+        {
+          "name": "count",
+          "schema": "string",
+          "description": "Number of examples to return."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/language/feedback",
+      "method": "provideFeedback",
+      "httpMethod": "post",
+      "tag": "Language Examples",
+      "description": "Create a Feedback Example",
+      "parameters": [
+        {
+          "name": "document",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "expectedLabel",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "modelId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/language/intent",
+      "method": "intentMultipart",
+      "httpMethod": "post",
+      "tag": "Language Prediction",
+      "description": "Prediction for Intent",
+      "parameters": [
+        {
+          "name": "document",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "modelId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "numResults",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sampleId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/language/models/{modelId}",
+      "method": "deleteModel",
+      "httpMethod": "delete",
+      "tag": "Language Models",
+      "description": "Delete a Model",
+      "parameters": [
+        {
+          "name": "modelId",
+          "schema": "string",
+          "required": true,
+          "description": "Model Id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/language/models/{modelId}",
+      "method": "getTrainedModelMetrics",
+      "httpMethod": "get",
+      "tag": "Language Models",
+      "description": "Get Model Metrics",
+      "parameters": [
+        {
+          "name": "modelId",
+          "schema": "string",
+          "required": true,
+          "description": "Model Id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/language/models/{modelId}/lc",
+      "method": "getTrainedModelLearningCurve",
+      "httpMethod": "get",
+      "tag": "Language Models",
+      "description": "Get Model Learning Curve",
+      "parameters": [
+        {
+          "name": "modelId",
+          "schema": "string",
+          "required": true,
+          "description": "Model Id"
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "description": "Index of the epoch from which you want to start paging"
+        },
+        {
+          "name": "count",
+          "schema": "string",
+          "description": "Number of epoch to return. Maximum valid value is 25."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/language/retrain",
+      "method": "retrain",
+      "httpMethod": "post",
+      "tag": "Language Training",
+      "description": "Retrain a Dataset",
+      "parameters": [
+        {
+          "name": "algorithm",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "epochs",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "learningRate",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "modelId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "trainParams",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/language/sentiment",
+      "method": "sentimentMultipart",
+      "httpMethod": "post",
+      "tag": "Language Prediction",
+      "description": "Prediction for Sentiment",
+      "parameters": [
+        {
+          "name": "document",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "modelId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "numResults",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sampleId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/language/train",
+      "method": "train",
+      "httpMethod": "post",
+      "tag": "Language Training",
+      "description": "Train a Dataset",
+      "parameters": [
+        {
+          "name": "algorithm",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "datasetId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "epochs",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "learningRate",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "trainParams",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/language/train/{modelId}",
+      "method": "getTrainStatusAndProgress",
+      "httpMethod": "get",
+      "tag": "Language Training",
+      "description": "Get Training Status",
+      "parameters": [
+        {
+          "name": "modelId",
+          "schema": "string",
+          "required": true,
+          "description": "Model Id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/oauth2/token",
+      "method": "generateTokenV2",
+      "httpMethod": "post",
+      "tag": "Authorization",
+      "description": "Generate an OAuth Token",
+      "parameters": [
+        {
+          "name": "assertion",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "grant_type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "refresh_token",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "scope",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "valid_for",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/oauth2/tokens/{token}",
+      "method": "revokeRefreshTokenV2",
+      "httpMethod": "delete",
+      "tag": "Authorization",
+      "description": "Delete a Refresh Token",
+      "parameters": [
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": "the token to revoke"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v2/vision/bulkfeedback",
+      "method": "updateDatasetAsync1",
+      "httpMethod": "put",
+      "tag": "Vision Examples",
+      "description": "Create Feedback Examples From a Zip File",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "modelId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/vision/datasets",
+      "method": "listDatasets1",
+      "httpMethod": "get",
+      "tag": "Vision Datasets",
+      "description": "Get All Datasets",
+      "parameters": [
+        {
+          "name": "offset",
+          "schema": "string",
+          "description": "Index of the dataset from which you want to start paging"
+        },
+        {
+          "name": "count",
+          "schema": "string",
+          "description": "Number of datsets to return. Maximum valid value is 25. If you specify a number greater than 25, the call returns 25 datasets."
+        },
+        {
+          "name": "global",
+          "schema": "boolean",
+          "description": "If true, returns all global datasets. Global datasets are public datasets that Salesforce provides."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/vision/datasets",
+      "method": "createDataset",
+      "httpMethod": "post",
+      "tag": "Vision Datasets",
+      "description": "Create a Dataset",
+      "parameters": [
+        {
+          "name": "labels",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/vision/datasets/upload",
+      "method": "uploadDatasetAsync1",
+      "httpMethod": "post",
+      "tag": "Vision Datasets",
+      "description": "Create a Dataset From a Zip File Asynchronously",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "path",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/vision/datasets/upload/sync",
+      "method": "uploadDatasetSync1",
+      "httpMethod": "post",
+      "tag": "Vision Datasets",
+      "description": "Create a Dataset From a Zip File Synchronously",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "path",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/vision/datasets/{datasetId}",
+      "method": "deleteDataset1",
+      "httpMethod": "delete",
+      "tag": "Vision Datasets",
+      "description": "Delete a Dataset",
+      "parameters": [
+        {
+          "name": "datasetId",
+          "schema": "string",
+          "required": true,
+          "description": "Dataset Id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/vision/datasets/{datasetId}",
+      "method": "getDataset1",
+      "httpMethod": "get",
+      "tag": "Vision Datasets",
+      "description": "Get a Dataset",
+      "parameters": [
+        {
+          "name": "datasetId",
+          "schema": "string",
+          "required": true,
+          "description": "Dataset Id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/vision/datasets/{datasetId}/examples",
+      "method": "getExamples1",
+      "httpMethod": "get",
+      "tag": "Vision Examples",
+      "description": "Get All Examples",
+      "parameters": [
+        {
+          "name": "datasetId",
+          "schema": "string",
+          "required": true,
+          "description": "Dataset Id"
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "description": "Index of the example from which you want to start paging."
+        },
+        {
+          "name": "count",
+          "schema": "string",
+          "description": "Number of examples to return."
+        },
+        {
+          "name": "source",
+          "schema": "string",
+          "description": "return examples that were created in the dataset as feedback"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/vision/datasets/{datasetId}/examples",
+      "method": "addExample",
+      "httpMethod": "post",
+      "tag": "Vision Examples",
+      "description": "Create an Example",
+      "parameters": [
+        {
+          "name": "datasetId",
+          "schema": "string",
+          "required": true,
+          "description": "Dataset Id"
+        },
+        {
+          "name": "data",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "labelId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/vision/datasets/{datasetId}/models",
+      "method": "getTrainedModels1",
+      "httpMethod": "get",
+      "tag": "Vision Models",
+      "description": "Get All Models",
+      "parameters": [
+        {
+          "name": "offset",
+          "schema": "string",
+          "description": "Index of the model from which you want to start paging."
+        },
+        {
+          "name": "count",
+          "schema": "string",
+          "description": "Number of models to return."
+        },
+        {
+          "name": "datasetId",
+          "schema": "string",
+          "required": true,
+          "description": "Dataset Id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/vision/datasets/{datasetId}/upload",
+      "method": "updateDatasetAsync2",
+      "httpMethod": "put",
+      "tag": "Vision Examples",
+      "description": "Create Examples From a Zip File",
+      "parameters": [
+        {
+          "name": "datasetId",
+          "schema": "string",
+          "required": true,
+          "description": "Dataset Id"
+        },
+        {
+          "name": "data",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "path",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/vision/deletion/{id}",
+      "method": "get1",
+      "httpMethod": "get",
+      "tag": "Vision Datasets",
+      "description": "Get Deletion Status",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Deletion Id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/vision/detect",
+      "method": "detectMultipart",
+      "httpMethod": "post",
+      "tag": "Vision Prediction",
+      "description": "Detection with Image File",
+      "parameters": [
+        {
+          "name": "modelId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "sampleBase64Content",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sampleId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sampleLocation",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/vision/examples",
+      "method": "getExamplesByLabel1",
+      "httpMethod": "get",
+      "tag": "Vision Examples",
+      "description": "Get All Examples for Label",
+      "parameters": [
+        {
+          "name": "labelId",
+          "schema": "string",
+          "description": "Label Id"
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "description": "Index of the example from which you want to start paging."
+        },
+        {
+          "name": "count",
+          "schema": "string",
+          "description": "Number of examples to return."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/vision/feedback",
+      "method": "provideFeedback1",
+      "httpMethod": "post",
+      "tag": "Vision Examples",
+      "description": "Create a Feedback Example",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "expectedLabel",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "modelId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/vision/models/{modelId}",
+      "method": "deleteModel1",
+      "httpMethod": "delete",
+      "tag": "Vision Models",
+      "description": "Delete a Model",
+      "parameters": [
+        {
+          "name": "modelId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/vision/models/{modelId}",
+      "method": "getTrainedModelMetrics1",
+      "httpMethod": "get",
+      "tag": "Vision Models",
+      "description": "Get Model Metrics",
+      "parameters": [
+        {
+          "name": "modelId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/vision/models/{modelId}/lc",
+      "method": "getTrainedModelLearningCurve1",
+      "httpMethod": "get",
+      "tag": "Vision Models",
+      "description": "Get Model Learning Curve",
+      "parameters": [
+        {
+          "name": "modelId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "description": "Index of the epoch from which you want to start paging"
+        },
+        {
+          "name": "count",
+          "schema": "string",
+          "description": "Number of epoch to return. Maximum valid value is 25."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/vision/ocr",
+      "method": "ocrMultipart",
+      "httpMethod": "post",
+      "tag": "Vision Prediction",
+      "description": "Detect Text",
+      "parameters": [
+        {
+          "name": "modelId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sampleContent",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sampleId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sampleLocation",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "task",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/vision/predict",
+      "method": "predictMultipart",
+      "httpMethod": "post",
+      "tag": "Vision Prediction",
+      "description": "Make Prediction",
+      "parameters": [
+        {
+          "name": "modelId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "numResults",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sampleBase64Content",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sampleId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sampleLocation",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/vision/retrain",
+      "method": "retrain1",
+      "httpMethod": "post",
+      "tag": "Vision Training",
+      "description": "Retrain a Dataset",
+      "parameters": [
+        {
+          "name": "algorithm",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "epochs",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "learningRate",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "modelId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "trainParams",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/vision/train",
+      "method": "train1",
+      "httpMethod": "post",
+      "tag": "Vision Training",
+      "description": "Train a Dataset",
+      "parameters": [
+        {
+          "name": "algorithm",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "datasetId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "epochs",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "learningRate",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "trainParams",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/vision/train/{modelId}",
+      "method": "getTrainStatusAndProgress1",
+      "httpMethod": "get",
+      "tag": "Vision Training",
+      "description": "Get Training Status",
+      "parameters": [
+        {
+          "name": "modelId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://salesforce.local",
   "apiDescription": "Provided by [Salesforce](https://www.einstein-hub.com/)  � Copyright 2000�2020 salesforce.com, inc. All rights reserved. Salesforce is a registered trademark of salesforce.com, inc., as are other names and marks. Other marks appearing herein may be trademarks of their respective owners. **Last updated:** Aug 17, 2020",
   "apiTitle": "Einstein Vision and Einstein Language",

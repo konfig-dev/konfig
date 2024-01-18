@@ -3,6 +3,65 @@
   "openApiRaw": "https://api.koomalooma.com/oas",
   "homepage": "koomalooma.com",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/users",
+      "method": "/usersPost",
+      "httpMethod": "post",
+      "description": "Create a User",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/commitments",
+      "method": "/users/{userId}/commitmentsPost",
+      "httpMethod": "post",
+      "description": "Assign points to a User",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "user_id of the user to assign points to"
+        },
+        {
+          "name": "campaign_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "promotion_goal_category",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "promotion_goal_description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "transaction_value",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.koomalooma.com/api",
   "apiDescription": "This is the koomalooma Partner API. koomalooma is the first Loyalty BPaaS (Business Process as a Service) for mobile and web companies. With koomalooma merchants issue points for actions their customers / users make on your mobile or web store, for example a purchase or a referral. koomalooma takes care of all the rest, from signing up users, keeping track of points and delivering rewards in over 80 countries. koomalooma offers an easy to integrate API and web backend to configure loyalty campaigns and track performance. You can find more at http://support.koomalooma.com",
   "apiTitle": "koomalooma Partner API",

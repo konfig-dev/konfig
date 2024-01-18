@@ -3,6 +3,741 @@
   "openApiRaw": "https://linqr.app/openapi/openapi.json",
   "homepage": "linqr.app",
   "apiVersion": "2.0",
+  "methods": [
+    {
+      "url": "/batch/qrcode",
+      "method": "qrCodeBatchBatchQrcodePost",
+      "httpMethod": "post",
+      "tag": "Multiple QR Codes",
+      "description": "QR Code Batch",
+      "parameters": [
+        {
+          "name": "items",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "output",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "424",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/images",
+      "method": "imageListAllImagesGet",
+      "httpMethod": "get",
+      "tag": "Image management",
+      "description": "List all images",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/images",
+      "method": "imageUploadImagesPost",
+      "httpMethod": "post",
+      "tag": "Image management",
+      "description": "Upload image",
+      "parameters": [
+        {
+          "name": "image",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/images/{id}",
+      "method": "imageDeleteImagesIdDelete",
+      "httpMethod": "delete",
+      "tag": "Image management",
+      "description": "Delete image",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/images/{id}",
+      "method": "imageListImagesIdGet",
+      "httpMethod": "get",
+      "tag": "Image management",
+      "description": "List image",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/qrcode",
+      "method": "dispatcherQrcodePost",
+      "httpMethod": "post",
+      "tag": "Single QR Code",
+      "description": "Arbitrary data type QR Code",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "image",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "output",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "size",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "style",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "424",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/qrcode/contact",
+      "method": "dispatcherQrcodeContactPost",
+      "httpMethod": "post",
+      "tag": "Single QR Code",
+      "description": "Contact QR Code",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "image",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "output",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "size",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "style",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "424",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/qrcode/crypto",
+      "method": "dispatcherQrcodeCryptoPost",
+      "httpMethod": "post",
+      "tag": "Single QR Code",
+      "description": "Cryptocurrency payment QR Code",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "image",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "output",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "size",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "style",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "424",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/qrcode/email",
+      "method": "dispatcherQrcodeEmailPost",
+      "httpMethod": "post",
+      "tag": "Single QR Code",
+      "description": "Email QR Code",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "image",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "output",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "size",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "style",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "424",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/qrcode/geo",
+      "method": "dispatcherQrcodeGeoPost",
+      "httpMethod": "post",
+      "tag": "Single QR Code",
+      "description": "Geolocation QR Code",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "image",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "output",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "size",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "style",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "424",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/qrcode/phone",
+      "method": "dispatcherQrcodePhonePost",
+      "httpMethod": "post",
+      "tag": "Single QR Code",
+      "description": "Telephone QR Code",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "image",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "output",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "size",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "style",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "424",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/qrcode/sms",
+      "method": "dispatcherQrcodeSmsPost",
+      "httpMethod": "post",
+      "tag": "Single QR Code",
+      "description": "SMS QR Code",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "image",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "output",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "size",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "style",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "424",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/qrcode/text",
+      "method": "dispatcherQrcodeTextPost",
+      "httpMethod": "post",
+      "tag": "Single QR Code",
+      "description": "Text QR Code",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "image",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "output",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "size",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "style",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "424",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/qrcode/wifi",
+      "method": "dispatcherQrcodeWifiPost",
+      "httpMethod": "post",
+      "tag": "Single QR Code",
+      "description": "WiFi QR Code",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "image",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "output",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "size",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "style",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "424",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://run.byvalue.org",
   "apiDescription": "This is LinQR QR Code API documentation. This API allows you to generate custom, visually attractive QR Codes. The cloud infrastructure guarantees high availability and autoscalability of the service. You can generate hundreds of thousands of images this way and use them however you like.\n\nWe realize that your API use case may require custom solutions, and perhaps we lack functionality that is very important to you. In that case feel free to write an email to our support and tell us about it. We have repeatedly added new functions of our service directly after the requests of our users.\n\n**General remarks:**\n - maximum request size is fixed at 32MB.\n - request timeout is fixed at 180 seconds.",
   "apiTitle": "LinQR",

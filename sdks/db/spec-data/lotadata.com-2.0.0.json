@@ -3,6 +3,320 @@
   "openApiRaw": "https://developers.lotadata.com/swagger/spec/apiv2.json",
   "homepage": "lotadata.com",
   "apiVersion": "2.0.0",
+  "methods": [
+    {
+      "url": "/events",
+      "method": "/eventsGet",
+      "httpMethod": "get",
+      "tag": "Events",
+      "description": "Find event occurrences in the area. Returns results at specific place and time, event groups are expanded for every occurrence.",
+      "parameters": [
+        {
+          "name": "category",
+          "schema": "array",
+          "description": "List of required EventCategory ids (Tier 1)"
+        },
+        {
+          "name": "activity",
+          "schema": "string",
+          "description": "List of required activity type ids (compliment to category)"
+        },
+        {
+          "name": "ambience",
+          "schema": "string",
+          "description": "List of required ambience ids"
+        },
+        {
+          "name": "genre",
+          "schema": "string",
+          "description": "List of required genre ids"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": "Matching on event and place names"
+        },
+        {
+          "name": "q",
+          "schema": "string",
+          "description": "Text query matching titles, description, various text, tags, category"
+        },
+        {
+          "name": "from_day",
+          "schema": "string",
+          "required": false,
+          "description": "Start on or after date specified (2015-10-16)"
+        },
+        {
+          "name": "to_day",
+          "schema": "string",
+          "required": false,
+          "description": "Start on or before date specified (2015-10-16)"
+        },
+        {
+          "name": "capacity_min",
+          "schema": "number",
+          "required": false,
+          "description": "Min capacity at location"
+        },
+        {
+          "name": "capacity_max",
+          "schema": "number",
+          "required": false,
+          "description": "Min capacity at location"
+        },
+        {
+          "name": "center",
+          "schema": "string",
+          "description": "latitude,longitude of the origin point"
+        },
+        {
+          "name": "radius",
+          "schema": "integer",
+          "description": "Distance from origin in meters"
+        },
+        {
+          "name": "bbox",
+          "schema": "array",
+          "required": false,
+          "description": "Corner of a bounding box (lat,lng). Requires 0 or 2 pairs"
+        },
+        {
+          "name": "polygon",
+          "schema": "array",
+          "required": false,
+          "description": "Closed custom polygon. Ordered list of lat,lng pairs"
+        },
+        {
+          "name": "within",
+          "schema": "string",
+          "required": false,
+          "description": "Search within specified geopolitical place id"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Return results starting at specified offset"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Max results to return"
+        },
+        {
+          "name": "fieldset",
+          "schema": "string",
+          "required": true,
+          "description": "Return results starting at specified offset (summary, context, detail)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/events/{id}",
+      "method": "/events/{id}Get",
+      "httpMethod": "get",
+      "tag": "Events",
+      "description": "Get Specific event details.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "event @id"
+        },
+        {
+          "name": "fieldset",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Event Occurrence Detail limited to requested fieldset."
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/places",
+      "method": "/placesGet",
+      "httpMethod": "get",
+      "tag": "Places",
+      "description": "Venues, landmarks, regions, these are all places to search.",
+      "parameters": [
+        {
+          "name": "category",
+          "schema": "array",
+          "description": "List of required PlaceCategory ids (Tier 1)"
+        },
+        {
+          "name": "function",
+          "schema": "array",
+          "description": "List of required PlaceFunction ids (Tier 2)"
+        },
+        {
+          "name": "ambience",
+          "schema": "array",
+          "description": "List of required ambience ids"
+        },
+        {
+          "name": "tag",
+          "schema": "array",
+          "description": "List of required tags"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": "Specific PlaceType to return"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": "Match on place names"
+        },
+        {
+          "name": "exact",
+          "schema": "boolean",
+          "description": "Require an exact name match"
+        },
+        {
+          "name": "capacity_min",
+          "schema": "number",
+          "required": false,
+          "description": "Min capacity at location"
+        },
+        {
+          "name": "capacity_max",
+          "schema": "number",
+          "required": false,
+          "description": "Min capacity at location"
+        },
+        {
+          "name": "street",
+          "schema": "string",
+          "description": "Address of the place or street component of the address"
+        },
+        {
+          "name": "locality",
+          "schema": "string",
+          "description": "city, town, or neighborhood of the place"
+        },
+        {
+          "name": "region",
+          "schema": "string",
+          "description": "region or state"
+        },
+        {
+          "name": "postal_code",
+          "schema": "string",
+          "description": "Postal or zip code"
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "description": "country component of the address"
+        },
+        {
+          "name": "center",
+          "schema": "string",
+          "description": "latitude,longitude of the origin point"
+        },
+        {
+          "name": "radius",
+          "schema": "integer",
+          "description": "Distance from origin in meters"
+        },
+        {
+          "name": "bbox",
+          "schema": "array",
+          "required": false,
+          "description": "Corner of a bounding box (lat,lng). Requires 0 or 2 pairs"
+        },
+        {
+          "name": "polygon",
+          "schema": "array",
+          "required": false,
+          "description": "Closed custom polygon. Ordered list of lat,lng pairs"
+        },
+        {
+          "name": "within",
+          "schema": "string",
+          "required": false,
+          "description": "Search within specified geopolitical place id"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Return results starting at specified offset"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Max results to return"
+        },
+        {
+          "name": "fieldset",
+          "schema": "string",
+          "required": true,
+          "description": "Return results starting at specified offset (summary, context, detail)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/places/{id}",
+      "method": "/places/{id}Get",
+      "httpMethod": "get",
+      "tag": "Places",
+      "description": "Get specific place details",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "place @id"
+        },
+        {
+          "name": "fieldset",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api2.lotadata.com/v2",
   "apiDescription": "Access the most exhaustive, accurate and up-to-date collection of global and hyper-local geocoded events and activities across a wide range of categories and genres",
   "apiTitle": "LotaData",

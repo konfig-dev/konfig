@@ -3,6 +3,8023 @@
   "openApiRaw": "https://api.motaword.com/swagger",
   "homepage": "motaword.com",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/",
+      "method": "getEndpoints",
+      "httpMethod": "get",
+      "tag": "Static",
+      "description": "Available endpoints",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/async/download",
+      "method": "downloadAsync",
+      "httpMethod": "get",
+      "tag": "Async",
+      "description": "Download result of an async operation",
+      "parameters": [
+        {
+          "name": "async_request_key",
+          "schema": "string",
+          "required": true,
+          "description": "Async operation key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/blogs",
+      "method": "getBlogPosts",
+      "httpMethod": "get",
+      "tag": "Blog",
+      "description": "Get blog posts - ordered by created desc by default",
+      "parameters": [
+        {
+          "name": "locale",
+          "schema": "string",
+          "required": false,
+          "description": "Article language, default `en`. When no blog article is available and `fallback=true` is specified, it falls back to `en`."
+        },
+        {
+          "name": "fallback",
+          "schema": "boolean",
+          "required": false,
+          "description": "When `true`, and no article is found in the locale, it falls back to `locale=en`."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "per_page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cache/{key}",
+      "method": "deleteCache",
+      "httpMethod": "delete",
+      "description": "Clear cache by key",
+      "parameters": [
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": "Cache key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/commissions",
+      "method": "getCommissions",
+      "httpMethod": "get",
+      "tag": "Commission",
+      "description": "Returns a commission list of current client.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/commissions",
+      "method": "getCommissionsByFilter",
+      "httpMethod": "post",
+      "tag": "Commission",
+      "description": "Returns a commission list of current client.",
+      "parameters": [
+        {
+          "name": "budget_code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "date_from",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "date_to",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "source_languages",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "target_languages",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "users",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects",
+      "method": "getContinuousProjects",
+      "httpMethod": "get",
+      "tag": "ContinuousProject",
+      "description": "View continuous projects",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Type of continuous project."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects",
+      "method": "createContinuousProject",
+      "httpMethod": "post",
+      "tag": "ContinuousProject",
+      "description": "Create a continuous project",
+      "parameters": [
+        {
+          "name": "analytics_enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "auto_start_postedit",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "created_at",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "is_enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "last_activity_at",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "mt_enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "mt_engine",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "postedit_enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "source_language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "subscription",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "target_languages",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "word_count",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{id}",
+      "method": "deleteContinuousProject",
+      "httpMethod": "delete",
+      "tag": "ContinuousProject",
+      "description": "Delete a continuous project",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous project ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{id}",
+      "method": "getContinuousProject",
+      "httpMethod": "get",
+      "tag": "ContinuousProject",
+      "description": "View a continuous project",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous Project ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{id}",
+      "method": "updateContinuousProject",
+      "httpMethod": "post",
+      "tag": "ContinuousProject",
+      "description": "Update a continuous project",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous project ID"
+        },
+        {
+          "name": "analytics_enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "auto_start_postedit",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "is_enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "languages",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "mt_enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "postedit_enabled",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{id}/analytics-token",
+      "method": "getAnalyticsToken",
+      "httpMethod": "get",
+      "tag": "ContinuousProject",
+      "description": "Get JWT token to be used in analytics dashboards",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous project ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{id}/collect-analytics",
+      "method": "collectAnalytics",
+      "httpMethod": "post",
+      "tag": "ContinuousProject",
+      "description": "Save/collect analytics data from Active widget",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous project ID"
+        },
+        {
+          "name": "anonymousId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "sessionId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "userId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{id}/complete",
+      "method": "complete",
+      "httpMethod": "post",
+      "tag": "ContinuousProject",
+      "description": "Complete continuous project",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous project ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{id}/documents/quote",
+      "method": "getQuoteForDocuments",
+      "httpMethod": "post",
+      "tag": "ContinuousProject",
+      "description": "Get quote for documents",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous project ID"
+        },
+        {
+          "name": "files",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{id}/documents/{documentId}/complete",
+      "method": "completeContinuousDocument",
+      "httpMethod": "post",
+      "tag": "ContinuousProject",
+      "description": "Complete a continuous project document",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous project ID"
+        },
+        {
+          "name": "documentId",
+          "schema": "integer",
+          "required": true,
+          "description": "Document ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{id}/documents/{documentId}/quote",
+      "method": "getQuoteForDocument",
+      "httpMethod": "post",
+      "tag": "ContinuousProject",
+      "description": "Get a quote for a continuous project document",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous project ID"
+        },
+        {
+          "name": "documentId",
+          "schema": "integer",
+          "required": true,
+          "description": "Document ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{id}/languages/quote",
+      "method": "getQuoteForLanguages",
+      "httpMethod": "post",
+      "tag": "ContinuousProject",
+      "description": "Get quote for languages",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous project ID"
+        },
+        {
+          "name": "languages",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{id}/languages/{targetLanguage}/complete",
+      "method": "completeLanguage",
+      "httpMethod": "post",
+      "tag": "ContinuousProject",
+      "description": "Complete continuous project language",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous project ID"
+        },
+        {
+          "name": "targetLanguage",
+          "schema": "string",
+          "required": true,
+          "description": "Target language that you want to complete"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{id}/languages/{targetLanguage}/quote",
+      "method": "getQuoteForLanguage",
+      "httpMethod": "post",
+      "tag": "ContinuousProject",
+      "description": "Get quote for language",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous project ID"
+        },
+        {
+          "name": "targetLanguage",
+          "schema": "string",
+          "required": true,
+          "description": "Target language that you want to complete"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{id}/subscription",
+      "method": "deleteSubscription",
+      "httpMethod": "delete",
+      "tag": "ContinuousProject",
+      "description": "Delete subscription for continuous project",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous project ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{id}/subscription",
+      "method": "getSubscription",
+      "httpMethod": "get",
+      "tag": "ContinuousProject",
+      "description": "Get subscription for continuous project",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous project ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{id}/subscription",
+      "method": "createSubscription",
+      "httpMethod": "post",
+      "tag": "ContinuousProject",
+      "description": "Create subscription for continuous project",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous project ID"
+        },
+        {
+          "name": "downgrade",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "payment_method",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "period_end",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "plan_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "plan_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "price",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "products",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "schedule_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "schedule_start",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "subscription_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "upgrade",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "withTrial",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{id}/subscription",
+      "method": "updateSubscription",
+      "httpMethod": "put",
+      "tag": "ContinuousProject",
+      "description": "Update subscription for continuous project",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous project ID"
+        },
+        {
+          "name": "downgrade",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "payment_method",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "period_end",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "plan_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "plan_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "price",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "products",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "schedule_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "schedule_start",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "subscription_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "upgrade",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "withTrial",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{id}/subscription/payment",
+      "method": "updateSubscriptionPaymentMethod",
+      "httpMethod": "put",
+      "tag": "ContinuousProject",
+      "description": "Update subscription payment method for continuous project",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous project ID"
+        },
+        {
+          "name": "downgrade",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "payment_method",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "period_end",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "plan_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "plan_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "price",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "products",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "schedule_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "schedule_start",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "subscription_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "upgrade",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "withTrial",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{id}/translate/{targetLanguage}",
+      "method": "translate",
+      "httpMethod": "post",
+      "tag": "ContinuousProject",
+      "description": "Instantly translate your content",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous project ID"
+        },
+        {
+          "name": "targetLanguage",
+          "schema": "string",
+          "required": true,
+          "description": "Target language that you want to instantly translate your file into."
+        },
+        {
+          "name": "contents",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "documents",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "filters",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "meta",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{projectId}/documents",
+      "method": "getContinuousProjectDocuments",
+      "httpMethod": "get",
+      "tag": "ContinuousProject",
+      "description": "View continuous documents",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous Project ID"
+        },
+        {
+          "name": "filterByLanguage",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{projectId}/documents",
+      "method": "addDocument",
+      "httpMethod": "post",
+      "tag": "ContinuousProject",
+      "description": "Add a new document to your continuous project",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous project ID"
+        },
+        {
+          "name": "document",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{projectId}/documents/progress",
+      "method": "postContinuousProjectDocumentProgress",
+      "httpMethod": "post",
+      "tag": "ContinuousProject",
+      "description": "Get continuous project document progress for multiple IDs",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous project ID"
+        },
+        {
+          "name": "documentName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "filterByLanguage",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{projectId}/documents/strings",
+      "method": "postContinuousProjectFileStrings",
+      "httpMethod": "post",
+      "tag": "Strings",
+      "description": "Get a list of strings and its translations in the project.",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "documentName",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{projectId}/documents/{documentId}",
+      "method": "getContinuousProjectDocument",
+      "httpMethod": "get",
+      "tag": "ContinuousProject",
+      "description": "View a continuous document",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous project ID"
+        },
+        {
+          "name": "documentId",
+          "schema": "integer",
+          "required": true,
+          "description": "Document ID/Name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{projectId}/documents/{documentId}",
+      "method": "updateDocument",
+      "httpMethod": "post",
+      "tag": "ContinuousProject",
+      "description": "Update the document",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous project ID"
+        },
+        {
+          "name": "documentId",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous project document ID"
+        },
+        {
+          "name": "document",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{projectId}/documents/{documentId}/progress",
+      "method": "getContinuousProjectDocumentProgress",
+      "httpMethod": "get",
+      "tag": "ContinuousProject",
+      "description": "Monitor progress of a continuous document",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous project ID"
+        },
+        {
+          "name": "documentId",
+          "schema": "integer",
+          "required": true,
+          "description": "Document ID/Name"
+        },
+        {
+          "name": "filterByLanguage",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{projectId}/documents/{documentId}/strings",
+      "method": "getContinuousProjectFileStrings",
+      "httpMethod": "get",
+      "tag": "Strings",
+      "description": "View strings their translations in a continuous document",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "documentId",
+          "schema": "integer",
+          "required": true,
+          "description": "Document ID/Name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{projectId}/invoices",
+      "method": "getContinuousProjectInvoices",
+      "httpMethod": "get",
+      "tag": "ContinuousProject",
+      "description": "Invoices of a continuous project",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{projectId}/progress",
+      "method": "getContinuousProjectProgress",
+      "httpMethod": "get",
+      "tag": "ContinuousProject",
+      "description": "Monitor progress and status of a continous project",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "filterByLanguage",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{projectId}/strings",
+      "method": "getContinuousProjectStrings",
+      "httpMethod": "get",
+      "tag": "Strings",
+      "description": "View strings and translations in continuous project",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{projectId}/strings/cached",
+      "method": "clearTranslationCache",
+      "httpMethod": "delete",
+      "tag": "Strings",
+      "description": "Clear translation cache",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "locale",
+          "schema": "string",
+          "required": false,
+          "description": "Locale"
+        },
+        {
+          "name": "file_id",
+          "schema": "integer",
+          "required": false,
+          "description": "Continuous Project File ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{projectId}/strings/cached",
+      "method": "getTranslationCache",
+      "httpMethod": "get",
+      "tag": "Strings",
+      "description": "View cached strings translations in continuous project",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "flatten",
+          "schema": "boolean",
+          "required": false,
+          "description": "Flatten cache results and ignore document keys"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Continuous project cache for translations per target language."
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{projectId}/strings/recache-tms",
+      "method": "recacheTranslations",
+      "httpMethod": "post",
+      "tag": "Strings",
+      "description": "Recache translations",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "locale",
+          "schema": "string",
+          "required": false,
+          "description": "Locale"
+        },
+        {
+          "name": "file_id",
+          "schema": "integer",
+          "required": false,
+          "description": "Continuous Project File ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{projectId}/widgets",
+      "method": "getActiveWidgets",
+      "httpMethod": "get",
+      "tag": "ContinuousProject",
+      "description": "View Active widgets",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous Project ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{projectId}/widgets",
+      "method": "createActiveWidget",
+      "httpMethod": "post",
+      "tag": "ContinuousProject",
+      "description": "Create a new Active widget",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous project ID"
+        },
+        {
+          "name": "admin_mode",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "allow_hash_in_url",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "allow_query_in_url",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "auto_detect_source_language",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "created_at",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "debug_mode",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "elements",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "follow_user",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "force_cache_refresh_interval",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "hit_backend_for_existing",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "language_mappings",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "live",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "modify_links",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "optimize_per_page",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "pages",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "path_regex",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "position",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "query_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "reboot_on_url_change",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "restricted_domains",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sections",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "test_mode",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "theme",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "url_change_mode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "url_mode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "use_cache",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "use_dummy_translations",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "variables",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{projectId}/widgets/{widgetId}",
+      "method": "deleteActiveWidget",
+      "httpMethod": "delete",
+      "tag": "ContinuousProject",
+      "description": "Delete a single widget for this Active project",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous Project ID"
+        },
+        {
+          "name": "widgetId",
+          "schema": "integer",
+          "required": true,
+          "description": "Active widget ID belonging to this Continuous Project"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{projectId}/widgets/{widgetId}",
+      "method": "getActiveWidget",
+      "httpMethod": "get",
+      "tag": "ContinuousProject",
+      "description": "View an Active widget",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous Project ID"
+        },
+        {
+          "name": "widgetId",
+          "schema": "integer",
+          "required": true,
+          "description": "Active widget ID belonging to this Continuous Project"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{projectId}/widgets/{widgetId}",
+      "method": "updateActiveWidget",
+      "httpMethod": "post",
+      "tag": "ContinuousProject",
+      "description": "Update Active widget settings.",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous Project ID"
+        },
+        {
+          "name": "widgetId",
+          "schema": "integer",
+          "required": true,
+          "description": "Active widget ID belonging to this Continuous Project"
+        },
+        {
+          "name": "admin_mode",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "allow_hash_in_url",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "allow_query_in_url",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "auto_detect_source_language",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "created_at",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "debug_mode",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "elements",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "follow_user",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "force_cache_refresh_interval",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "hit_backend_for_existing",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "language_mappings",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "live",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "modify_links",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "optimize_per_page",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "pages",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "path_regex",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "position",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "query_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "reboot_on_url_change",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "restricted_domains",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sections",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "test_mode",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "theme",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "url_change_mode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "url_mode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "use_cache",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "use_dummy_translations",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "variables",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/continuous_projects/{projectId}/widgets/{widgetId}/reset-token",
+      "method": "resetActiveWidgetToken",
+      "httpMethod": "post",
+      "tag": "ContinuousProject",
+      "description": "Reset Active widget token",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Continuous Project ID"
+        },
+        {
+          "name": "widgetId",
+          "schema": "integer",
+          "required": true,
+          "description": "Active widget ID belonging to this Continuous Project"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/corporate",
+      "method": "getCorporate",
+      "httpMethod": "get",
+      "tag": "Corporate",
+      "description": "View your corporate account",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/corporate/permissions",
+      "method": "getAvailableCorporatePermissions",
+      "httpMethod": "get",
+      "tag": "Corporate",
+      "description": "View available permissions",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/corporate/user-groups",
+      "method": "getCorporateUserGroups",
+      "httpMethod": "get",
+      "tag": "Corporate",
+      "description": "View user groups",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/corporate/user-groups",
+      "method": "saveCorporateUserGroup",
+      "httpMethod": "post",
+      "tag": "Corporate",
+      "description": "Create or update a corporate user group",
+      "parameters": [
+        {
+          "name": "corporate_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "permissions",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/corporate/users",
+      "method": "getCorporateUsers",
+      "httpMethod": "get",
+      "tag": "Corporate",
+      "description": "View users",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/corporate/users",
+      "method": "saveCorporateUser",
+      "httpMethod": "post",
+      "tag": "Corporate",
+      "description": "Create or update a user",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/corporates/all",
+      "method": "getCorporatesList",
+      "httpMethod": "get",
+      "tag": "Corporate",
+      "description": "Get a list of corporate accounts",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/corporates/{corporateId}",
+      "method": "getCorporateById",
+      "httpMethod": "get",
+      "tag": "Corporate",
+      "description": "Get details of this corporate account",
+      "parameters": [
+        {
+          "name": "corporateId",
+          "schema": "integer",
+          "required": true,
+          "description": "Corporate ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/corporates/{corporateId}/permissions",
+      "method": "getAvailableCorporatePermissionsById",
+      "httpMethod": "get",
+      "tag": "Corporate",
+      "description": "Get a list of available permissions for this corporate account. They are used when assigning permissions to corporate users.",
+      "parameters": [
+        {
+          "name": "corporateId",
+          "schema": "integer",
+          "required": true,
+          "description": "Corporate ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/corporates/{corporateId}/user-groups",
+      "method": "getCorporateUserGroupsById",
+      "httpMethod": "get",
+      "tag": "Corporate",
+      "description": "Get a list of user groups for this corporate account",
+      "parameters": [
+        {
+          "name": "corporateId",
+          "schema": "integer",
+          "required": true,
+          "description": "Corporate ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/corporates/{corporateId}/user-groups",
+      "method": "saveCorporateUserGroupById",
+      "httpMethod": "post",
+      "tag": "Corporate",
+      "description": "Create or update a corporate user group for this corporate account",
+      "parameters": [
+        {
+          "name": "corporateId",
+          "schema": "integer",
+          "required": true,
+          "description": "Corporate ID"
+        },
+        {
+          "name": "corporate_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "permissions",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/corporates/{corporateId}/users",
+      "method": "getCorporateUsersById",
+      "httpMethod": "get",
+      "tag": "Corporate",
+      "description": "Get a list of users for this corporate account",
+      "parameters": [
+        {
+          "name": "corporateId",
+          "schema": "integer",
+          "required": true,
+          "description": "Corporate ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/delete-account",
+      "method": "deleteAccount",
+      "httpMethod": "delete",
+      "tag": "User",
+      "description": "Delete your account",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/documents",
+      "method": "getDocuments",
+      "httpMethod": "get",
+      "tag": "Document",
+      "description": "View your documents",
+      "parameters": [
+        {
+          "name": "recent",
+          "schema": "boolean",
+          "required": false,
+          "description": "When true, this will return the most 4 recent active documents."
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type_filter",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "language_code",
+          "schema": "string",
+          "required": false,
+          "description": "searches in source language of documents, in source and target languages of document's quote"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "per_page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "order_by",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "order_type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "with[]",
+          "schema": "array",
+          "required": false,
+          "description": "Attach further information. Possible values 'preview' to fetch temporary preview URLs. This is NOT recommended to be used with list calls. Only use with[]=preview for single document/style guide calls."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/documents/subjects",
+      "method": "getAllDocumentSubjects",
+      "httpMethod": "get",
+      "tag": "Document",
+      "description": "Get a list of subjects of projects",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/documents/{documentId}",
+      "method": "getDocument",
+      "httpMethod": "get",
+      "tag": "Document",
+      "description": "View a single document",
+      "parameters": [
+        {
+          "name": "documentId",
+          "schema": "string",
+          "required": true,
+          "description": "Document ID or filename"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/documents/{documentId}/progress",
+      "method": "getDocumentProgress",
+      "httpMethod": "get",
+      "tag": "Document",
+      "description": "View a document translation progress",
+      "parameters": [
+        {
+          "name": "documentId",
+          "schema": "number",
+          "required": true,
+          "description": "Document ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/documents/{documentId}/regenerate_preview",
+      "method": "regeneratePreview",
+      "httpMethod": "post",
+      "tag": "Document",
+      "description": "Regenerate preview and return preview URL for given file",
+      "parameters": [
+        {
+          "name": "documentId",
+          "schema": "integer",
+          "required": true,
+          "description": "Document ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/documents/{documentId}/similars",
+      "method": "getSimilarDocuments",
+      "httpMethod": "get",
+      "tag": "Document",
+      "description": "Find documents similar to this document.",
+      "parameters": [
+        {
+          "name": "documentId",
+          "schema": "integer",
+          "required": true,
+          "description": "Document ID"
+        },
+        {
+          "name": "per_page",
+          "schema": "integer",
+          "required": false,
+          "description": "Determines the number of similar documents to return."
+        },
+        {
+          "name": "with[]",
+          "schema": "array",
+          "required": false,
+          "description": "Attach further information. Possible values 'preview' to fetch temporary preview URLs. This is NOT recommended to be used with list calls. Only use with[]=preview for single document/style guide calls."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/documents/{documentId}/use_as_draft",
+      "method": "useAsDraft",
+      "httpMethod": "post",
+      "tag": "Document",
+      "description": "Use the translation of given source manual document as manual draft source for the given target document.",
+      "parameters": [
+        {
+          "name": "documentId",
+          "schema": "integer",
+          "required": true,
+          "description": "Document ID"
+        },
+        {
+          "name": "fromFileId",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "fromManualTranslationFileId",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "toManualTranslationFileId",
+          "schema": "number",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/documents/{documentId}/use_as_regular",
+      "method": "useAsRegular",
+      "httpMethod": "post",
+      "tag": "Document",
+      "description": "Use the translation of the given manual document as a regular file.",
+      "parameters": [
+        {
+          "name": "documentId",
+          "schema": "integer",
+          "required": true,
+          "description": "Document ID"
+        },
+        {
+          "name": "allowOriginalFilePreview",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "allowReviewInManualEditor",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "disableInvitations",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "fromManualTranslationFileId",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "hideNumbers",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "recreate",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/downgrade-proofreader",
+      "method": "downgradeProofreader",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/earnings",
+      "method": "getEarnings",
+      "httpMethod": "get",
+      "tag": "User",
+      "description": "View your vendor earnings",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/formats",
+      "method": "getFormats",
+      "httpMethod": "get",
+      "tag": "Static",
+      "description": "List of supported file formats",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/freeze-account",
+      "method": "freezeAccount",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "Freeze account",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/glossary",
+      "method": "downloadGlobalGlossary",
+      "httpMethod": "get",
+      "tag": "Glossary",
+      "description": "Download account glossary.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/glossary",
+      "method": "updateGlobalGlossary",
+      "httpMethod": "post",
+      "tag": "Glossary",
+      "description": "Create or update the account glossary",
+      "parameters": [
+        {
+          "name": "glossary",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/integrations/token",
+      "method": "getIntegrationsToken",
+      "httpMethod": "get",
+      "tag": "Integrations",
+      "description": "Generate a new access token for MotaWord's integrations service",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/invitation/vendors",
+      "method": "getInvitationVendors",
+      "httpMethod": "post",
+      "tag": "Invitation",
+      "description": "Get vendor list for compiled invitation needs",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/languages",
+      "method": "getLanguages",
+      "httpMethod": "get",
+      "tag": "Static",
+      "description": "List of supported languages",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/location",
+      "method": "logLocation",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "Log user's current location. This data is used in our Intelligent Project Manager for various data analysis, including project prioritization for vendors and account validation.",
+      "parameters": [
+        {
+          "name": "lat",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "lon",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/make-proofreader",
+      "method": "makeProofreader",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/me",
+      "method": "getMe",
+      "httpMethod": "get",
+      "tag": "User",
+      "description": "View your account info",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/me",
+      "method": "updateMe",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "Update your account info",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ml/delivery-prediction",
+      "method": "getDeliveryPrediction",
+      "httpMethod": "post",
+      "tag": "MachineLearning",
+      "description": "Get a delivery prediction for a project",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/notifications/subscribe",
+      "method": "subscribeNotification",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "Subscribe to push notifications",
+      "parameters": [
+        {
+          "name": "device",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "endpoint",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/notifications/unsubscribe",
+      "method": "unsubscribeNotification",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "",
+      "parameters": [
+        {
+          "name": "device",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "endpoint",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/pam/chat",
+      "method": "postMessage",
+      "httpMethod": "post",
+      "tag": "Pam",
+      "description": "Sends a message to chat",
+      "parameters": [
+        {
+          "name": "message",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "recipients",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "slots",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "thread_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "thread_key",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/pam/profiles/client/{clientId}",
+      "method": "getClientProfileForPam",
+      "httpMethod": "get",
+      "tag": "Pam",
+      "description": "Get the Pam profile of a client for this client ID",
+      "parameters": [
+        {
+          "name": "clientId",
+          "schema": "integer",
+          "required": true,
+          "description": "Client ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/pam/projects/{projectId}/completion-report",
+      "method": "getProjectCompletionReportForPam",
+      "httpMethod": "get",
+      "tag": "Pam",
+      "description": "Get completion report data of a project",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Quote ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/password",
+      "method": "updatePassword",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "Update your account password",
+      "parameters": [
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/payment",
+      "method": "getPaymentInfo",
+      "httpMethod": "get",
+      "tag": "User",
+      "description": "View your payment and billing info",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/payment",
+      "method": "updatePaymentInfo",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "Update payment info",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/payment/reset-corporate-payment-code",
+      "method": "resetCorporatePaymentCode",
+      "httpMethod": "post",
+      "tag": "Payment",
+      "description": "Reset payment code",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/payment/toggle-corporate-auto-charge",
+      "method": "toggleCorporateAutoCharge",
+      "httpMethod": "post",
+      "tag": "Payment",
+      "description": "Manage automatic charges on your credit card",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/payment/{cardId}",
+      "method": "getCreditCard",
+      "httpMethod": "get",
+      "tag": "Payment",
+      "description": "View saved credit card",
+      "parameters": [
+        {
+          "name": "cardId",
+          "schema": "integer",
+          "required": true,
+          "description": "Credit Card ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/payment/{cardId}/delete",
+      "method": "deleteCreditCard",
+      "httpMethod": "delete",
+      "tag": "Payment",
+      "description": "Delete credit card",
+      "parameters": [
+        {
+          "name": "cardId",
+          "schema": "integer",
+          "required": true,
+          "description": "Credit Card ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/payment/{cardId}/reset-payment-code",
+      "method": "resetCardPaymentCode",
+      "httpMethod": "post",
+      "tag": "Payment",
+      "description": "Reset credit card payment code",
+      "parameters": [
+        {
+          "name": "cardId",
+          "schema": "integer",
+          "required": true,
+          "description": "Credit Card ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/permissions",
+      "method": "getPermissions",
+      "httpMethod": "get",
+      "tag": "User",
+      "description": "View your permissions",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/profile-picture",
+      "method": "uploadProfilePicture",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "Upload profile picture",
+      "parameters": [
+        {
+          "name": "profile_picture",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects",
+      "method": "getProjects",
+      "httpMethod": "get",
+      "tag": "Project",
+      "description": "View your translation projects",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "per_page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "status[]",
+          "schema": "array",
+          "required": false,
+          "description": "Filter projects by status. Accepts multiple statuses. Possible values 'pending', 'started', 'completed'"
+        },
+        {
+          "name": "with_pending",
+          "schema": "boolean",
+          "required": false,
+          "description": "deprecated. use `status[]` param."
+        },
+        {
+          "name": "with_started",
+          "schema": "boolean",
+          "required": false,
+          "description": "deprecated. use `status[]` param."
+        },
+        {
+          "name": "with_completed",
+          "schema": "boolean",
+          "required": false,
+          "description": "deprecated. use `status[]` param."
+        },
+        {
+          "name": "order_by",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "order_type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "with[]",
+          "schema": "array",
+          "required": false,
+          "description": "Include detailed information. Possible values 'client', 'vendor'"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects",
+      "method": "createProject",
+      "httpMethod": "post",
+      "tag": "Project",
+      "description": "Create a new project",
+      "parameters": [
+        {
+          "name": "callback_url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "coupon_code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "custom",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "documents[]",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "glossaries[]",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "source_language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "styleguides[]",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "target_languages[]",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/from-internal-id/{projectId}",
+      "method": "getQuoteIdFromInternalId",
+      "httpMethod": "get",
+      "tag": "Project",
+      "description": "Get Quote Id",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/vendor",
+      "method": "getVendorProjects",
+      "httpMethod": "get",
+      "tag": "Project",
+      "description": "List projects as a vendor",
+      "parameters": [
+        {
+          "name": "joined",
+          "schema": "boolean",
+          "required": false,
+          "description": "Return only projects that this user has already joined"
+        },
+        {
+          "name": "completed",
+          "schema": "boolean",
+          "required": false,
+          "description": "Return only projects that have been completed. When `true`, this makes `joined` true as well."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "per_page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{id}",
+      "method": "deleteProject",
+      "httpMethod": "delete",
+      "tag": "Project",
+      "description": "Delete your translation project",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{id}",
+      "method": "getProject",
+      "httpMethod": "get",
+      "tag": "Project",
+      "description": "View a translation project",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "with[]",
+          "schema": "array",
+          "required": false,
+          "description": "Include detailed information. Possible values 'client', 'vendor', 'score'"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{id}",
+      "method": "updateProject",
+      "httpMethod": "put",
+      "tag": "Project",
+      "description": "Update project info and settings",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "callback_url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "coupon_code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "custom",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "source_language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "target_languages[]",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{id}/assign-cm",
+      "method": "assignCm",
+      "httpMethod": "post",
+      "tag": "Project",
+      "description": "Assign a CM to the project",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{id}/callback/{actionType}",
+      "method": "triggerCallback",
+      "httpMethod": "get",
+      "tag": "Project",
+      "description": "Trigger a call to your callback URL related to this project.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "actionType",
+          "schema": "string",
+          "required": true,
+          "description": "Callback type"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{id}/cancel",
+      "method": "cancelProject",
+      "httpMethod": "post",
+      "tag": "Project",
+      "description": "Cancel your translation project",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{id}/deliver",
+      "method": "deliverProject",
+      "httpMethod": "post",
+      "tag": "Project",
+      "description": "Deliver project",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{id}/download",
+      "method": "download",
+      "httpMethod": "get",
+      "tag": "Project",
+      "description": "Download your translated project",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{id}/download/{language}",
+      "method": "downloadLanguage",
+      "httpMethod": "get",
+      "tag": "Project",
+      "description": "Download your translated project language",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": true,
+          "description": "Language code. You can download the translation of only a specific language."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{id}/email-quote",
+      "method": "sendQuoteEmail",
+      "httpMethod": "post",
+      "tag": "Project",
+      "description": "Send a quote email",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{id}/invoice",
+      "method": "getInvoice",
+      "httpMethod": "get",
+      "tag": "Project",
+      "description": "View project invoice",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{id}/invoice.html",
+      "method": "downloadHtmlInvoice",
+      "httpMethod": "get",
+      "tag": "Project",
+      "description": "Download project invoice (HTML)",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{id}/invoice.pdf",
+      "method": "downloadPdfInvoice",
+      "httpMethod": "get",
+      "tag": "Project",
+      "description": "Download project invoice (PDF)",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{id}/launch",
+      "method": "launchProject",
+      "httpMethod": "post",
+      "tag": "Project",
+      "description": "Launch your translation project",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "bin",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "budget_code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "card_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "payment_code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "payment_method",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "stripe_token",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{id}/package",
+      "method": "package",
+      "httpMethod": "post",
+      "tag": "Project",
+      "description": "Package your translated project",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "async",
+          "schema": "integer",
+          "description": "If you want to package and download the translation synchronously, mark this parameter as '0'. It will package the translation and then return the packaged file in the response, identical to /download call after an asynchronous /package call."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{id}/package/check",
+      "method": "trackPackage",
+      "httpMethod": "get",
+      "tag": "Project",
+      "description": "Track translation packaging status",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "description": "This is the package tracking key provided in the response of a /package call."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{id}/package/{language}",
+      "method": "packageLanguage",
+      "httpMethod": "post",
+      "tag": "Project",
+      "description": "Package your translated project language",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": true,
+          "description": "Language code. You can package the translation of only a specific language."
+        },
+        {
+          "name": "async",
+          "schema": "integer",
+          "description": "If you want to package and download the translation synchronously, mark this parameter as '0'. It will package the translation and then return the packaged file in the response, identical to /download call after an asynchronous /package call."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{id}/progress",
+      "method": "getProgress",
+      "httpMethod": "get",
+      "tag": "Project",
+      "description": "View progress of a project",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "raw",
+          "schema": "boolean",
+          "description": "This will return a more raw progress information for translation and proofreading. For instance, when completed, we will return 100% for both tasks by default, whereas their actual progress may be lower than 100%."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{id}/recreate",
+      "method": "recreateProject",
+      "httpMethod": "post",
+      "tag": "Project",
+      "description": "Recreate your translation project from scratch. This is a risky action, you will lose current translations.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{id}/reports",
+      "method": "submitProjectReports",
+      "httpMethod": "post",
+      "tag": "Project",
+      "description": "Submit feedback report for a project",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "activity_type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{id}/sales/activities",
+      "method": "getSalesActivities",
+      "httpMethod": "get",
+      "tag": "Activity",
+      "description": "Get sales activities for a project",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "excludeOwner",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{id}/sales/activities",
+      "method": "insertSalesActivity",
+      "httpMethod": "post",
+      "tag": "Activity",
+      "description": "Insert sales activity for a project",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "subject",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "timestamp",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{id}/webhooks",
+      "method": "deleteProjectWebhook",
+      "httpMethod": "delete",
+      "tag": "Project Webhooks",
+      "description": "Delete project webhooks",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{id}/webhooks",
+      "method": "getProjectWebhooks",
+      "httpMethod": "get",
+      "tag": "Project Webhooks",
+      "description": "View project webhooks",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{id}/webhooks",
+      "method": "postProjectWebhook",
+      "httpMethod": "post",
+      "tag": "Project Webhooks",
+      "description": "Update project webhook",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "callback_url",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{id}/webhooks",
+      "method": "updateProjectWebhook",
+      "httpMethod": "put",
+      "tag": "Project Webhooks",
+      "description": "Update project webhook",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "callback_url",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/activities",
+      "method": "getActivities",
+      "httpMethod": "get",
+      "tag": "Activity",
+      "description": "Monitor project activities",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "per_page",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/activities/{activityId}",
+      "method": "getActivity",
+      "httpMethod": "get",
+      "tag": "Activity",
+      "description": "View an activity",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "activityId",
+          "schema": "integer",
+          "required": true,
+          "description": "Activity ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/activities/{activityId}",
+      "method": "submitComment",
+      "httpMethod": "post",
+      "tag": "Activity",
+      "description": "Submit comment to an activity",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "activityId",
+          "schema": "integer",
+          "required": true,
+          "description": "Activity ID"
+        },
+        {
+          "name": "comment",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "commented_at",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/activities/{activityId}/comments",
+      "method": "getActivityComments",
+      "httpMethod": "get",
+      "tag": "Activity",
+      "description": "View activity comments",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "activityId",
+          "schema": "integer",
+          "required": true,
+          "description": "Activity ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/comments",
+      "method": "getComments",
+      "httpMethod": "get",
+      "tag": "Activity",
+      "description": "View all project comments",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "per_page",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/documents",
+      "method": "getProjectDocuments",
+      "httpMethod": "get",
+      "tag": "Project Document",
+      "description": "View project source documents",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "with[]",
+          "schema": "array",
+          "required": false,
+          "description": "Attach further information. Possible values 'preview' to fetch temporary preview URLs. This is NOT recommended to be used with list calls. Only use with[]=preview for single document/style guide calls."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/documents",
+      "method": "createProjectDocument",
+      "httpMethod": "post",
+      "tag": "Project Document",
+      "description": "Upload a new document",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "documents[]",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "schemes[]",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "source-links[]",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/documents/{documentId}",
+      "method": "deleteProjectDocument",
+      "httpMethod": "delete",
+      "tag": "Project Document",
+      "description": "Delete the document",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "documentId",
+          "schema": "integer",
+          "required": true,
+          "description": "Document ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/documents/{documentId}",
+      "method": "getProjectDocument",
+      "httpMethod": "get",
+      "tag": "Project Document",
+      "description": "View a project source document",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "documentId",
+          "schema": "integer",
+          "required": true,
+          "description": "Document ID"
+        },
+        {
+          "name": "with[]",
+          "schema": "array",
+          "required": false,
+          "description": "Attach further information. Possible values 'preview' to fetch temporary preview URLs. This is NOT recommended to be used with list calls. Only use with[]=preview for single document/style guide calls."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/documents/{documentId}",
+      "method": "updateProjectDocument",
+      "httpMethod": "post",
+      "tag": "Project Document",
+      "description": "Update the document.",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "documentId",
+          "schema": "integer",
+          "required": true,
+          "description": "Document ID"
+        },
+        {
+          "name": "documents",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "schemes",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "source-link",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/documents/{documentId}/download",
+      "method": "downloadProjectDocument",
+      "httpMethod": "get",
+      "tag": "Project Document",
+      "description": "Download a project source document",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "documentId",
+          "schema": "integer",
+          "required": true,
+          "description": "Document ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/documents/{documentId}/translations",
+      "method": "getDocumentTranslations",
+      "httpMethod": "get",
+      "tag": "Strings",
+      "description": "View strings and translations of a document",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "documentId",
+          "schema": "integer",
+          "required": true,
+          "description": "Document ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/documents/{documentId}/translations/download/{language}",
+      "method": "downloadTranslatedDocumentForLanguage",
+      "httpMethod": "get",
+      "tag": "Project Document",
+      "description": "Download translated document",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "documentId",
+          "schema": "integer",
+          "required": true,
+          "description": "Document ID"
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": true,
+          "description": "Target language code."
+        },
+        {
+          "name": "certified",
+          "schema": "boolean",
+          "required": false,
+          "description": "Download certified translation"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/documents/{documentId}/translations/{language}",
+      "method": "getDocumentTranslationsForLanguage",
+      "httpMethod": "get",
+      "tag": "Strings",
+      "description": "View strings and translations of a document for target language",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "documentId",
+          "schema": "integer",
+          "required": true,
+          "description": "Document ID"
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": true,
+          "description": "Target language code."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/glossaries",
+      "method": "getGlossaries",
+      "httpMethod": "get",
+      "tag": "Glossary",
+      "description": "View glossaries",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/glossaries",
+      "method": "createGlossary",
+      "httpMethod": "post",
+      "tag": "Glossary",
+      "description": "Upload a glossary file",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "glossaries",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/glossaries/{glossaryId}",
+      "method": "deleteGlossary",
+      "httpMethod": "delete",
+      "tag": "Glossary",
+      "description": "Delete a glossary",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "glossaryId",
+          "schema": "integer",
+          "required": true,
+          "description": "Glossary ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/glossaries/{glossaryId}",
+      "method": "getGlossary",
+      "httpMethod": "get",
+      "tag": "Glossary",
+      "description": "View a glossary",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "glossaryId",
+          "schema": "integer",
+          "required": true,
+          "description": "Glossary ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/glossaries/{glossaryId}",
+      "method": "updateGlossary",
+      "httpMethod": "put",
+      "tag": "Glossary",
+      "description": "Update a glossary",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "glossaryId",
+          "schema": "integer",
+          "required": true,
+          "description": "Glossary ID"
+        },
+        {
+          "name": "glossaries",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/glossaries/{glossaryId}/download",
+      "method": "downloadGlossary",
+      "httpMethod": "get",
+      "tag": "Glossary",
+      "description": "Download a glossary",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "glossaryId",
+          "schema": "integer",
+          "required": true,
+          "description": "Glossary ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/strings",
+      "method": "getProjectStrings",
+      "httpMethod": "get",
+      "tag": "Strings",
+      "description": "View project strings and translations",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/strings/package",
+      "method": "packageProjectTranslationMemory",
+      "httpMethod": "post",
+      "tag": "Strings",
+      "description": "Download project translation memory",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "async",
+          "schema": "integer",
+          "description": "If you want to package and download the translation memory synchronously, mark this parameter as '0'. It will package the translation memory and then return the packaged file in the response, identical to async/download call after an asynchronous /package call."
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": "Translation Memory file format"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/strings/package/status",
+      "method": "packageProjectTranslationMemoryStatus",
+      "httpMethod": "get",
+      "tag": "Strings",
+      "description": "Check translation memory packaging status",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "async_request_key",
+          "schema": "string",
+          "required": true,
+          "description": "Async operation key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/strings/{languageCode}/package",
+      "method": "packageProjectTranslationMemoryForLanguage",
+      "httpMethod": "post",
+      "tag": "Strings",
+      "description": "Download language-specific project translation memory",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "languageCode",
+          "schema": "string",
+          "required": true,
+          "description": "Language Code"
+        },
+        {
+          "name": "async",
+          "schema": "integer",
+          "description": "If you want to package and download the translation memory synchronously, mark this parameter as '0'. It will package the translation memory and then return the packaged file in the response, identical to async/download call after an asynchronous /package call."
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": "Translation Memory file format"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/strings/{languageCode}/package/status",
+      "method": "packageProjectTranslationMemoryForLanguageStatus",
+      "httpMethod": "get",
+      "tag": "Strings",
+      "description": "Check language-specific translation memory packaging status",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "languageCode",
+          "schema": "string",
+          "required": true,
+          "description": "Language Code"
+        },
+        {
+          "name": "async_request_key",
+          "schema": "string",
+          "required": true,
+          "description": "Async operation key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/strings/{language}",
+      "method": "getProjectStringsForLanguage",
+      "httpMethod": "get",
+      "tag": "Strings",
+      "description": "View strings and translations for target language",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": true,
+          "description": "Target language code"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/styleguides",
+      "method": "getStyleGuides",
+      "httpMethod": "get",
+      "tag": "Style Guide",
+      "description": "View style guides",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "with[]",
+          "schema": "array",
+          "required": false,
+          "description": "Attach further information. Possible values 'preview' to fetch temporary preview URLs. This is NOT recommended to be used with list calls. Only use with[]=preview for single document/style guide calls."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/styleguides",
+      "method": "createStyleGuide",
+      "httpMethod": "post",
+      "tag": "Style Guide",
+      "description": "Upload a new style guide",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "styleguides",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/styleguides/{styleGuideId}",
+      "method": "deleteStyleGuide",
+      "httpMethod": "delete",
+      "tag": "Style Guide",
+      "description": "Delete a style guide",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "styleGuideId",
+          "schema": "integer",
+          "required": true,
+          "description": "Style Guide ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/styleguides/{styleGuideId}",
+      "method": "getStyleGuide",
+      "httpMethod": "get",
+      "tag": "Style Guide",
+      "description": "View a style guide",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "styleGuideId",
+          "schema": "integer",
+          "required": true,
+          "description": "Style Guide ID"
+        },
+        {
+          "name": "with[]",
+          "schema": "array",
+          "required": false,
+          "description": "Attach further information. Possible values 'preview' to fetch temporary preview URLs. This is NOT recommended to be used with list calls. Only use with[]=preview for single document/style guide calls."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/styleguides/{styleGuideId}",
+      "method": "updateStyleGuide",
+      "httpMethod": "put",
+      "tag": "Style Guide",
+      "description": "Update a style guide",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "styleGuideId",
+          "schema": "integer",
+          "required": true,
+          "description": "Style guide ID"
+        },
+        {
+          "name": "styleguides",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/styleguides/{styleGuideId}/download",
+      "method": "downloadStyleGuide",
+      "httpMethod": "get",
+      "tag": "Style Guide",
+      "description": "Download a style guide",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "styleGuideId",
+          "schema": "integer",
+          "required": true,
+          "description": "Style Guide ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/translations",
+      "method": "getProjectTranslations",
+      "httpMethod": "get",
+      "tag": "Strings",
+      "description": "Deprecated. Use /projects/{projectId}/strings instead.",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/translations/{language}",
+      "method": "getProjectTranslationsForLanguage",
+      "httpMethod": "get",
+      "tag": "Strings",
+      "description": "Deprecated. use /projects/{projectId}/strings/{language} instead.",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": true,
+          "description": "Target language code"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{projectId}/vendors",
+      "method": "getProjectVendors",
+      "httpMethod": "get",
+      "tag": "Project",
+      "description": "Get a list of vendors.",
+      "parameters": [
+        {
+          "name": "projectId",
+          "schema": "integer",
+          "required": true,
+          "description": "Project ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reports/filter",
+      "method": "getFilterContents",
+      "httpMethod": "post",
+      "tag": "Report",
+      "description": "Returns available options for selected timeframe.",
+      "parameters": [
+        {
+          "name": "date_from",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "date_to",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reports/language-pairs",
+      "method": "getLanguagePairsReport",
+      "httpMethod": "post",
+      "tag": "Report",
+      "description": "Language pairs report",
+      "parameters": [
+        {
+          "name": "budget_code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "date_from",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "date_to",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "source_languages",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "target_languages",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "users",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reports/projects",
+      "method": "getProjectsReport",
+      "httpMethod": "post",
+      "tag": "Report",
+      "description": "Projects report",
+      "parameters": [
+        {
+          "name": "budget_code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "date_from",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "date_to",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "source_languages",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "target_languages",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "users",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reports/qa",
+      "method": "generateQaReport",
+      "httpMethod": "post",
+      "tag": "Report",
+      "description": "Generate a QA report for given filter",
+      "parameters": [
+        {
+          "name": "budget_codes",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "categories",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "clients",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "date_from",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "date_to",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "documents",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "projects",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "severities",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "source_languages",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "subjects",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "target_languages",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "vendors",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reports/users",
+      "method": "getUsersReport",
+      "httpMethod": "post",
+      "tag": "Report",
+      "description": "Company users report",
+      "parameters": [
+        {
+          "name": "budget_code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "date_from",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "date_to",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "source_languages",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "target_languages",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "users",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resend-email-confirmation",
+      "method": "sendEmailConfirmation",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "Sends email confirmation email for current user",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/responsivity",
+      "method": "getResponsivity",
+      "httpMethod": "get",
+      "tag": "User",
+      "description": "View your vendor responsiveness",
+      "parameters": [
+        {
+          "name": "period",
+          "schema": "string",
+          "description": "Time period to calculate your responsiveness"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/search",
+      "method": "searchEverywhere",
+      "httpMethod": "get",
+      "tag": "Search",
+      "description": "Search everything in your account",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": true,
+          "description": "Search query term"
+        },
+        {
+          "name": "include[]",
+          "schema": "array",
+          "required": false,
+          "description": "Search in these entities. Current oprions are projects, documents, strings. Can be multiple. When not provided, we'll search through all entities."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "per_page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/search/documents/reindex",
+      "method": "reindexDocuments",
+      "httpMethod": "post",
+      "tag": "Search",
+      "description": "Reindex for search all of the client source and translation documents.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/search/documents/reindex/status",
+      "method": "checkDocumentsReindex",
+      "httpMethod": "get",
+      "tag": "Search",
+      "description": "Check reindex status of the client source and translation documents.",
+      "parameters": [
+        {
+          "name": "async_request_key",
+          "schema": "string",
+          "required": true,
+          "description": "Async operation key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats",
+      "method": "getStats",
+      "httpMethod": "get",
+      "tag": "User",
+      "description": "View your account statistics",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/commissions",
+      "method": "getCommissionStats",
+      "httpMethod": "get",
+      "tag": "Stats",
+      "description": "Returns the total commissions stats.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/commissions",
+      "method": "getCommissionStatsByFilter",
+      "httpMethod": "post",
+      "tag": "Stats",
+      "description": "Returns the total commissions stats by report filter.",
+      "parameters": [
+        {
+          "name": "budget_code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "date_from",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "date_to",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "source_languages",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "target_languages",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "users",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/popular-pairs",
+      "method": "getPopularPairs",
+      "httpMethod": "get",
+      "tag": "Stats",
+      "description": "View your popular language pairs",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/projects",
+      "method": "getProjectStats",
+      "httpMethod": "get",
+      "tag": "Stats",
+      "description": "View your project statistics",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/strings",
+      "method": "getStringStats",
+      "httpMethod": "get",
+      "tag": "Stats",
+      "description": "View your translation statistics",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/strings",
+      "method": "getStrings",
+      "httpMethod": "get",
+      "tag": "Strings",
+      "description": "View account strings (translation memory)",
+      "parameters": [
+        {
+          "name": "source_language",
+          "schema": "string",
+          "required": false,
+          "description": "Source Language Code"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Requested page"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/strings",
+      "method": "postStrings",
+      "httpMethod": "post",
+      "tag": "Strings",
+      "description": "Translate Strings with MT",
+      "parameters": [
+        {
+          "name": "contents",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "source_language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "target_languages",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/strings",
+      "method": "updateTranslationMemoryUnit",
+      "httpMethod": "put",
+      "tag": "Strings",
+      "description": "Update string translation",
+      "parameters": [
+        {
+          "name": "sourceLanguage",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sourceText",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "targetLanguage",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "targetText",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/strings/{languageCode}/package",
+      "method": "packageUserTranslationMemory",
+      "httpMethod": "post",
+      "tag": "Strings",
+      "description": "Download account translation memory",
+      "parameters": [
+        {
+          "name": "languageCode",
+          "schema": "string",
+          "required": true,
+          "description": "Source Language Code"
+        },
+        {
+          "name": "async",
+          "schema": "integer",
+          "description": "If you want to package and download the translation memory synchronously, mark this parameter as '0'. It will package the translation memory and then return the packaged file in the response, identical to async/download call after an asynchronous /package call."
+        },
+        {
+          "name": "email",
+          "schema": "integer",
+          "description": "If you don't need us to email the TMX, set this to '0'. Default is 1."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/strings/{languageCode}/package/status",
+      "method": "packageUserTranslationMemoryForLanguageStatus",
+      "httpMethod": "get",
+      "tag": "Strings",
+      "description": "Check account translation memory packaging status",
+      "parameters": [
+        {
+          "name": "languageCode",
+          "schema": "string",
+          "required": true,
+          "description": "Language Code"
+        },
+        {
+          "name": "async_request_key",
+          "schema": "string",
+          "required": true,
+          "description": "Async operation key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/styleguide",
+      "method": "downloadGlobalStyleGuide",
+      "httpMethod": "get",
+      "tag": "Style Guide",
+      "description": "Download account style guide",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/styleguide",
+      "method": "updateGlobalStyleGuide",
+      "httpMethod": "post",
+      "tag": "Style Guide",
+      "description": "Create or update the account style guide",
+      "parameters": [
+        {
+          "name": "styleguide",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/surveys/{scope}/{type}",
+      "method": "getQuestions",
+      "httpMethod": "get",
+      "tag": "Surveys",
+      "description": "Get survey questions in given scope and type",
+      "parameters": [
+        {
+          "name": "scope",
+          "schema": "string",
+          "required": true,
+          "description": "Scope"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": "Type"
+        },
+        {
+          "name": "attach_answers_for_project",
+          "schema": "integer",
+          "required": false,
+          "description": "Project ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/surveys/{scope}/{type}",
+      "method": "submitAnswers",
+      "httpMethod": "post",
+      "tag": "Surveys",
+      "description": "Post survey answers for scope and type",
+      "parameters": [
+        {
+          "name": "scope",
+          "schema": "string",
+          "required": true,
+          "description": "Scope"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": "Type"
+        },
+        {
+          "name": "answers",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/swagger",
+      "method": "getSwaggerYaml",
+      "httpMethod": "get",
+      "tag": "Static",
+      "description": "OpenAPI YAML representation of our API",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/token",
+      "method": "getAccessToken",
+      "httpMethod": "post",
+      "tag": "Auth",
+      "description": "Retrieve an access token",
+      "parameters": [
+        {
+          "name": "grant_type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "refresh_token",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "scope",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/unfreeze-account",
+      "method": "unfreezeAccount",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "Defreeze your account",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/user-groups",
+      "method": "getUserGroups",
+      "httpMethod": "get",
+      "tag": "User",
+      "description": "View your user groups",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users",
+      "method": "getUsers",
+      "httpMethod": "get",
+      "tag": "User",
+      "description": "Get a list of platform users",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "per_page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user_type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users",
+      "method": "createUser",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "Create a new user",
+      "parameters": [
+        {
+          "name": "notify",
+          "schema": "boolean",
+          "required": false,
+          "description": "Send a welcome email to the user"
+        },
+        {
+          "name": "billing",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "birthday",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "can_work_manual_files",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "city",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "client",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "corporate_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "created_at",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "do_not_contact",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "first_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "has_pwd",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "is_client",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "is_developer",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "is_proofreader",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "is_prospect",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "is_sales_person",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "is_vendor",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "language_pairs",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "last_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "last_seen_online_at",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "locale",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "mailing",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "native_language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "nps",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "phone_number",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "profile_picture_path",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "social_media",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "street",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "timezone",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tms_user_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "user_groups",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "vendor",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "zip_code",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/available-vendors",
+      "method": "getAvailableVendors",
+      "httpMethod": "post",
+      "tag": "Vendor",
+      "description": "Get a list of vendors available for the criteria given",
+      "parameters": [
+        {
+          "name": "with[]",
+          "schema": "array",
+          "required": false,
+          "description": "Include detailed information. Possible values 'user'. Requesting user info enrichment takes much longer."
+        },
+        {
+          "name": "corporateId",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "manualWorkPermission",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "sourceLanguage",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "targetLanguages",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "types",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/filter",
+      "method": "getFilteredVendors",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "Filter vendors based on provided parameters",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "The page number"
+        },
+        {
+          "name": "per_page",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of items per page"
+        },
+        {
+          "name": "order_by",
+          "schema": "string",
+          "required": false,
+          "description": "The field to order the results by"
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "required": false,
+          "description": "The order to sort the results by (ascending or descending)"
+        },
+        {
+          "name": "clients",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "communication_channel",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "corporate_ids_for_auth",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "corporates",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "country",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "created_at",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "current_services",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "daily_proofreading_capacity",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "daily_translation_capacity",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "destination_languages",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "dtp_software",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "email_address",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "experience",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "first_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "is_certified_translator",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "is_sworn_translator",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "language_pairs",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "last_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "last_online",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "last_worked",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "memoq",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "memsource",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "min_tqs",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "omegat",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "project_count",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "proofreader_experience",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "provides_creative_writing_service",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "provides_postedit_service",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "quote_file_subjects",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "reference",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sdl_trados",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "skype_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "smartcat",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "smartling",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "source_languages",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "specialization",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "subtitle_edit",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "subtitle_workshop",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "translator_association",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "transsuite_2000",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "user_working_timezone",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "vendor_profile_lsp",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "vendor_tags",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "vendor_type",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "vendor_working_timezone",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "word_count",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "wordbee",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "wordfast",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "work_type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "work_with",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "working_as",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "xbench",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "xtm",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/send-password-reminder",
+      "method": "sendPasswordReminder",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "Sends password reset email to the user's registered email address",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/tags",
+      "method": "getAllVendorTags",
+      "httpMethod": "get",
+      "tag": "User",
+      "description": "Returns all vendor tags for vendors filter",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{userId}",
+      "method": "getUser",
+      "httpMethod": "get",
+      "tag": "User",
+      "description": "Get user information, including client or vendor specific info.",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "User ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{userId}",
+      "method": "updateUser",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "User ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{userId}/approve",
+      "method": "approveVendorApplication",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "User ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{userId}/delete-account",
+      "method": "deleteUserAccount",
+      "httpMethod": "delete",
+      "tag": "User",
+      "description": "Delete requester account",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "User ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{userId}/documents",
+      "method": "getUserDocuments",
+      "httpMethod": "get",
+      "tag": "Document",
+      "description": "Get a list of your documents",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "User ID"
+        },
+        {
+          "name": "recent",
+          "schema": "boolean",
+          "required": false,
+          "description": "When true, this will return the most 4 recent active documents."
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type_filter",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "language_code",
+          "schema": "string",
+          "required": false,
+          "description": "searches in source language of documents, in source and target languages of document's quote"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "per_page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "order_by",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "order_type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{userId}/downgrade-proofreader",
+      "method": "downgradeUserProofreader",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "User ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{userId}/earnings",
+      "method": "getUserEarnings",
+      "httpMethod": "get",
+      "tag": "User",
+      "description": "Returns your vendor earnings. Includes real-time earnings from ongoing projects, and fixed earnings from completed projects. Also includes total earnings and string edits.",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "User ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{userId}/freeze-account",
+      "method": "freezeUserAccount",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "Freeze requester account for project notifications",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "User ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{userId}/make-proofreader",
+      "method": "makeUserProofreader",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "User ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{userId}/notifications/subscribe",
+      "method": "subscribeUserNotification",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "User ID"
+        },
+        {
+          "name": "device",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "endpoint",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{userId}/notifications/unsubscribe",
+      "method": "unsubscribeUserNotification",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "User ID"
+        },
+        {
+          "name": "device",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "endpoint",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{userId}/payment",
+      "method": "getUserPaymentInfo",
+      "httpMethod": "get",
+      "tag": "User",
+      "description": "View user's payment and billing info",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "User ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{userId}/payment",
+      "method": "updateUserPaymentInfo",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "Update user payment info",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "User ID"
+        },
+        {
+          "name": "billing",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "card",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "cards",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "corporate",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "shared_card",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{userId}/permissions",
+      "method": "getUserPermissions",
+      "httpMethod": "get",
+      "tag": "User",
+      "description": "Returns a list of permissions that this user is authorized for.",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "User ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{userId}/profile-picture",
+      "method": "uploadUserProfilePicture",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "User ID"
+        },
+        {
+          "name": "profile_picture",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{userId}/projects/vendor",
+      "method": "getVendorProjectsByUserId",
+      "httpMethod": "get",
+      "tag": "Project",
+      "description": "Get a list of user/vendor projects",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "User ID"
+        },
+        {
+          "name": "joined",
+          "schema": "boolean",
+          "required": false,
+          "description": "Return only projects that this user has already joined"
+        },
+        {
+          "name": "completed",
+          "schema": "boolean",
+          "required": false,
+          "description": "Return only projects that have been completed. When `true`, this makes `joined` true as well."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "per_page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{userId}/reject",
+      "method": "rejectVendorApplication",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "User ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{userId}/resend-email-confirmation",
+      "method": "sendUserEmailConfirmation",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "Sends email confirmation email for a user",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "User ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{userId}/responsivity",
+      "method": "getUserResponsivity",
+      "httpMethod": "get",
+      "tag": "User",
+      "description": "Returns a user's vendor responsivity stats",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "User ID"
+        },
+        {
+          "name": "period",
+          "schema": "string",
+          "description": "Period for calcualtion."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{userId}/stats",
+      "method": "getUserStats",
+      "httpMethod": "get",
+      "tag": "User",
+      "description": "Returns a user's client and vendor statistics. This used to be called \"summary\" (\\@deprecated).",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "User ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{userId}/stats/popular-pairs",
+      "method": "getUserPopularPairs",
+      "httpMethod": "get",
+      "tag": "User",
+      "description": "Returns the language pairs that the user has ordered most.",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "User ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{userId}/stats/projects",
+      "method": "getUserProjectStats",
+      "httpMethod": "get",
+      "tag": "User",
+      "description": "Returns a user's project statistics.",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "User ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{userId}/suspend",
+      "method": "suspendUser",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "User ID"
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{userId}/unfreeze-account",
+      "method": "unfreezeUserAccount",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "Unfreeze requester account for project notifications",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "User ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{userId}/user-groups",
+      "method": "getThisUserGroups",
+      "httpMethod": "get",
+      "tag": "User",
+      "description": "Returns a list of user groups that this user belongs to.",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "User ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{userId}/user-groups",
+      "method": "updateUserGroup",
+      "httpMethod": "post",
+      "tag": "User",
+      "description": "",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "User ID"
+        },
+        {
+          "name": "admin_mode",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "allow_hash_in_url",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "allow_query_in_url",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "auto_detect_source_language",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "created_at",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "debug_mode",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "elements",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "follow_user",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "force_cache_refresh_interval",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "hit_backend_for_existing",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "language_mappings",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "live",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "modify_links",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "optimize_per_page",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "pages",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "path_regex",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "position",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "query_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "reboot_on_url_change",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "restricted_domains",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sections",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "test_mode",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "theme",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "url_change_mode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "url_mode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "use_cache",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "use_dummy_translations",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "variables",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.motaword.com",
   "apiDescription": "Use MotaWord API to post and track your translation projects.",
   "apiTitle": "MotaWord API",

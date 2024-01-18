@@ -3,6 +3,205 @@
   "openApiRaw": "https://api.breadcrumbs.one/swagger/v1/swagger.json",
   "homepage": "breadcrumbs.one",
   "apiVersion": "v1",
+  "methods": [
+    {
+      "url": "/node",
+      "method": "/nodePost",
+      "httpMethod": "post",
+      "tag": "Node",
+      "description": "Shows the incoming and outgoing transactions from blockchain address",
+      "parameters": [
+        {
+          "name": "address",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "chain",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "token_address",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/pathfinder",
+      "method": "/pathfinderPost",
+      "httpMethod": "post",
+      "tag": "Pathfinder",
+      "description": "Automatically find path between crypto addresses",
+      "parameters": [
+        {
+          "name": "chain",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "destination_addresses",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "direction_type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "entity_tags",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "search_type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "source_address",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/risk/address",
+      "method": "/risk/addressGet",
+      "httpMethod": "get",
+      "tag": "Risk",
+      "description": "Will check the risk score for single address",
+      "parameters": [
+        {
+          "name": "chain",
+          "schema": "string",
+          "required": true,
+          "description": "Blockchain eg: ETH, BTC, MATIC, RON, SOL, TRX"
+        },
+        {
+          "name": "address",
+          "schema": "string",
+          "required": true,
+          "description": "Blockchain address"
+        },
+        {
+          "name": "include_exposure",
+          "schema": "boolean",
+          "description": "If set to `true`, will search the one nearest illicit address (incoming and outgoing) from the specified address"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/risk/transaction",
+      "method": "/risk/transactionGet",
+      "httpMethod": "get",
+      "tag": "Risk",
+      "description": "Will check the risk score for every addresses in a transaction",
+      "parameters": [
+        {
+          "name": "chain",
+          "schema": "string",
+          "required": true,
+          "description": "Blockchain eg: ETH, BTC, MATIC, RON, SOL, TRX"
+        },
+        {
+          "name": "hash",
+          "schema": "string",
+          "required": true,
+          "description": "Blockchain hash"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sanctioned_address",
+      "method": "/sanctionedAddressPost",
+      "httpMethod": "post",
+      "tag": "Sanction",
+      "description": "Verify if the addresses provided are in our sanctioned lists",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.breadcrumbs.one",
   "apiTitle": "Breadcrumbs One",
   "endpoints": 5,

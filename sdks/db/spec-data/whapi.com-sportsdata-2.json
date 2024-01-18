@@ -4,6 +4,1711 @@
   "homepage": "whapi.com",
   "serviceName": "sportsdata",
   "apiVersion": "2",
+  "methods": [
+    {
+      "url": "/classes/{classId}/competitions/",
+      "method": "getCompetitionsForClass",
+      "httpMethod": "get",
+      "tag": "sportsdata",
+      "description": "Retrieves a list of competitions for a given class id.",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key available from your developer portal"
+        },
+        {
+          "name": "classId",
+          "schema": "string",
+          "required": true,
+          "description": "The class id to retrieve information for."
+        },
+        {
+          "name": "isPublished",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether only active entities should be returned, according to the William Hill definition of active"
+        },
+        {
+          "name": "fields",
+          "schema": "array",
+          "required": false,
+          "description": "Specify an absolute field list to return (Comma-Separated List)"
+        },
+        {
+          "name": "include",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields in addition to the default to return (Comma-Separated List)"
+        },
+        {
+          "name": "exclude",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields from the default to exclude (Comma-Separated List)"
+        },
+        {
+          "name": "displayed",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether to return displayed entities or not"
+        },
+        {
+          "name": "channel",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a channel filter and only results from that channel will be returned"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a status to filter results by. This is currently A (active) or S (suspended)"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "The field to order the response by, followed by the order. For example: name,desc"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Skip over a number of elements by specifying a start value for the query"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Specify the number of results to return"
+        },
+        {
+          "name": "culture",
+          "schema": "string",
+          "required": false,
+          "description": "Code used to return responses in language other than English, acceptable values are en-GB|de-DE|es-ES|fr-FR|nn-NO|fi-FI|ru-RU|pt-PT|hu-HU|sl-SL|ga-IE|en-CA|sr-Latn|sv-SE|el=GR|zh-CHS|it-IT|zh-CHT|cs-CZ|de-AT|ja-JP|pl-PL|da-DK|ro-RO|nl-NL|tr-TR"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/classes/{classId}/events/",
+      "method": "getEventsForClass",
+      "httpMethod": "get",
+      "tag": "sportsdata",
+      "description": "Retrieves a list of events for a given class id.",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key available from your developer portal"
+        },
+        {
+          "name": "classId",
+          "schema": "string",
+          "required": true,
+          "description": "The class id to retrieve information for."
+        },
+        {
+          "name": "isPublished",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether only active entities should be returned, according to the William Hill definition of active"
+        },
+        {
+          "name": "fields",
+          "schema": "array",
+          "required": false,
+          "description": "Specify an absolute field list to return (Comma-Separated List)"
+        },
+        {
+          "name": "include",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields in addition to the default to return (Comma-Separated List)"
+        },
+        {
+          "name": "exclude",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields from the default to exclude (Comma-Separated List)"
+        },
+        {
+          "name": "displayed",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether to return displayed entities or not"
+        },
+        {
+          "name": "channel",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a channel filter and only results from that channel will be returned"
+        },
+        {
+          "name": "settled",
+          "schema": "boolean",
+          "required": false,
+          "description": "Specify wether only settled entities should be returned"
+        },
+        {
+          "name": "includeEmpty",
+          "schema": "boolean",
+          "required": false,
+          "description": "When declared as false it should exclude markets and events that have no selections / markets"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a status to filter results by. This is currently A (active) or S (suspended)"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "The field to order the response by, followed by the order. For example: name,desc"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Skip over a number of elements by specifying a start value for the query"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Specify the number of results to return"
+        },
+        {
+          "name": "headlineSummary",
+          "schema": "boolean",
+          "required": false,
+          "description": "Return only headline markets (Markets with the lowest display order) Either 1 InPlay and 1 Pre-Match, or the amount specified in marketCount, if available. Markets and Outcomes will be returned."
+        },
+        {
+          "name": "includeAllDescendants",
+          "schema": "boolean",
+          "required": false,
+          "description": "Include every descendant in the below heirarchy"
+        },
+        {
+          "name": "isInPlay",
+          "schema": "boolean",
+          "required": false,
+          "description": "Show only events that are in-play"
+        },
+        {
+          "name": "marketCount",
+          "schema": "integer",
+          "required": false,
+          "description": "Specify the number of markets to return when requesting headlineSummary. This count of InPlay and Pre-Match markets will be returned.For example, when specifying 1, 1 In Play and 1 Pre Match market will be returned."
+        },
+        {
+          "name": "date",
+          "schema": "string",
+          "required": false,
+          "description": "Return only events for the specified date (yyyy-MM-dd)."
+        },
+        {
+          "name": "dateFrom",
+          "schema": "string",
+          "required": false,
+          "description": "The UTC datetime from the events to be returned. (yyyy-MM-ddTHH:mm:ss)"
+        },
+        {
+          "name": "dateTo",
+          "schema": "string",
+          "required": false,
+          "description": "The UTC datetime TO the events to be returned. (yyyy-MM-ddTHH:mm:ss)"
+        },
+        {
+          "name": "eventSort",
+          "schema": "string",
+          "required": false,
+          "description": "Filter event by event sort"
+        },
+        {
+          "name": "culture",
+          "schema": "string",
+          "required": false,
+          "description": "Code used to return responses in language other than English, acceptable values are en-GB|de-DE|es-ES|fr-FR|nn-NO|fi-FI|ru-RU|pt-PT|hu-HU|sl-SL|ga-IE|en-CA|sr-Latn|sv-SE|el=GR|zh-CHS|it-IT|zh-CHT|cs-CZ|de-AT|ja-JP|pl-PL|da-DK|ro-RO|nl-NL|tr-TR"
+        },
+        {
+          "name": "marketPublished",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether only active entities should be returned, according to the William Hill definition of active"
+        },
+        {
+          "name": "marketStatus",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a status to filter results by. This is currently A (active) or S (suspended)"
+        },
+        {
+          "name": "marketDisplayed",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether to return displayed entities or not"
+        },
+        {
+          "name": "marketChannel",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a channel filter and only results from that channel will be returned"
+        },
+        {
+          "name": "marketSort",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by market sort (e.g. MR (match result) -- (Outright))."
+        },
+        {
+          "name": "marketEW",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether to return markets with each way betting or those without"
+        },
+        {
+          "name": "selectionStatus",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a status to filter results by. This is currently A (active) or S (suspended)"
+        },
+        {
+          "name": "selectionChannel",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a channel filter and only results from that channel will be returned"
+        },
+        {
+          "name": "selectionPublished",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether only active entities should be returned, according to the William Hill definition of active"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/competitions/{competitionId}",
+      "method": "getCompetition",
+      "httpMethod": "get",
+      "tag": "sportsdata",
+      "description": "Retrieves a specific competition",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key available from your developer portal"
+        },
+        {
+          "name": "competitionId",
+          "schema": "string",
+          "required": true,
+          "description": "The competition id to retrieve information for."
+        },
+        {
+          "name": "fields",
+          "schema": "array",
+          "required": false,
+          "description": "Specify an absolute field list to return (Comma-Separated List)"
+        },
+        {
+          "name": "include",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields in addition to the default to return (Comma-Separated List)"
+        },
+        {
+          "name": "exclude",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields from the default to exclude (Comma-Separated List)"
+        },
+        {
+          "name": "culture",
+          "schema": "string",
+          "required": false,
+          "description": "Code used to return responses in language other than English, acceptable values are en-GB|de-DE|es-ES|fr-FR|nn-NO|fi-FI|ru-RU|pt-PT|hu-HU|sl-SL|ga-IE|en-CA|sr-Latn|sv-SE|el=GR|zh-CHS|it-IT|zh-CHT|cs-CZ|de-AT|ja-JP|pl-PL|da-DK|ro-RO|nl-NL|tr-TR"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/competitions/{competitionId}/events/",
+      "method": "getEventsForCompetition",
+      "httpMethod": "get",
+      "tag": "sportsdata",
+      "description": "Retrieves a list of events for a given competition id.",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key available from your developer portal"
+        },
+        {
+          "name": "competitionId",
+          "schema": "string",
+          "required": true,
+          "description": "The competition id to retrieve information for."
+        },
+        {
+          "name": "isPublished",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether only active entities should be returned, according to the William Hill definition of active"
+        },
+        {
+          "name": "fields",
+          "schema": "array",
+          "required": false,
+          "description": "Specify an absolute field list to return (Comma-Separated List)"
+        },
+        {
+          "name": "include",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields in addition to the default to return (Comma-Separated List)"
+        },
+        {
+          "name": "exclude",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields from the default to exclude (Comma-Separated List)"
+        },
+        {
+          "name": "displayed",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether to return displayed entities or not"
+        },
+        {
+          "name": "channel",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a channel filter and only results from that channel will be returned"
+        },
+        {
+          "name": "settled",
+          "schema": "boolean",
+          "required": false,
+          "description": "Specify wether only settled entities should be returned"
+        },
+        {
+          "name": "includeEmpty",
+          "schema": "boolean",
+          "required": false,
+          "description": "When declared as false it should exclude markets and events that have no selections / markets"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a status to filter results by. This is currently A (active) or S (suspended)"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "The field to order the response by, followed by the order. For example: name,desc"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Skip over a number of elements by specifying a start value for the query"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Specify the number of results to return"
+        },
+        {
+          "name": "headlineSummary",
+          "schema": "boolean",
+          "required": false,
+          "description": "Return only headline markets (Markets with the lowest display order) Either 1 InPlay and 1 Pre-Match, or the amount specified in marketCount, if available. Markets and Outcomes will be returned."
+        },
+        {
+          "name": "includeAllDescendants",
+          "schema": "boolean",
+          "required": false,
+          "description": "Include every descendant in the below heirarchy"
+        },
+        {
+          "name": "isInPlay",
+          "schema": "boolean",
+          "required": false,
+          "description": "Show only events that are in-play"
+        },
+        {
+          "name": "marketCount",
+          "schema": "integer",
+          "required": false,
+          "description": "Specify the number of markets to return when requesting headlineSummary. This count of InPlay and Pre-Match markets will be returned.For example, when specifying 1, 1 In Play and 1 Pre Match market will be returned."
+        },
+        {
+          "name": "date",
+          "schema": "string",
+          "required": false,
+          "description": "Return only events for the specified date (yyyy-MM-dd)."
+        },
+        {
+          "name": "dateFrom",
+          "schema": "string",
+          "required": false,
+          "description": "The UTC datetime from the events to be returned. (yyyy-MM-ddTHH:mm:ss)"
+        },
+        {
+          "name": "dateTo",
+          "schema": "string",
+          "required": false,
+          "description": "The UTC datetime TO the events to be returned. (yyyy-MM-ddTHH:mm:ss)"
+        },
+        {
+          "name": "marketGroupId",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by marketGroupId (e.g. OB_MG1276585)."
+        },
+        {
+          "name": "eventSort",
+          "schema": "string",
+          "required": false,
+          "description": "Filter event by event sort"
+        },
+        {
+          "name": "culture",
+          "schema": "string",
+          "required": false,
+          "description": "Code used to return responses in language other than English, acceptable values are en-GB|de-DE|es-ES|fr-FR|nn-NO|fi-FI|ru-RU|pt-PT|hu-HU|sl-SL|ga-IE|en-CA|sr-Latn|sv-SE|el=GR|zh-CHS|it-IT|zh-CHT|cs-CZ|de-AT|ja-JP|pl-PL|da-DK|ro-RO|nl-NL|tr-TR"
+        },
+        {
+          "name": "marketPublished",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether only active entities should be returned, according to the William Hill definition of active"
+        },
+        {
+          "name": "marketStatus",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a status to filter results by. This is currently A (active) or S (suspended)"
+        },
+        {
+          "name": "marketDisplayed",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether to return displayed entities or not"
+        },
+        {
+          "name": "marketChannel",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a channel filter and only results from that channel will be returned"
+        },
+        {
+          "name": "marketSort",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by market sort (e.g. MR (match result) -- (Outright))."
+        },
+        {
+          "name": "marketEW",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether to return markets with each way betting or those without"
+        },
+        {
+          "name": "selectionStatus",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a status to filter results by. This is currently A (active) or S (suspended)"
+        },
+        {
+          "name": "selectionChannel",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a channel filter and only results from that channel will be returned"
+        },
+        {
+          "name": "selectionPublished",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether only active entities should be returned, according to the William Hill definition of active"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/competitions/{competitionId}/marketgroups/",
+      "method": "getMarketGroupsForCompetition",
+      "httpMethod": "get",
+      "tag": "sportsdata",
+      "description": "Retrieves a list of market groups for a given competition id",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key available from your developer portal"
+        },
+        {
+          "name": "competitionId",
+          "schema": "string",
+          "required": true,
+          "description": "The competition id to retrieve information for."
+        },
+        {
+          "name": "fields",
+          "schema": "array",
+          "required": false,
+          "description": "Specify an absolute field list to return (Comma-Separated List)"
+        },
+        {
+          "name": "include",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields in addition to the default to return (Comma-Separated List)"
+        },
+        {
+          "name": "exclude",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields from the default to exclude (Comma-Separated List)"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "The field to order the response by, followed by the order. For example: name,desc"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Skip over a number of elements by specifying a start value for the query"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Specify the number of results to return"
+        },
+        {
+          "name": "culture",
+          "schema": "string",
+          "required": false,
+          "description": "Code used to return responses in language other than English, acceptable values are en-GB|de-DE|es-ES|fr-FR|nn-NO|fi-FI|ru-RU|pt-PT|hu-HU|sl-SL|ga-IE|en-CA|sr-Latn|sv-SE|el=GR|zh-CHS|it-IT|zh-CHT|cs-CZ|de-AT|ja-JP|pl-PL|da-DK|ro-RO|nl-NL|tr-TR"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by market group name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/competitions/{competitionId}/marketsByGroupid",
+      "method": "getMarketsByGroupId",
+      "httpMethod": "get",
+      "tag": "sportsdata",
+      "description": "Retrieves a list of events/markets/selections where markets within said event match selected sort/groupId",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key available from your developer portal"
+        },
+        {
+          "name": "competitionId",
+          "schema": "string",
+          "required": true,
+          "description": "The competition id to retrieve information for."
+        },
+        {
+          "name": "fields",
+          "schema": "array",
+          "required": false,
+          "description": "Specify an absolute field list to return (Comma-Separated List)"
+        },
+        {
+          "name": "include",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields in addition to the default to return (Comma-Separated List)"
+        },
+        {
+          "name": "exclude",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields from the default to exclude (Comma-Separated List)"
+        },
+        {
+          "name": "marketSort",
+          "schema": "string",
+          "required": true,
+          "description": "Filter by market sort (e.g. MR (match result) -- (Outright))."
+        },
+        {
+          "name": "marketGroupId",
+          "schema": "string",
+          "required": true,
+          "description": "Filter by marketGroupId (e.g. OB_MG1276585)."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/events/",
+      "method": "getEvents",
+      "httpMethod": "get",
+      "tag": "sportsdata",
+      "description": "Retrieves a list of events for the provided IDs.",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key available from your developer portal"
+        },
+        {
+          "name": "ids",
+          "schema": "array",
+          "required": false,
+          "description": "A comma-separated list of selectionIds"
+        },
+        {
+          "name": "isPublished",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether only active entities should be returned, according to the William Hill definition of active"
+        },
+        {
+          "name": "includeAllDescendants",
+          "schema": "boolean",
+          "required": false,
+          "description": "Include every descendant in the below heirarchy"
+        },
+        {
+          "name": "fields",
+          "schema": "array",
+          "required": false,
+          "description": "Specify an absolute field list to return (Comma-Separated List)"
+        },
+        {
+          "name": "include",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields in addition to the default to return (Comma-Separated List)"
+        },
+        {
+          "name": "exclude",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields from the default to exclude (Comma-Separated List)"
+        },
+        {
+          "name": "channel",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a channel filter and only results from that channel will be returned"
+        },
+        {
+          "name": "settled",
+          "schema": "boolean",
+          "required": false,
+          "description": "Specify wether only settled entities should be returned"
+        },
+        {
+          "name": "includeEmpty",
+          "schema": "boolean",
+          "required": false,
+          "description": "When declared as false it should exclude markets and events that have no selections / markets"
+        },
+        {
+          "name": "headlineSummary",
+          "schema": "boolean",
+          "required": false,
+          "description": "Return only headline markets (Markets with the lowest display order) Either 1 InPlay and 1 Pre-Match, or the amount specified in marketCount, if available. Markets and Outcomes will be returned."
+        },
+        {
+          "name": "marketCount",
+          "schema": "integer",
+          "required": false,
+          "description": "Specify the number of markets to return when requesting headlineSummary. This count of InPlay and Pre-Match markets will be returned.For example, when specifying 1, 1 In Play and 1 Pre Match market will be returned."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "The field to order the response by, followed by the order. For example: name,desc"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Skip over a number of elements by specifying a start value for the query"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Specify the number of results to return"
+        },
+        {
+          "name": "marketIds",
+          "schema": "array",
+          "required": false,
+          "description": "Comma-seaerated list of market IDs to filter by"
+        },
+        {
+          "name": "culture",
+          "schema": "string",
+          "required": false,
+          "description": "Code used to return responses in language other than English, acceptable values are en-GB|de-DE|es-ES|fr-FR|nn-NO|fi-FI|ru-RU|pt-PT|hu-HU|sl-SL|ga-IE|en-CA|sr-Latn|sv-SE|el=GR|zh-CHS|it-IT|zh-CHT|cs-CZ|de-AT|ja-JP|pl-PL|da-DK|ro-RO|nl-NL|tr-TR"
+        },
+        {
+          "name": "marketPublished",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether only active entities should be returned, according to the William Hill definition of active"
+        },
+        {
+          "name": "marketStatus",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a status to filter results by. This is currently A (active) or S (suspended)"
+        },
+        {
+          "name": "marketDisplayed",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether to return displayed entities or not"
+        },
+        {
+          "name": "marketChannel",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a channel filter and only results from that channel will be returned"
+        },
+        {
+          "name": "marketSort",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by market sort (e.g. MR (match result) -- (Outright))."
+        },
+        {
+          "name": "marketEW",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether to return markets with each way betting or those without"
+        },
+        {
+          "name": "selectionStatus",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a status to filter results by. This is currently A (active) or S (suspended)"
+        },
+        {
+          "name": "selectionChannel",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a channel filter and only results from that channel will be returned"
+        },
+        {
+          "name": "selectionPublished",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether only active entities should be returned, according to the William Hill definition of active"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/events/{eventId}",
+      "method": "getEvent",
+      "httpMethod": "get",
+      "tag": "sportsdata",
+      "description": "Retrieves a single event by ID.",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key available from your developer portal"
+        },
+        {
+          "name": "eventId",
+          "schema": "string",
+          "required": true,
+          "description": "The event ID to retrieve information for."
+        },
+        {
+          "name": "includeAllDescendants",
+          "schema": "boolean",
+          "required": false,
+          "description": "Include every descendant in the below heirarchy"
+        },
+        {
+          "name": "fields",
+          "schema": "array",
+          "required": false,
+          "description": "Specify an absolute field list to return (Comma-Separated List)"
+        },
+        {
+          "name": "include",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields in addition to the default to return (Comma-Separated List)"
+        },
+        {
+          "name": "exclude",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields from the default to exclude (Comma-Separated List)"
+        },
+        {
+          "name": "headlineSummary",
+          "schema": "boolean",
+          "required": false,
+          "description": "Return only headline markets (Markets with the lowest display order) Either 1 InPlay and 1 Pre-Match, or the amount specified in marketCount, if available. Markets and Outcomes will be returned."
+        },
+        {
+          "name": "marketCount",
+          "schema": "integer",
+          "required": false,
+          "description": "Specify the number of markets to return when requesting headlineSummary. This count of InPlay and Pre-Match markets will be returned.For example, when specifying 1, 1 In Play and 1 Pre Match market will be returned."
+        },
+        {
+          "name": "marketIds",
+          "schema": "array",
+          "required": false,
+          "description": "Comma-seaerated list of market IDs to filter by"
+        },
+        {
+          "name": "includeEmpty",
+          "schema": "boolean",
+          "required": false,
+          "description": "When declared as false it should exclude markets and events that have no selections / markets"
+        },
+        {
+          "name": "culture",
+          "schema": "string",
+          "required": false,
+          "description": "Code used to return responses in language other than English, acceptable values are en-GB|de-DE|es-ES|fr-FR|nn-NO|fi-FI|ru-RU|pt-PT|hu-HU|sl-SL|ga-IE|en-CA|sr-Latn|sv-SE|el=GR|zh-CHS|it-IT|zh-CHT|cs-CZ|de-AT|ja-JP|pl-PL|da-DK|ro-RO|nl-NL|tr-TR"
+        },
+        {
+          "name": "marketPublished",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether only active entities should be returned, according to the William Hill definition of active"
+        },
+        {
+          "name": "marketStatus",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a status to filter results by. This is currently A (active) or S (suspended)"
+        },
+        {
+          "name": "marketDisplayed",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether to return displayed entities or not"
+        },
+        {
+          "name": "marketChannel",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a channel filter and only results from that channel will be returned"
+        },
+        {
+          "name": "marketSort",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by market sort (e.g. MR (match result) -- (Outright))."
+        },
+        {
+          "name": "marketEW",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether to return markets with each way betting or those without"
+        },
+        {
+          "name": "selectionStatus",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a status to filter results by. This is currently A (active) or S (suspended)"
+        },
+        {
+          "name": "selectionChannel",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a channel filter and only results from that channel will be returned"
+        },
+        {
+          "name": "selectionPublished",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether only active entities should be returned, according to the William Hill definition of active"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/events/{eventId}/competitors",
+      "method": "getEventCompetitors",
+      "httpMethod": "get",
+      "tag": "competitors",
+      "description": "Retrieves competitors for a single event by ID.",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key available from your developer portal"
+        },
+        {
+          "name": "eventId",
+          "schema": "string",
+          "required": true,
+          "description": "The event ID to retrieve information for."
+        },
+        {
+          "name": "fields",
+          "schema": "array",
+          "required": false,
+          "description": "Specify an absolute field list to return (Comma-Separated List)"
+        },
+        {
+          "name": "include",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields in addition to the default to return (Comma-Separated List)"
+        },
+        {
+          "name": "exclude",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields from the default to exclude (Comma-Separated List)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/events/{eventId}/markets/",
+      "method": "getMarkets",
+      "httpMethod": "get",
+      "tag": "sportsdata",
+      "description": "Gets one or more specific markets",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key available from your developer portal"
+        },
+        {
+          "name": "eventId",
+          "schema": "string",
+          "required": true,
+          "description": "The event ID to retrieve information for."
+        },
+        {
+          "name": "ids",
+          "schema": "array",
+          "required": false,
+          "description": "A comma-separated list of selectionIds"
+        },
+        {
+          "name": "includeAllDescendants",
+          "schema": "boolean",
+          "required": false,
+          "description": "Include every descendant in the below heirarchy"
+        },
+        {
+          "name": "fields",
+          "schema": "array",
+          "required": false,
+          "description": "Specify an absolute field list to return (Comma-Separated List)"
+        },
+        {
+          "name": "include",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields in addition to the default to return (Comma-Separated List)"
+        },
+        {
+          "name": "exclude",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields from the default to exclude (Comma-Separated List)"
+        },
+        {
+          "name": "includeEmpty",
+          "schema": "boolean",
+          "required": false,
+          "description": "When declared as false it should exclude markets and events that have no selections / markets"
+        },
+        {
+          "name": "culture",
+          "schema": "string",
+          "required": false,
+          "description": "Code used to return responses in language other than English, acceptable values are en-GB|de-DE|es-ES|fr-FR|nn-NO|fi-FI|ru-RU|pt-PT|hu-HU|sl-SL|ga-IE|en-CA|sr-Latn|sv-SE|el=GR|zh-CHS|it-IT|zh-CHT|cs-CZ|de-AT|ja-JP|pl-PL|da-DK|ro-RO|nl-NL|tr-TR"
+        },
+        {
+          "name": "marketPublished",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether only active entities should be returned, according to the William Hill definition of active"
+        },
+        {
+          "name": "marketStatus",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a status to filter results by. This is currently A (active) or S (suspended)"
+        },
+        {
+          "name": "marketDisplayed",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether to return displayed entities or not"
+        },
+        {
+          "name": "marketChannel",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a channel filter and only results from that channel will be returned"
+        },
+        {
+          "name": "marketSort",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by market sort (e.g. MR (match result) -- (Outright))."
+        },
+        {
+          "name": "marketEW",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether to return markets with each way betting or those without"
+        },
+        {
+          "name": "selectionStatus",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a status to filter results by. This is currently A (active) or S (suspended)"
+        },
+        {
+          "name": "selectionChannel",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a channel filter and only results from that channel will be returned"
+        },
+        {
+          "name": "selectionPublished",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether only active entities should be returned, according to the William Hill definition of active"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/events/{eventId}/markets/{marketId}/selections/",
+      "method": "getSelections",
+      "httpMethod": "get",
+      "tag": "sportsdata",
+      "description": "Gets one or more selections for a market",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key available from your developer portal"
+        },
+        {
+          "name": "eventId",
+          "schema": "string",
+          "required": true,
+          "description": "The event ID to retrieve information for."
+        },
+        {
+          "name": "marketId",
+          "schema": "string",
+          "required": true,
+          "description": "The market id to retrieve information for"
+        },
+        {
+          "name": "ids",
+          "schema": "array",
+          "required": false,
+          "description": "A comma-separated list of selectionIds"
+        },
+        {
+          "name": "fields",
+          "schema": "array",
+          "required": false,
+          "description": "Specify an absolute field list to return (Comma-Separated List)"
+        },
+        {
+          "name": "include",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields in addition to the default to return (Comma-Separated List)"
+        },
+        {
+          "name": "exclude",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields from the default to exclude (Comma-Separated List)"
+        },
+        {
+          "name": "culture",
+          "schema": "string",
+          "required": false,
+          "description": "Code used to return responses in language other than English, acceptable values are en-GB|de-DE|es-ES|fr-FR|nn-NO|fi-FI|ru-RU|pt-PT|hu-HU|sl-SL|ga-IE|en-CA|sr-Latn|sv-SE|el=GR|zh-CHS|it-IT|zh-CHT|cs-CZ|de-AT|ja-JP|pl-PL|da-DK|ro-RO|nl-NL|tr-TR"
+        },
+        {
+          "name": "selectionStatus",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a status to filter results by. This is currently A (active) or S (suspended)"
+        },
+        {
+          "name": "selectionChannel",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a channel filter and only results from that channel will be returned"
+        },
+        {
+          "name": "selectionPublished",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether only active entities should be returned, according to the William Hill definition of active"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sports/",
+      "method": "getSports",
+      "httpMethod": "get",
+      "tag": "sportsdata",
+      "description": "Gets a list of all sports",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key available from your developer portal"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "The field to order the response by, followed by the order. For example: name,desc"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Skip over a number of elements by specifying a start value for the query"
+        },
+        {
+          "name": "isPublished",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether only active entities should be returned, according to the William Hill definition of active"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Specify the number of results to return"
+        },
+        {
+          "name": "fields",
+          "schema": "array",
+          "required": false,
+          "description": "Specify an absolute field list to return (Comma-Separated List)"
+        },
+        {
+          "name": "include",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields in addition to the default to return (Comma-Separated List)"
+        },
+        {
+          "name": "exclude",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields from the default to exclude (Comma-Separated List)"
+        },
+        {
+          "name": "culture",
+          "schema": "string",
+          "required": false,
+          "description": "Code used to return responses in language other than English, acceptable values are en-GB|de-DE|es-ES|fr-FR|nn-NO|fi-FI|ru-RU|pt-PT|hu-HU|sl-SL|ga-IE|en-CA|sr-Latn|sv-SE|el=GR|zh-CHS|it-IT|zh-CHT|cs-CZ|de-AT|ja-JP|pl-PL|da-DK|ro-RO|nl-NL|tr-TR"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sports/{sportId}/classes/",
+      "method": "getClassesForSport",
+      "httpMethod": "get",
+      "tag": "sportsdata",
+      "description": "Retrieves a list of classes for a given sport id.",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key available from your developer portal"
+        },
+        {
+          "name": "sportId",
+          "schema": "string",
+          "required": true,
+          "description": "The sport id to retrieve information for."
+        },
+        {
+          "name": "isPublished",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether only active entities should be returned, according to the William Hill definition of active"
+        },
+        {
+          "name": "fields",
+          "schema": "array",
+          "required": false,
+          "description": "Specify an absolute field list to return (Comma-Separated List)"
+        },
+        {
+          "name": "include",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields in addition to the default to return (Comma-Separated List)"
+        },
+        {
+          "name": "exclude",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields from the default to exclude (Comma-Separated List)"
+        },
+        {
+          "name": "displayed",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether to return displayed entities or not"
+        },
+        {
+          "name": "channel",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a channel filter and only results from that channel will be returned"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a status to filter results by. This is currently A (active) or S (suspended)"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "The field to order the response by, followed by the order. For example: name,desc"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Skip over a number of elements by specifying a start value for the query"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Specify the number of results to return"
+        },
+        {
+          "name": "culture",
+          "schema": "string",
+          "required": false,
+          "description": "Code used to return responses in language other than English, acceptable values are en-GB|de-DE|es-ES|fr-FR|nn-NO|fi-FI|ru-RU|pt-PT|hu-HU|sl-SL|ga-IE|en-CA|sr-Latn|sv-SE|el=GR|zh-CHS|it-IT|zh-CHT|cs-CZ|de-AT|ja-JP|pl-PL|da-DK|ro-RO|nl-NL|tr-TR"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sports/{sportId}/competitions/",
+      "method": "getCompetitionsForSport",
+      "httpMethod": "get",
+      "tag": "sportsdata",
+      "description": "Retrieves a list of competitions for a given sport id.",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key available from your developer portal"
+        },
+        {
+          "name": "sportId",
+          "schema": "string",
+          "required": true,
+          "description": "The sport id to retrieve information for."
+        },
+        {
+          "name": "isPublished",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether only active entities should be returned, according to the William Hill definition of active"
+        },
+        {
+          "name": "fields",
+          "schema": "array",
+          "required": false,
+          "description": "Specify an absolute field list to return (Comma-Separated List)"
+        },
+        {
+          "name": "include",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields in addition to the default to return (Comma-Separated List)"
+        },
+        {
+          "name": "exclude",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields from the default to exclude (Comma-Separated List)"
+        },
+        {
+          "name": "displayed",
+          "schema": "string",
+          "required": false,
+          "description": "Specify whether to return displayed entities or not"
+        },
+        {
+          "name": "channel",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a channel filter and only results from that channel will be returned"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Specify a status to filter results by. This is currently A (active) or S (suspended)"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "The field to order the response by, followed by the order. For example: name,desc"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Skip over a number of elements by specifying a start value for the query"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Specify the number of results to return"
+        },
+        {
+          "name": "culture",
+          "schema": "string",
+          "required": false,
+          "description": "Code used to return responses in language other than English, acceptable values are en-GB|de-DE|es-ES|fr-FR|nn-NO|fi-FI|ru-RU|pt-PT|hu-HU|sl-SL|ga-IE|en-CA|sr-Latn|sv-SE|el=GR|zh-CHS|it-IT|zh-CHT|cs-CZ|de-AT|ja-JP|pl-PL|da-DK|ro-RO|nl-NL|tr-TR"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/topbets/",
+      "method": "getTopBets",
+      "httpMethod": "get",
+      "tag": "sportsdata",
+      "description": "Retrieves a weighted list of Selections.",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "Your API Key available from your developer portal"
+        },
+        {
+          "name": "sportIds",
+          "schema": "array",
+          "required": false,
+          "description": "A comma-separated list of sportsIds for which to retrieve topBets for"
+        },
+        {
+          "name": "competitionIds",
+          "schema": "array",
+          "required": false,
+          "description": "A comma-separated list of competitionIds for which to retrieve topBets for"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Specify the number of results to return"
+        },
+        {
+          "name": "fields",
+          "schema": "array",
+          "required": false,
+          "description": "Specify an absolute field list to return (Comma-Separated List)"
+        },
+        {
+          "name": "include",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields in addition to the default to return (Comma-Separated List)"
+        },
+        {
+          "name": "exclude",
+          "schema": "array",
+          "required": false,
+          "description": "Specify fields from the default to exclude (Comma-Separated List)"
+        },
+        {
+          "name": "param_topBetEventId",
+          "schema": "string",
+          "required": false,
+          "description": "The event ID to retrieve top bet information for. Multiple events up to 5 may be used"
+        },
+        {
+          "name": "sortName",
+          "schema": "string",
+          "required": false,
+          "description": "The market sort code used to further filter event results. Please note this can only be used with event id(s)."
+        },
+        {
+          "name": "culture",
+          "schema": "string",
+          "required": false,
+          "description": "Code used to return responses in language other than English, acceptable values are en-GB|de-DE|es-ES|fr-FR|nn-NO|fi-FI|ru-RU|pt-PT|hu-HU|sl-SL|ga-IE|en-CA|sr-Latn|sv-SE|el=GR|zh-CHS|it-IT|zh-CHT|cs-CZ|de-AT|ja-JP|pl-PL|da-DK|ro-RO|nl-NL|tr-TR"
+        },
+        {
+          "name": "Locale",
+          "schema": "string",
+          "required": false,
+          "description": "Code used to select a set of top bets settings, default is \"whapi\" which allows events set in far future to be included, setting the value to \"en-GB\" will activate english sportsbook settings, mirroring top bets on the website, which restricts events returned to those taking place in next 36 hours. Acceptable values (not all heve their own settings - if none currently available for that locale - en-GB will be used) are de-DE|whapi|en-GB|es-ES|fr-FR|nn-NO|fi-FI|ru-RU|pt-PT|hu-HU|sl-SL|ga-IE|en-CA|sr-Latn|sv-SE|el=GR|zh-CHS|it-IT|zh-CHT|cs-CZ|de-AT|ja-JP|pl-PL|da-DK|ro-RO|nl-NL|tr-TR"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://sandbox.whapi.com/v2/sportsdata",
   "apiDescription": "The William Hill SportsData REST API is a collection of GET methods to provide William Hill product data such as sport, competition, event, market and selection data (including prices).",
   "apiTitle": "SportsData API",

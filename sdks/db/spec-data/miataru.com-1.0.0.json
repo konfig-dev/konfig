@@ -3,6 +3,131 @@
   "openApiRaw": "https://raw.githubusercontent.com/miataru/miataru-protocol-specification/swagger/miataru-v1/api/swagger/swagger.yaml",
   "homepage": "miataru.com",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/GetLocation",
+      "method": "getLocation",
+      "httpMethod": "post",
+      "tag": "getLocation",
+      "description": "To retrieve a specific devices latest known location the /GetLocation method is used. Please note that the MiataruConfig portion is optional. RequestMiataruDeviceID should be the ID of the device the request is sent from (or an identifier like an URL).",
+      "parameters": [
+        {
+          "name": "MiataruConfig",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "MiataruGetLocation",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/GetLocationGeoJSON/{deviceID}",
+      "method": "getLocationGeoJson",
+      "httpMethod": "get",
+      "tag": "getLocation",
+      "description": "Retrieves a devices Location in GeoJSON format.",
+      "parameters": [
+        {
+          "name": "deviceID",
+          "schema": "string",
+          "required": true,
+          "description": "the unique device ID of the device the location is requested from"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/GetLocationHistory",
+      "method": "getLocationHistory",
+      "httpMethod": "post",
+      "tag": "getLocation",
+      "description": "Location History is stored on the server only if the client told the server to do so using the “EnableLocationHistory” setting in the Location Update requests. For transitions of enabling/disabling that functionality - Everytime a Location Update is received by the server with “EnableLocationHistory=false” the server removes all stored Location History till that point. There is a server-side setting that controls up to how many Location Updates the server is storing in the Location History before it removes the oldest one. To request the Location History of a particular device the client sends the following POST request to the GetLocationHistory service URL. Please note that the MiataruConfig portion is optional. RequestMiataruDeviceID should be the ID of the device the request is sent from (or an identifier like an URL).",
+      "parameters": [
+        {
+          "name": "MiataruConfig",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "MiataruGetLocationHistory",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/GetVisitorHistory",
+      "method": "getVisitorHistory",
+      "httpMethod": "post",
+      "tag": "getVisitorHistory",
+      "description": "Visitor History is stored on the server with every request to the location or location history information of a device. There is a server-side setting that controls up to how many Visitors the server is storing in the Visitor History before it removes the oldest one. To request the Visitor History of a particular device the client sends the following POST request to the GetVisitorHistory service URL.",
+      "parameters": [
+        {
+          "name": "MiataruGetVisitorHistory",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/UpdateLocation",
+      "method": "updateLocation",
+      "httpMethod": "post",
+      "tag": "updateLocation",
+      "description": "This method is used to update the location of a device. The device does not need to be known already to the Miataru server but it rather creates a unique identifier for itself in the client application. This unique identifier, or device ID is then used to address this particular device.",
+      "parameters": [
+        {
+          "name": "MiataruConfig",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "MiataruLocation",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://service.miataru.com/v1",
   "apiDescription": "The Miataru API is very simple and straight forward. Generally you're posting (HTTP POST) a JSON formatted request to a service method locations and you get back a JSON formatted answer. Please take into consideration that this has the request-for-comment status and that it can change while there's work done on client and server applications. Versioning therefore is done by prepending the version number - /v1/ for version 1 - to the method call.",
   "apiTitle": "Miataru",

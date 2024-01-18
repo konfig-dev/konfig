@@ -4,6 +4,174 @@
   "homepage": "mastercard.com",
   "serviceName": "SpendingPulse",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/gasweekly",
+      "method": "/gasweeklyGet",
+      "httpMethod": "get",
+      "tag": "Gas Weekly",
+      "description": "Returns the weekly gasoline report. This resource pulls back the report with ProductLine = \"US Weekly Gasoline Demand Report\". Keep in mind that you must be subscribed to the gasoline weekly report to be able to receive data back from this resource.",
+      "parameters": [
+        {
+          "name": "CurrentRow",
+          "schema": "string",
+          "required": false,
+          "description": "Starting record number to return."
+        },
+        {
+          "name": "Offset",
+          "schema": "string",
+          "required": false,
+          "description": "Used to restrict the number of records returned if needed to be less than max."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/parameters",
+      "method": "/parametersGet",
+      "httpMethod": "get",
+      "tag": "Parameters",
+      "description": "Returns a distinct list of all reports are available and that one is subscribed to.",
+      "parameters": [
+        {
+          "name": "CurrentRow",
+          "schema": "string",
+          "required": false,
+          "description": "Starting record number to return."
+        },
+        {
+          "name": "Offset",
+          "schema": "string",
+          "required": false,
+          "description": "Used to restrict the number of records returned if needed to be less than max."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spendingpulse",
+      "method": "/spendingpulseGet",
+      "httpMethod": "get",
+      "tag": "SpendingPulse Report",
+      "description": "Returns all Spending Pulse reports (with the exception of the gasoline weekly report, which has its own resource), that one is subscribed to.",
+      "parameters": [
+        {
+          "name": "CurrentRow",
+          "schema": "string",
+          "required": false,
+          "description": "Starting record number to return."
+        },
+        {
+          "name": "Offset",
+          "schema": "string",
+          "required": false,
+          "description": "Used to restrict the number of records returned if needed to be less than max."
+        },
+        {
+          "name": "ProductLine",
+          "schema": "string",
+          "required": false,
+          "description": "Product Line.  Either ?US Executive Report? or ?Weekly Sales?"
+        },
+        {
+          "name": "PublicationCoveragePeriod",
+          "schema": "string",
+          "required": false,
+          "description": "Publication Coverage Period indicates what period is to be covered, often the current report will include the month prior."
+        },
+        {
+          "name": "Country",
+          "schema": "string",
+          "required": false,
+          "description": "Country code."
+        },
+        {
+          "name": "ReportType",
+          "schema": "string",
+          "required": false,
+          "description": "Report type name, today the only report supported is \"monitor\"."
+        },
+        {
+          "name": "Period",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the period covered by the data with possible values of - day, week, month, quarter, annual"
+        },
+        {
+          "name": "Sector",
+          "schema": "string",
+          "required": false,
+          "description": "Sector name."
+        },
+        {
+          "name": "Ecomm",
+          "schema": "string",
+          "required": false,
+          "description": "Ecommerce indicator."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/subscription",
+      "method": "/subscriptionGet",
+      "httpMethod": "get",
+      "tag": "Subscription",
+      "description": "Returns a list of all reports one is currently subscribed to.",
+      "parameters": [
+        {
+          "name": "CurrentRow",
+          "schema": "string",
+          "required": false,
+          "description": "Starting record number to return."
+        },
+        {
+          "name": "Offset",
+          "schema": "string",
+          "required": false,
+          "description": "Used to restrict the number of records returned if needed to be less than max."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.mastercard.com/spendingpulse/v1/spulse.svc",
   "apiDescription": "This API will provide monthly data which includes metrics such as sales volume and growth rate.",
   "apiTitle": "Spending Pulse",

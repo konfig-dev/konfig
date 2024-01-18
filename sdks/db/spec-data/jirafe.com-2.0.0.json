@@ -3,6 +3,446 @@
   "openApiRaw": "https://event.jirafe.com/api-docs",
   "homepage": "jirafe.com",
   "apiVersion": "2.0.0",
+  "methods": [
+    {
+      "url": "/{siteId}/batch",
+      "method": "postBatch",
+      "httpMethod": "post",
+      "tag": "batch",
+      "description": "Send a batch for the given site",
+      "parameters": [
+        {
+          "name": "siteId",
+          "schema": "string",
+          "required": true,
+          "description": "ID site to send the event"
+        },
+        {
+          "name": "cart",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "category",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "customer",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "employee",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "order",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "product",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/{siteId}/cart",
+      "method": "postCart",
+      "httpMethod": "post",
+      "tag": "cart",
+      "description": "Send a cart for the given site",
+      "parameters": [
+        {
+          "name": "siteId",
+          "schema": "string",
+          "required": true,
+          "description": "ID site to send the event"
+        },
+        {
+          "name": "cart_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "change_date",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "cookies",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "create_date",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "currency",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "customer",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "items",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "previous_items",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "subtotal",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "total",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "total_discounts",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "total_payment_cost",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "total_shipping",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "total_tax",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "visit",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/{siteId}/category",
+      "method": "postCategory",
+      "httpMethod": "post",
+      "tag": "category",
+      "description": "Send a category for the given site",
+      "parameters": [
+        {
+          "name": "siteId",
+          "schema": "string",
+          "required": true,
+          "description": "ID site to send the event"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/{siteId}/customer",
+      "method": "postCustomer",
+      "httpMethod": "post",
+      "tag": "customer",
+      "description": "Send a customer for the given site",
+      "parameters": [
+        {
+          "name": "siteId",
+          "schema": "string",
+          "required": true,
+          "description": "ID site to send the event"
+        },
+        {
+          "name": "active_flag",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "change_date",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "company",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "cookies",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "create_date",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "department",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "first_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "last_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "marketing_opt_in",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "phone",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "position",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/{siteId}/order",
+      "method": "postOrderCancelled",
+      "httpMethod": "post",
+      "tag": "order",
+      "description": "Send a order for the given site",
+      "parameters": [
+        {
+          "name": "siteId",
+          "schema": "string",
+          "required": true,
+          "description": "ID site to send the event"
+        },
+        {
+          "name": "cancel_date",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "order_number",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/{siteId}/product",
+      "method": "postProduct",
+      "httpMethod": "post",
+      "tag": "product",
+      "description": "Send a product for the given site",
+      "parameters": [
+        {
+          "name": "siteId",
+          "schema": "string",
+          "required": true,
+          "description": "ID site to send the event"
+        },
+        {
+          "name": "ancestors",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "attributes",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "base_product",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "brand",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "catalog",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "categories",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "change_date",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "code",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "create_date",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "images",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "is_order",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "is_sku",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "rating",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "urls",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "vendors",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://event.jirafe.com/v2",
   "apiDescription": "API endpoins for sending Jirafe events",
   "apiTitle": "Jirafe Events",

@@ -4,6 +4,1141 @@
   "homepage": "adyen.com",
   "serviceName": "AccountService",
   "apiVersion": "5",
+  "methods": [
+    {
+      "url": "/checkAccountHolder",
+      "method": "postCheckAccountHolder",
+      "httpMethod": "post",
+      "tag": "Verification",
+      "description": "Trigger verification",
+      "parameters": [
+        {
+          "name": "accountHolderCode",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "accountStateType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "tier",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/closeAccount",
+      "method": "postCloseAccount",
+      "httpMethod": "post",
+      "tag": "Accounts",
+      "description": "Close an account",
+      "parameters": [
+        {
+          "name": "accountCode",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/closeAccountHolder",
+      "method": "postCloseAccountHolder",
+      "httpMethod": "post",
+      "tag": "Account holders",
+      "description": "Close an account holder",
+      "parameters": [
+        {
+          "name": "accountHolderCode",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/closeStores",
+      "method": "postCloseStores",
+      "httpMethod": "post",
+      "tag": "Account holders",
+      "description": "Close stores",
+      "parameters": [
+        {
+          "name": "accountHolderCode",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "stores",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/createAccount",
+      "method": "postCreateAccount",
+      "httpMethod": "post",
+      "tag": "Accounts",
+      "description": "Create an account",
+      "parameters": [
+        {
+          "name": "accountHolderCode",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "bankAccountUUID",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "payoutMethodCode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "payoutSchedule",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "payoutScheduleReason",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "payoutSpeed",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/createAccountHolder",
+      "method": "postCreateAccountHolder",
+      "httpMethod": "post",
+      "tag": "Account holders",
+      "description": "Create an account holder",
+      "parameters": [
+        {
+          "name": "accountHolderCode",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "accountHolderDetails",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "createDefaultAccount",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "legalEntity",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "primaryCurrency",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "processingTier",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/deleteBankAccounts",
+      "method": "postDeleteBankAccounts",
+      "httpMethod": "post",
+      "tag": "Verification",
+      "description": "Delete bank accounts",
+      "parameters": [
+        {
+          "name": "accountHolderCode",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "bankAccountUUIDs",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/deleteLegalArrangements",
+      "method": "postDeleteLegalArrangements",
+      "httpMethod": "post",
+      "tag": "Verification",
+      "description": "Delete legal arrangements",
+      "parameters": [
+        {
+          "name": "accountHolderCode",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "legalArrangements",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/deletePayoutMethods",
+      "method": "postDeletePayoutMethods",
+      "httpMethod": "post",
+      "tag": "Verification",
+      "description": "Delete payout methods",
+      "parameters": [
+        {
+          "name": "accountHolderCode",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "payoutMethodCodes",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/deleteShareholders",
+      "method": "postDeleteShareholders",
+      "httpMethod": "post",
+      "tag": "Verification",
+      "description": "Delete shareholders",
+      "parameters": [
+        {
+          "name": "accountHolderCode",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "shareholderCodes",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/deleteSignatories",
+      "method": "postDeleteSignatories",
+      "httpMethod": "post",
+      "tag": "Verification",
+      "description": "Delete signatories",
+      "parameters": [
+        {
+          "name": "accountHolderCode",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "signatoryCodes",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/getAccountHolder",
+      "method": "postGetAccountHolder",
+      "httpMethod": "post",
+      "tag": "Account holders",
+      "description": "Get an account holder",
+      "parameters": [
+        {
+          "name": "accountCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "accountHolderCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "showDetails",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/getTaxForm",
+      "method": "postGetTaxForm",
+      "httpMethod": "post",
+      "tag": "Account holders",
+      "description": "Get a tax form",
+      "parameters": [
+        {
+          "name": "accountHolderCode",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "formType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "year",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/getUploadedDocuments",
+      "method": "postGetUploadedDocuments",
+      "httpMethod": "post",
+      "tag": "Verification",
+      "description": "Get documents",
+      "parameters": [
+        {
+          "name": "accountHolderCode",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "bankAccountUUID",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "shareholderCode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/suspendAccountHolder",
+      "method": "postSuspendAccountHolder",
+      "httpMethod": "post",
+      "tag": "Account holders",
+      "description": "Suspend an account holder",
+      "parameters": [
+        {
+          "name": "accountHolderCode",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/unSuspendAccountHolder",
+      "method": "postUnSuspendAccountHolder",
+      "httpMethod": "post",
+      "tag": "Account holders",
+      "description": "Unsuspend an account holder",
+      "parameters": [
+        {
+          "name": "accountHolderCode",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/updateAccount",
+      "method": "postUpdateAccount",
+      "httpMethod": "post",
+      "tag": "Accounts",
+      "description": "Update an account",
+      "parameters": [
+        {
+          "name": "accountCode",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "bankAccountUUID",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "payoutMethodCode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "payoutSchedule",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "payoutSpeed",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/updateAccountHolder",
+      "method": "postUpdateAccountHolder",
+      "httpMethod": "post",
+      "tag": "Account holders",
+      "description": "Update an account holder",
+      "parameters": [
+        {
+          "name": "accountHolderCode",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "accountHolderDetails",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "legalEntity",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "primaryCurrency",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "processingTier",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/updateAccountHolderState",
+      "method": "postUpdateAccountHolderState",
+      "httpMethod": "post",
+      "tag": "Account holders",
+      "description": "Update payout or processing state",
+      "parameters": [
+        {
+          "name": "accountHolderCode",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "disable",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "stateType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/uploadDocument",
+      "method": "postUploadDocument",
+      "httpMethod": "post",
+      "tag": "Verification",
+      "description": "Upload a document",
+      "parameters": [
+        {
+          "name": "documentContent",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "documentDetail",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://cal-test.adyen.com/cal/services/Account/v5",
   "apiDescription": "This API is used for the classic integration. If you are just starting your implementation, refer to our [new integration guide](https://docs.adyen.com/marketplaces-and-platforms) instead.\n\nThe Account API provides endpoints for managing account-related entities on your platform. These related entities include account holders, accounts, bank accounts, shareholders, and verification-related documents. The management operations include actions such as creation, retrieval, updating, and deletion of them.\n\nFor more information, refer to our [documentation](https://docs.adyen.com/marketplaces-and-platforms/classic).\n## Authentication\nYour Adyen contact will provide your API credential and an API key. To connect to the API, add an `X-API-Key` header with the API key as the value, for example:\n\n ```\ncurl\n-H \"Content-Type: application/json\" \\\n-H \"X-API-Key: YOUR_API_KEY\" \\\n...\n```\n\nAlternatively, you can use the username and password to connect to the API using basic authentication. For example:\n\n```\ncurl\n-U \"ws@MarketPlace.YOUR_PLATFORM_ACCOUNT\":\"YOUR_WS_PASSWORD\" \\\n-H \"Content-Type: application/json\" \\\n...\n```\nWhen going live, you need to generate new web service user credentials to access the [live endpoints](https://docs.adyen.com/development-resources/live-endpoints).\n\n## Versioning\nThe Account API supports [versioning](https://docs.adyen.com/development-resources/versioning) using a version suffix in the endpoint URL. This suffix has the following format: \"vXX\", where XX is the version number.\n\nFor example:\n```\nhttps://cal-test.adyen.com/cal/services/Account/v5/createAccountHolder\n```",
   "apiTitle": "Account API",

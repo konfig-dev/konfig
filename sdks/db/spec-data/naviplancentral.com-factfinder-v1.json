@@ -4,6 +4,5226 @@
   "homepage": "naviplancentral.com",
   "serviceName": "factfinder",
   "apiVersion": "v1",
+  "methods": [
+    {
+      "url": "/api/AccountTypes",
+      "method": "accountTypesGetByCountry",
+      "httpMethod": "get",
+      "tag": "AccountTypes",
+      "description": "Description: This operation retrieves all Account Types for the specified country.<br />\r\n              Purpose: Provides access to the Account Types including id and type description.",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "The country used to filter Account Types"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/AccountTypes/{id}",
+      "method": "accountTypesGetById",
+      "httpMethod": "get",
+      "tag": "AccountTypes",
+      "description": "Description: This operation retrieves all Account Types for the specified id.<br />\r\n              Purpose: Provides access to the Account Types including id and type description.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of Account Type used to retreive the Account Type information"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Accounts",
+      "method": "accountsGetAccountsByFactFinderIdByFactfinderidExternalsourceid",
+      "httpMethod": "get",
+      "tag": "Accounts",
+      "description": "Description: This operation retrieves all Accounts for the specified Fact Finder ID and/or external source ID.<br />\r\n              Purpose: Provides access to the Account information including description and market value.",
+      "parameters": [
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Fact Finder used to retrieve Accounts"
+        },
+        {
+          "name": "externalSourceId",
+          "schema": "string",
+          "required": false,
+          "description": "The external ID used to filter Accounts"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Accounts",
+      "method": "accountsPostByModel",
+      "httpMethod": "post",
+      "tag": "Accounts",
+      "description": "Description: The operation creates an Account.<br />\r\n              Purpose: Allows for creation of Accounts on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "accountType",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "externalSourceId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "externalSourceName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "lastUpdated",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "marketValue",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "owner",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "ownerDependentId",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Accounts/{accountId}/Holdings",
+      "method": "accountsGetAccountHoldingsByAccountid",
+      "httpMethod": "get",
+      "tag": "Accounts",
+      "description": "Retrieves all holdings in the specified Account.",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Account used to retrieve the Account Holding data"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Accounts/{accountId}/Holdings",
+      "method": "accountsPostAccountHoldingByAccountidModel",
+      "httpMethod": "post",
+      "tag": "Accounts",
+      "description": "Creates a holding and adds it to an existing Account.",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "integer",
+          "required": true,
+          "description": "The existing Account ID used to identify which Account to add the holding to"
+        },
+        {
+          "name": "costBasis",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "cusip",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "marketValue",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "symbol",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "valuationDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Accounts/{accountId}/Holdings",
+      "method": "accountsPutHoldingsByAccountidHoldings",
+      "httpMethod": "put",
+      "tag": "Accounts",
+      "description": "Updates all holdings associated with an account",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "integer",
+          "required": true,
+          "description": "The account with the holding to be updated"
+        },
+        {
+          "name": "holdings",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Accounts/{accountId}/Holdings/{id}",
+      "method": "accountsDeleteAccountHoldingByAccountidId",
+      "httpMethod": "delete",
+      "tag": "Accounts",
+      "description": "Description: This operation deletes a single Account Holding for the specified Account Holding ID and Account ID.<br />\r\n              Purpose: Provides the ability to remove individual holdings from a specified Account.",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Account used to retrieve the Account data that the specified holding belongs to."
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Account Holding used to delete the Account Holding"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/Accounts/{accountId}/Holdings/{id}",
+      "method": "accountsGetAccountHoldingByAccountidId",
+      "httpMethod": "get",
+      "tag": "Accounts",
+      "description": "Description: This operation retrieves a single Account Holding for the specified Account Holding ID and Account ID.<br />\r\n              Purpose: Provides access to the Account Holding information including description and market value.",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Account used to retrieve the Account Holding data"
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Account Holding used to retrieve the Account Holding data"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Accounts/{accountId}/Holdings/{id}",
+      "method": "accountsPutByAccountidIdHolding",
+      "httpMethod": "put",
+      "tag": "Accounts",
+      "description": "Updates a holding associated with an account",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "integer",
+          "required": true,
+          "description": "The account with the holding to be updated"
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the holding to update"
+        },
+        {
+          "name": "costBasis",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "cusip",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "marketValue",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "symbol",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "valuationDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Accounts/{accountId}/SavingsStrategies",
+      "method": "accountsDeleteSavingsStrategiesByAccountid",
+      "httpMethod": "delete",
+      "tag": "Accounts",
+      "description": "Deletes all savings strategies tied to an account",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the account that holds the savings strategies"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/Accounts/{accountId}/SavingsStrategies",
+      "method": "accountsGetSavingsStrategiesByAccountIdByAccountid",
+      "httpMethod": "get",
+      "tag": "Accounts",
+      "description": "Get all of the savings strategies for a specific account",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the account to retrieve the savings strategies from"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Accounts/{accountId}/SavingsStrategies",
+      "method": "accountsPostSavingsStrategyByAccountidSavingsstrategy",
+      "httpMethod": "post",
+      "tag": "Accounts",
+      "description": "Creates a savings strategy on a specific account",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the account to create a savings strategy for"
+        },
+        {
+          "name": "employerSavingsAmount",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "employerSavingsAmountType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "frequencyId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "mandatoryAmount",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "mandatoryAmountType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "postTaxSavingsAmount",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "postTaxSavingsAmountType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "preTaxSavingsAmount",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "preTaxSavingsAmountType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Accounts/{accountId}/SavingsStrategies/{id}",
+      "method": "accountsDeleteSavingsStrategyByAccountidId",
+      "httpMethod": "delete",
+      "tag": "Accounts",
+      "description": "Deletes a specific savings strategy",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the account that holds the savings strategy"
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the savings strategy to be deleted"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/Accounts/{accountId}/SavingsStrategies/{id}",
+      "method": "accountsGetSavingsStrategiesByAccountIdAndSavingsStrategyIdByAccountidId",
+      "httpMethod": "get",
+      "tag": "Accounts",
+      "description": "Get a specific savings strategy for an account",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the account to retrieve the savings strategies from"
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the savings strategy to get"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Accounts/{accountId}/SavingsStrategies/{id}",
+      "method": "accountsPutSavingsStrategyByAccountidIdSavingsstrategy",
+      "httpMethod": "put",
+      "tag": "Accounts",
+      "description": "Updates a specific savings strategy",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the account that holds the savings strategy"
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the savings strategy to update"
+        },
+        {
+          "name": "employerSavingsAmount",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "employerSavingsAmountType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "frequencyId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "mandatoryAmount",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "mandatoryAmountType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "postTaxSavingsAmount",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "postTaxSavingsAmountType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "preTaxSavingsAmount",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "preTaxSavingsAmountType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Accounts/{id}",
+      "method": "accountsDeleteAccountById",
+      "httpMethod": "delete",
+      "tag": "Accounts",
+      "description": "Description: The operation removes an Account tied to a Fact Finder.<br />\r\n              Purpose: Allows for removal of an Account from a Fact Finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The Account ID used to identify which Account to remove"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/Accounts/{id}",
+      "method": "accountsGetById",
+      "httpMethod": "get",
+      "tag": "Accounts",
+      "description": "Description: This operation retrieves a single Account for the specified Account ID.<br />\r\n              Purpose: Provides access to the Account information including description and market value.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Account used to retrieve the Account data"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Accounts/{id}",
+      "method": "accountsPutByIdModel",
+      "httpMethod": "put",
+      "tag": "Accounts",
+      "description": "Description: The operation updates an Account, deletes associated saving strategies if the account type changes.<br />\r\n              Purpose: Allows for complete replacement of an Account on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The existing Account ID used to identify which Account to update"
+        },
+        {
+          "name": "accountType",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "externalSourceId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "externalSourceName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "lastUpdated",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "marketValue",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "owner",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "ownerDependentId",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Clients",
+      "method": "clientsPostByModel",
+      "httpMethod": "post",
+      "tag": "Clients",
+      "description": "Description: This operation submits the Fact Finder data to an external system.<br />\r\n              Purpose: Allows Fact Finder data to be persisted in another system for that system's consumption and use.",
+      "parameters": [
+        {
+          "name": "externalDestinationName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "planAction",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/CriticalIllnessInsurancePolicies",
+      "method": "criticalIllnessInsurancePoliciesGetCriticalIllnessInsurancePoliciesByFactFinderIdByFactfinderid",
+      "httpMethod": "get",
+      "tag": "CriticalIllnessInsurancePolicies",
+      "description": "Description: This operation retrieves all Critical Illness Insurance Policies for the specified Fact Finder ID.<br />\r\n              Purpose: Provides access to the Critical Illness Insurance Policies including description and policy type.",
+      "parameters": [
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Fact Finder used to retrieve Critical Illness Insurance Policies"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/CriticalIllnessInsurancePolicies",
+      "method": "criticalIllnessInsurancePoliciesPostByModel",
+      "httpMethod": "post",
+      "tag": "CriticalIllnessInsurancePolicies",
+      "description": "Description: The operation creates a Critical Illness Insurance Policy.<br />\r\n              Purpose: Allows for creation of Critical Illness Insurance Policies on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "benefit",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "frequency",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "insured",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "policyType",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "premium",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/CriticalIllnessInsurancePolicies/{id}",
+      "method": "criticalIllnessInsurancePoliciesDeleteById",
+      "httpMethod": "delete",
+      "tag": "CriticalIllnessInsurancePolicies",
+      "description": "Description: The operation removes a Critical Illness Insurance Policy tied to a Fact Finder.<br />\r\n              Purpose: Allows for removal of a Critical Illness Insurance Policy from a Fact Finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The Critical Illness Insurance Policy ID used to identify which Critical Illness Insurance Policy to remove"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/CriticalIllnessInsurancePolicies/{id}",
+      "method": "criticalIllnessInsurancePoliciesGetById",
+      "httpMethod": "get",
+      "tag": "CriticalIllnessInsurancePolicies",
+      "description": "Description: This operation retrieves a single Critical Illness Insurance Policy for the specified Critical Illness Insurance Policy ID.<br />\r\n              Purpose: Provides access to the Critical Illness Insurance Policy including description and policy type.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Critical Illness Insurance Policy used to retreive the Critical Illness Insurance Policy"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/CriticalIllnessInsurancePolicies/{id}",
+      "method": "criticalIllnessInsurancePoliciesPutByIdModel",
+      "httpMethod": "put",
+      "tag": "CriticalIllnessInsurancePolicies",
+      "description": "Description: The operation updates a Critical Illness Insurance Policy.<br />\r\n              Purpose: Allows for complete replacement of a Critical Illness Insurance Policy on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The existing Critical Illness Insurance Policy ID used to identify which Critical Illness Insurance Policy to update"
+        },
+        {
+          "name": "benefit",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "frequency",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "insured",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "policyType",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "premium",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/CriticalIllnessInsurancePolicyTypes",
+      "method": "criticalIllnessInsurancePolicyTypesGetByCountry",
+      "httpMethod": "get",
+      "tag": "CriticalIllnessInsurancePolicyTypes",
+      "description": "Description: This operation retrieves all Critical Illness Insurance Policy Types for the specified country.<br />\r\n              Purpose: Provides access to the Critical Illness Insurance Policy Types including id and type description.",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "The country used to filter Critical Illness Insurance Policy Types"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/CriticalIllnessInsurancePolicyTypes/{id}",
+      "method": "criticalIllnessInsurancePolicyTypesGetById",
+      "httpMethod": "get",
+      "tag": "CriticalIllnessInsurancePolicyTypes",
+      "description": "Description: This operation retrieves the Critical Illness Insurance Policy Type for the specified id.<br />\r\n              Purpose: Provides access to the Critical Illness Insurance Policy Types including id and type description.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of Critical Illness Insurance Policy Type used to retreive the Critical Illness Insurance Policy Type information"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/DefinedBenefitPensions",
+      "method": "definedBenefitPensionsGetDefinedBenefitPensionsByFactFinderIdByFactfinderid",
+      "httpMethod": "get",
+      "tag": "DefinedBenefitPensions",
+      "description": "Description: This operation retrieves all Defined Benefit Pensions for the specified Fact Finder ID.<br />\r\n              Purpose: Provides access to the Defined Benefit Pensions including description and start date.",
+      "parameters": [
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Fact Finder used to retrieve Defined Benefit Pensions"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/DefinedBenefitPensions",
+      "method": "definedBenefitPensionsPostByModel",
+      "httpMethod": "post",
+      "tag": "DefinedBenefitPensions",
+      "description": "Description: The operation creates a Defined Benefit Pension.<br />\r\n              Purpose: Allows for creation of Defined Benefit Pensions on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "estimatedAmount",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "member",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/DefinedBenefitPensions/{id}",
+      "method": "definedBenefitPensionsDeleteDefinedBenefitPensionById",
+      "httpMethod": "delete",
+      "tag": "DefinedBenefitPensions",
+      "description": "Description: The operation removes a Defined Benefit Pension tied to a Fact Finder.<br />\r\n              Purpose: Allows for removal of a Defined Benefit Pension from a Fact Finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The Defined Benefit Pension ID used to identify which Defined Benefit Pension to remove"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/DefinedBenefitPensions/{id}",
+      "method": "definedBenefitPensionsGetById",
+      "httpMethod": "get",
+      "tag": "DefinedBenefitPensions",
+      "description": "Description: This operation retrieves a single Defined Benefit Pension for the specified Defined Benefit Pension ID.<br />\r\n              Purpose: Provides access to the Defined Benefit Pension including description and start date.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Defined Benefit Pension used to retreive the Defined Benefit Pension"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/DefinedBenefitPensions/{id}",
+      "method": "definedBenefitPensionsPutDefinedBenefitPensionByIdModel",
+      "httpMethod": "put",
+      "tag": "DefinedBenefitPensions",
+      "description": "Description: The operation updates a Defined Benefit Pension.<br />\r\n              Purpose: Allows for complete replacement of a Defined Benefit Pension on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The existing Defined Benefit Pension ID used to identify which Defined Benefit Pension to update"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "estimatedAmount",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "member",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Demographics",
+      "method": "demographicsGetDemographicsByFactFinderIdByFactfinderid",
+      "httpMethod": "get",
+      "tag": "Demographics",
+      "description": "Description: This operation retrieves all Demographic information for the specified Fact Finder ID.<br />\r\n              Purpose: Provides access to the Demographic information including city and state.",
+      "parameters": [
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Fact Finder used to retrieve Demographic information"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Demographics",
+      "method": "demographicsPostByModel",
+      "httpMethod": "post",
+      "tag": "Demographics",
+      "description": "Description: The operation creates Demographic information.<br />\r\n              Purpose: Allows for creation of Demographic information on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "city",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "externalSourceId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "head1",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "head2",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "jointAnalysis",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Demographics/{demographicId}/Dependents",
+      "method": "demographicsGetDependentsByDemographicid",
+      "httpMethod": "get",
+      "tag": "Demographics",
+      "description": "Description: This operation retrieves all Dependents for the specified Demographic information ID.<br />\r\n              Purpose: Provides access to the Dependents including first and last name.",
+      "parameters": [
+        {
+          "name": "demographicId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Demographic information used to retrieve Dependents"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Demographics/{demographicId}/Dependents",
+      "method": "demographicsPostByDemographicidModel",
+      "httpMethod": "post",
+      "tag": "Demographics",
+      "description": "Description: The operation creates a Dependent.<br />\r\n              Purpose: Allows for creation of Dependents on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "demographicId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Demographic information to add the Dependent to"
+        },
+        {
+          "name": "birthDate",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "dependentOf",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "relationship",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Demographics/{demographicId}/Dependents/{id}",
+      "method": "demographicsDeleteDependentByDemographicidId",
+      "httpMethod": "delete",
+      "tag": "Demographics",
+      "description": "Description: The operation removes a Dependent tied to a Fact Finder.<br />\r\n              Purpose: Allows for removal of a Dependent from a Fact Finder.",
+      "parameters": [
+        {
+          "name": "demographicId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Demographic information used to identify which Dependent to remove"
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The Dependent ID used to identify which Dependent to remove"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/Demographics/{demographicId}/Dependents/{id}",
+      "method": "demographicsGetDependentByDemographicidId",
+      "httpMethod": "get",
+      "tag": "Demographics",
+      "description": "Description: This operation retrieves a single Dependent for the specified Dependent ID.<br />\r\n              Purpose: Provides access to the Dependent including first and last name.",
+      "parameters": [
+        {
+          "name": "demographicId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Demographic information used to retrieve Dependents"
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Dependent used to retreive the Dependent"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Demographics/{demographicId}/Dependents/{id}",
+      "method": "demographicsPutByDemographicidIdModel",
+      "httpMethod": "put",
+      "tag": "Demographics",
+      "description": "Description: The operation updates a Dependent.<br />\r\n              Purpose: Allows for complete replacement of a Dependent on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "demographicId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Demographic information used to identify which Dependent to update"
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The existing Dependent ID used to identify which Dependent to update"
+        },
+        {
+          "name": "birthDate",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "dependentOf",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "relationship",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Demographics/{id}",
+      "method": "demographicsGetById",
+      "httpMethod": "get",
+      "tag": "Demographics",
+      "description": "Description: This operation retrieves Demographic information for the specified Demographic information ID.<br />\r\n              Purpose: Provides access to the Demographic information including city and state.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Demographic information used to retreive the Demographic information"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Demographics/{id}",
+      "method": "demographicsPutByIdModel",
+      "httpMethod": "put",
+      "tag": "Demographics",
+      "description": "Description: The operation updates Demographic information.<br />\r\n              Purpose: Allows for complete replacement of Demographic information on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The existing Demographic information ID used to identify which Demographic information to update"
+        },
+        {
+          "name": "city",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "externalSourceId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "head1",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "head2",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "jointAnalysis",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/DisabilityInsurancePolicies",
+      "method": "disabilityInsurancePoliciesGetDisabilityInsurancePoliciesByFactFinderIdByFactfinderid",
+      "httpMethod": "get",
+      "tag": "DisabilityInsurancePolicies",
+      "description": "Description: This operation retrieves all Disability Insurance Policies for the specified Fact Finder ID.<br />\r\n              Purpose: Provides access to the Disability Insurance Policies including description and policy type.",
+      "parameters": [
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Fact Finder used to retrieve Disability Insurance Policies"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/DisabilityInsurancePolicies",
+      "method": "disabilityInsurancePoliciesPostByModel",
+      "httpMethod": "post",
+      "tag": "DisabilityInsurancePolicies",
+      "description": "Description: The operation creates a Disability Insurance Policy.<br />\r\n              Purpose: Allows for creation of Disability Insurance Policies on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "benefit",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "benefitFrequency",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "benefitType",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "insured",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "policyType",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "premium",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "premiumFrequency",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/DisabilityInsurancePolicies/{id}",
+      "method": "disabilityInsurancePoliciesDeleteById",
+      "httpMethod": "delete",
+      "tag": "DisabilityInsurancePolicies",
+      "description": "Description: The operation removes a Disability Insurance Policy tied to a Fact Finder.<br />\r\n              Purpose: Allows for removal of a Disability Insurance Policy from a Fact Finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The Disability Insurance Policy ID used to identify which Disability Insurance Policy to remove"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/DisabilityInsurancePolicies/{id}",
+      "method": "disabilityInsurancePoliciesGetById",
+      "httpMethod": "get",
+      "tag": "DisabilityInsurancePolicies",
+      "description": "Description: This operation retrieves a single Disability Insurance Policy for the specified Disability Insurance Policy ID.<br />\r\n              Purpose: Provides access to the Disability Insurance Policy including description and policy type.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Disability Insurance Policy used to retreive the Disability Insurance Policy"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/DisabilityInsurancePolicies/{id}",
+      "method": "disabilityInsurancePoliciesPutByIdModel",
+      "httpMethod": "put",
+      "tag": "DisabilityInsurancePolicies",
+      "description": "Description: The operation updates a Disability Insurance Policy.<br />\r\n              Purpose: Allows for complete replacement of a Disability Insurance Policy on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The existing Disability Insurance Policy ID used to identify which Disability Insurance Policy to update"
+        },
+        {
+          "name": "benefit",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "benefitFrequency",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "benefitType",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "insured",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "policyType",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "premium",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "premiumFrequency",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/DisabilityInsurancePolicyTypes",
+      "method": "disabilityInsurancePolicyTypesGetByCountry",
+      "httpMethod": "get",
+      "tag": "DisabilityInsurancePolicyTypes",
+      "description": "Description: This operation retrieves all Disability Insurance Policy Types for the specified country.<br />\r\n              Purpose: Provides access to the Disability Insurance Policy Types including id and type description.",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "The country used to filter Disability Insurance Policy Types"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/DisabilityInsurancePolicyTypes/{id}",
+      "method": "disabilityInsurancePolicyTypesGetById",
+      "httpMethod": "get",
+      "tag": "DisabilityInsurancePolicyTypes",
+      "description": "Description: This operation retrieves all Disability Insurance Policy Types for the specified id.<br />\r\n              Purpose: Provides access to the Disability Insurance Policy Types including id and type description.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of Disability Insurance Policy Type used to retreive the Disability Insurance Policy Type information"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/EducationGoals",
+      "method": "educationGoalsGetEducationGoalsByFactFinderIdByFactfinderid",
+      "httpMethod": "get",
+      "tag": "EducationGoals",
+      "description": "Description: This operation retrieves all Education Goals for the specified Fact Finder ID.<br />\r\n              Purpose: Provides access to the Education Goals including description and projected cost.",
+      "parameters": [
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Fact Finder used to retrieve Education Goals"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/EducationGoals",
+      "method": "educationGoalsPostByModel",
+      "httpMethod": "post",
+      "tag": "EducationGoals",
+      "description": "Description: The operation creates an Education Goal.<br />\r\n              Purpose: Allows for creation of Education Goals on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "projectedCost",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/EducationGoals/{educationGoalId}/Expenses",
+      "method": "educationGoalsGetEducationExpensesByEducationGoalIdByEducationgoalid",
+      "httpMethod": "get",
+      "tag": "EducationGoals",
+      "description": "Description: This operation retrieves all Education Goal Expenses for the specified Education Goal ID.<br />\r\n              Purpose: Provides access to the Education Goal Expenses including description and annual cost.",
+      "parameters": [
+        {
+          "name": "educationGoalId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Education Goal used to retrieve Education Goal Expenses"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/EducationGoals/{educationGoalId}/Expenses",
+      "method": "educationGoalsPostByEducationgoalidModel",
+      "httpMethod": "post",
+      "tag": "EducationGoals",
+      "description": "Description: The operation creates an Education Goal Expense.<br />\r\n              Purpose: Allows for creation of Education Goal Expenses on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "educationGoalId",
+          "schema": "integer",
+          "required": true,
+          "description": "The Education Goal ID used to locate the Goal to add the expense to"
+        },
+        {
+          "name": "annualCost",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "member",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "memberDependentId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "startYear",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "years",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/EducationGoals/{educationGoalId}/Expenses/{id}",
+      "method": "educationGoalsDeleteByEducationgoalidId",
+      "httpMethod": "delete",
+      "tag": "EducationGoals",
+      "description": "Description: The operation removes an Education Goal Expense tied to a Fact Finder.<br />\r\n              Purpose: Allows for removal of an Education Goal Expense from a Fact Finder.",
+      "parameters": [
+        {
+          "name": "educationGoalId",
+          "schema": "integer",
+          "required": true,
+          "description": "The Education Goal ID used to locate the Goal to delete the Expense under"
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The Education Goal Expense ID used to identify which Education Goal Expense to remove"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/EducationGoals/{educationGoalId}/Expenses/{id}",
+      "method": "educationGoalsGetEducationExpenseByEducationgoalidId",
+      "httpMethod": "get",
+      "tag": "EducationGoals",
+      "description": "Description: This operation retrieves a single Education Goal Expense for the specified Education Goal Expense ID.<br />\r\n              Purpose: Provides access to the Education Goal Expense including description and annual cost.",
+      "parameters": [
+        {
+          "name": "educationGoalId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Education Goal used to retrieve Education Goal Expenses"
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Education Goal Expense used to retreive the Education Goal Expense"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/EducationGoals/{educationGoalId}/Expenses/{id}",
+      "method": "educationGoalsPutByEducationgoalidIdModel",
+      "httpMethod": "put",
+      "tag": "EducationGoals",
+      "description": "Description: The operation updates an Education Goal Expense.<br />\r\n              Purpose: Allows for complete replacement of an Education Goal Expense on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "educationGoalId",
+          "schema": "integer",
+          "required": true,
+          "description": "The Education Goal ID used to locate the Goal to update the Expense under"
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The existing Education Goal Expense ID used to identify which Education Goal Expense to update"
+        },
+        {
+          "name": "annualCost",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "member",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "memberDependentId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "startYear",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "years",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/EducationGoals/{id}",
+      "method": "educationGoalsDeleteById",
+      "httpMethod": "delete",
+      "tag": "EducationGoals",
+      "description": "Description: The operation removes an Education Goal tied to a Fact Finder.<br />\r\n              Purpose: Allows for removal of an Education Goal from a Fact Finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The Education Goal ID used to identify which Education Goal to remove"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/EducationGoals/{id}",
+      "method": "educationGoalsGetById",
+      "httpMethod": "get",
+      "tag": "EducationGoals",
+      "description": "Description: This operation retrieves a single Education Goal for the specified Education Goal ID.<br />\r\n              Purpose: Provides access to the Education Goal including description and projected cost.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Education Goal used to retreive the Education Goal"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/EducationGoals/{id}",
+      "method": "educationGoalsPutByIdModel",
+      "httpMethod": "put",
+      "tag": "EducationGoals",
+      "description": "Description: The operation creates an Education Goal Expense.<br />\r\n              Purpose: Allows for creation of Education Goal Expenses on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The Education Goal ID used to locate the Goal to add the Expense to"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "projectedCost",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/ExpenseTypes",
+      "method": "expenseTypesGetByCountry",
+      "httpMethod": "get",
+      "tag": "ExpenseTypes",
+      "description": "Description: This operation retrieves all Expense Types for the specified country.<br />\r\n              Purpose: Provides access to the Expense Types including id and type description.",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "The country used to filter Expense Types"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/ExpenseTypes/{id}",
+      "method": "expenseTypesGetById",
+      "httpMethod": "get",
+      "tag": "ExpenseTypes",
+      "description": "Description: This operation retrieves all Expense Types for the specified country.<br />\r\n              Purpose: Provides access to the Expense Types including id and type description.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of Expense Type used to retreive the Expense Type information"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Expenses",
+      "method": "expensesGetExpensesByFactFinderIdByFactfinderid",
+      "httpMethod": "get",
+      "tag": "Expenses",
+      "description": "Description: This operation retrieves all Expenses for the specified Fact Finder ID.<br />\r\n              Purpose: Provides access to the Expenses including description and Expense type.",
+      "parameters": [
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Fact Finder used to retrieve Expenses"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Expenses",
+      "method": "expensesPostByModel",
+      "httpMethod": "post",
+      "tag": "Expenses",
+      "description": "Description: The operation creates an Expense.<br />\r\n              Purpose: Allows for creation of Expenses on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "annualPeriod",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "expenseAmount",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "expenseTypeId",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "frequency",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "member",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Expenses/{id}",
+      "method": "expensesDeleteById",
+      "httpMethod": "delete",
+      "tag": "Expenses",
+      "description": "Description: The operation removes an Expense tied to a Fact Finder.<br />\r\n              Purpose: Allows for removal of an Expense from a Fact Finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The Expense ID used to identify which Expense to remove"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/Expenses/{id}",
+      "method": "expensesGetById",
+      "httpMethod": "get",
+      "tag": "Expenses",
+      "description": "Description: This operation retrieves a single Expense for the specified Expense ID.<br />\r\n              Purpose: Provides access to the Expense including description and Expense type.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Expense used to retreive the Expense"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Expenses/{id}",
+      "method": "expensesPutByIdModel",
+      "httpMethod": "put",
+      "tag": "Expenses",
+      "description": "Description: The operation updates an Expense.<br />\r\n              Purpose: Allows for complete replacement of an Expense on a Fact Finder. <br /><br />\r\n              Note: Expense type cannot be changed for expenses prepopulated from NaviPlan.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The existing Expense ID used to identify which Expense to update"
+        },
+        {
+          "name": "annualPeriod",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "expenseAmount",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "expenseTypeId",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "frequency",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "member",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/FactFinders",
+      "method": "factFindersGetByHouseholdIdByHouseholdid",
+      "httpMethod": "get",
+      "tag": "FactFinders",
+      "description": "Description: This operation retrieves all Fact Finders for the specified householdId, \r\n              or if null, all households associated with the user.<br />\r\n              Purpose: Provides access to the Fact Finder including status.",
+      "parameters": [
+        {
+          "name": "householdId",
+          "schema": "integer",
+          "required": false,
+          "description": "The ID of the household used to retrieve the fact finders. If not set, uses all households associated with the user"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/FactFinders",
+      "method": "factFindersPostByModel",
+      "httpMethod": "post",
+      "tag": "FactFinders",
+      "description": "Description: The operation creates a completely empty draft Fact Finder.<br />\r\n              Requirements: A householdId and list of modules must be provided.<br />\r\n              Purpose: Stages a Fact Finder for population.",
+      "parameters": [
+        {
+          "name": "householdId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "modules",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "planLevel",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/FactFinders/Populate",
+      "method": "factFindersPostPopulateByModel",
+      "httpMethod": "post",
+      "tag": "FactFinders",
+      "description": "Description: The operation creates a new Populated Fact Finder.<br />\r\n              Requirements: A householdId and list of modules must be provided.<br />\r\n              Purpose: Creation of a Fact Finder.",
+      "parameters": [
+        {
+          "name": "householdId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "modules",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "planId",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "planLevel",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/FactFinders/{factFinderId}/Modules",
+      "method": "factFinderModulesGetByFactfinderid",
+      "httpMethod": "get",
+      "tag": "FactFinderModules",
+      "description": "Description: This operation retrieves all Fact Finder Modules for the specified Fact Finder ID.<br />\r\n              Purpose: Provides access to the Fact Finder Modules including description and policy type.",
+      "parameters": [
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Fact Finder used to retrieve Fact Finder Modules"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/FactFinders/{factFinderId}/Modules/{id}",
+      "method": "factFinderModulesGetByFactfinderidId",
+      "httpMethod": "get",
+      "tag": "FactFinderModules",
+      "description": "Description: This operation retrieves a single Fact Finder Module for the specified Fact Finder Module ID.<br />\r\n              Purpose: Provides access to the Fact Finder Module including description and policy type.",
+      "parameters": [
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Fact Finder used to retrieve Fact Finder Module"
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Fact Finder Module used to retreive the Fact Finder Module"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/FactFinders/{factFinderId}/Modules/{id}",
+      "method": "factFinderModulesPutByModelFactfinderidId",
+      "httpMethod": "put",
+      "tag": "FactFinderModules",
+      "description": "Description: The operation updates a Fact Finder Module.<br />\r\n              Purpose: Allows for complete replacement of a Fact Finder Module on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Fact Finder used to identify the Fact Finder Module to update"
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The existing Fact Finder Module ID used to identify which Fact Finder Module to update"
+        },
+        {
+          "name": "available",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "moduleName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "visited",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/FactFinders/{factFinderId}/Snapshots",
+      "method": "factFindersGetSnapshotsByFactfinderid",
+      "httpMethod": "get",
+      "tag": "FactFinders",
+      "description": "Description: The operation retrieves Snapshots of a Fact Finder.<br />\r\n              Purpose: Allows for advisors to view all Snapshots taken of a Fact Finder.",
+      "parameters": [
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Fact Finder to retrieve Snapshots for"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/FactFinders/{factFinderId}/Snapshots",
+      "method": "factFindersPostSnapshotsByFactfinderid",
+      "httpMethod": "post",
+      "tag": "FactFinders",
+      "description": "Description: The operation creates a Snapshot of a Fact Finder.<br />\r\n              Purpose: Allows for advisors to compare the current fact finder to a snapshot prior to acceptance.",
+      "parameters": [
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Fact Finder used to create the Fact Finder Snapshot"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/FactFinders/{id}",
+      "method": "factFindersDeleteById",
+      "httpMethod": "delete",
+      "tag": "FactFinders",
+      "description": "Description: This operation deletes a single Fact Finder for the specified Fact Finder ID.<br />\r\n              Purpose: Deletes the fact finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Fact Finder to be deleted"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/FactFinders/{id}",
+      "method": "factFindersGetById",
+      "httpMethod": "get",
+      "tag": "FactFinders",
+      "description": "Description: This operation retrieves a single Fact Finder for the specified Fact Finder ID.<br />\r\n              Purpose: Provides access to the Fact Finder including status.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Fact Finder used to retrieve the Fact Finder"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/FactFinders/{id}",
+      "method": "factFindersPutByIdModel",
+      "httpMethod": "put",
+      "tag": "FactFinders",
+      "description": "Description: The operation updates a Fact Finder.<br />\r\n              Purpose: Allows for the updating of a Fact Finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The existing Fact Finder ID used to identify which Fact Finder to update"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/FactFinders/{id}/Populate",
+      "method": "factFindersPutPopulateFactFinderByIdModel",
+      "httpMethod": "put",
+      "tag": "FactFinders",
+      "description": "Description: The operation populates a fact finder.<br />\r\n              Purpose: Allows for the population of a Fact Finder based on a NaviPlan plan or client. This\r\n                       operation cannot be performed on a Fact Finder more than once.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The existing Fact Finder ID used to identify which Fact Finder to populate."
+        },
+        {
+          "name": "planId",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/FilingStatusTypes",
+      "method": "filingStatusTypesGetByCountry",
+      "httpMethod": "get",
+      "tag": "FilingStatusTypes",
+      "description": "Description: This operation retrieves all Filing Status Types for the specified country.<br />\r\n              Purpose: Provides access to the Filing Status Types including id and type description.",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "The country used to filter Filing Status Types"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/FilingStatusTypes/{id}",
+      "method": "filingStatusTypesGetById",
+      "httpMethod": "get",
+      "tag": "FilingStatusTypes",
+      "description": "Description: This operation retrieves all Filing Status Type for the specified id.<br />\r\n              Purpose: Provides access to the Filing Status Types including id and type description.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of Filing Status Type used to retreive the Filing Status Type information"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/FrequencyTypes",
+      "method": "frequencyTypesGetByEntityCountry",
+      "httpMethod": "get",
+      "tag": "FrequencyTypes",
+      "description": "Description: This operation retrieves all Frequency Types for the specified country and entity.<br />\r\n              Purpose: Provides access to the Frequency Types including id and type description.",
+      "parameters": [
+        {
+          "name": "entity",
+          "schema": "string",
+          "required": true,
+          "description": "The entity used to filter Frequency Types"
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "The country used to filter Frequency Types"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/FrequencyTypes/{id}",
+      "method": "frequencyTypesGetById",
+      "httpMethod": "get",
+      "tag": "FrequencyTypes",
+      "description": "Description: This operation retrieves the Frequency Type for the specified id.<br />\r\n              Purpose: Provides access to the Frequency Types including id and type description.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of Frequency Type used to retreive the Frequency Type information"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/IncomeTypes",
+      "method": "incomeTypesGetByCountry",
+      "httpMethod": "get",
+      "tag": "IncomeTypes",
+      "description": "Description: This operation retrieves all Income Types for the specified country.<br />\r\n              Purpose: Provides access to the Income Types including id and type description.",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "The country used to filter Income Types"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/IncomeTypes/{id}",
+      "method": "incomeTypesGetById",
+      "httpMethod": "get",
+      "tag": "IncomeTypes",
+      "description": "Description: This operation retrieves the Income Type for the specified id.<br />\r\n              Purpose: Provides access to the Income Types including id and type description.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of Income Type used to retreive the Income Type information"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Incomes",
+      "method": "incomesGetIncomesByFactFinderIdByFactfinderid",
+      "httpMethod": "get",
+      "tag": "Incomes",
+      "description": "Description: This operation retrieves all Incomes for the specified Fact Finder ID.<br />\r\n              Purpose: Provides access to the Incomes including annual amount and start date.",
+      "parameters": [
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Fact Finder used to retrieve Incomes"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Incomes",
+      "method": "incomesPostByModel",
+      "httpMethod": "post",
+      "tag": "Incomes",
+      "description": "Description: The operation creates an Income.<br />\r\n              Purpose: Allows for creation of Incomes on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "annualAmount",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "incomeTypeId",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "owner",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Incomes/{id}",
+      "method": "incomesDeleteById",
+      "httpMethod": "delete",
+      "tag": "Incomes",
+      "description": "Description: The operation removes an Income tied to a Fact Finder.<br />\r\n              Purpose: Allows for removal of an Income from a Fact Finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The Income ID used to identify which Income to remove"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/Incomes/{id}",
+      "method": "incomesGetById",
+      "httpMethod": "get",
+      "tag": "Incomes",
+      "description": "Description: This operation retrieves a single Income for the specified Income ID.<br />\r\n              Purpose: Provides access to the Income including annual amount and start date.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Income used to retreive the Income"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Incomes/{id}",
+      "method": "incomesPutByIdModel",
+      "httpMethod": "put",
+      "tag": "Incomes",
+      "description": "Description: The operation updates an Income.<br />\r\n              Purpose: Allows for complete replacement of an Income on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The existing Income ID used to identify which Income to update"
+        },
+        {
+          "name": "annualAmount",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "incomeTypeId",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "owner",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Liabilities",
+      "method": "liabilitiesGetLiabilitiesByFactFinderIdByFactfinderidExternalsourceid",
+      "httpMethod": "get",
+      "tag": "Liabilities",
+      "description": "Description: This operation retrieves all Liabilities for the specified Fact Finder ID.<br />\r\n              Purpose: Provides access to the Liabilities including owner and type.",
+      "parameters": [
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Fact Finder used to retrieve Liabilities"
+        },
+        {
+          "name": "externalSourceId",
+          "schema": "string",
+          "required": false,
+          "description": "The external source ID used to filter Liabilities"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Liabilities",
+      "method": "liabilitiesPostByModel",
+      "httpMethod": "post",
+      "tag": "Liabilities",
+      "description": "Description: The operation creates a Liability.<br />\r\n              Purpose: Allows for creation of Liabilities on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "balance",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "balanceAsOfDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "externalSourceId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "externalSourceName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "frequency",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "interestRate",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "lastUpdated",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "liabilityType",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "loanDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "originalPrincipal",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "owner",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "payment",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "paymentType",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Liabilities/{id}",
+      "method": "liabilitiesDeleteById",
+      "httpMethod": "delete",
+      "tag": "Liabilities",
+      "description": "Description: The operation removes a Liability tied to a Fact Finder.<br />\r\n              Purpose: Allows for removal of a Liability from a Fact Finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The Liability ID used to identify which Liability to remove"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/Liabilities/{id}",
+      "method": "liabilitiesGetById",
+      "httpMethod": "get",
+      "tag": "Liabilities",
+      "description": "Description: This operation retrieves a single Liability for the specified Liability ID.<br />\r\n              Purpose: Provides access to the Liability including owner and type.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Liability used to retreive the Liability"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Liabilities/{id}",
+      "method": "liabilitiesPutByIdModel",
+      "httpMethod": "put",
+      "tag": "Liabilities",
+      "description": "Description: The operation updates a Liability.<br />\r\n              Purpose: Allows for complete replacement of a Liability on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The existing Liability ID used to identify which Liability to update"
+        },
+        {
+          "name": "balance",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "balanceAsOfDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "externalSourceId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "externalSourceName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "frequency",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "interestRate",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "lastUpdated",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "liabilityType",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "loanDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "originalPrincipal",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "owner",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "payment",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "paymentType",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/LiabilityTypes",
+      "method": "liabilityTypesGetByCountry",
+      "httpMethod": "get",
+      "tag": "LiabilityTypes",
+      "description": "Description: This operation retrieves all Liability Types for the specified country.<br />\r\n              Purpose: Provides access to the Liability Types including id and type description.",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "The country used to filter Liability Types"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/LiabilityTypes/{id}",
+      "method": "liabilityTypesGetById",
+      "httpMethod": "get",
+      "tag": "LiabilityTypes",
+      "description": "Description: This operation retrieves the Liability Type for the specified id.<br />\r\n              Purpose: Provides access to the Liability Types including id and type description.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of Liability Type used to retreive the Liability Type information"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/LifeInsurancePolicies",
+      "method": "lifeInsurancePoliciesGetLifeInsurancePoliciesByFactFinderIdByFactfinderid",
+      "httpMethod": "get",
+      "tag": "LifeInsurancePolicies",
+      "description": "Description: This operation retrieves all Life Insurance Policies for the specified Fact Finder ID.<br />\r\n              Purpose: Provides access to the Life Insurance Policies including description and policy type.",
+      "parameters": [
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Fact Finder used to retrieve Life Insurance Policies"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/LifeInsurancePolicies",
+      "method": "lifeInsurancePoliciesPostByModel",
+      "httpMethod": "post",
+      "tag": "LifeInsurancePolicies",
+      "description": "Description: The operation creates a Life Insurance Policy.<br />\r\n              Purpose: Allows for creation of Life Insurance Policies on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "beneficiary",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "beneficiaryDependentId",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "benefit",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "frequency",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "generalAccountMarketValue",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "insured",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "payer",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "policyType",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "premium",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/LifeInsurancePolicies/{id}",
+      "method": "lifeInsurancePoliciesDeleteById",
+      "httpMethod": "delete",
+      "tag": "LifeInsurancePolicies",
+      "description": "Description: The operation removes a Life Insurance Policy tied to a Fact Finder.<br />\r\n              Purpose: Allows for removal of a Life Insurance Policy and associated subaccounts from a Fact Finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The Life Insurance Policy ID used to identify which Life Insurance Policy to remove"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/LifeInsurancePolicies/{id}",
+      "method": "lifeInsurancePoliciesGetById",
+      "httpMethod": "get",
+      "tag": "LifeInsurancePolicies",
+      "description": "Description: This operation retrieves a single Life Insurance Policy for the specified Life Insurance Policy ID.<br />\r\n              Purpose: Provides access to the Life Insurance Policy including description and policy type.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Life Insurance Policy used to retreive the Life Insurance Policy"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/LifeInsurancePolicies/{id}",
+      "method": "lifeInsurancePoliciesPutByIdModel",
+      "httpMethod": "put",
+      "tag": "LifeInsurancePolicies",
+      "description": "Description: The operation updates a Life Insurance Policy, deletes associated sub-accounts if the policy type changes.<br />\r\n              Purpose: Allows for complete replacement of a Life Insurance Policy on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The existing Life Insurance Policy ID used to identify which Life Insurance Policy to update"
+        },
+        {
+          "name": "beneficiary",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "beneficiaryDependentId",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "benefit",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "frequency",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "generalAccountMarketValue",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "insured",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "payer",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "policyType",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "premium",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/LifeInsurancePolicies/{lifeInsurancePolicyId}/Subaccounts",
+      "method": "lifeInsurancePoliciesGetSubaccountsByLifeinsurancepolicyid",
+      "httpMethod": "get",
+      "tag": "LifeInsurancePolicies",
+      "description": "Description: Get all the subaccounts for an existing Life Insurance Policy.<br />\r\n              Purpose: Provides access to all the Life Insurance Policy subaccounts.",
+      "parameters": [
+        {
+          "name": "lifeInsurancePolicyId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Life Insurance Policy used to retrieve the Life Insurance Policy Subaccounts."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/LifeInsurancePolicies/{lifeInsurancePolicyId}/Subaccounts",
+      "method": "lifeInsurancePoliciesPostSubaccountByLifeinsurancepolicyidModel",
+      "httpMethod": "post",
+      "tag": "LifeInsurancePolicies",
+      "description": "Description: Creates a subaccount and adds it to an existing Life Insurance Policy.<br />\r\n              Purpose: Allows for creation of subaccount on a Life Insurance Policy.",
+      "parameters": [
+        {
+          "name": "lifeInsurancePolicyId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Life Insurance Policy used to create the Life Insurance Policy Subaccount."
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "marketValue",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "symbol",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/LifeInsurancePolicies/{lifeInsurancePolicyId}/Subaccounts/{id}",
+      "method": "lifeInsurancePoliciesDeleteSubaccountByLifeinsurancepolicyidId",
+      "httpMethod": "delete",
+      "tag": "LifeInsurancePolicies",
+      "description": "Description: Deletes an existing Life Insurance Policy Subaccount for an existing Life Insurance Policy.<br />\r\n              Purpose: Allows for removal of a subaccount from a Life Insurance Policy.",
+      "parameters": [
+        {
+          "name": "lifeInsurancePolicyId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Life Insurance Policy used to delete the Life Insurance Policy Subaccount."
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Life Insurance Policy Subaccount."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/LifeInsurancePolicies/{lifeInsurancePolicyId}/Subaccounts/{id}",
+      "method": "lifeInsurancePoliciesGetSubaccountByLifeinsurancepolicyidId",
+      "httpMethod": "get",
+      "tag": "LifeInsurancePolicies",
+      "description": "Description: Get a specific subaccount for an existing Life Insurance Policy.<br />\r\n              Purpose: Provides access to the Life Insurance Policy subaccount.",
+      "parameters": [
+        {
+          "name": "lifeInsurancePolicyId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Life Insurance Policy used to retrieve the Life Insurance Policy Subaccount."
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Life Insurance Policy Subaccount."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/LifeInsurancePolicies/{lifeInsurancePolicyId}/Subaccounts/{id}",
+      "method": "lifeInsurancePoliciesPutSubaccountByLifeinsurancepolicyidIdModel",
+      "httpMethod": "put",
+      "tag": "LifeInsurancePolicies",
+      "description": "Description: Updates an existing Life Insurance Policy Subaccount for an existing Life Insurance Policy.<br />\r\n              Purpose: Allows for complete replacement of a subaccount on a Life Insurance Policy.",
+      "parameters": [
+        {
+          "name": "lifeInsurancePolicyId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Life Insurance Policy used to update the Life Insurance Policy Subaccount."
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Life Insurance Policy Subaccount."
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "marketValue",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "symbol",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/LifeInsurancePolicyTypes",
+      "method": "lifeInsurancePolicyTypesGetByCountry",
+      "httpMethod": "get",
+      "tag": "LifeInsurancePolicyTypes",
+      "description": "Description: This operation retrieves all Life Insurance Policy Types for the specified country.<br />\r\n              Purpose: Provides access to the Life Insurance Policy Types including id and type description.",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "The country used to filter Life Insurance Policy Types"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/LifeInsurancePolicyTypes/{id}",
+      "method": "lifeInsurancePolicyTypesGetById",
+      "httpMethod": "get",
+      "tag": "LifeInsurancePolicyTypes",
+      "description": "Description: This operation retrieves the Life Insurance Policy Type for the specified id.<br />\r\n              Purpose: Provides access to the Life Insurance Policy Types including id and type description.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of Life Insurance Policy Type used to retreive the Life Insurance Policy Type information"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/LifestyleAssetTypes",
+      "method": "lifestyleAssetTypesGetByCountry",
+      "httpMethod": "get",
+      "tag": "LifestyleAssetTypes",
+      "description": "Description: This operation retrieves all Lifestyle Asset Types for the specified country.<br />\r\n              Purpose: Provides access to the Lifestyle Asset Types including id and type description.",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "The country used to filter Lifestyle Asset Types"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/LifestyleAssetTypes/{id}",
+      "method": "lifestyleAssetTypesGetById",
+      "httpMethod": "get",
+      "tag": "LifestyleAssetTypes",
+      "description": "Description: This operation retrieves the Lifestyle Asset Type for the specified id.<br />\r\n              Purpose: Provides access to the Lifestyle Asset Types including id and type description.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of Lifestyle Asset Type used to retreive the Lifestyle Asset Type information"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/LifestyleAssets",
+      "method": "lifestyleAssetsGetLifestyleAssetsByFactFinderIdByFactfinderid",
+      "httpMethod": "get",
+      "tag": "LifestyleAssets",
+      "description": "Description: This operation retrieves all Lifestyle Assets for the specified Fact Finder ID.<br />\r\n              Purpose: Provides access to the Lifestyle Assets including description and market value.",
+      "parameters": [
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Fact Finder used to retrieve Lifestyle Assets"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/LifestyleAssets",
+      "method": "lifestyleAssetsPostByModel",
+      "httpMethod": "post",
+      "tag": "LifestyleAssets",
+      "description": "Description: The operation creates a Lifestyle Asset.<br />\r\n              Purpose: Allows for creation of Lifestyle Assets on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "marketValue",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "owner",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "purchaseAmount",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "purchaseDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/LifestyleAssets/{id}",
+      "method": "lifestyleAssetsDeleteById",
+      "httpMethod": "delete",
+      "tag": "LifestyleAssets",
+      "description": "Description: The operation removes a Lifestyle Asset tied to a Fact Finder.<br />\r\n              Purpose: Allows for removal of a Lifestyle Asset from a Fact Finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The Lifestyle Asset ID used to identify which Lifestyle Asset to remove"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/LifestyleAssets/{id}",
+      "method": "lifestyleAssetsGetById",
+      "httpMethod": "get",
+      "tag": "LifestyleAssets",
+      "description": "Description: This operation retrieves a single Lifestyle Asset for the specified Lifestyle Asset ID.<br />\r\n              Purpose: Provides access to the Lifestyle Asset including description and market value.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Lifestyle Asset used to retreive the Lifestyle Asset"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/LifestyleAssets/{id}",
+      "method": "lifestyleAssetsPutByIdModel",
+      "httpMethod": "put",
+      "tag": "LifestyleAssets",
+      "description": "Description: The operation updates a Lifestyle Asset.<br />\r\n              Purpose: Allows for complete replacement of a Lifestyle Asset on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The existing Lifestyle Asset ID used to identify which Lifestyle Asset to update"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "marketValue",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "owner",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "purchaseAmount",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "purchaseDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/LongTermCareInsurancePolicies",
+      "method": "longTermCareInsurancePoliciesGetLongTermCareInsurancePoliciesByFactFinderIdByFactfinderid",
+      "httpMethod": "get",
+      "tag": "LongTermCareInsurancePolicies",
+      "description": "Description: This operation retrieves all Long Term Care Insurance Policies for the specified Fact Finder ID.<br />\r\n              Purpose: Provides access to the Long Term Care Insurance Policies including description and premium.",
+      "parameters": [
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Fact Finder used to retrieve Long Term Care Insurance Policies"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/LongTermCareInsurancePolicies",
+      "method": "longTermCareInsurancePoliciesPostByModel",
+      "httpMethod": "post",
+      "tag": "LongTermCareInsurancePolicies",
+      "description": "Description: The operation creates a Long Term Care Insurance Policy.<br />\r\n              Purpose: Allows for creation of Long Term Care Insurance Policies on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "benefit",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "benefitFrequency",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "insured",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "premium",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "premiumFrequency",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/LongTermCareInsurancePolicies/{id}",
+      "method": "longTermCareInsurancePoliciesDeleteById",
+      "httpMethod": "delete",
+      "tag": "LongTermCareInsurancePolicies",
+      "description": "Description: The operation removes a Long Term Care Insurance Policy tied to a Fact Finder.<br />\r\n              Purpose: Allows for removal of a Long Term Care Insurance Policy from a Fact Finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The Long Term Care Insurance Policy ID used to identify which Long Term Care Insurance Policy to remove"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/LongTermCareInsurancePolicies/{id}",
+      "method": "longTermCareInsurancePoliciesGetById",
+      "httpMethod": "get",
+      "tag": "LongTermCareInsurancePolicies",
+      "description": "Description: This operation retrieves a single Long Term Care Insurance Policy for the specified Long Term Care Insurance Policy ID.<br />\r\n              Purpose: Provides access to the Long Term Care Insurance Policy including description and premium.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Long Term Care Insurance Policy used to retreive the Long Term Care Insurance Policy"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/LongTermCareInsurancePolicies/{id}",
+      "method": "longTermCareInsurancePoliciesPutByIdModel",
+      "httpMethod": "put",
+      "tag": "LongTermCareInsurancePolicies",
+      "description": "Description: The operation updates a Long Term Care Insurance Policy.<br />\r\n              Purpose: Allows for complete replacement of a Long Term Care Insurance Policy on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The existing Long Term Care Insurance Policy ID used to identify which Long Term Care Insurance Policy to update"
+        },
+        {
+          "name": "benefit",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "benefitFrequency",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "insured",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "premium",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "premiumFrequency",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/MajorPurchaseGoalTypes",
+      "method": "majorPurchaseGoalTypesGetByCountry",
+      "httpMethod": "get",
+      "tag": "MajorPurchaseGoalTypes",
+      "description": "Description: This operation retrieves all Major Purchase Goal Types for the specified country.<br />\r\n              Purpose: Provides access to the Major Purchase Goal Types including id and type description.",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "The country used to filter Major Purchase Goal Types"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/MajorPurchaseGoalTypes/{id}",
+      "method": "majorPurchaseGoalTypesGetById",
+      "httpMethod": "get",
+      "tag": "MajorPurchaseGoalTypes",
+      "description": "Description: This operation retrieves the Major Purchase Goal Type for the specified id.<br />\r\n              Purpose: Provides access to the Major Purchase Goal Types including id and type description.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of Major Purchase Goal Type used to retreive the Major Purchase Goal Type information"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/MajorPurchaseGoals",
+      "method": "majorPurchaseGoalsGetMajorPurchaseGoalsByFactFinderIdByFactfinderid",
+      "httpMethod": "get",
+      "tag": "MajorPurchaseGoals",
+      "description": "Description: This operation retrieves all Major Purchases for the specified Fact Finder ID.<br />\r\n              Purpose: Provides access to the Major Purchases including description and amount.",
+      "parameters": [
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Fact Finder used to retrieve Major Purchases"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/MajorPurchaseGoals",
+      "method": "majorPurchaseGoalsPostByModel",
+      "httpMethod": "post",
+      "tag": "MajorPurchaseGoals",
+      "description": "Description: The operation creates a Major Purchase.<br />\r\n              Purpose: Allows for creation of Major Purchases on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "amount",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "majorPurchaseGoalTypeId",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "member",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "targetDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/MajorPurchaseGoals/{id}",
+      "method": "majorPurchaseGoalsDeleteById",
+      "httpMethod": "delete",
+      "tag": "MajorPurchaseGoals",
+      "description": "Description: The operation removes a Major Purchase tied to a Fact Finder.<br />\r\n              Purpose: Allows for removal of a Major Purchase from a Fact Finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The Major Purchase ID used to identify which Major Purchase to remove"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/MajorPurchaseGoals/{id}",
+      "method": "majorPurchaseGoalsGetById",
+      "httpMethod": "get",
+      "tag": "MajorPurchaseGoals",
+      "description": "Description: This operation retrieves a single Major Purchase for the specified Major Purchase ID.<br />\r\n              Purpose: Provides access to the Major Purchase including description and amount.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Major Purchase used to retreive the Major Purchase"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/MajorPurchaseGoals/{id}",
+      "method": "majorPurchaseGoalsPutByIdModel",
+      "httpMethod": "put",
+      "tag": "MajorPurchaseGoals",
+      "description": "Description: The operation updates a Major Purchase.<br />\r\n              Purpose: Allows for complete replacement of a Major Purchase on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The existing Major Purchase ID used to identify which Major Purchase to update"
+        },
+        {
+          "name": "amount",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "majorPurchaseGoalTypeId",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "member",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "targetDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Presentation/Accounts",
+      "method": "presentationGetAccountsByFactfinderidExternalsourceid",
+      "httpMethod": "get",
+      "tag": "Presentation",
+      "description": "Description: This operation retrieves all current Accounts for the specified Fact Finder ID, as well as\r\n                           all of the holdings and savings strategies belonging to those accounts.<br />\r\n              Purpose: Provides access to the Accounts in a Fact Finder as well as any sub-entities belonging to them.",
+      "parameters": [
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Fact Finder used to retrieve Accounts"
+        },
+        {
+          "name": "externalSourceId",
+          "schema": "string",
+          "required": false,
+          "description": "The external ID used to filter Accounts"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Presentation/Demographics/Owners",
+      "method": "presentationGetDemographicOwnersByFactfinderid",
+      "httpMethod": "get",
+      "tag": "Presentation",
+      "description": "Description: This operation retrieves owner values for the fact finder based on demographics data\r\n              Purpose: Provides the list of valid options for owner, student, beneficiary, etc.",
+      "parameters": [
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Fact Finder used to retrieve owners."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Presentation/Demographics/Relationships",
+      "method": "presentationGetDemographicRelationships",
+      "httpMethod": "get",
+      "tag": "Presentation",
+      "description": "Description: This operation retrieves all relationship types relevant to demographics.<br />\r\n              Purpose: Provides a list of relationship types organized by whether or not they can be defined as children.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Presentation/Incomes",
+      "method": "presentationGetIncomesByFactfinderid",
+      "httpMethod": "get",
+      "tag": "Presentation",
+      "description": "Description: This operation retrieves all current Incomes for the specified Fact Finder ID.<br />\r\n              Purpose: Provides access to the Incomes in a Fact Finder, filtered by Incomes that are current.",
+      "parameters": [
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Fact Finder used to retrieve Incomes"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Presentation/Liabilities",
+      "method": "presentationGetLiabilitiesByFactfinderid",
+      "httpMethod": "get",
+      "tag": "Presentation",
+      "description": "Description: This operation retrieves all current Liabilities for the specified Fact Finder ID.<br />\r\n              Purpose: Provides access to the Liabilities in a Fact Finder, filtered by Liabilities that are current.",
+      "parameters": [
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Fact Finder used to retrieve Liabilities"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Presentation/LifeInsurancePolicies",
+      "method": "presentationGetLifeInsurancePoliciesByFactfinderid",
+      "httpMethod": "get",
+      "tag": "Presentation",
+      "description": "Description: This operation retrieves all life insurance policies, including subaccounts if available, for the specified Fact Finder ID.<br />\r\n              Purpose: Provides access to the Life Insurance Policies in a Fact Finder.",
+      "parameters": [
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Fact Finder used to retrieve Life Insurance Policies."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Presentation/Pensions",
+      "method": "presentationGetPensionsByFactfinderid",
+      "httpMethod": "get",
+      "tag": "Presentation",
+      "description": "Description: This operation retrieves all future Defined Benefit Pensions for the specified Fact Finder ID.<br />\r\n              Purpose: Provides access to the Pensions in a Fact Finder, filtered by Pensions that are in the future.",
+      "parameters": [
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Fact Finder used to retrieve Pensions."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/RealEstateAssets",
+      "method": "realEstateAssetsGetRealEstateAssetsByFactFinderIdByFactfinderid",
+      "httpMethod": "get",
+      "tag": "RealEstateAssets",
+      "description": "Description: This operation retrieves all Real Estate Assets for the specified Fact Finder ID.<br />\r\n              Purpose: Provides access to the Real Estate Assets including description and market value.",
+      "parameters": [
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Fact Finder used to retrieve Real Estate Assets"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/RealEstateAssets",
+      "method": "realEstateAssetsPostByModel",
+      "httpMethod": "post",
+      "tag": "RealEstateAssets",
+      "description": "Description: The operation creates a Real Estate Asset.<br />\r\n              Purpose: Allows for creation of Real Estate Assets on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "frequency",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "marketValue",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "owner",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "purchaseAmount",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "purchaseDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "rentalIncome",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/RealEstateAssets/{id}",
+      "method": "realEstateAssetsDeleteById",
+      "httpMethod": "delete",
+      "tag": "RealEstateAssets",
+      "description": "Description: The operation removes a Real Estate Asset tied to a Fact Finder.<br />\r\n              Purpose: Allows for removal of a Real Estate Asset from a Fact Finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The Real Estate Asset ID used to identify which Real Estate Asset to remove"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/RealEstateAssets/{id}",
+      "method": "realEstateAssetsGetById",
+      "httpMethod": "get",
+      "tag": "RealEstateAssets",
+      "description": "Description: This operation retrieves a single Real Estate Asset for the specified Real Estate Asset ID.<br />\r\n              Purpose: Provides access to the Real Estate Asset including description and market value.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Real Estate Asset used to retreive the Real Estate Asset"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/RealEstateAssets/{id}",
+      "method": "realEstateAssetsPutByIdModel",
+      "httpMethod": "put",
+      "tag": "RealEstateAssets",
+      "description": "Description: The operation updates a Real Estate Asset.<br />\r\n              Purpose: Allows for complete replacement of a Real Estate Asset on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The existing Real Estate Asset ID used to identify which Real Estate Asset to update"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "frequency",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "marketValue",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "owner",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "purchaseAmount",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "purchaseDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "rentalIncome",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/RetirementGoals",
+      "method": "retirementGoalsGetRetirementGoalsByFactFinderIdByFactfinderid",
+      "httpMethod": "get",
+      "tag": "RetirementGoals",
+      "description": "Description: This operation retrieves all Retirement Goals for the specified Fact Finder ID.<br />\r\n              Purpose: Provides access to the Retirement Goals including retirement date.",
+      "parameters": [
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Fact Finder used to retrieve Retirement Goals"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/RetirementGoals",
+      "method": "retirementGoalsPostByModel",
+      "httpMethod": "post",
+      "tag": "RetirementGoals",
+      "description": "Description: The operation creates a Retirement Goal.<br />\r\n              Purpose: Allows for creation of Retirement Goals on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "head1RetirementDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "head2RetirementDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/RetirementGoals/{id}",
+      "method": "retirementGoalsDeleteById",
+      "httpMethod": "delete",
+      "tag": "RetirementGoals",
+      "description": "Description: The operation removes a Retirement Goal tied to a Fact Finder.<br />\r\n              Purpose: Allows for removal of a Retirement Goal from a Fact Finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The Retirement Goal ID used to identify which Retirement Goal to remove"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/RetirementGoals/{id}",
+      "method": "retirementGoalsGetById",
+      "httpMethod": "get",
+      "tag": "RetirementGoals",
+      "description": "Description: This operation retrieves a single Retirement Goal for the specified Retirement Goal ID.<br />\r\n              Purpose: Provides access to the Retirement Goal including retirement date.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Retirement Goal used to retreive the Retirement Goal"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/RetirementGoals/{id}",
+      "method": "retirementGoalsPutByIdModel",
+      "httpMethod": "put",
+      "tag": "RetirementGoals",
+      "description": "Description: The operation updates a Retirement Goal.<br />\r\n              Purpose: Allows for complete replacement of a Retirement Goal on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The existing Retirement Goal ID used to identify which Retirement Goal to update"
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "factFinderId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "head1RetirementDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "head2RetirementDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/RetirementGoals/{retirementGoalId}/Expenses",
+      "method": "retirementGoalsGetRetirementExpensesByRetirementGoalIdByRetirementgoalid",
+      "httpMethod": "get",
+      "tag": "RetirementGoals",
+      "description": "Description: This operation retrieves all Retirement Goal Expenses for the specified Retirement Goal ID.<br />\r\n              Purpose: Provides access to the Retirement Goal Expenses including description and amount.",
+      "parameters": [
+        {
+          "name": "retirementGoalId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Retirement Goal used to retrieve Retirement Goal Expenses"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/RetirementGoals/{retirementGoalId}/Expenses",
+      "method": "retirementGoalsPostByRetirementgoalidModel",
+      "httpMethod": "post",
+      "tag": "RetirementGoals",
+      "description": "Description: The operation creates a Retirement Goal Expense.<br />\r\n              Purpose: Allows for creation of Retirement Goal Expenses on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "retirementGoalId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Retirement Goal to add the Retirement Goal Expense to"
+        },
+        {
+          "name": "amount",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "annualPeriod",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "frequency",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "member",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/RetirementGoals/{retirementGoalId}/Expenses/{id}",
+      "method": "retirementGoalsDeleteByRetirementgoalidId",
+      "httpMethod": "delete",
+      "tag": "RetirementGoals",
+      "description": "Description: The operation removes a Retirement Goal Expense tied to a Fact Finder.<br />\r\n              Purpose: Allows for removal of a Retirement Goal Expense from a Fact Finder.",
+      "parameters": [
+        {
+          "name": "retirementGoalId",
+          "schema": "integer",
+          "required": true,
+          "description": "The Retirement Goal ID used to locate the Goal to delete the Retirement Goal Expense under"
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The Retirement Goal Expense ID used to identify which Retirement Goal Expense to remove"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/RetirementGoals/{retirementGoalId}/Expenses/{id}",
+      "method": "retirementGoalsGetRetirementExpenseByRetirementgoalidId",
+      "httpMethod": "get",
+      "tag": "RetirementGoals",
+      "description": "Description: This operation retrieves a single Retirement Goal Expense for the specified Retirement Goal Expense ID.<br />\r\n              Purpose: Provides access to the Retirement Goal Expense including description and amount.",
+      "parameters": [
+        {
+          "name": "retirementGoalId",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Retirement Goal used to retrieve the Retirement Goal Expense"
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Retirement Goal Expense used to retreive the Retirement Goal Expense"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/RetirementGoals/{retirementGoalId}/Expenses/{id}",
+      "method": "retirementGoalsPutByRetirementgoalidIdModel",
+      "httpMethod": "put",
+      "tag": "RetirementGoals",
+      "description": "Description: The operation updates a Retirement Goal Expense.<br />\r\n              Purpose: Allows for complete replacement of a Retirement Goal Expense on a Fact Finder.",
+      "parameters": [
+        {
+          "name": "retirementGoalId",
+          "schema": "integer",
+          "required": true,
+          "description": "The Retirement Goal ID used to locate the Goal to update the Retirement Goal Expense under"
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The existing Retirement Goal Expense ID used to identify which Retirement Goal Expense to update"
+        },
+        {
+          "name": "amount",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "annualPeriod",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "externalDestinationId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "frequency",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "member",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/ServiceInformation",
+      "method": "factFinderServiceInformationGet",
+      "httpMethod": "get",
+      "tag": "FactFinderServiceInformation",
+      "description": "Description: This operation retrieves information statistics for the current service.<br />\r\n              Purpose: Provides access to Service Information.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/StatesProvinces",
+      "method": "statesProvincesGetByCountry",
+      "httpMethod": "get",
+      "tag": "StatesProvinces",
+      "description": "Description: This operation retrieves all States and Provinces for the specified country.<br />\r\n              Purpose: Provides access to the States and Provinces.",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "The country used to filter States and Provinces"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/StatesProvinces/{id}",
+      "method": "statesProvincesGetById",
+      "httpMethod": "get",
+      "tag": "StatesProvinces",
+      "description": "Description: This operation retrieves the States and Provinces for the specified id.<br />\r\n              Purpose: Provides access to the States and Provinces.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the State or Province used to retreive the State or Province information"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://demo.uat.naviplancentral.com/factfinder",
   "apiDescription": "An API for accessing the NaviPlan Fact Finder.",
   "apiTitle": "Advicent.FactFinderService",

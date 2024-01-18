@@ -4,6 +4,35 @@
   "homepage": "nasa.gov",
   "serviceName": "apod",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/apod",
+      "method": "/apodGet",
+      "httpMethod": "get",
+      "tag": "request tag",
+      "description": "Returns images",
+      "parameters": [
+        {
+          "name": "date",
+          "schema": "string",
+          "required": false,
+          "description": "The date of the APOD image to retrieve"
+        },
+        {
+          "name": "hd",
+          "schema": "boolean",
+          "required": false,
+          "description": "Retrieve the URL for the high resolution image"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.nasa.gov/planetary",
   "apiDescription": "This endpoint structures the APOD imagery and associated metadata so that it can be repurposed for other applications. In addition, if the concept_tags parameter is set to True, then keywords derived from the image explanation are returned. These keywords could be used as auto-generated hashtags for twitter or instagram feeds; but generally help with discoverability of relevant imagery",
   "apiTitle": "APOD",

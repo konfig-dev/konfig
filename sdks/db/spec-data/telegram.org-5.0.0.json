@@ -3,6 +3,3493 @@
   "openApiRaw": "https://josxa.stoplight.io/api/v1/projects/josxa/bot-api/nodes/openapi.json?branch=main",
   "homepage": "telegram.org",
   "apiVersion": "5.0.0",
+  "methods": [
+    {
+      "url": "/addStickerToSet",
+      "method": "/addStickerToSetPost",
+      "httpMethod": "post",
+      "description": "Use this method to add a new sticker to a set created by the bot. You **must** use exactly one of the fields *png\\_sticker* or *tgs\\_sticker*. Animated stickers can be added to animated sticker sets and only to them. Animated sticker sets can have up to 50 stickers. Static sticker sets can have up to 120 stickers. Returns *True* on success.",
+      "parameters": [
+        {
+          "name": "emojis",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "mask_position",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "png_sticker",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "tgs_sticker",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/answerCallbackQuery",
+      "method": "/answerCallbackQueryPost",
+      "httpMethod": "post",
+      "description": "Use this method to send answers to callback queries sent from [inline keyboards](/bots#inline-keyboards-and-on-the-fly-updating). The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, *True* is returned.\n\nAlternatively, the user can be redirected to the specified Game URL. For this option to work, you must first create a game for your bot via [@Botfather](https://t.me/botfather) and accept the terms. Otherwise, you may use links like `t.me/your_bot?start=XXXX` that open your bot with a parameter.",
+      "parameters": [
+        {
+          "name": "cache_time",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "callback_query_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "show_alert",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "text",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/answerInlineQuery",
+      "method": "/answerInlineQueryPost",
+      "httpMethod": "post",
+      "description": "Use this method to send answers to an inline query. On success, *True* is returned.  \nNo more than **50** results per query are allowed.",
+      "parameters": [
+        {
+          "name": "cache_time",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "inline_query_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "is_personal",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "next_offset",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "results",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "switch_pm_parameter",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "switch_pm_text",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/answerPreCheckoutQuery",
+      "method": "/answerPreCheckoutQueryPost",
+      "httpMethod": "post",
+      "description": "Once the user has confirmed their payment and shipping details, the Bot API sends the final confirmation in the form of an [Update](https://core.telegram.org/bots/api/#update) with the field *pre\\_checkout\\_query*. Use this method to respond to such pre-checkout queries. On success, True is returned. **Note:** The Bot API must receive an answer within 10 seconds after the pre-checkout query was sent.",
+      "parameters": [
+        {
+          "name": "error_message",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "ok",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "pre_checkout_query_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/answerShippingQuery",
+      "method": "/answerShippingQueryPost",
+      "httpMethod": "post",
+      "description": "If you sent an invoice requesting a shipping address and the parameter *is\\_flexible* was specified, the Bot API will send an [Update](https://core.telegram.org/bots/api/#update) with a *shipping\\_query* field to the bot. Use this method to reply to shipping queries. On success, True is returned.",
+      "parameters": [
+        {
+          "name": "error_message",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "ok",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "shipping_options",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "shipping_query_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/close",
+      "method": "/closePost",
+      "httpMethod": "post",
+      "description": "Use this method to close the bot instance before moving it from one local server to another. You need to delete the webhook before calling this method to ensure that the bot isn't launched again after server restart. The method will return error 429 in the first 10 minutes after the bot is launched. Returns *True* on success. Requires no parameters.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/copyMessage",
+      "method": "/copyMessagePost",
+      "httpMethod": "post",
+      "description": "Use this method to copy messages of any kind. The method is analogous to the method [forwardMessages](https://core.telegram.org/bots/api/#forwardmessages), but the copied message doesn't have a link to the original message. Returns the [MessageId](https://core.telegram.org/bots/api/#messageid) of the sent message on success.",
+      "parameters": [
+        {
+          "name": "allow_sending_without_reply",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "caption",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "caption_entities",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "disable_notification",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "from_chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "message_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "parse_mode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_markup",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_to_message_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/createNewStickerSet",
+      "method": "/createNewStickerSetPost",
+      "httpMethod": "post",
+      "description": "Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus created. You **must** use exactly one of the fields *png\\_sticker* or *tgs\\_sticker*. Returns *True* on success.",
+      "parameters": [
+        {
+          "name": "contains_masks",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "emojis",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "mask_position",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "png_sticker",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "tgs_sticker",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/deleteChatPhoto",
+      "method": "/deleteChatPhotoPost",
+      "httpMethod": "post",
+      "description": "Use this method to delete a chat photo. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns *True* on success.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/deleteChatStickerSet",
+      "method": "/deleteChatStickerSetPost",
+      "httpMethod": "post",
+      "description": "Use this method to delete a group sticker set from a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Use the field *can\\_set\\_sticker\\_set* optionally returned in [getChat](https://core.telegram.org/bots/api/#getchat) requests to check if the bot can use this method. Returns *True* on success.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/deleteMessage",
+      "method": "/deleteMessagePost",
+      "httpMethod": "post",
+      "description": "Use this method to delete a message, including service messages, with the following limitations:  \n\\- A message can only be deleted if it was sent less than 48 hours ago.  \n\\- A dice message in a private chat can only be deleted if it was sent more than 24 hours ago.  \n\\- Bots can delete outgoing messages in private chats, groups, and supergroups.  \n\\- Bots can delete incoming messages in private chats.  \n\\- Bots granted *can\\_post\\_messages* permissions can delete outgoing messages in channels.  \n\\- If the bot is an administrator of a group, it can delete any message there.  \n\\- If the bot has *can\\_delete\\_messages* permission in a supergroup or a channel, it can delete any message there.  \nReturns *True* on success.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "message_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/deleteStickerFromSet",
+      "method": "/deleteStickerFromSetPost",
+      "httpMethod": "post",
+      "description": "Use this method to delete a sticker from a set created by the bot. Returns *True* on success.",
+      "parameters": [
+        {
+          "name": "sticker",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/deleteWebhook",
+      "method": "/deleteWebhookPost",
+      "httpMethod": "post",
+      "description": "Use this method to remove webhook integration if you decide to switch back to [getUpdates](https://core.telegram.org/bots/api/#getupdates). Returns *True* on success.",
+      "parameters": [
+        {
+          "name": "drop_pending_updates",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/editMessageCaption",
+      "method": "/editMessageCaptionPost",
+      "httpMethod": "post",
+      "description": "Use this method to edit captions of messages. On success, if the edited message is not an inline message, the edited [Message](https://core.telegram.org/bots/api/#message) is returned, otherwise *True* is returned.",
+      "parameters": [
+        {
+          "name": "caption",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "caption_entities",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "inline_message_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "message_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "parse_mode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "reply_markup",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/editMessageLiveLocation",
+      "method": "/editMessageLiveLocationPost",
+      "httpMethod": "post",
+      "description": "Use this method to edit live location messages. A location can be edited until its *live\\_period* expires or editing is explicitly disabled by a call to [stopMessageLiveLocation](https://core.telegram.org/bots/api/#stopmessagelivelocation). On success, if the edited message is not an inline message, the edited [Message](https://core.telegram.org/bots/api/#message) is returned, otherwise *True* is returned.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "heading",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "horizontal_accuracy",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "inline_message_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "latitude",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "longitude",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "message_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "proximity_alert_radius",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_markup",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/editMessageMedia",
+      "method": "/editMessageMediaPost",
+      "httpMethod": "post",
+      "description": "Use this method to edit animation, audio, document, photo, or video messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded. Use a previously uploaded file via its file\\_id or specify a URL. On success, if the edited message was sent by the bot, the edited [Message](https://core.telegram.org/bots/api/#message) is returned, otherwise *True* is returned.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "inline_message_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "media",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "message_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_markup",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/editMessageReplyMarkup",
+      "method": "/editMessageReplyMarkupPost",
+      "httpMethod": "post",
+      "description": "Use this method to edit only the reply markup of messages. On success, if the edited message is not an inline message, the edited [Message](https://core.telegram.org/bots/api/#message) is returned, otherwise *True* is returned.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "inline_message_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "message_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "reply_markup",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/editMessageText",
+      "method": "/editMessageTextPost",
+      "httpMethod": "post",
+      "description": "Use this method to edit text and [game](https://core.telegram.org/bots/api/#games) messages. On success, if the edited message is not an inline message, the edited [Message](https://core.telegram.org/bots/api/#message) is returned, otherwise *True* is returned.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "disable_web_page_preview",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "entities",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "inline_message_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "message_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parse_mode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_markup",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "text",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/exportChatInviteLink",
+      "method": "/exportChatInviteLinkPost",
+      "httpMethod": "post",
+      "description": "Use this method to generate a new invite link for a chat; any previously generated link is revoked. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns the new invite link as *String* on success.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/forwardMessage",
+      "method": "/forwardMessagePost",
+      "httpMethod": "post",
+      "description": "Use this method to forward messages of any kind. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "disable_notification",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "from_chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "message_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/getChat",
+      "method": "/getChatPost",
+      "httpMethod": "post",
+      "description": "Use this method to get up to date information about the chat (current name of the user for one-on-one conversations, current username of a user, group or channel, etc.). Returns a [Chat](https://core.telegram.org/bots/api/#chat) object on success.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/getChatAdministrators",
+      "method": "/getChatAdministratorsPost",
+      "httpMethod": "post",
+      "description": "Use this method to get a list of administrators in a chat. On success, returns an Array of [ChatMember](https://core.telegram.org/bots/api/#chatmember) objects that contains information about all chat administrators except other bots. If the chat is a group or a supergroup and no administrators were appointed, only the creator will be returned.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/getChatMember",
+      "method": "/getChatMemberPost",
+      "httpMethod": "post",
+      "description": "Use this method to get information about a member of a chat. Returns a [ChatMember](https://core.telegram.org/bots/api/#chatmember) object on success.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/getChatMembersCount",
+      "method": "/getChatMembersCountPost",
+      "httpMethod": "post",
+      "description": "Use this method to get the number of members in a chat. Returns *Int* on success.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/getFile",
+      "method": "/getFilePost",
+      "httpMethod": "post",
+      "description": "Use this method to get basic info about a file and prepare it for downloading. For the moment, bots can download files of up to 20MB in size. On success, a [File](https://core.telegram.org/bots/api/#file) object is returned. The file can then be downloaded via the link `https://api.telegram.org/file/bot<token>/<file_path>`, where `<file_path>` is taken from the response. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling [getFile](https://core.telegram.org/bots/api/#getfile) again.",
+      "parameters": [
+        {
+          "name": "file_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/getGameHighScores",
+      "method": "/getGameHighScoresPost",
+      "httpMethod": "post",
+      "description": "Use this method to get data for high score tables. Will return the score of the specified user and several of their neighbors in a game. On success, returns an *Array* of [GameHighScore](https://core.telegram.org/bots/api/#gamehighscore) objects.\n\nThis method will currently return scores for the target user, plus two of their closest neighbors on each side. Will also return the top three users if the user and his neighbors are not among them. Please note that this behavior is subject to change.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "inline_message_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "message_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/getMe",
+      "method": "/getMePost",
+      "httpMethod": "post",
+      "description": "A simple method for testing your bot's auth token. Requires no parameters. Returns basic information about the bot in form of a [User](https://core.telegram.org/bots/api/#user) object.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/getMyCommands",
+      "method": "/getMyCommandsPost",
+      "httpMethod": "post",
+      "description": "Use this method to get the current list of the bot's commands. Requires no parameters. Returns Array of [BotCommand](https://core.telegram.org/bots/api/#botcommand) on success.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/getStickerSet",
+      "method": "/getStickerSetPost",
+      "httpMethod": "post",
+      "description": "Use this method to get a sticker set. On success, a [StickerSet](https://core.telegram.org/bots/api/#stickerset) object is returned.",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/getUpdates",
+      "method": "/getUpdatesPost",
+      "httpMethod": "post",
+      "description": "Use this method to receive incoming updates using long polling ([wiki](https://en.wikipedia.org/wiki/Push_technology#Long_polling)). An Array of [Update](https://core.telegram.org/bots/api/#update) objects is returned.",
+      "parameters": [
+        {
+          "name": "allowed_updates",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "timeout",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/getUserProfilePhotos",
+      "method": "/getUserProfilePhotosPost",
+      "httpMethod": "post",
+      "description": "Use this method to get a list of profile pictures for a user. Returns a [UserProfilePhotos](https://core.telegram.org/bots/api/#userprofilephotos) object.",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/getWebhookInfo",
+      "method": "/getWebhookInfoPost",
+      "httpMethod": "post",
+      "description": "Use this method to get current webhook status. Requires no parameters. On success, returns a [WebhookInfo](https://core.telegram.org/bots/api/#webhookinfo) object. If the bot is using [getUpdates](https://core.telegram.org/bots/api/#getupdates), will return an object with the *url* field empty.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/kickChatMember",
+      "method": "/kickChatMemberPost",
+      "httpMethod": "post",
+      "description": "Use this method to kick a user from a group, a supergroup or a channel. In the case of supergroups and channels, the user will not be able to return to the group on their own using invite links, etc., unless [unbanned](https://core.telegram.org/bots/api/#unbanchatmember) first. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns *True* on success.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "until_date",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/leaveChat",
+      "method": "/leaveChatPost",
+      "httpMethod": "post",
+      "description": "Use this method for your bot to leave a group, supergroup or channel. Returns *True* on success.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/logOut",
+      "method": "/logOutPost",
+      "httpMethod": "post",
+      "description": "Use this method to log out from the cloud Bot API server before launching the bot locally. You **must** log out the bot before running it locally, otherwise there is no guarantee that the bot will receive updates. After a successful call, you can immediately log in on a local server, but will not be able to log in back to the cloud Bot API server for 10 minutes. Returns *True* on success. Requires no parameters.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/pinChatMessage",
+      "method": "/pinChatMessagePost",
+      "httpMethod": "post",
+      "description": "Use this method to add a message to the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can\\_pin\\_messages' admin right in a supergroup or 'can\\_edit\\_messages' admin right in a channel. Returns *True* on success.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "disable_notification",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "message_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/promoteChatMember",
+      "method": "/promoteChatMemberPost",
+      "httpMethod": "post",
+      "description": "Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Pass *False* for all boolean parameters to demote a user. Returns *True* on success.",
+      "parameters": [
+        {
+          "name": "can_change_info",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "can_delete_messages",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "can_edit_messages",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "can_invite_users",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "can_pin_messages",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "can_post_messages",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "can_promote_members",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "can_restrict_members",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "is_anonymous",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restrictChatMember",
+      "method": "/restrictChatMemberPost",
+      "httpMethod": "post",
+      "description": "Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate admin rights. Pass *True* for all permissions to lift restrictions from a user. Returns *True* on success.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "permissions",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "until_date",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sendAnimation",
+      "method": "/sendAnimationPost",
+      "httpMethod": "post",
+      "description": "Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned. Bots can currently send animation files of up to 50 MB in size, this limit may be changed in the future.",
+      "parameters": [
+        {
+          "name": "allow_sending_without_reply",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "animation",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "caption",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "caption_entities",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "disable_notification",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "duration",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "height",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parse_mode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_markup",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_to_message_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "thumb",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "width",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sendAudio",
+      "method": "/sendAudioPost",
+      "httpMethod": "post",
+      "description": "Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.\n\nFor sending voice messages, use the [sendVoice](https://core.telegram.org/bots/api/#sendvoice) method instead.",
+      "parameters": [
+        {
+          "name": "allow_sending_without_reply",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "audio",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "caption",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "caption_entities",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "disable_notification",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "duration",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parse_mode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "performer",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_markup",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_to_message_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "thumb",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sendChatAction",
+      "method": "/sendChatActionPost",
+      "httpMethod": "post",
+      "description": "Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). Returns *True* on success.\n\nExample: The [ImageBot](https://t.me/imagebot) needs some time to process a request and upload the image. Instead of sending a text message along the lines of “Retrieving image, please wait…”, the bot may use [sendChatAction](https://core.telegram.org/bots/api/#sendchataction) with *action* = *upload\\_photo*. The user will see a “sending photo” status for the bot.\n\nWe only recommend using this method when a response from the bot will take a **noticeable** amount of time to arrive.",
+      "parameters": [
+        {
+          "name": "action",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sendContact",
+      "method": "/sendContactPost",
+      "httpMethod": "post",
+      "description": "Use this method to send phone contacts. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.",
+      "parameters": [
+        {
+          "name": "allow_sending_without_reply",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "disable_notification",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "first_name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "last_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "phone_number",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "reply_markup",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_to_message_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "vcard",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sendDice",
+      "method": "/sendDicePost",
+      "httpMethod": "post",
+      "description": "Use this method to send an animated emoji that will display a random value. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.",
+      "parameters": [
+        {
+          "name": "allow_sending_without_reply",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "disable_notification",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "emoji",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_markup",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_to_message_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sendDocument",
+      "method": "/sendDocumentPost",
+      "httpMethod": "post",
+      "description": "Use this method to send general files. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned. Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.",
+      "parameters": [
+        {
+          "name": "allow_sending_without_reply",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "caption",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "caption_entities",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "disable_content_type_detection",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "disable_notification",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "document",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "parse_mode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_markup",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_to_message_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "thumb",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sendGame",
+      "method": "/sendGamePost",
+      "httpMethod": "post",
+      "description": "Use this method to send a game. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.",
+      "parameters": [
+        {
+          "name": "allow_sending_without_reply",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "chat_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "disable_notification",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "game_short_name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "reply_markup",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_to_message_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sendInvoice",
+      "method": "/sendInvoicePost",
+      "httpMethod": "post",
+      "description": "Use this method to send invoices. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.",
+      "parameters": [
+        {
+          "name": "allow_sending_without_reply",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "chat_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "currency",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "disable_notification",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "is_flexible",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "need_email",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "need_name",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "need_phone_number",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "need_shipping_address",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "payload",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "photo_height",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "photo_size",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "photo_url",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "photo_width",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "prices",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "provider_data",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "provider_token",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "reply_markup",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_to_message_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "send_email_to_provider",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "send_phone_number_to_provider",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "start_parameter",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sendLocation",
+      "method": "/sendLocationPost",
+      "httpMethod": "post",
+      "description": "Use this method to send point on the map. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.",
+      "parameters": [
+        {
+          "name": "allow_sending_without_reply",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "disable_notification",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "heading",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "horizontal_accuracy",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "latitude",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "live_period",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "longitude",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "proximity_alert_radius",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_markup",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_to_message_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sendMediaGroup",
+      "method": "/sendMediaGroupPost",
+      "httpMethod": "post",
+      "description": "Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of [Messages](https://core.telegram.org/bots/api/#message) that were sent is returned.",
+      "parameters": [
+        {
+          "name": "allow_sending_without_reply",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "disable_notification",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "media",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "reply_to_message_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sendMessage",
+      "method": "/sendMessagePost",
+      "httpMethod": "post",
+      "description": "Use this method to send text messages. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.",
+      "parameters": [
+        {
+          "name": "allow_sending_without_reply",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "disable_notification",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "disable_web_page_preview",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "entities",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parse_mode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_markup",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_to_message_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "text",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sendPhoto",
+      "method": "/sendPhotoPost",
+      "httpMethod": "post",
+      "description": "Use this method to send photos. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.",
+      "parameters": [
+        {
+          "name": "allow_sending_without_reply",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "caption",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "caption_entities",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "disable_notification",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parse_mode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "photo",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "reply_markup",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_to_message_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sendPoll",
+      "method": "/sendPollPost",
+      "httpMethod": "post",
+      "description": "Use this method to send a native poll. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.",
+      "parameters": [
+        {
+          "name": "allow_sending_without_reply",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "allows_multiple_answers",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "close_date",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "correct_option_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "disable_notification",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "explanation",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "explanation_entities",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "explanation_parse_mode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "is_anonymous",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "is_closed",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "open_period",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "options",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "question",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "reply_markup",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_to_message_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sendSticker",
+      "method": "/sendStickerPost",
+      "httpMethod": "post",
+      "description": "Use this method to send static .WEBP or [animated](https://telegram.org/blog/animated-stickers) .TGS stickers. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.",
+      "parameters": [
+        {
+          "name": "allow_sending_without_reply",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "disable_notification",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_markup",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_to_message_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sticker",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sendVenue",
+      "method": "/sendVenuePost",
+      "httpMethod": "post",
+      "description": "Use this method to send information about a venue. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.",
+      "parameters": [
+        {
+          "name": "address",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "allow_sending_without_reply",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "disable_notification",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "foursquare_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "foursquare_type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "google_place_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "google_place_type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "latitude",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "longitude",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "reply_markup",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_to_message_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sendVideo",
+      "method": "/sendVideoPost",
+      "httpMethod": "post",
+      "description": "Use this method to send video files, Telegram clients support mp4 videos (other formats may be sent as [Document](https://core.telegram.org/bots/api/#document)). On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned. Bots can currently send video files of up to 50 MB in size, this limit may be changed in the future.",
+      "parameters": [
+        {
+          "name": "allow_sending_without_reply",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "caption",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "caption_entities",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "disable_notification",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "duration",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "height",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parse_mode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_markup",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_to_message_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "supports_streaming",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "thumb",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "video",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "width",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sendVideoNote",
+      "method": "/sendVideoNotePost",
+      "httpMethod": "post",
+      "description": "As of [v.4.0](https://telegram.org/blog/video-messages-and-telescope), Telegram clients support rounded square mp4 videos of up to 1 minute long. Use this method to send video messages. On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned.",
+      "parameters": [
+        {
+          "name": "allow_sending_without_reply",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "disable_notification",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "duration",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "length",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_markup",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_to_message_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "thumb",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "video_note",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sendVoice",
+      "method": "/sendVoicePost",
+      "httpMethod": "post",
+      "description": "Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .OGG file encoded with OPUS (other formats may be sent as [Audio](https://core.telegram.org/bots/api/#audio) or [Document](https://core.telegram.org/bots/api/#document)). On success, the sent [Message](https://core.telegram.org/bots/api/#message) is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.",
+      "parameters": [
+        {
+          "name": "allow_sending_without_reply",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "caption",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "caption_entities",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "disable_notification",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "duration",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parse_mode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_markup",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reply_to_message_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "voice",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setChatAdministratorCustomTitle",
+      "method": "/setChatAdministratorCustomTitlePost",
+      "httpMethod": "post",
+      "description": "Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns *True* on success.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "custom_title",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setChatDescription",
+      "method": "/setChatDescriptionPost",
+      "httpMethod": "post",
+      "description": "Use this method to change the description of a group, a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns *True* on success.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setChatPermissions",
+      "method": "/setChatPermissionsPost",
+      "httpMethod": "post",
+      "description": "Use this method to set default chat permissions for all members. The bot must be an administrator in the group or a supergroup for this to work and must have the *can\\_restrict\\_members* admin rights. Returns *True* on success.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "permissions",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setChatPhoto",
+      "method": "/setChatPhotoPost",
+      "httpMethod": "post",
+      "description": "Use this method to set a new profile photo for the chat. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns *True* on success.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "photo",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setChatStickerSet",
+      "method": "/setChatStickerSetPost",
+      "httpMethod": "post",
+      "description": "Use this method to set a new group sticker set for a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Use the field *can\\_set\\_sticker\\_set* optionally returned in [getChat](https://core.telegram.org/bots/api/#getchat) requests to check if the bot can use this method. Returns *True* on success.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "sticker_set_name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setChatTitle",
+      "method": "/setChatTitlePost",
+      "httpMethod": "post",
+      "description": "Use this method to change the title of a chat. Titles can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns *True* on success.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setGameScore",
+      "method": "/setGameScorePost",
+      "httpMethod": "post",
+      "description": "Use this method to set the score of the specified user in a game. On success, if the message was sent by the bot, returns the edited [Message](https://core.telegram.org/bots/api/#message), otherwise returns *True*. Returns an error, if the new score is not greater than the user's current score in the chat and *force* is *False*.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "disable_edit_message",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "force",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "inline_message_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "message_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "score",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setMyCommands",
+      "method": "/setMyCommandsPost",
+      "httpMethod": "post",
+      "description": "Use this method to change the list of the bot's commands. Returns *True* on success.",
+      "parameters": [
+        {
+          "name": "commands",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setPassportDataErrors",
+      "method": "/setPassportDataErrorsPost",
+      "httpMethod": "post",
+      "description": "Informs a user that some of the Telegram Passport elements they provided contains errors. The user will not be able to re-submit their Passport to you until the errors are fixed (the contents of the field for which you returned the error must change). Returns *True* on success.\n\nUse this if the data submitted by the user doesn't satisfy the standards your service requires for any reason. For example, if a birthday date seems invalid, a submitted document is blurry, a scan shows evidence of tampering, etc. Supply some details in the error message to make sure the user knows how to correct the issues.",
+      "parameters": [
+        {
+          "name": "errors",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setStickerPositionInSet",
+      "method": "/setStickerPositionInSetPost",
+      "httpMethod": "post",
+      "description": "Use this method to move a sticker in a set created by the bot to a specific position. Returns *True* on success.",
+      "parameters": [
+        {
+          "name": "position",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "sticker",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setStickerSetThumb",
+      "method": "/setStickerSetThumbPost",
+      "httpMethod": "post",
+      "description": "Use this method to set the thumbnail of a sticker set. Animated thumbnails can be set for animated sticker sets only. Returns *True* on success.",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "thumb",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setWebhook",
+      "method": "/setWebhookPost",
+      "httpMethod": "post",
+      "description": "Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized [Update](https://core.telegram.org/bots/api/#update). In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns *True* on success.\n\nIf you'd like to make sure that the Webhook request comes from Telegram, we recommend using a secret path in the URL, e.g. `https://www.example.com/<token>`. Since nobody else knows your bot's token, you can be pretty sure it's us.",
+      "parameters": [
+        {
+          "name": "allowed_updates",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "certificate",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "drop_pending_updates",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "ip_address",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "max_connections",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stopMessageLiveLocation",
+      "method": "/stopMessageLiveLocationPost",
+      "httpMethod": "post",
+      "description": "Use this method to stop updating a live location message before *live\\_period* expires. On success, if the message was sent by the bot, the sent [Message](https://core.telegram.org/bots/api/#message) is returned, otherwise *True* is returned.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "inline_message_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "message_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "reply_markup",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stopPoll",
+      "method": "/stopPollPost",
+      "httpMethod": "post",
+      "description": "Use this method to stop a poll which was sent by the bot. On success, the stopped [Poll](https://core.telegram.org/bots/api/#poll) with the final results is returned.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "message_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "reply_markup",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/unbanChatMember",
+      "method": "/unbanChatMemberPost",
+      "httpMethod": "post",
+      "description": "Use this method to unban a previously kicked user in a supergroup or channel. The user will **not** return to the group or channel automatically, but will be able to join via link, etc. The bot must be an administrator for this to work. By default, this method guarantees that after the call the user is not a member of the chat, but will be able to join it. So if the user is a member of the chat they will also be **removed** from the chat. If you don't want this, use the parameter *only\\_if\\_banned*. Returns *True* on success.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "only_if_banned",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/unpinAllChatMessages",
+      "method": "/unpinAllChatMessagesPost",
+      "httpMethod": "post",
+      "description": "Use this method to clear the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can\\_pin\\_messages' admin right in a supergroup or 'can\\_edit\\_messages' admin right in a channel. Returns *True* on success.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/unpinChatMessage",
+      "method": "/unpinChatMessagePost",
+      "httpMethod": "post",
+      "description": "Use this method to remove a message from the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can\\_pin\\_messages' admin right in a supergroup or 'can\\_edit\\_messages' admin right in a channel. Returns *True* on success.",
+      "parameters": [
+        {
+          "name": "chat_id",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "message_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/uploadStickerFile",
+      "method": "/uploadStickerFilePost",
+      "httpMethod": "post",
+      "description": "Use this method to upload a .PNG file with a sticker for later use in *createNewStickerSet* and *addStickerToSet* methods (can be used multiple times). Returns the uploaded [File](https://core.telegram.org/bots/api/#file) on success.",
+      "parameters": [
+        {
+          "name": "png_sticker",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.telegram.org/bot{token}",
   "apiDescription": "Auto-generated OpenAPI schema",
   "apiTitle": "Telegram Bot API",

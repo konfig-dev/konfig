@@ -4,6 +4,497 @@
   "homepage": "xero.com",
   "serviceName": "xero_files",
   "apiVersion": "2.9.4",
+  "methods": [
+    {
+      "url": "/Associations/{ObjectId}",
+      "method": "getAssociationsByObject",
+      "httpMethod": "get",
+      "tag": "Files",
+      "description": "Retrieves an association object using a unique object ID",
+      "parameters": [
+        {
+          "name": "ObjectId",
+          "schema": "string",
+          "required": true,
+          "description": "Object id for single object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Files",
+      "method": "getFiles",
+      "httpMethod": "get",
+      "tag": "Files",
+      "description": "Retrieves files",
+      "parameters": [
+        {
+          "name": "pagesize",
+          "schema": "integer",
+          "description": "pass an optional page size value"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": "number of records to skip for pagination"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "values to sort by"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Files",
+      "method": "uploadFile",
+      "httpMethod": "post",
+      "tag": "Files",
+      "description": "Uploads a File",
+      "parameters": [
+        {
+          "name": "FolderId",
+          "schema": "string",
+          "description": "pass an optional folder id to save file to specific folder"
+        },
+        {
+          "name": "body",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "filename",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "mimeType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Files/{FileId}",
+      "method": "deleteFile",
+      "httpMethod": "delete",
+      "tag": "Files",
+      "description": "Deletes a specific file",
+      "parameters": [
+        {
+          "name": "FileId",
+          "schema": "string",
+          "required": true,
+          "description": "File id for single object"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/Files/{FileId}",
+      "method": "getFile",
+      "httpMethod": "get",
+      "tag": "Files",
+      "description": "Retrieves a file by a unique file ID",
+      "parameters": [
+        {
+          "name": "FileId",
+          "schema": "string",
+          "required": true,
+          "description": "File id for single object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Files/{FileId}",
+      "method": "updateFile",
+      "httpMethod": "put",
+      "tag": "Files",
+      "description": "Update a file",
+      "parameters": [
+        {
+          "name": "FileId",
+          "schema": "string",
+          "required": true,
+          "description": "File id for single object"
+        },
+        {
+          "name": "CreatedDateUtc",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "FolderId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "MimeType",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Size",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "UpdatedDateUtc",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "User",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Files/{FileId}/Associations",
+      "method": "getFileAssociations",
+      "httpMethod": "get",
+      "tag": "Files",
+      "description": "Retrieves a specific file associations",
+      "parameters": [
+        {
+          "name": "FileId",
+          "schema": "string",
+          "required": true,
+          "description": "File id for single object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Files/{FileId}/Associations",
+      "method": "createFileAssociation",
+      "httpMethod": "post",
+      "tag": "Files",
+      "description": "Creates a new file association",
+      "parameters": [
+        {
+          "name": "FileId",
+          "schema": "string",
+          "required": true,
+          "description": "File id for single object"
+        },
+        {
+          "name": "FileId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ObjectGroup",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ObjectId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ObjectType",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Files/{FileId}/Associations/{ObjectId}",
+      "method": "deleteFileAssociation",
+      "httpMethod": "delete",
+      "tag": "Files",
+      "description": "Deletes an existing file association",
+      "parameters": [
+        {
+          "name": "FileId",
+          "schema": "string",
+          "required": true,
+          "description": "File id for single object"
+        },
+        {
+          "name": "ObjectId",
+          "schema": "string",
+          "required": true,
+          "description": "Object id for single object"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/Files/{FileId}/Content",
+      "method": "getFileContent",
+      "httpMethod": "get",
+      "tag": "Files",
+      "description": "Retrieves the content of a specific file",
+      "parameters": [
+        {
+          "name": "FileId",
+          "schema": "string",
+          "required": true,
+          "description": "File id for single object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Folders",
+      "method": "getFolders",
+      "httpMethod": "get",
+      "tag": "Files",
+      "description": "Retrieves folders",
+      "parameters": [
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "values to sort by"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Folders",
+      "method": "createFolder",
+      "httpMethod": "post",
+      "tag": "Files",
+      "description": "Creates a new folder",
+      "parameters": [
+        {
+          "name": "Email",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "FileCount",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "IsInbox",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Folders/{FolderId}",
+      "method": "deleteFolder",
+      "httpMethod": "delete",
+      "tag": "Files",
+      "description": "Deletes a folder",
+      "parameters": [
+        {
+          "name": "FolderId",
+          "schema": "string",
+          "required": true,
+          "description": "Folder id for single object"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/Folders/{FolderId}",
+      "method": "getFolder",
+      "httpMethod": "get",
+      "tag": "Files",
+      "description": "Retrieves specific folder by using a unique folder ID",
+      "parameters": [
+        {
+          "name": "FolderId",
+          "schema": "string",
+          "required": true,
+          "description": "Folder id for single object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Folders/{FolderId}",
+      "method": "updateFolder",
+      "httpMethod": "put",
+      "tag": "Files",
+      "description": "Updates an existing folder",
+      "parameters": [
+        {
+          "name": "FolderId",
+          "schema": "string",
+          "required": true,
+          "description": "Folder id for single object"
+        },
+        {
+          "name": "Email",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "FileCount",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "IsInbox",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Inbox",
+      "method": "getInbox",
+      "httpMethod": "get",
+      "tag": "Files",
+      "description": "Retrieves inbox folder",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.xero.com/files.xro/1.0/",
   "apiDescription": "These endpoints are specific to Xero Files API",
   "apiTitle": "Xero Files API",

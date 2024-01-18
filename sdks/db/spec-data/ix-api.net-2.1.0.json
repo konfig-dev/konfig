@@ -3,6 +3,3456 @@
   "openApiRaw": "https://docs.ix-api.net/v2/ix-api-latest.json",
   "homepage": "ix-api.net",
   "apiVersion": "2.1.0",
+  "methods": [
+    {
+      "url": "/accounts",
+      "method": "accountsList",
+      "httpMethod": "get",
+      "tag": "accounts",
+      "description": "Retrieve a list of `Account`s.\n\nThis includes all accounts the currently authorized account\nis managing and the current account itself.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "array",
+          "required": false,
+          "description": "Filter by id"
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by state"
+        },
+        {
+          "name": "state__is_not",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by state__is_not"
+        },
+        {
+          "name": "managing_account",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by managing_account"
+        },
+        {
+          "name": "billable",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by billable"
+        },
+        {
+          "name": "external_ref",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by external_ref"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/accounts",
+      "method": "accountsCreate",
+      "httpMethod": "post",
+      "tag": "accounts",
+      "description": "Create a new account.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{id}",
+      "method": "accountsDestroy",
+      "httpMethod": "delete",
+      "tag": "accounts",
+      "description": "Accounts can be deleted, when all services and configs\nare decommissioned or the account is not longer referenced\ne.g. as a `managing_account` or `billing_account`.\n\nDeleting an account will cascade to `contacts` and\n`role-assignments`.\n\nThe request will immediately fail, if the above preconditions\nare not met.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{id}",
+      "method": "accountsRead",
+      "httpMethod": "get",
+      "tag": "accounts",
+      "description": "Get a single account.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{id}",
+      "method": "accountsPartialUpdate",
+      "httpMethod": "patch",
+      "tag": "accounts",
+      "description": "Update parts of an account.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        },
+        {
+          "name": "address",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "billing_information",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "discoverable",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "external_ref",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "legal_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "managing_account",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "metro_area_network_presence",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{id}",
+      "method": "accountsUpdate",
+      "httpMethod": "put",
+      "tag": "accounts",
+      "description": "Update the entire account.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/auth/refresh",
+      "method": "authTokenRefresh",
+      "httpMethod": "post",
+      "tag": "auth",
+      "description": "Reauthenticate the API user, issue a new `access_token`\nand `refresh_token` pair by providing the `refresh_token`\nin the request body.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/auth/token",
+      "method": "authTokenCreate",
+      "httpMethod": "post",
+      "tag": "auth",
+      "description": "Authenticate an API user identified by `api_key` and\n`api_secret`.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/connections",
+      "method": "connectionsList",
+      "httpMethod": "get",
+      "tag": "connections",
+      "description": "List all `connection`s.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "array",
+          "required": false,
+          "description": "Filter by id"
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by state"
+        },
+        {
+          "name": "state__is_not",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by state__is_not"
+        },
+        {
+          "name": "mode",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by mode"
+        },
+        {
+          "name": "mode__is_not",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by mode__is_not"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by name"
+        },
+        {
+          "name": "metro_area_network",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by metro_area_network"
+        },
+        {
+          "name": "pop",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by pop"
+        },
+        {
+          "name": "facility",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by facility"
+        },
+        {
+          "name": "external_ref",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by external_ref"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/connections/{id}",
+      "method": "connectionsRead",
+      "httpMethod": "get",
+      "tag": "connections",
+      "description": "Read a `connection`.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/contacts",
+      "method": "contactsList",
+      "httpMethod": "get",
+      "tag": "contacts",
+      "description": "List available contacts managed by the authorized account.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "array",
+          "required": false,
+          "description": "Filter by id"
+        },
+        {
+          "name": "managing_account",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by managing_account"
+        },
+        {
+          "name": "consuming_account",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by consuming_account"
+        },
+        {
+          "name": "external_ref",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by external_ref"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/contacts",
+      "method": "contactsCreate",
+      "httpMethod": "post",
+      "tag": "contacts",
+      "description": "Create a new contact.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/contacts/{id}",
+      "method": "contactsDestroy",
+      "httpMethod": "delete",
+      "tag": "contacts",
+      "description": "Remove a contact.\n\nPlease note, that a contact can only be removed if\nit is not longer in use in a network service or config\nthrough a role assignment.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/contacts/{id}",
+      "method": "contactsRead",
+      "httpMethod": "get",
+      "tag": "contacts",
+      "description": "Get a contact by it's id",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/contacts/{id}",
+      "method": "contactsPartialUpdate",
+      "httpMethod": "patch",
+      "tag": "contacts",
+      "description": "Update parts of a contact",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        },
+        {
+          "name": "consuming_account",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "external_ref",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "managing_account",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "telephone",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/contacts/{id}",
+      "method": "contactsUpdate",
+      "httpMethod": "put",
+      "tag": "contacts",
+      "description": "Update a contact",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/devices",
+      "method": "devicesList",
+      "httpMethod": "get",
+      "tag": "devices",
+      "description": "List available devices",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "array",
+          "required": false,
+          "description": "Filter by id"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by name"
+        },
+        {
+          "name": "capability_media_type",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by capability_media_type"
+        },
+        {
+          "name": "capability_speed",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by capability_speed"
+        },
+        {
+          "name": "capability_speed__lt",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by capability_speed__lt"
+        },
+        {
+          "name": "capability_speed__lte",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by capability_speed__lte"
+        },
+        {
+          "name": "capability_speed__gt",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by capability_speed__gt"
+        },
+        {
+          "name": "capability_speed__gte",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by capability_speed__gte"
+        },
+        {
+          "name": "facility",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by facility"
+        },
+        {
+          "name": "pop",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by pop"
+        },
+        {
+          "name": "metro_area_network",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by metro_area_network"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/devices/{id}",
+      "method": "devicesRead",
+      "httpMethod": "get",
+      "tag": "devices",
+      "description": "Get a specific device identified by id",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/facilities",
+      "method": "facilitiesList",
+      "httpMethod": "get",
+      "tag": "facilities",
+      "description": "Get a (filtered) list of `facilities`.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "array",
+          "required": false,
+          "description": "Filter by id"
+        },
+        {
+          "name": "capability_media_type",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by capability_media_type"
+        },
+        {
+          "name": "capability_speed",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by capability_speed"
+        },
+        {
+          "name": "capability_speed__lt",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by capability_speed__lt"
+        },
+        {
+          "name": "capability_speed__lte",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by capability_speed__lte"
+        },
+        {
+          "name": "capability_speed__gt",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by capability_speed__gt"
+        },
+        {
+          "name": "capability_speed__gte",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by capability_speed__gte"
+        },
+        {
+          "name": "organisation_name",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by organisation_name"
+        },
+        {
+          "name": "metro_area",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by metro_area"
+        },
+        {
+          "name": "metro_area_network",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by metro_area_network"
+        },
+        {
+          "name": "address_country",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by address_country"
+        },
+        {
+          "name": "address_locality",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by address_locality"
+        },
+        {
+          "name": "postal_code",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by postal_code"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/facilities/{id}",
+      "method": "facilitiesRead",
+      "httpMethod": "get",
+      "tag": "facilities",
+      "description": "Retrieve a facility by id",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/health",
+      "method": "apiHealthRead",
+      "httpMethod": "get",
+      "tag": "health",
+      "description": "Get the IX-API service health status.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/implementation",
+      "method": "apiImplementationRead",
+      "httpMethod": "get",
+      "tag": "implementation",
+      "description": "Get the API implementation details.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ips",
+      "method": "ipsList",
+      "httpMethod": "get",
+      "tag": "ips",
+      "description": "List all ip addresses (and prefixes).",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "array",
+          "required": false,
+          "description": "Filter by id"
+        },
+        {
+          "name": "managing_account",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by managing_account"
+        },
+        {
+          "name": "consuming_account",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by consuming_account"
+        },
+        {
+          "name": "external_ref",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by external_ref"
+        },
+        {
+          "name": "network_service",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by network_service"
+        },
+        {
+          "name": "network_service_config",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by network_service_config"
+        },
+        {
+          "name": "network_feature",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by network_feature"
+        },
+        {
+          "name": "network_feature_config",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by network_feature_config"
+        },
+        {
+          "name": "version",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by version"
+        },
+        {
+          "name": "fqdn",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by fqdn"
+        },
+        {
+          "name": "prefix_length",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by prefix_length"
+        },
+        {
+          "name": "valid_not_before",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by valid_not_before"
+        },
+        {
+          "name": "valid_not_after",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by valid_not_after"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ips",
+      "method": "ipsCreate",
+      "httpMethod": "post",
+      "tag": "ips",
+      "description": "Add an ip host address or network prefix.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ips/{id}",
+      "method": "ipsRead",
+      "httpMethod": "get",
+      "tag": "ips",
+      "description": "Get a single ip addresses by it's id.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ips/{id}",
+      "method": "ipsPartialUpdate",
+      "httpMethod": "patch",
+      "tag": "ips",
+      "description": "Update parts of an ip address.\n\n\nAs with the `PUT` opertaion, IP addresses, where you\ndon't have update rights, will yield a `resource access denied`\nerror when attempting an update.\n\nIf the ip address was allocated for you, you might\nnot be able to change anything but the `fqdn`.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        },
+        {
+          "name": "address",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "consuming_account",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "external_ref",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "fqdn",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "managing_account",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "prefix_length",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "valid_not_after",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "valid_not_before",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "version",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ips/{id}",
+      "method": "ipsUpdate",
+      "httpMethod": "put",
+      "tag": "ips",
+      "description": "Update an ip address object.\n\nYou can only update\nIP addresses within your current scope. Not all\naddresses you can read you can update.\n\nIf the ip address was allocated for you, you might\nnot be able to change anything but the `fqdn`.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/macs",
+      "method": "macsList",
+      "httpMethod": "get",
+      "tag": "macs",
+      "description": "List all mac addresses managed by the authorized customer.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "array",
+          "required": false,
+          "description": "Filter by id"
+        },
+        {
+          "name": "managing_account",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by managing_account"
+        },
+        {
+          "name": "consuming_account",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by consuming_account"
+        },
+        {
+          "name": "external_ref",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by external_ref"
+        },
+        {
+          "name": "network_service_config",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by network_service_config"
+        },
+        {
+          "name": "address",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by address"
+        },
+        {
+          "name": "assigned_at",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by assigned_at"
+        },
+        {
+          "name": "valid_not_before",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by valid_not_before"
+        },
+        {
+          "name": "valid_not_after",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by valid_not_after"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/macs",
+      "method": "macsCreate",
+      "httpMethod": "post",
+      "tag": "macs",
+      "description": "Register a mac address.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/macs/{id}",
+      "method": "macsDestroy",
+      "httpMethod": "delete",
+      "tag": "macs",
+      "description": "Remove a mac address.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/macs/{id}",
+      "method": "macsRead",
+      "httpMethod": "get",
+      "tag": "macs",
+      "description": "Get a single mac address by it's id.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/member-joining-rules",
+      "method": "memberJoiningRulesList",
+      "httpMethod": "get",
+      "tag": "member-joining-rules",
+      "description": "Get a list of joining rules",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "array",
+          "required": false,
+          "description": "Filter by id"
+        },
+        {
+          "name": "network_service",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by network_service"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/member-joining-rules",
+      "method": "memberJoiningRulesCreate",
+      "httpMethod": "post",
+      "tag": "member-joining-rules",
+      "description": "Create a member joining rule",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Polymorphic Member Joining Rule"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/member-joining-rules/{id}",
+      "method": "memberJoiningRulesDestroy",
+      "httpMethod": "delete",
+      "tag": "member-joining-rules",
+      "description": "Delete a joining rule",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Polymorphic Member Joining Rule"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/member-joining-rules/{id}",
+      "method": "memberJoiningRulesRead",
+      "httpMethod": "get",
+      "tag": "member-joining-rules",
+      "description": "Get a single rule",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Polymorphic Member Joining Rule"
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/member-joining-rules/{id}",
+      "method": "memberJoiningRulesPartialUpdate",
+      "httpMethod": "patch",
+      "tag": "member-joining-rules",
+      "description": "Partially update a joining rule",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Polymorphic Member Joining Rule"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/member-joining-rules/{id}",
+      "method": "memberJoiningRulesUpdate",
+      "httpMethod": "put",
+      "tag": "member-joining-rules",
+      "description": "Update a joining rule",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Polymorphic Member Joining Rule"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/metro-area-networks",
+      "method": "metroAreaNetworksList",
+      "httpMethod": "get",
+      "tag": "metro-area-networks",
+      "description": "List all MetroAreaNetworks",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "array",
+          "required": false,
+          "description": "Filter by id"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by name"
+        },
+        {
+          "name": "metro_area",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by metro_area"
+        },
+        {
+          "name": "service_provider",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by service_provider"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/metro-area-networks/{id}",
+      "method": "metroAreaNetworksRead",
+      "httpMethod": "get",
+      "tag": "metro-area-networks",
+      "description": "Retrieve a MetroAreaNetwork",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/metro-areas",
+      "method": "metroAreasList",
+      "httpMethod": "get",
+      "tag": "metro-areas",
+      "description": "List all MetroAreas",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "array",
+          "required": false,
+          "description": "Filter by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/metro-areas/{id}",
+      "method": "metroAreasRead",
+      "httpMethod": "get",
+      "tag": "metro-areas",
+      "description": "Get a single MetroArea",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/network-feature-configs",
+      "method": "networkFeatureConfigsList",
+      "httpMethod": "get",
+      "tag": "network-feature-configs",
+      "description": "Get all network feature configs.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "array",
+          "required": false,
+          "description": "Filter by id"
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by state"
+        },
+        {
+          "name": "state__is_not",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by state__is_not"
+        },
+        {
+          "name": "managing_account",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by managing_account"
+        },
+        {
+          "name": "consuming_account",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by consuming_account"
+        },
+        {
+          "name": "external_ref",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by external_ref"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by type"
+        },
+        {
+          "name": "service_config",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by service_config"
+        },
+        {
+          "name": "network_feature",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by network_feature"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/network-feature-configs",
+      "method": "networkFeatureConfigsCreate",
+      "httpMethod": "post",
+      "tag": "network-feature-configs",
+      "description": "Create a configuration for a `NetworkFeature`\ndefined in the `NetworkFeature`s collection.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Polymorphic Network Feature Config"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/network-feature-configs/{id}",
+      "method": "networkFeatureConfigsDestroy",
+      "httpMethod": "delete",
+      "tag": "network-feature-configs",
+      "description": "Remove a network feature config.\n\nThe network feature config will be marked as\n`decommission_requested`.\nDecommissioning a network feature config will not\ncascade to related services or service configs.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": "Polymorphic Network Feature Config"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/network-feature-configs/{id}",
+      "method": "networkFeatureConfigsRead",
+      "httpMethod": "get",
+      "tag": "network-feature-configs",
+      "description": "Get a single network feature config.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Polymorphic Network Feature Config"
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/network-feature-configs/{id}",
+      "method": "networkFeatureConfigsPartialUpdate",
+      "httpMethod": "patch",
+      "tag": "network-feature-configs",
+      "description": "Update parts of a network feature configuration",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": "Polymorphic Network Feature Config"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/network-feature-configs/{id}",
+      "method": "networkFeatureConfigsUpdate",
+      "httpMethod": "put",
+      "tag": "network-feature-configs",
+      "description": "Update a network feature configuration",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": "Polymorphic Network Feature Config"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/network-features",
+      "method": "networkFeaturesList",
+      "httpMethod": "get",
+      "tag": "network-features",
+      "description": "List available network features.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "array",
+          "required": false,
+          "description": "Filter by id"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by type"
+        },
+        {
+          "name": "required",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by required"
+        },
+        {
+          "name": "network_service",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by network_service"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/network-features/{id}",
+      "method": "networkFeaturesRead",
+      "httpMethod": "get",
+      "tag": "network-features",
+      "description": "Get a single network feature by it's id.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Polymorphic Network Feature"
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/network-service-configs",
+      "method": "networkServiceConfigsList",
+      "httpMethod": "get",
+      "tag": "network-service-configs",
+      "description": "Get all `network-service-config`s.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "array",
+          "required": false,
+          "description": "Filter by id"
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by state"
+        },
+        {
+          "name": "state__is_not",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by state__is_not"
+        },
+        {
+          "name": "managing_account",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by managing_account"
+        },
+        {
+          "name": "consuming_account",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by consuming_account"
+        },
+        {
+          "name": "external_ref",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by external_ref"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by type"
+        },
+        {
+          "name": "inner_vlan",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by inner_vlan"
+        },
+        {
+          "name": "outer_vlan",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by outer_vlan"
+        },
+        {
+          "name": "capacity",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by capacity"
+        },
+        {
+          "name": "network_service",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by network_service"
+        },
+        {
+          "name": "connection",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by connection"
+        },
+        {
+          "name": "product_offering",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by product_offering"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/network-service-configs",
+      "method": "networkServiceConfigsCreate",
+      "httpMethod": "post",
+      "tag": "network-service-configs",
+      "description": "Create a `network-service-config`.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Polymorphic Network Service Config"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/network-service-configs/{id}",
+      "method": "networkServiceConfigsDestroy",
+      "httpMethod": "delete",
+      "tag": "network-service-configs",
+      "description": "Request decommissioning the network service configuration.\n\nThe network service config will assume the state\n`decommission_requested`.\nThis will cascade to related resources like\n`network-feature-configs`.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": "Polymorphic Network Service Config"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/network-service-configs/{id}",
+      "method": "networkServiceConfigsRead",
+      "httpMethod": "get",
+      "tag": "network-service-configs",
+      "description": "Get a `network-service-config`",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Polymorphic Network Service Config"
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/network-service-configs/{id}",
+      "method": "networkServiceConfigsPartialUpdate",
+      "httpMethod": "patch",
+      "tag": "network-service-configs",
+      "description": "Update parts of an exisiting `network-service-config`.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": "Polymorphic Network Service Config"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/network-service-configs/{id}",
+      "method": "networkServiceConfigsUpdate",
+      "httpMethod": "put",
+      "tag": "network-service-configs",
+      "description": "Update an exisiting `network-service-config`",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": "Polymorphic Network Service Config"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/network-service-configs/{id}/cancellation-policy",
+      "method": "networkServiceConfigCancellationPolicyRead",
+      "httpMethod": "get",
+      "tag": "network-service-configs",
+      "description": "The cancellation-policy can be queried to answer\nthe questions:\n\nIf I cancel my subscription, *when will it be technically\ndecommissioned*?\nIf I cancel my subscription, *until what date will I be charged*?\n\nWhen the query parameter `decommision_at` is not provided\nit will provide the first possible cancellation date\nand charge period if cancelled at above date.\n\nThe granularity of the date field is a day, the start and end\nof which are to be interpreted by the IXP (some may use UTC,\nsome may use their local time zone).",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        },
+        {
+          "name": "decommission_at",
+          "schema": "string",
+          "required": false,
+          "description": "By providing a date in the format `YYYY-MM-DD` you can\nquery the policy what would happen if you request a\ndecommissioning on this date."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/network-services",
+      "method": "networkServicesList",
+      "httpMethod": "get",
+      "tag": "network-services",
+      "description": "List available `NetworkService`s.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "array",
+          "required": false,
+          "description": "Filter by id"
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by state"
+        },
+        {
+          "name": "state__is_not",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by state__is_not"
+        },
+        {
+          "name": "managing_account",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by managing_account"
+        },
+        {
+          "name": "consuming_account",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by consuming_account"
+        },
+        {
+          "name": "external_ref",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by external_ref"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by type"
+        },
+        {
+          "name": "pop",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by pop"
+        },
+        {
+          "name": "product_offering",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by product_offering"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/network-services",
+      "method": "networkServicesCreate",
+      "httpMethod": "post",
+      "tag": "network-services",
+      "description": "Create a new network service",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Polymorphic Network Services"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/network-services/{id}",
+      "method": "networkServicesDestroy",
+      "httpMethod": "delete",
+      "tag": "network-services",
+      "description": "Request decomissioning of the network service.\n\nThe network service will enter the state of\n`decommission_requested`. The request will\ncascade to related network service and feature\nconfigs.\n\nAn *optional request body* can be provided to request\na specific service termination date.\n\nIf no date is given in the request body, it is assumed to\nbe the earliest possible date.\n\nPossible values for `decommission_at` can be queried\nthrough the `network_service_cancellation_policy_read`\noperation.\n\nThe response will contain the dates on which the\nchanges will be effected.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": "Polymorphic Network Services"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/network-services/{id}",
+      "method": "networkServicesRead",
+      "httpMethod": "get",
+      "tag": "network-services",
+      "description": "Get a specific `network-service` by id.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Polymorphic Network Services"
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/network-services/{id}",
+      "method": "networkServicesPartialUpdate",
+      "httpMethod": "patch",
+      "tag": "network-services",
+      "description": "Partially update a network service",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": "Polymorphic Network Services"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/network-services/{id}",
+      "method": "networkServicesUpdate",
+      "httpMethod": "put",
+      "tag": "network-services",
+      "description": "Update a network service",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": "Polymorphic Network Services"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/network-services/{id}/cancellation-policy",
+      "method": "networkServiceCancellationPolicyRead",
+      "httpMethod": "get",
+      "tag": "network-services",
+      "description": "The cancellation-policy can be queried to answer\nthe questions:\n\nIf I cancel my service, *when will it be technically\ndecommissioned*?\nIf I cancel my service, *until what date will I be charged*?\n\nWhen the query parameter `decommision_at` is not provided\nit will provide the first possible cancellation date\nand charge period if cancelled at above date.\n\nThe granularity of the date field is a day, the start and end\nof which are to be interpreted by the IXP (some may use UTC,\nsome may use their local time zone).",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        },
+        {
+          "name": "decommission_at",
+          "schema": "string",
+          "required": false,
+          "description": "By providing a date in the format `YYYY-MM-DD` you can\nquery the policy what would happen if you request a\ndecommissioning on this date."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/network-services/{id}/change-request",
+      "method": "networkServiceChangeRequestDestroy",
+      "httpMethod": "delete",
+      "tag": "network-services",
+      "description": "Retract or reject a change to the network service.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/network-services/{id}/change-request",
+      "method": "networkServiceChangeRequestRead",
+      "httpMethod": "get",
+      "tag": "network-services",
+      "description": "Get the change request.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/network-services/{id}/change-request",
+      "method": "networkServiceChangeRequestCreate",
+      "httpMethod": "post",
+      "tag": "network-services",
+      "description": "Request a change to the network service.\n\nA participant in a network service of type\n`p2p_vc` can issue a change request, expressing a\ndesired change in the capacity.\nThe change is accepted when all sides have configured\nthe network service configs with the new bandwidth.\nThese changes can sometimes require a change of the\nproduct offering.\nThe product offering may only differ in regards to\nbandwidth.\n\nThe network service will change it's state from `production`\ninto `production_change_pending`.\n\nOnly one change request may be issued at a time.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/pops",
+      "method": "popsList",
+      "httpMethod": "get",
+      "tag": "pops",
+      "description": "List all PoPs",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "array",
+          "required": false,
+          "description": "Filter by id"
+        },
+        {
+          "name": "facility",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by facility"
+        },
+        {
+          "name": "metro_area_network",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by metro_area_network"
+        },
+        {
+          "name": "capability_media_type",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by capability_media_type"
+        },
+        {
+          "name": "capability_speed",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by capability_speed"
+        },
+        {
+          "name": "capability_speed__lt",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by capability_speed__lt"
+        },
+        {
+          "name": "capability_speed__lte",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by capability_speed__lte"
+        },
+        {
+          "name": "capability_speed__gt",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by capability_speed__gt"
+        },
+        {
+          "name": "capability_speed__gte",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by capability_speed__gte"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/pops/{id}",
+      "method": "popsRead",
+      "httpMethod": "get",
+      "tag": "pops",
+      "description": "Get a single point of presence",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ports",
+      "method": "portsList",
+      "httpMethod": "get",
+      "tag": "ports",
+      "description": "List all ports.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "array",
+          "required": false,
+          "description": "Filter by id"
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by state"
+        },
+        {
+          "name": "state__is_not",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by state__is_not"
+        },
+        {
+          "name": "media_type",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by media_type"
+        },
+        {
+          "name": "pop",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by pop"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by name"
+        },
+        {
+          "name": "external_ref",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by external_ref"
+        },
+        {
+          "name": "device",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by device"
+        },
+        {
+          "name": "speed",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by speed"
+        },
+        {
+          "name": "connection",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by connection"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ports/{id}",
+      "method": "portsRead",
+      "httpMethod": "get",
+      "tag": "ports",
+      "description": "Retrieve a port.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/product-offerings",
+      "method": "productOfferingsList",
+      "httpMethod": "get",
+      "tag": "product-offerings",
+      "description": "List all (filtered) products-offerings available on the platform",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "array",
+          "required": false,
+          "description": "Filter by id"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by type"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by name"
+        },
+        {
+          "name": "handover_metro_area",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by handover_metro_area"
+        },
+        {
+          "name": "handover_metro_area_network",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by handover_metro_area_network"
+        },
+        {
+          "name": "service_metro_area",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by service_metro_area"
+        },
+        {
+          "name": "service_metro_area_network",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by service_metro_area_network"
+        },
+        {
+          "name": "service_provider",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by service_provider"
+        },
+        {
+          "name": "downgrade_allowed",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by downgrade_allowed"
+        },
+        {
+          "name": "upgrade_allowed",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by upgrade_allowed"
+        },
+        {
+          "name": "bandwidth",
+          "schema": "integer",
+          "required": false,
+          "description": "Find product offerings where bandwidth is\nwithin the range of `bandwidth_min` and `bandwidth_max`."
+        },
+        {
+          "name": "physical_port_speed",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by physical_port_speed"
+        },
+        {
+          "name": "service_provider_region",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by service_provider_region"
+        },
+        {
+          "name": "service_provider_pop",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by service_provider_pop"
+        },
+        {
+          "name": "delivery_method",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by delivery_method"
+        },
+        {
+          "name": "cloud_key",
+          "schema": "string",
+          "required": false,
+          "description": "For product offerings of type `cloud_vc`, if the\n`service_provider_workflow` is `provider_first` the\n`cloud_key` will be used for filtering the relevant\nofferings."
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "Returned objects only have properties which are\npresent in the list of fields.\nThe required `type` property is *implicitly* included.\nThe results are *deduplicated*.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/product-offerings/{id}",
+      "method": "productOfferingsRead",
+      "httpMethod": "get",
+      "tag": "product-offerings",
+      "description": "Get a single products-offering by id.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Polymorphic Product Offering"
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/role-assignments",
+      "method": "roleAssignmentsList",
+      "httpMethod": "get",
+      "tag": "role-assignments",
+      "description": "List all role assignments for a contact.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "array",
+          "required": false,
+          "description": "Filter by id"
+        },
+        {
+          "name": "contact",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by contact"
+        },
+        {
+          "name": "role",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by role"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/role-assignments",
+      "method": "roleAssignmentsCreate",
+      "httpMethod": "post",
+      "tag": "role-assignments",
+      "description": "Assign a `Role` to a `Contact`.\n\nThe contact needs to have all fields filled, which the\nrole requires. If this is not the case a `400`\n`UnableToFulfill` will be returned.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/role-assignments/{assignment_id}",
+      "method": "roleAssignmentsDestroy",
+      "httpMethod": "delete",
+      "tag": "role-assignments",
+      "description": "Remove a role assignment from a contact.\n\nIf the contact is still in use with a given role required,\nthis will yield an `UnableToFulfill` error.",
+      "parameters": [
+        {
+          "name": "assignment_id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by assignment_id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/role-assignments/{assignment_id}",
+      "method": "roleAssignmentsRead",
+      "httpMethod": "get",
+      "tag": "role-assignments",
+      "description": "Get a role assignment for a contact.",
+      "parameters": [
+        {
+          "name": "assignment_id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by assignment_id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/roles",
+      "method": "rolesList",
+      "httpMethod": "get",
+      "tag": "roles",
+      "description": "List all roles available.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "array",
+          "required": false,
+          "description": "Filter by id"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by name"
+        },
+        {
+          "name": "contact",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by contact"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/roles/{id}",
+      "method": "rolesRead",
+      "httpMethod": "get",
+      "tag": "roles",
+      "description": "Get a single `Role`.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Get by id"
+        },
+        {
+          "name": "id",
+          "schema": "array",
+          "required": false,
+          "description": "Filter by id"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "/api/v2",
   "apiDescription": "\nThis API allows to config/change/delete Internet Exchange services.\n\n# Filters\n\nWhen querying collections, the provided query parameters\nare validated. Unknown query parameters are ignored.\nProviding invalid filter values should yield a validation error.\n",
   "apiTitle": "IX-API",

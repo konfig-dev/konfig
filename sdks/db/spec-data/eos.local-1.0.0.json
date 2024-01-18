@@ -3,6 +3,81 @@
   "openApiRaw": "https://gist.githubusercontent.com/MikeRalphson/9b1349082ac4eca3660eaf6ad31e70d2/raw/88dacf4280e9aca949b5f4692904229fdf2457ff/swagger(1).json",
   "homepage": "eos.local",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/net/connect",
+      "method": "connect",
+      "httpMethod": "post",
+      "description": "connect",
+      "parameters": [
+        {
+          "name": "endpoint",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "\"already connected\" or \"added connection\""
+        }
+      ]
+    },
+    {
+      "url": "/net/connections",
+      "method": "connections",
+      "httpMethod": "post",
+      "description": "connections",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/net/disconnect",
+      "method": "disconnect",
+      "httpMethod": "post",
+      "description": "disconnect",
+      "parameters": [
+        {
+          "name": "endpoint",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "\"connection removed\" or \"no known connection for host\""
+        }
+      ]
+    },
+    {
+      "url": "/net/status",
+      "method": "status",
+      "httpMethod": "post",
+      "description": "status",
+      "parameters": [
+        {
+          "name": "endpoint",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://eos.local",
   "apiTitle": "Net API",
   "endpoints": 4,

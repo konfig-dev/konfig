@@ -3,6 +3,39 @@
   "openApiRaw": "https://fcm.googleapis.com/$discovery/rest?version=v1",
   "homepage": "javatpoint.com",
   "apiVersion": "v1",
+  "methods": [
+    {
+      "url": "/v1/{parent}/messages:send",
+      "method": "fcmProjectsMessagesSend",
+      "httpMethod": "post",
+      "tag": "projects",
+      "description": "Send a message to specified target (a registration token, topic or condition).",
+      "parameters": [
+        {
+          "name": "parent",
+          "schema": "string",
+          "required": true,
+          "description": "Required. It contains the Firebase project id (i.e. the unique identifier for your Firebase project), in the format of `projects/{project_id}`. For legacy support, the numeric project number with no padding is also supported in the format of `projects/{project_number}`."
+        },
+        {
+          "name": "message",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "validateOnly",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Message to send by Firebase Cloud Messaging Service."
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://fcm.googleapis.com/",
   "apiDescription": "FCM send API that provides a cross-platform messaging solution to reliably deliver messages at no cost.",
   "apiTitle": "Firebase Cloud Messaging API",

@@ -4,6 +4,74 @@
   "homepage": "import.io",
   "serviceName": "run",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/extractor/{extractorId}/cancel",
+      "method": "/extractor/{extractorId}/cancelPost",
+      "httpMethod": "post",
+      "tag": "run.import.io",
+      "description": "Cancel an existing crawl.",
+      "parameters": [
+        {
+          "name": "extractorId",
+          "schema": "string",
+          "required": true,
+          "description": "extractorId"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/extractor/{extractorId}/start",
+      "method": "/extractor/{extractorId}/startPost",
+      "httpMethod": "post",
+      "tag": "run.import.io",
+      "description": "Launch a crawl from an extractor that a user owns.",
+      "parameters": [
+        {
+          "name": "extractorId",
+          "schema": "string",
+          "required": true,
+          "description": "the id of the extractor to start crawling with"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://run.import.io",
   "apiTitle": "import.io",
   "endpoints": 2,

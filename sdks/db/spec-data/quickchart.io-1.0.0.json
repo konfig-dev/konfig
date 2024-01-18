@@ -3,6 +3,164 @@
   "openApiRaw": "https://quickchart.io/openapi.yaml",
   "homepage": "quickchart.io",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/chart",
+      "method": "/chartGet",
+      "httpMethod": "get",
+      "description": "Generate a chart (GET)",
+      "parameters": [
+        {
+          "name": "chart",
+          "schema": "string",
+          "description": "The chart configuration in Chart.js format (JSON or Javascript)."
+        },
+        {
+          "name": "width",
+          "schema": "integer",
+          "description": "The width of the chart in pixels."
+        },
+        {
+          "name": "height",
+          "schema": "integer",
+          "description": "The height of the chart in pixels."
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "description": "The output format of the chart, 'png', 'jpg', 'svg', or 'webp'."
+        },
+        {
+          "name": "backgroundColor",
+          "schema": "string",
+          "description": "The background color of the chart."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/chart",
+      "method": "/chartPost",
+      "httpMethod": "post",
+      "description": "Generate a chart (POST)",
+      "parameters": [
+        {
+          "name": "backgroundColor",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "chart",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "height",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "width",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/qr",
+      "method": "/qrGet",
+      "httpMethod": "get",
+      "description": "Generate a QR code (GET)",
+      "parameters": [
+        {
+          "name": "text",
+          "schema": "string",
+          "description": "The text to be encoded in the QR code."
+        },
+        {
+          "name": "width",
+          "schema": "integer",
+          "description": "The width of the QR code in pixels."
+        },
+        {
+          "name": "height",
+          "schema": "integer",
+          "description": "The height of the QR code in pixels."
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "description": "The output format of the QR code, e.g., 'png' or 'svg'."
+        },
+        {
+          "name": "margin",
+          "schema": "integer",
+          "description": "The margin around the QR code in pixels."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/qr",
+      "method": "/qrPost",
+      "httpMethod": "post",
+      "description": "Generate a QR code (POST)",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "height",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "margin",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "text",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "width",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://quickchart.io",
   "apiDescription": "An API to generate charts and QR codes using QuickChart services.",
   "apiTitle": "QuickChart API",

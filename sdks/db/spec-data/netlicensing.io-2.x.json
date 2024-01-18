@@ -3,6 +3,1514 @@
   "openApiRaw": "http://io.labs64.com/NetLicensing-API/v2.x/netlicensing.json",
   "homepage": "netlicensing.io",
   "apiVersion": "2.x",
+  "methods": [
+    {
+      "url": "/license",
+      "method": "listLicenses",
+      "httpMethod": "get",
+      "tag": "License",
+      "description": "List Licenses",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/license",
+      "method": "createLicense",
+      "httpMethod": "post",
+      "tag": "License",
+      "description": "Create License",
+      "parameters": [
+        {
+          "name": "active",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "currency",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "hidden",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "licenseTemplateNumber",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "licenseeNumber",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "number",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parentfeature",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "price",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "quantity",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "timeVolume",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "timeVolumePeriod",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "usedQuantity",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/license/{licenseNumber}",
+      "method": "deleteLicense",
+      "httpMethod": "delete",
+      "tag": "License",
+      "description": "Delete License",
+      "parameters": [
+        {
+          "name": "licenseNumber",
+          "schema": "string",
+          "required": true,
+          "description": "Unique number (across all Products/Licensees of a Vendor) that identifies the License. Vendor can assign this number when creating a License or let NetLicensing generate one. Read-only after corresponding creation Transaction status is set to closed."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/license/{licenseNumber}",
+      "method": "getLicense",
+      "httpMethod": "get",
+      "tag": "License",
+      "description": "Get License",
+      "parameters": [
+        {
+          "name": "licenseNumber",
+          "schema": "string",
+          "required": true,
+          "description": "Unique number (across all Products/Licensees of a Vendor) that identifies the License. Vendor can assign this number when creating a License or let NetLicensing generate one. Read-only after corresponding creation Transaction status is set to closed."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/license/{licenseNumber}",
+      "method": "updateLicense",
+      "httpMethod": "post",
+      "tag": "License",
+      "description": "Update License",
+      "parameters": [
+        {
+          "name": "licenseNumber",
+          "schema": "string",
+          "required": true,
+          "description": "Unique number (across all Products/Licensees of a Vendor) that identifies the License. Vendor can assign this number when creating a License or let NetLicensing generate one. Read-only after corresponding creation Transaction status is set to closed."
+        },
+        {
+          "name": "active",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "currency",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "hidden",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "number",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "parentfeature",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "price",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "quantity",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "timeVolume",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "timeVolumePeriod",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "usedQuantity",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/licensee",
+      "method": "listLicensees",
+      "httpMethod": "get",
+      "tag": "Licensee",
+      "description": "List Licensees",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/licensee",
+      "method": "createLicensee",
+      "httpMethod": "post",
+      "tag": "Licensee",
+      "description": "Create Licensee",
+      "parameters": [
+        {
+          "name": "active",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "markedForTransfer",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "number",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "productNumber",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/licensee/{licenseeNumber}",
+      "method": "deleteLicensee",
+      "httpMethod": "delete",
+      "tag": "Licensee",
+      "description": "Delete Licensee",
+      "parameters": [
+        {
+          "name": "licenseeNumber",
+          "schema": "string",
+          "required": true,
+          "description": "Unique number (across all Products of a Vendor) that identifies the Licensee."
+        },
+        {
+          "name": "forceCascade",
+          "schema": "boolean",
+          "required": false,
+          "description": "Force object deletion and all descendants."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/licensee/{licenseeNumber}",
+      "method": "getLicensee",
+      "httpMethod": "get",
+      "tag": "Licensee",
+      "description": "Get Licensee",
+      "parameters": [
+        {
+          "name": "licenseeNumber",
+          "schema": "string",
+          "required": true,
+          "description": "Unique number (across all Products of a Vendor) that identifies the Licensee. Vendor can assign this number when creating a Licensee or let NetLicensing generate one. Read-only after creation of the first License for the Licensee."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/licensee/{licenseeNumber}",
+      "method": "updateLicensee",
+      "httpMethod": "post",
+      "tag": "Licensee",
+      "description": "Update Licensee",
+      "parameters": [
+        {
+          "name": "licenseeNumber",
+          "schema": "string",
+          "required": true,
+          "description": "Unique number (across all Products of a Vendor) that identifies the Licensee. Vendor can assign this number when creating a Licensee or let NetLicensing generate one. Read-only after creation of the first License for the Licensee."
+        },
+        {
+          "name": "active",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "markedForTransfer",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "number",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/licensee/{licenseeNumber}/transfer",
+      "method": "transferLicenses",
+      "httpMethod": "post",
+      "tag": "Licensee",
+      "description": "Transfer Licenses",
+      "parameters": [
+        {
+          "name": "licenseeNumber",
+          "schema": "string",
+          "required": true,
+          "description": "Licensee number with a maximum length of 1000 characters"
+        },
+        {
+          "name": "sourceLicenseeNumber",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/licensee/{licenseeNumber}/validate",
+      "method": "validateLicensee",
+      "httpMethod": "post",
+      "tag": "Licensee",
+      "description": "Validate Licensee",
+      "parameters": [
+        {
+          "name": "licenseeNumber",
+          "schema": "string",
+          "required": true,
+          "description": "Licensee number with a maximum length of 1000 characters"
+        },
+        {
+          "name": "action",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "licenseeName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "nodeSecret",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "productModuleNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "productNumber",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sessionId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/licensetemplate",
+      "method": "listLicenseTemplates",
+      "httpMethod": "get",
+      "tag": "License Template",
+      "description": "List License Templates",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/licensetemplate",
+      "method": "createLicenseTemplate",
+      "httpMethod": "post",
+      "tag": "License Template",
+      "description": "Create License Template",
+      "parameters": [
+        {
+          "name": "active",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "automatic",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "currency",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "hidden",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "hideLicenses",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "licenseType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "maxSessions",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "number",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "price",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "productModuleNumber",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "quantity",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "quota",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "timeVolume",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "timeVolumePeriod",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/licensetemplate/{licenseTemplateNumber}",
+      "method": "deleteLicenseTemplate",
+      "httpMethod": "delete",
+      "tag": "License Template",
+      "description": "Delete License Template",
+      "parameters": [
+        {
+          "name": "licenseTemplateNumber",
+          "schema": "string",
+          "required": true,
+          "description": "Unique number (across all Products of a Vendor) that identifies the License Template."
+        },
+        {
+          "name": "forceCascade",
+          "schema": "boolean",
+          "required": false,
+          "description": "Force object deletion and all descendants."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/licensetemplate/{licenseTemplateNumber}",
+      "method": "getLicenseTemplate",
+      "httpMethod": "get",
+      "tag": "License Template",
+      "description": "Get License Template",
+      "parameters": [
+        {
+          "name": "licenseTemplateNumber",
+          "schema": "string",
+          "required": true,
+          "description": "Unique number (across all Products of a Vendor) that identifies the License Template. Vendor can assign this number when creating a License Template or let NetLicensing generate one. Read-only after creation of the first License from this License Template."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/licensetemplate/{licenseTemplateNumber}",
+      "method": "updateLicenseTemplate",
+      "httpMethod": "post",
+      "tag": "License Template",
+      "description": "Update License Template",
+      "parameters": [
+        {
+          "name": "licenseTemplateNumber",
+          "schema": "string",
+          "required": true,
+          "description": "Unique number (across all Products of a Vendor) that identifies the License Template. Vendor can assign this number when creating a License Template or let NetLicensing generate one. Read-only after creation of the first License from this License Template."
+        },
+        {
+          "name": "active",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "automatic",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "currency",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "hidden",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "hideLicenses",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "licenseType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "maxSessions",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "number",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "price",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "quantity",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "quota",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "timeVolume",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "timeVolumePeriod",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/paymentmethod",
+      "method": "listPaymentMethods",
+      "httpMethod": "get",
+      "tag": "Payment Method",
+      "description": "List Payment Methods",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/paymentmethod/{paymentMethodNumber}",
+      "method": "getPaymentMethod",
+      "httpMethod": "get",
+      "tag": "Payment Method",
+      "description": "Get Payment Method",
+      "parameters": [
+        {
+          "name": "paymentMethodNumber",
+          "schema": "string",
+          "required": true,
+          "description": "Payment method number"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/paymentmethod/{paymentMethodNumber}",
+      "method": "updatePaymentMethod",
+      "httpMethod": "post",
+      "tag": "Payment Method",
+      "description": "Update Payment Method",
+      "parameters": [
+        {
+          "name": "paymentMethodNumber",
+          "schema": "string",
+          "required": true,
+          "description": "Payment method number"
+        },
+        {
+          "name": "active",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "paypal.subject",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/product",
+      "method": "listProducts",
+      "httpMethod": "get",
+      "tag": "Product",
+      "description": "List Products",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/product",
+      "method": "createProduct",
+      "httpMethod": "post",
+      "tag": "Product",
+      "description": "Create Product",
+      "parameters": [
+        {
+          "name": "active",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "licenseeAutoCreate",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "licensingInfo",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "number",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "vatMode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/product/{productNumber}",
+      "method": "deleteProduct",
+      "httpMethod": "delete",
+      "tag": "Product",
+      "description": "Delete Product",
+      "parameters": [
+        {
+          "name": "productNumber",
+          "schema": "string",
+          "required": true,
+          "description": "Unique number that identifies the Product."
+        },
+        {
+          "name": "forceCascade",
+          "schema": "boolean",
+          "required": false,
+          "description": "Force object deletion and all descendants."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/product/{productNumber}",
+      "method": "productNumber",
+      "httpMethod": "get",
+      "tag": "Product",
+      "description": "Get Product",
+      "parameters": [
+        {
+          "name": "productNumber",
+          "schema": "string",
+          "required": true,
+          "description": "Unique number that identifies the Product."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/product/{productNumber}",
+      "method": "updateProduct",
+      "httpMethod": "post",
+      "tag": "Product",
+      "description": "Update Product",
+      "parameters": [
+        {
+          "name": "productNumber",
+          "schema": "string",
+          "required": true,
+          "description": "Unique number that identifies the Product."
+        },
+        {
+          "name": "active",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "licenseeAutoCreate",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "licensingInfo",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "number",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "vatMode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/productmodule",
+      "method": "listProductModules",
+      "httpMethod": "get",
+      "tag": "Product Module",
+      "description": "List Product Modules",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/productmodule",
+      "method": "createProductModule",
+      "httpMethod": "post",
+      "tag": "Product Module",
+      "description": "Create Product Module",
+      "parameters": [
+        {
+          "name": "active",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "licenseTemplate",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "licensingModel",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "maxCheckoutValidity",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "nodeSecretMode",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "number",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "productNumber",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "redThreshold",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "yellowThreshold",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/productmodule/{productModuleNumber}",
+      "method": "deleteProductModule",
+      "httpMethod": "delete",
+      "tag": "Product Module",
+      "description": "Delete Product Module",
+      "parameters": [
+        {
+          "name": "productModuleNumber",
+          "schema": "string",
+          "required": true,
+          "description": "Unique number (across all Products of a Vendor) that identifies the Product Module."
+        },
+        {
+          "name": "forceCascade",
+          "schema": "boolean",
+          "required": false,
+          "description": "Force object deletion and all descendants."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/productmodule/{productModuleNumber}",
+      "method": "getProductModule",
+      "httpMethod": "get",
+      "tag": "Product Module",
+      "description": "Get Product Module",
+      "parameters": [
+        {
+          "name": "productModuleNumber",
+          "schema": "string",
+          "required": true,
+          "description": "Unique number (across all Products of a Vendor) that identifies the Product Module. Vendor can assign this number when creating a Product Module or let NetLicensing generate one. Read-only after creation of the first Licensee for the Product."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/productmodule/{productModuleNumber}",
+      "method": "updateProductModule",
+      "httpMethod": "post",
+      "tag": "Product Module",
+      "description": "Update Product Module",
+      "parameters": [
+        {
+          "name": "productModuleNumber",
+          "schema": "string",
+          "required": true,
+          "description": "Unique number (across all Products of a Vendor) that identifies the Product Module. Vendor can assign this number when creating a Product Module or let NetLicensing generate one. Read-only after creation of the first Licensee for the Product."
+        },
+        {
+          "name": "active",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "licenseTemplate",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "licensingModel",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "maxCheckoutValidity",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "nodeSecretMode",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "number",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "redThreshold",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "yellowThreshold",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/token",
+      "method": "listTokens",
+      "httpMethod": "get",
+      "tag": "Token",
+      "description": "List Tokens",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/token",
+      "method": "createToken",
+      "httpMethod": "post",
+      "tag": "Token",
+      "description": "Create token",
+      "parameters": [
+        {
+          "name": "action",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "apiKeyRole",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "cancelURL",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "cancelURLTitle",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "licenseTemplateNumber",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "licenseeNumber",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "predefinedShoppingItem",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "privateKey",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "productNumber",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "successURL",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "successURLTitle",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "tokenType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/token/{tokenNumber}",
+      "method": "deleteToken",
+      "httpMethod": "delete",
+      "tag": "Token",
+      "description": "Delete token",
+      "parameters": [
+        {
+          "name": "tokenNumber",
+          "schema": "string",
+          "required": true,
+          "description": "Token number"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/token/{tokenNumber}",
+      "method": "getToken",
+      "httpMethod": "get",
+      "tag": "Token",
+      "description": "Get token",
+      "parameters": [
+        {
+          "name": "tokenNumber",
+          "schema": "string",
+          "required": true,
+          "description": "Token number"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/transaction",
+      "method": "listTransactions",
+      "httpMethod": "get",
+      "tag": "Transaction",
+      "description": "List Transactions",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/transaction",
+      "method": "createTransaction",
+      "httpMethod": "post",
+      "tag": "Transaction",
+      "description": "Create Transaction",
+      "parameters": [
+        {
+          "name": "active",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "dateClosed",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dateCreated",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "licenseeNumber",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "number",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "paymentMethod",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "source",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/transaction/{transactionNumber}",
+      "method": "getTransaction",
+      "httpMethod": "get",
+      "tag": "Transaction",
+      "description": "Get Transaction ",
+      "parameters": [
+        {
+          "name": "transactionNumber",
+          "schema": "string",
+          "required": true,
+          "description": "Unique number (across all Products of a Vendor) that identifies the Transaction"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/transaction/{transactionNumber}",
+      "method": "updateTransaction",
+      "httpMethod": "post",
+      "tag": "Transaction",
+      "description": "Update Transaction",
+      "parameters": [
+        {
+          "name": "transactionNumber",
+          "schema": "string",
+          "required": true,
+          "description": "Unique number (across all Products of a Vendor) that identifies the Transaction"
+        },
+        {
+          "name": "active",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "dateClosed",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "dateCreated",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "number",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "paymentMethod",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "source",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/utility/licenseTypes",
+      "method": "licenseTypes",
+      "httpMethod": "get",
+      "tag": "Utility",
+      "description": "List License Types",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/utility/licensingModels",
+      "method": "licensingModels",
+      "httpMethod": "get",
+      "tag": "Utility",
+      "description": "List Licensing Models",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://go.netlicensing.io/core/v2/rest",
   "apiDescription": "The Labs64 <a href='https://netlicensing.io/wiki/restful-api' target='_blank'>NetLicensing RESTful API</a> gives you access to NetLicensing’s core features.<br/><br/><strong>Authentication</strong><br/>You authenticate to the NetLicensing API by providing your account credentials or simply use our demo account - <code>demo:demo</code><br/><br/>Find out more about Labs64 NetLicensing at <a href='https://netlicensing.io' target='_blank'>netlicensing.io</a>",
   "apiTitle": "Labs64 NetLicensing RESTful API Test Center",

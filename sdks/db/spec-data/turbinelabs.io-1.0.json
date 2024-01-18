@@ -3,6 +3,1559 @@
   "openApiRaw": "https://raw.githubusercontent.com/turbinelabs/api/master/swagger.yml",
   "homepage": "turbinelabs.io",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/admin/user/self",
+      "method": "/admin/user/selfGet",
+      "httpMethod": "get",
+      "tag": "User Management",
+      "description": "Returns the user object for the account authorized and making this request.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/admin/user/self/access_token/{access-token-key}",
+      "method": "/admin/user/self/accessToken/{accessTokenKey}Delete",
+      "httpMethod": "delete",
+      "tag": "User Management",
+      "description": "Delete the specified access token.",
+      "parameters": [
+        {
+          "name": "access-token-key",
+          "schema": "string",
+          "required": true,
+          "description": "the key of the Access Token that should be deleted"
+        },
+        {
+          "name": "checksum",
+          "schema": "string",
+          "required": true,
+          "description": "the current checksum of the user to be modified"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/admin/user/self/access_tokens",
+      "method": "/admin/user/self/accessTokensGet",
+      "httpMethod": "get",
+      "tag": "User Management",
+      "description": "Lists Access Tokens that are configured for the authenticated user.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/admin/user/self/access_tokens",
+      "method": "/admin/user/self/accessTokensPost",
+      "httpMethod": "post",
+      "tag": "User Management",
+      "description": "Creates a new Access Token and associates it with the authenticated user.",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/changelog/adhoc",
+      "method": "/changelog/adhocGet",
+      "httpMethod": "get",
+      "tag": "Audit Log",
+      "description": "Allows an arbitrary filter to be specified and applied to the org\\'s change log.",
+      "parameters": [
+        {
+          "name": "filter",
+          "schema": "string",
+          "description": "Encoded FilterSums representing the query you would like to execute. See object definition for details."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/changelog/cluster-graph/{clusterKey}",
+      "method": "/changelog/clusterGraph/{clusterKey}Get",
+      "httpMethod": "get",
+      "tag": "Audit Log",
+      "description": "get changes related to the indicated cluster",
+      "parameters": [
+        {
+          "name": "clusterKey",
+          "schema": "string",
+          "required": true,
+          "description": "the cluster key to see an audit log for"
+        },
+        {
+          "name": "start",
+          "schema": "number",
+          "required": false,
+          "description": "The beginning of the window we want to see changes for; measured in\nmicroseconds since Unix Epoch.\n"
+        },
+        {
+          "name": "end",
+          "schema": "number",
+          "required": false,
+          "description": "The end of the window we want to see changes for; measured in\nmicroseconds since Unix Epoch.\n"
+        },
+        {
+          "name": "max_results",
+          "schema": "number",
+          "required": false,
+          "description": "Determines how many ChangeDescription object should be returned to\nthe calling code.\n"
+        },
+        {
+          "name": "ref_id",
+          "schema": "string",
+          "required": false,
+          "description": "When paginating a Changelog request start on the entry that comes\nimmediately before or after this ID (as determined by the direction\nargument).\n"
+        },
+        {
+          "name": "direction",
+          "schema": "string",
+          "required": false,
+          "description": "If set to \"before\" then changes will be returned that occurred before\nreference ID. If \"after\" then changes will be returned that have\noccurred since the reference ID.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/changelog/domain-graph/{domainKey}",
+      "method": "/changelog/domainGraph/{domainKey}Get",
+      "httpMethod": "get",
+      "tag": "Audit Log",
+      "description": "get changes related to the indicated domain",
+      "parameters": [
+        {
+          "name": "domainKey",
+          "schema": "string",
+          "required": true,
+          "description": "the domain key to see an audit log for"
+        },
+        {
+          "name": "start",
+          "schema": "number",
+          "required": false,
+          "description": "The beginning of the window we want to see changes for; measured in\nmicroseconds since Unix Epoch.\n"
+        },
+        {
+          "name": "end",
+          "schema": "number",
+          "required": false,
+          "description": "The end of the window we want to see changes for; measured in\nmicroseconds since Unix Epoch.\n"
+        },
+        {
+          "name": "max_results",
+          "schema": "number",
+          "required": false,
+          "description": "Determines how many ChangeDescription object should be returned to\nthe calling code.\n"
+        },
+        {
+          "name": "ref_id",
+          "schema": "string",
+          "required": false,
+          "description": "When paginating a Changelog request start on the entry that comes\nimmediately before or after this ID (as determined by the direction\nargument).\n"
+        },
+        {
+          "name": "direction",
+          "schema": "string",
+          "required": false,
+          "description": "If set to \"before\" then changes will be returned that occurred before\nreference ID. If \"after\" then changes will be returned that have\noccurred since the reference ID.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/changelog/route-graph/{routeKey}",
+      "method": "/changelog/routeGraph/{routeKey}Get",
+      "httpMethod": "get",
+      "tag": "Audit Log",
+      "description": "get changes related to the indicated route",
+      "parameters": [
+        {
+          "name": "routeKey",
+          "schema": "string",
+          "required": true,
+          "description": "the route key to see an audit log for"
+        },
+        {
+          "name": "start",
+          "schema": "number",
+          "required": false,
+          "description": "The beginning of the window we want to see changes for; measured in\nmicroseconds since Unix Epoch.\n"
+        },
+        {
+          "name": "end",
+          "schema": "number",
+          "required": false,
+          "description": "The end of the window we want to see changes for; measured in\nmicroseconds since Unix Epoch.\n"
+        },
+        {
+          "name": "max_results",
+          "schema": "number",
+          "required": false,
+          "description": "Determines how many ChangeDescription object should be returned to\nthe calling code.\n"
+        },
+        {
+          "name": "ref_id",
+          "schema": "string",
+          "required": false,
+          "description": "When paginating a Changelog request start on the entry that comes\nimmediately before or after this ID (as determined by the direction\nargument).\n"
+        },
+        {
+          "name": "direction",
+          "schema": "string",
+          "required": false,
+          "description": "If set to \"before\" then changes will be returned that occurred before\nreference ID. If \"after\" then changes will be returned that have\noccurred since the reference ID.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/changelog/shared-rules-graph/{sharedRulesKey}",
+      "method": "/changelog/sharedRulesGraph/{sharedRulesKey}Get",
+      "httpMethod": "get",
+      "tag": "Audit Log",
+      "description": "get changes related to the indicated SharedRules",
+      "parameters": [
+        {
+          "name": "sharedRulesKey",
+          "schema": "string",
+          "required": true,
+          "description": "the shared rules key to see an audit log for"
+        },
+        {
+          "name": "start",
+          "schema": "number",
+          "required": false,
+          "description": "The beginning of the window we want to see changes for; measured in\nmicroseconds since Unix Epoch.\n"
+        },
+        {
+          "name": "end",
+          "schema": "number",
+          "required": false,
+          "description": "The end of the window we want to see changes for; measured in\nmicroseconds since Unix Epoch.\n"
+        },
+        {
+          "name": "max_results",
+          "schema": "number",
+          "required": false,
+          "description": "Determines how many ChangeDescription object should be returned to\nthe calling code.\n"
+        },
+        {
+          "name": "ref_id",
+          "schema": "string",
+          "required": false,
+          "description": "When paginating a Changelog request start on the entry that comes\nimmediately before or after this ID (as determined by the direction\nargument).\n"
+        },
+        {
+          "name": "direction",
+          "schema": "string",
+          "required": false,
+          "description": "If set to \"before\" then changes will be returned that occurred before\nreference ID. If \"after\" then changes will be returned that have\noccurred since the reference ID.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/changelog/zone/{zoneKey}",
+      "method": "/changelog/zone/{zoneKey}Get",
+      "httpMethod": "get",
+      "tag": "Audit Log",
+      "description": "get changes in a specified zone",
+      "parameters": [
+        {
+          "name": "zoneKey",
+          "schema": "string",
+          "required": true,
+          "description": "the zone key to see an audit log for"
+        },
+        {
+          "name": "start",
+          "schema": "number",
+          "required": false,
+          "description": "The beginning of the window we want to see changes for; measured in\nmicroseconds since Unix Epoch.\n"
+        },
+        {
+          "name": "end",
+          "schema": "number",
+          "required": false,
+          "description": "The end of the window we want to see changes for; measured in\nmicroseconds since Unix Epoch.\n"
+        },
+        {
+          "name": "max_results",
+          "schema": "number",
+          "required": false,
+          "description": "Determines how many ChangeDescription object should be returned to\nthe calling code.\n"
+        },
+        {
+          "name": "ref_id",
+          "schema": "string",
+          "required": false,
+          "description": "When paginating a Changelog request start on the entry that comes\nimmediately before or after this ID (as determined by the direction\nargument).\n"
+        },
+        {
+          "name": "direction",
+          "schema": "string",
+          "required": false,
+          "description": "If set to \"before\" then changes will be returned that occurred before\nreference ID. If \"after\" then changes will be returned that have\noccurred since the reference ID.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cluster",
+      "method": "/clusterGet",
+      "httpMethod": "get",
+      "tag": "Cluster",
+      "description": "get clusters",
+      "parameters": [
+        {
+          "name": "filters",
+          "schema": "string",
+          "description": "A JSON encoded array of ClusterFilter objects. The filter is taken\nas a union of intersections. In other words an object that matches\nevery constraint in any ClusterFilter will be included.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cluster",
+      "method": "/clusterPost",
+      "httpMethod": "post",
+      "tag": "Cluster",
+      "description": "create cluster",
+      "parameters": [
+        {
+          "name": "circuit_breakers",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "health_checks",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "instances",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "outlier_detection",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "require_tls",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "zone_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cluster/{clusterKey}",
+      "method": "/cluster/{clusterKey}Delete",
+      "httpMethod": "delete",
+      "tag": "Cluster",
+      "description": "delete cluster",
+      "parameters": [
+        {
+          "name": "clusterKey",
+          "schema": "string",
+          "required": true,
+          "description": "the cluster key"
+        },
+        {
+          "name": "checksum",
+          "schema": "string",
+          "required": true,
+          "description": "the current checksum of the cluster to be deleted"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cluster/{clusterKey}",
+      "method": "/cluster/{clusterKey}Get",
+      "httpMethod": "get",
+      "tag": "Cluster",
+      "description": "get cluster",
+      "parameters": [
+        {
+          "name": "clusterKey",
+          "schema": "string",
+          "required": true,
+          "description": "the cluster key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cluster/{clusterKey}",
+      "method": "/cluster/{clusterKey}Put",
+      "httpMethod": "put",
+      "tag": "Cluster",
+      "description": "modify cluster",
+      "parameters": [
+        {
+          "name": "clusterKey",
+          "schema": "string",
+          "required": true,
+          "description": "the cluster key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cluster/{clusterKey}/instances",
+      "method": "/cluster/{clusterKey}/instancesPost",
+      "httpMethod": "post",
+      "tag": "Cluster",
+      "description": "add instance",
+      "parameters": [
+        {
+          "name": "clusterKey",
+          "schema": "string",
+          "required": true,
+          "description": "the cluster to add the instance to"
+        },
+        {
+          "name": "host",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "port",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cluster/{clusterKey}/instances/{instanceIdentifier}",
+      "method": "/cluster/{clusterKey}/instances/{instanceIdentifier}Delete",
+      "httpMethod": "delete",
+      "tag": "Cluster",
+      "description": "remove instance",
+      "parameters": [
+        {
+          "name": "checksum",
+          "schema": "string",
+          "required": true,
+          "description": "the current checksum of the instance to be deleted"
+        },
+        {
+          "name": "clusterKey",
+          "schema": "string",
+          "required": true,
+          "description": "the cluster to remove an instance from"
+        },
+        {
+          "name": "instanceIdentifier",
+          "schema": "string",
+          "required": true,
+          "description": "the instance to remove, identified as <host>:<port>"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/domain",
+      "method": "/domainGet",
+      "httpMethod": "get",
+      "tag": "Domain",
+      "description": "get domains",
+      "parameters": [
+        {
+          "name": "filters",
+          "schema": "string",
+          "description": "A JSON encoded array of DomainFilter objects. The filter is taken\nas a union of intersections. In other words an object that matches\nevery constraint in any DomainFilter will be included.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/domain",
+      "method": "/domainPost",
+      "httpMethod": "post",
+      "tag": "Domain",
+      "description": "create domain",
+      "parameters": [
+        {
+          "name": "aliases",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "checksum",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "cors_config",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "domain_key",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "force_https",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "gzip_enabled",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "port",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "redirects",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "ssl_config",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "zone_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/domain/{domainKey}",
+      "method": "/domain/{domainKey}Delete",
+      "httpMethod": "delete",
+      "tag": "Domain",
+      "description": "delete domain",
+      "parameters": [
+        {
+          "name": "domainKey",
+          "schema": "string",
+          "required": true,
+          "description": "the domain key"
+        },
+        {
+          "name": "checksum",
+          "schema": "string",
+          "required": true,
+          "description": "the current checksum of the domain to be deleted"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/domain/{domainKey}",
+      "method": "/domain/{domainKey}Get",
+      "httpMethod": "get",
+      "tag": "Domain",
+      "description": "get domain",
+      "parameters": [
+        {
+          "name": "domainKey",
+          "schema": "string",
+          "required": true,
+          "description": "the domain key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/listener",
+      "method": "/listenerGet",
+      "httpMethod": "get",
+      "tag": "Listener",
+      "description": "list listeners",
+      "parameters": [
+        {
+          "name": "filters",
+          "schema": "string",
+          "description": "A JSON encoded array of ListenerFilter objects. The filter is taken\nas a union of intersections. In other words an object that matches\nevery constraint in any ListenerFilter will be included.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/listener",
+      "method": "/listenerPost",
+      "httpMethod": "post",
+      "tag": "Listener",
+      "description": "create listener",
+      "parameters": [
+        {
+          "name": "domain_keys",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "ip",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "port",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "protocol",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "tracing_config",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "zone_key",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/listener/{listenerKey}",
+      "method": "/listener/{listenerKey}Delete",
+      "httpMethod": "delete",
+      "tag": "Listener",
+      "description": "delete listener",
+      "parameters": [
+        {
+          "name": "listenerKey",
+          "schema": "string",
+          "required": true,
+          "description": "the listener key"
+        },
+        {
+          "name": "checksum",
+          "schema": "string",
+          "required": true,
+          "description": "the current checksum of the listener to be deleted"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/listener/{listenerKey}",
+      "method": "/listener/{listenerKey}Get",
+      "httpMethod": "get",
+      "tag": "Listener",
+      "description": "get listener",
+      "parameters": [
+        {
+          "name": "listenerKey",
+          "schema": "string",
+          "required": true,
+          "description": "the listener key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/listener/{listenerKey}",
+      "method": "/listener/{listenerKey}Put",
+      "httpMethod": "put",
+      "tag": "Listener",
+      "description": "modify listener",
+      "parameters": [
+        {
+          "name": "listenerKey",
+          "schema": "string",
+          "required": true,
+          "description": "the listener key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/proxy",
+      "method": "/proxyGet",
+      "httpMethod": "get",
+      "tag": "Proxy",
+      "description": "list proxies",
+      "parameters": [
+        {
+          "name": "filters",
+          "schema": "string",
+          "description": "A JSON encoded array of ProxyFilter objects. The filter is taken\nas a union of intersections. In other words an object that matches\nevery constraint in any ProxyFilter will be included.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/proxy",
+      "method": "/proxyPost",
+      "httpMethod": "post",
+      "tag": "Proxy",
+      "description": "create proxy",
+      "parameters": [
+        {
+          "name": "domain_keys",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "listener_keys",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "zone_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/proxy/{proxyKey}",
+      "method": "/proxy/{proxyKey}Delete",
+      "httpMethod": "delete",
+      "tag": "Proxy",
+      "description": "delete proxy",
+      "parameters": [
+        {
+          "name": "proxyKey",
+          "schema": "string",
+          "required": true,
+          "description": "the proxy key"
+        },
+        {
+          "name": "checksum",
+          "schema": "string",
+          "required": true,
+          "description": "the current checksum of the proxy to be deleted"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/proxy/{proxyKey}",
+      "method": "/proxy/{proxyKey}Get",
+      "httpMethod": "get",
+      "tag": "Proxy",
+      "description": "get proxy",
+      "parameters": [
+        {
+          "name": "proxyKey",
+          "schema": "string",
+          "required": true,
+          "description": "the proxy key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/route",
+      "method": "/routeGet",
+      "httpMethod": "get",
+      "tag": "Route",
+      "description": "get routes",
+      "parameters": [
+        {
+          "name": "filters",
+          "schema": "string",
+          "description": "A JSON encoded array of RouteFilter objects. The filter is taken\nas a union of intersections. In other words an object that matches\nevery constraint in any RouteFilter will be included.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/route",
+      "method": "/routePost",
+      "httpMethod": "post",
+      "tag": "Route",
+      "description": "create route",
+      "parameters": [
+        {
+          "name": "checksum",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "cohort_seed",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "domain_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "path",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "response_data",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "retry_policy",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "route_key",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "rules",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "shared_rules_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "zone_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/route/{routeKey}",
+      "method": "/route/{routeKey}Delete",
+      "httpMethod": "delete",
+      "tag": "Route",
+      "description": "delete route",
+      "parameters": [
+        {
+          "name": "routeKey",
+          "schema": "string",
+          "required": true,
+          "description": "the route key"
+        },
+        {
+          "name": "checksum",
+          "schema": "string",
+          "required": true,
+          "description": "the current checksum of the route to be deleted"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/route/{routeKey}",
+      "method": "/route/{routeKey}Get",
+      "httpMethod": "get",
+      "tag": "Route",
+      "description": "get route",
+      "parameters": [
+        {
+          "name": "routeKey",
+          "schema": "string",
+          "required": true,
+          "description": "the route key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/route/{routeKey}",
+      "method": "/route/{routeKey}Put",
+      "httpMethod": "put",
+      "tag": "Route",
+      "description": "modify route",
+      "parameters": [
+        {
+          "name": "routeKey",
+          "schema": "string",
+          "required": true,
+          "description": "the route key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/shared_rules",
+      "method": "/sharedRulesGet",
+      "httpMethod": "get",
+      "tag": "Shared Rules",
+      "description": "get shared_rules",
+      "parameters": [
+        {
+          "name": "filters",
+          "schema": "string",
+          "description": "A JSON encoded array of SharedRulesFilter objects. The filter is taken\nas a union of intersections. In other words an object that matches\nevery constraint in any SharedRulesFilter will be included.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/shared_rules",
+      "method": "/sharedRulesPost",
+      "httpMethod": "post",
+      "tag": "Shared Rules",
+      "description": "create shared_rules",
+      "parameters": [
+        {
+          "name": "checksum",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "cohort_seed",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "default",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "response_data",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "retry_policy",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "rules",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "shared_rules_key",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "zone_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/shared_rules/{sharedRulesKey}",
+      "method": "/sharedRules/{sharedRulesKey}Delete",
+      "httpMethod": "delete",
+      "tag": "Route",
+      "description": "delete shared_rules object",
+      "parameters": [
+        {
+          "name": "sharedRulesKey",
+          "schema": "string",
+          "required": true,
+          "description": "the shared_rules key"
+        },
+        {
+          "name": "checksum",
+          "schema": "string",
+          "required": true,
+          "description": "the current checksum of the shared_rules to be deleted"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/shared_rules/{sharedRulesKey}",
+      "method": "/sharedRules/{sharedRulesKey}Get",
+      "httpMethod": "get",
+      "tag": "Shared Rules",
+      "description": "get shared_rules object",
+      "parameters": [
+        {
+          "name": "sharedRulesKey",
+          "schema": "string",
+          "required": true,
+          "description": "the shared_rules key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/shared_rules/{sharedRulesKey}",
+      "method": "/sharedRules/{sharedRulesKey}Put",
+      "httpMethod": "put",
+      "tag": "Shared Rules",
+      "description": "modify shared_rules object",
+      "parameters": [
+        {
+          "name": "sharedRulesKey",
+          "schema": "string",
+          "required": true,
+          "description": "the shared_rules key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/zone",
+      "method": "/zoneGet",
+      "httpMethod": "get",
+      "tag": "Zone",
+      "description": "get a list of zones",
+      "parameters": [
+        {
+          "name": "filters",
+          "schema": "string",
+          "description": "A JSON encoded array of ZoneFilter objects. The filter is taken\nas a union of intersections. In other words an object that matches\nevery constraint in any ZoneFilter will be included.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/zone",
+      "method": "/zonePost",
+      "httpMethod": "post",
+      "tag": "Zone",
+      "description": "create zone",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/zone/{zoneKey}",
+      "method": "/zone/{zoneKey}Delete",
+      "httpMethod": "delete",
+      "tag": "Zone",
+      "description": "delete zone",
+      "parameters": [
+        {
+          "name": "zoneKey",
+          "schema": "string",
+          "required": true,
+          "description": "the zone key"
+        },
+        {
+          "name": "checksum",
+          "schema": "string",
+          "required": true,
+          "description": "the current checksum of the zone to be deleted"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/zone/{zoneKey}",
+      "method": "/zone/{zoneKey}Get",
+      "httpMethod": "get",
+      "tag": "Zone",
+      "description": "get zone",
+      "parameters": [
+        {
+          "name": "zoneKey",
+          "schema": "string",
+          "required": true,
+          "description": "the zone key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.turbinelabs.io/v1.0",
   "apiDescription": "The Turbine Labs API provides CRUD operations for core object types, and is\nmostly RESTy. The easiest way to interact with the API is with\n[tbnctl](https://docs.turbinelabs.io/advanced/tbnctl.html).\nIf you want to make direct HTTP calls, however, you can obtain an access\ntoken using tbnctl, and then pass it in the Authorization header,\nprefixed by `Token `:\n```console\ncurl -H \"Authorization: Token <access token>\" https://api.turbinelabs.io/v1.0/cluster\n```\n",
   "apiTitle": "Turbine Labs API",

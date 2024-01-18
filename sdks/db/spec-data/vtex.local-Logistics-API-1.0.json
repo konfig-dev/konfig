@@ -4,6 +4,2020 @@
   "homepage": "vtex.local",
   "serviceName": "Logistics-API",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/api/logistics-capacity/resources/carrier@{capacityType}@{shippingPolicyId}/time-frames",
+      "method": "/api/logisticsCapacity/resources/carrier@{capacityType}@{shippingPolicyId}/timeFramesGet",
+      "httpMethod": "get",
+      "tag": "Scheduled Delivery",
+      "description": "Search capacity reservations in time range",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "capacityType",
+          "schema": "string",
+          "required": true,
+          "description": "How the delivery capacity is measured as defined in the shipping policy. Capacity can be measured by maximum number of orders (`\"orders_quantity\"`) or SKUs (`\"skus_quantity\"`)."
+        },
+        {
+          "name": "shippingPolicyId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of shipping policy to search."
+        },
+        {
+          "name": "rangeStart",
+          "schema": "string",
+          "required": true,
+          "description": "Starting date of time range"
+        },
+        {
+          "name": "rangeEnd",
+          "schema": "string",
+          "required": true,
+          "description": "End date of time range."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/logistics-capacity/resources/carrier@{capacityType}@{shippingPolicyId}/time-frames/{windowDay}F{windowStartTime}T{windowEndTime}",
+      "method": "/api/logisticsCapacity/resources/carrier@{capacityType}@{shippingPolicyId}/timeFrames/{windowDay}f{windowStartTime}t{windowEndTime}Get",
+      "httpMethod": "get",
+      "tag": "Scheduled Delivery",
+      "description": "Get capacity reservation usage by window",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "capacityType",
+          "schema": "string",
+          "required": true,
+          "description": "How the delivery capacity is measured as defined in the shipping policy. Capacity can be measured by maximum number of orders (`\"orders_quantity\"`) or SKUs (`\"skus_quantity\"`)."
+        },
+        {
+          "name": "shippingPolicyId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of shipping policy to search."
+        },
+        {
+          "name": "windowDay",
+          "schema": "string",
+          "required": true,
+          "description": "Day of the specific scheduled delivery window to be consulted for reservations."
+        },
+        {
+          "name": "windowStartTime",
+          "schema": "string",
+          "required": true,
+          "description": "Start time of specific scheduled delivery window to be consulted for reservations."
+        },
+        {
+          "name": "windowEndTime",
+          "schema": "string",
+          "required": true,
+          "description": "End time of specific scheduled delivery window to be consulted for reservations."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/carriers/{carrierId}/adddayofweekblocked",
+      "method": "addBlockedDeliveryWindows",
+      "httpMethod": "post",
+      "tag": "Scheduled Delivery",
+      "description": "Add blocked delivery windows",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "carrierId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/carriers/{carrierId}/getdayofweekblocked",
+      "method": "retrieveBlockedDeliveryWindows",
+      "httpMethod": "get",
+      "tag": "Scheduled Delivery",
+      "description": "Retrieve blocked delivery windows",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "carrierId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/carriers/{carrierId}/removedayofweekblocked",
+      "method": "removeBlockedDeliveryWindows",
+      "httpMethod": "post",
+      "tag": "Scheduled Delivery",
+      "description": "Remove blocked delivery windows",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "carrierId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/docks",
+      "method": "allDocks",
+      "httpMethod": "get",
+      "tag": "Docks",
+      "description": "List all  docks",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/docks",
+      "method": "create/updateDock",
+      "httpMethod": "post",
+      "tag": "Docks",
+      "description": "Create/update dock",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "address",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "dockTimeFake",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "freightTableIds",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "priority",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "salesChannel",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "salesChannels",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timeFakeOverhead",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "wmsEndPoint",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/docks/{dockId}",
+      "method": "dock",
+      "httpMethod": "delete",
+      "tag": "Docks",
+      "description": "Delete dock",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "dockId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/docks/{dockId}",
+      "method": "dockById",
+      "httpMethod": "get",
+      "tag": "Docks",
+      "description": "List dock by ID",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "dockId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/docks/{dockId}/activation",
+      "method": "activateDock",
+      "httpMethod": "post",
+      "tag": "Docks",
+      "description": "Activate dock",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "dockId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/docks/{dockId}/deactivation",
+      "method": "deactivateDock",
+      "httpMethod": "post",
+      "tag": "Docks",
+      "description": "Deactivate dock",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "dockId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/freights/{carrierId}/values/update",
+      "method": "create/updateFreightValues",
+      "httpMethod": "post",
+      "tag": "Freight Values",
+      "description": "Create/update freight values",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "carrierId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/freights/{carrierId}/{cep}/values",
+      "method": "freightValues",
+      "httpMethod": "get",
+      "tag": "Freight Values",
+      "description": "List freight values",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "carrierId",
+          "schema": "string",
+          "required": true,
+          "description": "Carrier ID"
+        },
+        {
+          "name": "cep",
+          "schema": "string",
+          "required": true,
+          "description": "Postal code."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/geoshape",
+      "method": "pagedPolygons",
+      "httpMethod": "get",
+      "tag": "Polygons",
+      "description": "List paged polygons",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "perPage",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/geoshape",
+      "method": "createUpdatePolygon",
+      "httpMethod": "put",
+      "tag": "Polygons",
+      "description": "Create/update polygon",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "geoShape",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/geoshape/{polygonName}",
+      "method": "deletePolygon",
+      "httpMethod": "delete",
+      "tag": "Polygons",
+      "description": "Delete polygon",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "polygonName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/geoshape/{polygonName}",
+      "method": "polygonbyId",
+      "httpMethod": "get",
+      "tag": "Polygons",
+      "description": "List polygon by ID",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "polygonName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/holidays",
+      "method": "allHolidays",
+      "httpMethod": "get",
+      "tag": "Holidays",
+      "description": "List all holidays",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/holidays/{holidayId}",
+      "method": "holiday",
+      "httpMethod": "delete",
+      "tag": "Holidays",
+      "description": "Delete holiday",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "holidayId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/holidays/{holidayId}",
+      "method": "holidayById",
+      "httpMethod": "get",
+      "tag": "Holidays",
+      "description": "List holiday by ID",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "holidayId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/holidays/{holidayId}",
+      "method": "create/updateHoliday",
+      "httpMethod": "put",
+      "tag": "Holidays",
+      "description": "Create/update holiday",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "holidayId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/pickuppoints",
+      "method": "listAllPickupPpoints",
+      "httpMethod": "get",
+      "tag": "Pickup points",
+      "description": "List all pickup points",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/pickuppoints/_search",
+      "method": "getpaged",
+      "httpMethod": "get",
+      "tag": "Pickup points",
+      "description": "List paged Pickup Points",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "pageSize",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "keyword",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/pickuppoints/{pickupPointId}",
+      "method": "delete",
+      "httpMethod": "delete",
+      "tag": "Pickup points",
+      "description": "Delete Pickup Point",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "pickupPointId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/pickuppoints/{pickupPointId}",
+      "method": "getById",
+      "httpMethod": "get",
+      "tag": "Pickup points",
+      "description": "List Pickup Point By ID",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "pickupPointId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/pickuppoints/{pickupPointId}",
+      "method": "createUpdatePickupPoint",
+      "httpMethod": "put",
+      "tag": "Pickup points",
+      "description": "Create/Update Pickup Point",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "pickupPointId",
+          "schema": "string",
+          "required": true,
+          "description": "Pickup Point ID. Cannot contain spaces."
+        },
+        {
+          "name": "address",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "businessHours",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "formatted_address",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "instructions",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "isActive",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "isThirdPartyPickup",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "tagsLabel",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/warehouses",
+      "method": "allWarehouses",
+      "httpMethod": "get",
+      "tag": "Warehouses",
+      "description": "List all warehouses",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/warehouses",
+      "method": "create/updateWarehouse",
+      "httpMethod": "post",
+      "tag": "Warehouses",
+      "description": "Create/update warehouse",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "warehouseDocks",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/warehouses/{warehouseId}",
+      "method": "removeWarehouse",
+      "httpMethod": "delete",
+      "tag": "Warehouses",
+      "description": "Remove warehouse",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "warehouseId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/warehouses/{warehouseId}",
+      "method": "warehouseById",
+      "httpMethod": "get",
+      "tag": "Warehouses",
+      "description": "List warehouse by ID",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "warehouseId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/warehouses/{warehouseId}/activation",
+      "method": "activateWarehouse",
+      "httpMethod": "post",
+      "tag": "Warehouses",
+      "description": "Activate warehouse",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "warehouseId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/configuration/warehouses/{warehouseId}/deactivation",
+      "method": "deactivateWarehouse",
+      "httpMethod": "post",
+      "tag": "Warehouses",
+      "description": "Deactivate warehouse",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "warehouseId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/inventory/items/{itemId}/warehouses/{warehouseId}/dispatched",
+      "method": "getinventorywithdispatchedreservations",
+      "httpMethod": "get",
+      "tag": "Inventory",
+      "description": "List inventory with dispatched reservations",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "itemId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "warehouseId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/logistics/pvt/inventory/items/{skuId}/docks/{dockId}",
+      "method": "inventoryperdock",
+      "httpMethod": "get",
+      "tag": "Inventory",
+      "description": "List inventory per dock",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "skuId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "dockId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/logistics/pvt/inventory/items/{skuId}/docks/{dockId}/warehouses/{warehouseId}",
+      "method": "inventoryperdockandwarehouse",
+      "httpMethod": "get",
+      "tag": "Inventory",
+      "description": "List inventory per dock and warehouse",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "skuId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "dockId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "warehouseId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/logistics/pvt/inventory/items/{skuId}/warehouses/{warehouseId}",
+      "method": "inventoryperwarehouse",
+      "httpMethod": "get",
+      "tag": "Inventory",
+      "description": "List inventory per warehouse",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "skuId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "warehouseId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/logistics/pvt/inventory/items/{skuId}/warehouses/{warehouseId}/supplyLots",
+      "method": "getSupplyLots",
+      "httpMethod": "get",
+      "tag": "Inventory",
+      "description": "List supply lots",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        },
+        {
+          "name": "skuId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the SKU."
+        },
+        {
+          "name": "warehouseId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the warehouse where the SKU is located."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/inventory/items/{skuId}/warehouses/{warehouseId}/supplyLots/{supplyLotId}",
+      "method": "saveSupplyLot",
+      "httpMethod": "put",
+      "tag": "Inventory",
+      "description": "Save supply lot",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "skuId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the SKU whose availability is being scheduled."
+        },
+        {
+          "name": "warehouseId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the warehouse where the SKU will arrive."
+        },
+        {
+          "name": "supplyLotId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the Supply Lot in which the SKU's scheduling should be considered."
+        },
+        {
+          "name": "dateOfSupplyUtc",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "keepSellingAfterExpiration",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "quantity",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/inventory/items/{skuId}/warehouses/{warehouseId}/supplyLots/{supplyLotId}/transfer",
+      "method": "transferSupplyLot",
+      "httpMethod": "post",
+      "tag": "Inventory",
+      "description": "Transfer supply lot",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "skuId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the SKU."
+        },
+        {
+          "name": "warehouseId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the warehouse where the SKU is located."
+        },
+        {
+          "name": "supplyLotId",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the Supply Lot in which the SKU is currently located and from where it will be transfered."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/inventory/reservations",
+      "method": "createReservation",
+      "httpMethod": "post",
+      "tag": "Reservations",
+      "description": "Create reservation",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        },
+        {
+          "name": "autorizationExpirationTTL",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "deliveryItemOptions",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "lockId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "salesChannel",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/logistics/pvt/inventory/reservations/{reservationId}",
+      "method": "reservationById",
+      "httpMethod": "get",
+      "tag": "Reservations",
+      "description": "List reservation by ID",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "reservationId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/logistics/pvt/inventory/reservations/{reservationId}/acknowledge",
+      "method": "acknowledgmentReservation",
+      "httpMethod": "post",
+      "tag": "Reservations",
+      "description": "Acknowledgment reservation",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "reservationId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/inventory/reservations/{reservationId}/cancel",
+      "method": "cancelReservation",
+      "httpMethod": "post",
+      "tag": "Reservations",
+      "description": "Cancel reservation",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "reservationId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/inventory/reservations/{reservationId}/confirm",
+      "method": "confirmReservation",
+      "httpMethod": "post",
+      "tag": "Reservations",
+      "description": "Confirm reservation",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "reservationId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/inventory/reservations/{warehouseId}/{skuId}",
+      "method": "reservationbyWarehouseandSku",
+      "httpMethod": "get",
+      "tag": "Reservations",
+      "description": "List reservation by warehouse and SKU",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "warehouseId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "skuId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/inventory/skus/{skuId}",
+      "method": "inventoryBySku",
+      "httpMethod": "get",
+      "tag": "Inventory",
+      "description": "List inventory by SKU",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "skuId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/logistics/pvt/inventory/skus/{skuId}/warehouses/{warehouseId}",
+      "method": "updateInventoryBySkuandWarehouse",
+      "httpMethod": "put",
+      "tag": "Inventory",
+      "description": "Update inventory by SKU and warehouse",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        },
+        {
+          "name": "skuId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "warehouseId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "dateUtcOnBalanceSystem",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "quantity",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timeToRefill (deprecated)",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "unlimitedQuantity",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/shipping-policies",
+      "method": "/api/logistics/pvt/shippingPoliciesGet",
+      "httpMethod": "get",
+      "tag": "Shipping Policies",
+      "description": "List shipping policies",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "page",
+          "schema": "string",
+          "required": true,
+          "description": "Desired number of pages to retrieve information from your Shipping Policies."
+        },
+        {
+          "name": "perPage",
+          "schema": "string",
+          "required": true,
+          "description": "Desired number of items per page, to retrieve information from your Shipping Policies."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/shipping-policies",
+      "method": "/api/logistics/pvt/shippingPoliciesPost",
+      "httpMethod": "post",
+      "tag": "Shipping Policies",
+      "description": "Create shipping policy",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "businessHourSettings",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "carrierSchedule",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "cubicWeightSettings",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "deliveryScheduleSettings",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "isActive",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "maxDimension",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "maximumValueAceptable",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "minimumValueAceptable",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "modalSettings",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "numberOfItemsPerShipment",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "pickupPointsSettings",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "shippingMethod",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "weekendAndHolidays",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/shipping-policies/{id}",
+      "method": "/api/logistics/pvt/shippingPolicies/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Shipping Policies",
+      "description": "Delete shipping policies by ID",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the shipping policy."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/shipping-policies/{id}",
+      "method": "/api/logistics/pvt/shippingPolicies/{id}Get",
+      "httpMethod": "get",
+      "tag": "Shipping Policies",
+      "description": "Retrieve shipping policy by ID",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the shipping policy."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/shipping-policies/{id}",
+      "method": "/api/logistics/pvt/shippingPolicies/{id}Put",
+      "httpMethod": "put",
+      "tag": "Shipping Policies",
+      "description": "Update shipping policy",
+      "parameters": [
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Shipping policy's ID"
+        },
+        {
+          "name": "deliveryOnWeekends",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "deliveryScheduleSettings",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isActive",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "maxDimension",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "shippingMethod",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/logistics/pvt/shipping/calculate",
+      "method": "calculateSla",
+      "httpMethod": "post",
+      "tag": "SLA",
+      "description": "Calculate SLA",
+      "parameters": [
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://vtex.local",
   "apiDescription": "\r\n\r\n>Check the [Fulfillment onboarding guide](https://developers.vtex.com/docs/guides/fulfillment). We created this guide to improve the onboarding experience for developers at VTEX. It assembles all documentation on our Developer Portal about fulfillment and is organized by focusing on the developer's journey.\r\n\r\nLogistics or fulfillment is the module responsible for shipping calculation and inventory management. \r\n\r\nThe variable `{{environment}}` can be filled with `vtexcommercestable` or `vtexcommercebeta`, depending on the environment you want to test.",
   "apiTitle": "Logistics API",

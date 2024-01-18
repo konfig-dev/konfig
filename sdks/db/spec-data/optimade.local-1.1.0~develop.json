@@ -3,6 +3,634 @@
   "openApiRaw": "https://raw.githubusercontent.com/Materials-Consortia/OPTIMADE/master/schemas/openapi_schema.json",
   "homepage": "optimade.local",
   "apiVersion": "1.1.0~develop",
+  "methods": [
+    {
+      "url": "/info",
+      "method": "getInfoInfoGet",
+      "httpMethod": "get",
+      "tag": "Info",
+      "description": "Get Info",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "errors are not allowed"
+        },
+        {
+          "statusCode": "400",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "403",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "404",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "422",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "500",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "501",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "553",
+          "description": "errors MUST be present and data MUST be skipped"
+        }
+      ]
+    },
+    {
+      "url": "/info/{entry}",
+      "method": "getEntryInfoInfoEntryGet",
+      "httpMethod": "get",
+      "tag": "Info",
+      "description": "Get Entry Info",
+      "parameters": [
+        {
+          "name": "entry",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "errors are not allowed"
+        },
+        {
+          "statusCode": "400",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "403",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "404",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "422",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "500",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "501",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "553",
+          "description": "errors MUST be present and data MUST be skipped"
+        }
+      ]
+    },
+    {
+      "url": "/links",
+      "method": "getLinksLinksGet",
+      "httpMethod": "get",
+      "tag": "Links",
+      "description": "Get Links",
+      "parameters": [
+        {
+          "name": "filter",
+          "schema": "string",
+          "required": false,
+          "description": "A filter string, in the format described in section API Filtering Format Specification of the specification."
+        },
+        {
+          "name": "response_format",
+          "schema": "string",
+          "required": false,
+          "description": "The output format requested (see section Response Format).\nDefaults to the format string 'json', which specifies the standard output format described in this specification.\nExample: `http://example.com/v1/structures?response_format=xml`"
+        },
+        {
+          "name": "email_address",
+          "schema": "string",
+          "required": false,
+          "description": "An email address of the user making the request.\nThe email SHOULD be that of a person and not an automatic system.\nExample: `http://example.com/v1/structures?email_address=user@example.com`"
+        },
+        {
+          "name": "response_fields",
+          "schema": "string",
+          "required": false,
+          "description": "A comma-delimited set of fields to be provided in the output.\nIf provided, these fields MUST be returned along with the REQUIRED fields.\nOther OPTIONAL fields MUST NOT be returned when this parameter is present.\nExample: `http://example.com/v1/structures?response_fields=last_modified,nsites`"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "If supporting sortable queries, an implementation MUST use the `sort` query parameter with format as specified by [JSON API 1.0](https://jsonapi.org/format/1.0/#fetching-sorting).\n\nAn implementation MAY support multiple sort fields for a single query.\nIf it does, it again MUST conform to the JSON API 1.0 specification.\n\nIf an implementation supports sorting for an entry listing endpoint, then the `/info/<entries>` endpoint MUST include, for each field name `<fieldname>` in its `data.properties.<fieldname>` response value that can be used for sorting, the key `sortable` with value `true`.\nIf a field name under an entry listing endpoint supporting sorting cannot be used for sorting, the server MUST either leave out the `sortable` key or set it equal to `false` for the specific field name.\nThe set of field names, with `sortable` equal to `true` are allowed to be used in the \"sort fields\" list according to its definition in the JSON API 1.0 specification.\nThe field `sortable` is in addition to each property description and other OPTIONAL fields.\nAn example is shown in the section Entry Listing Info Endpoints."
+        },
+        {
+          "name": "page_limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Sets a numerical limit on the number of entries returned.\nSee [JSON API 1.0](https://jsonapi.org/format/1.0/#fetching-pagination).\nThe API implementation MUST return no more than the number specified.\nIt MAY return fewer.\nThe database MAY have a maximum limit and not accept larger numbers (in which case an error code -- 403 Forbidden -- MUST be returned).\nThe default limit value is up to the API implementation to decide.\nExample: `http://example.com/optimade/v1/structures?page_limit=100`"
+        },
+        {
+          "name": "page_offset",
+          "schema": "integer",
+          "required": false,
+          "description": "RECOMMENDED for use with _offset-based_ pagination: using `page_offset` and `page_limit` is RECOMMENDED.\nExample: Skip 50 structures and fetch up to 100: `/structures?page_offset=50&page_limit=100`."
+        },
+        {
+          "name": "page_number",
+          "schema": "integer",
+          "required": false,
+          "description": "RECOMMENDED for use with _page-based_ pagination: using `page_number` and `page_limit` is RECOMMENDED.\nIt is RECOMMENDED that the first page has number 1, i.e., that `page_number` is 1-based.\nExample: Fetch page 2 of up to 50 structures per page: `/structures?page_number=2&page_limit=50`."
+        },
+        {
+          "name": "page_cursor",
+          "schema": "integer",
+          "required": false,
+          "description": "RECOMMENDED for use with _cursor-based_ pagination: using `page_cursor` and `page_limit` is RECOMMENDED."
+        },
+        {
+          "name": "page_above",
+          "schema": "integer",
+          "required": false,
+          "description": "RECOMMENDED for use with _value-based_ pagination: using `page_above`/`page_below` and `page_limit` is RECOMMENDED.\nExample: Fetch up to 100 structures above sort-field value 4000 (in this example, server chooses to fetch results sorted by increasing `id`, so `page_above` value refers to an `id` value): `/structures?page_above=4000&page_limit=100`."
+        },
+        {
+          "name": "page_below",
+          "schema": "integer",
+          "required": false,
+          "description": "RECOMMENDED for use with _value-based_ pagination: using `page_above`/`page_below` and `page_limit` is RECOMMENDED."
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "required": false,
+          "description": "A server MAY implement the JSON API concept of returning [compound documents](https://jsonapi.org/format/1.0/#document-compound-documents) by utilizing the `include` query parameter as specified by [JSON API 1.0](https://jsonapi.org/format/1.0/#fetching-includes).\n\nAll related resource objects MUST be returned as part of an array value for the top-level `included` field, see the section JSON Response Schema: Common Fields.\n\nThe value of `include` MUST be a comma-separated list of \"relationship paths\", as defined in the [JSON API](https://jsonapi.org/format/1.0/#fetching-includes).\nIf relationship paths are not supported, or a server is unable to identify a relationship path a `400 Bad Request` response MUST be made.\n\nThe **default value** for `include` is `references`.\nThis means `references` entries MUST always be included under the top-level field `included` as default, since a server assumes if `include` is not specified by a client in the request, it is still specified as `include=references`.\nNote, if a client explicitly specifies `include` and leaves out `references`, `references` resource objects MUST NOT be included under the top-level field `included`, as per the definition of `included`, see section JSON Response Schema: Common Fields.\n\n> **Note**: A query with the parameter `include` set to the empty string means no related resource objects are to be returned under the top-level field `included`."
+        },
+        {
+          "name": "api_hint",
+          "schema": "string",
+          "required": false,
+          "description": "If the client provides the parameter, the value SHOULD have the format `vMAJOR` or `vMAJOR.MINOR`, where MAJOR is a major version and MINOR is a minor version of the API. For example, if a client appends `api_hint=v1.0` to the query string, the hint provided is for major version 1 and minor version 0."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "errors are not allowed"
+        },
+        {
+          "statusCode": "400",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "403",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "404",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "422",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "500",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "501",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "553",
+          "description": "errors MUST be present and data MUST be skipped"
+        }
+      ]
+    },
+    {
+      "url": "/references",
+      "method": "getReferencesReferencesGet",
+      "httpMethod": "get",
+      "tag": "References",
+      "description": "Get References",
+      "parameters": [
+        {
+          "name": "filter",
+          "schema": "string",
+          "required": false,
+          "description": "A filter string, in the format described in section API Filtering Format Specification of the specification."
+        },
+        {
+          "name": "response_format",
+          "schema": "string",
+          "required": false,
+          "description": "The output format requested (see section Response Format).\nDefaults to the format string 'json', which specifies the standard output format described in this specification.\nExample: `http://example.com/v1/structures?response_format=xml`"
+        },
+        {
+          "name": "email_address",
+          "schema": "string",
+          "required": false,
+          "description": "An email address of the user making the request.\nThe email SHOULD be that of a person and not an automatic system.\nExample: `http://example.com/v1/structures?email_address=user@example.com`"
+        },
+        {
+          "name": "response_fields",
+          "schema": "string",
+          "required": false,
+          "description": "A comma-delimited set of fields to be provided in the output.\nIf provided, these fields MUST be returned along with the REQUIRED fields.\nOther OPTIONAL fields MUST NOT be returned when this parameter is present.\nExample: `http://example.com/v1/structures?response_fields=last_modified,nsites`"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "If supporting sortable queries, an implementation MUST use the `sort` query parameter with format as specified by [JSON API 1.0](https://jsonapi.org/format/1.0/#fetching-sorting).\n\nAn implementation MAY support multiple sort fields for a single query.\nIf it does, it again MUST conform to the JSON API 1.0 specification.\n\nIf an implementation supports sorting for an entry listing endpoint, then the `/info/<entries>` endpoint MUST include, for each field name `<fieldname>` in its `data.properties.<fieldname>` response value that can be used for sorting, the key `sortable` with value `true`.\nIf a field name under an entry listing endpoint supporting sorting cannot be used for sorting, the server MUST either leave out the `sortable` key or set it equal to `false` for the specific field name.\nThe set of field names, with `sortable` equal to `true` are allowed to be used in the \"sort fields\" list according to its definition in the JSON API 1.0 specification.\nThe field `sortable` is in addition to each property description and other OPTIONAL fields.\nAn example is shown in the section Entry Listing Info Endpoints."
+        },
+        {
+          "name": "page_limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Sets a numerical limit on the number of entries returned.\nSee [JSON API 1.0](https://jsonapi.org/format/1.0/#fetching-pagination).\nThe API implementation MUST return no more than the number specified.\nIt MAY return fewer.\nThe database MAY have a maximum limit and not accept larger numbers (in which case an error code -- 403 Forbidden -- MUST be returned).\nThe default limit value is up to the API implementation to decide.\nExample: `http://example.com/optimade/v1/structures?page_limit=100`"
+        },
+        {
+          "name": "page_offset",
+          "schema": "integer",
+          "required": false,
+          "description": "RECOMMENDED for use with _offset-based_ pagination: using `page_offset` and `page_limit` is RECOMMENDED.\nExample: Skip 50 structures and fetch up to 100: `/structures?page_offset=50&page_limit=100`."
+        },
+        {
+          "name": "page_number",
+          "schema": "integer",
+          "required": false,
+          "description": "RECOMMENDED for use with _page-based_ pagination: using `page_number` and `page_limit` is RECOMMENDED.\nIt is RECOMMENDED that the first page has number 1, i.e., that `page_number` is 1-based.\nExample: Fetch page 2 of up to 50 structures per page: `/structures?page_number=2&page_limit=50`."
+        },
+        {
+          "name": "page_cursor",
+          "schema": "integer",
+          "required": false,
+          "description": "RECOMMENDED for use with _cursor-based_ pagination: using `page_cursor` and `page_limit` is RECOMMENDED."
+        },
+        {
+          "name": "page_above",
+          "schema": "integer",
+          "required": false,
+          "description": "RECOMMENDED for use with _value-based_ pagination: using `page_above`/`page_below` and `page_limit` is RECOMMENDED.\nExample: Fetch up to 100 structures above sort-field value 4000 (in this example, server chooses to fetch results sorted by increasing `id`, so `page_above` value refers to an `id` value): `/structures?page_above=4000&page_limit=100`."
+        },
+        {
+          "name": "page_below",
+          "schema": "integer",
+          "required": false,
+          "description": "RECOMMENDED for use with _value-based_ pagination: using `page_above`/`page_below` and `page_limit` is RECOMMENDED."
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "required": false,
+          "description": "A server MAY implement the JSON API concept of returning [compound documents](https://jsonapi.org/format/1.0/#document-compound-documents) by utilizing the `include` query parameter as specified by [JSON API 1.0](https://jsonapi.org/format/1.0/#fetching-includes).\n\nAll related resource objects MUST be returned as part of an array value for the top-level `included` field, see the section JSON Response Schema: Common Fields.\n\nThe value of `include` MUST be a comma-separated list of \"relationship paths\", as defined in the [JSON API](https://jsonapi.org/format/1.0/#fetching-includes).\nIf relationship paths are not supported, or a server is unable to identify a relationship path a `400 Bad Request` response MUST be made.\n\nThe **default value** for `include` is `references`.\nThis means `references` entries MUST always be included under the top-level field `included` as default, since a server assumes if `include` is not specified by a client in the request, it is still specified as `include=references`.\nNote, if a client explicitly specifies `include` and leaves out `references`, `references` resource objects MUST NOT be included under the top-level field `included`, as per the definition of `included`, see section JSON Response Schema: Common Fields.\n\n> **Note**: A query with the parameter `include` set to the empty string means no related resource objects are to be returned under the top-level field `included`."
+        },
+        {
+          "name": "api_hint",
+          "schema": "string",
+          "required": false,
+          "description": "If the client provides the parameter, the value SHOULD have the format `vMAJOR` or `vMAJOR.MINOR`, where MAJOR is a major version and MINOR is a minor version of the API. For example, if a client appends `api_hint=v1.0` to the query string, the hint provided is for major version 1 and minor version 0."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "errors are not allowed"
+        },
+        {
+          "statusCode": "400",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "403",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "404",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "422",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "500",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "501",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "553",
+          "description": "errors MUST be present and data MUST be skipped"
+        }
+      ]
+    },
+    {
+      "url": "/references/{entry_id}",
+      "method": "getSingleReferenceReferencesEntryIdGet",
+      "httpMethod": "get",
+      "tag": "References",
+      "description": "Get Single Reference",
+      "parameters": [
+        {
+          "name": "entry_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "response_format",
+          "schema": "string",
+          "required": false,
+          "description": "The output format requested (see section Response Format).\nDefaults to the format string 'json', which specifies the standard output format described in this specification.\nExample: `http://example.com/v1/structures?response_format=xml`"
+        },
+        {
+          "name": "email_address",
+          "schema": "string",
+          "required": false,
+          "description": "An email address of the user making the request.\nThe email SHOULD be that of a person and not an automatic system.\nExample: `http://example.com/v1/structures?email_address=user@example.com`"
+        },
+        {
+          "name": "response_fields",
+          "schema": "string",
+          "required": false,
+          "description": "A comma-delimited set of fields to be provided in the output.\nIf provided, these fields MUST be returned along with the REQUIRED fields.\nOther OPTIONAL fields MUST NOT be returned when this parameter is present.\nExample: `http://example.com/v1/structures?response_fields=last_modified,nsites`"
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "required": false,
+          "description": "A server MAY implement the JSON API concept of returning [compound documents](https://jsonapi.org/format/1.0/#document-compound-documents) by utilizing the `include` query parameter as specified by [JSON API 1.0](https://jsonapi.org/format/1.0/#fetching-includes).\n\nAll related resource objects MUST be returned as part of an array value for the top-level `included` field, see the section JSON Response Schema: Common Fields.\n\nThe value of `include` MUST be a comma-separated list of \"relationship paths\", as defined in the [JSON API](https://jsonapi.org/format/1.0/#fetching-includes).\nIf relationship paths are not supported, or a server is unable to identify a relationship path a `400 Bad Request` response MUST be made.\n\nThe **default value** for `include` is `references`.\nThis means `references` entries MUST always be included under the top-level field `included` as default, since a server assumes if `include` is not specified by a client in the request, it is still specified as `include=references`.\nNote, if a client explicitly specifies `include` and leaves out `references`, `references` resource objects MUST NOT be included under the top-level field `included`, as per the definition of `included`, see section JSON Response Schema: Common Fields.\n\n> **Note**: A query with the parameter `include` set to the empty string means no related resource objects are to be returned under the top-level field `included`."
+        },
+        {
+          "name": "api_hint",
+          "schema": "string",
+          "required": false,
+          "description": "If the client provides the parameter, the value SHOULD have the format `vMAJOR` or `vMAJOR.MINOR`, where MAJOR is a major version and MINOR is a minor version of the API. For example, if a client appends `api_hint=v1.0` to the query string, the hint provided is for major version 1 and minor version 0."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "errors are not allowed"
+        },
+        {
+          "statusCode": "400",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "403",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "404",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "422",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "500",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "501",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "553",
+          "description": "errors MUST be present and data MUST be skipped"
+        }
+      ]
+    },
+    {
+      "url": "/structures",
+      "method": "getStructuresStructuresGet",
+      "httpMethod": "get",
+      "tag": "Structures",
+      "description": "Get Structures",
+      "parameters": [
+        {
+          "name": "filter",
+          "schema": "string",
+          "required": false,
+          "description": "A filter string, in the format described in section API Filtering Format Specification of the specification."
+        },
+        {
+          "name": "response_format",
+          "schema": "string",
+          "required": false,
+          "description": "The output format requested (see section Response Format).\nDefaults to the format string 'json', which specifies the standard output format described in this specification.\nExample: `http://example.com/v1/structures?response_format=xml`"
+        },
+        {
+          "name": "email_address",
+          "schema": "string",
+          "required": false,
+          "description": "An email address of the user making the request.\nThe email SHOULD be that of a person and not an automatic system.\nExample: `http://example.com/v1/structures?email_address=user@example.com`"
+        },
+        {
+          "name": "response_fields",
+          "schema": "string",
+          "required": false,
+          "description": "A comma-delimited set of fields to be provided in the output.\nIf provided, these fields MUST be returned along with the REQUIRED fields.\nOther OPTIONAL fields MUST NOT be returned when this parameter is present.\nExample: `http://example.com/v1/structures?response_fields=last_modified,nsites`"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "If supporting sortable queries, an implementation MUST use the `sort` query parameter with format as specified by [JSON API 1.0](https://jsonapi.org/format/1.0/#fetching-sorting).\n\nAn implementation MAY support multiple sort fields for a single query.\nIf it does, it again MUST conform to the JSON API 1.0 specification.\n\nIf an implementation supports sorting for an entry listing endpoint, then the `/info/<entries>` endpoint MUST include, for each field name `<fieldname>` in its `data.properties.<fieldname>` response value that can be used for sorting, the key `sortable` with value `true`.\nIf a field name under an entry listing endpoint supporting sorting cannot be used for sorting, the server MUST either leave out the `sortable` key or set it equal to `false` for the specific field name.\nThe set of field names, with `sortable` equal to `true` are allowed to be used in the \"sort fields\" list according to its definition in the JSON API 1.0 specification.\nThe field `sortable` is in addition to each property description and other OPTIONAL fields.\nAn example is shown in the section Entry Listing Info Endpoints."
+        },
+        {
+          "name": "page_limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Sets a numerical limit on the number of entries returned.\nSee [JSON API 1.0](https://jsonapi.org/format/1.0/#fetching-pagination).\nThe API implementation MUST return no more than the number specified.\nIt MAY return fewer.\nThe database MAY have a maximum limit and not accept larger numbers (in which case an error code -- 403 Forbidden -- MUST be returned).\nThe default limit value is up to the API implementation to decide.\nExample: `http://example.com/optimade/v1/structures?page_limit=100`"
+        },
+        {
+          "name": "page_offset",
+          "schema": "integer",
+          "required": false,
+          "description": "RECOMMENDED for use with _offset-based_ pagination: using `page_offset` and `page_limit` is RECOMMENDED.\nExample: Skip 50 structures and fetch up to 100: `/structures?page_offset=50&page_limit=100`."
+        },
+        {
+          "name": "page_number",
+          "schema": "integer",
+          "required": false,
+          "description": "RECOMMENDED for use with _page-based_ pagination: using `page_number` and `page_limit` is RECOMMENDED.\nIt is RECOMMENDED that the first page has number 1, i.e., that `page_number` is 1-based.\nExample: Fetch page 2 of up to 50 structures per page: `/structures?page_number=2&page_limit=50`."
+        },
+        {
+          "name": "page_cursor",
+          "schema": "integer",
+          "required": false,
+          "description": "RECOMMENDED for use with _cursor-based_ pagination: using `page_cursor` and `page_limit` is RECOMMENDED."
+        },
+        {
+          "name": "page_above",
+          "schema": "integer",
+          "required": false,
+          "description": "RECOMMENDED for use with _value-based_ pagination: using `page_above`/`page_below` and `page_limit` is RECOMMENDED.\nExample: Fetch up to 100 structures above sort-field value 4000 (in this example, server chooses to fetch results sorted by increasing `id`, so `page_above` value refers to an `id` value): `/structures?page_above=4000&page_limit=100`."
+        },
+        {
+          "name": "page_below",
+          "schema": "integer",
+          "required": false,
+          "description": "RECOMMENDED for use with _value-based_ pagination: using `page_above`/`page_below` and `page_limit` is RECOMMENDED."
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "required": false,
+          "description": "A server MAY implement the JSON API concept of returning [compound documents](https://jsonapi.org/format/1.0/#document-compound-documents) by utilizing the `include` query parameter as specified by [JSON API 1.0](https://jsonapi.org/format/1.0/#fetching-includes).\n\nAll related resource objects MUST be returned as part of an array value for the top-level `included` field, see the section JSON Response Schema: Common Fields.\n\nThe value of `include` MUST be a comma-separated list of \"relationship paths\", as defined in the [JSON API](https://jsonapi.org/format/1.0/#fetching-includes).\nIf relationship paths are not supported, or a server is unable to identify a relationship path a `400 Bad Request` response MUST be made.\n\nThe **default value** for `include` is `references`.\nThis means `references` entries MUST always be included under the top-level field `included` as default, since a server assumes if `include` is not specified by a client in the request, it is still specified as `include=references`.\nNote, if a client explicitly specifies `include` and leaves out `references`, `references` resource objects MUST NOT be included under the top-level field `included`, as per the definition of `included`, see section JSON Response Schema: Common Fields.\n\n> **Note**: A query with the parameter `include` set to the empty string means no related resource objects are to be returned under the top-level field `included`."
+        },
+        {
+          "name": "api_hint",
+          "schema": "string",
+          "required": false,
+          "description": "If the client provides the parameter, the value SHOULD have the format `vMAJOR` or `vMAJOR.MINOR`, where MAJOR is a major version and MINOR is a minor version of the API. For example, if a client appends `api_hint=v1.0` to the query string, the hint provided is for major version 1 and minor version 0."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "errors are not allowed"
+        },
+        {
+          "statusCode": "400",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "403",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "404",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "422",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "500",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "501",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "553",
+          "description": "errors MUST be present and data MUST be skipped"
+        }
+      ]
+    },
+    {
+      "url": "/structures/{entry_id}",
+      "method": "getSingleStructureStructuresEntryIdGet",
+      "httpMethod": "get",
+      "tag": "Structures",
+      "description": "Get Single Structure",
+      "parameters": [
+        {
+          "name": "entry_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "response_format",
+          "schema": "string",
+          "required": false,
+          "description": "The output format requested (see section Response Format).\nDefaults to the format string 'json', which specifies the standard output format described in this specification.\nExample: `http://example.com/v1/structures?response_format=xml`"
+        },
+        {
+          "name": "email_address",
+          "schema": "string",
+          "required": false,
+          "description": "An email address of the user making the request.\nThe email SHOULD be that of a person and not an automatic system.\nExample: `http://example.com/v1/structures?email_address=user@example.com`"
+        },
+        {
+          "name": "response_fields",
+          "schema": "string",
+          "required": false,
+          "description": "A comma-delimited set of fields to be provided in the output.\nIf provided, these fields MUST be returned along with the REQUIRED fields.\nOther OPTIONAL fields MUST NOT be returned when this parameter is present.\nExample: `http://example.com/v1/structures?response_fields=last_modified,nsites`"
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "required": false,
+          "description": "A server MAY implement the JSON API concept of returning [compound documents](https://jsonapi.org/format/1.0/#document-compound-documents) by utilizing the `include` query parameter as specified by [JSON API 1.0](https://jsonapi.org/format/1.0/#fetching-includes).\n\nAll related resource objects MUST be returned as part of an array value for the top-level `included` field, see the section JSON Response Schema: Common Fields.\n\nThe value of `include` MUST be a comma-separated list of \"relationship paths\", as defined in the [JSON API](https://jsonapi.org/format/1.0/#fetching-includes).\nIf relationship paths are not supported, or a server is unable to identify a relationship path a `400 Bad Request` response MUST be made.\n\nThe **default value** for `include` is `references`.\nThis means `references` entries MUST always be included under the top-level field `included` as default, since a server assumes if `include` is not specified by a client in the request, it is still specified as `include=references`.\nNote, if a client explicitly specifies `include` and leaves out `references`, `references` resource objects MUST NOT be included under the top-level field `included`, as per the definition of `included`, see section JSON Response Schema: Common Fields.\n\n> **Note**: A query with the parameter `include` set to the empty string means no related resource objects are to be returned under the top-level field `included`."
+        },
+        {
+          "name": "api_hint",
+          "schema": "string",
+          "required": false,
+          "description": "If the client provides the parameter, the value SHOULD have the format `vMAJOR` or `vMAJOR.MINOR`, where MAJOR is a major version and MINOR is a minor version of the API. For example, if a client appends `api_hint=v1.0` to the query string, the hint provided is for major version 1 and minor version 0."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "errors are not allowed"
+        },
+        {
+          "statusCode": "400",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "403",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "404",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "422",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "500",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "501",
+          "description": "errors MUST be present and data MUST be skipped"
+        },
+        {
+          "statusCode": "553",
+          "description": "errors MUST be present and data MUST be skipped"
+        }
+      ]
+    },
+    {
+      "url": "/versions",
+      "method": "getVersionsVersionsGet",
+      "httpMethod": "get",
+      "tag": "Versions",
+      "description": "Get Versions",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://optimade.local",
   "apiDescription": "The [Open Databases Integration for Materials Design (OPTIMADE) consortium](https://www.optimade.org/) aims to make materials databases interoperational by developing a common REST API.\n\nThis specification is generated using [`optimade-python-tools`](https://github.com/Materials-Consortia/optimade-python-tools/tree/v0.16.0) v0.16.0.",
   "apiTitle": "OPTIMADE API",

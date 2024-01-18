@@ -3,6 +3,509 @@
   "openApiRaw": "https://app.idtbeyond.com/swagger/spec-08ef3dc298.json",
   "homepage": "idtbeyond.com",
   "apiVersion": "1.1.7",
+  "methods": [
+    {
+      "url": "/iatu/balance",
+      "method": "/iatu/balanceGet",
+      "httpMethod": "get",
+      "tag": "account",
+      "description": "Account balance",
+      "parameters": [
+        {
+          "name": "x-idt-beyond-app-id",
+          "schema": "string",
+          "required": true,
+          "description": "Application ID you would like to use"
+        },
+        {
+          "name": "x-idt-beyond-app-key",
+          "schema": "string",
+          "required": true,
+          "description": "Application KEY you would like to use"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/iatu/charges/reports/all",
+      "method": "/iatu/charges/reports/allGet",
+      "httpMethod": "get",
+      "tag": "charges",
+      "description": "List of account charges in JSON",
+      "parameters": [
+        {
+          "name": "x-idt-beyond-app-id",
+          "schema": "string",
+          "required": true,
+          "description": "Application ID you would like to use"
+        },
+        {
+          "name": "x-idt-beyond-app-key",
+          "schema": "string",
+          "required": true,
+          "description": "Application KEY you would like to use"
+        },
+        {
+          "name": "date_from",
+          "schema": "string",
+          "required": true,
+          "description": "The beginning date of the search IN YYYY-MM-DD format (America/New_York timezone). '2016-01-28'"
+        },
+        {
+          "name": "date_to",
+          "schema": "string",
+          "required": true,
+          "description": "The ending date of the search IN YYYY-MM-DD format (America/New_York timezone). '2016-01-28'"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/iatu/charges/reports/all.csv",
+      "method": "/iatu/charges/reports/allCsvGet",
+      "httpMethod": "get",
+      "tag": "charges",
+      "description": "List of account charges in CSV",
+      "parameters": [
+        {
+          "name": "x-idt-beyond-app-id",
+          "schema": "string",
+          "required": true,
+          "description": "Application ID you would like to use"
+        },
+        {
+          "name": "x-idt-beyond-app-key",
+          "schema": "string",
+          "required": true,
+          "description": "Application KEY you would like to use"
+        },
+        {
+          "name": "date_from",
+          "schema": "string",
+          "required": true,
+          "description": "The beginning date of the search IN YYYY-MM-DD format (America/New_York timezone). '2016-01-28'"
+        },
+        {
+          "name": "date_to",
+          "schema": "string",
+          "required": true,
+          "description": "The ending date of the search IN YYYY-MM-DD format (America/New_York timezone). '2016-01-28'"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/iatu/number-validator",
+      "method": "/iatu/numberValidatorGet",
+      "httpMethod": "get",
+      "tag": "utilities",
+      "description": "Mobile number validation",
+      "parameters": [
+        {
+          "name": "x-idt-beyond-app-id",
+          "schema": "string",
+          "required": true,
+          "description": "Application ID you would like to use"
+        },
+        {
+          "name": "x-idt-beyond-app-key",
+          "schema": "string",
+          "required": true,
+          "description": "Application KEY you would like to use"
+        },
+        {
+          "name": "country_code",
+          "schema": "string",
+          "required": true,
+          "description": "2-digit code of the country in ISO 3166 format. 'BR'"
+        },
+        {
+          "name": "mobile_number",
+          "schema": "string",
+          "required": true,
+          "description": "The mobile number you would like to validate. '5521983115555'"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/iatu/products/promotions",
+      "method": "/iatu/products/promotionsGet",
+      "httpMethod": "get",
+      "tag": "utilities",
+      "description": "Current promotions",
+      "parameters": [
+        {
+          "name": "x-idt-beyond-app-id",
+          "schema": "string",
+          "required": true,
+          "description": "Application ID you would like to use"
+        },
+        {
+          "name": "x-idt-beyond-app-key",
+          "schema": "string",
+          "required": true,
+          "description": "Application KEY you would like to use"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/iatu/products/reports/all",
+      "method": "/iatu/products/reports/allGet",
+      "httpMethod": "get",
+      "tag": "products",
+      "description": "Get a list of products in JSON format",
+      "parameters": [
+        {
+          "name": "x-idt-beyond-app-id",
+          "schema": "string",
+          "required": true,
+          "description": "Application ID you would like to use"
+        },
+        {
+          "name": "x-idt-beyond-app-key",
+          "schema": "string",
+          "required": true,
+          "description": "Application KEY you would like to use"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/iatu/products/reports/all.csv",
+      "method": "/iatu/products/reports/allCsvGet",
+      "httpMethod": "get",
+      "tag": "products",
+      "description": "Get a list of products in CSV format",
+      "parameters": [
+        {
+          "name": "x-idt-beyond-app-id",
+          "schema": "string",
+          "required": true,
+          "description": "Application ID you would like to use"
+        },
+        {
+          "name": "x-idt-beyond-app-key",
+          "schema": "string",
+          "required": true,
+          "description": "Application KEY you would like to use"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/iatu/products/reports/local-value",
+      "method": "/iatu/products/reports/localValueGet",
+      "httpMethod": "get",
+      "tag": "products",
+      "description": "Get the estimated Local Value of a product",
+      "parameters": [
+        {
+          "name": "x-idt-beyond-app-id",
+          "schema": "string",
+          "required": true,
+          "description": "Application ID you would like to use"
+        },
+        {
+          "name": "x-idt-beyond-app-key",
+          "schema": "string",
+          "required": true,
+          "description": "Application KEY you would like to use"
+        },
+        {
+          "name": "country_code",
+          "schema": "string",
+          "required": true,
+          "description": "2-digit code of the country in ISO 3166 format. 'GT'"
+        },
+        {
+          "name": "carrier_code",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the mobile carrier. 'Claro'"
+        },
+        {
+          "name": "amount",
+          "schema": "integer",
+          "required": true,
+          "description": "This is the amount, in cents, of the product you are purchasing. '500' = $5.00"
+        },
+        {
+          "name": "currency_code",
+          "schema": "string",
+          "required": true,
+          "description": "The currency code (ISO 4217) on the product you are querying. 'USD'"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/iatu/topups",
+      "method": "/iatu/topupsPost",
+      "httpMethod": "post",
+      "tag": "topups",
+      "description": "Topup a mobile phone",
+      "parameters": [
+        {
+          "name": "x-idt-beyond-app-id",
+          "schema": "string",
+          "required": true,
+          "description": "Application ID you would like to use"
+        },
+        {
+          "name": "x-idt-beyond-app-key",
+          "schema": "string",
+          "required": true,
+          "description": "Application KEY you would like to use"
+        },
+        {
+          "name": "amount",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "carrier_code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "client_transaction_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "country_code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "mobile_number",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "plan",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "product_code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "terminal_id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/iatu/topups/reports",
+      "method": "/iatu/topups/reportsPost",
+      "httpMethod": "post",
+      "tag": "topups",
+      "description": "Search topups transactions",
+      "parameters": [
+        {
+          "name": "x-idt-beyond-app-id",
+          "schema": "string",
+          "required": true,
+          "description": "Application ID you would like to use"
+        },
+        {
+          "name": "x-idt-beyond-app-key",
+          "schema": "string",
+          "required": true,
+          "description": "Application KEY you would like to use"
+        },
+        {
+          "name": "client_transaction_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "date_from",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "date_to",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "to_service_number",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type_of_report",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/iatu/topups/reports/all",
+      "method": "/iatu/topups/reports/allGet",
+      "httpMethod": "get",
+      "tag": "topups",
+      "description": "List of account topups in JSON",
+      "parameters": [
+        {
+          "name": "x-idt-beyond-app-id",
+          "schema": "string",
+          "required": true,
+          "description": "Application ID you would like to use"
+        },
+        {
+          "name": "x-idt-beyond-app-key",
+          "schema": "string",
+          "required": true,
+          "description": "Application KEY you would like to use"
+        },
+        {
+          "name": "date_from",
+          "schema": "string",
+          "required": true,
+          "description": "The beginning date of the search IN YYYY-MM-DD format (America/New_York timezone). '2016-01-28'"
+        },
+        {
+          "name": "date_to",
+          "schema": "string",
+          "required": true,
+          "description": "The ending date of the search IN YYYY-MM-DD format (America/New_York timezone). '2016-01-28'"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/iatu/topups/reports/all.csv",
+      "method": "/iatu/topups/reports/allCsvGet",
+      "httpMethod": "get",
+      "tag": "topups",
+      "description": "List of account topups in CSV",
+      "parameters": [
+        {
+          "name": "x-idt-beyond-app-id",
+          "schema": "string",
+          "required": true,
+          "description": "Application ID you would like to use"
+        },
+        {
+          "name": "x-idt-beyond-app-key",
+          "schema": "string",
+          "required": true,
+          "description": "Application KEY you would like to use"
+        },
+        {
+          "name": "date_from",
+          "schema": "string",
+          "required": true,
+          "description": "The beginning date of the search IN YYYY-MM-DD format (America/New_York timezone). '2016-01-28'"
+        },
+        {
+          "name": "date_to",
+          "schema": "string",
+          "required": true,
+          "description": "The ending date of the search IN YYYY-MM-DD format (America/New_York timezone). '2016-01-28'"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/iatu/topups/reports/totals",
+      "method": "/iatu/topups/reports/totalsGet",
+      "httpMethod": "get",
+      "tag": "topups",
+      "description": "Summary of account topups in JSON",
+      "parameters": [
+        {
+          "name": "x-idt-beyond-app-id",
+          "schema": "string",
+          "required": true,
+          "description": "Application ID you would like to use"
+        },
+        {
+          "name": "x-idt-beyond-app-key",
+          "schema": "string",
+          "required": true,
+          "description": "Application KEY you would like to use"
+        },
+        {
+          "name": "date_from",
+          "schema": "string",
+          "required": true,
+          "description": "The beginning date of the search IN YYYY-MM-DD format (America/New_York timezone). '2016-01-28'"
+        },
+        {
+          "name": "date_to",
+          "schema": "string",
+          "required": true,
+          "description": "The ending date of the search IN YYYY-MM-DD format (America/New_York timezone). '2016-01-28'"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/iatu/topups/reverse",
+      "method": "/iatu/topups/reversePost",
+      "httpMethod": "post",
+      "tag": "topups",
+      "description": "Reversal of a Topup",
+      "parameters": [
+        {
+          "name": "x-idt-beyond-app-id",
+          "schema": "string",
+          "required": true,
+          "description": "Application ID you would like to use"
+        },
+        {
+          "name": "x-idt-beyond-app-key",
+          "schema": "string",
+          "required": true,
+          "description": "Application KEY you would like to use"
+        },
+        {
+          "name": "client_transaction_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "to_service_number",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/status",
+      "method": "/statusGet",
+      "httpMethod": "get",
+      "tag": "utilities",
+      "description": "Status check",
+      "parameters": [
+        {
+          "name": "x-idt-beyond-app-id",
+          "schema": "string",
+          "required": true,
+          "description": "Application ID you would like to use"
+        },
+        {
+          "name": "x-idt-beyond-app-key",
+          "schema": "string",
+          "required": true,
+          "description": "Application KEY you would like to use"
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://api.idtbeyond.com/v1",
   "apiDescription": "Our active docs provide the ability to test out your account and to see the responses to your queries. The services are RESTful, and are accessed using standard HTTP methods over a secure HTTPS channel. Requests and responses are currently sent in JSON format, and have a base URL of /v1.",
   "apiTitle": "Active Documentation for /v1",

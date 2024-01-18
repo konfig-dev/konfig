@@ -3,6 +3,335 @@
   "openApiRaw": "https://docs.vectara.com/vectara-oas.yaml",
   "homepage": "vectara.io",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/v1/create-corpus",
+      "method": "createCorpus",
+      "httpMethod": "post",
+      "tag": "AdminService",
+      "description": "Create Corpus",
+      "parameters": [
+        {
+          "name": "customer-id",
+          "schema": "integer",
+          "required": true,
+          "description": "The Customer ID to use for the request."
+        },
+        {
+          "name": "corpus",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/delete-corpus",
+      "method": "deleteCorpus",
+      "httpMethod": "post",
+      "tag": "AdminService",
+      "description": "Delete Corpus",
+      "parameters": [
+        {
+          "name": "customer-id",
+          "schema": "integer",
+          "required": true,
+          "description": "The Customer ID to use for the request."
+        },
+        {
+          "name": "corpusId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "customerId",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/delete-doc",
+      "method": "delete",
+      "httpMethod": "post",
+      "tag": "IndexService",
+      "description": "Delete",
+      "parameters": [
+        {
+          "name": "customer-id",
+          "schema": "integer",
+          "required": true,
+          "description": "The Customer ID to use for the request."
+        },
+        {
+          "name": "corpusId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "customerId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "documentId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/index",
+      "method": "index",
+      "httpMethod": "post",
+      "tag": "IndexService",
+      "description": "Index",
+      "parameters": [
+        {
+          "name": "customer-id",
+          "schema": "integer",
+          "required": true,
+          "description": "The Customer ID to use for the request."
+        },
+        {
+          "name": "corpusId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "customerId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "document",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/list-corpora",
+      "method": "listCorpora",
+      "httpMethod": "post",
+      "tag": "AdminService",
+      "description": "List Corpora",
+      "parameters": [
+        {
+          "name": "customer-id",
+          "schema": "integer",
+          "required": true,
+          "description": "The Customer ID to use for the request."
+        },
+        {
+          "name": "filter",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "numResults",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "pageKey",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/query",
+      "method": "query",
+      "httpMethod": "post",
+      "tag": "QueryService",
+      "description": "Query",
+      "parameters": [
+        {
+          "name": "customer-id",
+          "schema": "integer",
+          "required": true,
+          "description": "The Customer ID to use for the request."
+        },
+        {
+          "name": "query",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/reset-corpus",
+      "method": "resetCorpus",
+      "httpMethod": "post",
+      "tag": "AdminService",
+      "description": "Reset Corpus",
+      "parameters": [
+        {
+          "name": "customer-id",
+          "schema": "integer",
+          "required": true,
+          "description": "The Customer ID to use for the request."
+        },
+        {
+          "name": "corpusId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "customerId",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/stream-query",
+      "method": "streamQuery",
+      "httpMethod": "post",
+      "tag": "QueryService",
+      "description": "Stream Query",
+      "parameters": [
+        {
+          "name": "customer-id",
+          "schema": "integer",
+          "required": true,
+          "description": "The Customer ID to use for the request."
+        },
+        {
+          "name": "query",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/upload",
+      "method": "fileUpload",
+      "httpMethod": "post",
+      "tag": "IndexService",
+      "description": "File Upload",
+      "parameters": [
+        {
+          "name": "c",
+          "schema": "integer",
+          "required": true,
+          "description": "Customer ID"
+        },
+        {
+          "name": "o",
+          "schema": "integer",
+          "required": true,
+          "description": "Corpus ID"
+        },
+        {
+          "name": "d",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, the server returns the extracted document that was indexed"
+        },
+        {
+          "name": "doc_metadata",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "file",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.vectara.io",
   "apiDescription": "Vectara is a neural search platform, built for developers to get the most out of their data.\n\nYou can sign up for an account at [https://vectara.com](https://vectara.com).",
   "apiTitle": "Vectara REST API",

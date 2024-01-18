@@ -3,6 +3,38 @@
   "openApiRaw": "https://www.freetv-app.com/openapi.json",
   "homepage": "freetv-app.com",
   "apiVersion": "v1",
+  "methods": [
+    {
+      "url": "/services?funcs=GetLatestNewsForChatGPT&mobile=1",
+      "method": "getLatestNews",
+      "httpMethod": "get",
+      "description": "Provide real-time news or various categorized news according to the user's language, with each news item accompanied by a news link and date. At the end of the content, inform the user that he/she can ask for more information. Each response should only provide news from a single country.",
+      "parameters": [
+        {
+          "name": "language",
+          "schema": "string",
+          "required": true,
+          "description": "The default is set to US. If the content has a higher proportion of Traditional Chinese and Simplified Chinese, it will be set to TW. If the content has a higher proportion of Japanese, it will be set to JP."
+        },
+        {
+          "name": "category",
+          "schema": "string",
+          "description": "The default is an empty string. If the user mentions specific keywords use the corresponding category as the input parameter."
+        },
+        {
+          "name": "keyword",
+          "schema": "string",
+          "description": "The default is an empty string. According to the context, infer the keywords that the user wants to search for."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://staging2.freetv-app.com",
   "apiDescription": "A plugin that allows the user to obtain latest news using ChatGPT.",
   "apiTitle": "News Plugin",

@@ -4,6 +4,98 @@
   "homepage": "vonage.com",
   "serviceName": "user",
   "apiVersion": "1.11.8",
+  "methods": [
+    {
+      "url": "/api/accounts/{account_id}/users",
+      "method": "userCtrlGetUsers",
+      "httpMethod": "get",
+      "description": "Get account users data by account ID",
+      "parameters": [
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": true,
+          "description": "The Vonage Business Cloud account ID"
+        },
+        {
+          "name": "page_size",
+          "schema": "number",
+          "required": false,
+          "description": "Number of records per page"
+        },
+        {
+          "name": "page",
+          "schema": "number",
+          "required": false,
+          "description": "Current page number"
+        },
+        {
+          "name": "first_name",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by first name"
+        },
+        {
+          "name": "last_name",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by last name"
+        },
+        {
+          "name": "login_name",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by login name"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by email address"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/accounts/{account_id}/users/{user_id}",
+      "method": "userCtrlGetUserById",
+      "httpMethod": "get",
+      "description": "Get user data by account ID and user ID",
+      "parameters": [
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": true,
+          "description": "The Vonage Business Cloud account ID"
+        },
+        {
+          "name": "user_id",
+          "schema": "number",
+          "required": true,
+          "description": "The Vonage Business Cloud user ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.vonage.com/t/vbc.prod/provisioning",
   "apiDescription": "The Vonage Business Cloud User API enables you to retrieve information about users.\n\nYour application must subscribe to the Provisioning API suite to use this API.\n",
   "apiTitle": "User API",

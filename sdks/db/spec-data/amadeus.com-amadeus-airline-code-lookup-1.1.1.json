@@ -4,6 +4,37 @@
   "homepage": "amadeus.com",
   "serviceName": "amadeus-airline-code-lookup",
   "apiVersion": "1.1.1",
+  "methods": [
+    {
+      "url": "/reference-data/airlines",
+      "method": "getairlines",
+      "httpMethod": "get",
+      "tag": "airlines",
+      "description": "Return airlines information.",
+      "parameters": [
+        {
+          "name": "airlineCodes",
+          "schema": "string",
+          "required": false,
+          "description": "Code of the airline following IATA standard([IATA table codes](http://www.iata.org/publications/Pages/code-search.aspx)) or ICAO standard ([ICAO airlines table codes](https://en.wikipedia.org/wiki/List_of_airline_codes))\n\nSeveral airlines can be selected at once by sending a list separated by a coma (i.e. AF, SWA)\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://test.api.amadeus.com/v1",
   "apiDescription": "\nBefore using this API, we recommend you read our **[Authorization Guide](https://developers.amadeus.com/self-service/apis-docs/guides/authorization-262)** for more information on how to generate an access token. \n\nPlease also be aware that our test environment is based on a subset of the production, to see what is included in test please refer to our **[data collection](https://github.com/amadeus4dev/data-collection)**.",
   "apiTitle": "Airline Code Lookup API",

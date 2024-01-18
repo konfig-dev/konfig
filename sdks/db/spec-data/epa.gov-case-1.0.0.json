@@ -4,6 +4,2475 @@
   "homepage": "epa.gov",
   "serviceName": "case",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/case_rest_services.get_case_info",
+      "method": "/caseRestServicesGetCaseInfoGet",
+      "httpMethod": "get",
+      "tag": "Case Enforcement",
+      "description": "Enforcement Case Search (new version)",
+      "parameters": [
+        {
+          "name": "output",
+          "schema": "string",
+          "required": false,
+          "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+        },
+        {
+          "name": "p_case_category",
+          "schema": "string",
+          "required": false,
+          "description": "Case Category Filter.  Enter one or more case category codes to filter results.   Provide multiple values as a comma-delimited list.\n- AFR = Administrative - Formal\n- AIF = Administrative - Informal\n- JDC = Judicial"
+        },
+        {
+          "name": "p_case_status",
+          "schema": "string",
+          "required": false,
+          "description": "Case Status Code Filter.  Enter one or more case status codes to limit results.  Provide multiple values as a comma-delimited list."
+        },
+        {
+          "name": "p_milestone",
+          "schema": "string",
+          "required": false,
+          "description": "Administrative or Judicial Milestone Filter.  Enter one or milestone values to restrict results.  Provide multiple values as a comma-delimited list."
+        },
+        {
+          "name": "p_from_date",
+          "schema": "string",
+          "required": false,
+          "description": "Administrative or Judicial Milestone Date Range Start Limiter.  Enter a date value in MM/DD/YYYY format to limit milestone results.  Parameter p_to_date must also be populated when using this parameter option."
+        },
+        {
+          "name": "p_to_date",
+          "schema": "string",
+          "required": false,
+          "description": "Administrative or Judicial Milestone Date Range End Limiter.  Enter a date value in MM/DD/YYYY format to limit milestone results.  Parameter p_from_date must also be populated when using this parameter option."
+        },
+        {
+          "name": "p_milestone_fy",
+          "schema": "string",
+          "required": false,
+          "description": "Administrative or Judicial Milestone Fiscal Year Limiter.  Enter a single fiscal year value to limit milestone searches to a given fiscal year."
+        },
+        {
+          "name": "p_name",
+          "schema": "string",
+          "required": false,
+          "description": "Case Name Filter.  Enter one or more case names to restrict results.  Provide multiple values as a comma-delimited list.  When using this parameter the p_name_type parameter is required."
+        },
+        {
+          "name": "p_name_type",
+          "schema": "string",
+          "required": false,
+          "description": "Case Name Filter Modifier."
+        },
+        {
+          "name": "p_case_number",
+          "schema": "string",
+          "required": false,
+          "description": "Case Number Filter.  Enter one or more case numbers to restrict results.  Provide multiple values as a comma-delimited list."
+        },
+        {
+          "name": "p_docket_number",
+          "schema": "string",
+          "required": false,
+          "description": "DOJ Docket Number Filter.  Enter a single docket number or partial docket number to restrict results.  Use \"%\" as a wildcard for more complex filtering."
+        },
+        {
+          "name": "p_court_docket_number",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "p_activity_number",
+          "schema": "string",
+          "required": false,
+          "description": "Case Activity Number Filter.  Enter a single case activity number to filter results."
+        },
+        {
+          "name": "p_case_lead",
+          "schema": "string",
+          "required": false,
+          "description": "Case Lead Limiter.  Enter E or S to limit results.\n- E = EPA is the case lead.\n- S = The state is the case lead."
+        },
+        {
+          "name": "p_case_sens_flg",
+          "schema": "string",
+          "required": false,
+          "description": "Case Sensitive Data Flag.  Enter a Y or N to include or exclude cases with sensitive data."
+        },
+        {
+          "name": "p_region",
+          "schema": "string",
+          "required": false,
+          "description": "EPA Region Filter. Provide a single value of 01 thru 10 to restrict results to a single EPA region."
+        },
+        {
+          "name": "p_state",
+          "schema": "string",
+          "required": false,
+          "description": "Case Location State Filter.  Enter one or more state USPS postal codes to filter results.  Provide multiple values as a comma-delimited list."
+        },
+        {
+          "name": "p_district",
+          "schema": "string",
+          "required": false,
+          "description": "Case Location Court District Limiter.  Enter a single state court district code to limit results."
+        },
+        {
+          "name": "p_sic",
+          "schema": "string",
+          "required": false,
+          "description": "Standard Industrial Classification (SIC) Code Filter.  Enter a single 4-digit SIC Code to filter results."
+        },
+        {
+          "name": "p_sic_ao_naics",
+          "schema": "string",
+          "required": false,
+          "description": "Case Location SIC/NAICS And/Or Modifier.  Enter either AND or OR to govern the search logic of SIC and NAICS codes.\n- AND = Search will return results having both the provided SIC code(s) and provided NAICS code(s).\n- OR = Search will return results having either the provided SIC code(s) or the provided NAICS code(s)."
+        },
+        {
+          "name": "p_sic_primary_flg",
+          "schema": "string",
+          "required": false,
+          "description": "Case Location Primary SIC Flag.  Enter Y to limit SIC search results to primary SIC codes only."
+        },
+        {
+          "name": "p_sic_frs_flg",
+          "schema": "string",
+          "required": false,
+          "description": "Case Location Extended FRS SIC Search Flag.  Enter Y to expand SIC search to include Federal Registry Service datasets."
+        },
+        {
+          "name": "p_naics",
+          "schema": "string",
+          "required": false,
+          "description": "North American Industry Classification System Filter. Enter two to six digits to filter results to facilities having matching NAICS codes.  Digits less than six will match to all codes beginning with the provided values."
+        },
+        {
+          "name": "p_naics_primary_flg",
+          "schema": "string",
+          "required": false,
+          "description": "Case Location Primary NAICS Flag.  Enter Y to limit NAICS search results to primary NAICS codes only."
+        },
+        {
+          "name": "p_naics_frs_flg",
+          "schema": "string",
+          "required": false,
+          "description": "Case Location Extended FRS NAICS Search Flag.  Enter Y to expand NAICS search to include Federal Registry Service datasets."
+        },
+        {
+          "name": "p_enf_type",
+          "schema": "string",
+          "required": false,
+          "description": "Case Enforcement Type Filter. Enter one or more case enforcement type codes to limit results.  Provide multiple values as a comma-delimited list."
+        },
+        {
+          "name": "p_law",
+          "schema": "string",
+          "required": false,
+          "description": "Law Statute Code Filter.  Enter a single statute code to limit results."
+        },
+        {
+          "name": "p_section",
+          "schema": "string",
+          "required": false,
+          "description": "Law Section Code Filter. Enter one or more law section codes to limit results.  Provide multiple values as a comma-delimited list."
+        },
+        {
+          "name": "p_cp_citation",
+          "schema": "string",
+          "required": false,
+          "description": "Law Section Code Filter Alternative. Enter a single law section code to limit results.  This parameter accepts partial codes and allows for advanced search modifiers."
+        },
+        {
+          "name": "p_rank_order",
+          "schema": "string",
+          "required": false,
+          "description": "Law Status Rank Order Limiter.  Enter a single integer rank order to limit results."
+        },
+        {
+          "name": "p_enf_program",
+          "schema": "string",
+          "required": false,
+          "description": "Enforcement Program Code Limiter.  Enter one or more enforcement program codes to limit results.  Provide multiple values as a comma-delimited list.  "
+        },
+        {
+          "name": "p_violation",
+          "schema": "string",
+          "required": false,
+          "description": "Violation Type Code Filter.  Enter one or more violation type codes to limit results.  Provide multiple values as a comma-delimited list."
+        },
+        {
+          "name": "p_priority_area",
+          "schema": "string",
+          "required": false,
+          "description": "Case Priority Area Filter.  Enter one or more case priority areas to limit results.  Provide multiple values as a comma-delimited list."
+        },
+        {
+          "name": "p_priority_area_desc",
+          "schema": "string",
+          "required": false,
+          "description": "Case Priority Area Description Filter.  Enter a single case priority area description or partial case priority area description to limit results.  Use \"%\" as a wild-card match for more complex searches."
+        },
+        {
+          "name": "p_tribal",
+          "schema": "string",
+          "required": false,
+          "description": "Case Location Tribal Land Flag.  Enter Y or N to include or disallow cases on tribal land."
+        },
+        {
+          "name": "p_oeca_core",
+          "schema": "string",
+          "required": false,
+          "description": "OECA Core Program Flag.  Enter Y or N to include or exclude core program cases."
+        },
+        {
+          "name": "p_multimedia",
+          "schema": "string",
+          "required": false,
+          "description": "Enforcement Multimedia Case Flag.  Enter Y or N to include or exclude multimedia cases."
+        },
+        {
+          "name": "p_fed_case",
+          "schema": "string",
+          "required": false,
+          "description": "Federal Facility Involvement Flag.  Enter a Y or N to include or exclude cases involving federal facilities."
+        },
+        {
+          "name": "p_activity_contact",
+          "schema": "string",
+          "required": false,
+          "description": "Activity Contact Last Name Filter.  Enter a single last name or partial last name to filter results.  Use \"%\" as a wild-card for advanced searching."
+        },
+        {
+          "name": "p_role",
+          "schema": "string",
+          "required": false,
+          "description": "Activity Contact Role Code Filter.  Enter a single role code to restrict results."
+        },
+        {
+          "name": "p_fed_penalty",
+          "schema": "string",
+          "required": false,
+          "description": "Federal Penalty Assessed Amount Filter.  Provide one of the following keywords to restrict results.\n- ANY = cases with any penalty amount.\n- LE5000 = cases with penalty amount less than or equal to $5,000.\n- GT5000 = cases with penalty amount more than $5,000.\n- GT50000 = cases with penalty amount more than $50,000.\n- GT100000 = cases with penalty amount more than $100,000.\n- GT500000 = cases with penalty amount more than $500,000.\n- GT1000000 = cases with penalty amount more than $1,000,000.\n- GT2500000 = cases with penalty amount more than $2,500,000."
+        },
+        {
+          "name": "p_total_fed_penalty",
+          "schema": "string",
+          "required": false,
+          "description": "Total Federal Penalty Limiter.  Enter a keyword value to limit results to cases with given total federal penalties.\n- ANY = Cases with any federal penalty greater than zero.\n- LEXX = Replacing XX with a dollar value, return cases with federal penalty less than or equal to the given amount.\n- GTXX = Replacing XX with a dollar value, return cases with federal penalty greater than the given amount."
+        },
+        {
+          "name": "p_cost_recovery",
+          "schema": "string",
+          "required": false,
+          "description": "Cost Recovery Awarded Amount Limiter.  Enter a keyword value to limit results to cases with given cost recovery amounts.\n- ANY = Cases with any cost recovery amount greater than zero.\n- LEXX = Replacing XX with a dollar value, return cases with cost recovery amount less than or equal to the given amount.\n- GTXX = Replacing XX with a dollar value, return cases with cost recovery amount greater than the given amount."
+        },
+        {
+          "name": "p_total_cost_recovery",
+          "schema": "string",
+          "required": false,
+          "description": "Total Cost Recovery Amount Limiter.  Enter a keyword value to limit results to cases with given cost recovery amounts.\n- ANY = Cases with any cost recovery amount greater than zero.\n- LEXX = Replacing XX with a dollar value, return cases with cost recovery amount less than or equal to the given amount.\n- GTXX = Replacing XX with a dollar value, return cases with cost recovery amount greater than the given amount."
+        },
+        {
+          "name": "p_complying_actions",
+          "schema": "string",
+          "required": false,
+          "description": "Complying Actions Type Code Limiter.  Enter one or more complying action codes to restrict results.  Provide multiple values as a comma-delimited list."
+        },
+        {
+          "name": "p_comp_act_val",
+          "schema": "string",
+          "required": false,
+          "description": "Compliance Action Cost Limiter. Enter a keyword value to limit results to cases with given compliance cost amounts.\n- ANY = Cases with any compliance cost amount greater than zero.\n- LEXX = Replacing XX with a dollar value, return cases with compliance cost amount less than or equal to the given amount.\n- GTXX = Replacing XX with a dollar value, return cases with compliance cost amount greater than the given amount."
+        },
+        {
+          "name": "p_total_comp_act_val",
+          "schema": "string",
+          "required": false,
+          "description": "Total Compliance Action Amount Limiter.  Enter a keyword value to limit results to cases with given total compliance action amounts.\n- ANY = Cases with any total compliance action amount greater than zero.\n- LEXX = Replacing XX with a dollar value, return cases with total compliance action amount less than or equal to the given amount.\n- GTXX = Replacing XX with a dollar value, return cases with total compliance action amount greater than the given amount."
+        },
+        {
+          "name": "p_sep_cats",
+          "schema": "string",
+          "required": false,
+          "description": "Supplemental Environmental Projects Activity Category Code Limiter.  Provide one or more SEP activity category codes to limit results.  Provide multiple values as a comma-delimited list."
+        },
+        {
+          "name": "p_sep_val",
+          "schema": "string",
+          "required": false,
+          "description": "Supplemental Environmental Projects Activity Value Limiter.  Provide a keyword to limit results.\n- ANY = return cases with any SEP activity amount.\n- LE10000 = return cases with SEP activity amount less than or equal to $10,000.\n- GT10000 = return cases with SEP activity amount greater than $10,000.\n- GT50000 = return cases with SEP activity amount greater than $50,000.\n- GT100000 = return cases with SEP activity amount greater than $100,000.\n- GT500000 = return cases with SEP activity amount greater than $500,000.\n- GT1000000 = return cases with SEP activity amount greater than $1,000,000."
+        },
+        {
+          "name": "p_total_sep_val",
+          "schema": "string",
+          "required": false,
+          "description": "Supplemental Environmental Projects Total Value Limiter.  Provide a keyword to limit results.\n- ANY = return cases with any SEP total amount.\n- LE10000 = return cases with SEP total amount less than or equal to $10,000.\n- GT10000 = return cases with SEP total amount greater than $10,000.\n- GT50000 = return cases with SEP total amount greater than $50,000.\n- GT100000 = return cases with SEP total amount greater than $100,000.\n- GT500000 = return cases with SEP total amount greater than $500,000.\n- GT1000000 = return cases with SEP total amount greater than $1,000,000."
+        },
+        {
+          "name": "p_lodged_date",
+          "schema": "string",
+          "required": false,
+          "description": "Settlement Lodged Date Limiter.  Enter a single settlement lodged date in MM/DD/YYYY format to limit results."
+        },
+        {
+          "name": "p_entered_date",
+          "schema": "string",
+          "required": false,
+          "description": "Settlement Entered Date Limiter.  Enter a single settlement entered date in MM/DD/YYYY format to limit results."
+        },
+        {
+          "name": "p_facility_id",
+          "schema": "string",
+          "required": false,
+          "description": "Case Facility Registration Identifier Limiter.  Enter a single complete facility identifier to limit results."
+        },
+        {
+          "name": "p_fac_city",
+          "schema": "string",
+          "required": false,
+          "description": "Case Facility City Limiter.  Enter a single complete city name to filter cases by facility location city."
+        },
+        {
+          "name": "p_fac_zip",
+          "schema": "string",
+          "required": false,
+          "description": "Case Facility ZIP Code Limiter.  Enter a single 5-digit zip code to filter cases by facility location zip code."
+        },
+        {
+          "name": "p_fac_county",
+          "schema": "string",
+          "required": false,
+          "description": "Case Facility County Limiter.  Enter a single complete county name to filter cases by facility location county name."
+        },
+        {
+          "name": "p_case_summary",
+          "schema": "string",
+          "required": false,
+          "description": "Case Summary Search Limiter.  Enter a single case summary to limit results.  This parameter accepts partial codes and allows for advanced search modifiers."
+        },
+        {
+          "name": "p_case_summary_type",
+          "schema": "string",
+          "required": false,
+          "description": "Identifies how the the search terms enterened in p_case_summary are searched.  Valid values are ALL (Default), WITHIN, and CONTAINS.  Must be used with p_case_summary."
+        },
+        {
+          "name": "p_usmex",
+          "schema": "string",
+          "required": false,
+          "description": "US-Mexico Border Flag.  Enter Y/N to restrict searches to facilities located within 100KM of the border."
+        },
+        {
+          "name": "p_c1lat",
+          "schema": "number",
+          "required": false,
+          "description": "In decimal degrees.  Latitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
+        },
+        {
+          "name": "p_c1lon",
+          "schema": "number",
+          "required": false,
+          "description": "In decimal degrees.  Longitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
+        },
+        {
+          "name": "p_c2lat",
+          "schema": "number",
+          "required": false,
+          "description": "In decimal degrees.  Latitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
+        },
+        {
+          "name": "p_c2lon",
+          "schema": "number",
+          "required": false,
+          "description": "In decimal degrees.  Longitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
+        },
+        {
+          "name": "p_voluntary",
+          "schema": "string",
+          "required": false,
+          "description": "Voluntary Self Disclosure Flag.  Enter Y or N to include or exclude cases results having voluntary disclosure."
+        },
+        {
+          "name": "p_fed_indicator",
+          "schema": "string",
+          "required": false,
+          "description": "Federal Facility/Cross Media Flag.  Enter Y or N to limit results to cases with federal facility cross media."
+        },
+        {
+          "name": "p_fntype",
+          "schema": "string",
+          "required": false,
+          "description": "Controls type of text search performed on facility name with parameter p_fn.\n- EXACT = Find facilities having the exact provided name(s).\n- BEGINS = Find facilities with names starting with the provided term(s).\n- ALL = Find facilities using Oracle text search terms.\n- CONTAINS = "
+        },
+        {
+          "name": "p_civil_criminal_indicator",
+          "schema": "string",
+          "required": false,
+          "description": "Civil/Criminal Case Limiter.  Provide a keyword to limit results.\n- ANY = return both civil and criminal cases.\n- CI = return only civil cases.\n- CR = return only criminal cases."
+        },
+        {
+          "name": "queryset",
+          "schema": "number",
+          "required": false,
+          "description": "Query Limiter.  Enter a value to limit the number of records returned for each query. Value cannot exceed 70,000."
+        },
+        {
+          "name": "responseset",
+          "schema": "number",
+          "required": false,
+          "description": "Response Set Limiter. Enter a value to limit the number of records per page. Value cannot exceed 1,000."
+        },
+        {
+          "name": "mapset",
+          "schema": "string",
+          "required": false,
+          "description": "Identifies the maxium number of case facilities to return from the case_rest_services.get_case_info query."
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
+        },
+        {
+          "name": "qcolumns",
+          "schema": "string",
+          "required": false,
+          "description": "Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
+        },
+        {
+          "name": "p_pretty_print",
+          "schema": "number",
+          "required": false,
+          "description": "Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost."
+        },
+        {
+          "name": "p_ocmap_fy",
+          "schema": "string",
+          "required": false,
+          "description": "Fiscal Year to select cases that are displayed in the Office of Complicance Fiscal Year Map Services"
+        },
+        {
+          "name": "p_qs",
+          "schema": "string",
+          "required": false,
+          "description": "Quick Search. Allows entry for city, state, and/or zip code."
+        },
+        {
+          "name": "p_has_map",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Root Object"
+        }
+      ]
+    },
+    {
+      "url": "/case_rest_services.get_case_info",
+      "method": "/caseRestServicesGetCaseInfoPost",
+      "httpMethod": "post",
+      "tag": "Case Enforcement",
+      "description": "Enforcement Case Search (new version)",
+      "parameters": [
+        {
+          "name": "output",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_case_category",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_case_status",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_milestone",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_from_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_to_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_milestone_fy",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_name_type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_case_number",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_docket_number",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_court_docket_number",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_activity_number",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_case_lead",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_case_sens_flg",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_region",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_state",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_district",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_sic",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_sic_ao_naics",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_sic_primary_flg",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_sic_frs_flg",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_naics",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_naics_primary_flg",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_naics_frs_flg",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_enf_type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_law",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_section",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_cp_citation",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_rank_order",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_enf_program",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_violation",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_priority_area",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_priority_area_desc",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_tribal",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_oeca_core",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_multimedia",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_fed_case",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_activity_contact",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_role",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_fed_penalty",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_total_fed_penalty",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_cost_recovery",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_total_cost_recovery",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_complying_actions",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_comp_act_val",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_total_comp_act_val",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_sep_cats",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_sep_val",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_total_sep_val",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_lodged_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_entered_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_facility_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_fac_city",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_fac_zip",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_fac_county",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_case_summary",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_case_summary_type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_usmex",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_c1lat",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "p_c1lon",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "p_c2lat",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "p_c2lon",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "p_voluntary",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_fed_indicator",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_fntype",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_civil_criminal_indicator",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "queryset",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "responseset",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "mapset",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "qcolumns",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_pretty_print",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "p_ocmap_fy",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_qs",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_has_map",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Root Object"
+        }
+      ]
+    },
+    {
+      "url": "/case_rest_services.get_case_report",
+      "method": "/caseRestServicesGetCaseReportGet",
+      "httpMethod": "get",
+      "tag": "Case Enforcement",
+      "description": "Enforcement Case Summary Report Search",
+      "parameters": [
+        {
+          "name": "p_id",
+          "schema": "string",
+          "required": false,
+          "description": "Case Number. Enter the case number identifier to retrieve the case report."
+        },
+        {
+          "name": "output",
+          "schema": "string",
+          "required": false,
+          "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Service call container."
+        }
+      ]
+    },
+    {
+      "url": "/case_rest_services.get_case_report",
+      "method": "/caseRestServicesGetCaseReportPost",
+      "httpMethod": "post",
+      "tag": "Case Enforcement",
+      "description": "Enforcement Case Summary Report Search",
+      "parameters": [
+        {
+          "name": "p_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "output",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Service call container."
+        }
+      ]
+    },
+    {
+      "url": "/case_rest_services.get_cases",
+      "method": "/caseRestServicesGetCasesGet",
+      "httpMethod": "get",
+      "tag": "Case Enforcement",
+      "description": "Enforcement Case Search",
+      "parameters": [
+        {
+          "name": "output",
+          "schema": "string",
+          "required": false,
+          "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+        },
+        {
+          "name": "p_case_category",
+          "schema": "string",
+          "required": false,
+          "description": "Case Category Filter.  Enter one or more case category codes to filter results.   Provide multiple values as a comma-delimited list.\n- AFR = Administrative - Formal\n- AIF = Administrative - Informal\n- JDC = Judicial"
+        },
+        {
+          "name": "p_case_status",
+          "schema": "string",
+          "required": false,
+          "description": "Case Status Code Filter.  Enter one or more case status codes to limit results.  Provide multiple values as a comma-delimited list."
+        },
+        {
+          "name": "p_violation",
+          "schema": "string",
+          "required": false,
+          "description": "Violation Type Code Filter.  Enter one or more violation type codes to limit results.  Provide multiple values as a comma-delimited list."
+        },
+        {
+          "name": "p_milestone",
+          "schema": "string",
+          "required": false,
+          "description": "Administrative or Judicial Milestone Filter.  Enter one or milestone values to restrict results.  Provide multiple values as a comma-delimited list."
+        },
+        {
+          "name": "p_from_date",
+          "schema": "string",
+          "required": false,
+          "description": "Administrative or Judicial Milestone Date Range Start Limiter.  Enter a date value in MM/DD/YYYY format to limit milestone results.  Parameter p_to_date must also be populated when using this parameter option."
+        },
+        {
+          "name": "p_to_date",
+          "schema": "string",
+          "required": false,
+          "description": "Administrative or Judicial Milestone Date Range End Limiter.  Enter a date value in MM/DD/YYYY format to limit milestone results.  Parameter p_from_date must also be populated when using this parameter option."
+        },
+        {
+          "name": "p_milestone_fy",
+          "schema": "string",
+          "required": false,
+          "description": "Administrative or Judicial Milestone Fiscal Year Limiter.  Enter a single fiscal year value to limit milestone searches to a given fiscal year."
+        },
+        {
+          "name": "p_name",
+          "schema": "string",
+          "required": false,
+          "description": "Case Name Filter.  Enter one or more case names to restrict results.  Provide multiple values as a comma-delimited list.  When using this parameter the p_name_type parameter is required."
+        },
+        {
+          "name": "p_name_type",
+          "schema": "string",
+          "required": false,
+          "description": "Case Name Filter Modifier."
+        },
+        {
+          "name": "p_case_number",
+          "schema": "string",
+          "required": false,
+          "description": "Case Number Filter.  Enter one or more case numbers to restrict results.  Provide multiple values as a comma-delimited list."
+        },
+        {
+          "name": "p_docket_number",
+          "schema": "string",
+          "required": false,
+          "description": "DOJ Docket Number Filter.  Enter a single docket number or partial docket number to restrict results.  Use \"%\" as a wildcard for more complex filtering."
+        },
+        {
+          "name": "p_court_docket_number",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "p_activity_number",
+          "schema": "string",
+          "required": false,
+          "description": "Case Activity Number Filter.  Enter a single case activity number to filter results."
+        },
+        {
+          "name": "p_case_lead",
+          "schema": "string",
+          "required": false,
+          "description": "Case Lead Limiter.  Enter E or S to limit results.\n- E = EPA is the case lead.\n- S = The state is the case lead."
+        },
+        {
+          "name": "p_case_sens_flg",
+          "schema": "string",
+          "required": false,
+          "description": "Case Sensitive Data Flag.  Enter a Y or N to include or exclude cases with sensitive data."
+        },
+        {
+          "name": "p_region",
+          "schema": "string",
+          "required": false,
+          "description": "EPA Region Filter. Provide a single value of 01 thru 10 to restrict results to a single EPA region."
+        },
+        {
+          "name": "p_state",
+          "schema": "string",
+          "required": false,
+          "description": "Case Location State Filter.  Enter one or more state USPS postal codes to filter results.  Provide multiple values as a comma-delimited list."
+        },
+        {
+          "name": "p_district",
+          "schema": "string",
+          "required": false,
+          "description": "Case Location Court District Limiter.  Enter a single state court district code to limit results."
+        },
+        {
+          "name": "p_sic",
+          "schema": "string",
+          "required": false,
+          "description": "Standard Industrial Classification (SIC) Code Filter.  Enter a single 4-digit SIC Code to filter results."
+        },
+        {
+          "name": "p_sic_ao_naics",
+          "schema": "string",
+          "required": false,
+          "description": "Case Location SIC/NAICS And/Or Modifier.  Enter either AND or OR to govern the search logic of SIC and NAICS codes.\n- AND = Search will return results having both the provided SIC code(s) and provided NAICS code(s).\n- OR = Search will return results having either the provided SIC code(s) or the provided NAICS code(s)."
+        },
+        {
+          "name": "p_sic_primary_flg",
+          "schema": "string",
+          "required": false,
+          "description": "Case Location Primary SIC Flag.  Enter Y to limit SIC search results to primary SIC codes only."
+        },
+        {
+          "name": "p_sic_frs_flg",
+          "schema": "string",
+          "required": false,
+          "description": "Case Location Extended FRS SIC Search Flag.  Enter Y to expand SIC search to include Federal Registry Service datasets."
+        },
+        {
+          "name": "p_naics",
+          "schema": "string",
+          "required": false,
+          "description": "North American Industry Classification System Filter. Enter two to six digits to filter results to facilities having matching NAICS codes.  Digits less than six will match to all codes beginning with the provided values."
+        },
+        {
+          "name": "p_naics_primary_flg",
+          "schema": "string",
+          "required": false,
+          "description": "Case Location Primary NAICS Flag.  Enter Y to limit NAICS search results to primary NAICS codes only."
+        },
+        {
+          "name": "p_naics_frs_flg",
+          "schema": "string",
+          "required": false,
+          "description": "Case Location Extended FRS NAICS Search Flag.  Enter Y to expand NAICS search to include Federal Registry Service datasets."
+        },
+        {
+          "name": "p_enf_type",
+          "schema": "string",
+          "required": false,
+          "description": "Case Enforcement Type Filter. Enter one or more case enforcement type codes to limit results.  Provide multiple values as a comma-delimited list."
+        },
+        {
+          "name": "p_law",
+          "schema": "string",
+          "required": false,
+          "description": "Law Statute Code Filter.  Enter a single statute code to limit results."
+        },
+        {
+          "name": "p_section",
+          "schema": "string",
+          "required": false,
+          "description": "Law Section Code Filter. Enter one or more law section codes to limit results.  Provide multiple values as a comma-delimited list."
+        },
+        {
+          "name": "p_cp_citation",
+          "schema": "string",
+          "required": false,
+          "description": "Law Section Code Filter Alternative. Enter a single law section code to limit results.  This parameter accepts partial codes and allows for advanced search modifiers."
+        },
+        {
+          "name": "p_rank_order",
+          "schema": "string",
+          "required": false,
+          "description": "Law Status Rank Order Limiter.  Enter a single integer rank order to limit results."
+        },
+        {
+          "name": "p_enf_program",
+          "schema": "string",
+          "required": false,
+          "description": "Enforcement Program Code Limiter.  Enter one or more enforcement program codes to limit results.  Provide multiple values as a comma-delimited list.  "
+        },
+        {
+          "name": "p_priority_area",
+          "schema": "string",
+          "required": false,
+          "description": "Case Priority Area Filter.  Enter one or more case priority areas to limit results.  Provide multiple values as a comma-delimited list."
+        },
+        {
+          "name": "p_priority_area_desc",
+          "schema": "string",
+          "required": false,
+          "description": "Case Priority Area Description Filter.  Enter a single case priority area description or partial case priority area description to limit results.  Use \"%\" as a wild-card match for more complex searches."
+        },
+        {
+          "name": "p_tribal",
+          "schema": "string",
+          "required": false,
+          "description": "Case Location Tribal Land Flag.  Enter Y or N to include or disallow cases on tribal land."
+        },
+        {
+          "name": "p_oeca_core",
+          "schema": "string",
+          "required": false,
+          "description": "OECA Core Program Flag.  Enter Y or N to include or exclude core program cases."
+        },
+        {
+          "name": "p_multimedia",
+          "schema": "string",
+          "required": false,
+          "description": "Enforcement Multimedia Case Flag.  Enter Y or N to include or exclude multimedia cases."
+        },
+        {
+          "name": "p_fed_case",
+          "schema": "string",
+          "required": false,
+          "description": "Federal Facility Involvement Flag.  Enter a Y or N to include or exclude cases involving federal facilities."
+        },
+        {
+          "name": "p_activity_contact",
+          "schema": "string",
+          "required": false,
+          "description": "Activity Contact Last Name Filter.  Enter a single last name or partial last name to filter results.  Use \"%\" as a wild-card for advanced searching."
+        },
+        {
+          "name": "p_role",
+          "schema": "string",
+          "required": false,
+          "description": "Activity Contact Role Code Filter.  Enter a single role code to restrict results."
+        },
+        {
+          "name": "p_fed_penalty",
+          "schema": "string",
+          "required": false,
+          "description": "Federal Penalty Assessed Amount Filter.  Provide one of the following keywords to restrict results.\n- ANY = cases with any penalty amount.\n- LE5000 = cases with penalty amount less than or equal to $5,000.\n- GT5000 = cases with penalty amount more than $5,000.\n- GT50000 = cases with penalty amount more than $50,000.\n- GT100000 = cases with penalty amount more than $100,000.\n- GT500000 = cases with penalty amount more than $500,000.\n- GT1000000 = cases with penalty amount more than $1,000,000.\n- GT2500000 = cases with penalty amount more than $2,500,000."
+        },
+        {
+          "name": "p_total_fed_penalty",
+          "schema": "string",
+          "required": false,
+          "description": "Total Federal Penalty Limiter.  Enter a keyword value to limit results to cases with given total federal penalties.\n- ANY = Cases with any federal penalty greater than zero.\n- LEXX = Replacing XX with a dollar value, return cases with federal penalty less than or equal to the given amount.\n- GTXX = Replacing XX with a dollar value, return cases with federal penalty greater than the given amount."
+        },
+        {
+          "name": "p_cost_recovery",
+          "schema": "string",
+          "required": false,
+          "description": "Cost Recovery Awarded Amount Limiter.  Enter a keyword value to limit results to cases with given cost recovery amounts.\n- ANY = Cases with any cost recovery amount greater than zero.\n- LEXX = Replacing XX with a dollar value, return cases with cost recovery amount less than or equal to the given amount.\n- GTXX = Replacing XX with a dollar value, return cases with cost recovery amount greater than the given amount."
+        },
+        {
+          "name": "p_total_cost_recovery",
+          "schema": "string",
+          "required": false,
+          "description": "Total Cost Recovery Amount Limiter.  Enter a keyword value to limit results to cases with given cost recovery amounts.\n- ANY = Cases with any cost recovery amount greater than zero.\n- LEXX = Replacing XX with a dollar value, return cases with cost recovery amount less than or equal to the given amount.\n- GTXX = Replacing XX with a dollar value, return cases with cost recovery amount greater than the given amount."
+        },
+        {
+          "name": "p_complying_actions",
+          "schema": "string",
+          "required": false,
+          "description": "Complying Actions Type Code Limiter.  Enter one or more complying action codes to restrict results.  Provide multiple values as a comma-delimited list."
+        },
+        {
+          "name": "p_comp_act_val",
+          "schema": "string",
+          "required": false,
+          "description": "Compliance Action Cost Limiter. Enter a keyword value to limit results to cases with given compliance cost amounts.\n- ANY = Cases with any compliance cost amount greater than zero.\n- LEXX = Replacing XX with a dollar value, return cases with compliance cost amount less than or equal to the given amount.\n- GTXX = Replacing XX with a dollar value, return cases with compliance cost amount greater than the given amount."
+        },
+        {
+          "name": "p_total_comp_act_val",
+          "schema": "string",
+          "required": false,
+          "description": "Total Compliance Action Amount Limiter.  Enter a keyword value to limit results to cases with given total compliance action amounts.\n- ANY = Cases with any total compliance action amount greater than zero.\n- LEXX = Replacing XX with a dollar value, return cases with total compliance action amount less than or equal to the given amount.\n- GTXX = Replacing XX with a dollar value, return cases with total compliance action amount greater than the given amount."
+        },
+        {
+          "name": "p_sep_cats",
+          "schema": "string",
+          "required": false,
+          "description": "Supplemental Environmental Projects Activity Category Code Limiter.  Provide one or more SEP activity category codes to limit results.  Provide multiple values as a comma-delimited list."
+        },
+        {
+          "name": "p_sep_val",
+          "schema": "string",
+          "required": false,
+          "description": "Supplemental Environmental Projects Activity Value Limiter.  Provide a keyword to limit results.\n- ANY = return cases with any SEP activity amount.\n- LE10000 = return cases with SEP activity amount less than or equal to $10,000.\n- GT10000 = return cases with SEP activity amount greater than $10,000.\n- GT50000 = return cases with SEP activity amount greater than $50,000.\n- GT100000 = return cases with SEP activity amount greater than $100,000.\n- GT500000 = return cases with SEP activity amount greater than $500,000.\n- GT1000000 = return cases with SEP activity amount greater than $1,000,000."
+        },
+        {
+          "name": "p_total_sep_val",
+          "schema": "string",
+          "required": false,
+          "description": "Supplemental Environmental Projects Total Value Limiter.  Provide a keyword to limit results.\n- ANY = return cases with any SEP total amount.\n- LE10000 = return cases with SEP total amount less than or equal to $10,000.\n- GT10000 = return cases with SEP total amount greater than $10,000.\n- GT50000 = return cases with SEP total amount greater than $50,000.\n- GT100000 = return cases with SEP total amount greater than $100,000.\n- GT500000 = return cases with SEP total amount greater than $500,000.\n- GT1000000 = return cases with SEP total amount greater than $1,000,000."
+        },
+        {
+          "name": "p_lodged_date",
+          "schema": "string",
+          "required": false,
+          "description": "Settlement Lodged Date Limiter.  Enter a single settlement lodged date in MM/DD/YYYY format to limit results."
+        },
+        {
+          "name": "p_entered_date",
+          "schema": "string",
+          "required": false,
+          "description": "Settlement Entered Date Limiter.  Enter a single settlement entered date in MM/DD/YYYY format to limit results."
+        },
+        {
+          "name": "p_facility_id",
+          "schema": "string",
+          "required": false,
+          "description": "Case Facility Registration Identifier Limiter.  Enter a single complete facility identifier to limit results."
+        },
+        {
+          "name": "p_fac_city",
+          "schema": "string",
+          "required": false,
+          "description": "Case Facility City Limiter.  Enter a single complete city name to filter cases by facility location city."
+        },
+        {
+          "name": "p_fac_zip",
+          "schema": "string",
+          "required": false,
+          "description": "Case Facility ZIP Code Limiter.  Enter a single 5-digit zip code to filter cases by facility location zip code."
+        },
+        {
+          "name": "p_fac_county",
+          "schema": "string",
+          "required": false,
+          "description": "Case Facility County Limiter.  Enter a single complete county name to filter cases by facility location county name."
+        },
+        {
+          "name": "p_case_summary",
+          "schema": "string",
+          "required": false,
+          "description": "Case Summary Search Limiter.  Enter a single case summary to limit results.  This parameter accepts partial codes and allows for advanced search modifiers."
+        },
+        {
+          "name": "p_case_summary_type",
+          "schema": "string",
+          "required": false,
+          "description": "Identifies how the the search terms enterened in p_case_summary are searched.  Valid values are ALL (Default), WITHIN, and CONTAINS.  Must be used with p_case_summary."
+        },
+        {
+          "name": "p_usmex",
+          "schema": "string",
+          "required": false,
+          "description": "US-Mexico Border Flag.  Enter Y/N to restrict searches to facilities located within 100KM of the border."
+        },
+        {
+          "name": "p_c1lat",
+          "schema": "number",
+          "required": false,
+          "description": "In decimal degrees.  Latitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
+        },
+        {
+          "name": "p_c1lon",
+          "schema": "number",
+          "required": false,
+          "description": "In decimal degrees.  Longitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
+        },
+        {
+          "name": "p_c2lat",
+          "schema": "number",
+          "required": false,
+          "description": "In decimal degrees.  Latitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
+        },
+        {
+          "name": "p_c2lon",
+          "schema": "number",
+          "required": false,
+          "description": "In decimal degrees.  Longitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
+        },
+        {
+          "name": "p_voluntary",
+          "schema": "string",
+          "required": false,
+          "description": "Voluntary Self Disclosure Flag.  Enter Y or N to include or exclude cases results having voluntary disclosure."
+        },
+        {
+          "name": "p_fed_indicator",
+          "schema": "string",
+          "required": false,
+          "description": "Federal Facility/Cross Media Flag.  Enter Y or N to limit results to cases with federal facility cross media."
+        },
+        {
+          "name": "p_fntype",
+          "schema": "string",
+          "required": false,
+          "description": "Controls type of text search performed on facility name with parameter p_fn.\n- EXACT = Find facilities having the exact provided name(s).\n- BEGINS = Find facilities with names starting with the provided term(s).\n- ALL = Find facilities using Oracle text search terms.\n- CONTAINS = "
+        },
+        {
+          "name": "p_civil_criminal_indicator",
+          "schema": "string",
+          "required": false,
+          "description": "Civil/Criminal Case Limiter.  Provide a keyword to limit results.\n- ANY = return both civil and criminal cases.\n- CI = return only civil cases.\n- CR = return only criminal cases."
+        },
+        {
+          "name": "queryset",
+          "schema": "number",
+          "required": false,
+          "description": "Query Limiter.  Enter a value to limit the number of records returned for each query. Value cannot exceed 70,000."
+        },
+        {
+          "name": "responseset",
+          "schema": "number",
+          "required": false,
+          "description": "Response Set Limiter. Enter a value to limit the number of records per page. Value cannot exceed 1,000."
+        },
+        {
+          "name": "maplist",
+          "schema": "string",
+          "required": false,
+          "description": "Map List Flag.  Provide a Y to return mappable coordinates representing the full geographic extent of the queryset (all facilities that met the selection criteria)."
+        },
+        {
+          "name": "tablelist",
+          "schema": "string",
+          "required": false,
+          "description": "Table List Flag. Enter a Y to display the first page of facility results."
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
+        },
+        {
+          "name": "qcolumns",
+          "schema": "string",
+          "required": false,
+          "description": "Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
+        },
+        {
+          "name": "p_ocmap_fy",
+          "schema": "string",
+          "required": false,
+          "description": "Fiscal Year to select cases that are displayed in the Office of Complicance Fiscal Year Map Services"
+        },
+        {
+          "name": "p_qs",
+          "schema": "string",
+          "required": false,
+          "description": "Quick Search. Allows entry for city, state, and/or zip code."
+        },
+        {
+          "name": "p_has_map",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Service call container."
+        }
+      ]
+    },
+    {
+      "url": "/case_rest_services.get_cases",
+      "method": "/caseRestServicesGetCasesPost",
+      "httpMethod": "post",
+      "tag": "Case Enforcement",
+      "description": "Enforcement Case Search",
+      "parameters": [
+        {
+          "name": "output",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_case_category",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_case_status",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_milestone",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_from_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_to_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_milestone_fy",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_name_type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_case_number",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_docket_number",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_court_docket_number",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_activity_number",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_case_lead",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_case_sens_flg",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_region",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_state",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_district",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_sic",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_sic_ao_naics",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_sic_primary_flg",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_sic_frs_flg",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_naics",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_naics_primary_flg",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_naics_frs_flg",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_enf_type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_law",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_section",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_cp_citation",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_rank_order",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_enf_program",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_violation",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_priority_area",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_priority_area_desc",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_tribal",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_oeca_core",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_multimedia",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_fed_case",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_activity_contact",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_role",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_fed_penalty",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_total_fed_penalty",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_cost_recovery",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_total_cost_recovery",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_complying_actions",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_comp_act_val",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_total_comp_act_val",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_sep_cats",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_sep_val",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_total_sep_val",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_lodged_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_entered_date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_facility_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_fac_city",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_fac_zip",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_fac_county",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_case_summary",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_case_summary_type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_usmex",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_c1lat",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "p_c1lon",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "p_c2lat",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "p_c2lon",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "p_voluntary",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_fed_indicator",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_fntype",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_civil_criminal_indicator",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "queryset",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "responseset",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "maplist",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tablelist",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "qcolumns",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_ocmap_fy",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_qs",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "p_has_map",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Service call container."
+        }
+      ]
+    },
+    {
+      "url": "/case_rest_services.get_cases_from_facility",
+      "method": "/caseRestServicesGetCasesFromFacilityGet",
+      "httpMethod": "get",
+      "tag": "Case Enforcement",
+      "description": "Placeholder",
+      "parameters": [
+        {
+          "name": "p_id",
+          "schema": "string",
+          "required": true,
+          "description": "Identifier for the service."
+        },
+        {
+          "name": "output",
+          "schema": "string",
+          "required": false,
+          "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Root Object"
+        }
+      ]
+    },
+    {
+      "url": "/case_rest_services.get_cases_from_facility",
+      "method": "/caseRestServicesGetCasesFromFacilityPost",
+      "httpMethod": "post",
+      "tag": "Case Enforcement",
+      "description": "Placeholder",
+      "parameters": [
+        {
+          "name": "p_id",
+          "schema": "string",
+          "required": true,
+          "description": "Identifier for the service."
+        },
+        {
+          "name": "output",
+          "schema": "string",
+          "required": false,
+          "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Root Object"
+        }
+      ]
+    },
+    {
+      "url": "/case_rest_services.get_crcase_report",
+      "method": "/caseRestServicesGetCrcaseReportGet",
+      "httpMethod": "get",
+      "tag": "Case Enforcement",
+      "description": "Enforcement Criminal Case Summary Report Search",
+      "parameters": [
+        {
+          "name": "p_id",
+          "schema": "string",
+          "required": false,
+          "description": "Prosecution Summary Identifier. Enter the numeric prosecution summary identifier to retrieve the criminal case report."
+        },
+        {
+          "name": "output",
+          "schema": "string",
+          "required": false,
+          "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
+        },
+        {
+          "name": "mapset",
+          "schema": "string",
+          "required": false,
+          "description": "Identifies the maxium number of case facilities to return from the case_rest_services.get_case_info query."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Service call container."
+        }
+      ]
+    },
+    {
+      "url": "/case_rest_services.get_crcase_report",
+      "method": "/caseRestServicesGetCrcaseReportPost",
+      "httpMethod": "post",
+      "tag": "Case Enforcement",
+      "description": "Enforcement Criminal Case Summary Report Search",
+      "parameters": [
+        {
+          "name": "p_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "output",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Service call container."
+        }
+      ]
+    },
+    {
+      "url": "/case_rest_services.get_download",
+      "method": "/caseRestServicesGetDownloadGet",
+      "httpMethod": "get",
+      "tag": "Case Enforcement",
+      "description": "Enforcement Case Download Data Service",
+      "parameters": [
+        {
+          "name": "output",
+          "schema": "string",
+          "required": false,
+          "description": "Output Format Flag.  Enter one of the following keywords:\n- CSV = Facility results formatted as comma delimited file download (default)."
+        },
+        {
+          "name": "qid",
+          "schema": "string",
+          "required": true,
+          "description": "Query ID Selector.  Enter the QueryID number from a previously run query."
+        },
+        {
+          "name": "qcolumns",
+          "schema": "string",
+          "required": false,
+          "description": "Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/case_rest_services.get_download",
+      "method": "/caseRestServicesGetDownloadPost",
+      "httpMethod": "post",
+      "tag": "Case Enforcement",
+      "description": "Enforcement Case Download Data Service",
+      "parameters": [
+        {
+          "name": "output",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "qid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "qcolumns",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/case_rest_services.get_facilities_from_case",
+      "method": "/caseRestServicesGetFacilitiesFromCaseGet",
+      "httpMethod": "get",
+      "tag": "Case Enforcement",
+      "description": "Placeholder",
+      "parameters": [
+        {
+          "name": "p_id",
+          "schema": "string",
+          "required": true,
+          "description": "Identifier for the service."
+        },
+        {
+          "name": "output",
+          "schema": "string",
+          "required": false,
+          "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Root Object"
+        }
+      ]
+    },
+    {
+      "url": "/case_rest_services.get_facilities_from_case",
+      "method": "/caseRestServicesGetFacilitiesFromCasePost",
+      "httpMethod": "post",
+      "tag": "Case Enforcement",
+      "description": "Placeholder",
+      "parameters": [
+        {
+          "name": "p_id",
+          "schema": "string",
+          "required": true,
+          "description": "Identifier for the service."
+        },
+        {
+          "name": "output",
+          "schema": "string",
+          "required": false,
+          "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Root Object"
+        }
+      ]
+    },
+    {
+      "url": "/case_rest_services.get_map",
+      "method": "/caseRestServicesGetMapGet",
+      "httpMethod": "get",
+      "tag": "Case Enforcement",
+      "description": "Enforcement Case Map Service",
+      "parameters": [
+        {
+          "name": "output",
+          "schema": "string",
+          "required": false,
+          "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+        },
+        {
+          "name": "qid",
+          "schema": "string",
+          "required": true,
+          "description": "Query ID Selector.  Enter the QueryID number from a previously run query."
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
+        },
+        {
+          "name": "tablelist",
+          "schema": "string",
+          "required": false,
+          "description": "Table List Flag. Enter a Y to display the first page of facility results."
+        },
+        {
+          "name": "c1_lat",
+          "schema": "number",
+          "required": false,
+          "description": "Latitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
+        },
+        {
+          "name": "c1_long",
+          "schema": "number",
+          "required": false,
+          "description": "Longitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
+        },
+        {
+          "name": "c2_lat",
+          "schema": "number",
+          "required": false,
+          "description": "Latitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
+        },
+        {
+          "name": "c2_long",
+          "schema": "number",
+          "required": false,
+          "description": "Longitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Service call container."
+        }
+      ]
+    },
+    {
+      "url": "/case_rest_services.get_map",
+      "method": "/caseRestServicesGetMapPost",
+      "httpMethod": "post",
+      "tag": "Case Enforcement",
+      "description": "Enforcement Case Map Service",
+      "parameters": [
+        {
+          "name": "output",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "qid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "tablelist",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "c1_lat",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "c1_long",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "c2_lat",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "c2_long",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "mapset",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Service call container."
+        }
+      ]
+    },
+    {
+      "url": "/case_rest_services.get_qid",
+      "method": "/caseRestServicesGetQidGet",
+      "httpMethod": "get",
+      "tag": "Case Enforcement",
+      "description": "Enforcement Case Paginated Results Service",
+      "parameters": [
+        {
+          "name": "output",
+          "schema": "string",
+          "required": false,
+          "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+        },
+        {
+          "name": "qid",
+          "schema": "string",
+          "required": true,
+          "description": "Query ID Selector.  Enter the QueryID number from a previously run query."
+        },
+        {
+          "name": "pageno",
+          "schema": "number",
+          "required": false,
+          "description": "Indicates the number of the page to display. It is used only when the results are paginated."
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
+        },
+        {
+          "name": "newsort",
+          "schema": "number",
+          "required": false,
+          "description": "Output Sort Column.  Enter the number of the column on which the data will be sorted. If unpopulated results will sort on the first column."
+        },
+        {
+          "name": "descending",
+          "schema": "string",
+          "required": false,
+          "description": "Output Sort Column Descending Flag.  Enter Y to column identified in the newsort parameter descending.  Enter N to use ascending sort order. Used only when newsort parameter is populated."
+        },
+        {
+          "name": "qcolumns",
+          "schema": "string",
+          "required": false,
+          "description": "Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Service call container."
+        }
+      ]
+    },
+    {
+      "url": "/case_rest_services.get_qid",
+      "method": "/caseRestServicesGetQidPost",
+      "httpMethod": "post",
+      "tag": "Case Enforcement",
+      "description": "Enforcement Case Paginated Results Service",
+      "parameters": [
+        {
+          "name": "output",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "qid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "pageno",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "newsort",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "descending",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "qcolumns",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Service call container."
+        }
+      ]
+    },
+    {
+      "url": "/case_rest_services.metadata",
+      "method": "/caseRestServicesMetadataGet",
+      "httpMethod": "get",
+      "tag": "Metadata",
+      "description": "Enforcement Case Metadata Service",
+      "parameters": [
+        {
+          "name": "output",
+          "schema": "string",
+          "required": false,
+          "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Root Object"
+        }
+      ]
+    },
+    {
+      "url": "/case_rest_services.metadata",
+      "method": "/caseRestServicesMetadataPost",
+      "httpMethod": "post",
+      "tag": "Metadata",
+      "description": "Enforcement Case Metadata Service",
+      "parameters": [
+        {
+          "name": "output",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Root Object"
+        }
+      ]
+    },
+    {
+      "url": "/rest_lookups.icis_law_sections",
+      "method": "/restLookupsIcisLawSectionsGet",
+      "httpMethod": "get",
+      "tag": "Lookups",
+      "description": "ECHO ICIS Law Sections Lookup Service",
+      "parameters": [
+        {
+          "name": "output",
+          "schema": "string",
+          "required": false,
+          "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "JSONP Callback.  For use with JSONP and GEOJSONP output only.  Enter a name of the function in which to wrap the JSON response."
+        },
+        {
+          "name": "statute_code",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "status_flag",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "search_term",
+          "schema": "string",
+          "required": false,
+          "description": "Enter a partial or complete search phrase or word."
+        },
+        {
+          "name": "search_code",
+          "schema": "string",
+          "required": false,
+          "description": "Enter a partial or complete code value."
+        },
+        {
+          "name": "sort_order",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Root Object"
+        }
+      ]
+    },
+    {
+      "url": "/rest_lookups.icis_law_sections",
+      "method": "/restLookupsIcisLawSectionsPost",
+      "httpMethod": "post",
+      "tag": "Lookups",
+      "description": "ECHO ICIS Law Sections Lookup Service",
+      "parameters": [
+        {
+          "name": "output",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "statute_code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "status_flag",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "search_term",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "search_code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sort_order",
+          "schema": "number",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Root Object"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://echodata.epa.gov/echo",
   "apiDescription": "Enforcement and Compliance History Online (ECHO) is a tool developed and maintained by EPA's Office of Enforcement and Compliance Assurance for public use. ECHO provides integrated compliance and enforcement information for over 1 million regulated facilities nationwide.\n CASE Rest Services provide multiple service endpoints, each with specific capabilities, to search and retrieve data on civil cases entered into the \nIntegrated Compliance Information System (ICIS) and criminal cases entered into the Summary of Criminal Prosecutions database.  \nSee Enforcement Case Search Help (https://echo.epa.gov/help/enforcement-case-search-help) for additional information on searching civil and criminal cases. \n\\\nThe get_cases, get_map, get_qid, and get_download end points are meant to be used together, while the enhanced get_case_info end point is self contained..   \nThe recommended use scenario for get_cases, get_qid, get_map, and get_downoad is:\n\\\n <b>1)</b>  Use get_cases to validate passed query parameters, obtain summary statistics and to obtain a query_id (QID).  QIDs are time sensitive and will be valid for approximately 30 minutes.\n <b>2)</b>  Use get_qid, with the returned QID, to paginate through arrays of case results.\n <b>3)</b>  Use get_map, with the returned QID, to zoom in/out and pan on the clustered and individual facility coordinates, related to the returned cases, that meet the QID query criteria.\n <b>4)</b>  Use get_download, with the returned QID, to generate a Comma Separated Value (CSV) file of facility information that meets the QID query criteria.\n\\\nIn addition to the service endpoints listed above there are two detailed case report services, one for civil cases (get_case_report) and one for criminal cases (get_crcase_report). \nSee the Civil Enforcement Case Report Help (https://echo.epa.gov/help/reports/enforcement-case-report-help) and the Criminal Case Report Help (https://echo.epa.gov/help/reports/criminal-case-report-help) for additional information \non then data returned from these two services.   \n\\\nAdditional ECHO Resources:   <a href=\"https://echo.epa.gov/tools/web-services\">Web Services</a>, <a href=\"https://echo.epa.gov/resources/echo-data/about-the-data\">About ECHO's Data</a>, <a href=\"https://echo.epa.gov/tools/data-downloads\">Data Downloads</a>\n ",
   "apiTitle": "U.S. EPA Enforcement and Compliance History Online (ECHO) - Enforcement Case Search",

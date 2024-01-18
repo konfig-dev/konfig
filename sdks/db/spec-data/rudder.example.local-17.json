@@ -3,6 +3,3877 @@
   "openApiRaw": "https://docs.rudder.io/api/openapi.yml",
   "homepage": "rudder.example.local",
   "apiVersion": "17",
+  "methods": [
+    {
+      "url": "/api/changeRequests",
+      "method": "listChangeRequests",
+      "httpMethod": "get",
+      "tag": "🧩 Change requests",
+      "description": "List all change requests",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/archives/export",
+      "method": "export",
+      "httpMethod": "get",
+      "tag": "Archives",
+      "description": "Get a ZIP archive of the requested items and their dependencies",
+      "parameters": [
+        {
+          "name": "rules",
+          "schema": "array",
+          "description": "IDs (optionally with revision, '+' need to be escaped as '%2B') of rules to include"
+        },
+        {
+          "name": "directives",
+          "schema": "array",
+          "description": "IDs (optionally with revision, '+' need to be escaped as '%2B') of directives to include"
+        },
+        {
+          "name": "techniques",
+          "schema": "array",
+          "description": "IDs, ie technique name/technique version (optionally with revision, '+' need to be escaped as '%2B') of techniques to include"
+        },
+        {
+          "name": "groups",
+          "schema": "array",
+          "description": "IDs (optionally with revision, '+' need to be escaped as '%2B') of groups to include"
+        },
+        {
+          "name": "include",
+          "schema": "array",
+          "description": "Scope of dependencies to include in archive, where rule as directives and groups dependencies, directives have techniques dependencies, and techniques and groups don't have dependencies. 'none' means no dependencies will be include, 'all' means that the whole tree will,  'directives' and 'groups' means to include them specifically, 'techniques' means to include both directives and techniques."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/archives/import",
+      "method": "import",
+      "httpMethod": "post",
+      "tag": "Archives",
+      "description": "Import a ZIP archive of policies into Rudder",
+      "parameters": [
+        {
+          "name": "archive",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "merge",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/branding",
+      "method": "getBrandingConf",
+      "httpMethod": "get",
+      "tag": "🧩 Branding",
+      "description": "Get branding configuration",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/branding",
+      "method": "updateBRandingConf",
+      "httpMethod": "post",
+      "tag": "🧩 Branding",
+      "description": "Update web interface customization",
+      "parameters": [
+        {
+          "name": "barColor",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "displayBar",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "displayBarLogin",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "displayLabel",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "displayMotd",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "labelColor",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "labelText",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "motd",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "smallLogo",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "wideLogo",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/branding/reload",
+      "method": "reloadBrandingConf",
+      "httpMethod": "post",
+      "tag": "🧩 Branding",
+      "description": "Reload branding file",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/campaigns",
+      "method": "allCampaigns",
+      "httpMethod": "get",
+      "tag": "Campaigns",
+      "description": "Get all campaigns details",
+      "parameters": [
+        {
+          "name": "campaignType",
+          "schema": "string",
+          "required": false,
+          "description": "Type of the campaigns we want"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Status of the campaigns we want"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/campaigns",
+      "method": "saveCampaign",
+      "httpMethod": "post",
+      "tag": "Campaigns",
+      "description": "Save a campaign",
+      "parameters": [
+        {
+          "name": "campaignType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "details",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "info",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "version",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/campaigns/events",
+      "method": "getAllCampaignEvents",
+      "httpMethod": "get",
+      "tag": "Campaigns",
+      "description": "Get all campaign events",
+      "parameters": [
+        {
+          "name": "campaignType",
+          "schema": "string",
+          "required": false,
+          "description": "Type of the campaigns we want"
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "required": false,
+          "description": "Status of the campaign events we want"
+        },
+        {
+          "name": "campaignId",
+          "schema": "string",
+          "required": false,
+          "description": "id of the campaigns we want"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Max number of elements in response"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Offset of data in response (skip X elements)"
+        },
+        {
+          "name": "before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "asc",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/campaigns/events/{id}",
+      "method": "deleteCampaignEvent",
+      "httpMethod": "delete",
+      "tag": "Campaigns",
+      "description": "Delete a campaign event details",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the campaign event"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/campaigns/events/{id}",
+      "method": "getCampaignEvent",
+      "httpMethod": "get",
+      "tag": "Campaigns",
+      "description": "Get a campaign event details",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the campaign event"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/campaigns/events/{id}",
+      "method": "saveCampaignEvent",
+      "httpMethod": "post",
+      "tag": "Campaigns",
+      "description": "Update an existing event",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the campaign event"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/campaigns/{id}",
+      "method": "deleteCampaign",
+      "httpMethod": "delete",
+      "tag": "Campaigns",
+      "description": "Delete a campaign",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the campaign"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/campaigns/{id}",
+      "method": "getCampaign",
+      "httpMethod": "get",
+      "tag": "Campaigns",
+      "description": "Get a campaign details",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the campaign"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/campaigns/{id}/events",
+      "method": "getEventsCampaign",
+      "httpMethod": "get",
+      "tag": "Campaigns",
+      "description": "Get campaign events for a campaign",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the campaign"
+        },
+        {
+          "name": "campaignType",
+          "schema": "string",
+          "required": false,
+          "description": "Type of the campaigns we want"
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "required": false,
+          "description": "Status of the campaign events we want"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Max number of elements in response"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Offset of data in response (skip X elements)"
+        },
+        {
+          "name": "before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "asc",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/campaigns/{id}/schedule",
+      "method": "scheduleCampaign",
+      "httpMethod": "post",
+      "tag": "Campaigns",
+      "description": "Schedule a campaign event for a campaign",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the campaign"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/changeRequests/{changeRequestId}",
+      "method": "declineChangeRequest",
+      "httpMethod": "delete",
+      "tag": "🧩 Change requests",
+      "description": "Decline a request details",
+      "parameters": [
+        {
+          "name": "changeRequestId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/changeRequests/{changeRequestId}",
+      "method": "changeRequestDetails",
+      "httpMethod": "get",
+      "tag": "🧩 Change requests",
+      "description": "Get a change request details",
+      "parameters": [
+        {
+          "name": "changeRequestId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/changeRequests/{changeRequestId}",
+      "method": "updateChangeRequest",
+      "httpMethod": "post",
+      "tag": "🧩 Change requests",
+      "description": "Update a request details",
+      "parameters": [
+        {
+          "name": "changeRequestId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/changeRequests/{changeRequestId}/accept",
+      "method": "acceptChangeRequest",
+      "httpMethod": "post",
+      "tag": "🧩 Change requests",
+      "description": "Accept a request details",
+      "parameters": [
+        {
+          "name": "changeRequestId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/compliance",
+      "method": "getGlobalCompliance",
+      "httpMethod": "get",
+      "tag": "Compliance",
+      "description": "Global compliance",
+      "parameters": [
+        {
+          "name": "precision",
+          "schema": "integer",
+          "description": "Number of digits after comma in compliance percent figures"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/compliance/directives",
+      "method": "getDirectivesCompliance",
+      "httpMethod": "get",
+      "tag": "Compliance",
+      "description": "Compliance details for all directives",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/compliance/directives/{directiveId}",
+      "method": "getDirectiveComplianceId",
+      "httpMethod": "get",
+      "tag": "Compliance",
+      "description": "Compliance details by directive",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "description": "format of export"
+        },
+        {
+          "name": "directiveId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the directive"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/compliance/nodes",
+      "method": "getNodesCompliance",
+      "httpMethod": "get",
+      "tag": "Compliance",
+      "description": "Compliance details for all nodes",
+      "parameters": [
+        {
+          "name": "level",
+          "schema": "integer",
+          "description": "Number of depth level of compliance objects to display (1:rules, 2:directives, 3:components, 4:nodes, 5:values, 6:reports)"
+        },
+        {
+          "name": "precision",
+          "schema": "integer",
+          "description": "Number of digits after comma in compliance percent figures"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/compliance/nodes/{nodeId}",
+      "method": "getNodeCompliance",
+      "httpMethod": "get",
+      "tag": "Compliance",
+      "description": "Compliance details by node",
+      "parameters": [
+        {
+          "name": "level",
+          "schema": "integer",
+          "description": "Number of depth level of compliance objects to display (1:rules, 2:directives, 3:components, 4:nodes, 5:values, 6:reports)"
+        },
+        {
+          "name": "precision",
+          "schema": "integer",
+          "description": "Number of digits after comma in compliance percent figures"
+        },
+        {
+          "name": "nodeId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the target node"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/compliance/rules",
+      "method": "getRulesCompliance",
+      "httpMethod": "get",
+      "tag": "Compliance",
+      "description": "Compliance details for all rules",
+      "parameters": [
+        {
+          "name": "level",
+          "schema": "integer",
+          "description": "Number of depth level of compliance objects to display (1:rules, 2:directives, 3:components, 4:nodes, 5:values, 6:reports)"
+        },
+        {
+          "name": "precision",
+          "schema": "integer",
+          "description": "Number of digits after comma in compliance percent figures"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/compliance/rules/{ruleId}",
+      "method": "getRuleCompliance",
+      "httpMethod": "get",
+      "tag": "Compliance",
+      "description": "Compliance details by rule",
+      "parameters": [
+        {
+          "name": "level",
+          "schema": "integer",
+          "description": "Number of depth level of compliance objects to display (1:rules, 2:directives, 3:components, 4:nodes, 5:values, 6:reports)"
+        },
+        {
+          "name": "precision",
+          "schema": "integer",
+          "description": "Number of digits after comma in compliance percent figures"
+        },
+        {
+          "name": "ruleId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the target rule"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cve",
+      "method": "getAllCve",
+      "httpMethod": "get",
+      "tag": "🧩 CVE",
+      "description": "Get all CVE details",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cve/check",
+      "method": "checkCve",
+      "httpMethod": "post",
+      "tag": "🧩 CVE",
+      "description": "Trigger a CVE check",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cve/check/config",
+      "method": "getCveCheckConfiguration",
+      "httpMethod": "get",
+      "tag": "🧩 CVE",
+      "description": "Get CVE check config",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cve/check/config",
+      "method": "updateCveCheckConfiguration",
+      "httpMethod": "post",
+      "tag": "🧩 CVE",
+      "description": "Update cve check config",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cve/check/last",
+      "method": "getLastCveCheck",
+      "httpMethod": "get",
+      "tag": "🧩 CVE",
+      "description": "Get last CVE check result",
+      "parameters": [
+        {
+          "name": "groupId",
+          "schema": "string",
+          "required": false,
+          "description": "Id of node groups you want to get from last CVE check"
+        },
+        {
+          "name": "nodeId",
+          "schema": "string",
+          "required": false,
+          "description": "Id of nodes you want to get from last CVE check"
+        },
+        {
+          "name": "cveId",
+          "schema": "string",
+          "required": false,
+          "description": "Id of CVE you want to get from last CVE check"
+        },
+        {
+          "name": "package",
+          "schema": "string",
+          "required": false,
+          "description": "Name of packages you want to get from last CVE check"
+        },
+        {
+          "name": "severity",
+          "schema": "string",
+          "required": false,
+          "description": "Severity of the CVE you want to get from last CVE check"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cve/list",
+      "method": "getCveList",
+      "httpMethod": "post",
+      "tag": "🧩 CVE",
+      "description": "Get a list of CVE details",
+      "parameters": [
+        {
+          "name": "cveIds",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "maxScore",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "minScore",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "onlyScore",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "publishedDate",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cve/update",
+      "method": "updateCve",
+      "httpMethod": "post",
+      "tag": "🧩 CVE",
+      "description": "Update CVE database from remote source",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "years",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cve/update/fs",
+      "method": "readCvEfromFs",
+      "httpMethod": "post",
+      "tag": "🧩 CVE",
+      "description": "Update CVE database from file system",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cve/{cveId}",
+      "method": "getCve",
+      "httpMethod": "get",
+      "tag": "🧩 CVE",
+      "description": "Get a CVE details",
+      "parameters": [
+        {
+          "name": "cveId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the CVE"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/datasources",
+      "method": "getAllDataSources",
+      "httpMethod": "get",
+      "tag": "🧩 Data sources",
+      "description": "List all data sources",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/datasources",
+      "method": "createDataSource",
+      "httpMethod": "put",
+      "tag": "🧩 Data sources",
+      "description": "Create a data source",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "runParameters",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "updateTimeout",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/datasources/reload",
+      "method": "reloadAllDatasourcesAllNodes",
+      "httpMethod": "post",
+      "tag": "🧩 Data sources",
+      "description": "Update properties from data sources",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/datasources/reload/{datasourceId}",
+      "method": "reloadOneDatasourceAllNodes",
+      "httpMethod": "post",
+      "tag": "🧩 Data sources",
+      "description": "Update properties from data sources",
+      "parameters": [
+        {
+          "name": "datasourceId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the data source"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/datasources/{datasourceId}",
+      "method": "deleteDataSource",
+      "httpMethod": "delete",
+      "tag": "🧩 Data sources",
+      "description": "Delete a data source",
+      "parameters": [
+        {
+          "name": "datasourceId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the data source"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/datasources/{datasourceId}",
+      "method": "getDataSource",
+      "httpMethod": "get",
+      "tag": "🧩 Data sources",
+      "description": "Get data source configuration",
+      "parameters": [
+        {
+          "name": "datasourceId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the data source"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/datasources/{datasourceId}",
+      "method": "updateDataSource",
+      "httpMethod": "post",
+      "tag": "🧩 Data sources",
+      "description": "Update a data source configuration",
+      "parameters": [
+        {
+          "name": "datasourceId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the data source"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "runParameters",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "updateTimeout",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/directives",
+      "method": "listDirectives",
+      "httpMethod": "get",
+      "tag": "Directives",
+      "description": "List all directives",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/directives",
+      "method": "createDirective",
+      "httpMethod": "put",
+      "tag": "Directives",
+      "description": "Create a directive",
+      "parameters": [
+        {
+          "name": "displayName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "longDescription",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "parameters",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "priority",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "shortDescription",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "source",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "system",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "techniqueName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "techniqueVersion",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/directives/{directiveId}",
+      "method": "deleteDirective",
+      "httpMethod": "delete",
+      "tag": "Directives",
+      "description": "Delete a directive",
+      "parameters": [
+        {
+          "name": "directiveId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the directive"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/directives/{directiveId}",
+      "method": "directiveDetails",
+      "httpMethod": "get",
+      "tag": "Directives",
+      "description": "Get directive details",
+      "parameters": [
+        {
+          "name": "directiveId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the directive"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/directives/{directiveId}",
+      "method": "updateDirective",
+      "httpMethod": "post",
+      "tag": "Directives",
+      "description": "Update a directive details",
+      "parameters": [
+        {
+          "name": "directiveId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the directive"
+        },
+        {
+          "name": "displayName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "longDescription",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "parameters",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "policyMode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "priority",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "shortDescription",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "system",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "techniqueName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "techniqueVersion",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/directives/{directiveId}/check",
+      "method": "checkDirective",
+      "httpMethod": "post",
+      "tag": "Directives",
+      "description": "Check that update on a directive is valid",
+      "parameters": [
+        {
+          "name": "directiveId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the directive"
+        },
+        {
+          "name": "displayName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "longDescription",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "parameters",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "policyMode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "priority",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "shortDescription",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "system",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "techniqueName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "techniqueVersion",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups",
+      "method": "listGroups",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "List all groups",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups",
+      "method": "createGroup",
+      "httpMethod": "put",
+      "tag": "Groups",
+      "description": "Create a group",
+      "parameters": [
+        {
+          "name": "category",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "displayName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "dynamic",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "query",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "source",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/categories",
+      "method": "createGroupCategory",
+      "httpMethod": "put",
+      "tag": "Groups",
+      "description": "Create a group category",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "parent",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/categories/{groupCategoryId}",
+      "method": "deleteGroupCategory",
+      "httpMethod": "delete",
+      "tag": "Groups",
+      "description": "Delete group category",
+      "parameters": [
+        {
+          "name": "groupCategoryId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/categories/{groupCategoryId}",
+      "method": "getGroupCategoryDetails",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "Get group category details",
+      "parameters": [
+        {
+          "name": "groupCategoryId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/categories/{groupCategoryId}",
+      "method": "updateGroupCategory",
+      "httpMethod": "post",
+      "tag": "Groups",
+      "description": "Update group category details",
+      "parameters": [
+        {
+          "name": "groupCategoryId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "parent",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/tree",
+      "method": "getGroupTree",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "Get groups tree",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{groupId}",
+      "method": "deleteGroup",
+      "httpMethod": "delete",
+      "tag": "Groups",
+      "description": "Delete a group",
+      "parameters": [
+        {
+          "name": "groupId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the group"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{groupId}",
+      "method": "groupDetails",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "Get group details",
+      "parameters": [
+        {
+          "name": "groupId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the group"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{groupId}",
+      "method": "updateGroup",
+      "httpMethod": "post",
+      "tag": "Groups",
+      "description": "Update group details",
+      "parameters": [
+        {
+          "name": "groupId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the group"
+        },
+        {
+          "name": "category",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "displayName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "dynamic",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "query",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{groupId}/reload",
+      "method": "reloadGroup",
+      "httpMethod": "post",
+      "tag": "Groups",
+      "description": "Reload a group",
+      "parameters": [
+        {
+          "name": "groupId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the group"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/info",
+      "method": "apiGeneralInformations",
+      "httpMethod": "get",
+      "tag": "API Info",
+      "description": "List all endoints",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/info/details/{endpointName}",
+      "method": "apiInformations",
+      "httpMethod": "get",
+      "tag": "API Info",
+      "description": "Get information about one API endpoint",
+      "parameters": [
+        {
+          "name": "endpointName",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the endpoint for which one wants information"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/info/{sectionId}",
+      "method": "apiSubInformations",
+      "httpMethod": "get",
+      "tag": "API Info",
+      "description": "Get information on endpoint in a section",
+      "parameters": [
+        {
+          "name": "sectionId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the API section"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/inventories/info",
+      "method": "queueInformation",
+      "httpMethod": "get",
+      "tag": "Inventories",
+      "description": "Get information about inventory processing queue",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/inventories/upload",
+      "method": "uploadInventory",
+      "httpMethod": "post",
+      "tag": "Inventories",
+      "description": "Upload an inventory for processing",
+      "parameters": [
+        {
+          "name": "file",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "signature",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/inventories/watcher/restart",
+      "method": "fileWatcherRestart",
+      "httpMethod": "post",
+      "tag": "Inventories",
+      "description": "Restart inventory watcher",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/inventories/watcher/start",
+      "method": "fileWatcherStart",
+      "httpMethod": "post",
+      "tag": "Inventories",
+      "description": "Start inventory watcher",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/inventories/watcher/stop",
+      "method": "fileWatcherStop",
+      "httpMethod": "post",
+      "tag": "Inventories",
+      "description": "Stop inventory watcher",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/methods",
+      "method": "methods",
+      "httpMethod": "get",
+      "tag": "Techniques",
+      "description": "List methods",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/methods/reload",
+      "method": "reloadMethods",
+      "httpMethod": "post",
+      "tag": "Techniques",
+      "description": "Reload methods",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes",
+      "method": "listAcceptedNodes",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "List managed nodes",
+      "parameters": [
+        {
+          "name": "include",
+          "schema": "string",
+          "description": "Level of information to include from the node inventory. Some base levels are defined (**minimal**, **default**, **full**). You can add fields you want to a base level by adding them to the list, possible values are keys from json answer. If you don't provide a base level, they will be added to `default` level, so if you only want os details, use `minimal,os` as the value for this parameter.\n* **minimal** includes: `id`, `hostname` and `status`\n* **default** includes **minimal** plus `architectureDescription`, `description`, `ipAddresses`, `lastRunDate`, `lastInventoryDate`, `machine`, `os`, `managementTechnology`, `policyServerId`, `properties` (be careful! Only node own properties, if you also need inherited properties, look at the dedicated `/nodes/{id}/inheritedProperties` endpoint), `policyMode `, `ram` and `timezone`\n* **full** includes: **default** plus `accounts`, `bios`, `controllers`, `environmentVariables`, `fileSystems`, `managementTechnologyDetails`, `memories`, `networkInterfaces`, `ports`, `processes`, `processors`, `slots`, `software`, `sound`, `storage`, `videos` and `virtualMachines`"
+        },
+        {
+          "name": "query",
+          "schema": "undefined",
+          "description": "The criterion you want to find for your nodes. Replaces the `where`, `composition` and `select` parameters in a single parameter."
+        },
+        {
+          "name": "where",
+          "schema": "undefined",
+          "description": "The criterion you want to find for your nodes"
+        },
+        {
+          "name": "composition",
+          "schema": "string",
+          "description": "Boolean operator to use between each  `where` criteria."
+        },
+        {
+          "name": "select",
+          "schema": "string",
+          "description": "What kind of data we want to include. Here we can get policy servers/relay by setting `nodeAndPolicyServer`. Only used if `where` is defined."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes",
+      "method": "createNodes",
+      "httpMethod": "put",
+      "tag": "Nodes",
+      "description": "Create one or several new nodes",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/applyPolicy",
+      "method": "applyPolicyAllNodes",
+      "httpMethod": "post",
+      "tag": "Nodes",
+      "description": "Trigger an agent run on all nodes",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/pending",
+      "method": "listPendingNodes",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "List pending nodes",
+      "parameters": [
+        {
+          "name": "include",
+          "schema": "string",
+          "description": "Level of information to include from the node inventory. Some base levels are defined (**minimal**, **default**, **full**). You can add fields you want to a base level by adding them to the list, possible values are keys from json answer. If you don't provide a base level, they will be added to `default` level, so if you only want os details, use `minimal,os` as the value for this parameter.\n* **minimal** includes: `id`, `hostname` and `status`\n* **default** includes **minimal** plus `architectureDescription`, `description`, `ipAddresses`, `lastRunDate`, `lastInventoryDate`, `machine`, `os`, `managementTechnology`, `policyServerId`, `properties` (be careful! Only node own properties, if you also need inherited properties, look at the dedicated `/nodes/{id}/inheritedProperties` endpoint), `policyMode `, `ram` and `timezone`\n* **full** includes: **default** plus `accounts`, `bios`, `controllers`, `environmentVariables`, `fileSystems`, `managementTechnologyDetails`, `memories`, `networkInterfaces`, `ports`, `processes`, `processors`, `slots`, `software`, `sound`, `storage`, `videos` and `virtualMachines`"
+        },
+        {
+          "name": "query",
+          "schema": "undefined",
+          "description": "The criterion you want to find for your nodes. Replaces the `where`, `composition` and `select` parameters in a single parameter."
+        },
+        {
+          "name": "where",
+          "schema": "undefined",
+          "description": "The criterion you want to find for your nodes"
+        },
+        {
+          "name": "composition",
+          "schema": "string",
+          "description": "Boolean operator to use between each  `where` criteria."
+        },
+        {
+          "name": "select",
+          "schema": "string",
+          "description": "What kind of data we want to include. Here we can get policy servers/relay by setting `nodeAndPolicyServer`. Only used if `where` is defined."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/pending/{nodeId}",
+      "method": "changePendingNodeStatus",
+      "httpMethod": "post",
+      "tag": "Nodes",
+      "description": "Update pending Node status",
+      "parameters": [
+        {
+          "name": "nodeId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the target node"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/status",
+      "method": "getNodesStatus",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "Get nodes acceptation status",
+      "parameters": [
+        {
+          "name": "ids",
+          "schema": "string",
+          "required": true,
+          "description": "Comma separated list of node Ids"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{nodeId}",
+      "method": "deleteNode",
+      "httpMethod": "delete",
+      "tag": "Nodes",
+      "description": "Delete a node",
+      "parameters": [
+        {
+          "name": "nodeId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the target node"
+        },
+        {
+          "name": "mode",
+          "schema": "string",
+          "required": false,
+          "description": "Deletion mode to use, either move to trash ('move', default) or erase ('erase')"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{nodeId}",
+      "method": "nodeDetails",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "Get information about a node",
+      "parameters": [
+        {
+          "name": "nodeId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the target node"
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "description": "Level of information to include from the node inventory. Some base levels are defined (**minimal**, **default**, **full**). You can add fields you want to a base level by adding them to the list, possible values are keys from json answer. If you don't provide a base level, they will be added to `default` level, so if you only want os details, use `minimal,os` as the value for this parameter.\n* **minimal** includes: `id`, `hostname` and `status`\n* **default** includes **minimal** plus `architectureDescription`, `description`, `ipAddresses`, `lastRunDate`, `lastInventoryDate`, `machine`, `os`, `managementTechnology`, `policyServerId`, `properties` (be careful! Only node own properties, if you also need inherited properties, look at the dedicated `/nodes/{id}/inheritedProperties` endpoint), `policyMode `, `ram` and `timezone`\n* **full** includes: **default** plus `accounts`, `bios`, `controllers`, `environmentVariables`, `fileSystems`, `managementTechnologyDetails`, `memories`, `networkInterfaces`, `ports`, `processes`, `processors`, `slots`, `software`, `sound`, `storage`, `videos` and `virtualMachines`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{nodeId}",
+      "method": "updateNode",
+      "httpMethod": "post",
+      "tag": "Nodes",
+      "description": "Update node settings and properties",
+      "parameters": [
+        {
+          "name": "nodeId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the target node"
+        },
+        {
+          "name": "agentKey",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "policyMode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{nodeId}/applyPolicy",
+      "method": "applyPolicy",
+      "httpMethod": "post",
+      "tag": "Nodes",
+      "description": "Trigger an agent run",
+      "parameters": [
+        {
+          "name": "nodeId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the target node"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{nodeId}/fetchData",
+      "method": "reloadAllDatasourcesOneNode",
+      "httpMethod": "post",
+      "tag": "🧩 Data sources",
+      "description": "Update properties for one node from all data sources",
+      "parameters": [
+        {
+          "name": "nodeId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the target node"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{nodeId}/fetchData/{datasourceId}",
+      "method": "reloadOneDatasourceOneNode",
+      "httpMethod": "post",
+      "tag": "🧩 Data sources",
+      "description": "Update properties for one node from a data source",
+      "parameters": [
+        {
+          "name": "nodeId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the target node"
+        },
+        {
+          "name": "datasourceId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the data source"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/nodes/{nodeId}/inheritedProperties",
+      "method": "nodeInheritedProperties",
+      "httpMethod": "get",
+      "tag": "Nodes",
+      "description": "Get inherited node properties for a node",
+      "parameters": [
+        {
+          "name": "nodeId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the target node"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/parameters",
+      "method": "listParameters",
+      "httpMethod": "get",
+      "tag": "Parameters",
+      "description": "List all global parameters",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/parameters",
+      "method": "createParameter",
+      "httpMethod": "put",
+      "tag": "Parameters",
+      "description": "Create a new parameter",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "overridable",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "value",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/parameters/{parameterId}",
+      "method": "deleteParameter",
+      "httpMethod": "delete",
+      "tag": "Parameters",
+      "description": "Delete a parameter",
+      "parameters": [
+        {
+          "name": "parameterId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the parameter to manage"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/parameters/{parameterId}",
+      "method": "parameterDetails",
+      "httpMethod": "get",
+      "tag": "Parameters",
+      "description": "Get the value of a parameter",
+      "parameters": [
+        {
+          "name": "parameterId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the parameter to manage"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/parameters/{parameterId}",
+      "method": "updateParameter",
+      "httpMethod": "post",
+      "tag": "Parameters",
+      "description": "Update a parameter's value",
+      "parameters": [
+        {
+          "name": "parameterId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the parameter to manage"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rules",
+      "method": "listRules",
+      "httpMethod": "get",
+      "tag": "Rules",
+      "description": "List all rules",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rules",
+      "method": "createRule",
+      "httpMethod": "put",
+      "tag": "Rules",
+      "description": "Create a rule",
+      "parameters": [
+        {
+          "name": "category",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "directives",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "displayName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "longDescription",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "shortDescription",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "source",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "system",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "targets",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rules/categories",
+      "method": "createRuleCategory",
+      "httpMethod": "put",
+      "tag": "Rules",
+      "description": "Create a rule category",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "parent",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rules/categories/{ruleCategoryId}",
+      "method": "deleteRuleCategory",
+      "httpMethod": "delete",
+      "tag": "Rules",
+      "description": "Delete group category",
+      "parameters": [
+        {
+          "name": "ruleCategoryId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rules/categories/{ruleCategoryId}",
+      "method": "getRuleCategoryDetails",
+      "httpMethod": "get",
+      "tag": "Rules",
+      "description": "Get rule category details",
+      "parameters": [
+        {
+          "name": "ruleCategoryId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rules/categories/{ruleCategoryId}",
+      "method": "updateRuleCategory",
+      "httpMethod": "post",
+      "tag": "Rules",
+      "description": "Update rule category details",
+      "parameters": [
+        {
+          "name": "ruleCategoryId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "parent",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rules/tree",
+      "method": "getRuleTree",
+      "httpMethod": "get",
+      "tag": "Rules",
+      "description": "Get rules tree",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rules/{ruleId}",
+      "method": "deleteRule",
+      "httpMethod": "delete",
+      "tag": "Rules",
+      "description": "Delete a rule",
+      "parameters": [
+        {
+          "name": "ruleId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the target rule"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rules/{ruleId}",
+      "method": "ruleDetails",
+      "httpMethod": "get",
+      "tag": "Rules",
+      "description": "Get a rule details",
+      "parameters": [
+        {
+          "name": "ruleId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the target rule"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rules/{ruleId}",
+      "method": "updateRule",
+      "httpMethod": "post",
+      "tag": "Rules",
+      "description": "Update a rule details",
+      "parameters": [
+        {
+          "name": "ruleId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the target rule"
+        },
+        {
+          "name": "category",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "directives",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "displayName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "longDescription",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "shortDescription",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "system",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "targets",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/scaleoutrelay/demote/{nodeId}",
+      "method": "demoteToNode",
+      "httpMethod": "post",
+      "tag": "🧩 Scale out Relay",
+      "description": "Demote a relay to simple node",
+      "parameters": [
+        {
+          "name": "nodeId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the target node"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/scaleoutrelay/promote/{nodeId}",
+      "method": "promoteToRelay",
+      "httpMethod": "post",
+      "tag": "🧩 Scale out Relay",
+      "description": "Promote a node to relay",
+      "parameters": [
+        {
+          "name": "nodeId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the target node"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/secret",
+      "method": "getAllSecrets",
+      "httpMethod": "get",
+      "tag": "🧩 Secret Management",
+      "description": "List all secrets",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/secret",
+      "method": "updateSecret",
+      "httpMethod": "post",
+      "tag": "🧩 Secret Management",
+      "description": "Update a secret",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "value",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/secret",
+      "method": "addSecret",
+      "httpMethod": "put",
+      "tag": "🧩 Secret Management",
+      "description": "Create a secret",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "value",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/secret/{name}",
+      "method": "deleteSecret",
+      "httpMethod": "delete",
+      "tag": "🧩 Secret Management",
+      "description": "Delete a secret",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "Unique name of the secret"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/secret/{name}",
+      "method": "getSecret",
+      "httpMethod": "get",
+      "tag": "🧩 Secret Management",
+      "description": "Get one secret",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "Unique name of the secret"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/settings",
+      "method": "getAllSettings",
+      "httpMethod": "get",
+      "tag": "Settings",
+      "description": "List all settings",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/settings/allowed_networks/{nodeId}",
+      "method": "getAllowedNetworks",
+      "httpMethod": "get",
+      "tag": "Settings",
+      "description": "Get allowed networks for a policy server",
+      "parameters": [
+        {
+          "name": "nodeId",
+          "schema": "string",
+          "required": true,
+          "description": "Policy server ID for which you want to manage allowed networks."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/settings/allowed_networks/{nodeId}",
+      "method": "setAllowedNetworks",
+      "httpMethod": "post",
+      "tag": "Settings",
+      "description": "Set allowed networks for a policy server",
+      "parameters": [
+        {
+          "name": "nodeId",
+          "schema": "string",
+          "required": true,
+          "description": "Policy server ID for which you want to manage allowed networks."
+        },
+        {
+          "name": "value",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/settings/allowed_networks/{nodeId}/diff",
+      "method": "modifyAllowedNetworks",
+      "httpMethod": "post",
+      "tag": "Settings",
+      "description": "Modify allowed networks for a policy server",
+      "parameters": [
+        {
+          "name": "nodeId",
+          "schema": "string",
+          "required": true,
+          "description": "Policy server ID for which you want to manage allowed networks."
+        },
+        {
+          "name": "allowed_networks",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/settings/{settingId}",
+      "method": "getSetting",
+      "httpMethod": "get",
+      "tag": "Settings",
+      "description": "Get the value of a setting",
+      "parameters": [
+        {
+          "name": "settingId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the setting to set"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/settings/{settingId}",
+      "method": "modifySetting",
+      "httpMethod": "post",
+      "tag": "Settings",
+      "description": "Set the value of a setting",
+      "parameters": [
+        {
+          "name": "settingId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the setting to set"
+        },
+        {
+          "name": "value",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/status",
+      "method": "none",
+      "httpMethod": "get",
+      "tag": "Status",
+      "description": "Check if Rudder is alive",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/system/archives/{archiveKind}",
+      "method": "listArchives",
+      "httpMethod": "get",
+      "tag": "System",
+      "description": "List archives",
+      "parameters": [
+        {
+          "name": "archiveKind",
+          "schema": "string",
+          "required": true,
+          "description": "Type of archive to make"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/system/archives/{archiveKind}",
+      "method": "createArchive",
+      "httpMethod": "post",
+      "tag": "System",
+      "description": "Create an archive",
+      "parameters": [
+        {
+          "name": "archiveKind",
+          "schema": "string",
+          "required": true,
+          "description": "Type of archive to make"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/system/archives/{archiveKind}/restore/{archiveRestoreKind}",
+      "method": "restoreArchive",
+      "httpMethod": "post",
+      "tag": "System",
+      "description": "Restore an archive",
+      "parameters": [
+        {
+          "name": "archiveKind",
+          "schema": "string",
+          "required": true,
+          "description": "Type of archive to make"
+        },
+        {
+          "name": "archiveRestoreKind",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/system/archives/{archiveKind}/zip/{commitId}",
+      "method": "getZipArchive",
+      "httpMethod": "get",
+      "tag": "System",
+      "description": "Get an archive as a ZIP",
+      "parameters": [
+        {
+          "name": "archiveKind",
+          "schema": "string",
+          "required": true,
+          "description": "Type of archive to make"
+        },
+        {
+          "name": "commitId",
+          "schema": "string",
+          "required": true,
+          "description": "commit ID of the archive to get as a ZIP file"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/system/healthcheck",
+      "method": "getHealthcheckResult",
+      "httpMethod": "get",
+      "tag": "System",
+      "description": "Get healthcheck",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/system/info",
+      "method": "getSystemInfo",
+      "httpMethod": "get",
+      "tag": "System",
+      "description": "Get server information",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/system/maintenance/purgeSoftware",
+      "method": "purgeSoftware",
+      "httpMethod": "post",
+      "tag": "System",
+      "description": "Trigger batch for cleaning unreferenced software",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/system/regenerate/policies",
+      "method": "regeneratePolicies",
+      "httpMethod": "post",
+      "tag": "System",
+      "description": "Trigger a new policy generation",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/system/reload",
+      "method": "reloadAll",
+      "httpMethod": "post",
+      "tag": "System",
+      "description": "Reload both techniques and dynamic groups",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/system/reload/groups",
+      "method": "reloadGroups",
+      "httpMethod": "post",
+      "tag": "System",
+      "description": "Reload dynamic groups",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/system/reload/techniques",
+      "method": "reloadTechniques",
+      "httpMethod": "post",
+      "tag": "System",
+      "description": "Reload techniques",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/system/status",
+      "method": "getStatus",
+      "httpMethod": "get",
+      "tag": "System",
+      "description": "Get server status",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/system/update/policies",
+      "method": "updatePolicies",
+      "httpMethod": "post",
+      "tag": "System",
+      "description": "Trigger update of policies",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/systemUpdate/campaigns/{id}/history",
+      "method": "getCampaignHistory",
+      "httpMethod": "get",
+      "tag": "🧩 System update campaigns",
+      "description": "Get a campaign result history",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the campaign"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Max number of elements in response"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Offset of data in response (skip X elements)"
+        },
+        {
+          "name": "before",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "after",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "asc",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/systemUpdate/events/{id}/result",
+      "method": "getCampaignEventResult",
+      "httpMethod": "get",
+      "tag": "🧩 System update campaigns",
+      "description": "Get a campaign event result",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the campaign event"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/systemUpdate/events/{id}/result/{nodeId}",
+      "method": "getCampaignEventResultForNode",
+      "httpMethod": "get",
+      "tag": "🧩 System update campaigns",
+      "description": "Get detailed campaign event result for a Node",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the campaign event"
+        },
+        {
+          "name": "nodeId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the target node"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/techniques",
+      "method": "listTechniques",
+      "httpMethod": "get",
+      "tag": "Techniques",
+      "description": "List all techniques",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/techniques",
+      "method": "createTechnique",
+      "httpMethod": "put",
+      "tag": "Techniques",
+      "description": "Create technique",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/techniques/categories",
+      "method": "techniqueCategories",
+      "httpMethod": "get",
+      "tag": "Techniques",
+      "description": "List categories",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/techniques/reload",
+      "method": "techniques",
+      "httpMethod": "post",
+      "tag": "Techniques",
+      "description": "Reload techniques",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/techniques/versions",
+      "method": "listTechniquesVersions",
+      "httpMethod": "get",
+      "tag": "Techniques",
+      "description": "List versions",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/techniques/{techniqueId}",
+      "method": "getTechniqueAllVersion",
+      "httpMethod": "get",
+      "tag": "Techniques",
+      "description": "Technique metadata by ID",
+      "parameters": [
+        {
+          "name": "techniqueId",
+          "schema": "string",
+          "required": true,
+          "description": "Technique ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/techniques/{techniqueId}/directives",
+      "method": "listTechniquesDirectives",
+      "httpMethod": "get",
+      "tag": "Techniques",
+      "description": "List all directives based on a technique",
+      "parameters": [
+        {
+          "name": "techniqueId",
+          "schema": "string",
+          "required": true,
+          "description": "Technique ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/techniques/{techniqueId}/{techniqueVersion}",
+      "method": "deleteTechnique",
+      "httpMethod": "delete",
+      "tag": "Techniques",
+      "description": "Delete technique",
+      "parameters": [
+        {
+          "name": "techniqueId",
+          "schema": "string",
+          "required": true,
+          "description": "Technique ID"
+        },
+        {
+          "name": "techniqueVersion",
+          "schema": "string",
+          "required": true,
+          "description": "Technique version"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/techniques/{techniqueId}/{techniqueVersion}",
+      "method": "getTechniqueAllVersionId",
+      "httpMethod": "get",
+      "tag": "Techniques",
+      "description": "Technique metadata by version and ID",
+      "parameters": [
+        {
+          "name": "techniqueId",
+          "schema": "string",
+          "required": true,
+          "description": "Technique ID"
+        },
+        {
+          "name": "techniqueVersion",
+          "schema": "string",
+          "required": true,
+          "description": "Technique version"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/techniques/{techniqueId}/{techniqueVersion}",
+      "method": "updateTechnique",
+      "httpMethod": "post",
+      "tag": "Techniques",
+      "description": "Update technique",
+      "parameters": [
+        {
+          "name": "techniqueId",
+          "schema": "string",
+          "required": true,
+          "description": "Technique ID"
+        },
+        {
+          "name": "techniqueVersion",
+          "schema": "string",
+          "required": true,
+          "description": "Technique version"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/techniques/{techniqueId}/{techniqueVersion}/directives",
+      "method": "listTechniqueVersionDirectives",
+      "httpMethod": "get",
+      "tag": "Techniques",
+      "description": "List all directives based on a version of a technique",
+      "parameters": [
+        {
+          "name": "techniqueId",
+          "schema": "string",
+          "required": true,
+          "description": "Technique ID"
+        },
+        {
+          "name": "techniqueVersion",
+          "schema": "string",
+          "required": true,
+          "description": "Technique version"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/techniques/{techniqueId}/{techniqueVersion}/resources",
+      "method": "getTechniquesResources",
+      "httpMethod": "get",
+      "tag": "Techniques",
+      "description": "Technique's resources",
+      "parameters": [
+        {
+          "name": "techniqueId",
+          "schema": "string",
+          "required": true,
+          "description": "Technique ID"
+        },
+        {
+          "name": "techniqueVersion",
+          "schema": "string",
+          "required": true,
+          "description": "Technique version"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/techniques/{techniqueId}/{techniqueVersion}/revisions",
+      "method": "techniqueRevisions",
+      "httpMethod": "get",
+      "tag": "Techniques",
+      "description": "Technique's revisions",
+      "parameters": [
+        {
+          "name": "techniqueId",
+          "schema": "string",
+          "required": true,
+          "description": "Technique ID"
+        },
+        {
+          "name": "techniqueVersion",
+          "schema": "string",
+          "required": true,
+          "description": "Technique version"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/usermanagement",
+      "method": "addUser",
+      "httpMethod": "post",
+      "tag": "🧩 User Management",
+      "description": "Add user",
+      "parameters": [
+        {
+          "name": "isPreHahed",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "role",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/usermanagement/roles",
+      "method": "getRole",
+      "httpMethod": "get",
+      "tag": "🧩 User Management",
+      "description": "List all roles",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/usermanagement/update/{username}",
+      "method": "updateUser",
+      "httpMethod": "post",
+      "tag": "🧩 User Management",
+      "description": "Update user's infos",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "Username of an user (unique)"
+        },
+        {
+          "name": "isPreHahed",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "role",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/usermanagement/users",
+      "method": "getUserInfo",
+      "httpMethod": "get",
+      "tag": "🧩 User Management",
+      "description": "List all users",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/usermanagement/users/reload",
+      "method": "reloadUserConf",
+      "httpMethod": "get",
+      "tag": "🧩 User Management",
+      "description": "Reload user",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/usermanagement/{username}",
+      "method": "deleteUser",
+      "httpMethod": "delete",
+      "tag": "🧩 User Management",
+      "description": "Delete an user",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "Username of an user (unique)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users",
+      "method": "listUsers",
+      "httpMethod": "get",
+      "tag": "🧩 Change requests",
+      "description": "List user",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/validatedUsers",
+      "method": "saveWorkflowUser",
+      "httpMethod": "post",
+      "tag": "🧩 Change requests",
+      "description": "Update validated user list",
+      "parameters": [
+        {
+          "name": "validatedUsers",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/validatedUsers/{username}",
+      "method": "removeValidatedUser",
+      "httpMethod": "delete",
+      "tag": "🧩 Change requests",
+      "description": "Remove an user from validated user list",
+      "parameters": [
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "Username of an user (unique)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://rudder.example.local/rudder/api/latest",
   "apiDescription": "Download OpenAPI specification: [openapi.yml](openapi.yml)\n\n# Introduction\n\nRudder exposes a REST API, enabling the user to interact with Rudder without using the webapp, for example in scripts or cronjobs.\n\n## Versioning\n\nEach time the API is extended with new features (new functions, new parameters, new responses, ...), it will be assigned a new version number. This will allow you\nto keep your existing scripts (based on previous behavior). Versions will always be integers (no 2.1 or 3.3, just 2, 3, 4, ...) or `latest`.\n\nYou can change the version of the API used by setting it either within the url or in a header:\n\n* the URL: each URL is prefixed by its version id, like `/api/version/function`.\n\n```bash\n# Version 10\ncurl -X GET -H \"X-API-Token: yourToken\" https://rudder.example.com/rudder/api/10/rules\n# Latest\ncurl -X GET -H \"X-API-Token: yourToken\" https://rudder.example.com/rudder/api/latest/rules\n# Wrong (not an integer) => 404 not found\ncurl -X GET -H \"X-API-Token: yourToken\" https://rudder.example.com/rudder/api/3.14/rules\n```\n\n* the HTTP headers. You can add the **X-API-Version** header to your request. The value needs to be an integer or `latest`.\n\n```bash\n# Version 10\ncurl -X GET -H \"X-API-Token: yourToken\" -H \"X-API-Version: 10\" https://rudder.example.com/rudder/api/rules\n# Wrong => Error response indicating which versions are available\ncurl -X GET -H \"X-API-Token: yourToken\" -H \"X-API-Version: 3.14\" https://rudder.example.com/rudder/api/rules\n```\n\nIn the future, we may declare some versions as deprecated, in order to remove them in a later version of Rudder, but we will never remove any versions without warning, or without a safe\nperiod of time to allow migration from previous versions.\n\n\n<h4>Existing versions</h4>\n<table>\n  <thead>\n    <tr>\n      <th style=\"width: 20%\">Version</th>\n      <th style=\"width: 20%\">Rudder versions it appeared in</th>\n      <th style=\"width: 70%\">Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td class=\"code\">1</td>\n      <td class=\"code\">Never released (for internal use only)</td>\n      <td>Experimental version</td>\n    </tr>\n    <tr>\n      <td class=\"code\">2 to 10 (deprecated)</td>\n      <td class=\"code\">4.3 and before</td>\n      <td>These versions provided the core set of API features for rules, directives, nodes global parameters, change requests and compliance, rudder settings and system API</td>\n    </tr>\n    <tr>\n      <td class=\"code\">11</td>\n      <td class=\"code\">5.0</td>\n      <td>New system API (replacing old localhost v1 api): status, maintenance operations and server behavior</td>\n    </tr>\n    <tr>\n      <td class=\"code\">12</td>\n      <td class=\"code\">6.0 and 6.1</td>\n      <td>Node key management</td>\n    </tr>\n    <tr>\n      <td class=\"code\">13</td>\n      <td class=\"code\">6.2</td>\n      <td><ul>\n        <li>Node status endpoint</li>\n        <li>System health check</li>\n        <li>System maintenance job to purge software [that endpoint was back-ported in 6.1]</li>\n      </ul></td>\n    </tr>\n    <tr>\n      <td class=\"code\">14</td>\n      <td class=\"code\">7.0</td>\n      <td><ul>\n        <li>Secret management</li>\n        <li>Directive tree</li>\n        <li>Improve techniques management</li>\n        <li>Demote a relay</li>\n      </ul></td>\n    </tr>\n    <tr>\n      <td class=\"code\">15</td>\n      <td class=\"code\">7.1</td>\n      <td><ul>\n        <li>Package updates in nodes</li>\n      </ul></td>\n    </tr>\n    <tr>\n      <td class=\"code\">16</td>\n      <td class=\"code\">7.2</td>\n      <td><ul>\n        <li>Create node API included from plugin</li>\n        <li>Configuration archive import/export</li>\n      </ul></td>\n    </tr>\n  </tbody>\n</table>\n\n\n## Response format\n\nAll responses from the API are in the JSON format.\n\n```json\n{\n  \"action\": \"The name of the called function\",\n  \"id\": \"The ID of the element you want, if relevant\",\n  \"result\": \"The result of your action: success or error\",\n  \"data\": \"Only present if this is a success and depends on the function, it's usually a JSON object\",\n  \"errorDetails\": \"Only present if this is an error, it contains the error message\"\n}\n```\n\n\n* __Success__ responses are sent with the 200 HTTP (Success) code\n\n* __Error__ responses are sent with a HTTP error code (mostly 5xx...)\n\n\n## HTTP method\n\nRudder's REST API is based on the usage of [HTTP methods](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). We use them to indicate what action will be done by the request. Currently, we use four of them:\n\n\n* **GET**: search or retrieve information (get rule details, get a group, ...)\n\n* **PUT**: add new objects (create a directive, clone a Rule, ...)\n\n* **DELETE**: remove objects (delete a node, delete a parameter, ...)\n\n* **POST**: update existing objects (update a directive, reload a group, ...)\n\n\n## Parameters\n\n### General parameters\n\nSome parameters are available for almost all API functions. They will be described in this section.\nThey must be part of the query and can't be submitted in a JSON form.\n\n#### Available for all requests\n\n<table>\n  <thead>\n    <tr>\n      <th style=\"width: 30%\">Field</th>\n      <th style=\"width: 10%\">Type</th>\n      <th style=\"width: 70%\">Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td class=\"code\">prettify</td>\n      <td><b>boolean</b><br><i>optional</i></td>\n      <td>\n        Determine if the answer should be prettified (human friendly) or not. We recommend using this for debugging purposes, but not for general script usage as this does add some unnecessary load on the server side.\n        <p class=\"default-value\">Default value: <code>false</code></p>\n      </td>\n    </tr>\n  </tbody>\n</table>\n\n\n#### Available for modification requests (PUT/POST/DELETE)\n\n<table>\n  <thead>\n    <tr>\n      <th style=\"width: 25%\">Field</th>\n      <th style=\"width: 12%\">Type</th>\n      <th style=\"width: 70%\">Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td class=\"code\">reason</td>\n      <td><b>string</b><br><i>optional</i> or <i>required</i></td>\n      <td>\n        Set a message to explain the change. If you set the reason messages to be mandatory in the web interface, failing to supply this value will lead to an error.\n        <p class=\"default-value\">Default value: <code>\"\"</code></p>\n      </td>\n    </tr>\n    <tr>\n      <td class=\"code\">changeRequestName</td>\n      <td><b>string</b><br><i>optional</i></td>\n      <td>\n        Set the change request name, is used only if workflows are enabled. The default value depends on the function called\n        <p class=\"default-value\">Default value: <code>A default string for each function</code></p>\n      </td>\n    </tr>\n    <tr>\n      <td class=\"code\">changeRequestDescription</td>\n      <td><b>string</b><br><i>optional</i></td>\n      <td>\n        Set the change request description, is used only if workflows are enabled.\n        <p class=\"default-value\">Default value: <code>\"\"</code></p>\n      </td>\n    </tr>\n  </tbody>\n</table>\n\n\n### Passing parameters\n\nParameters to the API can be sent:\n\n* As part of the URL for resource identification\n\n* As data for POST/PUT requests\n\n  * Directly in JSON format\n\n  * As request arguments\n\n#### As part of the URL for resource identification\n\nParameters in URLs are used to indicate which resource you want to interact with. The function will not work if this resource is missing.\n\n```bash\n# Get the Rule of ID \"id\"\ncurl -H \"X-API-Token: yourToken\" https://rudder.example.com/rudder/api/latest/rules/id\n```\n\n\n\nCAUTION: To avoid surprising behavior, do not put a '/' at the end of an URL: it would be interpreted as '/[empty string parameter]' and redirected to '/index', likely not what you wanted to do.\n\n\n#### Sending data for POST/PUT requests\n\n##### Directly in JSON format\n\nJSON format is the preferred way to interact with Rudder API for creating or updating resources.\nYou'll also have to set the *Content-Type* header to **application/json** (without it the JSON content would be ignored).\nIn a `curl` `POST` request, that header can be provided with the `-H` parameter:\n\n```bash\ncurl -X POST -H \"Content-Type: application/json\" ...\n```\n\nThe supplied file must contain a valid JSON: strings need quotes, booleans and integers don't, etc.\n\nThe (human readable) format is:\n\n```json\n{\n  \"key1\": \"value1\",\n  \"key2\": false,\n  \"key3\": 42\n}\n```\n\n\nHere is an example with inlined data:\n\n```bash\n# Update the Rule 'id' with a new name, disabled, and setting it one directive\ncurl -X POST -H \"X-API-Token: yourToken\" -H  \"Content-Type: application/json\"\nhttps://rudder.example.com/rudder/api/rules/latest/{id}\n  -d '{ \"displayName\": \"new name\", \"enabled\": false, \"directives\": \"directiveId\"}'\n```\n\nYou can also pass a supply the JSON in a file:\n\n```bash\n# Update the Rule 'id' with a new name, disabled, and setting it one directive\ncurl -X POST -H \"X-API-Token: yourToken\" -H \"Content-Type: application/json\" https://rudder.example.com/rudder/api/rules/latest/{id} -d @jsonParam\n```\n\nNote that the general parameters view in the previous chapter cannot be passed in a JSON, and you will need to pass them a URL parameters if you want them to be taken into account (you can't mix JSON and request parameters):\n\n```bash\n# Update the Rule 'id' with a new name, disabled, and setting it one directive with reason message \"Reason used\"\ncurl -X POST -H \"X-API-Token: yourToken\" -H \"Content-Type: application/json\" \"https://rudder.example.com/rudder/api/rules/latest/{id}?reason=Reason used\" -d @jsonParam -d \"reason=Reason ignored\"\n```\n\n##### Request parameters\n\nIn some cases, when you have little, simple data to update, JSON can feel bloated. In such cases, you can use\nrequest parameters. You will need to pass one parameter for each data you want to change.\n\nParameters follow the following schema:\n\n```\nkey=value\n```\n\nYou can pass parameters by two means:\n\n* As query parameters: At the end of your url, put a **?** then your first parameter and then a **&** before next parameters. In that case, parameters need to be https://en.wikipedia.org/wiki/Percent-encoding[URL encoded]\n\n```bash\n# Update the Rule 'id' with a new name, disabled, and setting it one directive\ncurl -X POST -H \"X-API-Token: yourToken\"  https://rudder.example.com/rudder/api/rules/latest/{id}?\"displayName=my new name\"&\"enabled=false\"&\"directives=aDirectiveId\"\n```\n\n* As request data: You can pass those parameters in the request data, they won't figure in the URL, making it lighter to read, You can pass a file that contains data.\n\n```bash\n# Update the Rule 'id' with a new name, disabled, and setting it one directive (in file directive-info.json)\ncurl -X POST -H \"X-API-Token: yourToken\"\nhttps://rudder.example.com/rudder/api/rules/latest/{id} -d \"displayName=my new name\" -d \"enabled=false\" -d @directive-info.json\n```\n",
   "apiTitle": "Rudder API",

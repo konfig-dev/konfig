@@ -4,6 +4,184 @@
   "homepage": "deutschebahn.com",
   "serviceName": "stada",
   "apiVersion": "2.2.01",
+  "methods": [
+    {
+      "url": "/stations",
+      "method": "/stationsGet",
+      "httpMethod": "get",
+      "description": "This operation provides the master data for german railway stations.",
+      "parameters": [
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Offset of the first hit returned in the QueryResult object with respect to all hits returned by the query. If this parameter is omitted, it will be set to 0 internally."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The maximum number of hits to be returned by that query. If 'limit' is set greater than 10000, it will be reset to 10000 internally and only 10000 hits will be returned."
+        },
+        {
+          "name": "searchstring",
+          "schema": "string",
+          "required": false,
+          "description": "String to search for a station name. The wildcards * (indicating an arbitrary number of characters) and ? (indicating one single character) can be used in the search pattern. A comma separated list of station names is also supported (e.g. searchstring=hamburg*,berlin*)."
+        },
+        {
+          "name": "category",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by station category. Category ranges are supported as well as lists of categories (e.g. category=2-4 or category=1,3-5). The category must be between 1 and 7 otherwise a parameter exception is returned."
+        },
+        {
+          "name": "federalstate",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by German federal state. Lists of federal states are also supported (e.g. federalstate=bayern,hamburg). Wildcards are not allowed here."
+        },
+        {
+          "name": "eva",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by EVA number. Wildcards are not allowed here."
+        },
+        {
+          "name": "ril",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by Ril100-identifier. Wildcards are not allowed here."
+        },
+        {
+          "name": "logicaloperator",
+          "schema": "string",
+          "required": false,
+          "description": "Logical operator to combine query parameters (default=AND). See above for further details.  Allowed values: or, and"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stations/{id}",
+      "method": "/stations/{id}Get",
+      "httpMethod": "get",
+      "description": "This operation provides the master data for a german railway station selected by its station-id.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Station ID (Bahnhofsnummer)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/szentralen",
+      "method": "/szentralenGet",
+      "httpMethod": "get",
+      "description": "This operation provides the master data for 3-S-Zentralen.",
+      "parameters": [
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Offset of the first hit returned in the QueryResult object with respect to all hits returned by the query. If this parameter is omitted, it will be set to 0 internally."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The maximum number of hits to be returned by that query. If 'limit' is set greater than 10000, it will be reset to 10000 internally and only 100 hits will be returned."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/szentralen/{id}",
+      "method": "/szentralen/{id}Get",
+      "httpMethod": "get",
+      "description": "This operation provides the master data for 3-S-Zentralen select by its id.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "id of the 3-S-Zentrale."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.deutschebahn.com/stada/v2",
   "apiDescription": "An API providing master data for German railway stations by DB Station&Service AG.",
   "apiTitle": "Stationsdatenbereitstellung",

@@ -4,6 +4,545 @@
   "homepage": "nexmo.com",
   "serviceName": "conversation",
   "apiVersion": "2.0.1",
+  "methods": [
+    {
+      "url": "/conversations",
+      "method": "listConversations",
+      "httpMethod": "get",
+      "tag": "conversation",
+      "description": "List conversations",
+      "parameters": [
+        {
+          "name": "date_start",
+          "schema": "string",
+          "required": false,
+          "description": "Return the records that occurred after this point in time."
+        },
+        {
+          "name": "date_end",
+          "schema": "string",
+          "required": false,
+          "description": "Return the records that occurred before this point in time."
+        },
+        {
+          "name": "page_size",
+          "schema": "number",
+          "required": false,
+          "description": "Return this amount of records in the response"
+        },
+        {
+          "name": "record_index",
+          "schema": "number",
+          "required": false,
+          "description": "Return calls from this index in the response"
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "required": false,
+          "description": "Return the records in ascending or descending order."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations",
+      "method": "createConversation",
+      "httpMethod": "post",
+      "tag": "conversation",
+      "description": "Create a conversation",
+      "parameters": [
+        {
+          "name": "display_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "image_url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/{conversation_id}",
+      "method": "deleteConversation",
+      "httpMethod": "delete",
+      "tag": "conversation",
+      "description": "Delete a conversation",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Empty JSON payload"
+        }
+      ]
+    },
+    {
+      "url": "/conversations/{conversation_id}",
+      "method": "retrieveConversation",
+      "httpMethod": "get",
+      "tag": "conversation",
+      "description": "Retrieve a conversation",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Conversation Object"
+        }
+      ]
+    },
+    {
+      "url": "/conversations/{conversation_id}",
+      "method": "replaceConversation",
+      "httpMethod": "put",
+      "tag": "conversation",
+      "description": "Update a conversation",
+      "parameters": [
+        {
+          "name": "display_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "image_url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/{conversation_id}/events",
+      "method": "getEvents",
+      "httpMethod": "get",
+      "tag": "event",
+      "description": "List events",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/{conversation_id}/events",
+      "method": "createEvent",
+      "httpMethod": "post",
+      "tag": "event",
+      "description": "Create an event",
+      "parameters": [
+        {
+          "name": "body",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Create New Event Response Payload Object"
+        }
+      ]
+    },
+    {
+      "url": "/conversations/{conversation_id}/events/{event_id}",
+      "method": "deleteEvent",
+      "httpMethod": "delete",
+      "tag": "event",
+      "description": "Delete an event",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Empty JSON payload"
+        }
+      ]
+    },
+    {
+      "url": "/conversations/{conversation_id}/events/{event_id}",
+      "method": "getEvent",
+      "httpMethod": "get",
+      "tag": "event",
+      "description": "Retrieve an event",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Retrieve Events Response Payload Object Item"
+        }
+      ]
+    },
+    {
+      "url": "/conversations/{conversation_id}/members",
+      "method": "getMembers",
+      "httpMethod": "get",
+      "tag": "member",
+      "description": "List members",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/{conversation_id}/members",
+      "method": "createMember",
+      "httpMethod": "post",
+      "tag": "member",
+      "description": "Create a member",
+      "parameters": [
+        {
+          "name": "action",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "channel",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "knocking_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "media",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "member_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "member_id_inviting",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/{conversation_id}/members/{member_id}",
+      "method": "deleteMember",
+      "httpMethod": "delete",
+      "tag": "member",
+      "description": "Delete a member",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Empty JSON payload"
+        }
+      ]
+    },
+    {
+      "url": "/conversations/{conversation_id}/members/{member_id}",
+      "method": "getMember",
+      "httpMethod": "get",
+      "tag": "member",
+      "description": "Retrieve a member",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/{conversation_id}/members/{member_id}",
+      "method": "updateMember",
+      "httpMethod": "put",
+      "tag": "member",
+      "description": "Update a member",
+      "parameters": [
+        {
+          "name": "action",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "channel",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversations/{conversation_id}/record",
+      "method": "recordConversation",
+      "httpMethod": "put",
+      "tag": "conversation",
+      "description": "Record a conversation",
+      "parameters": [
+        {
+          "name": "action",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "event_method",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "event_url",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "split",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/legs",
+      "method": "listLegs",
+      "httpMethod": "get",
+      "tag": "leg",
+      "description": "List legs",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "List Legs Response Payload Object"
+        }
+      ]
+    },
+    {
+      "url": "/legs/{leg_id}",
+      "method": "deleteLeg",
+      "httpMethod": "delete",
+      "tag": "leg",
+      "description": "Delete a leg",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Empty JSON payload"
+        }
+      ]
+    },
+    {
+      "url": "/users",
+      "method": "getUsers",
+      "httpMethod": "get",
+      "tag": "user",
+      "description": "List users",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users",
+      "method": "createUser",
+      "httpMethod": "post",
+      "tag": "user",
+      "description": "Create a user",
+      "parameters": [
+        {
+          "name": "display_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "image_url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}",
+      "method": "deleteUser",
+      "httpMethod": "delete",
+      "tag": "user",
+      "description": "Delete a user",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Empty JSON payload"
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}",
+      "method": "getUser",
+      "httpMethod": "get",
+      "tag": "user",
+      "description": "Retrieve a user",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}",
+      "method": "updateUser",
+      "httpMethod": "put",
+      "tag": "user",
+      "description": "Update a user",
+      "parameters": [
+        {
+          "name": "channels",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "display_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "image_url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{user_id}/conversations",
+      "method": "getuserConversations",
+      "httpMethod": "get",
+      "tag": "user",
+      "description": "List user conversations",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.nexmo.com/v0.1",
   "apiDescription": "The Conversation API enables you to build conversation features where communication can take place across multiple mediums including IP Messaging, PSTN Voice, SMS and WebRTC Audio and Video. The context of the conversations is maintained though each communication event taking place within a conversation, no matter the medium.",
   "apiTitle": "Conversation API",

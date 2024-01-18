@@ -4,6 +4,806 @@
   "homepage": "getgo.com",
   "serviceName": "gototraining",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/accounts/{accountKey}/organizers",
+      "method": "getAllOrganisers",
+      "httpMethod": "get",
+      "tag": "Organizers",
+      "description": "DEPRECATED: Get Organizers",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "accountKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the multi-user account"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/trainings",
+      "method": "getAllTrainings",
+      "httpMethod": "get",
+      "tag": "Trainings",
+      "description": "Get Trainings",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training organizer"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/trainings",
+      "method": "scheduleTraining",
+      "httpMethod": "post",
+      "tag": "Trainings",
+      "description": "Create Training",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training organizer"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "organizers",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "registrationSettings",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "timeZone",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "times",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/trainings/{trainingKey}",
+      "method": "cancelTraining",
+      "httpMethod": "delete",
+      "tag": "Trainings",
+      "description": "Delete Training",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training organizer"
+        },
+        {
+          "name": "trainingKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/organizers/{organizerKey}/trainings/{trainingKey}",
+      "method": "getTraining",
+      "httpMethod": "get",
+      "tag": "Trainings",
+      "description": "Get Training",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training organizer"
+        },
+        {
+          "name": "trainingKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Describes a scheduled training."
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/trainings/{trainingKey}/manageUrl",
+      "method": "getManageTrainingUrl",
+      "httpMethod": "get",
+      "tag": "Trainings",
+      "description": "Get Management URL for Training",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training organizer"
+        },
+        {
+          "name": "trainingKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/trainings/{trainingKey}/nameDescription",
+      "method": "updateTrainingNameDescription",
+      "httpMethod": "put",
+      "tag": "Trainings",
+      "description": "Update Training Name and Description",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training organizer"
+        },
+        {
+          "name": "trainingKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/organizers/{organizerKey}/trainings/{trainingKey}/organizers",
+      "method": "getOrganisersForTraining",
+      "httpMethod": "get",
+      "tag": "Trainings",
+      "description": "Get Training Organizers",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training organizer"
+        },
+        {
+          "name": "trainingKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/trainings/{trainingKey}/organizers",
+      "method": "updateOrganisersForTraining",
+      "httpMethod": "put",
+      "tag": "Trainings",
+      "description": "Update Training Organizers",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training organizer"
+        },
+        {
+          "name": "trainingKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training"
+        },
+        {
+          "name": "notifyOrganizers",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "organizers",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/organizers/{organizerKey}/trainings/{trainingKey}/registrants",
+      "method": "getRegistrants",
+      "httpMethod": "get",
+      "tag": "Registrations",
+      "description": "Get Training Registrants",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training organizer"
+        },
+        {
+          "name": "trainingKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/trainings/{trainingKey}/registrants",
+      "method": "registerForTraining",
+      "httpMethod": "post",
+      "tag": "Registrations",
+      "description": "Register for Training",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training organizer"
+        },
+        {
+          "name": "trainingKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "givenName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "surname",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Describes a newly created training registrant"
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/trainings/{trainingKey}/registrants/{registrantKey}",
+      "method": "cancelRegistration",
+      "httpMethod": "delete",
+      "tag": "Registrations",
+      "description": "Cancel Registration",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training organizer"
+        },
+        {
+          "name": "trainingKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training"
+        },
+        {
+          "name": "registrantKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the registrant"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/organizers/{organizerKey}/trainings/{trainingKey}/registrants/{registrantKey}",
+      "method": "getRegistrant",
+      "httpMethod": "get",
+      "tag": "Registrations",
+      "description": "Get Registrant",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training organizer"
+        },
+        {
+          "name": "trainingKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training"
+        },
+        {
+          "name": "registrantKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the registrant"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Describes a training registrant."
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/trainings/{trainingKey}/registrationSettings",
+      "method": "updateRegistrationSettingsForTraining",
+      "httpMethod": "put",
+      "tag": "Trainings",
+      "description": "Update Training Registration Settings",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training organizer"
+        },
+        {
+          "name": "trainingKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training"
+        },
+        {
+          "name": "disableConfirmationEmail",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "disableWebRegistration",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/organizers/{organizerKey}/trainings/{trainingKey}/startUrl",
+      "method": "getStartUrl",
+      "httpMethod": "get",
+      "tag": "Trainings",
+      "description": "Get Start Url",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training organizer"
+        },
+        {
+          "name": "trainingKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizers/{organizerKey}/trainings/{trainingKey}/times",
+      "method": "updateTrainingTimes",
+      "httpMethod": "put",
+      "tag": "Trainings",
+      "description": "Update Training Times",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training organizer"
+        },
+        {
+          "name": "trainingKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training"
+        },
+        {
+          "name": "notifyRegistrants",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "notifyTrainers",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "timeZone",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "times",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Number of parties notified of a change to a training session times"
+        }
+      ]
+    },
+    {
+      "url": "/reports/organizers/{organizerKey}/sessions",
+      "method": "getSessionDetailsForDateRange",
+      "httpMethod": "post",
+      "tag": "Reports",
+      "description": "Get Sessions by Date Range",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training organizer"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reports/organizers/{organizerKey}/sessions/{sessionKey}/attendees",
+      "method": "getAttendanceDetails",
+      "httpMethod": "get",
+      "tag": "Reports",
+      "description": "Get Attendance Details",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training organizer"
+        },
+        {
+          "name": "sessionKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training session"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reports/organizers/{organizerKey}/trainings/{trainingKey}",
+      "method": "getSessionDetailsForTraining",
+      "httpMethod": "get",
+      "tag": "Reports",
+      "description": "Get Sessions By Training",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "organizerKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training organizer"
+        },
+        {
+          "name": "trainingKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/trainings/{trainingKey}/recordings",
+      "method": "getRecordingsForTraining",
+      "httpMethod": "get",
+      "tag": "Recordings",
+      "description": "Get Online Recordings for Training",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "trainingKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Contains a list of recordings for the training."
+        }
+      ]
+    },
+    {
+      "url": "/trainings/{trainingKey}/recordings/{recordingId}",
+      "method": "getRecordingDownloadById",
+      "httpMethod": "get",
+      "tag": "Recordings",
+      "description": "Get Download for Online Recordings",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "trainingKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training"
+        },
+        {
+          "name": "recordingId",
+          "schema": "integer",
+          "required": true,
+          "description": "the unique id of the recording"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/trainings/{trainingKey}/start",
+      "method": "startTraining",
+      "httpMethod": "get",
+      "tag": "Trainings",
+      "description": "Start Training",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Access token"
+        },
+        {
+          "name": "trainingKey",
+          "schema": "integer",
+          "required": true,
+          "description": "The key of the training"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Host URL that can be used to start a training"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.getgo.com/G2T/rest",
   "apiDescription": "The GoToTraining API enables developers to use the stable and robust GoToTraining functionality as the basis for online trainings in a proprietary learning management system. The GoToTraining APIs provide the ability to access the scheduling, registration, management, and reporting functions of GoToTraining from external applications. With the ability to tightly integrate GoToTraining into your learning infrastructure, you can offer your learners a seamless user experience and provide them with a market leading virtual classroom environment.",
   "apiTitle": "GoToTraining",

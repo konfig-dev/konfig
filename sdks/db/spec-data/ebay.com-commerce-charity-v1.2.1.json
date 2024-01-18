@@ -4,6 +4,80 @@
   "homepage": "ebay.com",
   "serviceName": "commerce-charity",
   "apiVersion": "v1.2.1",
+  "methods": [
+    {
+      "url": "/charity_org",
+      "method": "getCharityOrgs",
+      "httpMethod": "get",
+      "tag": "charity_org",
+      "description": "This call is used to search for supported charitable organizations. It allows users to search for a specific charitable organization, or for multiple charitable organizations, from a particular charitable domain and/or geographical region, or by using search criteria.<br /><br />The call returns paginated search results containing the charitable organizations that match the specified criteria.",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "string",
+          "required": false,
+          "description": "The number of items, from the result set, returned in a single page.<br /><br /><b>Valid Values:</b> <code>1-100</code><br /><br /><b>Default:</b> <code>20</code>"
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "required": false,
+          "description": "The number of items that will be skipped in the result set. This is used with the <b>limit</b> field to control the pagination of the output.<br /><br />For example, if the <b>offset</b> is set to <code>0</code> and the <b>limit</b> is set to <code>10</code>, the method will retrieve items 1 through 10 from the list of items returned. If the <b>offset</b> is set to <code>10</code> and the <b>limit</b> is set to <code>10</code>, the method will retrieve items 11 through 20 from the list of items returned.<br /><br /><b>Valid Values:</b> <code>0-10,000</code><br /><br /><b>Default:</b> <code>0</code>"
+        },
+        {
+          "name": "q",
+          "schema": "string",
+          "required": false,
+          "description": "A query string that matches the keywords in name, mission statement, or description."
+        },
+        {
+          "name": "registration_ids",
+          "schema": "string",
+          "required": false,
+          "description": "A comma-separated list of charitable organization registration IDs.<br /><br /><span class=\"tablenote\"><b>Note: </b>Do not specify this parameter for query-based searches. Specify either the <b>q</b> or <b>registration_ids</b> parameter, but not both.</span><br /><br /><b>Maximum Limit:</b> <code>20</code>"
+        },
+        {
+          "name": "X-EBAY-C-MARKETPLACE-ID",
+          "schema": "string",
+          "required": true,
+          "description": "A header used to specify the eBay marketplace ID.<br /><br /><b>Valid Values:</b> <code>EBAY_GB</code> and <code>EBAY_US</code>"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A single set of search results, with information for accessing other sets."
+        }
+      ]
+    },
+    {
+      "url": "/charity_org/{charity_org_id}",
+      "method": "getCharityOrg",
+      "httpMethod": "get",
+      "tag": "charity_org",
+      "description": "This call is used to retrieve detailed information about supported charitable organizations. It allows users to retrieve the details for a specific charitable organization using its charity organization ID.",
+      "parameters": [
+        {
+          "name": "charity_org_id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the charitable organization."
+        },
+        {
+          "name": "X-EBAY-C-MARKETPLACE-ID",
+          "schema": "string",
+          "required": true,
+          "description": "A header used to specify the eBay marketplace ID.<br /><br /><b>Valid Values:</b> <code>EBAY_GB</code> and <code>EBAY_US</code>"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The full location, ID, logo and other details of the charity organization."
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.ebay.com{basePath}",
   "apiDescription": "The Charity API allows third-party developers to search for and access details on supported charitable organizations.",
   "apiTitle": "Charity API",

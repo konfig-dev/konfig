@@ -4,6 +4,478 @@
   "homepage": "nexmo.com",
   "serviceName": "subaccounts",
   "apiVersion": "1.0.8",
+  "methods": [
+    {
+      "url": "/{api_key}/balance-transfers",
+      "method": "retrieveBalanceTransfers",
+      "httpMethod": "get",
+      "tag": "Transfers",
+      "description": "Retrieve list of balance transfers",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the primary account."
+        },
+        {
+          "name": "start_date",
+          "schema": "string",
+          "required": true,
+          "description": "Start of the retrieval period."
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "required": false,
+          "description": "End of the retrieval period. If absent then all transfers until now is returned."
+        },
+        {
+          "name": "subaccount",
+          "schema": "string",
+          "required": false,
+          "description": "Subaccount to filter by. You may send this multiple times to filter on multiple subaccounts"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": "Unprovisioned"
+        },
+        {
+          "statusCode": "404",
+          "description": "Invalid API Key"
+        }
+      ]
+    },
+    {
+      "url": "/{api_key}/balance-transfers",
+      "method": "transferBalance",
+      "httpMethod": "post",
+      "tag": "Transfers",
+      "description": "Transfer balance",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the primary account"
+        },
+        {
+          "name": "amount",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "reference",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": "Unprovisioned"
+        },
+        {
+          "statusCode": "404",
+          "description": "Invalid API Key"
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{api_key}/credit-transfers",
+      "method": "retrieveCreditTransfers",
+      "httpMethod": "get",
+      "tag": "Transfers",
+      "description": "Retrieve list of credit transfers",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the primary account."
+        },
+        {
+          "name": "start_date",
+          "schema": "string",
+          "required": true,
+          "description": "Start of the retrieval period."
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "required": false,
+          "description": "End of the retrieval period. If absent then all transfers until now is returned."
+        },
+        {
+          "name": "subaccount",
+          "schema": "string",
+          "required": false,
+          "description": "Subaccount to filter by. You may send this multiple times to filter on multiple subaccounts"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": "Unprovisioned"
+        },
+        {
+          "statusCode": "404",
+          "description": "Invalid API Key"
+        }
+      ]
+    },
+    {
+      "url": "/{api_key}/credit-transfers",
+      "method": "transferCredit",
+      "httpMethod": "post",
+      "tag": "Transfers",
+      "description": "Transfer credit",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the primary account"
+        },
+        {
+          "name": "amount",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "reference",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": "Unprovisioned"
+        },
+        {
+          "statusCode": "404",
+          "description": "Invalid API Key"
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{api_key}/subaccounts",
+      "method": "retrieveSubaccountsList",
+      "httpMethod": "get",
+      "tag": "Subaccount Management",
+      "description": "Retrieve list of subaccounts",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the primary account"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": "Unprovisioned"
+        },
+        {
+          "statusCode": "404",
+          "description": "Invalid API Key"
+        }
+      ]
+    },
+    {
+      "url": "/{api_key}/subaccounts",
+      "method": "createSubAccount",
+      "httpMethod": "post",
+      "tag": "Subaccount Management",
+      "description": "Create subaccount",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the primary account"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "secret",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "use_primary_account_balance",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": "Unprovisioned"
+        },
+        {
+          "statusCode": "404",
+          "description": "Invalid API Key"
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{api_key}/subaccounts/{subaccount_key}",
+      "method": "retrieveSubaccount",
+      "httpMethod": "get",
+      "tag": "Subaccount Management",
+      "description": "Retrieve a subaccount",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the primary account"
+        },
+        {
+          "name": "subaccount_key",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the subaccount"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": "Unprovisioned"
+        },
+        {
+          "statusCode": "404",
+          "description": "Invalid API Key"
+        }
+      ]
+    },
+    {
+      "url": "/{api_key}/subaccounts/{subaccount_key}",
+      "method": "modifySubaccount",
+      "httpMethod": "patch",
+      "tag": "Subaccount Management",
+      "description": "Modify a subaccount",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the primary account"
+        },
+        {
+          "name": "subaccount_key",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the subaccount"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "suspended",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "use_primary_account_balance",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": "Unprovisioned"
+        },
+        {
+          "statusCode": "404",
+          "description": "Invalid API Key"
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{api_key}/transfer-number",
+      "method": "transferNumber",
+      "httpMethod": "post",
+      "tag": "Transfers",
+      "description": "Transfer number",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the primary account."
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "number",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.nexmo.com/accounts",
   "apiDescription": "The Subaccounts API enables you to create subaccounts under your primary account. Subaccounts facilitate differential product configuration, reporting, and billing. The Subaccounts API is released initially with restricted availability. You can read more about the API in the [Subaccounts documentation](/account/subaccounts/overview).",
   "apiTitle": "Subaccounts API",

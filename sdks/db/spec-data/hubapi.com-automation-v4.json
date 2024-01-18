@@ -4,6 +4,673 @@
   "homepage": "hubapi.com",
   "serviceName": "automation",
   "apiVersion": "v4",
+  "methods": [
+    {
+      "url": "/automation/v4/actions/callbacks/complete",
+      "method": "post-/automation/v4/actions/callbacks/completeCompleteBatch",
+      "httpMethod": "post",
+      "tag": "Public_Callbacks",
+      "description": "",
+      "parameters": [
+        {
+          "name": "inputs",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/automation/v4/actions/callbacks/{callbackId}/complete",
+      "method": "post-/automation/v4/actions/callbacks/{callbackId}/completeComplete",
+      "httpMethod": "post",
+      "tag": "Public_Callbacks",
+      "description": "",
+      "parameters": [
+        {
+          "name": "callbackId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "outputFields",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/automation/v4/actions/{appId}",
+      "method": "get-/automation/v4/actions/{appId}GetPage",
+      "httpMethod": "get",
+      "tag": "Public_Action_Definitions",
+      "description": "",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The maximum number of results to display per page."
+        },
+        {
+          "name": "after",
+          "schema": "string",
+          "required": false,
+          "description": "The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results."
+        },
+        {
+          "name": "archived",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to return only results that have been archived."
+        },
+        {
+          "name": "appId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/automation/v4/actions/{appId}",
+      "method": "post-/automation/v4/actions/{appId}Create",
+      "httpMethod": "post",
+      "tag": "Public_Action_Definitions",
+      "description": "",
+      "parameters": [
+        {
+          "name": "appId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "actionUrl",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "archivedAt",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "executionRules",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "functions",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "inputFieldDependencies",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "inputFields",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "labels",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "objectRequestOptions",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "objectTypes",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "outputFields",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "published",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/automation/v4/actions/{appId}/{definitionId}",
+      "method": "delete-/automation/v4/actions/{appId}/{definitionId}Archive",
+      "httpMethod": "delete",
+      "tag": "Public_Action_Definitions",
+      "description": "",
+      "parameters": [
+        {
+          "name": "definitionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "appId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/automation/v4/actions/{appId}/{definitionId}",
+      "method": "get-/automation/v4/actions/{appId}/{definitionId}GetById",
+      "httpMethod": "get",
+      "tag": "Public_Action_Definitions",
+      "description": "",
+      "parameters": [
+        {
+          "name": "definitionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "archived",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether to return only results that have been archived."
+        },
+        {
+          "name": "appId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/automation/v4/actions/{appId}/{definitionId}",
+      "method": "patch-/automation/v4/actions/{appId}/{definitionId}Update",
+      "httpMethod": "patch",
+      "tag": "Public_Action_Definitions",
+      "description": "",
+      "parameters": [
+        {
+          "name": "definitionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "appId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "actionUrl",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "executionRules",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "inputFieldDependencies",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "inputFields",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "labels",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "objectRequestOptions",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "objectTypes",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "outputFields",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "published",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/automation/v4/actions/{appId}/{definitionId}/functions",
+      "method": "get-/automation/v4/actions/{appId}/{definitionId}/functionsGetPage",
+      "httpMethod": "get",
+      "tag": "Public_Action_Functions",
+      "description": "",
+      "parameters": [
+        {
+          "name": "definitionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "appId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/automation/v4/actions/{appId}/{definitionId}/functions/{functionType}",
+      "method": "delete-/automation/v4/actions/{appId}/{definitionId}/functions/{functionType}ArchiveByFunctionType",
+      "httpMethod": "delete",
+      "tag": "Public_Action_Functions",
+      "description": "",
+      "parameters": [
+        {
+          "name": "definitionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "functionType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "appId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/automation/v4/actions/{appId}/{definitionId}/functions/{functionType}",
+      "method": "get-/automation/v4/actions/{appId}/{definitionId}/functions/{functionType}GetByFunctionType",
+      "httpMethod": "get",
+      "tag": "Public_Action_Functions",
+      "description": "",
+      "parameters": [
+        {
+          "name": "definitionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "functionType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "appId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/automation/v4/actions/{appId}/{definitionId}/functions/{functionType}",
+      "method": "put-/automation/v4/actions/{appId}/{definitionId}/functions/{functionType}CreateOrReplaceByFunctionType",
+      "httpMethod": "put",
+      "tag": "Public_Action_Functions",
+      "description": "",
+      "parameters": [
+        {
+          "name": "definitionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "functionType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "appId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/automation/v4/actions/{appId}/{definitionId}/functions/{functionType}/{functionId}",
+      "method": "delete-/automation/v4/actions/{appId}/{definitionId}/functions/{functionType}/{functionId}Archive",
+      "httpMethod": "delete",
+      "tag": "Public_Action_Functions",
+      "description": "",
+      "parameters": [
+        {
+          "name": "definitionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "functionType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "functionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "appId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/automation/v4/actions/{appId}/{definitionId}/functions/{functionType}/{functionId}",
+      "method": "get-/automation/v4/actions/{appId}/{definitionId}/functions/{functionType}/{functionId}GetById",
+      "httpMethod": "get",
+      "tag": "Public_Action_Functions",
+      "description": "",
+      "parameters": [
+        {
+          "name": "definitionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "functionType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "functionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "appId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/automation/v4/actions/{appId}/{definitionId}/functions/{functionType}/{functionId}",
+      "method": "put-/automation/v4/actions/{appId}/{definitionId}/functions/{functionType}/{functionId}CreateOrReplace",
+      "httpMethod": "put",
+      "tag": "Public_Action_Functions",
+      "description": "",
+      "parameters": [
+        {
+          "name": "definitionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "functionType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "functionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "appId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/automation/v4/actions/{appId}/{definitionId}/revisions",
+      "method": "get-/automation/v4/actions/{appId}/{definitionId}/revisionsGetPage",
+      "httpMethod": "get",
+      "tag": "Public_Action_Revisions",
+      "description": "",
+      "parameters": [
+        {
+          "name": "definitionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The maximum number of results to display per page."
+        },
+        {
+          "name": "after",
+          "schema": "string",
+          "required": false,
+          "description": "The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results."
+        },
+        {
+          "name": "appId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/automation/v4/actions/{appId}/{definitionId}/revisions/{revisionId}",
+      "method": "get-/automation/v4/actions/{appId}/{definitionId}/revisions/{revisionId}GetById",
+      "httpMethod": "get",
+      "tag": "Public_Action_Revisions",
+      "description": "",
+      "parameters": [
+        {
+          "name": "definitionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "revisionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "appId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.hubapi.com",
   "apiTitle": "Automation Actions V4",
   "endpoints": 9,

@@ -3,6 +3,536 @@
   "openApiRaw": "file:///home/mike/Downloads/swagger.json",
   "homepage": "klarna.com",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/payments/v1/authorizations/{authorizationToken}",
+      "method": "cancelAuthorization",
+      "httpMethod": "delete",
+      "tag": "orders",
+      "description": "Cancel an existing authorization",
+      "parameters": [
+        {
+          "name": "authorizationToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/payments/v1/authorizations/{authorizationToken}/customer-token",
+      "method": "purchaseToken",
+      "httpMethod": "post",
+      "tag": "orders",
+      "description": "Generate a consumer token",
+      "parameters": [
+        {
+          "name": "authorizationToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "billing_address",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "customer",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "intended_use",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "locale",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "purchase_country",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "purchase_currency",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/payments/v1/authorizations/{authorizationToken}/order",
+      "method": "createOrder",
+      "httpMethod": "post",
+      "tag": "orders",
+      "description": "Create a new order",
+      "parameters": [
+        {
+          "name": "authorizationToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "authorization_token",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "auto_capture",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "billing_address",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "custom_payment_method_ids",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "customer",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "locale",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "merchant_data",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "merchant_reference1",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "merchant_reference2",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "merchant_urls",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "order_amount",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "order_lines",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "order_tax_amount",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "payment_method_categories",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "purchase_country",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "purchase_currency",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "shipping_address",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/payments/v1/sessions",
+      "method": "createCreditSession",
+      "httpMethod": "post",
+      "tag": "sessions",
+      "description": "Create a new payment session",
+      "parameters": [
+        {
+          "name": "acquiring_channel",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "attachment",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "authorization_token",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "billing_address",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "client_token",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "custom_payment_method_ids",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "customer",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "design",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "expires_at",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "intent",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "locale",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "merchant_data",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "merchant_reference1",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "merchant_reference2",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "merchant_urls",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "options",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "order_amount",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "order_lines",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "order_tax_amount",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "payment_method_categories",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "purchase_country",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "purchase_currency",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "shipping_address",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/payments/v1/sessions/{session_id}",
+      "method": "readCreditSession",
+      "httpMethod": "get",
+      "tag": "sessions",
+      "description": "Read an existing payment session",
+      "parameters": [
+        {
+          "name": "session_id",
+          "schema": "string",
+          "required": true,
+          "description": "session_id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/payments/v1/sessions/{session_id}",
+      "method": "updateCreditSession",
+      "httpMethod": "post",
+      "tag": "sessions",
+      "description": "Update an existing payment session",
+      "parameters": [
+        {
+          "name": "session_id",
+          "schema": "string",
+          "required": true,
+          "description": "session_id"
+        },
+        {
+          "name": "acquiring_channel",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "attachment",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "authorization_token",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "billing_address",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "client_token",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "custom_payment_method_ids",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "customer",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "design",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "expires_at",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "intent",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "locale",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "merchant_data",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "merchant_reference1",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "merchant_reference2",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "merchant_urls",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "options",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "order_amount",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "order_lines",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "order_tax_amount",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "payment_method_categories",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "purchase_country",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "purchase_currency",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "shipping_address",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://api.klarna.com",
   "apiDescription": "The payments API is used to create a session to offer Klarna's payment methods as part of your checkout. As soon as the purchase is completed the order should be read and handled using the [`Order Management API`](https://docs.klarna.com/api/ordermanagement).\n\nRead more on [Klarna payments](https://docs.klarna.com/klarna-payments/).",
   "apiTitle": "Klarna Payments API V1",

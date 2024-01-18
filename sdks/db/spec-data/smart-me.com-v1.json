@@ -3,6 +3,1651 @@
   "openApiRaw": "https://smart-me.com/swagger/docs/v1",
   "homepage": "smart-me.com",
   "apiVersion": "v1",
+  "methods": [
+    {
+      "url": "/api/AccessToken",
+      "method": "accessTokenPut",
+      "httpMethod": "put",
+      "tag": "AccessToken",
+      "description": "Creates a Access Token to write on a Card (e.g. NFC)",
+      "parameters": [
+        {
+          "name": "CardId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "UserId",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Account/login",
+      "method": "accountLogin",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Account/login",
+      "method": "/api/account/loginPost",
+      "httpMethod": "post",
+      "tag": "Account",
+      "description": "",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Actions",
+      "method": "actionsPost",
+      "httpMethod": "post",
+      "tag": "Actions",
+      "description": "Set an action for the specified device.",
+      "parameters": [
+        {
+          "name": "Actions",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "DeviceID",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/Actions/{id}",
+      "method": "actionsGet",
+      "httpMethod": "get",
+      "tag": "Actions",
+      "description": "Gets all available Actions of a Device",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the device"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/AdditionalDeviceInformation/{id}",
+      "method": "additionalDeviceInformationGet",
+      "httpMethod": "get",
+      "tag": "AdditionalDeviceInformation",
+      "description": "Gets the additional information (e.g. Firmware Version) about a device.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the device"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Additional Information For a device"
+        }
+      ]
+    },
+    {
+      "url": "/api/CustomDevice",
+      "method": "customDeviceGet",
+      "httpMethod": "get",
+      "tag": "CustomDevice",
+      "description": "Gets all Custom Devices",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/CustomDevice",
+      "method": "customDevicePost",
+      "httpMethod": "post",
+      "tag": "CustomDevice",
+      "description": "Creates or updates a Custom Device or updates it's values.",
+      "parameters": [
+        {
+          "name": "Id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Serial",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "ValueDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Values",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Container Class for the Web API"
+        }
+      ]
+    },
+    {
+      "url": "/api/CustomDevice/{id}",
+      "method": "/api/customDevice/{id}Get",
+      "httpMethod": "get",
+      "tag": "CustomDevice",
+      "description": "Gets a Custom Device by it's ID",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the device"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Container Class for the Web API"
+        }
+      ]
+    },
+    {
+      "url": "/api/DeviceBySerial",
+      "method": "deviceBySerialGet",
+      "httpMethod": "get",
+      "tag": "DeviceBySerial",
+      "description": "Gets a Device by it's Serial Number. The Serial is the part before the \"-\".",
+      "parameters": [
+        {
+          "name": "serial",
+          "schema": "integer",
+          "required": true,
+          "description": "The Serial Number of the device"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Container Class for the Web API"
+        }
+      ]
+    },
+    {
+      "url": "/api/Devices",
+      "method": "devicesGet",
+      "httpMethod": "get",
+      "tag": "Devices",
+      "description": "Gets all Devices",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/Devices",
+      "method": "devicesPost",
+      "httpMethod": "post",
+      "tag": "Devices",
+      "description": "Creates or updates a Device or updates it's values.",
+      "parameters": [
+        {
+          "name": "ActivePower",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "CounterReading",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "CounterReadingExport",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "CounterReadingExportT1",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "CounterReadingExportT2",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "CounterReadingT1",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "CounterReadingT2",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "Current",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "CurrentL1",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "CurrentL2",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "CurrentL3",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "DeviceEnergyType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "DigitalInput1",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "Id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "MeterSubType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "PowerFactor",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "PowerFactorL1",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "PowerFactorL2",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "PowerFactorL3",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "Serial",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "Temperature",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "ValueDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Voltage",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "VoltageL1",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "VoltageL2",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "VoltageL3",
+          "schema": "number",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Container Class for the Web API"
+        }
+      ]
+    },
+    {
+      "url": "/api/Devices/{id}",
+      "method": "/api/devices/{id}Get",
+      "httpMethod": "get",
+      "tag": "Devices",
+      "description": "Gets a Device by it's ID",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the device"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Container Class for the Web API"
+        }
+      ]
+    },
+    {
+      "url": "/api/Devices/{id}",
+      "method": "devicesPut",
+      "httpMethod": "put",
+      "tag": "Devices",
+      "description": "Updates the On/Off Switch on a device. \r\n            For new implementations please use the \"actions\" command",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the device"
+        },
+        {
+          "name": "switchState",
+          "schema": "boolean",
+          "required": true,
+          "description": "The new state of the switch"
+        },
+        {
+          "name": "switchNumber",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of the switch if there are multiple (1 for L1, 3 for L3)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/DevicesByEnergy",
+      "method": "devicesByEnergyGet",
+      "httpMethod": "get",
+      "tag": "DevicesByEnergy",
+      "description": "Gets all Devices for an Energy Type",
+      "parameters": [
+        {
+          "name": "meterEnergyType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/DevicesBySubType",
+      "method": "devicesBySubTypeGet",
+      "httpMethod": "get",
+      "tag": "DevicesBySubType",
+      "description": "Gets all Devices by it's Sub Type (e.g. E-Charging Station)",
+      "parameters": [
+        {
+          "name": "meterSubType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/FastSendDeviceValues/{id}",
+      "method": "fastSendDeviceValuesGet",
+      "httpMethod": "get",
+      "tag": "FastSendDeviceValues",
+      "description": "Force a device to send the data every second (if supported). This for about 30s.\r\n            Don't use this call to force a device to send the data every second for a longer time.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/Folder/{id}",
+      "method": "folderGet",
+      "httpMethod": "get",
+      "tag": "Folder",
+      "description": "Gets the Values for a folder or a meter",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Container class for the folder API"
+        }
+      ]
+    },
+    {
+      "url": "/api/FolderMenu",
+      "method": "folderMenuGet",
+      "httpMethod": "get",
+      "tag": "FolderMenu",
+      "description": "Gets the folder menu items (each item might contain child items)",
+      "parameters": [
+        {
+          "name": "filter",
+          "schema": "string",
+          "required": false,
+          "description": "(optional) Filter for the folders and meters: \r\n            all: load everything\r\n            assigned: load only folders and meters that are assigend to a folder\r\n            unassigend: load only meters that are not assigend to a folder\r\n            user: load only folder and all users assigned to this folders\r\n            subuserlist: load all subusers as a list"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Container Class for the Web API representing a folder menu and it's items"
+        }
+      ]
+    },
+    {
+      "url": "/api/FolderMenu",
+      "method": "folderMenuPost",
+      "httpMethod": "post",
+      "tag": "FolderMenu",
+      "description": "Creates and updates the folder menu items",
+      "parameters": [
+        {
+          "name": "BrowserTimeZoneName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "BrowserUtcTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Items",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/Health",
+      "method": "healthGet",
+      "httpMethod": "get",
+      "tag": "Health",
+      "description": "A method returning HTTP 200 OK when queried.\r\n            It is used by Kubernetes probes to determine whether the app is healthy.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/MBus",
+      "method": "mBusPost",
+      "httpMethod": "post",
+      "tag": "MBus",
+      "description": "M-BUS API: Adds data of a M-BUS Meter to the smart-me Cloud.\r\n            Just send us the M-BUS Telegram (RSP_UD) and we will do the Rest.",
+      "parameters": [
+        {
+          "name": "Date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Telegram",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/MeterFolderInformation",
+      "method": "meterFolderInformationPost",
+      "httpMethod": "post",
+      "tag": "MeterFolderInformation",
+      "description": "Sets the Name of a Meter or a Folder",
+      "parameters": [
+        {
+          "name": "Id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/MeterFolderInformation/{id}",
+      "method": "meterFolderInformationGet",
+      "httpMethod": "get",
+      "tag": "MeterFolderInformation",
+      "description": "Beta: Gets the General Information for a Meter or a Folder",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Container Class for the Web API"
+        }
+      ]
+    },
+    {
+      "url": "/api/MeterValues/{id}",
+      "method": "meterValuesGet",
+      "httpMethod": "get",
+      "tag": "MeterValues",
+      "description": "Gets the Values for a Meter at a given Date. \r\n            The first Value found before the given Date is returned.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "date",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Container Class for the Web API. Conatinas the MeterValues in the Past"
+        }
+      ]
+    },
+    {
+      "url": "/api/RegisterForRealtimeApi",
+      "method": "registerForRealtimeApiGet",
+      "httpMethod": "get",
+      "tag": "RegisterForRealtimeApi",
+      "description": "Gets all registrations for the Realtime API.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/RegisterForRealtimeApi",
+      "method": "registerForRealtimeApiPost",
+      "httpMethod": "post",
+      "tag": "RegisterForRealtimeApi",
+      "description": "Creates a new registration for the realtime API. The Realtime API sends you the data of the registred devices as soon as we have them on the cloud.\r\n             More Information about the realtime API: https://www.smart-me.com/Description/api/realtimeapi.aspx",
+      "parameters": [
+        {
+          "name": "ApiUrl",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "BasicAuthPassword",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "BasicAuthUsername",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "MeterId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "RegistrationType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "SerialNumber",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/RegisterForRealtimeApi/{id}",
+      "method": "registerForRealtimeApiDelete",
+      "httpMethod": "delete",
+      "tag": "RegisterForRealtimeApi",
+      "description": "Deletes a realtime API registration.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the realtime API registration"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/SmartMeDeviceConfiguration",
+      "method": "smartMeDeviceConfigurationPost",
+      "httpMethod": "post",
+      "tag": "SmartMeDeviceConfiguration",
+      "description": "Sets the configuration of a smart-me device. The device needs to be online.",
+      "parameters": [
+        {
+          "name": "DeviceEncryptionKey",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "DevicePinCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "DnsUpdateState",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "EnableModbusTcp",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "Id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "InputConfiguration",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "OutputConfiguration",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "ShowReactiveEnergy",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "SwitchConfiguration",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "UploadInterval",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/SmartMeDeviceConfiguration/{id}",
+      "method": "smartMeDeviceConfigurationGet",
+      "httpMethod": "get",
+      "tag": "SmartMeDeviceConfiguration",
+      "description": "Gets the configuration of a smart-me device.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "API Container class for the meter configuration"
+        }
+      ]
+    },
+    {
+      "url": "/api/SubUser",
+      "method": "subUserPost",
+      "httpMethod": "post",
+      "tag": "SubUser",
+      "description": "Creates or updates a subuser.\r\n            To create a new user set no ID (empty)",
+      "parameters": [
+        {
+          "name": "AccessEndDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "AccessTimeStartDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "NewPassword",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "PermissionLevel",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Username",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/SubUser/{id}",
+      "method": "subUserDelete",
+      "httpMethod": "delete",
+      "tag": "SubUser",
+      "description": "Delete a subuser",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/SubUser/{id}",
+      "method": "subUserGet",
+      "httpMethod": "get",
+      "tag": "SubUser",
+      "description": "Get a sub user. The user must be assigend to the user that makes this call.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Container data for the sub user"
+        }
+      ]
+    },
+    {
+      "url": "/api/User",
+      "method": "userDelete",
+      "httpMethod": "delete",
+      "tag": "User",
+      "description": "Triggers user account deletion.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/User",
+      "method": "userGet",
+      "httpMethod": "get",
+      "tag": "User",
+      "description": "Gets the informations for the user.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Container Class for the Web API"
+        }
+      ]
+    },
+    {
+      "url": "/api/Values/{id}",
+      "method": "valuesGet",
+      "httpMethod": "get",
+      "tag": "Values",
+      "description": "Gets all (last) values of a device",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the device"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "API Container for a Meter Value"
+        }
+      ]
+    },
+    {
+      "url": "/api/ValuesInPast/{id}",
+      "method": "valuesInPastGet",
+      "httpMethod": "get",
+      "tag": "ValuesInPast",
+      "description": "Gets all (last) values of a device\r\n            The first Value found before the given Date is returned.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the device"
+        },
+        {
+          "name": "date",
+          "schema": "string",
+          "required": true,
+          "description": "the date of the value"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "API Container for a Meter Value"
+        }
+      ]
+    },
+    {
+      "url": "/api/ValuesInPastMultiple/{id}",
+      "method": "valuesInPastMultipleGet",
+      "httpMethod": "get",
+      "tag": "ValuesInPastMultiple",
+      "description": "Gets multiple values of a device. This call needs a smart-me professional licence.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the device"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": true,
+          "description": "The date when the first value should start"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "required": true,
+          "description": "The date when the last value should start"
+        },
+        {
+          "name": "interval",
+          "schema": "integer",
+          "required": true,
+          "description": "The interval in minutes betwenn the values. 0 means as fast as possible. Only 1000 values can be get in one call."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/VirtualBillingMeterActive",
+      "method": "virtualBillingMeterActiveGet",
+      "httpMethod": "get",
+      "tag": "VirtualBillingMeterActive",
+      "description": "Beta: Gets all active virtual meters",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/VirtualBillingMeterActive",
+      "method": "virtualBillingMeterActivePost",
+      "httpMethod": "post",
+      "tag": "VirtualBillingMeterActive",
+      "description": "Beta: Virtual Meter API: Activates a Meter and add the Consumption to a Virtual Meter assosiated with the User.",
+      "parameters": [
+        {
+          "name": "SerialNumber",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Container Class for the Web API"
+        }
+      ]
+    },
+    {
+      "url": "/api/VirtualBillingMeterDeactivate",
+      "method": "virtualBillingMeterDeactivatePost",
+      "httpMethod": "post",
+      "tag": "VirtualBillingMeterDeactivate",
+      "description": "Beta: Virtual Meter API: Deactivates a Virtual Meter.",
+      "parameters": [
+        {
+          "name": "ID",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/VirtualBillingMeters",
+      "method": "virtualBillingMetersGet",
+      "httpMethod": "get",
+      "tag": "VirtualBillingMeters",
+      "description": "Beta: Gets all Meters available to activate as a Virtual Meter.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/VirtualMeterCalculateFormula",
+      "method": "virtualMeterCalculateFormulaGet",
+      "httpMethod": "get",
+      "tag": "VirtualMeterCalculateFormula",
+      "description": "Calculates a virtual meter from a formula. \r\n            A meter is coded as ID(\"METERID\")",
+      "parameters": [
+        {
+          "name": "formula",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Container Class for the Web API"
+        }
+      ]
+    },
+    {
+      "url": "/api/VirtualTariff",
+      "method": "virtualTariffGet",
+      "httpMethod": "get",
+      "tag": "VirtualTariff",
+      "description": "Gets all Virtual Tariffs of a user",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/VirtualTariff/{id}",
+      "method": "/api/virtualTariff/{id}Get",
+      "httpMethod": "get",
+      "tag": "VirtualTariff",
+      "description": "Gets all virtual tariffs of a folder",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the Folder"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/VirtualTariffConsumption",
+      "method": "virtualTariffConsumptionGet",
+      "httpMethod": "get",
+      "tag": "VirtualTariffConsumption",
+      "description": "Gets the consumption of a folder with a virtuall tariffs.",
+      "parameters": [
+        {
+          "name": "folderId",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the Folder"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": true,
+          "description": "The start date (UTC)"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "required": true,
+          "description": "The end date (UTC)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/VirtualTariffsForProperty/{id}",
+      "method": "virtualTariffsForPropertyGet",
+      "httpMethod": "get",
+      "tag": "VirtualTariffsForProperty",
+      "description": "Gets all Virtual Tariffs for a property (folder)",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/VirtualTariffsStatusForProperty/{id}",
+      "method": "virtualTariffsStatusForPropertyGet",
+      "httpMethod": "get",
+      "tag": "VirtualTariffsStatusForProperty",
+      "description": "Gets the calculation status for a virtual tariff property",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/folder/assign",
+      "method": "folderAssignPost",
+      "httpMethod": "post",
+      "tag": "FolderAssign",
+      "description": "Assign a folder (source) or meter to another folder (target). Can be used to create a folder structure.",
+      "parameters": [
+        {
+          "name": "source",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the meter or folder that should be assign"
+        },
+        {
+          "name": "target",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the meter or folder that should be the parent"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/folder/settings/{id}",
+      "method": "folderSettingsDelete",
+      "httpMethod": "delete",
+      "tag": "FolderSettings",
+      "description": "Deletes a folder",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the folder"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/folder/settings/{id}",
+      "method": "folderSettingsGet",
+      "httpMethod": "get",
+      "tag": "FolderSettings",
+      "description": "Gets the settings of a folder or meter",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Container for the folder settings"
+        }
+      ]
+    },
+    {
+      "url": "/api/folder/settings/{id}",
+      "method": "folderSettingsPost",
+      "httpMethod": "post",
+      "tag": "FolderSettings",
+      "description": "Add or edit a folder or a meter. To add a new folder use and empty ID",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the folder or meter to edit. Use and empty ID to add a new folder"
+        },
+        {
+          "name": "Description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Enable",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "FolderType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ParentFolderId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "SerialNumber",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "UseableForVirtualBillingMeters",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "ValueCorrection",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "ValueCorrectionParentFolder",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "VisualizationName",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A folder menu item"
+        }
+      ]
+    },
+    {
+      "url": "/api/folder/user/assign",
+      "method": "userToFolderAssignDelete",
+      "httpMethod": "delete",
+      "tag": "UserToFolderAssign",
+      "description": "Deletes a user to folder assignement",
+      "parameters": [
+        {
+          "name": "source",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the user that should be de-assign"
+        },
+        {
+          "name": "target",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the folder"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/folder/user/assign",
+      "method": "userToFolderAssignPost",
+      "httpMethod": "post",
+      "tag": "UserToFolderAssign",
+      "description": "Assign a user to a folder",
+      "parameters": [
+        {
+          "name": "source",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the user that should be assign"
+        },
+        {
+          "name": "target",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the folder that should be the parent"
+        },
+        {
+          "name": "oldFolder",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the old folder (in case of a drag and drop to a new folder)"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/oauth/authorize",
+      "method": "oAuthAuthorize",
+      "httpMethod": "get",
+      "tag": "OAuth",
+      "description": "",
+      "parameters": [
+        {
+          "name": "client_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "redirect_uri",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "scope",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "client_secret",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/oauth/authorize",
+      "method": "/api/oauth/authorizePost",
+      "httpMethod": "post",
+      "tag": "OAuth",
+      "description": "",
+      "parameters": [
+        {
+          "name": "client_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "redirect_uri",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "scope",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "client_secret",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/pico",
+      "method": "picoGet",
+      "httpMethod": "get",
+      "tag": "Pico",
+      "description": "Gets all pico charging stations for this user",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/pico/charging/{id}",
+      "method": "picoChargingGet",
+      "httpMethod": "get",
+      "tag": "PicoCharging",
+      "description": "Gets the active charging data of a pico station",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Container class for the pico charging station API"
+        }
+      ]
+    },
+    {
+      "url": "/api/pico/history/{id}",
+      "method": "picoChargingHistoryGet",
+      "httpMethod": "get",
+      "tag": "PicoChargingHistory",
+      "description": "Gets the last charging history for a pico station",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/pico/loadmanagementgroup",
+      "method": "/api/pico/loadmanagementgroupGet",
+      "httpMethod": "get",
+      "tag": "PicoLoadmanagementGroup",
+      "description": "GET: api/pico/loadmanagementgroup\r\n            \r\n            Returns all available load management groups",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/pico/loadmanagementgroup/current/{serial}",
+      "method": "picoLoadmanagementSetDynamicCurrentPost",
+      "httpMethod": "post",
+      "tag": "PicoLoadmanagementSetDynamicCurrent",
+      "description": "Sets the dynamic current of a load management group or a single station.",
+      "parameters": [
+        {
+          "name": "serial",
+          "schema": "integer",
+          "required": true,
+          "description": "The serial number can be any pico serial in the group (e.g. 700001)"
+        },
+        {
+          "name": "current",
+          "schema": "integer",
+          "required": true,
+          "description": "The dynamic current of the group (in mA)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/pico/loadmanagementgroup/{id}",
+      "method": "picoLoadmanagementGroupGet",
+      "httpMethod": "get",
+      "tag": "PicoLoadmanagementGroup",
+      "description": "GET: api/pico/loadmanagementgroup\r\n            \r\n            Returns a pico load management group by it's id",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "DTO for the pico loadmanagement group"
+        }
+      ]
+    },
+    {
+      "url": "/api/pico/settings/{id}",
+      "method": "picoSettingsGet",
+      "httpMethod": "get",
+      "tag": "PicoSettings",
+      "description": "GET: api/pico/settings\r\n            \r\n            Returns the settings of a pico charging station.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "DTO for the pico charging station settings"
+        }
+      ]
+    },
+    {
+      "url": "/api/pico/tryenablecablelock/{id}",
+      "method": "picoEnableFixCableLockPost",
+      "httpMethod": "post",
+      "tag": "PicoEnableFixCableLock",
+      "description": "Try to fix lock the cable of a pico. The pico must be online and a cable (without car) needs to be connected. Otherwise this will fail.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the pico"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://smart-me.com:443",
   "apiDescription": "With the smart-me REST API you get Access to all your devices in the smart-me Cloud and you can add your own devices. So its an easy way to add the smart-me Cloud support to your Hardware or Software Product.",
   "apiTitle": "smart-me",

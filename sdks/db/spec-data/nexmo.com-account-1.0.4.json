@@ -4,6 +4,302 @@
   "homepage": "nexmo.com",
   "serviceName": "account",
   "apiVersion": "1.0.4",
+  "methods": [
+    {
+      "url": "/account/get-balance",
+      "method": "getAccountBalance",
+      "httpMethod": "get",
+      "tag": "Balance",
+      "description": "Get Account Balance",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": "Your Vonage API key. You can find this in the [dashboard](https://dashboard.nexmo.com)"
+        },
+        {
+          "name": "api_secret",
+          "schema": "string",
+          "required": true,
+          "description": "Your Vonage API secret. You can find this in the [dashboard](https://dashboard.nexmo.com)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Authentication Failed"
+        }
+      ]
+    },
+    {
+      "url": "/account/register-sender",
+      "method": "registerSender",
+      "httpMethod": "post",
+      "tag": "Configuration",
+      "description": "Register an email sender",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": "Your Vonage API key. You can find this in the [dashboard](https://dashboard.nexmo.com)"
+        },
+        {
+          "name": "api_secret",
+          "schema": "string",
+          "required": true,
+          "description": "Your Vonage API secret. You can find this in the [dashboard](https://dashboard.nexmo.com)"
+        },
+        {
+          "name": "application_ids",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "provider",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "value",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/settings",
+      "method": "changeAccountSettings",
+      "httpMethod": "post",
+      "tag": "Configuration",
+      "description": "Change Account Settings",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": "Your Vonage API key. You can find this in the [dashboard](https://dashboard.nexmo.com)"
+        },
+        {
+          "name": "api_secret",
+          "schema": "string",
+          "required": true,
+          "description": "Your Vonage API secret. You can find this in the [dashboard](https://dashboard.nexmo.com)"
+        },
+        {
+          "name": "drCallBackUrl",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "moCallBackUrl",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/top-up",
+      "method": "topUpAccountBalance",
+      "httpMethod": "post",
+      "tag": "Balance",
+      "description": "Top Up Account Balance",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": "Your Vonage API key. You can find this in the [dashboard](https://dashboard.nexmo.com)"
+        },
+        {
+          "name": "api_secret",
+          "schema": "string",
+          "required": true,
+          "description": "Your Vonage API secret. You can find this in the [dashboard](https://dashboard.nexmo.com)"
+        },
+        {
+          "name": "trx",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{api_key}/secrets",
+      "method": "retrieveApiSecrets",
+      "httpMethod": "get",
+      "tag": "Secret Management",
+      "description": "Retrieve API Secrets",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": "The API key to manage secrets for"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": "This API key was not recognised"
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{api_key}/secrets",
+      "method": "createApiSecret",
+      "httpMethod": "post",
+      "tag": "Secret Management",
+      "description": "Create API Secret",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": "The API key to manage secrets for"
+        },
+        {
+          "name": "secret",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": "This API key was not recognised"
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{api_key}/secrets/{secret_id}",
+      "method": "revokeApiSecret",
+      "httpMethod": "delete",
+      "tag": "Secret Management",
+      "description": "Revoke an API Secret",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": "The API key to manage secrets for"
+        },
+        {
+          "name": "secret_id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the API Secret"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{api_key}/secrets/{secret_id}",
+      "method": "retrieveApiSecret",
+      "httpMethod": "get",
+      "tag": "Secret Management",
+      "description": "Retrieve one API Secret",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": "The API key to manage secrets for"
+        },
+        {
+          "name": "secret_id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the API Secret"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.nexmo.com",
   "apiDescription": "Enables users to manage their Vonage API Account by programmable means. More information is available here: <https://developer.nexmo.com/account/overview>.",
   "apiTitle": "Account API",

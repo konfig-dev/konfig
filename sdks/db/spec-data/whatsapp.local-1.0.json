@@ -3,6 +3,1140 @@
   "openApiRaw": "https://raw.githubusercontent.com/unblu/WhatsApp-Business-API-OpenAPI/master/openapi.yaml",
   "homepage": "whatsapp.local",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/account",
+      "method": "requestCode",
+      "httpMethod": "post",
+      "tag": "Registration",
+      "description": "Request-Code",
+      "parameters": [
+        {
+          "name": "cc",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "cert",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "method",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "phone_number",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "pin",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/shards",
+      "method": "setShards",
+      "httpMethod": "post",
+      "tag": "Application",
+      "description": "Set-Shards",
+      "parameters": [
+        {
+          "name": "cc",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "phone_number",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "pin",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "shards",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/account/verify",
+      "method": "registerAccount",
+      "httpMethod": "post",
+      "tag": "Registration",
+      "description": "Register-Account",
+      "parameters": [
+        {
+          "name": "code",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/certificates/external",
+      "method": "uploadCertificate",
+      "httpMethod": "post",
+      "tag": "Certificates",
+      "description": "Upload-Certificate",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/certificates/external/ca",
+      "method": "downloadCaCertificate",
+      "httpMethod": "get",
+      "tag": "Certificates",
+      "description": "Download-CA-Certificate",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/certificates/webhooks/ca",
+      "method": "deleteWebhookCaCertificate",
+      "httpMethod": "delete",
+      "tag": "Certificates",
+      "description": "Delete Webhook CA Certificate",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/certificates/webhooks/ca",
+      "method": "downloadWebhookCaCertificate",
+      "httpMethod": "get",
+      "tag": "Certificates",
+      "description": "Download Webhook CA Certificate",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/certificates/webhooks/ca",
+      "method": "uploadWebhookCaCertificate",
+      "httpMethod": "post",
+      "tag": "Certificates",
+      "description": "Upload Webhook CA Certificate",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/contacts",
+      "method": "checkContact",
+      "httpMethod": "post",
+      "tag": "Contacts",
+      "description": "Check-Contact",
+      "parameters": [
+        {
+          "name": "blocking",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "contacts",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups",
+      "method": "getAllGroups",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "Get-All-Groups",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups",
+      "method": "createGroup",
+      "httpMethod": "post",
+      "tag": "Groups",
+      "description": "Create-Group",
+      "parameters": [
+        {
+          "name": "subject",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{GroupId}",
+      "method": "getGroupInfo",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "Get-Group-Info",
+      "parameters": [
+        {
+          "name": "GroupId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{GroupId}",
+      "method": "updateGroupInfo",
+      "httpMethod": "put",
+      "tag": "Groups",
+      "description": "Update-Group-Info",
+      "parameters": [
+        {
+          "name": "GroupId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "subject",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/groups/{GroupId}/admins",
+      "method": "demoteGroupAdmin",
+      "httpMethod": "delete",
+      "tag": "Groups",
+      "description": "Demote-Group-Admin",
+      "parameters": [
+        {
+          "name": "GroupId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "wa_ids",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/groups/{GroupId}/admins",
+      "method": "promoteToGroupAdmin",
+      "httpMethod": "patch",
+      "tag": "Groups",
+      "description": "Promote-To-Group-Admin",
+      "parameters": [
+        {
+          "name": "GroupId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "wa_ids",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/groups/{GroupId}/icon",
+      "method": "deleteGroupIcon",
+      "httpMethod": "delete",
+      "tag": "Groups",
+      "description": "Delete-Group-Icon",
+      "parameters": [
+        {
+          "name": "GroupId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "File",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/groups/{GroupId}/icon",
+      "method": "getGroupIconBinary",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "Get-Group-Icon-Binary",
+      "parameters": [
+        {
+          "name": "GroupId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/groups/{GroupId}/icon",
+      "method": "setGroupIcon",
+      "httpMethod": "post",
+      "tag": "Groups",
+      "description": "Set-Group-Icon",
+      "parameters": [
+        {
+          "name": "GroupId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "File",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/groups/{GroupId}/invite",
+      "method": "deleteGroupInvite",
+      "httpMethod": "delete",
+      "tag": "Groups",
+      "description": "Delete-Group-Invite",
+      "parameters": [
+        {
+          "name": "GroupId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/groups/{GroupId}/invite",
+      "method": "getGroupInvite",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "Get-Group-Invite",
+      "parameters": [
+        {
+          "name": "GroupId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{GroupId}/leave",
+      "method": "leaveGroup",
+      "httpMethod": "post",
+      "tag": "Groups",
+      "description": "Leave-Group",
+      "parameters": [
+        {
+          "name": "GroupId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/groups/{GroupId}/participants",
+      "method": "removeGroupParticipant",
+      "httpMethod": "delete",
+      "tag": "Groups",
+      "description": "Remove-Group-Participant",
+      "parameters": [
+        {
+          "name": "GroupId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "wa_ids",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/health",
+      "method": "checkHealth",
+      "httpMethod": "get",
+      "tag": "Health",
+      "description": "Check-Health",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/media",
+      "method": "uploadMedia",
+      "httpMethod": "post",
+      "tag": "Media",
+      "description": "Upload-Media",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/media/{MediaId}",
+      "method": "deleteMedia",
+      "httpMethod": "delete",
+      "tag": "Media",
+      "description": "Delete-Media",
+      "parameters": [
+        {
+          "name": "MediaId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/media/{MediaId}",
+      "method": "downloadMedia",
+      "httpMethod": "get",
+      "tag": "Media",
+      "description": "Download-Media",
+      "parameters": [
+        {
+          "name": "MediaId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/messages",
+      "method": "sendMessage",
+      "httpMethod": "post",
+      "tag": "Messages",
+      "description": "Send-Message",
+      "parameters": [
+        {
+          "name": "audio",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "contacts",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "document",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "hsm",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "image",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "preview_url",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "recipient_type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "text",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "ttl",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "video",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/messages/{MessageID}",
+      "method": "markMessageAsRead",
+      "httpMethod": "put",
+      "tag": "Messages",
+      "description": "Mark-Message-As-Read",
+      "parameters": [
+        {
+          "name": "MessageID",
+          "schema": "string",
+          "required": true,
+          "description": "Message ID from Webhook"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/metrics",
+      "method": "getMetrics",
+      "httpMethod": "get",
+      "tag": "Health",
+      "description": "Get-Metrics (since v2.21.3)",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/settings/account/two-step",
+      "method": "disableTwoStep",
+      "httpMethod": "delete",
+      "tag": "Two-Step Verification",
+      "description": "Disable-Two-Step",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/settings/account/two-step",
+      "method": "enableTwoStep",
+      "httpMethod": "post",
+      "tag": "Two-Step Verification",
+      "description": "Enable-Two-Step",
+      "parameters": [
+        {
+          "name": "pin",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/settings/application",
+      "method": "resetApplicationSettings",
+      "httpMethod": "delete",
+      "tag": "Application",
+      "description": "Reset-Application-Settings",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/settings/application",
+      "method": "getApplicationSettings",
+      "httpMethod": "get",
+      "tag": "Application",
+      "description": "Get-Application-Settings",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/settings/application",
+      "method": "updateApplicationSettings",
+      "httpMethod": "patch",
+      "tag": "Application",
+      "description": "Update-Application-Settings",
+      "parameters": [
+        {
+          "name": "callback_backoff_delay_ms",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "callback_persist",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "heartbeat_interval",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "max_callback_backoff_delay_ms",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "media",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "on_call_pager",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "pass_through",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "sent_status",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "unhealthy_interval",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "webhooks",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/settings/application/media/providers",
+      "method": "getMediaProviders",
+      "httpMethod": "get",
+      "tag": "Application",
+      "description": "Get-Media-Providers",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/settings/application/media/providers",
+      "method": "updateMediaProviders",
+      "httpMethod": "post",
+      "tag": "Application",
+      "description": "Update-Media-Providers",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/settings/application/media/providers/{ProviderName}",
+      "method": "deleteMediaProviders",
+      "httpMethod": "delete",
+      "tag": "Application",
+      "description": "Delete-Media-Providers",
+      "parameters": [
+        {
+          "name": "ProviderName",
+          "schema": "string",
+          "required": true,
+          "description": "Provider Name"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/settings/backup",
+      "method": "backupSettings",
+      "httpMethod": "post",
+      "tag": "Backup/Restore",
+      "description": "Backup-Settings",
+      "parameters": [
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Save the data value as that will be used along with your password to restore the information."
+        }
+      ]
+    },
+    {
+      "url": "/settings/business/profile",
+      "method": "getBusinessProfile",
+      "httpMethod": "get",
+      "tag": "Business Profile",
+      "description": "Get-Business-Profile",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/settings/business/profile",
+      "method": "updateBusinessProfile",
+      "httpMethod": "post",
+      "tag": "Business Profile",
+      "description": "Update-Business-Profile",
+      "parameters": [
+        {
+          "name": "address",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "vertical",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "websites",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/settings/profile/about",
+      "method": "getProfileAbout",
+      "httpMethod": "get",
+      "tag": "Profile",
+      "description": "Get-Profile-About",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/settings/profile/about",
+      "method": "updateProfileAbout",
+      "httpMethod": "patch",
+      "tag": "Profile",
+      "description": "Update-Profile-About",
+      "parameters": [
+        {
+          "name": "text",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/settings/profile/photo",
+      "method": "deleteProfilePhoto",
+      "httpMethod": "delete",
+      "description": "Delete-Profile-Photo",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/settings/profile/photo",
+      "method": "getProfilePhoto",
+      "httpMethod": "get",
+      "tag": "Profile",
+      "description": "Get-Profile-Photo",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/settings/profile/photo",
+      "method": "updateProfilePhoto",
+      "httpMethod": "post",
+      "tag": "Profile",
+      "description": "Update-Profile-Photo",
+      "parameters": [
+        {
+          "name": "File",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/settings/restore",
+      "method": "restoreSettings",
+      "httpMethod": "post",
+      "tag": "Backup/Restore",
+      "description": "Restore-Settings",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/stats/app",
+      "method": "getAppStats",
+      "httpMethod": "get",
+      "tag": "Health",
+      "description": "Get-App-Stats",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/db",
+      "method": "getDbStats",
+      "httpMethod": "get",
+      "tag": "Health",
+      "description": "Get-DB-Stats",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/support",
+      "method": "getSupportInfo",
+      "httpMethod": "get",
+      "tag": "Health",
+      "description": "Get-Support-Info",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users",
+      "method": "createUser",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Create-User",
+      "parameters": [
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/login",
+      "method": "loginUser",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Login-User",
+      "parameters": [
+        {
+          "name": "new_password",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/logout",
+      "method": "logoutUser",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Logout-User",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/users/{UserUsername}",
+      "method": "deleteUser",
+      "httpMethod": "delete",
+      "tag": "Users",
+      "description": "Delete-User",
+      "parameters": [
+        {
+          "name": "UserUsername",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{UserUsername}",
+      "method": "getUser",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Get-User",
+      "parameters": [
+        {
+          "name": "UserUsername",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{UserUsername}",
+      "method": "updateUser",
+      "httpMethod": "put",
+      "tag": "Users",
+      "description": "Update-User",
+      "parameters": [
+        {
+          "name": "UserUsername",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://whatsapp.local",
   "apiDescription": "See https://developers.facebook.com/docs/whatsapp",
   "apiTitle": "WhatsApp Business API",

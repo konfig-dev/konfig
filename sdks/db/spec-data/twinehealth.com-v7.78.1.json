@@ -3,6 +3,2378 @@
   "openApiRaw": "https://raw.githubusercontent.com/TwineHealth/TwineDeveloperDocs/master/spec/swagger.yaml",
   "homepage": "twinehealth.com",
   "apiVersion": "v7.78.1",
+  "methods": [
+    {
+      "url": "/action",
+      "method": "createAction",
+      "httpMethod": "post",
+      "tag": "action",
+      "description": "Create action",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/action/{id}",
+      "method": "fetchAction",
+      "httpMethod": "get",
+      "tag": "action",
+      "description": "Get an action",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Action identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/action/{id}",
+      "method": "updateAction",
+      "httpMethod": "patch",
+      "tag": "action",
+      "description": "Update an action",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Action identifier"
+        },
+        {
+          "name": "data",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/bundle",
+      "method": "createBundle",
+      "httpMethod": "post",
+      "tag": "bundle",
+      "description": "Create bundle",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/bundle/{id}",
+      "method": "fetchBundle",
+      "httpMethod": "get",
+      "tag": "bundle",
+      "description": "Get a bundle",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Bundle identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/bundle/{id}",
+      "method": "updateBundle",
+      "httpMethod": "patch",
+      "tag": "bundle",
+      "description": "Update a bundle",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Bundle identifier"
+        },
+        {
+          "name": "data",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/calendar_event",
+      "method": "fetchCalendarEvents",
+      "httpMethod": "get",
+      "tag": "calendar event",
+      "description": "List calendar events",
+      "parameters": [
+        {
+          "name": "filter[patient]",
+          "schema": "string",
+          "description": "Patient id to fetch calendar event. Note that one of the following filters must be specified: `filter[patient]`, `filter[group]`, `filter[organization]`, or `filter[attendees]`.\n"
+        },
+        {
+          "name": "filter[groups]",
+          "schema": "string",
+          "description": "Comma-separated list of group ids. Note that one of the following filters must be specified: `filter[patient]`, `filter[group]`, `filter[organization]`, or `filter[attendees]`.\n"
+        },
+        {
+          "name": "filter[organization]",
+          "schema": "string",
+          "description": "Fitbit Plus organization id. Note that one of the following filters must be specified: `filter[patient]`, `filter[group]`, `filter[organization]`, or `filter[attendees]`.\n"
+        },
+        {
+          "name": "filter[attendees]",
+          "schema": "string",
+          "description": "Comma-separated list of coach or patient ids. Note that one of the following filters must be specified: `filter[patient]`, `filter[group]`, `filter[organization]`, or `filter[attendees]`.\n"
+        },
+        {
+          "name": "filter[type]",
+          "schema": "string",
+          "description": "Calendar event type"
+        },
+        {
+          "name": "filter[completed]",
+          "schema": "boolean",
+          "description": "If not specified, return all calendar events. If set to `true` return only events marked as completed, if set to `false`, return only events not marked as completed yet."
+        },
+        {
+          "name": "filter[start_at]",
+          "schema": "string",
+          "description": "The start (inclusive) and end (exclusive) dates are ISO date and time strings separated by `..`. Example for events starting in November 2017 (America/New_York): `filter[start_at]=2017-11-01T00:00:00-04:00..2017-12-01T00:00:00-05:00`\n"
+        },
+        {
+          "name": "filter[end_at]",
+          "schema": "string",
+          "description": "The start (inclusive) and end (exclusive) dates are ISO date and time strings separated by `..`. Example for events ending in November 2017 (America/New_York): `filter[end_at]=2017-11-01T00:00:00-04:00..2017-12-01T00:00:00-05:00`\n"
+        },
+        {
+          "name": "filter[completed_at]",
+          "schema": "string",
+          "description": "The start (inclusive) and end (exclusive) dates are ISO date and time strings separated by `..`. Example for events completed in November 2017 (America/New_York): `filter[completed_at]=2017-11-01T00:00:00-04:00..2017-12-01T00:00:00-05:00`\n"
+        },
+        {
+          "name": "filter[created_at]",
+          "schema": "string",
+          "description": "The start (inclusive) and end (exclusive) dates are ISO date and time strings separated by `..`. Example for events created in November 2017 (America/New_York): `filter[created_at]=2017-11-01T00:00:00-04:00..2017-12-01T00:00:00-05:00`\n"
+        },
+        {
+          "name": "filter[updated_at]",
+          "schema": "string",
+          "description": "The start (inclusive) and end (exclusive) dates are ISO date and time strings separated by `..`. Example for events updated in November 2017 (America/New_York): `filter[updated_at]=2017-11-01T00:00:00-04:00..2017-12-01T00:00:00-05:00`\n"
+        },
+        {
+          "name": "page[number]",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number"
+        },
+        {
+          "name": "page[size]",
+          "schema": "integer",
+          "required": false,
+          "description": "Page size"
+        },
+        {
+          "name": "page[limit]",
+          "schema": "integer",
+          "required": false,
+          "description": "Page limit"
+        },
+        {
+          "name": "page[cursor]",
+          "schema": "string",
+          "required": false,
+          "description": "Page cursor"
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "required": false,
+          "description": "List of related resources to include in the response"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/calendar_event",
+      "method": "createCalendarEvent",
+      "httpMethod": "post",
+      "tag": "calendar event",
+      "description": "Create calendar event",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/calendar_event/{id}",
+      "method": "deleteCalendarEvent",
+      "httpMethod": "delete",
+      "tag": "calendar event",
+      "description": "Delete a calendar event",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Calendar event identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/calendar_event/{id}",
+      "method": "fetchCalendarEvent",
+      "httpMethod": "get",
+      "tag": "calendar event",
+      "description": "Get a calendar event",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Calendar event identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/calendar_event/{id}",
+      "method": "updateCalendarEvent",
+      "httpMethod": "patch",
+      "tag": "calendar event",
+      "description": "Update a calendar event",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Calendar event identifier"
+        },
+        {
+          "name": "data",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/calendar_event_response",
+      "method": "createCalendarEventResponse",
+      "httpMethod": "post",
+      "tag": "calendar event response",
+      "description": "Create calendar event response",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/coach",
+      "method": "fetchCoaches",
+      "httpMethod": "get",
+      "tag": "coach",
+      "description": "List coaches",
+      "parameters": [
+        {
+          "name": "filter[groups]",
+          "schema": "string",
+          "description": "Comma-separated list of group ids. Note that one of the following filters must be specified: `filter[groups]`, `filter[organization]`.\n"
+        },
+        {
+          "name": "filter[organization]",
+          "schema": "string",
+          "description": "Fitbit Plus organization id. Note that one of the following filters must be specified: `filter[groups]`, `filter[organization]`.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/coach/{id}",
+      "method": "fetchCoach",
+      "httpMethod": "get",
+      "tag": "coach",
+      "description": "Get a coach",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Coach identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/email_history",
+      "method": "fetchEmailHistories",
+      "httpMethod": "get",
+      "tag": "email history",
+      "description": "List email histories",
+      "parameters": [
+        {
+          "name": "filter[receiver]",
+          "schema": "string",
+          "description": "Fitbit Plus user id of email recipient. Required if filter[sender] is not defined."
+        },
+        {
+          "name": "filter[sender]",
+          "schema": "string",
+          "description": "Fitbit Plus user id of email sender. Required if filter[receiver] is not defined."
+        },
+        {
+          "name": "filter[emailType]",
+          "schema": "string",
+          "description": "Type of email"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "valid sorts:\n  * send_time - ascending by send_time\n  * -send_time - descending by send_time\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/email_history/{id}",
+      "method": "fetchEmailHistory",
+      "httpMethod": "get",
+      "tag": "email history",
+      "description": "Get an email history",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Email history identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/group",
+      "method": "fetchGroups",
+      "httpMethod": "get",
+      "tag": "group",
+      "description": "List groups",
+      "parameters": [
+        {
+          "name": "filter[organization]",
+          "schema": "string",
+          "required": true,
+          "description": "Organization identifier"
+        },
+        {
+          "name": "filter[name]",
+          "schema": "string",
+          "required": false,
+          "description": "Group name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/group",
+      "method": "createGroup",
+      "httpMethod": "post",
+      "tag": "group",
+      "description": "Create a group",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/group/{id}",
+      "method": "fetchGroup",
+      "httpMethod": "get",
+      "tag": "group",
+      "description": "Get a group",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Group identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/health_profile",
+      "method": "fetchHealthProfiles",
+      "httpMethod": "get",
+      "tag": "health profile",
+      "description": "List health profiles",
+      "parameters": [
+        {
+          "name": "filter[patient]",
+          "schema": "string",
+          "description": "Patient id to fetch health profile. Note that one of the following filters must be specified: `filter[patient]`, `filter[group]`, or `filter[organization]`.\n"
+        },
+        {
+          "name": "filter[groups]",
+          "schema": "string",
+          "description": "Comma-separated list of group ids. Note that one of the following filters must be specified: `filter[patient]`, `filter[group]`, or `filter[organization]`.\n"
+        },
+        {
+          "name": "filter[organization]",
+          "schema": "string",
+          "description": "Fitbit Plus organization id. Note that one of the following filters must be specified: `filter[patient]`, `filter[group]`, or `filter[organization]`.\n"
+        },
+        {
+          "name": "page[number]",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number"
+        },
+        {
+          "name": "page[size]",
+          "schema": "integer",
+          "required": false,
+          "description": "Page size"
+        },
+        {
+          "name": "page[limit]",
+          "schema": "integer",
+          "required": false,
+          "description": "Page limit"
+        },
+        {
+          "name": "page[cursor]",
+          "schema": "string",
+          "required": false,
+          "description": "Page cursor"
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "required": false,
+          "description": "List of related resources to include in the response"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/health_profile/{id}",
+      "method": "fetchHealthProfile",
+      "httpMethod": "get",
+      "tag": "health profile",
+      "description": "Get a health profile",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Health profile identifier"
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "required": false,
+          "description": "List of related resources to include in the response"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/health_profile_answer",
+      "method": "fetchHealthProfileAnswers",
+      "httpMethod": "get",
+      "tag": "health profile answer",
+      "description": "List health profile answers",
+      "parameters": [
+        {
+          "name": "filter[patient]",
+          "schema": "string",
+          "description": "Patient id to fetch healt profile answers. Note that one of the following filters must be specified: `filter[patient]`, `filter[group]`, or `filter[organization]`.\n"
+        },
+        {
+          "name": "filter[groups]",
+          "schema": "string",
+          "description": "Comma-separated list of group ids. Note that one of the following filters must be specified: `filter[patient]`, `filter[group]`, or `filter[organization]`.\n"
+        },
+        {
+          "name": "filter[organization]",
+          "schema": "string",
+          "description": "Fitbit Plus organization id. Note that one of the following filters must be specified: `filter[patient]`, `filter[group]`, or `filter[organization]`.\n"
+        },
+        {
+          "name": "page[number]",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number"
+        },
+        {
+          "name": "page[size]",
+          "schema": "integer",
+          "required": false,
+          "description": "Page size"
+        },
+        {
+          "name": "page[limit]",
+          "schema": "integer",
+          "required": false,
+          "description": "Page limit"
+        },
+        {
+          "name": "page[cursor]",
+          "schema": "string",
+          "required": false,
+          "description": "Page cursor"
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "required": false,
+          "description": "List of related resources to include in the response"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/health_profile_answer/{id}",
+      "method": "fetchHealthProfileAnswer",
+      "httpMethod": "get",
+      "tag": "health profile answer",
+      "description": "Get a health profile answer",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Health profile answer identifier"
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "required": false,
+          "description": "List of related resources to include in the response"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/health_profile_question",
+      "method": "fetchHealthProfileQuestions",
+      "httpMethod": "get",
+      "tag": "health profile question",
+      "description": "List health profile questions",
+      "parameters": [
+        {
+          "name": "filter[patient]",
+          "schema": "string",
+          "description": "Patient id to fetch healt profile questions. Note that one of the following filters must be specified: `filter[patient]`, `filter[group]`, or `filter[organization]`.\n"
+        },
+        {
+          "name": "filter[groups]",
+          "schema": "string",
+          "description": "Comma-separated list of group ids. Note that one of the following filters must be specified: `filter[patient]`, `filter[group]`, or `filter[organization]`.\n"
+        },
+        {
+          "name": "filter[organization]",
+          "schema": "string",
+          "description": "Fitbit Plus organization id. Note that one of the following filters must be specified: `filter[patient]`, `filter[group]`, or `filter[organization]`.\n"
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "required": false,
+          "description": "List of related resources to include in the response"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/health_profile_question/{id}",
+      "method": "fetchHealthProfileQuestion",
+      "httpMethod": "get",
+      "tag": "health profile question",
+      "description": "Get a health profile question",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Health profile question identifier"
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "required": false,
+          "description": "List of related resources to include in the response"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/health_question_definition",
+      "method": "fetchHealthQuestionDefinitions",
+      "httpMethod": "get",
+      "tag": "health question definition",
+      "description": "List health question definitions",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/health_question_definition/{id}",
+      "method": "fetchHealthQuestionDefinition",
+      "httpMethod": "get",
+      "tag": "health question definition",
+      "description": "Get a health question definition",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Health question definition identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/oauth/token",
+      "method": "createToken",
+      "httpMethod": "post",
+      "tag": "oauth",
+      "description": "Create an oauth token",
+      "parameters": [
+        {
+          "name": "include",
+          "schema": "string",
+          "required": false,
+          "description": "List of related resources to include in the response"
+        },
+        {
+          "name": "data",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/oauth/token/{id}/groups",
+      "method": "fetchTokenGroups",
+      "httpMethod": "get",
+      "tag": "oauth",
+      "description": "Get the groups for a token",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Token identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/oauth/token/{id}/organization",
+      "method": "fetchTokenOrganization",
+      "httpMethod": "get",
+      "tag": "oauth",
+      "description": "Get the organization for a token",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Token identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organization/{id}",
+      "method": "fetchOrganization",
+      "httpMethod": "get",
+      "tag": "organization",
+      "description": "Get an organization",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Organization identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/patient",
+      "method": "fetchPatients",
+      "httpMethod": "get",
+      "tag": "patient",
+      "description": "List patients",
+      "parameters": [
+        {
+          "name": "filter[groups]",
+          "schema": "string",
+          "description": "Comma-separated list of group ids. Note that either `filter[group]` or `filter[organization]` must be specified."
+        },
+        {
+          "name": "filter[organization]",
+          "schema": "string",
+          "description": "Fitbit Plus organization id. Note that either `filter[group]` or `filter[organization]` must be specified."
+        },
+        {
+          "name": "filter[identifier][system]",
+          "schema": "string",
+          "description": "Identifier system (example: \"MyEHR\") - requires a \"filter[identifier][value]\" parameter"
+        },
+        {
+          "name": "filter[identifier][value]",
+          "schema": "string",
+          "description": "Identifier value (example: \"12345\") - requires a \"filter[identifier][system]\" parameter"
+        },
+        {
+          "name": "filter[archived]",
+          "schema": "boolean",
+          "description": "If not specified, return all patients. If set to 'true' return only archived patients, if set to 'false', return only patients who are not archived."
+        },
+        {
+          "name": "filter[created_at]",
+          "schema": "string",
+          "description": "The start (inclusive) and end (exclusive) dates are ISO date and time strings separated by `..`. Example for patients created in November 2017 (America/New_York): `filter[created_at]=2017-11-01T00:00:00-04:00..2017-12-01T00:00:00-05:00`\n"
+        },
+        {
+          "name": "filter[updated_at]",
+          "schema": "string",
+          "description": "The start (inclusive) and end (exclusive) dates are ISO date and time strings separated by `..`. Example for patients updated in November 2017 (America/New_York): `filter[updated_at]=2017-11-01T00:00:00-04:00..2017-12-01T00:00:00-05:00`\n"
+        },
+        {
+          "name": "page[number]",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number"
+        },
+        {
+          "name": "page[size]",
+          "schema": "integer",
+          "required": false,
+          "description": "Page size"
+        },
+        {
+          "name": "page[limit]",
+          "schema": "integer",
+          "required": false,
+          "description": "Page limit"
+        },
+        {
+          "name": "page[cursor]",
+          "schema": "string",
+          "required": false,
+          "description": "Page cursor"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/patient",
+      "method": "createPatient",
+      "httpMethod": "post",
+      "tag": "patient",
+      "description": "Create a patient",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "meta",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/patient",
+      "method": "upsertPatient",
+      "httpMethod": "put",
+      "tag": "patient",
+      "description": "Upsert patient",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "meta",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/patient/{id}",
+      "method": "fetchPatient",
+      "httpMethod": "get",
+      "tag": "patient",
+      "description": "Get a patient",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Patient identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/patient/{id}",
+      "method": "updatePatient",
+      "httpMethod": "patch",
+      "tag": "patient",
+      "description": "Update a patient",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Patient identifier"
+        },
+        {
+          "name": "data",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/patient/{id}/coaches",
+      "method": "fetchPatientCoaches",
+      "httpMethod": "get",
+      "tag": "patient",
+      "description": "List coaches for a patient",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Patient identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/patient/{id}/groups",
+      "method": "fetchPatientGroups",
+      "httpMethod": "get",
+      "tag": "patient",
+      "description": "List groups for a patient",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Patient identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/patient_health_metric",
+      "method": "fetchPatientHealthMetrics",
+      "httpMethod": "get",
+      "tag": "metric",
+      "description": "List patient health metrics",
+      "parameters": [
+        {
+          "name": "filter[patient]",
+          "schema": "string",
+          "description": "Filter the patient health metrics for a specified patient. Note that one of the following filters must be specified: `filter[patient]`, `filter[groups]`, `filter[organization]`.\n"
+        },
+        {
+          "name": "filter[groups]",
+          "schema": "string",
+          "description": "Comma-separated list of group ids. Note that one of the following filters must be specified: `filter[patient]`, `filter[groups]`, `filter[organization]`.\n"
+        },
+        {
+          "name": "filter[organization]",
+          "schema": "string",
+          "description": "Fitbit Plus organization id. Note that one of the following filters must be specified: `filter[patient]`, `filter[groups]`, `filter[organization]`.\n"
+        },
+        {
+          "name": "page[number]",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number"
+        },
+        {
+          "name": "page[size]",
+          "schema": "integer",
+          "required": false,
+          "description": "Page size"
+        },
+        {
+          "name": "page[limit]",
+          "schema": "integer",
+          "required": false,
+          "description": "Page limit"
+        },
+        {
+          "name": "page[cursor]",
+          "schema": "string",
+          "required": false,
+          "description": "Page cursor"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/patient_health_metric",
+      "method": "createPatientHealthMetric",
+      "httpMethod": "post",
+      "tag": "metric",
+      "description": "Create patient health metrics",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "meta",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/patient_health_metric/{id}",
+      "method": "fetchPatientHealthMetric",
+      "httpMethod": "get",
+      "tag": "metric",
+      "description": "Get a patient health metric",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Patient health metric identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/patient_plan_summary",
+      "method": "fetchPatientPlanSummaries",
+      "httpMethod": "get",
+      "tag": "plan",
+      "description": "List patient plan summaries",
+      "parameters": [
+        {
+          "name": "filter[patient]",
+          "schema": "string",
+          "description": "Patient id to fetch plan summary for. Note that one of the following filters must be specified: `filter[patient]`, `filter[groups]`, `filter[organization]`.\n"
+        },
+        {
+          "name": "filter[groups]",
+          "schema": "string",
+          "description": "Comma-separated list of group ids. Note that one of the following filters must be specified: `filter[patient]`, `filter[groups]`, `filter[organization]`.\n"
+        },
+        {
+          "name": "filter[organization]",
+          "schema": "string",
+          "description": "Fitbit Plus organization id. Note that one of the following filters must be specified: `filter[patient]`, `filter[groups]`, `filter[organization]`.\n"
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "required": false,
+          "description": "List of related resources to include in the response"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/patient_plan_summary/{id}",
+      "method": "fetchPatientPlanSummary",
+      "httpMethod": "get",
+      "tag": "plan",
+      "description": "Get the plan summary for a patient",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Plan summary identifier"
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "required": false,
+          "description": "List of related resources to include in the response"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/patient_plan_summary/{id}",
+      "method": "updatePatientPlanSummary",
+      "httpMethod": "patch",
+      "tag": "plan",
+      "description": "Update a plan summary",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Plan summary identifier"
+        },
+        {
+          "name": "data",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/result",
+      "method": "fetchPatientHealthResults",
+      "httpMethod": "get",
+      "tag": "result",
+      "description": "List patient health results",
+      "parameters": [
+        {
+          "name": "filter[patient]",
+          "schema": "string",
+          "required": true,
+          "description": "Filter the patient health results for a specified patient"
+        },
+        {
+          "name": "filter[actions]",
+          "schema": "string",
+          "description": "A comma-separated list of action identifiers"
+        },
+        {
+          "name": "filter[start_at]",
+          "schema": "string",
+          "description": "Filter results that occurred after the passed ISO date and time string"
+        },
+        {
+          "name": "filter[end_at]",
+          "schema": "string",
+          "description": "Filter results that occurred before the passed ISO date and time string"
+        },
+        {
+          "name": "filter[threads]",
+          "schema": "string",
+          "description": "A comma-separated list of thread identifiers"
+        },
+        {
+          "name": "filter[created_at]",
+          "schema": "string",
+          "description": "The start (inclusive) and end (exclusive) dates are ISO date and time strings separated by `..`. Example for results created in November 2017 (America/New_York): `filter[created_at]=2017-11-01T00:00:00-04:00..2017-12-01T00:00:00-05:00`\n"
+        },
+        {
+          "name": "filter[updated_at]",
+          "schema": "string",
+          "description": "The start (inclusive) and end (exclusive) dates are ISO date and time strings separated by `..`. Example for results updated in November 2017 (America/New_York): `filter[updated_at]=2017-11-01T00:00:00-04:00..2017-12-01T00:00:00-05:00`\n"
+        },
+        {
+          "name": "page[number]",
+          "schema": "integer",
+          "required": false,
+          "description": "Page number"
+        },
+        {
+          "name": "page[size]",
+          "schema": "integer",
+          "required": false,
+          "description": "Page size"
+        },
+        {
+          "name": "page[limit]",
+          "schema": "integer",
+          "required": false,
+          "description": "Page limit"
+        },
+        {
+          "name": "page[after]",
+          "schema": "string",
+          "required": false,
+          "description": "Page cursor"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/result/{id}",
+      "method": "fetchPatientHealthResult",
+      "httpMethod": "get",
+      "tag": "result",
+      "description": "Get a patient health result",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Patient health result identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reward",
+      "method": "fetchRewards",
+      "httpMethod": "get",
+      "tag": "reward",
+      "description": "List rewards",
+      "parameters": [
+        {
+          "name": "filter[patient]",
+          "schema": "string",
+          "description": "Patient identifier. Note that one of the following filters must be specified: `filter[patient]`, `filter[groups]`, `filter[organization]`.\n"
+        },
+        {
+          "name": "filter[reward_program_activation]",
+          "schema": "string",
+          "description": "Reward program activation identifier"
+        },
+        {
+          "name": "filter[thread]",
+          "schema": "string",
+          "description": "Thread identifier"
+        },
+        {
+          "name": "filter[groups]",
+          "schema": "string",
+          "description": "Comma-separated list of group ids. Note that one of the following filters must be specified: `filter[patient]`, `filter[groups]`, `filter[organization]`.\n"
+        },
+        {
+          "name": "filter[organization]",
+          "schema": "string",
+          "description": "Fitbit Plus organization id. Note that one of the following filters must be specified: `filter[patient]`, `filter[groups]`, `filter[organization]`.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reward",
+      "method": "createReward",
+      "httpMethod": "post",
+      "tag": "reward",
+      "description": "Create a reward",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reward/{id}",
+      "method": "fetchReward",
+      "httpMethod": "get",
+      "tag": "reward",
+      "description": "Get a reward",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Reward identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reward_earning",
+      "method": "fetchRewardEarnings",
+      "httpMethod": "get",
+      "tag": "reward earning",
+      "description": "List reward earnings",
+      "parameters": [
+        {
+          "name": "filter[groups]",
+          "schema": "string",
+          "required": true,
+          "description": "Group identifiers"
+        },
+        {
+          "name": "filter[patient]",
+          "schema": "string",
+          "required": true,
+          "description": "Patient identifier"
+        },
+        {
+          "name": "filter[ready_for_fulfillment]",
+          "schema": "boolean",
+          "description": "If true, only returns those reward earnings for which ready_for_fulfillment is true and fulfilled_at is null. If false, only returns those reward earnings for which ready_for_fulfillment is false and fulfilled_at is null."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reward_earning",
+      "method": "createRewardEarning",
+      "httpMethod": "post",
+      "tag": "reward earning",
+      "description": "Create a reward earning",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reward_earning/{id}",
+      "method": "fetchRewardEarning",
+      "httpMethod": "get",
+      "tag": "reward earning",
+      "description": "Get a reward earning",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Reward earning identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reward_earning_fulfillment",
+      "method": "fetchRewardEarningFulfillments",
+      "httpMethod": "get",
+      "tag": "reward earning fulfillment",
+      "description": "List reward earning fulfillments",
+      "parameters": [
+        {
+          "name": "filter[patient]",
+          "schema": "string",
+          "required": true,
+          "description": "Patient identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reward_earning_fulfillment",
+      "method": "createRewardEarningFulfillment",
+      "httpMethod": "post",
+      "tag": "reward earning fulfillment",
+      "description": "Create a reward earning fulfillment",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reward_earning_fulfillment/{id}",
+      "method": "fetchRewardEarningFulfillment",
+      "httpMethod": "get",
+      "tag": "reward earning fulfillment",
+      "description": "Get a reward earning fulfillment",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Reward earning fulfillment identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reward_program",
+      "method": "fetchRewardPrograms",
+      "httpMethod": "get",
+      "tag": "reward program",
+      "description": "List reward programs",
+      "parameters": [
+        {
+          "name": "filter[groups]",
+          "schema": "string",
+          "description": "Comma-separated list of group identifiers. Note that one of the following filters must be specified: `filter[groups]`, `filter[organization]`.\n"
+        },
+        {
+          "name": "filter[organization]",
+          "schema": "string",
+          "description": "Fitbit Plus organization id. Note that one of the following filters must be specified: `filter[groups]`, `filter[organization]`.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reward_program",
+      "method": "createRewardProgram",
+      "httpMethod": "post",
+      "tag": "reward program",
+      "description": "Create a reward program",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reward_program/{id}",
+      "method": "fetchRewardProgram",
+      "httpMethod": "get",
+      "tag": "reward program",
+      "description": "Get a reward program",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Reward program identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reward_program/{id}/group",
+      "method": "fetchRewardProgramGroup",
+      "httpMethod": "get",
+      "tag": "reward program",
+      "description": "Get group for a reward program",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Reward program identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reward_program_activation",
+      "method": "fetchRewardProgramActivations",
+      "httpMethod": "get",
+      "tag": "reward program activation",
+      "description": "List reward program activations",
+      "parameters": [
+        {
+          "name": "filter[patient]",
+          "schema": "string",
+          "description": "Patient identifier. Note that one of the following filters must be specified: `filter[patient]`, `filter[groups]`, `filter[organization]`.\n"
+        },
+        {
+          "name": "filter[groups]",
+          "schema": "string",
+          "description": "Comma-separated list of group ids. Note that one of the following filters must be specified: `filter[patient]`, `filter[groups]`, `filter[organization]`.\n"
+        },
+        {
+          "name": "filter[organization]",
+          "schema": "string",
+          "description": "Fitbit Plus organization id. Note that one of the following filters must be specified: `filter[patient]`, `filter[groups]`, `filter[organization]`.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reward_program_activation",
+      "method": "createRewardProgramActivation",
+      "httpMethod": "post",
+      "tag": "reward program activation",
+      "description": "Create a reward program activation",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reward_program_activation/{id}",
+      "method": "fetchRewardProgramActivation",
+      "httpMethod": "get",
+      "tag": "reward program activation",
+      "description": "Get a reward program activation",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Reward program activation identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.twinehealth.com/pub",
   "apiDescription": "# Overview\nThe Fitbit Plus API is a RESTful API. The requests and responses are formated according to the\n[JSON API](http://jsonapi.org/format/1.0/) specification.\n\nIn addition to this documentation, we also provide an\n[OpenAPI](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md) \"yaml\" file describing the API:\n[Fitbit Plus API Specification](swagger.yaml).\n\n# Authentication\nAuthentication for the Fitbit Plus API is based on the\n[OAuth 2.0 Authorization Framework](https://tools.ietf.org/html/rfc6749). Fitbit Plus currently supports grant\ntypes of **client_credentials** and **refresh_token**.\n\nSee [POST /oauth/token](#operation/createToken) for details on the request and response formats.\n<!-- ReDoc-Inject: <security-definitions> -->\n\n## Building Integrations\nWe will provide customers with unique client credentials for each application/integration they build, allowing us\nto enforce appropriate access controls and monitor API usage.\nThe client credentials will be scoped to the organization, and allow full access to all patients and related data\nwithin that organization.\n\nThese credentials are appropriate for creating an integration that does one of the following:\n - background reporting/analysis\n - synchronizing data with another system (such as an EMR)\n\nThe API credentials and oauth flows we currently support are **not** well suited for creating a user-facing\napplication that allows a user (patient, coach, or admin) to login and have access to data which is appropriate to\nthat specific user. It is possible to build such an application, but it is not possible to use Fitbit Plus as a\nfederated identity provider. You would need to have a separate means of verifying a user's identity. We do not\ncurrently support the required password-based oauth flow to make this possible.\n\n# Paging\nThe Fitbit Plus API supports two different pagination strategies for GET collection endpoints.\n\n#### Skip-based paging\n\nSkip-based paging uses the query parameters `page[size]` and `page[number]` to specify the max number of resources returned and the page number. We default to skip-based paging if there are no page parameters. The response will include a `links` object containing links to the first, last, prev, and next pages of data.\n\nIf the contents of the collection change while you are iterating through the collection, you will see duplicate or missing documents. For example, if you are iterating through the `calender_event` resource via `GET /pub/calendar_event?sort=start_at&page[size]=50&page[number]=1`, and a new `calendar_event` is created that has a `start_at` value before the first `calendar_event`, when you fetch the next page at `GET /pub/calendar_event?sort=start_at&page[size]=50&page[number]=2`, the first entry in the second response will be a duplicate of the last entry in the first response.\n\n#### Cursor-based paging\nCursor-based paging uses the query parameters `page[limit]` and `page[after]` to specify the max number of entries returned and identify where to begin the next page. Add `page[limit]` to the parameters to use cursor-based paging. The response will include a `links` object containing a link to the next page of data, if the next page exists.\n\nCursor-based paging is not subject to duplication if new resources are added to the collection. For example, if you are iterating through the `calender_event` resource via `GET /pub/calendar_event?sort=start_at&page[limit]=50`, and a new `calendar_event` is created that has a `start_at` value before the first `calendar_event`, you will not see a duplicate entry when you fetch the next page at `GET /pub/calendar_event?sort=start_at&page[limit]=50&page[after]=<cursor>`.\n\nWe encourage the use of cursor-based paging for performance reasons.\n\nIn either form of paging, you can determine whether any resources were missed by comparing the number of fetched resources against `meta.count`. Set `page[size]` or `page[limit]` to 0 to get only the count.\n\nIt is not valid to mix the two strategies.\n",
   "apiTitle": "Fitbit Plus API",

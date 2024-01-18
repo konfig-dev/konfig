@@ -4,6 +4,496 @@
   "homepage": "sportsdata.io",
   "serviceName": "nfl-v3-projections",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/{format}/DfsSlateOwnershipProjectionsBySlateID/{slateId}",
+      "method": "dfsSlateOwnershipProjectionsBySlateid",
+      "httpMethod": "get",
+      "description": "DFS Slate Ownership Projections by SlateID",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        },
+        {
+          "name": "slateId",
+          "schema": "string",
+          "required": true,
+          "description": "SlateID of the DFS Slate you wish to get ownership projections for. Will have an empty SlateOwnershipProjections if this slate was not projected"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/DfsSlatesByDate/{date}",
+      "method": "dfsSlatesByDate",
+      "httpMethod": "get",
+      "description": "DFS Slates by Date",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        },
+        {
+          "name": "date",
+          "schema": "string",
+          "required": true,
+          "description": "The date of the slates.\n<br>Examples: <code>2017-SEP-25</code>, <code>2017-10-31</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/DfsSlatesByWeek/{season}/{week}",
+      "method": "dfsSlatesByWeek",
+      "httpMethod": "get",
+      "description": "DFS Slates by Week",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        },
+        {
+          "name": "season",
+          "schema": "string",
+          "required": true,
+          "description": "Year of the season and the season type. If no season type is provided, then the default is regular season.\n          <br>Examples: <code>2015REG</code>, <code>2015PRE</code>, <code>2015POST</code>"
+        },
+        {
+          "name": "week",
+          "schema": "string",
+          "required": true,
+          "description": "Week of the season. Valid values are as follows: Preseason 0 to 4, Regular Season 1 to 17, Postseason 1 to 4.\n          Example: <code>1</code>"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/FantasyDefenseProjectionsByGame/{season}/{week}",
+      "method": "projectedFantasyDefenseGameStatsWDfsSalaries",
+      "httpMethod": "get",
+      "description": "Projected Fantasy Defense Game Stats (w/ DFS Salaries)",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        },
+        {
+          "name": "season",
+          "schema": "string",
+          "required": true,
+          "description": "Year of the season and the season type. If no season type is provided, then the default is regular season.\n          <br>Examples: <code>2015REG</code>, <code>2015PRE</code>, <code>2015POST</code>.\n        "
+        },
+        {
+          "name": "week",
+          "schema": "string",
+          "required": true,
+          "description": "Week of the season. Valid values are as follows: Preseason 0 to 4, Regular Season 1 to 17, Postseason 1 to 4.\n          Example: <code>1</code>\n        "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/FantasyDefenseProjectionsBySeason/{season}",
+      "method": "projectedFantasyDefenseSeasonStatsWAdp",
+      "httpMethod": "get",
+      "description": "Projected Fantasy Defense Season Stats (w/ ADP)",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        },
+        {
+          "name": "season",
+          "schema": "string",
+          "required": true,
+          "description": "Year of the season and the season type. If no season type is provided, then the default is regular season.\n          <br>Examples: <code>2015REG</code>, <code>2015PRE</code>, <code>2015POST</code>.\n        "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/IdpPlayerGameProjectionStatsByPlayerID/{season}/{week}/{playerid}",
+      "method": "idpProjectedPlayerGameStatsByPlayerWInjuriesLineupsDfsSalaries",
+      "httpMethod": "get",
+      "description": "IDP Projected Player Game Stats by Player (w/ Injuries, Lineups, DFS Salaries)",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        },
+        {
+          "name": "season",
+          "schema": "string",
+          "required": true,
+          "description": "Year of the season and the season type. If no season type is provided, then the default is regular season.\n          <br>Examples: <code>2015REG</code>, <code>2015PRE</code>, <code>2015POST</code>.\n        "
+        },
+        {
+          "name": "week",
+          "schema": "string",
+          "required": true,
+          "description": "Week of the season. Valid values are as follows: Preseason 0 to 4, Regular Season 1 to 17, Postseason 1 to 4.\n          Example: <code>1</code>\n        "
+        },
+        {
+          "name": "playerid",
+          "schema": "string",
+          "required": true,
+          "description": "Each NFL player has a unique ID assigned by FantasyData. Player IDs can be determined by pulling player related data. Example:<code>14257</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/IdpPlayerGameProjectionStatsByTeam/{season}/{week}/{team}",
+      "method": "idpProjectedPlayerGameStatsByTeamWInjuriesLineupsDfsSalaries",
+      "httpMethod": "get",
+      "description": "IDP Projected Player Game Stats by Team (w/ Injuries, Lineups, DFS Salaries)",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        },
+        {
+          "name": "season",
+          "schema": "string",
+          "required": true,
+          "description": "Year of the season and the season type. If no season type is provided, then the default is regular season.\n          <br>Examples: <code>2015REG</code>, <code>2015PRE</code>, <code>2015POST</code>.\n        "
+        },
+        {
+          "name": "week",
+          "schema": "string",
+          "required": true,
+          "description": "Week of the season. Valid values are as follows: Preseason 0 to 4, Regular Season 1 to 17, Postseason 1 to 4.\n          Example: <code>1</code>\n        "
+        },
+        {
+          "name": "team",
+          "schema": "string",
+          "required": true,
+          "description": "Abbreviation of the team. Example: <code>WAS</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/IdpPlayerGameProjectionStatsByWeek/{season}/{week}",
+      "method": "idpProjectedPlayerGameStatsByWeekWInjuriesLineupsDfsSalaries",
+      "httpMethod": "get",
+      "description": "IDP Projected Player Game Stats by Week (w/ Injuries, Lineups, DFS Salaries)",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        },
+        {
+          "name": "season",
+          "schema": "string",
+          "required": true,
+          "description": "Year of the season and the season type. If no season type is provided, then the default is regular season.\n          <br>Examples: <code>2015REG</code>, <code>2015PRE</code>, <code>2015POST</code>.\n        "
+        },
+        {
+          "name": "week",
+          "schema": "string",
+          "required": true,
+          "description": "Week of the season. Valid values are as follows: Preseason 0 to 4, Regular Season 1 to 17, Postseason 1 to 4.\n          Example: <code>1</code>\n        "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/InjuredPlayers",
+      "method": "injuredPlayers",
+      "httpMethod": "get",
+      "description": "Injured Players",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/PlayerGameProjectionStatsByPlayerID/{season}/{week}/{playerid}",
+      "method": "projectedPlayerGameStatsByPlayerWInjuriesLineupsDfsSalaries",
+      "httpMethod": "get",
+      "description": "Projected Player Game Stats by Player (w/ Injuries, Lineups, DFS Salaries)",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        },
+        {
+          "name": "season",
+          "schema": "string",
+          "required": true,
+          "description": "Year of the season and the season type. If no season type is provided, then the default is regular season.\n          <br>Examples: <code>2015REG</code>, <code>2015PRE</code>, <code>2015POST</code>.\n        "
+        },
+        {
+          "name": "week",
+          "schema": "string",
+          "required": true,
+          "description": "\n          Week of the season. Valid values are as follows: Preseason 0 to 4, Regular Season 1 to 17, Postseason 1 to 4.\n          Example: <code>1</code>\n        "
+        },
+        {
+          "name": "playerid",
+          "schema": "string",
+          "required": true,
+          "description": "Each NFL player has a unique ID assigned by FantasyData. Player IDs can be determined by pulling player related data. Example:<code>14257</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/PlayerGameProjectionStatsByTeam/{season}/{week}/{team}",
+      "method": "projectedPlayerGameStatsByTeamWInjuriesLineupsDfsSalaries",
+      "httpMethod": "get",
+      "description": "Projected Player Game Stats by Team (w/ Injuries, Lineups, DFS Salaries)",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        },
+        {
+          "name": "season",
+          "schema": "string",
+          "required": true,
+          "description": "Year of the season and the season type. If no season type is provided, then the default is regular season.\n          <br>Examples: <code>2015REG</code>, <code>2015PRE</code>, <code>2015POST</code>.\n        "
+        },
+        {
+          "name": "week",
+          "schema": "string",
+          "required": true,
+          "description": "Week of the season. Valid values are as follows: Preseason 0 to 4, Regular Season 1 to 17, Postseason 1 to 4.\n          Example: <code>1</code>\n        "
+        },
+        {
+          "name": "team",
+          "schema": "string",
+          "required": true,
+          "description": "Abbreviation of the team. Example: <code>WAS</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/PlayerGameProjectionStatsByWeek/{season}/{week}",
+      "method": "projectedPlayerGameStatsByWeekWInjuriesLineupsDfsSalaries",
+      "httpMethod": "get",
+      "description": "Projected Player Game Stats by Week (w/ Injuries, Lineups, DFS Salaries)",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        },
+        {
+          "name": "season",
+          "schema": "string",
+          "required": true,
+          "description": "Year of the season and the season type. If no season type is provided, then the default is regular season.\n          <br>Examples: <code>2015REG</code>, <code>2015PRE</code>, <code>2015POST</code>.\n        "
+        },
+        {
+          "name": "week",
+          "schema": "string",
+          "required": true,
+          "description": "\n          Week of the season. Valid values are as follows: Preseason 0 to 4, Regular Season 1 to 17, Postseason 1 to 4.\n          Example: <code>1</code>\n        "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/PlayerSeasonProjectionStats/{season}",
+      "method": "projectedPlayerSeasonStatsWAdp",
+      "httpMethod": "get",
+      "description": "Projected Player Season Stats (w/ ADP)",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        },
+        {
+          "name": "season",
+          "schema": "string",
+          "required": true,
+          "description": "Year of the season and the season type. If no season type is provided, then the default is regular season.\n          <br>Examples: <code>2015REG</code>, <code>2015PRE</code>, <code>2015POST</code>.\n        "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/PlayerSeasonProjectionStatsByPlayerID/{season}/{playerid}",
+      "method": "projectedPlayerSeasonStatsByPlayerWAdp",
+      "httpMethod": "get",
+      "description": "Projected Player Season Stats by Player (w/ ADP)",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        },
+        {
+          "name": "season",
+          "schema": "string",
+          "required": true,
+          "description": "Year of the season and the season type. If no season type is provided, then the default is regular season.\n          <br>Examples: <code>2015REG</code>, <code>2015PRE</code>, <code>2015POST</code>.\n        "
+        },
+        {
+          "name": "playerid",
+          "schema": "string",
+          "required": true,
+          "description": "Each NFL player has a unique ID assigned by FantasyData. Player IDs can be determined by pulling player related data. Example:<code>14257</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/PlayerSeasonProjectionStatsByTeam/{season}/{team}",
+      "method": "projectedPlayerSeasonStatsByTeamWAdp",
+      "httpMethod": "get",
+      "description": "Projected Player Season Stats by Team (w/ ADP)",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        },
+        {
+          "name": "season",
+          "schema": "string",
+          "required": true,
+          "description": "Year of the season and the season type. If no season type is provided, then the default is regular season.\n          <br>Examples: <code>2015REG</code>, <code>2015PRE</code>, <code>2015POST</code>.\n        "
+        },
+        {
+          "name": "team",
+          "schema": "string",
+          "required": true,
+          "description": "Abbreviation of the team. Example: <code>WAS</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/UpcomingDfsSlateOwnershipProjections",
+      "method": "upcomingDfsSlateOwnershipProjections",
+      "httpMethod": "get",
+      "description": "Upcoming DFS Slate Ownership Projections",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://azure-api.sportsdata.io/v3/nfl/projections",
   "apiDescription": "NFL projected stats API.",
   "apiTitle": "NFL v3 Projections",

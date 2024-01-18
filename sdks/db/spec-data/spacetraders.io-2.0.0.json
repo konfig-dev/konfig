@@ -3,6 +3,765 @@
   "openApiRaw": "https://raw.githubusercontent.com/SpaceTradersAPI/api-docs/main/reference/SpaceTraders.json",
   "homepage": "spacetraders.io",
   "apiVersion": "2.0.0",
+  "methods": [
+    {
+      "url": "/factions",
+      "method": "getFactions",
+      "httpMethod": "get",
+      "tag": "factions",
+      "description": "List Factions",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": "What entry offset to request"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "How many entries to return per page"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/factions/{factionSymbol}",
+      "method": "getFaction",
+      "httpMethod": "get",
+      "tag": "factions",
+      "description": "Get Faction",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/agent",
+      "method": "getMyAgent",
+      "httpMethod": "get",
+      "tag": "agents",
+      "description": "My Agent Details",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/contracts",
+      "method": "getContracts",
+      "httpMethod": "get",
+      "tag": "contracts",
+      "description": "List Contracts",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": "What entry offset to request"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "How many entries to return per page"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/contracts/{contractId}",
+      "method": "getContract",
+      "httpMethod": "get",
+      "tag": "contracts",
+      "description": "Get Contract",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/contracts/{contractId}/accept",
+      "method": "acceptContract",
+      "httpMethod": "post",
+      "tag": "contracts",
+      "description": "Accept Contract",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/contracts/{contractId}/deliver",
+      "method": "deliverContract",
+      "httpMethod": "post",
+      "tag": "contracts",
+      "description": "Deliver Contract",
+      "parameters": [
+        {
+          "name": "shipSymbol",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "tradeSymbol",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "units",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/contracts/{contractId}/fulfill",
+      "method": "fulfillContract",
+      "httpMethod": "post",
+      "tag": "contracts",
+      "description": "Fulfill Contract",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/ships",
+      "method": "getMyShips",
+      "httpMethod": "get",
+      "tag": "fleet",
+      "description": "List Ships",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": "What entry offset to request"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "How many entries to return per page"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/ships",
+      "method": "purchaseShip",
+      "httpMethod": "post",
+      "tag": "fleet",
+      "description": "Purchase Ship",
+      "parameters": [
+        {
+          "name": "shipType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "waypointSymbol",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/ships/{shipSymbol}",
+      "method": "getMyShip",
+      "httpMethod": "get",
+      "tag": "fleet",
+      "description": "Get Ship",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/ships/{shipSymbol}/cargo",
+      "method": "getMyShipCargo",
+      "httpMethod": "get",
+      "tag": "fleet",
+      "description": "Get Ship Cargo",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/ships/{shipSymbol}/chart",
+      "method": "createChart",
+      "httpMethod": "post",
+      "tag": "fleet",
+      "description": "Create Chart",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/ships/{shipSymbol}/cooldown",
+      "method": "getShipCooldown",
+      "httpMethod": "get",
+      "tag": "fleet",
+      "description": "Get Ship Cooldown",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/ships/{shipSymbol}/dock",
+      "method": "dockShip",
+      "httpMethod": "post",
+      "tag": "fleet",
+      "description": "Dock Ship",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/ships/{shipSymbol}/extract",
+      "method": "extractResources",
+      "httpMethod": "post",
+      "tag": "fleet",
+      "description": "Extract Resources",
+      "parameters": [
+        {
+          "name": "survey",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/ships/{shipSymbol}/jettison",
+      "method": "jettison",
+      "httpMethod": "post",
+      "tag": "fleet",
+      "description": "Jettison Cargo",
+      "parameters": [
+        {
+          "name": "symbol",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "units",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/ships/{shipSymbol}/jump",
+      "method": "jumpShip",
+      "httpMethod": "post",
+      "tag": "fleet",
+      "description": "Jump Ship",
+      "parameters": [
+        {
+          "name": "systemSymbol",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/ships/{shipSymbol}/nav",
+      "method": "getShipNav",
+      "httpMethod": "get",
+      "tag": "fleet",
+      "description": "Get Ship Nav",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/ships/{shipSymbol}/nav",
+      "method": "patchShipNav",
+      "httpMethod": "patch",
+      "tag": "fleet",
+      "description": "Patch Ship Nav",
+      "parameters": [
+        {
+          "name": "flightMode",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/ships/{shipSymbol}/navigate",
+      "method": "navigateShip",
+      "httpMethod": "post",
+      "tag": "fleet",
+      "description": "Navigate Ship",
+      "parameters": [
+        {
+          "name": "waypointSymbol",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/ships/{shipSymbol}/orbit",
+      "method": "orbitShip",
+      "httpMethod": "post",
+      "tag": "fleet",
+      "description": "Orbit Ship",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/ships/{shipSymbol}/purchase",
+      "method": "purchaseCargo",
+      "httpMethod": "post",
+      "tag": "fleet",
+      "description": "Purchase Cargo",
+      "parameters": [
+        {
+          "name": "symbol",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "units",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/ships/{shipSymbol}/refine",
+      "method": "shipRefine",
+      "httpMethod": "post",
+      "tag": "fleet",
+      "description": "Ship Refine",
+      "parameters": [
+        {
+          "name": "produce",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/ships/{shipSymbol}/refuel",
+      "method": "refuelShip",
+      "httpMethod": "post",
+      "tag": "fleet",
+      "description": "Refuel Ship",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/ships/{shipSymbol}/scan/ships",
+      "method": "createShipShipScan",
+      "httpMethod": "post",
+      "tag": "fleet",
+      "description": "Scan Ships",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/ships/{shipSymbol}/scan/systems",
+      "method": "createShipSystemScan",
+      "httpMethod": "post",
+      "tag": "fleet",
+      "description": "Scan Systems",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/ships/{shipSymbol}/scan/waypoints",
+      "method": "createShipWaypointScan",
+      "httpMethod": "post",
+      "tag": "fleet",
+      "description": "Scan Waypoints",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/ships/{shipSymbol}/sell",
+      "method": "sellCargo",
+      "httpMethod": "post",
+      "tag": "fleet",
+      "description": "Sell Cargo",
+      "parameters": [
+        {
+          "name": "symbol",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "units",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/ships/{shipSymbol}/survey",
+      "method": "createSurvey",
+      "httpMethod": "post",
+      "tag": "fleet",
+      "description": "Create Survey",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/ships/{shipSymbol}/transfer",
+      "method": "transferCargo",
+      "httpMethod": "post",
+      "tag": "fleet",
+      "description": "Transfer Cargo",
+      "parameters": [
+        {
+          "name": "shipSymbol",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "tradeSymbol",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "units",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/my/ships/{shipSymbol}/warp",
+      "method": "warpShip",
+      "httpMethod": "post",
+      "tag": "fleet",
+      "description": "Warp Ship",
+      "parameters": [
+        {
+          "name": "waypointSymbol",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/register",
+      "method": "register",
+      "httpMethod": "post",
+      "description": "Register New Agent",
+      "parameters": [
+        {
+          "name": "faction",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "symbol",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/systems",
+      "method": "getSystems",
+      "httpMethod": "get",
+      "tag": "systems",
+      "description": "List Systems",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": "What entry offset to request"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "How many entries to return per page"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/systems/{systemSymbol}",
+      "method": "getSystem",
+      "httpMethod": "get",
+      "tag": "systems",
+      "description": "Get System",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/systems/{systemSymbol}/waypoints",
+      "method": "getSystemWaypoints",
+      "httpMethod": "get",
+      "tag": "systems",
+      "description": "List Waypoints",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "description": "What entry offset to request"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "How many entries to return per page"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/systems/{systemSymbol}/waypoints/{waypointSymbol}",
+      "method": "getWaypoint",
+      "httpMethod": "get",
+      "tag": "systems",
+      "description": "Get Waypoint",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/systems/{systemSymbol}/waypoints/{waypointSymbol}/jump-gate",
+      "method": "getJumpGate",
+      "httpMethod": "get",
+      "tag": "systems",
+      "description": "Get Jump Gate",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/systems/{systemSymbol}/waypoints/{waypointSymbol}/market",
+      "method": "getMarket",
+      "httpMethod": "get",
+      "tag": "systems",
+      "description": "Get Market",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/systems/{systemSymbol}/waypoints/{waypointSymbol}/shipyard",
+      "method": "getShipyard",
+      "httpMethod": "get",
+      "tag": "systems",
+      "description": "Get Shipyard",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.spacetraders.io/v2",
   "apiDescription": "SpaceTraders is an open-universe game and learning platform that offers a set of HTTP endpoints to control a fleet of ships and explore a multiplayer universe.\n\nThe API is documented using [OpenAPI](https://github.com/SpaceTradersAPI/api-docs). You can send your first request right here in your browser to check the status of the game server.\n\n```json http\n{\n  \"method\": \"GET\",\n  \"url\": \"https://api.spacetraders.io/v2\",\n}\n```\n\nUnlike a traditional game, SpaceTraders does not have a first-party client or app to play the game. Instead, you can use the API to build your own client, write a script to automate your ships, or try an app built by the community.\n\nWe have a [Discord channel](https://discord.com/invite/jh6zurdWk5) where you can share your projects, ask questions, and get help from other players.\n\n\n",
   "apiTitle": "SpaceTraders API",

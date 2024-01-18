@@ -3,6 +3,4232 @@
   "openApiRaw": "https://s3.amazonaws.com/swagger.reverb.com/swagger.json",
   "homepage": "reverb.com",
   "apiVersion": "3.0",
+  "methods": [
+    {
+      "url": "/articles",
+      "method": "/articlesGet",
+      "httpMethod": "get",
+      "tag": "articles",
+      "description": "",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "per_page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "What's being searched for"
+        },
+        {
+          "name": "exclude_featured",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of featured articles to exclude"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/articles/categories",
+      "method": "/articles/categoriesGet",
+      "httpMethod": "get",
+      "tag": "articles",
+      "description": "List of all article categories",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/categories",
+      "method": "/categoriesGet",
+      "httpMethod": "get",
+      "tag": "categories",
+      "description": "List of supported product categories",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/categories/flat",
+      "method": "/categories/flatGet",
+      "httpMethod": "get",
+      "tag": "categories",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/categories/taxonomy",
+      "method": "/categories/taxonomyGet",
+      "httpMethod": "get",
+      "tag": "categories",
+      "description": "Full taxonomy tree of categories including middle categories",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/categories/{product_type}/{category}",
+      "method": "/categories/{productType}/{category}Get",
+      "httpMethod": "get",
+      "tag": "categories",
+      "description": "Get subcategory details",
+      "parameters": [
+        {
+          "name": "product_type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "category",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/categories/{uuid}",
+      "method": "/categories/{uuid}Get",
+      "httpMethod": "get",
+      "tag": "categories",
+      "description": "Get category details",
+      "parameters": [
+        {
+          "name": "uuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/comparison_shopping_pages",
+      "method": "/comparisonShoppingPagesGet",
+      "httpMethod": "get",
+      "tag": "comparison_shopping_pages",
+      "description": "Returns a set of comparison shopping pages based on the current params",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/comparison_shopping_pages/find",
+      "method": "/comparisonShoppingPages/findGet",
+      "httpMethod": "get",
+      "tag": "comparison_shopping_pages",
+      "description": "Show comparison shopping page",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": "ID of the comparison shopping page"
+        },
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": false,
+          "description": "Slug of the comparison shopping page"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/comparison_shopping_pages/{id}",
+      "method": "/comparisonShoppingPages/{id}Get",
+      "httpMethod": "get",
+      "tag": "comparison_shopping_pages",
+      "description": "",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/comparison_shopping_pages/{id}/listings",
+      "method": "/comparisonShoppingPages/{id}/listingsGet",
+      "httpMethod": "get",
+      "tag": "comparison_shopping_pages",
+      "description": "Return new or used listings for a comparison shopping page",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "condition",
+          "schema": "string",
+          "required": true,
+          "description": "Condition of the listing"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "per_page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/comparison_shopping_pages/{id}/reviews",
+      "method": "/comparisonShoppingPages/{id}/reviewsGet",
+      "httpMethod": "get",
+      "tag": "comparison_shopping_pages",
+      "description": "View reviews of a comparison shopping page",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/conversations/{conversation_id}/offer",
+      "method": "/conversations/{conversationId}/offerPost",
+      "httpMethod": "post",
+      "tag": "conversations",
+      "description": "Make an offer to the other participant in the conversation",
+      "parameters": [
+        {
+          "name": "conversation_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "country_code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "layaway_terms_slug",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "offer_items",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "price",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "quantity",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "recipient_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "region_code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "shipping_price",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/conversations/{id}/offer",
+      "method": "/conversations/{id}/offerPost",
+      "httpMethod": "post",
+      "tag": "conversations",
+      "description": "Make an offer to the other participant in the conversation",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "price",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "shipping_price",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/countries",
+      "method": "/countriesGet",
+      "httpMethod": "get",
+      "tag": "countries",
+      "description": "Retrieve a list of country codes with corresponding subregions",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/csps",
+      "method": "/cspsGet",
+      "httpMethod": "get",
+      "tag": "csps",
+      "description": "Returns a set of comparison shopping pages based on the current params",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/csps/categories",
+      "method": "/csps/categoriesGet",
+      "httpMethod": "get",
+      "tag": "csps",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/csps/find",
+      "method": "/csps/findGet",
+      "httpMethod": "get",
+      "tag": "csps",
+      "description": "Show comparison shopping page",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": "ID of the comparison shopping page"
+        },
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": false,
+          "description": "Slug of the comparison shopping page"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/csps/{id}",
+      "method": "/csps/{id}Get",
+      "httpMethod": "get",
+      "tag": "csps",
+      "description": "",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/curated_sets/{slug}",
+      "method": "/curatedSets/{slug}Get",
+      "httpMethod": "get",
+      "tag": "curated_sets",
+      "description": "",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/currencies/display",
+      "method": "/currencies/displayGet",
+      "httpMethod": "get",
+      "tag": "currencies",
+      "description": "List of supported display currencies for browsing listings",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/currencies/listing",
+      "method": "/currencies/listingGet",
+      "httpMethod": "get",
+      "tag": "currencies",
+      "description": "List of supported listing currencies for shops",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/feedback/{feedback_id}",
+      "method": "/feedback/{feedbackId}Get",
+      "httpMethod": "get",
+      "tag": "feedback",
+      "description": "Feedback details",
+      "parameters": [
+        {
+          "name": "feedback_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/handpicked/{slug}",
+      "method": "/handpicked/{slug}Get",
+      "httpMethod": "get",
+      "tag": "handpicked",
+      "description": "Get results from a handpicked collection",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "Search query."
+        },
+        {
+          "name": "auction_price_max",
+          "schema": "number",
+          "required": false,
+          "description": "Maximum current auction price"
+        },
+        {
+          "name": "category",
+          "schema": "string",
+          "required": false,
+          "description": "Category slug from /api/categories"
+        },
+        {
+          "name": "product_type",
+          "schema": "string",
+          "required": false,
+          "description": "Product type slug from /api/categories"
+        },
+        {
+          "name": "conditions",
+          "schema": "array",
+          "required": false,
+          "description": "Condition: all,new,b-stock,used,non-functioning,all-but-new,poor,fair,good,very-good,excellent,mint"
+        },
+        {
+          "name": "decade",
+          "schema": "string",
+          "required": false,
+          "description": "Decade: e.g. 1970s, early 70s"
+        },
+        {
+          "name": "finish",
+          "schema": "string",
+          "required": false,
+          "description": "Visual finish of the item, common for guitars"
+        },
+        {
+          "name": "handmade",
+          "schema": "boolean",
+          "required": false,
+          "description": "Handmade items only"
+        },
+        {
+          "name": "item_city",
+          "schema": "string",
+          "required": false,
+          "description": "City where item is located"
+        },
+        {
+          "name": "item_country",
+          "schema": "string",
+          "required": false,
+          "description": "DEPRECATED - Country code where item is located"
+        },
+        {
+          "name": "item_region",
+          "schema": "string",
+          "required": false,
+          "description": "Country code where item is located"
+        },
+        {
+          "name": "item_state",
+          "schema": "string",
+          "required": false,
+          "description": "State or region code where item is located"
+        },
+        {
+          "name": "make",
+          "schema": "array",
+          "required": false,
+          "description": "Make(s)/brand of item (e.g. Fender). Can take a single value or an array."
+        },
+        {
+          "name": "model",
+          "schema": "string",
+          "required": false,
+          "description": "Model of item (e.g. Stratocaster)"
+        },
+        {
+          "name": "must_not",
+          "schema": "string",
+          "required": false,
+          "description": "Search term negation. If you want to exclude a term, add it here"
+        },
+        {
+          "name": "price_max",
+          "schema": "number",
+          "required": false,
+          "description": "Maximum price of search results (USD)"
+        },
+        {
+          "name": "price_min",
+          "schema": "number",
+          "required": false,
+          "description": "Minimum price of search results (USD)"
+        },
+        {
+          "name": "currency",
+          "schema": "string",
+          "required": false,
+          "description": "The currency to be used for the price filters"
+        },
+        {
+          "name": "year_max",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum year of manufacture"
+        },
+        {
+          "name": "year_min",
+          "schema": "integer",
+          "required": false,
+          "description": "Minumum year of manufacture"
+        },
+        {
+          "name": "accepts_gift_cards",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, include only items that accept gift cards"
+        },
+        {
+          "name": "preferred_seller",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, include only items by Reverb Preferred Sellers"
+        },
+        {
+          "name": "shop",
+          "schema": "string",
+          "required": false,
+          "description": "Slug of shop to search"
+        },
+        {
+          "name": "shop_id",
+          "schema": "string",
+          "required": false,
+          "description": "ID of shop to search"
+        },
+        {
+          "name": "listing_type",
+          "schema": "string",
+          "required": false,
+          "description": "Type of listing: auctions,offers"
+        },
+        {
+          "name": "ships_to",
+          "schema": "string",
+          "required": false,
+          "description": "Limit search to items that ship to this country code"
+        },
+        {
+          "name": "exclude_auctions",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, exclude auctions"
+        },
+        {
+          "name": "accepts_payment_plans",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, only show items that can be purchased with a payment plan"
+        },
+        {
+          "name": "watchers_count_min",
+          "schema": "integer",
+          "required": false,
+          "description": "Minimum number of watchers (used to find popular items)"
+        },
+        {
+          "name": "not_ids",
+          "schema": "array",
+          "required": false,
+          "description": "Listing ID negation. If you want to exclude a listing, add it here."
+        },
+        {
+          "name": "local_pickup",
+          "schema": "boolean",
+          "required": false,
+          "description": "Only items that offer local pickup"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "per_page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/listing_conditions",
+      "method": "/listingConditionsGet",
+      "httpMethod": "get",
+      "tag": "listing_conditions",
+      "description": "List of supported product conditions",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/listings",
+      "method": "/listingsGet",
+      "httpMethod": "get",
+      "tag": "listings",
+      "description": "Default search of listings includes only used & handmade. Add a filter to view all listings or use the /listings/all endpoint.",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "Search query."
+        },
+        {
+          "name": "auction_price_max",
+          "schema": "number",
+          "required": false,
+          "description": "Maximum current auction price"
+        },
+        {
+          "name": "category",
+          "schema": "string",
+          "required": false,
+          "description": "Category slug from /api/categories"
+        },
+        {
+          "name": "product_type",
+          "schema": "string",
+          "required": false,
+          "description": "Product type slug from /api/categories"
+        },
+        {
+          "name": "conditions",
+          "schema": "array",
+          "required": false,
+          "description": "Condition: all,new,b-stock,used,non-functioning,all-but-new,poor,fair,good,very-good,excellent,mint"
+        },
+        {
+          "name": "decade",
+          "schema": "string",
+          "required": false,
+          "description": "Decade: e.g. 1970s, early 70s"
+        },
+        {
+          "name": "finish",
+          "schema": "string",
+          "required": false,
+          "description": "Visual finish of the item, common for guitars"
+        },
+        {
+          "name": "handmade",
+          "schema": "boolean",
+          "required": false,
+          "description": "Handmade items only"
+        },
+        {
+          "name": "item_city",
+          "schema": "string",
+          "required": false,
+          "description": "City where item is located"
+        },
+        {
+          "name": "item_country",
+          "schema": "string",
+          "required": false,
+          "description": "DEPRECATED - Country code where item is located"
+        },
+        {
+          "name": "item_region",
+          "schema": "string",
+          "required": false,
+          "description": "Country code where item is located"
+        },
+        {
+          "name": "item_state",
+          "schema": "string",
+          "required": false,
+          "description": "State or region code where item is located"
+        },
+        {
+          "name": "make",
+          "schema": "array",
+          "required": false,
+          "description": "Make(s)/brand of item (e.g. Fender). Can take a single value or an array."
+        },
+        {
+          "name": "model",
+          "schema": "string",
+          "required": false,
+          "description": "Model of item (e.g. Stratocaster)"
+        },
+        {
+          "name": "must_not",
+          "schema": "string",
+          "required": false,
+          "description": "Search term negation. If you want to exclude a term, add it here"
+        },
+        {
+          "name": "price_max",
+          "schema": "number",
+          "required": false,
+          "description": "Maximum price of search results (USD)"
+        },
+        {
+          "name": "price_min",
+          "schema": "number",
+          "required": false,
+          "description": "Minimum price of search results (USD)"
+        },
+        {
+          "name": "currency",
+          "schema": "string",
+          "required": false,
+          "description": "The currency to be used for the price filters"
+        },
+        {
+          "name": "year_max",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum year of manufacture"
+        },
+        {
+          "name": "year_min",
+          "schema": "integer",
+          "required": false,
+          "description": "Minumum year of manufacture"
+        },
+        {
+          "name": "accepts_gift_cards",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, include only items that accept gift cards"
+        },
+        {
+          "name": "preferred_seller",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, include only items by Reverb Preferred Sellers"
+        },
+        {
+          "name": "shop",
+          "schema": "string",
+          "required": false,
+          "description": "Slug of shop to search"
+        },
+        {
+          "name": "shop_id",
+          "schema": "string",
+          "required": false,
+          "description": "ID of shop to search"
+        },
+        {
+          "name": "listing_type",
+          "schema": "string",
+          "required": false,
+          "description": "Type of listing: auctions,offers"
+        },
+        {
+          "name": "ships_to",
+          "schema": "string",
+          "required": false,
+          "description": "Limit search to items that ship to this country code"
+        },
+        {
+          "name": "exclude_auctions",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, exclude auctions"
+        },
+        {
+          "name": "accepts_payment_plans",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, only show items that can be purchased with a payment plan"
+        },
+        {
+          "name": "watchers_count_min",
+          "schema": "integer",
+          "required": false,
+          "description": "Minimum number of watchers (used to find popular items)"
+        },
+        {
+          "name": "not_ids",
+          "schema": "array",
+          "required": false,
+          "description": "Listing ID negation. If you want to exclude a listing, add it here."
+        },
+        {
+          "name": "local_pickup",
+          "schema": "boolean",
+          "required": false,
+          "description": "Only items that offer local pickup"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "per_page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/listings",
+      "method": "/listingsPost",
+      "httpMethod": "post",
+      "tag": "listings",
+      "description": "Create a listing",
+      "parameters": [
+        {
+          "name": "categories",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "condition",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "exclusive_channel",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "finish",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "has_inventory",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "inventory",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "make",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "model",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "multi_item",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "offers_enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "origin_country_code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "photos",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "preorder_info",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "price",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "prop_65_warning",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "publish",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "seller",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "seller_cost",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "shipping",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "shipping_profile_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "shipping_profile_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sku",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sold_as_is",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "storage_location",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tax_exempt",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "upc",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "upc_does_not_apply",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "videos",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "year",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/listings/all",
+      "method": "/listings/allGet",
+      "httpMethod": "get",
+      "tag": "listings",
+      "description": "All listings including used, handmade, and brand new",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "Search query."
+        },
+        {
+          "name": "auction_price_max",
+          "schema": "number",
+          "required": false,
+          "description": "Maximum current auction price"
+        },
+        {
+          "name": "category",
+          "schema": "string",
+          "required": false,
+          "description": "Category slug from /api/categories"
+        },
+        {
+          "name": "product_type",
+          "schema": "string",
+          "required": false,
+          "description": "Product type slug from /api/categories"
+        },
+        {
+          "name": "conditions",
+          "schema": "array",
+          "required": false,
+          "description": "Condition: all,new,b-stock,used,non-functioning,all-but-new,poor,fair,good,very-good,excellent,mint"
+        },
+        {
+          "name": "decade",
+          "schema": "string",
+          "required": false,
+          "description": "Decade: e.g. 1970s, early 70s"
+        },
+        {
+          "name": "finish",
+          "schema": "string",
+          "required": false,
+          "description": "Visual finish of the item, common for guitars"
+        },
+        {
+          "name": "handmade",
+          "schema": "boolean",
+          "required": false,
+          "description": "Handmade items only"
+        },
+        {
+          "name": "item_city",
+          "schema": "string",
+          "required": false,
+          "description": "City where item is located"
+        },
+        {
+          "name": "item_country",
+          "schema": "string",
+          "required": false,
+          "description": "DEPRECATED - Country code where item is located"
+        },
+        {
+          "name": "item_region",
+          "schema": "string",
+          "required": false,
+          "description": "Country code where item is located"
+        },
+        {
+          "name": "item_state",
+          "schema": "string",
+          "required": false,
+          "description": "State or region code where item is located"
+        },
+        {
+          "name": "make",
+          "schema": "array",
+          "required": false,
+          "description": "Make(s)/brand of item (e.g. Fender). Can take a single value or an array."
+        },
+        {
+          "name": "model",
+          "schema": "string",
+          "required": false,
+          "description": "Model of item (e.g. Stratocaster)"
+        },
+        {
+          "name": "must_not",
+          "schema": "string",
+          "required": false,
+          "description": "Search term negation. If you want to exclude a term, add it here"
+        },
+        {
+          "name": "price_max",
+          "schema": "number",
+          "required": false,
+          "description": "Maximum price of search results (USD)"
+        },
+        {
+          "name": "price_min",
+          "schema": "number",
+          "required": false,
+          "description": "Minimum price of search results (USD)"
+        },
+        {
+          "name": "currency",
+          "schema": "string",
+          "required": false,
+          "description": "The currency to be used for the price filters"
+        },
+        {
+          "name": "year_max",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum year of manufacture"
+        },
+        {
+          "name": "year_min",
+          "schema": "integer",
+          "required": false,
+          "description": "Minumum year of manufacture"
+        },
+        {
+          "name": "accepts_gift_cards",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, include only items that accept gift cards"
+        },
+        {
+          "name": "preferred_seller",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, include only items by Reverb Preferred Sellers"
+        },
+        {
+          "name": "shop",
+          "schema": "string",
+          "required": false,
+          "description": "Slug of shop to search"
+        },
+        {
+          "name": "shop_id",
+          "schema": "string",
+          "required": false,
+          "description": "ID of shop to search"
+        },
+        {
+          "name": "listing_type",
+          "schema": "string",
+          "required": false,
+          "description": "Type of listing: auctions,offers"
+        },
+        {
+          "name": "ships_to",
+          "schema": "string",
+          "required": false,
+          "description": "Limit search to items that ship to this country code"
+        },
+        {
+          "name": "exclude_auctions",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, exclude auctions"
+        },
+        {
+          "name": "accepts_payment_plans",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, only show items that can be purchased with a payment plan"
+        },
+        {
+          "name": "watchers_count_min",
+          "schema": "integer",
+          "required": false,
+          "description": "Minimum number of watchers (used to find popular items)"
+        },
+        {
+          "name": "not_ids",
+          "schema": "array",
+          "required": false,
+          "description": "Listing ID negation. If you want to exclude a listing, add it here."
+        },
+        {
+          "name": "local_pickup",
+          "schema": "boolean",
+          "required": false,
+          "description": "Only items that offer local pickup"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "per_page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/listings/facets/seller_location",
+      "method": "/listings/facets/sellerLocationGet",
+      "httpMethod": "get",
+      "tag": "listings",
+      "description": "Individual facets",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/listings/{id}/negotiation",
+      "method": "/listings/{id}/negotiationGet",
+      "httpMethod": "get",
+      "tag": "listings",
+      "description": "Returns the latest negotiation for the requesting user given a listing id",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/listings/{id}/offer",
+      "method": "/listings/{id}/offerPost",
+      "httpMethod": "post",
+      "tag": "listings",
+      "description": "Make an offer to the seller of a listing",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "price",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "shipping_price",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/listings/{listing_id}/bump",
+      "method": "/listings/{listingId}/bumpGet",
+      "httpMethod": "get",
+      "tag": "listings",
+      "description": "View available bump tiers and stats for a listing",
+      "parameters": [
+        {
+          "name": "listing_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/listings/{listing_id}/bump/{budget_type}",
+      "method": "/listings/{listingId}/bump/{budgetType}Post",
+      "httpMethod": "post",
+      "tag": "listings",
+      "description": "Bump a listing",
+      "parameters": [
+        {
+          "name": "listing_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "budget_type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/listings/{listing_id}/conversations",
+      "method": "/listings/{listingId}/conversationsPost",
+      "httpMethod": "post",
+      "tag": "listings",
+      "description": "Start a conversation with a seller",
+      "parameters": [
+        {
+          "name": "listing_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "body",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/listings/{listing_id}/images",
+      "method": "/listings/{listingId}/imagesGet",
+      "httpMethod": "get",
+      "tag": "listings",
+      "description": "View the images associated with a particular listing",
+      "parameters": [
+        {
+          "name": "listing_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/listings/{listing_id}/images/{image_id}",
+      "method": "/listings/{listingId}/images/{imageId}Delete",
+      "httpMethod": "delete",
+      "tag": "listings",
+      "description": "Delete an image from a listing",
+      "parameters": [
+        {
+          "name": "listing_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "image_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/listings/{listing_id}/sales",
+      "method": "/listings/{listingId}/salesGet",
+      "httpMethod": "get",
+      "tag": "listings",
+      "description": "See all sales that include a listing.",
+      "parameters": [
+        {
+          "name": "listing_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/listings/{slug}",
+      "method": "/listings/{slug}Delete",
+      "httpMethod": "delete",
+      "tag": "listings",
+      "description": "Delete a draft listing. Cannot be used on non-drafts.",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/listings/{slug}",
+      "method": "/listings/{slug}Get",
+      "httpMethod": "get",
+      "tag": "listings",
+      "description": "Listing details",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/listings/{slug}",
+      "method": "/listings/{slug}Put",
+      "httpMethod": "put",
+      "tag": "listings",
+      "description": "Update a listing",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "categories",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "condition",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "exclusive_channel",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "finish",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "has_inventory",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "inventory",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "make",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "model",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "multi_item",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "offers_enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "origin_country_code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "photos",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "preorder_info",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "price",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "prop_65_warning",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "publish",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "seller",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "seller_cost",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "shipping",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "shipping_profile_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "shipping_profile_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sku",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sold_as_is",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "storage_location",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tax_exempt",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "upc",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "upc_does_not_apply",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "videos",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "year",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/listings/{slug}/edit",
+      "method": "/listings/{slug}/editGet",
+      "httpMethod": "get",
+      "tag": "listings",
+      "description": "Edit listing.",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/listings/{slug}/flag",
+      "method": "/listings/{slug}/flagPost",
+      "httpMethod": "post",
+      "tag": "listings",
+      "description": "Flag a listing for inappropriate content or fraud",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/listings/{slug}/reviews",
+      "method": "/listings/{slug}/reviewsGet",
+      "httpMethod": "get",
+      "tag": "listings",
+      "description": "View reviews of a listing",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/listings/{slug}/reviews",
+      "method": "/listings/{slug}/reviewsPost",
+      "httpMethod": "post",
+      "tag": "listings",
+      "description": "Create a review for a listing",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/listings/{slug}/similar_listings",
+      "method": "/listings/{slug}/similarListingsGet",
+      "httpMethod": "get",
+      "tag": "listings",
+      "description": "Listing details",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/account",
+      "method": "/my/accountGet",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Get account details",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/my/account",
+      "method": "/my/accountPut",
+      "httpMethod": "put",
+      "tag": "my",
+      "description": "Update account details",
+      "parameters": [
+        {
+          "name": "currency",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "first_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "last_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "locale_code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "shipping_region_code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "third_party_ad_data_consent",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/addresses",
+      "method": "/my/addressesGet",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "See all addresses in your address book",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/my/addresses",
+      "method": "/my/addressesPost",
+      "httpMethod": "post",
+      "tag": "my",
+      "description": "Create a new address in your address book",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/my/addresses/{address_id}",
+      "method": "/my/addresses/{addressId}Delete",
+      "httpMethod": "delete",
+      "tag": "my",
+      "description": "Delete an existing address in your address book",
+      "parameters": [
+        {
+          "name": "address_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/addresses/{address_id}",
+      "method": "/my/addresses/{addressId}Put",
+      "httpMethod": "put",
+      "tag": "my",
+      "description": "Update an existing address in your address book",
+      "parameters": [
+        {
+          "name": "address_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/conversations",
+      "method": "/my/conversationsGet",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Get a list of your conversations",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "Query string to search conversations by"
+        },
+        {
+          "name": "unread_only",
+          "schema": "boolean",
+          "required": false,
+          "description": "Show unread conversations only"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "per_page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/conversations",
+      "method": "/my/conversationsPost",
+      "httpMethod": "post",
+      "tag": "my",
+      "description": "Start a conversation",
+      "parameters": [
+        {
+          "name": "body",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "cloudinary_photos",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "listing_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "recipient_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "recipient_uuid",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "shop_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/conversations/{conversation_id}/messages",
+      "method": "/my/conversations/{conversationId}/messagesPost",
+      "httpMethod": "post",
+      "tag": "my",
+      "description": "Send a message",
+      "parameters": [
+        {
+          "name": "conversation_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "body",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/conversations/{id}",
+      "method": "/my/conversations/{id}Get",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Display conversation details with messages in natural time order (oldest to newest)",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/conversations/{id}",
+      "method": "/my/conversations/{id}Put",
+      "httpMethod": "put",
+      "tag": "my",
+      "description": "Mark a conversation read/unread",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "read",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/counts",
+      "method": "/my/countsGet",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Get your actionable status counts",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/my/curated_set/product/{product_id}",
+      "method": "/my/curatedSet/product/{productId}Delete",
+      "httpMethod": "delete",
+      "tag": "my",
+      "description": "",
+      "parameters": [
+        {
+          "name": "product_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/curated_set/product/{product_id}",
+      "method": "/my/curatedSet/product/{productId}Post",
+      "httpMethod": "post",
+      "tag": "my",
+      "description": "",
+      "parameters": [
+        {
+          "name": "product_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/feed",
+      "method": "/my/feedGet",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Get listings from your feed",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/my/feed/customize",
+      "method": "/my/feed/customizeGet",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "get your feed customization options",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/my/feed/grid",
+      "method": "/my/feed/gridGet",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "get your feed",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/my/feedback/received",
+      "method": "/my/feedback/receivedGet",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "List of received feedback",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/my/feedback/sent",
+      "method": "/my/feedback/sentGet",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "List of sent feedback",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/my/follows",
+      "method": "/my/followsGet",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "See what the user is following",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/my/follows/articles",
+      "method": "/my/follows/articlesGet",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Returns a user's ArticleCategoryFollows",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/my/follows/articles",
+      "method": "/my/follows/articlesPost",
+      "httpMethod": "post",
+      "tag": "my",
+      "description": "Set a user's ArticleCategoryFollows",
+      "parameters": [
+        {
+          "name": "category_uuids",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/follows/brands/{slug}",
+      "method": "/my/follows/brands/{slug}Delete",
+      "httpMethod": "delete",
+      "tag": "my",
+      "description": "Unfollow a brand",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/follows/brands/{slug}",
+      "method": "/my/follows/brands/{slug}Get",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Follow status for a brand",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/follows/brands/{slug}",
+      "method": "/my/follows/brands/{slug}Post",
+      "httpMethod": "post",
+      "tag": "my",
+      "description": "Follow a brand",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/follows/categories/{category}/{subcategory}",
+      "method": "/my/follows/categories/{category}/{subcategory}Delete",
+      "httpMethod": "delete",
+      "tag": "my",
+      "description": "Unfollow a subcategory",
+      "parameters": [
+        {
+          "name": "category",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "subcategory",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/follows/categories/{category}/{subcategory}",
+      "method": "/my/follows/categories/{category}/{subcategory}Get",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Follow status for a subcategory",
+      "parameters": [
+        {
+          "name": "category",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "subcategory",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/follows/categories/{category}/{subcategory}",
+      "method": "/my/follows/categories/{category}/{subcategory}Post",
+      "httpMethod": "post",
+      "tag": "my",
+      "description": "Follow a subcategory",
+      "parameters": [
+        {
+          "name": "category",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "subcategory",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/follows/categories/{identifier}",
+      "method": "/my/follows/categories/{identifier}Delete",
+      "httpMethod": "delete",
+      "tag": "my",
+      "description": "Unfollow a category",
+      "parameters": [
+        {
+          "name": "identifier",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/follows/categories/{identifier}",
+      "method": "/my/follows/categories/{identifier}Get",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Follow status for a category",
+      "parameters": [
+        {
+          "name": "identifier",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/follows/categories/{identifier}",
+      "method": "/my/follows/categories/{identifier}Post",
+      "httpMethod": "post",
+      "tag": "my",
+      "description": "Follow a category",
+      "parameters": [
+        {
+          "name": "identifier",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/follows/categories/{uuid}",
+      "method": "/my/follows/categories/{uuid}Post",
+      "httpMethod": "post",
+      "tag": "my",
+      "description": "Follow a category",
+      "parameters": [
+        {
+          "name": "uuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/follows/collections/{slug}",
+      "method": "/my/follows/collections/{slug}Delete",
+      "httpMethod": "delete",
+      "tag": "my",
+      "description": "Unfollow a collection",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/follows/collections/{slug}",
+      "method": "/my/follows/collections/{slug}Get",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Follow status for a collection",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/follows/collections/{slug}",
+      "method": "/my/follows/collections/{slug}Post",
+      "httpMethod": "post",
+      "tag": "my",
+      "description": "Follow a collection",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/follows/handpicked/{slug}",
+      "method": "/my/follows/handpicked/{slug}Delete",
+      "httpMethod": "delete",
+      "tag": "my",
+      "description": "Unfollow a handpicked collection",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/follows/handpicked/{slug}",
+      "method": "/my/follows/handpicked/{slug}Get",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Follow status for a handpicked collection",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/follows/handpicked/{slug}",
+      "method": "/my/follows/handpicked/{slug}Post",
+      "httpMethod": "post",
+      "tag": "my",
+      "description": "Follow a handpicked collection",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/follows/search",
+      "method": "/my/follows/searchGet",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Follow status for a search",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/my/follows/search",
+      "method": "/my/follows/searchPost",
+      "httpMethod": "post",
+      "tag": "my",
+      "description": "Follow a search",
+      "parameters": [
+        {
+          "name": "accepts_gift_cards",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "accepts_payment_plans",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "auction_price_max",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "category",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "conditions",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "currency",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "decade",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "exclude_auctions",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "finish",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "handmade",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "item_city",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "item_country",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "item_region",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "item_state",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "listing_type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "local_pickup",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "make",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "model",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "must_not",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "not_ids",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "preferred_seller",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "price_max",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "price_min",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "product_type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "query",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ships_to",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "shop",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "shop_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "watchers_count_min",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "year_max",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "year_min",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/follows/shops/{slug}",
+      "method": "/my/follows/shops/{slug}Delete",
+      "httpMethod": "delete",
+      "tag": "my",
+      "description": "Unfollow a shop",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/follows/shops/{slug}",
+      "method": "/my/follows/shops/{slug}Get",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Follow status for a shop",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/follows/shops/{slug}",
+      "method": "/my/follows/shops/{slug}Post",
+      "httpMethod": "post",
+      "tag": "my",
+      "description": "Follow a shop",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/follows/{follow_id}",
+      "method": "/my/follows/{followId}Delete",
+      "httpMethod": "delete",
+      "tag": "my",
+      "description": "Delete a follow",
+      "parameters": [
+        {
+          "name": "follow_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/follows/{follow_id}/alert",
+      "method": "/my/follows/{followId}/alertDelete",
+      "httpMethod": "delete",
+      "tag": "my",
+      "description": "",
+      "parameters": [
+        {
+          "name": "follow_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/follows/{follow_id}/alert",
+      "method": "/my/follows/{followId}/alertPost",
+      "httpMethod": "post",
+      "tag": "my",
+      "description": "",
+      "parameters": [
+        {
+          "name": "follow_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/listings",
+      "method": "/my/listingsGet",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Retrieve a list of live listings for the seller. To search all listings specify state=all",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "Search query."
+        },
+        {
+          "name": "auction_price_max",
+          "schema": "number",
+          "required": false,
+          "description": "Maximum current auction price"
+        },
+        {
+          "name": "category",
+          "schema": "string",
+          "required": false,
+          "description": "Category slug from /api/categories"
+        },
+        {
+          "name": "product_type",
+          "schema": "string",
+          "required": false,
+          "description": "Product type slug from /api/categories"
+        },
+        {
+          "name": "conditions",
+          "schema": "array",
+          "required": false,
+          "description": "Condition: all,new,b-stock,used,non-functioning,all-but-new,poor,fair,good,very-good,excellent,mint"
+        },
+        {
+          "name": "decade",
+          "schema": "string",
+          "required": false,
+          "description": "Decade: e.g. 1970s, early 70s"
+        },
+        {
+          "name": "finish",
+          "schema": "string",
+          "required": false,
+          "description": "Visual finish of the item, common for guitars"
+        },
+        {
+          "name": "handmade",
+          "schema": "boolean",
+          "required": false,
+          "description": "Handmade items only"
+        },
+        {
+          "name": "item_city",
+          "schema": "string",
+          "required": false,
+          "description": "City where item is located"
+        },
+        {
+          "name": "item_country",
+          "schema": "string",
+          "required": false,
+          "description": "DEPRECATED - Country code where item is located"
+        },
+        {
+          "name": "item_region",
+          "schema": "string",
+          "required": false,
+          "description": "Country code where item is located"
+        },
+        {
+          "name": "item_state",
+          "schema": "string",
+          "required": false,
+          "description": "State or region code where item is located"
+        },
+        {
+          "name": "make",
+          "schema": "array",
+          "required": false,
+          "description": "Make(s)/brand of item (e.g. Fender). Can take a single value or an array."
+        },
+        {
+          "name": "model",
+          "schema": "string",
+          "required": false,
+          "description": "Model of item (e.g. Stratocaster)"
+        },
+        {
+          "name": "must_not",
+          "schema": "string",
+          "required": false,
+          "description": "Search term negation. If you want to exclude a term, add it here"
+        },
+        {
+          "name": "price_max",
+          "schema": "number",
+          "required": false,
+          "description": "Maximum price of search results (USD)"
+        },
+        {
+          "name": "price_min",
+          "schema": "number",
+          "required": false,
+          "description": "Minimum price of search results (USD)"
+        },
+        {
+          "name": "currency",
+          "schema": "string",
+          "required": false,
+          "description": "The currency to be used for the price filters"
+        },
+        {
+          "name": "year_max",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum year of manufacture"
+        },
+        {
+          "name": "year_min",
+          "schema": "integer",
+          "required": false,
+          "description": "Minumum year of manufacture"
+        },
+        {
+          "name": "accepts_gift_cards",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, include only items that accept gift cards"
+        },
+        {
+          "name": "preferred_seller",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, include only items by Reverb Preferred Sellers"
+        },
+        {
+          "name": "shop",
+          "schema": "string",
+          "required": false,
+          "description": "Slug of shop to search"
+        },
+        {
+          "name": "shop_id",
+          "schema": "string",
+          "required": false,
+          "description": "ID of shop to search"
+        },
+        {
+          "name": "listing_type",
+          "schema": "string",
+          "required": false,
+          "description": "Type of listing: auctions,offers"
+        },
+        {
+          "name": "ships_to",
+          "schema": "string",
+          "required": false,
+          "description": "Limit search to items that ship to this country code"
+        },
+        {
+          "name": "exclude_auctions",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, exclude auctions"
+        },
+        {
+          "name": "accepts_payment_plans",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, only show items that can be purchased with a payment plan"
+        },
+        {
+          "name": "watchers_count_min",
+          "schema": "integer",
+          "required": false,
+          "description": "Minimum number of watchers (used to find popular items)"
+        },
+        {
+          "name": "not_ids",
+          "schema": "array",
+          "required": false,
+          "description": "Listing ID negation. If you want to exclude a listing, add it here."
+        },
+        {
+          "name": "local_pickup",
+          "schema": "boolean",
+          "required": false,
+          "description": "Only items that offer local pickup"
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "required": false,
+          "description": "Available: [\"all\", \"draft\", \"ended\", \"live\", \"ordered\", \"sold_out\", \"suspended\", \"seller_unavailable\"]. Defaults to 'live'"
+        },
+        {
+          "name": "sku",
+          "schema": "string",
+          "required": false,
+          "description": "Find a listing by sku"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/listings/drafts",
+      "method": "/my/listings/draftsGet",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Retrieve a list your draft listings",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "Search query."
+        },
+        {
+          "name": "auction_price_max",
+          "schema": "number",
+          "required": false,
+          "description": "Maximum current auction price"
+        },
+        {
+          "name": "category",
+          "schema": "string",
+          "required": false,
+          "description": "Category slug from /api/categories"
+        },
+        {
+          "name": "product_type",
+          "schema": "string",
+          "required": false,
+          "description": "Product type slug from /api/categories"
+        },
+        {
+          "name": "conditions",
+          "schema": "array",
+          "required": false,
+          "description": "Condition: all,new,b-stock,used,non-functioning,all-but-new,poor,fair,good,very-good,excellent,mint"
+        },
+        {
+          "name": "decade",
+          "schema": "string",
+          "required": false,
+          "description": "Decade: e.g. 1970s, early 70s"
+        },
+        {
+          "name": "finish",
+          "schema": "string",
+          "required": false,
+          "description": "Visual finish of the item, common for guitars"
+        },
+        {
+          "name": "handmade",
+          "schema": "boolean",
+          "required": false,
+          "description": "Handmade items only"
+        },
+        {
+          "name": "item_city",
+          "schema": "string",
+          "required": false,
+          "description": "City where item is located"
+        },
+        {
+          "name": "item_country",
+          "schema": "string",
+          "required": false,
+          "description": "DEPRECATED - Country code where item is located"
+        },
+        {
+          "name": "item_region",
+          "schema": "string",
+          "required": false,
+          "description": "Country code where item is located"
+        },
+        {
+          "name": "item_state",
+          "schema": "string",
+          "required": false,
+          "description": "State or region code where item is located"
+        },
+        {
+          "name": "make",
+          "schema": "array",
+          "required": false,
+          "description": "Make(s)/brand of item (e.g. Fender). Can take a single value or an array."
+        },
+        {
+          "name": "model",
+          "schema": "string",
+          "required": false,
+          "description": "Model of item (e.g. Stratocaster)"
+        },
+        {
+          "name": "must_not",
+          "schema": "string",
+          "required": false,
+          "description": "Search term negation. If you want to exclude a term, add it here"
+        },
+        {
+          "name": "price_max",
+          "schema": "number",
+          "required": false,
+          "description": "Maximum price of search results (USD)"
+        },
+        {
+          "name": "price_min",
+          "schema": "number",
+          "required": false,
+          "description": "Minimum price of search results (USD)"
+        },
+        {
+          "name": "currency",
+          "schema": "string",
+          "required": false,
+          "description": "The currency to be used for the price filters"
+        },
+        {
+          "name": "year_max",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum year of manufacture"
+        },
+        {
+          "name": "year_min",
+          "schema": "integer",
+          "required": false,
+          "description": "Minumum year of manufacture"
+        },
+        {
+          "name": "accepts_gift_cards",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, include only items that accept gift cards"
+        },
+        {
+          "name": "preferred_seller",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, include only items by Reverb Preferred Sellers"
+        },
+        {
+          "name": "shop",
+          "schema": "string",
+          "required": false,
+          "description": "Slug of shop to search"
+        },
+        {
+          "name": "shop_id",
+          "schema": "string",
+          "required": false,
+          "description": "ID of shop to search"
+        },
+        {
+          "name": "listing_type",
+          "schema": "string",
+          "required": false,
+          "description": "Type of listing: auctions,offers"
+        },
+        {
+          "name": "ships_to",
+          "schema": "string",
+          "required": false,
+          "description": "Limit search to items that ship to this country code"
+        },
+        {
+          "name": "exclude_auctions",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, exclude auctions"
+        },
+        {
+          "name": "accepts_payment_plans",
+          "schema": "boolean",
+          "required": false,
+          "description": "If true, only show items that can be purchased with a payment plan"
+        },
+        {
+          "name": "watchers_count_min",
+          "schema": "integer",
+          "required": false,
+          "description": "Minimum number of watchers (used to find popular items)"
+        },
+        {
+          "name": "not_ids",
+          "schema": "array",
+          "required": false,
+          "description": "Listing ID negation. If you want to exclude a listing, add it here."
+        },
+        {
+          "name": "local_pickup",
+          "schema": "boolean",
+          "required": false,
+          "description": "Only items that offer local pickup"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/listings/negotiations",
+      "method": "/my/listings/negotiationsGet",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Get a list of active negotiations as a seller",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "per_page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/listings/{slug}/state/end",
+      "method": "/my/listings/{slug}/state/endPut",
+      "httpMethod": "put",
+      "tag": "my",
+      "description": "End a listing",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/lists",
+      "method": "/my/listsGet",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Get a list of your lists (wishlist, watch list, etc)",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/my/negotiations/buying",
+      "method": "/my/negotiations/buyingGet",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Get a list of active negotiations as a buyer",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "per_page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/negotiations/{id}",
+      "method": "/my/negotiations/{id}Get",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Get offer details",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/negotiations/{id}/accept",
+      "method": "/my/negotiations/{id}/acceptPost",
+      "httpMethod": "post",
+      "tag": "my",
+      "description": "Accept an offer",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/negotiations/{id}/counter",
+      "method": "/my/negotiations/{id}/counterPost",
+      "httpMethod": "post",
+      "tag": "my",
+      "description": "Counter an offer",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "country_code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "layaway_terms_slug",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "offer_items",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "price",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "quantity",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "recipient_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "region_code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "shipping_price",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/negotiations/{id}/decline",
+      "method": "/my/negotiations/{id}/declinePost",
+      "httpMethod": "post",
+      "tag": "my",
+      "description": "Decline an offer",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/orders/awaiting_feedback",
+      "method": "/my/orders/awaitingFeedbackGet",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "List of orders that need feedback",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/my/orders/buying/all",
+      "method": "/my/orders/buying/allGet",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Returns all orders, newest first.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/my/orders/buying/by_uuid/{uuid}",
+      "method": "/my/orders/buying/byUuid/{uuid}Get",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "",
+      "parameters": [
+        {
+          "name": "uuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/orders/buying/unpaid",
+      "method": "/my/orders/buying/unpaidGet",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Returns unpaid orders, newest first.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/my/orders/buying/{id}",
+      "method": "/my/orders/buying/{id}Get",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Returns order details for a buyer",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/orders/buying/{id}/mark_received",
+      "method": "/my/orders/buying/{id}/markReceivedPost",
+      "httpMethod": "post",
+      "tag": "my",
+      "description": "Marks an order as received by the buyer",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/orders/selling/all",
+      "method": "/my/orders/selling/allGet",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Get all seller orders, newest first.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/my/orders/selling/awaiting_shipment",
+      "method": "/my/orders/selling/awaitingShipmentGet",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Get unpaid seller orders, newest first.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/my/orders/selling/buyer_history/{buyer_id}",
+      "method": "/my/orders/selling/buyerHistory/{buyerId}Get",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "See previous orders from buyer",
+      "parameters": [
+        {
+          "name": "buyer_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/orders/selling/by_uuid/{uuid}",
+      "method": "/my/orders/selling/byUuid/{uuid}Get",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "",
+      "parameters": [
+        {
+          "name": "uuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/orders/selling/unpaid",
+      "method": "/my/orders/selling/unpaidGet",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Get unpaid seller orders, newest first.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/my/orders/selling/{id}",
+      "method": "/my/orders/selling/{id}Get",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Returns order details for a seller",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/orders/selling/{id}/mark_picked_up",
+      "method": "/my/orders/selling/{id}/markPickedUpPost",
+      "httpMethod": "post",
+      "tag": "my",
+      "description": "Marks an order as picked up",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "date",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/orders/selling/{id}/ship",
+      "method": "/my/orders/selling/{id}/shipPost",
+      "httpMethod": "post",
+      "tag": "my",
+      "description": "Marks an order as shipped",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "provider",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "send_notification",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "tracking_number",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/orders/selling/{order_id}/refund_requests",
+      "method": "/my/orders/selling/{orderId}/refundRequestsPost",
+      "httpMethod": "post",
+      "tag": "my",
+      "description": "Initiate a refund for a sold order",
+      "parameters": [
+        {
+          "name": "order_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/payments/selling",
+      "method": "/my/payments/sellingGet",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Get payments",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "per_page",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_start_date",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by date created in ISO8601 format - e.g: 2015-04-09T10:52:23-00:00"
+        },
+        {
+          "name": "created_end_date",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by date created in ISO8601 format - e.g: 2015-04-09T10:52:23-00:00"
+        },
+        {
+          "name": "updated_start_date",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by date modified in ISO8601 format - e.g: 2015-04-09T10:52:23-00:00"
+        },
+        {
+          "name": "updated_end_date",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by date modified in ISO8601 format - e.g: 2015-04-09T10:52:23-00:00"
+        },
+        {
+          "name": "order_id",
+          "schema": "string",
+          "required": false,
+          "description": "Look up payments by order id"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/payments/selling/{id}",
+      "method": "/my/payments/selling/{id}Get",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Get payment",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/payouts",
+      "method": "/my/payoutsGet",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Get a list of payouts",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/my/payouts/{id}/line_items",
+      "method": "/my/payouts/{id}/lineItemsGet",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Read the line items of a payout",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/refund_requests/selling",
+      "method": "/my/refundRequests/sellingGet",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Get a list of refund requests as a seller",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/my/refund_requests/selling/{id}",
+      "method": "/my/refundRequests/selling/{id}Put",
+      "httpMethod": "put",
+      "tag": "my",
+      "description": "Update a refund request for a sold order",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/viewed_listings",
+      "method": "/my/viewedListingsGet",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Get a list of your recently viewed listings.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/my/wishlist",
+      "method": "/my/wishlistGet",
+      "httpMethod": "get",
+      "tag": "my",
+      "description": "Get a list of wishlisted items",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/my/wishlist/{id}",
+      "method": "/my/wishlist/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "my",
+      "description": "Remove a listing from your wishlist",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/my/wishlist/{id}",
+      "method": "/my/wishlist/{id}Put",
+      "httpMethod": "put",
+      "tag": "my",
+      "description": "Add a listing to your wishlist",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/orders/{order_id}/feedback/buyer",
+      "method": "/orders/{orderId}/feedback/buyerGet",
+      "httpMethod": "get",
+      "tag": "orders",
+      "description": "Feedback details for an order's buyer",
+      "parameters": [
+        {
+          "name": "order_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/orders/{order_id}/feedback/buyer",
+      "method": "/orders/{orderId}/feedback/buyerPost",
+      "httpMethod": "post",
+      "tag": "orders",
+      "description": "Add feedback about an order's buyer",
+      "parameters": [
+        {
+          "name": "order_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/orders/{order_id}/feedback/seller",
+      "method": "/orders/{orderId}/feedback/sellerGet",
+      "httpMethod": "get",
+      "tag": "orders",
+      "description": "Feedback details for an order's seller",
+      "parameters": [
+        {
+          "name": "order_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/orders/{order_id}/feedback/seller",
+      "method": "/orders/{orderId}/feedback/sellerPost",
+      "httpMethod": "post",
+      "tag": "orders",
+      "description": "Add feedback about an order's seller",
+      "parameters": [
+        {
+          "name": "order_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/payment_methods",
+      "method": "/paymentMethodsGet",
+      "httpMethod": "get",
+      "tag": "payment_methods",
+      "description": "Get list of payment methods",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/priceguide/{id}/transactions/summary",
+      "method": "/priceguide/{id}/transactions/summaryGet",
+      "httpMethod": "get",
+      "tag": "priceguide",
+      "description": "Get a summary of transactions for a given price guide",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "number_of_months",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "condition",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/products/reviews/{id}",
+      "method": "/products/reviews/{id}Get",
+      "httpMethod": "get",
+      "tag": "products",
+      "description": "View a review",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/products/reviews/{id}",
+      "method": "/products/reviews/{id}Put",
+      "httpMethod": "put",
+      "tag": "products",
+      "description": "Update a review",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "body",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "rating",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/products/{slug}/reviews",
+      "method": "/products/{slug}/reviewsGet",
+      "httpMethod": "get",
+      "tag": "products",
+      "description": "View reviews of a comparison shopping page",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/products/{slug}/reviews",
+      "method": "/products/{slug}/reviewsPost",
+      "httpMethod": "post",
+      "tag": "products",
+      "description": "Create a review for a product",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/sales/reverb",
+      "method": "/sales/reverbGet",
+      "httpMethod": "get",
+      "tag": "sales",
+      "description": "View upcoming and live Reverb official sales.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/sales/seller",
+      "method": "/sales/sellerGet",
+      "httpMethod": "get",
+      "tag": "sales",
+      "description": "View your created sales.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/sales/{sale_id}/listings",
+      "method": "/sales/{saleId}/listingsDelete",
+      "httpMethod": "delete",
+      "tag": "sales",
+      "description": "Remove a listing from a sale",
+      "parameters": [
+        {
+          "name": "sale_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/sales/{sale_id}/listings",
+      "method": "/sales/{saleId}/listingsPost",
+      "httpMethod": "post",
+      "tag": "sales",
+      "description": "Add listings to a sale",
+      "parameters": [
+        {
+          "name": "sale_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/sales/{slug}",
+      "method": "/sales/{slug}Get",
+      "httpMethod": "get",
+      "tag": "sales",
+      "description": "",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/shipping/providers",
+      "method": "/shipping/providersGet",
+      "httpMethod": "get",
+      "tag": "shipping",
+      "description": "List of supported shipping providers",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/shipping/regions",
+      "method": "/shipping/regionsGet",
+      "httpMethod": "get",
+      "tag": "shipping",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/shop",
+      "method": "/shopGet",
+      "httpMethod": "get",
+      "tag": "shop",
+      "description": "Get your own shop details",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/shop",
+      "method": "/shopPut",
+      "httpMethod": "put",
+      "tag": "shop",
+      "description": "Update your shop profile",
+      "parameters": [
+        {
+          "name": "address",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "currency",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "legal_country_code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "legal_country_code_confirmed",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "payment_policy",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "return_policy",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "shipping_policy",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "shop_type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "website",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/shop/listing_conditions",
+      "method": "/shop/listingConditionsGet",
+      "httpMethod": "get",
+      "tag": "shop",
+      "description": "List of supported product conditions",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/shop/payment_methods",
+      "method": "/shop/paymentMethodsGet",
+      "httpMethod": "get",
+      "tag": "shop",
+      "description": "Get accepted payment methods",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/shop/vacation",
+      "method": "/shop/vacationDelete",
+      "httpMethod": "delete",
+      "tag": "shop",
+      "description": "Disable vacation mode. All listings will be re-enabled.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/shop/vacation",
+      "method": "/shop/vacationGet",
+      "httpMethod": "get",
+      "tag": "shop",
+      "description": "Returns shop vacation status",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/shop/vacation",
+      "method": "/shop/vacationPost",
+      "httpMethod": "post",
+      "tag": "shop",
+      "description": "Enable vacation mode. All listings will be unavailable until vacation mode is turned off.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/shops/{id}/storefronts",
+      "method": "/shops/{id}/storefrontsGet",
+      "httpMethod": "get",
+      "tag": "shops",
+      "description": "Get storefront details on a shop.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/shops/{shop_id}/shipping_profiles",
+      "method": "/shops/{shopId}/shippingProfilesGet",
+      "httpMethod": "get",
+      "tag": "shops",
+      "description": "List of shipping profiles for your shop",
+      "parameters": [
+        {
+          "name": "shop_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/shops/{slug}",
+      "method": "/shops/{slug}Get",
+      "httpMethod": "get",
+      "tag": "shops",
+      "description": "Get details on a shop.",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "include_listing_count",
+          "schema": "boolean",
+          "required": false,
+          "description": "Include the live listing count in the response."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/shops/{slug}/feedback",
+      "method": "/shops/{slug}/feedbackGet",
+      "httpMethod": "get",
+      "tag": "shops",
+      "description": "Get seller's feedback",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/shops/{slug}/feedback/buyer",
+      "method": "/shops/{slug}/feedback/buyerGet",
+      "httpMethod": "get",
+      "tag": "shops",
+      "description": "Get seller's feedback as a buyer",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/shops/{slug}/feedback/seller",
+      "method": "/shops/{slug}/feedback/sellerGet",
+      "httpMethod": "get",
+      "tag": "shops",
+      "description": "Get seller's feedback as a seller",
+      "parameters": [
+        {
+          "name": "slug",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/wants",
+      "method": "/wantsGet",
+      "httpMethod": "get",
+      "tag": "wants",
+      "description": "A list of wanted items by the user",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/wants/{id}",
+      "method": "/wants/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "wants",
+      "description": "Unmark an item wanted.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/wants/{id}",
+      "method": "/wants/{id}Put",
+      "httpMethod": "put",
+      "tag": "wants",
+      "description": "Mark an item wanted. Returns 200 on success or 422 on failure.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/webhooks/registrations",
+      "method": "/webhooks/registrationsGet",
+      "httpMethod": "get",
+      "tag": "webhooks",
+      "description": "Get webhook registrations",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/webhooks/registrations",
+      "method": "/webhooks/registrationsPost",
+      "httpMethod": "post",
+      "tag": "webhooks",
+      "description": "Register a webhook",
+      "parameters": [
+        {
+          "name": "topic",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/webhooks/registrations/{id}",
+      "method": "/webhooks/registrations/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "webhooks",
+      "description": "Remove a webhook",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/webhooks/registrations/{id}",
+      "method": "/webhooks/registrations/{id}Get",
+      "httpMethod": "get",
+      "tag": "webhooks",
+      "description": "Get details of a webhook registration",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://api.reverb.com/api",
   "apiDescription": "reverb",
   "apiTitle": "reverb",

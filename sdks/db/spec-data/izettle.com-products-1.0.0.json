@@ -4,6 +4,1083 @@
   "homepage": "izettle.com",
   "serviceName": "products",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/organizations/{organizationUuid}/categories/v2",
+      "method": "getProductTypes",
+      "httpMethod": "get",
+      "tag": "categories",
+      "description": "Retrieve all categories",
+      "parameters": [
+        {
+          "name": "organizationUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizations/{organizationUuid}/categories/v2",
+      "method": "createCategories",
+      "httpMethod": "post",
+      "tag": "categories",
+      "description": "Create a new category",
+      "parameters": [
+        {
+          "name": "organizationUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "categories",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/organizations/{organizationUuid}/categories/v2/{categoryUuid}",
+      "method": "deleteCategory",
+      "httpMethod": "delete",
+      "tag": "categories",
+      "description": "Delete a category",
+      "parameters": [
+        {
+          "name": "organizationUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "categoryUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/organizations/{organizationUuid}/categories/v2/{categoryUuid}",
+      "method": "renameCategory",
+      "httpMethod": "patch",
+      "tag": "categories",
+      "description": "Rename a category",
+      "parameters": [
+        {
+          "name": "organizationUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "categoryUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/organizations/{organizationUuid}/discounts",
+      "method": "getAllDiscounts",
+      "httpMethod": "get",
+      "tag": "discounts",
+      "description": "Retrieve all discounts",
+      "parameters": [
+        {
+          "name": "organizationUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizations/{organizationUuid}/discounts",
+      "method": "createDiscount",
+      "httpMethod": "post",
+      "tag": "discounts",
+      "description": "Create a discount",
+      "parameters": [
+        {
+          "name": "organizationUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "amount",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "externalReference",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "imageLookupKeys",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "percentage",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "uuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizations/{organizationUuid}/discounts/{discountUuid}",
+      "method": "deleteDiscount",
+      "httpMethod": "delete",
+      "tag": "discounts",
+      "description": "Delete a single discount ",
+      "parameters": [
+        {
+          "name": "organizationUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "discountUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/organizations/{organizationUuid}/discounts/{discountUuid}",
+      "method": "getDiscount",
+      "httpMethod": "get",
+      "tag": "discounts",
+      "description": "Retrieve a single discount",
+      "parameters": [
+        {
+          "name": "If-None-Match",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "organizationUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "discountUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizations/{organizationUuid}/discounts/{discountUuid}",
+      "method": "updateDiscount",
+      "httpMethod": "put",
+      "tag": "discounts",
+      "description": "Update a single discount",
+      "parameters": [
+        {
+          "name": "If-Match",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "organizationUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "discountUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "amount",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "externalReference",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "imageLookupKeys",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "percentage",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "uuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizations/{organizationUuid}/images",
+      "method": "getAllImageUrls",
+      "httpMethod": "get",
+      "tag": "images",
+      "description": "Retrieve all library item images",
+      "parameters": [
+        {
+          "name": "organizationUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizations/{organizationUuid}/import/status",
+      "method": "getLatestImportStatus",
+      "httpMethod": "get",
+      "tag": "import",
+      "description": "Get status for latest import",
+      "parameters": [
+        {
+          "name": "organizationUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizations/{organizationUuid}/import/status/{importUuid}",
+      "method": "getStatusByUuid",
+      "httpMethod": "get",
+      "tag": "import",
+      "description": "Get status for an import",
+      "parameters": [
+        {
+          "name": "organizationUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "importUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizations/{organizationUuid}/import/v2",
+      "method": "importLibraryV2",
+      "httpMethod": "post",
+      "tag": "import",
+      "description": "Import library items",
+      "parameters": [
+        {
+          "name": "organizationUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "products",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizations/{organizationUuid}/library",
+      "method": "getLibrary",
+      "httpMethod": "get",
+      "tag": "library",
+      "description": "Retrieve the entire library",
+      "parameters": [
+        {
+          "name": "organizationUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "eventLogUuid",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "all",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizations/{organizationUuid}/products",
+      "method": "deleteProducts",
+      "httpMethod": "delete",
+      "tag": "products",
+      "description": "Delete a list of products",
+      "parameters": [
+        {
+          "name": "organizationUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "uuid",
+          "schema": "array",
+          "required": true,
+          "description": "List of product UUIDs to be deleted"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/organizations/{organizationUuid}/products",
+      "method": "getAllProductsInPos",
+      "httpMethod": "get",
+      "tag": "products",
+      "description": "Retrieve all products visible in POS",
+      "parameters": [
+        {
+          "name": "organizationUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizations/{organizationUuid}/products",
+      "method": "createProduct",
+      "httpMethod": "post",
+      "tag": "products",
+      "description": "Create a new product",
+      "parameters": [
+        {
+          "name": "organizationUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "returnEntity",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "categories",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "category",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "createWithDefaultTax",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "externalReference",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "imageLookupKeys",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "online",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "presentation",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "taxCode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "taxExempt",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "taxRates",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "unitName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "uuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "variantOptionDefinitions",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "variants",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "vatPercentage",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizations/{organizationUuid}/products/online/slug",
+      "method": "createProductSlug",
+      "httpMethod": "post",
+      "tag": "products/online",
+      "description": "Create a product identifier",
+      "parameters": [
+        {
+          "name": "organizationUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "productName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizations/{organizationUuid}/products/options",
+      "method": "getAllOptions",
+      "httpMethod": "get",
+      "tag": "products",
+      "description": "Retrieve an aggregate of active Options in the library",
+      "parameters": [
+        {
+          "name": "organizationUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizations/{organizationUuid}/products/v2",
+      "method": "getAllProductsV2",
+      "httpMethod": "get",
+      "tag": "products",
+      "description": "Retrieve all products visible in POS – v2",
+      "parameters": [
+        {
+          "name": "organizationUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "schema": "boolean",
+          "description": "If true, sorts response by created date"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizations/{organizationUuid}/products/v2/count",
+      "method": "countAllProducts",
+      "httpMethod": "get",
+      "tag": "products",
+      "description": "Retrieve the count of existing products",
+      "parameters": [
+        {
+          "name": "organizationUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizations/{organizationUuid}/products/v2/{productUuid}",
+      "method": "updateProduct",
+      "httpMethod": "put",
+      "tag": "products",
+      "description": "Update a single product",
+      "parameters": [
+        {
+          "name": "If-Match",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "organizationUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "productUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "categories",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "category",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "externalReference",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "imageLookupKeys",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "online",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "presentation",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "taxCode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "taxExempt",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "taxRates",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "unitName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "uuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "variantOptionDefinitions",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "variants",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "vatPercentage",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/organizations/{organizationUuid}/products/{productUuid}",
+      "method": "deleteProduct",
+      "httpMethod": "delete",
+      "tag": "products",
+      "description": "Delete a single product",
+      "parameters": [
+        {
+          "name": "organizationUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "productUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/organizations/{organizationUuid}/products/{productUuid}",
+      "method": "getProduct",
+      "httpMethod": "get",
+      "tag": "products",
+      "description": "Retrieve a single product",
+      "parameters": [
+        {
+          "name": "If-None-Match",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "organizationUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "productUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/taxes",
+      "method": "getTaxRates",
+      "httpMethod": "get",
+      "tag": "taxes",
+      "description": "Get all available tax rates",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/taxes",
+      "method": "createTaxRates",
+      "httpMethod": "post",
+      "tag": "taxes",
+      "description": "Create new tax rates",
+      "parameters": [
+        {
+          "name": "taxRates",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/taxes/count",
+      "method": "getProductCountForAllTaxes",
+      "httpMethod": "get",
+      "tag": "taxes",
+      "description": "Get all tax rates and a count of products associated with each",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/taxes/settings",
+      "method": "getTaxSettings",
+      "httpMethod": "get",
+      "tag": "taxes",
+      "description": "Get the organization tax settings ",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/taxes/settings",
+      "method": "setTaxationMode",
+      "httpMethod": "put",
+      "tag": "taxes",
+      "description": "Update the organization tax settings",
+      "parameters": [
+        {
+          "name": "taxationMode",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/taxes/{taxRateUuid}",
+      "method": "deleteTaxRate",
+      "httpMethod": "delete",
+      "tag": "taxes",
+      "description": "Delete a single tax rate",
+      "parameters": [
+        {
+          "name": "taxRateUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/taxes/{taxRateUuid}",
+      "method": "getTaxRate",
+      "httpMethod": "get",
+      "tag": "taxes",
+      "description": "Get a single tax rate",
+      "parameters": [
+        {
+          "name": "taxRateUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/taxes/{taxRateUuid}",
+      "method": "updateTaxRate",
+      "httpMethod": "put",
+      "tag": "taxes",
+      "description": "Update a single tax rate",
+      "parameters": [
+        {
+          "name": "taxRateUuid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "default",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "label",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "percentage",
+          "schema": "number",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://products.izettle.com",
   "apiDescription": "The Product Library API is used for managing merchant's product information and product images.",
   "apiTitle": "Product Library API",

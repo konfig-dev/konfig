@@ -3,6 +3,284 @@
   "openApiRaw": "https://raw.githubusercontent.com/icons8/api-docs/master/apiary.apib",
   "homepage": "icons8.com",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/api/iconsets/v3/categories?platform={platform}&language={language}",
+      "method": "categories",
+      "httpMethod": "get",
+      "description": "Categories",
+      "parameters": [
+        {
+          "name": "platform",
+          "schema": "string",
+          "required": true,
+          "description": "the platform that we are searching icons for"
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": true,
+          "description": "the language code to get localized result"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/iconsets/v3/category?category={category}&subcategory={subcategory}&amount={amount}&offset={offset}&platform={platform}&language={language}",
+      "method": "byCategory",
+      "httpMethod": "get",
+      "description": "By Category",
+      "parameters": [
+        {
+          "name": "category",
+          "schema": "string",
+          "required": true,
+          "description": "the code of category"
+        },
+        {
+          "name": "subcategory",
+          "schema": "string",
+          "required": true,
+          "description": "the code of subcategory"
+        },
+        {
+          "name": "amount",
+          "schema": "number",
+          "required": true,
+          "description": "the maximum number of icons which you'd like to receive"
+        },
+        {
+          "name": "offset",
+          "schema": "number",
+          "required": true,
+          "description": "the offset from the first received result"
+        },
+        {
+          "name": "platform",
+          "schema": "string",
+          "required": true,
+          "description": "the style of the icons"
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": true,
+          "description": "the language code to get localized result"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/iconsets/v3/latest?term={term}&amount={amount}&offset={offset}&platform={platform}&language={language}",
+      "method": "latest",
+      "httpMethod": "get",
+      "description": "Latest",
+      "parameters": [
+        {
+          "name": "amount",
+          "schema": "number",
+          "required": true,
+          "description": "the maximum number of icons which you'd like to receive"
+        },
+        {
+          "name": "offset",
+          "schema": "number",
+          "required": true,
+          "description": "the offset from the first received result"
+        },
+        {
+          "name": "platform",
+          "schema": "string",
+          "required": true,
+          "description": "the style of the icons"
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": true,
+          "description": "the language code to get localized result"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/iconsets/v3/search?term={term}&amount={amount}&offset={offset}&platform={platform}&language={language}&exact_amount={exact_amount}",
+      "method": "byKeywordV3",
+      "httpMethod": "get",
+      "description": "By Keyword v3",
+      "parameters": [
+        {
+          "name": "term",
+          "schema": "string",
+          "required": true,
+          "description": "the name or tag of the icon or any other phrase.\ne.g. use \"@home\" to find icons with the tag \"home\" and \"=home\" to find icons with the name \"home\"\n"
+        },
+        {
+          "name": "amount",
+          "schema": "number",
+          "required": true,
+          "description": "the maximum number of icons which you'd like to receive (will be multiplied by platforms count, if you didn't specify the platform and didn't set the 'exact_amount' parameter)"
+        },
+        {
+          "name": "exact_amount",
+          "schema": "boolean",
+          "required": true,
+          "description": "set it to 'true' if you'd like to receive the exact amount of icons, not multiplied by platforms count"
+        },
+        {
+          "name": "offset",
+          "schema": "number",
+          "required": true,
+          "description": "the offset from the first received result"
+        },
+        {
+          "name": "platform",
+          "schema": "string",
+          "required": true,
+          "description": "the style of the icons"
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": true,
+          "description": "the language code to get localized result"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/iconsets/v3/total?since={since}",
+      "method": "totals",
+      "httpMethod": "get",
+      "description": "Totals",
+      "parameters": [
+        {
+          "name": "since",
+          "schema": "string",
+          "required": true,
+          "description": "the optional date to calculate the total number of icons that were created after it.\nIt should be in format \"four year digits - dash - two month number digits - dash - two day number digits. For example 2014-12-31 means \"31th of December, 2014\".\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/iconsets/v4/search?term={term}&amount={amount}&offset={offset}&platform={platform}&language={language}&exact_amount={exact_amount}",
+      "method": "byKeywordV4",
+      "httpMethod": "get",
+      "description": "By Keyword v4",
+      "parameters": [
+        {
+          "name": "term",
+          "schema": "string",
+          "required": true,
+          "description": "the name or tag of the icon or any other phrase.\ne.g. use \"@home\" to find icons with the tag \"home\" and \"=home\" to find icons with the name \"home\"\n"
+        },
+        {
+          "name": "amount",
+          "schema": "number",
+          "required": true,
+          "description": "the maximum number of icons which you'd like to receive (will be multiplied by platforms count, if you didn't specify the platform and didn't set the 'exact_amount' parameter)"
+        },
+        {
+          "name": "offset",
+          "schema": "number",
+          "required": true,
+          "description": "the offset from the first received result"
+        },
+        {
+          "name": "platform",
+          "schema": "string",
+          "required": true,
+          "description": "the style of the icons"
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": true,
+          "description": "the language code to get localized result"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/task/web-font/collection",
+      "method": "fromACollection",
+      "httpMethod": "post",
+      "description": "From a Collection",
+      "parameters": [
+        {
+          "name": "auth",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "task",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/task/web-font/icons",
+      "method": "fromSeparateIcons",
+      "httpMethod": "post",
+      "description": "From Separate Icons",
+      "parameters": [
+        {
+          "name": "auth",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "task",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.icons8.com",
   "apiDescription": "# Icons8 API\n\nIcons8 API allows us to search and obtain [our icons](https://icons8.com/web-app).\n\nYou're welcome to use our icons to extend the functionality of your web and mobile applications, website templates, and even tattoos.\n\n![Tattoos](https://cdn.rawgit.com/icons8/api-docs/cff6fdf0/tattoos.svg)\n\n## Usage Examples\n\nSome examples of what you can do with our icons:\n\n* **Template customization.** This way, [Canva](https://www.canva.com/) uses our icons to customize their layouts.\n\n* **Graphics and text editors.** [Gravit](https://gravit.io/) allows to insert our icons into the mockups.\n\n* **Any application with customization.** [TimeTune](http://timetune.center/) uses our icons to customize the activities.\n\n## Getting Started\n\nTo get started, please [contact us](https://icons8.com/contact) to obtain an API key.\n\n## Pricing\n\nOur API license starts at $100/month.",
   "apiTitle": "Use a [New Version](https://icons8.github.io/icons8-docs/) Instead",

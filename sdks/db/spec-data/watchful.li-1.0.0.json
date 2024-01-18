@@ -3,6 +3,2028 @@
   "openApiRaw": "https://app.watchful.net/api/v1/api-docs/",
   "homepage": "watchful.li",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/audits",
+      "method": "getAudits",
+      "httpMethod": "get",
+      "tag": "audits",
+      "description": "Get a list of audits",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of object to return (max 100, default 25)"
+        },
+        {
+          "name": "limitstart",
+          "schema": "integer",
+          "required": false,
+          "description": "Start of the return (default 0)"
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "required": false,
+          "description": "ORDER by this field separete by comas. Add + / - after field for set ASC / DESC: type+,name-"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/audits/metadata",
+      "method": "getFieldsAudits",
+      "httpMethod": "get",
+      "tag": "audits",
+      "description": "Get the list of fields",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/audits/{id}",
+      "method": "deleteAuditById",
+      "httpMethod": "delete",
+      "tag": "audits",
+      "description": "Delete a specific audit",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of audit that needs to be deleted"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/audits/{id}",
+      "method": "getAuditById",
+      "httpMethod": "get",
+      "tag": "audits",
+      "description": "Find audit by ID",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of audit that needs to be fetched"
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "Fields to return separate by comas: name,id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/extensions",
+      "method": "getExtensions",
+      "httpMethod": "get",
+      "tag": "extensions",
+      "description": "Get a list Extensions",
+      "parameters": [
+        {
+          "name": "ext_name",
+          "schema": "string",
+          "required": false,
+          "description": "Do a 'LIKE' search, you can also use '%'"
+        },
+        {
+          "name": "siteids",
+          "schema": "string",
+          "required": false,
+          "description": "List of sites id separated by comma"
+        },
+        {
+          "name": "ext_prefix",
+          "schema": "string",
+          "required": false,
+          "description": "Do a 'LIKE' search, you can also use '%'. technical name of the extension com_xxxx"
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "required": false,
+          "description": "Do a 'LIKE' search, you can also use '%'"
+        },
+        {
+          "name": "vUpdate",
+          "schema": "integer",
+          "required": false,
+          "description": "update available for this extension"
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "Fields to return separate by comas: name,id"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of object to return (max 100, default 25)"
+        },
+        {
+          "name": "limitstart",
+          "schema": "integer",
+          "required": false,
+          "description": "Start of the return (default 0)"
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "required": false,
+          "description": "ORDER by this field separete by comas. Add + / - after field for set ASC / DESC: type+,name-"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/extensions/metadata",
+      "method": "getFieldsExtensions",
+      "httpMethod": "get",
+      "tag": "extensions",
+      "description": "Get the list of fields",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/extensions/{id}/ignore",
+      "method": "ignoreExtensionUpdate",
+      "httpMethod": "post",
+      "tag": "extensions",
+      "description": "Set 'ignore updates' for a given extension / site_id",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the extension"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/extensions/{id}/unignore",
+      "method": "unignoreExtensionUpdate",
+      "httpMethod": "post",
+      "tag": "extensions",
+      "description": "Remove 'ignore updates' for a given extension",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the extension"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/extensions/{id}/update",
+      "method": "updateExtension",
+      "httpMethod": "post",
+      "tag": "extensions",
+      "description": "Update the extension on the remote site",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the extension"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/feedbacks",
+      "method": "getFeedbacks",
+      "httpMethod": "get",
+      "tag": "feedbacks",
+      "description": "Get feedbacks",
+      "parameters": [
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "Fields to return separate by comas (es. name,id)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/feedbacks",
+      "method": "createFeedbacks",
+      "httpMethod": "post",
+      "tag": "feedbacks",
+      "description": "Create a feedback",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/feedbacks/metadata",
+      "method": "getFieldsFeedbacks",
+      "httpMethod": "get",
+      "tag": "feedbacks",
+      "description": "Get the list of fields",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/logs",
+      "method": "/logsGet",
+      "httpMethod": "get",
+      "tag": "logs",
+      "description": "Get a list of logs",
+      "parameters": [
+        {
+          "name": "log_type",
+          "schema": "string",
+          "description": "Type of the log"
+        },
+        {
+          "name": "log_entry",
+          "schema": "string",
+          "required": false,
+          "description": "Do a 'LIKE' search, you can also use '%'"
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "required": false,
+          "description": "Logs after this date, format YYYY-MM-DD HH:MM:SS"
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "required": false,
+          "description": "Logs before this date, format YYYY-MM-DD HH:MM:SS"
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "Fields to return separate by comas: name,id"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of object to return (max 100, default 25)"
+        },
+        {
+          "name": "limitstart",
+          "schema": "integer",
+          "required": false,
+          "description": "Start of the return (default 0)"
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "required": false,
+          "description": "ORDER by this field separete by comas. Add + / - after field for set ASC / DESC: type+,name-"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/logs/export",
+      "method": "getExportLogs",
+      "httpMethod": "get",
+      "tag": "logs",
+      "description": "Get a CSV or PDF file contain the list of logs",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Format of exported file (PDF or CSV)"
+        },
+        {
+          "name": "site",
+          "schema": "integer",
+          "required": false,
+          "description": "Site id of the log"
+        },
+        {
+          "name": "filter_type",
+          "schema": "string",
+          "description": "Type of the log"
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "Do a 'LIKE' search, you can also use '%'"
+        },
+        {
+          "name": "startdate",
+          "schema": "string",
+          "required": false,
+          "description": "Logs after this date, format YYYY-MM-DD HH:MM:SS"
+        },
+        {
+          "name": "enddate",
+          "schema": "string",
+          "required": false,
+          "description": "Logs before this date, format YYYY-MM-DD HH:MM:SS"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of object to return (max 100, default 25)"
+        },
+        {
+          "name": "startid",
+          "schema": "integer",
+          "required": false,
+          "description": "Start of the return (default 0)"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/logs/metadata",
+      "method": "getFieldsLogs",
+      "httpMethod": "get",
+      "tag": "logs",
+      "description": "Get the list of fields",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/logs/types",
+      "method": "getTypesLogs",
+      "httpMethod": "get",
+      "tag": "logs",
+      "description": "Get the list of log types",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/logs/{id}",
+      "method": "deleteLogById",
+      "httpMethod": "delete",
+      "tag": "logs",
+      "description": "Delete a specific log",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of log that needs to be deleted"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/packages",
+      "method": "/packagesPost",
+      "httpMethod": "post",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/reports/sites/{id}",
+      "method": "/reports/sites/{id}Get",
+      "httpMethod": "get",
+      "tag": "reports",
+      "description": "Returns a PDF report for a specific site",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID that needs to be fetched"
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "required": false,
+          "description": "Start of the report, format YYYY-MM-DD, default today-30day "
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "required": false,
+          "description": "End of the report, format YYYY-MM-DD, default today"
+        },
+        {
+          "name": "reports",
+          "schema": "string",
+          "required": false,
+          "description": "Type of reports separate by comas: Ga,Logs,Uptime"
+        },
+        {
+          "name": "log_type",
+          "schema": "string",
+          "description": "Type of the log to show in the report"
+        },
+        {
+          "name": "compare",
+          "schema": "integer",
+          "description": "Define if you want show previous values in Google Analytics graph"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reports/tags/{id}",
+      "method": "/reports/tags/{id}Get",
+      "httpMethod": "get",
+      "tag": "reports",
+      "description": "Find sites by ID",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID that needs to be fetched"
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "required": false,
+          "description": "Start of the report, format YYYY-MM-DD, default today-30day "
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "required": false,
+          "description": "End of the report, format YYYY-MM-DD, default today"
+        },
+        {
+          "name": "reports",
+          "schema": "string",
+          "required": false,
+          "description": "Type of reports separate by comas: Ga,Logs,Uptime"
+        },
+        {
+          "name": "log_type",
+          "schema": "string",
+          "description": "Type of the log to show in the report"
+        },
+        {
+          "name": "compare",
+          "schema": "integer",
+          "description": "Define if you want show previous values in Google Analytics graph"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sites",
+      "method": "getSites",
+      "httpMethod": "get",
+      "tag": "sites",
+      "description": "Get a list of Sites",
+      "parameters": [
+        {
+          "name": "siteids",
+          "schema": "string",
+          "required": false,
+          "description": "List of sites id separated by comma"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "Site name. Do a 'LIKE' search, you can also use '%'"
+        },
+        {
+          "name": "access_url",
+          "schema": "string",
+          "required": false,
+          "description": "Access URL. Do a 'LIKE' search, you can also use '%'"
+        },
+        {
+          "name": "j_version",
+          "schema": "string",
+          "required": false,
+          "description": "Joomla version. Do a 'LIKE' search, you can also use '%'"
+        },
+        {
+          "name": "ip",
+          "schema": "string",
+          "required": false,
+          "description": "Ip address. Do a 'LIKE' search, you can also use '%'"
+        },
+        {
+          "name": "jUpdate",
+          "schema": "integer",
+          "description": "Joomla core update status (1: update required, 0: update not required)"
+        },
+        {
+          "name": "canUpdate",
+          "schema": "integer",
+          "description": "canUpdate"
+        },
+        {
+          "name": "published",
+          "schema": "integer",
+          "required": false,
+          "description": "Is published"
+        },
+        {
+          "name": "error",
+          "schema": "string",
+          "required": false,
+          "description": "Has errors"
+        },
+        {
+          "name": "nbUpdates",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "up",
+          "schema": "integer",
+          "required": false,
+          "description": "Is online"
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "Fields to return separated by commas (e.g. name,id)"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of objects to return (max 100, default 25)"
+        },
+        {
+          "name": "limitstart",
+          "schema": "integer",
+          "required": false,
+          "description": "Start of the return (default 0)"
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "required": false,
+          "description": "ORDER by this field separete by comas. Add + / - after field for set ASC / DESC: type+,name-"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sites",
+      "method": "createSite",
+      "httpMethod": "post",
+      "tag": "sites",
+      "description": "Create a site",
+      "parameters": [
+        {
+          "name": "access_url",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "admin_url",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "akeebaProfile",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "backupSchedule",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dateBackup",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "notes",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "published",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "secret_word",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "word_akeeba",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "word_check",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sites/metadata",
+      "method": "/sites/metadataGet",
+      "httpMethod": "get",
+      "tag": "sites",
+      "description": "Get the list of fields",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sites/{id}",
+      "method": "/sites/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "sites",
+      "description": "Delete a specific Site",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of Site that needs to be deleted"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sites/{id}",
+      "method": "getSiteById",
+      "httpMethod": "get",
+      "tag": "sites",
+      "description": "Find sites by ID",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID that needs to be fetched"
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "Fields to return separate by comas: name,id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sites/{id}",
+      "method": "/sites/{id}Put",
+      "httpMethod": "put",
+      "tag": "sites",
+      "description": "Update a site",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the website that needs to be update"
+        },
+        {
+          "name": "access_url",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "admin_url",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "akeebaProfile",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "backupSchedule",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dateBackup",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "notes",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "published",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "secret_word",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "word_akeeba",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "word_check",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sites/{id}/audits",
+      "method": "getSiteAudits",
+      "httpMethod": "get",
+      "tag": "sites",
+      "description": "Return audits for a specific website",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the website"
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "Fields to return separate by comas: name,id"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of object to return (max 100, default 25)"
+        },
+        {
+          "name": "limitstart",
+          "schema": "integer",
+          "required": false,
+          "description": "Start of the return (default 0)"
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "required": false,
+          "description": "ORDER by this field"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sites/{id}/audits",
+      "method": "createAudits",
+      "httpMethod": "post",
+      "tag": "sites",
+      "description": "Create an audit for the site",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the website"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sites/{id}/backupnow",
+      "method": "addSiteToBackupQueue",
+      "httpMethod": "post",
+      "tag": "sites",
+      "description": "Add the site to the backup queue",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the website"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sites/{id}/backupprofiles",
+      "method": "getBackupProfiles",
+      "httpMethod": "get",
+      "tag": "sites",
+      "description": "Return backup profile",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the website"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/sites/{id}/backups",
+      "method": "getListBackups",
+      "httpMethod": "get",
+      "tag": "sites",
+      "description": "List of latest backups",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the website"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/sites/{id}/backupstart",
+      "method": "startSiteBackup",
+      "httpMethod": "post",
+      "tag": "sites",
+      "description": "Start a remote backup for the site",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the website"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sites/{id}/backupstep",
+      "method": "stepSiteBackup",
+      "httpMethod": "post",
+      "tag": "sites",
+      "description": "Step (continue) a remote backup for the site",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the website"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sites/{id}/extensions",
+      "method": "/sites/{id}/extensionsGet",
+      "httpMethod": "get",
+      "tag": "sites",
+      "description": "Get extensions for a site",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the website"
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "Fields to return separate by comas: name,id"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of object to return (max 100, default 25)"
+        },
+        {
+          "name": "limitstart",
+          "schema": "integer",
+          "required": false,
+          "description": "Start of the return (default 0)"
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "required": false,
+          "description": "ORDER by this field"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sites/{id}/extensions",
+      "method": "installExtension",
+      "httpMethod": "post",
+      "tag": "sites",
+      "description": "Install extension",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the website"
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": "URL to install the extension from"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/sites/{id}/logs",
+      "method": "/sites/{id}/logsGet",
+      "httpMethod": "get",
+      "tag": "sites",
+      "description": "Return logs for a specific website",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the website"
+        },
+        {
+          "name": "log_entry",
+          "schema": "string",
+          "required": false,
+          "description": "Do a 'LIKE' search, you can also use '%'"
+        },
+        {
+          "name": "log_type",
+          "schema": "string",
+          "description": "Type of the log"
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "required": false,
+          "description": "Logs after this date, format YYYY-MM-DD HH:MM:SS"
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "required": false,
+          "description": "Logs before this date, format YYYY-MM-DD HH:MM:SS"
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "Fields to return separate by comas: name,id"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of object to return (max 100, default 25)"
+        },
+        {
+          "name": "limitstart",
+          "schema": "integer",
+          "required": false,
+          "description": "Start of the return (default 0)"
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "required": false,
+          "description": "ORDER by this field separete by comas. Add + / - after field for set ASC / DESC: type+,name-"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sites/{id}/logs",
+      "method": "createLog",
+      "httpMethod": "post",
+      "tag": "sites",
+      "description": "Create a custom log for a specific website",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the website"
+        },
+        {
+          "name": "log_date",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "log_entry",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "log_level",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sites/{id}/monitor",
+      "method": "deleteMonitor",
+      "httpMethod": "delete",
+      "tag": "sites",
+      "description": "Delete uptime monitor",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the website"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sites/{id}/monitor",
+      "method": "postMonitor",
+      "httpMethod": "post",
+      "tag": "sites",
+      "description": "Post uptime monitor",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the website"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sites/{id}/scanner",
+      "method": "scanner",
+      "httpMethod": "get",
+      "tag": "sites",
+      "description": "Scan the site for malware",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the website"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sites/{id}/seo",
+      "method": "seoAnalyze",
+      "httpMethod": "get",
+      "tag": "sites",
+      "description": "SEO analyze for a page",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the website"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sites/{id}/tags",
+      "method": "/sites/{id}/tagsGet",
+      "httpMethod": "get",
+      "tag": "sites",
+      "description": "Return tags for a specific website",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the website"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "Do a 'LIKE' search, you can also use '%'"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": "Bootstrap color of the tag"
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "Fields to return separate by comas: name,id"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of object to return (max 100, default 25)"
+        },
+        {
+          "name": "limitstart",
+          "schema": "integer",
+          "required": false,
+          "description": "Start of the return (default 0)"
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "required": false,
+          "description": "ORDER by this field"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sites/{id}/tags",
+      "method": "postTags",
+      "httpMethod": "post",
+      "tag": "sites",
+      "description": "Add tags for a specific website",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the website"
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "nbSites",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sites/{id}/updatejoomla",
+      "method": "updateJoomla",
+      "httpMethod": "post",
+      "tag": "sites",
+      "description": "Update Joomla core on the remote site",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the website"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sites/{id}/uptime",
+      "method": "getUptime",
+      "httpMethod": "get",
+      "tag": "sites",
+      "description": "Return uptime data",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the website"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sites/{id}/validate",
+      "method": "validateSite",
+      "httpMethod": "get",
+      "tag": "sites",
+      "description": "validate the site, return the new logs",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the website"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sites/{id}/validatedebug",
+      "method": "validateDebugSite",
+      "httpMethod": "get",
+      "tag": "sites",
+      "description": "validate the site, return the debug information",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of the website"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ssousers",
+      "method": "getSsoUsers",
+      "httpMethod": "get",
+      "tag": "ssousers",
+      "description": "Get a list of SSO Users",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ssousers",
+      "method": "createSsoUsers",
+      "httpMethod": "post",
+      "tag": "ssousers",
+      "description": "Create a SSO User",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "groupid",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "lastLoginDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "lastLoginSite",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "userid",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ssousers/{id}",
+      "method": "deleteSsoUserById",
+      "httpMethod": "delete",
+      "tag": "ssousers",
+      "description": "Delete a specific SSO User",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of SSO User that needs to be deleted"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ssousers/{id}",
+      "method": "getSsoUsersById",
+      "httpMethod": "get",
+      "tag": "ssousers",
+      "description": "Find SSO User by ID",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of SSO User that needs to be fetched"
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "Fields to return separate by comas: name,id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ssousers/{id}",
+      "method": "updateSsoUsers",
+      "httpMethod": "put",
+      "tag": "ssousers",
+      "description": "Update a SSO User",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of SSO User that needs to be updated"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "groupid",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "lastLoginDate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "lastLoginSite",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "userid",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tags",
+      "method": "/tagsGet",
+      "httpMethod": "get",
+      "tag": "tags",
+      "description": "Get a list of tags",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "Do a 'LIKE' search, you can also use '%'"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": "Bootstrap color of the tag"
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "Fields to return separate by comas: name,id"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of object to return (max 100, default 25)"
+        },
+        {
+          "name": "limitstart",
+          "schema": "integer",
+          "required": false,
+          "description": "Start of the return (default 0)"
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "required": false,
+          "description": "ORDER by this field separete by comas. Add + / - after field for set ASC / DESC: type+,name-"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tags",
+      "method": "createTags",
+      "httpMethod": "post",
+      "tag": "tags",
+      "description": "Create a tag",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "nbSites",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tags/metadata",
+      "method": "/tags/metadataGet",
+      "httpMethod": "get",
+      "tag": "tags",
+      "description": "Get the list of fields",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tags/{id}",
+      "method": "/tags/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "tags",
+      "description": "Delete a specific tag",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of tag that needs to be deleted"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tags/{id}",
+      "method": "getTagById",
+      "httpMethod": "get",
+      "tag": "tags",
+      "description": "Find tag by ID",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of tag that needs to be fetched"
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "Fields to return separate by comas: name,id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tags/{id}",
+      "method": "updateTag",
+      "httpMethod": "put",
+      "tag": "tags",
+      "description": "Update a tag",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of tag"
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "nbSites",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tags/{id}/sites",
+      "method": "getSitesByTags",
+      "httpMethod": "get",
+      "tag": "tags",
+      "description": "Find sites by tag ID",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "ID of tag that needs to be fetched"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "Do a 'LIKE' search, you can also use '%'"
+        },
+        {
+          "name": "access_url",
+          "schema": "string",
+          "required": false,
+          "description": "Do a 'LIKE' search, you can also use '%'"
+        },
+        {
+          "name": "j_version",
+          "schema": "string",
+          "required": false,
+          "description": "Do a 'LIKE' search, you can also use '%'"
+        },
+        {
+          "name": "ip",
+          "schema": "string",
+          "required": false,
+          "description": "Do a 'LIKE' search, you can also use '%'"
+        },
+        {
+          "name": "jUpdate",
+          "schema": "integer",
+          "description": "Joomla core update"
+        },
+        {
+          "name": "published",
+          "schema": "integer",
+          "required": false,
+          "description": "is published"
+        },
+        {
+          "name": "error",
+          "schema": "string",
+          "required": false,
+          "description": "have errors"
+        },
+        {
+          "name": "nbUpdates",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "up",
+          "schema": "integer",
+          "required": false,
+          "description": "is the website online"
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "Fields to return separate by comas: name,id"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Number of object to return (max 100, default 25)"
+        },
+        {
+          "name": "limitstart",
+          "schema": "integer",
+          "required": false,
+          "description": "Start of the return (default 0)"
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "required": false,
+          "description": "ORDER by this field separete by comas. Add + / - after field for set ASC / DESC: type+,name-"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://watchful.li/api/v1",
   "apiTitle": "watchful.li",
   "endpoints": 43,

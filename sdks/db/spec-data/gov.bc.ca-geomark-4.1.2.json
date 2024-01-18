@@ -4,6 +4,304 @@
   "homepage": "gov.bc.ca",
   "serviceName": "geomark",
   "apiVersion": "4.1.2",
+  "methods": [
+    {
+      "url": "/geomarks/copy",
+      "method": "/geomarks/copyPost",
+      "httpMethod": "post",
+      "tag": "create",
+      "description": "Create a new geomark by copying the geometries from one or more existing geomarks from the current server.",
+      "parameters": [
+        {
+          "name": "geomarkUrl",
+          "schema": "string",
+          "required": true,
+          "description": "One or more geomark URLs or identifiers to create the new geomark from."
+        },
+        {
+          "name": "resultFormat",
+          "schema": "string",
+          "required": false,
+          "description": "The file format the geomark info resource should be returned using."
+        },
+        {
+          "name": "allowOverlap",
+          "schema": "boolean",
+          "required": false,
+          "description": "Select this option to allow overlapping geometries"
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "The callback function a JSON result format would be wrapped in to support Ajax requests."
+        },
+        {
+          "name": "redirectUrl",
+          "schema": "string",
+          "required": false,
+          "description": "The optional external URL to redirect the user to when the geomark is created rather than showing the geomark info page. The geomarkId and geomarkUrl query string parameters will be added to the redirectUrl so that the target application gets a reference to the geomark."
+        },
+        {
+          "name": "failureRedirectUrl",
+          "schema": "string",
+          "required": false,
+          "description": "The url to redirect if the geomark could not be created. The URL will include a <fieldName>_Error parameter with the error message for the field that caused the error."
+        },
+        {
+          "name": "bufferMetres",
+          "schema": "integer",
+          "required": false,
+          "description": "The amount to buffer the geometry in metres, must only contain numerical digits (e.g 10). Leave blank and no buffer will be added to input geometries. If blank then any Point, LineString, MultiPoint and MultiLineString geometries will be ignored."
+        },
+        {
+          "name": "bufferJoin",
+          "schema": "string",
+          "required": false,
+          "description": "If bufferMetres is specified, The style of buffer to use for joins between the line segments for lines and polygons."
+        },
+        {
+          "name": "bufferCap",
+          "schema": "string",
+          "required": false,
+          "description": "If bufferMetres is specified, The style of buffer to use at the ends of a buffered line."
+        },
+        {
+          "name": "bufferMitreLimit",
+          "schema": "integer",
+          "required": false,
+          "description": "If bufferMetres is specified, the maximum ratio of distance from the original geometry to a mitre buffer point and the buffer amount. If the ratio is greater than this a bevel will be used instead. This prevents infinite distances when the angle between the two lines at a join is small. Must be > 0."
+        },
+        {
+          "name": "bufferSegments",
+          "schema": "integer",
+          "required": false,
+          "description": "If bufferMetres is specified, the number of line segments used in each quadrant to approximate the curve for round end-cap and join styles. Must be > 0."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/geomarks/new",
+      "method": "/geomarks/newPost",
+      "httpMethod": "post",
+      "tag": "create",
+      "description": "Create a new geomark",
+      "parameters": [
+        {
+          "name": "allowOverlap",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "body",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "bufferCap",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "bufferJoin",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "bufferMetres",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "bufferMitreLimit",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "bufferSegments",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "failureRedirectUrl",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "multiple",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "redirectUrl",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "resultFormat",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "srid",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/geomarks/{geomarkId}.{fileFormatExtension}",
+      "method": "/geomarks/{geomarkId}.{fileFormatExtension}Get",
+      "httpMethod": "get",
+      "tag": "info",
+      "description": "Get information about a particular geomark",
+      "parameters": [
+        {
+          "name": "geomarkId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the geomark."
+        },
+        {
+          "name": "fileFormatExtension",
+          "schema": "string",
+          "required": true,
+          "description": "The file format name extension used to represent the geomark download."
+        },
+        {
+          "name": "srid",
+          "schema": "integer",
+          "required": false,
+          "description": "The srid of the coordinate system the geometry should be converted to."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/geomarks/{geomarkId}/boundingBox.{fileFormatExtension}",
+      "method": "/geomarks/{geomarkId}/boundingBox.{fileFormatExtension}Get",
+      "httpMethod": "get",
+      "tag": "boundingBox",
+      "description": "Gets the bounding box of the geomark",
+      "parameters": [
+        {
+          "name": "geomarkId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the geomark"
+        },
+        {
+          "name": "fileFormatExtension",
+          "schema": "string",
+          "required": true,
+          "description": "The file format name extension used to represent the geomark download."
+        },
+        {
+          "name": "srid",
+          "schema": "integer",
+          "required": false,
+          "description": "The srid of the coordinate system the geometry should be converted to."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/geomarks/{geomarkId}/feature.{fileFormatExtension}",
+      "method": "/geomarks/{geomarkId}/feature.{fileFormatExtension}Get",
+      "httpMethod": "get",
+      "tag": "feature",
+      "description": "Get the feature and attribution of the geomark",
+      "parameters": [
+        {
+          "name": "geomarkId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the geomark"
+        },
+        {
+          "name": "fileFormatExtension",
+          "schema": "string",
+          "required": true,
+          "description": "The file format name extension used to represent the geomark download."
+        },
+        {
+          "name": "srid",
+          "schema": "integer",
+          "required": false,
+          "description": "The srid of the coordinate system the geometry should be converted to."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/geomarks/{geomarkId}/parts.{fileFormatExtension}",
+      "method": "/geomarks/{geomarkId}/parts.{fileFormatExtension}Get",
+      "httpMethod": "get",
+      "tag": "parts",
+      "description": "Get the individual geometries within a multi-part geometry",
+      "parameters": [
+        {
+          "name": "geomarkId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the geomark"
+        },
+        {
+          "name": "fileFormatExtension",
+          "schema": "string",
+          "required": true,
+          "description": "The file format name extension used to represent the geomark download."
+        },
+        {
+          "name": "srid",
+          "schema": "integer",
+          "required": false,
+          "description": "The srid of the coordinate system the geometry should be converted to."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/geomarks/{geomarkId}/point.{fileFormatExtension}",
+      "method": "/geomarks/{geomarkId}/point.{fileFormatExtension}Get",
+      "httpMethod": "get",
+      "tag": "point",
+      "description": "Gets a single spatial point representative of the geomark.",
+      "parameters": [
+        {
+          "name": "geomarkId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the geomark."
+        },
+        {
+          "name": "fileFormatExtension",
+          "schema": "string",
+          "required": true,
+          "description": "The file format name extension used to represent the geomark download."
+        },
+        {
+          "name": "srid",
+          "schema": "integer",
+          "required": false,
+          "description": "The srid of the coordinate system the geometry should be converted to."
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://apps.gov.bc.ca/pub/geomark",
   "apiDescription": "The Geomark Web Service allows you to create and share geographic areas of interest over the web in a variety of formats and coordinate systems. This service is especially helpful when you need to share an area of interest with people who require that the data be in a different format, or they use different mapping software. \n\nPlease note that you may experience issues when submitting requests to the delivery or test environment if using this [OpenAPI specification](https://github.com/bcgov/api-specs/tree/master/geomark) in other API console viewers.",
   "apiTitle": "GeoMark Web Service REST API",

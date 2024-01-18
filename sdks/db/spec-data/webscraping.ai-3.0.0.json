@@ -3,6 +3,330 @@
   "openApiRaw": "https://webscraping.ai/openapi.yml",
   "homepage": "webscraping.ai",
   "apiVersion": "3.0.0",
+  "methods": [
+    {
+      "url": "/account",
+      "method": "account",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Information about your account calls quota",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/html",
+      "method": "getHtml",
+      "httpMethod": "get",
+      "tag": "HTML",
+      "description": "Page HTML by URL",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": "URL of the target page"
+        },
+        {
+          "name": "headers",
+          "schema": "object",
+          "description": "HTTP headers to pass to the target page. Can be specified either via a nested query parameter (...&headers[One]=value1&headers=[Another]=value2) or as a JSON encoded object (...&headers={\"One\": \"value1\", \"Another\": \"value2\"})"
+        },
+        {
+          "name": "timeout",
+          "schema": "integer",
+          "description": "Maximum processing time in ms. Increase it in case of timeout errors (10000 by default, maximum is 30000)"
+        },
+        {
+          "name": "js",
+          "schema": "boolean",
+          "description": "Execute on-page JavaScript using a headless browser (true by default)"
+        },
+        {
+          "name": "js_timeout",
+          "schema": "integer",
+          "description": "Maximum JavaScript rendering time in ms. Increase it in case if you see a loading indicator instead of data on the target page."
+        },
+        {
+          "name": "proxy",
+          "schema": "string",
+          "description": "Type of proxy, use residential proxies if your site restricts traffic from datacenters (datacenter by default). Note that residential proxy requests are more expensive than datacenter, see the pricing page for details."
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "description": "Country of the proxy to use (US by default). Only available on Startup and Custom plans."
+        },
+        {
+          "name": "device",
+          "schema": "string",
+          "description": "Type of device emulation."
+        },
+        {
+          "name": "error_on_404",
+          "schema": "boolean",
+          "description": "Return error on 404 HTTP status on the target page (false by default)."
+        },
+        {
+          "name": "error_on_redirect",
+          "schema": "boolean",
+          "description": "Return error on redirect on the target page (false by default)."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "502",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        },
+        {
+          "statusCode": "504",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/selected",
+      "method": "getSelected",
+      "httpMethod": "get",
+      "tag": "Selected HTML",
+      "description": "HTML of a selected page area by URL and CSS selector",
+      "parameters": [
+        {
+          "name": "selector",
+          "schema": "string",
+          "description": "CSS selector (null by default, returns whole page HTML)"
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": "URL of the target page"
+        },
+        {
+          "name": "headers",
+          "schema": "object",
+          "description": "HTTP headers to pass to the target page. Can be specified either via a nested query parameter (...&headers[One]=value1&headers=[Another]=value2) or as a JSON encoded object (...&headers={\"One\": \"value1\", \"Another\": \"value2\"})"
+        },
+        {
+          "name": "timeout",
+          "schema": "integer",
+          "description": "Maximum processing time in ms. Increase it in case of timeout errors (10000 by default, maximum is 30000)"
+        },
+        {
+          "name": "js",
+          "schema": "boolean",
+          "description": "Execute on-page JavaScript using a headless browser (true by default)"
+        },
+        {
+          "name": "js_timeout",
+          "schema": "integer",
+          "description": "Maximum JavaScript rendering time in ms. Increase it in case if you see a loading indicator instead of data on the target page."
+        },
+        {
+          "name": "proxy",
+          "schema": "string",
+          "description": "Type of proxy, use residential proxies if your site restricts traffic from datacenters (datacenter by default). Note that residential proxy requests are more expensive than datacenter, see the pricing page for details."
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "description": "Country of the proxy to use (US by default). Only available on Startup and Custom plans."
+        },
+        {
+          "name": "device",
+          "schema": "string",
+          "description": "Type of device emulation."
+        },
+        {
+          "name": "error_on_404",
+          "schema": "boolean",
+          "description": "Return error on 404 HTTP status on the target page (false by default)."
+        },
+        {
+          "name": "error_on_redirect",
+          "schema": "boolean",
+          "description": "Return error on redirect on the target page (false by default)."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "502",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        },
+        {
+          "statusCode": "504",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/selected-multiple",
+      "method": "getSelectedMultiple",
+      "httpMethod": "get",
+      "tag": "Selected HTML",
+      "description": "HTML of multiple page areas by URL and CSS selectors",
+      "parameters": [
+        {
+          "name": "selectors",
+          "schema": "array",
+          "description": "Multiple CSS selectors (null by default, returns whole page HTML)"
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": "URL of the target page"
+        },
+        {
+          "name": "headers",
+          "schema": "object",
+          "description": "HTTP headers to pass to the target page. Can be specified either via a nested query parameter (...&headers[One]=value1&headers=[Another]=value2) or as a JSON encoded object (...&headers={\"One\": \"value1\", \"Another\": \"value2\"})"
+        },
+        {
+          "name": "timeout",
+          "schema": "integer",
+          "description": "Maximum processing time in ms. Increase it in case of timeout errors (10000 by default, maximum is 30000)"
+        },
+        {
+          "name": "js",
+          "schema": "boolean",
+          "description": "Execute on-page JavaScript using a headless browser (true by default)"
+        },
+        {
+          "name": "js_timeout",
+          "schema": "integer",
+          "description": "Maximum JavaScript rendering time in ms. Increase it in case if you see a loading indicator instead of data on the target page."
+        },
+        {
+          "name": "proxy",
+          "schema": "string",
+          "description": "Type of proxy, use residential proxies if your site restricts traffic from datacenters (datacenter by default). Note that residential proxy requests are more expensive than datacenter, see the pricing page for details."
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "description": "Country of the proxy to use (US by default). Only available on Startup and Custom plans."
+        },
+        {
+          "name": "device",
+          "schema": "string",
+          "description": "Type of device emulation."
+        },
+        {
+          "name": "error_on_404",
+          "schema": "boolean",
+          "description": "Return error on 404 HTTP status on the target page (false by default)."
+        },
+        {
+          "name": "error_on_redirect",
+          "schema": "boolean",
+          "description": "Return error on redirect on the target page (false by default)."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Array of elements matched by selectors"
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "502",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        },
+        {
+          "statusCode": "504",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.webscraping.ai",
   "apiDescription": "A client for https://webscraping.ai API. It provides a web scraping automation API with Chrome JavaScript rendering, rotating proxies, and built-in HTML parsing.",
   "apiTitle": "WebScraping.AI",

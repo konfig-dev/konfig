@@ -3,6 +3,1222 @@
   "openApiRaw": "https://api.exhibitday.com/swagger/docs/v1",
   "homepage": "exhibitday.com",
   "apiVersion": "v1",
+  "methods": [
+    {
+      "url": "/api/docs/Swagger",
+      "method": "swaggerGet",
+      "httpMethod": "get",
+      "tag": "Swagger",
+      "description": "",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/events/",
+      "method": "events3Delete",
+      "httpMethod": "delete",
+      "tag": "events",
+      "description": "Delete an Event",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The id of the event you would like to delete."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/events/",
+      "method": "events0Get",
+      "httpMethod": "get",
+      "tag": "events",
+      "description": "Retrieve Events",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "filter_by_event_name_contains_text",
+          "schema": "string",
+          "required": false,
+          "description": "Only include events that have the given text in the event Name. For example: If you want to retrieve all the events that have the word “International” in the event Name field, pass in the value “International” for the filter_by_event_name_contains_text parameter. Note: this text search is not case-sensitive."
+        },
+        {
+          "name": "filter_by_start_date_greater_than_or_equal_to",
+          "schema": "string",
+          "required": false,
+          "description": "Only include events that have their start date greater than or equal to the value passed in for this filter parameter. Use this date format: YYYY-MM-DD"
+        },
+        {
+          "name": "filter_by_start_date_smaller_than_or_equal_to",
+          "schema": "string",
+          "required": false,
+          "description": "Only include events that have their start date smaller than or equal to the value passed in for this filter parameter. Use this date format: YYYY-MM-DD"
+        },
+        {
+          "name": "filter_by_end_date_greater_than_or_equal_to",
+          "schema": "string",
+          "required": false,
+          "description": "Only include events that have their end date greater than or equal to the value passed in for this filter parameter. Use this date format: YYYY-MM-DD"
+        },
+        {
+          "name": "filter_by_end_date_smaller_than_or_equal_to",
+          "schema": "string",
+          "required": false,
+          "description": "Only include events that have their end date smaller than or equal to the value passed in for this filter parameter. Use this date format: YYYY-MM-DD"
+        },
+        {
+          "name": "filter_by_event_participation_type_id",
+          "schema": "number",
+          "required": false,
+          "description": "Only include events that have their participation_type_id equal to the value passed in for this filter parameter. To get a list of available event Participation Type Ids in your workspace, refer to this endpoint: /v1/references/event_participation_types"
+        },
+        {
+          "name": "filter_by_event_format_id",
+          "schema": "number",
+          "required": false,
+          "description": "Only include events that have their format_id equal to the value passed in for this filter parameter. The following integer values are accepted (1 for In-Person, 2 for Virtual, 3 for Hybrid)"
+        },
+        {
+          "name": "filter_by_event_star_rating",
+          "schema": "number",
+          "required": false,
+          "description": "Only include events that have their star rating equal to the value passed in for this filter parameter. The following integer values are accepted: 0, 1, 2, 3"
+        },
+        {
+          "name": "filter_by_event_tag",
+          "schema": "string",
+          "required": false,
+          "description": "Only include events that have this tag. For example, you can use this filter to get all the events that have the tag “International”. Note: You can only pass in one tag to filter based on."
+        },
+        {
+          "name": "filter_by_custom_event_field__custom_NNNNNN",
+          "schema": "string",
+          "required": false,
+          "description": "This is a special filter that lets you filter down your events based on a value of a Custom Text field or a Custom Dropdown field under the Event Information tab, Event Booth tab, or the Special Event tab. To use this filter, you’ll need the field name for the custom text field or custom dropdown field. You can obtain a list of field names for custom event fields in your workspace from the following endpoint: /v1/references/event_custom_fields. For example, if you have configured a custom dropdown field called “Region” under the Event information tab, and its field name is “custom_123456” and you would like to filter your events to include only ones that have “Northeast” selected for that custom dropdown field, pass in “filter_by_custom_event_field__custom_123456” as the parameter name and “Northeast” as its parameter value. Note: You can only filter down based on one custom event field (and it has to be either a custom text field or a custom dropdown field)."
+        },
+        {
+          "name": "filter_by_integration_metadata_field_1",
+          "schema": "string",
+          "required": false,
+          "description": "Only include events that have their integration_metadata_field_1 property equal to the value you pass in for this parameter. Note: An event's integration_metadata_field_1 property is an integration-specific text field only accessible via the ExhibitDay API. This field is typically used to store metadata or information about a particular event (e.g., the \"external id\" of the event from another system you're integrating with)."
+        },
+        {
+          "name": "filter_by_integration_metadata_field_2",
+          "schema": "string",
+          "required": false,
+          "description": "Only include events that have their integration_metadata_field_2 property equal to the value you pass in for this parameter. Note: An event's integration_metadata_field_2 property is an integration-specific text field only accessible via the ExhibitDay API. This field is typically used to store metadata or information about a particular event (e.g., the \"external id\" of the event from another system you're integrating with)."
+        },
+        {
+          "name": "filter_by_integration_metadata_field_3",
+          "schema": "string",
+          "required": false,
+          "description": "Only include events that have their integration_metadata_field_3 property equal to the value you pass in for this parameter. Note: An event's integration_metadata_field_3 property is an integration-specific text field only accessible via the ExhibitDay API. This field is typically used to store metadata or information about a particular event (e.g., the \"external id\" of the event from another system you're integrating with)."
+        },
+        {
+          "name": "filter_by_integration_metadata_field_4",
+          "schema": "string",
+          "required": false,
+          "description": "Only include events that have their integration_metadata_field_4 property equal to the value you pass in for this parameter. Note: An event's integration_metadata_field_4 property is an integration-specific text field only accessible via the ExhibitDay API. This field is typically used to store metadata or information about a particular event (e.g., the \"external id\" of the event from another system you're integrating with)."
+        },
+        {
+          "name": "filter_by_integration_metadata_field_5",
+          "schema": "string",
+          "required": false,
+          "description": "Only include events that have their integration_metadata_field_5 property equal to the value you pass in for this parameter. Note: An event's integration_metadata_field_5 property is an integration-specific text field only accessible via the ExhibitDay API. This field is typically used to store metadata or information about a particular event (e.g., the \"external id\" of the event from another system you're integrating with)."
+        },
+        {
+          "name": "hydrate_tasks",
+          "schema": "string",
+          "required": false,
+          "description": "Include the tasks collection for each event in the result set. Note: hydrating the task collection for each event in the results will naturally yield a larger response size and response time. Set the value for this parameter to true only if you need to include the list of tasks for each event in the result set."
+        },
+        {
+          "name": "hydrate_task_sections_list",
+          "schema": "string",
+          "required": false,
+          "description": "Include the list of available task sections for each event in the result set. Note: hydrating the event task section collection for each event in the results will naturally yield a larger response size and response time. Set the value for this parameter to true only if you need to include the list of task sections for each event in the result set."
+        },
+        {
+          "name": "hydrate_custom_fields",
+          "schema": "string",
+          "required": false,
+          "description": "Include the event custom fields (i.e. custom fields that have been added to your workspace) for each event in the result set. Note: hydrating the event custom field collection for each event in the results will naturally yield a larger response size and response time. Set the value for this parameter to true only if you need to include the custom field values for each event in the result set."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/events/",
+      "method": "events2Patch",
+      "httpMethod": "patch",
+      "tag": "events",
+      "description": "Update an Event",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The id of the event you would like to update."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "The name of the event."
+        },
+        {
+          "name": "start_date",
+          "schema": "string",
+          "required": false,
+          "description": "Event Start Date (format: YYYY-MM-DD). Must be smaller or equal to Event End Date."
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "required": false,
+          "description": "Event End Date (format: YYYY-MM-DD). Must be greater or equal to Event Start Date."
+        },
+        {
+          "name": "participation_type_id",
+          "schema": "number",
+          "required": false,
+          "description": "Integer representing the participation_type_id for the event (1: Committed, 2: Considering, 3: Not Going). Note: you can use the following endpoint to retrieve a list of available participation_type_id's: /v1/references/event_participation_types"
+        },
+        {
+          "name": "format_id",
+          "schema": "number",
+          "required": false,
+          "description": "Integer representing the FormatId for the event (1 for In-Person, 2 for Virtual, 3 for Hybrid)"
+        },
+        {
+          "name": "star_rating",
+          "schema": "number",
+          "required": false,
+          "description": "Star Rating for the event (0, 1, 2, or 3)."
+        },
+        {
+          "name": "website_url",
+          "schema": "string",
+          "required": false,
+          "description": "URL of the event website. Must be a well-formed URL."
+        },
+        {
+          "name": "venue_name",
+          "schema": "string",
+          "required": false,
+          "description": "The name of the venue for the event."
+        },
+        {
+          "name": "booth_size",
+          "schema": "number",
+          "required": false,
+          "description": "The size of your booth for the event."
+        },
+        {
+          "name": "booth_number",
+          "schema": "number",
+          "required": false,
+          "description": "Your booth number for the event."
+        },
+        {
+          "name": "event_notes",
+          "schema": "number",
+          "required": false,
+          "description": "Event Notes (under the Event Information tab). Only accepts plain text. Any html tags in the value you pass in will be stripped. New line characters will get replaced with a <br/> tag."
+        },
+        {
+          "name": "booth_notes",
+          "schema": "number",
+          "required": false,
+          "description": "Booth Notes (under the event Booth tab). Only accepts plain text. Any html tags in the value you pass in will be stripped. New line characters will get replaced with a <br/> tag."
+        },
+        {
+          "name": "budget_notes",
+          "schema": "number",
+          "required": false,
+          "description": "Budget Notes (under the event Budget tab). Only accepts plain text. Any html tags in the value you pass in will be stripped. New line characters will get replaced with a <br/> tag."
+        },
+        {
+          "name": "roi_notes",
+          "schema": "number",
+          "required": false,
+          "description": "ROI Notes (under the event ROI tab). Only accepts plain text. Any html tags in the value you pass in will be stripped. New line characters will get replaced with a <br/> tag."
+        },
+        {
+          "name": "budget_booth_reservation",
+          "schema": "number",
+          "required": false,
+          "description": "A number (greater or equal to 0.00) that represents the budget for reserving the booth for the event."
+        },
+        {
+          "name": "budget_booth_services",
+          "schema": "number",
+          "required": false,
+          "description": "A number (greater or equal to 0.00) that represents the budget for all the booth services for the event."
+        },
+        {
+          "name": "budget_attendee_registrations",
+          "schema": "number",
+          "required": false,
+          "description": "A number (greater or equal to 0.00) that represents the budget for event registration / attendee tickets."
+        },
+        {
+          "name": "budget_travel",
+          "schema": "number",
+          "required": false,
+          "description": "A number (greater or equal to 0.00) that represents the budget for travel and lodging for the event."
+        },
+        {
+          "name": "budget_giveaways",
+          "schema": "number",
+          "required": false,
+          "description": "A number (greater or equal to 0.00) that represents the budget for your giveaways (swag and raffle items) for the event."
+        },
+        {
+          "name": "budget_shipments",
+          "schema": "number",
+          "required": false,
+          "description": "A number (greater or equal to 0.00) that represents the budget for all shipments for the event."
+        },
+        {
+          "name": "budget_misc_expenses",
+          "schema": "number",
+          "required": false,
+          "description": "A number (greater or equal to 0.00) that represents the budget for all miscellaneous expenses for the event."
+        },
+        {
+          "name": "budget_sponsorships",
+          "schema": "number",
+          "required": false,
+          "description": "A number (greater or equal to 0.00) that represents the budget for all sponsorships for the event."
+        },
+        {
+          "name": "roi_num_leads",
+          "schema": "number",
+          "required": false,
+          "description": "An integer (greater or equal to 0) that represents the number of leads generated from this event."
+        },
+        {
+          "name": "roi_num_impressions_booth",
+          "schema": "number",
+          "required": false,
+          "description": "An integer (greater or equal to 0) that represents the number of booth walk-bys / impressions (i.e., estimated total number of people who saw your booth at this event)."
+        },
+        {
+          "name": "roi_num_impressions_sponsorships",
+          "schema": "number",
+          "required": false,
+          "description": "An integer (greater or equal to 0) that represents the number of sponsorship impressions (i.e., estimated total number of people reached through all your sponsorships for this event)."
+        },
+        {
+          "name": "roi_num_impressions_media",
+          "schema": "number",
+          "required": false,
+          "description": "An integer (greater or equal to 0) that represents the number of social/traditional media impressions (i.e., estimated total number of people reached via social media or traditional media coverage)."
+        },
+        {
+          "name": "roi_num_meetings_existing_customers",
+          "schema": "number",
+          "required": false,
+          "description": "An integer (greater or equal to 0) that represents the number of meetings with existing customers (i.e., total number of meetings your team had with your existing customers at this event)."
+        },
+        {
+          "name": "roi_num_meetings_new_customers",
+          "schema": "number",
+          "required": false,
+          "description": "An integer (greater or equal to 0) that represents the number of meetings with new/potential customers (i.e., total number of meetings your team had with new/potential customers at this event)."
+        },
+        {
+          "name": "roi_amount_actual_sales",
+          "schema": "number",
+          "required": false,
+          "description": "A number (greater or equal to 0.00) that represents the actual sales amount (attributable to this event and already closed)."
+        },
+        {
+          "name": "roi_amount_potential_sales",
+          "schema": "number",
+          "required": false,
+          "description": "A number (greater or equal to 0.00) that represents the additional opportunity / potential sales amount (attributable to this event, but, yet to be closed)."
+        },
+        {
+          "name": "integration_metadata_field_1",
+          "schema": "string",
+          "required": false,
+          "description": "This is an integration-specific text field only accessible via the ExhibitDay API. This field can be used to store whatever metadata or information you'd like about a particular event. For example, you can use it to store the \"external id\" of the event (from another system you're integrating with). Or, you can use it to store the last sync timestamp. Note: when you retrieve a list of events (using the /v1/events endpoint), you can filter down the results by the value of this field."
+        },
+        {
+          "name": "integration_metadata_field_2",
+          "schema": "string",
+          "required": false,
+          "description": "This is an integration-specific text field only accessible via the ExhibitDay API. This field can be used to store whatever metadata or information you'd like about a particular event. For example, you can use it to store the \"external id\" of the event (from another system you're integrating with). Or, you can use it to store the last sync timestamp. Note: when you retrieve a list of events (using the /v1/events endpoint), you can filter down the results by the value of this field."
+        },
+        {
+          "name": "integration_metadata_field_3",
+          "schema": "string",
+          "required": false,
+          "description": "This is an integration-specific text field only accessible via the ExhibitDay API. This field can be used to store whatever metadata or information you'd like about a particular event. For example, you can use it to store the \"external id\" of the event (from another system you're integrating with). Or, you can use it to store the last sync timestamp. Note: when you retrieve a list of events (using the /v1/events endpoint), you can filter down the results by the value of this field."
+        },
+        {
+          "name": "integration_metadata_field_4",
+          "schema": "string",
+          "required": false,
+          "description": "This is an integration-specific text field only accessible via the ExhibitDay API. This field can be used to store whatever metadata or information you'd like about a particular event. For example, you can use it to store the \"external id\" of the event (from another system you're integrating with). Or, you can use it to store the last sync timestamp. Note: when you retrieve a list of events (using the /v1/events endpoint), you can filter down the results by the value of this field."
+        },
+        {
+          "name": "integration_metadata_field_5",
+          "schema": "string",
+          "required": false,
+          "description": "This is an integration-specific text field only accessible via the ExhibitDay API. This field can be used to store whatever metadata or information you'd like about a particular event. For example, you can use it to store the \"external id\" of the event (from another system you're integrating with). Or, you can use it to store the last sync timestamp. Note: when you retrieve a list of events (using the /v1/events endpoint), you can filter down the results by the value of this field."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/events/",
+      "method": "events1Post",
+      "httpMethod": "post",
+      "tag": "events",
+      "description": "Add an Event",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "The name of the event."
+        },
+        {
+          "name": "start_date",
+          "schema": "string",
+          "required": true,
+          "description": "Event Start Date (format: YYYY-MM-DD). Must be smaller or equal to Event End Date."
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "required": true,
+          "description": "Event End Date (format: YYYY-MM-DD). Must be greater or equal to Event Start Date."
+        },
+        {
+          "name": "format_id",
+          "schema": "number",
+          "required": false,
+          "description": "Integer representing the format_id for the event (1 for In-Person, 2 for Virtual, 3 for Hybrid)"
+        },
+        {
+          "name": "participation_type_id",
+          "schema": "number",
+          "required": false,
+          "description": "Integer representing the event_participation_type_id for the event (1: Committed, 2: Considering, 3: Not Going). Note: you can use the following endpoint to retrieve a list of available participation_type_id's: /v1/references/event_participation_types"
+        },
+        {
+          "name": "integration_metadata_field_1",
+          "schema": "string",
+          "required": false,
+          "description": "This is an integration-specific text field only accessible via the ExhibitDay API. This field can be used to store whatever metadata or information you'd like about a particular event. For example, you can use it to store the \"external id\" of the event (from another system you're integrating with). Or, you can use it to store the last sync timestamp. Note: when you retrieve a list of events (using the /v1/events endpoint), you can filter down the results by the value of this field."
+        },
+        {
+          "name": "integration_metadata_field_2",
+          "schema": "string",
+          "required": false,
+          "description": "This is an integration-specific text field only accessible via the ExhibitDay API. This field can be used to store whatever metadata or information you'd like about a particular event. For example, you can use it to store the \"external id\" of the event (from another system you're integrating with). Or, you can use it to store the last sync timestamp. Note: when you retrieve a list of events (using the /v1/events endpoint), you can filter down the results by the value of this field."
+        },
+        {
+          "name": "integration_metadata_field_3",
+          "schema": "string",
+          "required": false,
+          "description": "This is an integration-specific text field only accessible via the ExhibitDay API. This field can be used to store whatever metadata or information you'd like about a particular event. For example, you can use it to store the \"external id\" of the event (from another system you're integrating with). Or, you can use it to store the last sync timestamp. Note: when you retrieve a list of events (using the /v1/events endpoint), you can filter down the results by the value of this field."
+        },
+        {
+          "name": "integration_metadata_field_4",
+          "schema": "string",
+          "required": false,
+          "description": "This is an integration-specific text field only accessible via the ExhibitDay API. This field can be used to store whatever metadata or information you'd like about a particular event. For example, you can use it to store the \"external id\" of the event (from another system you're integrating with). Or, you can use it to store the last sync timestamp. Note: when you retrieve a list of events (using the /v1/events endpoint), you can filter down the results by the value of this field."
+        },
+        {
+          "name": "integration_metadata_field_5",
+          "schema": "string",
+          "required": false,
+          "description": "This is an integration-specific text field only accessible via the ExhibitDay API. This field can be used to store whatever metadata or information you'd like about a particular event. For example, you can use it to store the \"external id\" of the event (from another system you're integrating with). Or, you can use it to store the last sync timestamp. Note: when you retrieve a list of events (using the /v1/events endpoint), you can filter down the results by the value of this field."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/events/info",
+      "method": "eventsInfo0Get",
+      "httpMethod": "get",
+      "tag": "events",
+      "description": "Retrieve a Single Event by id",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "Id of the specific event that you would like to retrieve."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/financials/event_costs",
+      "method": "financialsEventCosts0Get",
+      "httpMethod": "get",
+      "tag": "financials",
+      "description": "Retrieve event costs",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "filter_by_event_id",
+          "schema": "number",
+          "required": false,
+          "description": "Id of a specific event that you would like to retrieve costs for."
+        },
+        {
+          "name": "filter_by_event_start_date_greater_than_or_equal_to",
+          "schema": "string",
+          "required": false,
+          "description": "Only include costs for events that have their start date greater than or equal to the value passed in for this filter parameter. Use this date format: YYYY-MM-DD"
+        },
+        {
+          "name": "filter_by_event_start_date_smaller_than_or_equal_to",
+          "schema": "string",
+          "required": false,
+          "description": "Only include costs for events that have their start date smaller than or equal to the value passed in for this filter parameter. Use this date format: YYYY-MM-DD"
+        },
+        {
+          "name": "filter_by_event_end_date_greater_than_or_equal_to",
+          "schema": "string",
+          "required": false,
+          "description": "Only include costs for events that have their end date greater than or equal to the value passed in for this filter parameter. Use this date format: YYYY-MM-DD"
+        },
+        {
+          "name": "filter_by_event_end_date_smaller_than_or_equal_to",
+          "schema": "string",
+          "required": false,
+          "description": "Only include costs for events that have their end date smaller than or equal to the value passed in for this filter parameter. Use this date format: YYYY-MM-DD"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/financials/misc_annual_expense_costs",
+      "method": "financialsMiscAnnualExpenseCosts0Get",
+      "httpMethod": "get",
+      "tag": "financials",
+      "description": "Retrieve Miscellaneous Annual Expense Costs",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "budget_year",
+          "schema": "number",
+          "required": false,
+          "description": "The specific budget year that you would like to retrieve miscellaneous annual expense costs for (e.g., 2023)."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/references/event_cost_types",
+      "method": "referencesEventCostTypes0Get",
+      "httpMethod": "get",
+      "tag": "references",
+      "description": "Event Cost Types",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/references/event_custom_fields",
+      "method": "referencesEventCustomFields0Get",
+      "httpMethod": "get",
+      "tag": "references",
+      "description": "Event Custom Fields",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/references/event_participation_types",
+      "method": "referencesEventParticipationTypes0Get",
+      "httpMethod": "get",
+      "tag": "references",
+      "description": "Event Participation Types",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/references/event_tags",
+      "method": "referencesEventTags0Get",
+      "httpMethod": "get",
+      "tag": "references",
+      "description": "Event Tags",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/references/users_and_resources",
+      "method": "referencesUsersAndResources0Get",
+      "httpMethod": "get",
+      "tag": "references",
+      "description": "User and Resources",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/tasks/",
+      "method": "tasks3Delete",
+      "httpMethod": "delete",
+      "tag": "tasks",
+      "description": "Delete a Task",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The id of the task you would like to delete."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/tasks/",
+      "method": "tasks0Get",
+      "httpMethod": "get",
+      "tag": "tasks",
+      "description": "Retrieve Tasks",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "filter_by_event_id",
+          "schema": "number",
+          "required": false,
+          "description": "Only include tasks from this given event."
+        },
+        {
+          "name": "filter_by_general_tasks_only",
+          "schema": "number",
+          "required": false,
+          "description": "Only include general tasks (tasks on the main task board that do not belong to a particular event). Note: this filter cannot be used in conjunction with the filter_by_event_id filter."
+        },
+        {
+          "name": "filter_by_incomplete_only",
+          "schema": "string",
+          "required": false,
+          "description": "If you pass in the value \"true\" for this parameter, the result will only include tasks that are NOT marked as Completed."
+        },
+        {
+          "name": "filter_by_completed_only",
+          "schema": "string",
+          "required": false,
+          "description": "If you pass in the value \"true\" for this parameter, the result will only include tasks that are marked as Completed."
+        },
+        {
+          "name": "filter_by_no_due_date",
+          "schema": "string",
+          "required": false,
+          "description": "If you pass in the value \"true\" for this parameter, the result will only include tasks that do not have a due date set."
+        },
+        {
+          "name": "filter_by_due_date_greater_than_or_equal_to",
+          "schema": "string",
+          "required": false,
+          "description": "Only include tasks that have a due date greater than or equal to the value passed in for this filter parameter. Use this date format: YYYY-MM-DD. Note: this filter cannot be used in conjunction with the filter_by_no_due_date filter."
+        },
+        {
+          "name": "filter_by_due_date_smaller_than_or_equal_to",
+          "schema": "string",
+          "required": false,
+          "description": "Only include tasks that have a due date smaller than or equal to the value passed in for this filter parameter. Use this date format: YYYY-MM-DD. Note: this filter cannot be used in conjunction with the filter_by_no_due_date filter."
+        },
+        {
+          "name": "filter_by_has_assignee",
+          "schema": "string",
+          "required": false,
+          "description": "Only include tasks that have an assignee. Unassigned tasks will get excluded."
+        },
+        {
+          "name": "filter_by_assignee_user_id",
+          "schema": "string",
+          "required": false,
+          "description": "Only include tasks that are assigned to this user. You can get a list of UserId's in your workspace from the /v1/references/users_and_resources endpoint. Note: If you want to retrieve the tasks that are unassigned, include this parameter and pass in the word \"null\" as the value for it."
+        },
+        {
+          "name": "filter_by_task_name_contains_text",
+          "schema": "string",
+          "required": false,
+          "description": "Only include tasks that have the given text in the task Name. For example: If you want to retrieve all the tasks that have the word “order” in the task Name field, pass in the value “order” for the filter_by_task_name_contains_text parameter. Note: this text search is not case-sensitive."
+        },
+        {
+          "name": "filter_by_integration_metadata_field_1",
+          "schema": "string",
+          "required": false,
+          "description": "Only include tasks that have their integration_metadata_field_1 property equal to the value you pass in for this parameter. Note: A task's IntegrationMetadataField1 property is an integration-specific text field only accessible via the ExhibitDay API. This field is typically used to store metadata or information about a particular task (e.g., the \"external id\" of the task from another system you're integrating with)."
+        },
+        {
+          "name": "filter_by_integration_metadata_field_2",
+          "schema": "string",
+          "required": false,
+          "description": "Only include tasks that have their integration_metadata_field_2 property equal to the value you pass in for this parameter. Note: A task's IntegrationMetadataField2 property is an integration-specific text field only accessible via the ExhibitDay API. This field is typically used to store metadata or information about a particular task (e.g., the \"external id\" of the task from another system you're integrating with)."
+        },
+        {
+          "name": "filter_by_integration_metadata_field_3",
+          "schema": "string",
+          "required": false,
+          "description": "Only include tasks that have their integration_metadata_field_3 property equal to the value you pass in for this parameter. Note: A task's IntegrationMetadataField3 property is an integration-specific text field only accessible via the ExhibitDay API. This field is typically used to store metadata or information about a particular task (e.g., the \"external id\" of the task from another system you're integrating with)."
+        },
+        {
+          "name": "filter_by_integration_metadata_field_4",
+          "schema": "string",
+          "required": false,
+          "description": "Only include tasks that have their integration_metadata_field_4 property equal to the value you pass in for this parameter. Note: A task's IntegrationMetadataField4 property is an integration-specific text field only accessible via the ExhibitDay API. This field is typically used to store metadata or information about a particular task (e.g., the \"external id\" of the task from another system you're integrating with)."
+        },
+        {
+          "name": "filter_by_integration_metadata_field_5",
+          "schema": "string",
+          "required": false,
+          "description": "Only include tasks that have their integration_metadata_field_5 property equal to the value you pass in for this parameter. Note: A task's IntegrationMetadataField5 property is an integration-specific text field only accessible via the ExhibitDay API. This field is typically used to store metadata or information about a particular task (e.g., the \"external id\" of the task from another system you're integrating with)."
+        },
+        {
+          "name": "hydrate_task_comments",
+          "schema": "string",
+          "required": false,
+          "description": "Include the comments collection for each task in the result set. Note: hydrating the comments collection for each task in the results will naturally yield a larger response size and response time. Set the value for this parameter to true only if you need to include the list of comments for each task in the result set."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/tasks/",
+      "method": "tasks2Patch",
+      "httpMethod": "patch",
+      "tag": "tasks",
+      "description": "Update a Task",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The Id of the task you would like to update."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "The name/short description of the task."
+        },
+        {
+          "name": "task_section_id",
+          "schema": "number",
+          "required": false,
+          "description": "The id of the event task section that the task should be placed under. If you don't want to place/categorize the task under a specific event task section, pass in the value \null\" for this parameter. Note: you can get a list of available Task Section Ids for a given event using the /v1/event/info endpoint."
+        },
+        {
+          "name": "is_completed",
+          "schema": "string",
+          "required": false,
+          "description": "Boolean representing whether or not the task has been completed."
+        },
+        {
+          "name": "due_date",
+          "schema": "string",
+          "required": false,
+          "description": "Task due date (format: YYYY-MM-DD). If you don't want the task to have a due date, pass in the value \"null\" for this parameter."
+        },
+        {
+          "name": "assignee_user_id",
+          "schema": "string",
+          "required": false,
+          "description": "The User Id of the user you would like to assign the task to. If you want the task to be unassigned, pass in the value \"null\" for this parameter. To get a list of all the User Ids in your workspace, use the /v1/references/users_and_resources API endpoint; users who can have tasks assigned to them will have their can_have_tasks_assigned property set to true."
+        },
+        {
+          "name": "details",
+          "schema": "string",
+          "required": false,
+          "description": "The details/description of the task. Only accepts plain text. Any html tags in the value you pass in will be stripped. New line characters will get replaced with a <br/> tag."
+        },
+        {
+          "name": "integration_metadata_field_1",
+          "schema": "string",
+          "required": false,
+          "description": "This is an integration-specific text field only accessible via the ExhibitDay API. This field can be used to store whatever metadata or information you'd like about a particular task. For example, you can use it to store the \"external id\" of the task (from another system you're integrating with). Or, you can use it to store the last sync timestamp. Note: when you retrieve a list of tasks (using the /v1/tasks endpoint), you can filter down the results by the value of this field."
+        },
+        {
+          "name": "integration_metadata_field_2",
+          "schema": "string",
+          "required": false,
+          "description": "This is an integration-specific text field only accessible via the ExhibitDay API. This field can be used to store whatever metadata or information you'd like about a particular task. For example, you can use it to store the \"external id\" of the task (from another system you're integrating with). Or, you can use it to store the last sync timestamp. Note: when you retrieve a list of tasks (using the /v1/tasks endpoint), you can filter down the results by the value of this field."
+        },
+        {
+          "name": "integration_metadata_field_3",
+          "schema": "string",
+          "required": false,
+          "description": "This is an integration-specific text field only accessible via the ExhibitDay API. This field can be used to store whatever metadata or information you'd like about a particular task. For example, you can use it to store the \"external id\" of the task (from another system you're integrating with). Or, you can use it to store the last sync timestamp. Note: when you retrieve a list of tasks (using the /v1/tasks endpoint), you can filter down the results by the value of this field."
+        },
+        {
+          "name": "integration_metadata_field_4",
+          "schema": "string",
+          "required": false,
+          "description": "This is an integration-specific text field only accessible via the ExhibitDay API. This field can be used to store whatever metadata or information you'd like about a particular task. For example, you can use it to store the \"external id\" of the task (from another system you're integrating with). Or, you can use it to store the last sync timestamp. Note: when you retrieve a list of tasks (using the /v1/tasks endpoint), you can filter down the results by the value of this field."
+        },
+        {
+          "name": "integration_metadata_field_5",
+          "schema": "string",
+          "required": false,
+          "description": "This is an integration-specific text field only accessible via the ExhibitDay API. This field can be used to store whatever metadata or information you'd like about a particular task. For example, you can use it to store the \"external id\" of the task (from another system you're integrating with). Or, you can use it to store the last sync timestamp. Note: when you retrieve a list of tasks (using the /v1/tasks endpoint), you can filter down the results by the value of this field."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/tasks/",
+      "method": "tasks1Post",
+      "httpMethod": "post",
+      "tag": "tasks",
+      "description": "Add a Task",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "The name/short description of the task."
+        },
+        {
+          "name": "event_id",
+          "schema": "number",
+          "required": false,
+          "description": "The id of the event you would like to add the task under. If this value is not provided, the task will be added as a general (non-event-specific) task in your workspace (under the main Task Board)."
+        },
+        {
+          "name": "task_section_id",
+          "schema": "number",
+          "required": false,
+          "description": "The id of the event task section that the task should be placed under. Leave this value blank if you don't want to place/categorize the task under a specific event task section. Note: you can get a list of available Task Section Ids for a given event using the /v1/event/info endpoint."
+        },
+        {
+          "name": "is_completed",
+          "schema": "string",
+          "required": false,
+          "description": "Boolean representing whether or not the task has been completed."
+        },
+        {
+          "name": "due_date",
+          "schema": "string",
+          "required": false,
+          "description": "Task due date (format: YYYY-MM-DD)."
+        },
+        {
+          "name": "assignee_user_id",
+          "schema": "string",
+          "required": false,
+          "description": "The id of the user you would like to assign the task to. If you want the task to be unassigned, leave the value for this parameter blank. To get a list of all the user ids in your workspace, use the /v1/references/users_and_resources API endpoint. Users that can have tasks assigned to them will have their can_have_tasks_assigned property set to true."
+        },
+        {
+          "name": "details",
+          "schema": "string",
+          "required": false,
+          "description": "The details/description of the task. Only accepts plain text. Any html tags in the value you pass in will be stripped. New line characters will get replaced with a <br/> tag."
+        },
+        {
+          "name": "integration_metadata_field_1",
+          "schema": "string",
+          "required": false,
+          "description": "This is an integration-specific text field only accessible via the ExhibitDay API. This field can be used to store whatever metadata or information you'd like about a particular task. For example, you can use it to store the \"external id\" of the task (from another system you're integrating with). Or, you can use it to store the last sync timestamp. Note: when you retrieve a list of tasks (using the /v1/tasks endpoint), you can filter down the results by the value of this field."
+        },
+        {
+          "name": "integration_metadata_field_2",
+          "schema": "string",
+          "required": false,
+          "description": "This is an integration-specific text field only accessible via the ExhibitDay API. This field can be used to store whatever metadata or information you'd like about a particular task. For example, you can use it to store the \"external id\" of the task (from another system you're integrating with). Or, you can use it to store the last sync timestamp. Note: when you retrieve a list of tasks (using the /v1/tasks endpoint), you can filter down the results by the value of this field."
+        },
+        {
+          "name": "integration_metadata_field_3",
+          "schema": "string",
+          "required": false,
+          "description": "This is an integration-specific text field only accessible via the ExhibitDay API. This field can be used to store whatever metadata or information you'd like about a particular task. For example, you can use it to store the \"external id\" of the task (from another system you're integrating with). Or, you can use it to store the last sync timestamp. Note: when you retrieve a list of tasks (using the /v1/tasks endpoint), you can filter down the results by the value of this field."
+        },
+        {
+          "name": "integration_metadata_field_4",
+          "schema": "string",
+          "required": false,
+          "description": "This is an integration-specific text field only accessible via the ExhibitDay API. This field can be used to store whatever metadata or information you'd like about a particular task. For example, you can use it to store the \"external id\" of the task (from another system you're integrating with). Or, you can use it to store the last sync timestamp. Note: when you retrieve a list of tasks (using the /v1/tasks endpoint), you can filter down the results by the value of this field."
+        },
+        {
+          "name": "integration_metadata_field_5",
+          "schema": "string",
+          "required": false,
+          "description": "This is an integration-specific text field only accessible via the ExhibitDay API. This field can be used to store whatever metadata or information you'd like about a particular task. For example, you can use it to store the \"external id\" of the task (from another system you're integrating with). Or, you can use it to store the last sync timestamp. Note: when you retrieve a list of tasks (using the /v1/tasks endpoint), you can filter down the results by the value of this field."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/tasks/comment",
+      "method": "tasksComment3Delete",
+      "httpMethod": "delete",
+      "tag": "tasks",
+      "description": "Delete a Task Comment",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The Id of the task comment you would like to delete."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/tasks/comment",
+      "method": "tasksComment0Get",
+      "httpMethod": "get",
+      "tag": "tasks",
+      "description": "Retrieve a Single Task Comment by id",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "Id of the specific task comment that you would like to retrieve."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/tasks/comment",
+      "method": "tasksComment2Patch",
+      "httpMethod": "patch",
+      "tag": "tasks",
+      "description": "Update a Task Comment",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "The Id of the task comment you would like to update."
+        },
+        {
+          "name": "comment",
+          "schema": "string",
+          "required": true,
+          "description": "The text that you would like to replace the existing comment with. Only accepts plain text. Any html tags in the value you pass in will be stripped."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/tasks/comment",
+      "method": "tasksComment1Post",
+      "httpMethod": "post",
+      "tag": "tasks",
+      "description": "Add a Comment to a Task",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "task_id",
+          "schema": "number",
+          "required": true,
+          "description": "The id of the task you would like to add the comment to."
+        },
+        {
+          "name": "comment",
+          "schema": "string",
+          "required": true,
+          "description": "The text of comment you would like to add. Only accepts plain text. Any html tags in the value you pass in will be stripped."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/tasks/comments",
+      "method": "tasksComments0Get",
+      "httpMethod": "get",
+      "tag": "tasks",
+      "description": "Retrieve Task Comments",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "filter_by_event_id",
+          "schema": "number",
+          "required": false,
+          "description": "Only include task comment for tasks from this given event."
+        },
+        {
+          "name": "filter_by_task_id",
+          "schema": "number",
+          "required": false,
+          "description": "Only include task comments for this specific task."
+        },
+        {
+          "name": "hydrate_task",
+          "schema": "string",
+          "required": false,
+          "description": "Include the task object for each task comment in the result set. Note: hydrating the task object for each task comment in the results will naturally yield a larger response size and response time. Set the value for this parameter to true only if you need to include the task object each comment in the result set."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/tasks/info",
+      "method": "tasksInfo0Get",
+      "httpMethod": "get",
+      "tag": "tasks",
+      "description": "Retrieve a Single Task by id",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "number",
+          "required": true,
+          "description": "Id of the specific task that you would like to retrieve."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.exhibitday.com",
   "apiDescription": "This API can be used to programmatically pull data out of ExhibitDay or push data into ExhibitDay -- allowing for automation between ExhibitDay and your internal systems (or other third-party software). To use the API, you'll need working knowledge of consuming REST APIs.<br /><br />Docs: https://api.exhibitday.com/swagger/docs/v1",
   "apiTitle": "Test the ExhibitDay API with Swagger",

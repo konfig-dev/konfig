@@ -3,6 +3,611 @@
   "openApiRaw": "http://www.europeana.eu/api/api-docs",
   "homepage": "europeana.eu",
   "apiVersion": "version unknown",
+  "methods": [
+    {
+      "url": "/record/v2/opensearch.rss",
+      "method": "openSearch",
+      "httpMethod": "get",
+      "tag": "Search",
+      "description": "basic search function following the OpenSearch specification",
+      "parameters": [
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": false,
+          "description": "count"
+        },
+        {
+          "name": "searchTerms",
+          "schema": "string",
+          "required": true,
+          "description": "searchTerms"
+        },
+        {
+          "name": "startIndex",
+          "schema": "integer",
+          "required": false,
+          "description": "startIndex"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/record/v2/search.json",
+      "method": "searchRecords",
+      "httpMethod": "get",
+      "tag": "Search",
+      "description": "search for records",
+      "parameters": [
+        {
+          "name": "boost",
+          "schema": "string",
+          "required": false,
+          "description": "boost"
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "callback"
+        },
+        {
+          "name": "colourpalette",
+          "schema": "array",
+          "required": false,
+          "description": "colourpalette"
+        },
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": "cursor"
+        },
+        {
+          "name": "facet",
+          "schema": "array",
+          "required": false,
+          "description": "facet"
+        },
+        {
+          "name": "hit.fl",
+          "schema": "string",
+          "required": false,
+          "description": "hit.fl"
+        },
+        {
+          "name": "hit.selectors",
+          "schema": "string",
+          "required": false,
+          "description": "hit.selectors"
+        },
+        {
+          "name": "landingpage",
+          "schema": "boolean",
+          "required": false,
+          "description": "landingpage"
+        },
+        {
+          "name": "lang",
+          "schema": "string",
+          "required": false,
+          "description": "lang"
+        },
+        {
+          "name": "media",
+          "schema": "boolean",
+          "required": false,
+          "description": "media"
+        },
+        {
+          "name": "profile",
+          "schema": "string",
+          "required": false,
+          "description": "profile"
+        },
+        {
+          "name": "q.source",
+          "schema": "string",
+          "required": false,
+          "description": "q.source"
+        },
+        {
+          "name": "q.target",
+          "schema": "string",
+          "required": false,
+          "description": "q.target"
+        },
+        {
+          "name": "qf",
+          "schema": "array",
+          "required": false,
+          "description": "qf"
+        },
+        {
+          "name": "query",
+          "schema": "string",
+          "required": true,
+          "description": "query"
+        },
+        {
+          "name": "reusability",
+          "schema": "array",
+          "required": false,
+          "description": "reusability"
+        },
+        {
+          "name": "rows",
+          "schema": "integer",
+          "required": false,
+          "description": "rows"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "required": false,
+          "description": "sort"
+        },
+        {
+          "name": "start",
+          "schema": "integer",
+          "required": false,
+          "description": "start"
+        },
+        {
+          "name": "text_fulltext",
+          "schema": "boolean",
+          "required": false,
+          "description": "text_fulltext"
+        },
+        {
+          "name": "theme",
+          "schema": "string",
+          "required": false,
+          "description": "theme"
+        },
+        {
+          "name": "thumbnail",
+          "schema": "boolean",
+          "required": false,
+          "description": "thumbnail"
+        },
+        {
+          "name": "wskey",
+          "schema": "string",
+          "required": true,
+          "description": "wskey"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/record/v2/search.json",
+      "method": "searchRecordsPost",
+      "httpMethod": "post",
+      "tag": "Search",
+      "description": "search for records post",
+      "parameters": [
+        {
+          "name": "wskey",
+          "schema": "string",
+          "required": true,
+          "description": "wskey"
+        },
+        {
+          "name": "boost",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "colourPalette",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "cursor",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "facet",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "hit",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "landingPage",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "media",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "profile",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "qf",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "query",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "reusability",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "rows",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sort",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "start",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "textFulltext",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "theme",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "thumbnail",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/record/v2/translateQuery.json",
+      "method": "translateQueryUsingGet",
+      "httpMethod": "get",
+      "tag": "Search",
+      "description": "translate a term to different languages",
+      "parameters": [
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "callback"
+        },
+        {
+          "name": "languageCodes",
+          "schema": "array",
+          "required": true,
+          "description": "languageCodes"
+        },
+        {
+          "name": "profile",
+          "schema": "string",
+          "required": false,
+          "description": "profile"
+        },
+        {
+          "name": "term",
+          "schema": "string",
+          "required": true,
+          "description": "term"
+        },
+        {
+          "name": "wskey",
+          "schema": "string",
+          "required": true,
+          "description": "wskey"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/record/v2/{collectionId}/{recordId}.json",
+      "method": "getSingleRecordJson",
+      "httpMethod": "get",
+      "tag": "Record",
+      "description": "get a single record in JSON format",
+      "parameters": [
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "callback"
+        },
+        {
+          "name": "collectionId",
+          "schema": "string",
+          "required": true,
+          "description": "collectionId"
+        },
+        {
+          "name": "lang",
+          "schema": "string",
+          "required": false,
+          "description": "lang"
+        },
+        {
+          "name": "profile",
+          "schema": "string",
+          "required": false,
+          "description": "profile"
+        },
+        {
+          "name": "recordId",
+          "schema": "string",
+          "required": true,
+          "description": "recordId"
+        },
+        {
+          "name": "wskey",
+          "schema": "string",
+          "required": true,
+          "description": "wskey"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/record/v2/{collectionId}/{recordId}.jsonld",
+      "method": "getSingleRecordJsonLd",
+      "httpMethod": "get",
+      "tag": "Record",
+      "description": "get single record in JSON LD format",
+      "parameters": [
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "callback"
+        },
+        {
+          "name": "collectionId",
+          "schema": "string",
+          "required": true,
+          "description": "collectionId"
+        },
+        {
+          "name": "lang",
+          "schema": "string",
+          "required": false,
+          "description": "lang"
+        },
+        {
+          "name": "profile",
+          "schema": "string",
+          "required": false,
+          "description": "profile"
+        },
+        {
+          "name": "recordId",
+          "schema": "string",
+          "required": true,
+          "description": "recordId"
+        },
+        {
+          "name": "wskey",
+          "schema": "string",
+          "required": true,
+          "description": "wskey"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/record/v2/{collectionId}/{recordId}.rdf",
+      "method": "getSingleRecordRdf",
+      "httpMethod": "get",
+      "tag": "Record",
+      "description": "get single record in RDF format)",
+      "parameters": [
+        {
+          "name": "collectionId",
+          "schema": "string",
+          "required": true,
+          "description": "collectionId"
+        },
+        {
+          "name": "lang",
+          "schema": "string",
+          "required": false,
+          "description": "lang"
+        },
+        {
+          "name": "profile",
+          "schema": "string",
+          "required": false,
+          "description": "profile"
+        },
+        {
+          "name": "recordId",
+          "schema": "string",
+          "required": true,
+          "description": "recordId"
+        },
+        {
+          "name": "wskey",
+          "schema": "string",
+          "required": true,
+          "description": "wskey"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/record/v2/{collectionId}/{recordId}.schema.jsonld",
+      "method": "getSingleRecordSchemaOrg",
+      "httpMethod": "get",
+      "tag": "Record",
+      "description": "get single record in Schema.org JSON LD format",
+      "parameters": [
+        {
+          "name": "callback",
+          "schema": "string",
+          "required": false,
+          "description": "callback"
+        },
+        {
+          "name": "collectionId",
+          "schema": "string",
+          "required": true,
+          "description": "collectionId"
+        },
+        {
+          "name": "lang",
+          "schema": "string",
+          "required": false,
+          "description": "lang"
+        },
+        {
+          "name": "profile",
+          "schema": "string",
+          "required": false,
+          "description": "profile"
+        },
+        {
+          "name": "recordId",
+          "schema": "string",
+          "required": true,
+          "description": "recordId"
+        },
+        {
+          "name": "wskey",
+          "schema": "string",
+          "required": true,
+          "description": "wskey"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/record/v2/{collectionId}/{recordId}.ttl",
+      "method": "getSingleRecordTurtle",
+      "httpMethod": "get",
+      "tag": "Record",
+      "description": "get single record in turtle format)",
+      "parameters": [
+        {
+          "name": "collectionId",
+          "schema": "string",
+          "required": true,
+          "description": "collectionId"
+        },
+        {
+          "name": "lang",
+          "schema": "string",
+          "required": false,
+          "description": "lang"
+        },
+        {
+          "name": "profile",
+          "schema": "string",
+          "required": false,
+          "description": "profile"
+        },
+        {
+          "name": "recordId",
+          "schema": "string",
+          "required": true,
+          "description": "recordId"
+        },
+        {
+          "name": "wskey",
+          "schema": "string",
+          "required": true,
+          "description": "wskey"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "api.europeana.eu",
   "apiDescription": "This Swagger API console provides an overview of the Europeana Search & Record API. You can build and test anything from the simplest search to a complex query using facetList such as dates, geotags and permissions. For more help and information, head to our comprehensive <a href=\"https://pro.europeana.eu/page/intro\">online documentation</a>.",
   "apiTitle": "Europeana Search & Record API",

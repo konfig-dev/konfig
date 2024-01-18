@@ -4,6 +4,110 @@
   "homepage": "nytimes.com",
   "serviceName": "timeswire",
   "apiVersion": "3.0.0",
+  "methods": [
+    {
+      "url": "/content.json",
+      "method": "/contentJsonGet",
+      "httpMethod": "get",
+      "description": "",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": "The complete URL of a specific news item, URL-encoded or backslash-escaped"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/content/{source}/{section}.json",
+      "method": "/content/{source}/{section}JsonGet",
+      "httpMethod": "get",
+      "description": "",
+      "parameters": [
+        {
+          "name": "source",
+          "schema": "string",
+          "required": true,
+          "description": "Limits the set of items by originating source\n\nall = items from both The New York Times and The International New York Times\nnyt = New York Times items only\niht = International New York Times items only\n"
+        },
+        {
+          "name": "section",
+          "schema": "string",
+          "required": true,
+          "description": "Limits the set of items by one or more sections\nall | One or more section names, separated by semicolons\n\n To get all sections, specify all. To get a particular section or sections, use the section names returned by this request:\n http://api.nytimes.com/svc/news/v3/content/section-list.json\n"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Limits the number of results, between 1 and 20"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Sets the starting point of the result set"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/content/{source}/{section}/{time-period}.json",
+      "method": "/content/{source}/{section}/{timePeriod}JsonGet",
+      "httpMethod": "get",
+      "description": "",
+      "parameters": [
+        {
+          "name": "source",
+          "schema": "string",
+          "required": true,
+          "description": "Limits the set of items by originating source\n\nall = items from both The New York Times and The International New York Times\nnyt = New York Times items only\niht = International New York Times items only\n"
+        },
+        {
+          "name": "section",
+          "schema": "string",
+          "required": true,
+          "description": "Limits the set of items by one or more sections\nall | One or more section names, separated by semicolons\n\n To get all sections, specify all. To get a particular section or sections, use the section names returned by this request:\n http://api.nytimes.com/svc/news/v3/content/section-list.json\n"
+        },
+        {
+          "name": "time-period",
+          "schema": "integer",
+          "required": true,
+          "description": "Limits the set of items by time published, integer in number of hours"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Limits the number of results, between 1 and 20"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Sets the starting point of the result set"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://api.nytimes.com/svc/news/v3",
   "apiDescription": "With the Times Newswire API, you can get links and metadata for Times articles and blog posts as soon as they are published on NYTimes.com. The Times Newswire API provides an up-to-the-minute stream of published items.",
   "apiTitle": "Times Newswire API",

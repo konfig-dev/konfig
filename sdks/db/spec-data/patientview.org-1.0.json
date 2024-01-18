@@ -3,6 +3,469 @@
   "openApiRaw": "https://www.patientview.org/api/api-docs",
   "homepage": "patientview.org",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/auth/login",
+      "method": "logIn",
+      "httpMethod": "post",
+      "tag": "auth-controller",
+      "description": "Log In",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/auth/logout/{token}",
+      "method": "logOut",
+      "httpMethod": "delete",
+      "tag": "auth-controller",
+      "description": "Log Out",
+      "parameters": [
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": "token"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/auth/{token}/basicuserinformation",
+      "method": "getBasicUserInformation",
+      "httpMethod": "get",
+      "tag": "auth-controller",
+      "description": "Get Basic User Information",
+      "parameters": [
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": "token"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/patient/{userId}/basic",
+      "method": "getBasicPatientDetails",
+      "httpMethod": "get",
+      "tag": "patient-controller",
+      "description": "Get Basic Patient Information",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "userId"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/patientmanagement/diagnoses",
+      "method": "getPatientManagementDiagnoses",
+      "httpMethod": "get",
+      "tag": "patient-management-controller",
+      "description": "getPatientManagementDiagnoses",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/patientmanagement/lookuptypes",
+      "method": "getPatientManagementLookupTypes",
+      "httpMethod": "get",
+      "tag": "patient-management-controller",
+      "description": "getPatientManagementLookupTypes",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/patientmanagement/validate",
+      "method": "validatePatientManagement",
+      "httpMethod": "post",
+      "tag": "patient-management-controller",
+      "description": "validatePatientManagement",
+      "parameters": [
+        {
+          "name": "condition",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "encounters",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "groupCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "identifier",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "observations",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "patient",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "practitioners",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/patientmanagement/{userId}/group/{groupId}/identifier/{identifierId}",
+      "method": "getPatientManagement",
+      "httpMethod": "get",
+      "tag": "patient-management-controller",
+      "description": "getPatientManagement",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "userId"
+        },
+        {
+          "name": "groupId",
+          "schema": "integer",
+          "required": true,
+          "description": "groupId"
+        },
+        {
+          "name": "identifierId",
+          "schema": "integer",
+          "required": true,
+          "description": "identifierId"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/patientmanagement/{userId}/group/{groupId}/identifier/{identifierId}",
+      "method": "savePatientManagement",
+      "httpMethod": "post",
+      "tag": "patient-management-controller",
+      "description": "savePatientManagement",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "userId"
+        },
+        {
+          "name": "groupId",
+          "schema": "integer",
+          "required": true,
+          "description": "groupId"
+        },
+        {
+          "name": "identifierId",
+          "schema": "integer",
+          "required": true,
+          "description": "identifierId"
+        },
+        {
+          "name": "condition",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "encounters",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "groupCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "identifier",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "observations",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "patient",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "practitioners",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/patientmanagement/{userId}/group/{groupId}/identifier/{identifierId}/surgeries",
+      "method": "savePatientManagementSurgeries",
+      "httpMethod": "post",
+      "tag": "patient-management-controller",
+      "description": "savePatientManagementSurgeries",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "userId"
+        },
+        {
+          "name": "groupId",
+          "schema": "integer",
+          "required": true,
+          "description": "groupId"
+        },
+        {
+          "name": "identifierId",
+          "schema": "integer",
+          "required": true,
+          "description": "identifierId"
+        },
+        {
+          "name": "condition",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "encounters",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "groupCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "identifier",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "observations",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "patient",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "practitioners",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/user/{userId}/availableobservationheadings",
+      "method": "getAvailableObservationHeadings",
+      "httpMethod": "get",
+      "tag": "observation-heading-controller",
+      "description": "Get Available Observations Types For a User",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "userId"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/user/{userId}/observations",
+      "method": "getObservationsByCodes",
+      "httpMethod": "get",
+      "tag": "observation-controller",
+      "description": "Get Observations of Multiple Types For a User",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "userId"
+        },
+        {
+          "name": "code",
+          "schema": "array",
+          "required": true,
+          "description": "code"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": true,
+          "description": "limit"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "offset"
+        },
+        {
+          "name": "orderDirection",
+          "schema": "string",
+          "required": true,
+          "description": "orderDirection"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/user/{userId}/observations/{code}",
+      "method": "getObservationsByCode",
+      "httpMethod": "get",
+      "tag": "observation-controller",
+      "description": "Get Observations of a Certain Type For a User",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "userId"
+        },
+        {
+          "name": "code",
+          "schema": "string",
+          "required": true,
+          "description": "code"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/user/{userId}/observations/{code}/patiententered",
+      "method": "getPatientEnteredObservationsByCode",
+      "httpMethod": "get",
+      "tag": "observation-controller",
+      "description": "Get patient entered Observations of a Certain Type For a User",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "userId"
+        },
+        {
+          "name": "code",
+          "schema": "string",
+          "required": true,
+          "description": "code"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/user/{userId}/patiententeredobservationheadings",
+      "method": "getPatientEnteredObservationHeadings",
+      "httpMethod": "get",
+      "tag": "observation-heading-controller",
+      "description": "Get Available Patient Entered Observations Types For a User",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "integer",
+          "required": true,
+          "description": "userId"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://www.patientview.org/",
   "apiDescription": "The recommended REST API endpoints to be used when integrating with PatientView",
   "apiTitle": "PatientView",

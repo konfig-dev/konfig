@@ -4,6 +4,35 @@
   "homepage": "interzoid.com",
   "serviceName": "getcountrymatch",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/getcountrymatch",
+      "method": "getcountrymatch",
+      "httpMethod": "get",
+      "tag": "Country Match Similarity Key",
+      "description": "Gets a similarity key for matching purposes for country name data",
+      "parameters": [
+        {
+          "name": "license",
+          "schema": "string",
+          "required": true,
+          "description": "Your Interzoid license API key. Register at www.interzoid.com/register"
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "Country name from which to generate similarity key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.interzoid.com",
   "apiDescription": "This API provides a similarity key used to match with other similar country name data, including for purposes of deduplication, fuzzy matching, or merging of datasets. A much higher match rate will be achieved by matching on the algorithmically generated similarity key rather than the data itself.",
   "apiTitle": "Interzoid Get Country Match Similarity Key API",

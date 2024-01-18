@@ -4,6 +4,140 @@
   "homepage": "deutschebahn.com",
   "serviceName": "fahrplan",
   "apiVersion": "v1",
+  "methods": [
+    {
+      "url": "/arrivalBoard/{id}",
+      "method": "/arrivalBoard/{id}Get",
+      "httpMethod": "get",
+      "description": "Get arrival board of a location",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of location. Use attribute 'id' from the result of 'location'"
+        },
+        {
+          "name": "date",
+          "schema": "string",
+          "required": true,
+          "description": "Date and time in ISO-8601 format, yyyy-mm-ddThh:mm:ss, example: 2017-04-01 or 2017-04-01T10:30"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/departureBoard/{id}",
+      "method": "/departureBoard/{id}Get",
+      "httpMethod": "get",
+      "description": "Get departure board of a location",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of a location. Use attribute 'id' from the result of 'location'"
+        },
+        {
+          "name": "date",
+          "schema": "string",
+          "required": true,
+          "description": "Date and time in ISO-8601 format, yyyy-mm-ddThh:mm:ss, example: 2017-04-01 or 2017-04-01T10:30"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/journeyDetails/{id}",
+      "method": "/journeyDetails/{id}Get",
+      "httpMethod": "get",
+      "description": "Get details about a single journey",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of a journey. Use attribute 'detailsId' from the result of  'arrivalBoard' or 'departureBoard'"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/location/{name}",
+      "method": "/location/{name}Get",
+      "httpMethod": "get",
+      "description": "Get location information",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "Name or name fragment of a location"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.deutschebahn.com/freeplan/v1",
   "apiDescription": "A RESTful webservice to request a railway journey - FREE plan with restricted access (max. 10 requests per minute). Please ignore the message in the API Console about the access token.\n\nRegister to use an less restricted version, which requires an access token.",
   "apiTitle": "Fahrplan-Free",

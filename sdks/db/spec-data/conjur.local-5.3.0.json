@@ -3,6 +3,1364 @@
   "openApiRaw": "https://raw.githubusercontent.com/cyberark/conjur-openapi-spec/main/spec/openapi.yml",
   "homepage": "conjur.local",
   "apiVersion": "5.3.0",
+  "methods": [
+    {
+      "url": "/authenticators",
+      "method": "getAuthenticators",
+      "httpMethod": "get",
+      "tag": "status",
+      "description": "Details about which authenticators are on the Conjur Server",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/authn-azure/{service_id}/{account}/{login}/authenticate",
+      "method": "getAccessTokenViaAzure",
+      "httpMethod": "post",
+      "tag": "authentication",
+      "description": "Gets a short-lived access token for applications running in Azure.",
+      "parameters": [
+        {
+          "name": "service_id",
+          "schema": "string",
+          "required": true,
+          "description": "URL-Encoded authenticator service ID"
+        },
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Organization account name"
+        },
+        {
+          "name": "login",
+          "schema": "string",
+          "required": true,
+          "description": "URL-encoded login name. For users, it’s the user ID. For hosts, the login name is `host/<host-id>`"
+        },
+        {
+          "name": "Accept-Encoding",
+          "schema": "string",
+          "description": "Setting the Accept-Encoding header to base64 will return a pre-encoded access token"
+        },
+        {
+          "name": "jwt",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/authn-gcp/{account}/authenticate",
+      "method": "getAccessTokenViaGcp",
+      "httpMethod": "post",
+      "tag": "authentication",
+      "description": "Gets a short-lived access token for applications running in\nGoogle Cloud Platform.\n",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Organization account name"
+        },
+        {
+          "name": "Accept-Encoding",
+          "schema": "string",
+          "description": "Setting the Accept-Encoding header to base64 will return a pre-encoded access token"
+        },
+        {
+          "name": "jwt",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Example of a Conjur API key"
+        }
+      ]
+    },
+    {
+      "url": "/authn-gcp/{account}/status",
+      "method": "getGcpAuthenticatorStatus",
+      "httpMethod": "get",
+      "tag": "status",
+      "description": "Details whether an authentication service has been configured properly",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "The organization account name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "501",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/authn-iam/{service_id}/{account}/{login}/authenticate",
+      "method": "getAccessTokenViaAws",
+      "httpMethod": "post",
+      "tag": "authentication",
+      "description": "Get a short-lived access token for applications running in AWS.",
+      "parameters": [
+        {
+          "name": "service_id",
+          "schema": "string",
+          "required": true,
+          "description": "URL-Encoded authenticator service ID"
+        },
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Organization account name"
+        },
+        {
+          "name": "login",
+          "schema": "string",
+          "required": true,
+          "description": "URL-encoded login name. For hosts, the login name is `host/<host-id>`"
+        },
+        {
+          "name": "Accept-Encoding",
+          "schema": "string",
+          "description": "Setting the Accept-Encoding header to base64 will return a pre-encoded access token"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/authn-jwt/{service_id}/{account}/authenticate",
+      "method": "getAccessTokenViaJwt",
+      "httpMethod": "post",
+      "tag": "authentication",
+      "description": "Gets a short-lived access token for applications using JSON Web Token (JWT)\nto access the Conjur API.\n",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Organization account name"
+        },
+        {
+          "name": "service_id",
+          "schema": "string",
+          "required": true,
+          "description": "URL-Encoded authenticator service ID"
+        },
+        {
+          "name": "jwt",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/authn-jwt/{service_id}/{account}/{id}/authenticate",
+      "method": "getAccessTokenViaJwtWithId",
+      "httpMethod": "post",
+      "tag": "authentication",
+      "description": "Gets a short-lived access token for applications using JSON Web Token (JWT)\nto access the Conjur API. Covers the case of use of optional URL parameter \"ID\"\n",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Organization account name"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Organization user id"
+        },
+        {
+          "name": "service_id",
+          "schema": "string",
+          "required": true,
+          "description": "URL-Encoded authenticator service ID"
+        },
+        {
+          "name": "jwt",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/authn-k8s/{service_id}/inject_client_cert",
+      "method": "k8SInjectClientCert",
+      "httpMethod": "post",
+      "tag": "authentication",
+      "description": "For applications running in Kubernetes; sends Conjur a certificate\nsigning request (CSR) and requests a client certificate injected into\nthe application's Kubernetes pod.\n",
+      "parameters": [
+        {
+          "name": "service_id",
+          "schema": "string",
+          "required": true,
+          "description": "URL-Encoded authenticator service ID"
+        },
+        {
+          "name": "Host-Id-Prefix",
+          "schema": "string",
+          "description": "Dot-separated policy tree, prefixed by `host.`, where the application identity is defined"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/authn-k8s/{service_id}/{account}/{login}/authenticate",
+      "method": "getAccessTokenViaKubernetes",
+      "httpMethod": "post",
+      "tag": "authentication",
+      "description": "Gets a short-lived access token for applications running in Kubernetes.",
+      "parameters": [
+        {
+          "name": "service_id",
+          "schema": "string",
+          "required": true,
+          "description": "URL-Encoded authenticator service ID"
+        },
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Organization account name"
+        },
+        {
+          "name": "login",
+          "schema": "string",
+          "required": true,
+          "description": "URL-encoded login name. For users, it’s the user ID. For hosts, the login name is `host/<host-id>`"
+        },
+        {
+          "name": "Accept-Encoding",
+          "schema": "string",
+          "description": "Setting the Accept-Encoding header to base64 will return a pre-encoded access token"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/authn-ldap/{service_id}/{account}/login",
+      "method": "getApiKeyViaLdap",
+      "httpMethod": "get",
+      "tag": "authentication",
+      "description": "Gets the Conjur API key of a user given the LDAP username and\npassword via HTTP Basic Authentication.\n",
+      "parameters": [
+        {
+          "name": "service_id",
+          "schema": "string",
+          "required": true,
+          "description": "URL-Encoded authenticator service ID"
+        },
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Organization account name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Example of a Conjur API key"
+        }
+      ]
+    },
+    {
+      "url": "/authn-ldap/{service_id}/{account}/{login}/authenticate",
+      "method": "getAccessTokenViaLdap",
+      "httpMethod": "post",
+      "tag": "authentication",
+      "description": "Gets a short-lived access token for users and hosts using their\nLDAP identity to access the Conjur API.\n",
+      "parameters": [
+        {
+          "name": "service_id",
+          "schema": "string",
+          "required": true,
+          "description": "URL-Encoded authenticator service ID"
+        },
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Organization account name"
+        },
+        {
+          "name": "login",
+          "schema": "string",
+          "required": true,
+          "description": "URL-encoded login name. For users, it’s the user ID. For hosts, the login name is `host/<host-id>`"
+        },
+        {
+          "name": "Accept-Encoding",
+          "schema": "string",
+          "description": "Setting the Accept-Encoding header to base64 will return a pre-encoded access token"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/authn-oidc/{service_id}/{account}/authenticate",
+      "method": "getAccessTokenViaOidc",
+      "httpMethod": "post",
+      "tag": "authentication",
+      "description": "Gets a short-lived access token for applications using OpenID\nConnect (OIDC) to access the Conjur API.\n",
+      "parameters": [
+        {
+          "name": "service_id",
+          "schema": "string",
+          "required": true,
+          "description": "URL-Encoded authenticator service ID"
+        },
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Organization account name"
+        },
+        {
+          "name": "id_token",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/authn/{account}/api_key",
+      "method": "rotateApiKey",
+      "httpMethod": "put",
+      "tag": "authentication",
+      "description": "Rotates a role's API key.",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Organization account name"
+        },
+        {
+          "name": "role",
+          "schema": "string",
+          "description": "(**Optional**) role specifier in `{kind}:{identifier}` format\n\n##### Permissions required\n\n`update` privilege on the role whose API key is being rotated.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Example of a Conjur API key"
+        }
+      ]
+    },
+    {
+      "url": "/authn/{account}/login",
+      "method": "getApiKey",
+      "httpMethod": "get",
+      "tag": "authentication",
+      "description": "Gets the API key of a user given the username and password\nvia HTTP Basic Authentication.\n",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Organization account name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Example of a Conjur API key"
+        }
+      ]
+    },
+    {
+      "url": "/authn/{account}/password",
+      "method": "changePassword",
+      "httpMethod": "put",
+      "tag": "authentication",
+      "description": "Changes a user’s password.",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Organization account name"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/authn/{account}/{login}/authenticate",
+      "method": "getAccessToken",
+      "httpMethod": "post",
+      "tag": "authentication",
+      "description": "Gets a short-lived access token, which is required in the header\nof most subsequent API requests.\n",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Organization account name"
+        },
+        {
+          "name": "login",
+          "schema": "string",
+          "required": true,
+          "description": "URL-encoded login name. For users, it’s the user ID. For hosts, the login name is `host/<host-id>`"
+        },
+        {
+          "name": "Accept-Encoding",
+          "schema": "string",
+          "description": "Setting the Accept-Encoding header to base64 will return a pre-encoded access token"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ca/{account}/{service_id}/sign",
+      "method": "sign",
+      "httpMethod": "post",
+      "tag": "certificate authority",
+      "description": "Gets a signed certificate from the configured Certificate Authority service.",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Organization account name"
+        },
+        {
+          "name": "service_id",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the Certificate Authority service"
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "description": "Setting the Accept header to `application/x-pem-file` allows Conjur to respond with a formatted certificate"
+        },
+        {
+          "name": "csr",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "ttl",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/health",
+      "method": "health",
+      "httpMethod": "get",
+      "tag": "status",
+      "description": "Health info about conjur",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/host_factories/hosts",
+      "method": "createHost",
+      "httpMethod": "post",
+      "tag": "host factory",
+      "description": "Creates a Host using the Host Factory.",
+      "parameters": [
+        {
+          "name": "annotations",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Contains information about a created host"
+        }
+      ]
+    },
+    {
+      "url": "/host_factory_tokens",
+      "method": "createToken",
+      "httpMethod": "post",
+      "tag": "host factory",
+      "description": "Creates one or more host identity tokens.",
+      "parameters": [
+        {
+          "name": "cidr",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "expiration",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "host_factory",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/host_factory_tokens/{token}",
+      "method": "revokeToken",
+      "httpMethod": "delete",
+      "tag": "host factory",
+      "description": "Revokes a token, immediately disabling it.",
+      "parameters": [
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": "The host factory token to revoke"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/info",
+      "method": "info",
+      "httpMethod": "get",
+      "tag": "status",
+      "description": "Basic information about the Conjur Enterprise server",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/policies/{account}/policy/{identifier}",
+      "method": "updatePolicy",
+      "httpMethod": "patch",
+      "tag": "policies",
+      "description": "Modifies an existing Conjur policy.",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Organization account name"
+        },
+        {
+          "name": "identifier",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the policy to update"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/policies/{account}/policy/{identifier}",
+      "method": "loadPolicy",
+      "httpMethod": "post",
+      "tag": "policies",
+      "description": "Adds data to the existing Conjur policy.",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Organization account name"
+        },
+        {
+          "name": "identifier",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the policy to update"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/policies/{account}/policy/{identifier}",
+      "method": "replacePolicy",
+      "httpMethod": "put",
+      "tag": "policies",
+      "description": "Loads or replaces a Conjur policy document.",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Organization account name"
+        },
+        {
+          "name": "identifier",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the policy to load (root if no root policy has been loaded yet)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/public_keys/{account}/{kind}/{identifier}",
+      "method": "showPublicKeys",
+      "httpMethod": "get",
+      "tag": "public keys",
+      "description": "Shows all public keys for a resource.",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Organization account name"
+        },
+        {
+          "name": "kind",
+          "schema": "string",
+          "required": true,
+          "description": "Type of resource"
+        },
+        {
+          "name": "identifier",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the resource for which to get the information about"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/remote_health/{remote}",
+      "method": "remoteHealth",
+      "httpMethod": "get",
+      "tag": "status",
+      "description": "Health info about a given Conjur Enterprise server",
+      "parameters": [
+        {
+          "name": "remote",
+          "schema": "string",
+          "required": true,
+          "description": "The hostname of the remote to check"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources",
+      "method": "showResourcesForAllAccounts",
+      "httpMethod": "get",
+      "tag": "resources",
+      "description": "Lists resources within an organization account.",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "description": "Organization account name"
+        },
+        {
+          "name": "kind",
+          "schema": "string",
+          "description": "Type of resource"
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "description": "Filter resources based on this value by name"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "When listing resources, start at this item number."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "When listing resources, return up to this many results."
+        },
+        {
+          "name": "count",
+          "schema": "boolean",
+          "description": "When listing resources, if `true`, return only the count of the results."
+        },
+        {
+          "name": "role",
+          "schema": "string",
+          "description": "Retrieves the resources list for a different role if the authenticated role has access"
+        },
+        {
+          "name": "acting_as",
+          "schema": "string",
+          "description": "Retrieves the resources list for a different role if the authenticated role has access"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/{account}",
+      "method": "showResourcesForAccount",
+      "httpMethod": "get",
+      "tag": "resources",
+      "description": "Lists resources within an organization account.",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Organization account name"
+        },
+        {
+          "name": "kind",
+          "schema": "string",
+          "description": "Type of resource"
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "description": "Filter resources based on this value by name"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "When listing resources, start at this item number."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "When listing resources, return up to this many results."
+        },
+        {
+          "name": "count",
+          "schema": "boolean",
+          "description": "When listing resources, if `true`, return only the count of the results."
+        },
+        {
+          "name": "role",
+          "schema": "string",
+          "description": "Retrieves the resources list for a different role if the authenticated role has access"
+        },
+        {
+          "name": "acting_as",
+          "schema": "string",
+          "description": "Retrieves the resources list for a different role if the authenticated role has access"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/{account}/{kind}",
+      "method": "showResourcesForKind",
+      "httpMethod": "get",
+      "tag": "resources",
+      "description": "Lists resources of the same kind within an organization account.",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Organization account name"
+        },
+        {
+          "name": "kind",
+          "schema": "string",
+          "required": true,
+          "description": "Type of resource"
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "description": "Filter resources based on this value by name"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "When listing resources, start at this item number."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "When listing resources, return up to this many results."
+        },
+        {
+          "name": "count",
+          "schema": "boolean",
+          "description": "When listing resources, if `true`, return only the count of the results."
+        },
+        {
+          "name": "role",
+          "schema": "string",
+          "description": "Retrieves the resources list for a different role if the authenticated role has access"
+        },
+        {
+          "name": "acting_as",
+          "schema": "string",
+          "description": "Retrieves the resources list for a different role if the authenticated role has access"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/resources/{account}/{kind}/{identifier}",
+      "method": "showResource",
+      "httpMethod": "get",
+      "tag": "resources",
+      "description": "Shows a description of a single resource.",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Organization account name"
+        },
+        {
+          "name": "kind",
+          "schema": "string",
+          "required": true,
+          "description": "Type of resource"
+        },
+        {
+          "name": "identifier",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the resource for which to get the information about"
+        },
+        {
+          "name": "permitted_roles",
+          "schema": "boolean",
+          "description": "Lists the roles which have the named privilege on a resource."
+        },
+        {
+          "name": "privilege",
+          "schema": "string",
+          "description": "Level of privilege to filter on. Can only be used in combination with `permitted_roles` or `check` parameter."
+        },
+        {
+          "name": "check",
+          "schema": "boolean",
+          "description": "Check whether a role has a privilege on a resource."
+        },
+        {
+          "name": "role",
+          "schema": "string",
+          "description": "Role to check privilege on. Can only be used in combination with `check` parameter."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/roles/{account}/{kind}/{identifier}",
+      "method": "removeMemberFromRole",
+      "httpMethod": "delete",
+      "tag": "roles",
+      "description": "Deletes an existing role membership",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Organization account name"
+        },
+        {
+          "name": "kind",
+          "schema": "string",
+          "required": true,
+          "description": "Type of resource"
+        },
+        {
+          "name": "identifier",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the role for which to get the information about"
+        },
+        {
+          "name": "members",
+          "schema": "string",
+          "required": true,
+          "description": "Returns a list of the Role's members."
+        },
+        {
+          "name": "member",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Role to be added as a member."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/roles/{account}/{kind}/{identifier}",
+      "method": "showRole",
+      "httpMethod": "get",
+      "tag": "roles",
+      "description": "Get role information",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Organization account name"
+        },
+        {
+          "name": "kind",
+          "schema": "string",
+          "required": true,
+          "description": "Type of resource"
+        },
+        {
+          "name": "identifier",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the role for which to get the information about"
+        },
+        {
+          "name": "all",
+          "schema": "string",
+          "description": "Returns an array of Role IDs representing all role memberships, expanded recursively."
+        },
+        {
+          "name": "memberships",
+          "schema": "string",
+          "description": "Returns all direct role memberships (members not expanded recursively)."
+        },
+        {
+          "name": "members",
+          "schema": "string",
+          "description": "Returns a list of the Role's members."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "When listing members, start at this item number."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "When listing members, return up to this many results."
+        },
+        {
+          "name": "count",
+          "schema": "boolean",
+          "description": "When listing members, if `true`, return only the count of members."
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "description": "When listing members, the results will be narrowed to only those matching the provided string"
+        },
+        {
+          "name": "graph",
+          "schema": "string",
+          "description": "If included in the query returns a graph view of the role"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/roles/{account}/{kind}/{identifier}",
+      "method": "addMemberToRole",
+      "httpMethod": "post",
+      "tag": "roles",
+      "description": "Update or modify an existing role membership",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Organization account name"
+        },
+        {
+          "name": "kind",
+          "schema": "string",
+          "required": true,
+          "description": "Type of resource"
+        },
+        {
+          "name": "identifier",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the role for which to get the information about"
+        },
+        {
+          "name": "members",
+          "schema": "string",
+          "required": true,
+          "description": "Returns a list of the Role's members."
+        },
+        {
+          "name": "member",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Role to be added as a member."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/secrets",
+      "method": "getSecrets",
+      "httpMethod": "get",
+      "tag": "secrets",
+      "description": "Fetch multiple secrets",
+      "parameters": [
+        {
+          "name": "variable_ids",
+          "schema": "string",
+          "required": true,
+          "description": "Comma-delimited, URL-encoded resource IDs of the variables."
+        },
+        {
+          "name": "Accept-Encoding",
+          "schema": "string",
+          "description": "Set the encoding of the response object"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/secrets/{account}/{kind}/{identifier}",
+      "method": "getSecret",
+      "httpMethod": "get",
+      "tag": "secrets",
+      "description": "Fetches the value of a secret from the specified Secret.",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Organization account name"
+        },
+        {
+          "name": "kind",
+          "schema": "string",
+          "required": true,
+          "description": "Type of resource - in almost all cases this should be `variable`"
+        },
+        {
+          "name": "identifier",
+          "schema": "string",
+          "required": true,
+          "description": "URL-encoded variable ID"
+        },
+        {
+          "name": "version",
+          "schema": "integer",
+          "description": "(**Optional**) Version you want to retrieve (Conjur keeps the last 20 versions of a secret)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/secrets/{account}/{kind}/{identifier}",
+      "method": "createSecret",
+      "httpMethod": "post",
+      "tag": "secrets",
+      "description": "Creates a secret value within the specified variable.",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Organization account name"
+        },
+        {
+          "name": "kind",
+          "schema": "string",
+          "required": true,
+          "description": "Type of resource - in almost all cases this should be `variable`"
+        },
+        {
+          "name": "identifier",
+          "schema": "string",
+          "required": true,
+          "description": "URL-encoded variable ID"
+        },
+        {
+          "name": "expirations",
+          "schema": "string",
+          "required": false,
+          "description": "Tells the server to reset the variables expiration date"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/whoami",
+      "method": "whoAmI",
+      "httpMethod": "get",
+      "tag": "status",
+      "description": "Provides information about the client making an API request.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Information about the client making a request"
+        }
+      ]
+    },
+    {
+      "url": "/{authenticator}/{account}",
+      "method": "enableAuthenticator",
+      "httpMethod": "patch",
+      "tag": "authentication",
+      "description": "Enables or disables authenticator defined without service_id.",
+      "parameters": [
+        {
+          "name": "authenticator",
+          "schema": "string",
+          "required": true,
+          "description": "The authenticator to update"
+        },
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Organization account name"
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/{authenticator}/{service_id}/{account}",
+      "method": "enableAuthenticatorInstance",
+      "httpMethod": "patch",
+      "tag": "authentication",
+      "description": "Enables or disables authenticator service instances.",
+      "parameters": [
+        {
+          "name": "authenticator",
+          "schema": "string",
+          "required": true,
+          "description": "The authenticator to update"
+        },
+        {
+          "name": "service_id",
+          "schema": "string",
+          "required": true,
+          "description": "URL-Encoded authenticator service ID"
+        },
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "Organization account name"
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/{authenticator}/{service_id}/{account}/status",
+      "method": "getServiceAuthenticatorStatus",
+      "httpMethod": "get",
+      "tag": "status",
+      "description": "Details whether an authentication service has been configured properly",
+      "parameters": [
+        {
+          "name": "authenticator",
+          "schema": "string",
+          "required": true,
+          "description": "The type of authenticator"
+        },
+        {
+          "name": "service_id",
+          "schema": "string",
+          "required": true,
+          "description": "URL-Encoded authenticator service ID"
+        },
+        {
+          "name": "account",
+          "schema": "string",
+          "required": true,
+          "description": "The organization account name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "501",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://conjur.local",
   "apiDescription": "This is an API definition for CyberArk Conjur Open Source. You can find out more at [Conjur.org](https://www.conjur.org/).",
   "apiTitle": "Conjur",

@@ -3,6 +3,136 @@
   "openApiRaw": "https://api.evemarketer.com/ec/swagger.yaml",
   "homepage": "evemarketer.com",
   "apiVersion": "1.0.1",
+  "methods": [
+    {
+      "url": "/marketstat",
+      "method": "/marketstatGet",
+      "httpMethod": "get",
+      "tag": "marketstat",
+      "description": "XML Marketstat",
+      "parameters": [
+        {
+          "name": "typeid",
+          "schema": "array",
+          "required": true,
+          "description": "TypeID. Multiple TypeIDs can be specified in the following format (up to 200 TypeIDs per request):\ntypeid=34&typeid=35 or typeid=34,35\n"
+        },
+        {
+          "name": "regionlimit",
+          "schema": "integer",
+          "description": "Limit the statistics to a single region."
+        },
+        {
+          "name": "usesystem",
+          "schema": "integer",
+          "description": "Limit the statistics to a single solar system."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/marketstat",
+      "method": "/marketstatPost",
+      "httpMethod": "post",
+      "tag": "marketstat",
+      "description": "XML Marketstat",
+      "parameters": [
+        {
+          "name": "typeid",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "regionlimit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "usesystem",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/marketstat/json",
+      "method": "/marketstat/jsonGet",
+      "httpMethod": "get",
+      "tag": "marketstat",
+      "description": "JSON Marketstat",
+      "parameters": [
+        {
+          "name": "typeid",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "regionlimit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "usesystem",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/marketstat/json",
+      "method": "/marketstat/jsonPost",
+      "httpMethod": "post",
+      "tag": "marketstat",
+      "description": "JSON Marketstat",
+      "parameters": [
+        {
+          "name": "typeid",
+          "schema": "array",
+          "required": true,
+          "description": "TypeID. Multiple TypeIDs can be specified in the following format (up to 200 TypeIDs per request):\ntypeid=34&typeid=35 or typeid=34,35\n"
+        },
+        {
+          "name": "regionlimit",
+          "schema": "integer",
+          "description": "Limit the statistics to a single region."
+        },
+        {
+          "name": "usesystem",
+          "schema": "integer",
+          "description": "Limit the statistics to a single region."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.evemarketer.com/ec",
   "apiDescription": "EVEMarketer Marketstat API is almost compatible with EVE-Central's Marketstat API.",
   "apiTitle": "EVEMarketer Marketstat API",

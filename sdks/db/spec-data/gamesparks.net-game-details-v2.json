@@ -4,6 +4,2895 @@
   "homepage": "gamesparks.net",
   "serviceName": "game-details",
   "apiVersion": "v2",
+  "methods": [
+    {
+      "url": "/restv2/game/regions",
+      "method": "getRegionOptionsUsingGet",
+      "httpMethod": "get",
+      "tag": "region",
+      "description": "getRegionOptions",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/analytics",
+      "method": "getAnalyticsDataUsingGet",
+      "httpMethod": "get",
+      "tag": "analytics",
+      "description": "Returns the results of executed query defined by the parameters passed in",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "stage",
+          "schema": "string",
+          "required": true,
+          "description": "stage"
+        },
+        {
+          "name": "dataType",
+          "schema": "string",
+          "required": true,
+          "description": "dataType"
+        },
+        {
+          "name": "precision",
+          "schema": "string",
+          "required": true,
+          "description": "precision"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": true,
+          "description": "yyyy-MM-dd"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "required": true,
+          "description": "yyyy-MM-dd"
+        },
+        {
+          "name": "keys",
+          "schema": "string",
+          "required": false,
+          "description": "the keys to select. For example \"ReturningUsers\", \"NewUsers\", etc"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/analytics/count",
+      "method": "getDataCountUsingGet",
+      "httpMethod": "get",
+      "tag": "analytics",
+      "description": "Returns the count of executed query",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "stage",
+          "schema": "string",
+          "required": true,
+          "description": "stage"
+        },
+        {
+          "name": "queryName",
+          "schema": "string",
+          "required": true,
+          "description": "queryName"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/analytics/rollingRetention",
+      "method": "getRetentionUsingGet",
+      "httpMethod": "get",
+      "tag": "analytics",
+      "description": "Returns the percentage of user retention over the last 30 days",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "stage",
+          "schema": "string",
+          "required": true,
+          "description": "stage"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/billingDetails",
+      "method": "getBillingDetails",
+      "httpMethod": "get",
+      "tag": "billingDetails",
+      "description": "Retrieves the Billing Details",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/billingDetails",
+      "method": "putBillingDetails",
+      "httpMethod": "put",
+      "tag": "billingDetails",
+      "description": "Updates the Billing Details",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "building",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "city",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "companyName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "email1",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "email2",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "email3",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "firstName1",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "firstName2",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "firstName3",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "lastName1",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "lastName2",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "lastName3",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "postcode",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "street",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "taxNumber",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/notifications/summary",
+      "method": "getGameSummaryUsingGet",
+      "httpMethod": "get",
+      "tag": "notifications",
+      "description": "getGameSummary",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "stage",
+          "schema": "string",
+          "required": true,
+          "description": "stage"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": true,
+          "description": "yyyy-MM-dd"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "required": true,
+          "description": "yyyy-MM-dd"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/pushNotifications/test/amazon",
+      "method": "testPushAmazonNotificationsUsingPost",
+      "httpMethod": "post",
+      "tag": "pushNotificationTest",
+      "description": "testPushAmazonNotifications",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "customJson",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "messageId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "pushId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "subtitle",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "summary",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/pushNotifications/test/apple/development",
+      "method": "testPushAppleDevNotificationsUsingPost",
+      "httpMethod": "post",
+      "tag": "pushNotificationTest",
+      "description": "testPushAppleDevNotifications",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "customJson",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "messageId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "pushId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "subtitle",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "summary",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/pushNotifications/test/apple/production",
+      "method": "testPushAppleProdNotificationsUsingPost",
+      "httpMethod": "post",
+      "tag": "pushNotificationTest",
+      "description": "testPushAppleProdNotifications",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "customJson",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "messageId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "pushId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "subtitle",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "summary",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/pushNotifications/test/google",
+      "method": "testPushGoogleNotificationsUsingPost",
+      "httpMethod": "post",
+      "tag": "pushNotificationTest",
+      "description": "testPushGoogleNotifications",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "customJson",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "messageId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "pushId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "subtitle",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "summary",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/pushNotifications/test/microsoft/windows8",
+      "method": "testWindows8NotificationsUsingPost",
+      "httpMethod": "post",
+      "tag": "pushNotificationTest",
+      "description": "testWindows8Notifications",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "customJson",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "messageId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "pushId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "subtitle",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "summary",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/pushNotifications/test/microsoft/windowsPhone8",
+      "method": "testWindowsPhone8NotificationsUsingPost",
+      "httpMethod": "post",
+      "tag": "pushNotificationTest",
+      "description": "testWindowsPhone8Notifications",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "customJson",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "messageId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "pushId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "subtitle",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "summary",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/pushNotifications/test/viber/integration",
+      "method": "testViberIntegrationNotificationsUsingPost",
+      "httpMethod": "post",
+      "tag": "pushNotificationTest",
+      "description": "testViberIntegrationNotifications",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "customJson",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "messageId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "pushId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "subtitle",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "summary",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/pushNotifications/test/viber/production",
+      "method": "testViberProductionNotificationsUsingPost",
+      "httpMethod": "post",
+      "tag": "pushNotificationTest",
+      "description": "testViberProductionNotifications",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "customJson",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "messageId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "pushId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "subtitle",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "summary",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/scripts/differences/{snapshotId1}/{snapshotId2}",
+      "method": "getScriptDifferencesUsingGet",
+      "httpMethod": "get",
+      "tag": "scripts",
+      "description": "getScriptDifferences",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "snapshotId1",
+          "schema": "string",
+          "required": true,
+          "description": "snapshotId1"
+        },
+        {
+          "name": "snapshotId2",
+          "schema": "string",
+          "required": true,
+          "description": "snapshotId2"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/scripts/export",
+      "method": "exportZipUsingGet",
+      "httpMethod": "get",
+      "tag": "scripts",
+      "description": "exportZip",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/scripts/import/accept",
+      "method": "importAcceptUsingPost",
+      "httpMethod": "post",
+      "tag": "scripts",
+      "description": "importAccept",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "body",
+          "schema": "string",
+          "required": true,
+          "description": "body"
+        },
+        {
+          "name": "file",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/scripts/import/preview",
+      "method": "importZipUsingPost",
+      "httpMethod": "post",
+      "tag": "scripts",
+      "description": "importZip",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "file",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/scripts/versions",
+      "method": "getScriptVersionsUsingGet1",
+      "httpMethod": "get",
+      "tag": "scripts",
+      "description": "getScriptVersions",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "pageSize"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/scripts/versions/{page}",
+      "method": "getScriptVersionsUsingGet",
+      "httpMethod": "get",
+      "tag": "scripts",
+      "description": "getScriptVersions",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": true,
+          "description": "page"
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "pageSize"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/segmentQueryFilters",
+      "method": "getSegmentQueryFiltersUsingGet",
+      "httpMethod": "get",
+      "tag": "segmentQueryFilters",
+      "description": "getSegmentQueryFilters",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/segmentQueryFilters/config",
+      "method": "getSegmentQueryFiltersConfigUsingGet",
+      "httpMethod": "get",
+      "tag": "segmentQueryFilters",
+      "description": "getSegmentQueryFiltersConfig",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/segmentQueryFilters/config",
+      "method": "updateSegmentQueryFiltersConfigUsingPut",
+      "httpMethod": "put",
+      "tag": "segmentQueryFilters",
+      "description": "updateSegmentQueryFiltersConfig",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "customFilters",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "hiddenFilters",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/segmentQueryFilters/standardFilters",
+      "method": "getSegmentQueryStandardFiltersUsingGet",
+      "httpMethod": "get",
+      "tag": "segmentQueryFilters",
+      "description": "getSegmentQueryStandardFilters",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/snapshots",
+      "method": "getSnapshotsUsingGet1",
+      "httpMethod": "get",
+      "tag": "snapshots",
+      "description": "getSnapshots",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "pageSize"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/snapshots",
+      "method": "createSnapshotsUsingPost",
+      "httpMethod": "post",
+      "tag": "snapshots",
+      "description": "createSnapshots",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/snapshots/liveSnapshotId",
+      "method": "getLiveSnapshotIdUsingGet",
+      "httpMethod": "get",
+      "tag": "snapshots",
+      "description": "getLiveSnapshotId",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/snapshots/page/{page}",
+      "method": "getSnapshotsUsingGet",
+      "httpMethod": "get",
+      "tag": "snapshots",
+      "description": "getSnapshots",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": true,
+          "description": "page"
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "pageSize"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/snapshots/revert/to/{snapshotId}",
+      "method": "revertToSnapshotUsingPost",
+      "httpMethod": "post",
+      "tag": "snapshots",
+      "description": "revertToSnapshot",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "snapshotId",
+          "schema": "string",
+          "required": true,
+          "description": "snapshotId"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/snapshots/{snapshotId}",
+      "method": "deleteSnapshotUsingDelete1",
+      "httpMethod": "delete",
+      "tag": "snapshots",
+      "description": "deleteSnapshot",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "snapshotId",
+          "schema": "string",
+          "required": true,
+          "description": "snapshotId"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/snapshots/{snapshotId}",
+      "method": "getSnapshotUsingGet",
+      "httpMethod": "get",
+      "tag": "snapshots",
+      "description": "getSnapshot",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "snapshotId",
+          "schema": "string",
+          "required": true,
+          "description": "snapshotId"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/snapshots/{snapshotId}/copy",
+      "method": "copySnapshotToNewGameUsingPost",
+      "httpMethod": "post",
+      "tag": "snapshots",
+      "description": "copySnapshotToNewGame",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "snapshotId",
+          "schema": "string",
+          "required": true,
+          "description": "snapshotId"
+        },
+        {
+          "name": "includeGameConfig",
+          "schema": "boolean",
+          "required": false,
+          "description": "includeGameConfig"
+        },
+        {
+          "name": "includeMetadata",
+          "schema": "boolean",
+          "required": false,
+          "description": "includeMetadata"
+        },
+        {
+          "name": "includeBinaries",
+          "schema": "boolean",
+          "required": false,
+          "description": "includeBinaries"
+        },
+        {
+          "name": "includeCollaborators",
+          "schema": "boolean",
+          "required": false,
+          "description": "includeCollaborators"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/snapshots/{snapshotId}/copy/to/{targetApiKey}",
+      "method": "copySnapshotToExistingGameUsingPost1",
+      "httpMethod": "post",
+      "tag": "snapshots",
+      "description": "copySnapshotToExistingGame",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "snapshotId",
+          "schema": "string",
+          "required": true,
+          "description": "snapshotId"
+        },
+        {
+          "name": "targetApiKey",
+          "schema": "string",
+          "required": true,
+          "description": "targetApiKey"
+        },
+        {
+          "name": "includeGameConfig",
+          "schema": "boolean",
+          "required": false,
+          "description": "includeGameConfig"
+        },
+        {
+          "name": "includeMetadata",
+          "schema": "boolean",
+          "required": false,
+          "description": "includeMetadata"
+        },
+        {
+          "name": "includeBinaries",
+          "schema": "boolean",
+          "required": false,
+          "description": "includeBinaries"
+        },
+        {
+          "name": "includeCollaborators",
+          "schema": "boolean",
+          "required": false,
+          "description": "includeCollaborators"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/snapshots/{snapshotId}/publish",
+      "method": "publishSnapshotUsingPost1",
+      "httpMethod": "post",
+      "tag": "snapshots",
+      "description": "publishSnapshot",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "snapshotId",
+          "schema": "string",
+          "required": true,
+          "description": "snapshotId"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/snapshots/{snapshotId}/unpublish",
+      "method": "unpublishSnapshotUsingPost",
+      "httpMethod": "post",
+      "tag": "snapshots",
+      "description": "unpublishSnapshot",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "snapshotId",
+          "schema": "string",
+          "required": true,
+          "description": "snapshotId"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/testHarness/scenarios",
+      "method": "getTestHarnessScenariosUsingGet",
+      "httpMethod": "get",
+      "tag": "testHarness",
+      "description": "getTestHarnessScenarios",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/testHarness/scenarios",
+      "method": "createTestHarnessScenarioUsingPost",
+      "httpMethod": "post",
+      "tag": "testHarness",
+      "description": "createTestHarnessScenario",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "scenarioJson",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "scenarioName",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/testHarness/scenarios/{scenarioName}",
+      "method": "deleteTestHarnessScenarioUsingDelete",
+      "httpMethod": "delete",
+      "tag": "testHarness",
+      "description": "deleteTestHarnessScenario",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "scenarioName",
+          "schema": "string",
+          "required": true,
+          "description": "scenarioName"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/testHarness/scenarios/{scenarioName}",
+      "method": "getTestHarnessScenarioUsingGet",
+      "httpMethod": "get",
+      "tag": "testHarness",
+      "description": "getTestHarnessScenario",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "scenarioName",
+          "schema": "string",
+          "required": true,
+          "description": "scenarioName"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/admin/testHarness/scenarios/{scenarioName}",
+      "method": "updateTestHarnessScenarioUsingPut",
+      "httpMethod": "put",
+      "tag": "testHarness",
+      "description": "updateTestHarnessScenario",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "scenarioName",
+          "schema": "string",
+          "required": true,
+          "description": "scenarioName"
+        },
+        {
+          "name": "scenarioJson",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "scenarioName",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/config/~credentials/{credentialName}/resetSecret",
+      "method": "updateCredentialSecretUsingPost",
+      "httpMethod": "post",
+      "tag": "credentials",
+      "description": "Resets the secret of a credential",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "credentialName",
+          "schema": "string",
+          "required": true,
+          "description": "credentialName"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/endpoints",
+      "method": "getGamesEndpointsUsingGet",
+      "httpMethod": "get",
+      "tag": "gamesAdmin",
+      "description": "getGamesEndpoints",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/manage/experiments",
+      "method": "getExperimentsUsingGet",
+      "httpMethod": "get",
+      "tag": "experiments",
+      "description": "getExperiments",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/manage/experiments",
+      "method": "createExperimentUsingPost",
+      "httpMethod": "post",
+      "tag": "experiments",
+      "description": "createExperiment",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "active",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "changedFieldsAndInitialValues",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "complete",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "config",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "measurements",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "measurementsEsQuery",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "percentHash",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "publishedStages",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/manage/experiments/{id}",
+      "method": "deleteExperimentUsingDelete",
+      "httpMethod": "delete",
+      "tag": "experiments",
+      "description": "deleteExperiment",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/manage/experiments/{id}",
+      "method": "getExperimentUsingGet",
+      "httpMethod": "get",
+      "tag": "experiments",
+      "description": "getExperiment",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/manage/experiments/{id}",
+      "method": "updateExperimentUsingPut",
+      "httpMethod": "put",
+      "tag": "experiments",
+      "description": "updateExperiment",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "id"
+        },
+        {
+          "name": "active",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "changedFieldsAndInitialValues",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "complete",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "config",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "measurements",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "measurementsEsQuery",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "percentHash",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "publishedStages",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/manage/experiments/{id}/{action}",
+      "method": "doActionExperimentUsingPost",
+      "httpMethod": "post",
+      "tag": "experiments",
+      "description": "doActionExperiment",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "id"
+        },
+        {
+          "name": "action",
+          "schema": "string",
+          "required": true,
+          "description": "action"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/manage/queries",
+      "method": "listQueriesUsingGet",
+      "httpMethod": "get",
+      "tag": "manage",
+      "description": "listQueries",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/manage/queries",
+      "method": "createQueryUsingPost",
+      "httpMethod": "post",
+      "tag": "manage",
+      "description": "createQuery",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "esRules",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "qbRules",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "shortCode",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/manage/queries/{shortCode}",
+      "method": "deleteQueryUsingDelete",
+      "httpMethod": "delete",
+      "tag": "manage",
+      "description": "deleteQuery",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "shortCode",
+          "schema": "string",
+          "required": true,
+          "description": "shortCode"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/manage/queries/{shortCode}",
+      "method": "getQueryUsingGet",
+      "httpMethod": "get",
+      "tag": "manage",
+      "description": "getQuery",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "shortCode",
+          "schema": "string",
+          "required": true,
+          "description": "shortCode"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/manage/queries/{shortCode}",
+      "method": "updateQueryUsingPut",
+      "httpMethod": "put",
+      "tag": "manage",
+      "description": "updateQuery",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "shortCode",
+          "schema": "string",
+          "required": true,
+          "description": "shortCode"
+        },
+        {
+          "name": "esRules",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "qbRules",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "shortCode",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/manage/screens",
+      "method": "listScreensUsingGet",
+      "httpMethod": "get",
+      "tag": "manage",
+      "description": "listScreens",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/manage/screens",
+      "method": "createScreenUsingPost",
+      "httpMethod": "post",
+      "tag": "manage",
+      "description": "createScreen",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "groups",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "shortCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "template",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/manage/screens/executable",
+      "method": "listExecutableScreensUsingGet",
+      "httpMethod": "get",
+      "tag": "manage",
+      "description": "listExecutableScreens",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/manage/screens/{shortCode}",
+      "method": "deleteScreenUsingDelete",
+      "httpMethod": "delete",
+      "tag": "manage",
+      "description": "deleteScreen",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "shortCode",
+          "schema": "string",
+          "required": true,
+          "description": "shortCode"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/manage/screens/{shortCode}",
+      "method": "getScreenUsingGet",
+      "httpMethod": "get",
+      "tag": "manage",
+      "description": "getScreen",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "shortCode",
+          "schema": "string",
+          "required": true,
+          "description": "shortCode"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/manage/screens/{shortCode}",
+      "method": "updateScreenUsingPut",
+      "httpMethod": "put",
+      "tag": "manage",
+      "description": "updateScreen",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "shortCode",
+          "schema": "string",
+          "required": true,
+          "description": "shortCode"
+        },
+        {
+          "name": "groups",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "shortCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "template",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/manage/snapshots",
+      "method": "listSnapshotsUsingGet",
+      "httpMethod": "get",
+      "tag": "manage",
+      "description": "listSnapshots",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/manage/snapshots",
+      "method": "createSnapshotUsingPost",
+      "httpMethod": "post",
+      "tag": "manage",
+      "description": "createSnapshot",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/manage/snapshots/{snapshotId}",
+      "method": "deleteSnapshotUsingDelete",
+      "httpMethod": "delete",
+      "tag": "manage",
+      "description": "deleteSnapshot",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "snapshotId",
+          "schema": "string",
+          "required": true,
+          "description": "snapshotId"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/manage/snapshots/{snapshotId}/copy/to/{targetApiKey}",
+      "method": "copySnapshotToExistingGameUsingPost",
+      "httpMethod": "post",
+      "tag": "manage",
+      "description": "copySnapshotToExistingGame",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "snapshotId",
+          "schema": "string",
+          "required": true,
+          "description": "snapshotId"
+        },
+        {
+          "name": "targetApiKey",
+          "schema": "string",
+          "required": true,
+          "description": "targetApiKey"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/manage/snapshots/{snapshotId}/publish",
+      "method": "publishSnapshotUsingPost",
+      "httpMethod": "post",
+      "tag": "manage",
+      "description": "publishSnapshot",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "snapshotId",
+          "schema": "string",
+          "required": true,
+          "description": "snapshotId"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/manage/snapshots/{snapshotId}/revert",
+      "method": "revertSnapshotUsingPost",
+      "httpMethod": "post",
+      "tag": "manage",
+      "description": "revertSnapshot",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "snapshotId",
+          "schema": "string",
+          "required": true,
+          "description": "snapshotId"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/manage/snippets",
+      "method": "listSnippetsUsingGet",
+      "httpMethod": "get",
+      "tag": "manage",
+      "description": "listSnippets",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/manage/snippets",
+      "method": "createSnippetUsingPost",
+      "httpMethod": "post",
+      "tag": "manage",
+      "description": "createSnippet",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "groups",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "script",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "scriptData",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "shortCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "template",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/manage/snippets/{shortCode}",
+      "method": "deleteSnippetUsingDelete",
+      "httpMethod": "delete",
+      "tag": "manage",
+      "description": "deleteSnippet",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "shortCode",
+          "schema": "string",
+          "required": true,
+          "description": "shortCode"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/manage/snippets/{shortCode}",
+      "method": "getSnippetUsingGet",
+      "httpMethod": "get",
+      "tag": "manage",
+      "description": "getSnippet",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "shortCode",
+          "schema": "string",
+          "required": true,
+          "description": "shortCode"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/manage/snippets/{shortCode}",
+      "method": "updateSnippetUsingPut",
+      "httpMethod": "put",
+      "tag": "manage",
+      "description": "updateSnippet",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        },
+        {
+          "name": "shortCode",
+          "schema": "string",
+          "required": true,
+          "description": "shortCode"
+        },
+        {
+          "name": "groups",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "script",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "scriptData",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "shortCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "template",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{apiKey}/restore",
+      "method": "restoreDeletedGameUsingPost",
+      "httpMethod": "post",
+      "tag": "gamesAdmin",
+      "description": "restoreDeletedGame",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "required": true,
+          "description": "apiKey"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{gameApiKey}/region/{regionCode}",
+      "method": "setGameRegionUsingPost",
+      "httpMethod": "post",
+      "tag": "region",
+      "description": "setGameRegion",
+      "parameters": [
+        {
+          "name": "gameApiKey",
+          "schema": "string",
+          "required": true,
+          "description": "gameApiKey"
+        },
+        {
+          "name": "regionCode",
+          "schema": "string",
+          "required": true,
+          "description": "regionCode"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/game/{gameApiKey}/regions",
+      "method": "getGameRegionOptionsUsingGet",
+      "httpMethod": "get",
+      "tag": "region",
+      "description": "getGameRegionOptions",
+      "parameters": [
+        {
+          "name": "gameApiKey",
+          "schema": "string",
+          "required": true,
+          "description": "gameApiKey"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/games",
+      "method": "listUsingGet",
+      "httpMethod": "get",
+      "tag": "gamesAdmin",
+      "description": "list",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/restv2/games/deleted",
+      "method": "listDeletedUsingGet",
+      "httpMethod": "get",
+      "tag": "gamesAdmin",
+      "description": "listDeleted",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "//config2.gamesparks.net",
   "apiDescription": "The API to manage the GameSparks game details",
   "apiTitle": "GameSparks Game Details API",

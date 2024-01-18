@@ -3,6 +3,4851 @@
   "openApiRaw": "http://api.v2.clickmeter.com.s3.amazonaws.com/docs/api-docs-v2.json",
   "homepage": "clickmeter.com",
   "apiVersion": "v2",
+  "methods": [
+    {
+      "url": "/account",
+      "method": "accountGet",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Retrieve current account data",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account",
+      "method": "accountPost",
+      "httpMethod": "post",
+      "tag": "Account",
+      "description": "Update current account data",
+      "parameters": [
+        {
+          "name": "boGoVal",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "bonusClicks",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "companyName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "companyRole",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "phone",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "redirectOnly",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "registrationDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "timeframeMinDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "timezone",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "timezonename",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/domainwhitelist",
+      "method": "accountGetDomainWhitelist",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Retrieve list of a domains allowed to redirect in DDU mode",
+      "parameters": [
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Offset where to start from"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Limit results to this number"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/domainwhitelist",
+      "method": "accountPutDomainWhitelist",
+      "httpMethod": "post",
+      "tag": "Account",
+      "description": "Create an domain entry",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/domainwhitelist/{whitelistId}",
+      "method": "accountDeleteDomainWhitelist",
+      "httpMethod": "delete",
+      "tag": "Account",
+      "description": "Delete an domain entry",
+      "parameters": [
+        {
+          "name": "whitelistId",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the domain to delete"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/guests",
+      "method": "accountGetGuests",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Retrieve list of a guest",
+      "parameters": [
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Offset where to start from"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Limit results to this number"
+        },
+        {
+          "name": "sortBy",
+          "schema": "string",
+          "required": false,
+          "description": "Field to sort by"
+        },
+        {
+          "name": "sortDirection",
+          "schema": "string",
+          "required": false,
+          "description": "Direction of sort \"asc\" or \"desc\""
+        },
+        {
+          "name": "textSearch",
+          "schema": "string",
+          "required": false,
+          "description": "Filter fields by this pattern"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/guests",
+      "method": "accountPutGuest",
+      "httpMethod": "post",
+      "tag": "Account",
+      "description": "Create a guest",
+      "parameters": [
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "conversionOptions",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "creationDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "currentGrant",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "dateFormat",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "decimalSeparator",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "extendedGrants",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "groupGrants",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "hitOptions",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "loginCount",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "notes",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "numberGroupSeparator",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "timeFormat",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "timeZone",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "timeframeMinDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "timezonename",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tlGrants",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "tpGrants",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "userName",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/guests/count",
+      "method": "accountGetGuestsCount",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Retrieve count of guests",
+      "parameters": [
+        {
+          "name": "textSearch",
+          "schema": "string",
+          "required": false,
+          "description": "Filter fields by this pattern"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/guests/{guestId}",
+      "method": "accountDeleteGuest",
+      "httpMethod": "delete",
+      "tag": "Account",
+      "description": "Delete a guest",
+      "parameters": [
+        {
+          "name": "guestId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the guest"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/guests/{guestId}",
+      "method": "accountGetGuest",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Retrieve a guest",
+      "parameters": [
+        {
+          "name": "guestId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the guest"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/guests/{guestId}",
+      "method": "accountPostGuest",
+      "httpMethod": "post",
+      "tag": "Account",
+      "description": "Update a guest",
+      "parameters": [
+        {
+          "name": "guestId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the guest"
+        },
+        {
+          "name": "apiKey",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "conversionOptions",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "creationDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "currentGrant",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "dateFormat",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "decimalSeparator",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "extendedGrants",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "groupGrants",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "hitOptions",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "loginCount",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "notes",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "numberGroupSeparator",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "timeFormat",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "timeZone",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "timeframeMinDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "timezonename",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tlGrants",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "tpGrants",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "userName",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/guests/{guestId}/permissions",
+      "method": "accountGetPermissions",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Retrieve permissions for a guest",
+      "parameters": [
+        {
+          "name": "guestId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the guest"
+        },
+        {
+          "name": "entityType",
+          "schema": "string",
+          "required": false,
+          "description": "Can be \"datapoint\" or \"group\""
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Offset where to start from"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Limit results to this number"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Can be \"w\" or \"r\""
+        },
+        {
+          "name": "entityId",
+          "schema": "integer",
+          "required": false,
+          "description": "Optional id of the datapoint/group entity to filter by"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/guests/{guestId}/permissions/count",
+      "method": "accountGetPermissionsCount",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Retrieve count of the permissions for a guest",
+      "parameters": [
+        {
+          "name": "guestId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the guest"
+        },
+        {
+          "name": "entityType",
+          "schema": "string",
+          "required": false,
+          "description": "Can be \"datapoint\" or \"group\""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Can be \"w\" or \"r\""
+        },
+        {
+          "name": "entityId",
+          "schema": "integer",
+          "required": false,
+          "description": "Optional id of the datapoint/group entity to filter by"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/guests/{guestId}/{type}/permissions/patch",
+      "method": "/account/guests/{guestId}/{type}/permissions/patchPost",
+      "httpMethod": "post",
+      "tag": "Account",
+      "description": "Change the permission on a shared object",
+      "parameters": [
+        {
+          "name": "guestId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the guest"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": "Can be \"datapoint\" or \"group\""
+        },
+        {
+          "name": "Action",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "Verb",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/guests/{guestId}/{type}/permissions/patch",
+      "method": "accountPatchPermissions",
+      "httpMethod": "put",
+      "tag": "Account",
+      "description": "Change the permission on a shared object",
+      "parameters": [
+        {
+          "name": "guestId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the guest"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": "Can be \"datapoint\" or \"group\""
+        },
+        {
+          "name": "Action",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "Verb",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/ipblacklist",
+      "method": "accountGetIpBlacklist",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Retrieve list of a ip to exclude from event tracking",
+      "parameters": [
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Offset where to start from"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Limit results to this number"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/ipblacklist",
+      "method": "accountPutIpBlacklist",
+      "httpMethod": "post",
+      "tag": "Account",
+      "description": "Create an ip blacklist entry",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ip",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/ipblacklist/{blacklistId}",
+      "method": "accountDeleteIpBlacklist",
+      "httpMethod": "delete",
+      "tag": "Account",
+      "description": "Delete an ip blacklist entry",
+      "parameters": [
+        {
+          "name": "blacklistId",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the ip to delete"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/plan",
+      "method": "accountGetPlan",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Retrieve current account plan",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/aggregated",
+      "method": "aggregatedGetStatisticsSingle",
+      "httpMethod": "get",
+      "tag": "Aggregated",
+      "description": "Retrieve statistics about this customer for a timeframe",
+      "parameters": [
+        {
+          "name": "timeFrame",
+          "schema": "string",
+          "required": true,
+          "description": "Timeframe of the request. See list at $timeframeList"
+        },
+        {
+          "name": "fromDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the starting day (YYYYMMDD)"
+        },
+        {
+          "name": "toDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the ending day (YYYYMMDD)"
+        },
+        {
+          "name": "hourly",
+          "schema": "boolean",
+          "required": false,
+          "description": "If using \"yesterday\" or \"today\" timeframe you can ask for the hourly detail"
+        },
+        {
+          "name": "onlyFavorites",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/aggregated/list",
+      "method": "aggregatedGetStatisticsList",
+      "httpMethod": "get",
+      "tag": "Aggregated",
+      "description": "Retrieve statistics about this customer for a timeframe grouped by some temporal entity (day/week/month)",
+      "parameters": [
+        {
+          "name": "timeFrame",
+          "schema": "string",
+          "required": true,
+          "description": "Timeframe of the request. See list at $timeframeList"
+        },
+        {
+          "name": "fromDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the starting day (YYYYMMDD)"
+        },
+        {
+          "name": "toDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the ending day (YYYYMMDD)"
+        },
+        {
+          "name": "groupBy",
+          "schema": "string",
+          "required": false,
+          "description": "The temporal entity you want to group by (\"week\"/\"month\"). If unspecified is \"day\"."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/aggregated/summary/conversions",
+      "method": "aggregatedGetConversionsSummary",
+      "httpMethod": "get",
+      "tag": "Aggregated",
+      "description": "Retrieve statistics about a subset of conversions for a timeframe with conversions data",
+      "parameters": [
+        {
+          "name": "timeFrame",
+          "schema": "string",
+          "required": true,
+          "description": "Timeframe of the request. See list at $timeframeList"
+        },
+        {
+          "name": "fromDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the starting day (YYYYMMDD)"
+        },
+        {
+          "name": "toDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the ending day (YYYYMMDD)"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Status of conversion (\"deleted\"/\"active\")"
+        },
+        {
+          "name": "sortBy",
+          "schema": "string",
+          "required": false,
+          "description": "Field to sort by"
+        },
+        {
+          "name": "sortDirection",
+          "schema": "string",
+          "required": false,
+          "description": "Direction of sort \"asc\" or \"desc\""
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Offset where to start from"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Limit results to this number"
+        },
+        {
+          "name": "textSearch",
+          "schema": "string",
+          "required": false,
+          "description": "Filter fields by this pattern"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/aggregated/summary/datapoints",
+      "method": "aggregatedGetDatapointsSummary",
+      "httpMethod": "get",
+      "tag": "Aggregated",
+      "description": "Retrieve statistics about a subset of datapoints for a timeframe with datapoints data",
+      "parameters": [
+        {
+          "name": "timeFrame",
+          "schema": "string",
+          "required": true,
+          "description": "Timeframe of the request. See list at $timeframeList"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of datapoint (\"tl\"/\"tp\")"
+        },
+        {
+          "name": "fromDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the starting day (YYYYMMDD)"
+        },
+        {
+          "name": "toDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the ending day (YYYYMMDD)"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Status of datapoint (\"deleted\"/\"active\"/\"paused\"/\"spam\")"
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "required": false,
+          "description": "A comma separated list of tags you want to filter with."
+        },
+        {
+          "name": "favourite",
+          "schema": "boolean",
+          "required": false,
+          "description": "Is the datapoint marked as favourite"
+        },
+        {
+          "name": "sortBy",
+          "schema": "string",
+          "required": false,
+          "description": "Field to sort by"
+        },
+        {
+          "name": "sortDirection",
+          "schema": "string",
+          "required": false,
+          "description": "Direction of sort \"asc\" or \"desc\""
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Offset where to start from"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Limit results to this number"
+        },
+        {
+          "name": "groupId",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by this group id"
+        },
+        {
+          "name": "textSearch",
+          "schema": "string",
+          "required": false,
+          "description": "Filter fields by this pattern"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/aggregated/summary/groups",
+      "method": "aggregatedGetGroupsSummary",
+      "httpMethod": "get",
+      "tag": "Aggregated",
+      "description": "Retrieve statistics about a subset of groups for a timeframe with groups data",
+      "parameters": [
+        {
+          "name": "timeFrame",
+          "schema": "string",
+          "required": true,
+          "description": "Timeframe of the request. See list at $timeframeList"
+        },
+        {
+          "name": "fromDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the starting day (YYYYMMDD)"
+        },
+        {
+          "name": "toDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the ending day (YYYYMMDD)"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Status of group (\"deleted\"/\"active\")"
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "required": false,
+          "description": "A comma separated list of tags you want to filter with."
+        },
+        {
+          "name": "favourite",
+          "schema": "boolean",
+          "required": false,
+          "description": "Is the group marked as favourite"
+        },
+        {
+          "name": "sortBy",
+          "schema": "string",
+          "required": false,
+          "description": "Field to sort by"
+        },
+        {
+          "name": "sortDirection",
+          "schema": "string",
+          "required": false,
+          "description": "Direction of sort \"asc\" or \"desc\""
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Offset where to start from"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Limit results to this number"
+        },
+        {
+          "name": "textSearch",
+          "schema": "string",
+          "required": false,
+          "description": "Filter fields by this pattern"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/clickstream",
+      "method": "clickStreamGet",
+      "httpMethod": "get",
+      "tag": "ClickStream",
+      "description": "Retrieve the latest list of events of this account. Limited to last 100.",
+      "parameters": [
+        {
+          "name": "group",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by this group id (mutually exclusive with \"datapoint\" and \"conversion\")"
+        },
+        {
+          "name": "datapoint",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by this datapoint id (mutually exclusive with \"group\" and \"conversion\")"
+        },
+        {
+          "name": "conversion",
+          "schema": "integer",
+          "required": false,
+          "description": "Filter by this conversion id (mutually exclusive with \"datapoint\" and \"group\")"
+        },
+        {
+          "name": "pageSize",
+          "schema": "integer",
+          "required": false,
+          "description": "Limit results to this number"
+        },
+        {
+          "name": "filter",
+          "schema": "string",
+          "required": false,
+          "description": "Filter event type (\"spiders\"/\"uniques\"/\"nonuniques\"/\"conversions\")"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversions",
+      "method": "conversionsGet",
+      "httpMethod": "get",
+      "tag": "Conversions",
+      "description": "Retrieve a list of conversions",
+      "parameters": [
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Offset where to start from"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Limit results to this number"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Status of conversion (\"deleted\"/\"active\")"
+        },
+        {
+          "name": "textSearch",
+          "schema": "string",
+          "required": false,
+          "description": "Filter fields by this pattern"
+        },
+        {
+          "name": "createdAfter",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude conversions created before this date (YYYYMMDD)"
+        },
+        {
+          "name": "createdBefore",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude conversions created after this date (YYYYMMDD)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversions",
+      "method": "conversionsPut",
+      "httpMethod": "post",
+      "tag": "Conversions",
+      "description": "Create a conversion",
+      "parameters": [
+        {
+          "name": "code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "creationDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "deleted",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "protocol",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "value",
+          "schema": "number",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversions/aggregated/list",
+      "method": "conversionsGetStatisticsAllList",
+      "httpMethod": "get",
+      "tag": "Conversions",
+      "description": "Retrieve statistics about this customer for a timeframe related to a subset of conversions grouped by some temporal entity (day/week/month)",
+      "parameters": [
+        {
+          "name": "timeFrame",
+          "schema": "string",
+          "required": true,
+          "description": "Timeframe of the request. See list at $timeframeList"
+        },
+        {
+          "name": "fromDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the starting day (YYYYMMDD)"
+        },
+        {
+          "name": "toDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the ending day (YYYYMMDD)"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Status of conversion (\"deleted\"/\"active\")"
+        },
+        {
+          "name": "groupBy",
+          "schema": "string",
+          "required": false,
+          "description": "The temporal entity you want to group by (\"week\"/\"month\"). If unspecified is \"day\"."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversions/count",
+      "method": "conversionsCount",
+      "httpMethod": "get",
+      "tag": "Conversions",
+      "description": "Retrieve a count of conversions",
+      "parameters": [
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Status of conversion (\"deleted\"/\"active\")"
+        },
+        {
+          "name": "textSearch",
+          "schema": "string",
+          "required": false,
+          "description": "Filter fields by this pattern"
+        },
+        {
+          "name": "createdAfter",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude conversions created before this date (YYYYMMDD)"
+        },
+        {
+          "name": "createdBefore",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude conversions created after this date (YYYYMMDD)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversions/{conversionId}",
+      "method": "conversionsDelete",
+      "httpMethod": "delete",
+      "tag": "Conversions",
+      "description": "Delete conversion specified by id",
+      "parameters": [
+        {
+          "name": "conversionId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the conversion"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversions/{conversionId}",
+      "method": "/conversions/{conversionId}Get",
+      "httpMethod": "get",
+      "tag": "Conversions",
+      "description": "Retrieve conversion specified by id",
+      "parameters": [
+        {
+          "name": "conversionId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the conversion"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversions/{conversionId}",
+      "method": "conversionsPost",
+      "httpMethod": "post",
+      "tag": "Conversions",
+      "description": "Update conversion specified by id",
+      "parameters": [
+        {
+          "name": "conversionId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the conversion"
+        },
+        {
+          "name": "code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "creationDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "deleted",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "protocol",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "value",
+          "schema": "number",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversions/{conversionId}/aggregated",
+      "method": "conversionsGetStatisticsSingle",
+      "httpMethod": "get",
+      "tag": "Conversions",
+      "description": "Retrieve statistics about this conversion for a timeframe",
+      "parameters": [
+        {
+          "name": "conversionId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the conversion"
+        },
+        {
+          "name": "timeFrame",
+          "schema": "string",
+          "required": true,
+          "description": "Timeframe of the request. See list at $timeframeList"
+        },
+        {
+          "name": "fromDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the starting day (YYYYMMDD)"
+        },
+        {
+          "name": "toDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the ending day (YYYYMMDD)"
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by this tag name"
+        },
+        {
+          "name": "favourite",
+          "schema": "boolean",
+          "required": false,
+          "description": "Is the datapoint marked as favourite"
+        },
+        {
+          "name": "hourly",
+          "schema": "boolean",
+          "required": false,
+          "description": "If using \"yesterday\" or \"today\" timeframe you can ask for the hourly detail"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversions/{conversionId}/aggregated/list",
+      "method": "conversionsGetStatisticsList",
+      "httpMethod": "get",
+      "tag": "Conversions",
+      "description": "Retrieve statistics about this conversion for a timeframe grouped by some temporal entity (day/week/month)",
+      "parameters": [
+        {
+          "name": "conversionId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the conversion"
+        },
+        {
+          "name": "timeFrame",
+          "schema": "string",
+          "required": true,
+          "description": "Timeframe of the request. See list at $timeframeList"
+        },
+        {
+          "name": "fromDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the starting day (YYYYMMDD)"
+        },
+        {
+          "name": "toDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the ending day (YYYYMMDD)"
+        },
+        {
+          "name": "groupBy",
+          "schema": "string",
+          "required": false,
+          "description": "The temporal entity you want to group by (\"week\"/\"month\"). If unspecified is \"day\"."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversions/{conversionId}/datapoints",
+      "method": "conversionsGetDatapoints",
+      "httpMethod": "get",
+      "tag": "Conversions",
+      "description": "Retrieve a list of datapoints connected to this conversion",
+      "parameters": [
+        {
+          "name": "conversionId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the conversion"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Offset where to start from"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Limit results to this number"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Type of datapoint (\"tl\"/\"tp\")"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Status of datapoint (\"deleted\"/\"active\"/\"paused\"/\"spam\")"
+        },
+        {
+          "name": "tags",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by this tag name"
+        },
+        {
+          "name": "textSearch",
+          "schema": "string",
+          "required": false,
+          "description": "Filter fields by this pattern"
+        },
+        {
+          "name": "createdAfter",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude datapoints created before this date (YYYYMMDD)"
+        },
+        {
+          "name": "createdBefore",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude datapoints created after this date (YYYYMMDD)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversions/{conversionId}/datapoints/batch/patch",
+      "method": "/conversions/{conversionId}/datapoints/batch/patchPut",
+      "httpMethod": "put",
+      "tag": "Conversions",
+      "description": "Modify the association between a conversion and multiple datapoints",
+      "parameters": [
+        {
+          "name": "conversionId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the conversion"
+        },
+        {
+          "name": "PatchRequests",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversions/{conversionId}/datapoints/count",
+      "method": "conversionsGetDatapointsCount",
+      "httpMethod": "get",
+      "tag": "Conversions",
+      "description": "Retrieve a count of datapoints connected to this conversion",
+      "parameters": [
+        {
+          "name": "conversionId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the conversion"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Type of datapoint (\"tl\"/\"tp\")"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Status of datapoint (\"deleted\"/\"active\"/\"paused\"/\"spam\")"
+        },
+        {
+          "name": "tags",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by this tag name"
+        },
+        {
+          "name": "textSearch",
+          "schema": "string",
+          "required": false,
+          "description": "Filter fields by this pattern"
+        },
+        {
+          "name": "createdAfter",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude datapoints created before this date (YYYYMMDD)"
+        },
+        {
+          "name": "createdBefore",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude datapoints created after this date (YYYYMMDD)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversions/{conversionId}/datapoints/patch",
+      "method": "conversionsPatch",
+      "httpMethod": "put",
+      "tag": "Conversions",
+      "description": "Modify the association between a conversion and a datapoint",
+      "parameters": [
+        {
+          "name": "conversionId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the conversion"
+        },
+        {
+          "name": "Action",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "ReplaceId",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversions/{conversionId}/hits",
+      "method": "conversionsGetHits",
+      "httpMethod": "get",
+      "tag": "Conversions",
+      "description": "Retrieve the list of events related to this conversion.",
+      "parameters": [
+        {
+          "name": "conversionId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the conversion"
+        },
+        {
+          "name": "timeframe",
+          "schema": "string",
+          "required": true,
+          "description": "Timeframe of the request. See list at $timeframeList"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Limit results to this number"
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "required": false,
+          "description": "Offset where to start from (it's the lastKey field in the response object)"
+        },
+        {
+          "name": "fromDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the starting day (YYYYMMDD)"
+        },
+        {
+          "name": "toDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the ending day (YYYYMMDD)"
+        },
+        {
+          "name": "filter",
+          "schema": "string",
+          "required": false,
+          "description": "Filter event type (\"spiders\"/\"uniques\"/\"nonuniques\"/\"conversions\")"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conversions/{conversionId}/notes",
+      "method": "conversionsPatchNotes",
+      "httpMethod": "put",
+      "tag": "Conversions",
+      "description": "Fast patch the \"notes\" field of a conversion",
+      "parameters": [
+        {
+          "name": "conversionId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the conversion"
+        },
+        {
+          "name": "Text",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/datapoints",
+      "method": "dataPointsGet",
+      "httpMethod": "get",
+      "tag": "DataPoints",
+      "description": "List of all the datapoints associated to the user",
+      "parameters": [
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Where to start when retrieving elements. Default is 0 if not specified."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum elements to retrieve. Default to 20 if not specified."
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Type of the datapoint (\"tp\"/\"tl\")"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Status of the datapoint"
+        },
+        {
+          "name": "tags",
+          "schema": "string",
+          "required": false,
+          "description": "A comma separated list of tags you want to filter with."
+        },
+        {
+          "name": "textSearch",
+          "schema": "string",
+          "required": false,
+          "description": "Filter fields by this pattern"
+        },
+        {
+          "name": "onlyFavorites",
+          "schema": "boolean",
+          "required": false,
+          "description": "Filter fields by favourite status"
+        },
+        {
+          "name": "sortBy",
+          "schema": "string",
+          "required": false,
+          "description": "Field to sort by"
+        },
+        {
+          "name": "sortDirection",
+          "schema": "string",
+          "required": false,
+          "description": "Direction of sort \"asc\" or \"desc\""
+        },
+        {
+          "name": "createdAfter",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude datapoints created before this date (YYYYMMDD)"
+        },
+        {
+          "name": "createdBefore",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude datapoints created after this date (YYYYMMDD)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/datapoints",
+      "method": "dataPointsPut",
+      "httpMethod": "post",
+      "tag": "DataPoints",
+      "description": "Create a datapoint",
+      "parameters": [
+        {
+          "name": "creationDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "encodeIp",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "fifthConversionId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "fifthConversionName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "firstConversionId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "firstConversionName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "fourthConversionId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "fourthConversionName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "groupId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "groupName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "isPublic",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "isSecured",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "lightTracking",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "notes",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "preferred",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "redirectOnly",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "secondConversionId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "secondConversionName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "thirdConversionId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "thirdConversionName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "trackingCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "typeTL",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "typeTP",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "writePermited",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/datapoints/aggregated",
+      "method": "dataPointsGetStatisticsAggregatedSingle",
+      "httpMethod": "get",
+      "tag": "DataPoints",
+      "description": "Retrieve statistics about this customer for a timeframe by groups",
+      "parameters": [
+        {
+          "name": "timeFrame",
+          "schema": "string",
+          "required": true,
+          "description": "Timeframe of the request. See list at $timeframeList"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Type of datapoint (\"tl\"/\"tp\")"
+        },
+        {
+          "name": "fromDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the starting day (YYYYMMDD)"
+        },
+        {
+          "name": "toDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the ending day (YYYYMMDD)"
+        },
+        {
+          "name": "hourly",
+          "schema": "boolean",
+          "required": false,
+          "description": "If using \"yesterday\" or \"today\" timeframe you can ask for the hourly detail"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Status of datapoint (\"deleted\"/\"active\"/\"paused\"/\"spam\")"
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "required": false,
+          "description": "A comma separated list of tags you want to filter with."
+        },
+        {
+          "name": "favourite",
+          "schema": "boolean",
+          "required": false,
+          "description": "Is the datapoint is marked as favourite"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/datapoints/aggregated/list",
+      "method": "dataPointsGetStatisticsAllList",
+      "httpMethod": "get",
+      "tag": "DataPoints",
+      "description": "Retrieve statistics about all datapoints of this customer for a timeframe grouped by some temporal entity (day/week/month)",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of datapoint (\"tl\"/\"tp\")"
+        },
+        {
+          "name": "timeFrame",
+          "schema": "string",
+          "required": true,
+          "description": "Timeframe of the request. See list at $timeframeList"
+        },
+        {
+          "name": "fromDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the starting day (YYYYMMDD)"
+        },
+        {
+          "name": "toDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the ending day (YYYYMMDD)"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Status of datapoint (\"deleted\"/\"active\"/\"paused\"/\"spam\")"
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "required": false,
+          "description": "A comma separated list of tags you want to filter with."
+        },
+        {
+          "name": "favourite",
+          "schema": "boolean",
+          "required": false,
+          "description": "Is the datapoint is marked as favourite"
+        },
+        {
+          "name": "groupBy",
+          "schema": "string",
+          "required": false,
+          "description": "The temporal entity you want to group by (\"week\"/\"month\"). If unspecified is \"day\"."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/datapoints/batch",
+      "method": "dataPointsBatchDelete",
+      "httpMethod": "delete",
+      "tag": "DataPoints",
+      "description": "Delete multiple datapoints",
+      "parameters": [
+        {
+          "name": "Entities",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/datapoints/batch",
+      "method": "dataPointsBatchPost",
+      "httpMethod": "post",
+      "tag": "DataPoints",
+      "description": "Update multiple datapoints",
+      "parameters": [
+        {
+          "name": "List",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/datapoints/batch",
+      "method": "dataPointsBatchPut",
+      "httpMethod": "put",
+      "tag": "DataPoints",
+      "description": "Create multiple datapoints",
+      "parameters": [
+        {
+          "name": "List",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/datapoints/count",
+      "method": "dataPointsCount",
+      "httpMethod": "get",
+      "tag": "DataPoints",
+      "description": "Count the datapoints associated to the user",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Type of the datapoint (\"tp\"/\"tl\")"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Status of the datapoint"
+        },
+        {
+          "name": "tags",
+          "schema": "string",
+          "required": false,
+          "description": "A comma separated list of tags you want to filter with."
+        },
+        {
+          "name": "textSearch",
+          "schema": "string",
+          "required": false,
+          "description": "Filter fields by this pattern"
+        },
+        {
+          "name": "onlyFavorites",
+          "schema": "boolean",
+          "required": false,
+          "description": "Filter fields by favourite status"
+        },
+        {
+          "name": "createdAfter",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude datapoints created before this date (YYYYMMDD)"
+        },
+        {
+          "name": "createdBefore",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude datapoints created after this date (YYYYMMDD)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/datapoints/{id}",
+      "method": "dataPointsDelete",
+      "httpMethod": "delete",
+      "tag": "DataPoints",
+      "description": "Delete a datapoint",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the datapoint"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/datapoints/{id}",
+      "method": "/datapoints/{id}Get",
+      "httpMethod": "get",
+      "tag": "DataPoints",
+      "description": "Get a datapoint",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the datapoint"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/datapoints/{id}",
+      "method": "dataPointsPost",
+      "httpMethod": "post",
+      "tag": "DataPoints",
+      "description": "Update a datapoint",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the datapoint"
+        },
+        {
+          "name": "creationDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "encodeIp",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "fifthConversionId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "fifthConversionName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "firstConversionId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "firstConversionName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "fourthConversionId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "fourthConversionName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "groupId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "groupName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "isPublic",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "isSecured",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "lightTracking",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "notes",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "preferred",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "redirectOnly",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "secondConversionId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "secondConversionName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "thirdConversionId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "thirdConversionName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "trackingCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "typeTL",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "typeTP",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "writePermited",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/datapoints/{id}/aggregated",
+      "method": "dataPointsGetStatisticsSingle",
+      "httpMethod": "get",
+      "tag": "DataPoints",
+      "description": "Retrieve statistics about this datapoint for a timeframe",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the datapoint"
+        },
+        {
+          "name": "timeFrame",
+          "schema": "string",
+          "required": true,
+          "description": "Timeframe of the request. See list at $timeframeList"
+        },
+        {
+          "name": "fromDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the starting day (YYYYMMDD)"
+        },
+        {
+          "name": "toDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the ending day (YYYYMMDD)"
+        },
+        {
+          "name": "hourly",
+          "schema": "boolean",
+          "required": false,
+          "description": "If using \"yesterday\" or \"today\" timeframe you can ask for the hourly detail"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/datapoints/{id}/aggregated/list",
+      "method": "dataPointsGetStatisticsList",
+      "httpMethod": "get",
+      "tag": "DataPoints",
+      "description": "Retrieve statistics about this datapoint for a timeframe grouped by some temporal entity (day/week/month)",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the datapoint"
+        },
+        {
+          "name": "timeFrame",
+          "schema": "string",
+          "required": true,
+          "description": "Timeframe of the request. See list at $timeframeList"
+        },
+        {
+          "name": "fromDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the starting day (YYYYMMDD)"
+        },
+        {
+          "name": "toDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the ending day (YYYYMMDD)"
+        },
+        {
+          "name": "groupBy",
+          "schema": "string",
+          "required": false,
+          "description": "The temporal entity you want to group by (\"week\"/\"month\"). If unspecified is \"day\"."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/datapoints/{id}/favourite",
+      "method": "dataPointsPatchFavourite",
+      "httpMethod": "put",
+      "tag": "DataPoints",
+      "description": "Fast switch the \"favourite\" field of a datapoint",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the datapoint"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/datapoints/{id}/hits",
+      "method": "dataPointsGetHits",
+      "httpMethod": "get",
+      "tag": "DataPoints",
+      "description": "Retrieve the list of events related to this datapoint.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the datapoint"
+        },
+        {
+          "name": "timeframe",
+          "schema": "string",
+          "required": true,
+          "description": "Timeframe of the request. See list at $timeframeList"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Limit results to this number"
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "required": false,
+          "description": "Offset where to start from (it's the lastKey field in the response object)"
+        },
+        {
+          "name": "fromDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the starting day (YYYYMMDD)"
+        },
+        {
+          "name": "toDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the ending day (YYYYMMDD)"
+        },
+        {
+          "name": "filter",
+          "schema": "string",
+          "required": false,
+          "description": "Filter event type (\"spiders\"/\"uniques\"/\"nonuniques\"/\"conversions\")"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/datapoints/{id}/notes",
+      "method": "dataPointsPatchNotes",
+      "httpMethod": "put",
+      "tag": "DataPoints",
+      "description": "Fast patch the \"notes\" field of a datapoint",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the datapoint"
+        },
+        {
+          "name": "Text",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/domains",
+      "method": "domainsGet",
+      "httpMethod": "get",
+      "tag": "Domains",
+      "description": "Retrieve a list of domains",
+      "parameters": [
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Offset where to start from"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Limit results to this number"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Type of domain (\"system\"/\"go\"/\"personal\"/\"dedicated\"). If not specified default is \"system\""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "Filter domains with this anmen"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/domains",
+      "method": "domainsPut",
+      "httpMethod": "post",
+      "tag": "Domains",
+      "description": "Create a domain",
+      "parameters": [
+        {
+          "name": "custom404",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "customHomepage",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/domains/count",
+      "method": "domainsCount",
+      "httpMethod": "get",
+      "tag": "Domains",
+      "description": "Retrieve count of domains",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Type of domain (\"system\"/\"go\"/\"personal\"/\"dedicated\"). If not specified default is \"system\""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "Filter domains with this anmen"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/domains/{id}",
+      "method": "domainsDelete",
+      "httpMethod": "delete",
+      "tag": "Domains",
+      "description": "Delete a domain",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of domain"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/domains/{id}",
+      "method": "/domains/{id}Get",
+      "httpMethod": "get",
+      "tag": "Domains",
+      "description": "Get a domain",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of domain"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/domains/{id}",
+      "method": "domainsUpdate",
+      "httpMethod": "post",
+      "tag": "Domains",
+      "description": "Update a domain",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of domain"
+        },
+        {
+          "name": "custom404",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "customHomepage",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups",
+      "method": "groupsGet",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "List of all the groups associated to the user.",
+      "parameters": [
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Where to start when retrieving elements. Default is 0 if not specified."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum elements to retrieve. Default to 20 if not specified."
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Status of the group"
+        },
+        {
+          "name": "tags",
+          "schema": "string",
+          "required": false,
+          "description": "A comma separated list of tags you want to filter with."
+        },
+        {
+          "name": "textSearch",
+          "schema": "string",
+          "required": false,
+          "description": "Filter fields by this pattern"
+        },
+        {
+          "name": "createdAfter",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude groups created before this date (YYYYMMDD)"
+        },
+        {
+          "name": "createdBefore",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude groups created after this date (YYYYMMDD)"
+        },
+        {
+          "name": "write",
+          "schema": "boolean",
+          "required": false,
+          "description": "Write permission"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups",
+      "method": "groupsPut",
+      "httpMethod": "post",
+      "tag": "Groups",
+      "description": "Create a group",
+      "parameters": [
+        {
+          "name": "creationDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "deleted",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "isPublic",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "notes",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "preferred",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "redirectOnly",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "writePermited",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/aggregated",
+      "method": "groupsGetStatisticsAggregatedSingle",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "Retrieve statistics about this customer for a timeframe by groups",
+      "parameters": [
+        {
+          "name": "timeFrame",
+          "schema": "string",
+          "required": true,
+          "description": "Timeframe of the request. See list at $timeframeList"
+        },
+        {
+          "name": "fromDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the starting day (YYYYMMDD)"
+        },
+        {
+          "name": "toDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the ending day (YYYYMMDD)"
+        },
+        {
+          "name": "hourly",
+          "schema": "boolean",
+          "required": false,
+          "description": "If using \"yesterday\" or \"today\" timeframe you can ask for the hourly detail"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Status of group (\"deleted\"/\"active\")"
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "required": false,
+          "description": "A comma separated list of tags you want to filter with."
+        },
+        {
+          "name": "favourite",
+          "schema": "boolean",
+          "required": false,
+          "description": "Is the group is marked as favourite"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/aggregated/list",
+      "method": "groupsGetStatisticsAllList",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "Retrieve statistics about all groups of this customer for a timeframe grouped by some temporal entity (day/week/month)",
+      "parameters": [
+        {
+          "name": "timeFrame",
+          "schema": "string",
+          "required": true,
+          "description": "Timeframe of the request. See list at $timeframeList"
+        },
+        {
+          "name": "fromDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the starting day (YYYYMMDD)"
+        },
+        {
+          "name": "toDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the ending day (YYYYMMDD)"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Status of group (\"deleted\"/\"active\")"
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "required": false,
+          "description": "A comma separated list of tags you want to filter with."
+        },
+        {
+          "name": "favourite",
+          "schema": "boolean",
+          "required": false,
+          "description": "Is the group is marked as favourite"
+        },
+        {
+          "name": "groupBy",
+          "schema": "string",
+          "required": false,
+          "description": "The temporal entity you want to group by (\"week\"/\"month\"). If unspecified is \"day\"."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/count",
+      "method": "groupsCount",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "Count the groups associated to the user.",
+      "parameters": [
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Status of the datapoint"
+        },
+        {
+          "name": "tags",
+          "schema": "string",
+          "required": false,
+          "description": "A comma separated list of tags you want to filter with."
+        },
+        {
+          "name": "textSearch",
+          "schema": "string",
+          "required": false,
+          "description": "Filter fields by this pattern"
+        },
+        {
+          "name": "createdAfter",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude groups created before this date (YYYYMMDD)"
+        },
+        {
+          "name": "createdBefore",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude groups created after this date (YYYYMMDD)"
+        },
+        {
+          "name": "write",
+          "schema": "boolean",
+          "required": false,
+          "description": "Write permission"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{id}",
+      "method": "groupsDelete",
+      "httpMethod": "delete",
+      "tag": "Groups",
+      "description": "Delete group specified by id",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the group"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{id}",
+      "method": "/groups/{id}Get",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "Get a group",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the group"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{id}",
+      "method": "groupsPost",
+      "httpMethod": "post",
+      "tag": "Groups",
+      "description": "Update a group",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the group"
+        },
+        {
+          "name": "creationDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "deleted",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "isPublic",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "notes",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "preferred",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "redirectOnly",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "writePermited",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{id}/aggregated",
+      "method": "groupsGetStatisticsSingle",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "Retrieve statistics about this group for a timeframe",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the group"
+        },
+        {
+          "name": "timeFrame",
+          "schema": "string",
+          "required": true,
+          "description": "Timeframe of the request. See list at $timeframeList"
+        },
+        {
+          "name": "fromDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the starting day (YYYYMMDD)"
+        },
+        {
+          "name": "toDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the ending day (YYYYMMDD)"
+        },
+        {
+          "name": "hourly",
+          "schema": "boolean",
+          "required": false,
+          "description": "If using \"yesterday\" or \"today\" timeframe you can ask for the hourly detail"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{id}/aggregated/list",
+      "method": "groupsGetStatisticsList",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "Retrieve statistics about this group for a timeframe grouped by some temporal entity (day/week/month)",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the group"
+        },
+        {
+          "name": "timeFrame",
+          "schema": "string",
+          "required": true,
+          "description": "Timeframe of the request. See list at $timeframeList"
+        },
+        {
+          "name": "fromDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the starting day (YYYYMMDD)"
+        },
+        {
+          "name": "toDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the ending day (YYYYMMDD)"
+        },
+        {
+          "name": "groupBy",
+          "schema": "string",
+          "required": false,
+          "description": "The temporal entity you want to group by (\"week\"/\"month\"). If unspecified is \"day\"."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{id}/aggregated/summary",
+      "method": "groupsGetDatapointsSummary",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "Retrieve statistics about a subset of datapoints for a timeframe with datapoints data",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Filter by this group id"
+        },
+        {
+          "name": "timeFrame",
+          "schema": "string",
+          "required": true,
+          "description": "Timeframe of the request. See list at $timeframeList"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Type of datapoint (\"tl\"/\"tp\")"
+        },
+        {
+          "name": "fromDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the starting day (YYYYMMDD)"
+        },
+        {
+          "name": "toDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the ending day (YYYYMMDD)"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Status of datapoint (\"deleted\"/\"active\"/\"paused\"/\"spam\")"
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "required": false,
+          "description": "A comma separated list of tags you want to filter with."
+        },
+        {
+          "name": "favourite",
+          "schema": "boolean",
+          "required": false,
+          "description": "Is the datapoint marked as favourite"
+        },
+        {
+          "name": "sortBy",
+          "schema": "string",
+          "required": false,
+          "description": "Field to sort by"
+        },
+        {
+          "name": "sortDirection",
+          "schema": "string",
+          "required": false,
+          "description": "Direction of sort \"asc\" or \"desc\""
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Offset where to start from"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Limit results to this number"
+        },
+        {
+          "name": "textSearch",
+          "schema": "string",
+          "required": false,
+          "description": "Filter fields by this pattern"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{id}/datapoints",
+      "method": "groupsGetDatapoints",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "List of all the datapoints associated to the user in this group.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the group"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Where to start when retrieving elements. Default is 0 if not specified."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum elements to retrieve. Default to 20 if not specified."
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Type of the datapoint (\"tp\"/\"tl\")"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Status of the datapoint"
+        },
+        {
+          "name": "tags",
+          "schema": "string",
+          "required": false,
+          "description": "A comma separated list of tags you want to filter with."
+        },
+        {
+          "name": "textSearch",
+          "schema": "string",
+          "required": false,
+          "description": "Filter fields by this pattern"
+        },
+        {
+          "name": "onlyFavorites",
+          "schema": "boolean",
+          "required": false,
+          "description": "Filter fields by favourite status"
+        },
+        {
+          "name": "sortBy",
+          "schema": "string",
+          "required": false,
+          "description": "Field to sort by"
+        },
+        {
+          "name": "sortDirection",
+          "schema": "string",
+          "required": false,
+          "description": "Direction of sort \"asc\" or \"desc\""
+        },
+        {
+          "name": "createdAfter",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude datapoints created before this date (YYYYMMDD)"
+        },
+        {
+          "name": "createdBefore",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude datapoints created after this date (YYYYMMDD)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{id}/datapoints",
+      "method": "groupsPutDatapoint",
+      "httpMethod": "post",
+      "tag": "Groups",
+      "description": "Create a datapoint in this group",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the group"
+        },
+        {
+          "name": "creationDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "encodeIp",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "fifthConversionId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "fifthConversionName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "firstConversionId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "firstConversionName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "fourthConversionId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "fourthConversionName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "groupId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "groupName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "isPublic",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "isSecured",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "lightTracking",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "notes",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "preferred",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "redirectOnly",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "secondConversionId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "secondConversionName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "thirdConversionId",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "thirdConversionName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "trackingCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "typeTL",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "typeTP",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "writePermited",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{id}/datapoints/count",
+      "method": "groupsGetDatapointsCount",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "Count the datapoints associated to the user in this group.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the group"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Type of the datapoint (\"tp\"/\"tl\")"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Status of the datapoint"
+        },
+        {
+          "name": "tags",
+          "schema": "string",
+          "required": false,
+          "description": "A comma separated list of tags you want to filter with."
+        },
+        {
+          "name": "textSearch",
+          "schema": "string",
+          "required": false,
+          "description": "Filter fields by this pattern"
+        },
+        {
+          "name": "onlyFavorites",
+          "schema": "boolean",
+          "required": false,
+          "description": "Filter fields by favourite status"
+        },
+        {
+          "name": "createdAfter",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude datapoints created before this date (YYYYMMDD)"
+        },
+        {
+          "name": "createdBefore",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude datapoints created after this date (YYYYMMDD)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{id}/favourite",
+      "method": "groupsPatchFavourite",
+      "httpMethod": "put",
+      "tag": "Groups",
+      "description": "Fast switch the \"favourite\" field of a group",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the group"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{id}/hits",
+      "method": "groupsGetHits",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "Retrieve the list of events related to this group.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the group"
+        },
+        {
+          "name": "timeframe",
+          "schema": "string",
+          "required": true,
+          "description": "Timeframe of the request. See list at $timeframeList"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Limit results to this number"
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "required": false,
+          "description": "Offset where to start from (it's the lastKey field in the response object)"
+        },
+        {
+          "name": "fromDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the starting day (YYYYMMDD)"
+        },
+        {
+          "name": "toDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the ending day (YYYYMMDD)"
+        },
+        {
+          "name": "filter",
+          "schema": "string",
+          "required": false,
+          "description": "Filter event type (\"spiders\"/\"uniques\"/\"nonuniques\"/\"conversions\")"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/groups/{id}/notes",
+      "method": "groupsPatchNotes",
+      "httpMethod": "put",
+      "tag": "Groups",
+      "description": "Fast patch the \"notes\" field of a group",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the group"
+        },
+        {
+          "name": "Text",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/hits",
+      "method": "hitsGetHits",
+      "httpMethod": "get",
+      "tag": "Hits",
+      "description": "Retrieve the list of events related to this account.",
+      "parameters": [
+        {
+          "name": "timeframe",
+          "schema": "string",
+          "required": true,
+          "description": "Timeframe of the request. See list at $timeframeList"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Limit results to this number"
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "required": false,
+          "description": "Offset where to start from (it's the lastKey field in the response object)"
+        },
+        {
+          "name": "fromDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the starting day (YYYYMMDD)"
+        },
+        {
+          "name": "toDay",
+          "schema": "string",
+          "required": false,
+          "description": "If using a \"custom\" timeFrame you can specify the ending day (YYYYMMDD)"
+        },
+        {
+          "name": "filter",
+          "schema": "string",
+          "required": false,
+          "description": "Filter event type (\"spiders\"/\"uniques\"/\"nonuniques\"/\"conversions\")"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/me",
+      "method": "meGetMe",
+      "httpMethod": "get",
+      "tag": "Me",
+      "description": "Retrieve current account data",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/me/plan",
+      "method": "meGetMePlan",
+      "httpMethod": "get",
+      "tag": "Me",
+      "description": "Retrieve current account plan",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/retargeting",
+      "method": "retargetingGet",
+      "httpMethod": "get",
+      "tag": "Retargeting",
+      "description": "List of all the retargeting scripts associated to the user",
+      "parameters": [
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Where to start when retrieving elements. Default is 0 if not specified."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum elements to retrieve. Default to 20 if not specified."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/retargeting",
+      "method": "retargetingPut",
+      "httpMethod": "post",
+      "tag": "Retargeting",
+      "description": "Creates a retargeting script",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "script",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/retargeting/count",
+      "method": "retargetingCount",
+      "httpMethod": "get",
+      "tag": "Retargeting",
+      "description": "Retrieve count of retargeting scripts",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/retargeting/{id}",
+      "method": "retargetingDelete",
+      "httpMethod": "delete",
+      "tag": "Retargeting",
+      "description": "Deletes a retargeting script (and remove associations)",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the retargeting script"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/retargeting/{id}",
+      "method": "/retargeting/{id}Get",
+      "httpMethod": "get",
+      "tag": "Retargeting",
+      "description": "Get a retargeting script object",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the retargeting script"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/retargeting/{id}",
+      "method": "retargetingPost",
+      "httpMethod": "post",
+      "tag": "Retargeting",
+      "description": "Updates a retargeting script",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the retargeting script"
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "script",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/retargeting/{id}/datapoints",
+      "method": "retargetingGetDatapoints",
+      "httpMethod": "get",
+      "tag": "Retargeting",
+      "description": "List of all the datapoints associated to the retargeting script.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the retargeting script"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Where to start when retrieving elements. Default is 0 if not specified."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum elements to retrieve. Default to 20 if not specified."
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Status of the datapoint"
+        },
+        {
+          "name": "tags",
+          "schema": "string",
+          "required": false,
+          "description": "A comma separated list of tags you want to filter with."
+        },
+        {
+          "name": "textSearch",
+          "schema": "string",
+          "required": false,
+          "description": "Filter fields by this pattern"
+        },
+        {
+          "name": "onlyFavorites",
+          "schema": "boolean",
+          "required": false,
+          "description": "Filter fields by favourite status"
+        },
+        {
+          "name": "sortBy",
+          "schema": "string",
+          "required": false,
+          "description": "Field to sort by"
+        },
+        {
+          "name": "sortDirection",
+          "schema": "string",
+          "required": false,
+          "description": "Direction of sort \"asc\" or \"desc\""
+        },
+        {
+          "name": "createdAfter",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude datapoints created before this date (YYYYMMDD)"
+        },
+        {
+          "name": "createdBefore",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude datapoints created after this date (YYYYMMDD)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/retargeting/{id}/datapoints/count",
+      "method": "retargetingGetDatapointsCount",
+      "httpMethod": "get",
+      "tag": "Retargeting",
+      "description": "Count the datapoints associated to the retargeting script.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the group"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Status of the datapoint"
+        },
+        {
+          "name": "tags",
+          "schema": "string",
+          "required": false,
+          "description": "A comma separated list of tags you want to filter with."
+        },
+        {
+          "name": "textSearch",
+          "schema": "string",
+          "required": false,
+          "description": "Filter fields by this pattern"
+        },
+        {
+          "name": "onlyFavorites",
+          "schema": "boolean",
+          "required": false,
+          "description": "Filter fields by favourite status"
+        },
+        {
+          "name": "createdAfter",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude datapoints created before this date (YYYYMMDD)"
+        },
+        {
+          "name": "createdBefore",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude datapoints created after this date (YYYYMMDD)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tags",
+      "method": "tagsGet",
+      "httpMethod": "get",
+      "tag": "Tags",
+      "description": "List of all the groups associated to the user filtered by this tag.",
+      "parameters": [
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Where to start when retrieving elements. Default is 0 if not specified."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum elements to retrieve. Default to 20 if not specified."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "Name of the tag"
+        },
+        {
+          "name": "datapoints",
+          "schema": "string",
+          "required": false,
+          "description": "Comma separated list of datapoints id to filter by"
+        },
+        {
+          "name": "groups",
+          "schema": "string",
+          "required": false,
+          "description": "Comma separated list of groups id to filter by"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Type of entity related to the tag"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tags",
+      "method": "tagsPut",
+      "httpMethod": "post",
+      "tag": "Tags",
+      "description": "Create a tag",
+      "parameters": [
+        {
+          "name": "datapoints",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "groups",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tags/count",
+      "method": "tagsCount",
+      "httpMethod": "get",
+      "tag": "Tags",
+      "description": "List of all the groups associated to the user filtered by this tag.",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "Name of the tag"
+        },
+        {
+          "name": "datapoints",
+          "schema": "string",
+          "required": false,
+          "description": "Comma separated list of datapoints id to filter by"
+        },
+        {
+          "name": "groups",
+          "schema": "string",
+          "required": false,
+          "description": "Comma separated list of groups id to filter by"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Type of entity related to the tag"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tags/{tagId}",
+      "method": "tagsDelete",
+      "httpMethod": "delete",
+      "tag": "Tags",
+      "description": "Delete a tag",
+      "parameters": [
+        {
+          "name": "tagId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the tag"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tags/{tagId}",
+      "method": "/tags/{tagId}Get",
+      "httpMethod": "get",
+      "tag": "Tags",
+      "description": "Retrieve a tag",
+      "parameters": [
+        {
+          "name": "tagId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the tag"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tags/{tagId}/datapoints",
+      "method": "tagsDeleteRelatedDatapoints",
+      "httpMethod": "delete",
+      "tag": "Tags",
+      "description": "Delete the association of this tag with all datapoints",
+      "parameters": [
+        {
+          "name": "tagId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the tag"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tags/{tagId}/datapoints",
+      "method": "tagsGetDatapoints",
+      "httpMethod": "get",
+      "tag": "Tags",
+      "description": "List of all the datapoints associated to the user filtered by this tag",
+      "parameters": [
+        {
+          "name": "tagId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the tag."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Where to start when retrieving elements. Default is 0 if not specified."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum elements to retrieve. Default to 20 if not specified."
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Type of the datapoint (\"tp\"/\"tl\")"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Status of the datapoint"
+        },
+        {
+          "name": "textSearch",
+          "schema": "string",
+          "required": false,
+          "description": "Filter fields by this pattern"
+        },
+        {
+          "name": "createdAfter",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude datapoints created before this date (YYYYMMDD)"
+        },
+        {
+          "name": "createdBefore",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude datapoints created after this date (YYYYMMDD)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tags/{tagId}/datapoints/count",
+      "method": "tagsGetDatapointsCount",
+      "httpMethod": "get",
+      "tag": "Tags",
+      "description": "Count the datapoints associated to the user filtered by this tag",
+      "parameters": [
+        {
+          "name": "tagId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the tag."
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Type of the datapoint (\"tp\"/\"tl\")"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Status of the datapoint"
+        },
+        {
+          "name": "textSearch",
+          "schema": "string",
+          "required": false,
+          "description": "Filter fields by this pattern"
+        },
+        {
+          "name": "createdAfter",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude datapoints created before this date (YYYYMMDD)"
+        },
+        {
+          "name": "createdBefore",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude datapoints created after this date (YYYYMMDD)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tags/{tagId}/datapoints/patch",
+      "method": "tagsPatchDataPoint",
+      "httpMethod": "put",
+      "tag": "Tags",
+      "description": "Associate/Deassociate a tag with a datapoint",
+      "parameters": [
+        {
+          "name": "tagId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the tag"
+        },
+        {
+          "name": "Action",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Id",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tags/{tagId}/groups",
+      "method": "tagsDeleteRelatedGroups",
+      "httpMethod": "delete",
+      "tag": "Tags",
+      "description": "Delete the association of this tag with all groups",
+      "parameters": [
+        {
+          "name": "tagId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the tag"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tags/{tagId}/groups",
+      "method": "tagsGetGroups",
+      "httpMethod": "get",
+      "tag": "Tags",
+      "description": "List of all the groups associated to the user filtered by this tag.",
+      "parameters": [
+        {
+          "name": "tagId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the tag."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Where to start when retrieving elements. Default is 0 if not specified."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum elements to retrieve. Default to 20 if not specified."
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Status of the datapoint"
+        },
+        {
+          "name": "textSearch",
+          "schema": "string",
+          "required": false,
+          "description": "Filter fields by this pattern"
+        },
+        {
+          "name": "createdAfter",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude groups created before this date (YYYYMMDD)"
+        },
+        {
+          "name": "createdBefore",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude groups created after this date (YYYYMMDD)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tags/{tagId}/groups/count",
+      "method": "tagsGetGroupsCount",
+      "httpMethod": "get",
+      "tag": "Tags",
+      "description": "Count the groups associated to the user filtered by this tag",
+      "parameters": [
+        {
+          "name": "tagId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the tag."
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Status of the datapoint"
+        },
+        {
+          "name": "textSearch",
+          "schema": "string",
+          "required": false,
+          "description": "Filter fields by this pattern"
+        },
+        {
+          "name": "createdAfter",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude groups created before this date (YYYYMMDD)"
+        },
+        {
+          "name": "createdBefore",
+          "schema": "string",
+          "required": false,
+          "description": "Exclude groups created after this date (YYYYMMDD)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tags/{tagId}/groups/patch",
+      "method": "tagsPatchGroup",
+      "httpMethod": "put",
+      "tag": "Tags",
+      "description": "Associate/Deassociate a tag with a group",
+      "parameters": [
+        {
+          "name": "tagId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the tag"
+        },
+        {
+          "name": "Action",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Id",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tags/{tagId}/name",
+      "method": "tagsPatchTagName",
+      "httpMethod": "put",
+      "tag": "Tags",
+      "description": "Fast patch a tag name",
+      "parameters": [
+        {
+          "name": "tagId",
+          "schema": "integer",
+          "required": true,
+          "description": "Id of the tag"
+        },
+        {
+          "name": "Text",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://apiv2.clickmeter.com:80",
   "apiDescription": "Api dashboard for ClickMeter API",
   "apiTitle": "ClickMeter API",

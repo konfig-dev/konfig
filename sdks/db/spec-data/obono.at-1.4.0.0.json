@@ -3,6 +3,574 @@
   "openApiRaw": "https://app.obono.at/api/docs/api.yml",
   "homepage": "obono.at",
   "apiVersion": "1.4.0.0",
+  "methods": [
+    {
+      "url": "/auth",
+      "method": "/authGet",
+      "httpMethod": "get",
+      "tag": "auth",
+      "description": "Request a JWT access token using your obono username and password.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/belege/{belegUuid}",
+      "method": "/belege/{belegUuid}Get",
+      "httpMethod": "get",
+      "tag": "beleg",
+      "description": "Retrieves a particular `Beleg` from the \"Datenerfassungsprotokoll\".",
+      "parameters": [
+        {
+          "name": "belegUuid",
+          "schema": "string",
+          "required": true,
+          "description": "The `_uuid` of the `Beleg` to fetch."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/export/csv/registrierkassen/{registrierkasseUuid}/belege",
+      "method": "/export/csv/registrierkassen/{registrierkasseUuid}/belegeGet",
+      "httpMethod": "get",
+      "tag": "export",
+      "description": "",
+      "parameters": [
+        {
+          "name": "registrierkasseUuid",
+          "schema": "string",
+          "required": true,
+          "description": "The `_uuid` of the `Registrierkasse` to export."
+        },
+        {
+          "name": "before",
+          "schema": "string",
+          "description": "Only return results that were saved before the specified date-time string (i.e., anything that `Date.parse()` can parse)."
+        },
+        {
+          "name": "after",
+          "schema": "string",
+          "description": "Only return results that were saved after the specified date-time string (i.e., anything that `Date.parse()` can parse)."
+        },
+        {
+          "name": "posten",
+          "schema": "boolean",
+          "description": "Export `Posten` instead of `Belegdaten`."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/export/dep131/registrierkassen/{registrierkasseUuid}/belege",
+      "method": "/export/dep131/registrierkassen/{registrierkasseUuid}/belegeGet",
+      "httpMethod": "get",
+      "tag": "export",
+      "description": "",
+      "parameters": [
+        {
+          "name": "registrierkasseUuid",
+          "schema": "string",
+          "required": true,
+          "description": "The `_uuid` of the `Registrierkasse` to export."
+        },
+        {
+          "name": "before",
+          "schema": "string",
+          "description": "Only return results that were saved before the specified date-time string (i.e., anything that `Date.parse()` can parse)."
+        },
+        {
+          "name": "after",
+          "schema": "string",
+          "description": "Only return results that were saved after the specified date-time string (i.e., anything that `Date.parse()` can parse)."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/export/dep7/registrierkassen/{registrierkasseUuid}/belege",
+      "method": "/export/dep7/registrierkassen/{registrierkasseUuid}/belegeGet",
+      "httpMethod": "get",
+      "tag": "export",
+      "description": "",
+      "parameters": [
+        {
+          "name": "registrierkasseUuid",
+          "schema": "string",
+          "required": true,
+          "description": "The `_uuid` of the `Registrierkasse` to export."
+        },
+        {
+          "name": "before",
+          "schema": "string",
+          "description": "Only return results that were saved before the specified date-time string (i.e., anything that `Date.parse()` can parse)."
+        },
+        {
+          "name": "after",
+          "schema": "string",
+          "description": "Only return results that were saved after the specified date-time string (i.e., anything that `Date.parse()` can parse)."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/export/gobd/registrierkassen/{registrierkasseUuid}",
+      "method": "/export/gobd/registrierkassen/{registrierkasseUuid}Get",
+      "httpMethod": "get",
+      "tag": "export",
+      "description": "",
+      "parameters": [
+        {
+          "name": "registrierkasseUuid",
+          "schema": "string",
+          "required": true,
+          "description": "The `_uuid` of the `Registrierkasse` to export."
+        },
+        {
+          "name": "before",
+          "schema": "string",
+          "description": "Only return results that were saved before the specified date-time string (i.e., anything that `Date.parse()` can parse)."
+        },
+        {
+          "name": "after",
+          "schema": "string",
+          "description": "Only return results that were saved after the specified date-time string (i.e., anything that `Date.parse()` can parse)."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/export/html/belege/{belegUuid}",
+      "method": "/export/html/belege/{belegUuid}Get",
+      "httpMethod": "get",
+      "tag": "export",
+      "description": "",
+      "parameters": [
+        {
+          "name": "belegUuid",
+          "schema": "string",
+          "required": true,
+          "description": "The `_uuid` of a particular `Beleg` to export."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/export/pdf/belege/{belegUuid}",
+      "method": "/export/pdf/belege/{belegUuid}Get",
+      "httpMethod": "get",
+      "tag": "export",
+      "description": "",
+      "parameters": [
+        {
+          "name": "belegUuid",
+          "schema": "string",
+          "required": true,
+          "description": "The `_uuid` of a particular `Beleg` to export."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/export/qr/belege/{belegUuid}",
+      "method": "/export/qr/belege/{belegUuid}Get",
+      "httpMethod": "get",
+      "tag": "export",
+      "description": "",
+      "parameters": [
+        {
+          "name": "belegUuid",
+          "schema": "string",
+          "required": true,
+          "description": "The `_uuid` of a particular `Beleg` to export."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/export/thermal-print/belege/{belegUuid}",
+      "method": "/export/thermalPrint/belege/{belegUuid}Get",
+      "httpMethod": "get",
+      "tag": "export",
+      "description": "",
+      "parameters": [
+        {
+          "name": "belegUuid",
+          "schema": "string",
+          "required": true,
+          "description": "The `_uuid` of a particular `Beleg` to export."
+        },
+        {
+          "name": "qr",
+          "schema": "boolean",
+          "description": "Should the RKSV QR code should be rendered?"
+        },
+        {
+          "name": "width",
+          "schema": "integer",
+          "description": "Number of characters per line."
+        },
+        {
+          "name": "dialect",
+          "schema": "string",
+          "description": "The thermal printer dialect."
+        },
+        {
+          "name": "encoding",
+          "schema": "string",
+          "description": "The encoding of the binary data."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/export/xls/registrierkassen/{registrierkasseUuid}/belege",
+      "method": "/export/xls/registrierkassen/{registrierkasseUuid}/belegeGet",
+      "httpMethod": "get",
+      "tag": "export",
+      "description": "",
+      "parameters": [
+        {
+          "name": "registrierkasseUuid",
+          "schema": "string",
+          "required": true,
+          "description": "The `_uuid` of the `Registrierkasse` to export."
+        },
+        {
+          "name": "before",
+          "schema": "string",
+          "description": "Only return results that were saved before the specified date-time string (i.e., anything that `Date.parse()` can parse)."
+        },
+        {
+          "name": "after",
+          "schema": "string",
+          "description": "Only return results that were saved after the specified date-time string (i.e., anything that `Date.parse()` can parse)."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/registrierkassen/{registrierkasseUuid}",
+      "method": "getRegistrierkasse",
+      "httpMethod": "get",
+      "tag": "registrierkasse",
+      "description": "Returns information about a particular `Registrierkasse`.",
+      "parameters": [
+        {
+          "name": "registrierkasseUuid",
+          "schema": "string",
+          "required": true,
+          "description": "The `_uuid` of a particular `Registrierkasse` to fetch."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/registrierkassen/{registrierkasseUuid}/abschluss",
+      "method": "createAbschluss",
+      "httpMethod": "post",
+      "tag": "beleg",
+      "description": "Generates an `Abschlussbeleg`.",
+      "parameters": [
+        {
+          "name": "registrierkasseUuid",
+          "schema": "string",
+          "required": true,
+          "description": "The `_uuid` of the `Registrierkasse` to retrieve the `Beleg` collection."
+        },
+        {
+          "name": "Abschluss-Beginn-Datum-Uhrzeit",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Abschluss-Ende-Datum-Uhrzeit",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/registrierkassen/{registrierkasseUuid}/belege",
+      "method": "getBelege",
+      "httpMethod": "get",
+      "tag": "beleg",
+      "description": "Retrieves the `Beleg` collection from the \"Datenerfassungsprotokoll\".",
+      "parameters": [
+        {
+          "name": "registrierkasseUuid",
+          "schema": "string",
+          "required": true,
+          "description": "The `_uuid` of the `Registrierkasse` to retrieve the `Beleg` collection."
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Determines the format of the `Beleg` collection."
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "description": "Determines the sorting order."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Limits the number of returned results."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Skips the specified number of results from the result set."
+        },
+        {
+          "name": "before",
+          "schema": "string",
+          "description": "Only return results that where saved before the specified date-time string (i.e., anything that `Date.parse()` can parse)."
+        },
+        {
+          "name": "after",
+          "schema": "string",
+          "description": "Only return results that where saved after the specified date-time string (i.e., anything that `Date.parse()` can parse)."
+        },
+        {
+          "name": "gte",
+          "schema": "integer",
+          "description": "Only return results that have at least a particular `Belegnummer`."
+        },
+        {
+          "name": "lte",
+          "schema": "integer",
+          "description": "Only return results that have at most a particular `Belegnummer`."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/registrierkassen/{registrierkasseUuid}/belege/{belegUuid}",
+      "method": "getBeleg",
+      "httpMethod": "get",
+      "tag": "beleg",
+      "description": "Retrieves a particular `Beleg` from the \"Datenerfassungsprotokoll\".",
+      "parameters": [
+        {
+          "name": "registrierkasseUuid",
+          "schema": "string",
+          "required": true,
+          "description": "The `_uuid` of the `Registrierkasse` that contains the requested `Beleg`."
+        },
+        {
+          "name": "belegUuid",
+          "schema": "string",
+          "required": true,
+          "description": "The `_uuid` of the `Beleg` to fetch."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/registrierkassen/{registrierkasseUuid}/belege/{belegUuid}",
+      "method": "addBeleg",
+      "httpMethod": "put",
+      "tag": "beleg",
+      "description": "Signs a receipt and stores it in the \"Datenerfassungsprotokoll\".",
+      "parameters": [
+        {
+          "name": "registrierkasseUuid",
+          "schema": "string",
+          "required": true,
+          "description": "The `_uuid` of the `Registrierkasse` to use for signing data."
+        },
+        {
+          "name": "belegUuid",
+          "schema": "string",
+          "required": true,
+          "description": "The `_uuid` of the `Beleg` to store."
+        },
+        {
+          "name": "Externer-Beleg-Belegkreis",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Externer-Beleg-Bezeichnung",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Externer-Beleg-Referenz",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Kunde",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Notizen",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "Posten",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "Rabatte",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "Storno",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "Storno-Beleg-UUID",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Storno-Text",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Training",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "Unternehmen-Adresse1",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Unternehmen-Adresse2",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Unternehmen-Fusszeile",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Unternehmen-ID",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Unternehmen-ID-Typ",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Unternehmen-Kopfzeile",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Unternehmen-Name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Unternehmen-Ort",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Unternehmen-PLZ",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Zahlungen",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/registrierkassen/{registrierkasseUuid}/dep",
+      "method": "getDep",
+      "httpMethod": "get",
+      "tag": "registrierkasse",
+      "description": "Generates a DEP file.",
+      "parameters": [
+        {
+          "name": "registrierkasseUuid",
+          "schema": "string",
+          "required": true,
+          "description": "The `_uuid` of the `Registrierkasse` to retrieve the DEP file."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/registrierkassen/{registrierkasseUuid}/monatsbelege",
+      "method": "getMonatsbelege",
+      "httpMethod": "get",
+      "tag": "monatsbelege",
+      "description": "Returns a list of `Monatsbelege`.",
+      "parameters": [
+        {
+          "name": "registrierkasseUuid",
+          "schema": "string",
+          "required": true,
+          "description": "The `_uuid` of the `Registrierkasse`."
+        },
+        {
+          "name": "year",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "month",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "/api/v1",
   "apiDescription": "Provides a RESTful API for interacting with virtual cash registers and creating receipts that are conform with the Registrierkassensicherheitsverordnung (RKSV).\n\nYou may find our [automatically generated clients](./clients) for various programming languages and environments helpful...\n",
   "apiTitle": "obono RKSV API",

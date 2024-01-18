@@ -3,6 +3,250 @@
   "openApiRaw": "https://raw.githubusercontent.com/openstf/stf/master/lib/units/api/swagger/api_v1_generated.json",
   "homepage": "openstf.io",
   "apiVersion": "2.3.0",
+  "methods": [
+    {
+      "url": "/devices",
+      "method": "getDevices",
+      "httpMethod": "get",
+      "tag": "devices",
+      "description": "Device List",
+      "parameters": [
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "Fields query parameter takes a comma seperated list of fields. Only listed field will be return in response"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/devices/{serial}",
+      "method": "getDeviceBySerial",
+      "httpMethod": "get",
+      "tag": "devices",
+      "description": "Device Information",
+      "parameters": [
+        {
+          "name": "serial",
+          "schema": "string",
+          "required": true,
+          "description": "Device Serial"
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "Fields query parameter takes a comma seperated list of fields. Only listed field will be return in response"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/user",
+      "method": "getUser",
+      "httpMethod": "get",
+      "tag": "user",
+      "description": "User Profile",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/user/accessTokens",
+      "method": "getUserAccessTokens",
+      "httpMethod": "get",
+      "tag": "user",
+      "description": "Access Tokens",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/user/devices",
+      "method": "getUserDevices",
+      "httpMethod": "get",
+      "tag": "user",
+      "description": "User Devices",
+      "parameters": [
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "Fields query parameter takes a comma seperated list of fields. Only listed field will be return in response"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/user/devices",
+      "method": "addUserDevice",
+      "httpMethod": "post",
+      "tag": "user",
+      "description": "Add a device to a user",
+      "parameters": [
+        {
+          "name": "serial",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "timeout",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/user/devices/{serial}",
+      "method": "deleteUserDeviceBySerial",
+      "httpMethod": "delete",
+      "tag": "user",
+      "description": "Delete User Device",
+      "parameters": [
+        {
+          "name": "serial",
+          "schema": "string",
+          "required": true,
+          "description": "Device Serial"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/user/devices/{serial}",
+      "method": "getUserDeviceBySerial",
+      "httpMethod": "get",
+      "tag": "user",
+      "description": "User Device",
+      "parameters": [
+        {
+          "name": "serial",
+          "schema": "string",
+          "required": true,
+          "description": "Device Serial"
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "Fields query parameter takes a comma seperated list of fields. Only listed field will be return in response"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/user/devices/{serial}/remoteConnect",
+      "method": "remoteDisconnectUserDeviceBySerial",
+      "httpMethod": "delete",
+      "tag": "user",
+      "description": "Remote Disconnect",
+      "parameters": [
+        {
+          "name": "serial",
+          "schema": "string",
+          "required": true,
+          "description": "Device Serial"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/user/devices/{serial}/remoteConnect",
+      "method": "remoteConnectUserDeviceBySerial",
+      "httpMethod": "post",
+      "tag": "user",
+      "description": "Remote Connect",
+      "parameters": [
+        {
+          "name": "serial",
+          "schema": "string",
+          "required": true,
+          "description": "Device Serial"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://openstf.local/api/v1",
   "apiDescription": "Control and manages real Smartphone devices from browser and restful apis",
   "apiTitle": "Smartphone Test Farm",

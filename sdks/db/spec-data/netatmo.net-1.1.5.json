@@ -3,6 +3,695 @@
   "openApiRaw": "https://raw.githubusercontent.com/cbornet/netatmo-swagger-decl/master/spec/swagger.yaml",
   "homepage": "netatmo.net",
   "apiVersion": "1.1.5",
+  "methods": [
+    {
+      "url": "/addwebhook",
+      "method": "addwebhook",
+      "httpMethod": "get",
+      "tag": "welcome",
+      "description": "Links a callback url to a user.\n",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": "Your webhook callback url"
+        },
+        {
+          "name": "app_type",
+          "schema": "string",
+          "required": true,
+          "description": "Webhooks are only available for Welcome, enter app_camera."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/createnewschedule",
+      "method": "createnewschedule",
+      "httpMethod": "post",
+      "tag": "thermostat",
+      "description": "The method createnewschedule creates a new schedule stored in the backup list.",
+      "parameters": [
+        {
+          "name": "device_id",
+          "schema": "string",
+          "required": true,
+          "description": "The relay id"
+        },
+        {
+          "name": "module_id",
+          "schema": "string",
+          "required": true,
+          "description": "The thermostat id"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "program_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "selected",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "timetable",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "zones",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/devicelist",
+      "method": "devicelist",
+      "httpMethod": "get",
+      "tag": "deprecated",
+      "description": "The method devicelist returns the list of devices owned by the user, and their modules.\nA device is identified by its _id (which is its mac address) and each device may have one, several or no modules, also identified by an _id.\n",
+      "parameters": [
+        {
+          "name": "app_type",
+          "schema": "string",
+          "description": "Defines which device type will be returned by devicelist. It could be app_thermostat or app_station (by default if not provided)"
+        },
+        {
+          "name": "device_id",
+          "schema": "string",
+          "description": "Specify a device_id if you want to retrieve only this device informations."
+        },
+        {
+          "name": "get_favorites",
+          "schema": "boolean",
+          "required": false,
+          "description": "When set to \"true\", the favorite devices of the user are returned. This flag is available only if the devices requested are Weather Stations."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dropwebhook",
+      "method": "dropwebhook",
+      "httpMethod": "get",
+      "tag": "welcome",
+      "description": "Dissociates a webhook from a user.\n",
+      "parameters": [
+        {
+          "name": "app_type",
+          "schema": "string",
+          "required": true,
+          "description": "For Welcome, use app_camera"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/getcamerapicture",
+      "method": "getcamerapicture",
+      "httpMethod": "get",
+      "tag": "welcome",
+      "description": "Returns the snapshot associated to an event.\n",
+      "parameters": [
+        {
+          "name": "image_id",
+          "schema": "string",
+          "required": true,
+          "description": "id of the image (can be retrieved as 'id' in 'face' in Gethomedata, or as 'id' in 'snapshot' in Getnextevents, Getlasteventof and Geteventsuntil)"
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": "Security key to access snapshots."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/geteventsuntil",
+      "method": "geteventsuntil",
+      "httpMethod": "get",
+      "tag": "welcome",
+      "description": "Returns the snapshot associated to an event.\n",
+      "parameters": [
+        {
+          "name": "home_id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the Home you're interested in"
+        },
+        {
+          "name": "event_id",
+          "schema": "string",
+          "required": true,
+          "description": "Your request will retrieve all the events until this one"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/gethomecoachsdata",
+      "method": "gethomecoachsdata",
+      "httpMethod": "get",
+      "tag": "healthyhomecoach",
+      "description": "The method gethomecoachsdata Returns data from a user Healthy Home Coach Station (measures and device specific data).",
+      "parameters": [
+        {
+          "name": "device_id",
+          "schema": "string",
+          "description": "Id of the device you want to retrieve information of"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/gethomedata",
+      "method": "gethomedata",
+      "httpMethod": "get",
+      "tag": "welcome",
+      "description": "Returns information about users homes and cameras.\n",
+      "parameters": [
+        {
+          "name": "home_id",
+          "schema": "string",
+          "description": "Specify if you're looking for the events of a specific Home."
+        },
+        {
+          "name": "size",
+          "schema": "integer",
+          "description": "Number of events to retrieve. Default is `30`."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/getlasteventof",
+      "method": "getlasteventof",
+      "httpMethod": "get",
+      "tag": "welcome",
+      "description": "Returns most recent events.\n",
+      "parameters": [
+        {
+          "name": "home_id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the Home you're interested in"
+        },
+        {
+          "name": "person_id",
+          "schema": "string",
+          "required": true,
+          "description": "Your request will retrieve all events of the given home until the most recent event of the given person"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Number of events to retrieve. Default is 30."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/getmeasure",
+      "method": "getmeasure",
+      "httpMethod": "get",
+      "tag": "station",
+      "description": "The method getmeasure returns the measurements of a device or a module.\n",
+      "parameters": [
+        {
+          "name": "device_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the device whose module's measurements you want to retrieve. This _id can be found in the user's devices field."
+        },
+        {
+          "name": "module_id",
+          "schema": "string",
+          "description": "If you don't specify any module_id you will retrieve the device's measurements. If you specify a module_id you will retrieve the module's measurements."
+        },
+        {
+          "name": "scale",
+          "schema": "string",
+          "required": true,
+          "description": "Defines the time interval between two measurements.\nPossible values :\nmax -> every value stored will be returned\n30min -> 1 value every 30 minutes\n1hour -> 1 value every hour\n3hours -> 1 value every 3 hours\n1day -> 1 value per day\n1week -> 1 value per week\n1month -> 1 value per month\n"
+        },
+        {
+          "name": "type",
+          "schema": "array",
+          "required": true,
+          "description": "Measures you are interested in. Data you can request depends on the scale.\n**For Weather Station:**\n  * max -> Temperature (°C), CO2 (ppm), Humidity (%), Pressure (mbar), Noise (db), Rain (mm), WindStrength (km/h), WindAngle (angles), Guststrength (km/h), GustAngle (angles)\n  * 30min, 1hour, 3hours -> Same as above + min_temp, max_temp, min_hum, max_hum, min_pressure, max_pressure, min_noise, max_noise, sum_rain, date_max_gust\n  * 1day, 1week, 1month -> Same as above + date_min_temp, date_max_temp, date_min_hum, date_max_hum, date_min_pressure, date_max_pressure, date_min_noise, date_max_noise, date_min_co2, date_max_co2\n\n**For Thermostat:**\n  * max -> temperature (°C), sp_temperature (°C), boileron (sec), boileroff (sec)\n  * 30min, 1hour, 3hours -> temperature, sp_temperature, min_temp,\nmax_temp, sum_boiler_on, sum_boiler_off\n  * 1day, 1week, 1month -> temperature, min_temp, date_min_temp,\nmax_temp, sum_boiler_on, sum_boiler_off\n"
+        },
+        {
+          "name": "date_begin",
+          "schema": "integer",
+          "description": "Starting timestamp (utc) of the requested measurements.\nPlease note measurement retrieving is limited to 1024 measurements.\n"
+        },
+        {
+          "name": "date_end",
+          "schema": "string",
+          "description": "Ending timestamp (utc) of the request measurements.\nIf you want only the last measurement, do not provide date_begin, and set date_end to `last`.\n"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Limits the number of measurements returned (default & max is 1024)"
+        },
+        {
+          "name": "optimize",
+          "schema": "boolean",
+          "description": "Allows you to choose the format of the answer.\nIf you build a mobile app and bandwith usage is an issue, use `optimize = true`.\nUse `optimize = false`, for an easier parse. In this case, values are indexed by sorted timestamp.\nExample of un-optimized response :\n```json\n{\"status\": \"ok\", \n  \"body\": {\n    \"1347575400\": [18.3,39],\n    \"1347586200\": [20.6,48]\n  },\n\"time_exec\": 0.012136936187744}\n```\nIf optimize is set true, measurements are returned as an array of series of regularly spaced measurements. Each series is defined by a beginning time beg_time and a step between measurements, step_time:\n```json\n{\"status\": \"ok\",\n  \"body\": [\n    {\"beg_time\": 1347575400,\n     \"step_time\": 10800,\n     \"value\": \n        [[18.3,39],\n        [ 20.6,48]]\n    }],\n\"time_exec\": 0.014238119125366}\n```\nDefault value is `true`.\n"
+        },
+        {
+          "name": "real_time",
+          "schema": "boolean",
+          "description": "In scales higher than max, since the data is aggregated, the timestamps returned are by default offset by +(scale/2).\nFor instance, if you ask for measurements at a daily scale, you will receive data timestamped at 12:00 if real_time is set to `false` (default case), and timestamped at 00:00 if real_time is set to `true`.\nNB : The servers always store data with real_time set to `true` and data are offset by this parameter AFTER having being time-filtered, thus you could have data after date_end if real_time is set to `false`.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/getnextevents",
+      "method": "getnextevents",
+      "httpMethod": "get",
+      "tag": "welcome",
+      "description": "Returns previous events.\n",
+      "parameters": [
+        {
+          "name": "home_id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the Home you're interested in"
+        },
+        {
+          "name": "event_id",
+          "schema": "string",
+          "required": true,
+          "description": "Your request will retrieve events occured before this one"
+        },
+        {
+          "name": "size",
+          "schema": "integer",
+          "description": "Number of events to retrieve. Default is 30."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/getpublicdata",
+      "method": "getpublicdata",
+      "httpMethod": "get",
+      "tag": "public",
+      "description": "Retrieves publicly shared weather data from Outdoor Modules within a predefined area.",
+      "parameters": [
+        {
+          "name": "lat_ne",
+          "schema": "integer",
+          "required": true,
+          "description": "Latitude of the north east corner of the requested area. -85 <= lat_ne <= 85 and lat_ne>lat_sw"
+        },
+        {
+          "name": "lon_ne",
+          "schema": "integer",
+          "required": true,
+          "description": "Longitude of the north east corner of the requested area. -180 <= lon_ne <= 180 and lon_ne>lon_sw"
+        },
+        {
+          "name": "lat_sw",
+          "schema": "integer",
+          "required": true,
+          "description": "Latitude of the south west corner of the requested area. -85 <= lat_sw <= 85"
+        },
+        {
+          "name": "lon_sw",
+          "schema": "integer",
+          "required": true,
+          "description": "Longitude of the south west corner of the requested area. -180 <= lon_sw <= 180"
+        },
+        {
+          "name": "required_data",
+          "schema": "array",
+          "description": "To filter stations based on relevant measurements you want (e.g. rain will only return stations with rain gauges). Default is no filter. You can find all measurements available on the Thermostat page."
+        },
+        {
+          "name": "filter",
+          "schema": "boolean",
+          "description": "True to exclude stations with abnormal temperature measures. Default is false."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/getstationsdata",
+      "method": "getstationsdata",
+      "httpMethod": "get",
+      "tag": "station",
+      "description": "The method getstationsdata Returns data from a user's Weather Stations (measures and device specific data).",
+      "parameters": [
+        {
+          "name": "device_id",
+          "schema": "string",
+          "description": "Id of the device you want to retrieve information of"
+        },
+        {
+          "name": "get_favorites",
+          "schema": "boolean",
+          "description": "Whether to include the user's favorite Weather Stations in addition to the user's own Weather Stations"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/getthermostatsdata",
+      "method": "getthermostatsdata",
+      "httpMethod": "get",
+      "tag": "thermostat",
+      "description": "The method getthermostatsdata returns information about user's thermostats such as their last measurements.",
+      "parameters": [
+        {
+          "name": "device_id",
+          "schema": "string",
+          "description": "Id of the device you want to retrieve information of"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/getthermstate",
+      "method": "getthermstate",
+      "httpMethod": "get",
+      "tag": "deprecated",
+      "description": "The method getthermstate returns the last Thermostat measurements, its current weekly schedule, and, if present, its current manual temperature setpoint.",
+      "parameters": [
+        {
+          "name": "device_id",
+          "schema": "string",
+          "required": true,
+          "description": "The relay id"
+        },
+        {
+          "name": "module_id",
+          "schema": "string",
+          "required": true,
+          "description": "The thermostat id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/getuser",
+      "method": "getuser",
+      "httpMethod": "get",
+      "tag": "deprecated",
+      "description": "The method getuser returns information about a user such as prefered language, prefered units, and list of devices.\n",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/partnerdevices",
+      "method": "partnerdevices",
+      "httpMethod": "get",
+      "tag": "partner",
+      "description": "The method partnerdevices returns the list of device_id to which your partner application has access to.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setpersonsaway",
+      "method": "setpersonsaway",
+      "httpMethod": "post",
+      "tag": "welcome",
+      "description": "Sets a person as 'Away' or the Home as 'Empty'. The event will be added to the user’s timeline.\n",
+      "parameters": [
+        {
+          "name": "home_id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the Home you're interested in"
+        },
+        {
+          "name": "person_id",
+          "schema": "string",
+          "description": "If a person_id is specified, that person will be set as 'Away'. If no person_id is specified, the Home will be set as 'Empty'."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setpersonshome",
+      "method": "setpersonshome",
+      "httpMethod": "post",
+      "tag": "welcome",
+      "description": "Sets a person as 'At home'.\n",
+      "parameters": [
+        {
+          "name": "home_id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the Home you're interested in"
+        },
+        {
+          "name": "person_ids",
+          "schema": "string",
+          "required": true,
+          "description": "List of persons IDs"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setthermpoint",
+      "method": "setthermpoint",
+      "httpMethod": "post",
+      "tag": "thermostat",
+      "description": "The method setthermpoint changes the Thermostat manual temperature setpoint.",
+      "parameters": [
+        {
+          "name": "device_id",
+          "schema": "string",
+          "required": true,
+          "description": "The relay id"
+        },
+        {
+          "name": "module_id",
+          "schema": "string",
+          "required": true,
+          "description": "The thermostat id"
+        },
+        {
+          "name": "setpoint_mode",
+          "schema": "string",
+          "required": true,
+          "description": "Chosen setpoint_mode"
+        },
+        {
+          "name": "setpoint_endtime",
+          "schema": "integer",
+          "description": "When using the manual or max setpoint_mode, this parameter defines when the setpoint expires."
+        },
+        {
+          "name": "setpoint_temp",
+          "schema": "number",
+          "description": "When using the manual setpoint_mode, this parameter defines the temperature setpoint (in Celcius) to use."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/switchschedule",
+      "method": "switchschedule",
+      "httpMethod": "post",
+      "tag": "thermostat",
+      "description": "The method switchschedule switches the Thermostat's schedule to another existing schedule.",
+      "parameters": [
+        {
+          "name": "device_id",
+          "schema": "string",
+          "required": true,
+          "description": "The relay id"
+        },
+        {
+          "name": "module_id",
+          "schema": "string",
+          "required": true,
+          "description": "The thermostat id"
+        },
+        {
+          "name": "schedule_id",
+          "schema": "string",
+          "required": true,
+          "description": "The schedule id. It can be found in the getthermstate response, under the keys `therm_program_backup` and `therm_program`.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/syncschedule",
+      "method": "syncschedule",
+      "httpMethod": "post",
+      "tag": "thermostat",
+      "description": "The method syncschedule changes the Thermostat weekly schedule.",
+      "parameters": [
+        {
+          "name": "device_id",
+          "schema": "string",
+          "required": true,
+          "description": "The relay id"
+        },
+        {
+          "name": "module_id",
+          "schema": "string",
+          "required": true,
+          "description": "The thermostat id"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "program_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "selected",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "timetable",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "zones",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.netatmo.net/api",
   "apiDescription": "<h3>Welcome to the Netatmo swagger on-line documentation !</h3>\nThis site is a complement to the official <a href=\"https://dev.netatmo.com/\">Netatmo developper documentation</a> using swagger to bring interactivity and easy testing of requests with the \"try it\" button (authenticate with the authorization code OAuth2 flow by clicking the authenticate button in the methods). You can find the source code for this site can be found in the project <a href=\"https://github.com/cbornet/netatmo-swagger-ui\">netatmo-swagger-ui</a>. You can also use the online <a href=\"./swagger.json\">swagger declaration</a> file to generate code or static documentation (see <a href=\"https://github.com/cbornet/netatmo-swagger-api\">netatmo-swagger-api</a>).\n",
   "apiTitle": "Netatmo",

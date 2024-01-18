@@ -3,6 +3,2065 @@
   "openApiRaw": "https://api.configcat.com/docs/v1/swagger.json",
   "homepage": "configcat.com",
   "apiVersion": "v1",
+  "methods": [
+    {
+      "url": "/v1/code-references",
+      "method": "/v1/codeReferencesPost",
+      "httpMethod": "post",
+      "tag": "Code References",
+      "description": "",
+      "parameters": [
+        {
+          "name": "activeBranches",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "branch",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "commitHash",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "commitUrl",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "configId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "flagReferences",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "repository",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "uploader",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/code-references/delete-reports",
+      "method": "/v1/codeReferences/deleteReportsPost",
+      "httpMethod": "post",
+      "tag": "Code References",
+      "description": "",
+      "parameters": [
+        {
+          "name": "branch",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "configId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "repository",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "settingId",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/configs/{configId}",
+      "method": "deleteConfig",
+      "httpMethod": "delete",
+      "tag": "Configs",
+      "description": "Delete Config",
+      "parameters": [
+        {
+          "name": "configId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Config."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/configs/{configId}",
+      "method": "getConfig",
+      "httpMethod": "get",
+      "tag": "Configs",
+      "description": "Get Config",
+      "parameters": [
+        {
+          "name": "configId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Config."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/configs/{configId}",
+      "method": "updateConfig",
+      "httpMethod": "put",
+      "tag": "Configs",
+      "description": "Update Config",
+      "parameters": [
+        {
+          "name": "configId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Config."
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/configs/{configId}/deleted-settings",
+      "method": "getDeletedSettings",
+      "httpMethod": "get",
+      "tag": "Audit logs",
+      "description": "List Deleted Settings",
+      "parameters": [
+        {
+          "name": "configId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Config."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/configs/{configId}/environments/{environmentId}",
+      "method": "getSdkKeys",
+      "httpMethod": "get",
+      "tag": "SDK Keys",
+      "description": "Get SDK Key",
+      "parameters": [
+        {
+          "name": "configId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Config."
+        },
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Environment."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/configs/{configId}/environments/{environmentId}/values",
+      "method": "getSettingValues",
+      "httpMethod": "get",
+      "tag": "Feature Flag & Setting values",
+      "description": "Get values",
+      "parameters": [
+        {
+          "name": "configId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Config."
+        },
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Environment."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/configs/{configId}/environments/{environmentId}/values",
+      "method": "postSettingValues",
+      "httpMethod": "post",
+      "tag": "Feature Flag & Setting values",
+      "description": "Post values",
+      "parameters": [
+        {
+          "name": "configId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Config."
+        },
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Environment."
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "description": "The reason note for the Audit Log if the Product's \"Config changes require a reason\" preference is turned on."
+        },
+        {
+          "name": "settingValues",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/configs/{configId}/settings",
+      "method": "getSettings",
+      "httpMethod": "get",
+      "tag": "Feature Flags & Settings",
+      "description": "List Flags",
+      "parameters": [
+        {
+          "name": "configId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Config."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/configs/{configId}/settings",
+      "method": "createSetting",
+      "httpMethod": "post",
+      "tag": "Feature Flags & Settings",
+      "description": "Create Flag",
+      "parameters": [
+        {
+          "name": "configId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Config."
+        },
+        {
+          "name": "hint",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "initialValues",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "settingType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/environments/{environmentId}",
+      "method": "deleteEnvironment",
+      "httpMethod": "delete",
+      "tag": "Environments",
+      "description": "Delete Environment",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Environment."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/environments/{environmentId}",
+      "method": "getEnvironment",
+      "httpMethod": "get",
+      "tag": "Environments",
+      "description": "Get Environment",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Environment."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/environments/{environmentId}",
+      "method": "updateEnvironment",
+      "httpMethod": "put",
+      "tag": "Environments",
+      "description": "Update Environment",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Environment."
+        },
+        {
+          "name": "color",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/environments/{environmentId}/settings/{settingId}/integrationLinks/{integrationLinkType}/{key}",
+      "method": "deleteIntegrationLink",
+      "httpMethod": "delete",
+      "tag": "Integration links",
+      "description": "Delete Integration link",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Environment."
+        },
+        {
+          "name": "settingId",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the Setting."
+        },
+        {
+          "name": "integrationLinkType",
+          "schema": "string",
+          "required": true,
+          "description": "The integration's type."
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": "The key of the integration link."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/environments/{environmentId}/settings/{settingId}/integrationLinks/{integrationLinkType}/{key}",
+      "method": "addOrUpdateIntegrationLink",
+      "httpMethod": "post",
+      "tag": "Integration links",
+      "description": "Add or update Integration link",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Environment."
+        },
+        {
+          "name": "settingId",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the Setting."
+        },
+        {
+          "name": "integrationLinkType",
+          "schema": "string",
+          "required": true,
+          "description": "The integration link's type."
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": "The key of the integration link."
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/environments/{environmentId}/settings/{settingId}/value",
+      "method": "getSettingValue",
+      "httpMethod": "get",
+      "tag": "Feature Flag & Setting values",
+      "description": "Get value",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Environment."
+        },
+        {
+          "name": "settingId",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the Setting."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/environments/{environmentId}/settings/{settingId}/value",
+      "method": "updateSettingValue",
+      "httpMethod": "patch",
+      "tag": "Feature Flag & Setting values",
+      "description": "Update value",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Environment."
+        },
+        {
+          "name": "settingId",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the Setting."
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "description": "The reason note for the Audit Log if the Product's \"Config changes require a reason\" preference is turned on."
+        },
+        {
+          "name": "operations",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/environments/{environmentId}/settings/{settingId}/value",
+      "method": "replaceSettingValue",
+      "httpMethod": "put",
+      "tag": "Feature Flag & Setting values",
+      "description": "Replace value",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Environment."
+        },
+        {
+          "name": "settingId",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the Setting."
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "description": "The reason note for the Audit Log if the Product's \"Config changes require a reason\" preference is turned on."
+        },
+        {
+          "name": "rolloutPercentageItems",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "rolloutRules",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "value",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/integrationLink/{integrationLinkType}/{key}/details",
+      "method": "getIntegrationLinkDetails",
+      "httpMethod": "get",
+      "tag": "Integration links",
+      "description": "Get Integration link",
+      "parameters": [
+        {
+          "name": "integrationLinkType",
+          "schema": "string",
+          "required": true,
+          "description": "The integration link's type."
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": "The key of the integration link."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/jira/Connect",
+      "method": "/v1/jira/connectPost",
+      "httpMethod": "post",
+      "tag": "Integration links",
+      "description": "",
+      "parameters": [
+        {
+          "name": "clientKey",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "jiraJwtToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/jira/environments/{environmentId}/settings/{settingId}/integrationLinks/{key}",
+      "method": "jiraAddOrUpdateIntegrationLink",
+      "httpMethod": "post",
+      "tag": "Integration links",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Environment."
+        },
+        {
+          "name": "settingId",
+          "schema": "integer",
+          "required": true,
+          "description": "The id of the Setting."
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": "The key of the integration link."
+        },
+        {
+          "name": "clientKey",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "jiraJwtToken",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/me",
+      "method": "getMe",
+      "httpMethod": "get",
+      "tag": "Me",
+      "description": "Get authenticated user details",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/organizations",
+      "method": "getOrganizations",
+      "httpMethod": "get",
+      "tag": "Organizations",
+      "description": "List Organizations",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/organizations/{organizationId}/auditlogs",
+      "method": "getOrganizationAuditlogs",
+      "httpMethod": "get",
+      "tag": "Audit logs",
+      "description": "List Audit log items for Organization",
+      "parameters": [
+        {
+          "name": "organizationId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Organization."
+        },
+        {
+          "name": "productId",
+          "schema": "string",
+          "description": "The identifier of the Product."
+        },
+        {
+          "name": "configId",
+          "schema": "string",
+          "description": "The identifier of the Config."
+        },
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "description": "The identifier of the Environment."
+        },
+        {
+          "name": "auditLogType",
+          "schema": "undefined",
+          "description": "Filter Audit logs by Audit log type."
+        },
+        {
+          "name": "fromUtcDateTime",
+          "schema": "string",
+          "description": "Filter Audit logs by starting UTC date."
+        },
+        {
+          "name": "toUtcDateTime",
+          "schema": "string",
+          "description": "Filter Audit logs by ending UTC date."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/organizations/{organizationId}/members",
+      "method": "getOrganizationMembers",
+      "httpMethod": "get",
+      "tag": "Members",
+      "description": "List Organization Members",
+      "parameters": [
+        {
+          "name": "organizationId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Organization."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/organizations/{organizationId}/members/{userId}",
+      "method": "deleteOrganizationMember",
+      "httpMethod": "delete",
+      "tag": "Members",
+      "description": "Delete Member from Organization",
+      "parameters": [
+        {
+          "name": "organizationId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Organization."
+        },
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Member."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/organizations/{organizationId}/members/{userId}",
+      "method": "addMemberToGroup",
+      "httpMethod": "post",
+      "tag": "Members",
+      "description": "Update Member Permissions",
+      "parameters": [
+        {
+          "name": "organizationId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Organization."
+        },
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Member."
+        },
+        {
+          "name": "permissionGroupIds",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/organizations/{organizationId}/products",
+      "method": "createProduct",
+      "httpMethod": "post",
+      "tag": "Products",
+      "description": "Create Product",
+      "parameters": [
+        {
+          "name": "organizationId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Organization."
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/permissions/{permissionGroupId}",
+      "method": "deletePermissionGroup",
+      "httpMethod": "delete",
+      "tag": "Permission Groups",
+      "description": "Delete Permission Group",
+      "parameters": [
+        {
+          "name": "permissionGroupId",
+          "schema": "integer",
+          "required": true,
+          "description": "The identifier of the Permission Group."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/permissions/{permissionGroupId}",
+      "method": "getPermissionGroup",
+      "httpMethod": "get",
+      "tag": "Permission Groups",
+      "description": "Get Permission Group",
+      "parameters": [
+        {
+          "name": "permissionGroupId",
+          "schema": "integer",
+          "required": true,
+          "description": "The identifier of the Permission Group."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/permissions/{permissionGroupId}",
+      "method": "updatePermissionGroup",
+      "httpMethod": "put",
+      "tag": "Permission Groups",
+      "description": "Update Permission Group",
+      "parameters": [
+        {
+          "name": "permissionGroupId",
+          "schema": "integer",
+          "required": true,
+          "description": "The identifier of the Permission Group."
+        },
+        {
+          "name": "accessType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "canCreateOrUpdateConfig",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "canCreateOrUpdateEnvironment",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "canCreateOrUpdateSegments",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "canCreateOrUpdateSetting",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "canCreateOrUpdateTag",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "canDeleteConfig",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "canDeleteEnvironment",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "canDeleteSegments",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "canDeleteSetting",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "canDeleteTag",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "canManageIntegrations",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "canManageMembers",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "canManageProductPreferences",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "canManageWebhook",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "canRotateSdkKey",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "canTagSetting",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "canUseExportImport",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "canViewProductAuditLog",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "canViewProductStatistics",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "canViewSdkKey",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "environmentAccesses",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "newEnvironmentAccessType",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/products",
+      "method": "getProducts",
+      "httpMethod": "get",
+      "tag": "Products",
+      "description": "List Products",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/products/{productId}",
+      "method": "deleteProduct",
+      "httpMethod": "delete",
+      "tag": "Products",
+      "description": "Delete Product",
+      "parameters": [
+        {
+          "name": "productId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Product."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/products/{productId}",
+      "method": "getProduct",
+      "httpMethod": "get",
+      "tag": "Products",
+      "description": "Get Product",
+      "parameters": [
+        {
+          "name": "productId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Product."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/products/{productId}",
+      "method": "updateProduct",
+      "httpMethod": "put",
+      "tag": "Products",
+      "description": "Update Product",
+      "parameters": [
+        {
+          "name": "productId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Product."
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/products/{productId}/auditlogs",
+      "method": "getAuditlogs",
+      "httpMethod": "get",
+      "tag": "Audit logs",
+      "description": "List Audit log items for Product",
+      "parameters": [
+        {
+          "name": "productId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Product."
+        },
+        {
+          "name": "configId",
+          "schema": "string",
+          "description": "The identifier of the Config."
+        },
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "description": "The identifier of the Environment."
+        },
+        {
+          "name": "auditLogType",
+          "schema": "undefined",
+          "description": "Filter Audit logs by Audit log type."
+        },
+        {
+          "name": "fromUtcDateTime",
+          "schema": "string",
+          "description": "Filter Audit logs by starting UTC date."
+        },
+        {
+          "name": "toUtcDateTime",
+          "schema": "string",
+          "description": "Filter Audit logs by ending UTC date."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/products/{productId}/configs",
+      "method": "getConfigs",
+      "httpMethod": "get",
+      "tag": "Configs",
+      "description": "List Configs",
+      "parameters": [
+        {
+          "name": "productId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Product."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/products/{productId}/configs",
+      "method": "createConfig",
+      "httpMethod": "post",
+      "tag": "Configs",
+      "description": "Create Config",
+      "parameters": [
+        {
+          "name": "productId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Product."
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/products/{productId}/environments",
+      "method": "getEnvironments",
+      "httpMethod": "get",
+      "tag": "Environments",
+      "description": "List Environments",
+      "parameters": [
+        {
+          "name": "productId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Product."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/products/{productId}/environments",
+      "method": "createEnvironment",
+      "httpMethod": "post",
+      "tag": "Environments",
+      "description": "Create Environment",
+      "parameters": [
+        {
+          "name": "productId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Product."
+        },
+        {
+          "name": "color",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/products/{productId}/members",
+      "method": "getProductMembers",
+      "httpMethod": "get",
+      "tag": "Members",
+      "description": "List Product Members",
+      "parameters": [
+        {
+          "name": "productId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Product."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/products/{productId}/members/invite",
+      "method": "inviteMember",
+      "httpMethod": "post",
+      "tag": "Members",
+      "description": "Invite Member",
+      "parameters": [
+        {
+          "name": "productId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Product."
+        },
+        {
+          "name": "emails",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "permissionGroupId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/products/{productId}/members/{userId}",
+      "method": "deleteProductMember",
+      "httpMethod": "delete",
+      "tag": "Members",
+      "description": "Delete Member from Product",
+      "parameters": [
+        {
+          "name": "productId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Product."
+        },
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Member."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/products/{productId}/permissions",
+      "method": "getPermissionGroups",
+      "httpMethod": "get",
+      "tag": "Permission Groups",
+      "description": "List Permission Groups",
+      "parameters": [
+        {
+          "name": "productId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Product."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/products/{productId}/permissions",
+      "method": "createPermissionGroup",
+      "httpMethod": "post",
+      "tag": "Permission Groups",
+      "description": "Create Permission Group",
+      "parameters": [
+        {
+          "name": "productId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Product."
+        },
+        {
+          "name": "accessType",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "canCreateOrUpdateConfig",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "canCreateOrUpdateEnvironment",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "canCreateOrUpdateSegments",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "canCreateOrUpdateSetting",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "canCreateOrUpdateTag",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "canDeleteConfig",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "canDeleteEnvironment",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "canDeleteSegments",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "canDeleteSetting",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "canDeleteTag",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "canManageIntegrations",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "canManageMembers",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "canManageProductPreferences",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "canManageWebhook",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "canRotateSdkKey",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "canTagSetting",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "canUseExportImport",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "canViewProductAuditLog",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "canViewProductStatistics",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "canViewSdkKey",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "environmentAccesses",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "newEnvironmentAccessType",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/products/{productId}/segments",
+      "method": "getSegments",
+      "httpMethod": "get",
+      "tag": "Segments",
+      "description": "List Segments",
+      "parameters": [
+        {
+          "name": "productId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Product."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/products/{productId}/segments",
+      "method": "createSegment",
+      "httpMethod": "post",
+      "tag": "Segments",
+      "description": "Create Segment",
+      "parameters": [
+        {
+          "name": "productId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Product."
+        },
+        {
+          "name": "comparator",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "comparisonAttribute",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "comparisonValue",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/products/{productId}/tags",
+      "method": "getTags",
+      "httpMethod": "get",
+      "tag": "Tags",
+      "description": "List Tags",
+      "parameters": [
+        {
+          "name": "productId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Product."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/products/{productId}/tags",
+      "method": "createTag",
+      "httpMethod": "post",
+      "tag": "Tags",
+      "description": "Create Tag",
+      "parameters": [
+        {
+          "name": "productId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Organization."
+        },
+        {
+          "name": "color",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/segments/{segmentId}",
+      "method": "deleteSegment",
+      "httpMethod": "delete",
+      "tag": "Segments",
+      "description": "Delete Segment",
+      "parameters": [
+        {
+          "name": "segmentId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Segment."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/segments/{segmentId}",
+      "method": "getSegment",
+      "httpMethod": "get",
+      "tag": "Segments",
+      "description": "Get Segment",
+      "parameters": [
+        {
+          "name": "segmentId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Segment."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/segments/{segmentId}",
+      "method": "updateSegment",
+      "httpMethod": "put",
+      "tag": "Segments",
+      "description": "Update Segment",
+      "parameters": [
+        {
+          "name": "segmentId",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the Segment."
+        },
+        {
+          "name": "comparator",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "comparisonAttribute",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "comparisonValue",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/settings/{settingId}",
+      "method": "deleteSetting",
+      "httpMethod": "delete",
+      "tag": "Feature Flags & Settings",
+      "description": "Delete Flag",
+      "parameters": [
+        {
+          "name": "settingId",
+          "schema": "integer",
+          "required": true,
+          "description": "The identifier of the Setting."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/settings/{settingId}",
+      "method": "getSetting",
+      "httpMethod": "get",
+      "tag": "Feature Flags & Settings",
+      "description": "Get Flag",
+      "parameters": [
+        {
+          "name": "settingId",
+          "schema": "integer",
+          "required": true,
+          "description": "The identifier of the Setting."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/settings/{settingId}",
+      "method": "updateSetting",
+      "httpMethod": "patch",
+      "tag": "Feature Flags & Settings",
+      "description": "Update Flag",
+      "parameters": [
+        {
+          "name": "settingId",
+          "schema": "integer",
+          "required": true,
+          "description": "The identifier of the Setting."
+        },
+        {
+          "name": "operations",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/settings/{settingKeyOrId}/value",
+      "method": "getSettingValueBySdkkey",
+      "httpMethod": "get",
+      "tag": "Feature Flag & Setting values using SDK Key",
+      "description": "Get value",
+      "parameters": [
+        {
+          "name": "settingKeyOrId",
+          "schema": "string",
+          "required": true,
+          "description": "The key or id of the Setting."
+        },
+        {
+          "name": "X-CONFIGCAT-SDKKEY",
+          "schema": "string",
+          "description": "The ConfigCat SDK Key. (https://app.configcat.com/sdkkey)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/settings/{settingKeyOrId}/value",
+      "method": "updateSettingValueBySdkkey",
+      "httpMethod": "patch",
+      "tag": "Feature Flag & Setting values using SDK Key",
+      "description": "Update value",
+      "parameters": [
+        {
+          "name": "settingKeyOrId",
+          "schema": "string",
+          "required": true,
+          "description": "The key or id of the Setting."
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "description": "The reason note for the Audit Log if the Product's \"Config changes require a reason\" preference is turned on."
+        },
+        {
+          "name": "X-CONFIGCAT-SDKKEY",
+          "schema": "string",
+          "description": "The ConfigCat SDK Key. (https://app.configcat.com/sdkkey)"
+        },
+        {
+          "name": "operations",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/settings/{settingKeyOrId}/value",
+      "method": "replaceSettingValueBySdkkey",
+      "httpMethod": "put",
+      "tag": "Feature Flag & Setting values using SDK Key",
+      "description": "Replace value",
+      "parameters": [
+        {
+          "name": "settingKeyOrId",
+          "schema": "string",
+          "required": true,
+          "description": "The key or id of the Setting."
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "description": "The reason note for the Audit Log if the Product's \"Config changes require a reason\" preference is turned on."
+        },
+        {
+          "name": "X-CONFIGCAT-SDKKEY",
+          "schema": "string",
+          "description": "The ConfigCat SDK Key. (https://app.configcat.com/sdkkey)"
+        },
+        {
+          "name": "rolloutPercentageItems",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "rolloutRules",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "value",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/tags/{tagId}",
+      "method": "deleteTag",
+      "httpMethod": "delete",
+      "tag": "Tags",
+      "description": "Delete Tag",
+      "parameters": [
+        {
+          "name": "tagId",
+          "schema": "integer",
+          "required": true,
+          "description": "The identifier of the Tag."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/tags/{tagId}",
+      "method": "getTag",
+      "httpMethod": "get",
+      "tag": "Tags",
+      "description": "Get Tag",
+      "parameters": [
+        {
+          "name": "tagId",
+          "schema": "integer",
+          "required": true,
+          "description": "The identifier of the Tag."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/tags/{tagId}",
+      "method": "updateTag",
+      "httpMethod": "put",
+      "tag": "Tags",
+      "description": "Update Tag",
+      "parameters": [
+        {
+          "name": "tagId",
+          "schema": "integer",
+          "required": true,
+          "description": "The identifier of the Tag."
+        },
+        {
+          "name": "color",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/tags/{tagId}/settings",
+      "method": "getSettingsByTag",
+      "httpMethod": "get",
+      "tag": "Tags",
+      "description": "List Settings by Tag",
+      "parameters": [
+        {
+          "name": "tagId",
+          "schema": "integer",
+          "required": true,
+          "description": "The identifier of the Tag."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.configcat.com",
   "apiDescription": "**Base API URL**: https://api.configcat.com\n\nIf you prefer the swagger documentation, you can find it here: [Swagger UI](https://api.configcat.com/swagger).\n\nThe purpose of this API is to access the ConfigCat platform programmatically. \nYou can **Create**, **Read**, **Update** and **Delete** any entities like **Feature Flags, Configs, Environments** or **Products** within ConfigCat. \n\nThe API is based on HTTP REST, uses resource-oriented URLs, status codes and supports JSON \nand JSON+HAL format. Do not use this API for accessing and evaluating feature flag values. Use the [SDKs instead](https://configcat.com/docs/sdk-reference/overview).\n\n\n# OpenAPI Specification\n\nThe complete specification is publicly available here: [swagger.json](v1/swagger.json). \nYou can use it to generate client libraries in various languages with [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator) or\n[Swagger Codegen](https://swagger.io/tools/swagger-codegen/) to interact with this API.\n\n# Authentication\nThis API uses the [Basic HTTP Authentication Scheme](https://en.wikipedia.org/wiki/Basic_access_authentication). \n\n<!-- ReDoc-Inject: <security-definitions> -->\n\n# Throttling and rate limits\nAll the rate limited API calls are returning information about the current rate limit period in the following HTTP headers:\n\n| Header | Description |\n| :- | :- |\n| X-Rate-Limit-Remaining | The maximum number of requests remaining in the current rate limit period. |\n| X-Rate-Limit-Reset     | The time\twhen the current rate limit period resets.\t\t\t\t\t\t  |\n\nWhen the rate limit is exceeded by a request, the API returns with a `HTTP 429 - Too many requests` status along with a `Retry-After` HTTP header.\n",
   "apiTitle": "ConfigCat Public Management API",

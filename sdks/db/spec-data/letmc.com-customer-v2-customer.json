@@ -4,6 +4,786 @@
   "homepage": "letmc.com",
   "serviceName": "customer",
   "apiVersion": "v2-customer",
+  "methods": [
+    {
+      "url": "/v2/customer/{shortName}/branch/branches",
+      "method": "branchControllerGetBranches",
+      "httpMethod": "get",
+      "tag": "BranchController",
+      "description": "All branches defined for a company",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "The index of the first item to return"
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of items to return (up to 1000 per request)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Holds results from a paged query returning BranchModel values"
+        }
+      ]
+    },
+    {
+      "url": "/v2/customer/{shortName}/branch/branches/{branchID}",
+      "method": "/v2/customer/{shortName}/branch/branches/{branchId}Get",
+      "httpMethod": "get",
+      "tag": "BranchController",
+      "description": "Get a specific branch given its unique Object ID (OID)",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "branchID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the Branch"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Defines a single branch of a client."
+        }
+      ]
+    },
+    {
+      "url": "/v2/customer/{shortName}/landlord/accounting",
+      "method": "landlordControllerGetAccounts",
+      "httpMethod": "get",
+      "tag": "LandlordController",
+      "description": "Get the accounting details for the landlord.",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": "The login token returned from the /session POST call"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Landlord Accounting"
+        }
+      ]
+    },
+    {
+      "url": "/v2/customer/{shortName}/landlord/document",
+      "method": "landlordControllerGetDocument",
+      "httpMethod": "get",
+      "tag": "LandlordController",
+      "description": "Download a Document",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": "The login token returned from the /session POST call"
+        },
+        {
+          "name": "ID",
+          "schema": "string",
+          "required": true,
+          "description": "The Document ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/customer/{shortName}/landlord/inventory",
+      "method": "landlordControllerGetInvetoryReport",
+      "httpMethod": "get",
+      "tag": "LandlordController",
+      "description": "Generate a Inventory PDF for a tenancy",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": "The login token returned from the /session POST call"
+        },
+        {
+          "name": "tenancyID",
+          "schema": "string",
+          "required": true,
+          "description": "The Tenancy ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/customer/{shortName}/landlord/invoice",
+      "method": "landlordControllerGetInvoice",
+      "httpMethod": "get",
+      "tag": "LandlordController",
+      "description": "Get an invoice pdf belonging to the landlord.",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": "The login token returned from the /session POST call"
+        },
+        {
+          "name": "invoiceID",
+          "schema": "string",
+          "required": true,
+          "description": "The invoice ID to load."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/customer/{shortName}/landlord/landlordcrmentries",
+      "method": "landlordControllerGetLandlordCrmEntries",
+      "httpMethod": "get",
+      "tag": "LandlordController",
+      "description": "Retrieve landlord's CRM ID",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": "The login token returned from the /session POST call"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/customer/{shortName}/landlord/maintenance",
+      "method": "landlordControllerGetMaintenanceJobs",
+      "httpMethod": "get",
+      "tag": "LandlordController",
+      "description": "Get Active maintenance jobs.",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": "The login token returned from the /session POST call"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Landlord Maintenance"
+        }
+      ]
+    },
+    {
+      "url": "/v2/customer/{shortName}/landlord/profitloss",
+      "method": "landlordControllerGetProfitLossReport",
+      "httpMethod": "get",
+      "tag": "LandlordController",
+      "description": "Generate a Profit and Loss Report",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": "The login token returned from the /session POST call"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Class to represent proffit loss report."
+        }
+      ]
+    },
+    {
+      "url": "/v2/customer/{shortName}/landlord/rentarrears",
+      "method": "landlordControllerGetRentArrears",
+      "httpMethod": "get",
+      "tag": "LandlordController",
+      "description": "Rent Arrears",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": "The login token returned from the /session POST call"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Landlord Rent Arrears."
+        }
+      ]
+    },
+    {
+      "url": "/v2/customer/{shortName}/landlord/sas",
+      "method": "landlordControllerGetSasReport",
+      "httpMethod": "get",
+      "tag": "LandlordController",
+      "description": "Generate a Self Assessment Tax Report",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": "The login token returned from the /session POST call"
+        },
+        {
+          "name": "yearEnd",
+          "schema": "integer",
+          "required": true,
+          "description": "The Tax Year End."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/customer/{shortName}/landlord/settings",
+      "method": "landlordControllerGetSettings",
+      "httpMethod": "get",
+      "tag": "LandlordController",
+      "description": "Get contact details of all linked landlords.",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": "The login token returned from the /session POST call"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Landlord Settings"
+        }
+      ]
+    },
+    {
+      "url": "/v2/customer/{shortName}/landlord/summary",
+      "method": "landlordControllerGetSummaryDetails",
+      "httpMethod": "get",
+      "tag": "LandlordController",
+      "description": "Get the summary details for the landlord.",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": "The login token returned from the /session POST call"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Landlord Summary - Landing Page."
+        }
+      ]
+    },
+    {
+      "url": "/v2/customer/{shortName}/landlord/tenancy",
+      "method": "landlordControllerGetTenancy",
+      "httpMethod": "get",
+      "tag": "LandlordController",
+      "description": "Get tenancy details.",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": "The login token returned from the /session POST call"
+        },
+        {
+          "name": "tenancyID",
+          "schema": "string",
+          "required": true,
+          "description": "The Tenancy ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Landlord Tenancy Model."
+        }
+      ]
+    },
+    {
+      "url": "/v2/customer/{shortName}/landlord/tenancy/maintenance/preference",
+      "method": "landlordControllerCreateMaintenancePreference",
+      "httpMethod": "post",
+      "tag": "LandlordController",
+      "description": "Post tenancy maintenance preferences:-",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": "The login token returned from the /session POST call"
+        },
+        {
+          "name": "tenancyID",
+          "schema": "string",
+          "required": true,
+          "description": "The Tenancy ID"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the maintenance preference to add"
+        },
+        {
+          "name": "notes",
+          "schema": "string",
+          "required": true,
+          "description": "Notes of the maintenance preference to add"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/customer/{shortName}/landlord/tenancyagreement",
+      "method": "landlordControllerGetTenancyAgreementReport",
+      "httpMethod": "get",
+      "tag": "LandlordController",
+      "description": "Generate a Tenancy Agreement Copy (PDF)",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": "The login token returned from the /session POST call"
+        },
+        {
+          "name": "tenancyID",
+          "schema": "string",
+          "required": true,
+          "description": "The Tenancy ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/customer/{shortName}/photo/download",
+      "method": "photoControllerGetPhotoDownload",
+      "httpMethod": "get",
+      "tag": "PhotoController",
+      "description": "Downloads the photo of a property given the photo ID.",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": "The login token returned from the /session POST call"
+        },
+        {
+          "name": "photoID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the photo on the property"
+        },
+        {
+          "name": "width",
+          "schema": "integer",
+          "required": false,
+          "description": "An optional parameter specifying the image width"
+        },
+        {
+          "name": "height",
+          "schema": "integer",
+          "required": false,
+          "description": "An optional parameter specifying the image height"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/customer/{shortName}/property/{propertyID}/photos",
+      "method": "propertyControllerGetPropertiesPhotos",
+      "httpMethod": "get",
+      "tag": "PropertyController",
+      "description": "A collection showing all the photos linked to a specific block, property or room",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": "The login token returned from the /session POST call"
+        },
+        {
+          "name": "propertyID",
+          "schema": "string",
+          "required": true,
+          "description": "The unique ID of the Property"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "The index of the first item to return"
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "The maximum number of items to return (up to 1000 per request)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Holds results from a paged query returning LandlordPhotoModel values"
+        }
+      ]
+    },
+    {
+      "url": "/v2/customer/{shortName}/session",
+      "method": "sessionControllerLogout",
+      "httpMethod": "delete",
+      "tag": "SessionController",
+      "description": "Logout a customer previously logged in via the Login endpoint.",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": "The login token returned from the /session POST call"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v2/customer/{shortName}/session",
+      "method": "sessionControllerGetSessionInfo",
+      "httpMethod": "get",
+      "tag": "SessionController",
+      "description": "Gets information about the currently logged on customer.",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": "The login token returned from the /session POST call"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/customer/{shortName}/session",
+      "method": "sessionControllerLogin",
+      "httpMethod": "post",
+      "tag": "SessionController",
+      "description": "Login as a customer given their username and password.",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": "The user's username."
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": "The user's password."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/customer/{shortName}/session/createlandlordlogin",
+      "method": "sessionControllerCreateLandlordLogin",
+      "httpMethod": "post",
+      "tag": "SessionController",
+      "description": "Send a request to the in-tray to create a landlord login.",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": "The email address of the landlord"
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "required": true,
+          "description": "The title of the landlord"
+        },
+        {
+          "name": "forename",
+          "schema": "string",
+          "required": true,
+          "description": "The forename of the landlord"
+        },
+        {
+          "name": "surname",
+          "schema": "string",
+          "required": true,
+          "description": "The surname of the landlord"
+        },
+        {
+          "name": "propertyAddress",
+          "schema": "string",
+          "required": true,
+          "description": "Address of the property linked to the landlord"
+        },
+        {
+          "name": "contactDetails",
+          "schema": "string",
+          "required": true,
+          "description": "Contact details of the landlord"
+        },
+        {
+          "name": "branchID",
+          "schema": "string",
+          "required": false,
+          "description": "(Optional) The branch ID linked to the login. This will determine which in tray the request display in"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v2/customer/{shortName}/session/password",
+      "method": "sessionControllerChangePassword",
+      "httpMethod": "put",
+      "tag": "SessionController",
+      "description": "Change the password of a customer given their existing and new password.",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": "The login token returned from the /session POST call"
+        },
+        {
+          "name": "oldPassword",
+          "schema": "string",
+          "required": true,
+          "description": "The customer's existing password."
+        },
+        {
+          "name": "newPassword",
+          "schema": "string",
+          "required": true,
+          "description": "The customer's new password."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v2/customer/{shortName}/session/resetpassword",
+      "method": "sessionControllerResetPassword",
+      "httpMethod": "post",
+      "tag": "SessionController",
+      "description": "Reset the customer's password. An email will be sent out to reset.",
+      "parameters": [
+        {
+          "name": "shortName",
+          "schema": "string",
+          "required": true,
+          "description": "The unique client short-name"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": "The login Email Address."
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://live-api.letmc.com",
   "apiTitle": "agentOS Api V2, Customer Login Call Group",
   "endpoints": 22,

@@ -3,6 +3,387 @@
   "openApiRaw": "https://raw.githubusercontent.com/RiteKit/api-docs/master/apiary.apib",
   "homepage": "ritekit.com",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/v1/emoji/auto-emojify",
+      "method": "autoEmojify",
+      "httpMethod": "get",
+      "description": "Auto-Emojify",
+      "parameters": [
+        {
+          "name": "text",
+          "schema": "string",
+          "required": true,
+          "description": "Text of the post"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/emoji/suggestions",
+      "method": "emojiSuggestions",
+      "httpMethod": "get",
+      "description": "Emoji Suggestions",
+      "parameters": [
+        {
+          "name": "text",
+          "schema": "string",
+          "required": true,
+          "description": "Text of the post"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/images/animate",
+      "method": "animateImage",
+      "httpMethod": "get",
+      "description": "Animate Image",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": "URL of the company"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": "URL of the company"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/images/logo",
+      "method": "companyLogo",
+      "httpMethod": "get",
+      "description": "Company Logo",
+      "parameters": [
+        {
+          "name": "domain",
+          "schema": "string",
+          "required": true,
+          "description": "URL of the company"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/images/quote",
+      "method": "textToImage",
+      "httpMethod": "get",
+      "description": "Text to Image",
+      "parameters": [
+        {
+          "name": "quote",
+          "schema": "string",
+          "required": true,
+          "description": "Text of the quote"
+        },
+        {
+          "name": "author",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the author/source"
+        },
+        {
+          "name": "fontSize",
+          "schema": "integer",
+          "required": true,
+          "description": "Font size for the quote (author font size is calculated automatically)"
+        },
+        {
+          "name": "quoteFont",
+          "schema": "string",
+          "required": true,
+          "description": "Font-family used for quote text"
+        },
+        {
+          "name": "quoteFontColor",
+          "schema": "string",
+          "required": true,
+          "description": "Font color of the quote text"
+        },
+        {
+          "name": "authorFont",
+          "schema": "string",
+          "required": true,
+          "description": "Font-family used for author name"
+        },
+        {
+          "name": "authorFontColor",
+          "schema": "string",
+          "required": true,
+          "description": "Font color of the author"
+        },
+        {
+          "name": "enableHighlight",
+          "schema": "integer",
+          "required": true,
+          "description": "Enable highlight on quote text"
+        },
+        {
+          "name": "highlightColor",
+          "schema": "string",
+          "required": true,
+          "description": "Color used for highlight"
+        },
+        {
+          "name": "bgType",
+          "schema": "string",
+          "required": true,
+          "description": "Background type (gradient/solid)"
+        },
+        {
+          "name": "backgroundColor",
+          "schema": "string",
+          "required": true,
+          "description": "Background color for solid background type"
+        },
+        {
+          "name": "gradientType",
+          "schema": "string",
+          "required": true,
+          "description": "Type of gradient background (linear/radial)"
+        },
+        {
+          "name": "gradientColor1",
+          "schema": "string",
+          "required": true,
+          "description": "First color for gradient background type"
+        },
+        {
+          "name": "gradientColor2",
+          "schema": "string",
+          "required": true,
+          "description": "Second color for gradient background type"
+        },
+        {
+          "name": "brandLogo",
+          "schema": "string",
+          "required": true,
+          "description": "URL of the brand logo"
+        },
+        {
+          "name": "animation",
+          "schema": "string",
+          "required": true,
+          "description": "Animation type: none, rays, glint, circle"
+        },
+        {
+          "name": "showQuoteMark",
+          "schema": "integer",
+          "required": false,
+          "description": "showing/hiding quote mark"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/link/cta",
+      "method": "listOfCtAs",
+      "httpMethod": "get",
+      "description": "List of CTAs",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/link/short-link",
+      "method": "shortenLink",
+      "httpMethod": "get",
+      "description": "Shorten Link",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": "URL"
+        },
+        {
+          "name": "cta",
+          "schema": "integer",
+          "required": true,
+          "description": "cta id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/search/trending",
+      "method": "trendingHashtags",
+      "httpMethod": "get",
+      "description": "Trending Hashtags",
+      "parameters": [
+        {
+          "name": "green",
+          "schema": "boolean",
+          "required": false,
+          "description": "Restrict results only to green hashtags. Hides overused (red) hashtags."
+        },
+        {
+          "name": "latin",
+          "schema": "boolean",
+          "required": false,
+          "description": "Restrict results only to hashtags with latin characters"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/stats/auto-hashtag",
+      "method": "autoHashtag",
+      "httpMethod": "get",
+      "description": "Auto-Hashtag",
+      "parameters": [
+        {
+          "name": "post",
+          "schema": "string",
+          "required": true,
+          "description": "Text of the post"
+        },
+        {
+          "name": "maxHashtags",
+          "schema": "integer",
+          "required": false,
+          "description": "Max number of hashtags."
+        },
+        {
+          "name": "hashtagPosition",
+          "schema": "string",
+          "required": false,
+          "description": "Position of hashtags: end => at the end, auto => anywhere"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/stats/hashtag-suggestions",
+      "method": "hashtagSuggestions",
+      "httpMethod": "get",
+      "description": "Hashtag Suggestions",
+      "parameters": [
+        {
+          "name": "text",
+          "schema": "string",
+          "required": true,
+          "description": "Topic"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/stats/history/{hashtag}",
+      "method": "hashtagHistory",
+      "httpMethod": "get",
+      "description": "Hashtag History",
+      "parameters": [
+        {
+          "name": "hashtag",
+          "schema": "string",
+          "required": true,
+          "description": "Hashtag without # mark"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/stats/multiple-hashtags",
+      "method": "hashtagStats",
+      "httpMethod": "get",
+      "description": "Hashtag Stats",
+      "parameters": [
+        {
+          "name": "tags",
+          "schema": "array",
+          "required": true,
+          "description": "Hashtag(s) without # mark"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v2/instagram/hashtags-cleaner",
+      "method": "hashtagsCleaner",
+      "httpMethod": "get",
+      "description": "Hashtags cleaner",
+      "parameters": [
+        {
+          "name": "post",
+          "schema": "string",
+          "required": true,
+          "description": "post"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.ritekit.com",
   "apiDescription": "RiteKit API is based on REST principles.\n\nAuthentication uses standard OAuth 2.0 process\n\n##Getting started\n\n1. Sign up for [RiteKit](https://ritekit.com/)\n\n1. Go to [developer dashboard](https://ritekit.com/developer/dashboard/)\n\n1. Click \"Create a token\" button to get your **Client ID** and **Client secret**\n\n1. When you reach your free limit of calls per month, [upgrade to paid tiers](https://ritekit.com/developer/)\n\n## Options for authorizing API Calls\n\n#### Using Client ID directly\n\nYou can directly connect to our API using your **client ID** by sending it as a GET query parameter. This option is simple (no need for oAuth) but it should be used only in case the Client ID is not exposed publicly.\n\nGET  https://api.ritekit.com/v1/stats/multiple-hashtags?tags=php&client_id=292c6912e7710c838347ae178b4a",
   "apiTitle": "RiteKit API",

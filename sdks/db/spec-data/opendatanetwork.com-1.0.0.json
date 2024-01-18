@@ -3,6 +3,422 @@
   "openApiRaw": "https://raw.githubusercontent.com/socrata/odn-backend/master/opendatanetwork-apiary.apib",
   "homepage": "opendatanetwork.com",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/data/v1/availability/",
+      "method": "findAllAvailableDataForSomeEntities",
+      "httpMethod": "get",
+      "description": "Find all available data for some entities",
+      "parameters": [
+        {
+          "name": "entity_id",
+          "schema": "string",
+          "required": true,
+          "description": "Comma separated list of entity IDs."
+        },
+        {
+          "name": "app_token",
+          "schema": "string",
+          "required": false,
+          "description": "The [Socrata App Token](https://dev.socrata.com/docs/app-tokens.html) to be\nused with your request. The `app_token` parameter is required if an app token is not passed via the `X-App-Token` HTTP header. Clients must [register for their own app tokens](https://dev.socrata.com/docs/app-tokens.html)."
+        },
+        {
+          "name": "X-App-Token",
+          "schema": "string",
+          "required": false,
+          "description": "e.g. cQovpGcdUT1CSzgYk0KPYdAI0"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/data/v1/constraint/{variable}",
+      "method": "getConstraintPermutationsForEntities",
+      "httpMethod": "get",
+      "description": "Get constraint permutations for entities",
+      "parameters": [
+        {
+          "name": "variable",
+          "schema": "string",
+          "required": true,
+          "description": "Full ID of the variable to retrieve."
+        },
+        {
+          "name": "entity_id",
+          "schema": "string",
+          "required": true,
+          "description": "Comma separated list of entity IDs."
+        },
+        {
+          "name": "constraint",
+          "schema": "string",
+          "required": true,
+          "description": "Constraint to use."
+        },
+        {
+          "name": "app_token",
+          "schema": "string",
+          "required": false,
+          "description": "The [Socrata App Token](https://dev.socrata.com/docs/app-tokens.html) to be\nused with your request. The `app_token` parameter is required if an app token is not passed via the `X-App-Token` HTTP header. Clients must [register for their own app tokens](https://dev.socrata.com/docs/app-tokens.html)."
+        },
+        {
+          "name": "X-App-Token",
+          "schema": "string",
+          "required": false,
+          "description": "e.g. cQovpGcdUT1CSzgYk0KPYdAI0"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/data/v1/map/new",
+      "method": "createAMap",
+      "httpMethod": "get",
+      "description": "Create a map",
+      "parameters": [
+        {
+          "name": "variable",
+          "schema": "string",
+          "required": true,
+          "description": "A single variable ID."
+        },
+        {
+          "name": "entity_id",
+          "schema": "string",
+          "required": true,
+          "description": "A comma separated list of entity IDs.\nEntities must have the same type and represent geographical regions."
+        },
+        {
+          "name": "constraint",
+          "schema": "string",
+          "required": false,
+          "description": "Values must be specified for each constraint in the dataset.\nFor example, to generate map data for `demographics.population.count`,\nyou must specify a value for `year` by passing `year=2013`."
+        },
+        {
+          "name": "app_token",
+          "schema": "string",
+          "required": false,
+          "description": "The [Socrata App Token](https://dev.socrata.com/docs/app-tokens.html) to be\nused with your request. The `app_token` parameter is required if an app token is not passed via the `X-App-Token` HTTP header. Clients must [register for their own app tokens](https://dev.socrata.com/docs/app-tokens.html)."
+        },
+        {
+          "name": "X-App-Token",
+          "schema": "string",
+          "required": false,
+          "description": "e.g. cQovpGcdUT1CSzgYk0KPYdAI0"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/data/v1/values",
+      "method": "getValuesForVariables",
+      "httpMethod": "get",
+      "description": "Get values for variables",
+      "parameters": [
+        {
+          "name": "variable",
+          "schema": "string",
+          "required": true,
+          "description": "Comma separated list of variable IDs.\nDefaults to retrieving all variables.\nIt is also possible to pass in a topic such as\n`demographics`, or a dataset such as `demographics.population`,\nwhich would both be equivalent to specifying\n`demographics.population.count` and `demographics.population.change`.\nNote that only variables in the same dataset are allowed."
+        },
+        {
+          "name": "entity_id",
+          "schema": "string",
+          "required": false,
+          "description": "Comma separated list of entity IDs.\nDefaults to retrieving all entities.\nNote that since there is currently no results pagination,\nretrieving values for all entities may produce incomplete results."
+        },
+        {
+          "name": "forecast",
+          "schema": "number",
+          "required": false,
+          "description": "Number of steps to forecast.\nMust be an integer between 0 and 20.\nForecasts are produced using linear extrapolation\non the data. They are only available when retrieving\ndata for a single variable across many numerical\nconstraint options.\n\n+ Default `0`"
+        },
+        {
+          "name": "describe",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether or not to produce a description of the data.\nSet to `true` to produce a description.\nDescriptions are not available if no entities are specified.\n\n+ Default `false`"
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": "If format is set to `google`, the data frame will be formatted\nas a [Google Visualizations data table](https://developers.google.com/chart/interactive/docs/reference#datatable-class).\nIf the format is not provided or invalid, then the frame\nwill be formatted normally."
+        },
+        {
+          "name": "app_token",
+          "schema": "string",
+          "required": false,
+          "description": "The [Socrata App Token](https://dev.socrata.com/docs/app-tokens.html) to be\nused with your request. The `app_token` parameter is required if an app token is not passed via the `X-App-Token` HTTP header. Clients must [register for their own app tokens](https://dev.socrata.com/docs/app-tokens.html)."
+        },
+        {
+          "name": "X-App-Token",
+          "schema": "string",
+          "required": false,
+          "description": "e.g. cQovpGcdUT1CSzgYk0KPYdAI0"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/entity/v1",
+      "method": "getEntities",
+      "httpMethod": "get",
+      "description": "Get Entities",
+      "parameters": [
+        {
+          "name": "entity_id",
+          "schema": "string",
+          "required": false,
+          "description": "ID of the entity."
+        },
+        {
+          "name": "entity_name",
+          "schema": "string",
+          "required": false,
+          "description": "Name of the entity."
+        },
+        {
+          "name": "entity_type",
+          "schema": "string",
+          "required": false,
+          "description": "Type of the entity."
+        },
+        {
+          "name": "app_token",
+          "schema": "string",
+          "required": false,
+          "description": "The [Socrata App Token](https://dev.socrata.com/docs/app-tokens.html) to be\nused with your request. The `app_token` parameter is required if an app token is not passed via the `X-App-Token` HTTP header. Clients must [register for their own app tokens](https://dev.socrata.com/docs/app-tokens.html)."
+        },
+        {
+          "name": "X-App-Token",
+          "schema": "string",
+          "required": false,
+          "description": "e.g. cQovpGcdUT1CSzgYk0KPYdAI0"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/entity/v1/{relation}",
+      "method": "findTheRelativesOfAnEntity",
+      "httpMethod": "get",
+      "description": "Find the relatives of an entity",
+      "parameters": [
+        {
+          "name": "relation",
+          "schema": "string",
+          "required": true,
+          "description": "The type of relation to find."
+        },
+        {
+          "name": "entity_id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the target entity."
+        },
+        {
+          "name": "variable_id",
+          "schema": "string",
+          "required": false,
+          "description": "If this parameter is included, only entities with data for the given\nvariable will be returned. Note that this may cause the number of\nentities returned to be less than the specified `limit`."
+        },
+        {
+          "name": "limit",
+          "schema": "number",
+          "required": false,
+          "description": "Maximum number of entities in each group.\nMust be an integer from 1 to 1000."
+        },
+        {
+          "name": "app_token",
+          "schema": "string",
+          "required": false,
+          "description": "The [Socrata App Token](https://dev.socrata.com/docs/app-tokens.html) to be\nused with your request. The `app_token` parameter is required if an app token is not passed via the `X-App-Token` HTTP header. Clients must [register for their own app tokens](https://dev.socrata.com/docs/app-tokens.html)."
+        },
+        {
+          "name": "X-App-Token",
+          "schema": "string",
+          "required": false,
+          "description": "e.g. cQovpGcdUT1CSzgYk0KPYdAI0"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/search/v1/dataset",
+      "method": "getDatasets",
+      "httpMethod": "get",
+      "description": "Get datasets",
+      "parameters": [
+        {
+          "name": "entity_id",
+          "schema": "string",
+          "required": false,
+          "description": "Entities to use in formulating the query."
+        },
+        {
+          "name": "dataset_id",
+          "schema": "string",
+          "required": false,
+          "description": "If included, the search terms of the dataset\nwill be used in the query."
+        },
+        {
+          "name": "limit",
+          "schema": "number",
+          "required": false,
+          "description": "Maximum number of results to return.\nMust be an integer from 0 to 50000."
+        },
+        {
+          "name": "offset",
+          "schema": "number",
+          "required": false,
+          "description": "Number of results to skip.\nUsed for pagination."
+        },
+        {
+          "name": "app_token",
+          "schema": "string",
+          "required": false,
+          "description": "The [Socrata App Token](https://dev.socrata.com/docs/app-tokens.html) to be\nused with your request. The `app_token` parameter is required if an app token is not passed via the `X-App-Token` HTTP header. Clients must [register for their own app tokens](https://dev.socrata.com/docs/app-tokens.html)."
+        },
+        {
+          "name": "X-App-Token",
+          "schema": "string",
+          "required": false,
+          "description": "e.g. cQovpGcdUT1CSzgYk0KPYdAI0"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/search/v1/question",
+      "method": "getQuestions",
+      "httpMethod": "get",
+      "description": "Get questions",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": true,
+          "description": "String to search against."
+        },
+        {
+          "name": "limit",
+          "schema": "number",
+          "required": false,
+          "description": "Maximum number of results to return.\nMust be an integer from 0 to 50000."
+        },
+        {
+          "name": "offset",
+          "schema": "number",
+          "required": false,
+          "description": "Number of results to skip.\nUsed for pagination."
+        },
+        {
+          "name": "app_token",
+          "schema": "string",
+          "required": false,
+          "description": "The [Socrata App Token](https://dev.socrata.com/docs/app-tokens.html) to be\nused with your request. The `app_token` parameter is required if an app token is not passed via the `X-App-Token` HTTP header. Clients must [register for their own app tokens](https://dev.socrata.com/docs/app-tokens.html)."
+        },
+        {
+          "name": "X-App-Token",
+          "schema": "string",
+          "required": false,
+          "description": "e.g. cQovpGcdUT1CSzgYk0KPYdAI0"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/suggest/v1/{type}",
+      "method": "getSuggestions",
+      "httpMethod": "get",
+      "description": "Get suggestions",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the object to find."
+        },
+        {
+          "name": "query",
+          "schema": "string",
+          "required": true,
+          "description": "Query to match."
+        },
+        {
+          "name": "limit",
+          "schema": "number",
+          "required": false,
+          "description": "Maximum number of results to return.\nMust be an integer from 0 to 100."
+        },
+        {
+          "name": "variable_id",
+          "schema": "string",
+          "required": false,
+          "description": "This parameter is only available when suggesting entities with `type=entity`.\nIf it is provided, suggestions will be filtered to include\nonly entities that have data for the given variable.\n\nIf the variable provided is invalid, no entities will be returned.\n\nNote that this filtering will increase response time significantly,\nso it should only be used when necessary."
+        },
+        {
+          "name": "app_token",
+          "schema": "string",
+          "required": false,
+          "description": "The [Socrata App Token](https://dev.socrata.com/docs/app-tokens.html) to be\nused with your request. The `app_token` parameter is required if an app token is not passed via the `X-App-Token` HTTP header. Clients must [register for their own app tokens](https://dev.socrata.com/docs/app-tokens.html)."
+        },
+        {
+          "name": "X-App-Token",
+          "schema": "string",
+          "required": false,
+          "description": "e.g. cQovpGcdUT1CSzgYk0KPYdAI0"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://api.opendatanetwork.com",
   "apiDescription": "The Socrata OpenDataNetwork (ODN) REST API exposes public data, often continuosly updated and enhanced, from many thousands of public\ngovernment and non profit agencies.\n\nMuch of this data originating from independent sources is fused together to create new, and often\npowerful, entity level data. The API, in addition to search and autosuggest capabilities for finding datasets,\nenables data based comparisons across geographical regions such as states, counties, metropolitan areas,\ncities and zip codes using highly vetted data providers such as US Census, BEA, HUD and others. Comparison data\nis preformatted for easy and efficient display on a chart, graph or interactive map.\n\nThe API also exposes data organized by narrative style questions a human might ask. The questions can\nbe rapidly found using an autosuggest style index, and then used to directly access all data needed to\nthoroughly and authoritatively answer the question. Retrieved data includes time series (temporally aligned),\ntabular, map heavy (includes spatial boundaries), and auto generated unstructured descriptive text.\n\nThe ODN API does not duplicate API endpoints or services provided by public sector agencies, but rather,\nreturns context relevant pre-populated REST URLs, when appropriate, so the caller can access data\ndirectly from the source.\n\nThe [open source](http://github.com/socrata/odn-backend) API powers [OpenDataNetwork.com](http://OpenDataNetwork.com), an [open source](http://github.com/socrata/opendatanetwork.com)\nsite; the site highlights myriad uses and provides API badges with contextually relevant API example\nREST endpoints and documentation pointers.\n\nFinally, we continuously add new dat sources which appear automatically in the API, so if your favorite data\nsource is not available, check back soon. You can also join us [HERE](http://www.opendatanetwork.com/join-open-data-network)\nand receive updates or let us know which data sources you are most interested in.\n\n## App Tokens\n\nRegistering for and including a [Socrata application token](https://dev.socrata.com/docs/app-tokens.html)\nis _required_ for the ODN API. They can be passed either using the `app_token` parameter\nor the `X-App-Token` HTTP header.",
   "apiTitle": "ODN API",

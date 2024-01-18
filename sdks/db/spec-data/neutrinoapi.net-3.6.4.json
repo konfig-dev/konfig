@@ -3,6 +3,1662 @@
   "openApiRaw": "https://www.neutrinoapi.com/api/swagger.json",
   "homepage": "neutrinoapi.net",
   "apiVersion": "3.6.4",
+  "methods": [
+    {
+      "url": "/bad-word-filter",
+      "method": "badWordFilter",
+      "httpMethod": "post",
+      "tag": "Data Tools",
+      "description": "Bad Word Filter",
+      "parameters": [
+        {
+          "name": "catalog",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "censor-character",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "content",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/bin-list-download",
+      "method": "binListDownload",
+      "httpMethod": "get",
+      "tag": "E-commerce",
+      "description": "BIN List Download",
+      "parameters": [
+        {
+          "name": "include-iso3",
+          "schema": "boolean",
+          "required": false,
+          "description": "Include ISO 3-letter country codes and ISO 3-letter currency codes in the data. These will be added to columns 10 and 11 respectively"
+        },
+        {
+          "name": "include-8digit",
+          "schema": "boolean",
+          "required": false,
+          "description": "Include 8-digit and higher BIN codes. This option includes all 6-digit BINs and all 8-digit and higher BINs (including some 9, 10 and 11 digit BINs where available)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/bin-lookup",
+      "method": "binLookup",
+      "httpMethod": "get",
+      "tag": "E-commerce",
+      "description": "BIN Lookup",
+      "parameters": [
+        {
+          "name": "bin-number",
+          "schema": "string",
+          "required": true,
+          "description": "The BIN or IIN number. This is the first 6, 8 or 10 digits of a card number, use 8 (or more) digits for the highest level of accuracy"
+        },
+        {
+          "name": "customer-ip",
+          "schema": "string",
+          "required": false,
+          "description": "Pass in the customers IP address and we will return some extra information about them"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/browser-bot",
+      "method": "browserBot",
+      "httpMethod": "post",
+      "tag": "WWW",
+      "description": "Browser Bot",
+      "parameters": [
+        {
+          "name": "delay",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "exec",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "ignore-certificate-errors",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "selector",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "timeout",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user-agent",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/convert",
+      "method": "convert",
+      "httpMethod": "get",
+      "tag": "E-commerce",
+      "description": "Convert",
+      "parameters": [
+        {
+          "name": "from-value",
+          "schema": "string",
+          "required": true,
+          "description": "The value to convert from (e.g. 10.95)"
+        },
+        {
+          "name": "from-type",
+          "schema": "string",
+          "required": true,
+          "description": "The type of the value to convert from (e.g. USD)"
+        },
+        {
+          "name": "to-type",
+          "schema": "string",
+          "required": true,
+          "description": "The type to convert to (e.g. EUR)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/domain-lookup",
+      "method": "domainLookup",
+      "httpMethod": "get",
+      "tag": "Security and Networking",
+      "description": "Domain Lookup",
+      "parameters": [
+        {
+          "name": "host",
+          "schema": "string",
+          "required": true,
+          "description": "A domain name, hostname, FQDN, URL, HTML link or email address to lookup"
+        },
+        {
+          "name": "live",
+          "schema": "boolean",
+          "required": false,
+          "description": "For domains that we have never seen before then perform various live checks and realtime reconnaissance. <br>NOTE: this option may add additional non-deterministic delay to the request, if you require consistently fast API response times or just want to check our domain blocklists then you can disable this option"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/email-validate",
+      "method": "emailValidate",
+      "httpMethod": "get",
+      "tag": "Data Tools",
+      "description": "Email Validate",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": "An email address"
+        },
+        {
+          "name": "fix-typos",
+          "schema": "boolean",
+          "required": false,
+          "description": "Automatically attempt to fix typos in the address"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/email-verify",
+      "method": "emailVerify",
+      "httpMethod": "get",
+      "tag": "Security and Networking",
+      "description": "Email Verify",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": "An email address"
+        },
+        {
+          "name": "fix-typos",
+          "schema": "boolean",
+          "required": false,
+          "description": "Automatically attempt to fix typos in the address"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/geocode-address",
+      "method": "geocodeAddress",
+      "httpMethod": "get",
+      "tag": "Geolocation",
+      "description": "Geocode Address",
+      "parameters": [
+        {
+          "name": "address",
+          "schema": "string",
+          "required": false,
+          "description": "The full address, partial address or name of a place to try and locate. Comma separated address components are preferred."
+        },
+        {
+          "name": "house-number",
+          "schema": "string",
+          "required": false,
+          "description": "The house/building number to locate"
+        },
+        {
+          "name": "street",
+          "schema": "string",
+          "required": false,
+          "description": "The street/road name to locate"
+        },
+        {
+          "name": "city",
+          "schema": "string",
+          "required": false,
+          "description": "The city/town name to locate"
+        },
+        {
+          "name": "county",
+          "schema": "string",
+          "required": false,
+          "description": "The county/region name to locate"
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "required": false,
+          "description": "The state name to locate"
+        },
+        {
+          "name": "postal-code",
+          "schema": "string",
+          "required": false,
+          "description": "The postal code to locate"
+        },
+        {
+          "name": "country-code",
+          "schema": "string",
+          "required": false,
+          "description": "Limit result to this country (the default is no country bias)"
+        },
+        {
+          "name": "language-code",
+          "schema": "string",
+          "required": false,
+          "description": "The language to display results in, available languages are: <ul> <li>de, en, es, fr, it, pt, ru, zh</li> </ul>"
+        },
+        {
+          "name": "fuzzy-search",
+          "schema": "boolean",
+          "required": false,
+          "description": "If no matches are found for the given address, start performing a recursive fuzzy search until a geolocation is found. This option is recommended for processing user input or implementing auto-complete. We use a combination of approximate string matching and data cleansing to find possible location matches"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/geocode-reverse",
+      "method": "geocodeReverse",
+      "httpMethod": "get",
+      "tag": "Geolocation",
+      "description": "Geocode Reverse",
+      "parameters": [
+        {
+          "name": "latitude",
+          "schema": "string",
+          "required": true,
+          "description": "The location latitude in decimal degrees format"
+        },
+        {
+          "name": "longitude",
+          "schema": "string",
+          "required": true,
+          "description": "The location longitude in decimal degrees format"
+        },
+        {
+          "name": "language-code",
+          "schema": "string",
+          "required": false,
+          "description": "The language to display results in, available languages are: <ul> <li>de, en, es, fr, it, pt, ru</li> </ul>"
+        },
+        {
+          "name": "zoom",
+          "schema": "string",
+          "required": false,
+          "description": "The zoom level to respond with: <br> <ul> <li>address - the most precise address available</li> <li>street - the street level</li> <li>city - the city level</li> <li>state - the state level</li> <li>country - the country level</li> </ul>"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/hlr-lookup",
+      "method": "hlrLookup",
+      "httpMethod": "get",
+      "tag": "Telephony",
+      "description": "HLR Lookup",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "string",
+          "required": true,
+          "description": "A phone number"
+        },
+        {
+          "name": "country-code",
+          "schema": "string",
+          "required": false,
+          "description": "ISO 2-letter country code, assume numbers are based in this country. <br>If not set numbers are assumed to be in international format (with or without the leading + sign)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/host-reputation",
+      "method": "hostReputation",
+      "httpMethod": "get",
+      "tag": "Security and Networking",
+      "description": "Host Reputation",
+      "parameters": [
+        {
+          "name": "host",
+          "schema": "string",
+          "required": true,
+          "description": "An IP address, domain name, FQDN or URL. <br>If you supply a domain/URL it will be checked against the URI DNSBL lists"
+        },
+        {
+          "name": "list-rating",
+          "schema": "integer",
+          "required": false,
+          "description": "Only check lists with this rating or better"
+        },
+        {
+          "name": "zones",
+          "schema": "string",
+          "required": false,
+          "description": "Only check these DNSBL zones/hosts. Multiple zones can be supplied as comma-separated values"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/html-clean",
+      "method": "htmlClean",
+      "httpMethod": "post",
+      "tag": "WWW",
+      "description": "HTML Clean",
+      "parameters": [
+        {
+          "name": "content",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "output-type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/html-render",
+      "method": "htmlRender",
+      "httpMethod": "post",
+      "tag": "Imaging",
+      "description": "HTML Render",
+      "parameters": [
+        {
+          "name": "content",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "css",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "delay",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "footer",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "grayscale",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "header",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "ignore-certificate-errors",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "image-height",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "image-width",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "landscape",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "margin",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "margin-bottom",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "margin-left",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "margin-right",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "margin-top",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "page-height",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "page-size",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "page-width",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "timeout",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "zoom",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/image-resize",
+      "method": "imageResize",
+      "httpMethod": "post",
+      "tag": "Imaging",
+      "description": "Image Resize",
+      "parameters": [
+        {
+          "name": "bg-color",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "height",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "image-url",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resize-mode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "width",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/image-watermark",
+      "method": "imageWatermark",
+      "httpMethod": "post",
+      "tag": "Imaging",
+      "description": "Image Watermark",
+      "parameters": [
+        {
+          "name": "bg-color",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "height",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "image-url",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "opacity",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "position",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "resize-mode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "watermark-url",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "width",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ip-blocklist",
+      "method": "ipBlocklist",
+      "httpMethod": "get",
+      "tag": "Security and Networking",
+      "description": "IP Blocklist",
+      "parameters": [
+        {
+          "name": "ip",
+          "schema": "string",
+          "required": true,
+          "description": "An IPv4 or IPv6 address. Accepts standard IP notation (with or without port number), CIDR notation and IPv6 compressed notation. If multiple IPs are passed using comma-separated values the first non-bogon address on the list will be checked"
+        },
+        {
+          "name": "vpn-lookup",
+          "schema": "boolean",
+          "required": false,
+          "description": "Include public VPN provider IP addresses. <br><b>NOTE</b>: For more advanced VPN detection including the ability to identify private and stealth VPNs use the <a href=\"https://www.neutrinoapi.com/api/ip-probe/\">IP Probe API</a>"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ip-blocklist-download",
+      "method": "ipBlocklistDownload",
+      "httpMethod": "get",
+      "tag": "Security and Networking",
+      "description": "IP Blocklist Download",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": false,
+          "description": "The data format. Can be either CSV or TXT"
+        },
+        {
+          "name": "include-vpn",
+          "schema": "boolean",
+          "required": false,
+          "description": "Include public VPN provider addresses, this option is only available for Tier 3 or higher accounts. Adds any IPs which are solely listed as VPN providers, IPs that are listed on multiple sensors will still be included without enabling this option. <br><b>WARNING</b>: This adds at least an additional 8 million IP addresses to the download if not using CIDR notation"
+        },
+        {
+          "name": "cidr",
+          "schema": "boolean",
+          "required": false,
+          "description": "Output IPs using CIDR notation. This option should be preferred but is off by default for backwards compatibility"
+        },
+        {
+          "name": "ip6",
+          "schema": "boolean",
+          "required": false,
+          "description": "Output the IPv6 version of the blocklist, the default is to output IPv4 only. Note that this option enables CIDR notation too as this is the only notation currently supported for IPv6"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ip-info",
+      "method": "ipInfo",
+      "httpMethod": "get",
+      "tag": "Geolocation",
+      "description": "IP Info",
+      "parameters": [
+        {
+          "name": "ip",
+          "schema": "string",
+          "required": true,
+          "description": "IPv4 or IPv6 address"
+        },
+        {
+          "name": "reverse-lookup",
+          "schema": "boolean",
+          "required": false,
+          "description": "Do a reverse DNS (PTR) lookup. This option can add extra delay to the request so only use it if you need it"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ip-probe",
+      "method": "ipProbe",
+      "httpMethod": "get",
+      "tag": "Security and Networking",
+      "description": "IP Probe",
+      "parameters": [
+        {
+          "name": "ip",
+          "schema": "string",
+          "required": true,
+          "description": "IPv4 or IPv6 address"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/phone-playback",
+      "method": "phonePlayback",
+      "httpMethod": "post",
+      "tag": "Telephony",
+      "description": "Phone Playback",
+      "parameters": [
+        {
+          "name": "audio-url",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit-ttl",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "number",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/phone-validate",
+      "method": "phoneValidate",
+      "httpMethod": "get",
+      "tag": "Data Tools",
+      "description": "Phone Validate",
+      "parameters": [
+        {
+          "name": "number",
+          "schema": "string",
+          "required": true,
+          "description": "A phone number. This can be in international format (E.164) or local format. If passing local format you must also set either the 'country-code' OR 'ip' options as well"
+        },
+        {
+          "name": "country-code",
+          "schema": "string",
+          "required": false,
+          "description": "ISO 2-letter country code, assume numbers are based in this country. If not set numbers are assumed to be in international format (with or without the leading + sign)"
+        },
+        {
+          "name": "ip",
+          "schema": "string",
+          "required": false,
+          "description": "Pass in a users IP address and we will assume numbers are based in the country of the IP address"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/phone-verify",
+      "method": "phoneVerify",
+      "httpMethod": "post",
+      "tag": "Telephony",
+      "description": "Phone Verify",
+      "parameters": [
+        {
+          "name": "code-length",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "country-code",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "language-code",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit-ttl",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "number",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "playback-delay",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "security-code",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/qr-code",
+      "method": "qrCode",
+      "httpMethod": "post",
+      "tag": "Imaging",
+      "description": "QR Code",
+      "parameters": [
+        {
+          "name": "bg-color",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "content",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "fg-color",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "height",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "width",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sms-verify",
+      "method": "smsVerify",
+      "httpMethod": "post",
+      "tag": "Telephony",
+      "description": "SMS Verify",
+      "parameters": [
+        {
+          "name": "code-length",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "country-code",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "language-code",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit-ttl",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "number",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "security-code",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ua-lookup",
+      "method": "uaLookup",
+      "httpMethod": "get",
+      "tag": "Data Tools",
+      "description": "UA Lookup",
+      "parameters": [
+        {
+          "name": "ua",
+          "schema": "string",
+          "required": true,
+          "description": "The user-agent string to lookup. For client hints use the 'UA' header or the JSON data directly from 'navigator.userAgentData.brands' or 'navigator.userAgentData.getHighEntropyValues()'"
+        },
+        {
+          "name": "ua-version",
+          "schema": "string",
+          "required": false,
+          "description": "For client hints this corresponds to the 'UA-Full-Version' header or 'uaFullVersion' from NavigatorUAData"
+        },
+        {
+          "name": "ua-platform",
+          "schema": "string",
+          "required": false,
+          "description": "For client hints this corresponds to the 'UA-Platform' header or 'platform' from NavigatorUAData"
+        },
+        {
+          "name": "ua-platform-version",
+          "schema": "string",
+          "required": false,
+          "description": "For client hints this corresponds to the 'UA-Platform-Version' header or 'platformVersion' from NavigatorUAData"
+        },
+        {
+          "name": "ua-mobile",
+          "schema": "string",
+          "required": false,
+          "description": "For client hints this corresponds to the 'UA-Mobile' header or 'mobile' from NavigatorUAData"
+        },
+        {
+          "name": "device-model",
+          "schema": "string",
+          "required": false,
+          "description": "For client hints this corresponds to the 'UA-Model' header or 'model' from NavigatorUAData. <br>You can also use this parameter to lookup a device directly by its model name, model code or hardware code, on android you can get the model name from: https://developer.android.com/reference/android/os/Build.html#MODEL"
+        },
+        {
+          "name": "device-brand",
+          "schema": "string",
+          "required": false,
+          "description": "This parameter is only used in combination with 'device-model' when doing direct device lookups without any user-agent data. Set this to the brand or manufacturer name, this is required for accurate device detection with ambiguous model names. On android you can get the device brand from: https://developer.android.com/reference/android/os/Build#MANUFACTURER"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/url-info",
+      "method": "urlInfo",
+      "httpMethod": "get",
+      "tag": "WWW",
+      "description": "URL Info",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": "The URL to probe"
+        },
+        {
+          "name": "fetch-content",
+          "schema": "boolean",
+          "required": false,
+          "description": "If this URL responds with html, text, json or xml then return the response. This option is useful if you want to perform further processing on the URL content (e.g. with the HTML Extract or HTML Clean APIs)"
+        },
+        {
+          "name": "ignore-certificate-errors",
+          "schema": "boolean",
+          "required": false,
+          "description": "Ignore any TLS/SSL certificate errors and load the URL anyway"
+        },
+        {
+          "name": "timeout",
+          "schema": "integer",
+          "required": false,
+          "description": "Timeout in seconds. Give up if still trying to load the URL after this number of seconds"
+        },
+        {
+          "name": "retry",
+          "schema": "integer",
+          "required": false,
+          "description": "If the request fails for any reason try again this many times"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/verify-security-code",
+      "method": "verifySecurityCode",
+      "httpMethod": "get",
+      "tag": "Telephony",
+      "description": "Verify Security Code",
+      "parameters": [
+        {
+          "name": "security-code",
+          "schema": "string",
+          "required": true,
+          "description": "The security code to verify"
+        },
+        {
+          "name": "limit-by",
+          "schema": "string",
+          "required": false,
+          "description": "If set then enable additional brute-force protection by limiting the number of attempts by the supplied value. This can be set to any unique identifier you would like to limit by, for example a hash of the users email, phone number or IP address. Requests to this API will be ignored after approximately 10 failed verification attempts"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://neutrinoapi.net",
   "apiDescription": "The general-purpose API",
   "apiTitle": "Neutrino API",

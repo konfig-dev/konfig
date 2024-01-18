@@ -3,6 +3,465 @@
   "openApiRaw": "http://developer.bulksms.com/json/v1/swagger.yaml",
   "homepage": "bulksms.com",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/blocked-numbers",
+      "method": "/blockedNumbersGet",
+      "httpMethod": "get",
+      "tag": "Blocked Numbers",
+      "description": "List blocked numbers",
+      "parameters": [
+        {
+          "name": "min-id",
+          "schema": "integer",
+          "description": "Records with an `id` that is greater or equal to min-id will be returned. The default value is `0`.  You can add 1 to an id that you previously retrieved, to return subsequent records."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "The maximum number of records to return. The default value is `10000`. The value cannot be greater than 10000."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/blocked-numbers",
+      "method": "/blockedNumbersPost",
+      "httpMethod": "post",
+      "tag": "Blocked Numbers",
+      "description": "Create a blocked number",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/credit/transfer",
+      "method": "/credit/transferPost",
+      "httpMethod": "post",
+      "tag": "Credits",
+      "description": "Transfer credits to another account",
+      "parameters": [
+        {
+          "name": "commentOnFrom",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "commentOnTo",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "credits",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "toUserId",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "toUsername",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/messages",
+      "method": "/messagesGet",
+      "httpMethod": "get",
+      "tag": "Message",
+      "description": "Retrieve Messages",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "number",
+          "required": false,
+          "description": "The maximum number of messages that are returned.  The default is 1000.\nThe value of `limit` is not a guarantee that a specific number of messages will be in the response, even if there are more messages available.  Consider the case where you have 150 messages and you specify `limit=50`.  It is possible that only 49 messages will be returned.  The  way to make sure that there are no more messages is to submit a new call using the `id` filter field with the `<` operator (described below)."
+        },
+        {
+          "name": "filter",
+          "schema": "string",
+          "description": "See the message filtering for more information."
+        },
+        {
+          "name": "sortOrder",
+          "schema": "string",
+          "description": "The default value is DESCENDING\n\nIf the `sortOrder` is DESCENDING, the newest messages be first in the result.  ASCENDING places the oldest messages on top of the response.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "See the [errors page](errors/) for more detail on what kind of errors you can get."
+        }
+      ]
+    },
+    {
+      "url": "/messages",
+      "method": "/messagesPost",
+      "httpMethod": "post",
+      "tag": "Message",
+      "description": "Send Messages",
+      "parameters": [
+        {
+          "name": "deduplication-id",
+          "schema": "integer",
+          "description": "Safeguards against the possibility of sending the same messages more than once.\n\nIf a communication failure occurs during a submission, you cannot be sure that the submission was processed; therefore you would have to submit it again. When you post the retry, you must use the `deduplication-id` of the original post. The BulkSMS system uses this ID to check that the request was not previously processed. (If it was previously processed, the submission will succeed, and the behaviour will be indistinguishable to you from a non-duplicated submission). The ID expires after about 12 hours.\n"
+        },
+        {
+          "name": "auto-unicode",
+          "schema": "boolean",
+          "description": "Specifies how to deal with message text that contains characters not present in the GSM 03.38 character set.\n\nMessages that contain only GSM 03.38 characters are not affected by this setting. \nIf the value is `true` then a message containing non-GSM 03.38 characters will be transmitted as a Unicode SMS (which is most likely more costly). \n\nPlease note: when `auto-unicode` is `true` and the value of the `encoding` property is specified as `UNICODE`, the message will always be sent as `UNICODE`.\n\nIf the value is `false` and the `encoding` property is `TEXT` then non-GSM 03.38 characters will be replaced by the `?` character.\n\nWhen using this setting on the API, you should take case to ensure that your message is _clean_.  \n\nInvisible unicode and unexpected characters could unintentionally convert an message to `UNICODE`.  A common mistake is to use the backtick character (\\`) which is unicode and will turn your `TEXT` message into a `UNICODE` message.\n"
+        },
+        {
+          "name": "schedule-date",
+          "schema": "string",
+          "description": "Allows you to send a message in the future.\n\nAn example value is `2019-02-18T13:00:00+02:00`.  It encodes to `2019-02-18T13%3A00%3A00%2B02%3A00`.\nCredits are deducted from your account immediately. Once submitted, scheduled messages cannot be changed or cancelled.\nThe date can be a maximum of two years in the future. If the value is in the past, the message will be sent immediately.\nThe date format requires you to supply an offset from UTC. You can decide to use the offset of your timezone, or maybe the zone of the recipient's location is more appropriate.\nIf the destination is a group, the group members are determined at the time that you submit the message; not the time the message is scheduled to be sent.\n"
+        },
+        {
+          "name": "schedule-description",
+          "schema": "string",
+          "description": "A note that is stored together with a scheduled submission, which could be used to more easily identify the scheduled submission at a later date.\n\nThe value of this field is ignored if the `schedule-date` is not provided.\nA value that is longer than 256 characters is truncated.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "See the [errors page](errors/) for more detail on what kind of errors you can get."
+        },
+        {
+          "statusCode": "403",
+          "description": "See the [errors page](errors/) for more detail on what kind of errors you can get."
+        }
+      ]
+    },
+    {
+      "url": "/messages/send",
+      "method": "/messages/sendGet",
+      "httpMethod": "get",
+      "tag": "Message",
+      "description": "Send message by simple GET or POST",
+      "parameters": [
+        {
+          "name": "to",
+          "schema": "string",
+          "required": true,
+          "description": "The phone number of the recipient."
+        },
+        {
+          "name": "body",
+          "schema": "string",
+          "required": true,
+          "description": "The text you want to send."
+        },
+        {
+          "name": "deduplication-id",
+          "schema": "integer",
+          "description": "Refer to the `deduplication-id` parameter."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "See the [errors page](errors/) for more detail on what kind of errors you can get."
+        },
+        {
+          "statusCode": "403",
+          "description": "See the [errors page](errors/) for more detail on what kind of errors you can get."
+        }
+      ]
+    },
+    {
+      "url": "/messages/{id}",
+      "method": "/messages/{id}Get",
+      "httpMethod": "get",
+      "tag": "Message",
+      "description": "Show Message",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The `id` of the message you want to retrieve"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "See the [errors page](errors/) for more detail on what kind of errors you can get."
+        },
+        {
+          "statusCode": "404",
+          "description": "See the [errors page](errors/) for more detail on what kind of errors you can get."
+        }
+      ]
+    },
+    {
+      "url": "/messages/{id}/relatedReceivedMessages",
+      "method": "/messages/{id}/relatedReceivedMessagesGet",
+      "httpMethod": "get",
+      "tag": "Message",
+      "description": "List Related Messages",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The `id` of the sent message"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "See the [errors page](errors/) for more detail on what kind of errors you can get."
+        }
+      ]
+    },
+    {
+      "url": "/profile",
+      "method": "/profileGet",
+      "httpMethod": "get",
+      "tag": "Profile",
+      "description": "Get profile",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rmm/pre-sign-attachment",
+      "method": "/rmm/preSignAttachmentPost",
+      "httpMethod": "post",
+      "tag": "Attachments",
+      "description": "Upload an attachment via a signed URL",
+      "parameters": [
+        {
+          "name": "fileExtension",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "mediaType",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/webhooks",
+      "method": "/webhooksGet",
+      "httpMethod": "get",
+      "tag": "Webhooks",
+      "description": "List webhooks",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/webhooks",
+      "method": "/webhooksPost",
+      "httpMethod": "post",
+      "tag": "Webhooks",
+      "description": "Create a webhook",
+      "parameters": [
+        {
+          "name": "active",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "contactEmailAddress",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "invokeOption",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "onWebApp",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "triggerScope",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "See the [errors page](errors/) for more detail on what kind of errors you can get."
+        }
+      ]
+    },
+    {
+      "url": "/webhooks/{id}",
+      "method": "/webhooks/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Webhooks",
+      "description": "Delete a webhook",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": "See the [errors page](errors/) for more detail on what kind of errors you can get."
+        }
+      ]
+    },
+    {
+      "url": "/webhooks/{id}",
+      "method": "/webhooks/{id}Get",
+      "httpMethod": "get",
+      "tag": "Webhooks",
+      "description": "Read a webhook",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "See the [errors page](errors/) for more detail on what kind of errors you can get."
+        },
+        {
+          "statusCode": "404",
+          "description": "See the [errors page](errors/) for more detail on what kind of errors you can get."
+        }
+      ]
+    },
+    {
+      "url": "/webhooks/{id}",
+      "method": "/webhooks/{id}Post",
+      "httpMethod": "post",
+      "tag": "Webhooks",
+      "description": "Update a webhook",
+      "parameters": [
+        {
+          "name": "active",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "contactEmailAddress",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "invokeOption",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "onWebApp",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "triggerScope",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": "See the [errors page](errors/) for more detail on what kind of errors you can get."
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.bulksms.com/v1",
   "apiDescription": "## Overview\n\nThe JSON REST API allows you to submit and receive [BulkSMS](https://www.bulksms.com/) messages. You can also get access to past messages and see your account profile.\n\nThe base URL to use for this service is `https://api.bulksms.com/v1`.  The base URL cannot be used on its own; you must append a path that identifies an operation and you may have to specify some path parameters as well.\n\n[Click here](/developer/) to go to the main BulkSMS developer site.\n\nIn order to give you an idea on how the API can be used, some JSON snippets are provided below.  Have a look at the [messages section](#tag/Message) for more information.\n\nProbably the most simple example\n\n```\n{\n    \"to\": \"+27001234567\",\n    \"body\": \"Hello World!\"\n}\n```\n\n\nYou can send unicode automatically using the `auto-unicode` query parameter. \nAlternatively, you can specify `UNICODE` for the `encoding` property in the request body. \nPlease note: when `auto-unicode` is specified and the value of the `encoding` property is `UNICODE`, the message will always be sent as `UNICODE`.\n\nHere is an example that sets the `encoding` explicitly\n\n```\n{\n  \"to\": \"+27001234567\",\n  \"body\": \"Dobrá práce! Jak se máš?\",\n  \"encoding\": \"UNICODE\"\n}\n```\n\nYou can also specify a from number\n\n```\n{\n    \"from\": \"+27007654321\",\n    \"to\": \"+27001234567\",\n    \"body\": \"Hello World!\"\n}\n```\n\nSimilar to above, but repliable\n\n```\n{\n    \"from\": { \"type\": \"REPLIABLE\" },\n    \"to\": \"+27001234567\",\n    \"body\": \"Hello World!\"\n}\n```\n\nA message to a group called Everyone\n\n```\n{\n    \"to\": { \"type\": \"GROUP\", \"name\": \"Everyone\" },\n    \"body\": \"Hello World!\"\n}\n```\n\nA message to multiple recipients\n\n```\n{\n    \"to\": [\"+27001234567\", \"+27002345678\", \"+27003456789\"],\n    \"body\": \"Happy Holidays!\"\n}\n```\n\nSending more than one message in the same request\n\n```\n[\n    {\n        \"to\": \"+27001234567\",\n        \"body\": \"Hello World!\"\n    },\n    {\n        \"to\": \"+27002345678\",\n        \"body\": \"Hello Universe!\"\n    }\n]\n```\n\n**The insecure base URL `http://api.bulksms.com/v1` is deprecated** and may in future result in a `301` redirect response, or insecure requests may be rejected outright. Please use the secure (`https`) URI above.\n\n### HTTP Content Type\n\nAll API methods expect requests to supply a `Content-Type` header with the value `application/json`. All responses will have the `Content-Type` header set to `application/json`.\n\n### JSON Formatting\n\nYou are advised to format your JSON resources according to strict JSON format rules. While the API does attempt to parse strictly invalid JSON documents, doing so may lead to incorrect interpretation and unexpected results.\n\nGood JSON libraries will produce valid JSON suitable for submission, but if you are manually generating the JSON text, be careful to follow the JSON format. This include correct escaping of control characters and double quoting of property names.\n\nSee the [JSON specification](https://tools.ietf.org/html/rfc4627) for further information.\n\n### Date Formatting\n\nDates are formatted according to ISO-8601, such as `1970-01-01T10:00:00+01:00` for 1st January 1970, 10AM UTC+1.\n\nSee the [Wikipedia ISO 8601 reference](https://en.wikipedia.org/wiki/ISO_8601) for further information.\n\nSpecifically, calendar dates are formatted with the 'extended' format `YYYY-MM-DD`. Basic format, week dates and ordinal dates are not supported. Times are also formatted in the 'extended' format `hh:mm:ss`. Hours, minutes and seconds are mandatory. Offset from UTC must be provided; this is to ensure that there is no misunderstanding regarding times provided to the API.\n\nThe format we look for is `yyyy-MM-ddThh:mm:ss[Z|[+-]hh:mm]`\n\nExamples of valid date/times are`2011-12-31T12:00:00Z` `2011-12-31T12:00:00+02:00`\n\n### Entity Format Modifications\n\nIt is expected that over time some changes will be made to the request and response formats of various methods available in the API.\nWhere possible, these will be implemented in a backwards compatible way.\nTo make this possible you are required to ignore unknown properties.\nThis enables the addition of information in response documents while maintaining compatibility with older clients.\n\n### Optional Request Entity Properties\n\nThere are many instances where requests can be made without having to specify every single property allowable in the request format.\nAny such optional properties are noted as such in the documentation and their default value is noted.\n",
   "apiTitle": "BulkSMS JSON REST API",

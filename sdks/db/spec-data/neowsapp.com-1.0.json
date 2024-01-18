@@ -3,6 +3,178 @@
   "openApiRaw": "http://www.neowsapp.com/api-docs",
   "homepage": "neowsapp.com",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/rest/v1/feed",
+      "method": "retrieveNearEarthObjectFeed",
+      "httpMethod": "get",
+      "tag": "feed",
+      "description": "Find Near Earth Objects by date",
+      "parameters": [
+        {
+          "name": "start_date",
+          "schema": "string",
+          "required": false,
+          "description": "Start of date range search, format: yyyy-MM-dd - (ex: 2015-04-28)"
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "required": false,
+          "description": "End of date range search, format: yyyy-MM-dd - (ex: 2015-04-28). If left off search will extends 7 days from start_date"
+        },
+        {
+          "name": "detailed",
+          "schema": "boolean",
+          "required": false,
+          "description": "detailed"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rest/v1/feed/today",
+      "method": "retrieveNeoFeedToday",
+      "httpMethod": "get",
+      "tag": "feed",
+      "description": "Find Near Earth Objects for today",
+      "parameters": [
+        {
+          "name": "detailed",
+          "schema": "boolean",
+          "required": false,
+          "description": "detailed"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rest/v1/neo/browse",
+      "method": "browseNearEarthObjects",
+      "httpMethod": "get",
+      "tag": "neo",
+      "description": "Browse the Near Earth Objects service",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "page"
+        },
+        {
+          "name": "size",
+          "schema": "integer",
+          "required": false,
+          "description": "size"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rest/v1/neo/sentry",
+      "method": "retrieveSentryRiskData",
+      "httpMethod": "get",
+      "tag": "neosentry",
+      "description": "Retrieve Sentry (Impact Risk ) Near Earth Objects",
+      "parameters": [
+        {
+          "name": "is_active",
+          "schema": "boolean",
+          "required": false,
+          "description": "show current list of Sentry objects, or show removed Sentry objects"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "page"
+        },
+        {
+          "name": "size",
+          "schema": "integer",
+          "required": false,
+          "description": "size"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rest/v1/neo/sentry/{asteroid_id}",
+      "method": "retrieveSentryRiskDataById",
+      "httpMethod": "get",
+      "tag": "neosentry",
+      "description": "Retrieve Sentry (Impact Risk ) Near Earth Objectby ID ",
+      "parameters": [
+        {
+          "name": "asteroid_id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of NearEarth object.  ID can be SPK_ID, Asteroid des (designation) or Sentry ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rest/v1/neo/{asteroid_id}",
+      "method": "retrieveNearEarthObjectById",
+      "httpMethod": "get",
+      "tag": "neo",
+      "description": "Find Near Earth Objects by id",
+      "parameters": [
+        {
+          "name": "asteroid_id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of Near Earth Object - (ex: 3729835)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rest/v1/stats",
+      "method": "retrieveCurrentNeoStatistics",
+      "httpMethod": "get",
+      "tag": "stats",
+      "description": "Get the Near Earth Object data set totals",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://www.neowsapp.com/",
   "apiDescription": "A web service for near earth objects. All the data is from the <a href=\"http://neo.jpl.nasa.gov/\" target=\"_blank\">NASA JPL Asteroid team</a>. \n\n \n\nNeoWs is proud to power AsteroidTracker on <a href=\"https://itunes.apple.com/us/app/asteroid-tracker/id689684901?mt=8\" target=\"_blank\">iOS</a> and <a href=\"https://play.google.com/store/apps/details?id=com.vitruviussoftware.bunifish.asteroidtracker&feature\" target=\"_blank\">Android</a> as well as related apps. \n\n Follow us on <a href=\"https://twitter.com/AsteroidTracker\" target=\"_blank\">Twitter</a>",
   "apiTitle": "NeoWs - (Near Earth Object Web Service)",

@@ -4,6 +4,420 @@
   "homepage": "mastercard.com",
   "serviceName": "masterpassqr",
   "apiVersion": "V1",
+  "methods": [
+    {
+      "url": "/send/#env/v1/partners/{partnerId}/merchant/transfer",
+      "method": "createMerchantTransfer",
+      "httpMethod": "post",
+      "tag": "Merchant Transfer - Funding and Payment",
+      "description": "Initiates a Mastercard Merchant Presented QR purchase transaction by securing funds from a consumer’s account with a Funding Transaction and pushing funds to a merchant account with a Payment Transaction.",
+      "parameters": [
+        {
+          "name": "partnerId",
+          "schema": "string",
+          "required": true,
+          "description": "Path Param - Provider assigned partner id. \n\nType: Alphanumeric Special  [a-zA-Z0-9_-], Length: 32"
+        },
+        {
+          "name": "merchant_transfer",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response details for a merchant transfer."
+        }
+      ]
+    },
+    {
+      "url": "/send/#env/v1/partners/{partnerId}/merchant/transfers",
+      "method": "getMerchantTransferByRef",
+      "httpMethod": "get",
+      "tag": "Merchant Retrieval",
+      "description": "Purpose of this service is to retrieve the Transfer resource associated with a specified transfer_reference value.",
+      "parameters": [
+        {
+          "name": "partnerId",
+          "schema": "string",
+          "required": true,
+          "description": "Path Param - Provider assigned partner id. Details - string, 32"
+        },
+        {
+          "name": "ref",
+          "schema": "string",
+          "required": true,
+          "description": "Query Param - Is the client specified transfer reference when initiating the transfer. Allowable characters are alphanumeric and * , - . _ ~. Details- 6-40 Example- DEF123456"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response details for a merchant transfer."
+        }
+      ]
+    },
+    {
+      "url": "/send/#env/v1/partners/{partnerId}/merchant/transfers/payment",
+      "method": "createMerchantPayment",
+      "httpMethod": "post",
+      "tag": "Merchant Transfer - Payment",
+      "description": "Initiates a Mastercard Merchant Presented QR purchase transaction by pushing funds to a merchant account.",
+      "parameters": [
+        {
+          "name": "partnerId",
+          "schema": "string",
+          "required": true,
+          "description": "Path Param - Provider assigned partner id. Details - string, 32"
+        },
+        {
+          "name": "merchant_payment_transfer",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response details for a merchant transfer."
+        }
+      ]
+    },
+    {
+      "url": "/send/#env/v1/partners/{partnerId}/merchant/transfers/refund",
+      "method": "createMerchantRefund",
+      "httpMethod": "post",
+      "tag": "Merchant Refund",
+      "description": "Initiates a Mastercard Merchant Presented QR Refund transaction by pushing funds from a merchant account back to the customer's account.",
+      "parameters": [
+        {
+          "name": "partnerId",
+          "schema": "string",
+          "required": true,
+          "description": "Path Param - Provider assigned partner id. Details - string, 32"
+        },
+        {
+          "name": "merchant_refund_transfer",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response details for a merchant transfer."
+        }
+      ]
+    },
+    {
+      "url": "/send/#env/v1/partners/{partnerId}/merchant/transfers/{transferId}",
+      "method": "getMerchantTransferById",
+      "httpMethod": "get",
+      "tag": "Merchant Retrieval",
+      "description": "Purpose of this service is to retrieve the Transfer resource associated with the specified transfer-id.",
+      "parameters": [
+        {
+          "name": "partnerId",
+          "schema": "string",
+          "required": true,
+          "description": "Path Param - Provider assigned partner id. Details - string, 32"
+        },
+        {
+          "name": "transferId",
+          "schema": "string",
+          "required": true,
+          "description": "Path Param - Valid transfer id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response details for a merchant transfer."
+        }
+      ]
+    },
+    {
+      "url": "/send/v1/partners/{partner-id}/transfers/{transfer-id}/transactions/{transaction-id}/reversals",
+      "method": "createFundingReversal",
+      "httpMethod": "post",
+      "tag": "Funding Reversal",
+      "description": "Funding Reversals must be submitted within 30 minutes of the funding transfer request, and should only be submitted for the following conditions:  Funding Transaction must be reversed if payment transaction cannot complete successfully, i.e. the payment transaction is rejected or declined.  Upon a successful reversal of a funding transaction, the refund must be credited to the sending consumer’s Funding Account.",
+      "parameters": [
+        {
+          "name": "partner-id",
+          "schema": "string",
+          "required": true,
+          "description": "Path Param - Provider assigned partner id. Details - string, 32"
+        },
+        {
+          "name": "transfer-id",
+          "schema": "string",
+          "required": true,
+          "description": "Valid transfer id"
+        },
+        {
+          "name": "transaction-id",
+          "schema": "string",
+          "required": true,
+          "description": "Valid transaction id"
+        },
+        {
+          "name": "funding_reversal",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response details"
+        }
+      ]
+    },
+    {
+      "url": "/send/v1/partners/{partnerId}/events/generate/payment",
+      "method": "sendNotificationPaymentRetry",
+      "httpMethod": "post",
+      "tag": "Test Payment Notification",
+      "description": "Client can simulate a Mastercard Merchant Presented QR Payment notification to the registered URL endpoint. ",
+      "parameters": [
+        {
+          "name": "partnerId",
+          "schema": "string",
+          "required": true,
+          "description": "Path Param - Provider assigned partner id. Details - string, 32"
+        },
+        {
+          "name": "notification_request",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Contains the details of the response message."
+        }
+      ]
+    },
+    {
+      "url": "/send/v1/partners/{partnerId}/events/generate/refund",
+      "method": "sendNotificationRefundRetry",
+      "httpMethod": "post",
+      "tag": "Test Refund Notification",
+      "description": "Client can simulate a Mastercard Merchant Presented QR Refund notification to the registered URL endpoint. ",
+      "parameters": [
+        {
+          "name": "partnerId",
+          "schema": "string",
+          "required": true,
+          "description": "Path Param - Provider assigned partner id. Details - string, 32"
+        },
+        {
+          "name": "notification_request",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Contains the details of the response message."
+        }
+      ]
+    },
+    {
+      "url": "/send/v1/partners/{partnerId}/notification-registries",
+      "method": "createTransferNotificationRegistration",
+      "httpMethod": "post",
+      "tag": "Transfer Notification Registration",
+      "description": "This service allows Mastercard Merchant QR originating and receiving partners to register a PAN and service provider to receive notifications on an inbound Merchant Refund or Merchant Payment Transaction.",
+      "parameters": [
+        {
+          "name": "partnerId",
+          "schema": "string",
+          "required": true,
+          "description": "Path Param - Provider assigned partner id. Type: Alphanumeric Special Length: 40"
+        },
+        {
+          "name": "accountregistration",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response details"
+        }
+      ]
+    },
+    {
+      "url": "/send/v1/partners/{partnerId}/notification-registries/{account-reg-ref}",
+      "method": "deleteTransferNotificationRegistration",
+      "httpMethod": "delete",
+      "tag": "Transfer Notification Registration",
+      "description": "This service allows Mastercard Merchant QR originating and receiving partners to delete a registered PAN for notifications. ",
+      "parameters": [
+        {
+          "name": "partnerId",
+          "schema": "string",
+          "required": true,
+          "description": "Path Param - Provider assigned partner id. Type: Alphanumeric Special Length: 40"
+        },
+        {
+          "name": "account-reg-ref",
+          "schema": "string",
+          "required": true,
+          "description": "Path Param - System generated unique account registration identifier. Type: Alphanumeric Special Length: 40"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response details"
+        }
+      ]
+    },
+    {
+      "url": "/send/v1/partners/{partnerId}/notification-registries/{account-reg-ref}",
+      "method": "notificationRegistrationApiReadBy",
+      "httpMethod": "get",
+      "tag": "Transfer Notification Registration",
+      "description": "This service allows Mastercard Merchant QR originating and receiving partners to retrieve the service provider's information for a registered PAN for notifications. ",
+      "parameters": [
+        {
+          "name": "partnerId",
+          "schema": "string",
+          "required": true,
+          "description": "Path Param - Provider assigned partner id. Type: Alphanumeric Special Length: 40"
+        },
+        {
+          "name": "account-reg-ref",
+          "schema": "string",
+          "required": true,
+          "description": "Path Param - System generated unique account registration identifier. Type: Alphanumberic Special Length: 40"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response details"
+        }
+      ]
+    },
+    {
+      "url": "/send/v1/partners/{partnerId}/notification-registries/{account-reg-ref}",
+      "method": "notificationRegistrationApiUpdate",
+      "httpMethod": "put",
+      "tag": "Transfer Notification Registration",
+      "description": "This service allows Mastercard Merchant QR originating and receiving partners to update the notitification service provider for a registered PAN.",
+      "parameters": [
+        {
+          "name": "partnerId",
+          "schema": "string",
+          "required": true,
+          "description": "Path Param - Provider assigned partner id. Type: Alphanumeric Special Length: 40"
+        },
+        {
+          "name": "account-reg-ref",
+          "schema": "string",
+          "required": true,
+          "description": "Path Param - System generated unique account registration identifier. Type: Alphanumeric Special Length: 40"
+        },
+        {
+          "name": "accountregistration",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response details"
+        }
+      ]
+    },
+    {
+      "url": "/send/v1/partners/{partnerId}/transfers/funding",
+      "method": "createFunding",
+      "httpMethod": "post",
+      "tag": "Funding",
+      "description": "The Funding Transaction enables the 'pull' of money from the sender's card to the Transaction Originator who is providing the Person to Merchant service. The amount that is debited from the Funding Account (sending consumer's account) will be the amount 'pushed' to the recipient via a payment transfer request.  Funds can be transferred from Mastercard® or Maestro® debit card accounts. To initiate the funding transaction, users can provide the sending consumer's Primary Account Number (PAN) or a unique identifier previously mapped to the sending consumer's account.",
+      "parameters": [
+        {
+          "name": "partnerId",
+          "schema": "string",
+          "required": true,
+          "description": "Path Param - Provider assigned partner id. Details - string, 32"
+        },
+        {
+          "name": "funding_transfer",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response details"
+        }
+      ]
+    },
+    {
+      "url": "/send/v1/{partnerId}/digital-account",
+      "method": "createDigitalAccntRefNum",
+      "httpMethod": "post",
+      "tag": "Digital Account Reference Number",
+      "description": "Used to create a digital account reference number from Incontrol ",
+      "parameters": [
+        {
+          "name": "partnerId",
+          "schema": "string",
+          "required": true,
+          "description": "Path Param - Provider assigned partner id. \n\nType: Alphanumeric Special  [a-zA-Z0-9_-], Length: 32"
+        },
+        {
+          "name": "digital_account",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response details for a create digital account reference number"
+        }
+      ]
+    },
+    {
+      "url": "/send/v1/{partnerId}/digital-account/search",
+      "method": "retrieveDigitalAccntRefNumList",
+      "httpMethod": "post",
+      "tag": "Digital Account Reference Number Retrieval",
+      "description": "Used to retreive a digital account reference list from Incontrol ",
+      "parameters": [
+        {
+          "name": "partnerId",
+          "schema": "string",
+          "required": true,
+          "description": "Path Param - Provider assigned partner id. Details - string, 32"
+        },
+        {
+          "name": "digital_account",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response details for a retrieve digital account reference number"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.mastercard.com",
   "apiTitle": "Send Person to Merchant",
   "endpoints": 13,

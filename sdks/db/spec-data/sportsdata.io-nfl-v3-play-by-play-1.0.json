@@ -4,6 +4,110 @@
   "homepage": "sportsdata.io",
   "serviceName": "nfl-v3-play-by-play",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/{format}/PlayByPlay/{season}/{week}/{hometeam}",
+      "method": "playByPlay",
+      "httpMethod": "get",
+      "description": "Play By Play",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        },
+        {
+          "name": "season",
+          "schema": "string",
+          "required": true,
+          "description": "Year of the season and the season type. If no season type is provided, then the default is regular season.\n          <br>Examples: <code>2015REG</code>, <code>2015PRE</code>, <code>2015POST</code>.\n        "
+        },
+        {
+          "name": "week",
+          "schema": "string",
+          "required": true,
+          "description": "Week of the season. Valid values are as follows: Preseason 0 to 4, Regular Season 1 to 17, Postseason 1 to 4.\n          Example: <code>1</code>\n        "
+        },
+        {
+          "name": "hometeam",
+          "schema": "string",
+          "required": true,
+          "description": "Abbreviation of the home team. Example: <code>WAS</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/PlayByPlayDelta/{season}/{week}/{minutes}",
+      "method": "playByPlayDelta",
+      "httpMethod": "get",
+      "description": "Play By Play Delta",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        },
+        {
+          "name": "season",
+          "schema": "string",
+          "required": true,
+          "description": "Year of the season and the season type. If no season type is provided, then the default is regular season.\n          <br>Examples: <code>2015REG</code>, <code>2015PRE</code>, <code>2015POST</code>.\n        "
+        },
+        {
+          "name": "week",
+          "schema": "string",
+          "required": true,
+          "description": "Week of the season. Valid values are as follows: Preseason 0 to 4, Regular Season 1 to 17, Postseason 1 to 4.\n          Example: <code>1</code>\n        "
+        },
+        {
+          "name": "minutes",
+          "schema": "string",
+          "required": true,
+          "description": "Only returns player statistics that have changed in the last X minutes.  You specify how many minutes in time to go back.  Valid entries are:<br>\n          <code>1</code> or <code>2</code>.\n        "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/SimulatedPlayByPlay/{numberofplays}",
+      "method": "playByPlaySimulation",
+      "httpMethod": "get",
+      "description": "Play By Play Simulation",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        },
+        {
+          "name": "numberofplays",
+          "schema": "string",
+          "required": true,
+          "description": "The number of plays to progress in this NFL live game simulation. Example entries are <code>0</code>, <code>1</code>, <code>2</code>, <code>3</code>, <code>150</code>, <code>200</code>, etc."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://azure-api.sportsdata.io/v3/nfl/pbp",
   "apiDescription": "NFL play-by-play API.",
   "apiTitle": "NFL v3 Play-by-Play",

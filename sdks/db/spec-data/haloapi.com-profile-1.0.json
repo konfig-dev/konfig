@@ -4,6 +4,73 @@
   "homepage": "haloapi.com",
   "serviceName": "profile",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/h5/profiles/{player}/appearance",
+      "method": "halo5PlayerAppearance",
+      "httpMethod": "get",
+      "description": "Halo 5 - Player Appearance",
+      "parameters": [
+        {
+          "name": "player",
+          "schema": "string",
+          "required": true,
+          "description": "The Player's Gamertag"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/h5/profiles/{player}/emblem",
+      "method": "halo5PlayerEmblemImage",
+      "httpMethod": "get",
+      "description": "Halo 5 - Player Emblem Image",
+      "parameters": [
+        {
+          "name": "player",
+          "schema": "string",
+          "required": true,
+          "description": "The Player's Gamertag."
+        },
+        {
+          "name": "size",
+          "schema": "number",
+          "description": "An optional size (specified in pixels) of the image requested. When specified, this value must be one of the following values: 95, 128, 190, 256, 512. If a value is specified that is not in this list, the API returns HTTP 400 (\"Bad Request\"). If the size is empty or missing, the API will use 256."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/h5/profiles/{player}/spartan",
+      "method": "halo5PlayerSpartanImage",
+      "httpMethod": "get",
+      "description": "Halo 5 - Player Spartan Image",
+      "parameters": [
+        {
+          "name": "player",
+          "schema": "string",
+          "required": true,
+          "description": "The Player's Gamertag."
+        },
+        {
+          "name": "size",
+          "schema": "number",
+          "description": "An optional size (specified in pixels) of the image requested. When specified, this value must be one of the following values: 95, 128, 190, 256, 512. If a value is specified that is not in this list, the API returns HTTP 400 (\"Bad Request\"). If the size is empty or missing, the API will use 256."
+        },
+        {
+          "name": "crop",
+          "schema": "string",
+          "description": "An optional crop that will be used to determine what portion of the Spartan is returned in the image. The value must be either \"full\" or \"portrait\". If no value is specified \"full\" is used. If an unsupported value is provided, the API returns HTTP 400 (\"Bad Request\")."
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://www.haloapi.com/profile",
   "apiDescription": "API that provides Profile information about Players.",
   "apiTitle": "Profile",

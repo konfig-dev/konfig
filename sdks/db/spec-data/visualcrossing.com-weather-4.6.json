@@ -4,6 +4,277 @@
   "homepage": "visualcrossing.com",
   "serviceName": "weather",
   "apiVersion": "4.6",
+  "methods": [
+    {
+      "url": "/VisualCrossingWebServices/rest/services/timeline/{location}",
+      "method": "/visualCrossingWebServices/rest/services/timeline/{location}Get",
+      "httpMethod": "get",
+      "tag": "Timeline Weather API (15-day forecast request)",
+      "description": "Historical and Forecast Weather API",
+      "parameters": [
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "Locaton of interest as an address, partial address or decimal latitude,longtude value"
+        },
+        {
+          "name": "contentType",
+          "schema": "string",
+          "description": "data format of the output either json or CSV"
+        },
+        {
+          "name": "unitGroup",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "description": "data to include in the output (required for CSV format - days,hours,alerts,current,events )"
+        },
+        {
+          "name": "lang",
+          "schema": "string",
+          "description": "Language to use for weather descriptions"
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/VisualCrossingWebServices/rest/services/timeline/{location}/{startdate}",
+      "method": "/visualCrossingWebServices/rest/services/timeline/{location}/{startdate}Get",
+      "httpMethod": "get",
+      "tag": "Timeline Weather API (single date request)",
+      "description": "Historical and Forecast Weather API",
+      "parameters": [
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "startdate",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "contentType",
+          "schema": "string",
+          "description": "data format of the output either json or CSV"
+        },
+        {
+          "name": "unitGroup",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "description": "data to include in the output (required for CSV format - days,hours,alerts,current,events )"
+        },
+        {
+          "name": "lang",
+          "schema": "string",
+          "description": "Language to use for weather descriptions"
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/VisualCrossingWebServices/rest/services/timeline/{location}/{startdate}/{enddate}",
+      "method": "/visualCrossingWebServices/rest/services/timeline/{location}/{startdate}/{enddate}Get",
+      "httpMethod": "get",
+      "tag": "Timeline Weather API (date range request)",
+      "description": "Historical and Forecast Weather API",
+      "parameters": [
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "startdate",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "enddate",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "contentType",
+          "schema": "string",
+          "description": "data format of the output either json or CSV"
+        },
+        {
+          "name": "unitGroup",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "description": "data to include in the output (required for CSV format - days,hours,alerts,current,events )"
+        },
+        {
+          "name": "lang",
+          "schema": "string",
+          "description": "Language to use for weather descriptions"
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/VisualCrossingWebServices/rest/services/weatherdata/forecast",
+      "method": "/visualCrossingWebServices/rest/services/weatherdata/forecastGet",
+      "httpMethod": "get",
+      "tag": "Weather Forecast",
+      "description": "Weather Forecast API",
+      "parameters": [
+        {
+          "name": "sendAsDatasource",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "allowAsynch",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "shortColumnNames",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "locations",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "aggregateHours",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "contentType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "unitGroup",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/VisualCrossingWebServices/rest/services/weatherdata/history",
+      "method": "/visualCrossingWebServices/rest/services/weatherdata/historyGet",
+      "httpMethod": "get",
+      "tag": "Historical Weather",
+      "description": "Retrieves hourly or daily historical weather records.",
+      "parameters": [
+        {
+          "name": "maxDistance",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "shortColumnNames",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "endDateTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "aggregateHours",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "collectStationContributions",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "startDateTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "maxStations",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "allowAsynch",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "locations",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "includeNormals",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "contentType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "unitGroup",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://weather.visualcrossing.com",
   "apiDescription": "Weather Forecast and Historical Weather Data via RESTful API.",
   "apiTitle": "Visual Crossing Weather API",

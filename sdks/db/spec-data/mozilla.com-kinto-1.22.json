@@ -4,6 +4,958 @@
   "homepage": "mozilla.com",
   "serviceName": "kinto",
   "apiVersion": "1.22",
+  "methods": [
+    {
+      "url": "/",
+      "method": "serverInfo",
+      "httpMethod": "get",
+      "tag": "Utilities",
+      "description": "",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/__api__",
+      "method": "getOpenapiSpec",
+      "httpMethod": "get",
+      "tag": "Utilities",
+      "description": "",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/__heartbeat__",
+      "method": "heartbeat",
+      "httpMethod": "get",
+      "tag": "Utilities",
+      "description": "",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/__lbheartbeat__",
+      "method": "lbheartbeat",
+      "httpMethod": "get",
+      "tag": "Utilities",
+      "description": "",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/__version__",
+      "method": "version",
+      "httpMethod": "get",
+      "tag": "Utilities",
+      "description": "",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/batch",
+      "method": "batch",
+      "httpMethod": "post",
+      "tag": "Batch",
+      "description": "",
+      "parameters": [
+        {
+          "name": "defaults",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "requests",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/buckets",
+      "method": "getBuckets",
+      "httpMethod": "get",
+      "tag": "Buckets",
+      "description": "",
+      "parameters": [
+        {
+          "name": "_limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_sort",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_token",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_since",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_to",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_before",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "last_modified",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_fields",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "If-Match",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "If-None-Match",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "412",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/buckets/monitor/collections/changes/records",
+      "method": "getChangess",
+      "httpMethod": "get",
+      "tag": "Changess",
+      "description": "",
+      "parameters": [
+        {
+          "name": "_limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_sort",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_token",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_since",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_to",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_before",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "last_modified",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_fields",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "If-Match",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "If-None-Match",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "412",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/buckets/{bid}/collections/{cid}/changeset",
+      "method": "getCollectionChangeset",
+      "httpMethod": "get",
+      "tag": "Collection-changeset",
+      "description": "",
+      "parameters": [
+        {
+          "name": "_since",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_expected",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "_limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "bucket",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "collection",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/buckets/{bucket_id}/collections",
+      "method": "getCollections",
+      "httpMethod": "get",
+      "tag": "Collections",
+      "description": "",
+      "parameters": [
+        {
+          "name": "_limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_sort",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_token",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_since",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_to",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_before",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "last_modified",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_fields",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "If-Match",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "If-None-Match",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "412",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/buckets/{bucket_id}/collections/{collection_id}/records",
+      "method": "getRecords",
+      "httpMethod": "get",
+      "tag": "Records",
+      "description": "",
+      "parameters": [
+        {
+          "name": "_limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_sort",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_token",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_since",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_to",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_before",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "last_modified",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_fields",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "If-Match",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "If-None-Match",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "412",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/buckets/{bucket_id}/collections/{collection_id}/records/{id}",
+      "method": "getRecord",
+      "httpMethod": "get",
+      "tag": "Records",
+      "description": "",
+      "parameters": [
+        {
+          "name": "_fields",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "If-Match",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "If-None-Match",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "412",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/buckets/{bucket_id}/collections/{collection_id}/records/{id}/attachment",
+      "method": "deleteAttachment",
+      "httpMethod": "delete",
+      "tag": "Attachment",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/buckets/{bucket_id}/collections/{collection_id}/records/{id}/attachment",
+      "method": "createAttachment",
+      "httpMethod": "post",
+      "tag": "Attachment",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/buckets/{bucket_id}/collections/{id}",
+      "method": "getCollection",
+      "httpMethod": "get",
+      "tag": "Collections",
+      "description": "",
+      "parameters": [
+        {
+          "name": "_fields",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "If-Match",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "If-None-Match",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "412",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/buckets/{bucket_id}/groups",
+      "method": "getGroups",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "",
+      "parameters": [
+        {
+          "name": "_limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_sort",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_token",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_since",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_to",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_before",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "last_modified",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "_fields",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "If-Match",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "If-None-Match",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "412",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/buckets/{bucket_id}/groups/{id}",
+      "method": "getGroup",
+      "httpMethod": "get",
+      "tag": "Groups",
+      "description": "",
+      "parameters": [
+        {
+          "name": "_fields",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "If-Match",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "If-None-Match",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "412",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/buckets/{id}",
+      "method": "getBucket",
+      "httpMethod": "get",
+      "tag": "Buckets",
+      "description": "",
+      "parameters": [
+        {
+          "name": "_fields",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "If-Match",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "If-None-Match",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "412",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/contribute.json",
+      "method": "contribute",
+      "httpMethod": "get",
+      "tag": "Utilities",
+      "description": "",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://firefox.settings.services.mozilla.com/v1",
   "apiTitle": "Remote Settings PROD",
   "endpoints": 20,

@@ -4,6 +4,1829 @@
   "homepage": "openbanking.org.uk",
   "serviceName": "account-info-openapi",
   "apiVersion": "3.1.7",
+  "methods": [
+    {
+      "url": "/account-access-consents",
+      "method": "createAccountAccessConsents",
+      "httpMethod": "post",
+      "tag": "Account Access",
+      "description": "Create Account Access Consents",
+      "parameters": [
+        {
+          "name": "x-fapi-auth-date",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "x-fapi-customer-ip-address",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        {
+          "name": "x-customer-user-agent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        },
+        {
+          "name": "Data",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Risk",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/account-access-consents/{ConsentId}",
+      "method": "deleteAccountAccessConsentsConsentId",
+      "httpMethod": "delete",
+      "tag": "Account Access",
+      "description": "Delete Account Access Consents",
+      "parameters": [
+        {
+          "name": "ConsentId",
+          "schema": "string",
+          "required": true,
+          "description": "ConsentId"
+        },
+        {
+          "name": "x-fapi-auth-date",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "x-fapi-customer-ip-address",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        {
+          "name": "x-customer-user-agent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/account-access-consents/{ConsentId}",
+      "method": "getAccountAccessConsentsConsentId",
+      "httpMethod": "get",
+      "tag": "Account Access",
+      "description": "Get Account Access Consents",
+      "parameters": [
+        {
+          "name": "ConsentId",
+          "schema": "string",
+          "required": true,
+          "description": "ConsentId"
+        },
+        {
+          "name": "x-fapi-auth-date",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "x-fapi-customer-ip-address",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        {
+          "name": "x-customer-user-agent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/accounts",
+      "method": "getAccounts",
+      "httpMethod": "get",
+      "tag": "Accounts",
+      "description": "Get Accounts",
+      "parameters": [
+        {
+          "name": "x-fapi-auth-date",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "x-fapi-customer-ip-address",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        {
+          "name": "x-customer-user-agent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{AccountId}",
+      "method": "getAccountsAccountId",
+      "httpMethod": "get",
+      "tag": "Accounts",
+      "description": "Get Accounts",
+      "parameters": [
+        {
+          "name": "AccountId",
+          "schema": "string",
+          "required": true,
+          "description": "AccountId"
+        },
+        {
+          "name": "x-fapi-auth-date",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "x-fapi-customer-ip-address",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        {
+          "name": "x-customer-user-agent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{AccountId}/balances",
+      "method": "getAccountsAccountIdBalances",
+      "httpMethod": "get",
+      "tag": "Balances",
+      "description": "Get Balances",
+      "parameters": [
+        {
+          "name": "AccountId",
+          "schema": "string",
+          "required": true,
+          "description": "AccountId"
+        },
+        {
+          "name": "x-fapi-auth-date",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "x-fapi-customer-ip-address",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        {
+          "name": "x-customer-user-agent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{AccountId}/beneficiaries",
+      "method": "getAccountsAccountIdBeneficiaries",
+      "httpMethod": "get",
+      "tag": "Beneficiaries",
+      "description": "Get Beneficiaries",
+      "parameters": [
+        {
+          "name": "AccountId",
+          "schema": "string",
+          "required": true,
+          "description": "AccountId"
+        },
+        {
+          "name": "x-fapi-auth-date",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "x-fapi-customer-ip-address",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        {
+          "name": "x-customer-user-agent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{AccountId}/direct-debits",
+      "method": "getAccountsAccountIdDirectDebits",
+      "httpMethod": "get",
+      "tag": "Direct Debits",
+      "description": "Get Direct Debits",
+      "parameters": [
+        {
+          "name": "AccountId",
+          "schema": "string",
+          "required": true,
+          "description": "AccountId"
+        },
+        {
+          "name": "x-fapi-auth-date",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "x-fapi-customer-ip-address",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        {
+          "name": "x-customer-user-agent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{AccountId}/offers",
+      "method": "getAccountsAccountIdOffers",
+      "httpMethod": "get",
+      "tag": "Offers",
+      "description": "Get Offers",
+      "parameters": [
+        {
+          "name": "AccountId",
+          "schema": "string",
+          "required": true,
+          "description": "AccountId"
+        },
+        {
+          "name": "x-fapi-auth-date",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "x-fapi-customer-ip-address",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        {
+          "name": "x-customer-user-agent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{AccountId}/parties",
+      "method": "getAccountsAccountIdParties",
+      "httpMethod": "get",
+      "tag": "Parties",
+      "description": "Get Parties",
+      "parameters": [
+        {
+          "name": "AccountId",
+          "schema": "string",
+          "required": true,
+          "description": "AccountId"
+        },
+        {
+          "name": "x-fapi-auth-date",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "x-fapi-customer-ip-address",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        {
+          "name": "x-customer-user-agent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{AccountId}/party",
+      "method": "getAccountsAccountIdParty",
+      "httpMethod": "get",
+      "tag": "Parties",
+      "description": "Get Parties",
+      "parameters": [
+        {
+          "name": "AccountId",
+          "schema": "string",
+          "required": true,
+          "description": "AccountId"
+        },
+        {
+          "name": "x-fapi-auth-date",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "x-fapi-customer-ip-address",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        {
+          "name": "x-customer-user-agent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{AccountId}/product",
+      "method": "getAccountsAccountIdProduct",
+      "httpMethod": "get",
+      "tag": "Products",
+      "description": "Get Products",
+      "parameters": [
+        {
+          "name": "AccountId",
+          "schema": "string",
+          "required": true,
+          "description": "AccountId"
+        },
+        {
+          "name": "x-fapi-auth-date",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "x-fapi-customer-ip-address",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        {
+          "name": "x-customer-user-agent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Product details of Other Product which is not avaiable in the standard list"
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{AccountId}/scheduled-payments",
+      "method": "getAccountsAccountIdScheduledPayments",
+      "httpMethod": "get",
+      "tag": "Scheduled Payments",
+      "description": "Get Scheduled Payments",
+      "parameters": [
+        {
+          "name": "AccountId",
+          "schema": "string",
+          "required": true,
+          "description": "AccountId"
+        },
+        {
+          "name": "x-fapi-auth-date",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "x-fapi-customer-ip-address",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        {
+          "name": "x-customer-user-agent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{AccountId}/standing-orders",
+      "method": "getAccountsAccountIdStandingOrders",
+      "httpMethod": "get",
+      "tag": "Standing Orders",
+      "description": "Get Standing Orders",
+      "parameters": [
+        {
+          "name": "AccountId",
+          "schema": "string",
+          "required": true,
+          "description": "AccountId"
+        },
+        {
+          "name": "x-fapi-auth-date",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "x-fapi-customer-ip-address",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        {
+          "name": "x-customer-user-agent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{AccountId}/statements",
+      "method": "getAccountsAccountIdStatements",
+      "httpMethod": "get",
+      "tag": "Statements",
+      "description": "Get Statements",
+      "parameters": [
+        {
+          "name": "AccountId",
+          "schema": "string",
+          "required": true,
+          "description": "AccountId"
+        },
+        {
+          "name": "x-fapi-auth-date",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "x-fapi-customer-ip-address",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        {
+          "name": "x-customer-user-agent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        },
+        {
+          "name": "fromStatementDateTime",
+          "schema": "string",
+          "description": "The UTC ISO 8601 Date Time to filter statements FROM\nNB Time component is optional - set to 00:00:00 for just Date.\nIf the Date Time contains a timezone, the ASPSP must ignore the timezone component."
+        },
+        {
+          "name": "toStatementDateTime",
+          "schema": "string",
+          "description": "The UTC ISO 8601 Date Time to filter statements TO\nNB Time component is optional - set to 00:00:00 for just Date.\nIf the Date Time contains a timezone, the ASPSP must ignore the timezone component."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{AccountId}/statements/{StatementId}",
+      "method": "getAccountsAccountIdStatementsStatementId",
+      "httpMethod": "get",
+      "tag": "Statements",
+      "description": "Get Statements",
+      "parameters": [
+        {
+          "name": "StatementId",
+          "schema": "string",
+          "required": true,
+          "description": "StatementId"
+        },
+        {
+          "name": "AccountId",
+          "schema": "string",
+          "required": true,
+          "description": "AccountId"
+        },
+        {
+          "name": "x-fapi-auth-date",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "x-fapi-customer-ip-address",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        {
+          "name": "x-customer-user-agent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{AccountId}/statements/{StatementId}/file",
+      "method": "getAccountsAccountIdStatementsStatementIdFile",
+      "httpMethod": "get",
+      "tag": "Statements",
+      "description": "Get Statements",
+      "parameters": [
+        {
+          "name": "StatementId",
+          "schema": "string",
+          "required": true,
+          "description": "StatementId"
+        },
+        {
+          "name": "AccountId",
+          "schema": "string",
+          "required": true,
+          "description": "AccountId"
+        },
+        {
+          "name": "x-fapi-auth-date",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "x-fapi-customer-ip-address",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        {
+          "name": "x-customer-user-agent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{AccountId}/statements/{StatementId}/transactions",
+      "method": "getAccountsAccountIdStatementsStatementIdTransactions",
+      "httpMethod": "get",
+      "tag": "Transactions",
+      "description": "Get Transactions",
+      "parameters": [
+        {
+          "name": "StatementId",
+          "schema": "string",
+          "required": true,
+          "description": "StatementId"
+        },
+        {
+          "name": "AccountId",
+          "schema": "string",
+          "required": true,
+          "description": "AccountId"
+        },
+        {
+          "name": "x-fapi-auth-date",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "x-fapi-customer-ip-address",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        {
+          "name": "x-customer-user-agent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{AccountId}/transactions",
+      "method": "getAccountsAccountIdTransactions",
+      "httpMethod": "get",
+      "tag": "Transactions",
+      "description": "Get Transactions",
+      "parameters": [
+        {
+          "name": "AccountId",
+          "schema": "string",
+          "required": true,
+          "description": "AccountId"
+        },
+        {
+          "name": "x-fapi-auth-date",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "x-fapi-customer-ip-address",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        {
+          "name": "x-customer-user-agent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        },
+        {
+          "name": "fromBookingDateTime",
+          "schema": "string",
+          "description": "The UTC ISO 8601 Date Time to filter transactions FROM\nNB Time component is optional - set to 00:00:00 for just Date.\nIf the Date Time contains a timezone, the ASPSP must ignore the timezone component."
+        },
+        {
+          "name": "toBookingDateTime",
+          "schema": "string",
+          "description": "The UTC ISO 8601 Date Time to filter transactions TO\nNB Time component is optional - set to 00:00:00 for just Date.\nIf the Date Time contains a timezone, the ASPSP must ignore the timezone component."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/balances",
+      "method": "getBalances",
+      "httpMethod": "get",
+      "tag": "Balances",
+      "description": "Get Balances",
+      "parameters": [
+        {
+          "name": "x-fapi-auth-date",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "x-fapi-customer-ip-address",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        {
+          "name": "x-customer-user-agent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/beneficiaries",
+      "method": "getBeneficiaries",
+      "httpMethod": "get",
+      "tag": "Beneficiaries",
+      "description": "Get Beneficiaries",
+      "parameters": [
+        {
+          "name": "x-fapi-auth-date",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "x-fapi-customer-ip-address",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        {
+          "name": "x-customer-user-agent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/direct-debits",
+      "method": "getDirectDebits",
+      "httpMethod": "get",
+      "tag": "Direct Debits",
+      "description": "Get Direct Debits",
+      "parameters": [
+        {
+          "name": "x-fapi-auth-date",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "x-fapi-customer-ip-address",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        {
+          "name": "x-customer-user-agent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/offers",
+      "method": "getOffers",
+      "httpMethod": "get",
+      "tag": "Offers",
+      "description": "Get Offers",
+      "parameters": [
+        {
+          "name": "x-fapi-auth-date",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "x-fapi-customer-ip-address",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        {
+          "name": "x-customer-user-agent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/party",
+      "method": "getParty",
+      "httpMethod": "get",
+      "tag": "Parties",
+      "description": "Get Parties",
+      "parameters": [
+        {
+          "name": "x-fapi-auth-date",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "x-fapi-customer-ip-address",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        {
+          "name": "x-customer-user-agent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/products",
+      "method": "getProducts",
+      "httpMethod": "get",
+      "tag": "Products",
+      "description": "Get Products",
+      "parameters": [
+        {
+          "name": "x-fapi-auth-date",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "x-fapi-customer-ip-address",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        {
+          "name": "x-customer-user-agent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Product details of Other Product which is not avaiable in the standard list"
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/scheduled-payments",
+      "method": "getScheduledPayments",
+      "httpMethod": "get",
+      "tag": "Scheduled Payments",
+      "description": "Get Scheduled Payments",
+      "parameters": [
+        {
+          "name": "x-fapi-auth-date",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "x-fapi-customer-ip-address",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        {
+          "name": "x-customer-user-agent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/standing-orders",
+      "method": "getStandingOrders",
+      "httpMethod": "get",
+      "tag": "Standing Orders",
+      "description": "Get Standing Orders",
+      "parameters": [
+        {
+          "name": "x-fapi-auth-date",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "x-fapi-customer-ip-address",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        {
+          "name": "x-customer-user-agent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/statements",
+      "method": "getStatements",
+      "httpMethod": "get",
+      "tag": "Statements",
+      "description": "Get Statements",
+      "parameters": [
+        {
+          "name": "x-fapi-auth-date",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "x-fapi-customer-ip-address",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        {
+          "name": "fromStatementDateTime",
+          "schema": "string",
+          "description": "The UTC ISO 8601 Date Time to filter statements FROM\nNB Time component is optional - set to 00:00:00 for just Date.\nIf the Date Time contains a timezone, the ASPSP must ignore the timezone component."
+        },
+        {
+          "name": "toStatementDateTime",
+          "schema": "string",
+          "description": "The UTC ISO 8601 Date Time to filter statements TO\nNB Time component is optional - set to 00:00:00 for just Date.\nIf the Date Time contains a timezone, the ASPSP must ignore the timezone component."
+        },
+        {
+          "name": "x-customer-user-agent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/transactions",
+      "method": "getTransactions",
+      "httpMethod": "get",
+      "tag": "Transactions",
+      "description": "Get Transactions",
+      "parameters": [
+        {
+          "name": "x-fapi-auth-date",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "x-fapi-customer-ip-address",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "x-fapi-interaction-id",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        {
+          "name": "x-customer-user-agent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        },
+        {
+          "name": "fromBookingDateTime",
+          "schema": "string",
+          "description": "The UTC ISO 8601 Date Time to filter transactions FROM\nNB Time component is optional - set to 00:00:00 for just Date.\nIf the Date Time contains a timezone, the ASPSP must ignore the timezone component."
+        },
+        {
+          "name": "toBookingDateTime",
+          "schema": "string",
+          "description": "The UTC ISO 8601 Date Time to filter transactions TO\nNB Time component is optional - set to 00:00:00 for just Date.\nIf the Date Time contains a timezone, the ASPSP must ignore the timezone component."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://openbanking.org.uk",
   "apiDescription": "Swagger for Account and Transaction API Specification",
   "apiTitle": "Account and Transaction API Specification",

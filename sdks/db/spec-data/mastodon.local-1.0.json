@@ -3,6 +3,3334 @@
   "openApiRaw": "https://raw.githubusercontent.com/oneslash/mastodon/feat/add-open-api-spec/api-specification.yml",
   "homepage": "mastodon.local",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/api/oembed",
+      "method": "/api/oembedGet",
+      "httpMethod": "get",
+      "description": "OEmbed as JSON",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "string",
+          "description": "URL of a status"
+        },
+        {
+          "name": "maxwidth",
+          "schema": "integer",
+          "description": "width of the iframe. Defaults to 400"
+        },
+        {
+          "name": "maxheight",
+          "schema": "integer",
+          "description": "height of the iframe. Defaults to null"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a rich preview card that is generated using OpenGraph tags from a URL."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/proofs",
+      "method": "/api/proofsGet",
+      "httpMethod": "get",
+      "description": "View identity proof",
+      "parameters": [
+        {
+          "name": "provider",
+          "schema": "string",
+          "description": "The identity provider to be looked up. Currently only supports keybase (case-sensitive)"
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "description": "The username on the selected identity provider"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a proof from an external identity provider."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/accounts",
+      "method": "/api/v1/accountsPost",
+      "httpMethod": "post",
+      "tag": "TODOSecurity",
+      "description": "Creates a user and account records. Returns an account access token for the app that initiated the request. The app should save this token for later, and should wait for the user to confirm their account by clicking a link in their email inbox.",
+      "parameters": [
+        {
+          "name": "agreement",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "locale",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "reason",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/accounts/relationships",
+      "method": "/api/v1/accounts/relationshipsGet",
+      "httpMethod": "get",
+      "tag": "accounts",
+      "description": "Sets a private note on a user.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "array",
+          "required": true,
+          "description": "Array of account IDs to check"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "422",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/accounts/search",
+      "method": "/api/v1/accounts/searchGet",
+      "httpMethod": "get",
+      "tag": "accounts",
+      "description": "Search for matching accounts by username or display name.",
+      "parameters": [
+        {
+          "name": "q",
+          "schema": "string",
+          "required": true,
+          "description": "What to search for"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Maximum number of results. Defaults to 40."
+        },
+        {
+          "name": "resolve",
+          "schema": "string",
+          "description": "Attempt WebFinger lookup. Defaults to false. Use this when `q` is an exact address."
+        },
+        {
+          "name": "following",
+          "schema": "boolean",
+          "description": "Only who the user is following. Defaults to false."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/accounts/update_credentials",
+      "method": "/api/v1/accounts/updateCredentialsPatch",
+      "httpMethod": "patch",
+      "tag": "accounts",
+      "description": "Update the user's display and preferences.",
+      "parameters": [
+        {
+          "name": "avatar",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "bot",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "discoverable",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "display_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "fields_attributes",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "header",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "locked",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "note",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "source",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a user of Mastodon and their associated profile."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/accounts/verify_credentials",
+      "method": "/api/v1/accounts/verifyCredentialsGet",
+      "httpMethod": "get",
+      "tag": "accounts",
+      "description": "Test to make sure that the user token works.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a user of Mastodon and their associated profile."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "403",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/accounts/{id}",
+      "method": "/api/v1/accounts/{id}Get",
+      "httpMethod": "get",
+      "tag": "accounts",
+      "description": "",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a user of Mastodon and their associated profile."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/accounts/{id}/block",
+      "method": "/api/v1/accounts/{id}/blockPost",
+      "httpMethod": "post",
+      "tag": "accounts",
+      "description": "Block the given account. Clients should filter statuses from this account if received (e.g. due to a boost in the Home timeline).",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents the relationship between accounts, such as following / blocking / muting / etc."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/accounts/{id}/featured_tags",
+      "method": "/api/v1/accounts/{id}/featuredTagsGet",
+      "httpMethod": "get",
+      "tag": "accounts",
+      "description": "Tags featured by this account.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/accounts/{id}/follow",
+      "method": "/api/v1/accounts/{id}/followPost",
+      "httpMethod": "post",
+      "tag": "accounts",
+      "description": "Follow the given account. Can also be used to update whether to show reblogs or enable notifications.",
+      "parameters": [
+        {
+          "name": "notify",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "reblogs",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents the relationship between accounts, such as following / blocking / muting / etc."
+        },
+        {
+          "statusCode": "403",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/accounts/{id}/followers",
+      "method": "/api/v1/accounts/{id}/followersGet",
+      "httpMethod": "get",
+      "tag": "accounts",
+      "description": "Accounts which follow the given account, if network is not hidden by the account owner.",
+      "parameters": [
+        {
+          "name": "max_id",
+          "schema": "string",
+          "description": "Internal parameter. Use HTTP `Link` header for pagination."
+        },
+        {
+          "name": "since_id",
+          "schema": "string",
+          "description": "Internal parameter. Use HTTP `Link` header for pagination."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Maximum number of results to return. Defaults to 40."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/accounts/{id}/following",
+      "method": "/api/v1/accounts/{id}/followingGet",
+      "httpMethod": "get",
+      "tag": "accounts",
+      "description": "Accounts which the given account is following, if network is not hidden by the account owner.",
+      "parameters": [
+        {
+          "name": "max_id",
+          "schema": "string",
+          "description": "Internal parameter. Use HTTP `Link` header for pagination."
+        },
+        {
+          "name": "since_id",
+          "schema": "string",
+          "description": "Internal parameter. Use HTTP `Link` header for pagination."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Maximum number of results to return. Defaults to 40."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/accounts/{id}/identity_proofs",
+      "method": "/api/v1/accounts/{id}/identityProofsGet",
+      "httpMethod": "get",
+      "tag": "accounts",
+      "description": "Array of IdentityProof",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "422",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/accounts/{id}/lists",
+      "method": "/api/v1/accounts/{id}/listsGet",
+      "httpMethod": "get",
+      "tag": "accounts",
+      "description": "User lists that you have added this account to.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/accounts/{id}/mute",
+      "method": "/api/v1/accounts/{id}/mutePost",
+      "httpMethod": "post",
+      "tag": "accounts",
+      "description": "Mute the given account. Clients should filter statuses and notifications from this account, if received (e.g. due to a boost in the Home timeline).",
+      "parameters": [
+        {
+          "name": "duration",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "notifications",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents the relationship between accounts, such as following / blocking / muting / etc."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/accounts/{id}/note",
+      "method": "/api/v1/accounts/{id}/notePost",
+      "httpMethod": "post",
+      "tag": "accounts",
+      "description": "Sets a private note on a user.",
+      "parameters": [
+        {
+          "name": "comment",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents the relationship between accounts, such as following / blocking / muting / etc."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/accounts/{id}/pin",
+      "method": "/api/v1/accounts/{id}/pinPost",
+      "httpMethod": "post",
+      "tag": "accounts",
+      "description": "Add the given account to the user's featured profiles. (Featured profiles are currently shown on the user's own public profile.)",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents the relationship between accounts, such as following / blocking / muting / etc."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "403",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "422",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "500",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/accounts/{id}/statuses",
+      "method": "/api/v1/accounts/{id}/statusesGet",
+      "httpMethod": "get",
+      "tag": "accounts",
+      "description": "Statuses posted to the given account.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/accounts/{id}/unblock",
+      "method": "/api/v1/accounts/{id}/unblockPost",
+      "httpMethod": "post",
+      "tag": "accounts",
+      "description": "Block the given account. Clients should filter statuses from this account if received (e.g. due to a boost in the Home timeline).",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents the relationship between accounts, such as following / blocking / muting / etc."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/accounts/{id}/unfollow",
+      "method": "/api/v1/accounts/{id}/unfollowPost",
+      "httpMethod": "post",
+      "tag": "accounts",
+      "description": "Unfollow the given account.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents the relationship between accounts, such as following / blocking / muting / etc."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/accounts/{id}/unmute",
+      "method": "/api/v1/accounts/{id}/unmutePost",
+      "httpMethod": "post",
+      "tag": "accounts",
+      "description": "Unmute the given account.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents the relationship between accounts, such as following / blocking / muting / etc."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/accounts/{id}/unpin",
+      "method": "/api/v1/accounts/{id}/unpinPost",
+      "httpMethod": "post",
+      "tag": "accounts",
+      "description": "Remove the given account from the user's featured profiles.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents the relationship between accounts, such as following / blocking / muting / etc."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/admin/accounts",
+      "method": "/api/v1/admin/accountsGet",
+      "httpMethod": "get",
+      "description": "View accounts matching certain criteria for filtering, up to 100 at a time. Pagination may be done with the HTTP Link header in the response.",
+      "parameters": [
+        {
+          "name": "local",
+          "schema": "boolean",
+          "description": "Filter for local accounts?"
+        },
+        {
+          "name": "remote",
+          "schema": "boolean",
+          "description": "Filter for remote accounts?"
+        },
+        {
+          "name": "by_domain",
+          "schema": "string",
+          "description": "Filter by the given domain"
+        },
+        {
+          "name": "active",
+          "schema": "boolean",
+          "description": "Filter for currently active accounts?"
+        },
+        {
+          "name": "pending",
+          "schema": "boolean",
+          "description": "Filter for currently pending accounts?"
+        },
+        {
+          "name": "disabled",
+          "schema": "boolean",
+          "description": "Filter for currently disabled accounts?"
+        },
+        {
+          "name": "silenced",
+          "schema": "boolean",
+          "description": "Filter for currently silenced accounts?"
+        },
+        {
+          "name": "suspended",
+          "schema": "boolean",
+          "description": "Filter for currently suspended accounts?"
+        },
+        {
+          "name": "staff",
+          "schema": "boolean",
+          "description": "Filter for staff accounts?"
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "description": "Username to search for"
+        },
+        {
+          "name": "display_name",
+          "schema": "string",
+          "description": "Display name to search for"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": "Lookup a user with this email"
+        },
+        {
+          "name": "ip",
+          "schema": "string",
+          "description": "Lookup a user with this IP"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/admin/accounts/{id}",
+      "method": "/api/v1/admin/accounts/{id}Get",
+      "httpMethod": "get",
+      "description": "View admin-level information about the given account.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Admin-level information about a given account."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/admin/accounts/{id}/action",
+      "method": "/api/v1/admin/accounts/{id}/actionPost",
+      "httpMethod": "post",
+      "description": "Perform an action against an account and log this action in the moderation history.",
+      "parameters": [
+        {
+          "name": "report_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "send_email_notification",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "text",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "warning_preset_id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/admin/accounts/{id}/approve",
+      "method": "/api/v1/admin/accounts/{id}/approvePost",
+      "httpMethod": "post",
+      "description": "Approve the given local account if it is currently pending approval.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/admin/accounts/{id}/enable",
+      "method": "/api/v1/admin/accounts/{id}/enablePost",
+      "httpMethod": "post",
+      "description": "Re-enable a local account whose login is currently disabled.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/admin/accounts/{id}/reject",
+      "method": "/api/v1/admin/accounts/{id}/rejectPost",
+      "httpMethod": "post",
+      "description": "Reject the given local account if it is currently pending approval.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/admin/accounts/{id}/unsilence",
+      "method": "/api/v1/admin/accounts/{id}/unsilencePost",
+      "httpMethod": "post",
+      "description": "Unsilence a currently silenced account.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/admin/accounts/{id}/unsuspend",
+      "method": "/api/v1/admin/accounts/{id}/unsuspendPost",
+      "httpMethod": "post",
+      "description": "Unsuspend a currently suspended account.",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/admin/reports",
+      "method": "/api/v1/admin/reportsGet",
+      "httpMethod": "get",
+      "description": "View all reports. Pagination may be done with HTTP Link header in the response.",
+      "parameters": [
+        {
+          "name": "resolved",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "account_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "target_account_id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/admin/reports/{id}",
+      "method": "/api/v1/admin/reports/{id}Get",
+      "httpMethod": "get",
+      "description": "View information about the report with the given ID.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Admin-level information about a filed report."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/admin/reports/{id}/assign_to_self",
+      "method": "/api/v1/admin/reports/{id}/assignToSelfPost",
+      "httpMethod": "post",
+      "description": "Claim the handling of this report to yourself.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Admin-level information about a filed report."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/admin/reports/{id}/reopen",
+      "method": "/api/v1/admin/reports/{id}/reopenPost",
+      "httpMethod": "post",
+      "description": "Mark a report as resolved with no further action taken.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Admin-level information about a filed report."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/admin/reports/{id}/resolve",
+      "method": "/api/v1/admin/reports/{id}/resolvePost",
+      "httpMethod": "post",
+      "description": "Mark a report as resolved with no further action taken.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Admin-level information about a filed report."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/admin/reports/{id}/unassign",
+      "method": "/api/v1/admin/reports/{id}/unassignPost",
+      "httpMethod": "post",
+      "description": "Unassign a report so that someone else can claim it.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Admin-level information about a filed report."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/announcements",
+      "method": "/api/v1/announcementsGet",
+      "httpMethod": "get",
+      "description": "See all currently active announcements set by admins.",
+      "parameters": [
+        {
+          "name": "with_dismissed",
+          "schema": "boolean",
+          "description": "If true, response will include announcements dismissed by the user. Defaults to false."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/announcements/{id}/dismiss",
+      "method": "/api/v1/announcements/{id}/dismissPost",
+      "httpMethod": "post",
+      "description": "Allows a user to mark the announcement as read.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/announcements/{id}/reactions/{name}",
+      "method": "/api/v1/announcements/{id}/reactions/{name}Delete",
+      "httpMethod": "delete",
+      "description": "Undo a react emoji to an announcement.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/announcements/{id}/reactions/{name}",
+      "method": "/api/v1/announcements/{id}/reactions/{name}Put",
+      "httpMethod": "put",
+      "description": "Allows a user to mark the announcement as read.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/apps",
+      "method": "/api/v1/appsPost",
+      "httpMethod": "post",
+      "tag": "apps",
+      "description": "Create a new application to obtain OAuth2 credentials.",
+      "parameters": [
+        {
+          "name": "client_name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "redirect_uris",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "scopes",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "website",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/apps/verify_credentials",
+      "method": "/api/v1/apps/verifyCredentialsGet",
+      "httpMethod": "get",
+      "tag": "apps",
+      "description": "Confirm that the app's OAuth2 credentials work.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents an application that interfaces with the REST API to access accounts or post statuses."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/blocks",
+      "method": "/api/v1/blocksGet",
+      "httpMethod": "get",
+      "description": "Get blocked users.",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "max_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "since_id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/bookmarks",
+      "method": "/api/v1/bookmarksGet",
+      "httpMethod": "get",
+      "description": "Statuses the user has bookmarked.",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "max_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "since_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "min_id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/conversations",
+      "method": "/api/v1/conversationsGet",
+      "httpMethod": "get",
+      "description": "Show conversation.",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Max number of results to return. Defaults to 20."
+        },
+        {
+          "name": "max_id",
+          "schema": "string",
+          "description": "Return results older than ID"
+        },
+        {
+          "name": "since_id",
+          "schema": "string",
+          "description": "Return results newer than ID"
+        },
+        {
+          "name": "min_id",
+          "schema": "string",
+          "description": "Return results immediately newer than ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/conversations/{id}",
+      "method": "/api/v1/conversations/{id}Delete",
+      "httpMethod": "delete",
+      "description": "Remove converstation",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/conversations/{id}/read",
+      "method": "/api/v1/conversations/{id}/readPost",
+      "httpMethod": "post",
+      "description": "Remove converstation",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a conversation with \"direct message\" visibility."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/custom_emojis",
+      "method": "/api/v1/customEmojisGet",
+      "httpMethod": "get",
+      "description": "Returns custom emojis that are available on the server.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/directory",
+      "method": "/api/v1/directoryGet",
+      "httpMethod": "get",
+      "description": "List accounts visible in the directory.",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "How many accounts to load. Default 40."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "How many accounts to skip before returning results. Default 0."
+        },
+        {
+          "name": "order",
+          "schema": "string",
+          "description": "the `active` to sort by most recently posted statuses (default) or `new` to sort by most recently created profiles."
+        },
+        {
+          "name": "local",
+          "schema": "boolean",
+          "description": "Only return local accounts."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/domain_blocks",
+      "method": "/api/v1/domainBlocksDelete",
+      "httpMethod": "delete",
+      "description": "Remove a domain block, if it exists in the user's array of blocked domains.",
+      "parameters": [
+        {
+          "name": "domain",
+          "schema": "string",
+          "required": true,
+          "description": "Domain to unblock."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "422",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/domain_blocks",
+      "method": "/api/v1/domainBlocksGet",
+      "httpMethod": "get",
+      "description": "View domains the user has blocked.",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "max_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "since_id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/domain_blocks",
+      "method": "/api/v1/domainBlocksPost",
+      "httpMethod": "post",
+      "description": "\"Block a domain to:\n- hide all public posts from it\n- hide all notifications from it\n- remove all followers from it\n- prevent following new users from it (but does not remove existing follows)\"\n",
+      "parameters": [
+        {
+          "name": "domain",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "422",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/endorsements",
+      "method": "/api/v1/endorsementsGet",
+      "httpMethod": "get",
+      "description": "Accounts that the user is currently featuring on their profile.",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Maximum number of results to return. Defaults to 40. Paginate using the HTTP Link header."
+        },
+        {
+          "name": "max_id",
+          "schema": "string",
+          "description": "Internal parameter. Use HTTP Link header from response for pagination"
+        },
+        {
+          "name": "since_id",
+          "schema": "string",
+          "description": "Internal parameter. Use HTTP Link header from response for pagination."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/favourites",
+      "method": "/api/v1/favouritesGet",
+      "httpMethod": "get",
+      "description": "Statuses the user has favourited.",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "max_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "min_id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/featured_tags",
+      "method": "/api/v1/featuredTagsGet",
+      "httpMethod": "get",
+      "description": "View your featured tags.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/featured_tags",
+      "method": "/api/v1/featuredTagsPost",
+      "httpMethod": "post",
+      "description": "Create a feature a tag.",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a hashtag that is featured on a profile."
+        },
+        {
+          "statusCode": "422",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/featured_tags/suggestions",
+      "method": "/api/v1/featuredTags/suggestionsGet",
+      "httpMethod": "get",
+      "description": "Shows your 10 most-used tags, with usage history for the past week.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/featured_tags/{id}",
+      "method": "/api/v1/featuredTags/{id}Delete",
+      "httpMethod": "delete",
+      "description": "Unfeature a tag",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/filters",
+      "method": "/api/v1/filtersGet",
+      "httpMethod": "get",
+      "description": "",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/filters",
+      "method": "/api/v1/filtersPost",
+      "httpMethod": "post",
+      "description": "",
+      "parameters": [
+        {
+          "name": "context",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "expires_in",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "irreversible",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "phrase",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "whole_word",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a user-defined filter for determining which statuses should not be shown to the user."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "422",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/filters/{id}",
+      "method": "/api/v1/filters/{id}Delete",
+      "httpMethod": "delete",
+      "description": "Delete a filter.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/filters/{id}",
+      "method": "/api/v1/filters/{id}Get",
+      "httpMethod": "get",
+      "description": "Get one filter.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a user-defined filter for determining which statuses should not be shown to the user."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/filters/{id}",
+      "method": "/api/v1/filters/{id}Put",
+      "httpMethod": "put",
+      "description": "Update a filter.",
+      "parameters": [
+        {
+          "name": "context",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "expires_in",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "irreversible",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "phrase",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "whole_word",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a user-defined filter for determining which statuses should not be shown to the user."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "422",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/follow_requests",
+      "method": "/api/v1/followRequestsGet",
+      "httpMethod": "get",
+      "description": "Pending Follows",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Maximum number of results to return. Defaults to 40. Paginate using the HTTP Link header."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/follow_requests/{id}/authorize",
+      "method": "/api/v1/followRequests/{id}/authorizePost",
+      "httpMethod": "post",
+      "description": "Accept Follow",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents the relationship between accounts, such as following / blocking / muting / etc."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/follow_requests/{id}/reject",
+      "method": "/api/v1/followRequests/{id}/rejectPost",
+      "httpMethod": "post",
+      "description": "Accept Follow",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents the relationship between accounts, such as following / blocking / muting / etc."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/instance",
+      "method": "/api/v1/instanceGet",
+      "httpMethod": "get",
+      "description": "Information about the server.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents the software instance of Mastodon running on this domain."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/instance/activity",
+      "method": "/api/v1/instance/activityGet",
+      "httpMethod": "get",
+      "description": "Instance activity over the last 3 months, binned weekly.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/instance/peers",
+      "method": "/api/v1/instance/peersGet",
+      "httpMethod": "get",
+      "description": "Information about the server.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/lists",
+      "method": "/api/v1/listsDelete",
+      "httpMethod": "delete",
+      "description": "Delete a list",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/lists",
+      "method": "/api/v1/listsGet",
+      "httpMethod": "get",
+      "description": "Fetch all lists that the user owns.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/lists",
+      "method": "/api/v1/listsPost",
+      "httpMethod": "post",
+      "description": "Create a new list.",
+      "parameters": [
+        {
+          "name": "replies_policy",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a list of some users that the authenticated user follows."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/lists",
+      "method": "/api/v1/listsPut",
+      "httpMethod": "put",
+      "description": "Change the title of a list, or which replies to show.",
+      "parameters": [
+        {
+          "name": "replies_policy",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a list of some users that the authenticated user follows."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "422",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/lists/{id}",
+      "method": "/api/v1/lists/{id}Get",
+      "httpMethod": "get",
+      "description": "Remove converstation",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a list of some users that the authenticated user follows."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/lists/{id}/accounts",
+      "method": "/api/v1/lists/{id}/accountsDelete",
+      "httpMethod": "delete",
+      "description": "Remove accounts from the given list.",
+      "parameters": [
+        {
+          "name": "account_ids",
+          "schema": "array",
+          "required": true,
+          "description": "Array of account IDs to add to the list."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "422",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/lists/{id}/accounts",
+      "method": "/api/v1/lists/{id}/accountsGet",
+      "httpMethod": "get",
+      "description": "View accounts in List",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Maximum number of results. Defaults to 40. Max 40. Set to 0 in order to get all accounts without pagination. Pagination is done with the HTTP Link header."
+        },
+        {
+          "name": "max_id",
+          "schema": "string",
+          "description": "Return results older than ID"
+        },
+        {
+          "name": "since_id",
+          "schema": "string",
+          "description": "Return results newer than ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/lists/{id}/accounts",
+      "method": "/api/v1/lists/{id}/accountsPost",
+      "httpMethod": "post",
+      "description": "Add accounts to the given list. Note that the user must be following these accounts.",
+      "parameters": [
+        {
+          "name": "account_ids",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "422",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/markers",
+      "method": "/api/v1/markersGet",
+      "httpMethod": "get",
+      "description": "Get saved timeline position",
+      "parameters": [
+        {
+          "name": "timeline",
+          "schema": "array",
+          "required": true,
+          "description": "Array of markers to fetch. String enum anyOf home, notifications. If not provided, an empty object will be returned."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/markers",
+      "method": "/api/v1/markersPost",
+      "httpMethod": "post",
+      "description": "Get saved timeline position",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "409",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/media",
+      "method": "/api/v1/mediaPost",
+      "httpMethod": "post",
+      "description": "Creates an attachment to be used with a new status.",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "file",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "focus",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "thumbnail",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a file or media attachment that can be added to a status."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "422",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/media/{id}",
+      "method": "/api/v1/media/{id}Get",
+      "httpMethod": "get",
+      "description": "Get an attachement.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a file or media attachment that can be added to a status."
+        },
+        {
+          "statusCode": "206",
+          "description": "Represents a file or media attachment that can be added to a status."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "422",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/media/{id}",
+      "method": "/api/v1/media/{id}Post",
+      "httpMethod": "post",
+      "description": "Update an Attachment, before it is attached to a status and posted.",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "file",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "focus",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "thumbnail",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a file or media attachment that can be added to a status."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "422",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/mutes",
+      "method": "/api/v1/mutesGet",
+      "httpMethod": "get",
+      "description": "Accounts the user has muted.",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "max_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "since_id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/notifications",
+      "method": "/api/v1/notificationsGet",
+      "httpMethod": "get",
+      "description": "Notifications concerning the user. This API returns Link headers containing links to the next/previous page. However, the links can also be constructed dynamically using query params and id values.",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Max number of results to return. Defaults to 20."
+        },
+        {
+          "name": "max_id",
+          "schema": "string",
+          "description": "Return results older than ID"
+        },
+        {
+          "name": "since_id",
+          "schema": "string",
+          "description": "Return results newer than ID"
+        },
+        {
+          "name": "min_id",
+          "schema": "string",
+          "description": "Return results immediately newer than ID"
+        },
+        {
+          "name": "exclude_types",
+          "schema": "array",
+          "description": "Array of types to exclude (follow, favourite, reblog, mention, poll, follow_request)"
+        },
+        {
+          "name": "account_id",
+          "schema": "string",
+          "description": "Return only notifications received from this account"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/notifications/clear",
+      "method": "/api/v1/notifications/clearPost",
+      "httpMethod": "post",
+      "description": "Clear all notifications from the server.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/notifications/{id}",
+      "method": "/api/v1/notifications/{id}Get",
+      "httpMethod": "get",
+      "description": "View information about a notification with a given ID.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a notification of an event relevant to the user."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/notifications/{id}/dismiss",
+      "method": "/api/v1/notifications/{id}/dismissPost",
+      "httpMethod": "post",
+      "description": "Clear a single notification from the server.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a notification of an event relevant to the user."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/polls/{id}",
+      "method": "/api/v1/polls/{id}Get",
+      "httpMethod": "get",
+      "description": "View a poll.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a poll attached to a status."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/polls/{id}",
+      "method": "/api/v1/polls/{id}Post",
+      "httpMethod": "post",
+      "description": "Vote on a poll.",
+      "parameters": [
+        {
+          "name": "choices",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a poll attached to a status."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "422",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/preferences",
+      "method": "/api/v1/preferencesGet",
+      "httpMethod": "get",
+      "description": "Shows your 10 most-used tags, with usage history for the past week.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a user's preferences."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/push/subscription",
+      "method": "/api/v1/push/subscriptionDelete",
+      "httpMethod": "delete",
+      "description": "Updates the current push subscription. Only the data part can be updated. To change fundamentals, a new subscription must be created instead.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/push/subscription",
+      "method": "/api/v1/push/subscriptionGet",
+      "httpMethod": "get",
+      "description": "View the PushSubscription currently associated with this access token.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a subscription to the push streaming server."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/push/subscription",
+      "method": "/api/v1/push/subscriptionPost",
+      "httpMethod": "post",
+      "description": "Add a Web Push API subscription to receive notifications. Each access token can have one push subscription. If you create a new subscription, the old subscription is deleted.",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "subscription",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a subscription to the push streaming server."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/push/subscription",
+      "method": "/api/v1/push/subscriptionPut",
+      "httpMethod": "put",
+      "description": "Updates the current push subscription. Only the data part can be updated. To change fundamentals, a new subscription must be created instead.",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a subscription to the push streaming server."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/reports",
+      "method": "/api/v1/reportsPost",
+      "httpMethod": "post",
+      "description": "File a report.",
+      "parameters": [
+        {
+          "name": "account_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "comment",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "forward",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "status_ids",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Reports filed against users and/or statuses, to be taken action on by moderators."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/scheduled_statuses",
+      "method": "/api/v1/scheduledStatusesGet",
+      "httpMethod": "get",
+      "description": "View scheduled statuses",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Max number of results to return. Defaults to 20."
+        },
+        {
+          "name": "max_id",
+          "schema": "string",
+          "description": "Return results older than ID"
+        },
+        {
+          "name": "since_id",
+          "schema": "string",
+          "description": "Return results newer than ID"
+        },
+        {
+          "name": "min_id",
+          "schema": "string",
+          "description": "Return results immediately newer than ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/scheduled_statuses/{id}",
+      "method": "/api/v1/scheduledStatuses/{id}Delete",
+      "httpMethod": "delete",
+      "description": "Cancel a scheduled status",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/scheduled_statuses/{id}",
+      "method": "/api/v1/scheduledStatuses/{id}Get",
+      "httpMethod": "get",
+      "description": "View a single scheduled status",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a status that will be published at a future scheduled date."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/scheduled_statuses/{id}",
+      "method": "/api/v1/scheduledStatuses/{id}Put",
+      "httpMethod": "put",
+      "description": "View a single scheduled status",
+      "parameters": [
+        {
+          "name": "scheduled_at",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a status that will be published at a future scheduled date."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "422",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/statuses",
+      "method": "/api/v1/statusesPost",
+      "httpMethod": "post",
+      "description": "",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/statuses/{id}",
+      "method": "/api/v1/statuses/{id}Delete",
+      "httpMethod": "delete",
+      "description": "",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a status posted by an account."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/statuses/{id}",
+      "method": "/api/v1/statuses/{id}Get",
+      "httpMethod": "get",
+      "description": "",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a status posted by an account."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/statuses/{id}/bookmark",
+      "method": "/api/v1/statuses/{id}/bookmarkPost",
+      "httpMethod": "post",
+      "description": "Privately bookmark a status.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a status posted by an account."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/statuses/{id}/context",
+      "method": "/api/v1/statuses/{id}/contextGet",
+      "httpMethod": "get",
+      "description": "",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents the tree around a given status. Used for reconstructing threads of statuses."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/statuses/{id}/favourite",
+      "method": "/api/v1/statuses/{id}/favouritePost",
+      "httpMethod": "post",
+      "description": "Add a status to your favourites list.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a status posted by an account."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/statuses/{id}/favourited_by",
+      "method": "/api/v1/statuses/{id}/favouritedByGet",
+      "httpMethod": "get",
+      "description": "View who favourited a given status.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a user of Mastodon and their associated profile."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/statuses/{id}/mute",
+      "method": "/api/v1/statuses/{id}/mutePost",
+      "httpMethod": "post",
+      "description": "Do not receive notifications for the thread that this status is part of. Must be a thread in which you are a participant.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a status posted by an account."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/statuses/{id}/pin",
+      "method": "/api/v1/statuses/{id}/pinPost",
+      "httpMethod": "post",
+      "description": "Feature one of your own public statuses at the top of your profile.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a status posted by an account."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "422",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/statuses/{id}/reblog",
+      "method": "/api/v1/statuses/{id}/reblogPost",
+      "httpMethod": "post",
+      "description": "Reshare a status.",
+      "parameters": [
+        {
+          "name": "visibility",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a status posted by an account."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/statuses/{id}/reblogged_by",
+      "method": "/api/v1/statuses/{id}/rebloggedByGet",
+      "httpMethod": "get",
+      "description": "View who boosted a given status.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a user of Mastodon and their associated profile."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/statuses/{id}/unbookmark",
+      "method": "/api/v1/statuses/{id}/unbookmarkPost",
+      "httpMethod": "post",
+      "description": "Remove a status from your private bookmarks.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a status posted by an account."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/statuses/{id}/unfavourite",
+      "method": "/api/v1/statuses/{id}/unfavouritePost",
+      "httpMethod": "post",
+      "description": "Remove a status from your favourites list.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a status posted by an account."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/statuses/{id}/unmute",
+      "method": "/api/v1/statuses/{id}/unmutePost",
+      "httpMethod": "post",
+      "description": "Status's conversation unmuted, or was already unmuted",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a status posted by an account."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/statuses/{id}/unpin",
+      "method": "/api/v1/statuses/{id}/unpinPost",
+      "httpMethod": "post",
+      "description": "Unfeature a status from the top of your profile.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a status posted by an account."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/statuses/{id}/unreblog",
+      "method": "/api/v1/statuses/{id}/unreblogPost",
+      "httpMethod": "post",
+      "description": "Undo a reshare of a status.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a status posted by an account."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "404",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/suggestions",
+      "method": "/api/v1/suggestionsGet",
+      "httpMethod": "get",
+      "description": "Accounts the user has had past positive interactions with, but is not yet following.",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Maximum number of results to return. Defaults to 40."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Represents a user of Mastodon and their associated profile."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/suggestions/{id}",
+      "method": "/api/v1/suggestions/{id}Delete",
+      "httpMethod": "delete",
+      "description": "Delete user suggestion",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/timelines/home",
+      "method": "/api/v1/timelines/homeGet",
+      "httpMethod": "get",
+      "description": "View statuses from followed users.",
+      "parameters": [
+        {
+          "name": "local",
+          "schema": "boolean",
+          "description": "Show only local statuses? Defaults to false."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Max number of results to return. Defaults to 20."
+        },
+        {
+          "name": "max_id",
+          "schema": "string",
+          "description": "Return results older than ID"
+        },
+        {
+          "name": "since_id",
+          "schema": "string",
+          "description": "Return results newer than ID"
+        },
+        {
+          "name": "min_id",
+          "schema": "string",
+          "description": "Return results immediately newer than ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/timelines/list/{list_id}",
+      "method": "/api/v1/timelines/list/{listId}Get",
+      "httpMethod": "get",
+      "description": "View statuses in the given list timeline.",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Max number of results to return. Defaults to 20."
+        },
+        {
+          "name": "max_id",
+          "schema": "string",
+          "description": "Return results older than ID"
+        },
+        {
+          "name": "since_id",
+          "schema": "string",
+          "description": "Return results newer than ID"
+        },
+        {
+          "name": "min_id",
+          "schema": "string",
+          "description": "Return results immediately newer than ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/timelines/public",
+      "method": "/api/v1/timelines/publicGet",
+      "httpMethod": "get",
+      "description": "Public timeline",
+      "parameters": [
+        {
+          "name": "local",
+          "schema": "boolean",
+          "description": "Show only local statuses? Defaults to false."
+        },
+        {
+          "name": "remote",
+          "schema": "boolean",
+          "description": "Show only local statuses? Defaults to false."
+        },
+        {
+          "name": "only_media",
+          "schema": "boolean",
+          "description": "Show only statuses with media attached? Defaults to false.."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Max number of results to return. Defaults to 20."
+        },
+        {
+          "name": "max_id",
+          "schema": "string",
+          "description": "Return results older than ID"
+        },
+        {
+          "name": "since_id",
+          "schema": "string",
+          "description": "Return results newer than ID"
+        },
+        {
+          "name": "min_id",
+          "schema": "string",
+          "description": "Return results immediately newer than ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/timelines/tag/{hashtag}",
+      "method": "/api/v1/timelines/tag/{hashtag}Get",
+      "httpMethod": "get",
+      "description": "View public statuses containing the given hashtag.",
+      "parameters": [
+        {
+          "name": "local",
+          "schema": "boolean",
+          "description": "Show only local statuses? Defaults to false."
+        },
+        {
+          "name": "remote",
+          "schema": "boolean",
+          "description": "Show only local statuses? Defaults to false."
+        },
+        {
+          "name": "only_media",
+          "schema": "boolean",
+          "description": "Show only statuses with media attached? Defaults to false.."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Max number of results to return. Defaults to 20."
+        },
+        {
+          "name": "max_id",
+          "schema": "string",
+          "description": "Return results older than ID"
+        },
+        {
+          "name": "since_id",
+          "schema": "string",
+          "description": "Return results newer than ID"
+        },
+        {
+          "name": "min_id",
+          "schema": "string",
+          "description": "Return results immediately newer than ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/trends",
+      "method": "/api/v1/trendsGet",
+      "httpMethod": "get",
+      "description": "Tags that are being used more frequently within the past week.",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Max number of results to return. Defaults to 10."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/search",
+      "method": "/api/v2/searchGet",
+      "httpMethod": "get",
+      "description": "Search results",
+      "parameters": [
+        {
+          "name": "q",
+          "schema": "string",
+          "required": true,
+          "description": "What to search for"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Maximum number of results. Defaults to 40."
+        },
+        {
+          "name": "resolve",
+          "schema": "string",
+          "description": "Attempt WebFinger lookup."
+        },
+        {
+          "name": "following",
+          "schema": "boolean",
+          "description": "Only who the user is following. Defaults to false."
+        },
+        {
+          "name": "account_id",
+          "schema": "string",
+          "description": "If provided, statuses returned will be authored only by this account"
+        },
+        {
+          "name": "max_id",
+          "schema": "string",
+          "description": "Return results older than this id"
+        },
+        {
+          "name": "min_id",
+          "schema": "string",
+          "description": "Return results immediately newer than this id"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": "Enum(accounts, hashtags, statuses)"
+        },
+        {
+          "name": "exclude_unreviewed",
+          "schema": "boolean",
+          "description": "Filter out unreviewed tags? Defaults to false. Use true when trying to find trending tags."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Offset in search results. Used for pagination. Defaults to 0."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/oauth/authorize",
+      "method": "/oauth/authorizeGet",
+      "httpMethod": "get",
+      "tag": "oauth",
+      "description": "Displays an authorization form to the user. If approved, it will create and return an authorization code, then redirect to the desired redirect_uri, or show the authorization code if urn:ietf:wg:oauth:2.0:oob was requested. The authorization code can be used while requesting a token to obtain access to user-level methods.",
+      "parameters": [
+        {
+          "name": "response_type",
+          "schema": "string",
+          "required": true,
+          "description": "Should be set equal to code."
+        },
+        {
+          "name": "client_id",
+          "schema": "string",
+          "required": true,
+          "description": "Client ID, obtained during app registration."
+        },
+        {
+          "name": "redirect_uri",
+          "schema": "string",
+          "required": true,
+          "description": "Set a URI to redirect the user to. If this parameter is set to urn:ietf:wg:oauth:2.0:oob then the authorization code will be shown instead. Must match one of the redirect URIs declared during app registration."
+        },
+        {
+          "name": "scope",
+          "schema": "string",
+          "description": "List of requested OAuth scopes, separated by spaces (or by pluses, if using query parameters). Must be a subset of scopes declared during app registration. If not provided, defaults to read."
+        },
+        {
+          "name": "force_login",
+          "schema": "boolean",
+          "description": "Added in 2.6.0. Forces the user to re-login, which is necessary for authorizing with multiple accounts from the same instance."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/oauth/revoke",
+      "method": "/oauth/revokePost",
+      "httpMethod": "post",
+      "tag": "oauth",
+      "description": "Revoke an access token to make it no longer valid for use.",
+      "parameters": [
+        {
+          "name": "client_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "client_secret",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": "Represents an error message."
+        }
+      ]
+    },
+    {
+      "url": "/oauth/token",
+      "method": "/oauth/tokenPost",
+      "httpMethod": "post",
+      "tag": "oauth",
+      "description": "Returns an access token, to be used during API calls that are not public.",
+      "parameters": [
+        {
+          "name": "client_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "client_secret",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "code",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "grant_type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "redirect_uri",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "scopes",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "Represents an error message."
+        },
+        {
+          "statusCode": "401",
+          "description": "Represents an error message."
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://mastodon.local",
   "apiTitle": "Mastodon API Specification (https://github.com/mastodon/mastodon)",
   "endpoints": 106,

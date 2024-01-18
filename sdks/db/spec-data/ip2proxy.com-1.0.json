@@ -3,6 +3,44 @@
   "openApiRaw": "https://api.swaggerhub.com/apis/ip2location/ip2proxy-proxy-detection/1.0",
   "homepage": "ip2proxy.com",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/",
+      "method": "/Get",
+      "httpMethod": "get",
+      "description": "Check if an IP address is proxy",
+      "parameters": [
+        {
+          "name": "package",
+          "schema": "string",
+          "description": "Package name from PX1 to PX11. If not present, the web service will assume the PX1 package query."
+        },
+        {
+          "name": "ip",
+          "schema": "string",
+          "required": true,
+          "description": "IP address (IPv4) for lookup purpose. If not present, the server IP address will be used for the lookup."
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "description": "If not present, json format will be returned as the search result."
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": "API key. Please sign up free trial license key at ip2location.com"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.ip2proxy.com",
   "apiDescription": "IP2Proxy allows instant detection of anonymous proxy, VPN, TOR exit nodes, search engine robots (SES), data center ranges (PX2-PX10), residential proxies (PX10) and VPN provider name (PX11) by IP address. It also returns the threat type of the proxy (PX9 or higher). Visit https://www.ip2location.com/web-service/ip2proxy for further information.",
   "apiTitle": "IP2Proxy Proxy Detection",

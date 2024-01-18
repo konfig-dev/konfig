@@ -3,6 +3,3939 @@
   "openApiRaw": "https://intellifi-nl.github.io/brain-rest-api-spec/openapi.yml",
   "homepage": "intellifi.nl",
   "apiVersion": "2.23.4+0.gb463b49.dirty",
+  "methods": [
+    {
+      "url": "/authinfo",
+      "method": "getAuthinfo",
+      "httpMethod": "get",
+      "tag": "authinfo",
+      "description": "Authentication information",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/blobs",
+      "method": "getBlobs",
+      "httpMethod": "get",
+      "tag": "blobs",
+      "description": "Get all binary large objects (blob)",
+      "parameters": [
+        {
+          "name": "after",
+          "schema": "string",
+          "description": "Limits on `time_created`, Marks the start of a range, optionally use `before` to set the end. Result output excludes the given timestamp."
+        },
+        {
+          "name": "after_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the start of a range, optionally use `before_id` to set the end. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "before",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `after` to set the start. Result output excludes the given timestamp."
+        },
+        {
+          "name": "before_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the end of a range, optionally use `after_id` to set the start. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the start of a range, optionally use `until` to set the end. Result output includes the given timestamp."
+        },
+        {
+          "name": "from_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the start of a range, optionally use `until_id` to set the end. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "id_only",
+          "schema": "boolean",
+          "description": "Removes `url` fields from output and shows `_id` instead of `_url` in references."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Sets the maximum number of returned resources. You may increase this number to large values, keep in mind that query times could become large. We advise you to use the pagination feature whenever you can."
+        },
+        {
+          "name": "populate",
+          "schema": "string",
+          "description": "Expand a reference into the actual resource (lookup). You may add multiple fields by giving a comma separated value."
+        },
+        {
+          "name": "results_only",
+          "schema": "boolean",
+          "description": "Removes response envelope with information about query, only sends back a JSON array with the applicable resources."
+        },
+        {
+          "name": "select",
+          "schema": "string",
+          "description": "Select which properties should be returned. You may add multiple fields by giving a comma separated value. Select can also be used together with populate: Specify the resource first, then a period(.) followed by the field."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Allows you to sort on on or more fields in the resource. You may append a minus sign (`-`) to request reverse order (new to old)."
+        },
+        {
+          "name": "until",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `from` to set the start. Result output includes the given timestamp."
+        },
+        {
+          "name": "until_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the end of a range, optionally use `from_id` to set the start. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "timeout_s",
+          "schema": "number",
+          "description": "Overrides the default query timeout (in seconds). A value of 0 means unlimited. IMPORTANT: using high timeouts in production code is strongly discouraged as it may lead to stability issues."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": "Unique identifier"
+        },
+        {
+          "name": "time_created",
+          "schema": "string",
+          "description": "Filter on the time the resource was created."
+        },
+        {
+          "name": "time_updated",
+          "schema": "string",
+          "description": "Filter on the time the resource was last updated"
+        },
+        {
+          "name": "hash",
+          "schema": "string",
+          "description": "Filter based on the hash of the blob."
+        },
+        {
+          "name": "blob_key",
+          "schema": "string",
+          "description": "Filter based on the unique blob_key"
+        },
+        {
+          "name": "content_type",
+          "schema": "string",
+          "description": "Filter based on the content type of the blob."
+        },
+        {
+          "name": "filename",
+          "schema": "string",
+          "description": "Filter based on the filename of the blob."
+        },
+        {
+          "name": "time_last_accessed",
+          "schema": "string",
+          "description": "Filter based on the last time the blob was accessed"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/blobs",
+      "method": "addBlob",
+      "httpMethod": "post",
+      "tag": "blobs",
+      "description": "Create binary large object (blob) metadata",
+      "parameters": [
+        {
+          "name": "blob_key",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "content_type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "download_url",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "filename",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "hash",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "time_created",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "time_last_accessed",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "time_updated",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "upload_url",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/blobs/{id}",
+      "method": "deleteBlob",
+      "httpMethod": "delete",
+      "tag": "blobs",
+      "description": "Delete binary large object (blob)",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/blobs/{id}",
+      "method": "getBlobMetadataById",
+      "httpMethod": "get",
+      "tag": "blobs",
+      "description": "Get binary large object (blob)",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/blobs/{id}/download/{filename}",
+      "method": "getBlobById",
+      "httpMethod": "get",
+      "tag": "blobs",
+      "description": "Download a binary large object (blob)",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        },
+        {
+          "name": "filename",
+          "schema": "string",
+          "required": true,
+          "description": "Filename of the blob."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/blobs/{id}/upload",
+      "method": "uploadBlobById",
+      "httpMethod": "post",
+      "tag": "blobs",
+      "description": "Create binary large object (blob)",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        },
+        {
+          "name": "file",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/events",
+      "method": "getEvents",
+      "httpMethod": "get",
+      "tag": "events",
+      "description": "Get all events",
+      "parameters": [
+        {
+          "name": "after",
+          "schema": "string",
+          "description": "Limits on `time_created`, Marks the start of a range, optionally use `before` to set the end. Result output excludes the given timestamp."
+        },
+        {
+          "name": "after_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the start of a range, optionally use `before_id` to set the end. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "before",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `after` to set the start. Result output excludes the given timestamp."
+        },
+        {
+          "name": "before_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the end of a range, optionally use `after_id` to set the start. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the start of a range, optionally use `until` to set the end. Result output includes the given timestamp."
+        },
+        {
+          "name": "from_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the start of a range, optionally use `until_id` to set the end. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "id_only",
+          "schema": "boolean",
+          "description": "Removes `url` fields from output and shows `_id` instead of `_url` in references."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Sets the maximum number of returned resources. You may increase this number to large values, keep in mind that query times could become large. We advise you to use the pagination feature whenever you can."
+        },
+        {
+          "name": "populate",
+          "schema": "string",
+          "description": "Expand a reference into the actual resource (lookup). You may add multiple fields by giving a comma separated value."
+        },
+        {
+          "name": "results_only",
+          "schema": "boolean",
+          "description": "Removes response envelope with information about query, only sends back a JSON array with the applicable resources."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Allows you to sort on on or more fields in the resource. You may append a minus sign (`-`) to request reverse order (new to old)."
+        },
+        {
+          "name": "until",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `from` to set the start. Result output includes the given timestamp."
+        },
+        {
+          "name": "until_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the end of a range, optionally use `from_id` to set the start. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "timeout_s",
+          "schema": "number",
+          "description": "Overrides the default query timeout (in seconds). A value of 0 means unlimited. IMPORTANT: using high timeouts in production code is strongly discouraged as it may lead to stability issues."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": "Unique identifier"
+        },
+        {
+          "name": "time_created",
+          "schema": "string",
+          "description": "Filter on the time the resource was created."
+        },
+        {
+          "name": "topic.resource_type",
+          "schema": "string",
+          "description": "Filter on the topic resource type"
+        },
+        {
+          "name": "topic.action",
+          "schema": "string",
+          "description": "Filter on the topic action"
+        },
+        {
+          "name": "topic.resource",
+          "schema": "string",
+          "description": "Filter on the topic resource id"
+        },
+        {
+          "name": "time_event",
+          "schema": "string",
+          "description": "Filter on the time the event was generated on the device."
+        },
+        {
+          "name": "time_expire",
+          "schema": "string",
+          "description": "Filter on the time the event will expire."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/events/{id}",
+      "method": "getEventById",
+      "httpMethod": "get",
+      "tag": "events",
+      "description": "Get event",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/items",
+      "method": "getItems",
+      "httpMethod": "get",
+      "tag": "items",
+      "description": "Get all items",
+      "parameters": [
+        {
+          "name": "after",
+          "schema": "string",
+          "description": "Limits on `time_created`, Marks the start of a range, optionally use `before` to set the end. Result output excludes the given timestamp."
+        },
+        {
+          "name": "after_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the start of a range, optionally use `before_id` to set the end. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "after_code",
+          "schema": "string",
+          "description": "Limits directly on `code_hex`. Marks the start of a range, optionally use `before_code` to set the end. Result output excludes the given `code_hex` value."
+        },
+        {
+          "name": "before",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `after` to set the start. Result output excludes the given timestamp."
+        },
+        {
+          "name": "before_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the end of a range, optionally use `after_id` to set the start. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "before_code",
+          "schema": "string",
+          "description": "Limits directly on `code_hex`. Marks the end of a range, optionally use `after_code` to set the start. Result output excludes the given `code_hex` value."
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the start of a range, optionally use `until` to set the end. Result output includes the given timestamp."
+        },
+        {
+          "name": "from_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the start of a range, optionally use `until_id` to set the end. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "from_code",
+          "schema": "string",
+          "description": "Limits on `code_hex`. Marks the start of a range, optionally use `until_code` to set the end. Result output includes the given `code_hex` value."
+        },
+        {
+          "name": "id_only",
+          "schema": "boolean",
+          "description": "Removes `url` fields from output and shows `_id` instead of `_url` in references."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Sets the maximum number of returned resources. You may increase this number to large values, keep in mind that query times could become large. We advise you to use the pagination feature whenever you can."
+        },
+        {
+          "name": "populate",
+          "schema": "string",
+          "description": "Expand a reference into the actual resource (lookup). You may add multiple fields by giving a comma separated value."
+        },
+        {
+          "name": "results_only",
+          "schema": "boolean",
+          "description": "Removes response envelope with information about query, only sends back a JSON array with the applicable resources."
+        },
+        {
+          "name": "select",
+          "schema": "string",
+          "description": "Select which properties should be returned. You may add multiple fields by giving a comma separated value. Select can also be used together with populate: Specify the resource first, then a period(.) followed by the field."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Allows you to sort on on or more fields in the resource. You may append a minus sign (`-`) to request reverse order (new to old)."
+        },
+        {
+          "name": "until",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `from` to set the start. Result output includes the given timestamp."
+        },
+        {
+          "name": "until_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the end of a range, optionally use `from_id` to set the start. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "timeout_s",
+          "schema": "number",
+          "description": "Overrides the default query timeout (in seconds). A value of 0 means unlimited. IMPORTANT: using high timeouts in production code is strongly discouraged as it may lead to stability issues."
+        },
+        {
+          "name": "until_code",
+          "schema": "string",
+          "description": "Limits on `code_hex`. Marks the end of a range, optionally use `from_code` to set the start. Result output includes the given `code_hex` value."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": "Unique identifier"
+        },
+        {
+          "name": "time_created",
+          "schema": "string",
+          "description": "Filter on the time the resource was created."
+        },
+        {
+          "name": "time_updated",
+          "schema": "string",
+          "description": "Filter on the time the resource was last updated"
+        },
+        {
+          "name": "code_hex",
+          "schema": "string",
+          "description": "Filter based on the hexadecimal string representation of the item. Supports wildcards: `*`."
+        },
+        {
+          "name": "is_present",
+          "schema": "boolean",
+          "description": "Only show items which are present of not."
+        },
+        {
+          "name": "label",
+          "schema": "string",
+          "description": "Filter based on the label value. Supports wildcards: `*`"
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "description": "Filter based on the location"
+        },
+        {
+          "name": "metadata",
+          "schema": "string",
+          "description": "Filter based on metadata. Does a partial match on any value in the metadata object. It is also possible to do an exact/wildcard match on specific properties, e.g. `metadata.foo=bar`"
+        },
+        {
+          "name": "move_count",
+          "schema": "integer",
+          "description": "Filter based on move count"
+        },
+        {
+          "name": "protocol",
+          "schema": "string",
+          "description": "Filter based on the detected protocol of an item."
+        },
+        {
+          "name": "sets",
+          "schema": "string",
+          "description": "Filter based on the set the resource is in."
+        },
+        {
+          "name": "technology",
+          "schema": "string",
+          "description": "Filter based on the detected technology of an item."
+        },
+        {
+          "name": "text",
+          "schema": "string",
+          "description": "Filter based on a full text search. Searched properties depend on the resource type. Matches on any of the given words. Supports quote (exact words) and minus (exclude) operators."
+        },
+        {
+          "name": "time_last_present",
+          "schema": "string",
+          "description": "Filter based on the time last present"
+        },
+        {
+          "name": "time_moved",
+          "schema": "string",
+          "description": "Filter based on time last moved"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": "Filter based on the type of an item."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/items",
+      "method": "addItem",
+      "httpMethod": "post",
+      "tag": "items",
+      "description": "Create item",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/items/{id}",
+      "method": "deleteItem",
+      "httpMethod": "delete",
+      "tag": "items",
+      "description": "Delete item",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/items/{id}",
+      "method": "getItemById",
+      "httpMethod": "get",
+      "tag": "items",
+      "description": "Get item",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/items/{id}",
+      "method": "updateItem",
+      "httpMethod": "put",
+      "tag": "items",
+      "description": "Update existing item",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        },
+        {
+          "name": "config_request",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "custom",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "label",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "location_request",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/keys",
+      "method": "getKeys",
+      "httpMethod": "get",
+      "tag": "keys",
+      "description": "Get all keys",
+      "parameters": [
+        {
+          "name": "after",
+          "schema": "string",
+          "description": "Limits on `time_created`, Marks the start of a range, optionally use `before` to set the end. Result output excludes the given timestamp."
+        },
+        {
+          "name": "after_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the start of a range, optionally use `before_id` to set the end. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "before",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `after` to set the start. Result output excludes the given timestamp."
+        },
+        {
+          "name": "before_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the end of a range, optionally use `after_id` to set the start. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the start of a range, optionally use `until` to set the end. Result output includes the given timestamp."
+        },
+        {
+          "name": "from_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the start of a range, optionally use `until_id` to set the end. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "id_only",
+          "schema": "boolean",
+          "description": "Removes `url` fields from output and shows `_id` instead of `_url` in references."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Sets the maximum number of returned resources. You may increase this number to large values, keep in mind that query times could become large. We advise you to use the pagination feature whenever you can."
+        },
+        {
+          "name": "populate",
+          "schema": "string",
+          "description": "Expand a reference into the actual resource (lookup). You may add multiple fields by giving a comma separated value."
+        },
+        {
+          "name": "results_only",
+          "schema": "boolean",
+          "description": "Removes response envelope with information about query, only sends back a JSON array with the applicable resources."
+        },
+        {
+          "name": "select",
+          "schema": "string",
+          "description": "Select which properties should be returned. You may add multiple fields by giving a comma separated value. Select can also be used together with populate: Specify the resource first, then a period(.) followed by the field."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Allows you to sort on on or more fields in the resource. You may append a minus sign (`-`) to request reverse order (new to old)."
+        },
+        {
+          "name": "until",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `from` to set the start. Result output includes the given timestamp."
+        },
+        {
+          "name": "until_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the end of a range, optionally use `from_id` to set the start. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "timeout_s",
+          "schema": "number",
+          "description": "Overrides the default query timeout (in seconds). A value of 0 means unlimited. IMPORTANT: using high timeouts in production code is strongly discouraged as it may lead to stability issues."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": "Unique identifier"
+        },
+        {
+          "name": "time_created",
+          "schema": "string",
+          "description": "Filter on the time the resource was created."
+        },
+        {
+          "name": "time_updated",
+          "schema": "string",
+          "description": "Filter on the time the resource was last updated"
+        },
+        {
+          "name": "secret",
+          "schema": "string",
+          "description": "Filter on the secret token."
+        },
+        {
+          "name": "label",
+          "schema": "string",
+          "description": "Filter on the label."
+        },
+        {
+          "name": "is_read_only",
+          "schema": "boolean",
+          "description": "Filter on read only status."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/keys",
+      "method": "addKey",
+      "httpMethod": "post",
+      "tag": "keys",
+      "description": "Create key",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "is_read_only",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "label",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "secret",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "time_created",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "time_updated",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/keys/{id}",
+      "method": "deleteKey",
+      "httpMethod": "delete",
+      "tag": "keys",
+      "description": "Delete key",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/keys/{id}",
+      "method": "getKeyById",
+      "httpMethod": "get",
+      "tag": "keys",
+      "description": "Get key",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/keys/{id}",
+      "method": "updateKey",
+      "httpMethod": "put",
+      "tag": "keys",
+      "description": "Update existing key",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "is_read_only",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "label",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "secret",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "time_created",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "time_updated",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/kvpairs",
+      "method": "getKvPairs",
+      "httpMethod": "get",
+      "tag": "kvpairs",
+      "description": "Get all key-value pairs",
+      "parameters": [
+        {
+          "name": "after",
+          "schema": "string",
+          "description": "Limits on `time_created`, Marks the start of a range, optionally use `before` to set the end. Result output excludes the given timestamp."
+        },
+        {
+          "name": "after_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the start of a range, optionally use `before_id` to set the end. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "before",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `after` to set the start. Result output excludes the given timestamp."
+        },
+        {
+          "name": "before_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the end of a range, optionally use `after_id` to set the start. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the start of a range, optionally use `until` to set the end. Result output includes the given timestamp."
+        },
+        {
+          "name": "from_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the start of a range, optionally use `until_id` to set the end. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "id_only",
+          "schema": "boolean",
+          "description": "Removes `url` fields from output and shows `_id` instead of `_url` in references."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Sets the maximum number of returned resources. You may increase this number to large values, keep in mind that query times could become large. We advise you to use the pagination feature whenever you can."
+        },
+        {
+          "name": "populate",
+          "schema": "string",
+          "description": "Expand a reference into the actual resource (lookup). You may add multiple fields by giving a comma separated value."
+        },
+        {
+          "name": "results_only",
+          "schema": "boolean",
+          "description": "Removes response envelope with information about query, only sends back a JSON array with the applicable resources."
+        },
+        {
+          "name": "select",
+          "schema": "string",
+          "description": "Select which properties should be returned. You may add multiple fields by giving a comma separated value. Select can also be used together with populate: Specify the resource first, then a period(.) followed by the field."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Allows you to sort on on or more fields in the resource. You may append a minus sign (`-`) to request reverse order (new to old)."
+        },
+        {
+          "name": "until",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `from` to set the start. Result output includes the given timestamp."
+        },
+        {
+          "name": "until_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the end of a range, optionally use `from_id` to set the start. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "timeout_s",
+          "schema": "number",
+          "description": "Overrides the default query timeout (in seconds). A value of 0 means unlimited. IMPORTANT: using high timeouts in production code is strongly discouraged as it may lead to stability issues."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": "Unique identifier"
+        },
+        {
+          "name": "time_created",
+          "schema": "string",
+          "description": "Filter on the time the resource was created."
+        },
+        {
+          "name": "time_updated",
+          "schema": "string",
+          "description": "Filter on the time the resource was last updated"
+        },
+        {
+          "name": "kv_key",
+          "schema": "string",
+          "description": "Filter on the key-value pair key value."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/kvpairs",
+      "method": "addKvPairs",
+      "httpMethod": "post",
+      "tag": "kvpairs",
+      "description": "Create key-value pair",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/kvpairs/{id}",
+      "method": "deleteKvPair",
+      "httpMethod": "delete",
+      "tag": "kvpairs",
+      "description": "Delete key-value pair",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/kvpairs/{id}",
+      "method": "getKvPairsById",
+      "httpMethod": "get",
+      "tag": "kvpairs",
+      "description": "Get key-value pair",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/kvpairs/{id}",
+      "method": "updateKvPair",
+      "httpMethod": "put",
+      "tag": "kvpairs",
+      "description": "Update existing Key-value pair",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        },
+        {
+          "name": "kv_value",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/locationrules",
+      "method": "getLocationRules",
+      "httpMethod": "get",
+      "tag": "locationrules",
+      "description": "Get all location rules",
+      "parameters": [
+        {
+          "name": "after",
+          "schema": "string",
+          "description": "Limits on `time_created`, Marks the start of a range, optionally use `before` to set the end. Result output excludes the given timestamp."
+        },
+        {
+          "name": "after_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the start of a range, optionally use `before_id` to set the end. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "before",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `after` to set the start. Result output excludes the given timestamp."
+        },
+        {
+          "name": "before_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the end of a range, optionally use `after_id` to set the start. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the start of a range, optionally use `until` to set the end. Result output includes the given timestamp."
+        },
+        {
+          "name": "from_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the start of a range, optionally use `until_id` to set the end. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "id_only",
+          "schema": "boolean",
+          "description": "Removes `url` fields from output and shows `_id` instead of `_url` in references."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Sets the maximum number of returned resources. You may increase this number to large values, keep in mind that query times could become large. We advise you to use the pagination feature whenever you can."
+        },
+        {
+          "name": "populate",
+          "schema": "string",
+          "description": "Expand a reference into the actual resource (lookup). You may add multiple fields by giving a comma separated value."
+        },
+        {
+          "name": "results_only",
+          "schema": "boolean",
+          "description": "Removes response envelope with information about query, only sends back a JSON array with the applicable resources."
+        },
+        {
+          "name": "select",
+          "schema": "string",
+          "description": "Select which properties should be returned. You may add multiple fields by giving a comma separated value. Select can also be used together with populate: Specify the resource first, then a period(.) followed by the field."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Allows you to sort on on or more fields in the resource. You may append a minus sign (`-`) to request reverse order (new to old)."
+        },
+        {
+          "name": "until",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `from` to set the start. Result output includes the given timestamp."
+        },
+        {
+          "name": "until_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the end of a range, optionally use `from_id` to set the start. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "timeout_s",
+          "schema": "number",
+          "description": "Overrides the default query timeout (in seconds). A value of 0 means unlimited. IMPORTANT: using high timeouts in production code is strongly discouraged as it may lead to stability issues."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": "Unique identifier"
+        },
+        {
+          "name": "time_created",
+          "schema": "string",
+          "description": "Filter on the time the resource was created."
+        },
+        {
+          "name": "time_updated",
+          "schema": "string",
+          "description": "Filter on the time the resource was last updated"
+        },
+        {
+          "name": "label",
+          "schema": "string",
+          "description": "Filter based on the label value. Supports wildcards: `*`"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": "Filter based on the type of location rule."
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": "Filter based on the `enabled` property."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/locationrules",
+      "method": "addLocationRule",
+      "httpMethod": "post",
+      "tag": "locationrules",
+      "description": "Create location rule",
+      "parameters": [
+        {
+          "name": "conditions",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "label",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "parameters",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/locationrules/{id}",
+      "method": "deleteLocationRule",
+      "httpMethod": "delete",
+      "tag": "locationrules",
+      "description": "Delete location rule",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/locationrules/{id}",
+      "method": "getLocationRuleById",
+      "httpMethod": "get",
+      "tag": "locationrules",
+      "description": "Get location rule",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/locationrules/{id}",
+      "method": "updateLocationRule",
+      "httpMethod": "put",
+      "tag": "locationrules",
+      "description": "Update existing location rule",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        },
+        {
+          "name": "conditions",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "label",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "parameters",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/locations",
+      "method": "getLocations",
+      "httpMethod": "get",
+      "tag": "locations",
+      "description": "Get all locations",
+      "parameters": [
+        {
+          "name": "after",
+          "schema": "string",
+          "description": "Limits on `time_created`, Marks the start of a range, optionally use `before` to set the end. Result output excludes the given timestamp."
+        },
+        {
+          "name": "after_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the start of a range, optionally use `before_id` to set the end. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "before",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `after` to set the start. Result output excludes the given timestamp."
+        },
+        {
+          "name": "before_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the end of a range, optionally use `after_id` to set the start. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the start of a range, optionally use `until` to set the end. Result output includes the given timestamp."
+        },
+        {
+          "name": "from_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the start of a range, optionally use `until_id` to set the end. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "id_only",
+          "schema": "boolean",
+          "description": "Removes `url` fields from output and shows `_id` instead of `_url` in references."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Sets the maximum number of returned resources. You may increase this number to large values, keep in mind that query times could become large. We advise you to use the pagination feature whenever you can."
+        },
+        {
+          "name": "populate",
+          "schema": "string",
+          "description": "Expand a reference into the actual resource (lookup). You may add multiple fields by giving a comma separated value."
+        },
+        {
+          "name": "results_only",
+          "schema": "boolean",
+          "description": "Removes response envelope with information about query, only sends back a JSON array with the applicable resources."
+        },
+        {
+          "name": "select",
+          "schema": "string",
+          "description": "Select which properties should be returned. You may add multiple fields by giving a comma separated value. Select can also be used together with populate: Specify the resource first, then a period(.) followed by the field."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Allows you to sort on on or more fields in the resource. You may append a minus sign (`-`) to request reverse order (new to old)."
+        },
+        {
+          "name": "until",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `from` to set the start. Result output includes the given timestamp."
+        },
+        {
+          "name": "until_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the end of a range, optionally use `from_id` to set the start. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "timeout_s",
+          "schema": "number",
+          "description": "Overrides the default query timeout (in seconds). A value of 0 means unlimited. IMPORTANT: using high timeouts in production code is strongly discouraged as it may lead to stability issues."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": "Unique identifier"
+        },
+        {
+          "name": "time_created",
+          "schema": "string",
+          "description": "Filter on the time the resource was created."
+        },
+        {
+          "name": "time_updated",
+          "schema": "string",
+          "description": "Filter on the time the resource was last updated"
+        },
+        {
+          "name": "label",
+          "schema": "string",
+          "description": "Filter based on the label value. Supports wildcards: `*`"
+        },
+        {
+          "name": "metadata",
+          "schema": "string",
+          "description": "Filter based on metadata. Does a partial match on any value in the metadata object. It is also possible to do an exact/wildcard match on specific properties, e.g. `metadata.foo=bar`"
+        },
+        {
+          "name": "text",
+          "schema": "string",
+          "description": "Filter based on a full text search. Searched properties depend on the resource type. Matches on any of the given words. Supports quote (exact words) and minus (exclude) operators."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/locations",
+      "method": "addLocation",
+      "httpMethod": "post",
+      "tag": "locations",
+      "description": "Create location",
+      "parameters": [
+        {
+          "name": "custom",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "label",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "time_created",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "time_updated",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/locations/{id}",
+      "method": "deleteLocation",
+      "httpMethod": "delete",
+      "tag": "locations",
+      "description": "Delete location",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/locations/{id}",
+      "method": "getLocationById",
+      "httpMethod": "get",
+      "tag": "locations",
+      "description": "Get location",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/locations/{id}",
+      "method": "updateLocation",
+      "httpMethod": "put",
+      "tag": "locations",
+      "description": "Update existing location",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        },
+        {
+          "name": "custom",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "label",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "time_created",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "time_updated",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/presences",
+      "method": "getPresences",
+      "httpMethod": "get",
+      "tag": "presences",
+      "description": "Get all presences",
+      "parameters": [
+        {
+          "name": "after",
+          "schema": "string",
+          "description": "Limits on `time_created`, Marks the start of a range, optionally use `before` to set the end. Result output excludes the given timestamp."
+        },
+        {
+          "name": "after_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the start of a range, optionally use `before_id` to set the end. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "before",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `after` to set the start. Result output excludes the given timestamp."
+        },
+        {
+          "name": "before_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the end of a range, optionally use `after_id` to set the start. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the start of a range, optionally use `until` to set the end. Result output includes the given timestamp."
+        },
+        {
+          "name": "from_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the start of a range, optionally use `until_id` to set the end. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "id_only",
+          "schema": "boolean",
+          "description": "Removes `url` fields from output and shows `_id` instead of `_url` in references."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Sets the maximum number of returned resources. You may increase this number to large values, keep in mind that query times could become large. We advise you to use the pagination feature whenever you can."
+        },
+        {
+          "name": "populate",
+          "schema": "string",
+          "description": "Expand a reference into the actual resource (lookup). You may add multiple fields by giving a comma separated value."
+        },
+        {
+          "name": "results_only",
+          "schema": "boolean",
+          "description": "Removes response envelope with information about query, only sends back a JSON array with the applicable resources."
+        },
+        {
+          "name": "select",
+          "schema": "string",
+          "description": "Select which properties should be returned. You may add multiple fields by giving a comma separated value. Select can also be used together with populate: Specify the resource first, then a period(.) followed by the field."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Allows you to sort on on or more fields in the resource. You may append a minus sign (`-`) to request reverse order (new to old)."
+        },
+        {
+          "name": "until",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `from` to set the start. Result output includes the given timestamp."
+        },
+        {
+          "name": "until_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the end of a range, optionally use `from_id` to set the start. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "timeout_s",
+          "schema": "number",
+          "description": "Overrides the default query timeout (in seconds). A value of 0 means unlimited. IMPORTANT: using high timeouts in production code is strongly discouraged as it may lead to stability issues."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": "Unique identifier"
+        },
+        {
+          "name": "time_created",
+          "schema": "string",
+          "description": "Filter on the time the resource was created."
+        },
+        {
+          "name": "time_updated",
+          "schema": "string",
+          "description": "Filter on the time the resource was last updated"
+        },
+        {
+          "name": "item",
+          "schema": "string",
+          "description": "Filter based on the item"
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "description": "Filter based on the location"
+        },
+        {
+          "name": "proximity",
+          "schema": "string",
+          "description": "Filter based on the proximity."
+        },
+        {
+          "name": "technology",
+          "schema": "string",
+          "description": "Filter based on the detected technology of an item."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/presences/{id}",
+      "method": "getPresenceById",
+      "httpMethod": "get",
+      "tag": "presences",
+      "description": "Get presence",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/services",
+      "method": "getServices",
+      "httpMethod": "get",
+      "tag": "services",
+      "description": "Get all services",
+      "parameters": [
+        {
+          "name": "after",
+          "schema": "string",
+          "description": "Limits on `time_created`, Marks the start of a range, optionally use `before` to set the end. Result output excludes the given timestamp."
+        },
+        {
+          "name": "after_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the start of a range, optionally use `before_id` to set the end. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "before",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `after` to set the start. Result output excludes the given timestamp."
+        },
+        {
+          "name": "before_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the end of a range, optionally use `after_id` to set the start. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the start of a range, optionally use `until` to set the end. Result output includes the given timestamp."
+        },
+        {
+          "name": "from_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the start of a range, optionally use `until_id` to set the end. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "id_only",
+          "schema": "boolean",
+          "description": "Removes `url` fields from output and shows `_id` instead of `_url` in references."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Sets the maximum number of returned resources. You may increase this number to large values, keep in mind that query times could become large. We advise you to use the pagination feature whenever you can."
+        },
+        {
+          "name": "populate",
+          "schema": "string",
+          "description": "Expand a reference into the actual resource (lookup). You may add multiple fields by giving a comma separated value."
+        },
+        {
+          "name": "results_only",
+          "schema": "boolean",
+          "description": "Removes response envelope with information about query, only sends back a JSON array with the applicable resources."
+        },
+        {
+          "name": "select",
+          "schema": "string",
+          "description": "Select which properties should be returned. You may add multiple fields by giving a comma separated value. Select can also be used together with populate: Specify the resource first, then a period(.) followed by the field."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Allows you to sort on on or more fields in the resource. You may append a minus sign (`-`) to request reverse order (new to old)."
+        },
+        {
+          "name": "until",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `from` to set the start. Result output includes the given timestamp."
+        },
+        {
+          "name": "until_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the end of a range, optionally use `from_id` to set the start. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "timeout_s",
+          "schema": "number",
+          "description": "Overrides the default query timeout (in seconds). A value of 0 means unlimited. IMPORTANT: using high timeouts in production code is strongly discouraged as it may lead to stability issues."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": "Unique identifier"
+        },
+        {
+          "name": "time_created",
+          "schema": "string",
+          "description": "Filter on the time the resource was created."
+        },
+        {
+          "name": "time_updated",
+          "schema": "string",
+          "description": "Filter on the time the resource was last updated"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": "Filter based on the name of the resource. Supports wildcards: `*`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/services/{id}",
+      "method": "getServiceById",
+      "httpMethod": "get",
+      "tag": "services",
+      "description": "Get service",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/services/{id}",
+      "method": "updateService",
+      "httpMethod": "put",
+      "tag": "services",
+      "description": "Update existing service",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        },
+        {
+          "name": "boot_count",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "config",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "config_request",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "restart_request",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "time_created",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "time_updated",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sets/itemlists",
+      "method": "getItemLists",
+      "httpMethod": "get",
+      "tag": "sets",
+      "description": "Get all item lists",
+      "parameters": [
+        {
+          "name": "after",
+          "schema": "string",
+          "description": "Limits on `time_created`, Marks the start of a range, optionally use `before` to set the end. Result output excludes the given timestamp."
+        },
+        {
+          "name": "after_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the start of a range, optionally use `before_id` to set the end. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "before",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `after` to set the start. Result output excludes the given timestamp."
+        },
+        {
+          "name": "before_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the end of a range, optionally use `after_id` to set the start. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the start of a range, optionally use `until` to set the end. Result output includes the given timestamp."
+        },
+        {
+          "name": "from_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the start of a range, optionally use `until_id` to set the end. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "id_only",
+          "schema": "boolean",
+          "description": "Removes `url` fields from output and shows `_id` instead of `_url` in references."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Sets the maximum number of returned resources. You may increase this number to large values, keep in mind that query times could become large. We advise you to use the pagination feature whenever you can."
+        },
+        {
+          "name": "populate",
+          "schema": "string",
+          "description": "Expand a reference into the actual resource (lookup). You may add multiple fields by giving a comma separated value."
+        },
+        {
+          "name": "results_only",
+          "schema": "boolean",
+          "description": "Removes response envelope with information about query, only sends back a JSON array with the applicable resources."
+        },
+        {
+          "name": "select",
+          "schema": "string",
+          "description": "Select which properties should be returned. You may add multiple fields by giving a comma separated value. Select can also be used together with populate: Specify the resource first, then a period(.) followed by the field."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Allows you to sort on on or more fields in the resource. You may append a minus sign (`-`) to request reverse order (new to old)."
+        },
+        {
+          "name": "until",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `from` to set the start. Result output includes the given timestamp."
+        },
+        {
+          "name": "until_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the end of a range, optionally use `from_id` to set the start. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "timeout_s",
+          "schema": "number",
+          "description": "Overrides the default query timeout (in seconds). A value of 0 means unlimited. IMPORTANT: using high timeouts in production code is strongly discouraged as it may lead to stability issues."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": "Unique identifier"
+        },
+        {
+          "name": "time_created",
+          "schema": "string",
+          "description": "Filter on the time the resource was created."
+        },
+        {
+          "name": "time_updated",
+          "schema": "string",
+          "description": "Filter on the time the resource was last updated"
+        },
+        {
+          "name": "label",
+          "schema": "string",
+          "description": "Filter based on the label value. Supports wildcards: `*`"
+        },
+        {
+          "name": "metadata",
+          "schema": "string",
+          "description": "Filter based on metadata. Does a partial match on any value in the metadata object. It is also possible to do an exact/wildcard match on specific properties, e.g. `metadata.foo=bar`"
+        },
+        {
+          "name": "text",
+          "schema": "string",
+          "description": "Filter based on a full text search. Searched properties depend on the resource type. Matches on any of the given words. Supports quote (exact words) and minus (exclude) operators."
+        },
+        {
+          "name": "total",
+          "schema": "integer",
+          "description": "Filter based on the total amount of items in the list"
+        },
+        {
+          "name": "sha1",
+          "schema": "string",
+          "description": "The sha1 checksum of the list. This will change when the list is mutated."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sets/itemlists",
+      "method": "addItemList",
+      "httpMethod": "post",
+      "tag": "sets",
+      "description": "Create item list",
+      "parameters": [
+        {
+          "name": "custom",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "label",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "list",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "sha1",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "time_created",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "time_updated",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "total",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sets/itemlists/{id}",
+      "method": "deleteItemSet",
+      "httpMethod": "delete",
+      "tag": "sets",
+      "description": "Delete item list",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sets/itemlists/{id}",
+      "method": "getItemListById",
+      "httpMethod": "get",
+      "tag": "sets",
+      "description": "Get item list",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sets/itemlists/{id}",
+      "method": "updateItemList",
+      "httpMethod": "put",
+      "tag": "sets",
+      "description": "Update existing item list",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        },
+        {
+          "name": "custom",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "label",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "list",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "sha1",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "time_created",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "time_updated",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "total",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sets/itemlists/{id}/ids",
+      "method": "getItemListIdsById",
+      "httpMethod": "get",
+      "tag": "sets",
+      "description": "Get item ids for this list",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "List of item ids"
+        }
+      ]
+    },
+    {
+      "url": "/sets/itemlists/{id}/ids",
+      "method": "addItemIdsList",
+      "httpMethod": "post",
+      "tag": "sets",
+      "description": "Add items to an existing list",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sets/itemlists/{id}/ids/{itemId}",
+      "method": "deleteItemIdFromItemList",
+      "httpMethod": "delete",
+      "tag": "sets",
+      "description": "Delete item from list",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        },
+        {
+          "name": "itemId",
+          "schema": "string",
+          "required": true,
+          "description": "Item ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sets/spotlists",
+      "method": "getSpotLists",
+      "httpMethod": "get",
+      "tag": "sets",
+      "description": "Get all spot lists",
+      "parameters": [
+        {
+          "name": "after",
+          "schema": "string",
+          "description": "Limits on `time_created`, Marks the start of a range, optionally use `before` to set the end. Result output excludes the given timestamp."
+        },
+        {
+          "name": "after_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the start of a range, optionally use `before_id` to set the end. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "before",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `after` to set the start. Result output excludes the given timestamp."
+        },
+        {
+          "name": "before_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the end of a range, optionally use `after_id` to set the start. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the start of a range, optionally use `until` to set the end. Result output includes the given timestamp."
+        },
+        {
+          "name": "from_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the start of a range, optionally use `until_id` to set the end. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "id_only",
+          "schema": "boolean",
+          "description": "Removes `url` fields from output and shows `_id` instead of `_url` in references."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Sets the maximum number of returned resources. You may increase this number to large values, keep in mind that query times could become large. We advise you to use the pagination feature whenever you can."
+        },
+        {
+          "name": "populate",
+          "schema": "string",
+          "description": "Expand a reference into the actual resource (lookup). You may add multiple fields by giving a comma separated value."
+        },
+        {
+          "name": "results_only",
+          "schema": "boolean",
+          "description": "Removes response envelope with information about query, only sends back a JSON array with the applicable resources."
+        },
+        {
+          "name": "select",
+          "schema": "string",
+          "description": "Select which properties should be returned. You may add multiple fields by giving a comma separated value. Select can also be used together with populate: Specify the resource first, then a period(.) followed by the field."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Allows you to sort on on or more fields in the resource. You may append a minus sign (`-`) to request reverse order (new to old)."
+        },
+        {
+          "name": "until",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `from` to set the start. Result output includes the given timestamp."
+        },
+        {
+          "name": "until_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the end of a range, optionally use `from_id` to set the start. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "timeout_s",
+          "schema": "number",
+          "description": "Overrides the default query timeout (in seconds). A value of 0 means unlimited. IMPORTANT: using high timeouts in production code is strongly discouraged as it may lead to stability issues."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": "Unique identifier"
+        },
+        {
+          "name": "time_created",
+          "schema": "string",
+          "description": "Filter on the time the resource was created."
+        },
+        {
+          "name": "time_updated",
+          "schema": "string",
+          "description": "Filter on the time the resource was last updated"
+        },
+        {
+          "name": "label",
+          "schema": "string",
+          "description": "Filter based on the label value. Supports wildcards: `*`"
+        },
+        {
+          "name": "metadata",
+          "schema": "string",
+          "description": "Filter based on metadata. Does a partial match on any value in the metadata object. It is also possible to do an exact/wildcard match on specific properties, e.g. `metadata.foo=bar`"
+        },
+        {
+          "name": "text",
+          "schema": "string",
+          "description": "Filter based on a full text search. Searched properties depend on the resource type. Matches on any of the given words. Supports quote (exact words) and minus (exclude) operators."
+        },
+        {
+          "name": "total",
+          "schema": "integer",
+          "description": "Filter based on the total amount of spots in the list"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sets/spotlists",
+      "method": "addSpotList",
+      "httpMethod": "post",
+      "tag": "sets",
+      "description": "Create spot list",
+      "parameters": [
+        {
+          "name": "custom",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "label",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "list",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "sha1",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "time_created",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "time_updated",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "total",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sets/spotlists/{id}",
+      "method": "deleteSpotList",
+      "httpMethod": "delete",
+      "tag": "sets",
+      "description": "Delete spot list",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sets/spotlists/{id}",
+      "method": "getSpotListById",
+      "httpMethod": "get",
+      "tag": "sets",
+      "description": "Info for a specific spot list",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sets/spotlists/{id}",
+      "method": "updateSpotList",
+      "httpMethod": "put",
+      "tag": "sets",
+      "description": "Update existing spot list",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        },
+        {
+          "name": "custom",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "label",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "list",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "time_created",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "time_updated",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "total",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sets/spotlists/{id}/ids",
+      "method": "getSpotListIdsById",
+      "httpMethod": "get",
+      "tag": "sets",
+      "description": "Get spot ids for this list",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "List of item ids"
+        }
+      ]
+    },
+    {
+      "url": "/sets/spotlists/{id}/ids",
+      "method": "addItemIdsSpotList",
+      "httpMethod": "post",
+      "tag": "sets",
+      "description": "Add spots to an existing list",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sets/spotlists/{id}/ids/{itemId}",
+      "method": "deleteItemIdFromSpotList",
+      "httpMethod": "delete",
+      "tag": "sets",
+      "description": "Delete spot from list",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        },
+        {
+          "name": "itemId",
+          "schema": "string",
+          "required": true,
+          "description": "Item ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spots",
+      "method": "getSpots",
+      "httpMethod": "get",
+      "tag": "spots",
+      "description": "Get all spots",
+      "parameters": [
+        {
+          "name": "after",
+          "schema": "string",
+          "description": "Limits on `time_created`, Marks the start of a range, optionally use `before` to set the end. Result output excludes the given timestamp."
+        },
+        {
+          "name": "after_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the start of a range, optionally use `before_id` to set the end. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "before",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `after` to set the start. Result output excludes the given timestamp."
+        },
+        {
+          "name": "before_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the end of a range, optionally use `after_id` to set the start. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the start of a range, optionally use `until` to set the end. Result output includes the given timestamp."
+        },
+        {
+          "name": "from_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the start of a range, optionally use `until_id` to set the end. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "id_only",
+          "schema": "boolean",
+          "description": "Removes `url` fields from output and shows `_id` instead of `_url` in references."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Sets the maximum number of returned resources. You may increase this number to large values, keep in mind that query times could become large. We advise you to use the pagination feature whenever you can."
+        },
+        {
+          "name": "populate",
+          "schema": "string",
+          "description": "Expand a reference into the actual resource (lookup). You may add multiple fields by giving a comma separated value."
+        },
+        {
+          "name": "results_only",
+          "schema": "boolean",
+          "description": "Removes response envelope with information about query, only sends back a JSON array with the applicable resources."
+        },
+        {
+          "name": "select",
+          "schema": "string",
+          "description": "Select which properties should be returned. You may add multiple fields by giving a comma separated value. Select can also be used together with populate: Specify the resource first, then a period(.) followed by the field."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Allows you to sort on on or more fields in the resource. You may append a minus sign (`-`) to request reverse order (new to old)."
+        },
+        {
+          "name": "until",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `from` to set the start. Result output includes the given timestamp."
+        },
+        {
+          "name": "until_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the end of a range, optionally use `from_id` to set the start. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "timeout_s",
+          "schema": "number",
+          "description": "Overrides the default query timeout (in seconds). A value of 0 means unlimited. IMPORTANT: using high timeouts in production code is strongly discouraged as it may lead to stability issues."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": "Unique identifier"
+        },
+        {
+          "name": "time_created",
+          "schema": "string",
+          "description": "Filter on the time the resource was created."
+        },
+        {
+          "name": "time_updated",
+          "schema": "string",
+          "description": "Filter on the time the resource was last updated"
+        },
+        {
+          "name": "is_online",
+          "schema": "boolean",
+          "description": "Filter based on the online status."
+        },
+        {
+          "name": "request_counter",
+          "schema": "integer",
+          "description": "Filter based on the amount of request made"
+        },
+        {
+          "name": "serial_number",
+          "schema": "integer",
+          "description": "Filter based on the serial number."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spots/{id}",
+      "method": "getSpotById",
+      "httpMethod": "get",
+      "tag": "spots",
+      "description": "Get spot",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spots/{id}",
+      "method": "updateSpot",
+      "httpMethod": "put",
+      "tag": "spots",
+      "description": "Update existing spot",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spots/{id}/sets",
+      "method": "getSpotSetsById",
+      "httpMethod": "get",
+      "tag": "spots",
+      "description": "Get spotsets",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spots/{id}/sets",
+      "method": "addSpotSet",
+      "httpMethod": "post",
+      "tag": "spots",
+      "description": "Create spotset",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spots/{id}/sets/{setId}",
+      "method": "getSpotSetById",
+      "httpMethod": "get",
+      "tag": "spots",
+      "description": "Get spotset",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        },
+        {
+          "name": "setId",
+          "schema": "string",
+          "required": true,
+          "description": "Unique spot set identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spots/{id}/sets/{setId}",
+      "method": "updateSpotSet",
+      "httpMethod": "put",
+      "tag": "spots",
+      "description": "Update existing spotset",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        },
+        {
+          "name": "setId",
+          "schema": "string",
+          "required": true,
+          "description": "Unique spot set identifier"
+        },
+        {
+          "name": "delete",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spotsets",
+      "method": "/spotsetsGet",
+      "httpMethod": "get",
+      "tag": "spotsets",
+      "description": "Get spotsets",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spotsets",
+      "method": "/spotsetsPost",
+      "httpMethod": "post",
+      "tag": "spotsets",
+      "description": "Create spotset",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spotsets/{id}",
+      "method": "/spotsets/{id}Get",
+      "httpMethod": "get",
+      "tag": "spotsets",
+      "description": "Get spotset",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/spotsets/{id}",
+      "method": "/spotsets/{id}Put",
+      "httpMethod": "put",
+      "tag": "spotsets",
+      "description": "Update existing spotset",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        },
+        {
+          "name": "delete",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/subscriptions",
+      "method": "getSubscriptions",
+      "httpMethod": "get",
+      "tag": "subscriptions",
+      "description": "Get all subscriptions",
+      "parameters": [
+        {
+          "name": "after",
+          "schema": "string",
+          "description": "Limits on `time_created`, Marks the start of a range, optionally use `before` to set the end. Result output excludes the given timestamp."
+        },
+        {
+          "name": "after_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the start of a range, optionally use `before_id` to set the end. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "before",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `after` to set the start. Result output excludes the given timestamp."
+        },
+        {
+          "name": "before_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the end of a range, optionally use `after_id` to set the start. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the start of a range, optionally use `until` to set the end. Result output includes the given timestamp."
+        },
+        {
+          "name": "from_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the start of a range, optionally use `until_id` to set the end. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "id_only",
+          "schema": "boolean",
+          "description": "Removes `url` fields from output and shows `_id` instead of `_url` in references."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Sets the maximum number of returned resources. You may increase this number to large values, keep in mind that query times could become large. We advise you to use the pagination feature whenever you can."
+        },
+        {
+          "name": "populate",
+          "schema": "string",
+          "description": "Expand a reference into the actual resource (lookup). You may add multiple fields by giving a comma separated value."
+        },
+        {
+          "name": "results_only",
+          "schema": "boolean",
+          "description": "Removes response envelope with information about query, only sends back a JSON array with the applicable resources."
+        },
+        {
+          "name": "select",
+          "schema": "string",
+          "description": "Select which properties should be returned. You may add multiple fields by giving a comma separated value. Select can also be used together with populate: Specify the resource first, then a period(.) followed by the field."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Allows you to sort on on or more fields in the resource. You may append a minus sign (`-`) to request reverse order (new to old)."
+        },
+        {
+          "name": "until",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `from` to set the start. Result output includes the given timestamp."
+        },
+        {
+          "name": "until_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the end of a range, optionally use `from_id` to set the start. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "timeout_s",
+          "schema": "number",
+          "description": "Overrides the default query timeout (in seconds). A value of 0 means unlimited. IMPORTANT: using high timeouts in production code is strongly discouraged as it may lead to stability issues."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": "Unique identifier"
+        },
+        {
+          "name": "time_created",
+          "schema": "string",
+          "description": "Filter on the time the resource was created."
+        },
+        {
+          "name": "time_updated",
+          "schema": "string",
+          "description": "Filter on the time the resource was last updated"
+        },
+        {
+          "name": "topic_filter",
+          "schema": "string",
+          "description": "Filter on the topic filter. Make sure to use [percent-encoding](https://en.wikipedia.org/wiki/Percent-encoding) in the query parameter."
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": "Filter based on the description."
+        },
+        {
+          "name": "database_hold_time_h",
+          "schema": "integer",
+          "description": "Filter based on the number of hours events are retained in the database."
+        },
+        {
+          "name": "populate_events",
+          "schema": "boolean",
+          "description": "Filter based on subscriptions that populate the events"
+        },
+        {
+          "name": "verify_target_certificate",
+          "schema": "boolean",
+          "description": "Filter on the verification of the target certificate."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/subscriptions",
+      "method": "addSubscription",
+      "httpMethod": "post",
+      "tag": "subscriptions",
+      "description": "Create subscription",
+      "parameters": [
+        {
+          "name": "custom",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "database_hold_time_h",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "events_url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "populate_events",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "target_delivery_last_failure",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "target_delivery_status",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "target_retry",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "target_url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "time_created",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "time_updated",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "topic_filter",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "verify_target_certificate",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/subscriptions/{id}",
+      "method": "deleteSubscription",
+      "httpMethod": "delete",
+      "tag": "subscriptions",
+      "description": "Delete subscription",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/subscriptions/{id}",
+      "method": "getSubscriptionById",
+      "httpMethod": "get",
+      "tag": "subscriptions",
+      "description": "Get subscription",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/subscriptions/{id}",
+      "method": "updateSubscription",
+      "httpMethod": "put",
+      "tag": "subscriptions",
+      "description": "Update existing subscription",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        },
+        {
+          "name": "custom",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "database_hold_time_h",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "events_url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "populate_events",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "target_delivery_last_failure",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "target_delivery_status",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "target_retry",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "target_url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "time_created",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "time_updated",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "topic_filter",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "verify_target_certificate",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/subscriptions/{id}/events",
+      "method": "getEventsForSubscriptionById",
+      "httpMethod": "get",
+      "tag": "subscriptions",
+      "description": "Get subscription events",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        },
+        {
+          "name": "after",
+          "schema": "string",
+          "description": "Limits on `time_created`, Marks the start of a range, optionally use `before` to set the end. Result output excludes the given timestamp."
+        },
+        {
+          "name": "after_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the start of a range, optionally use `before_id` to set the end. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "before",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `after` to set the start. Result output excludes the given timestamp."
+        },
+        {
+          "name": "before_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the end of a range, optionally use `after_id` to set the start. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the start of a range, optionally use `until` to set the end. Result output includes the given timestamp."
+        },
+        {
+          "name": "from_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the start of a range, optionally use `until_id` to set the end. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "id_only",
+          "schema": "boolean",
+          "description": "Removes `url` fields from output and shows `_id` instead of `_url` in references."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Sets the maximum number of returned resources. You may increase this number to large values, keep in mind that query times could become large. We advise you to use the pagination feature whenever you can."
+        },
+        {
+          "name": "populate",
+          "schema": "string",
+          "description": "Expand a reference into the actual resource (lookup). You may add multiple fields by giving a comma separated value."
+        },
+        {
+          "name": "results_only",
+          "schema": "boolean",
+          "description": "Removes response envelope with information about query, only sends back a JSON array with the applicable resources."
+        },
+        {
+          "name": "select",
+          "schema": "string",
+          "description": "Select which properties should be returned. You may add multiple fields by giving a comma separated value. Select can also be used together with populate: Specify the resource first, then a period(.) followed by the field."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Allows you to sort on on or more fields in the resource. You may append a minus sign (`-`) to request reverse order (new to old)."
+        },
+        {
+          "name": "until",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `from` to set the start. Result output includes the given timestamp."
+        },
+        {
+          "name": "until_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the end of a range, optionally use `from_id` to set the start. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "timeout_s",
+          "schema": "number",
+          "description": "Overrides the default query timeout (in seconds). A value of 0 means unlimited. IMPORTANT: using high timeouts in production code is strongly discouraged as it may lead to stability issues."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": "Unique identifier"
+        },
+        {
+          "name": "time_created",
+          "schema": "string",
+          "description": "Filter on the time the resource was created."
+        },
+        {
+          "name": "topic.resource_type",
+          "schema": "string",
+          "description": "Filter on the topic resource type"
+        },
+        {
+          "name": "topic.action",
+          "schema": "string",
+          "description": "Filter on the topic action"
+        },
+        {
+          "name": "topic.resource",
+          "schema": "string",
+          "description": "Filter on the topic resource id"
+        },
+        {
+          "name": "time_event",
+          "schema": "string",
+          "description": "Filter on the time the event was generated on the device."
+        },
+        {
+          "name": "time_expire",
+          "schema": "string",
+          "description": "Filter on the time the event will expire."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users",
+      "method": "getUsers",
+      "httpMethod": "get",
+      "tag": "users",
+      "description": "Get all users",
+      "parameters": [
+        {
+          "name": "after",
+          "schema": "string",
+          "description": "Limits on `time_created`, Marks the start of a range, optionally use `before` to set the end. Result output excludes the given timestamp."
+        },
+        {
+          "name": "after_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the start of a range, optionally use `before_id` to set the end. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "before",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `after` to set the start. Result output excludes the given timestamp."
+        },
+        {
+          "name": "before_id",
+          "schema": "string",
+          "description": "Limits directly on `id`. Marks the end of a range, optionally use `after_id` to set the start. Result output excludes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the start of a range, optionally use `until` to set the end. Result output includes the given timestamp."
+        },
+        {
+          "name": "from_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the start of a range, optionally use `until_id` to set the end. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "id_only",
+          "schema": "boolean",
+          "description": "Removes `url` fields from output and shows `_id` instead of `_url` in references."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Sets the maximum number of returned resources. You may increase this number to large values, keep in mind that query times could become large. We advise you to use the pagination feature whenever you can."
+        },
+        {
+          "name": "populate",
+          "schema": "string",
+          "description": "Expand a reference into the actual resource (lookup). You may add multiple fields by giving a comma separated value."
+        },
+        {
+          "name": "results_only",
+          "schema": "boolean",
+          "description": "Removes response envelope with information about query, only sends back a JSON array with the applicable resources."
+        },
+        {
+          "name": "select",
+          "schema": "string",
+          "description": "Select which properties should be returned. You may add multiple fields by giving a comma separated value. Select can also be used together with populate: Specify the resource first, then a period(.) followed by the field."
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Allows you to sort on on or more fields in the resource. You may append a minus sign (`-`) to request reverse order (new to old)."
+        },
+        {
+          "name": "until",
+          "schema": "string",
+          "description": "Limits on `time_created`. Marks the end of a range, optionally use `from` to set the start. Result output includes the given timestamp."
+        },
+        {
+          "name": "until_id",
+          "schema": "string",
+          "description": "Limits on `id`. Marks the end of a range, optionally use `from_id` to set the start. Result output includes the given `id` value. Please note that `id` is in chronological order."
+        },
+        {
+          "name": "timeout_s",
+          "schema": "number",
+          "description": "Overrides the default query timeout (in seconds). A value of 0 means unlimited. IMPORTANT: using high timeouts in production code is strongly discouraged as it may lead to stability issues."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": "Unique identifier"
+        },
+        {
+          "name": "time_created",
+          "schema": "string",
+          "description": "Filter on the time the resource was created."
+        },
+        {
+          "name": "time_updated",
+          "schema": "string",
+          "description": "Filter on the time the resource was last updated"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": "Filter on the email address."
+        },
+        {
+          "name": "first_name",
+          "schema": "string",
+          "description": "Filter on the first name."
+        },
+        {
+          "name": "last_name",
+          "schema": "string",
+          "description": "Filter on the last name."
+        },
+        {
+          "name": "is_admin",
+          "schema": "boolean",
+          "description": "Filter on the administrator status."
+        },
+        {
+          "name": "is_locked",
+          "schema": "boolean",
+          "description": "Filter on the locked status."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users",
+      "method": "addUser",
+      "httpMethod": "post",
+      "tag": "users",
+      "description": "Create user",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "first_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "is_admin",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "is_locked",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "last_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "time_created",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "time_updated",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}",
+      "method": "deleteUser",
+      "httpMethod": "delete",
+      "tag": "users",
+      "description": "Delete user",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}",
+      "method": "getUserById",
+      "httpMethod": "get",
+      "tag": "users",
+      "description": "Get user",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}",
+      "method": "updateUser",
+      "httpMethod": "put",
+      "tag": "users",
+      "description": "Update existing user",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier"
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "first_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "is_admin",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "is_locked",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "last_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "time_created",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "time_updated",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "{protocol}://{customer}.intellifi.{tld}/api",
   "apiDescription": "This document describes the [Intellifi Brain](https://intellifi.zendesk.com/hc/en-us/categories/360000685454)\nWeb API specification using the [OpenAPI specification](https://github.com/OAI/OpenAPI-Specification).\n\nThe Brain Web API is a RESTful API that allows you to interact with the\n[Intellifi devices](https://intellifi.zendesk.com/hc/en-us/categories/360000685434) and\nservices in a powerful and simple way. Our end-to-end solution allows you to\nlocalize your items/assets based on technologies such as RFID and Bluetooth.\n\n# Try it out!\n\nThe API can be tried out and tested using the ['api-doc/tryitout' endpoint on this site](./tryitout/).\nThis UI allows anyone to visualize and interact with the API’s resources without having any of the implementation logic in place.\nIt’s automatically generated from this Specification, with the visual documentation making it easy for back end implementation and client side consumption.\n\n# Authentication\n\nApplications are required to provide some form of authentication to the API\nfor every secured endpoint. The Brain offers two forms of authentication.\n\n- API key (Via an HTTP request header or URL parameter)\n- Session cookie\n\n<!-- ReDoc-Inject: <security-definitions> -->\n\n# See also\n\n- About Intellifi and what we do: [intellifi.nl](https://intellifi.nl)\n- Technical and background information: [intellifi.zendesk.com](https://intellifi.zendesk.com)\n",
   "apiTitle": "Brain Web API",

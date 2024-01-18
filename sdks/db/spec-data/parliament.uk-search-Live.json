@@ -4,6 +4,110 @@
   "homepage": "parliament.uk",
   "serviceName": "search",
   "apiVersion": "Live",
+  "methods": [
+    {
+      "url": "/description",
+      "method": "/descriptionGet",
+      "httpMethod": "get",
+      "tag": "Description",
+      "description": "OpenSearch description document",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/query",
+      "method": "/queryGet",
+      "httpMethod": "get",
+      "tag": "Query",
+      "description": "Search results",
+      "parameters": [
+        {
+          "name": "q",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "start",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "count",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "subdomains",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "inUrlPrefixes",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/query.{extension}",
+      "method": "/query.{extension}Get",
+      "httpMethod": "get",
+      "tag": "Query",
+      "description": "Search results",
+      "parameters": [
+        {
+          "name": "extension",
+          "schema": "string",
+          "required": true,
+          "description": "extension"
+        },
+        {
+          "name": "q",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "start",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "count",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "subdomains",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "inUrlPrefixes",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.parliament.uk/search",
   "apiDescription": "Performs search on parliament.uk domain. Implements [OpenSearch specification](https://github.com/dewitt/opensearch). Throttled at 10 requests per second per IP address.",
   "apiTitle": "UK Parliament Search Service",

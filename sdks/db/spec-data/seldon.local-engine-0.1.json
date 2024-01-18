@@ -4,6 +4,107 @@
   "homepage": "seldon.local",
   "serviceName": "engine",
   "apiVersion": "0.1",
+  "methods": [
+    {
+      "url": "/seldon/{namespace}/{deployment}/api/v1.0/feedback",
+      "method": "sendFeedback",
+      "httpMethod": "post",
+      "tag": "External Ambassador API",
+      "description": "",
+      "parameters": [
+        {
+          "name": "namespace",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "deployment",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "request",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "response",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "reward",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "truth",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/seldon/{namespace}/{deployment}/api/v1.0/predictions",
+      "method": "predict",
+      "httpMethod": "post",
+      "tag": "External Ambassador API",
+      "description": "",
+      "parameters": [
+        {
+          "name": "namespace",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "deployment",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "binData",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "data",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "meta",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "strData",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://seldon.local",
   "apiTitle": "Seldon External API",
   "endpoints": 2,

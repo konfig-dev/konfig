@@ -3,6 +3,233 @@
   "openApiRaw": "https://raw.githubusercontent.com/Patrowl/PatrowlDocs/master/api/openapi-patrowl-engines.yaml",
   "homepage": "patrowl.local",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/",
+      "method": "getDefaultPage",
+      "httpMethod": "get",
+      "tag": "patrowl-engine",
+      "description": "Index page",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/clean",
+      "method": "cleanScansPage",
+      "httpMethod": "get",
+      "tag": "patrowl-engine",
+      "description": "Clean all scans",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/clean/{scanId}",
+      "method": "cleanScanPage",
+      "httpMethod": "get",
+      "tag": "patrowl-engine",
+      "description": "Clean scan",
+      "parameters": [
+        {
+          "name": "scanId",
+          "schema": "integer",
+          "required": true,
+          "description": "Numeric ID of the scan to clean"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/getfindings/{scanId}",
+      "method": "getFindingPage",
+      "httpMethod": "get",
+      "tag": "patrowl-engine",
+      "description": "Get findings on finished scans",
+      "parameters": [
+        {
+          "name": "scanId",
+          "schema": "integer",
+          "required": true,
+          "description": "Numeric ID of the scan to get findings"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/info",
+      "method": "getInfoPage",
+      "httpMethod": "get",
+      "tag": "patrowl-engine",
+      "description": "Engine info page",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/liveness",
+      "method": "getLivenessPage",
+      "httpMethod": "get",
+      "tag": "patrowl-engine",
+      "description": "Liveness page",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/readiness",
+      "method": "getReadinessPage",
+      "httpMethod": "get",
+      "tag": "patrowl-engine",
+      "description": "Readiness page",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/reloadconfig",
+      "method": "reloadConfigurationPage",
+      "httpMethod": "get",
+      "tag": "patrowl-engine",
+      "description": "Configuration reloading page",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/startscan",
+      "method": "startScanPage",
+      "httpMethod": "post",
+      "tag": "patrowl-engine",
+      "description": "Start a new scan",
+      "parameters": [
+        {
+          "name": "assets",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "options",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "scan_id",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/status",
+      "method": "statusScansPage",
+      "httpMethod": "get",
+      "tag": "patrowl-engine",
+      "description": "Status on all scans",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/status/{scanId}",
+      "method": "statusScanPage",
+      "httpMethod": "get",
+      "tag": "patrowl-engine",
+      "description": "Status of a scan",
+      "parameters": [
+        {
+          "name": "scanId",
+          "schema": "integer",
+          "required": true,
+          "description": "Numeric ID of the scan to get status"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stop/{scanId}",
+      "method": "stopScanPage",
+      "httpMethod": "get",
+      "tag": "patrowl-engine",
+      "description": "Stop a scan",
+      "parameters": [
+        {
+          "name": "scanId",
+          "schema": "integer",
+          "required": true,
+          "description": "Numeric ID of the scan to stop"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stopscans",
+      "method": "stopScansPage",
+      "httpMethod": "get",
+      "tag": "patrowl-engine",
+      "description": "Stop all scans",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/test",
+      "method": "getTestPage",
+      "httpMethod": "get",
+      "tag": "patrowl-engine",
+      "description": "Test page",
+      "parameters": [],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "http://patrowl.local",
   "apiDescription": "This is the API documentation for Patrowl Engines usage.",
   "apiTitle": "Swagger API-REST for Patrowl Engines",

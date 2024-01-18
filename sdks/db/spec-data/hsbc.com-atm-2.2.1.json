@@ -4,6 +4,224 @@
   "homepage": "hsbc.com",
   "serviceName": "atm",
   "apiVersion": "2.2.1",
+  "methods": [
+    {
+      "url": "/open-banking/v2.2/atms",
+      "method": "/openBanking/v22/atmsGet",
+      "httpMethod": "get",
+      "tag": "ATMs",
+      "description": "This API will return data about all our ATMs and is prepared to the Open Banking standards as defined by the Open Banking Implementation Entity (OBIE) in data dictionary version 2.2. It is regulated by the UK Competition and Markets Authority (CMA). Data is only available for the United Kingdom.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "408",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/x-open-banking/v2.2/atms/country/{country}",
+      "method": "/xOpenBanking/v22/atms/country/{country}Get",
+      "httpMethod": "get",
+      "tag": "ATMs",
+      "description": "This extended API will return data about all ATMs in the specified country. It is based-on the Open Banking standards as defined by the Open Banking Implementation Entity (OBIE) in data dictionary version 2.2. The extended functionality may not fully adhere to the non-functional requirements of the regulator. Data is only available for the United Kingdom.",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "The ISO country code e.g. &quot;GB&quot;"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "408",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/x-open-banking/v2.2/atms/country/{country}/town/{town}",
+      "method": "/xOpenBanking/v22/atms/country/{country}/town/{town}Get",
+      "httpMethod": "get",
+      "tag": "ATMs",
+      "description": "This extended API will return data about all ATMs in the specified town. It is based-on the Open Banking standards as defined by the Open Banking Implementation Entity (OBIE) in data dictionary version 2.2. The extended functionality may not fully adhere to the non-functional requirements of the regulator. Data is only available for the United Kingdom.",
+      "parameters": [
+        {
+          "name": "country",
+          "schema": "string",
+          "required": true,
+          "description": "The ISO country code e.g. &quot;GB&quot;"
+        },
+        {
+          "name": "town",
+          "schema": "string",
+          "required": true,
+          "description": "Town name, not case sensitive"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "408",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/x-open-banking/v2.2/atms/geo-location/lat/{latitude}/long/{longitude}",
+      "method": "/xOpenBanking/v22/atms/geoLocation/lat/{latitude}/long/{longitude}Get",
+      "httpMethod": "get",
+      "tag": "ATMs",
+      "description": "This extended API will data about all ATMs within a specified radius (1 to 10 miles) of the specified latitude and longitude. It is based-on the Open Banking standards as defined by the Open Banking Implementation Entity (OBIE) in data dictionary version 2.2. The extended functionality may not fully adhere to the non-functional requirements of the regulator. Data is only available for the United Kingdom.",
+      "parameters": [
+        {
+          "name": "latitude",
+          "schema": "string",
+          "required": true,
+          "description": "Positive or negative decimal value in degrees. eg &quot;51.50551621597067&quot;"
+        },
+        {
+          "name": "longitude",
+          "schema": "string",
+          "required": true,
+          "description": "Positive or negative decimal value in degrees. eg &quot;-0.0180120225995&quot;"
+        },
+        {
+          "name": "radius",
+          "schema": "number",
+          "required": true,
+          "description": "Number of miles (1 to 10) as an integer. Default = 1"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "408",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/x-open-banking/v2.2/atms/postcode/{postcode}",
+      "method": "/xOpenBanking/v22/atms/postcode/{postcode}Get",
+      "httpMethod": "get",
+      "tag": "ATMs",
+      "description": "This extended API will return data about all ATMs within a 5 mile radius of the specified postcode. It is based-on the Open Banking standards as defined by the Open Banking Implementation Entity (OBIE) in data dictionary version 2.2. The extended functionality may not fully adhere to the non-functional requirements of the regulator. Data is only available for the United Kingdom.",
+      "parameters": [
+        {
+          "name": "postcode",
+          "schema": "string",
+          "required": true,
+          "description": "Letters and numerals only. No spaces or special characters. eg  &quot;SW1A1AA&quot;"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "408",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://dikpeqbnwi3kx.cloudfront.net",
   "apiTitle": "ATM Locator API",
   "endpoints": 5,

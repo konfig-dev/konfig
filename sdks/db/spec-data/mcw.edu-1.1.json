@@ -3,6 +3,2602 @@
   "openApiRaw": "http://rest.rgd.mcw.edu/rgdws/v2/api-docs",
   "homepage": "mcw.edu",
   "apiVersion": "1.1",
+  "methods": [
+    {
+      "url": "/agr/affectedGenomicModels/{taxonId}",
+      "method": "getAffectedGenomicModelsUsingGet",
+      "httpMethod": "get",
+      "tag": "AGR",
+      "description": "Get affected genomic models (rat strains with gene alleles) submitted by RGD to AGR by taxonId",
+      "parameters": [
+        {
+          "name": "taxonId",
+          "schema": "string",
+          "required": true,
+          "description": "The taxon ID for species"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/agr/alleles/{taxonId}",
+      "method": "getAllelesForTaxonUsingGet",
+      "httpMethod": "get",
+      "tag": "AGR",
+      "description": "Get gene allele records submitted by RGD to AGR by taxonId",
+      "parameters": [
+        {
+          "name": "taxonId",
+          "schema": "string",
+          "required": true,
+          "description": "The taxon ID for species"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/agr/expression/{taxonId}",
+      "method": "getExpressionForTaxonUsingGet",
+      "httpMethod": "get",
+      "tag": "AGR",
+      "description": "Get expression annotations submitted by RGD to AGR by taxonId",
+      "parameters": [
+        {
+          "name": "taxonId",
+          "schema": "string",
+          "required": true,
+          "description": "The taxon ID for species"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/agr/phenotypes/{taxonId}",
+      "method": "getPhenotypesForTaxonUsingGet",
+      "httpMethod": "get",
+      "tag": "AGR",
+      "description": "Get phenotype annotations submitted by RGD to AGR by taxonId",
+      "parameters": [
+        {
+          "name": "taxonId",
+          "schema": "string",
+          "required": true,
+          "description": "The taxon ID for species"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/agr/variants/{taxonId}",
+      "method": "getVariantsForTaxonUsingGet",
+      "httpMethod": "get",
+      "tag": "AGR",
+      "description": "Get basic variant records submitted by RGD to AGR by taxonId",
+      "parameters": [
+        {
+          "name": "taxonId",
+          "schema": "string",
+          "required": true,
+          "description": "The taxon ID for species"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/agr/{taxonId}",
+      "method": "getGenesForLatestAssemblyUsingGet",
+      "httpMethod": "get",
+      "tag": "AGR",
+      "description": "Get gene records submitted by RGD to AGR by taxonId",
+      "parameters": [
+        {
+          "name": "taxonId",
+          "schema": "string",
+          "required": true,
+          "description": "The taxon ID for species"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/annotations/",
+      "method": "getAnnotationsUsingPost",
+      "httpMethod": "post",
+      "tag": "Annotation",
+      "description": "Return a list of genes annotated to an ontology term",
+      "parameters": [
+        {
+          "name": "evidenceCodes",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "ids",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "speciesTypeKeys",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "termAcc",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/annotations/accId/{rgdId}",
+      "method": "getTermAccIdsUsingGet",
+      "httpMethod": "get",
+      "tag": "Annotation",
+      "description": "Returns a list ontology term accession IDs annotated to an rgd object",
+      "parameters": [
+        {
+          "name": "rgdId",
+          "schema": "integer",
+          "required": true,
+          "description": "RGD ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/annotations/count/{accId}/{includeChildren}",
+      "method": "getAnnotationCountByAccIdUsingGet",
+      "httpMethod": "get",
+      "tag": "Annotation",
+      "description": "Returns annotation count for ontology accession ID",
+      "parameters": [
+        {
+          "name": "accId",
+          "schema": "string",
+          "required": true,
+          "description": "Ontology term accession ID"
+        },
+        {
+          "name": "includeChildren",
+          "schema": "boolean",
+          "required": true,
+          "description": "true: return annotations for the term and children, false: return annotations for the term only "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/annotations/count/{accId}/{speciesTypeKey}/{includeChildren}",
+      "method": "getAnnotationCountByAccIdAndSpeciesUsingGet",
+      "httpMethod": "get",
+      "tag": "Annotation",
+      "description": "Returns annotation count for ontology accession ID and speicies",
+      "parameters": [
+        {
+          "name": "accId",
+          "schema": "string",
+          "required": true,
+          "description": "Ontology term accession ID"
+        },
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "A list of species type keys can be found using the lookup service"
+        },
+        {
+          "name": "includeChildren",
+          "schema": "boolean",
+          "required": true,
+          "description": "true: return annotations for the term and children, false: return annotations for the term only "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/annotations/count/{accId}/{speciesTypeKey}/{includeChildren}/{objectType}",
+      "method": "getAnnotationCountByAccIdAndObjectTypeUsingGet",
+      "httpMethod": "get",
+      "tag": "Annotation",
+      "description": "Returns annotation count for ontology accession ID and object type",
+      "parameters": [
+        {
+          "name": "accId",
+          "schema": "string",
+          "required": true,
+          "description": "Ontology term accession ID"
+        },
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "A list of species type keys can be found using the lookup service"
+        },
+        {
+          "name": "includeChildren",
+          "schema": "boolean",
+          "required": true,
+          "description": "true: return annotations for the term and children, false: return annotations for the term only "
+        },
+        {
+          "name": "objectType",
+          "schema": "integer",
+          "required": true,
+          "description": "A list of object types can be found using the lookup service"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/annotations/reference/{refRgdId}",
+      "method": "getAnnotsByRefrerenceUsingGet",
+      "httpMethod": "get",
+      "tag": "Annotation",
+      "description": "Returns a list of annotations for a reference",
+      "parameters": [
+        {
+          "name": "refRgdId",
+          "schema": "integer",
+          "required": true,
+          "description": "Reference RGD ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/annotations/rgdId/{rgdId}",
+      "method": "getAnnotationsByRgdIdUsingGet",
+      "httpMethod": "get",
+      "tag": "Annotation",
+      "description": "Returns a list of annotations by RGD ID",
+      "parameters": [
+        {
+          "name": "rgdId",
+          "schema": "integer",
+          "required": true,
+          "description": "RGD ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/annotations/rgdId/{rgdId}/{ontologyPrefix}",
+      "method": "getAnnotationsByRgdIdAndOntologyUsingGet",
+      "httpMethod": "get",
+      "tag": "Annotation",
+      "description": "Returns a list of annotations by RGD ID and ontology prefix",
+      "parameters": [
+        {
+          "name": "rgdId",
+          "schema": "integer",
+          "required": true,
+          "description": "RGD ID"
+        },
+        {
+          "name": "ontologyPrefix",
+          "schema": "string",
+          "required": true,
+          "description": "Ontology Prefix.  The prefix can be found left of the semicolon in an ontology term accession ID.  As an example, term accession PW:0000034 has the ontology prefix PW"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/annotations/{accId}/{rgdId}",
+      "method": "getAnnotationsByAccIdAndRgdIdUsingGet",
+      "httpMethod": "get",
+      "tag": "Annotation",
+      "description": "Returns a list of annotations by RGD ID and ontology term accession ID",
+      "parameters": [
+        {
+          "name": "accId",
+          "schema": "string",
+          "required": true,
+          "description": "Ontology Term Accession ID"
+        },
+        {
+          "name": "rgdId",
+          "schema": "integer",
+          "required": true,
+          "description": "RGD ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/annotations/{accId}/{speciesTypeKey}/{includeChildren}",
+      "method": "getAnnotationsUsingGet",
+      "httpMethod": "get",
+      "tag": "Annotation",
+      "description": "Returns a list annotations for an ontology term or a term and it's children",
+      "parameters": [
+        {
+          "name": "accId",
+          "schema": "string",
+          "required": true,
+          "description": "Ontology term accession ID"
+        },
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "A list of species type keys can be found using the lookup service"
+        },
+        {
+          "name": "includeChildren",
+          "schema": "boolean",
+          "required": true,
+          "description": "true: return annotations for the term and children, false: return annotations for the term only "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/enrichment/annotatedGenes",
+      "method": "getEnrichmentDataUsingPost",
+      "httpMethod": "post",
+      "tag": "enrichment-web-service",
+      "description": "Return a list of genes annotated to the term.Genes are rgdids separated by comma.Species type is an integer value.term is the ontology",
+      "parameters": [
+        {
+          "name": "accId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "geneSymbols",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "species",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/enrichment/data",
+      "method": "getEnrichmentDataUsingPost1",
+      "httpMethod": "post",
+      "tag": "enrichment-web-service",
+      "description": "Return a chart of ontology terms annotated to the genes.Genes are rgdids separated by comma.Species type is an integer value.Aspect is the Ontology group",
+      "parameters": [
+        {
+          "name": "aspect",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "genes",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "species",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/genes/affyId/{affyId}/{speciesTypeKey}",
+      "method": "getGenesByAffyIdUsingGet",
+      "httpMethod": "get",
+      "tag": "Gene",
+      "description": "Return a list of genes for an affymetrix ID",
+      "parameters": [
+        {
+          "name": "affyId",
+          "schema": "string",
+          "required": true,
+          "description": "Affymetrix ID"
+        },
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "A list of RGD species type keys can be found in the lookup service"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/genes/alias/{aliasSymbol}/{speciesTypeKey}",
+      "method": "getGenesByAliasSymbolUsingGet",
+      "httpMethod": "get",
+      "tag": "Gene",
+      "description": "Return a list of genes for an alias and species",
+      "parameters": [
+        {
+          "name": "aliasSymbol",
+          "schema": "string",
+          "required": true,
+          "description": "Gene alias symbol"
+        },
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "A list of RGD species type keys can be found in the lookup service"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/genes/allele/{rgdId}",
+      "method": "getGeneAllelesUsingGet",
+      "httpMethod": "get",
+      "tag": "Gene",
+      "description": "Return a list of gene alleles",
+      "parameters": [
+        {
+          "name": "rgdId",
+          "schema": "integer",
+          "required": true,
+          "description": "RGD ID of gene"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/genes/annotation",
+      "method": "getAnnotatedGenesUsingPost",
+      "httpMethod": "post",
+      "tag": "Gene",
+      "description": "Return a list of genes annotated to an ontology term",
+      "parameters": [
+        {
+          "name": "accId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "evidenceCodes",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "speciesTypeKeys",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/genes/annotation/{accId}",
+      "method": "getAllAnnotatedGenesUsingGet",
+      "httpMethod": "get",
+      "tag": "Gene",
+      "description": "Return a list of genes annotated to an ontology term",
+      "parameters": [
+        {
+          "name": "accId",
+          "schema": "string",
+          "required": true,
+          "description": "Accesstion ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/genes/annotation/{accId}/{speciesTypeKey}",
+      "method": "getGenesAnnotatedUsingGet",
+      "httpMethod": "get",
+      "tag": "Gene",
+      "description": "Return a list of genes annotated to an ontology term",
+      "parameters": [
+        {
+          "name": "accId",
+          "schema": "string",
+          "required": true,
+          "description": "Ontology term accession ID"
+        },
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "Species type key.  A list of species type keys can be found in the lookup service"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/genes/keyword/{keyword}/{speciesTypeKey}",
+      "method": "getGenesByKeywordUsingGet",
+      "httpMethod": "get",
+      "tag": "Gene",
+      "description": "Return a list of genes by keyword and species type key",
+      "parameters": [
+        {
+          "name": "keyword",
+          "schema": "string",
+          "required": true,
+          "description": "Search keyword"
+        },
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "Species type key.  A list of species type keys can be found in the lookup service"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/genes/map/{mapKey}",
+      "method": "getGeneByMapKeyUsingGet",
+      "httpMethod": "get",
+      "tag": "Gene",
+      "description": "Return a list of all genes with position information for an assembly",
+      "parameters": [
+        {
+          "name": "mapKey",
+          "schema": "integer",
+          "required": true,
+          "description": "A list of RGD assembly map keys can be found in the lookup service"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/genes/mapped/{chr}/{start}/{stop}/{mapKey}",
+      "method": "getMappedGenesByPositionUsingGet",
+      "httpMethod": "get",
+      "tag": "Gene",
+      "description": "Return a list of genes position and map key",
+      "parameters": [
+        {
+          "name": "chr",
+          "schema": "string",
+          "required": true,
+          "description": "Chromosome"
+        },
+        {
+          "name": "start",
+          "schema": "integer",
+          "required": true,
+          "description": "Start Position"
+        },
+        {
+          "name": "stop",
+          "schema": "integer",
+          "required": true,
+          "description": "Stop Position"
+        },
+        {
+          "name": "mapKey",
+          "schema": "integer",
+          "required": true,
+          "description": "A list of RGD assembly map keys can be found in the lookup service"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/genes/orthologs",
+      "method": "getOrthologsByListUsingPost",
+      "httpMethod": "post",
+      "tag": "Gene",
+      "description": "Return a list of gene orthologs",
+      "parameters": [
+        {
+          "name": "rgdIds",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "speciesTypeKeys",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/genes/orthologs/{rgdId}",
+      "method": "getGeneOrthologsUsingGet",
+      "httpMethod": "get",
+      "tag": "Gene",
+      "description": "Return a list of gene orthologs",
+      "parameters": [
+        {
+          "name": "rgdId",
+          "schema": "integer",
+          "required": true,
+          "description": "RGD ID of a gene"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/genes/region/{chr}/{start}/{stop}/{mapKey}",
+      "method": "getGenesInRegionUsingGet",
+      "httpMethod": "get",
+      "tag": "Gene",
+      "description": "Return a list of genes in region",
+      "parameters": [
+        {
+          "name": "chr",
+          "schema": "string",
+          "required": true,
+          "description": "Chromosome"
+        },
+        {
+          "name": "start",
+          "schema": "integer",
+          "required": true,
+          "description": "Start Position"
+        },
+        {
+          "name": "stop",
+          "schema": "integer",
+          "required": true,
+          "description": "Stop Position"
+        },
+        {
+          "name": "mapKey",
+          "schema": "integer",
+          "required": true,
+          "description": "A list of RGD assembly map keys can be found in the lookup service"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/genes/species/{speciesTypeKey}",
+      "method": "getGenesBySpeciesUsingGet",
+      "httpMethod": "get",
+      "tag": "Gene",
+      "description": "Return a list of all genes for a species in RGD",
+      "parameters": [
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "A list of RGD species type keys can be found in the lookup service"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/genes/{chr}/{start}/{stop}/{mapKey}",
+      "method": "getGenesByPositionUsingGet",
+      "httpMethod": "get",
+      "tag": "Gene",
+      "description": "Return a list of genes position and map key",
+      "parameters": [
+        {
+          "name": "chr",
+          "schema": "string",
+          "required": true,
+          "description": "Chromosome"
+        },
+        {
+          "name": "start",
+          "schema": "integer",
+          "required": true,
+          "description": "Start Position"
+        },
+        {
+          "name": "stop",
+          "schema": "integer",
+          "required": true,
+          "description": "Stop Position"
+        },
+        {
+          "name": "mapKey",
+          "schema": "integer",
+          "required": true,
+          "description": "A list of RGD assembly map keys can be found in the lookup service"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/genes/{rgdId}",
+      "method": "getGeneByRgdIdUsingGet",
+      "httpMethod": "get",
+      "tag": "Gene",
+      "description": "Get a gene record by RGD ID",
+      "parameters": [
+        {
+          "name": "rgdId",
+          "schema": "integer",
+          "required": true,
+          "description": "The RGD ID of a Gene in RGD"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/genes/{symbol}/{speciesTypeKey}",
+      "method": "getGeneBySymbolUsingGet",
+      "httpMethod": "get",
+      "tag": "Gene",
+      "description": "Get a gene record by symbol and species type key",
+      "parameters": [
+        {
+          "name": "symbol",
+          "schema": "string",
+          "required": true,
+          "description": "Gene Symbol"
+        },
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "Species type key.  A list of species type keys can be found in the lookup service"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lookup/geneTypes",
+      "method": "getGeneTypesUsingGet",
+      "httpMethod": "get",
+      "tag": "Lookup",
+      "description": "Returns a list of gene types avialable in RGD",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lookup/id/map/EnsemblGene",
+      "method": "getEnsemblGeneMappingUsingPost",
+      "httpMethod": "post",
+      "tag": "Lookup",
+      "description": "Translate RGD IDs to Ensembl Gene IDs",
+      "parameters": [
+        {
+          "name": "rgdIds",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lookup/id/map/EnsemblGene/{rgdId}",
+      "method": "getEnsemblGeneMappingUsingGet",
+      "httpMethod": "get",
+      "tag": "Lookup",
+      "description": "Translate an RGD ID to an Ensembl Gene  ID",
+      "parameters": [
+        {
+          "name": "rgdId",
+          "schema": "integer",
+          "required": true,
+          "description": "RGD ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lookup/id/map/EnsemblProtein",
+      "method": "getEnsemblProteinMappingUsingPost",
+      "httpMethod": "post",
+      "tag": "Lookup",
+      "description": "Translate RGD IDs to Ensembl Protein IDs",
+      "parameters": [
+        {
+          "name": "rgdIds",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lookup/id/map/EnsemblProtein/{rgdId}",
+      "method": "getEnsemblProteinMappingUsingGet",
+      "httpMethod": "get",
+      "tag": "Lookup",
+      "description": "Translate an RGD ID to an Ensembl Protein ID",
+      "parameters": [
+        {
+          "name": "rgdId",
+          "schema": "integer",
+          "required": true,
+          "description": "RGD ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lookup/id/map/EnsemblTranscript",
+      "method": "getEnsemblTranscriptMappingUsingPost",
+      "httpMethod": "post",
+      "tag": "Lookup",
+      "description": "Translate RGD IDs to Ensembl Transcript IDs",
+      "parameters": [
+        {
+          "name": "rgdIds",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lookup/id/map/EnsemblTranscript/{rgdId}",
+      "method": "getEnsemblTranscriptMappingUsingGet",
+      "httpMethod": "get",
+      "tag": "Lookup",
+      "description": "Translate an RGD ID to an Ensembl Transcript ID",
+      "parameters": [
+        {
+          "name": "rgdId",
+          "schema": "integer",
+          "required": true,
+          "description": "RGD ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lookup/id/map/GTEx",
+      "method": "getGtexMappingUsingPost",
+      "httpMethod": "post",
+      "tag": "Lookup",
+      "description": "Translate RGD IDs to GTEx IDs",
+      "parameters": [
+        {
+          "name": "rgdIds",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lookup/id/map/GTEx/{rgdId}",
+      "method": "getGtexMappingUsingGet",
+      "httpMethod": "get",
+      "tag": "Lookup",
+      "description": "Translate an RGD ID to an GTEx ID",
+      "parameters": [
+        {
+          "name": "rgdId",
+          "schema": "integer",
+          "required": true,
+          "description": "RGD ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lookup/id/map/GenBankNucleotide",
+      "method": "getGenBankNucleotideMappingUsingPost",
+      "httpMethod": "post",
+      "tag": "Lookup",
+      "description": "Translate RGD IDs to GenBank Nucleotide IDs",
+      "parameters": [
+        {
+          "name": "rgdIds",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lookup/id/map/GenBankNucleotide/{rgdId}",
+      "method": "getGenBankNucleotideMappingUsingGet",
+      "httpMethod": "get",
+      "tag": "Lookup",
+      "description": "Translate an RGD ID to a GenBank Nucleotide ID",
+      "parameters": [
+        {
+          "name": "rgdId",
+          "schema": "integer",
+          "required": true,
+          "description": "RGD ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lookup/id/map/GenBankProtein",
+      "method": "getGenBankProteinMappingUsingPost",
+      "httpMethod": "post",
+      "tag": "Lookup",
+      "description": "Translate RGD IDs to GenBank Protein IDs",
+      "parameters": [
+        {
+          "name": "rgdIds",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lookup/id/map/GenBankProtein/{rgdId}",
+      "method": "getGenBankProteinMappingUsingGet",
+      "httpMethod": "get",
+      "tag": "Lookup",
+      "description": "Translate an RGD ID to a GenBank Protein ID",
+      "parameters": [
+        {
+          "name": "rgdId",
+          "schema": "integer",
+          "required": true,
+          "description": "RGD ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lookup/id/map/HGNC",
+      "method": "getHgncMappingUsingPost",
+      "httpMethod": "post",
+      "tag": "Lookup",
+      "description": "Translate RGD IDs to HGNC IDs",
+      "parameters": [
+        {
+          "name": "rgdIds",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lookup/id/map/HGNC/{rgdId}",
+      "method": "getHgncMappingUsingGet",
+      "httpMethod": "get",
+      "tag": "Lookup",
+      "description": "Translate an RGD ID to an HGNC ID",
+      "parameters": [
+        {
+          "name": "rgdId",
+          "schema": "integer",
+          "required": true,
+          "description": "RGD ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lookup/id/map/MGI",
+      "method": "getMgiMappingUsingPost",
+      "httpMethod": "post",
+      "tag": "Lookup",
+      "description": "Translate RGD IDs to MGI IDs",
+      "parameters": [
+        {
+          "name": "rgdIds",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lookup/id/map/MGI/{rgdId}",
+      "method": "getMgiMappingUsingGet",
+      "httpMethod": "get",
+      "tag": "Lookup",
+      "description": "Translate an RGD ID to an MGI ID",
+      "parameters": [
+        {
+          "name": "rgdId",
+          "schema": "integer",
+          "required": true,
+          "description": "RGD ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lookup/id/map/NCBIGene",
+      "method": "getNcbiGeneMappingUsingPost",
+      "httpMethod": "post",
+      "tag": "Lookup",
+      "description": "Translate RGD IDs to NCBI Gene IDs",
+      "parameters": [
+        {
+          "name": "rgdIds",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lookup/id/map/NCBIGene/{rgdId}",
+      "method": "getNcbiGeneMappingUsingGet",
+      "httpMethod": "get",
+      "tag": "Lookup",
+      "description": "Translate an RGD ID to an NCBI Gene ID",
+      "parameters": [
+        {
+          "name": "rgdId",
+          "schema": "integer",
+          "required": true,
+          "description": "RGD ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lookup/id/map/UniProt",
+      "method": "getUniProtMappingUsingPost",
+      "httpMethod": "post",
+      "tag": "Lookup",
+      "description": "Translate RGD IDs to UniProt IDs",
+      "parameters": [
+        {
+          "name": "rgdIds",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lookup/id/map/UniProt/{rgdId}",
+      "method": "getUniProtMappingUsingGet",
+      "httpMethod": "get",
+      "tag": "Lookup",
+      "description": "Translate an RGD ID to a UniProt ID",
+      "parameters": [
+        {
+          "name": "rgdId",
+          "schema": "integer",
+          "required": true,
+          "description": "RGD ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lookup/maps/{speciesTypeKey}",
+      "method": "getMapsUsingGet",
+      "httpMethod": "get",
+      "tag": "Lookup",
+      "description": "Return a list assembly maps for a species",
+      "parameters": [
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "RGD species type key. A full list of keys is available throught the lookup service.  1=human, 2=mouse, 3=rat,ect"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lookup/speciesTypeKeys",
+      "method": "getSpeciesTypesUsingGet",
+      "httpMethod": "get",
+      "tag": "Lookup",
+      "description": "Return a Map of species type keys available in RGD",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lookup/standardUnit/{accId}",
+      "method": "getMapsUsingGet1",
+      "httpMethod": "get",
+      "tag": "Lookup",
+      "description": "Return a standardUnit for an ontology if it exists",
+      "parameters": [
+        {
+          "name": "accId",
+          "schema": "string",
+          "required": true,
+          "description": "RGD term acc"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/maps/chr/{chromosome}/{mapKey}",
+      "method": "getChromosomeByAssemblyUsingGet",
+      "httpMethod": "get",
+      "tag": "Chromosome",
+      "description": "Return a list of chromosomes",
+      "parameters": [
+        {
+          "name": "chromosome",
+          "schema": "string",
+          "required": true,
+          "description": "chromosome"
+        },
+        {
+          "name": "mapKey",
+          "schema": "integer",
+          "required": true,
+          "description": "mapKey"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/maps/chr/{mapKey}",
+      "method": "getChromosomesByAssemblyUsingGet",
+      "httpMethod": "get",
+      "tag": "Chromosome",
+      "description": "Return a list of chromosomes",
+      "parameters": [
+        {
+          "name": "mapKey",
+          "schema": "integer",
+          "required": true,
+          "description": "mapKey"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/maps/{speciesTypeKey}",
+      "method": "getMapsBySpeciesUsingGet",
+      "httpMethod": "get",
+      "tag": "Map",
+      "description": "Return a list of assemblies",
+      "parameters": [
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "species Key"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ontology/ont/{accId}",
+      "method": "getOntDagsUsingGet",
+      "httpMethod": "get",
+      "tag": "Ontology",
+      "description": "Returns child and parent terms for Accession ID",
+      "parameters": [
+        {
+          "name": "accId",
+          "schema": "string",
+          "required": true,
+          "description": "Accession ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ontology/term/{accId1}/{accId2}",
+      "method": "isDescendantOfUsingGet",
+      "httpMethod": "get",
+      "tag": "Ontology",
+      "description": "Returns true or false for terms",
+      "parameters": [
+        {
+          "name": "accId1",
+          "schema": "string",
+          "required": true,
+          "description": "Child Term Accession ID"
+        },
+        {
+          "name": "accId2",
+          "schema": "string",
+          "required": true,
+          "description": "Parent Term Accession ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ontology/term/{accId}",
+      "method": "getTermUsingGet",
+      "httpMethod": "get",
+      "tag": "Ontology",
+      "description": "Returns term for Accession ID",
+      "parameters": [
+        {
+          "name": "accId",
+          "schema": "string",
+          "required": true,
+          "description": "Term Accession ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/pathways/diagrams/search/{searchString}",
+      "method": "searchPathwaysUsingGet",
+      "httpMethod": "get",
+      "tag": "Pathway",
+      "description": "Return a list of pathways based on search term",
+      "parameters": [
+        {
+          "name": "searchString",
+          "schema": "string",
+          "required": true,
+          "description": "Free text search string"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/pathways/diagramsForCategory/{category}",
+      "method": "getPathwaysWithDiagramsForCategoryUsingGet",
+      "httpMethod": "get",
+      "tag": "Pathway",
+      "description": "Return a list of pathways based on category provided",
+      "parameters": [
+        {
+          "name": "category",
+          "schema": "string",
+          "required": true,
+          "description": "Pathway Category"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/phenotype/phenominer/chart/{speciesTypeKey}/{refRgdId}/{termString}",
+      "method": "getChartInfoUsingGet",
+      "httpMethod": "get",
+      "tag": "Quantitative Phenotype",
+      "description": "Return a list of quantitative phenotypes values based on a combination of Clinical Measurement, Experimental Condition, Rat Strain, and/or Measurement Method ontology terms.  Results will be all records that match all terms submitted.  Ontology ids should be submitted as a comma delimited list (ex. RS:0000029,CMO:0000155,CMO:0000139).  Species type is an integer value (3=rat, 4=chinchilla).  Reference RGD ID for a study works like a filter.",
+      "parameters": [
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "Species Type Key - 3=rat 4=chinchilla "
+        },
+        {
+          "name": "refRgdId",
+          "schema": "integer",
+          "required": true,
+          "description": "Reference RGD ID for a study"
+        },
+        {
+          "name": "termString",
+          "schema": "string",
+          "required": true,
+          "description": "List of term accession IDs"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/phenotype/phenominer/chart/{speciesTypeKey}/{termString}",
+      "method": "getChartInfoUsingGet1",
+      "httpMethod": "get",
+      "tag": "Quantitative Phenotype",
+      "description": "Return a list of quantitative phenotypes values based on a combination of Clinical Measurement, Experimental Condition, Rat Strain, and/or Measurement Method ontology terms.  Results will be all records that match all terms submitted.  Ontology ids should be submitted as a comma delimited list (ex. RS:0000029,CMO:0000155,CMO:0000139).  Species type is an integer value (3=rat, 4=chinchilla)",
+      "parameters": [
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "Species Type Key - 3=rat 4=chinchilla "
+        },
+        {
+          "name": "termString",
+          "schema": "string",
+          "required": true,
+          "description": "List of term accession IDs"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/qtls/mapped/{chr}/{start}/{stop}/{mapKey}",
+      "method": "getMappedQtlByPositionUsingGet",
+      "httpMethod": "get",
+      "tag": "QTL",
+      "description": "Returns a list QTL for given position and assembly map",
+      "parameters": [
+        {
+          "name": "chr",
+          "schema": "string",
+          "required": true,
+          "description": "Chromosome"
+        },
+        {
+          "name": "start",
+          "schema": "integer",
+          "required": true,
+          "description": "Start Position"
+        },
+        {
+          "name": "stop",
+          "schema": "integer",
+          "required": true,
+          "description": "Stop Position"
+        },
+        {
+          "name": "mapKey",
+          "schema": "integer",
+          "required": true,
+          "description": "A list of assembly map keys can be found using the lookup service"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/qtls/{chr}/{start}/{stop}/{mapKey}",
+      "method": "getQtlListByPositionUsingGet",
+      "httpMethod": "get",
+      "tag": "QTL",
+      "description": "Returns a list QTL for given position and assembly map",
+      "parameters": [
+        {
+          "name": "chr",
+          "schema": "string",
+          "required": true,
+          "description": "Chromosome"
+        },
+        {
+          "name": "start",
+          "schema": "integer",
+          "required": true,
+          "description": "Start Position"
+        },
+        {
+          "name": "stop",
+          "schema": "integer",
+          "required": true,
+          "description": "Stop Position"
+        },
+        {
+          "name": "mapKey",
+          "schema": "integer",
+          "required": true,
+          "description": "A list of assembly map keys can be found using the lookup service"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/qtls/{rgdId}",
+      "method": "getQtlByRgdIdUsingGet",
+      "httpMethod": "get",
+      "tag": "QTL",
+      "description": "Return a QTL for provided RGD ID",
+      "parameters": [
+        {
+          "name": "rgdId",
+          "schema": "integer",
+          "required": true,
+          "description": "RGD ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sslps/mapped/{chr}/{start}/{stop}/{mapKey}",
+      "method": "getMappedSslpByPositionUsingGet",
+      "httpMethod": "get",
+      "tag": "SSLP",
+      "description": "Returns a list SSLP for given position and assembly map",
+      "parameters": [
+        {
+          "name": "chr",
+          "schema": "string",
+          "required": true,
+          "description": "Chromosome"
+        },
+        {
+          "name": "start",
+          "schema": "integer",
+          "required": true,
+          "description": "Start Position"
+        },
+        {
+          "name": "stop",
+          "schema": "integer",
+          "required": true,
+          "description": "Stop Position"
+        },
+        {
+          "name": "mapKey",
+          "schema": "integer",
+          "required": true,
+          "description": "A list of assembly map keys can be found using the lookup service"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/count/activeObject/{speciesTypeKey}/{dateYYYYMMDD}",
+      "method": "getActiveObjectCountUsingGet",
+      "httpMethod": "get",
+      "tag": "Statistics",
+      "description": "Count of active objects by type, for specified species and date",
+      "parameters": [
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "speciesTypeKey"
+        },
+        {
+          "name": "dateYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateYYYYMMDD"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/count/geneType/{speciesTypeKey}/{dateYYYYMMDD}",
+      "method": "getGeneTypeCountUsingGet",
+      "httpMethod": "get",
+      "tag": "Statistics",
+      "description": "Count of gene types, for specified species and date",
+      "parameters": [
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "speciesTypeKey"
+        },
+        {
+          "name": "dateYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateYYYYMMDD"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/count/objectStatus/{speciesTypeKey}/{dateYYYYMMDD}",
+      "method": "getObjectStatusCountUsingGet",
+      "httpMethod": "get",
+      "tag": "Statistics",
+      "description": "Count of objects with given status, for specified species and date",
+      "parameters": [
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "speciesTypeKey"
+        },
+        {
+          "name": "dateYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateYYYYMMDD"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/count/objectWithRefSeq/{speciesTypeKey}/{dateYYYYMMDD}",
+      "method": "getObjectsWithRefSeqCountUsingGet",
+      "httpMethod": "get",
+      "tag": "Statistics",
+      "description": "Count of objects with reference sequence(s), by object type, for specified species and date",
+      "parameters": [
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "speciesTypeKey"
+        },
+        {
+          "name": "dateYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateYYYYMMDD"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/count/objectWithReference/{speciesTypeKey}/{dateYYYYMMDD}",
+      "method": "getObjectsWithReferenceCountUsingGet",
+      "httpMethod": "get",
+      "tag": "Statistics",
+      "description": "Count of objects with reference, by object type, for specified species and date",
+      "parameters": [
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "speciesTypeKey"
+        },
+        {
+          "name": "dateYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateYYYYMMDD"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/count/objectWithXdb/{speciesTypeKey}/{objectKey}/{dateYYYYMMDD}",
+      "method": "getObjectsWithXdBsCountUsingGet",
+      "httpMethod": "get",
+      "tag": "Statistics",
+      "description": "Count of objects with external database ids, by database id, for specified species, object type and date",
+      "parameters": [
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "speciesTypeKey"
+        },
+        {
+          "name": "objectKey",
+          "schema": "integer",
+          "required": true,
+          "description": "objectKey"
+        },
+        {
+          "name": "dateYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateYYYYMMDD"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/count/proteinInteraction/{speciesTypeKey}/{dateYYYYMMDD}",
+      "method": "getProteinInteractionCountUsingGet",
+      "httpMethod": "get",
+      "tag": "Statistics",
+      "description": "Count of protein interactions, for specified species and date",
+      "parameters": [
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "speciesTypeKey"
+        },
+        {
+          "name": "dateYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateYYYYMMDD"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/count/qtlInheritanceType/{speciesTypeKey}/{dateYYYYMMDD}",
+      "method": "getQtlInheritanceTypeCountUsingGet",
+      "httpMethod": "get",
+      "tag": "Statistics",
+      "description": "Count of strains, by qtl inheritance type, for specified species and date",
+      "parameters": [
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "speciesTypeKey"
+        },
+        {
+          "name": "dateYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateYYYYMMDD"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/count/retiredObject/{speciesTypeKey}/{dateYYYYMMDD}",
+      "method": "getRetiredObjectCountUsingGet",
+      "httpMethod": "get",
+      "tag": "Statistics",
+      "description": "Count of retired objects by type, for specified species and date",
+      "parameters": [
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "speciesTypeKey"
+        },
+        {
+          "name": "dateYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateYYYYMMDD"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/count/strainType/{speciesTypeKey}/{dateYYYYMMDD}",
+      "method": "getStrainTypeCountUsingGet",
+      "httpMethod": "get",
+      "tag": "Statistics",
+      "description": "Count of strain types, for specified species and date",
+      "parameters": [
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "speciesTypeKey"
+        },
+        {
+          "name": "dateYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateYYYYMMDD"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/count/withdrawnObject/{speciesTypeKey}/{dateYYYYMMDD}",
+      "method": "getWithdrawnObjectCountUsingGet",
+      "httpMethod": "get",
+      "tag": "Statistics",
+      "description": "Count of withdrawn objects by type, for specified species and date",
+      "parameters": [
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "speciesTypeKey"
+        },
+        {
+          "name": "dateYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateYYYYMMDD"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/count/xdb/{speciesTypeKey}/{dateYYYYMMDD}",
+      "method": "getXdbsCountUsingGet",
+      "httpMethod": "get",
+      "tag": "Statistics",
+      "description": "Count of external database ids, for specied species and date",
+      "parameters": [
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "speciesTypeKey"
+        },
+        {
+          "name": "dateYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateYYYYMMDD"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/diff/activeObject/{speciesTypeKey}/{dateFromYYYYMMDD}/{dateToYYYYMMDD}",
+      "method": "getActiveObjectDiffUsingGet",
+      "httpMethod": "get",
+      "tag": "Statistics",
+      "description": "Count difference of active objects, by type, for specified species and date range",
+      "parameters": [
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "speciesTypeKey"
+        },
+        {
+          "name": "dateFromYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateFromYYYYMMDD"
+        },
+        {
+          "name": "dateToYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateToYYYYMMDD"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/diff/geneType/{speciesTypeKey}/{dateFromYYYYMMDD}/{dateToYYYYMMDD}",
+      "method": "getGeneTypeDiffUsingGet",
+      "httpMethod": "get",
+      "tag": "Statistics",
+      "description": "Count difference of gene types, for specified species and date range",
+      "parameters": [
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "speciesTypeKey"
+        },
+        {
+          "name": "dateFromYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateFromYYYYMMDD"
+        },
+        {
+          "name": "dateToYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateToYYYYMMDD"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/diff/objectStatus/{speciesTypeKey}/{dateFromYYYYMMDD}/{dateToYYYYMMDD}",
+      "method": "getObjectStatusDiffUsingGet",
+      "httpMethod": "get",
+      "tag": "Statistics",
+      "description": "Count difference of objects with given status, for specified species and date range",
+      "parameters": [
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "speciesTypeKey"
+        },
+        {
+          "name": "dateFromYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateFromYYYYMMDD"
+        },
+        {
+          "name": "dateToYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateToYYYYMMDD"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/diff/objectWithRefSeq/{speciesTypeKey}/{dateFromYYYYMMDD}/{dateToYYYYMMDD}",
+      "method": "getObjectsWithRefSeqDiffUsingGet",
+      "httpMethod": "get",
+      "tag": "Statistics",
+      "description": "Count difference of objects with reference sequence(s), by object type, for specified species and date range",
+      "parameters": [
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "speciesTypeKey"
+        },
+        {
+          "name": "dateFromYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateFromYYYYMMDD"
+        },
+        {
+          "name": "dateToYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateToYYYYMMDD"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/diff/objectWithReference/{speciesTypeKey}/{dateFromYYYYMMDD}/{dateToYYYYMMDD}",
+      "method": "getObjectsWithReferenceDiffUsingGet",
+      "httpMethod": "get",
+      "tag": "Statistics",
+      "description": "Count difference of objects with reference, by object type, for specified species and date range",
+      "parameters": [
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "speciesTypeKey"
+        },
+        {
+          "name": "dateFromYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateFromYYYYMMDD"
+        },
+        {
+          "name": "dateToYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateToYYYYMMDD"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/diff/objectWithXdb/{speciesTypeKey}/{objectKey}/{dateFromYYYYMMDD}/{dateToYYYYMMDD}",
+      "method": "getObjectsWithXdBsDiffUsingGet",
+      "httpMethod": "get",
+      "tag": "Statistics",
+      "description": "Count difference of objects with external database ids, by database id, for specified species, object type and date range",
+      "parameters": [
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "speciesTypeKey"
+        },
+        {
+          "name": "objectKey",
+          "schema": "integer",
+          "required": true,
+          "description": "objectKey"
+        },
+        {
+          "name": "dateFromYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateFromYYYYMMDD"
+        },
+        {
+          "name": "dateToYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateToYYYYMMDD"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/diff/proteinInteraction/{speciesTypeKey}/{dateFromYYYYMMDD}/{dateToYYYYMMDD}",
+      "method": "getProteinInteractionDiffUsingGet",
+      "httpMethod": "get",
+      "tag": "Statistics",
+      "description": "Count difference of protein interactions, for specified species and date range",
+      "parameters": [
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "speciesTypeKey"
+        },
+        {
+          "name": "dateFromYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateFromYYYYMMDD"
+        },
+        {
+          "name": "dateToYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateToYYYYMMDD"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/diff/qtlInheritanceType/{speciesTypeKey}/{dateFromYYYYMMDD}/{dateToYYYYMMDD}",
+      "method": "getQtlInheritanceTypeDiffUsingGet",
+      "httpMethod": "get",
+      "tag": "Statistics",
+      "description": "Count difference of strains, by qtl inheritance type, for specified species and date range",
+      "parameters": [
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "speciesTypeKey"
+        },
+        {
+          "name": "dateFromYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateFromYYYYMMDD"
+        },
+        {
+          "name": "dateToYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateToYYYYMMDD"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/diff/retiredObject/{speciesTypeKey}/{dateFromYYYYMMDD}/{dateToYYYYMMDD}",
+      "method": "getRetiredObjectDiffUsingGet",
+      "httpMethod": "get",
+      "tag": "Statistics",
+      "description": "Count difference of retired objects, by type, for specified species and date range",
+      "parameters": [
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "speciesTypeKey"
+        },
+        {
+          "name": "dateFromYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateFromYYYYMMDD"
+        },
+        {
+          "name": "dateToYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateToYYYYMMDD"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/diff/strainType/{speciesTypeKey}/{dateFromYYYYMMDD}/{dateToYYYYMMDD}",
+      "method": "getStrainTypeDiffUsingGet",
+      "httpMethod": "get",
+      "tag": "Statistics",
+      "description": "Count difference of strain types, for specified species and date range",
+      "parameters": [
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "speciesTypeKey"
+        },
+        {
+          "name": "dateFromYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateFromYYYYMMDD"
+        },
+        {
+          "name": "dateToYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateToYYYYMMDD"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/diff/withdrawnObject/{speciesTypeKey}/{dateFromYYYYMMDD}/{dateToYYYYMMDD}",
+      "method": "getWithdrawnObjectDiffUsingGet",
+      "httpMethod": "get",
+      "tag": "Statistics",
+      "description": "Count difference of withdrawn objects, by type, for specified species and date range",
+      "parameters": [
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "speciesTypeKey"
+        },
+        {
+          "name": "dateFromYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateFromYYYYMMDD"
+        },
+        {
+          "name": "dateToYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateToYYYYMMDD"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/diff/xdb/{speciesTypeKey}/{dateFromYYYYMMDD}/{dateToYYYYMMDD}",
+      "method": "getXdbsDiffUsingGet",
+      "httpMethod": "get",
+      "tag": "Statistics",
+      "description": "Count difference of external database ids, for specified species and date range",
+      "parameters": [
+        {
+          "name": "speciesTypeKey",
+          "schema": "integer",
+          "required": true,
+          "description": "speciesTypeKey"
+        },
+        {
+          "name": "dateFromYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateFromYYYYMMDD"
+        },
+        {
+          "name": "dateToYYYYMMDD",
+          "schema": "string",
+          "required": true,
+          "description": "dateToYYYYMMDD"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stats/term/{accId}/{filterAccId}",
+      "method": "getTermStatsUsingGet",
+      "httpMethod": "get",
+      "tag": "Statistics",
+      "description": "getTermStats",
+      "parameters": [
+        {
+          "name": "accId",
+          "schema": "string",
+          "required": true,
+          "description": "accId"
+        },
+        {
+          "name": "filterAccId",
+          "schema": "string",
+          "required": true,
+          "description": "filterAccId"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/strains/all",
+      "method": "getAllStrainsUsingGet",
+      "httpMethod": "get",
+      "tag": "Rat Strain",
+      "description": "Return all active strains in RGD",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/strains/{chr}/{start}/{stop}/{mapKey}",
+      "method": "getStrainsByPositionUsingGet",
+      "httpMethod": "get",
+      "tag": "Rat Strain",
+      "description": "Return all active strains by position",
+      "parameters": [
+        {
+          "name": "chr",
+          "schema": "string",
+          "required": true,
+          "description": "Chromosome"
+        },
+        {
+          "name": "start",
+          "schema": "integer",
+          "required": true,
+          "description": "Start Position"
+        },
+        {
+          "name": "stop",
+          "schema": "integer",
+          "required": true,
+          "description": "Stop Position"
+        },
+        {
+          "name": "mapKey",
+          "schema": "integer",
+          "required": true,
+          "description": "RGD Map Key (available through lookup service)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/strains/{rgdId}",
+      "method": "getStrainByRgdIdUsingGet",
+      "httpMethod": "get",
+      "tag": "Rat Strain",
+      "description": "Return a strain by RGD ID",
+      "parameters": [
+        {
+          "name": "rgdId",
+          "schema": "integer",
+          "required": true,
+          "description": "RGD ID of the strain"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "//rest.rgd.mcw.edu/rgdws",
   "apiDescription": "The RGD REST API provides programmatic access to information and annotation stored in the Rat Genome Database",
   "apiTitle": "Rat Genome Database REST API",

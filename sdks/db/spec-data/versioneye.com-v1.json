@@ -3,6 +3,89 @@
   "openApiRaw": "https://www.versioneye.com/api-docs/v1/swagger.yaml",
   "homepage": "versioneye.com",
   "apiVersion": "v1",
+  "methods": [
+    {
+      "url": "/api/v1/scans",
+      "method": "/api/v1/scansGet",
+      "httpMethod": "get",
+      "tag": "Scans",
+      "description": "Retrieves all scans",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "per_page",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/scans/{id}",
+      "method": "/api/v1/scans/{id}Get",
+      "httpMethod": "get",
+      "tag": "Scans",
+      "description": "Retrieves a project scan result",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/scans/{id}/files/{file_id}",
+      "method": "/api/v1/scans/{id}/files/{fileId}Get",
+      "httpMethod": "get",
+      "tag": "Scans",
+      "description": "Retrieves a file object, containing information about dependencies in the file",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "file_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "per_page",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://{defaultHost}",
   "apiTitle": "API V1",
   "endpoints": 3,

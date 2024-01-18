@@ -3,6 +3,465 @@
   "openApiRaw": "https://raw.githubusercontent.com/up-banking/api/master/v1/openapi.json",
   "homepage": "up.com.au",
   "apiVersion": "v1",
+  "methods": [
+    {
+      "url": "/accounts",
+      "method": "/accountsGet",
+      "httpMethod": "get",
+      "tag": "Accounts",
+      "description": "List accounts",
+      "parameters": [
+        {
+          "name": "page[size]",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of records to return in each page.\n"
+        },
+        {
+          "name": "filter[accountType]",
+          "schema": "undefined",
+          "required": false,
+          "description": "The type of account for which to return records. This\ncan be used to filter Savers from spending accounts.\n"
+        },
+        {
+          "name": "filter[ownershipType]",
+          "schema": "undefined",
+          "required": false,
+          "description": "The account ownership structure for which to return\nrecords. This can be used to filter 2Up accounts from Up\naccounts.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Successful response to get all accounts. This returns a paginated list of\naccounts, which can be scrolled by following the `prev` and `next` links\nif present.\n"
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{accountId}/transactions",
+      "method": "/accounts/{accountId}/transactionsGet",
+      "httpMethod": "get",
+      "tag": "Transactions",
+      "description": "List transactions by account",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the account.\n"
+        },
+        {
+          "name": "page[size]",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of records to return in each page.\n"
+        },
+        {
+          "name": "filter[status]",
+          "schema": "undefined",
+          "required": false,
+          "description": "The transaction status for which to return records. This\ncan be used to filter `HELD` transactions from those\nthat are `SETTLED`.\n"
+        },
+        {
+          "name": "filter[since]",
+          "schema": "string",
+          "required": false,
+          "description": "The start date-time from which to return records,\nformatted according to rfc-3339. Not to be used for\npagination purposes.\n"
+        },
+        {
+          "name": "filter[until]",
+          "schema": "string",
+          "required": false,
+          "description": "The end date-time up to which to return records,\nformatted according to rfc-3339. Not to be used for\npagination purposes.\n"
+        },
+        {
+          "name": "filter[category]",
+          "schema": "string",
+          "required": false,
+          "description": "The category identifier for which to filter transactions.\nBoth parent and child categories can be filtered through\nthis parameter. Providing an invalid category identifier\nresults in a `404` response.\n"
+        },
+        {
+          "name": "filter[tag]",
+          "schema": "string",
+          "required": false,
+          "description": "A transaction tag to filter for which to return records.\nIf the tag does not exist, zero records are returned and\na success response is given.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Successful response to get all transactions. This returns a paginated\nlist of transactions, which can be scrolled by following the `prev` and\n`next` links if present.\n"
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{id}",
+      "method": "/accounts/{id}Get",
+      "httpMethod": "get",
+      "tag": "Accounts",
+      "description": "Retrieve account",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the account.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Successful response to get a single account.\n"
+        }
+      ]
+    },
+    {
+      "url": "/categories",
+      "method": "/categoriesGet",
+      "httpMethod": "get",
+      "tag": "Categories",
+      "description": "List categories",
+      "parameters": [
+        {
+          "name": "filter[parent]",
+          "schema": "string",
+          "required": false,
+          "description": "The unique identifier of a parent category for which to\nreturn only its children. Providing an invalid category\nidentifier results in a `404` response.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Successful response to get all categories and their ancestry. The\nreturned list is not paginated.\n"
+        }
+      ]
+    },
+    {
+      "url": "/categories/{id}",
+      "method": "/categories/{id}Get",
+      "httpMethod": "get",
+      "tag": "Categories",
+      "description": "Retrieve category",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the category.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Successful response to get a single category and its ancestry.\n"
+        }
+      ]
+    },
+    {
+      "url": "/tags",
+      "method": "/tagsGet",
+      "httpMethod": "get",
+      "tag": "Tags",
+      "description": "List tags",
+      "parameters": [
+        {
+          "name": "page[size]",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of records to return in each page.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Successful response to get all tags. This returns a paginated list of\ntags, which can be scrolled by following the `prev` and `next` links if\npresent.\n"
+        }
+      ]
+    },
+    {
+      "url": "/transactions",
+      "method": "/transactionsGet",
+      "httpMethod": "get",
+      "tag": "Transactions",
+      "description": "List transactions",
+      "parameters": [
+        {
+          "name": "page[size]",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of records to return in each page.\n"
+        },
+        {
+          "name": "filter[status]",
+          "schema": "undefined",
+          "required": false,
+          "description": "The transaction status for which to return records. This\ncan be used to filter `HELD` transactions from those\nthat are `SETTLED`.\n"
+        },
+        {
+          "name": "filter[since]",
+          "schema": "string",
+          "required": false,
+          "description": "The start date-time from which to return records,\nformatted according to rfc-3339. Not to be used for\npagination purposes.\n"
+        },
+        {
+          "name": "filter[until]",
+          "schema": "string",
+          "required": false,
+          "description": "The end date-time up to which to return records,\nformatted according to rfc-3339. Not to be used for\npagination purposes.\n"
+        },
+        {
+          "name": "filter[category]",
+          "schema": "string",
+          "required": false,
+          "description": "The category identifier for which to filter transactions.\nBoth parent and child categories can be filtered through\nthis parameter. Providing an invalid category identifier\nresults in a `404` response.\n"
+        },
+        {
+          "name": "filter[tag]",
+          "schema": "string",
+          "required": false,
+          "description": "A transaction tag to filter for which to return records.\nIf the tag does not exist, zero records are returned and\na success response is given.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Successful response to get all transactions. This returns a paginated\nlist of transactions, which can be scrolled by following the `prev` and\n`next` links if present.\n"
+        }
+      ]
+    },
+    {
+      "url": "/transactions/{id}",
+      "method": "/transactions/{id}Get",
+      "httpMethod": "get",
+      "tag": "Transactions",
+      "description": "Retrieve transaction",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the transaction.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Successful response to get a single transaction.\n"
+        }
+      ]
+    },
+    {
+      "url": "/transactions/{transactionId}/relationships/category",
+      "method": "/transactions/{transactionId}/relationships/categoryPatch",
+      "httpMethod": "patch",
+      "tag": "Categories",
+      "description": "Categorize transaction",
+      "parameters": [
+        {
+          "name": "transactionId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the transaction.\n"
+        },
+        {
+          "name": "data",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/transactions/{transactionId}/relationships/tags",
+      "method": "/transactions/{transactionId}/relationships/tagsDelete",
+      "httpMethod": "delete",
+      "tag": "Tags",
+      "description": "Remove tags from transaction",
+      "parameters": [
+        {
+          "name": "transactionId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the transaction.\n"
+        },
+        {
+          "name": "data",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/transactions/{transactionId}/relationships/tags",
+      "method": "/transactions/{transactionId}/relationships/tagsPost",
+      "httpMethod": "post",
+      "tag": "Tags",
+      "description": "Add tags to transaction",
+      "parameters": [
+        {
+          "name": "transactionId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the transaction.\n"
+        },
+        {
+          "name": "data",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/util/ping",
+      "method": "/util/pingGet",
+      "httpMethod": "get",
+      "tag": "Utility endpoints",
+      "description": "Ping",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Basic ping response to verify authentication.\n"
+        },
+        {
+          "statusCode": "401",
+          "description": "Generic error response that returns one or more errors.\n"
+        }
+      ]
+    },
+    {
+      "url": "/webhooks",
+      "method": "/webhooksGet",
+      "httpMethod": "get",
+      "tag": "Webhooks",
+      "description": "List webhooks",
+      "parameters": [
+        {
+          "name": "page[size]",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of records to return in each page.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Successful response to get all webhooks. This returns a paginated list of\nwebhooks, which can be scrolled by following the `prev` and `next` links\nif present.\n"
+        }
+      ]
+    },
+    {
+      "url": "/webhooks",
+      "method": "/webhooksPost",
+      "httpMethod": "post",
+      "tag": "Webhooks",
+      "description": "Create webhook",
+      "parameters": [
+        {
+          "name": "data",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Successful response after creating a webhook.\n"
+        }
+      ]
+    },
+    {
+      "url": "/webhooks/{id}",
+      "method": "/webhooks/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Webhooks",
+      "description": "Delete webhook",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the webhook.\n"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/webhooks/{id}",
+      "method": "/webhooks/{id}Get",
+      "httpMethod": "get",
+      "tag": "Webhooks",
+      "description": "Retrieve webhook",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the webhook.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Successful response to get a single webhook.\n"
+        }
+      ]
+    },
+    {
+      "url": "/webhooks/{webhookId}/logs",
+      "method": "/webhooks/{webhookId}/logsGet",
+      "httpMethod": "get",
+      "tag": "Webhooks",
+      "description": "List webhook logs",
+      "parameters": [
+        {
+          "name": "webhookId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the webhook.\n"
+        },
+        {
+          "name": "page[size]",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of records to return in each page.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Successful response to get all delivery logs for a webhook. This returns\na paginated list of delivery logs, which can be scrolled by following the\n`next` and `prev` links if present.\n"
+        }
+      ]
+    },
+    {
+      "url": "/webhooks/{webhookId}/ping",
+      "method": "/webhooks/{webhookId}/pingPost",
+      "httpMethod": "post",
+      "tag": "Webhooks",
+      "description": "Ping webhook",
+      "parameters": [
+        {
+          "name": "webhookId",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier for the webhook.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Asynchronous callback request used for webhook event delivery.\n"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.up.com.au/api/v1",
   "apiDescription": "The Up API gives you programmatic access to your balances and\ntransaction data. You can request past transactions or set up\nwebhooks to receive real-time events when new transactions hit your\naccount. It’s new, it’s exciting and it’s just the beginning.\n",
   "apiTitle": "Up API",

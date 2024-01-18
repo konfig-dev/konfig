@@ -3,6 +3,472 @@
   "openApiRaw": "https://raw.githubusercontent.com/sigpwned/pinecone-openapi-spec/main/openapi.yml",
   "homepage": "pinecone.io",
   "apiVersion": "20230406.1",
+  "methods": [
+    {
+      "url": "/collections",
+      "method": "listCollections",
+      "httpMethod": "get",
+      "tag": "Index Operations",
+      "description": "List collections",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections",
+      "method": "createCollection",
+      "httpMethod": "post",
+      "tag": "Index Operations",
+      "description": "Create collection",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "source",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections/{collectionName}",
+      "method": "deleteCollection",
+      "httpMethod": "delete",
+      "tag": "Index Operations",
+      "description": "Delete Collection",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/collections/{collectionName}",
+      "method": "describeCollection",
+      "httpMethod": "get",
+      "tag": "Index Operations",
+      "description": "Describe collection",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/databases",
+      "method": "listIndexes",
+      "httpMethod": "get",
+      "tag": "Index Operations",
+      "description": "List indexes",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/databases",
+      "method": "createIndex",
+      "httpMethod": "post",
+      "tag": "Index Operations",
+      "description": "Create index",
+      "parameters": [
+        {
+          "name": "dimension",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "metadata_config",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "metric",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "pod_type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pods",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "replicas",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "source_collection",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/databases/{indexName}",
+      "method": "deleteIndex",
+      "httpMethod": "delete",
+      "tag": "Index Operations",
+      "description": "Delete Index",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/databases/{indexName}",
+      "method": "describeIndex",
+      "httpMethod": "get",
+      "tag": "Index Operations",
+      "description": "Describe index",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/databases/{indexName}",
+      "method": "configureIndex",
+      "httpMethod": "patch",
+      "tag": "Index Operations",
+      "description": "Configure index",
+      "parameters": [
+        {
+          "name": "pod_type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "replicas",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/describe_index_stats",
+      "method": "describeIndexStats",
+      "httpMethod": "post",
+      "tag": "Vector Operations",
+      "description": "Describe Index Stats",
+      "parameters": [
+        {
+          "name": "filter",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/query",
+      "method": "query",
+      "httpMethod": "post",
+      "tag": "Vector Operations",
+      "description": "Query",
+      "parameters": [
+        {
+          "name": "filter",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "includeMetadata",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "includeValues",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "namespace",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sparseVector",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "topK",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "vector",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/vectors/delete",
+      "method": "delete",
+      "httpMethod": "post",
+      "tag": "Vector Operations",
+      "description": "Delete",
+      "parameters": [
+        {
+          "name": "deleteAll",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "filter",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "ids",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "namespace",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/vectors/fetch",
+      "method": "fetch",
+      "httpMethod": "post",
+      "tag": "Vector Operations",
+      "description": "Fetch",
+      "parameters": [
+        {
+          "name": "ids",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "namespace",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/vectors/update",
+      "method": "update",
+      "httpMethod": "post",
+      "tag": "Vector Operations",
+      "description": "Fetch",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "namespace",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "setMetadata",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sparseValues",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "values",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/vectors/upsert",
+      "method": "upsert",
+      "httpMethod": "post",
+      "tag": "Vector Operations",
+      "description": "Upsert",
+      "parameters": [
+        {
+          "name": "namespace",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "vectors",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://controller.{environment}.pinecone.io",
   "apiDescription": "Pinecone is a vector database. This is an unofficial, community-managed OpenAPI spec that (should) accurately model the Pinecone API. This project was developed independent of and is unaffiliated with Pinecone Systems. Users should switch to the official API spec, if and when Pinecone releases it.",
   "apiTitle": "Pinecone API",

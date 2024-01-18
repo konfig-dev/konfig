@@ -3,6 +3,86 @@
   "openApiRaw": "https://www.code-scan.com/api.swagger.yaml",
   "homepage": "code-scan.com",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/job",
+      "method": "/jobGet",
+      "httpMethod": "get",
+      "description": "Get the status of a job",
+      "parameters": [
+        {
+          "name": "jobId",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the Job to retrieve"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/job",
+      "method": "/jobPost",
+      "httpMethod": "post",
+      "description": "Queues a job",
+      "parameters": [
+        {
+          "name": "analysisMode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "commitOverride",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "emailReportTo",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "projectBranch",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "projectKey",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://app.code-scan.com/api",
   "apiDescription": "Manage your Hosted CodeScan Service",
   "apiTitle": "CodeScan API",

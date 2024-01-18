@@ -3,6 +3,299 @@
   "openApiRaw": "https://carbone.io/examples/carboneRenderAPI.OpenAPI.yml",
   "homepage": "carbone.io",
   "apiVersion": "1.2.0",
+  "methods": [
+    {
+      "url": "/render/{renderId}",
+      "method": "/render/{renderId}Get",
+      "httpMethod": "get",
+      "tag": "render",
+      "description": "Retreive a generated document from a render ID.",
+      "parameters": [
+        {
+          "name": "renderId",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier of the report"
+        },
+        {
+          "name": "carbone-version",
+          "schema": "integer",
+          "required": true,
+          "description": "Carbone version"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/render/{templateId}",
+      "method": "/render/{templateId}Post",
+      "httpMethod": "post",
+      "tag": "render",
+      "description": "Generate a document from a template ID, and a JSON data-set",
+      "parameters": [
+        {
+          "name": "templateId",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier of the template"
+        },
+        {
+          "name": "carbone-version",
+          "schema": "integer",
+          "required": true,
+          "description": "Carbone version"
+        },
+        {
+          "name": "complement",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "convertTo",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "currencyRates",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "currencySource",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "currencyTarget",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "data",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "enum",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "hardRefresh",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "lang",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "reportName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "timezone",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "translations",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "variableStr",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/status",
+      "method": "/statusGet",
+      "httpMethod": "get",
+      "tag": "status",
+      "description": "Fetch the API status and version",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/template",
+      "method": "/templatePost",
+      "httpMethod": "post",
+      "tag": "template",
+      "description": "Upload a template.",
+      "parameters": [
+        {
+          "name": "carbone-version",
+          "schema": "integer",
+          "required": true,
+          "description": "Carbone version"
+        },
+        {
+          "name": "template",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/template/{templateId}",
+      "method": "/template/{templateId}Delete",
+      "httpMethod": "delete",
+      "tag": "template",
+      "description": "Delete a template from a template ID",
+      "parameters": [
+        {
+          "name": "templateId",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier of the template"
+        },
+        {
+          "name": "carbone-version",
+          "schema": "integer",
+          "required": true,
+          "description": "Carbone version"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/template/{templateId}",
+      "method": "/template/{templateId}Get",
+      "httpMethod": "get",
+      "tag": "template",
+      "description": "Download a template from a template ID",
+      "parameters": [
+        {
+          "name": "templateId",
+          "schema": "string",
+          "required": true,
+          "description": "Unique identifier of the template"
+        },
+        {
+          "name": "carbone-version",
+          "schema": "integer",
+          "required": true,
+          "description": "Carbone version"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.carbone.io",
   "apiDescription": "Carbone Cloud/On-premise Open API reference.\n\nFor requesting:\n- Carbone Cloud API: find your API key on your [Carbone account](https://account.carbone.io). Home page > Copy the `production` or `testing` API key.\n- Carbone On-premise: Update the `Server URL` on the Open API specification.\n\nUseful links:\n- [API Flow](https://carbone.io/api-reference.html#quickstart-api-flow)\n- [Integration / SDKs](https://carbone.io/api-reference.html#api-integration)\n- [Generated document storage](https://carbone.io/api-reference.html#report-storage)\n- [Request timeout](https://carbone.io/api-reference.html#api-timeout)",
   "apiTitle": "Carbone API",

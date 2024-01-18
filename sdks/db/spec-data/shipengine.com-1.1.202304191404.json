@@ -3,6 +3,2844 @@
   "openApiRaw": "https://raw.githubusercontent.com/ShipEngine/shipengine-openapi/master/openapi.yaml",
   "homepage": "shipengine.com",
   "apiVersion": "1.1.202304191404",
+  "methods": [
+    {
+      "url": "/v1/account/settings",
+      "method": "listAccountSettings",
+      "httpMethod": "get",
+      "tag": "account",
+      "description": "List Account Settings",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/account/settings/images",
+      "method": "listAccountImages",
+      "httpMethod": "get",
+      "tag": "account",
+      "description": "List Account Images",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/account/settings/images",
+      "method": "createAccountImage",
+      "httpMethod": "post",
+      "tag": "account",
+      "description": "Create an Account Image",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A get account images by id response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/account/settings/images/{label_image_id}",
+      "method": "deleteAccountImageById",
+      "httpMethod": "delete",
+      "tag": "account",
+      "description": "Delete Account Image By Id",
+      "parameters": [
+        {
+          "name": "label_image_id",
+          "schema": "string",
+          "required": true,
+          "description": "Label Image Id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/account/settings/images/{label_image_id}",
+      "method": "getAccountSettingsImagesById",
+      "httpMethod": "get",
+      "tag": "account",
+      "description": "Get Account Image By ID",
+      "parameters": [
+        {
+          "name": "label_image_id",
+          "schema": "string",
+          "required": true,
+          "description": "Label Image Id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A get account images by id response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/account/settings/images/{label_image_id}",
+      "method": "updateAccountSettingsImagesById",
+      "httpMethod": "put",
+      "tag": "account",
+      "description": "Update Account Image By ID",
+      "parameters": [
+        {
+          "name": "label_image_id",
+          "schema": "string",
+          "required": true,
+          "description": "Label Image Id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/addresses/recognize",
+      "method": "parseAddress",
+      "httpMethod": "put",
+      "tag": "addresses",
+      "description": "Parse an address",
+      "parameters": [
+        {
+          "name": "address",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "text",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The parsed address, as well as a confidence score and a list of all the entities that were recognized in the text.\n"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/addresses/validate",
+      "method": "validateAddress",
+      "httpMethod": "post",
+      "tag": "addresses",
+      "description": "Validate An Address",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "An address validation response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/batches",
+      "method": "listBatches",
+      "httpMethod": "get",
+      "tag": "batches",
+      "description": "List Batches",
+      "parameters": [
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Return a specific page of results. Defaults to the first page. If set to a number that's greater than the number of pages of results, an empty page is returned.\n"
+        },
+        {
+          "name": "page_size",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to return per response."
+        },
+        {
+          "name": "sort_dir",
+          "schema": "undefined",
+          "required": false,
+          "description": "Controls the sort order of the query."
+        },
+        {
+          "name": "batch_number",
+          "schema": "string",
+          "required": false,
+          "description": "Batch Number"
+        },
+        {
+          "name": "sort_by",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list batch response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/batches",
+      "method": "createBatch",
+      "httpMethod": "post",
+      "tag": "batches",
+      "description": "Create A Batch",
+      "parameters": [
+        {
+          "name": "batch_notes",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "external_batch_id",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "rate_ids",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "shipment_ids",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A create batch response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/batches/external_batch_id/{external_batch_id}",
+      "method": "getBatchByExternalId",
+      "httpMethod": "get",
+      "tag": "batches",
+      "description": "Get Batch By External ID",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A get batch by external id response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/batches/{batch_id}",
+      "method": "deleteBatch",
+      "httpMethod": "delete",
+      "tag": "batches",
+      "description": "Delete Batch By Id",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/batches/{batch_id}",
+      "method": "getBatchById",
+      "httpMethod": "get",
+      "tag": "batches",
+      "description": "Get Batch By ID",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A get batch by id response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/batches/{batch_id}",
+      "method": "updateBatch",
+      "httpMethod": "put",
+      "tag": "batches",
+      "description": "Update Batch By Id",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/batches/{batch_id}/add",
+      "method": "addToBatch",
+      "httpMethod": "post",
+      "tag": "batches",
+      "description": "Add to a Batch",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/batches/{batch_id}/errors",
+      "method": "listBatchErrors",
+      "httpMethod": "get",
+      "tag": "batches",
+      "description": "Get Batch Errors",
+      "parameters": [
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Return a specific page of results. Defaults to the first page. If set to a number that's greater than the number of pages of results, an empty page is returned.\n"
+        },
+        {
+          "name": "pagesize",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A batch errors response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/batches/{batch_id}/process/labels",
+      "method": "processBatch",
+      "httpMethod": "post",
+      "tag": "batches",
+      "description": "Process Batch ID Labels",
+      "parameters": [
+        {
+          "name": "display_scheme",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "label_format",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "label_layout",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ship_date",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/batches/{batch_id}/remove",
+      "method": "removeFromBatch",
+      "httpMethod": "post",
+      "tag": "batches",
+      "description": "Remove From Batch",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/carriers",
+      "method": "listCarriers",
+      "httpMethod": "get",
+      "tag": "carriers",
+      "description": "List Carriers",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "207",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/carriers/{carrier_id}",
+      "method": "getCarrierById",
+      "httpMethod": "get",
+      "tag": "carriers",
+      "description": "Get Carrier By ID",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A get carrier by id response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/carriers/{carrier_id}/add_funds",
+      "method": "addFundsToCarrier",
+      "httpMethod": "put",
+      "tag": "carriers",
+      "description": "Add Funds To Carrier",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The current balance of the requested carrier account"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/carriers/{carrier_id}/options",
+      "method": "getCarrierOptions",
+      "httpMethod": "get",
+      "tag": "carriers",
+      "description": "Get Carrier Options",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A carrier list options response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/carriers/{carrier_id}/packages",
+      "method": "listCarrierPackageTypes",
+      "httpMethod": "get",
+      "tag": "carriers",
+      "description": "List Carrier Package Types",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list carrier package types response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/carriers/{carrier_id}/services",
+      "method": "listCarrierServices",
+      "httpMethod": "get",
+      "tag": "carriers",
+      "description": "List Carrier Services",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A carrier list services response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/connections/carriers/{carrier_name}",
+      "method": "connectCarrier",
+      "httpMethod": "post",
+      "tag": "carrier_accounts",
+      "description": "Connect a carrier account",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A connect account response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/connections/carriers/{carrier_name}/{carrier_id}",
+      "method": "disconnectCarrier",
+      "httpMethod": "delete",
+      "tag": "carrier_accounts",
+      "description": "Disconnect a carrier",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/connections/carriers/{carrier_name}/{carrier_id}/settings",
+      "method": "getCarrierSettings",
+      "httpMethod": "get",
+      "tag": "carrier_accounts",
+      "description": "Get carrier settings",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/connections/carriers/{carrier_name}/{carrier_id}/settings",
+      "method": "updateCarrierSettings",
+      "httpMethod": "put",
+      "tag": "carrier_accounts",
+      "description": "Update carrier settings",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/connections/insurance/shipsurance",
+      "method": "disconnectInsurer",
+      "httpMethod": "delete",
+      "tag": "insurance",
+      "description": "Disconnect a Shipsurance Account",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/connections/insurance/shipsurance",
+      "method": "connectInsurer",
+      "httpMethod": "post",
+      "tag": "insurance",
+      "description": "Connect a Shipsurance Account",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "policy_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/downloads/{dir}/{subdir}/{filename}",
+      "method": "downloadFile",
+      "httpMethod": "get",
+      "tag": "downloads",
+      "description": "Download File",
+      "parameters": [
+        {
+          "name": "download",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "rotation",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/environment/webhooks",
+      "method": "listWebhooks",
+      "httpMethod": "get",
+      "tag": "webhooks",
+      "description": "List Webhooks",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A webhook list response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/environment/webhooks",
+      "method": "createWebhook",
+      "httpMethod": "post",
+      "tag": "webhooks",
+      "description": "Create a Webhook",
+      "parameters": [
+        {
+          "name": "event",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A webhook response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "409",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/environment/webhooks/{webhook_id}",
+      "method": "deleteWebhook",
+      "httpMethod": "delete",
+      "tag": "webhooks",
+      "description": "Delete Webhook By ID",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/environment/webhooks/{webhook_id}",
+      "method": "getWebhookById",
+      "httpMethod": "get",
+      "tag": "webhooks",
+      "description": "Get Webhook By ID",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A get webhook id response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/environment/webhooks/{webhook_id}",
+      "method": "updateWebhook",
+      "httpMethod": "put",
+      "tag": "webhooks",
+      "description": "Update a Webhook",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/insurance/shipsurance/add_funds",
+      "method": "addFundsToInsurance",
+      "httpMethod": "patch",
+      "tag": "insurance",
+      "description": "Add Funds To Insurance",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Add funds to insurance response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/insurance/shipsurance/balance",
+      "method": "getInsuranceBalance",
+      "httpMethod": "get",
+      "tag": "insurance",
+      "description": "Get Insurance Funds Balance",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A get insurance balance response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/labels",
+      "method": "listLabels",
+      "httpMethod": "get",
+      "tag": "labels",
+      "description": "List labels",
+      "parameters": [
+        {
+          "name": "label_status",
+          "schema": "string",
+          "required": false,
+          "description": "Only return labels that are currently in the specified status"
+        },
+        {
+          "name": "service_code",
+          "schema": "string",
+          "required": false,
+          "description": "Only return labels for a specific [carrier service](https://www.shipengine.com/docs/shipping/use-a-carrier-service/)"
+        },
+        {
+          "name": "carrier_id",
+          "schema": "string",
+          "required": false,
+          "description": "Only return labels for a specific [carrier account](https://www.shipengine.com/docs/carriers/setup/)"
+        },
+        {
+          "name": "tracking_number",
+          "schema": "string",
+          "required": false,
+          "description": "Only return labels with a specific tracking number"
+        },
+        {
+          "name": "batch_id",
+          "schema": "string",
+          "required": false,
+          "description": "Only return labels that were created in a specific [batch](https://www.shipengine.com/docs/labels/bulk/)"
+        },
+        {
+          "name": "rate_id",
+          "schema": "string",
+          "required": false,
+          "description": "Rate ID"
+        },
+        {
+          "name": "shipment_id",
+          "schema": "string",
+          "required": false,
+          "description": "Shipment ID"
+        },
+        {
+          "name": "warehouse_id",
+          "schema": "string",
+          "required": false,
+          "description": "Only return labels that originate from a specific [warehouse](https://www.shipengine.com/docs/shipping/ship-from-a-warehouse/)"
+        },
+        {
+          "name": "created_at_start",
+          "schema": "string",
+          "required": false,
+          "description": "Only return labels that were created on or after a specific date/time"
+        },
+        {
+          "name": "created_at_end",
+          "schema": "string",
+          "required": false,
+          "description": "Only return labels that were created on or before a specific date/time"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Return a specific page of results. Defaults to the first page. If set to a number that's greater than the number of pages of results, an empty page is returned.\n"
+        },
+        {
+          "name": "page_size",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to return per response."
+        },
+        {
+          "name": "sort_dir",
+          "schema": "undefined",
+          "required": false,
+          "description": "Controls the sort order of the query."
+        },
+        {
+          "name": "sort_by",
+          "schema": "string",
+          "required": false,
+          "description": "Controls which field the query is sorted by."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list label response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/labels",
+      "method": "createLabel",
+      "httpMethod": "post",
+      "tag": "labels",
+      "description": "Purchase Label",
+      "parameters": [
+        {
+          "name": "ship_from_service_point_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "ship_to_service_point_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A create label response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/labels/external_shipment_id/{external_shipment_id}",
+      "method": "getLabelByExternalShipmentId",
+      "httpMethod": "get",
+      "tag": "labels",
+      "description": "Get Label By External Shipment ID",
+      "parameters": [
+        {
+          "name": "label_download_type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A get label by external shipment id response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/labels/rates/{rate_id}",
+      "method": "createLabelFromRate",
+      "httpMethod": "post",
+      "tag": "labels",
+      "description": "Purchase Label with Rate ID",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A create label from rate response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/labels/shipment/{shipment_id}",
+      "method": "createLabelFromShipment",
+      "httpMethod": "post",
+      "tag": "labels",
+      "description": "Purchase Label with Shipment ID",
+      "parameters": [
+        {
+          "name": "display_scheme",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "label_download_type",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "label_format",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "label_layout",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "validate_address",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A create label from shipment response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/labels/{label_id}",
+      "method": "getLabelById",
+      "httpMethod": "get",
+      "tag": "labels",
+      "description": "Get Label By ID",
+      "parameters": [
+        {
+          "name": "label_download_type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A get label by id response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/labels/{label_id}/return",
+      "method": "createReturnLabel",
+      "httpMethod": "post",
+      "tag": "labels",
+      "description": "Create a return label",
+      "parameters": [
+        {
+          "name": "charge_event",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "display_scheme",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "label_download_type",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "label_format",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "label_image_id",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "label_layout",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A create return label response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/labels/{label_id}/track",
+      "method": "getTrackingLogFromLabel",
+      "httpMethod": "get",
+      "tag": "labels",
+      "description": "Get Label Tracking Information",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A get tracking log from label response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/labels/{label_id}/void",
+      "method": "voidLabel",
+      "httpMethod": "put",
+      "tag": "labels",
+      "description": "Void a Label By ID",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A void label response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/manifests",
+      "method": "listManifests",
+      "httpMethod": "get",
+      "tag": "manifests",
+      "description": "List Manifests",
+      "parameters": [
+        {
+          "name": "warehouse_id",
+          "schema": "string",
+          "required": false,
+          "description": "Warehouse ID"
+        },
+        {
+          "name": "ship_date_start",
+          "schema": "string",
+          "required": false,
+          "description": "ship date start range"
+        },
+        {
+          "name": "ship_date_end",
+          "schema": "string",
+          "required": false,
+          "description": "ship date end range"
+        },
+        {
+          "name": "created_at_start",
+          "schema": "string",
+          "required": false,
+          "description": "Used to create a filter for when a resource was created (ex. A shipment that was created after a certain time)"
+        },
+        {
+          "name": "created_at_end",
+          "schema": "string",
+          "required": false,
+          "description": "Used to create a filter for when a resource was created, (ex. A shipment that was created before a certain time)"
+        },
+        {
+          "name": "carrier_id",
+          "schema": "string",
+          "required": false,
+          "description": "Carrier ID"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Return a specific page of results. Defaults to the first page. If set to a number that's greater than the number of pages of results, an empty page is returned.\n"
+        },
+        {
+          "name": "page_size",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to return per response."
+        },
+        {
+          "name": "label_ids",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list manifests response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/manifests",
+      "method": "createManifest",
+      "httpMethod": "post",
+      "tag": "manifests",
+      "description": "Create Manifest",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A create manifest response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/manifests/requests/{manifest_request_id}",
+      "method": "getManifestRequestById",
+      "httpMethod": "get",
+      "tag": "manifests",
+      "description": "Get Manifest Request By Id",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A create manifest response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/manifests/{manifest_id}",
+      "method": "getManifestById",
+      "httpMethod": "get",
+      "tag": "manifests",
+      "description": "Get Manifest By Id",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A get manifest by id response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/packages",
+      "method": "listPackageTypes",
+      "httpMethod": "get",
+      "tag": "package_types",
+      "description": "List Custom Package Types",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list package types response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/packages",
+      "method": "createPackageType",
+      "httpMethod": "post",
+      "tag": "package_types",
+      "description": "Create Custom Package Type",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A create package type response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/packages/{package_id}",
+      "method": "deletePackageType",
+      "httpMethod": "delete",
+      "tag": "package_types",
+      "description": "Delete A Custom Package By ID",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/packages/{package_id}",
+      "method": "getPackageTypeById",
+      "httpMethod": "get",
+      "tag": "package_types",
+      "description": "Get Custom Package Type By ID",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A get package type by id response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/packages/{package_id}",
+      "method": "updatePackageType",
+      "httpMethod": "put",
+      "tag": "package_types",
+      "description": "Update Custom Package Type By ID",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/pickups",
+      "method": "listScheduledPickups",
+      "httpMethod": "get",
+      "tag": "package_pickups",
+      "description": "List Scheduled Pickups",
+      "parameters": [
+        {
+          "name": "carrier_id",
+          "schema": "string",
+          "required": false,
+          "description": "Carrier ID"
+        },
+        {
+          "name": "warehouse_id",
+          "schema": "string",
+          "required": false,
+          "description": "Warehouse ID"
+        },
+        {
+          "name": "created_at_start",
+          "schema": "string",
+          "required": false,
+          "description": "Only return scheduled pickups that were created on or after a specific date/time"
+        },
+        {
+          "name": "created_at_end",
+          "schema": "string",
+          "required": false,
+          "description": "Only return scheduled pickups that were created on or before a specific date/time"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Return a specific page of results. Defaults to the first page. If set to a number that's greater than the number of pages of results, an empty page is returned.\n"
+        },
+        {
+          "name": "page_size",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to return per response."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/pickups",
+      "method": "schedulePickup",
+      "httpMethod": "post",
+      "tag": "package_pickups",
+      "description": "Schedule a Pickup",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/pickups/{pickup_id}",
+      "method": "deleteScheduledPickup",
+      "httpMethod": "delete",
+      "tag": "package_pickups",
+      "description": "Delete a Scheduled Pickup",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/pickups/{pickup_id}",
+      "method": "getPickupById",
+      "httpMethod": "get",
+      "tag": "package_pickups",
+      "description": "Get Pickup By ID",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/rates",
+      "method": "calculateRates",
+      "httpMethod": "post",
+      "tag": "rates",
+      "description": "Get Shipping Rates",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A rate shipment response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/rates/bulk",
+      "method": "compareBulkRates",
+      "httpMethod": "post",
+      "tag": "rates",
+      "description": "Get Bulk Rates",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A bulk rate response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/rates/estimate",
+      "method": "estimateRates",
+      "httpMethod": "post",
+      "tag": "rates",
+      "description": "Estimate Rates",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A rate estimate response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/rates/{rate_id}",
+      "method": "getRateById",
+      "httpMethod": "get",
+      "tag": "rates",
+      "description": "Get Rate By ID",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A rate response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/service_points/list",
+      "method": "servicePointsList",
+      "httpMethod": "post",
+      "tag": "service_points",
+      "description": "List Service Points",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list service points response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/service_points/{carrier_code}/{country_code}/{service_point_id}",
+      "method": "servicePointsGetById",
+      "httpMethod": "get",
+      "tag": "service_points",
+      "description": "Get Service Point By ID",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A get service point by ID response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/shipments",
+      "method": "listShipments",
+      "httpMethod": "get",
+      "tag": "shipments",
+      "description": "List Shipments",
+      "parameters": [
+        {
+          "name": "shipment_status",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "batch_id",
+          "schema": "string",
+          "required": false,
+          "description": "Batch ID"
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "required": false,
+          "description": "Search for shipments based on the custom tag added to the shipment object"
+        },
+        {
+          "name": "created_at_start",
+          "schema": "string",
+          "required": false,
+          "description": "Used to create a filter for when a resource was created (ex. A shipment that was created after a certain time)"
+        },
+        {
+          "name": "created_at_end",
+          "schema": "string",
+          "required": false,
+          "description": "Used to create a filter for when a resource was created, (ex. A shipment that was created before a certain time)"
+        },
+        {
+          "name": "modified_at_start",
+          "schema": "string",
+          "required": false,
+          "description": "Used to create a filter for when a resource was modified (ex. A shipment that was modified after a certain time)"
+        },
+        {
+          "name": "modified_at_end",
+          "schema": "string",
+          "required": false,
+          "description": "Used to create a filter for when a resource was modified (ex. A shipment that was modified before a certain time)"
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Return a specific page of results. Defaults to the first page. If set to a number that's greater than the number of pages of results, an empty page is returned.\n"
+        },
+        {
+          "name": "page_size",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of results to return per response."
+        },
+        {
+          "name": "sales_order_id",
+          "schema": "string",
+          "required": false,
+          "description": "Sales Order ID"
+        },
+        {
+          "name": "sort_dir",
+          "schema": "undefined",
+          "required": false,
+          "description": "Controls the sort order of the query."
+        },
+        {
+          "name": "sort_by",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list shipment response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/shipments",
+      "method": "createShipments",
+      "httpMethod": "post",
+      "tag": "shipments",
+      "description": "Create Shipments",
+      "parameters": [
+        {
+          "name": "shipments",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A create shipments response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/shipments/external_shipment_id/{external_shipment_id}",
+      "method": "getShipmentByExternalId",
+      "httpMethod": "get",
+      "tag": "shipments",
+      "description": "Get Shipment By External ID",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A get shipment by external id response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/shipments/recognize",
+      "method": "parseShipment",
+      "httpMethod": "put",
+      "tag": "shipments",
+      "description": "Parse shipping info",
+      "parameters": [
+        {
+          "name": "shipment",
+          "schema": "undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "text",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The parsed shipment, as well as a confidence score and a list of all the shipping entities that were recognized in the text.\n"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/shipments/{shipment_id}",
+      "method": "getShipmentById",
+      "httpMethod": "get",
+      "tag": "shipments",
+      "description": "Get Shipment By ID",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A get shipment by id response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/shipments/{shipment_id}",
+      "method": "updateShipment",
+      "httpMethod": "put",
+      "tag": "shipments",
+      "description": "Update Shipment By ID",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "An update shipment response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/shipments/{shipment_id}/cancel",
+      "method": "cancelShipments",
+      "httpMethod": "put",
+      "tag": "shipments",
+      "description": "Cancel a Shipment",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/shipments/{shipment_id}/rates",
+      "method": "listShipmentRates",
+      "httpMethod": "get",
+      "tag": "shipments",
+      "description": "Get Shipment Rates",
+      "parameters": [
+        {
+          "name": "created_at_start",
+          "schema": "string",
+          "required": false,
+          "description": "Used to create a filter for when a resource was created (ex. A shipment that was created after a certain time)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A list shipment rates response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/shipments/{shipment_id}/tags/{tag_name}",
+      "method": "untagShipment",
+      "httpMethod": "delete",
+      "tag": "shipments",
+      "description": "Remove Tag from Shipment",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/shipments/{shipment_id}/tags/{tag_name}",
+      "method": "tagShipment",
+      "httpMethod": "post",
+      "tag": "shipments",
+      "description": "Add Tag to Shipment",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A shipment add tag response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/tags",
+      "method": "listTags",
+      "httpMethod": "get",
+      "tag": "tags",
+      "description": "Get Tags",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response body from a successful GET /tags API call"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/tags/{tag_name}",
+      "method": "deleteTag",
+      "httpMethod": "delete",
+      "tag": "tags",
+      "description": "Delete Tag",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/tags/{tag_name}",
+      "method": "createTag",
+      "httpMethod": "post",
+      "tag": "tags",
+      "description": "Create a New Tag",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response body for creating tags"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/tags/{tag_name}/{new_tag_name}",
+      "method": "renameTag",
+      "httpMethod": "put",
+      "tag": "tags",
+      "description": "Update Tag Name",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/tokens/ephemeral",
+      "method": "tokensGetEphemeralToken",
+      "httpMethod": "post",
+      "tag": "tokens",
+      "description": "Get Ephemeral Token",
+      "parameters": [
+        {
+          "name": "redirect",
+          "schema": "string",
+          "required": false,
+          "description": "Include a redirect url to the application formatted with the ephemeral token."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/tracking",
+      "method": "getTrackingLog",
+      "httpMethod": "get",
+      "tag": "tracking",
+      "description": "Get Tracking Information",
+      "parameters": [
+        {
+          "name": "carrier_code",
+          "schema": "string",
+          "required": false,
+          "description": "Carrier code used to retrieve tracking information"
+        },
+        {
+          "name": "tracking_number",
+          "schema": "string",
+          "required": false,
+          "description": "The tracking number associated with a shipment"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A get tracking log response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/tracking/start",
+      "method": "startTracking",
+      "httpMethod": "post",
+      "tag": "tracking",
+      "description": "Start Tracking a Package",
+      "parameters": [
+        {
+          "name": "carrier_code",
+          "schema": "string",
+          "required": false,
+          "description": "Carrier code used to retrieve tracking information"
+        },
+        {
+          "name": "tracking_number",
+          "schema": "string",
+          "required": false,
+          "description": "The tracking number associated with a shipment"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/tracking/stop",
+      "method": "stopTracking",
+      "httpMethod": "post",
+      "tag": "tracking",
+      "description": "Stop Tracking a Package",
+      "parameters": [
+        {
+          "name": "carrier_code",
+          "schema": "string",
+          "required": false,
+          "description": "Carrier code used to retrieve tracking information"
+        },
+        {
+          "name": "tracking_number",
+          "schema": "string",
+          "required": false,
+          "description": "The tracking number associated with a shipment"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/warehouses",
+      "method": "listWarehouses",
+      "httpMethod": "get",
+      "tag": "warehouses",
+      "description": "List Warehouses",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A warehouse list response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/warehouses",
+      "method": "createWarehouse",
+      "httpMethod": "post",
+      "tag": "warehouses",
+      "description": "Create Warehouse",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A create warehouse response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/warehouses/{warehouse_id}",
+      "method": "deleteWarehouse",
+      "httpMethod": "delete",
+      "tag": "warehouses",
+      "description": "Delete Warehouse By ID",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/warehouses/{warehouse_id}",
+      "method": "getWarehouseById",
+      "httpMethod": "get",
+      "tag": "warehouses",
+      "description": "Get Warehouse By Id",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A get warehouse by id response body"
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/warehouses/{warehouse_id}",
+      "method": "updateWarehouse",
+      "httpMethod": "put",
+      "tag": "warehouses",
+      "description": "Update Warehouse By Id",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    },
+    {
+      "url": "/v1/warehouses/{warehouse_id}/settings",
+      "method": "updateWarehouseSettings",
+      "httpMethod": "put",
+      "tag": "warehouses",
+      "description": "Update Warehouse Settings",
+      "parameters": [
+        {
+          "name": "is_default",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "404",
+          "description": "An error response body"
+        },
+        {
+          "statusCode": "500",
+          "description": "An error response body"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.shipengine.com",
   "apiDescription": "ShipEngine's easy-to-use REST API lets you manage all of your shipping needs without worrying about the complexities of different carrier APIs and protocols. We handle all the heavy lifting so you can focus on providing a first-class shipping experience for your customers at the best possible prices.\n\nEach of ShipEngine's features can be used by itself or in conjunction with each other to build powerful shipping functionality into your application or service.\n\n## Getting Started\nIf you're new to REST APIs then be sure to read our [introduction to REST](https://www.shipengine.com/docs/rest/) to understand the basics.  Learn how to [authenticate yourself to ShipEngine](https://www.shipengine.com/docs/auth/), and then use our [sandbox environment](https://www.shipengine.com/docs/sandbox/) to kick the tires and get familiar with our API. If you run into any problems, then be sure to check the [error handling guide](https://www.shipengine.com/docs/errors/) for tips.\n\nHere are some step-by-step **tutorials** to get you started:\n\n  - [Learn how to create your first shipping label](https://www.shipengine.com/docs/labels/create-a-label/)\n  - [Calculate shipping costs and compare rates across carriers](https://www.shipengine.com/docs/rates/)\n  - [Track packages on-demand or in real time](https://www.shipengine.com/docs/tracking/)\n  - [Validate mailing addresses anywhere on Earth](https://www.shipengine.com/docs/addresses/validation/)\n\n\n## Shipping Labels for Every Major Carrier\nShipEngine makes it easy to [create shipping labels for any carrier](https://www.shipengine.com/docs/labels/create-a-label/) and [download them](https://www.shipengine.com/docs/labels/downloading/) in a [variety of file formats](https://www.shipengine.com/docs/labels/formats/). You can even customize labels with your own [messages](https://www.shipengine.com/docs/labels/messages/) and [images](https://www.shipengine.com/docs/labels/branding/).\n\n\n## Real-Time Package Tracking\nWith ShipEngine you can [get the current status of a package](https://www.shipengine.com/docs/tracking/) or [subscribe to real-time tracking updates](https://www.shipengine.com/docs/tracking/webhooks/) via webhooks. You can also create [custimized tracking pages](https://www.shipengine.com/docs/tracking/branded-tracking-page/) with your own branding so your customers will always know where their package is.\n\n\n## Compare Shipping Costs Across Carriers\nMake sure you ship as cost-effectively as possible by [comparing rates across carriers](https://www.shipengine.com/docs/rates/get-shipment-rates/) using the ShipEngine Rates API. Or if you don't know the full shipment details yet, then you can [get rate estimates](https://www.shipengine.com/docs/rates/estimate/) with limited address info.\n\n\n## Worldwide Address Validation\nShipEngine supports [address validation](https://www.shipengine.com/docs/addresses/validation/) for virtually [every country on Earth](https://www.shipengine.com/docs/addresses/validation/countries/), including the United States, Canada, Great Britain, Australia, Germany, France, Norway, Spain, Sweden, Israel, Italy, and over 160 others.\n",
   "apiTitle": "ShipEngine API",

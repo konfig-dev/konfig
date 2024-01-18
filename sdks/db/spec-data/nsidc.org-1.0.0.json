@@ -3,6 +3,187 @@
   "openApiRaw": "http://documentation-index-vm.apps.nsidc.org/api-docs",
   "homepage": "nsidc.org",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/Facets",
+      "method": "facets",
+      "httpMethod": "get",
+      "tag": "SwaggerDocs",
+      "description": "View the facet information corresponding to a search",
+      "parameters": [
+        {
+          "name": "searchTerms",
+          "schema": "string",
+          "required": false,
+          "description": "URL-encoded keyword or keywords desired by the client; OpenSearch 1.1"
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of search results per page desired by the client; OpenSearch 1.1"
+        },
+        {
+          "name": "startIndex",
+          "schema": "integer",
+          "required": false,
+          "description": "First search result desired by the search client; OpenSearch 1.1"
+        },
+        {
+          "name": "spatial",
+          "schema": "string",
+          "required": false,
+          "description": "4 comma separated values - W, S, E, N; OpenSearch-Geo 1.0, \"box\" parameter"
+        },
+        {
+          "name": "sortKeys",
+          "schema": "string",
+          "required": false,
+          "description": "Sort the results by most relevant (default), smallest or largest spatial area, shortest or longest temporal duration, or most recently updated; partial implementation of OpenSearch SRU 1.0"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": false,
+          "description": "The start date in yyyy-mm-dd format"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "required": false,
+          "description": "The end date in yyyy-mm-dd format"
+        },
+        {
+          "name": "facetFilters",
+          "schema": "string",
+          "required": false,
+          "description": "Describes faceted restrictions on the search. A URL-encoded JSON object where the keys are the names of the facet, and the values are arrays of the selected facet values"
+        },
+        {
+          "name": "source",
+          "schema": "string",
+          "required": false,
+          "description": "Custom parameter for selecting which source to use; the Arctic Data Explorer (ADE) uses data aggregated from many sources, including, but not limited to, NSIDC"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/OpenSearch",
+      "method": "openSearch",
+      "httpMethod": "get",
+      "tag": "SwaggerDocs",
+      "description": "Search documents using the OpenSearch 1.1 Specification",
+      "parameters": [
+        {
+          "name": "searchTerms",
+          "schema": "string",
+          "required": false,
+          "description": "URL-encoded keyword or keywords desired by the client; OpenSearch 1.1"
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": false,
+          "description": "The number of search results per page desired by the client; OpenSearch 1.1"
+        },
+        {
+          "name": "startIndex",
+          "schema": "integer",
+          "required": false,
+          "description": "First search result desired by the search client; OpenSearch 1.1"
+        },
+        {
+          "name": "spatial",
+          "schema": "string",
+          "required": false,
+          "description": "4 comma separated values - W, S, E, N; OpenSearch-Geo 1.0, \"box\" parameter"
+        },
+        {
+          "name": "sortKeys",
+          "schema": "string",
+          "required": false,
+          "description": "Sort the results by most relevant (default), smallest or largest spatial area, shortest or longest temporal duration, or most recently updated; partial implementation of OpenSearch SRU 1.0"
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": false,
+          "description": "The start date in yyyy-mm-dd format"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "required": false,
+          "description": "The end date in yyyy-mm-dd format"
+        },
+        {
+          "name": "facetFilters",
+          "schema": "string",
+          "required": false,
+          "description": "Describes faceted restrictions on the search. A URL-encoded JSON object where the keys are the names of the facet, and the values are arrays of the selected facet values"
+        },
+        {
+          "name": "source",
+          "schema": "string",
+          "required": false,
+          "description": "Custom parameter for selecting which source to use; the Arctic Data Explorer (ADE) uses data aggregated from many sources, including, but not limited to, NSIDC"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/OpenSearchDescription",
+      "method": "opensearchDescription",
+      "httpMethod": "get",
+      "tag": "SwaggerDocs",
+      "description": "Describes the web interface of NSIDC's data search engine",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/suggest",
+      "method": "id",
+      "httpMethod": "get",
+      "tag": "SwaggerDocs",
+      "description": "Suggest search terms based on a partial query",
+      "parameters": [
+        {
+          "name": "q",
+          "schema": "string",
+          "required": true,
+          "description": "Search terms typed into the interface (minimum two characters)"
+        },
+        {
+          "name": "source",
+          "schema": "string",
+          "required": true,
+          "description": "Custom parameter for selecting which source to use; the Arctic Data Explorer (ADE) uses data aggregated from many sources, including, but not limited to, NSIDC"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://nsidc.org/api/dataset/2",
   "apiDescription": "This API allows programmers to build National Snow and Ice Data Center data and metadata services into their applications.",
   "apiTitle": "NSIDC Web Service Documentation Index",

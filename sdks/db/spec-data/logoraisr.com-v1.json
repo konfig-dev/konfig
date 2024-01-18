@@ -3,6 +3,208 @@
   "openApiRaw": "https://docs.logoraisr.com/swagger.json",
   "homepage": "logoraisr.com",
   "apiVersion": "v1",
+  "methods": [
+    {
+      "url": "/previews/{file_id}/",
+      "method": "previewsRead",
+      "httpMethod": "get",
+      "tag": "previews",
+      "description": "Get preview image of uploaded file",
+      "parameters": [
+        {
+          "name": "file_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the file for which the preview_img_url is generated."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/processes/",
+      "method": "processesList",
+      "httpMethod": "get",
+      "tag": "processes",
+      "description": "Get process list.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/",
+      "method": "projectsList",
+      "httpMethod": "get",
+      "tag": "projects",
+      "description": "Get user project list.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/",
+      "method": "projectsCreate",
+      "httpMethod": "post",
+      "tag": "projects",
+      "description": "Create a new project.",
+      "parameters": [
+        {
+          "name": "file_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "process",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "project_title",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/projects/{project_number}/",
+      "method": "projectsRead",
+      "httpMethod": "get",
+      "tag": "projects",
+      "description": "Get project details.",
+      "parameters": [
+        {
+          "name": "project_number",
+          "schema": "string",
+          "required": true,
+          "description": "Number of the project."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reports/",
+      "method": "reportsList",
+      "httpMethod": "get",
+      "tag": "reports",
+      "description": "Get user report list.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reports/",
+      "method": "reportsCreate",
+      "httpMethod": "post",
+      "tag": "reports",
+      "description": "Create a new report.",
+      "parameters": [
+        {
+          "name": "file_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "process",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reports/{report_number}/",
+      "method": "reportsRead",
+      "httpMethod": "get",
+      "tag": "reports",
+      "description": "Get report details.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/results/{result_file_id}/",
+      "method": "resultsRead",
+      "httpMethod": "get",
+      "tag": "results",
+      "description": "Get the result from image processing",
+      "parameters": [
+        {
+          "name": "result_file_id",
+          "schema": "string",
+          "required": true,
+          "description": "Id of the result_file for which the result_file_url is generated."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/uploads/",
+      "method": "uploadsCreate",
+      "httpMethod": "post",
+      "tag": "uploads",
+      "description": "Upload a new image",
+      "parameters": [
+        {
+          "name": "file",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.logoraisr.com/rest-v1",
   "apiDescription": "<p style=\"font-size:110%;\">Dig into our logoraisr API reference documentation. We also offer an OpenAPI specification to allow easy integration into your systems. You can download the json file by clicking on the download button.<p><br><p style=\"font-size:110%; font-weight:bold\">OpenAPI 2.0 Validation Status</p><img src=\"https://online.swagger.io/validator?url=https://docs.logoraisr.com/\">",
   "apiTitle": "API docs | logoraisr.com",

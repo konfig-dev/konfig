@@ -4,6 +4,46 @@
   "homepage": "amentum.space",
   "serviceName": "global-magnet",
   "apiVersion": "1.3.0",
+  "methods": [
+    {
+      "url": "/magnetic_field",
+      "method": "appApiWmmEndpointsWmmMagneticField",
+      "httpMethod": "get",
+      "description": "Calculate magnetic declination, inclination, total field intensity, and grid variation\n",
+      "parameters": [
+        {
+          "name": "altitude",
+          "schema": "number",
+          "required": true,
+          "description": "Geodetic Altitude 0 km to 600 km."
+        },
+        {
+          "name": "latitude",
+          "schema": "number",
+          "required": true,
+          "description": "Geodetic Latitude. -90 deg (S) to 90 deg (N)."
+        },
+        {
+          "name": "longitude",
+          "schema": "number",
+          "required": true,
+          "description": "Geodetic Longitude. -180 deg (W) to 180 deg (E)."
+        },
+        {
+          "name": "year",
+          "schema": "number",
+          "required": true,
+          "description": "Year as a decimal in the range 2015-2025 (2017.5 would be half way through 2017)."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "/wmm",
   "apiDescription": "\nThe World Magnetic Model calculates the intensity and direction of the Earth's magnetic field on a specific date-time, geodetic altitude, latitude, and longitude. It is relied upon throughout the world for navigation, mineral exploration, atmospheric and space science, and is installed on billions of devices.  <br><br>\nA comprehensive description of the World Magnetic Model, including its  limitations, can be found <a href='https://www.ngdc.noaa.gov/geomag/WMM/'>here</a>.  <br><br>\nWe provide a RESTful API to access the out-of-cycle  World Magnetic Model (WMM2015v2) valid for years 2015.0 - 2020.0 and WMM2020 valid for years 2020.0 - 2025.0<br><br>\nAPI requests must contain a key \"API-Key\" in the header (see code samples). Obtain a key from  <a href='https://developer.amentum.io'>here</a>. <br><br> \nAmentum Pty Ltd is not responsible nor liable for any loss or damage of any sort incurred as a result of using the API. <br><br>\nHelp us improve the quality of our web APIs by completing our 2 minute survey <a href=\"https://www.surveymonkey.com/r/CTDTRBN\">here</a>.<br><br>\nCopyright <a href='https://amentum.space'>Amentum Pty Ltd</a> 2021.\n",
   "apiTitle": "Geomag API",

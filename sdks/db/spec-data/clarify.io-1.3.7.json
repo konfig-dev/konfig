@@ -3,6 +3,727 @@
   "openApiRaw": "https://api.clarify.io/api-docs",
   "homepage": "clarify.io",
   "apiVersion": "1.3.7",
+  "methods": [
+    {
+      "url": "/v1/bundles",
+      "method": "/v1/bundlesGet",
+      "httpMethod": "get",
+      "tag": "bundles",
+      "description": "List bundles",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "limit results to specified number of bundles. Default is 10. Max 100."
+        },
+        {
+          "name": "embed",
+          "schema": "string",
+          "required": false,
+          "description": "list of link relations to embed in the result collection. Zero or more of: items, tracks, metadata, insights. List is space or comma separated single string or an array of strings"
+        },
+        {
+          "name": "iterator",
+          "schema": "string",
+          "required": false,
+          "description": "optional opaque value, automatically provided in next/prev links, or literal \"first\", \"last\""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/bundles",
+      "method": "/v1/bundlesPost",
+      "httpMethod": "post",
+      "tag": "bundles",
+      "description": "Create a bundle",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "media_url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "audio_channel",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "audio_language",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "start_time",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "parts_pending",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "label",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "notify_url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "external_id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/bundles/{bundle_id}",
+      "method": "/v1/bundles/{bundleId}Delete",
+      "httpMethod": "delete",
+      "tag": "bundles",
+      "description": "Delete a bundle",
+      "parameters": [
+        {
+          "name": "bundle_id",
+          "schema": "string",
+          "required": true,
+          "description": "id of a bundle"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/bundles/{bundle_id}",
+      "method": "/v1/bundles/{bundleId}Get",
+      "httpMethod": "get",
+      "tag": "bundles",
+      "description": "Get a bundle",
+      "parameters": [
+        {
+          "name": "bundle_id",
+          "schema": "string",
+          "required": true,
+          "description": "id of a bundle"
+        },
+        {
+          "name": "embed",
+          "schema": "string",
+          "required": false,
+          "description": "list of link relations to embed in the result bundle. Zero or more of: tracks, metadata, insights. List is space or comma separated single string or an array of strings"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/bundles/{bundle_id}",
+      "method": "/v1/bundles/{bundleId}Put",
+      "httpMethod": "put",
+      "tag": "bundles",
+      "description": "Update a bundle",
+      "parameters": [
+        {
+          "name": "bundle_id",
+          "schema": "string",
+          "required": true,
+          "description": "id of a bundle"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "notify_url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "external_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "version",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/bundles/{bundle_id}/insights",
+      "method": "/v1/bundles/{bundleId}/insightsGet",
+      "httpMethod": "get",
+      "tag": "bundles",
+      "description": "Get bundle insights",
+      "parameters": [
+        {
+          "name": "bundle_id",
+          "schema": "string",
+          "required": true,
+          "description": "id of a bundle"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/bundles/{bundle_id}/insights",
+      "method": "/v1/bundles/{bundleId}/insightsPost",
+      "httpMethod": "post",
+      "tag": "bundles",
+      "description": "Request an insight to be run",
+      "parameters": [
+        {
+          "name": "bundle_id",
+          "schema": "string",
+          "required": true,
+          "description": "id of a bundle"
+        },
+        {
+          "name": "insight",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/bundles/{bundle_id}/insights/{insight_id}",
+      "method": "v1BundlesbundleIdinsightsinsightId",
+      "httpMethod": "get",
+      "tag": "bundles",
+      "description": "Get bundle insight",
+      "parameters": [
+        {
+          "name": "bundle_id",
+          "schema": "string",
+          "required": true,
+          "description": "id of a bundle"
+        },
+        {
+          "name": "insight_id",
+          "schema": "string",
+          "required": true,
+          "description": "id of an insight"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/bundles/{bundle_id}/metadata",
+      "method": "/v1/bundles/{bundleId}/metadataDelete",
+      "httpMethod": "delete",
+      "tag": "bundles",
+      "description": "Delete bundle metadata",
+      "parameters": [
+        {
+          "name": "bundle_id",
+          "schema": "string",
+          "required": true,
+          "description": "id of a bundle"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/bundles/{bundle_id}/metadata",
+      "method": "/v1/bundles/{bundleId}/metadataGet",
+      "httpMethod": "get",
+      "tag": "bundles",
+      "description": "Get bundle metadata",
+      "parameters": [
+        {
+          "name": "bundle_id",
+          "schema": "string",
+          "required": true,
+          "description": "id of a bundle"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/bundles/{bundle_id}/metadata",
+      "method": "/v1/bundles/{bundleId}/metadataPut",
+      "httpMethod": "put",
+      "tag": "bundles",
+      "description": "Update bundle metadata",
+      "parameters": [
+        {
+          "name": "bundle_id",
+          "schema": "string",
+          "required": true,
+          "description": "id of a bundle"
+        },
+        {
+          "name": "data",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "version",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/bundles/{bundle_id}/tracks",
+      "method": "/v1/bundles/{bundleId}/tracksDelete",
+      "httpMethod": "delete",
+      "tag": "bundles",
+      "description": "Delete bundle tracks",
+      "parameters": [
+        {
+          "name": "bundle_id",
+          "schema": "string",
+          "required": true,
+          "description": "id of a bundle"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/bundles/{bundle_id}/tracks",
+      "method": "/v1/bundles/{bundleId}/tracksGet",
+      "httpMethod": "get",
+      "tag": "bundles",
+      "description": "Get bundle tracks",
+      "parameters": [
+        {
+          "name": "bundle_id",
+          "schema": "string",
+          "required": true,
+          "description": "id of a bundle"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/bundles/{bundle_id}/tracks",
+      "method": "/v1/bundles/{bundleId}/tracksPost",
+      "httpMethod": "post",
+      "tag": "bundles",
+      "description": "Add a track for a bundle",
+      "parameters": [
+        {
+          "name": "bundle_id",
+          "schema": "string",
+          "required": true,
+          "description": "id of a bundle"
+        },
+        {
+          "name": "label",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "media_url",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "audio_channel",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "audio_language",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "start_time",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parts_pending",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "track",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "version",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/bundles/{bundle_id}/tracks",
+      "method": "/v1/bundles/{bundleId}/tracksPut",
+      "httpMethod": "put",
+      "tag": "bundles",
+      "description": "Update a tracks for a bundle",
+      "parameters": [
+        {
+          "name": "bundle_id",
+          "schema": "string",
+          "required": true,
+          "description": "id of a bundle"
+        },
+        {
+          "name": "parts_complete",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "version",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/bundles/{bundle_id}/tracks/{track_id}",
+      "method": "/v1/bundles/{bundleId}/tracks/{trackId}Delete",
+      "httpMethod": "delete",
+      "tag": "bundles",
+      "description": "Delete a bundle track",
+      "parameters": [
+        {
+          "name": "bundle_id",
+          "schema": "string",
+          "required": true,
+          "description": "id of a bundle"
+        },
+        {
+          "name": "track_id",
+          "schema": "string",
+          "required": true,
+          "description": "id of a track"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/bundles/{bundle_id}/tracks/{track_id}",
+      "method": "/v1/bundles/{bundleId}/tracks/{trackId}Get",
+      "httpMethod": "get",
+      "tag": "bundles",
+      "description": "Get bundle track",
+      "parameters": [
+        {
+          "name": "bundle_id",
+          "schema": "string",
+          "required": true,
+          "description": "id of a bundle"
+        },
+        {
+          "name": "track_id",
+          "schema": "string",
+          "required": true,
+          "description": "id of a track"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/bundles/{bundle_id}/tracks/{track_id}",
+      "method": "/v1/bundles/{bundleId}/tracks/{trackId}Put",
+      "httpMethod": "put",
+      "tag": "bundles",
+      "description": "Add media to a track",
+      "parameters": [
+        {
+          "name": "bundle_id",
+          "schema": "string",
+          "required": true,
+          "description": "id of a bundle"
+        },
+        {
+          "name": "track_id",
+          "schema": "string",
+          "required": true,
+          "description": "id of a track"
+        },
+        {
+          "name": "media_url",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "audio_channel",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "audio_language",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "start_time",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parts_pending",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "version",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/reports/scores",
+      "method": "v1Reportsscores",
+      "httpMethod": "get",
+      "tag": "reports",
+      "description": "Generate Group Report <span class=\"label\">beta</span>",
+      "parameters": [
+        {
+          "name": "interval",
+          "schema": "string",
+          "required": true,
+          "description": "Duration of report periods. Default is month."
+        },
+        {
+          "name": "score_field",
+          "schema": "string",
+          "required": true,
+          "description": "A bundle/metadata field to use as a score. Ex. insights.spoken_words.listener_score."
+        },
+        {
+          "name": "group_field",
+          "schema": "string",
+          "required": true,
+          "description": "A metadata field by which to group scores, typically a user or team id field."
+        },
+        {
+          "name": "filter",
+          "schema": "string",
+          "required": false,
+          "description": "filter expression, typically programmatically generated based on input controls and data segregation rules etc. Up to 500 characters."
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": false,
+          "description": "Language to search in, specified with an RFC5646 code. Default is \"en\""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/reports/trends",
+      "method": "v1Reportstrends",
+      "httpMethod": "get",
+      "tag": "reports",
+      "description": "Generate Trends Report <span class=\"label\">beta</span>",
+      "parameters": [
+        {
+          "name": "interval",
+          "schema": "string",
+          "required": true,
+          "description": "Duration of report periods. Default is month."
+        },
+        {
+          "name": "content",
+          "schema": "string",
+          "required": false,
+          "description": "Content reported in each period. Zero or more of tracks, spoken_words, spoken_keywords. List is space or comma separated single string or an array of strings."
+        },
+        {
+          "name": "filter",
+          "schema": "string",
+          "required": false,
+          "description": "filter expression, typically programmatically generated based on input controls and data segregation rules etc. Up to 500 characters."
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": false,
+          "description": "Language to search in, specified with an RFC5646 code. Default is \"en\""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/search",
+      "method": "v1Search",
+      "httpMethod": "get",
+      "tag": "search",
+      "description": "Search bundles",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": false,
+          "description": "search terms, typically as typed into a search field. Up to 120 characters."
+        },
+        {
+          "name": "query_fields",
+          "schema": "string",
+          "required": false,
+          "description": "list of insights, metadata, and bundle fields to search with the query. Use insights.spoken_words for searching audio, metadata.* for all metadata fields, bundle.* for all bundle fields, * for audio and all fields. Default is insights.spoken_words and metadata.*. List is space or comma separated single string or an array of strings. If single string, up to 1024 characters."
+        },
+        {
+          "name": "filter",
+          "schema": "string",
+          "required": false,
+          "description": "filter expression, typically programmatically generated based on input controls and data segregation rules etc. Up to 500 characters."
+        },
+        {
+          "name": "language",
+          "schema": "string",
+          "required": false,
+          "description": "Language to search in, specified with an RFC5646 code. Default is \"en\""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "limit results to specified number of bundles. Default is 10. Max 100."
+        },
+        {
+          "name": "embed",
+          "schema": "string",
+          "required": false,
+          "description": "list of link relations to embed in the result collection. Zero or more of: items, tracks, metadata, insights. List is space or comma separated single string or an array of strings"
+        },
+        {
+          "name": "iterator",
+          "schema": "string",
+          "required": false,
+          "description": "opaque value, automatically provided in next/prev links"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.clarify.io",
   "apiDescription": "The API to Search and Understand Audio & Video Data.",
   "apiTitle": "api.clarify.io",

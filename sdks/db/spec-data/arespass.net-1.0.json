@@ -3,6 +3,66 @@
   "openApiRaw": "https://arespass.net/assets/arespassv1.0-openapi.yaml",
   "homepage": "arespass.net",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/about",
+      "method": "/aboutGet",
+      "httpMethod": "get",
+      "description": "Metadata about this API&#58; version number, release date and available languages.\n\nMetadata requests are NOT billed.\n",
+      "parameters": [
+        {
+          "name": "outputFormat",
+          "schema": "string",
+          "required": false,
+          "description": "**The format of the returned metadata.**\n\nAllowed values are *json*, *xml* and *yaml*.\n\nThe default value is *xml*.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "**This API version number**.\n"
+        }
+      ]
+    },
+    {
+      "url": "/ec",
+      "method": "/ecGet",
+      "httpMethod": "get",
+      "description": "The entropy calculator - alias ec -, analyzes a password and calculates its entropy.\n\nEntropy calculator requests are billed.\n",
+      "parameters": [
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": "**The password to be analyzed.**\n\nMinimum length is 4 characters; maximum length is 128 characters.\n\nBeware that certain characters like '&#35;', '&#61;' or '&#63;' must be properly encoded.\n\nFor more information about this issue, please refer to RFC 3986 (\"*Uniform Resource Identifier (URI): Generic Syntax*\"), sections 2.1, 2.2 and 2.4.\n"
+        },
+        {
+          "name": "outputFormat",
+          "schema": "string",
+          "required": false,
+          "description": "**The format of the returned analysis.**\n\nAllowed values are *json*, *xml* and *yaml*.\n\nThe default value is *xml*.\n"
+        },
+        {
+          "name": "penalty",
+          "schema": "number",
+          "required": false,
+          "description": "**The penalty applied to each character that is part of a word, number sequence, alphabet sequence, etc.**\n\nThe penalty is a float number in the range [0, 1]. Full penalty, 0; no penalty, 1.\n\nThe character used as decimal separator is always '&#46;'. Hence, a parameter value like *0,33* would be illegal.\n\nThe default value is *0.25*.\n"
+        },
+        {
+          "name": "reqId",
+          "schema": "string",
+          "required": false,
+          "description": "**An identifier for this request.**\n\nThe request identifier is a string that must match the regular expression */(?i)^[a-z0-9]{8,16}$/*.\n\nThis identifier is echoed in the returned response. Its value has no effect on the password analysis.\n\nIf this parameter is unset, a randomly generated identifier will be automatically assigned to this request.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://arespass.net/v1.0",
   "apiDescription": "Analyzes a password and calculates its entropy.",
   "apiTitle": "Arespass",

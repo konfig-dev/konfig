@@ -3,6 +3,472 @@
   "openApiRaw": "https://raw.githubusercontent.com/SureVoIP/API-Specification/master/openapi/openapi.yaml",
   "homepage": "surevoip.co.uk",
   "apiVersion": "9dcb0dc8",
+  "methods": [
+    {
+      "url": "/",
+      "method": "/Get",
+      "httpMethod": "get",
+      "tag": "global",
+      "description": "List global resources",
+      "parameters": [
+        {
+          "name": "hypermedia",
+          "schema": "string",
+          "description": "Disable Hypermedia"
+        },
+        {
+          "name": "content-type",
+          "schema": "string",
+          "description": "Content Type"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/announcements",
+      "method": "/announcementsGet",
+      "httpMethod": "get",
+      "tag": "announcements",
+      "description": "List global announcements",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/announcements",
+      "method": "/announcementsPost",
+      "httpMethod": "post",
+      "tag": "announcements",
+      "description": "Add a new announcement audio file",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "file",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/areacodes",
+      "method": "/areacodesGet",
+      "httpMethod": "get",
+      "tag": "areacodes",
+      "description": "List areacodes",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/billing",
+      "method": "/billingGet",
+      "httpMethod": "get",
+      "tag": "billing",
+      "description": "List global billing detail",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/calls",
+      "method": "/callsGet",
+      "httpMethod": "get",
+      "tag": "calls",
+      "description": "Validate a phone number by calling it once",
+      "parameters": [
+        {
+          "name": "validate",
+          "schema": "integer",
+          "description": "Validate a phone number by calling it for one ring. Note; not 100% proof the number is in service."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/calls",
+      "method": "/callsPost",
+      "httpMethod": "post",
+      "tag": "calls",
+      "description": "Create phone calls with or without announcements and scheduled hangups",
+      "parameters": [
+        {
+          "name": "announcement_at",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "announcement_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "caller_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "from",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "hangup_announcement_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "hangup_at",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "options",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/charges",
+      "method": "/chargesGet",
+      "httpMethod": "get",
+      "tag": "charges",
+      "description": "List charges",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/charges",
+      "method": "/chargesPost",
+      "httpMethod": "post",
+      "tag": "charges",
+      "description": "Create charges for invoices",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/contacts",
+      "method": "/contactsGet",
+      "httpMethod": "get",
+      "tag": "contacts",
+      "description": "List contacts",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/customers",
+      "method": "/customersGet",
+      "httpMethod": "get",
+      "tag": "customers",
+      "description": "List all customers or find your own account",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "302",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/customers/{account}",
+      "method": "getCustomer",
+      "httpMethod": "get",
+      "tag": "customers",
+      "description": "Represents a customer",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "integer",
+          "required": true,
+          "description": "Account ID of customer"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/customers/{account}/announcements",
+      "method": "/customers/{account}/announcementsGet",
+      "httpMethod": "get",
+      "tag": "announcements",
+      "description": "List of announcement audio files",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "integer",
+          "required": true,
+          "description": "Account ID of customer"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/customers/{account}/announcements/{announcement_id}",
+      "method": "/customers/{account}/announcements/{announcementId}Delete",
+      "httpMethod": "delete",
+      "tag": "announcements",
+      "description": "Delete an announcement audio file",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "integer",
+          "required": true,
+          "description": "Account ID of customer"
+        },
+        {
+          "name": "announcement_id",
+          "schema": "string",
+          "required": true,
+          "description": "Announcement ID of audio file"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "410",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/customers/{account}/announcements/{announcement_id}",
+      "method": "/customers/{account}/announcements/{announcementId}Get",
+      "httpMethod": "get",
+      "tag": "announcements",
+      "description": "Represents an announcement audio file",
+      "parameters": [
+        {
+          "name": "account",
+          "schema": "integer",
+          "required": true,
+          "description": "Account ID of customer"
+        },
+        {
+          "name": "announcement_id",
+          "schema": "string",
+          "required": true,
+          "description": "Announcement ID of audio file"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/faxes",
+      "method": "/faxesGet",
+      "httpMethod": "get",
+      "tag": "faxes",
+      "description": "List global ongoing faxes",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/hosted",
+      "method": "/hostedGet",
+      "httpMethod": "get",
+      "tag": "hosted",
+      "description": "List Hosted VoIP domains",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/ip-address",
+      "method": "/ipAddressGet",
+      "httpMethod": "get",
+      "tag": "support",
+      "description": "Return the IP address from where your API request originated",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/mobile",
+      "method": "/mobileGet",
+      "httpMethod": "get",
+      "tag": "mobile",
+      "description": "List mobile accounts",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/numbers",
+      "method": "/numbersGet",
+      "httpMethod": "get",
+      "tag": "numbers",
+      "description": "List available SureVoIP Ofcom number allocations for purchase",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/numbers/areacodes",
+      "method": "/numbers/areacodesGet",
+      "httpMethod": "get",
+      "tag": "areacodes",
+      "description": "Search available numbers by areacode",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/partners",
+      "method": "/partnersGet",
+      "httpMethod": "get",
+      "tag": "partners",
+      "description": "List SureVoIP Partner accounts",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/porting",
+      "method": "/portingGet",
+      "httpMethod": "get",
+      "tag": "porting",
+      "description": "List ported numbers",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/service-status",
+      "method": "/serviceStatusGet",
+      "httpMethod": "get",
+      "tag": "support",
+      "description": "List all Service Status messages",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/sip",
+      "method": "/sipGet",
+      "httpMethod": "get",
+      "tag": "sip",
+      "description": "List all SIP accounts",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/sms",
+      "method": "/smsGet",
+      "httpMethod": "get",
+      "tag": "sms",
+      "description": "List SMS",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/support/echo",
+      "method": "/support/echoPost",
+      "httpMethod": "post",
+      "tag": "echo",
+      "description": "Return your POSTed data for testing",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/topups",
+      "method": "/topupsGet",
+      "httpMethod": "get",
+      "tag": "topups",
+      "description": "List all account credit topups",
+      "parameters": [],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://api.surevoip.co.uk",
   "apiDescription": "# Introduction\nWelcome to the SureVoIP RESTful hypermedia API (sometimes known as a VoIP REST API, Telecom REST API, SIP API, Hypermedia API or just VoIP API.)\n\nThe SureVoIP API is a way for you to automate your interaction with the SureVoIP platforms. With the API, you can create your own scripts, applications or mashups which can:\n* List calls\n* create customers\n* search numbers\n* provision numbers\n* send SMS texts\n* create outbound calls\n* schedule announcements\n* schedule call hangups with an announcement\n* subscribe to events/alerts\n* track calls\n* retrieve invoices\n* grab your SIP details\n* check your IP address\n* be 100% self-sufficient\n* and much more!\n",
   "apiTitle": "The SureVoIP RESTful API",

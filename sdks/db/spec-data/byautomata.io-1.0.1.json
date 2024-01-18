@@ -3,6 +3,104 @@
   "openApiRaw": "https://s3.amazonaws.com/api.specs.byautomata.io/automata_api.json",
   "homepage": "byautomata.io",
   "apiVersion": "1.0.1",
+  "methods": [
+    {
+      "url": "/contentpro-search",
+      "method": "/contentproSearchGet",
+      "httpMethod": "get",
+      "tag": "contentpro-search",
+      "description": "Send search terms to receive the most relevant articles and companies.",
+      "parameters": [
+        {
+          "name": "terms",
+          "schema": "string",
+          "required": true,
+          "description": "We provide information about related companies and articles based on the search terms you provide. Separate search terms with commas. Ex. https://api.byautomata.io/contentpro-search?terms=cloud+computing,enterprise,security"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/contentpro-similar-text",
+      "method": "/contentproSimilarTextPost",
+      "httpMethod": "post",
+      "tag": "contentpro-similar-text",
+      "description": "The /contentpro-similar-text endpoint accepts and arbitrary piece of text and returns similar articles and blogs written by companies.",
+      "parameters": [
+        {
+          "name": "text",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/search",
+      "method": "/searchGet",
+      "httpMethod": "get",
+      "tag": "search",
+      "description": "Send search terms to receive the most relevant companies along with text snippets.",
+      "parameters": [
+        {
+          "name": "terms",
+          "schema": "string",
+          "required": true,
+          "description": "We provide information about related companies based on the search terms you provide. Separate search terms with commas. Ex. https://api.byautomata.io/search?link=cloud+computing,enterprise,security"
+        },
+        {
+          "name": "page",
+          "schema": "string",
+          "required": false,
+          "description": "Page number of search results. Ex. https://api.byautomata.io/search?page=0&link=cloud+computing,enterprise,security"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/similar",
+      "method": "/similarGet",
+      "httpMethod": "get",
+      "tag": "similar",
+      "description": "Send a company website to receive a list of companies related to them.",
+      "parameters": [
+        {
+          "name": "link",
+          "schema": "string",
+          "required": true,
+          "description": "We'll provide information about related companies based on the site you provide. If a LinkedIn page is sent, we will try to identify the company related to the page. Ex. https://api.byautomata.io/similar?link=ibm.com"
+        },
+        {
+          "name": "page",
+          "schema": "string",
+          "required": false,
+          "description": "Page number of search results. Ex. https://api.byautomata.io/similar?link=ibm.com&page=1"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.byautomata.io",
   "apiDescription": "This document provides the documentation for the Market Intelligence API by Automata. Get your API Key at https://apis.byautomata.io and check out our <a href='https://www.getpostman.com/collections/d182a1c78d4491d55e19'>Postman Collection</a>.<br><br>The root API endpoint is https://api.byautomata.io. Please refer to the code samples for examples of how to call the Market Intelligence API. The ContentPro endpoints (/contentpro-search and /contentpro-similar-text) are not included in the standard Market Intelligence API plans. Please contact support@byautomata.io for access.",
   "apiTitle": "Automata Market Intelligence API",

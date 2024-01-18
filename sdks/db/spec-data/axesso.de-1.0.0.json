@@ -3,6 +3,107 @@
   "openApiRaw": "https://raw.githubusercontent.com/Axesso/axesso-java-client/master/swagger/axessor_api_def_swagger.yaml",
   "homepage": "axesso.de",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/amz/amazon-lookup-buy-recommendations",
+      "method": "requestBuyRecommendation",
+      "httpMethod": "get",
+      "tag": "amz",
+      "description": "request buy recommendations to a given product",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": "The url of the requested product."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/amz/amazon-lookup-product",
+      "method": "requestProduct",
+      "httpMethod": "get",
+      "tag": "amz",
+      "description": "lookup product information",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": "The url of the requested product."
+        },
+        {
+          "name": "size",
+          "schema": "string",
+          "required": false,
+          "description": "Size parameter if available."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/amz/amazon-search-by-keyword",
+      "method": "keywordSearch",
+      "httpMethod": "get",
+      "tag": "amz",
+      "description": "fetch results auf a keyword search on Amazon",
+      "parameters": [
+        {
+          "name": "keyword",
+          "schema": "string",
+          "required": true,
+          "description": "keyword to search"
+        },
+        {
+          "name": "domainCode",
+          "schema": "string",
+          "required": true,
+          "description": "domain for the search"
+        },
+        {
+          "name": "sortBy",
+          "schema": "string",
+          "description": "sort option"
+        },
+        {
+          "name": "numberOfProducts",
+          "schema": "integer",
+          "description": "number of the results (max 20)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/amz/sort-options",
+      "method": "sortOptions",
+      "httpMethod": "get",
+      "tag": "amz",
+      "description": "request available sort options to use in keyword search",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://api.axesso.de",
   "apiDescription": "Use this api to fetch information to Amazon products and more.",
   "apiTitle": "Axesso Api",

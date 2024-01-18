@@ -4,6 +4,162 @@
   "homepage": "here.com",
   "serviceName": "positioning",
   "apiVersion": "2.1.1",
+  "methods": [
+    {
+      "url": "/health",
+      "method": "getHealth",
+      "httpMethod": "get",
+      "tag": "API Information",
+      "description": "Service health",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/locate",
+      "method": "postLocate",
+      "httpMethod": "post",
+      "tag": "Location",
+      "description": "Location query",
+      "parameters": [
+        {
+          "name": "confidence",
+          "schema": "integer",
+          "required": false,
+          "description": "Confidence level in percent for the accuracy/uncertainty in the location estimate response. If not specified, the default is 68 (this corresponds to a 68% probability that the true position is within the accuracy/uncertainty radius of the location estimate: the higher the number, the greater the confidence level).\n"
+        },
+        {
+          "name": "Content-Encoding",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates that the data in the body is gzip-encoded."
+        },
+        {
+          "name": "fallback",
+          "schema": "array",
+          "required": false,
+          "description": "Acceptable fallback options for cell and WLAN positioning. Values `area` and `any` apply to cell based positioning, and value `singleWifi` applies to WLAN based positioning. Both cell and WLAN options may be specified in the same request. If both `area` and `any` are specified, then `area` is ignored.\n\nBy default, cell based positioning returns cell tower level location estimates only. If you allow a WGS-84 compliant geocoordinate location estimate based on LAC, RNC, TAC, NID, or RZ areas, use the `fallback=area` setting. If you use the `fallback=any` setting, the service uses all available cell fallback methods and therefore the location estimate in the response may be at the MNC, SID, or MCC level.\n\nFor privacy reasons, the precise positioning based on a single WLAN AP is not possible. You can use the `fallback=singleWifi` setting to allow less accurate positioning based on a single WLAN AP. In that case, the center location of the position estimate will be deviated and the reported accuracy radius will be larger.\n"
+        },
+        {
+          "name": "desired",
+          "schema": "array",
+          "required": false,
+          "description": "Comma-separated list of additional data fields that the service should include in the response if data is available. The query parameter supports the value `altitude`.\n"
+        },
+        {
+          "name": "X-Request-ID",
+          "schema": "string",
+          "required": false,
+          "description": "ID used for correlating customer requests within HERE services. Used for logging and error reporting. Can be any string, but UUID is recommended. It will be echoed in the response.\n"
+        },
+        {
+          "name": "required",
+          "schema": "array",
+          "required": false,
+          "description": "Comma-separated list of additional data fields that the service should include in the response. If the data is not available, the response contains an error message. The query parameter supports the value `altitude`.\n"
+        },
+        {
+          "name": "cdma",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "client",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "gsm",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "lte",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "tdscdma",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "wcdma",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "wlan",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Object wrapper for the response to a location request."
+        },
+        {
+          "statusCode": "400",
+          "description": "Object wrapper for the error response to a request."
+        },
+        {
+          "statusCode": "401",
+          "description": "Error object reported in case of authentication or authorization errors."
+        },
+        {
+          "statusCode": "403",
+          "description": "Error object reported in case of authentication or authorization errors."
+        },
+        {
+          "statusCode": "404",
+          "description": "Object wrapper for the error response to a request."
+        },
+        {
+          "statusCode": "405",
+          "description": "Object wrapper for the error response to a request."
+        },
+        {
+          "statusCode": "413",
+          "description": "Object wrapper for the error response to a request."
+        },
+        {
+          "statusCode": "414",
+          "description": "Object wrapper for the error response to a request."
+        },
+        {
+          "statusCode": "415",
+          "description": "Object wrapper for the error response to a request."
+        },
+        {
+          "statusCode": "500",
+          "description": "Object wrapper for the error response to a request."
+        },
+        {
+          "statusCode": "503",
+          "description": "Object wrapper for the error response to a request."
+        }
+      ]
+    },
+    {
+      "url": "/version",
+      "method": "getApiVersion",
+      "httpMethod": "get",
+      "tag": "API Information",
+      "description": "API version",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://positioning.hereapi.com/v2",
   "apiDescription": "Positioning API accepts requests with radio network measurements and replies with corresponding location estimate. For more details and examples, see [Developer's Guide](https://developer.here.com/documentation/positioning). Cellular measurements are given in terms defined in 3GPP and 3GGP2 specifications, see the corresponsing documentation at http://www.3gpp.org.\n\nBreaking changes from v1:\n  - JSON fields\n    `altaccuracy`, `baselat`, `baselng`, `cellparams`, `pilotpower`, `pnoffset`, `powrx`, `rxlevel`,\n    have been deprecated and replaced with\n    `altAccuracy`, `baseLat`, `baseLng`, `cellParams`, `pilotPower`, `pnOffset`, `rss`, `rxLevel`\n    respectively.\n  - Dependent parameters combined as a subobject.\n    - CDMA, GSM, WCDMA, TD-SCDMA and LTE local identification parameters for serving cell moved under `localId` property.\n    - GSM neighbor global ID: `lac` and `cid` for neighbor cell moved under `globalIdentity` property.\n",
   "apiTitle": "HERE Network Positioning API v2",

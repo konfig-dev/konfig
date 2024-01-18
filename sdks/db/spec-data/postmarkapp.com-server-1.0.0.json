@@ -4,6 +4,2018 @@
   "homepage": "postmarkapp.com",
   "serviceName": "server",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/bounces",
+      "method": "getBounces",
+      "httpMethod": "get",
+      "tag": "Bounces API",
+      "description": "Get bounces",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "Number of bounces to return per request. Max 500."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "Number of bounces to skip."
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": "Filter by type of bounce"
+        },
+        {
+          "name": "inactive",
+          "schema": "boolean",
+          "description": "Filter by emails that were deactivated by Postmark due to the bounce. Set to true or false. If this isn't specified it will return both active and inactive."
+        },
+        {
+          "name": "emailFilter",
+          "schema": "string",
+          "description": "Filter by email address"
+        },
+        {
+          "name": "messageID",
+          "schema": "string",
+          "description": "Filter by messageID"
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "description": "Filter by tag"
+        },
+        {
+          "name": "todate",
+          "schema": "string",
+          "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+        },
+        {
+          "name": "fromdate",
+          "schema": "string",
+          "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/bounces/{bounceid}",
+      "method": "getSingleBounce",
+      "httpMethod": "get",
+      "tag": "Bounces API",
+      "description": "Get a single bounce",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "bounceid",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the bounce to retrieve."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/bounces/{bounceid}/activate",
+      "method": "activateBounce",
+      "httpMethod": "put",
+      "tag": "Bounces API",
+      "description": "Activate a bounce",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "bounceid",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Bounce to activate."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/bounces/{bounceid}/dump",
+      "method": "/bounces/{bounceid}/dumpGet",
+      "httpMethod": "get",
+      "tag": "Bounces API",
+      "description": "Get bounce dump",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "bounceid",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID for the bounce dump to retrieve."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/deliverystats",
+      "method": "getDeliveryStats",
+      "httpMethod": "get",
+      "tag": "Bounces API",
+      "description": "Get delivery stats",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/email",
+      "method": "sendEmail",
+      "httpMethod": "post",
+      "tag": "Sending API",
+      "description": "Send a single email",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "Attachments",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "Bcc",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Cc",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "From",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Headers",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "HtmlBody",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ReplyTo",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Subject",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Tag",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "TextBody",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "To",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "TrackLinks",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "TrackOpens",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The standard response when a postmark message is sent"
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/email/batch",
+      "method": "sendEmailBatch",
+      "httpMethod": "post",
+      "tag": "Sending API",
+      "description": "Send a batch of emails",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/email/batchWithTemplates",
+      "method": "sendEmailBatchWithTemplates",
+      "httpMethod": "post",
+      "tag": "Sending API",
+      "description": "Send a batch of email using templates.",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "Messages",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/email/withTemplate",
+      "method": "sendEmailWithTemplate",
+      "httpMethod": "post",
+      "tag": "Sending API",
+      "description": "Send an email using a Template",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "Attachments",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Bcc",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Cc",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "From",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Headers",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "InlineCss",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "ReplyTo",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Tag",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "TemplateAlias",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "TemplateId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "TemplateModel",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "To",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "TrackLinks",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "TrackOpens",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The standard response when a postmark message is sent"
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/messages/inbound",
+      "method": "searchInboundMessages",
+      "httpMethod": "get",
+      "tag": "Messages API",
+      "description": "Inbound message search",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "Number of messages to return per request. Max 500."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "Number of messages to skip"
+        },
+        {
+          "name": "recipient",
+          "schema": "string",
+          "description": "Filter by the user who was receiving the email"
+        },
+        {
+          "name": "fromemail",
+          "schema": "string",
+          "description": "Filter by the sender email address"
+        },
+        {
+          "name": "subject",
+          "schema": "string",
+          "description": "Filter by email subject"
+        },
+        {
+          "name": "mailboxhash",
+          "schema": "string",
+          "description": "Filter by mailboxhash"
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "description": "Filter by tag"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": "Filter by status (`blocked`, `processed`, `queued`, `failed`, `scheduled`)"
+        },
+        {
+          "name": "todate",
+          "schema": "string",
+          "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+        },
+        {
+          "name": "fromdate",
+          "schema": "string",
+          "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/messages/inbound/{messageid}/bypass",
+      "method": "bypassRulesForInboundMessage",
+      "httpMethod": "put",
+      "tag": "Messages API",
+      "description": "Bypass rules for a blocked inbound message",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "messageid",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the message which should bypass inbound rules."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A Postmark API error."
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/messages/inbound/{messageid}/details",
+      "method": "getInboundMessageDetails",
+      "httpMethod": "get",
+      "tag": "Messages API",
+      "description": "Inbound message details",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "messageid",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the message for which to details will be retrieved."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/messages/inbound/{messageid}/retry",
+      "method": "retryInboundMessageProcessing",
+      "httpMethod": "put",
+      "tag": "Messages API",
+      "description": "Retry a failed inbound message for processing",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "messageid",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the inbound message on which we should retry processing."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A Postmark API error."
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/messages/outbound",
+      "method": "searchOutboundMessages",
+      "httpMethod": "get",
+      "tag": "Messages API",
+      "description": "Outbound message search",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "Number of messages to return per request. Max 500."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "Number of messages to skip"
+        },
+        {
+          "name": "recipient",
+          "schema": "string",
+          "description": "Filter by the user who was receiving the email"
+        },
+        {
+          "name": "fromemail",
+          "schema": "string",
+          "description": "Filter by the sender email address"
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "description": "Filter by tag"
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": "Filter by status (`queued` or `sent`)"
+        },
+        {
+          "name": "todate",
+          "schema": "string",
+          "description": "Filter messages up to the date specified. e.g. `2014-02-01`"
+        },
+        {
+          "name": "fromdate",
+          "schema": "string",
+          "description": "Filter messages starting from the date specified. e.g. `2014-02-01`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/messages/outbound/clicks",
+      "method": "searchClicksForOutboundMessages",
+      "httpMethod": "get",
+      "tag": "Messages API",
+      "description": "Clicks for a all messages",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "Number of message clicks to return per request. Max 500."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "Number of messages to skip"
+        },
+        {
+          "name": "recipient",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by To, Cc, Bcc"
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by tag"
+        },
+        {
+          "name": "client_name",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by client name, i.e. Outlook, Gmail"
+        },
+        {
+          "name": "client_company",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by company, i.e. Microsoft, Apple, Google"
+        },
+        {
+          "name": "client_family",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by client family, i.e. OS X, Chrome"
+        },
+        {
+          "name": "os_name",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by full OS name and specific version, i.e. OS X 10.9 Mavericks, Windows 7"
+        },
+        {
+          "name": "os_family",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by kind of OS used without specific version, i.e. OS X, Windows"
+        },
+        {
+          "name": "os_company",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by company which produced the OS, i.e. Apple Computer, Inc., Microsoft Corporation"
+        },
+        {
+          "name": "platform",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by platform, i.e. webmail, desktop, mobile"
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by country messages were opened in, i.e. Denmark, Russia"
+        },
+        {
+          "name": "region",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by full name of region messages were opened in, i.e. Moscow, New York"
+        },
+        {
+          "name": "city",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by full name of region messages were opened in, i.e. Moscow, New York"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/messages/outbound/clicks/{messageid}",
+      "method": "getClicksForSingleOutboundMessage",
+      "httpMethod": "get",
+      "tag": "Messages API",
+      "description": "Retrieve Message Clicks",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "messageid",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the Outbound Message for which click statistics should be retrieved."
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "Number of message clicks to return per request. Max 500."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "Number of messages to skip."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/messages/outbound/opens",
+      "method": "searchOpensForOutboundMessages",
+      "httpMethod": "get",
+      "tag": "Messages API",
+      "description": "Opens for all messages",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "Number of message opens to return per request. Max 500."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "Number of messages to skip"
+        },
+        {
+          "name": "recipient",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by To, Cc, Bcc"
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by tag"
+        },
+        {
+          "name": "client_name",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by client name, i.e. Outlook, Gmail"
+        },
+        {
+          "name": "client_company",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by company, i.e. Microsoft, Apple, Google"
+        },
+        {
+          "name": "client_family",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by client family, i.e. OS X, Chrome"
+        },
+        {
+          "name": "os_name",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by full OS name and specific version, i.e. OS X 10.9 Mavericks, Windows 7"
+        },
+        {
+          "name": "os_family",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by kind of OS used without specific version, i.e. OS X, Windows"
+        },
+        {
+          "name": "os_company",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by company which produced the OS, i.e. Apple Computer, Inc., Microsoft Corporation"
+        },
+        {
+          "name": "platform",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by platform, i.e. webmail, desktop, mobile"
+        },
+        {
+          "name": "country",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by country messages were opened in, i.e. Denmark, Russia"
+        },
+        {
+          "name": "region",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by full name of region messages were opened in, i.e. Moscow, New York"
+        },
+        {
+          "name": "city",
+          "schema": "string",
+          "required": false,
+          "description": "Filter by full name of region messages were opened in, i.e. Moscow, New York"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/messages/outbound/opens/{messageid}",
+      "method": "getOpensForSingleOutboundMessage",
+      "httpMethod": "get",
+      "tag": "Messages API",
+      "description": "Retrieve Message Opens",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "messageid",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the Outbound Message for which open statistics should be retrieved."
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "Number of message opens to return per request. Max 500."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "Number of messages to skip."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/messages/outbound/{messageid}/details",
+      "method": "getOutboundMessageDetails",
+      "httpMethod": "get",
+      "tag": "Messages API",
+      "description": "Outbound message details",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "messageid",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the message for which to retrieve details."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/messages/outbound/{messageid}/dump",
+      "method": "getOutboundMessageDump",
+      "httpMethod": "get",
+      "tag": "Messages API",
+      "description": "Outbound message dump",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "messageid",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the message for which to retrieve a dump."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/server",
+      "method": "getCurrentServerConfiguration",
+      "httpMethod": "get",
+      "tag": "Server Configuration API",
+      "description": "Get Server Configuration",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/server",
+      "method": "editCurrentServerConfiguration",
+      "httpMethod": "put",
+      "tag": "Server Configuration API",
+      "description": "Edit Server Configuration",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "BounceHookUrl",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "ClickHookUrl",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "Color",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "DeliveryHookUrl",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "InboundDomain",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "InboundHookUrl",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "InboundSpamThreshold",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "Name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "OpenHookUrl",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "PostFirstOpenOnly",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "RawEmailEnabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "SmtpApiActivated",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "TrackLinks",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "TrackOpens",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/stats/outbound",
+      "method": "getOutboundOverviewStatistics",
+      "httpMethod": "get",
+      "tag": "Stats API",
+      "description": "Get outbound overview",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "description": "Filter by tag"
+        },
+        {
+          "name": "fromdate",
+          "schema": "string",
+          "description": "Filter stats starting from the date specified. e.g. `2014-01-01`"
+        },
+        {
+          "name": "todate",
+          "schema": "string",
+          "description": "Filter stats up to the date specified. e.g. `2014-02-01`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/stats/outbound/bounces",
+      "method": "getBounceCounts",
+      "httpMethod": "get",
+      "tag": "Stats API",
+      "description": "Get bounce counts",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "description": "Filter by tag"
+        },
+        {
+          "name": "fromdate",
+          "schema": "string",
+          "description": "Filter stats starting from the date specified. e.g. `2014-01-01`"
+        },
+        {
+          "name": "todate",
+          "schema": "string",
+          "description": "Filter stats up to the date specified. e.g. `2014-02-01`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/stats/outbound/clicks",
+      "method": "getOutboundClickCounts",
+      "httpMethod": "get",
+      "tag": "Stats API",
+      "description": "Get click counts",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "description": "Filter by tag"
+        },
+        {
+          "name": "fromdate",
+          "schema": "string",
+          "description": "Filter stats starting from the date specified. e.g. `2014-01-01`"
+        },
+        {
+          "name": "todate",
+          "schema": "string",
+          "description": "Filter stats up to the date specified. e.g. `2014-02-01`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The properties of this object will vary based request parameters."
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/stats/outbound/clicks/browserfamilies",
+      "method": "getOutboundClickCountsByBrowserFamily",
+      "httpMethod": "get",
+      "tag": "Stats API",
+      "description": "Get browser usage by family",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "description": "Filter by tag"
+        },
+        {
+          "name": "fromdate",
+          "schema": "string",
+          "description": "Filter stats starting from the date specified. e.g. `2014-01-01`"
+        },
+        {
+          "name": "todate",
+          "schema": "string",
+          "description": "Filter stats up to the date specified. e.g. `2014-02-01`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/stats/outbound/clicks/location",
+      "method": "getOutboundClickCountsByLocation",
+      "httpMethod": "get",
+      "tag": "Stats API",
+      "description": "Get clicks by body location",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "description": "Filter by tag"
+        },
+        {
+          "name": "fromdate",
+          "schema": "string",
+          "description": "Filter stats starting from the date specified. e.g. `2014-01-01`"
+        },
+        {
+          "name": "todate",
+          "schema": "string",
+          "description": "Filter stats up to the date specified. e.g. `2014-02-01`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The properties of this object will vary based request parameters."
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/stats/outbound/clicks/platforms",
+      "method": "getOutboundClickCountsByPlatform",
+      "httpMethod": "get",
+      "tag": "Stats API",
+      "description": "Get browser plaform usage",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "description": "Filter by tag"
+        },
+        {
+          "name": "fromdate",
+          "schema": "string",
+          "description": "Filter stats starting from the date specified. e.g. `2014-01-01`"
+        },
+        {
+          "name": "todate",
+          "schema": "string",
+          "description": "Filter stats up to the date specified. e.g. `2014-02-01`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The properties of this object will vary based request parameters."
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/stats/outbound/opens",
+      "method": "getOutboundOpenCounts",
+      "httpMethod": "get",
+      "tag": "Stats API",
+      "description": "Get email open counts",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "description": "Filter by tag"
+        },
+        {
+          "name": "fromdate",
+          "schema": "string",
+          "description": "Filter stats starting from the date specified. e.g. `2014-01-01`"
+        },
+        {
+          "name": "todate",
+          "schema": "string",
+          "description": "Filter stats up to the date specified. e.g. `2014-02-01`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/stats/outbound/opens/emailclients",
+      "method": "getOutboundOpenCountsByEmailClient",
+      "httpMethod": "get",
+      "tag": "Stats API",
+      "description": "Get email client usage",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "description": "Filter by tag"
+        },
+        {
+          "name": "fromdate",
+          "schema": "string",
+          "description": "Filter stats starting from the date specified. e.g. `2014-01-01`"
+        },
+        {
+          "name": "todate",
+          "schema": "string",
+          "description": "Filter stats up to the date specified. e.g. `2014-02-01`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/stats/outbound/opens/platforms",
+      "method": "getOutboundOpenCountsByPlatform",
+      "httpMethod": "get",
+      "tag": "Stats API",
+      "description": "Get email platform usage",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "description": "Filter by tag"
+        },
+        {
+          "name": "fromdate",
+          "schema": "string",
+          "description": "Filter stats starting from the date specified. e.g. `2014-01-01`"
+        },
+        {
+          "name": "todate",
+          "schema": "string",
+          "description": "Filter stats up to the date specified. e.g. `2014-02-01`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/stats/outbound/sends",
+      "method": "getSentCounts",
+      "httpMethod": "get",
+      "tag": "Stats API",
+      "description": "Get sent counts",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "description": "Filter by tag"
+        },
+        {
+          "name": "fromdate",
+          "schema": "string",
+          "description": "Filter stats starting from the date specified. e.g. `2014-01-01`"
+        },
+        {
+          "name": "todate",
+          "schema": "string",
+          "description": "Filter stats up to the date specified. e.g. `2014-02-01`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The result of a get sent counts operation."
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/stats/outbound/spam",
+      "method": "getSpamComplaints",
+      "httpMethod": "get",
+      "tag": "Stats API",
+      "description": "Get spam complaints",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "description": "Filter by tag"
+        },
+        {
+          "name": "fromdate",
+          "schema": "string",
+          "description": "Filter stats starting from the date specified. e.g. `2014-01-01`"
+        },
+        {
+          "name": "todate",
+          "schema": "string",
+          "description": "Filter stats up to the date specified. e.g. `2014-02-01`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/stats/outbound/tracked",
+      "method": "getTrackedEmailCounts",
+      "httpMethod": "get",
+      "tag": "Stats API",
+      "description": "Get tracked email counts",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "description": "Filter by tag"
+        },
+        {
+          "name": "fromdate",
+          "schema": "string",
+          "description": "Filter stats starting from the date specified. e.g. `2014-01-01`"
+        },
+        {
+          "name": "todate",
+          "schema": "string",
+          "description": "Filter stats starting from the date specified. e.g. `2014-01-01`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/templates",
+      "method": "listTemplates",
+      "httpMethod": "get",
+      "tag": "Templates API",
+      "description": "Get the Templates associated with this Server",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "Count",
+          "schema": "number",
+          "required": true,
+          "description": "The number of Templates to return"
+        },
+        {
+          "name": "Offset",
+          "schema": "number",
+          "required": true,
+          "description": "The number of Templates to \"skip\" before returning results."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/templates",
+      "method": "/templatesPost",
+      "httpMethod": "post",
+      "tag": "Templates API",
+      "description": "Create a Template",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "Alias",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "HtmlBody",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Subject",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "TextBody",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/templates/validate",
+      "method": "testTemplateContent",
+      "httpMethod": "post",
+      "tag": "Templates API",
+      "description": "Test Template Content",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "HtmlBody",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "InlineCssForHtmlTestRender",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "Subject",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "TestRenderModel",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "TextBody",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/templates/{templateIdOrAlias}",
+      "method": "deleteTemplate",
+      "httpMethod": "delete",
+      "tag": "Templates API",
+      "description": "Delete a Template",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "templateIdOrAlias",
+          "schema": "string",
+          "required": true,
+          "description": "The 'TemplateID' or 'Alias' value for the Template you wish to delete."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/templates/{templateIdOrAlias}",
+      "method": "getSingleTemplate",
+      "httpMethod": "get",
+      "tag": "Templates API",
+      "description": "Get a Template",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "templateIdOrAlias",
+          "schema": "string",
+          "required": true,
+          "description": "The 'TemplateID' or 'Alias' value for the Template you wish to retrieve."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/templates/{templateIdOrAlias}",
+      "method": "updateTemplate",
+      "httpMethod": "put",
+      "tag": "Templates API",
+      "description": "Update a Template",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "templateIdOrAlias",
+          "schema": "string",
+          "required": true,
+          "description": "The 'TemplateID' or 'Alias' value for the Template you wish to update."
+        },
+        {
+          "name": "Alias",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "HtmlBody",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Subject",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "TextBody",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/triggers/inboundrules",
+      "method": "listInboundRules",
+      "httpMethod": "get",
+      "tag": "Inbound Rules API",
+      "description": "List inbound rule triggers",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "count",
+          "schema": "integer",
+          "required": true,
+          "description": "Number of records to return per request."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": true,
+          "description": "Number of records to skip."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/triggers/inboundrules",
+      "method": "createInboundRule",
+      "httpMethod": "post",
+      "tag": "Inbound Rules API",
+      "description": "Create an inbound rule trigger",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "Rule",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    },
+    {
+      "url": "/triggers/inboundrules/{triggerid}",
+      "method": "deleteInboundRule",
+      "httpMethod": "delete",
+      "tag": "Inbound Rules API",
+      "description": "Delete a single trigger",
+      "parameters": [
+        {
+          "name": "X-Postmark-Server-Token",
+          "schema": "string",
+          "required": true,
+          "description": "The token associated with the Server on which this request will operate."
+        },
+        {
+          "name": "triggerid",
+          "schema": "integer",
+          "required": true,
+          "description": "The ID of the Inbound Rule that should be deleted."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A Postmark API error."
+        },
+        {
+          "statusCode": "422",
+          "description": "A Postmark API error."
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "api.postmarkapp.com",
   "apiDescription": "Postmark makes sending and receiving email\nincredibly easy.\n",
   "apiTitle": "Postmark API",

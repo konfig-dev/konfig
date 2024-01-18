@@ -4,6 +4,319 @@
   "homepage": "testfire.net",
   "serviceName": "altoroj",
   "apiVersion": "1.0.2",
+  "methods": [
+    {
+      "url": "/account",
+      "method": "getAccount",
+      "httpMethod": "get",
+      "tag": "2. Account",
+      "description": "Returns a list of all the accounts owned by the user",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Authorization token (provided upon successful login)"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/account/{accountNo}",
+      "method": "getAccountBalance",
+      "httpMethod": "get",
+      "tag": "2. Account",
+      "description": "Returns details about a specific account",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Authorization token (provided upon successful login)"
+        },
+        {
+          "name": "accountNo",
+          "schema": "string",
+          "required": true,
+          "description": "Account id"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/account/{accountNo}/transactions",
+      "method": "showLastTenTransactions",
+      "httpMethod": "get",
+      "tag": "2. Account",
+      "description": "Returns the last 10 transactions attached to an account",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Authorization token (provided upon successful login)"
+        },
+        {
+          "name": "accountNo",
+          "schema": "string",
+          "required": true,
+          "description": "Account id"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/account/{accountNo}/transactions",
+      "method": "getTransactions",
+      "httpMethod": "post",
+      "tag": "2. Account",
+      "description": "Return transactions between 2 specific dates",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Authorization token (provided upon successful login)"
+        },
+        {
+          "name": "accountNo",
+          "schema": "string",
+          "required": true,
+          "description": "Account id"
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "startDate",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/admin/addUser",
+      "method": "addUser",
+      "httpMethod": "post",
+      "tag": "5. Admin",
+      "description": "Add new user",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Authorization token (provided upon successful login)"
+        },
+        {
+          "name": "firstname",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "lastname",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "password1",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "password2",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/admin/changePassword",
+      "method": "changePassword",
+      "httpMethod": "post",
+      "tag": "5. Admin",
+      "description": "Change user password",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Authorization token (provided upon successful login)"
+        },
+        {
+          "name": "password1",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "password2",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/feedback/submit",
+      "method": "sendFeedback",
+      "httpMethod": "post",
+      "tag": "4. Feedback",
+      "description": "Submit feedback for the bank",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "subject",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/feedback/{feedbackId}",
+      "method": "getFeedback",
+      "httpMethod": "get",
+      "tag": "4. Feedback",
+      "description": "Retrieve feedback",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Authorization token (provided upon successful login)"
+        },
+        {
+          "name": "feedbackId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/login",
+      "method": "checkLogin",
+      "httpMethod": "get",
+      "tag": "1. Login",
+      "description": "Check if any user is logged in",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Authorization token (provided upon successful login)"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/login",
+      "method": "login",
+      "httpMethod": "post",
+      "tag": "1. Login",
+      "description": "Login method",
+      "parameters": [
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/logout",
+      "method": "doLogOut",
+      "httpMethod": "get",
+      "tag": "6. Logout",
+      "description": "Logout from the bank",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/transfer",
+      "method": "trasnfer",
+      "httpMethod": "post",
+      "tag": "3. Transfer",
+      "description": "Transfer money between two accounts",
+      "parameters": [
+        {
+          "name": "Authorization",
+          "schema": "string",
+          "required": true,
+          "description": "Authorization token (provided upon successful login)"
+        },
+        {
+          "name": "fromAccount",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "toAccount",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "transferAmount",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "/api",
   "apiTitle": "AltoroJ REST API",
   "endpoints": 10,

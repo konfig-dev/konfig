@@ -3,6 +3,157 @@
   "openApiRaw": "http://api.aviationdata.systems//swagger/docs/v1",
   "homepage": "aviationdata.systems",
   "apiVersion": "v1",
+  "methods": [
+    {
+      "url": "/v1/airport/autocomplete/{airport_name}",
+      "method": "autoCompleteAirportNameAirportNameSearch",
+      "httpMethod": "get",
+      "tag": "AutoCompleteAirportName",
+      "description": "Autocomplete airport names. Returns a maximum of 10 airport names.",
+      "parameters": [
+        {
+          "name": "airport_name",
+          "schema": "string",
+          "required": true,
+          "description": "Required: The airports name"
+        },
+        {
+          "name": "airport_service_type",
+          "schema": "string",
+          "required": true,
+          "description": "Required: Needs to be: All, Scheduled or NonScheduled"
+        },
+        {
+          "name": "optional_country_code",
+          "schema": "string",
+          "required": false,
+          "description": "Optional: Country code (ISO 3166-1). This can be found via /countries"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/airport/iata/{airport_iata}",
+      "method": "airportIataAirportIataSearch",
+      "httpMethod": "get",
+      "tag": "AirportIATA",
+      "description": "Search for airport by IATA code",
+      "parameters": [
+        {
+          "name": "airport_iata",
+          "schema": "string",
+          "required": true,
+          "description": "Required: The airports IATA code"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/airport/name/{airport_name}",
+      "method": "airportDetailsAirportNameSearch",
+      "httpMethod": "get",
+      "tag": "AirportDetails",
+      "description": "Search for airport by name",
+      "parameters": [
+        {
+          "name": "airport_name",
+          "schema": "string",
+          "required": true,
+          "description": "Required: The airports name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/airport/nearest/{result_count}/{latitude}/{longitude}",
+      "method": "nearestAirportsNearestAirportList",
+      "httpMethod": "get",
+      "tag": "NearestAirports",
+      "description": "Search for airports by location",
+      "parameters": [
+        {
+          "name": "result_count",
+          "schema": "integer",
+          "required": true,
+          "description": "Required: Number of airports to return. Min: 1 Max: 20"
+        },
+        {
+          "name": "latitude",
+          "schema": "number",
+          "required": true,
+          "description": "Required: Latitude"
+        },
+        {
+          "name": "longitude",
+          "schema": "number",
+          "required": true,
+          "description": "Required: Longitude"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/country/code/{country_code}",
+      "method": "countryAirportListCountryAirportList",
+      "httpMethod": "get",
+      "tag": "CountryAirportList",
+      "description": "Country airports. Returns a list of airports for a country code(ISO 3166-1 alpha-2 code)",
+      "parameters": [
+        {
+          "name": "country_code",
+          "schema": "string",
+          "required": true,
+          "description": "Country code (ISO 3166-1). This can be found via /countries"
+        },
+        {
+          "name": "airport_service_type",
+          "schema": "string",
+          "required": true,
+          "description": "Required: Needs to be: All, Scheduled or NonScheduled"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/country_list",
+      "method": "countryListCountryAirportList",
+      "httpMethod": "get",
+      "tag": "CountryList",
+      "description": "Country list. Returns a list of countries where airport data is available",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.aviationdata.systems",
   "apiTitle": "AviationData.Systems Airports API V1",
   "endpoints": 6,

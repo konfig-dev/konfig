@@ -3,6 +3,3217 @@
   "openApiRaw": "https://raw.githubusercontent.com/RumbleDiscovery/rumble-api/main/rumble-api.yml",
   "homepage": "rumble.run",
   "apiVersion": "2.15.0",
+  "methods": [
+    {
+      "url": "/account/agents",
+      "method": "getAccountAgents",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Get all agents across all organizations",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "an optional search string for filtering results"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/credentials",
+      "method": "getAccountCredentials",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Get all account credentials",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "an optional search string for filtering results"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/credentials",
+      "method": "createAccountCredential",
+      "httpMethod": "put",
+      "tag": "Account",
+      "description": "Create a new credential",
+      "parameters": [
+        {
+          "name": "acl",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "cidrs",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "global",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "secret",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/credentials/{credential_id}",
+      "method": "removeAccountCredential",
+      "httpMethod": "delete",
+      "tag": "Account",
+      "description": "Remove this credential",
+      "parameters": [
+        {
+          "name": "credential_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the credential to delete"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/account/credentials/{credential_id}",
+      "method": "getAccountCredential",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Get credential details",
+      "parameters": [
+        {
+          "name": "credential_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the credential to retrieve"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/events.json",
+      "method": "exportEventsJson",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "System event log as JSON",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "an optional search string for filtering results"
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "an optional list of fields to export, comma-separated"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/events.jsonl",
+      "method": "exportEventsJsonl",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "System event log as JSON line-delimited",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "an optional search string for filtering results"
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "an optional list of fields to export, comma-separated"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/groups",
+      "method": "getAccountGroups",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Get all groups",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/groups",
+      "method": "createAccountGroup",
+      "httpMethod": "post",
+      "tag": "Account",
+      "description": "Create a new group",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "expires_at",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "org_default_role",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "org_roles",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/groups",
+      "method": "updateAccountGroup",
+      "httpMethod": "put",
+      "tag": "Account",
+      "description": "Update an existing group",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "expires_at",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "org_default_role",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "org_roles",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/groups/{group_id}",
+      "method": "removeAccountGroup",
+      "httpMethod": "delete",
+      "tag": "Account",
+      "description": "Remove this group",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/account/groups/{group_id}",
+      "method": "getAccountGroup",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Get group details",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/keys",
+      "method": "getAccountKeys",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Get all active API keys",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/keys",
+      "method": "createAccountKey",
+      "httpMethod": "put",
+      "tag": "Account",
+      "description": "Create a new key",
+      "parameters": [
+        {
+          "name": "comment",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "organization_id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/keys/{key_id}",
+      "method": "removeAccountKey",
+      "httpMethod": "delete",
+      "tag": "Account",
+      "description": "Remove this key",
+      "parameters": [
+        {
+          "name": "key_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the key to retrieve"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/account/keys/{key_id}",
+      "method": "getAccountKey",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Get key details",
+      "parameters": [
+        {
+          "name": "key_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the key to retrieve"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/keys/{key_id}/rotate",
+      "method": "rotateAccountKey",
+      "httpMethod": "patch",
+      "tag": "Account",
+      "description": "Rotates the key secret",
+      "parameters": [
+        {
+          "name": "key_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the key to retrieve"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/license",
+      "method": "getAccountLicense",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Get license details",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/orgs",
+      "method": "getAccountOrganizations",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Get all organization details",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "an optional search string for filtering results"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/orgs",
+      "method": "createAccountOrganization",
+      "httpMethod": "put",
+      "tag": "Account",
+      "description": "Create a new organization",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "expiration_assets_offline",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "expiration_assets_stale",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "expiration_scans",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "export_token",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "parent_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "project",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/orgs/{org_id}",
+      "method": "removeAccountOrganization",
+      "httpMethod": "delete",
+      "tag": "Account",
+      "description": "Remove this organization",
+      "parameters": [
+        {
+          "name": "org_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the organization to retrieve"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/account/orgs/{org_id}",
+      "method": "getAccountOrganization",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Get organization details",
+      "parameters": [
+        {
+          "name": "org_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the organization to retrieve"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/orgs/{org_id}",
+      "method": "updateAccountOrganization",
+      "httpMethod": "patch",
+      "tag": "Account",
+      "description": "Update organization details",
+      "parameters": [
+        {
+          "name": "org_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the organization to retrieve"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "expiration_assets_offline",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "expiration_assets_stale",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "expiration_scans",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "export_token",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "parent_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "project",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/orgs/{org_id}/exportToken",
+      "method": "deleteAccountOrganizationExportToken",
+      "httpMethod": "delete",
+      "tag": "Account",
+      "description": "Removes the export token from the specified organization",
+      "parameters": [
+        {
+          "name": "org_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the organization to retrieve"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/account/orgs/{org_id}/exportToken/rotate",
+      "method": "rotateAccountOrganizationExportToken",
+      "httpMethod": "patch",
+      "tag": "Account",
+      "description": "Rotates the organization export token and returns the updated organization",
+      "parameters": [
+        {
+          "name": "org_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the organization to retrieve"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/sites",
+      "method": "getAccountSites",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Get all sites details across all organizations",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "an optional search string for filtering results"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/sso/groups",
+      "method": "getAccountGroupMappings",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Get all SSO group mappings",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/sso/groups",
+      "method": "createAccountGroupMapping",
+      "httpMethod": "post",
+      "tag": "Account",
+      "description": "Create a new SSO group mapping",
+      "parameters": [
+        {
+          "name": "created_at",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_by_email",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "group_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "group_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "sso_attribute",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "sso_value",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "updated_at",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/sso/groups",
+      "method": "updateAccountGroupMapping",
+      "httpMethod": "put",
+      "tag": "Account",
+      "description": "Update an existing SSO group mapping",
+      "parameters": [
+        {
+          "name": "created_at",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_by_email",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "group_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "group_name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "sso_attribute",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "sso_value",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "updated_at",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/sso/groups/{group_mapping_id}",
+      "method": "removeAccountGroupMapping",
+      "httpMethod": "delete",
+      "tag": "Account",
+      "description": "Remove this SSO group mapping",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/account/sso/groups/{group_mapping_id}",
+      "method": "getAccountGroupMapping",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Get SSO group mapping details",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/tasks",
+      "method": "getAccountTasks",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Get all task details across all organizations (up to 1000)",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "an optional search string for filtering results"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/tasks/templates",
+      "method": "getAccountScanTemplates",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Get all scan templates across all organizations (up to 1000)",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "an optional search string for filtering results"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/tasks/templates",
+      "method": "createAccountScanTemplate",
+      "httpMethod": "post",
+      "tag": "Account",
+      "description": "Create a new scan template",
+      "parameters": [
+        {
+          "name": "acl",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "global",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "params",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/tasks/templates",
+      "method": "updateAccountScanTemplate",
+      "httpMethod": "put",
+      "tag": "Account",
+      "description": "Update scan template",
+      "parameters": [
+        {
+          "name": "acl",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "agent_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "client_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_by",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_by_user_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "cruncher_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "error",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "global",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "grace_period",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "hidden",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "hosted_zone_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "linked_task_count",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "organization_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "params",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parent_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "recur",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "recur_frequency",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "recur_last",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "recur_last_task_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "recur_next",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "site_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "size_data",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "size_results",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "size_site",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "source_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "start_time",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "stats",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "template_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "updated_at",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/tasks/templates/{scan_template_id}",
+      "method": "removeAccountScanTemplate",
+      "httpMethod": "delete",
+      "tag": "Account",
+      "description": "Remove scan template",
+      "parameters": [
+        {
+          "name": "scan_template_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the scan template to remove"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/tasks/templates/{scan_template_id}",
+      "method": "getAccountScanTemplate",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Get scan template details",
+      "parameters": [
+        {
+          "name": "scan_template_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the scan template to retrieve"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/users",
+      "method": "getAccountUsers",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Get all users",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/users",
+      "method": "createAccountUser",
+      "httpMethod": "put",
+      "tag": "Account",
+      "description": "Create a new user account",
+      "parameters": [
+        {
+          "name": "client_admin",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "first_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "last_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "org_default_role",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "org_roles",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/users/invite",
+      "method": "createAccountUserInvite",
+      "httpMethod": "put",
+      "tag": "Account",
+      "description": "Create a new user account and send an email invite",
+      "parameters": [
+        {
+          "name": "client_admin",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "first_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "last_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "org_default_role",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "org_roles",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "subject",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/users/{user_id}",
+      "method": "removeAccountUser",
+      "httpMethod": "delete",
+      "tag": "Account",
+      "description": "Remove this user",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the user to delete"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/account/users/{user_id}",
+      "method": "getAccountUser",
+      "httpMethod": "get",
+      "tag": "Account",
+      "description": "Get user details",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the user to retrieve"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/users/{user_id}",
+      "method": "updateAccountUser",
+      "httpMethod": "patch",
+      "tag": "Account",
+      "description": "Update a user's details",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the user to retrieve"
+        },
+        {
+          "name": "client_admin",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "first_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "last_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "org_default_role",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "org_roles",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/users/{user_id}/resetLockout",
+      "method": "resetAccountUserLockout",
+      "httpMethod": "patch",
+      "tag": "Account",
+      "description": "Resets the user's lockout status",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the user to retrieve"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/users/{user_id}/resetMFA",
+      "method": "resetAccountUserMfa",
+      "httpMethod": "patch",
+      "tag": "Account",
+      "description": "Resets the user's MFA tokens",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the user to retrieve"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/account/users/{user_id}/resetPassword",
+      "method": "resetAccountUserPassword",
+      "httpMethod": "patch",
+      "tag": "Account",
+      "description": "Sends the user a password reset email",
+      "parameters": [
+        {
+          "name": "user_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the user to retrieve"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/export/org/assets.cisco.csv",
+      "method": "exportAssetsCiscoCsv",
+      "httpMethod": "get",
+      "tag": "Cisco SNTC",
+      "description": "Cisco serial number and model name export for Cisco Smart Net Total Care Service.",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "an optional search string for filtering results"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/export/org/assets.csv",
+      "method": "exportAssetsCsv",
+      "httpMethod": "get",
+      "tag": "Export",
+      "description": "Asset inventory as CSV",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "an optional search string for filtering results"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/export/org/assets.json",
+      "method": "exportAssetsJson",
+      "httpMethod": "get",
+      "tag": "Export",
+      "description": "Exports the asset inventory",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "an optional search string for filtering results"
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "an optional list of fields to export, comma-separated"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/export/org/assets.jsonl",
+      "method": "exportAssetsJsonl",
+      "httpMethod": "get",
+      "tag": "Export",
+      "description": "Asset inventory as JSON line-delimited",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "an optional search string for filtering results"
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "an optional list of fields to export, comma-separated"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/export/org/assets.nmap.xml",
+      "method": "exportAssetsNmapXml",
+      "httpMethod": "get",
+      "tag": "Export",
+      "description": "Asset inventory as Nmap-style XML",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "an optional search string for filtering results"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/export/org/assets.servicenow.csv",
+      "method": "snowExportAssetsCsv",
+      "httpMethod": "get",
+      "tag": "ServiceNow",
+      "description": "Export an asset inventory as CSV for ServiceNow integration",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/export/org/assets.servicenow.json",
+      "method": "snowExportAssetsJson",
+      "httpMethod": "get",
+      "tag": "ServiceNow",
+      "description": "Exports the asset inventory as JSON",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/export/org/assets/sync/created/assets.json",
+      "method": "splunkAssetSyncCreatedJson",
+      "httpMethod": "get",
+      "tag": "Splunk",
+      "description": "Exports the asset inventory in a sync-friendly manner using created_at as a checkpoint. Requires the Splunk entitlement.",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "an optional search string for filtering results"
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "an optional list of fields to export, comma-separated"
+        },
+        {
+          "name": "since",
+          "schema": "integer",
+          "required": false,
+          "description": "an optional unix timestamp to use as a checkpoint"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/export/org/assets/sync/updated/assets.json",
+      "method": "splunkAssetSyncUpdatedJson",
+      "httpMethod": "get",
+      "tag": "Splunk",
+      "description": "Exports the asset inventory in a sync-friendly manner using updated_at as a checkpoint. Requires the Splunk entitlement.",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "an optional search string for filtering results"
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "an optional list of fields to export, comma-separated"
+        },
+        {
+          "name": "since",
+          "schema": "integer",
+          "required": false,
+          "description": "an optional unix timestamp to use as a checkpoint"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/export/org/services.csv",
+      "method": "exportServicesCsv",
+      "httpMethod": "get",
+      "tag": "Export",
+      "description": "Service inventory as CSV",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "an optional search string for filtering results"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/export/org/services.json",
+      "method": "exportServicesJson",
+      "httpMethod": "get",
+      "tag": "Export",
+      "description": "Service inventory as JSON",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "an optional search string for filtering results"
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "an optional list of fields to export, comma-separated"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/export/org/services.jsonl",
+      "method": "exportServicesJsonl",
+      "httpMethod": "get",
+      "tag": "Export",
+      "description": "Service inventory as JSON line-delimited",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "an optional search string for filtering results"
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "an optional list of fields to export, comma-separated"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/export/org/services.servicenow.csv",
+      "method": "snowExportServicesCsv",
+      "httpMethod": "get",
+      "tag": "ServiceNow",
+      "description": "Export a service inventory as CSV for ServiceNow integration",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/export/org/sites.csv",
+      "method": "exportSitesCsv",
+      "httpMethod": "get",
+      "tag": "Export",
+      "description": "Site list as CSV",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/export/org/sites.json",
+      "method": "exportSitesJson",
+      "httpMethod": "get",
+      "tag": "Export",
+      "description": "Export all sites",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "an optional search string for filtering results"
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "an optional list of fields to export, comma-separated"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/export/org/sites.jsonl",
+      "method": "exportSitesJsonl",
+      "httpMethod": "get",
+      "tag": "Export",
+      "description": "Site list as JSON line-delimited",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "an optional search string for filtering results"
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "an optional list of fields to export, comma-separated"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/export/org/wireless.csv",
+      "method": "exportWirelessCsv",
+      "httpMethod": "get",
+      "tag": "Export",
+      "description": "Wireless inventory as CSV",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "an optional search string for filtering results"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/export/org/wireless.json",
+      "method": "exportWirelessJson",
+      "httpMethod": "get",
+      "tag": "Export",
+      "description": "Wireless inventory as JSON",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "an optional search string for filtering results"
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "an optional list of fields to export, comma-separated"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/export/org/wireless.jsonl",
+      "method": "exportWirelessJsonl",
+      "httpMethod": "get",
+      "tag": "Export",
+      "description": "Wireless inventory as JSON line-delimited",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "an optional search string for filtering results"
+        },
+        {
+          "name": "fields",
+          "schema": "string",
+          "required": false,
+          "description": "an optional list of fields to export, comma-separated"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org",
+      "method": "getOrganization",
+      "httpMethod": "get",
+      "tag": "Organization",
+      "description": "Get organization details",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org",
+      "method": "updateOrganization",
+      "httpMethod": "patch",
+      "tag": "Organization",
+      "description": "Update organization details",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "expiration_assets_offline",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "expiration_assets_stale",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "expiration_scans",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "export_token",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "parent_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "project",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/agents",
+      "method": "getAgents",
+      "httpMethod": "get",
+      "tag": "Organization",
+      "description": "Get all agents",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/agents/{agent_id}",
+      "method": "removeAgent",
+      "httpMethod": "delete",
+      "tag": "Organization",
+      "description": "Remove and uninstall an agent",
+      "parameters": [
+        {
+          "name": "agent_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the agent to remove"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/org/agents/{agent_id}",
+      "method": "getAgent",
+      "httpMethod": "get",
+      "tag": "Organization",
+      "description": "Get details for a single agent",
+      "parameters": [
+        {
+          "name": "agent_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the agent"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/agents/{agent_id}",
+      "method": "updateAgentSite",
+      "httpMethod": "patch",
+      "tag": "Organization",
+      "description": "Update the site associated with agent",
+      "parameters": [
+        {
+          "name": "agent_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the agent to update"
+        },
+        {
+          "name": "site_id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/agents/{agent_id}/update",
+      "method": "upgradeAgent",
+      "httpMethod": "post",
+      "tag": "Organization",
+      "description": "Force an agent to update and restart",
+      "parameters": [
+        {
+          "name": "agent_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the agent to update"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/org/assets",
+      "method": "getAssets",
+      "httpMethod": "get",
+      "tag": "Organization",
+      "description": "Get all assets",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "an optional search string for filtering results"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/assets/bulk/clearTags",
+      "method": "clearBulkAssetTags",
+      "httpMethod": "post",
+      "tag": "Organization",
+      "description": "Clear all tags across multiple assets based on a search query",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Summary of operation results"
+        }
+      ]
+    },
+    {
+      "url": "/org/assets/bulk/tags",
+      "method": "updateBulkAssetTags",
+      "httpMethod": "patch",
+      "tag": "Organization",
+      "description": "Update tags across multiple assets based on a search query",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Summary of operation results"
+        }
+      ]
+    },
+    {
+      "url": "/org/assets/top.hw.csv",
+      "method": "exportAssetTopHwcsv",
+      "httpMethod": "get",
+      "tag": "Export",
+      "description": "Top asset hardware products as CSV",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/assets/top.os.csv",
+      "method": "exportAssetTopOscsv",
+      "httpMethod": "get",
+      "tag": "Export",
+      "description": "Top asset operating systems as CSV",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/assets/top.tags.csv",
+      "method": "exportAssetTopTagsCsv",
+      "httpMethod": "get",
+      "tag": "Export",
+      "description": "Top asset tags as CSV",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/assets/top.types.csv",
+      "method": "exportAssetTopTypesCsv",
+      "httpMethod": "get",
+      "tag": "Export",
+      "description": "Top asset types as CSV",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/assets/{asset_id}",
+      "method": "removeAsset",
+      "httpMethod": "delete",
+      "tag": "Organization",
+      "description": "Remove an asset",
+      "parameters": [
+        {
+          "name": "asset_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the asset to remove"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/org/assets/{asset_id}",
+      "method": "getAsset",
+      "httpMethod": "get",
+      "tag": "Organization",
+      "description": "Get asset details",
+      "parameters": [
+        {
+          "name": "asset_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the asset to retrieve"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/assets/{asset_id}/comments",
+      "method": "updateAssetComments",
+      "httpMethod": "patch",
+      "tag": "Organization",
+      "description": "Update asset comments",
+      "parameters": [
+        {
+          "name": "asset_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the asset to update"
+        },
+        {
+          "name": "comments",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/assets/{asset_id}/tags",
+      "method": "updateAssetTags",
+      "httpMethod": "patch",
+      "tag": "Organization",
+      "description": "Update asset tags",
+      "parameters": [
+        {
+          "name": "asset_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the asset to update"
+        },
+        {
+          "name": "tags",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/key",
+      "method": "removeKey",
+      "httpMethod": "delete",
+      "tag": "Organization",
+      "description": "Remove the current API key",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/org/key",
+      "method": "getKey",
+      "httpMethod": "get",
+      "tag": "Organization",
+      "description": "Get API key details",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/key/rotate",
+      "method": "rotateKey",
+      "httpMethod": "patch",
+      "tag": "Organization",
+      "description": "Rotate the API key secret and return the updated key",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/services",
+      "method": "getServices",
+      "httpMethod": "get",
+      "tag": "Organization",
+      "description": "Get all services",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "an optional search string for filtering results"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/services/subnet.stats.csv",
+      "method": "exportSubnetUtilizationStatsCsv",
+      "httpMethod": "get",
+      "tag": "Export",
+      "description": "Subnet utilization statistics as as CSV",
+      "parameters": [
+        {
+          "name": "mask",
+          "schema": "string",
+          "required": false,
+          "description": "an optional subnet mask size (ex:24)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/services/top.products.csv",
+      "method": "exportServicesTopProductsCsv",
+      "httpMethod": "get",
+      "tag": "Export",
+      "description": "Top service products as CSV",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/services/top.protocols.csv",
+      "method": "exportServicesTopProtocolsCsv",
+      "httpMethod": "get",
+      "tag": "Export",
+      "description": "Top service protocols as CSV",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/services/top.tcp.csv",
+      "method": "exportServicesTopTcpcsv",
+      "httpMethod": "get",
+      "tag": "Export",
+      "description": "Top TCP services as CSV",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/services/top.udp.csv",
+      "method": "exportServicesTopUdpcsv",
+      "httpMethod": "get",
+      "tag": "Export",
+      "description": "Top UDP services as CSV",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/services/{service_id}",
+      "method": "removeService",
+      "httpMethod": "delete",
+      "tag": "Organization",
+      "description": "Remove a service",
+      "parameters": [
+        {
+          "name": "service_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the service to remove"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/org/services/{service_id}",
+      "method": "getService",
+      "httpMethod": "get",
+      "tag": "Organization",
+      "description": "Get service details",
+      "parameters": [
+        {
+          "name": "service_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the service to retrieve"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/sites",
+      "method": "getSites",
+      "httpMethod": "get",
+      "tag": "Organization",
+      "description": "Get all sites",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/sites",
+      "method": "createSite",
+      "httpMethod": "put",
+      "tag": "Organization",
+      "description": "Create a new site",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "excludes",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "scope",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/sites/{site_id}",
+      "method": "removeSite",
+      "httpMethod": "delete",
+      "tag": "Organization",
+      "description": "Remove a site and associated assets",
+      "parameters": [
+        {
+          "name": "site_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID or name of the site to remove"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/org/sites/{site_id}",
+      "method": "getSite",
+      "httpMethod": "get",
+      "tag": "Organization",
+      "description": "Get site details",
+      "parameters": [
+        {
+          "name": "site_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID or name of the site"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/sites/{site_id}",
+      "method": "updateSite",
+      "httpMethod": "patch",
+      "tag": "Organization",
+      "description": "Update a site definition",
+      "parameters": [
+        {
+          "name": "site_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID or name of the site to update"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "excludes",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "scope",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/sites/{site_id}/import",
+      "method": "importScanData",
+      "httpMethod": "put",
+      "tag": "Organization",
+      "description": "Import a scan data file into a site",
+      "parameters": [
+        {
+          "name": "site_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID or name of the site to import scan data into"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/sites/{site_id}/import/nessus",
+      "method": "importNessusScanData",
+      "httpMethod": "put",
+      "tag": "Organization",
+      "description": "Import a Nessus scan data file into a site",
+      "parameters": [
+        {
+          "name": "site_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID or name of the site to import Nessus scan data into"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/sites/{site_id}/scan",
+      "method": "createScan",
+      "httpMethod": "put",
+      "tag": "Organization",
+      "description": "Create a scan task for a given site",
+      "parameters": [
+        {
+          "name": "site_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID or name of the site to scan"
+        },
+        {
+          "name": "agent",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "excludes",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "host-ping",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "max-attempts",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "max-group-size",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "max-host-rate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "max-sockets",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "max-ttl",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "nameservers",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "passes",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "probes",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "rate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "scan-description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "scan-frequency",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "scan-grace-period",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "scan-name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "scan-start",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "scan-tags",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "screenshots",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "subnet-ping",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "subnet-ping-net-size",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "subnet-ping-sample-rate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "targets",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "tcp-excludes",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "tcp-ports",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/tasks",
+      "method": "getTasks",
+      "httpMethod": "get",
+      "tag": "Organization",
+      "description": "Get all tasks (last 1000)",
+      "parameters": [
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "an optional status string for filtering results"
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "an optional search string for filtering results"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/tasks/{task_id}",
+      "method": "getTask",
+      "httpMethod": "get",
+      "tag": "Organization",
+      "description": "Get task details",
+      "parameters": [
+        {
+          "name": "task_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the task to retrieve"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/tasks/{task_id}",
+      "method": "updateTask",
+      "httpMethod": "patch",
+      "tag": "Organization",
+      "description": "Update task parameters",
+      "parameters": [
+        {
+          "name": "task_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the task to update"
+        },
+        {
+          "name": "agent_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "client_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_at",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_by",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "created_by_user_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "cruncher_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "error",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "hidden",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "organization_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "params",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parent_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "recur",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "recur_frequency",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "recur_last",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "recur_last_task_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "recur_next",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "site_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "start_time",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "stats",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "template_id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "updated_at",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/tasks/{task_id}/changes",
+      "method": "getTaskChangeReport",
+      "httpMethod": "get",
+      "tag": "Organization",
+      "description": "Returns a temporary task change report data url",
+      "parameters": [
+        {
+          "name": "task_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the task"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A URL to a resource"
+        }
+      ]
+    },
+    {
+      "url": "/org/tasks/{task_id}/data",
+      "method": "getTaskScanData",
+      "httpMethod": "get",
+      "tag": "Organization",
+      "description": "Returns a temporary task scan data url",
+      "parameters": [
+        {
+          "name": "task_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the task"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A URL to a resource"
+        }
+      ]
+    },
+    {
+      "url": "/org/tasks/{task_id}/hide",
+      "method": "hideTask",
+      "httpMethod": "post",
+      "tag": "Organization",
+      "description": "Signal that a completed task should be hidden",
+      "parameters": [
+        {
+          "name": "task_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the task to hide"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/tasks/{task_id}/log",
+      "method": "getTaskLog",
+      "httpMethod": "get",
+      "tag": "Organization",
+      "description": "Returns a temporary task log data url",
+      "parameters": [
+        {
+          "name": "task_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the task"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A URL to a resource"
+        }
+      ]
+    },
+    {
+      "url": "/org/tasks/{task_id}/stop",
+      "method": "stopTask",
+      "httpMethod": "post",
+      "tag": "Organization",
+      "description": "Signal that a task should be stopped or canceledThis will also remove recurring and scheduled tasks",
+      "parameters": [
+        {
+          "name": "task_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the task to stop"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/wireless",
+      "method": "getWirelessLaNs",
+      "httpMethod": "get",
+      "tag": "Organization",
+      "description": "Get all wireless LANs",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "an optional search string for filtering results"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/org/wireless/{wireless_id}",
+      "method": "removeWirelessLan",
+      "httpMethod": "delete",
+      "tag": "Organization",
+      "description": "Remove a wireless LAN",
+      "parameters": [
+        {
+          "name": "wireless_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the wireless LAN to remove"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/org/wireless/{wireless_id}",
+      "method": "getWirelessLan",
+      "httpMethod": "get",
+      "tag": "Organization",
+      "description": "Get wireless LAN details",
+      "parameters": [
+        {
+          "name": "wireless_id",
+          "schema": "string",
+          "required": true,
+          "description": "UUID of the wireless LAN to retrieve"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/releases/agent/version",
+      "method": "getLatestAgentVersion",
+      "httpMethod": "get",
+      "tag": "Public",
+      "description": "Returns latest agent version",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A component ID and version"
+        }
+      ]
+    },
+    {
+      "url": "/releases/platform/version",
+      "method": "getLatestPlatformVersion",
+      "httpMethod": "get",
+      "tag": "Public",
+      "description": "Returns latest platform version",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A component ID and version"
+        }
+      ]
+    },
+    {
+      "url": "/releases/scanner/version",
+      "method": "getLatestScannerVersion",
+      "httpMethod": "get",
+      "tag": "Public",
+      "description": "Returns latest scanner version",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "A component ID and version"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://console.rumble.run/api/v1.0",
   "apiDescription": "<p><b><i>Rumble Network Discovery is now runZero. <a href=\"https://www.runzero.com/blog/introducing-runzero/\">Read the announcement</a></i></b>.</p> <p>This API is frozen and no longer being updated as of version 2.15.0.</p> <p>See our latest API documentation at <a href=\"https://app.swaggerhub.com/apis-docs/runZero/runZero\">swaggerhub.com/apis-docs/runZero/runZero</a>.</p>\n",
   "apiTitle": "Rumble API (deprecated)",

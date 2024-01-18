@@ -4,6 +4,116 @@
   "homepage": "o2.cz",
   "serviceName": "sociodemo",
   "apiVersion": "1.2.0",
+  "methods": [
+    {
+      "url": "/age/{location}",
+      "method": "age",
+      "httpMethod": "get",
+      "tag": "sociodemo",
+      "description": "Presence in a location aggregated by age",
+      "parameters": [
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "basic residential unit"
+        },
+        {
+          "name": "ageGroup",
+          "schema": "string",
+          "required": true,
+          "description": "age-group specification (1: 8-18, 2: 19-25, 3: 26-35, 4: 36-55, 5: 56+)"
+        },
+        {
+          "name": "occurenceType",
+          "schema": "string",
+          "required": true,
+          "description": "occurence type in the basic residential unit (1 - transit, 2 - visit)"
+        },
+        {
+          "name": "hour",
+          "schema": "string",
+          "required": true,
+          "description": "time interval for the count aggregation (from 0 to 23)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response with the result"
+        },
+        {
+          "statusCode": "400",
+          "description": "Response with error message"
+        },
+        {
+          "statusCode": "500",
+          "description": "Response with error message"
+        }
+      ]
+    },
+    {
+      "url": "/gender/{location}",
+      "method": "gender",
+      "httpMethod": "get",
+      "tag": "sociodemo",
+      "description": "Presence in a location aggregated by gender",
+      "parameters": [
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": "basic residential unit"
+        },
+        {
+          "name": "g",
+          "schema": "string",
+          "required": true,
+          "description": "gender specification (1 - male, 2 - female)"
+        },
+        {
+          "name": "occurenceType",
+          "schema": "string",
+          "required": true,
+          "description": "occurence type in the basic residential unit (1 - transit, 2 - visit)"
+        },
+        {
+          "name": "hour",
+          "schema": "string",
+          "required": true,
+          "description": "time interval for the count aggregation (from 0 to 23)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response with the result"
+        },
+        {
+          "statusCode": "400",
+          "description": "Response with error message"
+        },
+        {
+          "statusCode": "500",
+          "description": "Response with error message"
+        }
+      ]
+    },
+    {
+      "url": "/info",
+      "method": "getInfo",
+      "httpMethod": "get",
+      "tag": "info",
+      "description": "Information about versions of application and data.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Response to the info request"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://developer.o2.cz/sociodemo/sandbox/api",
   "apiDescription": "Socio-demo API can be used to obtain time-aggregated data representing groups of people on the given location in the Czech Republic. Having a location, the API can return count of people belonging to age group or gender aggregated by hours. The socio-demo data is based on presence of mobile stations in O2 mobile network.",
   "apiTitle": "Socio-demo API",

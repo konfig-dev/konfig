@@ -4,6 +4,39 @@
   "homepage": "mailboxvalidator.com",
   "serviceName": "validation",
   "apiVersion": "0.1",
+  "methods": [
+    {
+      "url": "/v1/validation/single",
+      "method": "/v1/validation/singleGet",
+      "httpMethod": "get",
+      "description": "The Single Validation API does validation on a single email address and returns all the validation results in either JSON or XML format.",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "description": "Return the result in json (default) or xml format."
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": "The email address to be validated."
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": "API key."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.mailboxvalidator.com",
   "apiDescription": "The Single Validation API does validation on a single email address and returns all the validation results in either JSON or XML format. Refer to https://www.mailboxvalidator.com for further information.",
   "apiTitle": "MailboxValidator Email Validation",

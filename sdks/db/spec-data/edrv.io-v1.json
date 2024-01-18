@@ -3,6 +3,2263 @@
   "openApiRaw": "https://developers.edrv.io/openapi/5f15c43c87b0d6001ea97414",
   "homepage": "edrv.io",
   "apiVersion": "v1",
+  "methods": [
+    {
+      "url": "/v1/chargestations",
+      "method": "getChargeStations",
+      "httpMethod": "get",
+      "tag": "Charge Stations",
+      "description": "List all Chargestations",
+      "parameters": [
+        {
+          "name": "organization",
+          "schema": "string",
+          "description": "Filter by Org. Id"
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "description": "Filter by Location Id"
+        },
+        {
+          "name": "online",
+          "schema": "boolean",
+          "description": "Filter by Online Status"
+        },
+        {
+          "name": "active",
+          "schema": "boolean",
+          "description": "Chargestations that have been activated/deactivated by the admin"
+        },
+        {
+          "name": "public",
+          "schema": "boolean",
+          "description": "Chargestations that are public"
+        },
+        {
+          "name": "paginate_limit",
+          "schema": "integer",
+          "description": "Number of results per page"
+        },
+        {
+          "name": "paginate_page",
+          "schema": "string",
+          "description": "The queried page index"
+        },
+        {
+          "name": "paginate_enabled",
+          "schema": "boolean",
+          "description": "Enable pagination"
+        },
+        {
+          "name": "sort_by",
+          "schema": "string",
+          "description": "Sort data by this key"
+        },
+        {
+          "name": "sort_order",
+          "schema": "string",
+          "description": "asc to sort ascending (default is desc - descending)"
+        },
+        {
+          "name": "createdAt[$gte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "createdAt[$lte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "updatedAt[$gte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "updatedAt[$lte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "include_location",
+          "schema": "boolean",
+          "description": "Populate location"
+        },
+        {
+          "name": "include_evses",
+          "schema": "boolean",
+          "description": "Populate evses"
+        },
+        {
+          "name": "include_organization",
+          "schema": "boolean",
+          "description": "Populate organization"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/chargestations",
+      "method": "postChargeStations",
+      "httpMethod": "post",
+      "tag": "Charge Stations",
+      "description": "Create a new charge station",
+      "parameters": [
+        {
+          "name": "location",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "manufacturer",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "model",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "protocol",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "public",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/chargestations/{id}",
+      "method": "deleteChargeStation",
+      "httpMethod": "delete",
+      "tag": "Charge Stations",
+      "description": "Use to delete a charge station",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The charge station id that needs to be deleted"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/chargestations/{id}",
+      "method": "getChargeStation",
+      "httpMethod": "get",
+      "tag": "Charge Stations",
+      "description": "Get a single charge station's data",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The charge station id that needs to be fetched"
+        },
+        {
+          "name": "include_location",
+          "schema": "boolean",
+          "description": "Populate location"
+        },
+        {
+          "name": "include_evses",
+          "schema": "boolean",
+          "description": "Populate evses"
+        },
+        {
+          "name": "include_organization",
+          "schema": "boolean",
+          "description": "Populate organization"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/chargestations/{id}",
+      "method": "patchChargeStation",
+      "httpMethod": "patch",
+      "tag": "Charge Stations",
+      "description": "Update a charge station's data",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of charge station that needs to be updated"
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "manufacturer",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "model",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "protocol",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "public",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/chargestations/{id}/connectors",
+      "method": "getChargeStationConnectors",
+      "httpMethod": "get",
+      "tag": "Charge Stations",
+      "description": "List connectors for a chargestation",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "chargeStation id"
+        },
+        {
+          "name": "include_evse",
+          "schema": "boolean",
+          "description": "Populate evse"
+        },
+        {
+          "name": "include_organization",
+          "schema": "boolean",
+          "description": "Populate organization"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/commands",
+      "method": "getCommands",
+      "httpMethod": "get",
+      "tag": "Commands",
+      "description": "Get Commands data",
+      "parameters": [
+        {
+          "name": "paginate_limit",
+          "schema": "integer",
+          "description": "Number of results per page"
+        },
+        {
+          "name": "paginate_page",
+          "schema": "string",
+          "description": "The queried page index"
+        },
+        {
+          "name": "paginate_enabled",
+          "schema": "boolean",
+          "description": "Enable pagination"
+        },
+        {
+          "name": "sort_by",
+          "schema": "string",
+          "description": "Sort data by this key"
+        },
+        {
+          "name": "sort_order",
+          "schema": "string",
+          "description": "asc to sort ascending (default is desc - descending)"
+        },
+        {
+          "name": "createdAt[$gte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "createdAt[$lte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "updatedAt[$gte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "updatedAt[$lte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "include_chargestation",
+          "schema": "boolean",
+          "description": "Populate chargestation"
+        },
+        {
+          "name": "include_driver",
+          "schema": "boolean",
+          "description": "Populate driver"
+        },
+        {
+          "name": "include_transaction",
+          "schema": "boolean",
+          "description": "Populate transaction"
+        },
+        {
+          "name": "include_organization",
+          "schema": "boolean",
+          "description": "Populate organization"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/commands/cancelreservation",
+      "method": "cancelreservation",
+      "httpMethod": "post",
+      "tag": "Commands",
+      "description": "Use to request a delete an existing reservation. The request will wait for the charge station to process the command. It will timeout after 60 seconds.",
+      "parameters": [
+        {
+          "name": "reservation",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/commands/chargingschedule",
+      "method": "deletechargingschedule",
+      "httpMethod": "delete",
+      "tag": "Smart Charging",
+      "description": "Delete a smart charging schedule",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/commands/chargingschedule",
+      "method": "setchargingschedule",
+      "httpMethod": "post",
+      "tag": "Smart Charging",
+      "description": "Set one of charging power or current of a specific chargestation connector",
+      "parameters": [
+        {
+          "name": "connector",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "schedule",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/commands/remotestart",
+      "method": "remotestart",
+      "httpMethod": "post",
+      "tag": "Commands",
+      "description": "Use to request a remote start command. The request will wait for the charge station to process the command. It will timeout after 60 seconds.",
+      "parameters": [
+        {
+          "name": "chargestation",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "connector",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "driver",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/commands/remotestop",
+      "method": "remotestop",
+      "httpMethod": "post",
+      "tag": "Commands",
+      "description": "Use to request a remote stop command. The request will wait for the charge station to process the command. It will timeout after 60 seconds.",
+      "parameters": [
+        {
+          "name": "chargestation",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "driver",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "transaction",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/commands/reserve",
+      "method": "reserve",
+      "httpMethod": "post",
+      "tag": "Commands",
+      "description": "Use to request a reserve command. The request will wait for the charge station to process the command. It will timeout after 60 seconds.",
+      "parameters": [
+        {
+          "name": "chargestation",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "connector",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "driver",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/commands/reset",
+      "method": "reset",
+      "httpMethod": "post",
+      "tag": "Commands",
+      "description": "Use to request a reset command. The request will wait for the charge station to process the command. It will timeout after 60 seconds.",
+      "parameters": [
+        {
+          "name": "chargestation",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/commands/unlockconnector",
+      "method": "unlockconnector",
+      "httpMethod": "post",
+      "tag": "Commands",
+      "description": "Use to request an unlock command for a connector. The request will wait for the charge station to process the command. It will timeout after 60 seconds.",
+      "parameters": [
+        {
+          "name": "chargestation",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "connector",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/commands/{id}/variables",
+      "method": "getVariables",
+      "httpMethod": "get",
+      "tag": "Commands",
+      "description": "Get a charge station's config variables",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The chargestation id"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/commands/{id}/variables",
+      "method": "patchChargeStationVariable",
+      "httpMethod": "patch",
+      "tag": "Commands",
+      "description": "Update config variables for a chargestation",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of charge station"
+        },
+        {
+          "name": "value",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "variable",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/configurations",
+      "method": "getConfigurations",
+      "httpMethod": "get",
+      "tag": "Configurations",
+      "description": "Get Configurations data",
+      "parameters": [
+        {
+          "name": "paginate_limit",
+          "schema": "integer",
+          "description": "Number of results per page"
+        },
+        {
+          "name": "paginate_page",
+          "schema": "string",
+          "description": "The queried page index"
+        },
+        {
+          "name": "paginate_enabled",
+          "schema": "boolean",
+          "description": "Enable pagination"
+        },
+        {
+          "name": "sort_by",
+          "schema": "string",
+          "description": "Sort data by this key"
+        },
+        {
+          "name": "sort_order",
+          "schema": "string",
+          "description": "asc to sort ascending (default is desc - descending)"
+        },
+        {
+          "name": "createdAt[$gte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "createdAt[$lte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "updatedAt[$gte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "updatedAt[$lte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/configurations",
+      "method": "postConfigurations",
+      "httpMethod": "post",
+      "tag": "Configurations",
+      "description": "Create connector with parameters",
+      "parameters": [
+        {
+          "name": "key",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "value",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/configurations/{id}",
+      "method": "getConfiguration",
+      "httpMethod": "get",
+      "tag": "Configurations",
+      "description": "Get one Configuration data",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of Configuration that needs to be fetched"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/connectors",
+      "method": "getConnectors",
+      "httpMethod": "get",
+      "tag": "Connectors",
+      "description": "List connectors",
+      "parameters": [
+        {
+          "name": "paginate_limit",
+          "schema": "integer",
+          "description": "Number of results per page"
+        },
+        {
+          "name": "paginate_page",
+          "schema": "string",
+          "description": "The queried page index"
+        },
+        {
+          "name": "paginate_enabled",
+          "schema": "boolean",
+          "description": "Enable pagination"
+        },
+        {
+          "name": "sort_by",
+          "schema": "string",
+          "description": "Sort data by this key"
+        },
+        {
+          "name": "sort_order",
+          "schema": "string",
+          "description": "asc to sort ascending (default is desc - descending)"
+        },
+        {
+          "name": "createdAt[$gte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "createdAt[$lte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "updatedAt[$gte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "updatedAt[$lte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "include_evse",
+          "schema": "boolean",
+          "description": "Populate evse"
+        },
+        {
+          "name": "include_organization",
+          "schema": "boolean",
+          "description": "Populate organization"
+        },
+        {
+          "name": "include_rate",
+          "schema": "boolean",
+          "description": "Populate rate"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/connectors",
+      "method": "postConnectors",
+      "httpMethod": "post",
+      "tag": "Connectors",
+      "description": "Create a new connector",
+      "parameters": [
+        {
+          "name": "chargestation",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "power",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "power_type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "rate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/connectors/{id}",
+      "method": "deleteConnector",
+      "httpMethod": "delete",
+      "tag": "Connectors",
+      "description": "Delete a connector",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The connector id that needs to be deleted"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/connectors/{id}",
+      "method": "getConnector",
+      "httpMethod": "get",
+      "tag": "Connectors",
+      "description": "Get a connector",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of connector that needs to be fetched"
+        },
+        {
+          "name": "include_evse",
+          "schema": "boolean",
+          "description": "Populate evse"
+        },
+        {
+          "name": "include_organization",
+          "schema": "boolean",
+          "description": "Populate organization"
+        },
+        {
+          "name": "include_rate",
+          "schema": "boolean",
+          "description": "Populate rate"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/connectors/{id}",
+      "method": "patchConnector",
+      "httpMethod": "patch",
+      "tag": "Connectors",
+      "description": "Update a connector's data",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of connector that needs to be updated"
+        },
+        {
+          "name": "chargestation",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "format",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "power",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "power_type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "rate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/drivers",
+      "method": "getDrivers",
+      "httpMethod": "get",
+      "tag": "Drivers",
+      "description": "List all drivers",
+      "parameters": [
+        {
+          "name": "active",
+          "schema": "boolean",
+          "description": "Get a list of active drivers"
+        },
+        {
+          "name": "paginate_limit",
+          "schema": "integer",
+          "description": "Number of results per page"
+        },
+        {
+          "name": "paginate_page",
+          "schema": "string",
+          "description": "The queried page index"
+        },
+        {
+          "name": "paginate_enabled",
+          "schema": "boolean",
+          "description": "Enable pagination"
+        },
+        {
+          "name": "sort_by",
+          "schema": "string",
+          "description": "Sort data by this key"
+        },
+        {
+          "name": "sort_order",
+          "schema": "string",
+          "description": "asc to sort ascending (default is desc - descending)"
+        },
+        {
+          "name": "createdAt[$gte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "createdAt[$lte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "updatedAt[$gte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "updatedAt[$lte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "include_tokens",
+          "schema": "boolean",
+          "description": "Populate tokens"
+        },
+        {
+          "name": "include_group",
+          "schema": "boolean",
+          "description": "Populate group"
+        },
+        {
+          "name": "include_organization",
+          "schema": "boolean",
+          "description": "Populate organization"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/drivers",
+      "method": "postDrivers",
+      "httpMethod": "post",
+      "tag": "Drivers",
+      "description": "Create a new driver",
+      "parameters": [
+        {
+          "name": "active",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "address",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "firstname",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "lastname",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "phone",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "source",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/drivers/{id}",
+      "method": "deleteDriver",
+      "httpMethod": "delete",
+      "tag": "Drivers",
+      "description": "Delete a driver",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The driver id that needs to be deleted"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/drivers/{id}",
+      "method": "getDriver",
+      "httpMethod": "get",
+      "tag": "Drivers",
+      "description": "Get a driver's data",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The driver id that needs to be fetched"
+        },
+        {
+          "name": "include_tokens",
+          "schema": "boolean",
+          "description": "Populate tokens"
+        },
+        {
+          "name": "include_group",
+          "schema": "boolean",
+          "description": "Populate group"
+        },
+        {
+          "name": "include_organization",
+          "schema": "boolean",
+          "description": "Populate organization"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/drivers/{id}",
+      "method": "patchDriver",
+      "httpMethod": "patch",
+      "tag": "Drivers",
+      "description": "Update a driver's data",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of driver that needs to be updated"
+        },
+        {
+          "name": "active",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "address",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "firstname",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "lastname",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "phone",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "source",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tokens",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/location/{id}",
+      "method": "deleteLocation",
+      "httpMethod": "delete",
+      "tag": "Locations",
+      "description": "Delete a location",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The location id that needs to be deleted"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/location/{id}",
+      "method": "getLocation",
+      "httpMethod": "get",
+      "tag": "Locations",
+      "description": "Get a location's data",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The location id that needs to be fetched"
+        },
+        {
+          "name": "include_chargestations",
+          "schema": "boolean",
+          "description": "Populate chargestations"
+        },
+        {
+          "name": "include_organization",
+          "schema": "boolean",
+          "description": "Populate organization"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/location/{id}",
+      "method": "patchLocation",
+      "httpMethod": "patch",
+      "tag": "Locations",
+      "description": "Update a location's data",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of location that needs to be updated"
+        },
+        {
+          "name": "active",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "address",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "chargestations",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "coordinates",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "openingHours",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "operatorName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "timezone",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/locations",
+      "method": "getLocations",
+      "httpMethod": "get",
+      "tag": "Locations",
+      "description": "Get Locations data",
+      "parameters": [
+        {
+          "name": "paginate_limit",
+          "schema": "integer",
+          "description": "Number of results per page"
+        },
+        {
+          "name": "paginate_page",
+          "schema": "string",
+          "description": "The queried page index"
+        },
+        {
+          "name": "paginate_enabled",
+          "schema": "boolean",
+          "description": "Enable pagination"
+        },
+        {
+          "name": "sort_by",
+          "schema": "string",
+          "description": "Sort data by this key"
+        },
+        {
+          "name": "sort_order",
+          "schema": "string",
+          "description": "asc to sort ascending (default is desc - descending)"
+        },
+        {
+          "name": "createdAt[$gte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "createdAt[$lte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "updatedAt[$gte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "updatedAt[$lte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "include_organization",
+          "schema": "boolean",
+          "description": "Populate organization"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/locations",
+      "method": "postLocations",
+      "httpMethod": "post",
+      "tag": "Locations",
+      "description": "Create a new location",
+      "parameters": [
+        {
+          "name": "active",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "address",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "chargestations",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "coordinates",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "operatorName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/organizations",
+      "method": "getOrganizations",
+      "httpMethod": "get",
+      "tag": "Organizations",
+      "description": "Get an array of all Organizations",
+      "parameters": [
+        {
+          "name": "paginate_limit",
+          "schema": "integer",
+          "description": "Number of results per page"
+        },
+        {
+          "name": "paginate_page",
+          "schema": "string",
+          "description": "The queried page index"
+        },
+        {
+          "name": "paginate_enabled",
+          "schema": "boolean",
+          "description": "Enable pagination"
+        },
+        {
+          "name": "sort_by",
+          "schema": "string",
+          "description": "Sort data by this key"
+        },
+        {
+          "name": "sort_order",
+          "schema": "string",
+          "description": "asc to sort ascending (default is desc - descending)"
+        },
+        {
+          "name": "createdAt[$gte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "createdAt[$lte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "updatedAt[$gte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "updatedAt[$lte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "include_locations",
+          "schema": "boolean",
+          "description": "Populate locations"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/organizations/{id}",
+      "method": "getOrganization",
+      "httpMethod": "get",
+      "tag": "Organizations",
+      "description": "Get one organization's data by id",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of organization that needs to be fetched"
+        },
+        {
+          "name": "include_locations",
+          "schema": "boolean",
+          "description": "Populate locations"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/organizations/{id}",
+      "method": "patchOrganization",
+      "httpMethod": "patch",
+      "tag": "Organizations",
+      "description": "Update an organization's data",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of organization that needs to be updated"
+        },
+        {
+          "name": "active",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "address",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "channels",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "configurations",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "locations",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "logo",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "otp",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "stripe_connected_account_id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "stripe_country",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "stripe_currency",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "stripe_reserve_amount",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "support",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "supportChat",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "theme",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/realtime",
+      "method": "getRealtime",
+      "httpMethod": "get",
+      "tag": "Realtime",
+      "description": "Use to request a Websockets handshake",
+      "parameters": [
+        {
+          "name": "sec-websocket-protocol",
+          "schema": "string",
+          "required": true,
+          "description": "The JWT token to use for auth"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/reservations",
+      "method": "getReservations",
+      "httpMethod": "get",
+      "tag": "Reservations",
+      "description": "Get Reservations data",
+      "parameters": [
+        {
+          "name": "paginate_limit",
+          "schema": "integer",
+          "description": "Number of results per page"
+        },
+        {
+          "name": "paginate_page",
+          "schema": "string",
+          "description": "The queried page index"
+        },
+        {
+          "name": "paginate_enabled",
+          "schema": "boolean",
+          "description": "Enable pagination"
+        },
+        {
+          "name": "sort_by",
+          "schema": "string",
+          "description": "Sort data by this key"
+        },
+        {
+          "name": "sort_order",
+          "schema": "string",
+          "description": "asc to sort ascending (default is desc - descending)"
+        },
+        {
+          "name": "createdAt[$gte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "createdAt[$lte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "updatedAt[$gte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "updatedAt[$lte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "include_chargestation",
+          "schema": "boolean",
+          "description": "Populate chargestation"
+        },
+        {
+          "name": "include_organization",
+          "schema": "boolean",
+          "description": "Populate organization"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/reservations/{id}",
+      "method": "getReservation",
+      "httpMethod": "get",
+      "tag": "Reservations",
+      "description": "Get one reservation data",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the reservation that needs to be fetched"
+        },
+        {
+          "name": "include_chargestation",
+          "schema": "boolean",
+          "description": "Populate chargestation"
+        },
+        {
+          "name": "include_organization",
+          "schema": "boolean",
+          "description": "Populate organization"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/reservations/{id}",
+      "method": "updatereservation",
+      "httpMethod": "patch",
+      "tag": "Reservations",
+      "description": "Use to request a update an existing reservation. The request will wait for the charge station to process the command. It will timeout after 60 seconds.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of the reservation that needs to be fetched"
+        },
+        {
+          "name": "connector",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "driver",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "endDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "evse",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/tokens",
+      "method": "getTokens",
+      "httpMethod": "get",
+      "tag": "Tokens",
+      "description": "List tokens",
+      "parameters": [
+        {
+          "name": "paginate_limit",
+          "schema": "integer",
+          "description": "Number of results per page"
+        },
+        {
+          "name": "paginate_page",
+          "schema": "string",
+          "description": "The queried page index"
+        },
+        {
+          "name": "paginate_enabled",
+          "schema": "boolean",
+          "description": "Enable pagination"
+        },
+        {
+          "name": "sort_by",
+          "schema": "string",
+          "description": "Sort data by this key"
+        },
+        {
+          "name": "sort_order",
+          "schema": "string",
+          "description": "asc to sort ascending (default is desc - descending)"
+        },
+        {
+          "name": "createdAt[$gte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "createdAt[$lte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "updatedAt[$gte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "updatedAt[$lte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "include_driver",
+          "schema": "boolean",
+          "description": "Populate driver"
+        },
+        {
+          "name": "include_organization",
+          "schema": "boolean",
+          "description": "Populate organization"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/tokens",
+      "method": "postTokens",
+      "httpMethod": "post",
+      "tag": "Tokens",
+      "description": "Create a new token",
+      "parameters": [
+        {
+          "name": "active",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "channel",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "driver",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "physicalId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/tokens/{id}",
+      "method": "deleteToken",
+      "httpMethod": "delete",
+      "tag": "Tokens",
+      "description": "Use to delete a token",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The token id that needs to be deleted"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/tokens/{id}",
+      "method": "getToken",
+      "httpMethod": "get",
+      "tag": "Tokens",
+      "description": "Get a single token's data",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The token id that needs to be fetched"
+        },
+        {
+          "name": "include_driver",
+          "schema": "boolean",
+          "description": "Populate driver"
+        },
+        {
+          "name": "include_organization",
+          "schema": "boolean",
+          "description": "Populate organization"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/tokens/{id}",
+      "method": "patchToken",
+      "httpMethod": "patch",
+      "tag": "Tokens",
+      "description": "Update a token",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "ID of token that needs to be updated"
+        },
+        {
+          "name": "active",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "channel",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "driver",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "physicalId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/transactions",
+      "method": "getTransactions",
+      "httpMethod": "get",
+      "tag": "Transactions",
+      "description": "Get a list of transactions",
+      "parameters": [
+        {
+          "name": "status",
+          "schema": "string",
+          "description": "Started to get only active transactions"
+        },
+        {
+          "name": "paginate_limit",
+          "schema": "integer",
+          "description": "Number of results per page"
+        },
+        {
+          "name": "paginate_page",
+          "schema": "string",
+          "description": "The queried page index"
+        },
+        {
+          "name": "paginate_enabled",
+          "schema": "boolean",
+          "description": "Enable pagination"
+        },
+        {
+          "name": "sort_by",
+          "schema": "string",
+          "description": "Sort data by this key"
+        },
+        {
+          "name": "sort_order",
+          "schema": "string",
+          "description": "asc to sort ascending (default is desc - descending)"
+        },
+        {
+          "name": "createdAt[$gte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "createdAt[$lte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "updatedAt[$gte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "updatedAt[$lte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "include_chargestation",
+          "schema": "boolean",
+          "description": "Populate chargestation"
+        },
+        {
+          "name": "include_evse",
+          "schema": "boolean",
+          "description": "Populate evse"
+        },
+        {
+          "name": "include_connector",
+          "schema": "boolean",
+          "description": "Populate connector"
+        },
+        {
+          "name": "include_driver",
+          "schema": "boolean",
+          "description": "Populate driver"
+        },
+        {
+          "name": "include_token",
+          "schema": "boolean",
+          "description": "Populate token"
+        },
+        {
+          "name": "include_reservation",
+          "schema": "boolean",
+          "description": "Populate reservation"
+        },
+        {
+          "name": "include_organization",
+          "schema": "boolean",
+          "description": "Populate organization"
+        },
+        {
+          "name": "include_rate",
+          "schema": "boolean",
+          "description": "Populate rate"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/transactions/{id}",
+      "method": "getTransaction",
+      "httpMethod": "get",
+      "tag": "Transactions",
+      "description": "Get a specific transaction",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The transaction id that needs to be fetched"
+        },
+        {
+          "name": "include_chargestation",
+          "schema": "boolean",
+          "description": "Populate chargestation"
+        },
+        {
+          "name": "include_evse",
+          "schema": "boolean",
+          "description": "Populate evse"
+        },
+        {
+          "name": "include_connector",
+          "schema": "boolean",
+          "description": "Populate connector"
+        },
+        {
+          "name": "include_driver",
+          "schema": "boolean",
+          "description": "Populate driver"
+        },
+        {
+          "name": "include_token",
+          "schema": "boolean",
+          "description": "Populate token"
+        },
+        {
+          "name": "include_reservation",
+          "schema": "boolean",
+          "description": "Populate reservation"
+        },
+        {
+          "name": "include_organization",
+          "schema": "boolean",
+          "description": "Populate organization"
+        },
+        {
+          "name": "include_rate",
+          "schema": "boolean",
+          "description": "Populate rate"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/transactions/{id}/cost",
+      "method": "getTransactionCost",
+      "httpMethod": "get",
+      "tag": "Transactions",
+      "description": "Get a specific transaction's cost",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The transaction id that needs to be fetched"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/vehicles",
+      "method": "getVehicles",
+      "httpMethod": "get",
+      "tag": "Vehicles",
+      "description": "List all vehicles",
+      "parameters": [
+        {
+          "name": "active",
+          "schema": "boolean",
+          "description": "Get a list of active vehicles"
+        },
+        {
+          "name": "paginate_limit",
+          "schema": "integer",
+          "description": "Number of results per page"
+        },
+        {
+          "name": "paginate_page",
+          "schema": "string",
+          "description": "The queried page index"
+        },
+        {
+          "name": "paginate_enabled",
+          "schema": "boolean",
+          "description": "Enable pagination"
+        },
+        {
+          "name": "sort_by",
+          "schema": "string",
+          "description": "Sort data by this key"
+        },
+        {
+          "name": "sort_order",
+          "schema": "string",
+          "description": "asc to sort ascending (default is desc - descending)"
+        },
+        {
+          "name": "createdAt[$gte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "createdAt[$lte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "updatedAt[$gte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "updatedAt[$lte]",
+          "schema": "string",
+          "description": "Date as ISO String"
+        },
+        {
+          "name": "include_driver",
+          "schema": "boolean",
+          "description": "Populate driver"
+        },
+        {
+          "name": "include_token",
+          "schema": "boolean",
+          "description": "Populate token"
+        },
+        {
+          "name": "include_organization",
+          "schema": "boolean",
+          "description": "Populate organization"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/vehicles/{id}",
+      "method": "getVehicle",
+      "httpMethod": "get",
+      "tag": "Vehicles",
+      "description": "Get a vehicle's data",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The vehicule id that needs to be fetched"
+        },
+        {
+          "name": "include_driver",
+          "schema": "boolean",
+          "description": "Populate driver"
+        },
+        {
+          "name": "include_token",
+          "schema": "boolean",
+          "description": "Populate token"
+        },
+        {
+          "name": "include_organization",
+          "schema": "boolean",
+          "description": "Populate organization"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/vehicles/{id}/battery",
+      "method": "getVehicleBattery",
+      "httpMethod": "get",
+      "tag": "Vehicles",
+      "description": "Get a vehicle's battery",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The vehicle id that needs to be fetched"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/vehicles/{id}/charge",
+      "method": "getVehicleCharge",
+      "httpMethod": "get",
+      "tag": "Vehicles",
+      "description": "Get a vehicle's charge",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The vehicle id that needs to be fetched"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/vehicles/{id}/charge",
+      "method": "postCharge",
+      "httpMethod": "post",
+      "tag": "Vehicles",
+      "description": "Change charge",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The vehicle id that needs to be fetched"
+        },
+        {
+          "name": "action",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/v1/vehicles/{id}/location",
+      "method": "getVehicleLocation",
+      "httpMethod": "get",
+      "tag": "Vehicles",
+      "description": "Get a vehicle's location",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The vehicle id that needs to be fetched"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/v1/vehicles/{id}/odometer",
+      "method": "getVehicleOdometer",
+      "httpMethod": "get",
+      "tag": "Vehicles",
+      "description": "Get a vehicle's odometer",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The vehicle id that needs to be fetched"
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "//api.edrv.io",
   "apiDescription": "edrv.io API Documentation",
   "apiTitle": "eDRV API",

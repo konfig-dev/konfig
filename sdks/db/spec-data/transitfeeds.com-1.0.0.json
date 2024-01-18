@@ -3,6 +3,162 @@
   "openApiRaw": "https://transitfeeds.com/api/transitfeeds-api.yaml",
   "homepage": "transitfeeds.com",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/getFeedVersions",
+      "method": "getFeedVersions",
+      "httpMethod": "get",
+      "description": "Retrieve a list of versions of specified (or all) feeds.",
+      "parameters": [
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": "Your personal API key, used for authentication."
+        },
+        {
+          "name": "feed",
+          "schema": "string",
+          "required": false,
+          "description": "If you only want to retrieve feed versions for a particular feed, include its ID here. You can use the `/getFeeds` call to discover feed IDs."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "The page number of results to return. For example, if you specify a `page` of `2` with a `limit` of 10, then results 11-20 are returned.\nThe number of pages available is included in the response.\n"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The maximum number of results to return.."
+        },
+        {
+          "name": "err",
+          "schema": "integer",
+          "required": false,
+          "description": "To include any errors detected when importing this feed in the response, specify a valud of `1`."
+        },
+        {
+          "name": "warn",
+          "schema": "integer",
+          "required": false,
+          "description": "To include any warnings detected when importing this feed in the response, specify a valud of `1`."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This element contains the response for a `/getFeedVersions` request."
+        }
+      ]
+    },
+    {
+      "url": "/getFeeds",
+      "method": "getFeeds",
+      "httpMethod": "get",
+      "description": "Retrieve a list of feeds.",
+      "parameters": [
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": "Your personal API key, used for authentication."
+        },
+        {
+          "name": "location",
+          "schema": "integer",
+          "required": false,
+          "description": "This is the unique ID of a location. If specified, feeds will only be returned that belong to this location\n(and perhaps sub-locations too, depending on the `descendants` value). You can use the `/getLocations` API\nendpoint to determine location IDs.\n"
+        },
+        {
+          "name": "descendants",
+          "schema": "integer",
+          "required": false,
+          "description": "If a location is specified in `location`, this flag can be used to control if returned feeds must be assigned directly to the location, or if feeds belonging to sub-locations can also be returned. If `0`, then feeds must be assigned directly to the specified location."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "The page number of results to return. For example, if you specify a `page` of `2` with a `limit` of 10, then results 11-20 are returned.\nThe number of pages available is included in the response.\n"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "The maximum number of results to return.."
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "The type of feeds to return. If unspecified, feeds of all types are returned."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This element contains the response for a `/getFeeds` request."
+        }
+      ]
+    },
+    {
+      "url": "/getLatestFeedVersion",
+      "method": "getLatestFeedVersion",
+      "httpMethod": "get",
+      "description": "Retrieve the download URL for the latest version of a feed.",
+      "parameters": [
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": "Your personal API key, used for authentication."
+        },
+        {
+          "name": "feed",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the feed to retrieve the latest feed version for. You can use the `/getFeeds` call to discover feed IDs."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This element contains the response for a `/getLatestFeedVersion` request."
+        }
+      ]
+    },
+    {
+      "url": "/getLocations",
+      "method": "getLocations",
+      "httpMethod": "get",
+      "description": "Retrieve a list of locations.",
+      "parameters": [
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": "Your personal API key, used for authentication."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This element contains the response for a `/getLocations` request."
+        },
+        {
+          "statusCode": "401",
+          "description": "This element contains information about a 401 Unauthorized error."
+        },
+        {
+          "statusCode": "404",
+          "description": "This element contains information about a 404 File Not Found error."
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.transitfeeds.com/v1",
   "apiDescription": "API to view feed information and download feeds from TransitFeeds.com\n",
   "apiTitle": "TransitFeeds API",

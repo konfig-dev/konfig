@@ -4,6 +4,182 @@
   "homepage": "nrm.se",
   "serviceName": "georg",
   "apiVersion": "2.1",
+  "methods": [
+    {
+      "url": "/autocomplete",
+      "method": "autoComplete",
+      "httpMethod": "get",
+      "tag": "georg",
+      "description": "Search",
+      "parameters": [
+        {
+          "name": "text",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sources",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "layers",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "countryCode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "size",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/coordinates",
+      "method": "searchCoordinates",
+      "httpMethod": "get",
+      "tag": "georg",
+      "description": "Search coordinates in different formate",
+      "parameters": [
+        {
+          "name": "coordinates",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/reverse",
+      "method": "getReverseGeoCode",
+      "httpMethod": "get",
+      "tag": "georg",
+      "description": "Get reverse geocoding",
+      "parameters": [
+        {
+          "name": "lat",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "lng",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/search",
+      "method": "search",
+      "httpMethod": "get",
+      "tag": "georg",
+      "description": "Get geocoding",
+      "parameters": [
+        {
+          "name": "text",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sources",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "layers",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "countryCode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "size",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/upload",
+      "method": "uploadFile",
+      "httpMethod": "post",
+      "tag": "georg",
+      "description": "Batch upload",
+      "parameters": [
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "formData",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "formDataMap",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "parts",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "preamble",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "/api/",
   "apiTitle": "Georg API",
   "endpoints": 5,

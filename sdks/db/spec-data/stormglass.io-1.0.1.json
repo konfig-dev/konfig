@@ -3,6 +3,35 @@
   "openApiRaw": "https://www.stormglass.io/specifications/api-specifications.yaml",
   "homepage": "stormglass.io",
   "apiVersion": "1.0.1",
+  "methods": [
+    {
+      "url": "/forecast",
+      "method": "getForecast",
+      "httpMethod": "get",
+      "tag": "forecast",
+      "description": "Get hourly forecasts by coordinates",
+      "parameters": [
+        {
+          "name": "lat",
+          "schema": "number",
+          "required": true,
+          "description": "The latitude for a location. Valid input is a number between -90 and 90."
+        },
+        {
+          "name": "lng",
+          "schema": "number",
+          "required": true,
+          "description": "The longitude for a location. Valid input is a number between -180 and 180."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.stormglass.io",
   "apiDescription": "Global marine weather data from multiple sources in one single API with hourly resolution. Get your API key by visiting the Storm Glass web site.",
   "apiTitle": "Storm Glass Marine Weather",

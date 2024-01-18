@@ -4,6 +4,1165 @@
   "homepage": "redhat.local",
   "serviceName": "patchman-engine",
   "apiVersion": "v1.15.3",
+  "methods": [
+    {
+      "url": "/api/patch/v1/advisories",
+      "method": "listAdvisories",
+      "httpMethod": "get",
+      "description": "Show me all applicable advisories for all my systems",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Limit for paging, set -1 to return all"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Offset for paging"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Sort field"
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "description": "Find matching text"
+        },
+        {
+          "name": "filter[id]",
+          "schema": "string",
+          "description": "Filter "
+        },
+        {
+          "name": "filter[description]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[public_date]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[synopsis]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[advisory_type]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[severity]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[applicable_systems]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "description": "Tag filter"
+        },
+        {
+          "name": "filter[system_profile][sap_system]",
+          "schema": "string",
+          "description": "Filter only SAP systems"
+        },
+        {
+          "name": "filter[system_profile][sap_sids][in]",
+          "schema": "array",
+          "description": "Filter systems by their SAP SIDs"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/patch/v1/advisories/{advisory_id}",
+      "method": "detailAdvisory",
+      "httpMethod": "get",
+      "description": "Show me details an advisory by given advisory name",
+      "parameters": [
+        {
+          "name": "advisory_id",
+          "schema": "string",
+          "required": true,
+          "description": "Advisory ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/patch/v1/advisories/{advisory_id}/systems",
+      "method": "listAdvisorySystems",
+      "httpMethod": "get",
+      "description": "Show me systems on which the given advisory is applicable",
+      "parameters": [
+        {
+          "name": "advisory_id",
+          "schema": "string",
+          "required": true,
+          "description": "Advisory ID"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Limit for paging, set -1 to return all"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Offset for paging"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Sort field"
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "description": "Find matching text"
+        },
+        {
+          "name": "filter[id]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[insights_id]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[display_name]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[last_evaluation]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[last_upload]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[rhsa_count]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[rhba_count]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[rhea_count]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[other_count]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[stale]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[stale_timestamp]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[stale_warning_timestamp]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[culled_timestamp]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[created]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "description": "Tag filter"
+        },
+        {
+          "name": "filter[system_profile][sap_system]",
+          "schema": "string",
+          "description": "Filter only SAP systems"
+        },
+        {
+          "name": "filter[system_profile][sap_sids][in]",
+          "schema": "array",
+          "description": "Filter systems by their SAP SIDs"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/patch/v1/export/advisories",
+      "method": "exportAdvisories",
+      "httpMethod": "get",
+      "description": "Export applicable advisories for all my systems",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "description": "Find matching text"
+        },
+        {
+          "name": "filter[id]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[description]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[public_date]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[synopsis]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[advisory_type]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[severity]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[applicable_systems]",
+          "schema": "string",
+          "description": "Filter"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/patch/v1/export/advisories/{advisory_id}/systems",
+      "method": "exportAdvisorySystems",
+      "httpMethod": "get",
+      "description": "Export systems for my account",
+      "parameters": [
+        {
+          "name": "advisory_id",
+          "schema": "string",
+          "required": true,
+          "description": "Advisory ID"
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "description": "Find matching text"
+        },
+        {
+          "name": "filter[id]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[display_name]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[last_evaluation]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[last_upload]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[rhsa_count]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[rhba_count]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[rhea_count]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[other_count]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[stale]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[packages_installed]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[packages_updatable]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[system_profile][sap_system]",
+          "schema": "string",
+          "description": "Filter only SAP systems"
+        },
+        {
+          "name": "filter[system_profile][sap_sids][in]",
+          "schema": "array",
+          "description": "Filter systems by their SAP SIDs"
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "description": "Tag filter"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/patch/v1/export/packages",
+      "method": "exportPackages",
+      "httpMethod": "get",
+      "description": "Show me all installed packages across my systems",
+      "parameters": [
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Sort field"
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "description": "Find matching text"
+        },
+        {
+          "name": "filter[name]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[systems_installed]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[systems_updatable]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[summary]",
+          "schema": "string",
+          "description": "Filter"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/patch/v1/export/packages/{package_name}/systems",
+      "method": "exportPackageSystems",
+      "httpMethod": "get",
+      "description": "Show me all my systems which have a package installed",
+      "parameters": [
+        {
+          "name": "package_name",
+          "schema": "string",
+          "required": true,
+          "description": "Package name"
+        },
+        {
+          "name": "filter[system_profile][sap_system]",
+          "schema": "string",
+          "description": "Filter only SAP systems"
+        },
+        {
+          "name": "filter[system_profile][sap_sids][in]",
+          "schema": "array",
+          "description": "Filter systems by their SAP SIDs"
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "description": "Tag filter"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/patch/v1/export/systems",
+      "method": "exportSystems",
+      "httpMethod": "get",
+      "description": "Export systems for my account",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "description": "Find matching text"
+        },
+        {
+          "name": "filter[id]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[display_name]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[last_evaluation]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[last_upload]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[rhsa_count]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[rhba_count]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[rhea_count]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[other_count]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[stale]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[packages_installed]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[packages_updatable]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[system_profile][sap_system]",
+          "schema": "string",
+          "description": "Filter only SAP systems"
+        },
+        {
+          "name": "filter[system_profile][sap_sids][in]",
+          "schema": "array",
+          "description": "Filter systems by their SAP SIDs"
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "description": "Tag filter"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/patch/v1/export/systems/{inventory_id}/advisories",
+      "method": "exportSystemAdvisories",
+      "httpMethod": "get",
+      "description": "Export applicable advisories for all my systems",
+      "parameters": [
+        {
+          "name": "inventory_id",
+          "schema": "string",
+          "required": true,
+          "description": "Inventory ID"
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "description": "Find matching text"
+        },
+        {
+          "name": "filter[id]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[description]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[public_date]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[synopsis]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[advisory_type]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[severity]",
+          "schema": "string",
+          "description": "Filter"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/patch/v1/export/systems/{inventory_id}/packages",
+      "method": "exportSystemPackages",
+      "httpMethod": "get",
+      "description": "Show me details about a system packages by given inventory id",
+      "parameters": [
+        {
+          "name": "inventory_id",
+          "schema": "string",
+          "required": true,
+          "description": "Inventory ID"
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "description": "Find matching text"
+        },
+        {
+          "name": "filter[name]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[description]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[evra]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[summary]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[updatable]",
+          "schema": "boolean",
+          "description": "Filter"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/patch/v1/packages/",
+      "method": "listPackages",
+      "httpMethod": "get",
+      "description": "Show me all installed packages across my systems",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Limit for paging, set -1 to return all"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Offset for paging"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Sort field"
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "description": "Find matching text"
+        },
+        {
+          "name": "filter[name]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[systems_installed]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[systems_updatable]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[summary]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "description": "Tag filter"
+        },
+        {
+          "name": "filter[system_profile][sap_system]",
+          "schema": "string",
+          "description": "Filter only SAP systems"
+        },
+        {
+          "name": "filter[system_profile][sap_sids][in]",
+          "schema": "array",
+          "description": "Filter systems by their SAP SIDs"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/patch/v1/packages/{package_name}",
+      "method": "latestPackage",
+      "httpMethod": "get",
+      "description": "Show me metadata of selected package",
+      "parameters": [
+        {
+          "name": "package_name",
+          "schema": "string",
+          "required": true,
+          "description": "package_name - latest, nevra - exact version"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/patch/v1/packages/{package_name}/systems",
+      "method": "packageSystems",
+      "httpMethod": "get",
+      "description": "Show me all my systems which have a package installed",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Limit for paging, set -1 to return all"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Offset for paging"
+        },
+        {
+          "name": "package_name",
+          "schema": "string",
+          "required": true,
+          "description": "Package name"
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "description": "Tag filter"
+        },
+        {
+          "name": "filter[system_profile][sap_system]",
+          "schema": "string",
+          "description": "Filter only SAP systems"
+        },
+        {
+          "name": "filter[system_profile][sap_sids][in]",
+          "schema": "array",
+          "description": "Filter systems by their SAP SIDs"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/patch/v1/packages/{package_name}/versions",
+      "method": "packageVersions",
+      "httpMethod": "get",
+      "description": "Show me all package versions installed on some system",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Limit for paging, set -1 to return all"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Offset for paging"
+        },
+        {
+          "name": "package_name",
+          "schema": "string",
+          "required": true,
+          "description": "Package name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/patch/v1/systems",
+      "method": "listSystems",
+      "httpMethod": "get",
+      "description": "Show me all my systems",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Limit for paging, set -1 to return all"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Offset for paging"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Sort field"
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "description": "Find matching text"
+        },
+        {
+          "name": "filter[insights_id]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[id]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[display_name]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[last_evaluation]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[last_upload]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[rhsa_count]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[rhba_count]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[rhea_count]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[other_count]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[stale]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[packages_installed]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[packages_updatable]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[stale_timestamp]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[stale_warning_timestamp]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[culled_timestamp]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[created]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "tags",
+          "schema": "array",
+          "description": "Tag filter"
+        },
+        {
+          "name": "filter[system_profile][sap_system]",
+          "schema": "string",
+          "description": "Filter only SAP systems"
+        },
+        {
+          "name": "filter[system_profile][sap_sids][in]",
+          "schema": "array",
+          "description": "Filter systems by their SAP SIDs"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/patch/v1/systems/{inventory_id}",
+      "method": "deletesystem",
+      "httpMethod": "delete",
+      "description": "Delete system by inventory id",
+      "parameters": [
+        {
+          "name": "inventory_id",
+          "schema": "string",
+          "required": true,
+          "description": "Inventory ID"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/patch/v1/systems/{inventory_id}",
+      "method": "detailSystem",
+      "httpMethod": "get",
+      "description": "Show me details about a system by given inventory id",
+      "parameters": [
+        {
+          "name": "inventory_id",
+          "schema": "string",
+          "required": true,
+          "description": "Inventory ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/patch/v1/systems/{inventory_id}/advisories",
+      "method": "listSystemAdvisories",
+      "httpMethod": "get",
+      "description": "Show me advisories for a system by given inventory id",
+      "parameters": [
+        {
+          "name": "inventory_id",
+          "schema": "string",
+          "required": true,
+          "description": "Inventory ID"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Limit for paging, set -1 to return all"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Offset for paging"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Sort field"
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "description": "Find matching text"
+        },
+        {
+          "name": "filter[id]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[description]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[public_date]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[synopsis]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[advisory_type]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[severity]",
+          "schema": "string",
+          "description": "Filter"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/patch/v1/systems/{inventory_id}/packages",
+      "method": "systemPackages",
+      "httpMethod": "get",
+      "description": "Show me details about a system packages by given inventory id",
+      "parameters": [
+        {
+          "name": "inventory_id",
+          "schema": "string",
+          "required": true,
+          "description": "Inventory ID"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Limit for paging, set -1 to return all"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "Offset for paging"
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "description": "Find matching text"
+        },
+        {
+          "name": "filter[name]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[description]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[evra]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[summary]",
+          "schema": "string",
+          "description": "Filter"
+        },
+        {
+          "name": "filter[updatable]",
+          "schema": "boolean",
+          "description": "Filter"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/patch/v1/views/advisories/systems",
+      "method": "viewAdvisoriesSystems",
+      "httpMethod": "post",
+      "description": "View advisory-system pairs for selected systems and advisories",
+      "parameters": [
+        {
+          "name": "advisories",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "systems",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/patch/v1/views/systems/advisories",
+      "method": "viewSystemsAdvisories",
+      "httpMethod": "post",
+      "description": "View system-advisory pairs for selected systems and advisories",
+      "parameters": [
+        {
+          "name": "advisories",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "systems",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://redhat.local",
   "apiDescription": "API of the Patch application on [cloud.redhat.com](cloud.redhat.com)\n\nSyntax of the `filter[name]` query parameters is described in  [Filters documentation](https://github.com/RedHatInsights/patchman-engine/wiki/API-custom-filters)",
   "apiTitle": "Patchman-engine API",

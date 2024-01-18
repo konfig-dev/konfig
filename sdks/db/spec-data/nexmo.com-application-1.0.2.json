@@ -4,6 +4,247 @@
   "homepage": "nexmo.com",
   "serviceName": "application",
   "apiVersion": "1.0.2",
+  "methods": [
+    {
+      "url": "/",
+      "method": "retrieveApplications",
+      "httpMethod": "get",
+      "description": "Retrieve all Applications",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": "You can find your API key in your [account overview](https://dashboard.nexmo.com/account-overview)"
+        },
+        {
+          "name": "api_secret",
+          "schema": "string",
+          "required": true,
+          "description": "You can find your API secret in your [account overview](https://dashboard.nexmo.com/account-overview)"
+        },
+        {
+          "name": "page_size",
+          "schema": "integer",
+          "required": false,
+          "description": "Set the number of items returned on each call to this endpoint. The default is 10 records."
+        },
+        {
+          "name": "page_index",
+          "schema": "integer",
+          "required": false,
+          "description": "Set the offset from the first page. The default value is `0`."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/",
+      "method": "createApplication",
+      "httpMethod": "post",
+      "description": "Create Application",
+      "parameters": [
+        {
+          "name": "answer_method",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "answer_url",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "api_secret",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "event_method",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "event_url",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "inbound_method",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "inbound_url",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "status_method",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "status_url",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{app_id}",
+      "method": "deleteApplication",
+      "httpMethod": "delete",
+      "description": "Destroy Application",
+      "parameters": [
+        {
+          "name": "app_id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID allocated to your application by Nexmo."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/{app_id}",
+      "method": "retrieveApplication",
+      "httpMethod": "get",
+      "description": "Retrieve Application",
+      "parameters": [
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": "You can find your API key in your [account overview](https://dashboard.nexmo.com/account-overview)"
+        },
+        {
+          "name": "api_secret",
+          "schema": "string",
+          "required": true,
+          "description": "You can find your API secret in your [account overview](https://dashboard.nexmo.com/account-overview)"
+        },
+        {
+          "name": "app_id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID allocated to your application by Nexmo."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{app_id}",
+      "method": "updateApplication",
+      "httpMethod": "put",
+      "description": "Update Application",
+      "parameters": [
+        {
+          "name": "app_id",
+          "schema": "string",
+          "required": true,
+          "description": "The ID allocated to your application by Nexmo."
+        },
+        {
+          "name": "answer_method",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "answer_url",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "api_key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "api_secret",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "event_method",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "event_url",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.nexmo.com/v1/applications",
   "apiDescription": "<div class=\"Vlt-callout Vlt-callout--critical\"> <i></i> <div class=\"Vlt-callout__content\">\n  <h4>Applications V1 is deprecated</h4>\n  This version of the API has been deprecated. Please use <a href=\"/api/application.v2\">version 2</a> going forwards\n</div> </div>\nA Nexmo application contains the security and configuration information you need to connect to Nexmo endpoints and easily use our products.",
   "apiTitle": "Nexmo Application API",

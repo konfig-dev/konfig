@@ -3,6 +3,2391 @@
   "openApiRaw": "https://raw.githubusercontent.com/pocketsmith/api/master/openapi.json",
   "homepage": "pocketsmith.com",
   "apiVersion": "2.0",
+  "methods": [
+    {
+      "url": "/accounts/{id}",
+      "method": "/accounts/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Accounts",
+      "description": "Delete account",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the account."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{id}",
+      "method": "/accounts/{id}Get",
+      "httpMethod": "get",
+      "tag": "Accounts",
+      "description": "Get account",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the account."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{id}",
+      "method": "/accounts/{id}Put",
+      "httpMethod": "put",
+      "tag": "Accounts",
+      "description": "Update account",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the account."
+        },
+        {
+          "name": "currency_code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "is_net_worth",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{id}/transactions",
+      "method": "/accounts/{id}/transactionsGet",
+      "httpMethod": "get",
+      "tag": "Transactions",
+      "description": "List transactions in account",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the account."
+        },
+        {
+          "name": "start_date",
+          "schema": "string",
+          "required": false,
+          "description": "Limit to transactions on or after this date. Required if end_date is provided. If not provided, defaults to the furtherest date allowed by the user's subscription."
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "required": false,
+          "description": "Limit to transactions on or before this date. Required if start_date is provided. If not provided, defaults to today's date."
+        },
+        {
+          "name": "updated_since",
+          "schema": "string",
+          "required": false,
+          "description": "Limit to transactions updated since an ISO 8601 timestamp."
+        },
+        {
+          "name": "uncategorised",
+          "schema": "integer",
+          "required": false,
+          "description": "Limit to uncategorised transactions."
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Limit to transactions of this type."
+        },
+        {
+          "name": "needs_review",
+          "schema": "integer",
+          "required": false,
+          "description": "Limit to transactions that need to be reviewed."
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "Limit to transactions matching a keyword search string. The provided string is matched against the transaction amount, account name, payee, category title, note, labels, and the date in ISO 8601 format."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Choose a particular page of the results."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/attachments/{id}",
+      "method": "/attachments/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Attachments",
+      "description": "Delete attachment",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the attachment."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/attachments/{id}",
+      "method": "/attachments/{id}Get",
+      "httpMethod": "get",
+      "tag": "Attachments",
+      "description": "Get attachment",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the attachment."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/attachments/{id}",
+      "method": "/attachments/{id}Put",
+      "httpMethod": "put",
+      "tag": "Attachments",
+      "description": "Update attachment",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the attachment."
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/categories/{id}",
+      "method": "/categories/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Categories",
+      "description": "Delete category",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the category."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/categories/{id}",
+      "method": "/categories/{id}Get",
+      "httpMethod": "get",
+      "tag": "Categories",
+      "description": "Get category",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the category."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/categories/{id}",
+      "method": "/categories/{id}Put",
+      "httpMethod": "put",
+      "tag": "Categories",
+      "description": "Update category",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the category."
+        },
+        {
+          "name": "colour",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "is_bill",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "is_transfer",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "parent_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "refund_behaviour",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "roll_up",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/categories/{id}/category_rules",
+      "method": "/categories/{id}/categoryRulesPost",
+      "httpMethod": "post",
+      "tag": "Category Rules",
+      "description": "Create category rule in category",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the category."
+        },
+        {
+          "name": "apply_to_all",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "apply_to_uncategorised",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "payee_matches",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/categories/{id}/transactions",
+      "method": "/categories/{id}/transactionsGet",
+      "httpMethod": "get",
+      "tag": "Transactions",
+      "description": "List transactions in categories",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "A comma-separated list of category IDs."
+        },
+        {
+          "name": "start_date",
+          "schema": "string",
+          "required": false,
+          "description": "Limit to transactions on or after this date. Required if end_date is provided. If not provided, defaults to the furtherest date allowed by the user's subscription."
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "required": false,
+          "description": "Limit to transactions on or before this date. Required if start_date is provided. If not provided, defaults to today's date."
+        },
+        {
+          "name": "updated_since",
+          "schema": "string",
+          "required": false,
+          "description": "Limit to transactions updated since an ISO 8601 timestamp."
+        },
+        {
+          "name": "uncategorised",
+          "schema": "integer",
+          "required": false,
+          "description": "Limit to uncategorised transactions."
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Limit to transactions of this type."
+        },
+        {
+          "name": "needs_review",
+          "schema": "integer",
+          "required": false,
+          "description": "Limit to transactions that need to be reviewed."
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "Limit to transactions matching a keyword search string. The provided string is matched against the transaction amount, account name, payee, category title, note, labels, and the date in ISO 8601 format."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Choose a particular page of the results."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/currencies",
+      "method": "/currenciesGet",
+      "httpMethod": "get",
+      "tag": "Currencies",
+      "description": "List currencies",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/currencies/{id}",
+      "method": "/currencies/{id}Get",
+      "httpMethod": "get",
+      "tag": "Currencies",
+      "description": "Get currency",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the currency."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/events/{id}",
+      "method": "/events/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Events",
+      "description": "Delete event",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the event."
+        },
+        {
+          "name": "behaviour",
+          "schema": "string",
+          "required": true,
+          "description": "Whether the delete applies only to this event, to all events within the series from this event or to all events within the series."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/events/{id}",
+      "method": "/events/{id}Get",
+      "httpMethod": "get",
+      "tag": "Events",
+      "description": "Get event",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the event."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/events/{id}",
+      "method": "/events/{id}Put",
+      "httpMethod": "put",
+      "tag": "Events",
+      "description": "Update event",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "The unique identifier of the event."
+        },
+        {
+          "name": "amount",
+          "schema": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "behaviour",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "note",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "repeat_interval",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "repeat_type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/institutions/{id}",
+      "method": "/institutions/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Institutions",
+      "description": "Delete institution",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the institution."
+        },
+        {
+          "name": "merge_into_institution_id",
+          "schema": "integer",
+          "required": false,
+          "description": "The unique identifier of the institution to merge into."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/institutions/{id}",
+      "method": "/institutions/{id}Get",
+      "httpMethod": "get",
+      "tag": "Institutions",
+      "description": "Get institution",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the institution."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/institutions/{id}",
+      "method": "/institutions/{id}Put",
+      "httpMethod": "put",
+      "tag": "Institutions",
+      "description": "Update institution",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the institution."
+        },
+        {
+          "name": "currency_code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/institutions/{id}/accounts",
+      "method": "/institutions/{id}/accountsGet",
+      "httpMethod": "get",
+      "tag": "Accounts",
+      "description": "List accounts in institution",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the institution."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/me",
+      "method": "/meGet",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Get the authorised user",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/scenarios/{id}/events",
+      "method": "/scenarios/{id}/eventsGet",
+      "httpMethod": "get",
+      "tag": "Events",
+      "description": "List events in scenario.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the scenario."
+        },
+        {
+          "name": "start_date",
+          "schema": "string",
+          "required": true,
+          "description": "Return the events from and including this date."
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "required": true,
+          "description": "Return the events until and including this date."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/scenarios/{id}/events",
+      "method": "/scenarios/{id}/eventsPost",
+      "httpMethod": "post",
+      "tag": "Events",
+      "description": "Create event in scenario",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the scenario."
+        },
+        {
+          "name": "amount",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "category_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "date",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "note",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "repeat_interval",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "repeat_type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/time_zones",
+      "method": "/timeZonesGet",
+      "httpMethod": "get",
+      "tag": "Time Zones",
+      "description": "List time zones",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/transaction_accounts/{id}",
+      "method": "/transactionAccounts/{id}Get",
+      "httpMethod": "get",
+      "tag": "Transaction Accounts",
+      "description": "Get transaction account",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the transaction account."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/transaction_accounts/{id}",
+      "method": "/transactionAccounts/{id}Put",
+      "httpMethod": "put",
+      "tag": "Transaction Accounts",
+      "description": "Update transaction account",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the transaction account."
+        },
+        {
+          "name": "institution_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "starting_balance",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "starting_balance_date",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/transaction_accounts/{id}/transactions",
+      "method": "/transactionAccounts/{id}/transactionsGet",
+      "httpMethod": "get",
+      "tag": "Transactions",
+      "description": "List transactions in transaction account",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the transaction account."
+        },
+        {
+          "name": "start_date",
+          "schema": "string",
+          "required": false,
+          "description": "Limit to transactions on or after this date. Required if end_date is provided. If not provided, defaults to the furtherest date allowed by the user's subscription."
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "required": false,
+          "description": "Limit to transactions on or before this date. Required if start_date is provided. If not provided, defaults to today's date."
+        },
+        {
+          "name": "updated_since",
+          "schema": "string",
+          "required": false,
+          "description": "Limit to transactions updated since an ISO 8601 timestamp."
+        },
+        {
+          "name": "uncategorised",
+          "schema": "integer",
+          "required": false,
+          "description": "Limit to uncategorised transactions."
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Limit to transactions of this type."
+        },
+        {
+          "name": "needs_review",
+          "schema": "integer",
+          "required": false,
+          "description": "Limit to transactions that need to be reviewed."
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "Limit to transactions matching a keyword search string. The provided string is matched against the transaction amount, account name, payee, category title, note, labels, and the date in ISO 8601 format."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Choose a particular page of the results."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/transaction_accounts/{id}/transactions",
+      "method": "/transactionAccounts/{id}/transactionsPost",
+      "httpMethod": "post",
+      "tag": "Transactions",
+      "description": "Create a transaction in transaction account",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the transaction account."
+        },
+        {
+          "name": "amount",
+          "schema": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "category_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "cheque_number",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "date",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "is_transfer",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "labels",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "memo",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "needs_review",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "note",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "payee",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/transactions/{id}",
+      "method": "/transactions/{id}Delete",
+      "httpMethod": "delete",
+      "tag": "Transactions",
+      "description": "Delete transaction",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the transaction."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/transactions/{id}",
+      "method": "/transactions/{id}Get",
+      "httpMethod": "get",
+      "tag": "Transactions",
+      "description": "Get a transaction",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the transaction."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/transactions/{id}",
+      "method": "/transactions/{id}Put",
+      "httpMethod": "put",
+      "tag": "Transactions",
+      "description": "Update a transaction",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the transaction."
+        },
+        {
+          "name": "amount",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "category_id",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "cheque_number",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "date",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "is_transfer",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "labels",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "memo",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "needs_review",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "note",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "payee",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/transactions/{id}/attachments",
+      "method": "/transactions/{id}/attachmentsGet",
+      "httpMethod": "get",
+      "tag": "Attachments",
+      "description": "List attachments in transaction",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the transaction."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/transactions/{id}/attachments",
+      "method": "/transactions/{id}/attachmentsPost",
+      "httpMethod": "post",
+      "tag": "Attachments",
+      "description": "Assigns attachment to transaction",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the transaction."
+        },
+        {
+          "name": "attachment_id",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/transactions/{transaction_id}/attachments/{attachment_id}",
+      "method": "/transactions/{transactionId}/attachments/{attachmentId}Delete",
+      "httpMethod": "delete",
+      "tag": "Attachments",
+      "description": "Unassigns attachment in transaction",
+      "parameters": [
+        {
+          "name": "transaction_id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the transaction."
+        },
+        {
+          "name": "attachment_id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the attachment."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}",
+      "method": "/users/{id}Get",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Get user",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the user."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}",
+      "method": "/users/{id}Put",
+      "httpMethod": "put",
+      "tag": "Users",
+      "description": "Update user",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the user."
+        },
+        {
+          "name": "always_show_base_currency",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "base_currency_code",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "beta_user",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "time_zone",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "week_start_day",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}/accounts",
+      "method": "/users/{id}/accountsGet",
+      "httpMethod": "get",
+      "tag": "Accounts",
+      "description": "List accounts in user",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the user."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}/accounts",
+      "method": "/users/{id}/accountsPost",
+      "httpMethod": "post",
+      "tag": "Accounts",
+      "description": "Create an account in user",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the user."
+        },
+        {
+          "name": "currency_code",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "institution_id",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}/accounts",
+      "method": "/users/{id}/accountsPut",
+      "httpMethod": "put",
+      "tag": "Accounts",
+      "description": "Update the display order of accounts in user",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the user."
+        },
+        {
+          "name": "accounts",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}/attachments",
+      "method": "/users/{id}/attachmentsGet",
+      "httpMethod": "get",
+      "tag": "Attachments",
+      "description": "Lists attachments in user",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the user."
+        },
+        {
+          "name": "unassigned",
+          "schema": "integer",
+          "required": false,
+          "description": "If set, returns unassigned attachments, that are available for assigning to a transaction."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}/attachments",
+      "method": "/users/{id}/attachmentsPost",
+      "httpMethod": "post",
+      "tag": "Attachments",
+      "description": "Create attachment in user",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the user."
+        },
+        {
+          "name": "file_data",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "file_name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}/budget",
+      "method": "/users/{id}/budgetGet",
+      "httpMethod": "get",
+      "tag": "Budgeting",
+      "description": "List budget for user",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the account."
+        },
+        {
+          "name": "roll_up",
+          "schema": "boolean",
+          "required": false,
+          "description": "Whether parent categories should have their children rolled up into them. When used, the children will still appear in the collection on their own, but their actual and forecast figures will be rolled up to the root parent."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}/budget_summary",
+      "method": "/users/{id}/budgetSummaryGet",
+      "httpMethod": "get",
+      "tag": "Budgeting",
+      "description": "Get budget summary for user",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the user."
+        },
+        {
+          "name": "period",
+          "schema": "string",
+          "required": true,
+          "description": "The period to analyse in, one of `weeks`, `months` or `years`. Also supported is `event`, although event period analysis is only possible when the budget events gathered align, so in this case where all categories are analysed together, it's highly unlikely that event period analysis will be possible."
+        },
+        {
+          "name": "interval",
+          "schema": "integer",
+          "required": true,
+          "description": "The period interval, e.g. if the interval is 2 and the period is weeks, the budget will be analysed fortnightly."
+        },
+        {
+          "name": "start_date",
+          "schema": "string",
+          "required": true,
+          "description": "The date to start analysing the budget from. This will be bumped out to make full periods as necessary."
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "required": true,
+          "description": "The date to stop analysing the budget from. This will be bumped out to make full periods as necessary."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}/categories",
+      "method": "/users/{id}/categoriesGet",
+      "httpMethod": "get",
+      "tag": "Categories",
+      "description": "List categories in user",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the user."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}/categories",
+      "method": "/users/{id}/categoriesPost",
+      "httpMethod": "post",
+      "tag": "Categories",
+      "description": "Create category in user",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the user."
+        },
+        {
+          "name": "colour",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "is_bill",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "is_transfer",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parent_id",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "refund_behaviour",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "roll_up",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}/category_rules",
+      "method": "/users/{id}/categoryRulesGet",
+      "httpMethod": "get",
+      "tag": "Category Rules",
+      "description": "List category rules in user",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the user."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}/events",
+      "method": "/users/{id}/eventsGet",
+      "httpMethod": "get",
+      "tag": "Events",
+      "description": "List events in user.",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the user."
+        },
+        {
+          "name": "start_date",
+          "schema": "string",
+          "required": true,
+          "description": "Return the events from and including this date."
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "required": true,
+          "description": "Return the events until and including this date."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}/forecast_cache",
+      "method": "/users/{id}/forecastCacheDelete",
+      "httpMethod": "delete",
+      "tag": "Budgeting",
+      "description": "Delete forecast cache for user",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the user."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}/institutions",
+      "method": "/users/{id}/institutionsGet",
+      "httpMethod": "get",
+      "tag": "Institutions",
+      "description": "List institutions in user",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the user"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}/institutions",
+      "method": "/users/{id}/institutionsPost",
+      "httpMethod": "post",
+      "tag": "Institutions",
+      "description": "Create institution in user",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the user"
+        },
+        {
+          "name": "currency_code",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "title",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}/labels",
+      "method": "/users/{id}/labelsGet",
+      "httpMethod": "get",
+      "tag": "Labels",
+      "description": "List labels in user",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the user."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}/saved_searches",
+      "method": "/users/{id}/savedSearchesGet",
+      "httpMethod": "get",
+      "tag": "Saved Searches",
+      "description": "List saved searches in user",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the user."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}/transaction_accounts",
+      "method": "/users/{id}/transactionAccountsGet",
+      "httpMethod": "get",
+      "tag": "Transaction Accounts",
+      "description": "List transaction accounts in user",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the user."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}/transactions",
+      "method": "/users/{id}/transactionsGet",
+      "httpMethod": "get",
+      "tag": "Transactions",
+      "description": "List transactions in user",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the account."
+        },
+        {
+          "name": "start_date",
+          "schema": "string",
+          "required": false,
+          "description": "Limit to transactions on or after this date. Required if end_date is provided. If not provided, defaults to the furtherest date allowed by the user's subscription."
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "required": false,
+          "description": "Limit to transactions on or before this date. Required if start_date is provided. If not provided, defaults to today's date."
+        },
+        {
+          "name": "updated_since",
+          "schema": "string",
+          "required": false,
+          "description": "Limit to transactions updated since an ISO 8601 timestamp."
+        },
+        {
+          "name": "uncategorised",
+          "schema": "integer",
+          "required": false,
+          "description": "Limit to uncategorised transactions."
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "Limit to transactions of this type."
+        },
+        {
+          "name": "needs_review",
+          "schema": "integer",
+          "required": false,
+          "description": "Limit to transactions that need to be reviewed."
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "Limit to transactions matching a keyword search string. The provided string is matched against the transaction amount, account name, payee, category title, note, labels, and the date in ISO 8601 format."
+        },
+        {
+          "name": "page",
+          "schema": "integer",
+          "required": false,
+          "description": "Choose a particular page of the results."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{id}/trend_analysis",
+      "method": "/users/{id}/trendAnalysisGet",
+      "httpMethod": "get",
+      "tag": "Budgeting",
+      "description": "Get trend analysis for user",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "integer",
+          "required": true,
+          "description": "The unique identifier of the user."
+        },
+        {
+          "name": "period",
+          "schema": "string",
+          "required": true,
+          "description": "The period to analyse in, one of `weeks`, `months` or `years`. Also supported is `event`, although event period analysis is only possible when the budget events gathered align, so in this case where all categories are analysed together, it's highly unlikely that event period analysis will be possible."
+        },
+        {
+          "name": "interval",
+          "schema": "integer",
+          "required": true,
+          "description": "The period interval, e.g. if the interval is 2 and the period is weeks, the budget will be analysed fortnightly."
+        },
+        {
+          "name": "start_date",
+          "schema": "string",
+          "required": true,
+          "description": "The date to start analysing the budget from. This will be bumped out to make full periods as necessary."
+        },
+        {
+          "name": "end_date",
+          "schema": "string",
+          "required": true,
+          "description": "The date to stop analysing the budget from. This will be bumped out to make full periods as necessary."
+        },
+        {
+          "name": "categories",
+          "schema": "string",
+          "required": true,
+          "description": "A comma-separated list of category IDs to analyse."
+        },
+        {
+          "name": "scenarios",
+          "schema": "string",
+          "required": true,
+          "description": "A comma-separated list of scenario IDs to analyse. You're likely going to want to include all a user's scenarios here, unless you have reason to only analyse for a subset of scenarios. Regardless of what scenarios are analysed, all actuals (transactions) across all accounts will be included."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.pocketsmith.com/v2",
   "apiDescription": "The PocketSmith API",
   "apiTitle": "PocketSmith",

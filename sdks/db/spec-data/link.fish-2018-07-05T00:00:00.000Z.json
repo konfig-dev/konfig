@@ -3,6 +3,435 @@
   "openApiRaw": "https://api.link.fish/swagger.yaml",
   "homepage": "link.fish",
   "apiVersion": "2018-07-05T00:00:00.000Z",
+  "methods": [
+    {
+      "url": "/Urls/apps",
+      "method": "/urls/appsGet",
+      "httpMethod": "get",
+      "tag": "REST-Endpoints",
+      "description": "Get mobile apps",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": "The URL of the website to query"
+        },
+        {
+          "name": "return_urls",
+          "schema": "boolean",
+          "required": false,
+          "description": "Returns app URLs instead of the identifiers"
+        },
+        {
+          "name": "browser_render",
+          "schema": "boolean",
+          "description": "If the page should be fully rendered with a browser to extract data. The request will then cost 5 credits instead of 1!"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Urls/browser-data",
+      "method": "/urls/browserDataGet",
+      "httpMethod": "get",
+      "tag": "REST-Endpoints",
+      "description": "Extract data (browser)",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": "The URL of the website to query"
+        },
+        {
+          "name": "item_format",
+          "schema": "string",
+          "description": "If the items should be return \"normal\" with multiple levels or \"flat\" with just one level and linked instead."
+        },
+        {
+          "name": "simplify_special_types",
+          "schema": "boolean",
+          "description": "Some types like \"PropertyValue\" do save key and value in separate properties which makes the data harder to process. If this option gets set it converts them automatically into the regular key -> value format."
+        },
+        {
+          "name": "include_raw_html",
+          "schema": "boolean",
+          "description": "Returns additionally also the raw HTML as property \"rawHtml\"."
+        },
+        {
+          "name": "screenshot",
+          "schema": "string",
+          "description": "If and what kind of screenshot should be returned. Do only request screenshot generation when really needed because it will increase the response time significantly."
+        },
+        {
+          "name": "screenshot_width",
+          "schema": "integer",
+          "description": "The widh of the screenshot in pixel."
+        },
+        {
+          "name": "screenshot_file_format",
+          "schema": "string",
+          "description": "The file format of the screenshot"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Urls/browser-screenshot",
+      "method": "/urls/browserScreenshotGet",
+      "httpMethod": "get",
+      "tag": "REST-Endpoints",
+      "description": "Generate screenshot (browser)",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": "The URL of the website to create screenshot of"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": "What kind of screenshot should be returned. If it should be a regular 16:9 screenshot or one with the full page height"
+        },
+        {
+          "name": "file_format",
+          "schema": "string",
+          "description": "The file format of the screenshot"
+        },
+        {
+          "name": "width",
+          "schema": "integer",
+          "description": "The widh of the screenshot in pixel."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Urls/data",
+      "method": "/urls/dataGet",
+      "httpMethod": "get",
+      "tag": "REST-Endpoints",
+      "description": "Extract data",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": "The URL of the website to query"
+        },
+        {
+          "name": "item_format",
+          "schema": "string",
+          "description": "If the items should be return \"normal\" with multiple levels or \"flat\" with just one level and linked instead."
+        },
+        {
+          "name": "simplify_special_types",
+          "schema": "boolean",
+          "description": "Some types like \"PropertyValue\" do save key and value in separate properties which makes the data harder to process. If this option gets set it converts them automatically into the regular key -> value format."
+        },
+        {
+          "name": "include_raw_html",
+          "schema": "boolean",
+          "description": "Returns additionally also the raw HTML as property \"rawHtml\"."
+        },
+        {
+          "name": "browser_render",
+          "schema": "boolean",
+          "description": "If the page should be fully rendered with a browser to extract data. The request will then cost 5 credits instead of 1!"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Urls/data-raw",
+      "method": "/urls/dataRawGet",
+      "httpMethod": "get",
+      "tag": "REST-Endpoints",
+      "description": "Return data of JSON/XML",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": "The URL to get the data of"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Urls/data-tabular",
+      "method": "/urls/dataTabularGet",
+      "httpMethod": "get",
+      "tag": "REST-Endpoints",
+      "description": "Return tabular data",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": "The URL to get the data of"
+        },
+        {
+          "name": "selector",
+          "schema": "string",
+          "required": false,
+          "description": "CSS selector to define tabular data which should get returned"
+        },
+        {
+          "name": "browser_render",
+          "schema": "boolean",
+          "description": "If the page should be fully rendered with a browser to extract data. The request will then cost 5 credits instead of 1!"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Urls/geo-coordinates",
+      "method": "/urls/geoCoordinatesGet",
+      "httpMethod": "get",
+      "tag": "REST-Endpoints",
+      "description": "Get geo coordinates",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": "The URL of the website to query"
+        },
+        {
+          "name": "browser_render",
+          "schema": "boolean",
+          "description": "If the page should be fully rendered with a browser to extract data. The request will then cost 5 credits instead of 1!"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/Urls/social-media",
+      "method": "/urls/socialMediaGet",
+      "httpMethod": "get",
+      "tag": "REST-Endpoints",
+      "description": "Get social media accounts",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": "The URL of the website to query"
+        },
+        {
+          "name": "return_urls",
+          "schema": "boolean",
+          "required": false,
+          "description": "Returns profile URLs instead of the profile names/ids"
+        },
+        {
+          "name": "browser_render",
+          "schema": "boolean",
+          "description": "If the page should be fully rendered with a browser to extract data. The request will then cost 5 credits instead of 1!"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "402",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.link.fish",
   "apiDescription": "API to easily extract data from websites.\n\n\n# Base URL\n\n\nAll URLs referenced in the documentation have the following base:\n\n\n```\nhttps://api.link.fish\n```\n\n\nThe REST API is only served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.\n\n\n# Authentication\nHTTP requests to the REST API are protected with [HTTP Basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication). You will use the email address of your link.fish account as the username and your API access token as the password for HTTP Basic authentication.\n\nIf you do not have an account yet, go to [https://link.fish/api](https://link.fish/api) and create one first.\n\nYou will receive the API access token automatically via email after you signed up. To generate a new token and invalidate the current one log into your link.fish  account at [https://app.link.fish](https://app.link.fish) and go to: \"Plugins\" -> \"API Dashboard\"\n\nThere you can also see how many credits you used already.\n\n\n# Errors\nThe API uses standard HTTP status codes to indicate the success or failure of the API call. The body of the response will be JSON in the following format:\n```\n{\n\n  \"status\": {HTTP STATUS CODE}\n  \"message\": \"{ERROR MESSAGE}\"\n}\n```\nLike for example when the authorization is not provided or wrong:\n```\n{\n\n  \"status\": 401\n  \"message\": \"Unauthorized\"\n}\n```\n\n# Request IDs\n\nEach API request has an associated request identifier. You can find it in the response headers, under X-LF-Request-Id. In case you have problems please provide this identifier that we can help you as good and fast as possible.\n\n\nExample:\n```\nX-LF-Request-Id: f7f0036f-5277-421a-b143-f7a151571d18\n```\n\n\n# Item format\n\nThe data is by default deeply nested. So if it should be checked if there is an offer with a price, the whole tree has to be checked. To make that simpler, it is also possible to return the data \"flat\". If selected it will flatten the tree by copying all the data to the main level under a property with the name of its type and link the data internally.\n\nInformation: We created a node module which allows converting between the two formats. It did not get open sourced yet. If you are in need, simply contact us via api@link.fish.\n\n\n# Response Content Type\nBy default, all data gets returned as JSON. If the data should be returned as XML add the following header:\n\n```\nAccept: application/xml\n```\n\n# Credits\n\nDepending on the request made a different amount of credits get charged. How many which request costs can be found on the [API pricing page](http://link.fish/api/#pricing). Additionally, does a  header named \"X-LF-Credits-Charged\" get added to each successful response with information about the credits.\n\nExample:\n```\nX-LF-Credits-Charged: 1 # Credits used for current requests\nX-LF-Credits-Subscription-Max: 1000 # Total credits available in subscription\nX-LF-Credits-Subscription-Used: 512 # Credits still left in current month\n```\nYou can check anytime how many credits you did use already by logging into your link.fish  account at [https://app.link.fish](https://app.link.fish) and checking under:  \"Plugins\" -> \"API Dashboard\"\n\n\nIf you have problems, questions or improvement advice please send us an email to api@link.fish\n",
   "apiTitle": "link.fish API",

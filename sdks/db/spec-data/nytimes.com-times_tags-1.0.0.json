@@ -4,6 +4,40 @@
   "homepage": "nytimes.com",
   "serviceName": "times_tags",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/timestags",
+      "method": "/timestagsGet",
+      "httpMethod": "get",
+      "description": "",
+      "parameters": [
+        {
+          "name": "query",
+          "schema": "string",
+          "required": true,
+          "description": "Your search query"
+        },
+        {
+          "name": "filter",
+          "schema": "string",
+          "required": false,
+          "description": "If you do not specify a value for filter (see the Optional Parameters), your query will be matched to tags in all four Times dictionaries: subject, geographic location, organization and person. To use more than one, separate with commas.\n"
+        },
+        {
+          "name": "max",
+          "schema": "integer",
+          "required": false,
+          "description": "Sets the maximum number of results"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://api.nytimes.com/svc/suggest/v1",
   "apiDescription": "With the TimesTags API, you can mine the riches of the New York Times tag set. The TimesTags service matches your query to the controlled vocabularies that fuel NYTimes.com metadata. You supply a string of characters, and the service returns a ranked list of suggested terms.",
   "apiTitle": "TimesTags API",

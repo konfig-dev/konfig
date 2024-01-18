@@ -3,6 +3,7801 @@
   "openApiRaw": "blob:https://docs.influxdata.com/blobId",
   "homepage": "influxdata.com",
   "apiVersion": "2.0.0",
+  "methods": [
+    {
+      "url": "/",
+      "method": "getRoutes",
+      "httpMethod": "get",
+      "tag": "Routes",
+      "description": "List all top level routes",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/authorizations",
+      "method": "getAuthorizations",
+      "httpMethod": "get",
+      "tag": "Authorizations",
+      "description": "List all authorizations",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "userID",
+          "schema": "string",
+          "description": "Only show authorizations that belong to a user ID."
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "description": "Only show authorizations that belong to a user name."
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "description": "Only show authorizations that belong to an organization ID."
+        },
+        {
+          "name": "org",
+          "schema": "string",
+          "description": "Only show authorizations that belong to a organization name."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/authorizations",
+      "method": "postAuthorizations",
+      "httpMethod": "post",
+      "tag": "Authorizations",
+      "description": "Create an authorization",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/authorizations/{authID}",
+      "method": "deleteAuthorizationsId",
+      "httpMethod": "delete",
+      "tag": "Authorizations",
+      "description": "Delete an authorization",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "authID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the authorization to delete."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/authorizations/{authID}",
+      "method": "getAuthorizationsId",
+      "httpMethod": "get",
+      "tag": "Authorizations",
+      "description": "Retrieve an authorization",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "authID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the authorization to get."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/authorizations/{authID}",
+      "method": "patchAuthorizationsId",
+      "httpMethod": "patch",
+      "tag": "Authorizations",
+      "description": "Update an authorization to be active or inactive",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "authID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the authorization to update."
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/buckets",
+      "method": "getBuckets",
+      "httpMethod": "get",
+      "tag": "Buckets",
+      "description": "List all buckets",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "after",
+          "schema": "string",
+          "required": false,
+          "description": "The last resource ID from which to seek from (but not including). This is to be used instead of `offset`.\n"
+        },
+        {
+          "name": "org",
+          "schema": "string",
+          "description": "The name of the organization."
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "description": "The organization ID."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": "Only returns buckets with a specific name."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": "Only returns buckets with a specific ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/buckets",
+      "method": "postBuckets",
+      "httpMethod": "post",
+      "tag": "Buckets",
+      "description": "Create a bucket",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "retentionRules",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "rp",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "schemaType",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "422",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/buckets/{bucketID}",
+      "method": "deleteBucketsId",
+      "httpMethod": "delete",
+      "tag": "Buckets",
+      "description": "Delete a bucket",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "bucketID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the bucket to delete."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/buckets/{bucketID}",
+      "method": "getBucketsId",
+      "httpMethod": "get",
+      "tag": "Buckets",
+      "description": "Retrieve a bucket",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "bucketID",
+          "schema": "string",
+          "required": true,
+          "description": "The bucket ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/buckets/{bucketID}",
+      "method": "patchBucketsId",
+      "httpMethod": "patch",
+      "tag": "Buckets",
+      "description": "Update a bucket",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "bucketID",
+          "schema": "string",
+          "required": true,
+          "description": "The bucket ID."
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "retentionRules",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/buckets/{bucketID}/labels",
+      "method": "getBucketsIdLabels",
+      "httpMethod": "get",
+      "tag": "Buckets",
+      "description": "List all labels for a bucket",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "bucketID",
+          "schema": "string",
+          "required": true,
+          "description": "The bucket ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/buckets/{bucketID}/labels",
+      "method": "postBucketsIdLabels",
+      "httpMethod": "post",
+      "tag": "Buckets",
+      "description": "Add a label to a bucket",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "bucketID",
+          "schema": "string",
+          "required": true,
+          "description": "The bucket ID."
+        },
+        {
+          "name": "labelID",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/buckets/{bucketID}/labels/{labelID}",
+      "method": "deleteBucketsIdLabelsId",
+      "httpMethod": "delete",
+      "tag": "Buckets",
+      "description": "Delete a label from a bucket",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "bucketID",
+          "schema": "string",
+          "required": true,
+          "description": "The bucket ID."
+        },
+        {
+          "name": "labelID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the label to delete."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/buckets/{bucketID}/members",
+      "method": "getBucketsIdMembers",
+      "httpMethod": "get",
+      "tag": "Buckets",
+      "description": "List all users with member privileges for a bucket",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "bucketID",
+          "schema": "string",
+          "required": true,
+          "description": "The bucket ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/buckets/{bucketID}/members",
+      "method": "postBucketsIdMembers",
+      "httpMethod": "post",
+      "tag": "Buckets",
+      "description": "Add a member to a bucket",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "bucketID",
+          "schema": "string",
+          "required": true,
+          "description": "The bucket ID."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/buckets/{bucketID}/members/{userID}",
+      "method": "deleteBucketsIdMembersId",
+      "httpMethod": "delete",
+      "tag": "Buckets",
+      "description": "Remove a member from a bucket",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "userID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the member to remove."
+        },
+        {
+          "name": "bucketID",
+          "schema": "string",
+          "required": true,
+          "description": "The bucket ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/buckets/{bucketID}/owners",
+      "method": "getBucketsIdOwners",
+      "httpMethod": "get",
+      "tag": "Buckets",
+      "description": "List all owners of a bucket",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "bucketID",
+          "schema": "string",
+          "required": true,
+          "description": "The bucket ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/buckets/{bucketID}/owners",
+      "method": "postBucketsIdOwners",
+      "httpMethod": "post",
+      "tag": "Buckets",
+      "description": "Add an owner to a bucket",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "bucketID",
+          "schema": "string",
+          "required": true,
+          "description": "The bucket ID."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/buckets/{bucketID}/owners/{userID}",
+      "method": "deleteBucketsIdOwnersId",
+      "httpMethod": "delete",
+      "tag": "Buckets",
+      "description": "Remove an owner from a bucket",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "userID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the owner to remove."
+        },
+        {
+          "name": "bucketID",
+          "schema": "string",
+          "required": true,
+          "description": "The bucket ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/checks",
+      "method": "getChecks",
+      "httpMethod": "get",
+      "tag": "Checks",
+      "description": "List all checks",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "required": true,
+          "description": "Only show checks that belong to a specific organization ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/checks",
+      "method": "createCheck",
+      "httpMethod": "post",
+      "tag": "Checks",
+      "description": "Add new check",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/checks/{checkID}",
+      "method": "deleteChecksId",
+      "httpMethod": "delete",
+      "tag": "Checks",
+      "description": "Delete a check",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "checkID",
+          "schema": "string",
+          "required": true,
+          "description": "The check ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/checks/{checkID}",
+      "method": "getChecksId",
+      "httpMethod": "get",
+      "tag": "Checks",
+      "description": "Retrieve a check",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "checkID",
+          "schema": "string",
+          "required": true,
+          "description": "The check ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/checks/{checkID}",
+      "method": "patchChecksId",
+      "httpMethod": "patch",
+      "tag": "Checks",
+      "description": "Update a check",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "checkID",
+          "schema": "string",
+          "required": true,
+          "description": "The check ID."
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/checks/{checkID}",
+      "method": "putChecksId",
+      "httpMethod": "put",
+      "tag": "Checks",
+      "description": "Update a check",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "checkID",
+          "schema": "string",
+          "required": true,
+          "description": "The check ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/checks/{checkID}/labels",
+      "method": "getChecksIdLabels",
+      "httpMethod": "get",
+      "tag": "Checks",
+      "description": "List all labels for a check",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "checkID",
+          "schema": "string",
+          "required": true,
+          "description": "The check ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/checks/{checkID}/labels",
+      "method": "postChecksIdLabels",
+      "httpMethod": "post",
+      "tag": "Checks",
+      "description": "Add a label to a check",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "checkID",
+          "schema": "string",
+          "required": true,
+          "description": "The check ID."
+        },
+        {
+          "name": "labelID",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/checks/{checkID}/labels/{labelID}",
+      "method": "deleteChecksIdLabelsId",
+      "httpMethod": "delete",
+      "tag": "Checks",
+      "description": "Delete label from a check",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "checkID",
+          "schema": "string",
+          "required": true,
+          "description": "The check ID."
+        },
+        {
+          "name": "labelID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the label to delete."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/checks/{checkID}/query",
+      "method": "getChecksIdQuery",
+      "httpMethod": "get",
+      "tag": "Checks",
+      "description": "Retrieve a check query",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "checkID",
+          "schema": "string",
+          "required": true,
+          "description": "The check ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Rendered flux that backs the check or notification."
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dashboards",
+      "method": "getDashboards",
+      "httpMethod": "get",
+      "tag": "Dashboards",
+      "description": "List all dashboards",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "descending",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "owner",
+          "schema": "string",
+          "description": "A user identifier. Returns only dashboards where this user has the `owner` role."
+        },
+        {
+          "name": "sortBy",
+          "schema": "string",
+          "description": "The column to sort by."
+        },
+        {
+          "name": "id",
+          "schema": "array",
+          "description": "A list of dashboard identifiers. Returns only the listed dashboards. If both `id` and `owner` are specified, only `id` is used."
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "description": "The identifier of the organization."
+        },
+        {
+          "name": "org",
+          "schema": "string",
+          "description": "The name of the organization."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dashboards",
+      "method": "postDashboards",
+      "httpMethod": "post",
+      "tag": "Dashboards",
+      "description": "Create a dashboard",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dashboards/{dashboardID}",
+      "method": "deleteDashboardsId",
+      "httpMethod": "delete",
+      "tag": "Dashboards",
+      "description": "Delete a dashboard",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "dashboardID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the dashboard to update."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dashboards/{dashboardID}",
+      "method": "getDashboardsId",
+      "httpMethod": "get",
+      "tag": "Dashboards",
+      "description": "Retrieve a Dashboard",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "dashboardID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the dashboard to update."
+        },
+        {
+          "name": "include",
+          "schema": "string",
+          "required": false,
+          "description": "Includes the cell view properties in the response if set to `properties`"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dashboards/{dashboardID}",
+      "method": "patchDashboardsId",
+      "httpMethod": "patch",
+      "tag": "Dashboards",
+      "description": "Update a dashboard",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "dashboardID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the dashboard to update."
+        },
+        {
+          "name": "cells",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dashboards/{dashboardID}/cells",
+      "method": "postDashboardsIdCells",
+      "httpMethod": "post",
+      "tag": "Cells",
+      "description": "Create a dashboard cell",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "dashboardID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the dashboard to update."
+        },
+        {
+          "name": "h",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "usingView",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "w",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "x",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "y",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dashboards/{dashboardID}/cells",
+      "method": "putDashboardsIdCells",
+      "httpMethod": "put",
+      "tag": "Cells",
+      "description": "Replace cells in a dashboard",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "dashboardID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the dashboard to update."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dashboards/{dashboardID}/cells/{cellID}",
+      "method": "deleteDashboardsIdCellsId",
+      "httpMethod": "delete",
+      "tag": "Cells",
+      "description": "Delete a dashboard cell",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "dashboardID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the dashboard to delete."
+        },
+        {
+          "name": "cellID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the cell to delete."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dashboards/{dashboardID}/cells/{cellID}",
+      "method": "patchDashboardsIdCellsId",
+      "httpMethod": "patch",
+      "tag": "Cells",
+      "description": "Update the non-positional information related to a cell",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "dashboardID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the dashboard to update."
+        },
+        {
+          "name": "cellID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the cell to update."
+        },
+        {
+          "name": "h",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "w",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "x",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "y",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dashboards/{dashboardID}/cells/{cellID}/view",
+      "method": "getDashboardsIdCellsIdView",
+      "httpMethod": "get",
+      "tag": "Cells",
+      "description": "Retrieve the view for a cell",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "dashboardID",
+          "schema": "string",
+          "required": true,
+          "description": "The dashboard ID."
+        },
+        {
+          "name": "cellID",
+          "schema": "string",
+          "required": true,
+          "description": "The cell ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dashboards/{dashboardID}/cells/{cellID}/view",
+      "method": "patchDashboardsIdCellsIdView",
+      "httpMethod": "patch",
+      "tag": "Cells",
+      "description": "Update the view for a cell",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "dashboardID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the dashboard to update."
+        },
+        {
+          "name": "cellID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the cell to update."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dashboards/{dashboardID}/labels",
+      "method": "getDashboardsIdLabels",
+      "httpMethod": "get",
+      "tag": "Dashboards",
+      "description": "List all labels for a dashboard",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "dashboardID",
+          "schema": "string",
+          "required": true,
+          "description": "The dashboard ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dashboards/{dashboardID}/labels",
+      "method": "postDashboardsIdLabels",
+      "httpMethod": "post",
+      "tag": "Dashboards",
+      "description": "Add a label to a dashboard",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "dashboardID",
+          "schema": "string",
+          "required": true,
+          "description": "The dashboard ID."
+        },
+        {
+          "name": "labelID",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dashboards/{dashboardID}/labels/{labelID}",
+      "method": "deleteDashboardsIdLabelsId",
+      "httpMethod": "delete",
+      "tag": "Dashboards",
+      "description": "Delete a label from a dashboard",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "dashboardID",
+          "schema": "string",
+          "required": true,
+          "description": "The dashboard ID."
+        },
+        {
+          "name": "labelID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the label to delete."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dashboards/{dashboardID}/members",
+      "method": "getDashboardsIdMembers",
+      "httpMethod": "get",
+      "tag": "Dashboards",
+      "description": "List all dashboard members",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "dashboardID",
+          "schema": "string",
+          "required": true,
+          "description": "The dashboard ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dashboards/{dashboardID}/members",
+      "method": "postDashboardsIdMembers",
+      "httpMethod": "post",
+      "tag": "Dashboards",
+      "description": "Add a member to a dashboard",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "dashboardID",
+          "schema": "string",
+          "required": true,
+          "description": "The dashboard ID."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dashboards/{dashboardID}/members/{userID}",
+      "method": "deleteDashboardsIdMembersId",
+      "httpMethod": "delete",
+      "tag": "Dashboards",
+      "description": "Remove a member from a dashboard",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "userID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the member to remove."
+        },
+        {
+          "name": "dashboardID",
+          "schema": "string",
+          "required": true,
+          "description": "The dashboard ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dashboards/{dashboardID}/owners",
+      "method": "getDashboardsIdOwners",
+      "httpMethod": "get",
+      "tag": "Dashboards",
+      "description": "List all dashboard owners",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "dashboardID",
+          "schema": "string",
+          "required": true,
+          "description": "The dashboard ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dashboards/{dashboardID}/owners",
+      "method": "postDashboardsIdOwners",
+      "httpMethod": "post",
+      "tag": "Dashboards",
+      "description": "Add an owner to a dashboard",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "dashboardID",
+          "schema": "string",
+          "required": true,
+          "description": "The dashboard ID."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dashboards/{dashboardID}/owners/{userID}",
+      "method": "deleteDashboardsIdOwnersId",
+      "httpMethod": "delete",
+      "tag": "Dashboards",
+      "description": "Remove an owner from a dashboard",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "userID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the owner to remove."
+        },
+        {
+          "name": "dashboardID",
+          "schema": "string",
+          "required": true,
+          "description": "The dashboard ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dbrps",
+      "method": "getDbrPs",
+      "httpMethod": "get",
+      "tag": "DBRPs",
+      "description": "List all database retention policy mappings",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "required": true,
+          "description": "Specifies the organization ID to filter on"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": "Specifies the mapping ID to filter on"
+        },
+        {
+          "name": "bucketID",
+          "schema": "string",
+          "description": "Specifies the bucket ID to filter on"
+        },
+        {
+          "name": "default",
+          "schema": "boolean",
+          "description": "Specifies filtering on default"
+        },
+        {
+          "name": "db",
+          "schema": "string",
+          "description": "Specifies the database to filter on"
+        },
+        {
+          "name": "rp",
+          "schema": "string",
+          "description": "Specifies the retention policy to filter on"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dbrps",
+      "method": "postDbrp",
+      "httpMethod": "post",
+      "tag": "DBRPs",
+      "description": "Add a database retention policy mapping",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "bucketID",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "database",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "default",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "org",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "retention_policy",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dbrps/{dbrpID}",
+      "method": "deleteDbrpid",
+      "httpMethod": "delete",
+      "tag": "DBRPs",
+      "description": "Delete a database retention policy",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "required": true,
+          "description": "Specifies the organization ID of the mapping"
+        },
+        {
+          "name": "dbrpID",
+          "schema": "string",
+          "required": true,
+          "description": "The database retention policy mapping"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dbrps/{dbrpID}",
+      "method": "getDbrPsId",
+      "httpMethod": "get",
+      "tag": "DBRPs",
+      "description": "Retrieve a database retention policy mapping",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "required": true,
+          "description": "Specifies the organization ID of the mapping"
+        },
+        {
+          "name": "dbrpID",
+          "schema": "string",
+          "required": true,
+          "description": "The database retention policy mapping ID"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dbrps/{dbrpID}",
+      "method": "patchDbrpid",
+      "httpMethod": "patch",
+      "tag": "DBRPs",
+      "description": "Update a database retention policy mapping",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "required": true,
+          "description": "Specifies the organization ID of the mapping"
+        },
+        {
+          "name": "dbrpID",
+          "schema": "string",
+          "required": true,
+          "description": "The database retention policy mapping."
+        },
+        {
+          "name": "database",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "default",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "retention_policy",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/delete",
+      "method": "postDelete",
+      "httpMethod": "post",
+      "tag": "Delete",
+      "description": "Delete time series data from InfluxDB",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "org",
+          "schema": "string",
+          "description": "Specifies the organization to delete data from."
+        },
+        {
+          "name": "bucket",
+          "schema": "string",
+          "description": "Specifies the bucket to delete data from."
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "description": "Specifies the organization ID of the resource."
+        },
+        {
+          "name": "bucketID",
+          "schema": "string",
+          "description": "Specifies the bucket ID to delete data from."
+        },
+        {
+          "name": "predicate",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "start",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "stop",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/documents/templates",
+      "method": "getDocumentsTemplates",
+      "httpMethod": "get",
+      "tag": "Templates",
+      "description": "List all templates",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "org",
+          "schema": "string",
+          "description": "Specifies the name of the organization of the template."
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "description": "Specifies the organization ID of the template."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/documents/templates",
+      "method": "postDocumentsTemplates",
+      "httpMethod": "post",
+      "tag": "Templates",
+      "description": "Create a template",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "content",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "labels",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "meta",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "org",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/documents/templates/{templateID}",
+      "method": "deleteDocumentsTemplatesId",
+      "httpMethod": "delete",
+      "tag": "Templates",
+      "description": "Delete a template",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "templateID",
+          "schema": "string",
+          "required": true,
+          "description": "The template ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/documents/templates/{templateID}",
+      "method": "getDocumentsTemplatesId",
+      "httpMethod": "get",
+      "tag": "Templates",
+      "description": "Retrieve a template",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "templateID",
+          "schema": "string",
+          "required": true,
+          "description": "The template ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/documents/templates/{templateID}",
+      "method": "putDocumentsTemplatesId",
+      "httpMethod": "put",
+      "tag": "Templates",
+      "description": "Update a template",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "templateID",
+          "schema": "string",
+          "required": true,
+          "description": "The template ID."
+        },
+        {
+          "name": "content",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "meta",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/documents/templates/{templateID}/labels",
+      "method": "getDocumentsTemplatesIdLabels",
+      "httpMethod": "get",
+      "tag": "Templates",
+      "description": "List all labels for a template",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "templateID",
+          "schema": "string",
+          "required": true,
+          "description": "The template ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/documents/templates/{templateID}/labels",
+      "method": "postDocumentsTemplatesIdLabels",
+      "httpMethod": "post",
+      "tag": "Templates",
+      "description": "Add a label to a template",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "templateID",
+          "schema": "string",
+          "required": true,
+          "description": "The template ID."
+        },
+        {
+          "name": "labelID",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/documents/templates/{templateID}/labels/{labelID}",
+      "method": "deleteDocumentsTemplatesIdLabelsId",
+      "httpMethod": "delete",
+      "tag": "Templates",
+      "description": "Delete a label from a template",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "templateID",
+          "schema": "string",
+          "required": true,
+          "description": "The template ID."
+        },
+        {
+          "name": "labelID",
+          "schema": "string",
+          "required": true,
+          "description": "The label ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/flags",
+      "method": "getFlags",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Return the feature flags for the currently authenticated user",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/health",
+      "method": "getHealth",
+      "httpMethod": "get",
+      "tag": "Health",
+      "description": "Get the health of an instance",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/labels",
+      "method": "getLabels",
+      "httpMethod": "get",
+      "tag": "Labels",
+      "description": "List all labels",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "description": "The organization ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/labels",
+      "method": "postLabels",
+      "httpMethod": "post",
+      "tag": "Labels",
+      "description": "Create a label",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/labels/{labelID}",
+      "method": "deleteLabelsId",
+      "httpMethod": "delete",
+      "tag": "Labels",
+      "description": "Delete a label",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "labelID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the label to delete."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/labels/{labelID}",
+      "method": "getLabelsId",
+      "httpMethod": "get",
+      "tag": "Labels",
+      "description": "Retrieve a label",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "labelID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the label to update."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/labels/{labelID}",
+      "method": "patchLabelsId",
+      "httpMethod": "patch",
+      "tag": "Labels",
+      "description": "Update a label",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "labelID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the label to update."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/me",
+      "method": "getMe",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Retrieve the currently authenticated user",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/me/password",
+      "method": "putMePassword",
+      "httpMethod": "put",
+      "tag": "Users",
+      "description": "Update a password",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/notificationEndpoints",
+      "method": "getNotificationEndpoints",
+      "httpMethod": "get",
+      "tag": "NotificationEndpoints",
+      "description": "List all notification endpoints",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "required": true,
+          "description": "Only show notification endpoints that belong to specific organization ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/notificationEndpoints",
+      "method": "createNotificationEndpoint",
+      "httpMethod": "post",
+      "tag": "NotificationEndpoints",
+      "description": "Add a notification endpoint",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/notificationEndpoints/{endpointID}",
+      "method": "deleteNotificationEndpointsId",
+      "httpMethod": "delete",
+      "tag": "NotificationEndpoints",
+      "description": "Delete a notification endpoint",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "endpointID",
+          "schema": "string",
+          "required": true,
+          "description": "The notification endpoint ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/notificationEndpoints/{endpointID}",
+      "method": "getNotificationEndpointsId",
+      "httpMethod": "get",
+      "tag": "NotificationEndpoints",
+      "description": "Retrieve a notification endpoint",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "endpointID",
+          "schema": "string",
+          "required": true,
+          "description": "The notification endpoint ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/notificationEndpoints/{endpointID}",
+      "method": "patchNotificationEndpointsId",
+      "httpMethod": "patch",
+      "tag": "NotificationEndpoints",
+      "description": "Update a notification endpoint",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "endpointID",
+          "schema": "string",
+          "required": true,
+          "description": "The notification endpoint ID."
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/notificationEndpoints/{endpointID}",
+      "method": "putNotificationEndpointsId",
+      "httpMethod": "put",
+      "tag": "NotificationEndpoints",
+      "description": "Update a notification endpoint",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "endpointID",
+          "schema": "string",
+          "required": true,
+          "description": "The notification endpoint ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/notificationEndpoints/{endpointID}/labels",
+      "method": "getNotificationEndpointsIdLabels",
+      "httpMethod": "get",
+      "tag": "NotificationEndpoints",
+      "description": "List all labels for a notification endpoint",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "endpointID",
+          "schema": "string",
+          "required": true,
+          "description": "The notification endpoint ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/notificationEndpoints/{endpointID}/labels",
+      "method": "postNotificationEndpointIdLabels",
+      "httpMethod": "post",
+      "tag": "NotificationEndpoints",
+      "description": "Add a label to a notification endpoint",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "endpointID",
+          "schema": "string",
+          "required": true,
+          "description": "The notification endpoint ID."
+        },
+        {
+          "name": "labelID",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/notificationEndpoints/{endpointID}/labels/{labelID}",
+      "method": "deleteNotificationEndpointsIdLabelsId",
+      "httpMethod": "delete",
+      "tag": "NotificationEndpoints",
+      "description": "Delete a label from a notification endpoint",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "endpointID",
+          "schema": "string",
+          "required": true,
+          "description": "The notification endpoint ID."
+        },
+        {
+          "name": "labelID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the label to delete."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/notificationRules",
+      "method": "getNotificationRules",
+      "httpMethod": "get",
+      "tag": "NotificationRules",
+      "description": "List all notification rules",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "required": true,
+          "description": "Only show notification rules that belong to a specific organization ID."
+        },
+        {
+          "name": "checkID",
+          "schema": "string",
+          "description": "Only show notifications that belong to the specific check ID."
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "description": "Only return notification rules that \"would match\" statuses which contain the tag key value pairs provided."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/notificationRules",
+      "method": "createNotificationRule",
+      "httpMethod": "post",
+      "tag": "NotificationRules",
+      "description": "Add a notification rule",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/notificationRules/{ruleID}",
+      "method": "deleteNotificationRulesId",
+      "httpMethod": "delete",
+      "tag": "NotificationRules",
+      "description": "Delete a notification rule",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "ruleID",
+          "schema": "string",
+          "required": true,
+          "description": "The notification rule ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/notificationRules/{ruleID}",
+      "method": "getNotificationRulesId",
+      "httpMethod": "get",
+      "tag": "NotificationRules",
+      "description": "Retrieve a notification rule",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "ruleID",
+          "schema": "string",
+          "required": true,
+          "description": "The notification rule ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/notificationRules/{ruleID}",
+      "method": "patchNotificationRulesId",
+      "httpMethod": "patch",
+      "tag": "NotificationRules",
+      "description": "Update a notification rule",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "ruleID",
+          "schema": "string",
+          "required": true,
+          "description": "The notification rule ID."
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/notificationRules/{ruleID}",
+      "method": "putNotificationRulesId",
+      "httpMethod": "put",
+      "tag": "NotificationRules",
+      "description": "Update a notification rule",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "ruleID",
+          "schema": "string",
+          "required": true,
+          "description": "The notification rule ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/notificationRules/{ruleID}/labels",
+      "method": "getNotificationRulesIdLabels",
+      "httpMethod": "get",
+      "tag": "NotificationRules",
+      "description": "List all labels for a notification rule",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "ruleID",
+          "schema": "string",
+          "required": true,
+          "description": "The notification rule ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/notificationRules/{ruleID}/labels",
+      "method": "postNotificationRuleIdLabels",
+      "httpMethod": "post",
+      "tag": "NotificationRules",
+      "description": "Add a label to a notification rule",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "ruleID",
+          "schema": "string",
+          "required": true,
+          "description": "The notification rule ID."
+        },
+        {
+          "name": "labelID",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/notificationRules/{ruleID}/labels/{labelID}",
+      "method": "deleteNotificationRulesIdLabelsId",
+      "httpMethod": "delete",
+      "tag": "NotificationRules",
+      "description": "Delete label from a notification rule",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "ruleID",
+          "schema": "string",
+          "required": true,
+          "description": "The notification rule ID."
+        },
+        {
+          "name": "labelID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the label to delete."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/notificationRules/{ruleID}/query",
+      "method": "getNotificationRulesIdQuery",
+      "httpMethod": "get",
+      "tag": "Rules",
+      "description": "Retrieve a notification rule query",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "ruleID",
+          "schema": "string",
+          "required": true,
+          "description": "The notification rule ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Rendered flux that backs the check or notification."
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/orgs",
+      "method": "getOrgs",
+      "httpMethod": "get",
+      "tag": "Organizations",
+      "description": "List all organizations",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "descending",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "org",
+          "schema": "string",
+          "description": "Filter organizations to a specific organization name."
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "description": "Filter organizations to a specific organization ID."
+        },
+        {
+          "name": "userID",
+          "schema": "string",
+          "description": "Filter organizations to a specific user ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/orgs",
+      "method": "postOrgs",
+      "httpMethod": "post",
+      "tag": "Organizations",
+      "description": "Create an organization",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/orgs/{orgID}",
+      "method": "deleteOrgsId",
+      "httpMethod": "delete",
+      "tag": "Organizations",
+      "description": "Delete an organization",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the organization to delete."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/orgs/{orgID}",
+      "method": "getOrgsId",
+      "httpMethod": "get",
+      "tag": "Organizations",
+      "description": "Retrieve an organization",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the organization to get."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/orgs/{orgID}",
+      "method": "patchOrgsId",
+      "httpMethod": "patch",
+      "tag": "Organizations",
+      "description": "Update an organization",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the organization to get."
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/orgs/{orgID}/members",
+      "method": "getOrgsIdMembers",
+      "httpMethod": "get",
+      "tag": "Organizations",
+      "description": "List all members of an organization",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "required": true,
+          "description": "The organization ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/orgs/{orgID}/members",
+      "method": "postOrgsIdMembers",
+      "httpMethod": "post",
+      "tag": "Organizations",
+      "description": "Add a member to an organization",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "required": true,
+          "description": "The organization ID."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/orgs/{orgID}/members/{userID}",
+      "method": "deleteOrgsIdMembersId",
+      "httpMethod": "delete",
+      "tag": "Organizations",
+      "description": "Remove a member from an organization",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "userID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the member to remove."
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "required": true,
+          "description": "The organization ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/orgs/{orgID}/owners",
+      "method": "getOrgsIdOwners",
+      "httpMethod": "get",
+      "tag": "Organizations",
+      "description": "List all owners of an organization",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "required": true,
+          "description": "The organization ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/orgs/{orgID}/owners",
+      "method": "postOrgsIdOwners",
+      "httpMethod": "post",
+      "tag": "Organizations",
+      "description": "Add an owner to an organization",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "required": true,
+          "description": "The organization ID."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/orgs/{orgID}/owners/{userID}",
+      "method": "deleteOrgsIdOwnersId",
+      "httpMethod": "delete",
+      "tag": "Organizations",
+      "description": "Remove an owner from an organization",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "userID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the owner to remove."
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "required": true,
+          "description": "The organization ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/orgs/{orgID}/secrets",
+      "method": "getOrgsIdSecrets",
+      "httpMethod": "get",
+      "tag": "Secrets",
+      "description": "List all secret keys for an organization",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "required": true,
+          "description": "The organization ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/orgs/{orgID}/secrets",
+      "method": "patchOrgsIdSecrets",
+      "httpMethod": "patch",
+      "tag": "Secrets",
+      "description": "Update secrets in an organization",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "required": true,
+          "description": "The organization ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/orgs/{orgID}/secrets/delete",
+      "method": "postOrgsIdSecrets",
+      "httpMethod": "post",
+      "tag": "Secrets",
+      "description": "Delete secrets from an organization",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "required": true,
+          "description": "The organization ID."
+        },
+        {
+          "name": "secrets",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/query",
+      "method": "postQuery",
+      "httpMethod": "post",
+      "tag": "Query",
+      "description": "Query InfluxDB",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "Accept-Encoding",
+          "schema": "string",
+          "description": "The Accept-Encoding request HTTP header advertises which content encoding, usually a compression algorithm, the client is able to understand."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "org",
+          "schema": "string",
+          "description": "Specifies the name of the organization executing the query. Takes either the ID or Name interchangeably. If both `orgID` and `org` are specified, `org` takes precedence."
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "description": "Specifies the ID of the organization executing the query. If both `orgID` and `org` are specified, `org` takes precedence."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/query/analyze",
+      "method": "postQueryAnalyze",
+      "httpMethod": "post",
+      "tag": "Query",
+      "description": "Analyze an InfluxQL or Flux query",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "dialect",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "extern",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "now",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "params",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "query",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/query/ast",
+      "method": "postQueryAst",
+      "httpMethod": "post",
+      "tag": "Query",
+      "description": "Generate an Abstract Syntax Tree (AST) from a query",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "query",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Contains the AST for the supplied Flux query"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/query/suggestions",
+      "method": "getQuerySuggestions",
+      "httpMethod": "get",
+      "tag": "Query",
+      "description": "Retrieve query suggestions",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/query/suggestions/{name}",
+      "method": "getQuerySuggestionsName",
+      "httpMethod": "get",
+      "tag": "Query",
+      "description": "Retrieve query suggestions for a branching suggestion",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "The name of the branching suggestion."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/ready",
+      "method": "getReady",
+      "httpMethod": "get",
+      "tag": "Ready",
+      "description": "Get the readiness of an instance at startup",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/scrapers",
+      "method": "getScrapers",
+      "httpMethod": "get",
+      "tag": "Scraper Targets",
+      "description": "List all scraper targets",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": "Specifies the name of the scraper target."
+        },
+        {
+          "name": "id",
+          "schema": "array",
+          "description": "List of scraper target IDs to return. If both `id` and `owner` are specified, only `id` is used."
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "description": "Specifies the organization ID of the scraper target."
+        },
+        {
+          "name": "org",
+          "schema": "string",
+          "description": "Specifies the organization name of the scraper target."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/scrapers",
+      "method": "postScrapers",
+      "httpMethod": "post",
+      "tag": "Scraper Targets",
+      "description": "Create a scraper target",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "allowInsecure",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "bucketID",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/scrapers/{scraperTargetID}",
+      "method": "deleteScrapersId",
+      "httpMethod": "delete",
+      "tag": "Scraper Targets",
+      "description": "Delete a scraper target",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "scraperTargetID",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the scraper target."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/scrapers/{scraperTargetID}",
+      "method": "getScrapersId",
+      "httpMethod": "get",
+      "tag": "Scraper Targets",
+      "description": "Retrieve a scraper target",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "scraperTargetID",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the scraper target."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/scrapers/{scraperTargetID}",
+      "method": "patchScrapersId",
+      "httpMethod": "patch",
+      "tag": "Scraper Targets",
+      "description": "Update a scraper target",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "scraperTargetID",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the scraper target."
+        },
+        {
+          "name": "allowInsecure",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "bucketID",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/scrapers/{scraperTargetID}/labels",
+      "method": "getScrapersIdLabels",
+      "httpMethod": "get",
+      "tag": "Scraper Targets",
+      "description": "List all labels for a scraper target",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "scraperTargetID",
+          "schema": "string",
+          "required": true,
+          "description": "The scraper target ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/scrapers/{scraperTargetID}/labels",
+      "method": "postScrapersIdLabels",
+      "httpMethod": "post",
+      "tag": "Scraper Targets",
+      "description": "Add a label to a scraper target",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "scraperTargetID",
+          "schema": "string",
+          "required": true,
+          "description": "The scraper target ID."
+        },
+        {
+          "name": "labelID",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/scrapers/{scraperTargetID}/labels/{labelID}",
+      "method": "deleteScrapersIdLabelsId",
+      "httpMethod": "delete",
+      "tag": "Scraper Targets",
+      "description": "Delete a label from a scraper target",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "scraperTargetID",
+          "schema": "string",
+          "required": true,
+          "description": "The scraper target ID."
+        },
+        {
+          "name": "labelID",
+          "schema": "string",
+          "required": true,
+          "description": "The label ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/scrapers/{scraperTargetID}/members",
+      "method": "getScrapersIdMembers",
+      "httpMethod": "get",
+      "tag": "Scraper Targets",
+      "description": "List all users with member privileges for a scraper target",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "scraperTargetID",
+          "schema": "string",
+          "required": true,
+          "description": "The scraper target ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/scrapers/{scraperTargetID}/members",
+      "method": "postScrapersIdMembers",
+      "httpMethod": "post",
+      "tag": "Scraper Targets",
+      "description": "Add a member to a scraper target",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "scraperTargetID",
+          "schema": "string",
+          "required": true,
+          "description": "The scraper target ID."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/scrapers/{scraperTargetID}/members/{userID}",
+      "method": "deleteScrapersIdMembersId",
+      "httpMethod": "delete",
+      "tag": "Scraper Targets",
+      "description": "Remove a member from a scraper target",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "userID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of member to remove."
+        },
+        {
+          "name": "scraperTargetID",
+          "schema": "string",
+          "required": true,
+          "description": "The scraper target ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/scrapers/{scraperTargetID}/owners",
+      "method": "getScrapersIdOwners",
+      "httpMethod": "get",
+      "tag": "Scraper Targets",
+      "description": "List all owners of a scraper target",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "scraperTargetID",
+          "schema": "string",
+          "required": true,
+          "description": "The scraper target ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/scrapers/{scraperTargetID}/owners",
+      "method": "postScrapersIdOwners",
+      "httpMethod": "post",
+      "tag": "Scraper Targets",
+      "description": "Add an owner to a scraper target",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "scraperTargetID",
+          "schema": "string",
+          "required": true,
+          "description": "The scraper target ID."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/scrapers/{scraperTargetID}/owners/{userID}",
+      "method": "deleteScrapersIdOwnersId",
+      "httpMethod": "delete",
+      "tag": "Scraper Targets",
+      "description": "Remove an owner from a scraper target",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "userID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of owner to remove."
+        },
+        {
+          "name": "scraperTargetID",
+          "schema": "string",
+          "required": true,
+          "description": "The scraper target ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup",
+      "method": "getSetup",
+      "httpMethod": "get",
+      "tag": "Setup",
+      "description": "Check if database has default user, org, bucket",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setup",
+      "method": "postSetup",
+      "httpMethod": "post",
+      "tag": "Setup",
+      "description": "Set up initial user, org and bucket",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "bucket",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "org",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "retentionPeriodHrs",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "retentionPeriodSeconds",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/signin",
+      "method": "postSignin",
+      "httpMethod": "post",
+      "description": "Exchange basic auth credentials for session",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/signout",
+      "method": "postSignout",
+      "httpMethod": "post",
+      "description": "Expire the current session",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sources",
+      "method": "getSources",
+      "httpMethod": "get",
+      "tag": "Sources",
+      "description": "List all sources",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "org",
+          "schema": "string",
+          "description": "The name of the organization."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sources",
+      "method": "postSources",
+      "httpMethod": "post",
+      "tag": "Sources",
+      "description": "Create a source",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "default",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "defaultRP",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "insecureSkipVerify",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "languages",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "metaUrl",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sharedSecret",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "telegraf",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sources/{sourceID}",
+      "method": "deleteSourcesId",
+      "httpMethod": "delete",
+      "tag": "Sources",
+      "description": "Delete a source",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "sourceID",
+          "schema": "string",
+          "required": true,
+          "description": "The source ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sources/{sourceID}",
+      "method": "getSourcesId",
+      "httpMethod": "get",
+      "tag": "Sources",
+      "description": "Retrieve a source",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "sourceID",
+          "schema": "string",
+          "required": true,
+          "description": "The source ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sources/{sourceID}",
+      "method": "patchSourcesId",
+      "httpMethod": "patch",
+      "tag": "Sources",
+      "description": "Update a Source",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "sourceID",
+          "schema": "string",
+          "required": true,
+          "description": "The source ID."
+        },
+        {
+          "name": "default",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "defaultRP",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "insecureSkipVerify",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "languages",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "metaUrl",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "sharedSecret",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "telegraf",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "token",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "username",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sources/{sourceID}/buckets",
+      "method": "getSourcesIdBuckets",
+      "httpMethod": "get",
+      "tag": "Sources",
+      "description": "Get buckets in a source",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "sourceID",
+          "schema": "string",
+          "required": true,
+          "description": "The source ID."
+        },
+        {
+          "name": "org",
+          "schema": "string",
+          "description": "The name of the organization."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sources/{sourceID}/health",
+      "method": "getSourcesIdHealth",
+      "httpMethod": "get",
+      "tag": "Sources",
+      "description": "Get the health of a source",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "sourceID",
+          "schema": "string",
+          "required": true,
+          "description": "The source ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stacks",
+      "method": "listStacks",
+      "httpMethod": "get",
+      "tag": "InfluxDB Templates",
+      "description": "List all installed InfluxDB templates",
+      "parameters": [
+        {
+          "name": "orgID",
+          "schema": "string",
+          "required": true,
+          "description": "The organization id of the stacks"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": "A collection of names to filter the list by."
+        },
+        {
+          "name": "stackID",
+          "schema": "string",
+          "description": "A collection of stackIDs to filter the list by."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stacks",
+      "method": "createStack",
+      "httpMethod": "post",
+      "tag": "InfluxDB Templates",
+      "description": "Create a new stack",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "urls",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stacks/{stack_id}",
+      "method": "deleteStack",
+      "httpMethod": "delete",
+      "tag": "InfluxDB Templates",
+      "description": "Delete a stack and associated resources",
+      "parameters": [
+        {
+          "name": "stack_id",
+          "schema": "string",
+          "required": true,
+          "description": "Theidentifier of the stack."
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "required": true,
+          "description": "The identifier of the organization."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stacks/{stack_id}",
+      "method": "readStack",
+      "httpMethod": "get",
+      "tag": "InfluxDB Templates",
+      "description": "Retrieve a stack",
+      "parameters": [
+        {
+          "name": "stack_id",
+          "schema": "string",
+          "required": true,
+          "description": "Theidentifier of the stack."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stacks/{stack_id}",
+      "method": "updateStack",
+      "httpMethod": "patch",
+      "tag": "InfluxDB Templates",
+      "description": "Update an InfluxDB Stack",
+      "parameters": [
+        {
+          "name": "stack_id",
+          "schema": "string",
+          "required": true,
+          "description": "Theidentifier of the stack."
+        },
+        {
+          "name": "additionalResources",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "templateURLs",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stacks/{stack_id}/uninstall",
+      "method": "uninstallStack",
+      "httpMethod": "post",
+      "tag": "InfluxDB Templates",
+      "description": "Uninstall an InfluxDB Stack",
+      "parameters": [
+        {
+          "name": "stack_id",
+          "schema": "string",
+          "required": true,
+          "description": "The stack id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tasks",
+      "method": "getTasks",
+      "httpMethod": "get",
+      "tag": "Tasks",
+      "description": "List all tasks",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": "Returns task with a specific name."
+        },
+        {
+          "name": "after",
+          "schema": "string",
+          "description": "Return tasks after a specified ID."
+        },
+        {
+          "name": "user",
+          "schema": "string",
+          "description": "Filter tasks to a specific user ID."
+        },
+        {
+          "name": "org",
+          "schema": "string",
+          "description": "Filter tasks to a specific organization name."
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "description": "Filter tasks to a specific organization ID."
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": "Filter tasks by a status--\"inactive\" or \"active\"."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "The number of tasks to return"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tasks",
+      "method": "postTasks",
+      "httpMethod": "post",
+      "tag": "Tasks",
+      "description": "Create a new task",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "flux",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "org",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tasks/{taskID}",
+      "method": "deleteTasksId",
+      "httpMethod": "delete",
+      "tag": "Tasks",
+      "description": "Delete a task",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "taskID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the task to delete."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tasks/{taskID}",
+      "method": "getTasksId",
+      "httpMethod": "get",
+      "tag": "Tasks",
+      "description": "Retrieve a task",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "taskID",
+          "schema": "string",
+          "required": true,
+          "description": "The task ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tasks/{taskID}",
+      "method": "patchTasksId",
+      "httpMethod": "patch",
+      "tag": "Tasks",
+      "description": "Update a task",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "taskID",
+          "schema": "string",
+          "required": true,
+          "description": "The task ID."
+        },
+        {
+          "name": "cron",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "every",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "flux",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "offset",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tasks/{taskID}/labels",
+      "method": "getTasksIdLabels",
+      "httpMethod": "get",
+      "tag": "Tasks",
+      "description": "List all labels for a task",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "taskID",
+          "schema": "string",
+          "required": true,
+          "description": "The task ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tasks/{taskID}/labels",
+      "method": "postTasksIdLabels",
+      "httpMethod": "post",
+      "tag": "Tasks",
+      "description": "Add a label to a task",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "taskID",
+          "schema": "string",
+          "required": true,
+          "description": "The task ID."
+        },
+        {
+          "name": "labelID",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tasks/{taskID}/labels/{labelID}",
+      "method": "deleteTasksIdLabelsId",
+      "httpMethod": "delete",
+      "tag": "Tasks",
+      "description": "Delete a label from a task",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "taskID",
+          "schema": "string",
+          "required": true,
+          "description": "The task ID."
+        },
+        {
+          "name": "labelID",
+          "schema": "string",
+          "required": true,
+          "description": "The label ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tasks/{taskID}/logs",
+      "method": "getTasksIdLogs",
+      "httpMethod": "get",
+      "tag": "Tasks",
+      "description": "Retrieve all logs for a task",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "taskID",
+          "schema": "string",
+          "required": true,
+          "description": "The task ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tasks/{taskID}/members",
+      "method": "getTasksIdMembers",
+      "httpMethod": "get",
+      "tag": "Tasks",
+      "description": "List all task members",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "taskID",
+          "schema": "string",
+          "required": true,
+          "description": "The task ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tasks/{taskID}/members",
+      "method": "postTasksIdMembers",
+      "httpMethod": "post",
+      "tag": "Tasks",
+      "description": "Add a member to a task",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "taskID",
+          "schema": "string",
+          "required": true,
+          "description": "The task ID."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tasks/{taskID}/members/{userID}",
+      "method": "deleteTasksIdMembersId",
+      "httpMethod": "delete",
+      "tag": "Tasks",
+      "description": "Remove a member from a task",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "userID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the member to remove."
+        },
+        {
+          "name": "taskID",
+          "schema": "string",
+          "required": true,
+          "description": "The task ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tasks/{taskID}/owners",
+      "method": "getTasksIdOwners",
+      "httpMethod": "get",
+      "tag": "Tasks",
+      "description": "List all owners of a task",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "taskID",
+          "schema": "string",
+          "required": true,
+          "description": "The task ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tasks/{taskID}/owners",
+      "method": "postTasksIdOwners",
+      "httpMethod": "post",
+      "tag": "Tasks",
+      "description": "Add an owner to a task",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "taskID",
+          "schema": "string",
+          "required": true,
+          "description": "The task ID."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tasks/{taskID}/owners/{userID}",
+      "method": "deleteTasksIdOwnersId",
+      "httpMethod": "delete",
+      "tag": "Tasks",
+      "description": "Remove an owner from a task",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "userID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the owner to remove."
+        },
+        {
+          "name": "taskID",
+          "schema": "string",
+          "required": true,
+          "description": "The task ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tasks/{taskID}/runs",
+      "method": "getTasksIdRuns",
+      "httpMethod": "get",
+      "tag": "Tasks",
+      "description": "List runs for a task",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "taskID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the task to get runs for."
+        },
+        {
+          "name": "after",
+          "schema": "string",
+          "description": "Returns runs after a specific ID."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "The number of runs to return"
+        },
+        {
+          "name": "afterTime",
+          "schema": "string",
+          "description": "Filter runs to those scheduled after this time, RFC3339"
+        },
+        {
+          "name": "beforeTime",
+          "schema": "string",
+          "description": "Filter runs to those scheduled before this time, RFC3339"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tasks/{taskID}/runs",
+      "method": "postTasksIdRuns",
+      "httpMethod": "post",
+      "tag": "Tasks",
+      "description": "Manually start a task run, overriding the current schedule",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "taskID",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "scheduledFor",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tasks/{taskID}/runs/{runID}",
+      "method": "deleteTasksIdRunsId",
+      "httpMethod": "delete",
+      "tag": "Tasks",
+      "description": "Cancel a running task",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "taskID",
+          "schema": "string",
+          "required": true,
+          "description": "The task ID."
+        },
+        {
+          "name": "runID",
+          "schema": "string",
+          "required": true,
+          "description": "The run ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tasks/{taskID}/runs/{runID}",
+      "method": "getTasksIdRunsId",
+      "httpMethod": "get",
+      "tag": "Tasks",
+      "description": "Retrieve a single run for a task",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "taskID",
+          "schema": "string",
+          "required": true,
+          "description": "The task ID."
+        },
+        {
+          "name": "runID",
+          "schema": "string",
+          "required": true,
+          "description": "The run ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tasks/{taskID}/runs/{runID}/logs",
+      "method": "getTasksIdRunsIdLogs",
+      "httpMethod": "get",
+      "tag": "Tasks",
+      "description": "Retrieve all logs for a run",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "taskID",
+          "schema": "string",
+          "required": true,
+          "description": "ID of task to get logs for."
+        },
+        {
+          "name": "runID",
+          "schema": "string",
+          "required": true,
+          "description": "ID of run to get logs for."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/tasks/{taskID}/runs/{runID}/retry",
+      "method": "postTasksIdRunsIdRetry",
+      "httpMethod": "post",
+      "tag": "Tasks",
+      "description": "Retry a task run",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "taskID",
+          "schema": "string",
+          "required": true,
+          "description": "The task ID."
+        },
+        {
+          "name": "runID",
+          "schema": "string",
+          "required": true,
+          "description": "The run ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/telegraf/plugins",
+      "method": "getTelegrafPlugins",
+      "httpMethod": "get",
+      "tag": "Telegraf Plugins",
+      "description": "List all Telegraf plugins",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": "The type of plugin desired."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/telegrafs",
+      "method": "getTelegrafs",
+      "httpMethod": "get",
+      "tag": "Telegrafs",
+      "description": "List all Telegraf configurations",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "description": "The organization ID the Telegraf config belongs to."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/telegrafs",
+      "method": "postTelegrafs",
+      "httpMethod": "post",
+      "tag": "Telegrafs",
+      "description": "Create a Telegraf configuration",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "config",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/telegrafs/{telegrafID}",
+      "method": "deleteTelegrafsId",
+      "httpMethod": "delete",
+      "tag": "Telegrafs",
+      "description": "Delete a Telegraf configuration",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "telegrafID",
+          "schema": "string",
+          "required": true,
+          "description": "The Telegraf configuration ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/telegrafs/{telegrafID}",
+      "method": "getTelegrafsId",
+      "httpMethod": "get",
+      "tag": "Telegrafs",
+      "description": "Retrieve a Telegraf configuration",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "telegrafID",
+          "schema": "string",
+          "required": true,
+          "description": "The Telegraf configuration ID."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/telegrafs/{telegrafID}",
+      "method": "putTelegrafsId",
+      "httpMethod": "put",
+      "tag": "Telegrafs",
+      "description": "Update a Telegraf configuration",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "telegrafID",
+          "schema": "string",
+          "required": true,
+          "description": "The Telegraf config ID."
+        },
+        {
+          "name": "config",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "metadata",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/telegrafs/{telegrafID}/labels",
+      "method": "getTelegrafsIdLabels",
+      "httpMethod": "get",
+      "tag": "Telegrafs",
+      "description": "List all labels for a Telegraf config",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "telegrafID",
+          "schema": "string",
+          "required": true,
+          "description": "The Telegraf config ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/telegrafs/{telegrafID}/labels",
+      "method": "postTelegrafsIdLabels",
+      "httpMethod": "post",
+      "tag": "Telegrafs",
+      "description": "Add a label to a Telegraf config",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "telegrafID",
+          "schema": "string",
+          "required": true,
+          "description": "The Telegraf config ID."
+        },
+        {
+          "name": "labelID",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/telegrafs/{telegrafID}/labels/{labelID}",
+      "method": "deleteTelegrafsIdLabelsId",
+      "httpMethod": "delete",
+      "tag": "Telegrafs",
+      "description": "Delete a label from a Telegraf config",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "telegrafID",
+          "schema": "string",
+          "required": true,
+          "description": "The Telegraf config ID."
+        },
+        {
+          "name": "labelID",
+          "schema": "string",
+          "required": true,
+          "description": "The label ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/telegrafs/{telegrafID}/members",
+      "method": "getTelegrafsIdMembers",
+      "httpMethod": "get",
+      "tag": "Telegrafs",
+      "description": "List all users with member privileges for a Telegraf config",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "telegrafID",
+          "schema": "string",
+          "required": true,
+          "description": "The Telegraf config ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/telegrafs/{telegrafID}/members",
+      "method": "postTelegrafsIdMembers",
+      "httpMethod": "post",
+      "tag": "Telegrafs",
+      "description": "Add a member to a Telegraf config",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "telegrafID",
+          "schema": "string",
+          "required": true,
+          "description": "The Telegraf config ID."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/telegrafs/{telegrafID}/members/{userID}",
+      "method": "deleteTelegrafsIdMembersId",
+      "httpMethod": "delete",
+      "tag": "Telegrafs",
+      "description": "Remove a member from a Telegraf config",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "userID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the member to remove."
+        },
+        {
+          "name": "telegrafID",
+          "schema": "string",
+          "required": true,
+          "description": "The Telegraf config ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/telegrafs/{telegrafID}/owners",
+      "method": "getTelegrafsIdOwners",
+      "httpMethod": "get",
+      "tag": "Telegrafs",
+      "description": "List all owners of a Telegraf configuration",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "telegrafID",
+          "schema": "string",
+          "required": true,
+          "description": "The Telegraf configuration ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/telegrafs/{telegrafID}/owners",
+      "method": "postTelegrafsIdOwners",
+      "httpMethod": "post",
+      "tag": "Telegrafs",
+      "description": "Add an owner to a Telegraf configuration",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "telegrafID",
+          "schema": "string",
+          "required": true,
+          "description": "The Telegraf configuration ID."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/telegrafs/{telegrafID}/owners/{userID}",
+      "method": "deleteTelegrafsIdOwnersId",
+      "httpMethod": "delete",
+      "tag": "Telegrafs",
+      "description": "Remove an owner from a Telegraf config",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "userID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the owner to remove."
+        },
+        {
+          "name": "telegrafID",
+          "schema": "string",
+          "required": true,
+          "description": "The Telegraf config ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/templates/apply",
+      "method": "applyTemplate",
+      "httpMethod": "post",
+      "tag": "InfluxDB Templates",
+      "description": "Apply or dry-run an InfluxDB Template",
+      "parameters": [
+        {
+          "name": "actions",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "dryRun",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "envRefs",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "remotes",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "secrets",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "stackID",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "template",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "templates",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/templates/export",
+      "method": "exportTemplate",
+      "httpMethod": "post",
+      "tag": "InfluxDB Templates",
+      "description": "Export a new Influx Template",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users",
+      "method": "getUsers",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "List all users",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "after",
+          "schema": "string",
+          "required": false,
+          "description": "The last resource ID from which to seek from (but not including). This is to be used instead of `offset`.\n"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users",
+      "method": "postUsers",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Create a user",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "oauthID",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{userID}",
+      "method": "deleteUsersId",
+      "httpMethod": "delete",
+      "tag": "Users",
+      "description": "Delete a user",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "userID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the user to delete."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{userID}",
+      "method": "getUsersId",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Retrieve a user",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "userID",
+          "schema": "string",
+          "required": true,
+          "description": "The user ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{userID}",
+      "method": "patchUsersId",
+      "httpMethod": "patch",
+      "tag": "Users",
+      "description": "Update a user",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "userID",
+          "schema": "string",
+          "required": true,
+          "description": "The ID of the user to update."
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "oauthID",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/users/{userID}/password",
+      "method": "postUsersIdPassword",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Update a password",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "userID",
+          "schema": "string",
+          "required": true,
+          "description": "The user ID."
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/variables",
+      "method": "getVariables",
+      "httpMethod": "get",
+      "tag": "Variables",
+      "description": "List all variables",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "org",
+          "schema": "string",
+          "description": "The name of the organization."
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "description": "The organization ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/variables",
+      "method": "postVariables",
+      "httpMethod": "post",
+      "tag": "Variables",
+      "description": "Create a variable",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "arguments",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "createdAt",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "labels",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "selected",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "updatedAt",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/variables/{variableID}",
+      "method": "deleteVariablesId",
+      "httpMethod": "delete",
+      "tag": "Variables",
+      "description": "Delete a variable",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "variableID",
+          "schema": "string",
+          "required": true,
+          "description": "The variable ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/variables/{variableID}",
+      "method": "getVariablesId",
+      "httpMethod": "get",
+      "tag": "Variables",
+      "description": "Retrieve a variable",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "variableID",
+          "schema": "string",
+          "required": true,
+          "description": "The variable ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/variables/{variableID}",
+      "method": "patchVariablesId",
+      "httpMethod": "patch",
+      "tag": "Variables",
+      "description": "Update a variable",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "variableID",
+          "schema": "string",
+          "required": true,
+          "description": "The variable ID."
+        },
+        {
+          "name": "arguments",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "createdAt",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "labels",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "selected",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "updatedAt",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/variables/{variableID}",
+      "method": "putVariablesId",
+      "httpMethod": "put",
+      "tag": "Variables",
+      "description": "Replace a variable",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "variableID",
+          "schema": "string",
+          "required": true,
+          "description": "The variable ID."
+        },
+        {
+          "name": "arguments",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "createdAt",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "labels",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "links",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "selected",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "updatedAt",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/variables/{variableID}/labels",
+      "method": "getVariablesIdLabels",
+      "httpMethod": "get",
+      "tag": "Variables",
+      "description": "List all labels for a variable",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "variableID",
+          "schema": "string",
+          "required": true,
+          "description": "The variable ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/variables/{variableID}/labels",
+      "method": "postVariablesIdLabels",
+      "httpMethod": "post",
+      "tag": "Variables",
+      "description": "Add a label to a variable",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "variableID",
+          "schema": "string",
+          "required": true,
+          "description": "The variable ID."
+        },
+        {
+          "name": "labelID",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/variables/{variableID}/labels/{labelID}",
+      "method": "deleteVariablesIdLabelsId",
+      "httpMethod": "delete",
+      "tag": "Variables",
+      "description": "Delete a label from a variable",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "variableID",
+          "schema": "string",
+          "required": true,
+          "description": "The variable ID."
+        },
+        {
+          "name": "labelID",
+          "schema": "string",
+          "required": true,
+          "description": "The label ID to delete."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/write",
+      "method": "postWrite",
+      "httpMethod": "post",
+      "tag": "Write",
+      "description": "Write time series data into InfluxDB",
+      "parameters": [
+        {
+          "name": "Zap-Trace-Span",
+          "schema": "string",
+          "required": false,
+          "description": "OpenTracing span context"
+        },
+        {
+          "name": "Content-Encoding",
+          "schema": "string",
+          "description": "When present, its value indicates to the database that compression is applied to the line-protocol body."
+        },
+        {
+          "name": "Content-Type",
+          "schema": "string",
+          "description": "Content-Type is used to indicate the format of the data sent to the server."
+        },
+        {
+          "name": "Content-Length",
+          "schema": "integer",
+          "description": "Content-Length is an entity header is indicating the size of the entity-body, in bytes, sent to the database. If the length is greater than the database max body configuration option, a 413 response is sent."
+        },
+        {
+          "name": "Accept",
+          "schema": "string",
+          "description": "Specifies the return content format."
+        },
+        {
+          "name": "org",
+          "schema": "string",
+          "required": true,
+          "description": "Specifies the destination organization for writes. Takes either the ID or Name interchangeably. If both `orgID` and `org` are specified, `org` takes precedence."
+        },
+        {
+          "name": "orgID",
+          "schema": "string",
+          "description": "Specifies the ID of the destination organization for writes. If both `orgID` and `org` are specified, `org` takes precedence."
+        },
+        {
+          "name": "bucket",
+          "schema": "string",
+          "required": true,
+          "description": "The destination bucket for writes."
+        },
+        {
+          "name": "precision",
+          "schema": "string",
+          "description": "The precision for the unix timestamps within the body line-protocol."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "413",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "/api/v2",
   "apiDescription": "# Authentication\n\n&lt;!-- ReDoc-Inject: &lt;security-definitions&gt; --&gt;",
   "apiTitle": "Influx OSS API Service",

@@ -3,6 +3,5794 @@
   "openApiRaw": "https://online.visualstudio.com/api/v1/swagger",
   "homepage": "visualstudio.com",
   "apiVersion": "v1",
+  "methods": [
+    {
+      "url": "/api/v1/AgentTelemetry",
+      "method": "/api/v1/agentTelemetryPost",
+      "httpMethod": "post",
+      "tag": "AgentTelemetry",
+      "description": "",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/AgentTelemetry/standalone",
+      "method": "/api/v1/agentTelemetry/standalonePost",
+      "httpMethod": "post",
+      "tag": "AgentTelemetry",
+      "description": "",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Agents/{family}",
+      "method": "/api/v1/agents/{family}Get",
+      "httpMethod": "get",
+      "tag": "Agents",
+      "description": "",
+      "parameters": [
+        {
+          "name": "family",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Environments",
+      "method": "/api/v1/environmentsGet",
+      "httpMethod": "get",
+      "tag": "Environments",
+      "description": "",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "planId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "deleted",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Environments",
+      "method": "/api/v1/environmentsPost",
+      "httpMethod": "post",
+      "tag": "Environments",
+      "description": "",
+      "parameters": [
+        {
+          "name": "access",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "analyticsTrackingId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "autoShutdownDelayMinutes",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "billableOwner",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "connection",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "containerImage",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "createAsPrebuild",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "devContainerJson",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "devContainerPath",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "experimentalFeatures",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "features",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "friendlyName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "gitHubApiUrl",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "gitHubAppUrl",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "gitHubPfsAuthEndpoint",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "githubEnvironmentEndpoint",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "hasDevcontainerJson",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "identity",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "label",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "netmonCorrelationData",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "personalization",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "planId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "platform",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "runtimeConstraints",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "secrets",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "seed",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "skuName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "testAccount",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "userTier",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "workingDirectory",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "307",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Environments/{environmentId}",
+      "method": "/api/v1/environments/{environmentId}Delete",
+      "httpMethod": "delete",
+      "tag": "Environments",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Environments/{environmentId}",
+      "method": "getEnvironmentRoute",
+      "httpMethod": "get",
+      "tag": "Environments",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "connect",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "pfConnect",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "deleted",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Environments/{environmentId}",
+      "method": "/api/v1/environments/{environmentId}Patch",
+      "httpMethod": "patch",
+      "tag": "Environments",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "autoShutdownDelayMinutes",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "failoverDetails",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "friendlyName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "planAccessToken",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "planId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "skuName",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "409",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Environments/{environmentId}/_callback",
+      "method": "updateEnvironmentRoute",
+      "httpMethod": "post",
+      "tag": "Environments",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "payload",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Environments/{environmentId}/archive",
+      "method": "/api/v1/environments/{environmentId}/archiveGet",
+      "httpMethod": "get",
+      "tag": "Environments",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Environments/{environmentId}/archive",
+      "method": "/api/v1/environments/{environmentId}/archivePost",
+      "httpMethod": "post",
+      "tag": "Environments",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Environments/{environmentId}/export",
+      "method": "/api/v1/environments/{environmentId}/exportPost",
+      "httpMethod": "post",
+      "tag": "Environments",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Environments/{environmentId}/folder",
+      "method": "/api/v1/environments/{environmentId}/folderPatch",
+      "httpMethod": "patch",
+      "tag": "Environments",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "recentFolderPaths",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Environments/{environmentId}/heartbeattoken",
+      "method": "/api/v1/environments/{environmentId}/heartbeattokenGet",
+      "httpMethod": "get",
+      "tag": "Environments",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Environments/{environmentId}/notify",
+      "method": "/api/v1/environments/{environmentId}/notifyPost",
+      "httpMethod": "post",
+      "tag": "Environments",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "details",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "displayMode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "message",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "modal",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Environments/{environmentId}/ports/{port}",
+      "method": "/api/v1/environments/{environmentId}/ports/{port}Delete",
+      "httpMethod": "delete",
+      "tag": "Environments",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "port",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Environments/{environmentId}/ports/{port}",
+      "method": "/api/v1/environments/{environmentId}/ports/{port}Put",
+      "httpMethod": "put",
+      "tag": "Environments",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "port",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "privacy",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "tunnelType",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Environments/{environmentId}/restore",
+      "method": "/api/v1/environments/{environmentId}/restorePatch",
+      "httpMethod": "patch",
+      "tag": "Environments",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Environments/{environmentId}/secrets",
+      "method": "/api/v1/environments/{environmentId}/secretsPut",
+      "httpMethod": "put",
+      "tag": "Environments",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "secrets",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": ""
+        },
+        {
+          "statusCode": "307",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Environments/{environmentId}/shutdown",
+      "method": "/api/v1/environments/{environmentId}/shutdownPost",
+      "httpMethod": "post",
+      "tag": "Environments",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Environments/{environmentId}/start",
+      "method": "/api/v1/environments/{environmentId}/startPost",
+      "httpMethod": "post",
+      "tag": "Environments",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "access",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Environments/{environmentId}/state",
+      "method": "/api/v1/environments/{environmentId}/stateGet",
+      "httpMethod": "get",
+      "tag": "Environments",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Environments/{environmentId}/updates",
+      "method": "/api/v1/environments/{environmentId}/updatesGet",
+      "httpMethod": "get",
+      "tag": "Environments",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/GenevaActions/Billing/resend",
+      "method": "/api/v1/genevaActions/billing/resendPost",
+      "httpMethod": "post",
+      "tag": "Billing",
+      "description": "",
+      "parameters": [
+        {
+          "name": "endTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "startTime",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/GenevaActions/Billing/{environmentId}",
+      "method": "/api/v1/genevaActions/billing/{environmentId}Get",
+      "httpMethod": "get",
+      "tag": "Billing",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "startTime",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "endTime",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/GenevaActions/Billing/{environmentId}/state-changes",
+      "method": "/api/v1/genevaActions/billing/{environmentId}/stateChangesGet",
+      "httpMethod": "get",
+      "tag": "Billing",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/GenevaActions/Billing/{environmentId}/state-changes",
+      "method": "/api/v1/genevaActions/billing/{environmentId}/stateChangesPost",
+      "httpMethod": "post",
+      "tag": "Billing",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "newValue",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "oldValue",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "time",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/GenevaActions/Configuration/{target}",
+      "method": "/api/v1/genevaActions/configuration/{target}Post",
+      "httpMethod": "post",
+      "tag": "Configuration",
+      "description": "",
+      "parameters": [
+        {
+          "name": "target",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "comment",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "value",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/GenevaActions/Configuration/{target}/{key}",
+      "method": "/api/v1/genevaActions/configuration/{target}/{key}Delete",
+      "httpMethod": "delete",
+      "tag": "Configuration",
+      "description": "",
+      "parameters": [
+        {
+          "name": "target",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/GenevaActions/Configuration/{target}/{key}",
+      "method": "/api/v1/genevaActions/configuration/{target}/{key}Get",
+      "httpMethod": "get",
+      "tag": "Configuration",
+      "description": "",
+      "parameters": [
+        {
+          "name": "target",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "key",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/GenevaActions/Environments/storage/{environmentIdOrFriendlyName}/{targetBlob}",
+      "method": "/api/v1/genevaActions/environments/storage/{environmentIdOrFriendlyName}/{targetBlob}Get",
+      "httpMethod": "get",
+      "tag": "Environments",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentIdOrFriendlyName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "targetBlob",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/GenevaActions/Environments/{environmentId}",
+      "method": "/api/v1/genevaActions/environments/{environmentId}Delete",
+      "httpMethod": "delete",
+      "tag": "Environments",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "deletionType",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/GenevaActions/Environments/{environmentId}",
+      "method": "/api/v1/genevaActions/environments/{environmentId}Get",
+      "httpMethod": "get",
+      "tag": "Environments",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/GenevaActions/Environments/{environmentId}/archive",
+      "method": "/api/v1/genevaActions/environments/{environmentId}/archivePut",
+      "httpMethod": "put",
+      "tag": "Environments",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/GenevaActions/Environments/{environmentId}/shutdown",
+      "method": "/api/v1/genevaActions/environments/{environmentId}/shutdownPut",
+      "httpMethod": "put",
+      "tag": "Environments",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/GenevaActions/Environments/{environmentId}/upload/running/vm/logs",
+      "method": "/api/v1/genevaActions/environments/{environmentId}/upload/running/vm/logsPost",
+      "httpMethod": "post",
+      "tag": "Environments",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/GenevaActions/Pools/change-resource-deletion-setting",
+      "method": "/api/v1/genevaActions/pools/changeResourceDeletionSettingPost",
+      "httpMethod": "post",
+      "tag": "Pools",
+      "description": "",
+      "parameters": [
+        {
+          "name": "comment",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "enabled",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "poolCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "poolType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "region",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/GenevaActions/Pools/{poolCode}/rotate-pool",
+      "method": "/api/v1/genevaActions/pools/{poolCode}/rotatePoolPost",
+      "httpMethod": "post",
+      "tag": "Pools",
+      "description": "",
+      "parameters": [
+        {
+          "name": "poolCode",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/GenevaActions/Pools/{target}",
+      "method": "/api/v1/genevaActions/pools/{target}Post",
+      "httpMethod": "post",
+      "tag": "Pools",
+      "description": "",
+      "parameters": [
+        {
+          "name": "target",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "comment",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "maxTargetCount",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "minTargetCount",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "poolCode",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "poolType",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "region",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "targetCount",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/GenevaActions/Prebuilds/pools/createorupdatesettings",
+      "method": "/api/v1/genevaActions/prebuilds/pools/createorupdatesettingsPost",
+      "httpMethod": "post",
+      "tag": "Prebuilds",
+      "description": "",
+      "parameters": [
+        {
+          "name": "branchName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "devContainerPath",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "pools",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "repoId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "storageType",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "subscription",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/GenevaActions/Prebuilds/pools/delete",
+      "method": "/api/v1/genevaActions/prebuilds/pools/deletePost",
+      "httpMethod": "post",
+      "tag": "Prebuilds",
+      "description": "",
+      "parameters": [
+        {
+          "name": "branchName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "devContainerPath",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "pools",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "repoId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "storageType",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "subscription",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/GenevaActions/Privacy/refresh-profile-telemetry-properties",
+      "method": "/api/v1/genevaActions/privacy/refreshProfileTelemetryPropertiesPost",
+      "httpMethod": "post",
+      "tag": "Privacy",
+      "description": "",
+      "parameters": [
+        {
+          "name": "partner",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tenantId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "userIds",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/GenevaActions/Resources/{resourceId}/under-investigation",
+      "method": "/api/v1/genevaActions/resources/{resourceId}/underInvestigationPost",
+      "httpMethod": "post",
+      "tag": "Resources",
+      "description": "",
+      "parameters": [
+        {
+          "name": "resourceId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/GenevaActions/VnetPoolDefinitions",
+      "method": "/api/v1/genevaActions/vnetPoolDefinitionsDelete",
+      "httpMethod": "delete",
+      "tag": "VnetPoolDefinitions",
+      "description": "",
+      "parameters": [
+        {
+          "name": "dimensions",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "isEnabled",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "logicalSkus",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "subtype",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "targetCount",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/GenevaActions/VnetPoolDefinitions",
+      "method": "/api/v1/genevaActions/vnetPoolDefinitionsPost",
+      "httpMethod": "post",
+      "tag": "VnetPoolDefinitions",
+      "description": "",
+      "parameters": [
+        {
+          "name": "dimensions",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "isEnabled",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "logicalSkus",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "subtype",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "targetCount",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/HeartBeat",
+      "method": "/api/v1/heartBeatPost",
+      "httpMethod": "post",
+      "tag": "HeartBeat",
+      "description": "",
+      "parameters": [
+        {
+          "name": "agentVersion",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "collectedDataList",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "resourceId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "timeStamp",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "422",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Locations",
+      "method": "/api/v1/locationsGet",
+      "httpMethod": "get",
+      "tag": "Locations",
+      "description": "",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Locations/{location}",
+      "method": "/api/v1/locations/{location}Get",
+      "httpMethod": "get",
+      "tag": "Locations",
+      "description": "",
+      "parameters": [
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "planId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Prebuilds/pools/{poolId}/instances",
+      "method": "/api/v1/prebuilds/pools/{poolId}/instancesPost",
+      "httpMethod": "post",
+      "tag": "Prebuilds",
+      "description": "",
+      "parameters": [
+        {
+          "name": "poolId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "environmentOptions",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "secrets",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Prebuilds/pools/{poolId}/instances",
+      "method": "/api/v1/prebuilds/pools/{poolId}/instancesPut",
+      "httpMethod": "put",
+      "tag": "Prebuilds",
+      "description": "",
+      "parameters": [
+        {
+          "name": "poolId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "environmentOptions",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "secrets",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Prebuilds/template/{environmentId}",
+      "method": "getTemplateInfoRoute",
+      "httpMethod": "get",
+      "tag": "Prebuilds",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Sas",
+      "method": "/api/v1/sasGet",
+      "httpMethod": "get",
+      "tag": "Sas",
+      "description": "",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Secrets",
+      "method": "/api/v1/secretsGet",
+      "httpMethod": "get",
+      "tag": "Secrets",
+      "description": "",
+      "parameters": [
+        {
+          "name": "planId",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Secrets",
+      "method": "/api/v1/secretsPost",
+      "httpMethod": "post",
+      "tag": "Secrets",
+      "description": "",
+      "parameters": [
+        {
+          "name": "planId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "filters",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "notes",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "scope",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "secretName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "value",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Secrets/{secretId}",
+      "method": "/api/v1/secrets/{secretId}Delete",
+      "httpMethod": "delete",
+      "tag": "Secrets",
+      "description": "",
+      "parameters": [
+        {
+          "name": "planId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "scope",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "secretId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Secrets/{secretId}",
+      "method": "/api/v1/secrets/{secretId}Put",
+      "httpMethod": "put",
+      "tag": "Secrets",
+      "description": "",
+      "parameters": [
+        {
+          "name": "planId",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "secretId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "filters",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "notes",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "scope",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "secretName",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "value",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Tenant/{tenantId}",
+      "method": "/api/v1/tenant/{tenantId}Delete",
+      "httpMethod": "delete",
+      "tag": "Tenant",
+      "description": "",
+      "parameters": [
+        {
+          "name": "tenantId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Tenant/{tenantId}",
+      "method": "/api/v1/tenant/{tenantId}Get",
+      "httpMethod": "get",
+      "tag": "Tenant",
+      "description": "",
+      "parameters": [
+        {
+          "name": "tenantId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Tenant/{tenantId}",
+      "method": "/api/v1/tenant/{tenantId}Put",
+      "httpMethod": "put",
+      "tag": "Tenant",
+      "description": "",
+      "parameters": [
+        {
+          "name": "tenantId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/Tokens/plans/{planName}/deleteAllCodespaces",
+      "method": "/api/v1/tokens/plans/{planName}/deleteAllCodespacesPost",
+      "httpMethod": "post",
+      "tag": "Tokens",
+      "description": "",
+      "parameters": [
+        {
+          "name": "planName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "x-subscription-id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "expiration",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/Tokens/plans/{planName}/readAllCodespaces",
+      "method": "/api/v1/tokens/plans/{planName}/readAllCodespacesPost",
+      "httpMethod": "post",
+      "tag": "Tokens",
+      "description": "",
+      "parameters": [
+        {
+          "name": "planName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "x-subscription-id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "expiration",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/Tokens/plans/{planName}/writeCodespaces",
+      "method": "/api/v1/tokens/plans/{planName}/writeCodespacesPost",
+      "httpMethod": "post",
+      "tag": "Tokens",
+      "description": "",
+      "parameters": [
+        {
+          "name": "planName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "x-subscription-id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "expiration",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/Tokens/plans/{planName}/writeDelegates",
+      "method": "/api/v1/tokens/plans/{planName}/writeDelegatesPost",
+      "httpMethod": "post",
+      "tag": "Tokens",
+      "description": "",
+      "parameters": [
+        {
+          "name": "planName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "x-subscription-id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "environmentIds",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "expiration",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "identity",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "portNumbers",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "scope",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/Tokens/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/{providerNamespace}/plans/{resourceName}",
+      "method": "/api/v1/tokens/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/{providerNamespace}/plans/{resourceName}Put",
+      "httpMethod": "put",
+      "tag": "Tokens",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "providerNamespace",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "headers",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "identity",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "provisioningState",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/Tunnel/{environmentId}/portInfo",
+      "method": "/api/v1/tunnel/{environmentId}/portInfoGet",
+      "httpMethod": "get",
+      "tag": "Tunnel",
+      "description": "",
+      "parameters": [
+        {
+          "name": "environmentId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "portNumber",
+          "schema": "integer",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/UserSubscriptions",
+      "method": "/api/v1/userSubscriptionsDelete",
+      "httpMethod": "delete",
+      "tag": "UserSubscriptions",
+      "description": "",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/UserSubscriptions",
+      "method": "/api/v1/userSubscriptionsPost",
+      "httpMethod": "post",
+      "tag": "UserSubscriptions",
+      "description": "",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/pools/default",
+      "method": "/api/v1/pools/defaultGet",
+      "httpMethod": "get",
+      "tag": "Pools",
+      "description": "",
+      "parameters": [
+        {
+          "name": "skuName",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/providers/GitHub.Network/{resourceType}/SubscriptionLifeCycleNotification",
+      "method": "/api/v1/subscriptions/{subscriptionId}/providers/gitHubNetwork/{resourceType}/subscriptionLifeCycleNotificationPut",
+      "httpMethod": "put",
+      "tag": "NetworkSettings",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "registrationDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/providers/GitHub.Network/{resourceType}/resourceReadBegin",
+      "method": "/api/v1/subscriptions/{subscriptionId}/providers/gitHubNetwork/{resourceType}/resourceReadBeginPost",
+      "httpMethod": "post",
+      "tag": "NetworkSettings",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "value",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/providers/Microsoft.Codespaces/plans/SubscriptionLifeCycleNotification",
+      "method": "/api/v1/subscriptions/{subscriptionId}/providers/microsoftCodespaces/plans/subscriptionLifeCycleNotificationPut",
+      "httpMethod": "put",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "registrationDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/providers/Microsoft.Codespaces/plans/resourceReadBegin",
+      "method": "/api/v1/subscriptions/{subscriptionId}/providers/microsoftCodespaces/plans/resourceReadBeginPost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "value",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/providers/Microsoft.VSOnline/plans/SubscriptionLifeCycleNotification",
+      "method": "/api/v1/subscriptions/{subscriptionId}/providers/microsoftVsOnline/plans/subscriptionLifeCycleNotificationPut",
+      "httpMethod": "put",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "registrationDate",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "state",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/providers/Microsoft.VSOnline/plans/resourceReadBegin",
+      "method": "/api/v1/subscriptions/{subscriptionId}/providers/microsoftVsOnline/plans/resourceReadBeginPost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "value",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/GitHub.Network/{resourceType}/resourceReadBegin",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/gitHubNetwork/{resourceType}/resourceReadBeginPost",
+      "httpMethod": "post",
+      "tag": "NetworkSettings",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "value",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/GitHub.Network/{resourceType}/{resourceName}",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/gitHubNetwork/{resourceType}/{resourceName}Delete",
+      "httpMethod": "delete",
+      "tag": "NetworkSettings",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "provisioningState",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/GitHub.Network/{resourceType}/{resourceName}",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/gitHubNetwork/{resourceType}/{resourceName}Patch",
+      "httpMethod": "patch",
+      "tag": "NetworkSettings",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "provisioningState",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/GitHub.Network/{resourceType}/{resourceName}",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/gitHubNetwork/{resourceType}/{resourceName}Put",
+      "httpMethod": "put",
+      "tag": "NetworkSettings",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "provisioningState",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/GitHub.Network/{resourceType}/{resourceName}/resourceCreationCompleted",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/gitHubNetwork/{resourceType}/{resourceName}/resourceCreationCompletedPost",
+      "httpMethod": "post",
+      "tag": "NetworkSettings",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/GitHub.Network/{resourceType}/{resourceName}/resourceCreationValidate",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/gitHubNetwork/{resourceType}/{resourceName}/resourceCreationValidatePost",
+      "httpMethod": "post",
+      "tag": "NetworkSettings",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "provisioningState",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/GitHub.Network/{resourceType}/{resourceName}/resourceDeletionCompleted",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/gitHubNetwork/{resourceType}/{resourceName}/resourceDeletionCompletedPost",
+      "httpMethod": "post",
+      "tag": "NetworkSettings",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/GitHub.Network/{resourceType}/{resourceName}/resourceDeletionValidate",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/gitHubNetwork/{resourceType}/{resourceName}/resourceDeletionValidatePost",
+      "httpMethod": "post",
+      "tag": "NetworkSettings",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "provisioningState",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/GitHub.Network/{resourceType}/{resourceName}/resourcePatchCompleted",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/gitHubNetwork/{resourceType}/{resourceName}/resourcePatchCompletedPost",
+      "httpMethod": "post",
+      "tag": "NetworkSettings",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/GitHub.Network/{resourceType}/{resourceName}/resourcePatchValidate",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/gitHubNetwork/{resourceType}/{resourceName}/resourcePatchValidatePost",
+      "httpMethod": "post",
+      "tag": "NetworkSettings",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "provisioningState",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/GitHub.Network/{resourceType}/{resourceName}/resourceReadBegin",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/gitHubNetwork/{resourceType}/{resourceName}/resourceReadBeginPost",
+      "httpMethod": "post",
+      "tag": "NetworkSettings",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "provisioningState",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Codespaces/plans/resourceReadBegin",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftCodespaces/plans/resourceReadBeginPost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "value",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Codespaces/plans/{resourceName}",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftCodespaces/plans/{resourceName}Put",
+      "httpMethod": "put",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "headers",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "identity",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "provisioningState",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Codespaces/plans/{resourceName}/deleteAllCodespaces",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftCodespaces/plans/{resourceName}/deleteAllCodespacesPost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "expiration",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Codespaces/plans/{resourceName}/deleteAllEnvironments",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftCodespaces/plans/{resourceName}/deleteAllEnvironmentsPost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "expiration",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Codespaces/plans/{resourceName}/readAllCodespaces",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftCodespaces/plans/{resourceName}/readAllCodespacesPost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "expiration",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Codespaces/plans/{resourceName}/readAllEnvironments",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftCodespaces/plans/{resourceName}/readAllEnvironmentsPost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "expiration",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Codespaces/plans/{resourceName}/readDelegates",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftCodespaces/plans/{resourceName}/readDelegatesPost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Codespaces/plans/{resourceName}/resourceCreationCompleted",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftCodespaces/plans/{resourceName}/resourceCreationCompletedPost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Codespaces/plans/{resourceName}/resourceCreationValidate",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftCodespaces/plans/{resourceName}/resourceCreationValidatePost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "identity",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "provisioningState",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Codespaces/plans/{resourceName}/resourceDeletionValidate",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftCodespaces/plans/{resourceName}/resourceDeletionValidatePost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Codespaces/plans/{resourceName}/resourcePatchCompleted",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftCodespaces/plans/{resourceName}/resourcePatchCompletedPost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "headers",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "identity",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Codespaces/plans/{resourceName}/resourcePatchValidate",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftCodespaces/plans/{resourceName}/resourcePatchValidatePost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "identity",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Codespaces/plans/{resourceName}/resourceReadBegin",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftCodespaces/plans/{resourceName}/resourceReadBeginPost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "identity",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "provisioningState",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Codespaces/plans/{resourceName}/writeCodespaces",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftCodespaces/plans/{resourceName}/writeCodespacesPost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "expiration",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Codespaces/plans/{resourceName}/writeDelegates",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftCodespaces/plans/{resourceName}/writeDelegatesPost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "environmentIds",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "expiration",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "identity",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "portNumbers",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "scope",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Codespaces/plans/{resourceName}/writeEnvironments",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftCodespaces/plans/{resourceName}/writeEnvironmentsPost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "expiration",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.VSOnline/plans/resourceReadBegin",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftVsOnline/plans/resourceReadBeginPost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "value",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.VSOnline/plans/{resourceName}",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftVsOnline/plans/{resourceName}Put",
+      "httpMethod": "put",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "headers",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "identity",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "provisioningState",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.VSOnline/plans/{resourceName}/deleteAllCodespaces",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftVsOnline/plans/{resourceName}/deleteAllCodespacesPost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "expiration",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.VSOnline/plans/{resourceName}/deleteAllEnvironments",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftVsOnline/plans/{resourceName}/deleteAllEnvironmentsPost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "expiration",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.VSOnline/plans/{resourceName}/readAllCodespaces",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftVsOnline/plans/{resourceName}/readAllCodespacesPost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "expiration",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.VSOnline/plans/{resourceName}/readAllEnvironments",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftVsOnline/plans/{resourceName}/readAllEnvironmentsPost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "expiration",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.VSOnline/plans/{resourceName}/readDelegates",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftVsOnline/plans/{resourceName}/readDelegatesPost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.VSOnline/plans/{resourceName}/resourceCreationCompleted",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftVsOnline/plans/{resourceName}/resourceCreationCompletedPost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.VSOnline/plans/{resourceName}/resourceCreationValidate",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftVsOnline/plans/{resourceName}/resourceCreationValidatePost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "identity",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "provisioningState",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.VSOnline/plans/{resourceName}/resourceDeletionValidate",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftVsOnline/plans/{resourceName}/resourceDeletionValidatePost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.VSOnline/plans/{resourceName}/resourcePatchCompleted",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftVsOnline/plans/{resourceName}/resourcePatchCompletedPost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "headers",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "identity",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.VSOnline/plans/{resourceName}/resourcePatchValidate",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftVsOnline/plans/{resourceName}/resourcePatchValidatePost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "identity",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "object",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.VSOnline/plans/{resourceName}/resourceReadBegin",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftVsOnline/plans/{resourceName}/resourceReadBeginPost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "identity",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "properties",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "provisioningState",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.VSOnline/plans/{resourceName}/writeCodespaces",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftVsOnline/plans/{resourceName}/writeCodespacesPost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "expiration",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.VSOnline/plans/{resourceName}/writeDelegates",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftVsOnline/plans/{resourceName}/writeDelegatesPost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "environmentIds",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "expiration",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "identity",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "portNumbers",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "scope",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.VSOnline/plans/{resourceName}/writeEnvironments",
+      "method": "/api/v1/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoftVsOnline/plans/{resourceName}/writeEnvironmentsPost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "expiration",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/{resourceGroup}/providers/Microsoft.Codespaces/plans/{resourceName}/deleteDelegates",
+      "method": "/api/v1/subscriptions/{subscriptionId}/{resourceGroup}/providers/microsoftCodespaces/plans/{resourceName}/deleteDelegatesPost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/subscriptions/{subscriptionId}/{resourceGroup}/providers/Microsoft.VSOnline/plans/{resourceName}/deleteDelegates",
+      "method": "/api/v1/subscriptions/{subscriptionId}/{resourceGroup}/providers/microsoftVsOnline/plans/{resourceName}/deleteDelegatesPost",
+      "httpMethod": "post",
+      "tag": "Plans",
+      "description": "",
+      "parameters": [
+        {
+          "name": "subscriptionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceGroup",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "resourceName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/tenant/{tenantId}/Pool/{poolName}",
+      "method": "/api/v1/tenant/{tenantId}/pool/{poolName}Delete",
+      "httpMethod": "delete",
+      "tag": "Pool",
+      "description": "",
+      "parameters": [
+        {
+          "name": "tenantId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "poolName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/tenant/{tenantId}/Pool/{poolName}",
+      "method": "/api/v1/tenant/{tenantId}/pool/{poolName}Get",
+      "httpMethod": "get",
+      "tag": "Pool",
+      "description": "",
+      "parameters": [
+        {
+          "name": "tenantId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "poolName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/tenant/{tenantId}/Pool/{poolName}",
+      "method": "/api/v1/tenant/{tenantId}/pool/{poolName}Patch",
+      "httpMethod": "patch",
+      "tag": "Pool",
+      "description": "",
+      "parameters": [
+        {
+          "name": "tenantId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "poolName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "domainUserCredentials",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "hotPoolSettings",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "poolGroupName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "userGroupName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "vmSpecs",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/tenant/{tenantId}/Pool/{poolName}",
+      "method": "/api/v1/tenant/{tenantId}/pool/{poolName}Put",
+      "httpMethod": "put",
+      "tag": "Pool",
+      "description": "",
+      "parameters": [
+        {
+          "name": "tenantId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "poolName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "domainUserCredentials",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "hotPoolSettings",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "poolGroupName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "userGroupName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "vmSpecs",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/tenant/{tenantId}/PoolGroup/{poolGroupName}",
+      "method": "/api/v1/tenant/{tenantId}/poolGroup/{poolGroupName}Delete",
+      "httpMethod": "delete",
+      "tag": "PoolGroup",
+      "description": "",
+      "parameters": [
+        {
+          "name": "tenantId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "poolGroupName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/tenant/{tenantId}/PoolGroup/{poolGroupName}",
+      "method": "/api/v1/tenant/{tenantId}/poolGroup/{poolGroupName}Get",
+      "httpMethod": "get",
+      "tag": "PoolGroup",
+      "description": "",
+      "parameters": [
+        {
+          "name": "tenantId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "poolGroupName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/tenant/{tenantId}/PoolGroup/{poolGroupName}",
+      "method": "/api/v1/tenant/{tenantId}/poolGroup/{poolGroupName}Patch",
+      "httpMethod": "patch",
+      "tag": "PoolGroup",
+      "description": "",
+      "parameters": [
+        {
+          "name": "tenantId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "poolGroupName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "displayName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/tenant/{tenantId}/PoolGroup/{poolGroupName}",
+      "method": "/api/v1/tenant/{tenantId}/poolGroup/{poolGroupName}Put",
+      "httpMethod": "put",
+      "tag": "PoolGroup",
+      "description": "",
+      "parameters": [
+        {
+          "name": "tenantId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "poolGroupName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "displayName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "region",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "tags",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/tenant/{tenantId}/pool/{poolName}/Vm",
+      "method": "/api/v1/tenant/{tenantId}/pool/{poolName}/vmGet",
+      "httpMethod": "get",
+      "tag": "Vm",
+      "description": "",
+      "parameters": [
+        {
+          "name": "tenantId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "poolName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/tenant/{tenantId}/pool/{poolName}/Vm/{vmName}",
+      "method": "/api/v1/tenant/{tenantId}/pool/{poolName}/vm/{vmName}Delete",
+      "httpMethod": "delete",
+      "tag": "Vm",
+      "description": "",
+      "parameters": [
+        {
+          "name": "tenantId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "poolName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "vmName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/tenant/{tenantId}/pool/{poolName}/Vm/{vmName}",
+      "method": "/api/v1/tenant/{tenantId}/pool/{poolName}/vm/{vmName}Get",
+      "httpMethod": "get",
+      "tag": "Vm",
+      "description": "",
+      "parameters": [
+        {
+          "name": "tenantId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "poolName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "vmName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/tenant/{tenantId}/pool/{poolName}/Vm/{vmName}",
+      "method": "/api/v1/tenant/{tenantId}/pool/{poolName}/vm/{vmName}Put",
+      "httpMethod": "put",
+      "tag": "Vm",
+      "description": "",
+      "parameters": [
+        {
+          "name": "tenantId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "poolName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "vmName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "user",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "202",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/tenant/{tenantId}/pool/{poolName}/Vm/{vmName}/start",
+      "method": "/api/v1/tenant/{tenantId}/pool/{poolName}/vm/{vmName}/startPost",
+      "httpMethod": "post",
+      "tag": "Vm",
+      "description": "",
+      "parameters": [
+        {
+          "name": "tenantId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "poolName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "vmName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/tenant/{tenantId}/pool/{poolName}/Vm/{vmName}/stop",
+      "method": "/api/v1/tenant/{tenantId}/pool/{poolName}/vm/{vmName}/stopPost",
+      "httpMethod": "post",
+      "tag": "Vm",
+      "description": "",
+      "parameters": [
+        {
+          "name": "tenantId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "poolName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "vmName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/prebuilds/delete",
+      "method": "/api/v2/prebuilds/deletePost",
+      "httpMethod": "post",
+      "tag": "PrebuildsV",
+      "description": "",
+      "parameters": [
+        {
+          "name": "branchName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "devContainerPath",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "prebuildConfigurationId",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "repoId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/prebuilds/repository/{repoId}/branch/{branchName}",
+      "method": "/api/v2/prebuilds/repository/{repoId}/branch/{branchName}Delete",
+      "httpMethod": "delete",
+      "tag": "PrebuildsV",
+      "description": "",
+      "parameters": [
+        {
+          "name": "repoId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "branchName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/prebuilds/templates",
+      "method": "/api/v2/prebuilds/templatesPost",
+      "httpMethod": "post",
+      "tag": "PrebuildsV",
+      "description": "",
+      "parameters": [
+        {
+          "name": "devContainerPath",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "experimentalFeatures",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "features",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "friendlyName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "gitHubPrebuildInstanceEndpoint",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "gitHubPrebuildTemplateEndpoint",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "planId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "seed",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "storageType",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "templateInfo",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/prebuilds/templates/skus/repo/{repoId}/branch/{branchName}/hash/{prebuildHash}/location/{location}/devcontainerpath/{devContainerPath}",
+      "method": "getPrebuildReadinessSkusRoute",
+      "httpMethod": "get",
+      "tag": "PrebuildsV",
+      "description": "",
+      "parameters": [
+        {
+          "name": "repoId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "branchName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "prebuildHash",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "location",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "devContainerPath",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "storageType",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "fastPathEnabled",
+          "schema": "boolean",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/prebuilds/templates/updatemaxversions",
+      "method": "/api/v2/prebuilds/templates/updatemaxversionsPost",
+      "httpMethod": "post",
+      "tag": "PrebuildsV",
+      "description": "",
+      "parameters": [
+        {
+          "name": "branchName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "devContainerPath",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "maxPrebuildTemplateVersions",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "repoId",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v2/prebuilds/templates/{templateId}/updatestatus",
+      "method": "/api/v2/prebuilds/templates/{templateId}/updatestatusPost",
+      "httpMethod": "post",
+      "tag": "PrebuildsV",
+      "description": "",
+      "parameters": [
+        {
+          "name": "templateId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "isSuccess",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/health",
+      "method": "/healthGet",
+      "httpMethod": "get",
+      "tag": "Health",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/internal/Netmon/correlation",
+      "method": "/internal/netmon/correlationGet",
+      "httpMethod": "get",
+      "tag": "Netmon",
+      "description": "",
+      "parameters": [
+        {
+          "name": "macAddress",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/warmup",
+      "method": "/warmupGet",
+      "httpMethod": "get",
+      "tag": "Warmup",
+      "description": "",
+      "parameters": [],
+      "responses": []
+    }
+  ],
   "apiBaseUrl": "https://online.visualstudio.com",
   "apiDescription": "Public APIs for managing VS Codespaces",
   "apiTitle": "VSOnline",

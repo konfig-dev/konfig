@@ -4,6 +4,72 @@
   "homepage": "vtex.local",
   "serviceName": "VTEX_TEMPLATE",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/pets",
+      "method": "listPets",
+      "httpMethod": "get",
+      "tag": "pets",
+      "description": "List all pets",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "How many items to return at one time (max 100)"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/pets",
+      "method": "createPets",
+      "httpMethod": "post",
+      "tag": "pets",
+      "description": "Create a pet",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/pets/{petId}",
+      "method": "showPetById",
+      "httpMethod": "get",
+      "tag": "pets",
+      "description": "Info for a specific pet",
+      "parameters": [
+        {
+          "name": "petId",
+          "schema": "string",
+          "required": true,
+          "description": "The id of the pet to retrieve"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://vtex.local",
   "apiTitle": "Pets Api",
   "endpoints": 2,

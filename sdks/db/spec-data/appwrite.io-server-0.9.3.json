@@ -4,6 +4,2432 @@
   "homepage": "appwrite.io",
   "serviceName": "server",
   "apiVersion": "0.9.3",
+  "methods": [
+    {
+      "url": "/account",
+      "method": "accountDelete",
+      "httpMethod": "delete",
+      "tag": "account",
+      "description": "Delete Account",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/account",
+      "method": "accountGet",
+      "httpMethod": "get",
+      "tag": "account",
+      "description": "Get Account",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "User"
+        }
+      ]
+    },
+    {
+      "url": "/account/email",
+      "method": "accountUpdateEmail",
+      "httpMethod": "patch",
+      "tag": "account",
+      "description": "Update Account Email",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "User"
+        }
+      ]
+    },
+    {
+      "url": "/account/logs",
+      "method": "accountGetLogs",
+      "httpMethod": "get",
+      "tag": "account",
+      "description": "Get Account Logs",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Logs List"
+        }
+      ]
+    },
+    {
+      "url": "/account/name",
+      "method": "accountUpdateName",
+      "httpMethod": "patch",
+      "tag": "account",
+      "description": "Update Account Name",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "User"
+        }
+      ]
+    },
+    {
+      "url": "/account/password",
+      "method": "accountUpdatePassword",
+      "httpMethod": "patch",
+      "tag": "account",
+      "description": "Update Account Password",
+      "parameters": [
+        {
+          "name": "oldPassword",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "User"
+        }
+      ]
+    },
+    {
+      "url": "/account/prefs",
+      "method": "accountGetPrefs",
+      "httpMethod": "get",
+      "tag": "account",
+      "description": "Get Account Preferences",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Preferences"
+        }
+      ]
+    },
+    {
+      "url": "/account/prefs",
+      "method": "accountUpdatePrefs",
+      "httpMethod": "patch",
+      "tag": "account",
+      "description": "Update Account Preferences",
+      "parameters": [
+        {
+          "name": "prefs",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "User"
+        }
+      ]
+    },
+    {
+      "url": "/account/recovery",
+      "method": "accountCreateRecovery",
+      "httpMethod": "post",
+      "tag": "account",
+      "description": "Create Password Recovery",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Token"
+        }
+      ]
+    },
+    {
+      "url": "/account/recovery",
+      "method": "accountUpdateRecovery",
+      "httpMethod": "put",
+      "tag": "account",
+      "description": "Complete Password Recovery",
+      "parameters": [
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "passwordAgain",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "secret",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Token"
+        }
+      ]
+    },
+    {
+      "url": "/account/sessions",
+      "method": "accountDeleteSessions",
+      "httpMethod": "delete",
+      "tag": "account",
+      "description": "Delete All Account Sessions",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/account/sessions",
+      "method": "accountGetSessions",
+      "httpMethod": "get",
+      "tag": "account",
+      "description": "Get Account Sessions",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Sessions List"
+        }
+      ]
+    },
+    {
+      "url": "/account/sessions/{sessionId}",
+      "method": "accountDeleteSession",
+      "httpMethod": "delete",
+      "tag": "account",
+      "description": "Delete Account Session",
+      "parameters": [
+        {
+          "name": "sessionId",
+          "schema": "string",
+          "required": true,
+          "description": "Session unique ID. Use the string 'current' to delete the current device session."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/account/sessions/{sessionId}",
+      "method": "accountGetSession",
+      "httpMethod": "get",
+      "tag": "account",
+      "description": "Get Session By ID",
+      "parameters": [
+        {
+          "name": "sessionId",
+          "schema": "string",
+          "required": true,
+          "description": "Session unique ID. Use the string 'current' to get the current device session."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Session"
+        }
+      ]
+    },
+    {
+      "url": "/account/verification",
+      "method": "accountCreateVerification",
+      "httpMethod": "post",
+      "tag": "account",
+      "description": "Create Email Verification",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Token"
+        }
+      ]
+    },
+    {
+      "url": "/account/verification",
+      "method": "accountUpdateVerification",
+      "httpMethod": "put",
+      "tag": "account",
+      "description": "Complete Email Verification",
+      "parameters": [
+        {
+          "name": "secret",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Token"
+        }
+      ]
+    },
+    {
+      "url": "/avatars/browsers/{code}",
+      "method": "avatarsGetBrowser",
+      "httpMethod": "get",
+      "tag": "avatars",
+      "description": "Get Browser Icon",
+      "parameters": [
+        {
+          "name": "code",
+          "schema": "string",
+          "required": true,
+          "description": "Browser Code."
+        },
+        {
+          "name": "width",
+          "schema": "integer",
+          "required": false,
+          "description": "Image width. Pass an integer between 0 to 2000. Defaults to 100."
+        },
+        {
+          "name": "height",
+          "schema": "integer",
+          "required": false,
+          "description": "Image height. Pass an integer between 0 to 2000. Defaults to 100."
+        },
+        {
+          "name": "quality",
+          "schema": "integer",
+          "required": false,
+          "description": "Image quality. Pass an integer between 0 to 100. Defaults to 100."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/avatars/credit-cards/{code}",
+      "method": "avatarsGetCreditCard",
+      "httpMethod": "get",
+      "tag": "avatars",
+      "description": "Get Credit Card Icon",
+      "parameters": [
+        {
+          "name": "code",
+          "schema": "string",
+          "required": true,
+          "description": "Credit Card Code. Possible values: amex, argencard, cabal, censosud, diners, discover, elo, hipercard, jcb, mastercard, naranja, targeta-shopping, union-china-pay, visa, mir, maestro."
+        },
+        {
+          "name": "width",
+          "schema": "integer",
+          "required": false,
+          "description": "Image width. Pass an integer between 0 to 2000. Defaults to 100."
+        },
+        {
+          "name": "height",
+          "schema": "integer",
+          "required": false,
+          "description": "Image height. Pass an integer between 0 to 2000. Defaults to 100."
+        },
+        {
+          "name": "quality",
+          "schema": "integer",
+          "required": false,
+          "description": "Image quality. Pass an integer between 0 to 100. Defaults to 100."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/avatars/favicon",
+      "method": "avatarsGetFavicon",
+      "httpMethod": "get",
+      "tag": "avatars",
+      "description": "Get Favicon",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": "Website URL which you want to fetch the favicon from."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/avatars/flags/{code}",
+      "method": "avatarsGetFlag",
+      "httpMethod": "get",
+      "tag": "avatars",
+      "description": "Get Country Flag",
+      "parameters": [
+        {
+          "name": "code",
+          "schema": "string",
+          "required": true,
+          "description": "Country Code. ISO Alpha-2 country code format."
+        },
+        {
+          "name": "width",
+          "schema": "integer",
+          "required": false,
+          "description": "Image width. Pass an integer between 0 to 2000. Defaults to 100."
+        },
+        {
+          "name": "height",
+          "schema": "integer",
+          "required": false,
+          "description": "Image height. Pass an integer between 0 to 2000. Defaults to 100."
+        },
+        {
+          "name": "quality",
+          "schema": "integer",
+          "required": false,
+          "description": "Image quality. Pass an integer between 0 to 100. Defaults to 100."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/avatars/image",
+      "method": "avatarsGetImage",
+      "httpMethod": "get",
+      "tag": "avatars",
+      "description": "Get Image from URL",
+      "parameters": [
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": "Image URL which you want to crop."
+        },
+        {
+          "name": "width",
+          "schema": "integer",
+          "required": false,
+          "description": "Resize preview image width, Pass an integer between 0 to 2000."
+        },
+        {
+          "name": "height",
+          "schema": "integer",
+          "required": false,
+          "description": "Resize preview image height, Pass an integer between 0 to 2000."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/avatars/initials",
+      "method": "avatarsGetInitials",
+      "httpMethod": "get",
+      "tag": "avatars",
+      "description": "Get User Initials",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "Full Name. When empty, current user name or email will be used. Max length: 128 chars."
+        },
+        {
+          "name": "width",
+          "schema": "integer",
+          "required": false,
+          "description": "Image width. Pass an integer between 0 to 2000. Defaults to 100."
+        },
+        {
+          "name": "height",
+          "schema": "integer",
+          "required": false,
+          "description": "Image height. Pass an integer between 0 to 2000. Defaults to 100."
+        },
+        {
+          "name": "color",
+          "schema": "string",
+          "required": false,
+          "description": "Changes text color. By default a random color will be picked and stay will persistent to the given name."
+        },
+        {
+          "name": "background",
+          "schema": "string",
+          "required": false,
+          "description": "Changes background color. By default a random color will be picked and stay will persistent to the given name."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/avatars/qr",
+      "method": "avatarsGetQr",
+      "httpMethod": "get",
+      "tag": "avatars",
+      "description": "Get QR Code",
+      "parameters": [
+        {
+          "name": "text",
+          "schema": "string",
+          "required": true,
+          "description": "Plain text to be converted to QR code image."
+        },
+        {
+          "name": "size",
+          "schema": "integer",
+          "required": false,
+          "description": "QR code size. Pass an integer between 0 to 1000. Defaults to 400."
+        },
+        {
+          "name": "margin",
+          "schema": "integer",
+          "required": false,
+          "description": "Margin from edge. Pass an integer between 0 to 10. Defaults to 1."
+        },
+        {
+          "name": "download",
+          "schema": "boolean",
+          "required": false,
+          "description": "Return resulting image with 'Content-Disposition: attachment ' headers for the browser to start downloading it. Pass 0 for no header, or 1 for otherwise. Default value is set to 0."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/database/collections",
+      "method": "databaseListCollections",
+      "httpMethod": "get",
+      "tag": "database",
+      "description": "List Collections",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "Search term to filter your list results. Max length: 256 chars."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Results limit value. By default will return maximum 25 results. Maximum of 100 results allowed per request."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Results offset. The default value is 0. Use this param to manage pagination."
+        },
+        {
+          "name": "orderType",
+          "schema": "string",
+          "required": false,
+          "description": "Order result by ASC or DESC order."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Collections List"
+        }
+      ]
+    },
+    {
+      "url": "/database/collections",
+      "method": "databaseCreateCollection",
+      "httpMethod": "post",
+      "tag": "database",
+      "description": "Create Collection",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "read",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "rules",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "write",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Collection"
+        }
+      ]
+    },
+    {
+      "url": "/database/collections/{collectionId}",
+      "method": "databaseDeleteCollection",
+      "httpMethod": "delete",
+      "tag": "database",
+      "description": "Delete Collection",
+      "parameters": [
+        {
+          "name": "collectionId",
+          "schema": "string",
+          "required": true,
+          "description": "Collection unique ID."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/database/collections/{collectionId}",
+      "method": "databaseGetCollection",
+      "httpMethod": "get",
+      "tag": "database",
+      "description": "Get Collection",
+      "parameters": [
+        {
+          "name": "collectionId",
+          "schema": "string",
+          "required": true,
+          "description": "Collection unique ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Collection"
+        }
+      ]
+    },
+    {
+      "url": "/database/collections/{collectionId}",
+      "method": "databaseUpdateCollection",
+      "httpMethod": "put",
+      "tag": "database",
+      "description": "Update Collection",
+      "parameters": [
+        {
+          "name": "collectionId",
+          "schema": "string",
+          "required": true,
+          "description": "Collection unique ID."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "read",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "rules",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "write",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Collection"
+        }
+      ]
+    },
+    {
+      "url": "/database/collections/{collectionId}/documents",
+      "method": "databaseListDocuments",
+      "httpMethod": "get",
+      "tag": "database",
+      "description": "List Documents",
+      "parameters": [
+        {
+          "name": "collectionId",
+          "schema": "string",
+          "required": true,
+          "description": "Collection unique ID. You can create a new collection with validation rules using the Database service [server integration](/docs/server/database#createCollection)."
+        },
+        {
+          "name": "filters",
+          "schema": "array",
+          "required": false,
+          "description": "Array of filter strings. Each filter is constructed from a key name, comparison operator (=, !=, >, <, <=, >=) and a value. You can also use a dot (.) separator in attribute names to filter by child document attributes. Examples: 'name=John Doe' or 'category.$id>=5bed2d152c362'."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Maximum number of documents to return in response.  Use this value to manage pagination. By default will return maximum 25 results. Maximum of 100 results allowed per request."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Offset value. The default value is 0. Use this param to manage pagination."
+        },
+        {
+          "name": "orderField",
+          "schema": "string",
+          "required": false,
+          "description": "Document field that results will be sorted by."
+        },
+        {
+          "name": "orderType",
+          "schema": "string",
+          "required": false,
+          "description": "Order direction. Possible values are DESC for descending order, or ASC for ascending order."
+        },
+        {
+          "name": "orderCast",
+          "schema": "string",
+          "required": false,
+          "description": "Order field type casting. Possible values are int, string, date, time or datetime. The database will attempt to cast the order field to the value you pass here. The default value is a string."
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "Search query. Enter any free text search. The database will try to find a match against all document attributes and children. Max length: 256 chars."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Documents List"
+        }
+      ]
+    },
+    {
+      "url": "/database/collections/{collectionId}/documents",
+      "method": "databaseCreateDocument",
+      "httpMethod": "post",
+      "tag": "database",
+      "description": "Create Document",
+      "parameters": [
+        {
+          "name": "collectionId",
+          "schema": "string",
+          "required": true,
+          "description": "Collection unique ID. You can create a new collection with validation rules using the Database service [server integration](/docs/server/database#createCollection)."
+        },
+        {
+          "name": "data",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "parentDocument",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parentProperty",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parentPropertyType",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "read",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "write",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Document"
+        }
+      ]
+    },
+    {
+      "url": "/database/collections/{collectionId}/documents/{documentId}",
+      "method": "databaseDeleteDocument",
+      "httpMethod": "delete",
+      "tag": "database",
+      "description": "Delete Document",
+      "parameters": [
+        {
+          "name": "collectionId",
+          "schema": "string",
+          "required": true,
+          "description": "Collection unique ID. You can create a new collection with validation rules using the Database service [server integration](/docs/server/database#createCollection)."
+        },
+        {
+          "name": "documentId",
+          "schema": "string",
+          "required": true,
+          "description": "Document unique ID."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/database/collections/{collectionId}/documents/{documentId}",
+      "method": "databaseGetDocument",
+      "httpMethod": "get",
+      "tag": "database",
+      "description": "Get Document",
+      "parameters": [
+        {
+          "name": "collectionId",
+          "schema": "string",
+          "required": true,
+          "description": "Collection unique ID. You can create a new collection with validation rules using the Database service [server integration](/docs/server/database#createCollection)."
+        },
+        {
+          "name": "documentId",
+          "schema": "string",
+          "required": true,
+          "description": "Document unique ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Document"
+        }
+      ]
+    },
+    {
+      "url": "/database/collections/{collectionId}/documents/{documentId}",
+      "method": "databaseUpdateDocument",
+      "httpMethod": "patch",
+      "tag": "database",
+      "description": "Update Document",
+      "parameters": [
+        {
+          "name": "collectionId",
+          "schema": "string",
+          "required": true,
+          "description": "Collection unique ID. You can create a new collection with validation rules using the Database service [server integration](/docs/server/database#createCollection)."
+        },
+        {
+          "name": "documentId",
+          "schema": "string",
+          "required": true,
+          "description": "Document unique ID."
+        },
+        {
+          "name": "data",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "read",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "write",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Document"
+        }
+      ]
+    },
+    {
+      "url": "/functions",
+      "method": "functionsList",
+      "httpMethod": "get",
+      "tag": "functions",
+      "description": "List Functions",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "Search term to filter your list results. Max length: 256 chars."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Results limit value. By default will return maximum 25 results. Maximum of 100 results allowed per request."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Results offset. The default value is 0. Use this param to manage pagination."
+        },
+        {
+          "name": "orderType",
+          "schema": "string",
+          "required": false,
+          "description": "Order result by ASC or DESC order."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Functions List"
+        }
+      ]
+    },
+    {
+      "url": "/functions",
+      "method": "functionsCreate",
+      "httpMethod": "post",
+      "tag": "functions",
+      "description": "Create Function",
+      "parameters": [
+        {
+          "name": "events",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "execute",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "runtime",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "schedule",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "timeout",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "vars",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Function"
+        }
+      ]
+    },
+    {
+      "url": "/functions/{functionId}",
+      "method": "functionsDelete",
+      "httpMethod": "delete",
+      "tag": "functions",
+      "description": "Delete Function",
+      "parameters": [
+        {
+          "name": "functionId",
+          "schema": "string",
+          "required": true,
+          "description": "Function unique ID."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/functions/{functionId}",
+      "method": "functionsGet",
+      "httpMethod": "get",
+      "tag": "functions",
+      "description": "Get Function",
+      "parameters": [
+        {
+          "name": "functionId",
+          "schema": "string",
+          "required": true,
+          "description": "Function unique ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Function"
+        }
+      ]
+    },
+    {
+      "url": "/functions/{functionId}",
+      "method": "functionsUpdate",
+      "httpMethod": "put",
+      "tag": "functions",
+      "description": "Update Function",
+      "parameters": [
+        {
+          "name": "functionId",
+          "schema": "string",
+          "required": true,
+          "description": "Function unique ID."
+        },
+        {
+          "name": "events",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "execute",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "schedule",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "timeout",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "vars",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Function"
+        }
+      ]
+    },
+    {
+      "url": "/functions/{functionId}/executions",
+      "method": "functionsListExecutions",
+      "httpMethod": "get",
+      "tag": "functions",
+      "description": "List Executions",
+      "parameters": [
+        {
+          "name": "functionId",
+          "schema": "string",
+          "required": true,
+          "description": "Function unique ID."
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "Search term to filter your list results. Max length: 256 chars."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Results limit value. By default will return maximum 25 results. Maximum of 100 results allowed per request."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Results offset. The default value is 0. Use this param to manage pagination."
+        },
+        {
+          "name": "orderType",
+          "schema": "string",
+          "required": false,
+          "description": "Order result by ASC or DESC order."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Executions List"
+        }
+      ]
+    },
+    {
+      "url": "/functions/{functionId}/executions",
+      "method": "functionsCreateExecution",
+      "httpMethod": "post",
+      "tag": "functions",
+      "description": "Create Execution",
+      "parameters": [
+        {
+          "name": "functionId",
+          "schema": "string",
+          "required": true,
+          "description": "Function unique ID."
+        },
+        {
+          "name": "data",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Execution"
+        }
+      ]
+    },
+    {
+      "url": "/functions/{functionId}/executions/{executionId}",
+      "method": "functionsGetExecution",
+      "httpMethod": "get",
+      "tag": "functions",
+      "description": "Get Execution",
+      "parameters": [
+        {
+          "name": "functionId",
+          "schema": "string",
+          "required": true,
+          "description": "Function unique ID."
+        },
+        {
+          "name": "executionId",
+          "schema": "string",
+          "required": true,
+          "description": "Execution unique ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Execution"
+        }
+      ]
+    },
+    {
+      "url": "/functions/{functionId}/tag",
+      "method": "functionsUpdateTag",
+      "httpMethod": "patch",
+      "tag": "functions",
+      "description": "Update Function Tag",
+      "parameters": [
+        {
+          "name": "functionId",
+          "schema": "string",
+          "required": true,
+          "description": "Function unique ID."
+        },
+        {
+          "name": "tag",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Function"
+        }
+      ]
+    },
+    {
+      "url": "/functions/{functionId}/tags",
+      "method": "functionsListTags",
+      "httpMethod": "get",
+      "tag": "functions",
+      "description": "List Tags",
+      "parameters": [
+        {
+          "name": "functionId",
+          "schema": "string",
+          "required": true,
+          "description": "Function unique ID."
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "Search term to filter your list results. Max length: 256 chars."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Results limit value. By default will return maximum 25 results. Maximum of 100 results allowed per request."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Results offset. The default value is 0. Use this param to manage pagination."
+        },
+        {
+          "name": "orderType",
+          "schema": "string",
+          "required": false,
+          "description": "Order result by ASC or DESC order."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Tags List"
+        }
+      ]
+    },
+    {
+      "url": "/functions/{functionId}/tags",
+      "method": "functionsCreateTag",
+      "httpMethod": "post",
+      "tag": "functions",
+      "description": "Create Tag",
+      "parameters": [
+        {
+          "name": "functionId",
+          "schema": "string",
+          "required": true,
+          "description": "Function unique ID."
+        },
+        {
+          "name": "code",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "command",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Tag"
+        }
+      ]
+    },
+    {
+      "url": "/functions/{functionId}/tags/{tagId}",
+      "method": "functionsDeleteTag",
+      "httpMethod": "delete",
+      "tag": "functions",
+      "description": "Delete Tag",
+      "parameters": [
+        {
+          "name": "functionId",
+          "schema": "string",
+          "required": true,
+          "description": "Function unique ID."
+        },
+        {
+          "name": "tagId",
+          "schema": "string",
+          "required": true,
+          "description": "Tag unique ID."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/functions/{functionId}/tags/{tagId}",
+      "method": "functionsGetTag",
+      "httpMethod": "get",
+      "tag": "functions",
+      "description": "Get Tag",
+      "parameters": [
+        {
+          "name": "functionId",
+          "schema": "string",
+          "required": true,
+          "description": "Function unique ID."
+        },
+        {
+          "name": "tagId",
+          "schema": "string",
+          "required": true,
+          "description": "Tag unique ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Tag"
+        }
+      ]
+    },
+    {
+      "url": "/health",
+      "method": "healthGet",
+      "httpMethod": "get",
+      "tag": "health",
+      "description": "Get HTTP",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/health/anti-virus",
+      "method": "healthGetAntiVirus",
+      "httpMethod": "get",
+      "tag": "health",
+      "description": "Get Anti virus",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/health/cache",
+      "method": "healthGetCache",
+      "httpMethod": "get",
+      "tag": "health",
+      "description": "Get Cache",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/health/db",
+      "method": "healthGetDb",
+      "httpMethod": "get",
+      "tag": "health",
+      "description": "Get DB",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/health/queue/certificates",
+      "method": "healthGetQueueCertificates",
+      "httpMethod": "get",
+      "tag": "health",
+      "description": "Get Certificate Queue",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/health/queue/functions",
+      "method": "healthGetQueueFunctions",
+      "httpMethod": "get",
+      "tag": "health",
+      "description": "Get Functions Queue",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/health/queue/logs",
+      "method": "healthGetQueueLogs",
+      "httpMethod": "get",
+      "tag": "health",
+      "description": "Get Logs Queue",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/health/queue/tasks",
+      "method": "healthGetQueueTasks",
+      "httpMethod": "get",
+      "tag": "health",
+      "description": "Get Tasks Queue",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/health/queue/usage",
+      "method": "healthGetQueueUsage",
+      "httpMethod": "get",
+      "tag": "health",
+      "description": "Get Usage Queue",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/health/queue/webhooks",
+      "method": "healthGetQueueWebhooks",
+      "httpMethod": "get",
+      "tag": "health",
+      "description": "Get Webhooks Queue",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/health/storage/local",
+      "method": "healthGetStorageLocal",
+      "httpMethod": "get",
+      "tag": "health",
+      "description": "Get Local Storage",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/health/time",
+      "method": "healthGetTime",
+      "httpMethod": "get",
+      "tag": "health",
+      "description": "Get Time",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/locale",
+      "method": "localeGet",
+      "httpMethod": "get",
+      "tag": "locale",
+      "description": "Get User Locale",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Locale"
+        }
+      ]
+    },
+    {
+      "url": "/locale/continents",
+      "method": "localeGetContinents",
+      "httpMethod": "get",
+      "tag": "locale",
+      "description": "List Continents",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Continents List"
+        }
+      ]
+    },
+    {
+      "url": "/locale/countries",
+      "method": "localeGetCountries",
+      "httpMethod": "get",
+      "tag": "locale",
+      "description": "List Countries",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Countries List"
+        }
+      ]
+    },
+    {
+      "url": "/locale/countries/eu",
+      "method": "localeGetCountriesEu",
+      "httpMethod": "get",
+      "tag": "locale",
+      "description": "List EU Countries",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Countries List"
+        }
+      ]
+    },
+    {
+      "url": "/locale/countries/phones",
+      "method": "localeGetCountriesPhones",
+      "httpMethod": "get",
+      "tag": "locale",
+      "description": "List Countries Phone Codes",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Phones List"
+        }
+      ]
+    },
+    {
+      "url": "/locale/currencies",
+      "method": "localeGetCurrencies",
+      "httpMethod": "get",
+      "tag": "locale",
+      "description": "List Currencies",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Currencies List"
+        }
+      ]
+    },
+    {
+      "url": "/locale/languages",
+      "method": "localeGetLanguages",
+      "httpMethod": "get",
+      "tag": "locale",
+      "description": "List Languages",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Languages List"
+        }
+      ]
+    },
+    {
+      "url": "/storage/files",
+      "method": "storageListFiles",
+      "httpMethod": "get",
+      "tag": "storage",
+      "description": "List Files",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "Search term to filter your list results. Max length: 256 chars."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Results limit value. By default will return maximum 25 results. Maximum of 100 results allowed per request."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Results offset. The default value is 0. Use this param to manage pagination."
+        },
+        {
+          "name": "orderType",
+          "schema": "string",
+          "required": false,
+          "description": "Order result by ASC or DESC order."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Files List"
+        }
+      ]
+    },
+    {
+      "url": "/storage/files",
+      "method": "storageCreateFile",
+      "httpMethod": "post",
+      "tag": "storage",
+      "description": "Create File",
+      "parameters": [
+        {
+          "name": "file",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "read",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "write",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "File"
+        }
+      ]
+    },
+    {
+      "url": "/storage/files/{fileId}",
+      "method": "storageDeleteFile",
+      "httpMethod": "delete",
+      "tag": "storage",
+      "description": "Delete File",
+      "parameters": [
+        {
+          "name": "fileId",
+          "schema": "string",
+          "required": true,
+          "description": "File unique ID."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/storage/files/{fileId}",
+      "method": "storageGetFile",
+      "httpMethod": "get",
+      "tag": "storage",
+      "description": "Get File",
+      "parameters": [
+        {
+          "name": "fileId",
+          "schema": "string",
+          "required": true,
+          "description": "File unique ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "File"
+        }
+      ]
+    },
+    {
+      "url": "/storage/files/{fileId}",
+      "method": "storageUpdateFile",
+      "httpMethod": "put",
+      "tag": "storage",
+      "description": "Update File",
+      "parameters": [
+        {
+          "name": "fileId",
+          "schema": "string",
+          "required": true,
+          "description": "File unique ID."
+        },
+        {
+          "name": "read",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "write",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "File"
+        }
+      ]
+    },
+    {
+      "url": "/storage/files/{fileId}/download",
+      "method": "storageGetFileDownload",
+      "httpMethod": "get",
+      "tag": "storage",
+      "description": "Get File for Download",
+      "parameters": [
+        {
+          "name": "fileId",
+          "schema": "string",
+          "required": true,
+          "description": "File unique ID."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/storage/files/{fileId}/preview",
+      "method": "storageGetFilePreview",
+      "httpMethod": "get",
+      "tag": "storage",
+      "description": "Get File Preview",
+      "parameters": [
+        {
+          "name": "fileId",
+          "schema": "string",
+          "required": true,
+          "description": "File unique ID"
+        },
+        {
+          "name": "width",
+          "schema": "integer",
+          "required": false,
+          "description": "Resize preview image width, Pass an integer between 0 to 4000."
+        },
+        {
+          "name": "height",
+          "schema": "integer",
+          "required": false,
+          "description": "Resize preview image height, Pass an integer between 0 to 4000."
+        },
+        {
+          "name": "gravity",
+          "schema": "string",
+          "required": false,
+          "description": "Image crop gravity. Can be one of center,top-left,top,top-right,left,right,bottom-left,bottom,bottom-right"
+        },
+        {
+          "name": "quality",
+          "schema": "integer",
+          "required": false,
+          "description": "Preview image quality. Pass an integer between 0 to 100. Defaults to 100."
+        },
+        {
+          "name": "borderWidth",
+          "schema": "integer",
+          "required": false,
+          "description": "Preview image border in pixels. Pass an integer between 0 to 100. Defaults to 0."
+        },
+        {
+          "name": "borderColor",
+          "schema": "string",
+          "required": false,
+          "description": "Preview image border color. Use a valid HEX color, no # is needed for prefix."
+        },
+        {
+          "name": "borderRadius",
+          "schema": "integer",
+          "required": false,
+          "description": "Preview image border radius in pixels. Pass an integer between 0 to 4000."
+        },
+        {
+          "name": "opacity",
+          "schema": "number",
+          "required": false,
+          "description": "Preview image opacity. Only works with images having an alpha channel (like png). Pass a number between 0 to 1."
+        },
+        {
+          "name": "rotation",
+          "schema": "integer",
+          "required": false,
+          "description": "Preview image rotation in degrees. Pass an integer between 0 and 360."
+        },
+        {
+          "name": "background",
+          "schema": "string",
+          "required": false,
+          "description": "Preview image background color. Only works with transparent images (png). Use a valid HEX color, no # is needed for prefix."
+        },
+        {
+          "name": "output",
+          "schema": "string",
+          "required": false,
+          "description": "Output format type (jpeg, jpg, png, gif and webp)."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/storage/files/{fileId}/view",
+      "method": "storageGetFileView",
+      "httpMethod": "get",
+      "tag": "storage",
+      "description": "Get File for View",
+      "parameters": [
+        {
+          "name": "fileId",
+          "schema": "string",
+          "required": true,
+          "description": "File unique ID."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/teams",
+      "method": "teamsList",
+      "httpMethod": "get",
+      "tag": "teams",
+      "description": "List Teams",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "Search term to filter your list results. Max length: 256 chars."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Results limit value. By default will return maximum 25 results. Maximum of 100 results allowed per request."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Results offset. The default value is 0. Use this param to manage pagination."
+        },
+        {
+          "name": "orderType",
+          "schema": "string",
+          "required": false,
+          "description": "Order result by ASC or DESC order."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Teams List"
+        }
+      ]
+    },
+    {
+      "url": "/teams",
+      "method": "teamsCreate",
+      "httpMethod": "post",
+      "tag": "teams",
+      "description": "Create Team",
+      "parameters": [
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "roles",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Team"
+        }
+      ]
+    },
+    {
+      "url": "/teams/{teamId}",
+      "method": "teamsDelete",
+      "httpMethod": "delete",
+      "tag": "teams",
+      "description": "Delete Team",
+      "parameters": [
+        {
+          "name": "teamId",
+          "schema": "string",
+          "required": true,
+          "description": "Team unique ID."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/teams/{teamId}",
+      "method": "teamsGet",
+      "httpMethod": "get",
+      "tag": "teams",
+      "description": "Get Team",
+      "parameters": [
+        {
+          "name": "teamId",
+          "schema": "string",
+          "required": true,
+          "description": "Team unique ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Team"
+        }
+      ]
+    },
+    {
+      "url": "/teams/{teamId}",
+      "method": "teamsUpdate",
+      "httpMethod": "put",
+      "tag": "teams",
+      "description": "Update Team",
+      "parameters": [
+        {
+          "name": "teamId",
+          "schema": "string",
+          "required": true,
+          "description": "Team unique ID."
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Team"
+        }
+      ]
+    },
+    {
+      "url": "/teams/{teamId}/memberships",
+      "method": "teamsGetMemberships",
+      "httpMethod": "get",
+      "tag": "teams",
+      "description": "Get Team Memberships",
+      "parameters": [
+        {
+          "name": "teamId",
+          "schema": "string",
+          "required": true,
+          "description": "Team unique ID."
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "Search term to filter your list results. Max length: 256 chars."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Results limit value. By default will return maximum 25 results. Maximum of 100 results allowed per request."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Results offset. The default value is 0. Use this param to manage pagination."
+        },
+        {
+          "name": "orderType",
+          "schema": "string",
+          "required": false,
+          "description": "Order result by ASC or DESC order."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Memberships List"
+        }
+      ]
+    },
+    {
+      "url": "/teams/{teamId}/memberships",
+      "method": "teamsCreateMembership",
+      "httpMethod": "post",
+      "tag": "teams",
+      "description": "Create Team Membership",
+      "parameters": [
+        {
+          "name": "teamId",
+          "schema": "string",
+          "required": true,
+          "description": "Team unique ID."
+        },
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "roles",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "url",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "Membership"
+        }
+      ]
+    },
+    {
+      "url": "/teams/{teamId}/memberships/{membershipId}",
+      "method": "teamsDeleteMembership",
+      "httpMethod": "delete",
+      "tag": "teams",
+      "description": "Delete Team Membership",
+      "parameters": [
+        {
+          "name": "teamId",
+          "schema": "string",
+          "required": true,
+          "description": "Team unique ID."
+        },
+        {
+          "name": "membershipId",
+          "schema": "string",
+          "required": true,
+          "description": "Membership ID."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/teams/{teamId}/memberships/{membershipId}",
+      "method": "teamsUpdateMembershipRoles",
+      "httpMethod": "patch",
+      "tag": "teams",
+      "description": "Update Membership Roles",
+      "parameters": [
+        {
+          "name": "teamId",
+          "schema": "string",
+          "required": true,
+          "description": "Team unique ID."
+        },
+        {
+          "name": "membershipId",
+          "schema": "string",
+          "required": true,
+          "description": "Membership ID."
+        },
+        {
+          "name": "roles",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Membership"
+        }
+      ]
+    },
+    {
+      "url": "/teams/{teamId}/memberships/{membershipId}/status",
+      "method": "teamsUpdateMembershipStatus",
+      "httpMethod": "patch",
+      "tag": "teams",
+      "description": "Update Team Membership Status",
+      "parameters": [
+        {
+          "name": "teamId",
+          "schema": "string",
+          "required": true,
+          "description": "Team unique ID."
+        },
+        {
+          "name": "membershipId",
+          "schema": "string",
+          "required": true,
+          "description": "Membership ID."
+        },
+        {
+          "name": "secret",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Membership"
+        }
+      ]
+    },
+    {
+      "url": "/users",
+      "method": "usersList",
+      "httpMethod": "get",
+      "tag": "users",
+      "description": "List Users",
+      "parameters": [
+        {
+          "name": "search",
+          "schema": "string",
+          "required": false,
+          "description": "Search term to filter your list results. Max length: 256 chars."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "required": false,
+          "description": "Results limit value. By default will return maximum 25 results. Maximum of 100 results allowed per request."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "required": false,
+          "description": "Results offset. The default value is 0. Use this param to manage pagination."
+        },
+        {
+          "name": "orderType",
+          "schema": "string",
+          "required": false,
+          "description": "Order result by ASC or DESC order."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Users List"
+        }
+      ]
+    },
+    {
+      "url": "/users",
+      "method": "usersCreate",
+      "httpMethod": "post",
+      "tag": "users",
+      "description": "Create User",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "password",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": "User"
+        }
+      ]
+    },
+    {
+      "url": "/users/{userId}",
+      "method": "usersDelete",
+      "httpMethod": "delete",
+      "tag": "users",
+      "description": "Delete User",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": "User unique ID."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/users/{userId}",
+      "method": "usersGet",
+      "httpMethod": "get",
+      "tag": "users",
+      "description": "Get User",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": "User unique ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "User"
+        }
+      ]
+    },
+    {
+      "url": "/users/{userId}/logs",
+      "method": "usersGetLogs",
+      "httpMethod": "get",
+      "tag": "users",
+      "description": "Get User Logs",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": "User unique ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Logs List"
+        }
+      ]
+    },
+    {
+      "url": "/users/{userId}/prefs",
+      "method": "usersGetPrefs",
+      "httpMethod": "get",
+      "tag": "users",
+      "description": "Get User Preferences",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": "User unique ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Preferences"
+        }
+      ]
+    },
+    {
+      "url": "/users/{userId}/prefs",
+      "method": "usersUpdatePrefs",
+      "httpMethod": "patch",
+      "tag": "users",
+      "description": "Update User Preferences",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": "User unique ID."
+        },
+        {
+          "name": "prefs",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Preferences"
+        }
+      ]
+    },
+    {
+      "url": "/users/{userId}/sessions",
+      "method": "usersDeleteSessions",
+      "httpMethod": "delete",
+      "tag": "users",
+      "description": "Delete User Sessions",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": "User unique ID."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/users/{userId}/sessions",
+      "method": "usersGetSessions",
+      "httpMethod": "get",
+      "tag": "users",
+      "description": "Get User Sessions",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": "User unique ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Sessions List"
+        }
+      ]
+    },
+    {
+      "url": "/users/{userId}/sessions/{sessionId}",
+      "method": "usersDeleteSession",
+      "httpMethod": "delete",
+      "tag": "users",
+      "description": "Delete User Session",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": "User unique ID."
+        },
+        {
+          "name": "sessionId",
+          "schema": "string",
+          "required": true,
+          "description": "User unique session ID."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/users/{userId}/status",
+      "method": "usersUpdateStatus",
+      "httpMethod": "patch",
+      "tag": "users",
+      "description": "Update User Status",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": "User unique ID."
+        },
+        {
+          "name": "status",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "User"
+        }
+      ]
+    },
+    {
+      "url": "/users/{userId}/verification",
+      "method": "usersUpdateVerification",
+      "httpMethod": "patch",
+      "tag": "users",
+      "description": "Update Email Verification",
+      "parameters": [
+        {
+          "name": "userId",
+          "schema": "string",
+          "required": true,
+          "description": "User unique ID."
+        },
+        {
+          "name": "emailVerification",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "User"
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://appwrite.io/v1",
   "apiDescription": "Appwrite backend as a service cuts up to 70% of the time and costs required for building a modern application. We abstract and simplify common development tasks behind a REST APIs, to help you develop your app in a fast and secure way. For full API documentation and tutorials go to [https://appwrite.io/docs](https://appwrite.io/docs)",
   "apiTitle": "Appwrite",

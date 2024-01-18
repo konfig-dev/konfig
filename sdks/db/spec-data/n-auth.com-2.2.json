@@ -3,6 +3,1606 @@
   "openApiRaw": "https://api.docs.nextauth.com/api/swagger.json",
   "homepage": "n-auth.com",
   "apiVersion": "2.2",
+  "methods": [
+    {
+      "url": "/apikeys/",
+      "method": "getApiKeys",
+      "httpMethod": "get",
+      "tag": "Management",
+      "description": "Get all API keys.",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/apikeys/",
+      "method": "createApiKey",
+      "httpMethod": "post",
+      "tag": "Management",
+      "description": "Create a new API key.",
+      "parameters": [
+        {
+          "name": "description",
+          "schema": "string",
+          "required": true,
+          "description": "Description for the new role"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/attributes/",
+      "method": "deleteGlobalAttributes",
+      "httpMethod": "delete",
+      "tag": "Global",
+      "description": "Delete all global attributes",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/attributes/",
+      "method": "getGlobalAttributes",
+      "httpMethod": "get",
+      "tag": "Global",
+      "description": "Get all global attributes",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/attributes/",
+      "method": "setGlobalAttributes",
+      "httpMethod": "post",
+      "tag": "Global",
+      "description": "Set all global attributes",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/attributes/",
+      "method": "updateGlobalAttributes",
+      "httpMethod": "put",
+      "tag": "Global",
+      "description": "Update specified global attributes",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/attributes/{attributekey}",
+      "method": "deleteGlobalAttribute",
+      "httpMethod": "delete",
+      "tag": "Global",
+      "description": "Delete specific global attribute",
+      "parameters": [
+        {
+          "name": "attributekey",
+          "schema": "string",
+          "required": true,
+          "description": "Key of the attribute"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/servers/",
+      "method": "getServers",
+      "httpMethod": "get",
+      "tag": "Servers",
+      "description": "List all your servers",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Limit the number of results"
+        },
+        {
+          "name": "marker",
+          "schema": "integer",
+          "description": "Offset in the result list"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/servers/",
+      "method": "createServer",
+      "httpMethod": "post",
+      "tag": "Servers",
+      "description": "Create a new server",
+      "parameters": [
+        {
+          "name": "accountCount",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "appandroid",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "appios",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "appname",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "appurl",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "lastLogin",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "logo",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "owner",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pinTimeout",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "pinTransTimeout",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "pingTime",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "serverFlags",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "serverName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "serverpk",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "siteurl",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "wsurl",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/servers/{serverid}/",
+      "method": "getServer",
+      "httpMethod": "get",
+      "tag": "Servers",
+      "description": "Configuration of a specific server",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/servers/{serverid}/",
+      "method": "updateServer",
+      "httpMethod": "put",
+      "tag": "Servers",
+      "description": "Update configuration of a specific server",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "accountCount",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "appandroid",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "appios",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "appname",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "appurl",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "lastLogin",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "logo",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "owner",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pinTimeout",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "pinTransTimeout",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "pingTime",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "serverFlags",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "serverName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "serverpk",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "siteurl",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "wsurl",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/servers/{serverid}/accounts/",
+      "method": "getAllAccounts",
+      "httpMethod": "get",
+      "tag": "Accounts",
+      "description": "Get all accounts",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "filter",
+          "schema": "string",
+          "description": "Filter users based on an attribute. Takes the format *attributename=attributevalue*. You can filter for multiple values at once, e.g. *group=in:group1,group2*"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Limit the number of results"
+        },
+        {
+          "name": "marker",
+          "schema": "integer",
+          "description": "Offset in the result list"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Sort the results by column. You can also specify ascending (default if not specified) or descending, e.g., *column:asc* . You can also sort by multiple columns, e.g., *column1:desc,column2:asc*"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/servers/{serverid}/accounts/{accountid}/",
+      "method": "deleteAccount",
+      "httpMethod": "delete",
+      "tag": "Accounts",
+      "description": "Delete specific account",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "accountid",
+          "schema": "integer",
+          "required": true,
+          "description": "Account id"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/servers/{serverid}/accounts/{accountid}/",
+      "method": "getAccount",
+      "httpMethod": "get",
+      "tag": "Accounts",
+      "description": "Get specific account",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "accountid",
+          "schema": "integer",
+          "required": true,
+          "description": "Account id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/servers/{serverid}/accounts/{accountid}/",
+      "method": "updateAccount",
+      "httpMethod": "put",
+      "tag": "Accounts",
+      "description": "Update specific account",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "accountid",
+          "schema": "integer",
+          "required": true,
+          "description": "Account id"
+        },
+        {
+          "name": "blocked",
+          "schema": "boolean",
+          "required": true,
+          "description": "True if the account is blocked"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/servers/{serverid}/accounts/{accountid}/provokelogin",
+      "method": "provokeLoginOnAccount",
+      "httpMethod": "post",
+      "tag": "Sessions",
+      "description": "Push a login confirmation to the user's app",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "X-nonce",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded nonce to identify the browser/webserver session"
+        },
+        {
+          "name": "accountid",
+          "schema": "integer",
+          "required": true,
+          "description": "Account id"
+        },
+        {
+          "name": "announceinfo",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "sessioninfo",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/servers/{serverid}/accounts/{accountid}/user",
+      "method": "updateAccountUser",
+      "httpMethod": "put",
+      "tag": "Accounts",
+      "description": "Update user of the given account.",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "accountid",
+          "schema": "integer",
+          "required": true,
+          "description": "Account id"
+        },
+        {
+          "name": "userid",
+          "schema": "string",
+          "required": true,
+          "description": "User name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/servers/{serverid}/attributes/",
+      "method": "deleteServerAttributes",
+      "httpMethod": "delete",
+      "tag": "Servers",
+      "description": "Delete all attributes of a specific server",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/servers/{serverid}/attributes/",
+      "method": "getServerAttributes",
+      "httpMethod": "get",
+      "tag": "Servers",
+      "description": "Get all attributes of a specific server",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/servers/{serverid}/attributes/",
+      "method": "setServerAttributes",
+      "httpMethod": "post",
+      "tag": "Servers",
+      "description": "Set all attributes of a specific server",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/servers/{serverid}/attributes/",
+      "method": "updateServerAttributes",
+      "httpMethod": "put",
+      "tag": "Servers",
+      "description": "Update specified attributes of a specific server",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/servers/{serverid}/attributes/{attributekey}",
+      "method": "deleteServerAttribute",
+      "httpMethod": "delete",
+      "tag": "Servers",
+      "description": "Delete specific attribute of a specific server",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "attributekey",
+          "schema": "string",
+          "required": true,
+          "description": "Key of the attribute"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/servers/{serverid}/permissions/",
+      "method": "getAllPermissions",
+      "httpMethod": "get",
+      "tag": "Management",
+      "description": "Get all permissions for the specified server.",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/servers/{serverid}/permissions/{roleid}",
+      "method": "revokePermissions",
+      "httpMethod": "delete",
+      "tag": "Management",
+      "description": "Revoke all permissions for the specified server and role.",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "roleid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded role id"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/servers/{serverid}/permissions/{roleid}",
+      "method": "getPermissions",
+      "httpMethod": "get",
+      "tag": "Management",
+      "description": "Get all permissions for the specified server and role.",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "roleid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded role id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/servers/{serverid}/permissions/{roleid}",
+      "method": "grantPermissions",
+      "httpMethod": "post",
+      "tag": "Management",
+      "description": "Set new permissions for the specified role on a server",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "roleid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded role id"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/servers/{serverid}/privilegedattributes/",
+      "method": "deleteServerPrivilegedAttributes",
+      "httpMethod": "delete",
+      "tag": "Global",
+      "description": "Delete all privileged attributes of a specific server",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/servers/{serverid}/privilegedattributes/",
+      "method": "getServerPrivilegedAttributes",
+      "httpMethod": "get",
+      "tag": "Global",
+      "description": "Get all privileged attributes of a specific server",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/servers/{serverid}/privilegedattributes/",
+      "method": "setServerPrivilegedAttributes",
+      "httpMethod": "post",
+      "tag": "Global",
+      "description": "Set all privileged attributes of a specific server",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/servers/{serverid}/privilegedattributes/",
+      "method": "updateServerPrivilegedAttributes",
+      "httpMethod": "put",
+      "tag": "Global",
+      "description": "Update privileged specified attributes of a specific server",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/servers/{serverid}/privilegedattributes/{attributekey}",
+      "method": "deleteServerPrivilegedAttribute",
+      "httpMethod": "delete",
+      "tag": "Global",
+      "description": "Delete specific privileged attribute of a specific server",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "attributekey",
+          "schema": "string",
+          "required": true,
+          "description": "Key of the attribute"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/servers/{serverid}/sessions/",
+      "method": "getSession",
+      "httpMethod": "get",
+      "tag": "Sessions",
+      "description": "Check if the user is logged in",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "X-nonce",
+          "schema": "string",
+          "required": true,
+          "description": "Nonce to identify the browser/webserver session"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/servers/{serverid}/sessions/html/enrol",
+      "method": "getHtmlEnrol",
+      "httpMethod": "get",
+      "tag": "HTML",
+      "description": "Generate HTML to enrol a new user",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "X-nonce",
+          "schema": "string",
+          "required": true,
+          "description": "Nonce to identify the browser/webserver session"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": false,
+          "description": "Name to forward to the nextAuth app for this account"
+        },
+        {
+          "name": "userid",
+          "schema": "string",
+          "required": false,
+          "description": "User name to register this user under"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/servers/{serverid}/sessions/html/footer",
+      "method": "getHtmlFooter",
+      "httpMethod": "get",
+      "tag": "HTML",
+      "description": "Generic HTML to add to footer. Required for login/logout/enrol functionality.",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "X-nonce",
+          "schema": "string",
+          "required": true,
+          "description": "Nonce to identify the browser/webserver session"
+        },
+        {
+          "name": "sessions",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/servers/{serverid}/sessions/html/login",
+      "method": "getHtmlLogin",
+      "httpMethod": "get",
+      "tag": "HTML",
+      "description": "Generate HTML for the login block",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "X-nonce",
+          "schema": "string",
+          "required": true,
+          "description": "Nonce to identify the browser/webserver session"
+        },
+        {
+          "name": "announceinfo",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "sessioninfo",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/servers/{serverid}/sessions/logout",
+      "method": "logout",
+      "httpMethod": "post",
+      "tag": "Sessions",
+      "description": "Force a logout on the given session",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "X-nonce",
+          "schema": "string",
+          "required": true,
+          "description": "Nonce to identify the browser/webserver session"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/servers/{serverid}/sessions/provokelogin",
+      "method": "provokeLogin",
+      "httpMethod": "post",
+      "tag": "Sessions",
+      "description": "Push a login confirmation to the user's app",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "X-nonce",
+          "schema": "string",
+          "required": true,
+          "description": "Nonce to identify the browser/webserver session"
+        },
+        {
+          "name": "announceinfo",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "sessioninfo",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/servers/{serverid}/sessions/qr/enrol",
+      "method": "getQrEnrol",
+      "httpMethod": "get",
+      "tag": "Registration",
+      "description": "Generate data for an enrol qr code",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "X-nonce",
+          "schema": "string",
+          "required": true,
+          "description": "Nonce to identify the browser/webserver session"
+        },
+        {
+          "name": "name",
+          "schema": "string",
+          "required": true,
+          "description": "Name to forward to the nextAuth app for this account"
+        },
+        {
+          "name": "userid",
+          "schema": "string",
+          "required": false,
+          "description": "User name to register this user under"
+        },
+        {
+          "name": "img",
+          "schema": "string",
+          "required": false,
+          "description": "'png' for a PNG image, not set for raw data in the qr code"
+        },
+        {
+          "name": "s",
+          "schema": "integer",
+          "required": false,
+          "description": "size in pixels of the qr code, defaults to 500"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/servers/{serverid}/sessions/qr/login",
+      "method": "getQrLogin",
+      "httpMethod": "get",
+      "tag": "Sessions",
+      "description": "Generate data for a login qr code",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "X-nonce",
+          "schema": "string",
+          "required": true,
+          "description": "Nonce to identify the browser/webserver session"
+        },
+        {
+          "name": "img",
+          "schema": "string",
+          "required": false,
+          "description": "\"png\" for a PNG image, not set for raw data in the qr code"
+        },
+        {
+          "name": "s",
+          "schema": "integer",
+          "required": false,
+          "description": "size in pixels of the qr code, defaults to 500"
+        },
+        {
+          "name": "announceinfo",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "sessioninfo",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/servers/{serverid}/sessions/registeruser",
+      "method": "registerUser",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Register a userid for the currently logged in account.",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "X-nonce",
+          "schema": "string",
+          "required": true,
+          "description": "Nonce to identify the browser/webserver session"
+        },
+        {
+          "name": "userid",
+          "schema": "string",
+          "required": true,
+          "description": "Username to register"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/servers/{serverid}/sessions/transactions",
+      "method": "createTransaction",
+      "httpMethod": "post",
+      "tag": "Transactions",
+      "description": "Create a transaction to be approved within the current session.",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "X-nonce",
+          "schema": "string",
+          "required": true,
+          "description": "Nonce to identify the browser/webserver session"
+        },
+        {
+          "name": "amount",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "benificiary",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/servers/{serverid}/transactions/{transactionid}",
+      "method": "getTransactionResult",
+      "httpMethod": "get",
+      "tag": "Transactions",
+      "description": "Get transaction result for a given transaction.",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "transactionid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded transaction id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/servers/{serverid}/users/",
+      "method": "getUsers",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Get all users",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "filter",
+          "schema": "string",
+          "description": "Filter users based on an attribute. Takes the format *attributename=attributevalue*. You can filter for multiple values at once, e.g. *group=in:group1,group2*"
+        },
+        {
+          "name": "search",
+          "schema": "string",
+          "description": "Search for a username LIKE %search%"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Limit the number of results"
+        },
+        {
+          "name": "marker",
+          "schema": "integer",
+          "description": "Offset in the result list"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Sort the results by column. You can also specify ascending (default if not specified) or descending, e.g., *column:asc* . You can also sort by multiple columns, e.g., *column1:desc,column2:asc*"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/servers/{serverid}/users/{userid}/",
+      "method": "deleteUser",
+      "httpMethod": "delete",
+      "tag": "Users",
+      "description": "Delete a specific user",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "userid",
+          "schema": "string",
+          "required": true,
+          "description": "User name"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/servers/{serverid}/users/{userid}/accounts",
+      "method": "deleteUserAccounts",
+      "httpMethod": "delete",
+      "tag": "Users",
+      "description": "Delete all accounts of a specific user",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "userid",
+          "schema": "string",
+          "required": true,
+          "description": "User name"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/servers/{serverid}/users/{userid}/accounts",
+      "method": "getUser",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Get all accounts of a specific user",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "userid",
+          "schema": "string",
+          "required": true,
+          "description": "User name"
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Limit the number of results"
+        },
+        {
+          "name": "marker",
+          "schema": "integer",
+          "description": "Offset in the result list"
+        },
+        {
+          "name": "sort",
+          "schema": "string",
+          "description": "Sort the results by column. You can also specify ascending (default if not specified) or descending, e.g., *column:asc* . You can also sort by multiple columns, e.g., *column1:desc,column2:asc*"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/servers/{serverid}/users/{userid}/attributes/",
+      "method": "deleteUserAttributes",
+      "httpMethod": "delete",
+      "tag": "Users",
+      "description": "Delete all attributes of a specific user",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "userid",
+          "schema": "string",
+          "required": true,
+          "description": "User name"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/servers/{serverid}/users/{userid}/attributes/",
+      "method": "getUserAttributes",
+      "httpMethod": "get",
+      "tag": "Users",
+      "description": "Get all attributes of a specific user",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "userid",
+          "schema": "string",
+          "required": true,
+          "description": "User name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/servers/{serverid}/users/{userid}/attributes/",
+      "method": "setUserAttributes",
+      "httpMethod": "post",
+      "tag": "Users",
+      "description": "Set all attributes of a specific user",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "userid",
+          "schema": "string",
+          "required": true,
+          "description": "User name"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/servers/{serverid}/users/{userid}/attributes/",
+      "method": "updateUserAttributes",
+      "httpMethod": "put",
+      "tag": "Users",
+      "description": "Update specified attributes of a specific user",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "userid",
+          "schema": "string",
+          "required": true,
+          "description": "User name"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/servers/{serverid}/users/{userid}/attributes/{attributekey}",
+      "method": "deleteUserAttribute",
+      "httpMethod": "delete",
+      "tag": "Users",
+      "description": "Delete specific attribute of a specific user",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "userid",
+          "schema": "string",
+          "required": true,
+          "description": "User name"
+        },
+        {
+          "name": "attributekey",
+          "schema": "string",
+          "required": true,
+          "description": "Key of the attribute"
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/servers/{serverid}/users/{userid}/provokelogin",
+      "method": "provokeLoginOnUser",
+      "httpMethod": "post",
+      "tag": "Sessions",
+      "description": "Push a login confirmation to the user's app",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "X-nonce",
+          "schema": "string",
+          "required": true,
+          "description": "Nonce to identify the browser/webserver session"
+        },
+        {
+          "name": "userid",
+          "schema": "string",
+          "required": true,
+          "description": "User name"
+        },
+        {
+          "name": "announceinfo",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "sessioninfo",
+          "schema": "undefined",
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/servers/{serverid}/users/{userid}/role/",
+      "method": "getUserRole",
+      "httpMethod": "get",
+      "tag": "Management",
+      "description": "Get role for a specific user.",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "userid",
+          "schema": "string",
+          "required": true,
+          "description": "User name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/servers/{serverid}/users/{userid}/role/",
+      "method": "getOrCreateUserRole",
+      "httpMethod": "post",
+      "tag": "Management",
+      "description": "Get or create a role for a specific user.",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        },
+        {
+          "name": "userid",
+          "schema": "string",
+          "required": true,
+          "description": "User name"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/servers/{serverid}/vash",
+      "method": "getServerVash",
+      "httpMethod": "get",
+      "tag": "Registration",
+      "description": "Visual hash of this server",
+      "parameters": [
+        {
+          "name": "serverid",
+          "schema": "string",
+          "required": true,
+          "description": "Base64 encoded server id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.nextauth.com",
   "apiDescription": "API for the nextAuth server",
   "apiTitle": "nextAuth API",

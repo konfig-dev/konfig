@@ -4,6 +4,544 @@
   "homepage": "sportsdata.io",
   "serviceName": "cfb-v3-scores",
   "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/{format}/AreAnyGamesInProgress",
+      "method": "areGamesInProgress",
+      "httpMethod": "get",
+      "description": "Are Games In Progress",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>xml</code> or <code>json</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/CurrentSeason",
+      "method": "currentSeason",
+      "httpMethod": "get",
+      "description": "Current Season",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>xml</code> or <code>json</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/CurrentSeasonDetails",
+      "method": "currentSeasonDetails",
+      "httpMethod": "get",
+      "description": "Current Season Details",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>xml</code> or <code>json</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/CurrentSeasonType",
+      "method": "currentSeasontype",
+      "httpMethod": "get",
+      "description": "Current SeasonType",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>xml</code> or <code>json</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/CurrentWeek",
+      "method": "currentWeek",
+      "httpMethod": "get",
+      "description": "Current Week",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>xml</code> or <code>json</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/Games/{season}",
+      "method": "schedules",
+      "httpMethod": "get",
+      "description": "Schedules",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>xml</code> or <code>json</code>."
+        },
+        {
+          "name": "season",
+          "schema": "string",
+          "required": true,
+          "description": "Year of the season (with optional season type).<br>Examples: <code>2018</code>, <code>2018PRE</code>, <code>2018POST</code>, <code>2018STAR</code>, <code>2019</code>, etc."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/GamesByDate/{date}",
+      "method": "gamesByDate",
+      "httpMethod": "get",
+      "description": "Games by Date",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>xml</code> or <code>json</code>."
+        },
+        {
+          "name": "date",
+          "schema": "string",
+          "required": true,
+          "description": "\n          The date of the game(s).\n          <br>Examples: <code>2016-SEP-01</code>, <code>2017-SEP-10</code>.\n        "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/GamesByWeek/{season}/{week}",
+      "method": "gamesByWeek",
+      "httpMethod": "get",
+      "description": "Games by Week",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>xml</code> or <code>json</code>."
+        },
+        {
+          "name": "season",
+          "schema": "string",
+          "required": true,
+          "description": "\n          Year of the season.\n          <br>Examples: <code>2015</code>, <code>2016</code>, etc.\n        "
+        },
+        {
+          "name": "week",
+          "schema": "string",
+          "required": true,
+          "description": "\n          The week of the game(s).\n          <br>Examples: <code>1</code>, <code>2</code>, <code>3</code>, etc.\n        "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/InjuredPlayers",
+      "method": "injuredPlayers",
+      "httpMethod": "get",
+      "description": "Injured Players",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>xml</code> or <code>json</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/LeagueHierarchy",
+      "method": "conferenceHierarchyWithTeams",
+      "httpMethod": "get",
+      "description": "Conference Hierarchy (with Teams)",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>xml</code> or <code>json</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/Player/{playerid}",
+      "method": "playerDetailsByPlayer",
+      "httpMethod": "get",
+      "description": "Player Details By Player",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        },
+        {
+          "name": "playerid",
+          "schema": "string",
+          "required": true,
+          "description": "\n          Unique FantasyData Player ID.\n          Example:<code>50002016</code>.\n        "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/Players",
+      "method": "playerDetailsByActive",
+      "httpMethod": "get",
+      "description": "Player Details By Active",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/Players/{team}",
+      "method": "playerDetailsByTeam",
+      "httpMethod": "get",
+      "description": "Player Details by Team",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        },
+        {
+          "name": "team",
+          "schema": "string",
+          "required": true,
+          "description": "\n          The abbreviation of the requested team.\n          <br>Examples: <code>SF</code>, <code>NYY</code>.\n        "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/PlayersBasic/{team}",
+      "method": "playersByTeamBasic",
+      "httpMethod": "get",
+      "description": "Players by Team (Basic)",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>XML</code> or <code>JSON</code>."
+        },
+        {
+          "name": "team",
+          "schema": "string",
+          "required": true,
+          "description": "\n          The abbreviation of the requested team.\n          <br>Examples: <code>SF</code>, <code>NYY</code>.\n        "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/SchedulesBasic/{season}",
+      "method": "schedulesBasic",
+      "httpMethod": "get",
+      "description": "Schedules (Basic)",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>xml</code> or <code>json</code>."
+        },
+        {
+          "name": "season",
+          "schema": "string",
+          "required": true,
+          "description": "Year of the season (with optional season type).<br>Examples: <code>2018</code>, <code>2018PRE</code>, <code>2018POST</code>, <code>2018STAR</code>, <code>2019</code>, etc."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/ScoresBasic/{season}/{week}",
+      "method": "gamesByWeekBasic",
+      "httpMethod": "get",
+      "description": "Games by Week (Basic)",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>xml</code> or <code>json</code>."
+        },
+        {
+          "name": "season",
+          "schema": "string",
+          "required": true,
+          "description": "\n          Year of the season.\n          <br>Examples: <code>2015</code>, <code>2016</code>, etc.\n        "
+        },
+        {
+          "name": "week",
+          "schema": "string",
+          "required": true,
+          "description": "\n          The week of the game(s).\n          <br>Examples: <code>1</code>, <code>2</code>, <code>3</code>, etc.\n        "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/Stadiums",
+      "method": "stadiums",
+      "httpMethod": "get",
+      "description": "Stadiums",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>xml</code> or <code>json</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/TeamGameStatsBySeason/{season}/{teamid}/{numberofgames}",
+      "method": "teamGameLogsBySeason",
+      "httpMethod": "get",
+      "description": "Team Game Logs By Season",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>xml</code> or <code>json</code>."
+        },
+        {
+          "name": "season",
+          "schema": "string",
+          "required": true,
+          "description": "Season to get games from. Example <code>2019POST</code>, <code>2020</code>        "
+        },
+        {
+          "name": "teamid",
+          "schema": "string",
+          "required": true,
+          "description": "Unique ID of team.  Example <code> 1 </code>"
+        },
+        {
+          "name": "numberofgames",
+          "schema": "string",
+          "required": true,
+          "description": "How many games to return. Example <code>all</code>, <code>10</code>, <code>25</code>"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/TeamGameStatsByWeek/{season}/{week}",
+      "method": "teamGameStatsByWeek",
+      "httpMethod": "get",
+      "description": "Team Game Stats by Week",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>xml</code> or <code>json</code>."
+        },
+        {
+          "name": "season",
+          "schema": "string",
+          "required": true,
+          "description": "\n          Year of the season.\n          <br>Examples: <code>2015</code>, <code>2016</code>, etc.\n        "
+        },
+        {
+          "name": "week",
+          "schema": "string",
+          "required": true,
+          "description": "\n          The week of the game(s).\n          <br>Examples: <code>1</code>, <code>2</code>, <code>3</code>, etc.\n        "
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/TeamSeasonStats/{season}",
+      "method": "teamSeasonStatsStandings",
+      "httpMethod": "get",
+      "description": "Team Season Stats & Standings",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>xml</code> or <code>json</code>."
+        },
+        {
+          "name": "season",
+          "schema": "string",
+          "required": true,
+          "description": "Year of the season (with optional season type).<br>Examples: <code>2017</code>, <code>2017POST</code>, <code>2018</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/Teams",
+      "method": "teams",
+      "httpMethod": "get",
+      "description": "Teams",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>xml</code> or <code>json</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/{format}/TeamsBasic",
+      "method": "teamsBasic",
+      "httpMethod": "get",
+      "description": "Teams (Basic)",
+      "parameters": [
+        {
+          "name": "format",
+          "schema": "string",
+          "required": true,
+          "description": "Desired response format. Valid entries are <code>xml</code> or <code>json</code>."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "http://azure-api.sportsdata.io/v3/cfb/scores",
   "apiDescription": "CFB schedules, scores, team stats, odds, weather, and news API.",
   "apiTitle": "CFB v3 Scores",

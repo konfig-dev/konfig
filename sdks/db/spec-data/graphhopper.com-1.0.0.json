@@ -3,6 +3,920 @@
   "openApiRaw": "https://docs.graphhopper.com/openapi.json",
   "homepage": "graphhopper.com",
   "apiVersion": "1.0.0",
+  "methods": [
+    {
+      "url": "/cluster",
+      "method": "solveClusteringProblem",
+      "httpMethod": "post",
+      "tag": "Cluster API",
+      "description": "POST Cluster Endpoint",
+      "parameters": [
+        {
+          "name": "configuration",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "customers",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cluster/calculate",
+      "method": "asyncClusteringProblem",
+      "httpMethod": "post",
+      "tag": "Cluster API",
+      "description": "Batch Cluster Endpoint",
+      "parameters": [
+        {
+          "name": "configuration",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "customers",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/cluster/solution/{jobId}",
+      "method": "getClusterSolution",
+      "httpMethod": "get",
+      "tag": "Cluster API",
+      "description": "GET Batch Solution Endpoint",
+      "parameters": [
+        {
+          "name": "jobId",
+          "schema": "string",
+          "required": true,
+          "description": "Request solution with jobId"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/geocode",
+      "method": "getGeocode",
+      "httpMethod": "get",
+      "tag": "Geocoding API",
+      "description": "Geocoding Endpoint",
+      "parameters": [
+        {
+          "name": "q",
+          "schema": "string",
+          "description": "If you do forward geocoding, this is `required` and is a textual description of the address you are looking for."
+        },
+        {
+          "name": "locale",
+          "schema": "string",
+          "description": "Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn't found the default (en) is used."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "Specify the maximum number of results to return"
+        },
+        {
+          "name": "reverse",
+          "schema": "boolean",
+          "description": "It is `required` to be `true` if you want to do a reverse geocoding request. If it is `true`, `point` must be defined as well, and `q` must not be used."
+        },
+        {
+          "name": "debug",
+          "schema": "boolean",
+          "description": "If `true`, the output will be formatted."
+        },
+        {
+          "name": "point",
+          "schema": "string",
+          "description": "_Forward geocoding_: The location bias in the format 'latitude,longitude' e.g. point=45.93272,11.58803. _Reverse geocoding_: The location to find amenities, cities."
+        },
+        {
+          "name": "provider",
+          "schema": "string",
+          "description": "The provider parameter is currently under development and can fall back to `default` at any time.\nThe intend is to provide alternatives to our default geocoder. Each provider has its own strenghts and might fit better for certain scenarios, so it's worth to compare the different providers.\nTo try it append the `provider`parameter to the URL like `&provider=nominatim`,\nthe result structure should be identical in all cases - if not, please report this back to us.\nKeep in mind that some providers do not support certain parameters or don't return some fields, for example `osm_id` and `osm_type` are not supported by every geocoding provider.\nIf you would like to use additional parameters of one of the providers, but it's not available for the GraphHopper Geocoding API, yet? Please contact us.\n\nThe credit costs can be different for all providers - see [here](https://support.graphhopper.com/support/solutions/articles/44000718211-what-is-one-credit-) for more information about it.\n\nCurrently, only the default provider and gisgraphy supports autocompletion of partial search strings.\n\nAll providers support normal \"forward\" geocoding and reverse geocoding via `reverse=true`.\n\n#### Default (`provider=default`)\n\nThis provider returns results of our internal geocoding engine, as described above.\nIn addition to the above documented parameters the following parameters are possible:\n* `bbox` - the expected format is `minLon,minLat,maxLon,maxLat`\n* `osm_tag` - you can filter `key:value` or exclude places with certain OpenStreetMap tags `!key:value`. E.g. `osm_tag=tourism:museum` or just the key `osm_tag=tourism`. To exclude multiple tags you add multiple `osm_tag` parameters.\n\n#### Nominatim (`provider=nominatim`)\n\nThe GraphHopper Directions API uses a commercially hosted Nominatim geocoder. You can try this provider [here](https://nominatim.openstreetmap.org/). The provider does **not** fall under the [restrictions](https://operations.osmfoundation.org/policies/nominatim/) of the Nominatim instance hosted by OpenStreetMap.\n\nIn addition to the above documented parameters Nominatim allows to use the following parameters, which can be used as documented [here](https://github.com/openstreetmap/Nominatim/blob/master/docs/api/Search.md#parameters):\n\n* `viewbox` - the expected format is `minLon,minLat,maxLon,maxLat`\n* `bounded` - If 1 and a viewbox is given, restrict the result to items contained within that viewbox. Default is 0.\n\n#### Gisgraphy (`provider=gisgraphy`)\n\nThis provider returns results from the Gisgraphy geocoder which you can try [here](https://services.gisgraphy.com/static/leaflet/index.html).\n\n**Limitations:** The `locale` parameter is not supported. Gisgraphy does not return OSM tags or an extent.\n\nGisgraphy has a special autocomplete API, which you can use by adding `autocomplete=true` (does not work with `reverse=true`). The autocomplete API is optimized on predicting text input, but returns less information.\n\nIn addition to the above documented parameters Gisgraphy allows to use the following parameters, which can be used as documented [here](https://www.gisgraphy.com/documentation/user-guide.php#geocodingservice):\n\n* `radius` - radius in meters\n* `country` - restrict search for the specified country. The value must be the ISO 3166 Alpha 2 code of the country.\n\n#### NetToolKit (`provider=nettoolkit`)\n\nThis provider returns results from the NetToolKit provider which is specialized for US addresses and provides a wrapper around Nominatim for other addresses. You can try it [here](https://www.nettoolkit.com/geo/demo).\n\nThe following additional NetToolKit parameters are supported (read [here](https://www.nettoolkit.com/docs/geo/geocoding) for more details):\n- `source`: User can choose which source provider to geocode the address, this value is \"NetToolKit\" by default\n- `country_code`: an iso-3166-2 country code (e.g : US) filter the results to the specify country code\n\n**Limitations:** NetToolKit does not support the `locale` parameter. NetToolKit does not return OSM tags (e.g. osm_id, osm_type, osm_value).\n\n#### OpenCage Data (`provider=opencagedata`)\n\nThis provider returns results from the OpenCageData geocoder which you can try [here](https://geocoder.opencagedata.com/demo).\n\nIn addition to the above documented parameters OpenCage Data allows to use the following parameters, which can be used as documented [here](https://geocoder.opencagedata.com/api#forward-opt):\n\n* countrycode - The country code is a two letter code as defined by the ISO 3166-1 Alpha 2 standard. E.g. gb for the United Kingdom, fr for France, us for United States. \n* bounds - the expected format is `minLon,minLat,maxLon,maxLat`\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/isochrone",
+      "method": "getIsochrone",
+      "httpMethod": "get",
+      "tag": "Isochrone API",
+      "description": "Isochrone Endpoint",
+      "parameters": [
+        {
+          "name": "point",
+          "schema": "string",
+          "required": true,
+          "description": "Specify the start coordinate"
+        },
+        {
+          "name": "time_limit",
+          "schema": "integer",
+          "description": "Specify which time the vehicle should travel. In seconds."
+        },
+        {
+          "name": "distance_limit",
+          "schema": "integer",
+          "description": "Specify which distance the vehicle should travel. In meters."
+        },
+        {
+          "name": "vehicle",
+          "schema": "string",
+          "description": "The vehicle profile for which the route should be calculated.\n"
+        },
+        {
+          "name": "buckets",
+          "schema": "integer",
+          "description": "Number by which to divide the given `time_limit` to create `buckets` nested isochrones of time intervals `time_limit-n*time_limit/buckets`. Applies analogously to `distance_limit`."
+        },
+        {
+          "name": "reverse_flow",
+          "schema": "boolean",
+          "description": "If `false` the flow goes from point to the polygon, if `true` the flow goes from the polygon \"inside\" to the point.\nExample use case for `false`&#58; *How many potential customer can be reached within 30min travel time from your store* vs. `true`&#58; *How many customers can reach your store within 30min travel time.*\n"
+        },
+        {
+          "name": "weighting",
+          "schema": "string",
+          "description": "Use `\"shortest\"` to get an isodistance line instead of an isochrone."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/match",
+      "method": "postGpx",
+      "httpMethod": "post",
+      "tag": "Map Matching API",
+      "description": "Map-match a GPX file",
+      "parameters": [
+        {
+          "name": "gps_accuracy",
+          "schema": "integer",
+          "required": false,
+          "description": "Specify the precision of a point, in meter"
+        },
+        {
+          "name": "vehicle",
+          "schema": "string",
+          "required": false,
+          "description": "Specify the vehicle profile like car"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/matrix",
+      "method": "getMatrix",
+      "httpMethod": "get",
+      "tag": "Matrix API",
+      "description": "GET Matrix Endpoint",
+      "parameters": [
+        {
+          "name": "point",
+          "schema": "array",
+          "required": false,
+          "description": "Specify multiple points in `latitude,longitude` for which the weight-, route-, time- or distance-matrix should be calculated. In this case the starts are identical to the destinations. If there are N points, then NxN entries will be calculated. The order of the point parameter is important. Specify at least three points. Cannot be used together with from_point or to_point."
+        },
+        {
+          "name": "from_point",
+          "schema": "array",
+          "required": false,
+          "description": "The starting points for the routes in `latitude,longitude`. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters."
+        },
+        {
+          "name": "to_point",
+          "schema": "array",
+          "required": false,
+          "description": "The destination points for the routes in `latitude,longitude`."
+        },
+        {
+          "name": "point_hint",
+          "schema": "array",
+          "required": false,
+          "description": "Optional parameter. Specifies a hint for each `point` parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up."
+        },
+        {
+          "name": "from_point_hint",
+          "schema": "array",
+          "required": false,
+          "description": "For the from_point parameter. See point_hint"
+        },
+        {
+          "name": "to_point_hint",
+          "schema": "array",
+          "required": false,
+          "description": "For the to_point parameter. See point_hint"
+        },
+        {
+          "name": "snap_prevention",
+          "schema": "array",
+          "description": "Optional parameter to avoid snapping to a certain road class or road environment. Current supported values `motorway`, `trunk`, `ferry`, `tunnel`, `bridge` and `ford`. Multiple values are specified like `snap_prevention=ferry&snap_prevention=motorway`\n"
+        },
+        {
+          "name": "curbside",
+          "schema": "array",
+          "required": false,
+          "description": "Optional parameter. It specifies on which side a point should be relative to the driver when she leaves/arrives at a start/target/via point. You need to specify this parameter for either none or all points. Only supported for motor vehicles and OpenStreetMap."
+        },
+        {
+          "name": "from_curbside",
+          "schema": "array",
+          "required": false,
+          "description": "Curbside setting for the from_point parameter. See curbside."
+        },
+        {
+          "name": "to_curbside",
+          "schema": "array",
+          "required": false,
+          "description": "Curbside setting for the to_point parameter. See curbside."
+        },
+        {
+          "name": "out_array",
+          "schema": "array",
+          "required": false,
+          "description": "Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API."
+        },
+        {
+          "name": "vehicle",
+          "schema": "string",
+          "description": "The vehicle profile for which the matrix should be calculated."
+        },
+        {
+          "name": "fail_fast",
+          "schema": "boolean",
+          "required": false,
+          "description": "Specifies whether or not the matrix calculation should return with an error as soon as possible in case some points cannot be found or some points are not connected. If set to `false` the time/weight/distance matrix will be calculated for all valid points and contain the `null` value for all entries that could not be calculated. The `hint` field of the response will also contain additional information about what went wrong (see its documentation)."
+        },
+        {
+          "name": "turn_costs",
+          "schema": "boolean",
+          "required": false,
+          "description": "Specifies if turn restrictions should be considered. Enabling this option increases the matrix computation time. Only supported for motor vehicles and OpenStreetMap."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/matrix",
+      "method": "postMatrix",
+      "httpMethod": "post",
+      "tag": "Matrix API",
+      "description": "POST Matrix Endpoint",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/matrix/calculate",
+      "method": "calculateMatrix",
+      "httpMethod": "post",
+      "tag": "Matrix API",
+      "description": "Batch Matrix Endpoint",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/matrix/solution/{jobId}",
+      "method": "getMatrixSolution",
+      "httpMethod": "get",
+      "tag": "Matrix API",
+      "description": "GET Batch Matrix Endpoint",
+      "parameters": [
+        {
+          "name": "jobId",
+          "schema": "string",
+          "required": true,
+          "description": "Request solution with jobId"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/route",
+      "method": "getRoute",
+      "httpMethod": "get",
+      "tag": "Routing API",
+      "description": "GET Route Endpoint",
+      "parameters": [
+        {
+          "name": "point",
+          "schema": "array",
+          "required": true,
+          "description": "The points for which the route should be calculated. Format: `[latitude,longitude]`. Specify at least an origin and a destination. Via points are possible.\nThe maximum number depends on your plan.\n"
+        },
+        {
+          "name": "point_hint",
+          "schema": "array",
+          "description": "The `point_hint` is typically a road name to which the associated `point` parameter should be snapped to. Specify no `point_hint` parameter or the same number as you have `point` parameters.\n"
+        },
+        {
+          "name": "snap_prevention",
+          "schema": "array",
+          "description": "Optional parameter to avoid snapping to a certain road class or road environment. Currently supported values are `motorway`, `trunk`, `ferry`, `tunnel`, `bridge` and `ford`. Multiple values are specified like `snap_prevention=ferry&snap_prevention=motorway`.\n"
+        },
+        {
+          "name": "vehicle",
+          "schema": "string",
+          "description": "The vehicle profile for which the route should be calculated.\n"
+        },
+        {
+          "name": "curbside",
+          "schema": "array",
+          "description": "Optional parameter. It specifies on which side a point should be relative to the driver when she leaves/arrives at a start/target/via point. You need to specify this parameter for either none or all points. Only supported for motor vehicles and OpenStreetMap.\n"
+        },
+        {
+          "name": "turn_costs",
+          "schema": "boolean",
+          "description": "Specifies if turn restrictions should be considered. Enabling this option increases the route computation time. Only supported for motor vehicles and OpenStreetMap.\n"
+        },
+        {
+          "name": "locale",
+          "schema": "string",
+          "description": "The locale of the resulting turn instructions. E.g. `pt_PT` for Portuguese or `de` for German.\n"
+        },
+        {
+          "name": "elevation",
+          "schema": "boolean",
+          "description": "If `true`, a third coordinate, the altitude, is included with all positions in the response.\nThis changes the format of the `points` and `snapped_waypoints` fields of the response, in both their\nencodings. Unless you switch off the `points_encoded` parameter, you need special code on the\nclient side that can handle three-dimensional coordinates.\nA request can fail if the vehicle profile does not support elevation. See the features object for every vehicle profile.\n"
+        },
+        {
+          "name": "details",
+          "schema": "array",
+          "description": "Optional parameter to retrieve path details. You can request additional details for the route: `street_name`, \n`time`, `distance`, `max_speed`, `toll`, `road_class`, `road_class_link`, `road_access`, `road_environment`, `lanes`, and `surface`. Read more about the usage of path details [here](https://discuss.graphhopper.com/t/2539).\n"
+        },
+        {
+          "name": "optimize",
+          "schema": "string",
+          "description": "Normally, the calculated route will visit the points in the order you specified them.\nIf you have more than two points, you can set this parameter to `\"true\"` and the points may be re-ordered to minimize the total travel time.\nKeep in mind that the limits on the number of locations of the Route Optimization API applies, and the request costs more credits.\n"
+        },
+        {
+          "name": "instructions",
+          "schema": "boolean",
+          "description": "If instructions should be calculated and returned\n"
+        },
+        {
+          "name": "calc_points",
+          "schema": "boolean",
+          "description": "If the points for the route should be calculated at all.\n"
+        },
+        {
+          "name": "debug",
+          "schema": "boolean",
+          "description": "If `true`, the output will be formatted.\n"
+        },
+        {
+          "name": "points_encoded",
+          "schema": "boolean",
+          "description": "Allows changing the encoding of location data in the response. The default is polyline encoding, which is compact\nbut requires special client code to unpack. (We provide it in our JavaScript client library!)\nSet this parameter to `false` to switch the encoding to simple coordinate pairs like `[lon,lat]`, or `[lon,lat,elevation]`.\nSee the description of the response format for more information.\n"
+        },
+        {
+          "name": "ch.disable",
+          "schema": "boolean",
+          "description": "Use this parameter in combination with one or more parameters from below.\n"
+        },
+        {
+          "name": "weighting",
+          "schema": "string",
+          "description": "Determines the way the \"best\" route is calculated. Besides `fastest` you can use `short_fastest` which finds a reasonable balance between the distance influence (`shortest`) and the time (`fastest`). You could also use `shortest` but is deprecated and not recommended for motor vehicles. All except `fastest` require `ch.disable=true`.\n"
+        },
+        {
+          "name": "heading",
+          "schema": "array",
+          "description": "Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points.\nIn this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree.\nThis parameter also influences the tour generated with `algorithm=round_trip` and forces the initial direction.  Requires `ch.disable=true`.\n"
+        },
+        {
+          "name": "heading_penalty",
+          "schema": "integer",
+          "description": "Time penalty in seconds for not obeying a specified heading. Requires `ch.disable=true`.\n"
+        },
+        {
+          "name": "pass_through",
+          "schema": "boolean",
+          "description": "If `true`, u-turns are avoided at via-points with regard to the `heading_penalty`. Requires `ch.disable=true`.\n"
+        },
+        {
+          "name": "block_area",
+          "schema": "string",
+          "description": "Block road access by specifying a point close to the road segment to be blocked, with the format `lat,lon`.\nYou can also block all road segments crossing a geometric shape. Specify a circle using the format `lat,lon,radius`, or a polygon using the format `lat1,lon1,lat2,lon2,...,latN,lonN`.\nYou can specify several shapes, separating them with `;`. Requires `ch.disable=true`.\n"
+        },
+        {
+          "name": "avoid",
+          "schema": "string",
+          "description": "Specify which road classes and environments you would like to avoid. \nPossible values are `motorway`, `steps`, `track`, `toll`, `ferry`, `tunnel` and `bridge`.\nSeparate several values with `;`. Obviously not all the values make sense for all vehicle profiles e.g. `bike` is already forbidden on a `motorway`. Requires `ch.disable=true`.\n"
+        },
+        {
+          "name": "algorithm",
+          "schema": "string",
+          "description": "Rather than looking for the shortest or fastest path, this parameter lets you solve two different problems related to routing:\nWith `alternative_route`, we give you not one but several routes that are close to optimal, but\nnot too similar to each other. \nWith `round_trip`, the route will get you back to where you started. This is meant for fun (think of\na bike trip), so we will add some randomness. The `round_trip` option requires `ch.disable=true`.\nYou can control both of these features with additional parameters, see below. \n"
+        },
+        {
+          "name": "round_trip.distance",
+          "schema": "integer",
+          "description": "If `algorithm=round_trip`, this parameter configures approximative length of the resulting round trip. Requires `ch.disable=true`.\n"
+        },
+        {
+          "name": "round_trip.seed",
+          "schema": "integer",
+          "description": "If `algorithm=round_trip`, this sets the random seed. Change this to get a different tour for each value.\n"
+        },
+        {
+          "name": "alternative_route.max_paths",
+          "schema": "integer",
+          "description": "If `algorithm=alternative_route`, this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.\n"
+        },
+        {
+          "name": "alternative_route.max_weight_factor",
+          "schema": "number",
+          "description": "If `algorithm=alternative_route`, this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives.\n"
+        },
+        {
+          "name": "alternative_route.max_share_factor",
+          "schema": "number",
+          "description": "If `algorithm=alternative_route`, this parameter specifies how similar an alternative route can be to the optimal route. Increasing can lead to worse alternatives.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "501",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/route",
+      "method": "postRoute",
+      "httpMethod": "post",
+      "tag": "Routing API",
+      "description": "POST Route Endpoint",
+      "parameters": [
+        {
+          "name": "algorithm",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "alternative_route.max_paths",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "alternative_route.max_share_factor",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "alternative_route.max_weight_factor",
+          "schema": "number",
+          "description": ""
+        },
+        {
+          "name": "avoid",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "block_area",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "calc_points",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "ch.disable",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "curbsides",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "debug",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "details",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "elevation",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "heading_penalty",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "headings",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "instructions",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "locale",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "optimize",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "pass_through",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "point_hints",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "points",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "points_encoded",
+          "schema": "boolean",
+          "description": ""
+        },
+        {
+          "name": "round_trip.distance",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "round_trip.seed",
+          "schema": "integer",
+          "description": ""
+        },
+        {
+          "name": "snap_preventions",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "vehicle",
+          "schema": "undefined",
+          "description": ""
+        },
+        {
+          "name": "weighting",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        },
+        {
+          "statusCode": "501",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/route/info",
+      "method": "/route/infoGet",
+      "httpMethod": "get",
+      "tag": "Routing API",
+      "description": "Coverage information",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Information about the server and the geographical area that it covers."
+        }
+      ]
+    },
+    {
+      "url": "/vrp",
+      "method": "solveVrp",
+      "httpMethod": "post",
+      "tag": "Route Optimization API",
+      "description": "POST route optimization problem",
+      "parameters": [
+        {
+          "name": "algorithm",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "configuration",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "cost_matrices",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "objectives",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "relations",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "services",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "shipments",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "vehicle_types",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "vehicles",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/vrp/optimize",
+      "method": "asyncVrp",
+      "httpMethod": "post",
+      "tag": "Route Optimization API",
+      "description": "POST route optimization problem (batch mode)",
+      "parameters": [
+        {
+          "name": "algorithm",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "configuration",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "cost_matrices",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "objectives",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "relations",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "services",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "shipments",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "vehicle_types",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "vehicles",
+          "schema": "array",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/vrp/solution/{jobId}",
+      "method": "getSolution",
+      "httpMethod": "get",
+      "tag": "Route Optimization API",
+      "description": "GET the solution (batch mode)",
+      "parameters": [
+        {
+          "name": "jobId",
+          "schema": "string",
+          "required": true,
+          "description": "Request solution with jobId"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://graphhopper.com/api/1",
   "apiDescription": "\nWith the [GraphHopper Directions API](https://www.graphhopper.com/products/) you can integrate A-to-B route planning, turn-by-turn navigation,\nroute optimization, isochrone calculations and other tools in your application.\n\nThe GraphHopper Directions API consists of the following RESTful web services:\n\n * [Routing API](#tag/Routing-API),\n * [Route Optimization API](#tag/Route-Optimization-API),\n * [Isochrone API](#tag/Isochrone-API),\n * [Map Matching API](#tag/Map-Matching-API),\n * [Matrix API](#tag/Matrix-API),\n * [Geocoding API](#tag/Geocoding-API) and\n * [Cluster API](#tag/Cluster-API).\n\n# Explore our APIs\n\n## Get started\n\n1. [Sign up for GraphHopper](https://support.graphhopper.com/a/solutions/articles/44001976025)\n2. [Create an API key](https://support.graphhopper.com/a/solutions/articles/44001976027)\n\nEach API part has its own documentation. Jump to the desired API part and learn about the API through the given examples and tutorials.\n\nIn addition, for each API there are specific sample requests that you can send via Insomnia or Postman to see what the requests and responses look like.\n\n## Insomnia\n\nTo explore our APIs with [Insomnia](https://insomnia.rest/), follow these steps:\n\n1. Open Insomnia and Import [our workspace](https://raw.githubusercontent.com/graphhopper/directions-api-doc/master/web/restclients/GraphHopper-Direction-API-Insomnia.json).\n2. Specify [your API key](https://graphhopper.com/dashboard/#/register) in your workspace: Manage Environments -> Base Environment -> `\"api_key\": your API key`\n3. Start exploring\n\n![Insomnia](./img/insomnia.png)\n\n## Postman\n\nTo explore our APIs with [Postman](https://www.getpostman.com/), follow these steps:\n\n1. Import our [request collections](https://raw.githubusercontent.com/graphhopper/directions-api-doc/master/web/restclients/graphhopper_directions_api.postman_collection.json) as well as our [environment file](https://raw.githubusercontent.com/graphhopper/directions-api-doc/master/web/restclients/graphhopper_directions_api.postman_environment.json).\n2. Specify [your API key](https://graphhopper.com/dashboard/#/register) in your environment: `\"api_key\": your API key`\n3. Start exploring\n\n![Postman](./img/postman.png)\n\n## API Client Libraries\n\nTo speed up development and make coding easier, we offer the following client libraries:\n\n * [JavaScript client](https://github.com/graphhopper/directions-api-js-client) - try the [live examples](https://graphhopper.com/api/1/examples/)\n * [Others](https://github.com/graphhopper/directions-api-clients) like C#, Ruby, PHP, Python, ... automatically created for the Route Optimization API\n\n### Bandwidth reduction\n\nIf you create your own client, make sure it supports http/2 and gzipped responses for best speed.\n\nIf you use the Matrix, the Route Optimization API or the Cluster API and want to solve large problems, we recommend you to reduce bandwidth\nby [compressing your POST request](https://gist.github.com/karussell/82851e303ea7b3459b2dea01f18949f4)\nand specifying the header as follows: `Content-Encoding: gzip`. This will also avoid the HTTP 413 error \"Request Entity Too Large\".\n\n## Contact Us\n\nIf you have problems or questions, please read the following information:\n\n- [FAQ](https://graphhopper.com/api/1/docs/FAQ/)\n- [Public forum](https://discuss.graphhopper.com/c/directions-api)\n- [Contact us](https://www.graphhopper.com/contact-form/)\n- [GraphHopper Status Page](https://status.graphhopper.com/)\n\nTo stay informed about the latest developments, you can\n\n- follow us on [twitter](https://twitter.com/graphhopper/),\n- read [our blog](https://graphhopper.com/blog/),\n- watch [our documentation repository](https://github.com/graphhopper/directions-api-doc),\n- sign up for our newsletter or\n- [our forum](https://discuss.graphhopper.com/c/directions-api).\n\nSelect the channel you like the most.\n\n\n# Map Data and Routing Profiles\n\nCurrently, our main data source is [OpenStreetMap](https://www.openstreetmap.org). We also integrated other network data providers.\nThis chapter gives an overview about the options you have.\n\n## OpenStreetMap\n\n#### Geographical Coverage\n\n[OpenStreetMap](https://www.openstreetmap.org) covers the whole world. If you want to see for yourself if we can provide data suitable for your region,\nplease visit [GraphHopper Maps](https://graphhopper.com/maps/).\nYou can edit and modify OpenStreetMap data if you find that important information is missing, e.g. a weight limit for a bridge.\n[Here](https://wiki.openstreetmap.org/wiki/Beginners%27_guide) is a beginner's guide that shows how to add data. If you have edited data, we usually consider your data after 1 week at the latest.\n\n#### Supported Vehicle Profiles\n\nThe Routing, Matrix and Route Optimization APIs support the following vehicle profiles:\n\nName       | Description           | Restrictions              | Icon\n-----------|:----------------------|:--------------------------|:---------------------------------------------------------\ncar        | Car mode              | car access                | ![car image](https://graphhopper.com/maps/img/car.png)\nsmall_truck| Small truck like a Mercedes Sprinter, Ford Transit or Iveco Daily | height=2.7m, width=2+0.4m, length=5.5m, weight=2080+1400 kg | ![small truck image](https://graphhopper.com/maps/img/small_truck.png)\ntruck      | Truck like a MAN or Mercedes-Benz Actros | height=3.7m, width=2.6+0.5m, length=12m, weight=13000 + 13000 kg, hgv=yes, 3 Axes | ![truck image](https://graphhopper.com/maps/img/truck.png)\nscooter    | Moped mode | Fast inner city, often used for food delivery, is able to ignore certain bollards, maximum speed of roughly 50km/h | ![scooter image](https://graphhopper.com/maps/img/scooter.png)\nfoot       | Pedestrian or walking without dangerous [SAC-scales](https://wiki.openstreetmap.org/wiki/Key:sac_scale) | foot access         | ![foot image](https://graphhopper.com/maps/img/foot.png)\nhike       | Pedestrian or walking with priority for more beautiful hiking tours and potentially a bit longer than `foot`. Walking duration is influenced by elevation differences.  | foot access         | ![hike image](https://graphhopper.com/maps/img/hike.png)\nbike       | Trekking bike avoiding hills | bike access  | ![bike image](https://graphhopper.com/maps/img/bike.png)\nmtb        | Mountainbike          | bike access         | ![Mountainbike image](https://graphhopper.com/maps/img/mtb.png)\nracingbike| Bike preferring roads | bike access         | ![racingbike image](https://graphhopper.com/maps/img/racingbike.png)\n\nPlease note:\n\n * all motor vehicles (`car`, `small_truck`, `truck` and `scooter`) support turn restrictions via `turn_costs=true`\n * the free package supports only the vehicle profiles `car`, `bike` or `foot`\n * up to 2 different vehicle profiles can be used in a single optimization request. The number of vehicles is unaffected and depends on your subscription.\n * we offer custom vehicle profiles with different properties, different speed profiles or different access options. To find out more about custom profiles, please [contact us](https://www.graphhopper.com/contact-form/).\n * a sophisticated `motorcycle` profile is available up on request. It is powered by the [Kurviger](https://kurviger.de/en) Routing API and favors curves and slopes while avoiding cities and highways.\n \n## TomTom\n\nIf you want to include traffic, you can purchase the TomTom Add-on.\nThis Add-on only uses TomTom's road network and historical traffic information.\nLive traffic is not yet considered. If you are interested to learn how we consider traffic information, we recommend that you read [this article](https://www.graphhopper.com/blog/2017/11/06/time-dependent-optimization/).\n\nPlease note the following:\n\n * Currently we only offer this for our [Route Optimization API](#tag/Route-Optimization-API).\n * In addition to our terms, you need to accept TomTom's [End User License Aggreement](https://www.graphhopper.com/tomtom-end-user-license-agreement/).\n * We do *not* use TomTom's web services. We only use their data with our software.\n \n[Contact us](https://www.graphhopper.com/contact-form/) for more details.\n\n#### Geographical Coverage\n\nWe offer\n\n- Europe including Russia\n- North, Central and South America\n- Saudi Arabia\n- United Arab Emirates\n- South Africa\n- Australia\n\n#### Supported Vehicle Profiles\n\nName       | Description           | Restrictions              | Icon\n-----------|:----------------------|:--------------------------|:---------------------------------------------------------\ncar        | Car mode              | car access                | ![car image](https://graphhopper.com/maps/img/car.png)\nsmall_truck| Small truck like a Mercedes Sprinter, Ford Transit or Iveco Daily | height=2.7m, width=2+0.4m, length=5.5m, weight=2080+1400 kg | ![small truck image](https://graphhopper.com/maps/img/small_truck.png)\n",
   "apiTitle": "GraphHopper Directions API",

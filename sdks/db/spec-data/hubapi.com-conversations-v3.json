@@ -4,6 +4,45 @@
   "homepage": "hubapi.com",
   "serviceName": "conversations",
   "apiVersion": "v3",
+  "methods": [
+    {
+      "url": "/conversations/v3/visitor-identification/tokens/create",
+      "method": "post-/conversations/v3/visitorIdentification/tokens/createGenerateToken",
+      "httpMethod": "post",
+      "tag": "Generate",
+      "description": "Generate a token",
+      "parameters": [
+        {
+          "name": "email",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "firstName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "lastName",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "The identification token to be passed to the Conversations JS API to identify the visitor"
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.hubapi.com",
   "apiDescription": "The Visitor Identification API allows you to pass identification information to the HubSpot chat widget for otherwise unknown visitors that were verified by your own authentication system.",
   "apiTitle": "Visitor Identification",

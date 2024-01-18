@@ -3,6 +3,874 @@
   "openApiRaw": "https://apirest.isendpro.com/isendpro.json",
   "homepage": "isendpro.com",
   "apiVersion": "1.1.1",
+  "methods": [
+    {
+      "url": "/campagne",
+      "method": "getCampagne",
+      "httpMethod": "get",
+      "tag": "campagne",
+      "description": "Retourne les SMS envoyés sur une période donnée",
+      "parameters": [
+        {
+          "name": "keyid",
+          "schema": "string",
+          "required": true,
+          "description": "Clé API"
+        },
+        {
+          "name": "rapportCampagne",
+          "schema": "string",
+          "required": true,
+          "description": "Doit valoir \"1\""
+        },
+        {
+          "name": "date_deb",
+          "schema": "string",
+          "required": true,
+          "description": "date de debut au format YYYY-MM-DD hh:mm"
+        },
+        {
+          "name": "date_fin",
+          "schema": "string",
+          "required": true,
+          "description": "date de fin au format YYYY-MM-DD hh:mm"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/comptage",
+      "method": "comptage",
+      "httpMethod": "post",
+      "tag": "comptage",
+      "description": "Compter le nombre de caractère ",
+      "parameters": [
+        {
+          "name": "comptage",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "date_envoi",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "emetteur",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "gmt_zone",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "keyid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "nostop",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "num",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "numAzur",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sms",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "smslong",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "tracker",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "ucs2",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/credit",
+      "method": "getCredit",
+      "httpMethod": "get",
+      "tag": "credit",
+      "description": "Interrogation credit",
+      "parameters": [
+        {
+          "name": "keyid",
+          "schema": "string",
+          "required": true,
+          "description": "Clé API"
+        },
+        {
+          "name": "credit",
+          "schema": "string",
+          "required": true,
+          "description": "Type de reponse demandée, 1 pour euro, 2 pour euro + estimation quantité"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/dellistenoire",
+      "method": "delListeNoire",
+      "httpMethod": "post",
+      "tag": "delListeNoire",
+      "description": "Ajoute un numero en liste noire",
+      "parameters": [
+        {
+          "name": "keyid",
+          "schema": "string",
+          "required": true,
+          "description": "Clé API"
+        },
+        {
+          "name": "delListeNoire",
+          "schema": "string",
+          "required": true,
+          "description": "Doit valoir \"1\""
+        },
+        {
+          "name": "num",
+          "schema": "string",
+          "required": true,
+          "description": "numéro de mobile à supprimer"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/getlistenoire",
+      "method": "getListeNoire",
+      "httpMethod": "post",
+      "tag": "getListeNoire",
+      "description": "Retourne le liste noire",
+      "parameters": [
+        {
+          "name": "keyid",
+          "schema": "string",
+          "required": true,
+          "description": "Clé API"
+        },
+        {
+          "name": "getListeNoire",
+          "schema": "string",
+          "required": true,
+          "description": "Doit valoir \"1\""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/hlr",
+      "method": "getHlr",
+      "httpMethod": "post",
+      "tag": "hlr",
+      "description": "Vérifier la validité d'un numéro",
+      "parameters": [
+        {
+          "name": "getHLR",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "keyid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "num",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/repertoire",
+      "method": "repertoireCrea",
+      "httpMethod": "post",
+      "tag": "repertoire",
+      "description": "Gestion repertoire (creation)",
+      "parameters": [
+        {
+          "name": "keyid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "repertoireEdit",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "repertoireNom",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/repertoire",
+      "method": "repertoire",
+      "httpMethod": "put",
+      "tag": "repertoire",
+      "description": "Gestion repertoire (modification)",
+      "parameters": [
+        {
+          "name": "champ1",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "champ10",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "champ11",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "champ12",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "champ13",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "champ14",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "champ15",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "champ16",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "champ17",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "champ18",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "champ19",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "champ2",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "champ20",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "champ21",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "champ22",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "champ23",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "champ24",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "champ25",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "champ26",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "champ27",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "champ3",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "champ4",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "champ5",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "champ6",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "champ7",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "champ8",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "champ9",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "keyid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "num",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "repertoireEdit",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "repertoireId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/setlistenoire",
+      "method": "setListeNoire",
+      "httpMethod": "post",
+      "tag": "setListeNoire",
+      "description": "Ajoute un numero en liste noire",
+      "parameters": [
+        {
+          "name": "keyid",
+          "schema": "string",
+          "required": true,
+          "description": "Clé API"
+        },
+        {
+          "name": "setlisteNoire",
+          "schema": "string",
+          "required": true,
+          "description": "Doit valoir \"1\""
+        },
+        {
+          "name": "num",
+          "schema": "string",
+          "required": true,
+          "description": "numéro de mobile à insérer en liste noire"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/shortlink",
+      "method": "addShortlink",
+      "httpMethod": "post",
+      "tag": "add shortlink",
+      "description": "add a shortlink",
+      "parameters": [
+        {
+          "name": "keyid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "shortlink",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/sms",
+      "method": "sendSms",
+      "httpMethod": "post",
+      "tag": "sms",
+      "description": "Envoyer un sms",
+      "parameters": [
+        {
+          "name": "date_envoi",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "emetteur",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "gmt_zone",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "keyid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "nostop",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "num",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "numAzur",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sms",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "smslong",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "tracker",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "ucs2",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/smsmulti",
+      "method": "sendSmsMulti",
+      "httpMethod": "post",
+      "tag": "sms",
+      "description": "Envoyer des SMS",
+      "parameters": [
+        {
+          "name": "date_envoi",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "emetteur",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "gmt_zone",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "keyid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "nostop",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "num",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "numAzur",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "repertoireId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sms",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "smslong",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "tracker",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "ucs2",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/subaccount",
+      "method": "subaccountAdd",
+      "httpMethod": "post",
+      "tag": "add subaccount",
+      "description": "Ajoute un sous compte",
+      "parameters": [
+        {
+          "name": "keyid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "subAccountEdit",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "subAccountLogin",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "subAccountPassword",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/subaccount",
+      "method": "subaccountEdit",
+      "httpMethod": "put",
+      "tag": "edit subaccount",
+      "description": "Edit a subaccount",
+      "parameters": [
+        {
+          "name": "keyid",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "subAccountAddCredit",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "subAccountCountryCode",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "subAccountEdit",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "subAccountKeyId",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "subAccountPrice",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "subAccountRestrictionStop",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "subAccountRestrictionTime",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://apirest.isendpro.com/cgi-bin",
   "apiDescription": "[1] Liste des fonctionnalités :\n- envoi de SMS à un ou plusieurs destinataires,\n- lookup HLR,\n- récupération des récapitulatifs de campagne,\n- gestion des répertoires,\n- ajout en liste noire.\n- comptage du nombre de caractères des SMS\n\n[2] Pour utiliser cette API vous devez:\n- Créer un compte iSendPro sur https://isendpro.com/\n- Créditer votre compte \n    - Remarque: obtention d'un crédit de test possible sous conditions\n- Noter votre clé de compte (keyid)\n  - Elle vous sera indispensable à l'utilisation de l'API\n  - Vous pouvez la trouver dans le rubrique mon \"compte\", sous-rubrique \"mon API\"\n- Configurer le contrôle IP\n  - Le contrôle IP est configurable dans le rubrique mon \"compte\", sous-rubrique \"mon API\"\n  - Il s'agit d'un système de liste blanche, vous devez entrer les IP utilisées pour appeler l'API\n  - Vous pouvez également désactiver totalement le contrôle IP\n",
   "apiTitle": "API iSendPro",

@@ -3,6 +3,777 @@
   "openApiRaw": "https://api.infermedica.com/v2/swagger.json",
   "homepage": "infermedica.com",
   "apiVersion": "v2",
+  "methods": [
+    {
+      "url": "/concepts",
+      "method": "getConcepts",
+      "httpMethod": "get",
+      "tag": "concepts",
+      "description": "",
+      "parameters": [
+        {
+          "name": "ids",
+          "schema": "string",
+          "required": false,
+          "description": "ids"
+        },
+        {
+          "name": "types",
+          "schema": "string",
+          "required": false,
+          "description": "types"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/concepts/{id}",
+      "method": "getConcept",
+      "httpMethod": "get",
+      "tag": "concepts",
+      "description": "",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "concept id"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conditions",
+      "method": "getAllConditions",
+      "httpMethod": "get",
+      "tag": "conditions",
+      "description": "List all conditions",
+      "parameters": [
+        {
+          "name": "age.value",
+          "schema": "integer",
+          "required": false,
+          "description": "age value"
+        },
+        {
+          "name": "age.unit",
+          "schema": "string",
+          "required": false,
+          "description": "unit in which age value was provided"
+        },
+        {
+          "name": "enable_triage_5",
+          "schema": "boolean",
+          "required": false,
+          "description": "enable 5-level triage values"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/conditions/{id}",
+      "method": "getCondition",
+      "httpMethod": "get",
+      "tag": "conditions",
+      "description": "Get condition by id",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "condition id"
+        },
+        {
+          "name": "age.value",
+          "schema": "integer",
+          "required": false,
+          "description": "age value"
+        },
+        {
+          "name": "age.unit",
+          "schema": "string",
+          "required": false,
+          "description": "unit in which age value was provided"
+        },
+        {
+          "name": "enable_triage_5",
+          "schema": "boolean",
+          "required": false,
+          "description": "enable 5-level triage values"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/diagnosis",
+      "method": "computeDiagnosis",
+      "httpMethod": "post",
+      "tag": "diagnosis",
+      "description": "Query diagnostic engine",
+      "parameters": [
+        {
+          "name": "age",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "evaluated_at",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "evidence",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "extras",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sex",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/explain",
+      "method": "computeExplanation",
+      "httpMethod": "post",
+      "tag": "explain",
+      "description": "Query diagnostic engine for explanation",
+      "parameters": [
+        {
+          "name": "age",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "evaluated_at",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "evidence",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "extras",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sex",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "target",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/info",
+      "method": "getDatabaseInfo",
+      "httpMethod": "get",
+      "tag": "info",
+      "description": "Get database information",
+      "parameters": [
+        {
+          "name": "age.value",
+          "schema": "integer",
+          "required": false,
+          "description": "age value"
+        },
+        {
+          "name": "age.unit",
+          "schema": "string",
+          "required": false,
+          "description": "unit in which age value was provided"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lab_tests",
+      "method": "getAllLabTests",
+      "httpMethod": "get",
+      "tag": "lab_tests",
+      "description": "List all lab tests",
+      "parameters": [
+        {
+          "name": "age.value",
+          "schema": "integer",
+          "required": false,
+          "description": "age value"
+        },
+        {
+          "name": "age.unit",
+          "schema": "string",
+          "required": false,
+          "description": "unit in which age value was provided"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lab_tests/{id}",
+      "method": "getLabTest",
+      "httpMethod": "get",
+      "tag": "lab_tests",
+      "description": "Get lab test by id",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "lab test id"
+        },
+        {
+          "name": "age.value",
+          "schema": "integer",
+          "required": false,
+          "description": "age value"
+        },
+        {
+          "name": "age.unit",
+          "schema": "string",
+          "required": false,
+          "description": "unit in which age value was provided"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/lookup",
+      "method": "getMatchingObservation",
+      "httpMethod": "get",
+      "tag": "lookup",
+      "description": "Find observation matching given phrase",
+      "parameters": [
+        {
+          "name": "phrase",
+          "schema": "string",
+          "required": true,
+          "description": "phrase to match"
+        },
+        {
+          "name": "sex",
+          "schema": "string",
+          "required": false,
+          "description": "sex filter"
+        },
+        {
+          "name": "age.value",
+          "schema": "integer",
+          "required": false,
+          "description": "age value"
+        },
+        {
+          "name": "age.unit",
+          "schema": "string",
+          "required": false,
+          "description": "unit in which age value was provided"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/parse",
+      "method": "getMentions",
+      "httpMethod": "post",
+      "tag": "parse",
+      "description": "Find mentions of observations in given text",
+      "parameters": [
+        {
+          "name": "concept_types",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "context",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "correct_spelling",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "include_tokens",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "text",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/rationale",
+      "method": "computeRationale",
+      "httpMethod": "post",
+      "tag": "rationale",
+      "description": "Query diagnostic engine for question rationale",
+      "parameters": [
+        {
+          "name": "age",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "evaluated_at",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "evidence",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "extras",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sex",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/red_flags",
+      "method": "computeRedFlags",
+      "httpMethod": "post",
+      "tag": "red_flags",
+      "description": "Query the diagnostic engine for possible red flag symptoms",
+      "parameters": [
+        {
+          "name": "max_results",
+          "schema": "integer",
+          "required": false,
+          "description": "maximum number of results"
+        },
+        {
+          "name": "age",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "evaluated_at",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "evidence",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "extras",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sex",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/risk_factors",
+      "method": "getAllRiskFactors",
+      "httpMethod": "get",
+      "tag": "risk_factors",
+      "description": "List all risk factors",
+      "parameters": [
+        {
+          "name": "age.value",
+          "schema": "integer",
+          "required": false,
+          "description": "age value"
+        },
+        {
+          "name": "age.unit",
+          "schema": "string",
+          "required": false,
+          "description": "unit in which age value was provided"
+        },
+        {
+          "name": "enable_triage_5",
+          "schema": "boolean",
+          "required": false,
+          "description": "enable 5-level triage values"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/risk_factors/{id}",
+      "method": "getRiskFactor",
+      "httpMethod": "get",
+      "tag": "risk_factors",
+      "description": "Get risk factor by id",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "risk factor id"
+        },
+        {
+          "name": "age.value",
+          "schema": "integer",
+          "required": false,
+          "description": "age value"
+        },
+        {
+          "name": "age.unit",
+          "schema": "string",
+          "required": false,
+          "description": "unit in which age value was provided"
+        },
+        {
+          "name": "enable_triage_5",
+          "schema": "boolean",
+          "required": false,
+          "description": "enable 5-level triage values"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/search",
+      "method": "getMatchingObservations",
+      "httpMethod": "get",
+      "tag": "search",
+      "description": "Find observations matching given phrase",
+      "parameters": [
+        {
+          "name": "phrase",
+          "schema": "string",
+          "required": true,
+          "description": "phrase to match"
+        },
+        {
+          "name": "sex",
+          "schema": "string",
+          "required": false,
+          "description": "sex filter"
+        },
+        {
+          "name": "age.value",
+          "schema": "integer",
+          "required": false,
+          "description": "age value"
+        },
+        {
+          "name": "age.unit",
+          "schema": "string",
+          "required": false,
+          "description": "unit in which age value was provided"
+        },
+        {
+          "name": "max_results",
+          "schema": "integer",
+          "required": false,
+          "description": "maximum number of results"
+        },
+        {
+          "name": "type",
+          "schema": "array",
+          "required": false,
+          "description": "type of results"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/suggest",
+      "method": "getSuggestions",
+      "httpMethod": "post",
+      "tag": "suggest",
+      "description": "Query diagnostic engine for related symptoms",
+      "parameters": [
+        {
+          "name": "max_results",
+          "schema": "integer",
+          "required": false,
+          "description": "maximum number of results"
+        },
+        {
+          "name": "age",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "evaluated_at",
+          "schema": "string",
+          "description": ""
+        },
+        {
+          "name": "evidence",
+          "schema": "array",
+          "description": ""
+        },
+        {
+          "name": "extras",
+          "schema": "object",
+          "description": ""
+        },
+        {
+          "name": "sex",
+          "schema": "string",
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/symptoms",
+      "method": "getAllSymptoms",
+      "httpMethod": "get",
+      "tag": "symptoms",
+      "description": "List all symptoms",
+      "parameters": [
+        {
+          "name": "age.value",
+          "schema": "integer",
+          "required": false,
+          "description": "age value"
+        },
+        {
+          "name": "age.unit",
+          "schema": "string",
+          "required": false,
+          "description": "unit in which age value was provided"
+        },
+        {
+          "name": "enable_triage_5",
+          "schema": "boolean",
+          "required": false,
+          "description": "enable 5-level triage values"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/symptoms/{id}",
+      "method": "getSymptom",
+      "httpMethod": "get",
+      "tag": "symptoms",
+      "description": "Get symptoms by id",
+      "parameters": [
+        {
+          "name": "id",
+          "schema": "string",
+          "required": true,
+          "description": "symptoms id"
+        },
+        {
+          "name": "age.value",
+          "schema": "integer",
+          "required": false,
+          "description": "age value"
+        },
+        {
+          "name": "age.unit",
+          "schema": "string",
+          "required": false,
+          "description": "unit in which age value was provided"
+        },
+        {
+          "name": "enable_triage_5",
+          "schema": "boolean",
+          "required": false,
+          "description": "enable 5-level triage values"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/triage",
+      "method": "computeTriage",
+      "httpMethod": "post",
+      "tag": "triage",
+      "description": "Query diagnostic engine for triage level",
+      "parameters": [
+        {
+          "name": "age",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "evaluated_at",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "evidence",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "extras",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sex",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    }
+  ],
   "apiBaseUrl": "https://api.infermedica.com/v2",
   "apiDescription": "Empower your healthcare services with intelligent diagnostic insights of Infermedica API.",
   "apiTitle": "Infermedica API",
