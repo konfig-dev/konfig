@@ -275,7 +275,7 @@ function getNumberOfParameters(spec: Spec): number {
   return numberOfParameters;
 }
 
-type SdkPagePropsWithPropertiesOmitted = Omit<
+export type SdkPagePropsWithPropertiesOmitted = Omit<
   SdkPageProps,
   | "previewLinkImage" // DONE IN SEPARATE SCRIPT
   | "metaDescription" // DONE IN SEPARATE SCRIPT
