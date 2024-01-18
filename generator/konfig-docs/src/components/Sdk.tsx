@@ -54,7 +54,7 @@ export function Sdk({
   sdkName,
   GettingStarted,
   Description,
-}: SdkPageProps & ReactProps) {
+}: Omit<SdkPageProps, "difficultyScore" | "providerName"> & ReactProps) {
   return (
     <Layout
       title={`${company} API - TypeScript SDK and OpenAPI Specification`}

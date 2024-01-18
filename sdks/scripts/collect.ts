@@ -3,7 +3,10 @@ import { Spec, getOperations, parseSpec } from "konfig-lib";
 import * as fs from "fs";
 import * as glob from "glob";
 import * as math from "mathjs";
-import { Db } from "../src/db-schema";
+import type {
+  Method,
+  SdkPageProps,
+} from "../../generator/konfig-docs/src/components/SdkComponentProps";
 
 type Paths = { oasPath: string }[];
 
@@ -50,6 +53,12 @@ function getProviderName(spec: Spec): string {
 }
 
 function getServiceName(spec: Spec): string {
+  const info = spec.spec.info as any;
+  return info["x-serviceName"];
+}
+
+// See generator/konfig-docs/src/components/Sdk.tsx#Method
+function getMethodsObject(spec: Spec): Method[] {
   const info = spec.spec.info as any;
   return info["x-serviceName"];
 }
@@ -122,6 +131,26 @@ function getNumberOfParameters(spec: Spec): number {
   return numberOfParameters;
 }
 
+type SdkPagePropsWithPropertiesOmitted = Omit<
+  SdkPageProps,
+  | "openApiRaw" // TODO
+  | "openApiUi" // TODO
+  | "previewLinkImage" // TODO
+  | "metaDescription" // TODO
+  | "favicon" // TODO
+  | "logo" // TODO
+  | "homepage" // TODO
+  | "methods" // TODO
+  | "lastUpdated" // TODO
+  | "sdkName" // DO MANUALLY
+  | "company" // DO MANUALLY
+>;
+
+export type Db = {
+  specifications: Record<string, SdkPagePropsWithPropertiesOmitted>;
+  skipped: string[];
+};
+
 async function writeData(db: Db) {
   fs.truncateSync(dbFile);
   const ws = fs.createWriteStream(dbFile, { flags: "a" });
@@ -152,7 +181,7 @@ async function collectData(): Promise<Db> {
     console.log(`Processing path ${++i}/${paths.length}: ${cleanPath}`);
     if (skip.includes(cleanPath)) continue;
     const oas = fs.readFileSync(oasPath, "utf-8");
-    let spec;
+    let spec: Spec;
     try {
       spec = await timeout(5000, parseSpec(oas));
     } catch (error) {
@@ -165,17 +194,22 @@ async function collectData(): Promise<Db> {
     const numberOfOperations = getNumberOfOperations(spec);
     const numberOfSchemas = getNumberOfSchemas(spec);
     const numberOfParameters = getNumberOfParameters(spec);
+    const apiBaseUrl = spec.spec.servers?.[0]?.url;
+    if (apiBaseUrl === undefined) {
+      console.log(`❌ Skipping ${cleanPath} due to missing apiBaseUrl.`);
+      continue;
+    }
     db.specifications[key] = {
       providerName: getProviderName(spec),
       serviceName: getServiceName(spec),
-      version: getVersion(spec),
-      servers: spec.spec.servers,
-      description: spec.spec.info.description,
-      title: spec.spec.info.title,
-      numberOfEndpoints: numberOfEndpoints,
-      numberOfOperations: numberOfOperations,
-      numberOfSchemas: numberOfSchemas,
-      numberOfParameters: numberOfParameters,
+      apiVersion: getVersion(spec),
+      apiBaseUrl: apiBaseUrl,
+      apiDescription: spec.spec.info.description,
+      apiTitle: spec.spec.info.title,
+      endpoints: numberOfEndpoints,
+      sdkMethods: numberOfOperations,
+      schemas: numberOfSchemas,
+      parameters: numberOfParameters,
       contactUrl: getInfoContactUrl(spec),
       contactEmail: getInfoContactEmail(spec),
       difficultyScore: computeDifficultyScore(
