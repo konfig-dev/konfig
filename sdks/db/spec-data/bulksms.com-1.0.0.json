@@ -1,6 +1,13 @@
 {
   "providerName": "bulksms.com",
   "openApiRaw": "http://developer.bulksms.com/json/v1/swagger.yaml",
+  "securitySchemes": {
+    "basicAuth": {
+      "description": "The API uses HTTP Basic Auth for authentication.\n\nYou are requested to preemptively provide the `Authorization` header in your requests and not wait until the server has provided a `401 Unauthorized` response.\n\nDoing so will reduce the number of requests required to achieve your goal, which will improve overall performance.\n\nYou authenticate using either the username you supplied when you registered with [BulkSMS](https://www.bulksms.com) or with an _API Token_. API tokens can be created by logging into your account and visiting _Settings &gt; Developer Settings &gt; API Tokens_.\n\n__Important:__\n- Where possible, use an API Token instead of the username and password when writing software against the API.\n\nWhether you use a username or an API Token, the values must be [Base64 encoded](https://en.wikipedia.org/wiki/Base64) before using it in the header.\nFor example, if the username is `Aladdin` and the password is `OpenSesame`, the unencoded header value is `Aladdin:OpenSesame`.  After encoding, the full header becomes\n\n```\nAuthorization: Basic QWxhZGRpbjpPcGVuU2VzYW1l\n```\nWhen using an API token, the value to be encoded will be `<token-id>:<token-secret>`.  These values _before Base64 encoding_ look something like this\n\n`\nBBDE1B476E03498AA768F66A286AABDC-01-B:9jSbVDK20!MXdfRGiIIFu#ffUE8*S\n`\n",
+      "scheme": "basic",
+      "type": "http"
+    }
+  },
   "homepage": "bulksms.com",
   "apiVersion": "1.0.0",
   "methods": [

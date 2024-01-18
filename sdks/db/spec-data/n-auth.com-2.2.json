@@ -1,6 +1,20 @@
 {
   "providerName": "n-auth.com",
   "openApiRaw": "https://api.docs.nextauth.com/api/swagger.json",
+  "securitySchemes": {
+    "api_key": {
+      "description": "API Key for a specific (virtual) server.",
+      "in": "header",
+      "name": "X-apikey",
+      "type": "apiKey"
+    },
+    "role_id": {
+      "description": "ID of the role you want to impersonate (requires that the role associated with the API key passed in the header above has global 'root' or global 'setrid' permissions).",
+      "in": "header",
+      "name": "X-su",
+      "type": "apiKey"
+    }
+  },
   "homepage": "n-auth.com",
   "apiVersion": "2.2",
   "methods": [

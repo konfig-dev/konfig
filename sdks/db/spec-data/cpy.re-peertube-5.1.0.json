@@ -1,6 +1,22 @@
 {
   "providerName": "cpy.re",
   "openApiRaw": "https://raw.githubusercontent.com/Chocobozzz/PeerTube/develop/support/doc/api/openapi.yaml",
+  "securitySchemes": {
+    "OAuth2": {
+      "description": "Authenticating via OAuth requires the following steps:\n- Have an activated account\n- [Generate] an access token for that account at `/api/v1/users/token`.\n- Make requests with the *Authorization: Bearer <token\\>* header\n- Profit, depending on the role assigned to the account\n\nNote that the __access token is valid for 1 day__ and is given\nalong with a __refresh token valid for 2 weeks__.\n\n[Generate]: https://docs.joinpeertube.org/api/rest-getting-started\n",
+      "flows": {
+        "password": {
+          "scopes": {
+            "admin": "Admin scope",
+            "moderator": "Moderator scope",
+            "user": "User scope"
+          },
+          "tokenUrl": "/api/v1/users/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "cpy.re",
   "serviceName": "peertube",
   "apiVersion": "5.1.0",

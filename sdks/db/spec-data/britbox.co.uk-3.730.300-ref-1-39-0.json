@@ -1,6 +1,45 @@
 {
   "providerName": "britbox.co.uk",
   "openApiRaw": "https://isl.britbox.co.uk/api/spec",
+  "securitySchemes": {
+    "accountAuth": {
+      "description": "Account JWT token",
+      "flows": {
+        "password": {
+          "scopes": {
+            "Catalog": "Access all read only content",
+            "Commerce": "Perform account level transactions",
+            "Playback": "Allow playback of restricted content",
+            "Settings": "Modify account settings"
+          },
+          "tokenUrl": "/account/authorization"
+        }
+      },
+      "type": "oauth2"
+    },
+    "profileAuth": {
+      "description": "Profile JWT token",
+      "flows": {
+        "password": {
+          "scopes": {
+            "Catalog": "Modify profile preferences and activity (bookmarks, watch list)"
+          },
+          "tokenUrl": "/account/profile/authorization"
+        }
+      },
+      "type": "oauth2"
+    },
+    "resetPasswordAuth": {
+      "in": "header",
+      "name": "authorization",
+      "type": "apiKey"
+    },
+    "verifyEmailAuth": {
+      "in": "header",
+      "name": "authorization",
+      "type": "apiKey"
+    }
+  },
   "homepage": "britbox.co.uk",
   "apiVersion": "3.730.300-ref-1-39-0",
   "methods": [

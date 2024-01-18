@@ -1,6 +1,30 @@
 {
   "providerName": "asana.com",
   "openApiRaw": "https://raw.githubusercontent.com/Asana/developer-docs/master/defs/asana_oas.yaml",
+  "securitySchemes": {
+    "oauth2": {
+      "description": "We require that applications designed to access the Asana API on behalf of multiple users implement OAuth 2.0.\nAsana supports the Authorization Code Grant flow.",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://app.asana.com/-/oauth_authorize",
+          "refreshUrl": "https://app.asana.com/-/oauth_token",
+          "scopes": {
+            "default": "Provides access to all endpoints documented in our API reference. If no scopes are requested, this scope is assumed by default.",
+            "email": "Provides access to the user’s email through the OpenID Connect user info endpoint.",
+            "openid": "Provides access to OpenID Connect ID tokens and the OpenID Connect user info endpoint.",
+            "profile": "Provides access to the user’s name and profile photo through the OpenID Connect user info endpoint."
+          },
+          "tokenUrl": "https://app.asana.com/-/oauth_token"
+        }
+      },
+      "type": "oauth2"
+    },
+    "personalAccessToken": {
+      "description": "A personal access token allows access to the api for the user who created it. This should be kept a secret and be treated like a password.",
+      "scheme": "bearer",
+      "type": "http"
+    }
+  },
   "homepage": "asana.com",
   "apiVersion": "1.0",
   "methods": [

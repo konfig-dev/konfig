@@ -1,6 +1,22 @@
 {
   "providerName": "izettle.com",
   "openApiRaw": "https://products.izettle.com/openapi.json",
+  "securitySchemes": {
+    "ZettleOauth": {
+      "description": "For more information about authorization API visit: https://developer.zettle.com/docs/api/oauth/overview",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://oauth.zettle.com/authorize",
+          "scopes": {
+            "READ:PRODUCT": "Access to read product library data",
+            "WRITE:PRODUCT": "Access to write product library data"
+          },
+          "tokenUrl": "https://oauth.zettle.com/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "izettle.com",
   "serviceName": "products",
   "apiVersion": "1.0.0",

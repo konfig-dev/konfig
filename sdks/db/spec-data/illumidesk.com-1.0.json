@@ -1,6 +1,14 @@
 {
   "providerName": "illumidesk.com",
   "openApiRaw": "https://raw.githubusercontent.com/3Blades/openapi/master/tbs_swagger.yml",
+  "securitySchemes": {
+    "jwt": {
+      "description": "A valid JSON Web Token (JWT) must be passed for all operations except for those in the `/auth` route. A JWT can be retrieved from the `/auth/jwt-token-auth` endpoint.\n\nThe following syntax is required:\n\n  Authorization: Bearer <token>\n",
+      "in": "header",
+      "name": "Authorization",
+      "type": "apiKey"
+    }
+  },
   "homepage": "illumidesk.com",
   "apiVersion": "1.0",
   "methods": [

@@ -1,6 +1,36 @@
 {
   "providerName": "just-eat.co.uk",
   "openApiRaw": "https://uk.api.just-eat.io/docs/openapi.json",
+  "securitySchemes": {
+    "Bearer": {
+      "bearerFormat": "JWT",
+      "description": "Bearer token authentication using a JSON Web Token (JWT).",
+      "scheme": "bearer",
+      "type": "http"
+    },
+    "api_key": {
+      "description": "APIs for delivery partners require an API key that will have been issued to you.",
+      "in": "header",
+      "name": "Authorization",
+      "type": "apiKey"
+    },
+    "basic_auth": {
+      "description": "A few services allow the use of basic authentication when a partner doesn't support OAuth based authentication.",
+      "scheme": "basic",
+      "type": "http"
+    },
+    "justeat_adfs": {
+      "description": "ADFS authentication provider for internal Just Eat tools.",
+      "openIdConnectUrl": "https://adfs.just-eat.com/adfs/.well-known/openid-configuration",
+      "type": "openIdConnect"
+    },
+    "restaurantsignup_jwt": {
+      "bearerFormat": "JWT token with payload `RestaurantId` and Role `[RestaurantRead | VerifyEmail | RestaurantWrite | FullAccess | DocumentRead]`",
+      "description": "Bearer token authentication using a JSON Web Token (JWT), used by the restaurant sign up system",
+      "scheme": "bearer",
+      "type": "http"
+    }
+  },
   "homepage": "just-eat.co.uk",
   "apiVersion": "1.0.0",
   "methods": [

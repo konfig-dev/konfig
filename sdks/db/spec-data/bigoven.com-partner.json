@@ -1,6 +1,19 @@
 {
   "providerName": "bigoven.com",
   "openApiRaw": "http://api2.bigoven.com/swagger/docs/partner",
+  "securitySchemes": {
+    "api_key": {
+      "description": "Pass your api_key in the header (recommended) or as a URL parameter. For the URL parameter, use api_key. For the header, send it as a header value for: X-BigOven-API-Key",
+      "in": "header",
+      "name": "X-BigOven-API-Key",
+      "type": "apiKey"
+    },
+    "basic": {
+      "description": "Basic HTTP Authentication is used for those endpoint calls where you want to act as a BigOven user -- e.g., to get the list of favorites of a signed-in user, or add items to their grocery list.",
+      "scheme": "basic",
+      "type": "http"
+    }
+  },
   "homepage": "bigoven.com",
   "apiVersion": "partner",
   "methods": [

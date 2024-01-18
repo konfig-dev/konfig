@@ -1,6 +1,31 @@
 {
   "providerName": "jirafe.com",
   "openApiRaw": "https://event.jirafe.com/api-docs",
+  "securitySchemes": {
+    "oauth2_accessCode": {
+      "type": "oauth2",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://account.jirafe.com/oauth2/auth_token",
+          "tokenUrl": "https://account.jirafe.com/oauth2/code",
+          "scopes": {
+            "write": "Send events"
+          }
+        }
+      }
+    },
+    "oauth2_implicit": {
+      "type": "oauth2",
+      "flows": {
+        "implicit": {
+          "authorizationUrl": "https://account.jirafe.com/oauth2/authorize",
+          "scopes": {
+            "write": "Send events"
+          }
+        }
+      }
+    }
+  },
   "homepage": "jirafe.com",
   "apiVersion": "2.0.0",
   "methods": [

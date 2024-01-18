@@ -1,6 +1,32 @@
 {
   "providerName": "fulfillment.com",
   "openApiRaw": "https://fulfillment.github.io/api/openapi.json",
+  "securitySchemes": {
+    "apiKey": {
+      "description": "",
+      "in": "header",
+      "name": "x-api-key",
+      "type": "apiKey"
+    },
+    "fdcAuth": {
+      "flows": {
+        "implicit": {
+          "authorizationUrl": "https://api.fulfillment.com/v2/oauth/authorize",
+          "scopes": {
+            "oms": "read & write access"
+          }
+        },
+        "password": {
+          "refreshUrl": "https://api.fulfillment.com/v2/oauth/access_token",
+          "scopes": {
+            "oms": "read & write access"
+          },
+          "tokenUrl": "https://api.fulfillment.com/v2/oauth/access_token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "fulfillment.com",
   "apiVersion": "2.0",
   "methods": [

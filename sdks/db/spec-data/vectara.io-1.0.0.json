@@ -1,6 +1,23 @@
 {
   "providerName": "vectara.io",
   "openApiRaw": "https://docs.vectara.com/vectara-oas.yaml",
+  "securitySchemes": {
+    "ApiKeyAuth": {
+      "in": "header",
+      "name": "x-api-key",
+      "type": "apiKey"
+    },
+    "oAuth": {
+      "description": "OAuth2 access to Vectara",
+      "flows": {
+        "clientCredentials": {
+          "scopes": {},
+          "tokenUrl": "https://vectara-prod-YOUR_VECTARA_CUSTOMER_ID.auth.us-west-2.amazoncognito.com/oauth2/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "vectara.io",
   "apiVersion": "1.0.0",
   "methods": [

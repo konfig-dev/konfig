@@ -1,6 +1,41 @@
 {
   "providerName": "enode.io",
   "openApiRaw": "https://docs.enode.io/OpenAPI-Enode-v1.3.10.json",
+  "securitySchemes": {
+    "ClientAccessToken": {
+      "description": "A `ClientAccessToken` access token is obtained via the [OAuth 2.0 Client Credentials grant](https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/)\n\nWhen accessing protected resources, the token should be provided in a Bearer authorization header as specified in [RFC6750](https://tools.ietf.org/html/rfc6750#section-2.1)\n\nExample:\n```\nDELETE /users/xyz HTTP/1.1\nAuthorization: Bearer yQ89j3LAnqBx42gWGUl4v-jxoS1mfTAH3Q52WTGrExw.zgRcRrE6KRKUgVQEVr2Pifub8Z7trCZrobKjvhGIOTI\n```\n\nYou can read more about obtaining this token in the [Authorization](#section/Authorization) section\n",
+      "flows": {
+        "clientCredentials": {
+          "scopes": {},
+          "tokenUrl": "https://link.test.enode.io/oauth2/token"
+        }
+      },
+      "type": "oauth2"
+    },
+    "UserAccessToken": {
+      "description": "A `UserAccessToken` access token is obtained via the [OAuth 2.0 Authorization Code grant](https://www.oauth.com/oauth2-servers/access-tokens/authorization-code-request/)\n\nThis token represents the authorization for the bearer to access resources on behalf of the user who authorized it. This authorization is further limited by scopes. When relevant, the `scope` required by each endpoint is listed in the documentation for that endpoint.\n\nWhen accessing protected resources, the token should be provided in a Bearer authorization header as specified in [RFC6750](https://tools.ietf.org/html/rfc6750#section-2.1)\n\nExample:\n```\nGET /vehicles HTTP/1.1\nAuthorization: Bearer yQ89j3LAnqBx42gWGUl4v-jxoS1mfTAH3Q52WTGrExw.zgRcRrE6KRKUgVQEVr2Pifub8Z7trCZrobKjvhGIOTI\n```\n\nYou can read more about obtaining this token in the [Authorization](#section/Authorization) section\n",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://link.test.enode.io/oauth2/auth",
+          "scopes": {
+            "all": "Read and write all resources",
+            "charger:charge_state": "Read charger charge state",
+            "charger:information": "Read charger information",
+            "charging_location": "Read & write user's charging locations",
+            "control:charger:charging": "Control charger charging",
+            "control:vehicle:charging": "Control vehicle charging",
+            "vehicle:charge_state": "Read vehicle charge state",
+            "vehicle:information": "Read vehicle information",
+            "vehicle:location": "Read vehicle location",
+            "vehicle:odometer": "Read vehicle odometer",
+            "vehicle:smart_charging_policy": "Read & write vehicle smart charging policy"
+          },
+          "tokenUrl": "https://link.test.enode.io/oauth2/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "enode.io",
   "apiVersion": "1.3.10",
   "methods": [

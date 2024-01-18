@@ -1,6 +1,26 @@
 {
   "providerName": "apiz.ebay.com",
   "openApiRaw": "https://developer.ebay.com/api-docs/master/commerce/identity/openapi/3/commerce_identity_v1_oas3.json",
+  "securitySchemes": {
+    "api_auth": {
+      "description": "The security definitions for this API. Please check individual operations for applicable scopes.",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://auth.ebay.com/oauth2/authorize",
+          "scopes": {
+            "https://api.ebay.com/oauth/api_scope/commerce.identity.address.readonly": "View a user's personal address information from their eBay member account",
+            "https://api.ebay.com/oauth/api_scope/commerce.identity.email.readonly": "View a user's personal email information from their eBay member account",
+            "https://api.ebay.com/oauth/api_scope/commerce.identity.name.readonly": "View a user's first and last name from their eBay member account",
+            "https://api.ebay.com/oauth/api_scope/commerce.identity.phone.readonly": "View a user's personal telephone information from their eBay member account",
+            "https://api.ebay.com/oauth/api_scope/commerce.identity.readonly": "View a user's basic information, such as username or business account details, from their eBay member account",
+            "https://api.ebay.com/oauth/api_scope/commerce.identity.status.readonly": "View a user's eBay member account status"
+          },
+          "tokenUrl": "https://api.ebay.com/identity/v1/oauth2/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "apiz.ebay.com",
   "serviceName": "commerce-identity",
   "apiVersion": "v1.1.0",

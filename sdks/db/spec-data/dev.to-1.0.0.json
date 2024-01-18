@@ -1,6 +1,14 @@
 {
   "providerName": "dev.to",
   "openApiRaw": "https://raw.githubusercontent.com/forem/forem/main/swagger/v1/api_v1.json",
+  "securitySchemes": {
+    "api-key": {
+      "description": "API Key authentication.\n\nAuthentication for some endpoints, like write operations on the\nArticles API require a DEV API key.\n\nAll authenticated endpoints are CORS disabled, the API key is intended for non-browser scripts.\n\n### Getting an API key\n\nTo obtain one, please follow these steps:\n\n  - visit https://dev.to/settings/extensions\n  - in the \"DEV API Keys\" section create a new key by adding a\n    description and clicking on \"Generate API Key\"\n\n    ![obtain a DEV API Key](https://user-images.githubusercontent.com/37842/172718105-bd93664e-76e0-477d-99c4-265dda0b06c5.png)\n\n  - You'll see the newly generated key in the same view\n    ![generated DEV API Key](https://user-images.githubusercontent.com/37842/172718151-e7fe26a0-9937-42e8-96c6-333acdab9e49.png)",
+      "in": "header",
+      "name": "api-key",
+      "type": "apiKey"
+    }
+  },
   "homepage": "dev.to",
   "apiVersion": "1.0.0",
   "methods": [

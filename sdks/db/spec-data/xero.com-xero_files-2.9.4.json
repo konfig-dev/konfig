@@ -1,6 +1,25 @@
 {
   "providerName": "xero.com",
   "openApiRaw": "https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero_files.yaml",
+  "securitySchemes": {
+    "OAuth2": {
+      "description": "For more information",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+          "scopes": {
+            "email": "Grant read-only access to your email",
+            "files": "Grant read-write access to files and folders",
+            "files.read": "Grant read-only access to files and folders",
+            "openid": "Grant read-only access to your open id",
+            "profile": "your profile information"
+          },
+          "tokenUrl": "https://identity.xero.com/connect/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "xero.com",
   "serviceName": "xero_files",
   "apiVersion": "2.9.4",

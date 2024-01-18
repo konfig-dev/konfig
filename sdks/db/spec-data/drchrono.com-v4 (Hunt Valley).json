@@ -1,6 +1,42 @@
 {
   "providerName": "drchrono.com",
   "openApiRaw": "https://drchrono.com/openapi-schema",
+  "securitySchemes": {
+    "drchrono_oauth2": {
+      "description": "",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://drchrono.com/o/authorize/",
+          "scopes": {
+            "billing:patient-payment:read": "View patient payment information",
+            "billing:patient-payment:write": "Modify patient payment information",
+            "billing:read": "View billing information.",
+            "billing:write": "Modify billing information.",
+            "calendar:read": "View your appointments.",
+            "calendar:write": "Schedule appointments and modify the data associated with them.",
+            "clinical:read": "View clinical information, such as vitals, clinical notes, medications and diagnoses.",
+            "clinical:write": "Create and modify clinical information, such as vitals, clinical notes, medications and diagnoses.",
+            "labs:read": "View patient lab orders and results.",
+            "labs:write": "Create and modify patient lab orders and results.",
+            "messages:read": "View messages in your message center.",
+            "messages:write": "Create and modify messages in your message center.",
+            "patients:read": "View detailed patient information.",
+            "patients:summary:read": "View summary information about your patients. This includes patients' name, chart_id, age, and gender.",
+            "patients:summary:write": "Create new patients and set their name, chart_id, age, and gender.",
+            "patients:write": "Create patients and modify detailed patient information.",
+            "settings:read": "View resources that requires Settings permission, such as custom fields.",
+            "settings:write": "Create resources that requires Settings permission, such as custom fields.",
+            "tasks:read": "View tasks in your tasks center",
+            "tasks:write": "Create and modify tasks in your tasks center",
+            "user:read": "View your basic information.",
+            "user:write": "Edit select account information, such as creating new exam rooms."
+          },
+          "tokenUrl": "https://drchrono.com/o/token/"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "drchrono.com",
   "apiVersion": "v4 (Hunt Valley)",
   "methods": [

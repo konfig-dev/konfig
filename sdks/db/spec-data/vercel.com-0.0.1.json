@@ -1,6 +1,23 @@
 {
   "providerName": "vercel.com",
   "openApiRaw": "https://openapi.vercel.sh",
+  "securitySchemes": {
+    "bearerToken": {
+      "description": "Default authentication mechanism",
+      "scheme": "bearer",
+      "type": "http"
+    },
+    "oauth2": {
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://api.vercel.com/oauth/authorize",
+          "scopes": {},
+          "tokenUrl": "https://api.vercel.com/oauth/access_token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "vercel.com",
   "apiVersion": "0.0.1",
   "methods": [

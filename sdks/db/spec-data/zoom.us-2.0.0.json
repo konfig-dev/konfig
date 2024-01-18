@@ -1,6 +1,33 @@
 {
   "providerName": "zoom.us",
   "openApiRaw": "https://marketplace.zoom.us/docs/api-reference/zoom-api/Zoom%20API.oas2.json",
+  "securitySchemes": {
+    "Bearer": {
+      "in": "header",
+      "name": "Authorization",
+      "type": "apiKey"
+    },
+    "Client_Credentials": {
+      "description": "Client Credentials Flow for ChatBots",
+      "flows": {
+        "clientCredentials": {
+          "scopes": {},
+          "tokenUrl": "https://api.zoom.us/oauth/token"
+        }
+      },
+      "type": "oauth2"
+    },
+    "OAuth": {
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://zoom.us/oauth/authorize",
+          "scopes": {},
+          "tokenUrl": "https://zoom.us/oauth/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "zoom.us",
   "apiVersion": "2.0.0",
   "methods": [

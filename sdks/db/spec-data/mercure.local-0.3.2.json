@@ -1,6 +1,20 @@
 {
   "providerName": "mercure.local",
   "openApiRaw": "https://raw.githubusercontent.com/dunglas/mercure/main/spec/openapi.yaml",
+  "securitySchemes": {
+    "Bearer": {
+      "bearerFormat": "JWT",
+      "description": "Preferred for server to server",
+      "scheme": "bearer",
+      "type": "http"
+    },
+    "Cookie": {
+      "description": "Preferred for web browsers (the cookie name may change depending on the configuration)",
+      "in": "cookie",
+      "name": "mercureAuthorization",
+      "type": "apiKey"
+    }
+  },
   "homepage": "mercure.local",
   "apiVersion": "0.3.2",
   "methods": [

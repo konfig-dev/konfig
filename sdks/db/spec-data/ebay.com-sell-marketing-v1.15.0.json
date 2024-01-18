@@ -1,6 +1,28 @@
 {
   "providerName": "ebay.com",
   "openApiRaw": "https://developer.ebay.com/api-docs/master/sell/marketing/openapi/3/sell_marketing_v1_oas3.json",
+  "securitySchemes": {
+    "api_auth": {
+      "description": "The security definitions for this API. Please check individual operations for applicable scopes.",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://auth.ebay.com/oauth2/authorize",
+          "scopes": {
+            "https://api.ebay.com/oauth/api_scope/sell.marketing": "View and manage your eBay marketing activities, such as ad campaigns and listing promotions",
+            "https://api.ebay.com/oauth/api_scope/sell.marketing.readonly": "View your eBay marketing activities, such as ad campaigns and listing promotions"
+          },
+          "tokenUrl": "https://api.ebay.com/identity/v1/oauth2/token"
+        },
+        "clientCredentials": {
+          "scopes": {
+            "https://api.ebay.com/oauth/api_scope": "View public data from eBay"
+          },
+          "tokenUrl": "https://api.ebay.com/identity/v1/oauth2/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "ebay.com",
   "serviceName": "sell-marketing",
   "apiVersion": "v1.15.0",

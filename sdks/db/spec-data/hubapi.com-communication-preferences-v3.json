@@ -1,6 +1,27 @@
 {
   "providerName": "hubapi.com",
   "openApiRaw": "https://api.hubspot.com/api-catalog-public/v1/apis/communication-preferences/v3",
+  "securitySchemes": {
+    "oauth2_legacy": {
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://app.hubspot.com/oauth/authorize",
+          "scopes": {
+            "communication_preferences.read": "Read contact subscription preferences",
+            "communication_preferences.read_write": "Update contact subscription preferences",
+            "communication_preferences.write": "Update contact subscription preferences"
+          },
+          "tokenUrl": "https://api.hubapi.com/oauth/v1/token"
+        }
+      },
+      "type": "oauth2"
+    },
+    "private_apps_legacy": {
+      "in": "header",
+      "name": "private-app-legacy",
+      "type": "apiKey"
+    }
+  },
   "homepage": "hubapi.com",
   "serviceName": "communication-preferences",
   "apiVersion": "v3",

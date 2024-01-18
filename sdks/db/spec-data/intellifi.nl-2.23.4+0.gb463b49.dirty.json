@@ -1,6 +1,26 @@
 {
   "providerName": "intellifi.nl",
   "openApiRaw": "https://intellifi-nl.github.io/brain-rest-api-spec/openapi.yml",
+  "securitySchemes": {
+    "CookieSid": {
+      "description": "This [session cookie](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies)\nwill be set after a successful graphical front-end login into the Brain.\nAuthentication via this method is particularly useful for using the API manually via the\n'[tryitout](./tryitout)' tool or by browsing the API using some JSON viewer browser extension.\nA [same-origin policy](https://en.wikipedia.org/wiki/Same-origin_policy) is enforced for cookie authentication.\nTherefore applications accessing the API outside of the Brain, are not\nallowed to be authenticated via this cookie.\n\nSome endpoints, mainly `users` and `keys` can only be used when\nauthenticated via an administrative account using a Cookie. This means\nthat these endpoints can only be used when logged in into the Graphical\nfront-end of the Brain.\n",
+      "in": "cookie",
+      "name": "brain.sid",
+      "type": "apiKey"
+    },
+    "HeaderApiKey": {
+      "description": "Applications are required to provide an API key with every HTTP request\nto the Web API.\n",
+      "in": "header",
+      "name": "X-Api-Key",
+      "type": "apiKey"
+    },
+    "QueryApiKey": {
+      "description": "Applications are required to provide an API key with every HTTP request\nto the Web API.\n",
+      "in": "query",
+      "name": "key",
+      "type": "apiKey"
+    }
+  },
   "homepage": "intellifi.nl",
   "apiVersion": "2.23.4+0.gb463b49.dirty",
   "methods": [

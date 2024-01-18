@@ -1,6 +1,17 @@
 {
   "providerName": "wikimedia.org",
   "openApiRaw": "https://wikimedia.org/api/rest_v1/?spec",
+  "securitySchemes": {
+    "mediawiki_auth": {
+      "description": "Checks permissions using MW api",
+      "in": "header",
+      "name": "cookie",
+      "type": "apiKey",
+      "x-internal-request-whitelist": [
+        "/http:\\/\\/[a-zA-Z0-9\\.]+\\/w\\/api\\.php/"
+      ]
+    }
+  },
   "homepage": "wikimedia.org",
   "apiVersion": "1.0.0",
   "methods": [

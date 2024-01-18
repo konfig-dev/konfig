@@ -1,6 +1,36 @@
 {
   "providerName": "velopayments.com",
   "openApiRaw": "https://raw.githubusercontent.com/velopaymentsapi/VeloOpenApi/master/spec/openapi.yaml",
+  "securitySchemes": {
+    "OAuth2": {
+      "description": "This API uses OAuth 2 with the Client Credentials grant flow. [More info](https://www.oauth.com/oauth2-servers/access-tokens/client-credentials)",
+      "flows": {
+        "clientCredentials": {
+          "scopes": {
+            " ": "Scopes not required"
+          },
+          "tokenUrl": "https://api.sandbox.velopayments.com/v1/login"
+        }
+      },
+      "type": "oauth2"
+    },
+    "basicAuth": {
+      "scheme": "basic",
+      "type": "http"
+    },
+    "oAuthVeloBackOffice": {
+      "description": "This API uses OAuth 2 with the implicit grant flow. Authenticated user must have backoffice role [More info](https://api.example.com/docs/auth)",
+      "flows": {
+        "clientCredentials": {
+          "scopes": {
+            " ": "Scopes not required"
+          },
+          "tokenUrl": "https://api.sandbox.velopayments.com/oauth/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "velopayments.com",
   "apiVersion": "2.35.57",
   "methods": [

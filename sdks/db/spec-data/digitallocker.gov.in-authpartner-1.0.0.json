@@ -1,6 +1,43 @@
 {
   "providerName": "digitallocker.gov.in",
   "openApiRaw": "https://apisetu.gov.in/api_specification_v8/authpartner.yaml",
+  "securitySchemes": {
+    "Customkey2": {
+      "in": "header",
+      "name": "X-2",
+      "type": "apiKey"
+    },
+    "Customkeys1": {
+      "in": "header",
+      "name": "X1123",
+      "type": "apiKey"
+    },
+    "bearerAuth": {
+      "scheme": "bearer",
+      "type": "http"
+    },
+    "oauthAuthorizeCode": {
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://betaapi.digitallocker.gov.in/public/oauth2/1/authorize",
+          "scopes": {},
+          "tokenUrl": "https://betaapi.digitallocker.gov.in/public/oauth2/1/token"
+        }
+      },
+      "type": "oauth2"
+    },
+    "oauthsecurity": {
+      "flows": {
+        "clientCredentials": {
+          "scopes": {
+            "default": "default scope"
+          },
+          "tokenUrl": "https://betaapi.digitallocker.gov.in/public/oauth2/1/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "digitallocker.gov.in",
   "serviceName": "authpartner",
   "apiVersion": "1.0.0",

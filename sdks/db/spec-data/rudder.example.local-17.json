@@ -1,6 +1,14 @@
 {
   "providerName": "rudder.example.local",
   "openApiRaw": "https://docs.rudder.io/api/openapi.yml",
+  "securitySchemes": {
+    "API-Tokens": {
+      "description": "Apart for the status API, authenticating is mandatory for every request, as sensitive information like inventories or configuration rules may get exposed. It is done using a dedicated API account, than can be created in the web interface on the 'API accounts' page located inside the Administration part.\n\n![API Tokens settings](assets/APISettings.png \"API tokens settings\")\n\nAPI accounts are not linked to standard user accounts, and currently give full administrative privileges: they must be secured adequately. Once you have created an API account, you get a token that will be needed to authenticate every request. This token is the API equivalent of a password, and must be secured just like a password would be.\n\nOn any call to the API, you will need to add a **X-API-Token** header to your request to authenticate:\n\n\n    curl --request GET --header \"X-API-Token: yourToken\" https://rudder.example.com/rudder/api/latest/rules\n\n\nIf you perform any action (creation, update, deletion) using the API, the event log generated will record the API account as the user.",
+      "in": "header",
+      "name": "X-API-Token",
+      "type": "apiKey"
+    }
+  },
   "homepage": "rudder.example.local",
   "apiVersion": "17",
   "methods": [

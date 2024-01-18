@@ -1,6 +1,20 @@
 {
   "providerName": "kumpeapps.com",
   "openApiRaw": "https://api.kumpeapps.com/python/swagger/swagger.yaml",
+  "securitySchemes": {
+    "app_key": {
+      "in": "header",
+      "name": "X-Auth",
+      "type": "apiKey",
+      "x-apikeyInfoFunc": "controllers.authorization_controller.check_app_key"
+    },
+    "auth_key": {
+      "in": "header",
+      "name": "X-Auth",
+      "type": "apiKey",
+      "x-apikeyInfoFunc": "controllers.authorization_controller.check_auth_key"
+    }
+  },
   "homepage": "kumpeapps.com",
   "apiVersion": "5.0.0",
   "methods": [

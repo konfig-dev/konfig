@@ -1,6 +1,55 @@
 {
   "providerName": "bitbucket.org",
   "openApiRaw": "https://bitbucket.org/api/swagger.json",
+  "securitySchemes": {
+    "api_key": {
+      "description": "API Keys can be used as Basic HTTP Authentication credentials and provide a substitute for the account's actual username and password. API Keys are only available to team accounts and there is only 1 key per account. API Keys do not support scopes and have therefore access to all contents of the account.",
+      "in": "header",
+      "name": "Authorization",
+      "type": "apiKey"
+    },
+    "basic": {
+      "description": "Basic HTTP Authentication as per [RFC-2617](https://tools.ietf.org/html/rfc2617) (Digest not supported). Note that Basic Auth is available only with username and app password as credentials.",
+      "scheme": "basic",
+      "type": "http"
+    },
+    "oauth2": {
+      "description": "OAuth 2 as per [RFC-6749](https://tools.ietf.org/html/rfc6749).",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://bitbucket.org/site/oauth2/authorize",
+          "scopes": {
+            "account": "Read your account information",
+            "account:write": "Read and modify your account information",
+            "email": "Read your account's primary email address",
+            "issue": "Read your repositories' issues",
+            "issue:write": "Read and modify your repositories' issues",
+            "pipeline": "Access your repositories' build pipelines",
+            "pipeline:variable": "Access your repositories' build pipelines and configure their variables",
+            "pipeline:write": "Access and rerun your repositories' build pipelines",
+            "project": "Read your workspace's project settings and read repositories contained within your workspace's projects",
+            "project:admin": "Read and modify settings for projects in your workspace",
+            "pullrequest": "Read your repositories and their pull requests",
+            "pullrequest:write": "Read and modify your repositories and their pull requests",
+            "repository": "Read your repositories",
+            "repository:admin": "Administer your repositories",
+            "repository:delete": "Delete your repositories",
+            "repository:write": "Read and modify your repositories",
+            "runner": "Access your workspaces/repositories' runners",
+            "runner:write": "Access and edit your workspaces/repositories' runners",
+            "snippet": "Read your snippets",
+            "snippet:write": "Read and modify your snippets",
+            "team": "Read your team membership information",
+            "team:write": "Read and modify your team membership information",
+            "webhook": "Read and modify your repositories' webhooks",
+            "wiki": "Read and modify your repositories' wikis"
+          },
+          "tokenUrl": "https://bitbucket.org/site/oauth2/access_token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "bitbucket.org",
   "apiVersion": "2.0",
   "methods": [

@@ -1,6 +1,35 @@
 {
   "providerName": "ebay.com",
   "openApiRaw": "https://developer.ebay.com/api-docs/master/buy/browse/openapi/2/buy_browse_v1_beta_oas2.json",
+  "securitySchemes": {
+    "Authorization_Code": {
+      "description": "The security definitions for this API. Please check individual operations for applicable scopes.",
+      "type": "oauth2",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://auth.ebay.com/oauth2/authorize",
+          "tokenUrl": "https://api.ebay.com/identity/v1/oauth2/token",
+          "scopes": {
+            "https://api.ebay.com/oauth/api_scope/buy.shopping.cart": " This scope would allow signed in user to access shopping carts"
+          }
+        }
+      }
+    },
+    "Client_Credentials": {
+      "description": "The security definitions for this API. Please check individual operations for applicable scopes.",
+      "type": "oauth2",
+      "flows": {
+        "clientCredentials": {
+          "tokenUrl": "https://api.ebay.com/identity/v1/oauth2/token",
+          "scopes": {
+            "https://api.ebay.com/oauth/api_scope": "View public data from eBay",
+            "https://api.ebay.com/oauth/api_scope/buy.item.bulk": "Retrieve eBay items in bulk.",
+            "https://api.ebay.com/oauth/scope/base@application": " This scope would allow applications to access any API associated with a base intent. Tokens with this scope should be restricted to use from server environments."
+          }
+        }
+      }
+    }
+  },
   "homepage": "ebay.com",
   "serviceName": "buy-browse",
   "apiVersion": "v1.1.0",

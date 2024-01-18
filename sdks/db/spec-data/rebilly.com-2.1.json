@@ -1,6 +1,26 @@
 {
   "providerName": "rebilly.com",
   "openApiRaw": "https://api-reference.rebilly.com/openapi.json",
+  "securitySchemes": {
+    "JWT": {
+      "bearerFormat": "JWT",
+      "description": "You can create a JSON Web Token (JWT) via our [JWT Session resource](https://user-api-docs.rebilly.com/#operation/PostSigninRequest).\nUsage format: `Bearer &lt;JWT&gt;`.\n",
+      "scheme": "bearer",
+      "type": "http"
+    },
+    "PublishableApiKey": {
+      "description": "Only for the Tokens resource.\nYou can create a Publishable API Key via our [API Keys resource](https://user-api-docs.rebilly.com/#tag/API-Keys), by specifying the type as `publishable`.\n",
+      "in": "header",
+      "name": "Authorization",
+      "type": "apiKey"
+    },
+    "SecretApiKey": {
+      "description": "When you sign up for an account, you are given your first secret API key.\nTo do so please [follow this link.](https://app.rebilly.com/signup)\nAlso you can generate additional API keys, and delete API keys (as you may\nneed to rotate your keys in the future). All API keys can be restricted to a\nsmall set of permissions (restricted API keys).\n",
+      "in": "header",
+      "name": "REB-APIKEY",
+      "type": "apiKey"
+    }
+  },
   "homepage": "rebilly.com",
   "apiVersion": "2.1",
   "methods": [

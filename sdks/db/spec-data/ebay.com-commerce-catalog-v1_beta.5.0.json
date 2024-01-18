@@ -1,6 +1,22 @@
 {
   "providerName": "ebay.com",
   "openApiRaw": "https://developer.ebay.com/api-docs/master/commerce/catalog/openapi/3/commerce_catalog_v1_beta_oas3.json",
+  "securitySchemes": {
+    "api_auth": {
+      "description": "The security definitions for this API. Please check individual operations for applicable scopes.",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://auth.ebay.com/oauth2/authorize",
+          "scopes": {
+            "https://api.ebay.com/oauth/api_scope/commerce.catalog.readonly": " This scope would allow signed in user to read catalog data.",
+            "https://api.ebay.com/oauth/api_scope/sell.inventory": "View and manage your inventory and offers"
+          },
+          "tokenUrl": "https://api.ebay.com/identity/v1/oauth2/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "ebay.com",
   "serviceName": "commerce-catalog",
   "apiVersion": "v1_beta.5.0",

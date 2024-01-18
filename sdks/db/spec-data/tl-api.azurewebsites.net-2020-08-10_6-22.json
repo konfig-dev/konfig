@@ -1,6 +1,27 @@
 {
   "providerName": "tl-api.azurewebsites.net",
   "openApiRaw": "https://tl-api.azurewebsites.net/swagger/default/swagger.json",
+  "securitySchemes": {
+    "apikey": {
+      "in": "header",
+      "name": "Ocp-Apim-Subscription-Key",
+      "type": "apiKey"
+    },
+    "bearer": {
+      "description": "auth0 authentication",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://tldev.eu.auth0.com/authorize",
+          "scopes": {
+            "read:tl_articles": "read:tl_articles",
+            "read:tl_packages": "read:tl_packages"
+          },
+          "tokenUrl": "https://tldev.eu.auth0.com/oauth/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "tl-api.azurewebsites.net",
   "apiVersion": "2020-08-10_6-22",
   "methods": [

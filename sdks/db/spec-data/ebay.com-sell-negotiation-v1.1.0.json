@@ -1,6 +1,22 @@
 {
   "providerName": "ebay.com",
   "openApiRaw": "https://developer.ebay.com/api-docs/master/sell/negotiation/openapi/3/sell_negotiation_v1_oas3.json",
+  "securitySchemes": {
+    "api_auth": {
+      "description": "The security definitions for this API. Please check individual operations for applicable scopes.",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://auth.ebay.com/oauth2/authorize",
+          "scopes": {
+            "https://api.ebay.com/oauth/api_scope/sell.inventory": "View and manage your inventory and offers",
+            "https://api.ebay.com/oauth/api_scope/sell.inventory.readonly": "View your inventory and offers"
+          },
+          "tokenUrl": "https://api.ebay.com/identity/v1/oauth2/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "ebay.com",
   "serviceName": "sell-negotiation",
   "apiVersion": "v1.1.0",

@@ -1,6 +1,28 @@
 {
   "providerName": "box.com",
   "openApiRaw": "https://opensource.box.com/box-openapi/openapi.json",
+  "securitySchemes": {
+    "OAuth2Security": {
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://account.box.com/api/oauth2/authorize",
+          "scopes": {
+            "manage_app_users": "Provision and manage app users",
+            "manage_data_retention": "Manage data retention polices",
+            "manage_enterprise_properties": "Manage enterprise properties",
+            "manage_groups": "Manage an enterprise's groups",
+            "manage_legal_hold": "Manage Legal Holds",
+            "manage_managed_users": "Provision and manage managed users",
+            "manage_webhook": "Create webhooks programmatically through the API",
+            "root_readonly": "Read all files and folders stored in Box",
+            "root_readwrite": "Read and write all files and folders stored in Box"
+          },
+          "tokenUrl": "https://api.box.com/oauth2/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "box.com",
   "apiVersion": "2.0.0",
   "methods": [

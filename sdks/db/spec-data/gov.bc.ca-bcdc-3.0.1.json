@@ -1,6 +1,43 @@
 {
   "providerName": "gov.bc.ca",
   "openApiRaw": "https://raw.githubusercontent.com/bcgov/api-specs/master/bcdc/bcdc.json",
+  "securitySchemes": {
+    "githubAccessCode": {
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://github.com/login/oauth/authorize",
+          "scopes": {
+            "admin:org": "Fully manage organization, teams, and memberships.",
+            "admin:public_key": "Fully manage public keys.",
+            "admin:repo_hook": "Grants read, write, ping, and delete access to hooks in public or private repositories.",
+            "delete_repo": "Grants access to delete adminable repositories.",
+            "gist": "Grants write access to gists.",
+            "notifications": "Grants read access to a user's notifications. repo also provides this access.",
+            "public_repo": "Grants read/write access to code, commit statuses, and deployment statuses for public repositories and organizations.",
+            "read:org": "Read-only access to organization, teams, and membership.",
+            "read:public_key": "List and view details for public keys.",
+            "read:repo_hook": "Grants read and ping access to hooks in public or private repositories.",
+            "repo": "Grants read/write access to code, commit statuses, and deployment statuses for public and private repositories and organizations.",
+            "repo:status": "Grants read/write access to public and private repository commit statuses. This scope is only necessary to grant other users or services access to private repository commit statuses without granting access to the code.",
+            "repo_deployment": "Grants access to deployment statuses for public and private repositories. This scope is only necessary to grant other users or services access to deployment statuses, without granting access to the code.",
+            "user": "Grants read/write access to profile info only. Note that this scope includes user:email and user:follow.",
+            "user:email": "Grants read access to a user's email addresses.",
+            "user:follow": "Grants access to follow or unfollow other users.",
+            "write:org": "Publicize and unpublicize organization membership.",
+            "write:public_key": "Create, list, and view details for public keys.",
+            "write:repo_hook": "Grants read, write, and ping access to hooks in public or private repositories."
+          },
+          "tokenUrl": "https://github.com/login/oauth/access_token"
+        }
+      },
+      "type": "oauth2"
+    },
+    "internalApiKey": {
+      "in": "header",
+      "name": "ckan_api_key",
+      "type": "apiKey"
+    }
+  },
   "homepage": "gov.bc.ca",
   "serviceName": "bcdc",
   "apiVersion": "3.0.1",

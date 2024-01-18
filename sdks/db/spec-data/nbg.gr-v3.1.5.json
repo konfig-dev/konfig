@@ -1,6 +1,41 @@
 {
   "providerName": "nbg.gr",
   "openApiRaw": "https://developer.nbg.gr/api.gateway/publicportal/sites/default/files/2020-09/NBGSwagger-account-and_transaction_api_specification_uk-v3.1.5-swagger%20%284%29.yaml",
+  "securitySchemes": {
+    "Authorization-Code-Token": {
+      "description": "OAuth2 Authorization Code Flow",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://my.nbg.gr/identity/connect/authorize",
+          "scopes": {
+            "accounts offline_access": "Production Scope",
+            "sandbox-uk-account-info-api-v1 offline_access": "Sandbox Scope"
+          },
+          "tokenUrl": "https://my.nbg.gr/identity/connect/token"
+        }
+      },
+      "type": "oauth2"
+    },
+    "Client-Credentials-Token": {
+      "description": "OAuth2 Client Credentials Flow",
+      "flows": {
+        "clientCredentials": {
+          "scopes": {
+            "accounts": "Production Scope",
+            "sandbox-uk-account-info-api-v1": "Sandbox Scope"
+          },
+          "tokenUrl": "https://my.nbg.gr/identity/connect/token"
+        }
+      },
+      "type": "oauth2"
+    },
+    "Client-Id": {
+      "description": "Application's Id",
+      "in": "header",
+      "name": "Client-Id",
+      "type": "apiKey"
+    }
+  },
   "homepage": "nbg.gr",
   "apiVersion": "v3.1.5",
   "methods": [

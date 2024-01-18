@@ -1,6 +1,41 @@
 {
   "providerName": "slmonitor.com",
   "openApiRaw": "https://api.slmonitor.com/swagger/v2.1/swagger.json",
+  "securitySchemes": {
+    "EmailLogin": {
+      "description": "",
+      "flows": {
+        "implicit": {
+          "authorizationUrl": "https://prodsafetyline.b2clogin.com/prodsafetyline.onmicrosoft.com/B2C_1_si/oauth2/v2.0/authorize",
+          "scopes": {
+            "CompanyAdministrator": "This scope can only be set within SafetyLine.",
+            "CompanyMonitor": "This scope can only be set within SafetyLine.",
+            "https://prodsafetyline.onmicrosoft.com/e22f72d0-b056-4155-a2db-da02bc226023/access_as_user": "Access the API as the signed-in user"
+          }
+        }
+      },
+      "type": "oauth2"
+    },
+    "MicrosoftLogin": {
+      "description": "",
+      "flows": {
+        "implicit": {
+          "authorizationUrl": "https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize",
+          "scopes": {
+            "CompanyAdministrator": "This scope can only be set within SafetyLine.",
+            "CompanyMonitor": "This scope can only be set within SafetyLine.",
+            "https://prodsafetyline.onmicrosoft.com/e22f72d0-b056-4155-a2db-da02bc226023/.default": "Use the default scopes"
+          }
+        }
+      },
+      "type": "oauth2"
+    },
+    "Pin": {
+      "description": "",
+      "scheme": "basic",
+      "type": "http"
+    }
+  },
   "homepage": "slmonitor.com",
   "apiVersion": "2.1",
   "methods": [

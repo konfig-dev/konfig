@@ -1,6 +1,50 @@
 {
   "providerName": "climate.com",
   "openApiRaw": "https://dev.fieldview.com/openapi/platform.yaml",
+  "securitySchemes": {
+    "api_key": {
+      "description": "API access key used to control throttling (429 responses).  This key is typically formatted:\n`partner-{name}-{uuid}`",
+      "in": "header",
+      "name": "X-Api-Key",
+      "type": "apiKey"
+    },
+    "oauth2_authorization_code": {
+      "description": "Log in with FieldView OAuth2 provider (Authorization Code Grant). Used to authorize the client (partner) and\nuser. The *access_token* is required to be provided in the `Authorization` header on all calls to the FieldView\nAPIs with the following format `Bearer $access_token`.",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://climate.com/static/app-login/",
+          "scopes": {
+            "asApplied:read": "Required for retrieving as applied data",
+            "asApplied:write": "Required for uploading application data",
+            "asHarvested:read": "Required for retrieving harvest data",
+            "asHarvested:write": "Required for uploading harvest data",
+            "asPlanted:read": "Required for retrieving planting data",
+            "asPlanted:write": "Required for uploading planting data",
+            "avroAgronomicData:read": "Required for retrieving agronomic data",
+            "boundaries:write": "*Originally missing*",
+            "customerInsights:read": "Required for retrieving customer insights metrics data",
+            "diagnostics:read": "Required for retrieving CNH machine diagnostic data",
+            "exports:read": "Required for requesting or retrieving exports",
+            "farmOrganizations:read": "Required for retrieving farm organization information",
+            "fields:read": "Required for retrieving field and boundary information",
+            "fields:write": "Required for uploading field boundaries",
+            "imagery:write": "Required for uploading imagery",
+            "operations:read": "Required for retrieving operation information",
+            "plantingActivitySummary:read": "Required for retrieving planting activity summary data",
+            "platform": "(DEPRECATED) Legacy scope used for some Platform APIs",
+            "resourceOwners:read": "Required for retrieving resource owner information",
+            "rx:write": "Required for uploading prescriptions",
+            "scouting:read": "Required for retrieving user\\'s scouting information",
+            "soil:write": "Required for uploading soil sample results",
+            "standCount:write": "*Originally missing*",
+            "weedCount:write": "*Originally missing*"
+          },
+          "tokenUrl": "https://api.climate.com/api/oauth/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "climate.com",
   "apiVersion": "4.0.11",
   "methods": [

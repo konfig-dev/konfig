@@ -1,6 +1,36 @@
 {
   "providerName": "lyft.com",
   "openApiRaw": "https://api.lyft.com/v1/spec",
+  "securitySchemes": {
+    "Client_Authentication": {
+      "description": "OAuth 2.0 - Application Only Credentials",
+      "type": "oauth2",
+      "flows": {
+        "clientCredentials": {
+          "tokenUrl": "https://api.lyft.com/oauth/token",
+          "scopes": {
+            "public": "Access public information such as ETAs and cost estimates"
+          }
+        }
+      }
+    },
+    "User_Authentication": {
+      "description": "OAuth 2.0 - User Credentials",
+      "type": "oauth2",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://api.lyft.com/oauth/authorize",
+          "tokenUrl": "https://api.lyft.com/oauth/token",
+          "scopes": {
+            "profile": "Access profile information about the user",
+            "public": "Access public information such as ETAs and cost estimates",
+            "rides.read": "Access information about the user's current and past rides",
+            "rides.request": "Request a ride for the user. Cancel an existing request.\n"
+          }
+        }
+      }
+    }
+  },
   "homepage": "lyft.com",
   "apiVersion": "1.0.0",
   "methods": [

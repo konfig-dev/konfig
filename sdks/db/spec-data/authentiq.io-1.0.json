@@ -1,6 +1,75 @@
 {
   "providerName": "authentiq.io",
   "openApiRaw": "https://raw.githubusercontent.com/AuthentiqID/authentiq-docs/master/docs/swagger/provider.yaml",
+  "securitySchemes": {
+    "client_registration_token": {
+      "description": "Client management via registration token.",
+      "in": "header",
+      "name": "Authorization",
+      "type": "apiKey"
+    },
+    "client_secret": {
+      "description": "Session management by confidential clients.",
+      "flows": {
+        "password": {
+          "scopes": {
+            "clients": "Enable client management"
+          },
+          "tokenUrl": "https://connect.authentiq.io/token"
+        }
+      },
+      "type": "oauth2"
+    },
+    "oauth_code": {
+      "description": "End-user authentication.",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://connect.authentiq.io/authorize",
+          "scopes": {
+            "address": "The user's postal address",
+            "aq:location": "The user's current location",
+            "aq:name": "The user's full name",
+            "aq:push": "Enable *One click sign-in*",
+            "email": "The user's email address",
+            "oidc": "Enable OIDC flow",
+            "phone": "The user's phone number"
+          },
+          "tokenUrl": "https://connect.authentiq.io/token"
+        }
+      },
+      "type": "oauth2"
+    },
+    "oauth_implicit": {
+      "description": "End-user authentication.",
+      "flows": {
+        "implicit": {
+          "authorizationUrl": "https://connect.authentiq.io/authorize",
+          "scopes": {
+            "address": "The user's postal address",
+            "aq:location": "The user's current location",
+            "aq:name": "The user's full name",
+            "aq:push": "Enable *One click sign-in*",
+            "email": "The user's email address",
+            "oidc": "Enable OIDC flow",
+            "phone": "The user's phone number"
+          }
+        }
+      },
+      "type": "oauth2"
+    },
+    "user_jwt": {
+      "description": "Session management by Authentiq ID.",
+      "flows": {
+        "clientCredentials": {
+          "scopes": {
+            "session": "Enable session management"
+          },
+          "tokenUrl": "https://connect.authentiq.io/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "authentiq.io",
   "apiVersion": "1.0",
   "methods": [

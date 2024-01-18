@@ -1,6 +1,22 @@
 {
   "providerName": "openbanking.org.uk",
   "openApiRaw": "https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/master/dist/openapi/event-notifications-openapi.yaml",
+  "securitySchemes": {
+    "TPPOAuth2Security": {
+      "description": "TPP client credential authorisation flow with the ASPSP",
+      "flows": {
+        "clientCredentials": {
+          "scopes": {
+            "accounts": "Ability to read Accounts information",
+            "fundsconfirmations": "Ability to confirm funds",
+            "payments": "Generic payment scope"
+          },
+          "tokenUrl": "https://authserver.example/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "openbanking.org.uk",
   "serviceName": "event-notifications-openapi",
   "apiVersion": "3.1.7",

@@ -1,6 +1,20 @@
 {
   "providerName": "here.com",
   "openApiRaw": "https://developer.here.com/documentation/positioning-api/swagger/positioning-v2-external-spec.yaml",
+  "securitySchemes": {
+    "APIKey": {
+      "description": "A 43-byte Base64 URL-safe encoded string used for the authentication of the client application. As a logged in user, you can generate it at your [Projects](https://developer.here.com/projects). API Keys never expire but you can invalidate your API Keys at any time. You cannot have more than two API Keys for one app at the same time. You must include API key with every request, unless bearer token is provided.\n\nSee the [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html) for more details.\n",
+      "in": "query",
+      "name": "apiKey",
+      "type": "apiKey"
+    },
+    "AccessToken": {
+      "bearerFormat": "JWT",
+      "description": "HERE Account bearer token. Required unless API Key provided in the query string parameters.\nSee the [Identity & Access Management Developer Guide](https://developer.here.com/documentation/identity-access-management/dev_guide/index.html) for more details.\n",
+      "scheme": "bearer",
+      "type": "http"
+    }
+  },
   "homepage": "here.com",
   "serviceName": "positioning",
   "apiVersion": "2.1.1",

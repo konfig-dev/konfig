@@ -1,6 +1,51 @@
 {
   "providerName": "surevoip.co.uk",
   "openApiRaw": "https://raw.githubusercontent.com/SureVoIP/API-Specification/master/openapi/openapi.yaml",
+  "securitySchemes": {
+    "BasicAuth": {
+      "description": "Basic HTTP Auth",
+      "scheme": "basic",
+      "type": "http"
+    },
+    "OAuth2": {
+      "description": "OpenID Certified OAuth 2.0 Server and OpenID Connect Provider",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://authz.surevoip.co.uk/oauth2/auth",
+          "refreshUrl": "https://authz.surevoip.co.uk/oauth2/token",
+          "scopes": {
+            "offline": "Include this scope if you wish to receive a refresh token",
+            "offline_access": "Include this scope if you wish to receive a refresh token",
+            "openid": "Include this scope if you wish to perform an OpenID Connect request"
+          },
+          "tokenUrl": "https://authz.surevoip.co.uk/oauth2/token"
+        },
+        "clientCredentials": {
+          "scopes": {
+            "offline": "Include this scope if you wish to receive a refresh token",
+            "offline_access": "Include this scope if you wish to receive a refresh token",
+            "openid": "Include this scope if you wish to perform an OpenID Connect request"
+          },
+          "tokenUrl": "https://authz.surevoip.co.uk/oauth2/token"
+        },
+        "implicit": {
+          "authorizationUrl": "https://authz.surevoip.co.uk/oauth2/auth",
+          "refreshUrl": "https://authz.surevoip.co.uk/oauth2/token",
+          "scopes": {
+            "offline": "Include this scope if you wish to receive a refresh token",
+            "offline_access": "Include this scope if you wish to receive a refresh token",
+            "openid": "Include this scope if you wish to perform an OpenID Connect request"
+          }
+        }
+      },
+      "type": "oauth2"
+    },
+    "OpenIDConnect": {
+      "description": "OpenID Certified OAuth 2.0 Server and OpenID Connect Provider",
+      "openIdConnectUrl": "https://authz.surevoip.co.uk/.well-known/openid-configuration",
+      "type": "openIdConnect"
+    }
+  },
   "homepage": "surevoip.co.uk",
   "apiVersion": "9dcb0dc8",
   "methods": [

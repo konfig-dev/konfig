@@ -1,6 +1,43 @@
 {
   "providerName": "netatmo.net",
   "openApiRaw": "https://raw.githubusercontent.com/cbornet/netatmo-swagger-decl/master/spec/swagger.yaml",
+  "securitySchemes": {
+    "code_oauth": {
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://api.netatmo.net/oauth2/authorize",
+          "scopes": {
+            "access_camera": "Access welcome camera",
+            "read_camera": "Read welcome camera's data",
+            "read_homecoach": "Read data coming from Healthy Home Coach",
+            "read_station": "Read weather station's data",
+            "read_thermostat": "Read thermostat's data",
+            "write_camera": "Write welcome camera's data",
+            "write_thermostat": "Configure the thermostat"
+          },
+          "tokenUrl": "https://api.netatmo.net/oauth2/token"
+        }
+      },
+      "type": "oauth2"
+    },
+    "password_oauth": {
+      "flows": {
+        "password": {
+          "scopes": {
+            "access_camera": "Access welcome camera",
+            "read_camera": "Read welcome camera's data",
+            "read_homecoach": "Read data coming from Healthy Home Coach",
+            "read_station": "Read weather station's data",
+            "read_thermostat": "Read thermostat's data",
+            "write_camera": "Write welcome camera's data",
+            "write_thermostat": "Configure the thermostat"
+          },
+          "tokenUrl": "https://api.netatmo.net/oauth2/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "netatmo.net",
   "apiVersion": "1.1.5",
   "methods": [

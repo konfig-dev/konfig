@@ -1,6 +1,14 @@
 {
   "providerName": "appveyor.com",
   "openApiRaw": "https://raw.githubusercontent.com/kevinoid/appveyor-swagger/master/swagger.yaml",
+  "securitySchemes": {
+    "apiToken": {
+      "description": "API token can be acquired from https://ci.appveyor.com/api-keys\nThis value must be passed to the server in the `Authorization` header as `\"Bearer <token>\"`.  Since [bearer token authentication support is not explicitly supported in OpenAPI 2.0](https://github.com/OAI/OpenAPI-Specification/issues/583), client code will vary.  Clients created with [swagger-codegen](https://github.com/swagger-api/swagger-codegen) should set `apiKeyPrefix` to `\"Bearer\"` and set `apiKey` to the token.  Other clients may need to set `apiKey` to the string `\"Bearer <token>\"`.\nNote that this should be [fixed in OpenAPI 3.0](https://github.com/OAI/OpenAPI-Specification/pull/807)), whenever that becomes available and supported.\n#### User-Level API Keys\nTo use a user-level API key (prefixed with \"v2.\"), `basePath` must be changed to `/api/account/{accountName}` where `{accountName}` is the name of the account for which requests will be made.",
+      "in": "header",
+      "name": "Authorization",
+      "type": "apiKey"
+    }
+  },
   "homepage": "appveyor.com",
   "apiVersion": "1.0.0",
   "methods": [

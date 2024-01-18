@@ -1,6 +1,14 @@
 {
   "providerName": "stellastra.com",
   "openApiRaw": "https://stellastra.com/stellastra.json",
+  "securitySchemes": {
+    "BasicAuth": {
+      "description": "Basic auth header, a base64 encoding of the auth_email and key, with a simple colon separating. \n\n1. base64(auth_email + \":\" + key)\n2. base64(\"johnsmith@yourcompany.com:77rOjc2Y2UyYTliMDFjMTY2ODMyNTIyYjAyNDE4YjRi)\n3. ImpvaG5zbWl0aEB5b3VyY29tcGFueS5jb206NzdyT2pjMlkyVXlZVGxpTURGak1UWTJPRE15TlRJeVlqQXlOREU0WWpSaQ==\n\nThis may already be handled by your HTTPS request library, for example, the Python \"requests\" library allows for , auth=(admin_email, key), while Axios for Node JS allows auth to be specified as {auth:{username: your_auth_email, password: key}}. ",
+      "scheme": "basic",
+      "type": "http",
+      "x-last-modified": 1669824185668
+    }
+  },
   "homepage": "stellastra.com",
   "apiVersion": "1.0",
   "methods": [

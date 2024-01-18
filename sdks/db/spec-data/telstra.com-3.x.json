@@ -1,6 +1,26 @@
 {
   "providerName": "telstra.com",
   "openApiRaw": "https://dev.telstra.com/sites/default/files/Messaging-API-Proxy-OAS3.json",
+  "securitySchemes": {
+    "bearer_auth": {
+      "flows": {
+        "clientCredentials": {
+          "scopes": {
+            "free-trial-numbers:read": "read information for free trial numbers",
+            "free-trial-numbers:write": "write information for free trial numbers",
+            "messages:read": "read information for messages",
+            "messages:write": "write information for messages",
+            "reports:read": "read information for reports",
+            "reports:write": "write information for reports",
+            "virtual-numbers:read": "read information for virtual-numbers",
+            "virtual-numbers:write": "write information for virtual numbers"
+          },
+          "tokenUrl": "https://products.api.telstra.com/v2/oauth/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "telstra.com",
   "apiVersion": "3.x",
   "methods": [

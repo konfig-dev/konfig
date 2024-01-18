@@ -1,6 +1,27 @@
 {
   "providerName": "runscope.com",
   "openApiRaw": "https://raw.githubusercontent.com/Runscope/runscope-api-examples/master/schemas/runscope-swagger-v2.json",
+  "securitySchemes": {
+    "runscope_auth": {
+      "type": "oauth2",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://www.runscope.com/signin/oauth/authorize",
+          "tokenUrl": "https://www.runscope.com/signin/oauth/access_token",
+          "scopes": {
+            "account:email": "Allows you to read the email addresses of user accounts.",
+            "api:read": "Default read access.",
+            "bucket:auth_token": "Allows you to read all bucket information, including Authenticated Buckets.",
+            "bucket:write": "Allows you to create new buckets on behalf of the user (up to their plan limit).",
+            "message:write": "Allows you to create new messages on behalf of the user (up to their plan limit).",
+            "team:read": "Allows you to read team details such as lists of team members and external service integrations.",
+            "test:read": "Allows you to read the details of API tests.",
+            "test:write": "Allows you to create, update and delete details of API tests."
+          }
+        }
+      }
+    }
+  },
   "homepage": "runscope.com",
   "apiVersion": "1.0.0",
   "methods": [

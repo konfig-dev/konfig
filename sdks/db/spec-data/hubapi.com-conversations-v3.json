@@ -1,6 +1,25 @@
 {
   "providerName": "hubapi.com",
   "openApiRaw": "https://api.hubspot.com/api-catalog-public/v1/apis/conversations/v3/visitor-identification",
+  "securitySchemes": {
+    "oauth2_legacy": {
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://app.hubspot.com/oauth/authorize",
+          "scopes": {
+            "conversations.visitor_identification.tokens.create": "Fetch identification tokens for authenticated website visitors interacting with the HubSpot chat widget"
+          },
+          "tokenUrl": "https://api.hubapi.com/oauth/v1/token"
+        }
+      },
+      "type": "oauth2"
+    },
+    "private_apps_legacy": {
+      "in": "header",
+      "name": "private-app-legacy",
+      "type": "apiKey"
+    }
+  },
   "homepage": "hubapi.com",
   "serviceName": "conversations",
   "apiVersion": "v3",

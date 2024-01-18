@@ -1,6 +1,53 @@
 {
   "providerName": "mastodon.local",
   "openApiRaw": "https://raw.githubusercontent.com/oneslash/mastodon/feat/add-open-api-spec/api-specification.yml",
+  "securitySchemes": {
+    "bearerAuth": {
+      "scheme": "bearer",
+      "type": "http"
+    },
+    "oauth": {
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "/oauth/authorize",
+          "scopes": {
+            "admin:read": "admin read",
+            "admin:read:accounts": "read accounts",
+            "admin:read:reports": "read reports",
+            "admin:write": "admin write",
+            "admin:write:accounts": "write accounts",
+            "admin:write:reports": "write reports",
+            "read:accounts": "read accounts",
+            "read:blocks": "read blocks",
+            "read:bookmarks": "read bookmarks",
+            "read:favourites": "read favourites",
+            "read:filters": "read filters",
+            "read:follows": "read follows",
+            "read:lists": "read lists",
+            "read:mutes": "read mutes",
+            "read:notifications": "read notifications",
+            "read:search": "read search",
+            "read:statuses": "read statuses",
+            "write:accounts": "write accounts",
+            "write:blocks": "write blocks",
+            "write:bookmarks": "write bookmarks",
+            "write:conversations": "write conversations",
+            "write:favourites": "write favourites",
+            "write:filters": "write filters",
+            "write:follows": "write follows",
+            "write:lists": "write lists",
+            "write:media": "write media",
+            "write:mutes": "write mutes",
+            "write:notifications": "write notifications",
+            "write:reports": "write reports",
+            "write:statuses": "write statuses"
+          },
+          "tokenUrl": "/oauth/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "mastodon.local",
   "apiVersion": "1.0",
   "methods": [

@@ -1,6 +1,46 @@
 {
   "providerName": "gitea.io",
   "openApiRaw": "https://try.gitea.io/swagger.v1.json",
+  "securitySchemes": {
+    "AccessToken": {
+      "in": "query",
+      "name": "access_token",
+      "type": "apiKey"
+    },
+    "AuthorizationHeaderToken": {
+      "description": "API tokens must be prepended with \"token\" followed by a space.",
+      "in": "header",
+      "name": "Authorization",
+      "type": "apiKey"
+    },
+    "BasicAuth": {
+      "scheme": "basic",
+      "type": "http"
+    },
+    "SudoHeader": {
+      "description": "Sudo API request as the user provided as the key. Admin privileges are required.",
+      "in": "header",
+      "name": "Sudo",
+      "type": "apiKey"
+    },
+    "SudoParam": {
+      "description": "Sudo API request as the user provided as the key. Admin privileges are required.",
+      "in": "query",
+      "name": "sudo",
+      "type": "apiKey"
+    },
+    "TOTPHeader": {
+      "description": "Must be used in combination with BasicAuth if two-factor authentication is enabled.",
+      "in": "header",
+      "name": "X-GITEA-OTP",
+      "type": "apiKey"
+    },
+    "Token": {
+      "in": "query",
+      "name": "token",
+      "type": "apiKey"
+    }
+  },
   "homepage": "gitea.io",
   "apiVersion": "1.20.0+dev-539-g5e389228f",
   "methods": [

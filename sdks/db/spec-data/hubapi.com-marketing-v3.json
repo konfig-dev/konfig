@@ -1,6 +1,31 @@
 {
   "providerName": "hubapi.com",
   "openApiRaw": "https://api.hubspot.com/api-catalog-public/v1/apis/marketing/v3/marketing-events-beta",
+  "securitySchemes": {
+    "developer_hapikey": {
+      "in": "query",
+      "name": "hapikey",
+      "type": "apiKey"
+    },
+    "oauth2_legacy": {
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://app.hubspot.com/oauth/authorize",
+          "scopes": {
+            "crm.objects.marketing_events.read": "Read marketing events",
+            "crm.objects.marketing_events.write": "Write marketing events"
+          },
+          "tokenUrl": "https://api.hubapi.com/oauth/v1/token"
+        }
+      },
+      "type": "oauth2"
+    },
+    "private_apps_legacy": {
+      "in": "header",
+      "name": "private-app-legacy",
+      "type": "apiKey"
+    }
+  },
   "homepage": "hubapi.com",
   "serviceName": "marketing",
   "apiVersion": "v3",

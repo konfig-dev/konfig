@@ -1,6 +1,24 @@
 {
   "providerName": "ebay.com",
   "openApiRaw": "https://developer.ebay.com/api-docs/master/sell/fulfillment/openapi/3/sell_fulfillment_v1_oas3.json",
+  "securitySchemes": {
+    "api_auth": {
+      "description": "The security definitions for this API. Please check individual operations for applicable scopes.",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://auth.ebay.com/oauth2/authorize",
+          "scopes": {
+            "https://api.ebay.com/oauth/api_scope/sell.finances": "View and manage your payment and order information to display this information to you and allow you to initiate refunds using the third party application",
+            "https://api.ebay.com/oauth/api_scope/sell.fulfillment": "View and manage your order fulfillments",
+            "https://api.ebay.com/oauth/api_scope/sell.fulfillment.readonly": "View your order fulfillments",
+            "https://api.ebay.com/oauth/api_scope/sell.payment.dispute": "View and manage disputes and related details (including payment and order information)."
+          },
+          "tokenUrl": "https://api.ebay.com/identity/v1/oauth2/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "ebay.com",
   "serviceName": "sell-fulfillment",
   "apiVersion": "v1.20.0",

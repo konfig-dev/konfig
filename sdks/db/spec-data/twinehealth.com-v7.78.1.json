@@ -1,6 +1,21 @@
 {
   "providerName": "twinehealth.com",
   "openApiRaw": "https://raw.githubusercontent.com/TwineHealth/TwineDeveloperDocs/master/spec/swagger.yaml",
+  "securitySchemes": {
+    "OAuth2": {
+      "description": "Fitbit Plus allows customers to access data for their organization using client credentials.\nOAuth2 is a safe and secure way to give you access.\n",
+      "flows": {
+        "clientCredentials": {
+          "scopes": {
+            "group": "access patients and data within a group",
+            "organization": "access patients and data within an organization"
+          },
+          "tokenUrl": "/oauth/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "twinehealth.com",
   "apiVersion": "v7.78.1",
   "methods": [

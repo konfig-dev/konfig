@@ -1,6 +1,13 @@
 {
   "providerName": "lgtm.com",
   "openApiRaw": "https://lgtm.com/api/v1.0/openapi",
+  "securitySchemes": {
+    "access-token": {
+      "description": "\n\nLGTM Enterprise users need to create and use an access token to authenticate with this API. This is optional for LGTM.com users unless they want to submit a CodeQL query for analysis of one or more projects, or to request the analysis of a patch or commit. LGTM.com users also need an access token to  check on the progress of long running tasks using the `/operations` endpoint.\nLog in to LGTM and use the **Create token** option in your Account settings page. For more detailed information, see [Authentication with the API](https://lgtm.com/help/lgtm/api/authentication-api) and [Managing access tokens](https://lgtm.com/help/lgtm/api/managing-access-tokens).\nIf you include an access token in the header of a request to the API  for data, it must have the scopes required by that endpoint. Access tokens are shown in the examples as: `Authorization: Bearer {access-token}`\n",
+      "scheme": "bearer",
+      "type": "http"
+    }
+  },
   "homepage": "lgtm.com",
   "apiVersion": "v1.0",
   "methods": [

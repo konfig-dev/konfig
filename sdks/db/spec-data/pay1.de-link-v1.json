@@ -1,6 +1,23 @@
 {
   "providerName": "pay1.de",
   "openApiRaw": "https://gist.githubusercontent.com/MikeRalphson/b526159dff395f5da394bdf0c1d8b004/raw/ec8e44241fcd114d00c4662a04d2ff5b16f4b95f/payone-openapi.yaml",
+  "securitySchemes": {
+    "createAuth": {
+      "description": "Base64 encoded (merchantId + accountId + portalId + mode + reference + totalAmount + currency) signed with Portalkey in HmacSHA256",
+      "scheme": "payone-hmac-sha256",
+      "type": "http"
+    },
+    "getMultipleAuth": {
+      "description": "Base64 encoded (merchantId + accountId + portalId + mode) signed with Portalkey in HmacSHA256",
+      "scheme": "payone-hmac-sha256",
+      "type": "http"
+    },
+    "getSingleAuth": {
+      "description": "Base64 encoded linkId signed with Portalkey in HmacSHA256",
+      "scheme": "payone-hmac-sha256",
+      "type": "http"
+    }
+  },
   "homepage": "pay1.de",
   "serviceName": "link",
   "apiVersion": "v1",

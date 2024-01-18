@@ -1,6 +1,20 @@
 {
   "providerName": "cisco.com",
   "openApiRaw": "https://raw.githubusercontent.com/CiscoPSIRT/openVulnAPI/master/swagger/openVulnAPISwagger0_0_3.yaml",
+  "securitySchemes": {
+    "psirt_openvuln_api_auth": {
+      "type": "oauth2",
+      "flows": {
+        "implicit": {
+          "authorizationUrl": "https://cloudsso.cisco.com/as/token.oauth2",
+          "scopes": {
+            "read:cvrf": "read cvrf files",
+            "read:oval": "read oval files"
+          }
+        }
+      }
+    }
+  },
   "homepage": "cisco.com",
   "apiVersion": "0.0.3",
   "methods": [

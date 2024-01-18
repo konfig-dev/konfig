@@ -1,6 +1,35 @@
 {
   "providerName": "zapier.com",
   "openApiRaw": "https://nla.zapier.com/api/v1/openapi.json",
+  "securitySchemes": {
+    "AccessPointApiKeyHeader": {
+      "in": "header",
+      "name": "X-API-Key",
+      "type": "apiKey"
+    },
+    "AccessPointApiKeyQuery": {
+      "in": "query",
+      "name": "api_key",
+      "type": "apiKey"
+    },
+    "AccessPointOAuth": {
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "/oauth/authorize/",
+          "scopes": {
+            "nla:exposed_actions:execute": "Execute exposed actions"
+          },
+          "tokenUrl": "/oauth/token/"
+        }
+      },
+      "type": "oauth2"
+    },
+    "SessionAuth": {
+      "in": "cookie",
+      "name": "sessionid",
+      "type": "apiKey"
+    }
+  },
   "homepage": "zapier.com",
   "serviceName": "nla",
   "apiVersion": "1.0.0",

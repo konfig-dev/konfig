@@ -1,6 +1,24 @@
 {
   "providerName": "conjur.local",
   "openApiRaw": "https://raw.githubusercontent.com/cyberark/conjur-openapi-spec/main/spec/openapi.yml",
+  "securitySchemes": {
+    "basicAuth": {
+      "description": "Basic authentication with Conjur username and password (users only)\nor API key (hosts and users).\n",
+      "scheme": "basic",
+      "type": "http"
+    },
+    "conjurAuth": {
+      "description": "Conjur access token in `Token token=<base64_encoded_token>` format.",
+      "in": "header",
+      "name": "Authorization",
+      "type": "apiKey"
+    },
+    "conjurKubernetesMutualTls": {
+      "description": "Conjur Kubernetes authenticator mutual TLS authentication.\nTo authenticate using this method, you must provide a trusted client\ncertificate\n",
+      "scheme": "mutual",
+      "type": "http"
+    }
+  },
   "homepage": "conjur.local",
   "apiVersion": "5.3.0",
   "methods": [

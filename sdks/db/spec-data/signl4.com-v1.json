@@ -1,6 +1,23 @@
 {
   "providerName": "signl4.com",
   "openApiRaw": "https://connect.signl4.com/api/docs/v1/swagger.json",
+  "securitySchemes": {
+    "oauth2": {
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://connect.signl4.com/identity/connect/authorize",
+          "refreshUrl": "https://connect.signl4.com/identity/connect/token",
+          "scopes": {
+            "offline_access": "Access write operations",
+            "public_api_read": "Access write operations",
+            "public_api_write": "Access read operations"
+          },
+          "tokenUrl": "https://connect.signl4.com/identity/connect/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "signl4.com",
   "apiVersion": "v1",
   "methods": [

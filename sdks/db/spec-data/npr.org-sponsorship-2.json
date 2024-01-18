@@ -1,6 +1,24 @@
 {
   "providerName": "npr.org",
   "openApiRaw": "https://sponsorship.api.npr.org/v2/swagger.json",
+  "securitySchemes": {
+    "oauth2": {
+      "type": "oauth2",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://authorization.api.npr.org/v2/authorize",
+          "tokenUrl": "https://authorization.api.npr.org/v2/token",
+          "scopes": {
+            "identity.readonly": "See your personal information, such as your first name, last name, and favorite station.",
+            "identity.write": "Update your personal information, such as your favorite station(s) or program(s) you follow, on your behalf.",
+            "listening.readonly": "See your NPR One listening history and get audio recommendations.",
+            "listening.write": "Record that you have heard, marked as interesting, and/or skipped NPR One stories in order to personalize future audio recommendations.",
+            "localactivation": "Connect you with your local NPR member station for communication purposes."
+          }
+        }
+      }
+    }
+  },
   "homepage": "npr.org",
   "serviceName": "sponsorship",
   "apiVersion": "2",

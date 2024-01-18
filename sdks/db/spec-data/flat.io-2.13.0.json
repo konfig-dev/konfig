@@ -1,6 +1,38 @@
 {
   "providerName": "flat.io",
   "openApiRaw": "https://raw.githubusercontent.com/FlatIO/api-reference/master/spec/swagger.yaml",
+  "securitySchemes": {
+    "OAuth2": {
+      "description": "OAuth 2.0 authentication for your app or. Please only request the most restrictive and needed scopes. Using some of the scopes may require an additional review from our team. The Flat API supports **authorization code** and **implicit** flows.\n",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://flat.io/auth/oauth",
+          "scopes": {
+            "account.education_profile": "Provides access to the basic person's education profile and public organization information.\n",
+            "account.email": "Provices access to the person's email.\n",
+            "account.public_profile": "Provides access to the basic person's public profile. Education profiles may be anonymized with this scope, you can request the scope `education_profile` to access to the a basic education account profile.\n",
+            "collections": "Full, permissive scope to access all of a user's collections.",
+            "collections.add_scores": "Allow to add scores to a user's collections.",
+            "collections.readonly": "Allow read-only access to a user's collections.",
+            "edu.admin": "Full, permissive scope to manage all the admin of an organization.",
+            "edu.admin.lti": "Access and manage the LTI Credentials for an organization.",
+            "edu.admin.lti.readonly": "Read-only access to the LTI Credentials of an organization.",
+            "edu.admin.users": "Access and manage the users and invitations of the organization.",
+            "edu.admin.users.readonly": "Read-only access to the users and invitations of the organization.",
+            "edu.assignments": "Read-write access to the assignments and submissions.",
+            "edu.assignments.readonly": "Read-only access to the assignments and submissions.",
+            "edu.classes": "Full, permissive scope to manage the classes.",
+            "edu.classes.readonly": "Read-only access to the classes.",
+            "scores": "Full, permissive scope to access all of a user's scores.\n",
+            "scores.readonly": "Allows read-only access to all a user's scores. You won't need this scope to read public scores.\n",
+            "scores.social": "Allow to post comments and like scores\n"
+          },
+          "tokenUrl": "https://api.flat.io/oauth/access_token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "flat.io",
   "apiVersion": "2.13.0",
   "methods": [

@@ -1,6 +1,42 @@
 {
   "providerName": "motaword.com",
   "openApiRaw": "https://api.motaword.com/swagger",
+  "securitySchemes": {
+    "basicAuth": {
+      "scheme": "basic",
+      "type": "http"
+    },
+    "mwoAuth": {
+      "description": "OAuth2 authentication, Client Credentials flow.",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "/token",
+          "refreshUrl": "/token",
+          "scopes": {
+            "default": "default",
+            "privileged": "privileged"
+          },
+          "tokenUrl": "/token"
+        },
+        "clientCredentials": {
+          "scopes": {
+            "default": "default",
+            "privileged": "privileged"
+          },
+          "tokenUrl": "/token"
+        },
+        "password": {
+          "refreshUrl": "/token",
+          "scopes": {
+            "default": "default",
+            "privileged": "privileged"
+          },
+          "tokenUrl": "/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "motaword.com",
   "apiVersion": "1.0",
   "methods": [

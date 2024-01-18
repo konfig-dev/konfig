@@ -1,6 +1,23 @@
 {
   "providerName": "microcks.local",
   "openApiRaw": "https://raw.githubusercontent.com/microcks/microcks/master/api/microcks-openapi-v1.7.yaml",
+  "securitySchemes": {
+    "jwt-bearer": {
+      "description": "JWT Bearer acquired using OAuth 2 Authentication flow or Direct Access Grant",
+      "flows": {
+        "clientCredentials": {
+          "refreshUrl": "https://keycloak.example.com/realms/microcks/protocol/openid-connect/token",
+          "scopes": {
+            "admin": "Administrator of the Microcks instance",
+            "manager": "Services & APIs content manager",
+            "user": "Simple authenticated user"
+          },
+          "tokenUrl": "https://keycloak.example.com/realms/microcks/protocol/openid-connect/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "microcks.local",
   "apiVersion": "1.7.0",
   "methods": [

@@ -1,6 +1,30 @@
 {
   "providerName": "hubapi.com",
   "openApiRaw": "https://api.hubspot.com/api-catalog-public/v1/apis/automation/v4/actions",
+  "securitySchemes": {
+    "developer_hapikey": {
+      "in": "query",
+      "name": "hapikey",
+      "type": "apiKey"
+    },
+    "oauth2_legacy": {
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://app.hubspot.com/oauth/authorize",
+          "scopes": {
+            "automation": "Read from and write to my Workflows"
+          },
+          "tokenUrl": "https://api.hubapi.com/oauth/v1/token"
+        }
+      },
+      "type": "oauth2"
+    },
+    "private_apps_legacy": {
+      "in": "header",
+      "name": "private-app-legacy",
+      "type": "apiKey"
+    }
+  },
   "homepage": "hubapi.com",
   "serviceName": "automation",
   "apiVersion": "v4",

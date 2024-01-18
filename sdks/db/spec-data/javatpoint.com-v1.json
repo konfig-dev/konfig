@@ -1,6 +1,35 @@
 {
   "providerName": "javatpoint.com",
   "openApiRaw": "https://fcm.googleapis.com/$discovery/rest?version=v1",
+  "securitySchemes": {
+    "Oauth2": {
+      "description": "Oauth 2.0 implicit authentication",
+      "flows": {
+        "implicit": {
+          "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+          "scopes": {
+            "https://www.googleapis.com/auth/cloud-platform": "See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.",
+            "https://www.googleapis.com/auth/firebase.messaging": "Send messages and manage messaging subscriptions for your Firebase applications"
+          }
+        }
+      },
+      "type": "oauth2"
+    },
+    "Oauth2c": {
+      "description": "Oauth 2.0 authorizationCode authentication",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+          "scopes": {
+            "https://www.googleapis.com/auth/cloud-platform": "See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.",
+            "https://www.googleapis.com/auth/firebase.messaging": "Send messages and manage messaging subscriptions for your Firebase applications"
+          },
+          "tokenUrl": "https://accounts.google.com/o/oauth2/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "javatpoint.com",
   "apiVersion": "v1",
   "methods": [

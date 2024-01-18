@@ -1,6 +1,26 @@
 {
   "providerName": "hubapi.com",
   "openApiRaw": "https://api.hubspot.com/api-catalog-public/v1/apis/events/v3/send",
+  "securitySchemes": {
+    "oauth2_legacy": {
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://app.hubspot.com/oauth/authorize",
+          "scopes": {
+            "analytics.behavioral_events.send": "Send Behavioral Event Completions",
+            "behavioral_events.event_definitions.read_write": "Read from and write to custom behavioral events definitions"
+          },
+          "tokenUrl": "https://api.hubapi.com/oauth/v1/token"
+        }
+      },
+      "type": "oauth2"
+    },
+    "private_apps_legacy": {
+      "in": "header",
+      "name": "private-app-legacy",
+      "type": "apiKey"
+    }
+  },
   "homepage": "hubapi.com",
   "serviceName": "analytics",
   "apiVersion": "v3",

@@ -1,6 +1,26 @@
 {
   "providerName": "stream-io-api.com",
   "openApiRaw": "https://stream-openapi.s3.us-east-1.amazonaws.com/chat/openapi-latest.yaml",
+  "securitySchemes": {
+    "JWT": {
+      "description": "JWT should be always provided when stream-auth-type=jwt.\n\nUsing JWT auth request could be authenticated as user or as server-side.\n\nWhen using user authentication permission checking is going to be applied to requests based on the user that is\nperforming a request.\n\nThe `authorization` header should be a JWT string signed using the secret attached to the API key used to perform\nrequests.\n\n**WARNING** all client-side official SDK do not ship with token generation; this is to make sure that the API secret is not\nshared with an untrusted party such as a browser or a iOS/Android application. Tokens **must** be generated server-side.\nIf you wish, you can configure your application to ignore authentication (see `disable_auth_check`)\nThe JWT string must include only the user_id claim and can include any built-in JWT claim such as iat, exp as well.\n",
+      "in": "header",
+      "name": "Authorization",
+      "type": "apiKey"
+    },
+    "api_key": {
+      "description": "Application API key should be always set in order to authenticate the request.",
+      "in": "query",
+      "name": "api_key",
+      "type": "apiKey"
+    },
+    "stream-auth-type": {
+      "description": "Stream-Auth-Type should be always set in order to authenticate the request. Possible\nvalues: `jwt` or `anonymous`.\n\n`jwt` allows you to authenticate as a user. With this auth type you should also provide valid JWT in Authorization\nheader.\n\n`anonymous` allows you to authenticate as anonymous user. Please note that most advanced features are not available\nto anonymous users.",
+      "in": "header",
+      "name": "Stream-Auth-Type",
+      "type": "apiKey"
+    }
+  },
   "homepage": "stream-io-api.com",
   "apiVersion": "v80.2.0",
   "methods": [

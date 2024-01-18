@@ -1,6 +1,52 @@
 {
   "providerName": "linode.com",
   "openApiRaw": "https://www.linode.com/docs/api/openapi.yaml",
+  "securitySchemes": {
+    "oauth": {
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://login.linode.com/oauth/authorize",
+          "scopes": {
+            "account:read_only": "Allows access to GET information about your Account.",
+            "account:read_write": "Allows access to all endpoints related to your Account.",
+            "databases:read_only": "*Originally missing*",
+            "databases:read_write": "*Originally missing*",
+            "domains:read_only": "Allows access to GET Domains on your Account.",
+            "domains:read_write": "Allows access to all Domain endpoints.",
+            "events:read_only": "Allows access to GET your Events.",
+            "events:read_write": "Allows access to all endpoints related to your Events.",
+            "firewall:read_only": "Allows access to GET information about your Firewalls.",
+            "firewall:read_write": "Allows acces to all Firewall endpoints.",
+            "images:read_only": "Allows access to GET your Images.",
+            "images:read_write": "Allows access to all endpoints related to your Images.",
+            "ips:read": "*Originally missing*",
+            "ips:read_only": "Allows access to GET your ips.",
+            "ips:read_write": "Allows access to all endpoints related to your ips.",
+            "linodes:read_only": "Allows access to GET Linodes on your Account.",
+            "linodes:read_write": "Allow access to all endpoints related to your Linodes.",
+            "lke:read_only": "Allows access to GET LKE Clusters on your Account.",
+            "lke:read_write": "Allows access to all endpoints related to LKE Clusters on your Account.",
+            "longview:read_only": "Allows access to GET your Longview Clients.",
+            "longview:read_write": "Allows access to all endpoints related to your Longview Clients.",
+            "nodebalancers:read_only": "Allows access to GET NodeBalancers on your Account.",
+            "nodebalancers:read_write": "Allows access to all NodeBalancer endpoints.",
+            "object_storage:read_only": "Allows access to GET information related to your Object Storage.",
+            "object_storage:read_write": "Allows access to all Object Storage endpoints.",
+            "stackscripts:read_only": "Allows access to GET your StackScripts.",
+            "stackscripts:read_write": "Allows access to all endpoints related to your StackScripts.",
+            "volumes:read_only": "Allows access to GET your Volumes.",
+            "volumes:read_write": "Allows access to all endpoints related to your Volumes."
+          },
+          "tokenUrl": "https://login.linode.com/oauth/token"
+        }
+      },
+      "type": "oauth2"
+    },
+    "personalAccessToken": {
+      "scheme": "bearer",
+      "type": "http"
+    }
+  },
   "homepage": "linode.com",
   "apiVersion": "4.151.1",
   "methods": [

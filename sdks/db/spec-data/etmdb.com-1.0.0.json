@@ -1,6 +1,24 @@
 {
   "providerName": "etmdb.com",
   "openApiRaw": "https://etmdb.com/api/docs/endpoints/?format=openapi",
+  "securitySchemes": {
+    "oauth2": {
+      "description": "OAuth2.0 Authorization for the EtMDB API",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://etmdb.com/api/oauth/authorize/",
+          "scopes": {
+            "admin": "Grants read and write access to administrative information",
+            "groups": "Grants access to groups",
+            "read": "Grants read access",
+            "write": "Grants write access"
+          },
+          "tokenUrl": "https://etmdb.com/api/oauth/token/"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "etmdb.com",
   "apiVersion": "1.0.0",
   "methods": [

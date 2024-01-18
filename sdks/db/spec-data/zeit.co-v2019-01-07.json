@@ -1,6 +1,23 @@
 {
   "providerName": "zeit.co",
   "openApiRaw": "https://unpkg.com/@zeit/openapi",
+  "securitySchemes": {
+    "bearerAuth": {
+      "scheme": "bearer",
+      "type": "http"
+    },
+    "oauthAuthentication": {
+      "description": "This API uses OAuth 2 with the authorizationCode flow",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://zeit.co/oauth/authorize",
+          "scopes": {},
+          "tokenUrl": "https://api.zeit.co/v2/oauth/access_token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "zeit.co",
   "apiVersion": "v2019-01-07",
   "methods": [

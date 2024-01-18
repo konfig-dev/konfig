@@ -1,6 +1,32 @@
 {
   "providerName": "ebay.com",
   "openApiRaw": "https://developer.ebay.com/api-docs/master/developer/analytics/openapi/3/developer_analytics_v1_beta_oas3.json",
+  "securitySchemes": {
+    "api_auth": {
+      "description": "The security definitions for this API. Please check individual operations for applicable scopes.",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://auth.ebay.com/oauth2/authorize",
+          "scopes": {
+            "https://api.ebay.com/oauth/api_scope/commerce.catalog.readonly": " This scope would allow signed in user to read catalog data.",
+            "https://api.ebay.com/oauth/api_scope/sell.inventory": "View and manage your inventory and offers",
+            "https://api.ebay.com/oauth/api_scope/sell.inventory.readonly": "View your inventory and offers",
+            "https://api.ebay.com/oauth/api_scope/sell.marketing": "View and manage your eBay marketing activities, such as ad campaigns and listing promotions",
+            "https://api.ebay.com/oauth/api_scope/sell.marketing.readonly": "View your eBay marketing activities, such as ad campaigns and listing promotions",
+            "https://api.ebay.com/oauth/api_scope/sell.marketplace.insights.readonly": " This scope would allow signed in users read only access to marketplace insights."
+          },
+          "tokenUrl": "https://api.ebay.com/identity/v1/oauth2/token"
+        },
+        "clientCredentials": {
+          "scopes": {
+            "https://api.ebay.com/oauth/api_scope": "View public data from eBay"
+          },
+          "tokenUrl": "https://api.ebay.com/identity/v1/oauth2/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "ebay.com",
   "serviceName": "developer-analytics",
   "apiVersion": "v1_beta.0.0",

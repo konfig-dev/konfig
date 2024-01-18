@@ -1,6 +1,25 @@
 {
   "providerName": "cowin.gov.cin",
   "openApiRaw": "https://apisetu.gov.in/api_specification_v8/cowincert.yaml",
+  "securitySchemes": {
+    "api_key": {
+      "in": "header",
+      "name": "Authorization",
+      "type": "apiKey"
+    },
+    "cert_auth": {
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://divoc.cowin.gov.in/realms/divoc/protocol/openid-connect/auth",
+          "scopes": {
+            "read:cert": "read or download certificates"
+          },
+          "tokenUrl": "https://divoc.xiv.in/auth/realms/divoc/protocol/openid-connect/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "cowin.gov.cin",
   "serviceName": "cowincert",
   "apiVersion": "1.0.0",

@@ -1,6 +1,19 @@
 {
   "providerName": "billbee.io",
   "openApiRaw": "https://app.billbee.io/swagger/docs/v1",
+  "securitySchemes": {
+    "X-Billbee-Api-Key": {
+      "description": "To identify the app developer, each API request has do contain a valid API Key in the HTTP header X-Billbee-Api-Key.",
+      "in": "header",
+      "name": "X-Billbee-Api-Key",
+      "type": "apiKey"
+    },
+    "basic": {
+      "description": "To authenticate an API request, the Billbee username/email and an API password have to be provided as a BasicAuth header.",
+      "scheme": "basic",
+      "type": "http"
+    }
+  },
   "homepage": "billbee.io",
   "apiVersion": "v1",
   "methods": [

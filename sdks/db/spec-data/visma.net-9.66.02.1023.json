@@ -1,6 +1,24 @@
 {
   "providerName": "visma.net",
   "openApiRaw": "https://integration.visma.net/API-index/doc/swagger",
+  "securitySchemes": {
+    "oauth2": {
+      "description": "OAuth2 Authorization Code Grant",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://connect.visma.com/connect/authorize",
+          "scopes": {
+            "vismanet_erp_interactive_api:create": "vismanet_erp_interactive_api:create",
+            "vismanet_erp_interactive_api:delete": "vismanet_erp_interactive_api:delete",
+            "vismanet_erp_interactive_api:read": "vismanet_erp_interactive_api:read",
+            "vismanet_erp_interactive_api:update": "vismanet_erp_interactive_api:update"
+          },
+          "tokenUrl": "https://connect.visma.com/connect/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "visma.net",
   "apiVersion": "9.66.02.1023",
   "methods": [

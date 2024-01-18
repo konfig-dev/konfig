@@ -1,6 +1,33 @@
 {
   "providerName": "openbanking.org.uk",
   "openApiRaw": "https://raw.githubusercontent.com/OpenBankingUK/read-write-api-specs/master/dist/openapi/account-info-openapi.yaml",
+  "securitySchemes": {
+    "PSUOAuth2Security": {
+      "description": "OAuth flow, it is required when the PSU needs to perform SCA with the ASPSP when a TPP wants to access an ASPSP resource owned by the PSU",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://authserver.example/authorization",
+          "scopes": {
+            "accounts": "Ability to read Accounts information"
+          },
+          "tokenUrl": "https://authserver.example/token"
+        }
+      },
+      "type": "oauth2"
+    },
+    "TPPOAuth2Security": {
+      "description": "TPP client credential authorisation flow with the ASPSP",
+      "flows": {
+        "clientCredentials": {
+          "scopes": {
+            "accounts": "Ability to read Accounts information"
+          },
+          "tokenUrl": "https://authserver.example/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "openbanking.org.uk",
   "serviceName": "account-info-openapi",
   "apiVersion": "3.1.7",

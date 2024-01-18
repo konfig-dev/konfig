@@ -1,6 +1,27 @@
 {
   "providerName": "cdcgov.local",
   "openApiRaw": "https://raw.githubusercontent.com/CDCgov/prime-reportstream/master/prime-router/docs/openapi.yml",
+  "securitySchemes": {
+    "ApiKeyAuth": {
+      "in": "header",
+      "name": "x-functions-key",
+      "type": "apiKey"
+    },
+    "OAuth2": {
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://hhs-prime.okta.com/oauth/authorize",
+          "scopes": {
+            "org_admin": "Grants write access to single org",
+            "system_admin": "Grants access to admin operations",
+            "user": "Grants read access"
+          },
+          "tokenUrl": "https://hhs-prime.okta.com/oauth/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "cdcgov.local",
   "serviceName": "prime-data-hub",
   "apiVersion": "0.2.0-oas3",

@@ -1,6 +1,19 @@
 {
   "providerName": "bufferapp.com",
   "openApiRaw": "https://raw.githubusercontent.com/APIs-guru/unofficial_openapi_specs/master/bufferapp.com/1/swagger.yaml",
+  "securitySchemes": {
+    "oauth_2_0": {
+      "description": "Body example for authorisation request:\n\nclient_id=...&\nredirect_uri=...&\nresponse_type=code\n\nBidy example for token request:\n\nPOST Data\nclient_id=...&\nclient_secret=...&\nredirect_uri=...&\ncode=...&\ngrant_type=authorization_code\n\nAll requests to the Buffer API must be made using HTTPS, with the access token provided in the HTTP Authorization header, request body or query string.\n",
+      "type": "oauth2",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://bufferapp.com/oauth2/authorize",
+          "tokenUrl": "https://api.bufferapp.com/1/oauth2/token.json",
+          "scopes": {}
+        }
+      }
+    }
+  },
   "homepage": "bufferapp.com",
   "apiVersion": "1",
   "methods": [

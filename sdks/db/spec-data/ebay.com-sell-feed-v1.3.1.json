@@ -1,6 +1,25 @@
 {
   "providerName": "ebay.com",
   "openApiRaw": "https://developer.ebay.com/api-docs/master/sell/feed/openapi/3/sell_feed_v1_oas3.json",
+  "securitySchemes": {
+    "api_auth": {
+      "description": "The security definitions for this API. Please check individual operations for applicable scopes.",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://auth.ebay.com/oauth2/authorize",
+          "scopes": {
+            "https://api.ebay.com/oauth/api_scope/commerce.catalog.readonly": " This scope would allow signed in user to read catalog data.",
+            "https://api.ebay.com/oauth/api_scope/sell.analytics.readonly": "View your selling analytics data, such as performance reports",
+            "https://api.ebay.com/oauth/api_scope/sell.fulfillment": "View and manage your order fulfillments",
+            "https://api.ebay.com/oauth/api_scope/sell.inventory": "View and manage your inventory and offers",
+            "https://api.ebay.com/oauth/api_scope/sell.marketing": "View and manage your eBay marketing activities, such as ad campaigns and listing promotions"
+          },
+          "tokenUrl": "https://api.ebay.com/identity/v1/oauth2/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "ebay.com",
   "serviceName": "sell-feed",
   "apiVersion": "v1.3.1",

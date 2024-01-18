@@ -1,6 +1,61 @@
 {
   "providerName": "visma.com",
   "openApiRaw": "https://api.severa.visma.com/psapublicrest/openapidocs/v1.0/doc.json",
+  "securitySchemes": {
+    "ClientIdAuth": {
+      "description": "Client_Id header",
+      "in": "header",
+      "name": "Client_Id",
+      "type": "apiKey"
+    },
+    "OAuth2": {
+      "description": "This API uses OAuth 2 with the Client Credentials flow",
+      "flows": {
+        "clientCredentials": {
+          "refreshUrl": "/refreshtoken",
+          "scopes": {
+            "activities:delete": "Delete access to activity resources",
+            "activities:read": "Read-only access to activity resources",
+            "activities:write": "Write access to activity resources",
+            "customers:delete": "Delete access to customer resources",
+            "customers:read": "Read-only access to customer resources",
+            "customers:write": "Write access to customer resources",
+            "fees:delete": "Delete access to project fee related resources",
+            "fees:read": "Read-only access to project fee related resources",
+            "fees:write": "Write access to project fee related resources",
+            "files:delete": "Delete access to files",
+            "files:read": "Read-only access to files",
+            "files:write": "Write access to files",
+            "hours:delete": "Delete access to work hour resources",
+            "hours:read": "Read-only access to work hour resources",
+            "hours:write": "Write access to work hour resources",
+            "invoices:delete": "Delete access to invoice resources",
+            "invoices:read": "Read-only access to invoice resources",
+            "invoices:write": "Write access to invoice resources",
+            "organization:read": "Read-only access to organization-level resources",
+            "organization:write": "Write access to organization-level resources",
+            "projects:delete": "Delete access to project resources",
+            "projects:read": "Read-only access to project resources",
+            "projects:write": "Write access to project resources",
+            "resourceallocations:delete": "Delete access to resource allocations",
+            "resourceallocations:read": "Read-only access to resource allocations",
+            "resourceallocations:write": "Write access to resource allocations",
+            "settings:delete": "Delete access to settings resources",
+            "settings:read": "Read-only access to settings resources",
+            "settings:write": "Write access to settings resources",
+            "travels:delete": "Delete access to travel expense related resources",
+            "travels:read": "Read-only access to travel expense related resources",
+            "travels:write": "Write access to travel expense related resources",
+            "users:delete": "Delete access to user resources",
+            "users:read": "Read-only access to user resources",
+            "users:write": "Write access to user resources"
+          },
+          "tokenUrl": "/token"
+        }
+      },
+      "type": "oauth2"
+    }
+  },
   "homepage": "visma.com",
   "apiVersion": "1.0",
   "methods": [

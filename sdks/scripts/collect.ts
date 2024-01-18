@@ -1,5 +1,11 @@
 import * as path from "path";
-import { Spec, getOperations, parseSpec, resolveRef } from "konfig-lib";
+import {
+  SecuritySchemes,
+  Spec,
+  getOperations,
+  parseSpec,
+  resolveRef,
+} from "konfig-lib";
 import * as fs from "fs";
 import * as glob from "glob";
 import * as math from "mathjs";
@@ -228,6 +234,23 @@ function getNumberOfSchemas(spec: Spec): number {
   return numberOfSchemas;
 }
 
+function getSecuritySchemes(spec: Spec): SecuritySchemes {
+  const securitySchemeOrRefs = spec.spec.components?.securitySchemes;
+  if (securitySchemeOrRefs === undefined) return {};
+  const securitySchemesKeys = Object.keys(securitySchemeOrRefs);
+  const securitySchemes: SecuritySchemes = {};
+  for (const key of securitySchemesKeys) {
+    const securitySchemeOrRef = securitySchemeOrRefs[key];
+    const securityScheme = resolveRef({
+      refOrObject: securitySchemeOrRef,
+      $ref: spec.$ref,
+    });
+    securitySchemes[key] = securityScheme;
+  }
+
+  return securitySchemes;
+}
+
 function getOpenApiRaw(spec: Spec): string {
   const info = spec.spec.info as any;
   const origin = info["x-origin"];
@@ -284,7 +307,7 @@ export type SdkPagePropsWithPropertiesOmitted = Omit<
   | "logo" // DONE IN SEPARATE SCRIPT
   | "sdkName" // DO MANUALLY
   | "company" // DO MANUALLY
->;
+> & { securitySchemes: SecuritySchemes };
 
 export type Db = {
   specifications: Record<string, SdkPagePropsWithPropertiesOmitted>;
@@ -428,6 +451,7 @@ async function processFiltered(): Promise<Db> {
     db.specifications[key] = {
       providerName: getProviderName(spec),
       openApiRaw: getOpenApiRaw(spec),
+      securitySchemes: getSecuritySchemes(spec),
       homepage: getProviderName(spec),
       serviceName: getServiceName(spec),
       apiVersion: getVersion(spec),
@@ -480,14 +504,11 @@ async function main() {
   console.log("Adding difficulty scores");
   db = await addDifficulty(db);
   // delete specFolder if it exists
-  fs.rmdirSync(specFolder, { recursive: true });
+  fs.rmSync(specFolder, { recursive: true });
   // ensure specFolder exists
   fs.mkdirSync(specFolder, { recursive: true });
   console.log("Writing data to disk");
   writeData(db);
-  console.log("Writing last-updated.txt");
-  const lastUpdated = new Date().toISOString();
-  fs.writeFileSync(path.join(dbFolder, "last-updated.txt"), lastUpdated);
   console.log("Done!");
 }
 
