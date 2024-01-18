@@ -2,6 +2,29 @@ import * as execa from "execa";
 import * as fs from "fs";
 import * as path from "path";
 import * as mustache from "mustache";
+import type { SdkPageProps } from "../../generator/konfig-docs/src/components/SdkComponentProps";
+
+export const dbFile = path.join(path.dirname(__dirname), "db", "data.json");
+
+type SdkPagePropsWithPropertiesOmitted = Omit<
+  SdkPageProps,
+  | "openApiRaw" // TODO
+  | "openApiUi" // TODO
+  | "previewLinkImage" // TODO
+  | "metaDescription" // TODO
+  | "favicon" // TODO
+  | "logo" // TODO
+  | "homepage" // TODO
+  | "methods" // TODO
+  | "lastUpdated" // TODO
+  | "sdkName" // DO MANUALLY
+  | "company" // DO MANUALLY
+>;
+
+export type Db = {
+  specifications: Record<string, SdkPagePropsWithPropertiesOmitted>;
+  skipped: string[];
+};
 
 export function generateSdkRepository(
   companyName: string,
