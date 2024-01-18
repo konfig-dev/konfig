@@ -1,5 +1,5 @@
 import * as path from "path";
-import { Spec, getOperations, parseSpec } from "konfig-lib";
+import { Spec, getOperations, parseSpec, resolveRef } from "konfig-lib";
 import * as fs from "fs";
 import * as glob from "glob";
 import * as math from "mathjs";
@@ -84,7 +84,10 @@ function getKey(spec: Spec): string {
   const serviceName = getServiceName(spec);
   if (serviceName === undefined)
     return `${getProviderName(spec)}-${getVersion(spec)}`;
-  return `${getProviderName(spec)}-${serviceName}-${getVersion(spec)}`;
+  return `${getProviderName(spec)}-${serviceName}-${getVersion(spec)}`.replace(
+    "/",
+    "-"
+  );
 }
 
 function getNumberOfEndpoints(spec: Spec): number {
@@ -123,14 +126,34 @@ function getOpenApiRaw(spec: Spec): string {
 }
 
 function getNumberOfParameters(spec: Spec): number {
-  if (spec.spec.components === undefined) return 0;
-  if (spec.spec.components.parameters === undefined) return 0;
-
   // iterate over all operations and count parameters
   let numberOfParameters = 0;
   getOperations(spec).forEach(({ operation }) => {
     if (operation.parameters === undefined) return;
     numberOfParameters += operation.parameters.length;
+
+    // Also add properties from an object type schema as parameters
+    let requestBody = operation.requestBody;
+    if (requestBody === undefined) return;
+    if ("$ref" in requestBody) {
+      requestBody = resolveRef({ refOrObject: requestBody, $ref: spec.$ref });
+    }
+    if ("$ref" in requestBody) {
+      throw Error("Expect requestBody to be dereferenced");
+    }
+    const mediaTypes = Object.keys(requestBody.content);
+    const mediaType = mediaTypes[0];
+    if (mediaType === undefined) return;
+    let schema = requestBody.content[mediaType].schema;
+    if (schema === undefined) return;
+    if ("$ref" in schema) {
+      schema = resolveRef({ refOrObject: schema, $ref: spec.$ref });
+    }
+    if ("$ref" in schema) {
+      throw Error("Expect schema to be dereferenced");
+    }
+    if (schema.properties === undefined) return;
+    numberOfParameters += Object.keys(schema.properties).length;
   });
 
   return numberOfParameters;
@@ -165,7 +188,7 @@ function writeData(db: Db) {
   }
 }
 
-const filter = [
+const doNotProcess = [
   "googleapis.com",
   "azure.com",
   "amazonaws.com",
@@ -174,6 +197,7 @@ const filter = [
   "twilio.com",
   "github.com",
   "plaid.com",
+  "apisetu.gov.in", // gets 403 forbidden
   "codat.io", // speakeasy customer
 ];
 
@@ -182,7 +206,7 @@ async function collectFilterAndSave(): Promise<void> {
 
   const filteredPaths = paths.filter(
     ({ oasPath }) =>
-      !filter.some((f) => oasPath.includes(f)) &&
+      !doNotProcess.some((f) => oasPath.includes(f)) &&
       skip.every((s) => !oasPath.includes(s))
   );
 
@@ -258,6 +282,12 @@ async function processFiltered(): Promise<Db> {
   for (const oasPath of filtered) {
     const cleanPath = path.relative(apiDirectory, oasPath);
 
+    // skip paths from doNotProcess
+    if (doNotProcess.some((f) => oasPath.includes(f))) {
+      console.log(`❌ Skipping ${cleanPath} due to doNotProcess.`);
+      continue;
+    }
+
     const spec = await parseSpec(fs.readFileSync(oasPath, "utf-8"));
 
     console.log(`Processing path ${++i}/${filtered.length}: ${cleanPath}`);
@@ -317,10 +347,11 @@ async function addDifficulty(db: Db): Promise<Db> {
 }
 
 async function main() {
-  if (process.env.FILTER !== "") {
+  if (process.env.FILTER !== undefined && process.env.FILTER !== "") {
     await collectFilterAndSave();
     return;
   }
+  console.log("Processing filtered specs");
   let db = await processFiltered();
   console.log("Adding difficulty scores");
   db = await addDifficulty(db);
