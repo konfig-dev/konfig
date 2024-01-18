@@ -64,7 +64,6 @@ export default function AblyTypeScriptSdk() {
       difficulty="hard"
       contactEmail="support@ably.io"
       openApiRaw="https://raw.githubusercontent.com/ably/open-specs/main/definitions/platform-v1.yaml"
-      openApiUi="https://elements-demo.stoplight.io/?spec=https://raw.githubusercontent.com/ably/open-specs/main/definitions/platform-v1.yaml"
     />
   );
 }

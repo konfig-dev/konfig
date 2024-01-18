@@ -42,7 +42,6 @@ export type SdkPageProps = {
   contactUrl?: string;
   contactEmail?: string;
   openApiRaw: string;
-  openApiUi: string;
   providerName: string;
   previewLinkImage: string;
   sdkName: string;

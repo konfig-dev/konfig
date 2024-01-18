@@ -49,7 +49,6 @@ export function Sdk({
   contactUrl,
   contactEmail,
   openApiRaw,
-  openApiUi,
   previewLinkImage,
   sdkName,
   GettingStarted,
@@ -187,7 +186,6 @@ export function Sdk({
               contactUrl={contactUrl}
               contactEmail={contactEmail}
               openApiRaw={openApiRaw}
-              openApiUi={openApiUi}
             />
           </div>
         </BigSection>
@@ -549,7 +547,6 @@ function Sidebar({
   contactUrl,
   contactEmail,
   openApiRaw,
-  openApiUi,
   homepage,
 }: {
   homepage: string;
@@ -565,7 +562,6 @@ function Sidebar({
   contactUrl: string;
   contactEmail: string;
   openApiRaw: string;
-  openApiUi: string;
 }) {
   return (
     <div className="top-20 sticky w-full lg:w-fit">
@@ -667,7 +663,10 @@ function Sidebar({
             >
               Raw
             </a>
-            <a href={openApiUi} target="_blank">
+            <a
+              href={`https://elements-demo.stoplight.io/?spec=${openApiRaw}`}
+              target="_blank"
+            >
               UI
             </a>
           </SidebarSectionContent>
