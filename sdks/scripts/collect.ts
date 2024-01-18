@@ -10,7 +10,8 @@ import type {
 
 type Paths = { oasPath: string }[];
 
-const specFolder = path.join(path.dirname(__dirname), "db", "spec-data");
+const dbFolder = path.join(path.dirname(__dirname), "db");
+const specFolder = path.join(dbFolder, "spec-data");
 const apiDirectory = path.join(
   path.dirname(__dirname),
   "openapi-directory",
@@ -129,8 +130,9 @@ function getNumberOfParameters(spec: Spec): number {
   // iterate over all operations and count parameters
   let numberOfParameters = 0;
   getOperations(spec).forEach(({ operation }) => {
-    if (operation.parameters === undefined) return;
-    numberOfParameters += operation.parameters.length;
+    numberOfParameters += operation.parameters
+      ? operation.parameters.length
+      : 0;
 
     // Also add properties from an object type schema as parameters
     let requestBody = operation.requestBody;
@@ -165,6 +167,7 @@ type SdkPagePropsWithPropertiesOmitted = Omit<
   | "previewLinkImage" // DONE IN SEPARATE SCRIPT
   | "metaDescription" // DONE IN SEPARATE SCRIPT
   | "favicon" // DONE IN SEPARATE SCRIPT
+  | "lastUpdated" // PICK UP FROM DIFFERENT FILE
   | "logo" // DONE IN SEPARATE SCRIPT
   | "sdkName" // DO MANUALLY
   | "company" // DO MANUALLY
@@ -190,6 +193,9 @@ function writeData(db: Db) {
 
 const doNotProcess = [
   "googleapis.com",
+  "google.home",
+  "google.com",
+  "goog.io",
   "azure.com",
   "amazonaws.com",
   "microsoft.com",
@@ -276,8 +282,8 @@ async function processFiltered(): Promise<Db> {
     .split("\n");
 
   const db: Db = { specifications: {} };
+  const select = process.env.SELECT;
 
-  const now = new Date();
   let i = 0;
   for (const oasPath of filtered) {
     const cleanPath = path.relative(apiDirectory, oasPath);
@@ -285,6 +291,11 @@ async function processFiltered(): Promise<Db> {
     // skip paths from doNotProcess
     if (doNotProcess.some((f) => oasPath.includes(f))) {
       console.log(`❌ Skipping ${cleanPath} due to doNotProcess.`);
+      continue;
+    }
+
+    if (select !== undefined && !oasPath.includes(select)) {
+      console.log(`❌ Skipping ${cleanPath} due to select.`);
       continue;
     }
 
@@ -307,7 +318,6 @@ async function processFiltered(): Promise<Db> {
       homepage: getProviderName(spec),
       serviceName: getServiceName(spec),
       apiVersion: getVersion(spec),
-      lastUpdated: now,
       apiBaseUrl: apiBaseUrl,
       apiDescription: spec.spec.info.description,
       apiTitle: spec.spec.info.title,
@@ -357,6 +367,9 @@ async function main() {
   db = await addDifficulty(db);
   console.log("Writing data to disk");
   writeData(db);
+  console.log("Writing last-updated.txt");
+  const lastUpdated = new Date().toISOString();
+  fs.writeFileSync(path.join(dbFolder, "last-updated.txt"), lastUpdated);
   console.log("Done!");
 }
 
