@@ -192,8 +192,9 @@ function computeDifficultyScore(
 function getKey(spec: Spec): string {
   const serviceName = getServiceName(spec);
   if (serviceName === undefined)
-    return `${getProviderName(spec)}-${getVersion(spec)}`;
-  return `${getProviderName(spec)}-${serviceName}-${getVersion(spec)}`
+    return `${getProviderName(spec)}|${getVersion(spec)}`;
+  return `${getProviderName(spec)}|${serviceName}|${getVersion(spec)}`
+    .replace(" ", "-")
     .replace("/", "-")
     .replace("&", "")
     .replace("--", "-");

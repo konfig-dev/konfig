@@ -1,0 +1,860 @@
+{
+  "providerName": "vtex.local",
+  "openApiRaw": "https://raw.githubusercontent.com/vtex/openapi-schemas/master/VTEX - Marketplace APIs - Suggestions.json",
+  "securitySchemes": {
+    "appKey": {
+      "in": "header",
+      "name": "X-VTEX-API-AppKey",
+      "type": "apiKey"
+    },
+    "appToken": {
+      "in": "header",
+      "name": "X-VTEX-API-AppToken",
+      "type": "apiKey"
+    }
+  },
+  "homepage": "vtex.local",
+  "serviceName": "Marketplace-APIs-",
+  "apiVersion": "1.0",
+  "methods": [
+    {
+      "url": "/suggestions",
+      "method": "getsuggestions",
+      "httpMethod": "get",
+      "tag": "Get Suggestions",
+      "description": "Get all SKU suggestions",
+      "parameters": [
+        {
+          "name": "accountName",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the VTEX account. Used as part of the URL"
+        },
+        {
+          "name": "q",
+          "schema": "string",
+          "required": false,
+          "description": "This field allows you to customize your search. You can fill in this query param if you want to narrow down your search using the available filters on Received SKU modules."
+        },
+        {
+          "name": "type",
+          "schema": "string",
+          "required": false,
+          "description": "This field allows users to filter SKU suggestions, by searching only the new suggestions that were just sent, and suggestions that have already been sent, but were updated. Possible values for this field include `new` and `update`."
+        },
+        {
+          "name": "seller",
+          "schema": "string",
+          "required": false,
+          "description": "A string that identifies the seller in the marketplace. This ID must be created by the marketplace and informed to the seller so it can call this endpoint."
+        },
+        {
+          "name": "status",
+          "schema": "string",
+          "required": false,
+          "description": "Narrow down you search, filtering by status. Values allowed on this field include: `accepted`, `pending` and `denied.`"
+        },
+        {
+          "name": "hasmapping",
+          "schema": "string",
+          "required": false,
+          "description": "This field allows you to filter SKUs that have mapping or not. Insert `true` to filter SKUs that have mapping, or `false` to retrieve SKUs that aren't mapped."
+        },
+        {
+          "name": "matcherid",
+          "schema": "string",
+          "required": false,
+          "description": "Identifies the matching entity. It can be either VTEX's matcher, or an external matcher developed by partners, for example. The `matcherId`'s value can be obtained through the [Get SKU Suggestion by ID](https://developers.vtex.com/vtex-rest-api/reference/getsuggestion) endpoint."
+        },
+        {
+          "name": "from",
+          "schema": "integer",
+          "required": false,
+          "description": "Define your pagination range, by adding the pagination starting value. Values should be bigger than 0, with a maximum of 50 records per page."
+        },
+        {
+          "name": "to",
+          "schema": "integer",
+          "required": false,
+          "description": "Define your pagination range, by adding the pagination ending value. Values should be bigger than 0, with a maximum of 50 records per page."
+        },
+        {
+          "name": "accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "contentType",
+          "schema": "string",
+          "required": true,
+          "description": "Type of the content being sent."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/suggestions/configuration",
+      "method": "getaccountconfig",
+      "httpMethod": "get",
+      "tag": "SKU Approval Settings",
+      "description": "Get Account's Approval Settings",
+      "parameters": [
+        {
+          "name": "accountName",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the VTEX account that belongs to the marketplace. All data extracted, and changes added will be posted into this account."
+        },
+        {
+          "name": "accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "contentType",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/suggestions/configuration",
+      "method": "saveaccountconfig",
+      "httpMethod": "put",
+      "tag": "SKU Approval Settings",
+      "description": "Save Account's Approval Settings",
+      "parameters": [
+        {
+          "name": "accountName",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the VTEX account that belongs to the marketplace. All data extracted, and changes added will be posted into this account."
+        },
+        {
+          "name": "accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "contentType",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "MatchFlux",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Matchers",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Score",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "SpecificationsMapping",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/suggestions/configuration/autoapproval/toggle",
+      "method": "getautoApprovevaluefromconfig",
+      "httpMethod": "get",
+      "tag": "SKU Approval Settings",
+      "description": "Get autoApprove Status in Account Settings",
+      "parameters": [
+        {
+          "name": "sellerId",
+          "schema": "string",
+          "required": true,
+          "description": "A string that identifies the seller in the marketplace. This ID must be created by the marketplace."
+        },
+        {
+          "name": "accountName",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the VTEX account that belongs to the marketplace. All data extracted, and changes added will be posted into this account."
+        },
+        {
+          "name": "accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "contentType",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/suggestions/configuration/autoapproval/toggle",
+      "method": "saveautoapproveforaccount",
+      "httpMethod": "put",
+      "tag": "SKU Approval Settings",
+      "description": "Activate autoApprove in Marketplace's Account",
+      "parameters": [
+        {
+          "name": "accountName",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the VTEX account that belongs to the marketplace. All data extracted, and changes added will be posted into this account."
+        },
+        {
+          "name": "accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "contentType",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "Enabled",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/suggestions/configuration/autoapproval/toggle/seller/{sellerId}",
+      "method": "saveautoapproveforaccountseller",
+      "httpMethod": "put",
+      "tag": "SKU Approval Settings",
+      "description": "Activate autoApprove Setting for a Seller",
+      "parameters": [
+        {
+          "name": "accountName",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the VTEX account that belongs to the marketplace. All data extracted, and changes added will be posted into this account."
+        },
+        {
+          "name": "sellerId",
+          "schema": "string",
+          "required": true,
+          "description": "A string that identifies the seller in the marketplace. This ID must be created by the marketplace."
+        },
+        {
+          "name": "accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "contentType",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "Enabled",
+          "schema": "boolean",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/suggestions/configuration/seller/{sellerId}",
+      "method": "getselleraccountconfig",
+      "httpMethod": "get",
+      "tag": "SKU Approval Settings",
+      "description": "Get Seller's Approval Settings",
+      "parameters": [
+        {
+          "name": "accountName",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the VTEX account that belongs to the marketplace. All data extracted, and changes added will be posted into this account."
+        },
+        {
+          "name": "sellerId",
+          "schema": "string",
+          "required": true,
+          "description": "A string that identifies the seller in the marketplace. This ID must be created by the marketplace."
+        },
+        {
+          "name": "accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "contentType",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/suggestions/configuration/seller/{sellerId}",
+      "method": "putselleraccountconfig",
+      "httpMethod": "put",
+      "tag": "SKU Approval Settings",
+      "description": "Save Seller's Approval Settings",
+      "parameters": [
+        {
+          "name": "accountName",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the VTEX account that belongs to the marketplace. All data extracted, and changes added will be posted into this account."
+        },
+        {
+          "name": "sellerId",
+          "schema": "string",
+          "required": true,
+          "description": "A string that identifies the seller in the marketplace. This ID must be created by the marketplace."
+        },
+        {
+          "name": "accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "contentType",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "mapping",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "matchFlux",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "sellerId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/suggestions/matches/action/{actionName}",
+      "method": "matchMultiple",
+      "httpMethod": "put",
+      "tag": "Match Received SKUs",
+      "description": "Match Multiple Received SKUs",
+      "parameters": [
+        {
+          "name": "accountName",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the VTEX account. Used as part of the URL"
+        },
+        {
+          "name": "contentType",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "actionName",
+          "schema": "string",
+          "required": true,
+          "description": "This field refers to the operation you choose to apply to received SKUs. Values include: newproduct, skuassociation, productassociation or deny."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/suggestions/{sellerId}/{sellerSkuId}",
+      "method": "deleteSuggestion",
+      "httpMethod": "delete",
+      "tag": "Manage Suggestions",
+      "description": "Delete SKU Suggestion",
+      "parameters": [
+        {
+          "name": "accountName",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the VTEX account. Used as part of the URL."
+        },
+        {
+          "name": "accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "contentType",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "sellerId",
+          "schema": "string",
+          "required": true,
+          "description": "A string that identifies the seller in the marketplace. This ID must be created by the marketplace and informed to the seller before the integration is built."
+        },
+        {
+          "name": "sellerSkuId",
+          "schema": "string",
+          "required": true,
+          "description": "A string that identifies the SKU in the marketplace. This is the ID that the marketplace will use for future references to this SKU, such as price and inventory notifications."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/suggestions/{sellerId}/{sellerSkuId}",
+      "method": "getSuggestion",
+      "httpMethod": "get",
+      "tag": "Get Suggestions",
+      "description": "Get SKU Suggestion by ID",
+      "parameters": [
+        {
+          "name": "accountName",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the VTEX account. Used as part of the URL"
+        },
+        {
+          "name": "accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "contentType",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "sellerId",
+          "schema": "string",
+          "required": true,
+          "description": "A string that identifies the seller in the marketplace. This ID must be created by the marketplace and informed to the seller before the integration is built."
+        },
+        {
+          "name": "sellerSkuId",
+          "schema": "string",
+          "required": true,
+          "description": "A string that identifies the SKU in the marketplace. This is the ID that the marketplace will use for future references to this SKU, such as price and inventory notifications."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/suggestions/{sellerId}/{sellerSkuId}",
+      "method": "saveSuggestion",
+      "httpMethod": "put",
+      "tag": "Manage Suggestions",
+      "description": "Send SKU Suggestion",
+      "parameters": [
+        {
+          "name": "accountName",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the VTEX account to which the seller wants to suggest a new SKU. It is used as part of the request URL."
+        },
+        {
+          "name": "accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
+        },
+        {
+          "name": "contentType",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "sellerId",
+          "schema": "string",
+          "required": true,
+          "description": "A string that identifies the seller in the marketplace. This ID must be created by the marketplace and informed to the seller before the integration is built."
+        },
+        {
+          "name": "sellerSkuId",
+          "schema": "string",
+          "required": true,
+          "description": "A string that identifies the SKU in the seller. This is the ID that the marketplace will use for future references to this SKU, such as price and inventory notifications."
+        },
+        {
+          "name": "AvailableQuantity",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "BrandName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "CategoryFullPath",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "EAN",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Height",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Images",
+          "schema": "array",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Length",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "MeasurementUnit",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Pricing",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "ProductDescription",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "ProductId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "ProductName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "ProductSpecifications",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "RefId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "SellerId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "SellerStockKeepingUnitId",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "SkuName",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "SkuSpecifications",
+          "schema": "array",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "UnitMultiplier",
+          "schema": "integer",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Weight",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Width",
+          "schema": "integer",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/suggestions/{sellerId}/{sellerskuid}/versions",
+      "method": "getVersions",
+      "httpMethod": "get",
+      "tag": "Get Versions",
+      "description": "Get all Versions",
+      "parameters": [
+        {
+          "name": "accountName",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the VTEX account. Used as part of the URL"
+        },
+        {
+          "name": "accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "contentType",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "sellerId",
+          "schema": "string",
+          "required": true,
+          "description": "A string that identifies the seller in the marketplace. This ID must be created by the marketplace and informed to the seller before the integration is built."
+        },
+        {
+          "name": "sellerskuid",
+          "schema": "string",
+          "required": true,
+          "description": "A string that identifies the SKU in the marketplace. This is the ID that the marketplace will use for future references to this SKU, such as price and inventory notifications."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/suggestions/{sellerId}/{sellerskuid}/versions/{version}",
+      "method": "getSuggestionbyversion",
+      "httpMethod": "get",
+      "tag": "Get Versions",
+      "description": "Get Version by ID",
+      "parameters": [
+        {
+          "name": "accountName",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the VTEX account. Used as part of the URL"
+        },
+        {
+          "name": "accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "contentType",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "sellerId",
+          "schema": "string",
+          "required": true,
+          "description": "A string that identifies the seller in the marketplace. This ID must be created by the marketplace and informed to the seller before the integration is built."
+        },
+        {
+          "name": "sellerskuid",
+          "schema": "string",
+          "required": true,
+          "description": "A string that identifies the SKU in the marketplace. This is the ID that the marketplace will use for future references to this SKU, such as price and inventory notifications."
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "required": true,
+          "description": "Whenever an SKU Suggestion is updated or changed, a new version of the original one is created. All versions are logged, so you can search for previous our current states of SKU suggestions. This field is the `versionId` associated to the version you choose to search for. You can get this field's value through the [Get SKU Suggestion by ID](https://developers.vtex.com/vtex-rest-api/reference/getsuggestion). through the `latestVersionId` field."
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "/suggestions/{sellerId}/{sellerskuid}/versions/{version}/matches/{matchid}",
+      "method": "match",
+      "httpMethod": "put",
+      "tag": "Match Received SKUs",
+      "description": "Match Received SKUs individually",
+      "parameters": [
+        {
+          "name": "accountName",
+          "schema": "string",
+          "required": true,
+          "description": "Name of the VTEX account. Used as part of the URL"
+        },
+        {
+          "name": "accept",
+          "schema": "string",
+          "required": true,
+          "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
+        },
+        {
+          "name": "contentType",
+          "schema": "string",
+          "required": true,
+          "description": "Describes the type of the content being sent."
+        },
+        {
+          "name": "sellerId",
+          "schema": "string",
+          "required": true,
+          "description": "A string that identifies the seller in the marketplace. This ID must be created by the marketplace and informed to the seller before the integration is built."
+        },
+        {
+          "name": "sellerskuid",
+          "schema": "string",
+          "required": true,
+          "description": "A string that identifies the SKU in the marketplace. This is the ID that the marketplace will use for future references to this SKU, such as price and inventory notifications."
+        },
+        {
+          "name": "version",
+          "schema": "string",
+          "required": true,
+          "description": "Whenever an SKU Suggestion is updated or changed, a new version of the original one is created. All versions are logged, so you can search for previous our current states of SKU suggestions. This field is the versionId associated to the version you choose to search for. You can get this field's value through the[Get SKU Suggestion by ID](https://developers.vtex.com/vtex-rest-api/reference/getsuggestion). through the `latestVersionId` field."
+        },
+        {
+          "name": "matchid",
+          "schema": "string",
+          "required": true,
+          "description": "Whenever an SKU suggestion is matched, it is associated to a unique ID. Fill in this field with the matchId you wish to filter by. The `matchId`'s value can be obtained through the *[Get SKU Suggestion by ID](https://developers.vtex.com/vtex-rest-api/reference/getsuggestion) endpoint."
+        },
+        {
+          "name": "matchType",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "matcherId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "product",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "productRef",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "score",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "sku",
+          "schema": "object",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "skuRef",
+          "schema": "string",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": []
+    }
+  ],
+  "apiBaseUrl": "https://vtex.local",
+  "apiDescription": "\r\nThe **Marketplace API** enables marketplaces and sellers hosted on VTEX to perform their collaborative operations.  \r\n\r\n>⚠️ The marketplace must [create an appKey and appToken](https://developers.vtex.com/docs/guides/getting-started-authentication) for each non-VTEX seller that will use this API.\r\n\r\n## Index\r\n\r\n### Notification\r\n\r\nEndpoints used by sellers to notify marketplaces that the price or inventory language has changed for one of their SKUs.\r\n\r\n`POST` [Notify marketplace of price update](https://developers.vtex.com/docs/api-reference/marketplace-apis#post-/notificator/-sellerId-/changenotification/-skuId-/price)\r\n\r\n`POST` [Notify marketplace of inventory update](https://developers.vtex.com/docs/api-reference/marketplace-apis#post-/notificator/-sellerId-/changenotification/-skuId-/inventory)\r\n\r\n\r\n### Suggestions\r\n\r\n#### Get Suggestions\r\n\r\nSearch and filter all suggestions using specific criteria.\r\n\r\n`GET` [Get all SKU Suggestions](https://developers.vtex.com/docs/api-reference/marketplace-apis-suggestions#get-/suggestions)\r\n\r\n`GET` [Get SKU Suggestion by ID](https://developers.vtex.com/docs/api-reference/marketplace-apis-suggestions#get-/suggestions/-sellerId-/-sellerSkuId-)\r\n\r\n\r\n#### Manage Suggestions\r\n\r\nSend or delete SKU suggestions from the seller to marketplace.\r\n\r\n`PUT` [Send SKU Suggestion](https://developers.vtex.com/docs/api-reference/marketplace-apis-suggestions#put-/suggestions/-sellerId-/-sellerSkuId-)\r\n\r\n`DELETE` [Delete SKU Suggestion](https://developers.vtex.com/docs/api-reference/marketplace-apis-suggestions#delete-/suggestions/-sellerId-/-sellerSkuId-)\r\n\r\n\r\n#### Get Versions\r\n\r\nSearch and filter all versions of suggestions, using specific criteria.\r\n\r\n`GET` [Get all versions](https://developers.vtex.com/docs/api-reference/marketplace-apis-suggestions#get-/suggestions/-sellerId-/-sellerskuid-/versions)\r\n\r\n`GET` [Get version by ID](https://developers.vtex.com/docs/api-reference/marketplace-apis-suggestions#get-/suggestions/-sellerId-/-sellerskuid-/versions/-version-)\r\n\r\n\r\n#### Match Received SKUs\r\n\r\nMatch SKU suggestions received in the marketplace.\r\n\r\n`PUT` [Match Received SKUs individually](https://developers.vtex.com/docs/api-reference/marketplace-apis-suggestions#put-/suggestions/-sellerId-/-sellerskuid-/versions/-version-/matches/-matchid-)\r\n\r\n`PUT` [Match Multiple Received SKUs](https://developers.vtex.com/docs/api-reference/marketplace-apis-suggestions#put-/suggestions/matches/action/-actionName-)\r\n\r\n\r\n#### SKU Approval Settings\r\n\r\nAllows marketplaces to configure rules for automatically and manually approving SKUs received from sellers.\r\n\r\n`GET`[Get autoApprove Status in Account Settings](https://developers.vtex.com/docs/api-reference/marketplace-apis-suggestions#get-/suggestions/configuration/autoapproval/toggle)  \r\n\r\n`PUT`[Activate autoApprove in Marketplace's Account](https://developers.vtex.com/docs/api-reference/marketplace-apis-suggestions#put-/suggestions/configuration/autoapproval/toggle)  \r\n\r\n`GET`[Get Account's Approval Settings](https://developers.vtex.com/docs/api-reference/marketplace-apis-suggestions#get-/suggestions/configuration)\r\n\r\n`PUT`[Save Account's Approval Settings](https://developers.vtex.com/docs/api-reference/marketplace-apis-suggestions#put-/suggestions/configuration)\r\n\r\n`GET`[Get Seller's Approval Settings](https://developers.vtex.com/docs/api-reference/marketplace-apis-suggestions#get-/suggestions/configuration/seller/-sellerId-)\r\n\r\n`PUT`[Save Seller's Approval Settings](https://developers.vtex.com/docs/api-reference/marketplace-apis-suggestions#put-/suggestions/configuration/seller/-sellerId-)\r\n\r\n`PUT`[Activate autoApprove Setting for a Seller](https://developers.vtex.com/docs/api-reference/marketplace-apis-suggestions#put-/suggestions/configuration/autoapproval/toggle/seller/-sellerId-)   \r\n\r\n\r\n### Matched Offers\r\n\r\nOffers are seller products and SKUs that were sent to the marketplace, and already have their price and inventory level configured.\r\n\r\n`GET`[Get Matched Offers List](https://developers.vtex.com/docs/api-reference/marketplace-apis#get-/offer-manager/pvt/offers)\r\n\r\n`GET`[Get Matched Offer's Data by SKU ID](https://developers.vtex.com/docs/api-reference/marketplace-apis#get-/offer-manager/pvt/product/-productId-/sku/-skuId-)  \r\n\r\n`GET`[Get Matched Offer's Data by Product ID](https://developers.vtex.com/docs/api-reference/marketplace-apis#get-/offer-manager/pvt/product/-productId-)\r\n",
+  "apiTitle": "Suggestions",
+  "endpoints": 10,
+  "sdkMethods": 15,
+  "schemas": 16,
+  "parameters": 110,
+  "difficultyScore": 50.5,
+  "difficulty": "Easy"
+}
