@@ -129,7 +129,7 @@
       "description": "List All SSH Keys",
       "parameters": [
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -227,7 +227,7 @@
       "description": "Delete an SSH Key",
       "parameters": [
         {
-          "name": "ssh_key_identifier",
+          "name": "sshKeyIdentifier",
           "schema": "undefined",
           "required": true,
           "description": "Either the ID or the fingerprint of an existing SSH key."
@@ -264,7 +264,7 @@
       "description": "Retrieve an Existing SSH Key",
       "parameters": [
         {
-          "name": "ssh_key_identifier",
+          "name": "sshKeyIdentifier",
           "schema": "undefined",
           "required": true,
           "description": "Either the ID or the fingerprint of an existing SSH key."
@@ -305,7 +305,7 @@
       "description": "Update an SSH Key's Name",
       "parameters": [
         {
-          "name": "ssh_key_identifier",
+          "name": "sshKeyIdentifier",
           "schema": "undefined",
           "required": true,
           "description": "Either the ID or the fingerprint of an existing SSH key."
@@ -351,7 +351,7 @@
       "description": "List All Actions",
       "parameters": [
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -394,7 +394,7 @@
       "description": "Retrieve an Existing Action",
       "parameters": [
         {
-          "name": "action_id",
+          "name": "actionId",
           "schema": "integer",
           "required": true,
           "description": "A unique numeric ID that can be used to identify and reference an action."
@@ -441,13 +441,13 @@
           "description": "Which 'page' of paginated results to return."
         },
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
         },
         {
-          "name": "with_projects",
+          "name": "withProjects",
           "schema": "boolean",
           "description": "Whether the project_id of listed apps should be fetched and included."
         }
@@ -483,12 +483,12 @@
       "description": "Create a New App",
       "parameters": [
         {
-          "name": "Accept",
+          "name": "accept",
           "schema": "string",
           "description": "The content-type that should be used by the response. By default, the response will be `application/json`. `application/yaml` is also supported."
         },
         {
-          "name": "Content-Type",
+          "name": "contentType",
           "schema": "string",
           "description": "The content-type used for the request. By default, the requests are assumed to use `application/json`. `application/yaml` is also supported."
         },
@@ -798,7 +798,7 @@
       "description": "List all app alerts",
       "parameters": [
         {
-          "name": "app_id",
+          "name": "appId",
           "schema": "string",
           "required": true,
           "description": "The app ID"
@@ -839,13 +839,13 @@
       "description": "Update destinations for alerts",
       "parameters": [
         {
-          "name": "app_id",
+          "name": "appId",
           "schema": "string",
           "required": true,
           "description": "The app ID"
         },
         {
-          "name": "alert_id",
+          "name": "alertId",
           "schema": "string",
           "required": true,
           "description": "The alert ID"
@@ -896,13 +896,13 @@
       "description": "Retrieve Active Deployment Logs",
       "parameters": [
         {
-          "name": "app_id",
+          "name": "appId",
           "schema": "string",
           "required": true,
           "description": "The app ID"
         },
         {
-          "name": "component_name",
+          "name": "componentName",
           "schema": "string",
           "required": true,
           "description": "An optional component name. If set, logs will be limited to this component only."
@@ -919,7 +919,7 @@
           "description": "The type of logs to retrieve\n- BUILD: Build-time logs\n- DEPLOY: Deploy-time logs\n- RUN: Live run-time logs"
         },
         {
-          "name": "pod_connection_timeout",
+          "name": "podConnectionTimeout",
           "schema": "string",
           "description": "An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`."
         }
@@ -959,7 +959,7 @@
       "description": "List App Deployments",
       "parameters": [
         {
-          "name": "app_id",
+          "name": "appId",
           "schema": "string",
           "required": true,
           "description": "The app ID"
@@ -971,7 +971,7 @@
           "description": "Which 'page' of paginated results to return."
         },
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -1012,7 +1012,7 @@
       "description": "Create an App Deployment",
       "parameters": [
         {
-          "name": "app_id",
+          "name": "appId",
           "schema": "string",
           "required": true,
           "description": "The app ID"
@@ -1058,13 +1058,13 @@
       "description": "Retrieve an App Deployment",
       "parameters": [
         {
-          "name": "app_id",
+          "name": "appId",
           "schema": "string",
           "required": true,
           "description": "The app ID"
         },
         {
-          "name": "deployment_id",
+          "name": "deploymentId",
           "schema": "string",
           "required": true,
           "description": "The deployment ID"
@@ -1105,13 +1105,13 @@
       "description": "Cancel a Deployment",
       "parameters": [
         {
-          "name": "app_id",
+          "name": "appId",
           "schema": "string",
           "required": true,
           "description": "The app ID"
         },
         {
-          "name": "deployment_id",
+          "name": "deploymentId",
           "schema": "string",
           "required": true,
           "description": "The deployment ID"
@@ -1152,19 +1152,19 @@
       "description": "Retrieve Deployment Logs",
       "parameters": [
         {
-          "name": "app_id",
+          "name": "appId",
           "schema": "string",
           "required": true,
           "description": "The app ID"
         },
         {
-          "name": "deployment_id",
+          "name": "deploymentId",
           "schema": "string",
           "required": true,
           "description": "The deployment ID"
         },
         {
-          "name": "component_name",
+          "name": "componentName",
           "schema": "string",
           "required": true,
           "description": "An optional component name. If set, logs will be limited to this component only."
@@ -1181,7 +1181,7 @@
           "description": "The type of logs to retrieve\n- BUILD: Build-time logs\n- DEPLOY: Deploy-time logs\n- RUN: Live run-time logs"
         },
         {
-          "name": "pod_connection_timeout",
+          "name": "podConnectionTimeout",
           "schema": "string",
           "description": "An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`."
         }
@@ -1221,13 +1221,13 @@
       "description": "Retrieve Aggregate Deployment Logs",
       "parameters": [
         {
-          "name": "app_id",
+          "name": "appId",
           "schema": "string",
           "required": true,
           "description": "The app ID"
         },
         {
-          "name": "deployment_id",
+          "name": "deploymentId",
           "schema": "string",
           "required": true,
           "description": "The deployment ID"
@@ -1244,7 +1244,7 @@
           "description": "The type of logs to retrieve\n- BUILD: Build-time logs\n- DEPLOY: Deploy-time logs\n- RUN: Live run-time logs"
         },
         {
-          "name": "pod_connection_timeout",
+          "name": "podConnectionTimeout",
           "schema": "string",
           "description": "An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`."
         }
@@ -1284,7 +1284,7 @@
       "description": "Retrieve Active Deployment Aggregate Logs",
       "parameters": [
         {
-          "name": "app_id",
+          "name": "appId",
           "schema": "string",
           "required": true,
           "description": "The app ID"
@@ -1301,7 +1301,7 @@
           "description": "The type of logs to retrieve\n- BUILD: Build-time logs\n- DEPLOY: Deploy-time logs\n- RUN: Live run-time logs"
         },
         {
-          "name": "pod_connection_timeout",
+          "name": "podConnectionTimeout",
           "schema": "string",
           "description": "An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`."
         }
@@ -1341,7 +1341,7 @@
       "description": "Retrieve App Daily Bandwidth Metrics",
       "parameters": [
         {
-          "name": "app_id",
+          "name": "appId",
           "schema": "string",
           "required": true,
           "description": "The app ID"
@@ -1387,7 +1387,7 @@
       "description": "Rollback App",
       "parameters": [
         {
-          "name": "app_id",
+          "name": "appId",
           "schema": "string",
           "required": true,
           "description": "The app ID"
@@ -1438,7 +1438,7 @@
       "description": "Commit App Rollback",
       "parameters": [
         {
-          "name": "app_id",
+          "name": "appId",
           "schema": "string",
           "required": true,
           "description": "The app ID"
@@ -1475,7 +1475,7 @@
       "description": "Revert App Rollback",
       "parameters": [
         {
-          "name": "app_id",
+          "name": "appId",
           "schema": "string",
           "required": true,
           "description": "The app ID"
@@ -1516,7 +1516,7 @@
       "description": "Validate App Rollback",
       "parameters": [
         {
-          "name": "app_id",
+          "name": "appId",
           "schema": "string",
           "required": true,
           "description": "The app ID"
@@ -1701,7 +1701,7 @@
       "description": "List All CDN Endpoints",
       "parameters": [
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -1817,7 +1817,7 @@
       "description": "Delete a CDN Endpoint",
       "parameters": [
         {
-          "name": "cdn_id",
+          "name": "cdnId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a CDN endpoint."
@@ -1854,7 +1854,7 @@
       "description": "Retrieve an Existing CDN Endpoint",
       "parameters": [
         {
-          "name": "cdn_id",
+          "name": "cdnId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a CDN endpoint."
@@ -1895,7 +1895,7 @@
       "description": "Update a CDN Endpoint",
       "parameters": [
         {
-          "name": "cdn_id",
+          "name": "cdnId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a CDN endpoint."
@@ -1951,7 +1951,7 @@
       "description": "Purge the Cache for an Existing CDN Endpoint",
       "parameters": [
         {
-          "name": "cdn_id",
+          "name": "cdnId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a CDN endpoint."
@@ -1994,7 +1994,7 @@
       "description": "List All Certificates",
       "parameters": [
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -2067,7 +2067,7 @@
       "description": "Delete a Certificate",
       "parameters": [
         {
-          "name": "certificate_id",
+          "name": "certificateId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a certificate."
@@ -2104,7 +2104,7 @@
       "description": "Retrieve an Existing Certificate",
       "parameters": [
         {
-          "name": "certificate_id",
+          "name": "certificateId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a certificate."
@@ -2213,7 +2213,7 @@
       "description": "List All Invoices",
       "parameters": [
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -2256,7 +2256,7 @@
       "description": "Retrieve an Invoice by UUID",
       "parameters": [
         {
-          "name": "invoice_uuid",
+          "name": "invoiceUuid",
           "schema": "string",
           "required": true,
           "description": "UUID of the invoice"
@@ -2297,7 +2297,7 @@
       "description": "Retrieve an Invoice CSV by UUID",
       "parameters": [
         {
-          "name": "invoice_uuid",
+          "name": "invoiceUuid",
           "schema": "string",
           "required": true,
           "description": "UUID of the invoice"
@@ -2338,7 +2338,7 @@
       "description": "Retrieve an Invoice PDF by UUID",
       "parameters": [
         {
-          "name": "invoice_uuid",
+          "name": "invoiceUuid",
           "schema": "string",
           "required": true,
           "description": "UUID of the invoice"
@@ -2379,7 +2379,7 @@
       "description": "Retrieve an Invoice Summary by UUID",
       "parameters": [
         {
-          "name": "invoice_uuid",
+          "name": "invoiceUuid",
           "schema": "string",
           "required": true,
           "description": "UUID of the invoice"
@@ -2420,7 +2420,7 @@
       "description": "List All Database Clusters",
       "parameters": [
         {
-          "name": "tag_name",
+          "name": "tagName",
           "schema": "string",
           "required": false,
           "description": "Limits the results to database clusters with a specific tag."
@@ -2529,7 +2529,7 @@
       "description": "Destroy a Database Cluster",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
@@ -2566,7 +2566,7 @@
       "description": "Retrieve an Existing Database Cluster",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
@@ -2607,7 +2607,7 @@
       "description": "List Backups for a Database Cluster",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
@@ -2648,7 +2648,7 @@
       "description": "Retrieve the Public Certificate",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
@@ -2689,7 +2689,7 @@
       "description": "Retrieve an Existing Database Cluster Configuration",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
@@ -2730,7 +2730,7 @@
       "description": "Update the Database Configuration for an Existing Database",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
@@ -2772,7 +2772,7 @@
       "description": "List All Databases",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
@@ -2813,7 +2813,7 @@
       "description": "Add a New Database",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
@@ -2860,13 +2860,13 @@
       "description": "Delete a Database",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
         },
         {
-          "name": "database_name",
+          "name": "databaseName",
           "schema": "string",
           "required": true,
           "description": "The name of the database."
@@ -2903,13 +2903,13 @@
       "description": "Retrieve an Existing Database",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
         },
         {
-          "name": "database_name",
+          "name": "databaseName",
           "schema": "string",
           "required": true,
           "description": "The name of the database."
@@ -2950,7 +2950,7 @@
       "description": "Retrieve the Eviction Policy for a Redis Cluster",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
@@ -2991,7 +2991,7 @@
       "description": "Configure the Eviction Policy for a Redis Cluster",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
@@ -3034,7 +3034,7 @@
       "description": "List Firewall Rules (Trusted Sources) for a Database Cluster",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
@@ -3075,7 +3075,7 @@
       "description": "Update Firewall Rules (Trusted Sources) for a Database",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
@@ -3117,7 +3117,7 @@
       "description": "Configure a Database Cluster's Maintenance Window",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
@@ -3178,7 +3178,7 @@
       "description": "Migrate a Database Cluster to a New Region",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
@@ -3221,7 +3221,7 @@
       "description": "Retrieve the Status of an Online Migration",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
@@ -3262,7 +3262,7 @@
       "description": "Start an Online Migration",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
@@ -3313,13 +3313,13 @@
       "description": "Stop an Online Migration",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
         },
         {
-          "name": "migration_id",
+          "name": "migrationId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier assigned to the online migration."
@@ -3356,7 +3356,7 @@
       "description": "List Connection Pools (PostgreSQL)",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
@@ -3397,7 +3397,7 @@
       "description": "Add a New Connection Pool (PostgreSQL)",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
@@ -3480,13 +3480,13 @@
       "description": "Delete a Connection Pool (PostgreSQL)",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
         },
         {
-          "name": "pool_name",
+          "name": "poolName",
           "schema": "string",
           "required": true,
           "description": "The name used to identify the connection pool."
@@ -3523,13 +3523,13 @@
       "description": "Retrieve Existing Connection Pool (PostgreSQL)",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
         },
         {
-          "name": "pool_name",
+          "name": "poolName",
           "schema": "string",
           "required": true,
           "description": "The name used to identify the connection pool."
@@ -3570,13 +3570,13 @@
       "description": "Update Connection Pools (PostgreSQL)",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
         },
         {
-          "name": "pool_name",
+          "name": "poolName",
           "schema": "string",
           "required": true,
           "description": "The name used to identify the connection pool."
@@ -3637,7 +3637,7 @@
       "description": "List All Read-only Replicas",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
@@ -3678,7 +3678,7 @@
       "description": "Create a Read-only Replica",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
@@ -3719,13 +3719,13 @@
       "description": "Destroy a Read-only Replica",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
         },
         {
-          "name": "replica_name",
+          "name": "replicaName",
           "schema": "string",
           "required": true,
           "description": "The name of the database replica."
@@ -3762,13 +3762,13 @@
       "description": "Retrieve an Existing Read-only Replica",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
         },
         {
-          "name": "replica_name",
+          "name": "replicaName",
           "schema": "string",
           "required": true,
           "description": "The name of the database replica."
@@ -3809,13 +3809,13 @@
       "description": "Promote a Read-only Replica to become a Primary Cluster",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
         },
         {
-          "name": "replica_name",
+          "name": "replicaName",
           "schema": "string",
           "required": true,
           "description": "The name of the database replica."
@@ -3852,7 +3852,7 @@
       "description": "Resize a Database Cluster",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
@@ -3901,7 +3901,7 @@
       "description": "Retrieve the SQL Modes for a MySQL Cluster",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
@@ -3942,7 +3942,7 @@
       "description": "Update SQL Mode for a Cluster",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
@@ -3985,7 +3985,7 @@
       "description": "Upgrade Major Version for a Database",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
@@ -4027,7 +4027,7 @@
       "description": "List all Database Users",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
@@ -4068,7 +4068,7 @@
       "description": "Add a Database User",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
@@ -4133,7 +4133,7 @@
       "description": "Remove a Database User",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
@@ -4176,7 +4176,7 @@
       "description": "Retrieve an Existing Database User",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
@@ -4223,7 +4223,7 @@
       "description": "Reset a Database User's Password or Authentication Method",
       "parameters": [
         {
-          "name": "database_cluster_uuid",
+          "name": "databaseClusterUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a database cluster."
@@ -4275,7 +4275,7 @@
       "description": "List All Domains",
       "parameters": [
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -4369,7 +4369,7 @@
       "description": "Delete a Domain",
       "parameters": [
         {
-          "name": "domain_name",
+          "name": "domainName",
           "schema": "string",
           "required": true,
           "description": "The name of the domain itself."
@@ -4406,7 +4406,7 @@
       "description": "Retrieve an Existing Domain",
       "parameters": [
         {
-          "name": "domain_name",
+          "name": "domainName",
           "schema": "string",
           "required": true,
           "description": "The name of the domain itself."
@@ -4447,7 +4447,7 @@
       "description": "List All Domain Records",
       "parameters": [
         {
-          "name": "domain_name",
+          "name": "domainName",
           "schema": "string",
           "required": true,
           "description": "The name of the domain itself."
@@ -4463,7 +4463,7 @@
           "description": "The type of the DNS record. For example: A, CNAME, TXT, ..."
         },
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -4510,7 +4510,7 @@
       "description": "Create a New Domain Record",
       "parameters": [
         {
-          "name": "domain_name",
+          "name": "domainName",
           "schema": "string",
           "required": true,
           "description": "The name of the domain itself."
@@ -4551,13 +4551,13 @@
       "description": "Delete a Domain Record",
       "parameters": [
         {
-          "name": "domain_name",
+          "name": "domainName",
           "schema": "string",
           "required": true,
           "description": "The name of the domain itself."
         },
         {
-          "name": "domain_record_id",
+          "name": "domainRecordId",
           "schema": "integer",
           "required": true,
           "description": "The unique identifier of the domain record."
@@ -4594,13 +4594,13 @@
       "description": "Retrieve an Existing Domain Record",
       "parameters": [
         {
-          "name": "domain_name",
+          "name": "domainName",
           "schema": "string",
           "required": true,
           "description": "The name of the domain itself."
         },
         {
-          "name": "domain_record_id",
+          "name": "domainRecordId",
           "schema": "integer",
           "required": true,
           "description": "The unique identifier of the domain record."
@@ -4641,13 +4641,13 @@
       "description": "Update a Domain Record",
       "parameters": [
         {
-          "name": "domain_name",
+          "name": "domainName",
           "schema": "string",
           "required": true,
           "description": "The name of the domain itself."
         },
         {
-          "name": "domain_record_id",
+          "name": "domainRecordId",
           "schema": "integer",
           "required": true,
           "description": "The unique identifier of the domain record."
@@ -4748,13 +4748,13 @@
       "description": "Update a Domain Record",
       "parameters": [
         {
-          "name": "domain_name",
+          "name": "domainName",
           "schema": "string",
           "required": true,
           "description": "The name of the domain itself."
         },
         {
-          "name": "domain_record_id",
+          "name": "domainRecordId",
           "schema": "integer",
           "required": true,
           "description": "The unique identifier of the domain record."
@@ -4855,7 +4855,7 @@
       "description": "Deleting Droplets by Tag",
       "parameters": [
         {
-          "name": "tag_name",
+          "name": "tagName",
           "schema": "string",
           "required": true,
           "description": "Specifies Droplets to be deleted by tag."
@@ -4892,7 +4892,7 @@
       "description": "List All Droplets",
       "parameters": [
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -4904,7 +4904,7 @@
           "description": "Which 'page' of paginated results to return."
         },
         {
-          "name": "tag_name",
+          "name": "tagName",
           "schema": "string",
           "required": false,
           "description": "Used to filter Droplets by a specific tag. Can not be combined with `name`."
@@ -4977,7 +4977,7 @@
       "description": "Acting on Tagged Droplets",
       "parameters": [
         {
-          "name": "tag_name",
+          "name": "tagName",
           "schema": "string",
           "required": false,
           "description": "Used to filter Droplets by a specific tag. Can not be combined with `name`."
@@ -5014,7 +5014,7 @@
       "description": "Delete an Existing Droplet",
       "parameters": [
         {
-          "name": "droplet_id",
+          "name": "dropletId",
           "schema": "integer",
           "required": true,
           "description": "A unique identifier for a Droplet instance."
@@ -5051,7 +5051,7 @@
       "description": "Retrieve an Existing Droplet",
       "parameters": [
         {
-          "name": "droplet_id",
+          "name": "dropletId",
           "schema": "integer",
           "required": true,
           "description": "A unique identifier for a Droplet instance."
@@ -5092,13 +5092,13 @@
       "description": "List Actions for a Droplet",
       "parameters": [
         {
-          "name": "droplet_id",
+          "name": "dropletId",
           "schema": "integer",
           "required": true,
           "description": "A unique identifier for a Droplet instance."
         },
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -5145,7 +5145,7 @@
       "description": "Initiate a Droplet Action",
       "parameters": [
         {
-          "name": "droplet_id",
+          "name": "dropletId",
           "schema": "integer",
           "required": true,
           "description": "A unique identifier for a Droplet instance."
@@ -5186,13 +5186,13 @@
       "description": "Retrieve a Droplet Action",
       "parameters": [
         {
-          "name": "droplet_id",
+          "name": "dropletId",
           "schema": "integer",
           "required": true,
           "description": "A unique identifier for a Droplet instance."
         },
         {
-          "name": "action_id",
+          "name": "actionId",
           "schema": "integer",
           "required": true,
           "description": "A unique numeric ID that can be used to identify and reference an action."
@@ -5233,13 +5233,13 @@
       "description": "List Backups for a Droplet",
       "parameters": [
         {
-          "name": "droplet_id",
+          "name": "dropletId",
           "schema": "integer",
           "required": true,
           "description": "A unique identifier for a Droplet instance."
         },
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -5286,7 +5286,7 @@
       "description": "List Associated Resources for a Droplet",
       "parameters": [
         {
-          "name": "droplet_id",
+          "name": "dropletId",
           "schema": "integer",
           "required": true,
           "description": "A unique identifier for a Droplet instance."
@@ -5327,13 +5327,13 @@
       "description": "Destroy a Droplet and All of its Associated Resources (Dangerous)",
       "parameters": [
         {
-          "name": "droplet_id",
+          "name": "dropletId",
           "schema": "integer",
           "required": true,
           "description": "A unique identifier for a Droplet instance."
         },
         {
-          "name": "X-Dangerous",
+          "name": "xDangerous",
           "schema": "boolean",
           "required": true,
           "description": "Acknowledge this action will destroy the Droplet and all associated resources and _can not_ be reversed."
@@ -5370,7 +5370,7 @@
       "description": "Retry a Droplet Destroy with Associated Resources Request",
       "parameters": [
         {
-          "name": "droplet_id",
+          "name": "dropletId",
           "schema": "integer",
           "required": true,
           "description": "A unique identifier for a Droplet instance."
@@ -5411,7 +5411,7 @@
       "description": "Selectively Destroy a Droplet and its Associated Resources",
       "parameters": [
         {
-          "name": "droplet_id",
+          "name": "dropletId",
           "schema": "integer",
           "required": true,
           "description": "A unique identifier for a Droplet instance."
@@ -5473,7 +5473,7 @@
       "description": "Check Status of a Droplet Destroy with Associated Resources Request",
       "parameters": [
         {
-          "name": "droplet_id",
+          "name": "dropletId",
           "schema": "integer",
           "required": true,
           "description": "A unique identifier for a Droplet instance."
@@ -5514,13 +5514,13 @@
       "description": "List all Firewalls Applied to a Droplet",
       "parameters": [
         {
-          "name": "droplet_id",
+          "name": "dropletId",
           "schema": "integer",
           "required": true,
           "description": "A unique identifier for a Droplet instance."
         },
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -5567,13 +5567,13 @@
       "description": "List All Available Kernels for a Droplet",
       "parameters": [
         {
-          "name": "droplet_id",
+          "name": "dropletId",
           "schema": "integer",
           "required": true,
           "description": "A unique identifier for a Droplet instance."
         },
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -5620,7 +5620,7 @@
       "description": "List Neighbors for a Droplet",
       "parameters": [
         {
-          "name": "droplet_id",
+          "name": "dropletId",
           "schema": "integer",
           "required": true,
           "description": "A unique identifier for a Droplet instance."
@@ -5661,13 +5661,13 @@
       "description": "List Snapshots for a Droplet",
       "parameters": [
         {
-          "name": "droplet_id",
+          "name": "dropletId",
           "schema": "integer",
           "required": true,
           "description": "A unique identifier for a Droplet instance."
         },
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -5714,7 +5714,7 @@
       "description": "List All Firewalls",
       "parameters": [
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -5791,7 +5791,7 @@
       "description": "Delete a Firewall",
       "parameters": [
         {
-          "name": "firewall_id",
+          "name": "firewallId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to identify and reference a firewall."
@@ -5828,7 +5828,7 @@
       "description": "Retrieve an Existing Firewall",
       "parameters": [
         {
-          "name": "firewall_id",
+          "name": "firewallId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to identify and reference a firewall."
@@ -5869,7 +5869,7 @@
       "description": "Update a Firewall",
       "parameters": [
         {
-          "name": "firewall_id",
+          "name": "firewallId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to identify and reference a firewall."
@@ -5914,7 +5914,7 @@
       "description": "Remove Droplets from a Firewall",
       "parameters": [
         {
-          "name": "firewall_id",
+          "name": "firewallId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to identify and reference a firewall."
@@ -5961,7 +5961,7 @@
       "description": "Add Droplets to a Firewall",
       "parameters": [
         {
-          "name": "firewall_id",
+          "name": "firewallId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to identify and reference a firewall."
@@ -6008,7 +6008,7 @@
       "description": "Remove Rules from a Firewall",
       "parameters": [
         {
-          "name": "firewall_id",
+          "name": "firewallId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to identify and reference a firewall."
@@ -6049,7 +6049,7 @@
       "description": "Add Rules to a Firewall",
       "parameters": [
         {
-          "name": "firewall_id",
+          "name": "firewallId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to identify and reference a firewall."
@@ -6090,7 +6090,7 @@
       "description": "Remove Tags from a Firewall",
       "parameters": [
         {
-          "name": "firewall_id",
+          "name": "firewallId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to identify and reference a firewall."
@@ -6137,7 +6137,7 @@
       "description": "Add Tags to a Firewall",
       "parameters": [
         {
-          "name": "firewall_id",
+          "name": "firewallId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to identify and reference a firewall."
@@ -6184,7 +6184,7 @@
       "description": "List All Floating IPs",
       "parameters": [
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -6257,7 +6257,7 @@
       "description": "Delete a Floating IP",
       "parameters": [
         {
-          "name": "floating_ip",
+          "name": "floatingIp",
           "schema": "string",
           "required": true,
           "description": "A floating IP address."
@@ -6294,7 +6294,7 @@
       "description": "Retrieve an Existing Floating IP",
       "parameters": [
         {
-          "name": "floating_ip",
+          "name": "floatingIp",
           "schema": "string",
           "required": true,
           "description": "A floating IP address."
@@ -6335,7 +6335,7 @@
       "description": "List All Actions for a Floating IP",
       "parameters": [
         {
-          "name": "floating_ip",
+          "name": "floatingIp",
           "schema": "string",
           "required": true,
           "description": "A floating IP address."
@@ -6376,7 +6376,7 @@
       "description": "Initiate a Floating IP Action",
       "parameters": [
         {
-          "name": "floating_ip",
+          "name": "floatingIp",
           "schema": "string",
           "required": true,
           "description": "A floating IP address."
@@ -6417,13 +6417,13 @@
       "description": "Retrieve an Existing Floating IP Action",
       "parameters": [
         {
-          "name": "floating_ip",
+          "name": "floatingIp",
           "schema": "string",
           "required": true,
           "description": "A floating IP address."
         },
         {
-          "name": "action_id",
+          "name": "actionId",
           "schema": "integer",
           "required": true,
           "description": "A unique numeric ID that can be used to identify and reference an action."
@@ -6545,7 +6545,7 @@
       "description": "Delete Namespace",
       "parameters": [
         {
-          "name": "namespace_id",
+          "name": "namespaceId",
           "schema": "string",
           "required": true,
           "description": "The ID of the namespace to be managed."
@@ -6582,7 +6582,7 @@
       "description": "Get Namespace",
       "parameters": [
         {
-          "name": "namespace_id",
+          "name": "namespaceId",
           "schema": "string",
           "required": true,
           "description": "The ID of the namespace to be managed."
@@ -6627,7 +6627,7 @@
       "description": "List Triggers",
       "parameters": [
         {
-          "name": "namespace_id",
+          "name": "namespaceId",
           "schema": "string",
           "required": true,
           "description": "The ID of the namespace to be managed."
@@ -6668,7 +6668,7 @@
       "description": "Create Trigger",
       "parameters": [
         {
-          "name": "namespace_id",
+          "name": "namespaceId",
           "schema": "string",
           "required": true,
           "description": "The ID of the namespace to be managed."
@@ -6747,13 +6747,13 @@
       "description": "Delete Trigger",
       "parameters": [
         {
-          "name": "namespace_id",
+          "name": "namespaceId",
           "schema": "string",
           "required": true,
           "description": "The ID of the namespace to be managed."
         },
         {
-          "name": "trigger_name",
+          "name": "triggerName",
           "schema": "string",
           "required": true,
           "description": "The name of the trigger to be managed."
@@ -6790,13 +6790,13 @@
       "description": "Get Trigger",
       "parameters": [
         {
-          "name": "namespace_id",
+          "name": "namespaceId",
           "schema": "string",
           "required": true,
           "description": "The ID of the namespace to be managed."
         },
         {
-          "name": "trigger_name",
+          "name": "triggerName",
           "schema": "string",
           "required": true,
           "description": "The name of the trigger to be managed."
@@ -6837,13 +6837,13 @@
       "description": "Update Trigger",
       "parameters": [
         {
-          "name": "namespace_id",
+          "name": "namespaceId",
           "schema": "string",
           "required": true,
           "description": "The ID of the namespace to be managed."
         },
         {
-          "name": "trigger_name",
+          "name": "triggerName",
           "schema": "string",
           "required": true,
           "description": "The name of the trigger to be managed."
@@ -6910,13 +6910,13 @@
           "description": "Used to filter only user images."
         },
         {
-          "name": "tag_name",
+          "name": "tagName",
           "schema": "string",
           "required": false,
           "description": "Used to filter images by a specific tag."
         },
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -6989,7 +6989,7 @@
       "description": "Delete an Image",
       "parameters": [
         {
-          "name": "image_id",
+          "name": "imageId",
           "schema": "integer",
           "required": true,
           "description": "A unique number that can be used to identify and reference a specific image."
@@ -7026,7 +7026,7 @@
       "description": "Retrieve an Existing Image",
       "parameters": [
         {
-          "name": "image_id",
+          "name": "imageId",
           "schema": "undefined",
           "required": true,
           "description": "A unique number (id) or string (slug) used to identify and reference a\nspecific image.\n\n**Public** images can be identified by image `id` or `slug`.\n\n**Private** images *must* be identified by image `id`.\n"
@@ -7067,7 +7067,7 @@
       "description": "Update an Image",
       "parameters": [
         {
-          "name": "image_id",
+          "name": "imageId",
           "schema": "integer",
           "required": true,
           "description": "A unique number that can be used to identify and reference a specific image."
@@ -7123,7 +7123,7 @@
       "description": "List All Actions for an Image",
       "parameters": [
         {
-          "name": "image_id",
+          "name": "imageId",
           "schema": "integer",
           "required": true,
           "description": "A unique number that can be used to identify and reference a specific image."
@@ -7164,7 +7164,7 @@
       "description": "Initiate an Image Action",
       "parameters": [
         {
-          "name": "image_id",
+          "name": "imageId",
           "schema": "integer",
           "required": true,
           "description": "A unique number that can be used to identify and reference a specific image."
@@ -7205,13 +7205,13 @@
       "description": "Retrieve an Existing Action",
       "parameters": [
         {
-          "name": "image_id",
+          "name": "imageId",
           "schema": "integer",
           "required": true,
           "description": "A unique number that can be used to identify and reference a specific image."
         },
         {
-          "name": "action_id",
+          "name": "actionId",
           "schema": "integer",
           "required": true,
           "description": "A unique numeric ID that can be used to identify and reference an action."
@@ -7252,7 +7252,7 @@
       "description": "List All Kubernetes Clusters",
       "parameters": [
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -7440,7 +7440,7 @@
       "description": "Delete a Kubernetes Cluster",
       "parameters": [
         {
-          "name": "cluster_id",
+          "name": "clusterId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to reference a Kubernetes cluster."
@@ -7477,7 +7477,7 @@
       "description": "Retrieve an Existing Kubernetes Cluster",
       "parameters": [
         {
-          "name": "cluster_id",
+          "name": "clusterId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to reference a Kubernetes cluster."
@@ -7518,7 +7518,7 @@
       "description": "Update a Kubernetes Cluster",
       "parameters": [
         {
-          "name": "cluster_id",
+          "name": "clusterId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to reference a Kubernetes cluster."
@@ -7595,13 +7595,13 @@
       "description": "Fetch Clusterlint Diagnostics for a Kubernetes Cluster",
       "parameters": [
         {
-          "name": "cluster_id",
+          "name": "clusterId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to reference a Kubernetes cluster."
         },
         {
-          "name": "run_id",
+          "name": "runId",
           "schema": "string",
           "required": false,
           "description": "Specifies the clusterlint run whose results will be retrieved."
@@ -7642,7 +7642,7 @@
       "description": "Run Clusterlint Checks on a Kubernetes Cluster",
       "parameters": [
         {
-          "name": "cluster_id",
+          "name": "clusterId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to reference a Kubernetes cluster."
@@ -7703,13 +7703,13 @@
       "description": "Retrieve Credentials for a Kubernetes Cluster",
       "parameters": [
         {
-          "name": "cluster_id",
+          "name": "clusterId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to reference a Kubernetes cluster."
         },
         {
-          "name": "expiry_seconds",
+          "name": "expirySeconds",
           "schema": "integer",
           "required": false,
           "description": "The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry."
@@ -7750,7 +7750,7 @@
       "description": "List Associated Resources for Cluster Deletion",
       "parameters": [
         {
-          "name": "cluster_id",
+          "name": "clusterId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to reference a Kubernetes cluster."
@@ -7791,7 +7791,7 @@
       "description": "Delete a Cluster and All of its Associated Resources (Dangerous)",
       "parameters": [
         {
-          "name": "cluster_id",
+          "name": "clusterId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to reference a Kubernetes cluster."
@@ -7828,7 +7828,7 @@
       "description": "Selectively Delete a Cluster and its Associated Resources",
       "parameters": [
         {
-          "name": "cluster_id",
+          "name": "clusterId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to reference a Kubernetes cluster."
@@ -7880,13 +7880,13 @@
       "description": "Retrieve the kubeconfig for a Kubernetes Cluster",
       "parameters": [
         {
-          "name": "cluster_id",
+          "name": "clusterId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to reference a Kubernetes cluster."
         },
         {
-          "name": "expiry_seconds",
+          "name": "expirySeconds",
           "schema": "integer",
           "required": false,
           "description": "The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry."
@@ -7927,7 +7927,7 @@
       "description": "List All Node Pools in a Kubernetes Clusters",
       "parameters": [
         {
-          "name": "cluster_id",
+          "name": "clusterId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to reference a Kubernetes cluster."
@@ -7968,7 +7968,7 @@
       "description": "Add a Node Pool to a Kubernetes Cluster",
       "parameters": [
         {
-          "name": "cluster_id",
+          "name": "clusterId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to reference a Kubernetes cluster."
@@ -8009,13 +8009,13 @@
       "description": "Delete a Node Pool in a Kubernetes Cluster",
       "parameters": [
         {
-          "name": "cluster_id",
+          "name": "clusterId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to reference a Kubernetes cluster."
         },
         {
-          "name": "node_pool_id",
+          "name": "nodePoolId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to reference a Kubernetes node pool."
@@ -8052,13 +8052,13 @@
       "description": "Retrieve a Node Pool for a Kubernetes Cluster",
       "parameters": [
         {
-          "name": "cluster_id",
+          "name": "clusterId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to reference a Kubernetes cluster."
         },
         {
-          "name": "node_pool_id",
+          "name": "nodePoolId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to reference a Kubernetes node pool."
@@ -8099,13 +8099,13 @@
       "description": "Update a Node Pool in a Kubernetes Cluster",
       "parameters": [
         {
-          "name": "cluster_id",
+          "name": "clusterId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to reference a Kubernetes cluster."
         },
         {
-          "name": "node_pool_id",
+          "name": "nodePoolId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to reference a Kubernetes node pool."
@@ -8146,25 +8146,25 @@
       "description": "Delete a Node in a Kubernetes Cluster",
       "parameters": [
         {
-          "name": "cluster_id",
+          "name": "clusterId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to reference a Kubernetes cluster."
         },
         {
-          "name": "node_pool_id",
+          "name": "nodePoolId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to reference a Kubernetes node pool."
         },
         {
-          "name": "node_id",
+          "name": "nodeId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to reference a node in a Kubernetes node pool."
         },
         {
-          "name": "skip_drain",
+          "name": "skipDrain",
           "schema": "integer",
           "required": false,
           "description": "Specifies whether or not to drain workloads from a node before it is deleted. Setting it to `1` causes node draining to be skipped. Omitting the query parameter or setting its value to `0` carries out draining prior to deletion."
@@ -8207,13 +8207,13 @@
       "description": "Recycle a Kubernetes Node Pool",
       "parameters": [
         {
-          "name": "cluster_id",
+          "name": "clusterId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to reference a Kubernetes cluster."
         },
         {
-          "name": "node_pool_id",
+          "name": "nodePoolId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to reference a Kubernetes node pool."
@@ -8255,7 +8255,7 @@
       "description": "Upgrade a Kubernetes Cluster",
       "parameters": [
         {
-          "name": "cluster_id",
+          "name": "clusterId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to reference a Kubernetes cluster."
@@ -8297,7 +8297,7 @@
       "description": "Retrieve Available Upgrades for an Existing Kubernetes Cluster",
       "parameters": [
         {
-          "name": "cluster_id",
+          "name": "clusterId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to reference a Kubernetes cluster."
@@ -8338,7 +8338,7 @@
       "description": "Retrieve User Information for a Kubernetes Cluster",
       "parameters": [
         {
-          "name": "cluster_id",
+          "name": "clusterId",
           "schema": "string",
           "required": true,
           "description": "A unique ID that can be used to reference a Kubernetes cluster."
@@ -8477,7 +8477,7 @@
       "description": "List All Load Balancers",
       "parameters": [
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -8550,7 +8550,7 @@
       "description": "Delete a Load Balancer",
       "parameters": [
         {
-          "name": "lb_id",
+          "name": "lbId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a load balancer."
@@ -8587,7 +8587,7 @@
       "description": "Retrieve an Existing Load Balancer",
       "parameters": [
         {
-          "name": "lb_id",
+          "name": "lbId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a load balancer."
@@ -8628,7 +8628,7 @@
       "description": "Update a Load Balancer",
       "parameters": [
         {
-          "name": "lb_id",
+          "name": "lbId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a load balancer."
@@ -8669,7 +8669,7 @@
       "description": "Remove Droplets from a Load Balancer",
       "parameters": [
         {
-          "name": "lb_id",
+          "name": "lbId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a load balancer."
@@ -8711,7 +8711,7 @@
       "description": "Add Droplets to a Load Balancer",
       "parameters": [
         {
-          "name": "lb_id",
+          "name": "lbId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a load balancer."
@@ -8753,7 +8753,7 @@
       "description": "Remove Forwarding Rules from a Load Balancer",
       "parameters": [
         {
-          "name": "lb_id",
+          "name": "lbId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a load balancer."
@@ -8796,7 +8796,7 @@
       "description": "Add Forwarding Rules to a Load Balancer",
       "parameters": [
         {
-          "name": "lb_id",
+          "name": "lbId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a load balancer."
@@ -8839,7 +8839,7 @@
       "description": "List Alert Policies",
       "parameters": [
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -8967,7 +8967,7 @@
       "description": "Delete an Alert Policy",
       "parameters": [
         {
-          "name": "alert_uuid",
+          "name": "alertUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for an alert policy."
@@ -9004,7 +9004,7 @@
       "description": "Retrieve an Existing Alert Policy",
       "parameters": [
         {
-          "name": "alert_uuid",
+          "name": "alertUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for an alert policy."
@@ -9045,7 +9045,7 @@
       "description": "Update an Alert Policy",
       "parameters": [
         {
-          "name": "alert_uuid",
+          "name": "alertUuid",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for an alert policy."
@@ -9140,7 +9140,7 @@
       "description": "Get Droplet Bandwidth Metrics",
       "parameters": [
         {
-          "name": "host_id",
+          "name": "hostId",
           "schema": "string",
           "required": true,
           "description": "The droplet ID."
@@ -9201,7 +9201,7 @@
       "description": "Get Droplet CPU Metrics",
       "parameters": [
         {
-          "name": "host_id",
+          "name": "hostId",
           "schema": "string",
           "required": true,
           "description": "The droplet ID."
@@ -9250,7 +9250,7 @@
       "description": "Get Droplet Filesystem Free Metrics",
       "parameters": [
         {
-          "name": "host_id",
+          "name": "hostId",
           "schema": "string",
           "required": true,
           "description": "The droplet ID."
@@ -9299,7 +9299,7 @@
       "description": "Get Droplet Filesystem Size Metrics",
       "parameters": [
         {
-          "name": "host_id",
+          "name": "hostId",
           "schema": "string",
           "required": true,
           "description": "The droplet ID."
@@ -9348,7 +9348,7 @@
       "description": "Get Droplet Load1 Metrics",
       "parameters": [
         {
-          "name": "host_id",
+          "name": "hostId",
           "schema": "string",
           "required": true,
           "description": "The droplet ID."
@@ -9397,7 +9397,7 @@
       "description": "Get Droplet Load15 Metrics",
       "parameters": [
         {
-          "name": "host_id",
+          "name": "hostId",
           "schema": "string",
           "required": true,
           "description": "The droplet ID."
@@ -9446,7 +9446,7 @@
       "description": "Get Droplet Load5 Metrics",
       "parameters": [
         {
-          "name": "host_id",
+          "name": "hostId",
           "schema": "string",
           "required": true,
           "description": "The droplet ID."
@@ -9495,7 +9495,7 @@
       "description": "Get Droplet Available Memory Metrics",
       "parameters": [
         {
-          "name": "host_id",
+          "name": "hostId",
           "schema": "string",
           "required": true,
           "description": "The droplet ID."
@@ -9544,7 +9544,7 @@
       "description": "Get Droplet Cached Memory Metrics",
       "parameters": [
         {
-          "name": "host_id",
+          "name": "hostId",
           "schema": "string",
           "required": true,
           "description": "The droplet ID."
@@ -9593,7 +9593,7 @@
       "description": "Get Droplet Free Memory Metrics",
       "parameters": [
         {
-          "name": "host_id",
+          "name": "hostId",
           "schema": "string",
           "required": true,
           "description": "The droplet ID."
@@ -9642,7 +9642,7 @@
       "description": "Get Droplet Total Memory Metrics",
       "parameters": [
         {
-          "name": "host_id",
+          "name": "hostId",
           "schema": "string",
           "required": true,
           "description": "The droplet ID."
@@ -9691,7 +9691,7 @@
       "description": "List All Projects",
       "parameters": [
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -9940,7 +9940,7 @@
       "description": "Delete an Existing Project",
       "parameters": [
         {
-          "name": "project_id",
+          "name": "projectId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a project."
@@ -9981,7 +9981,7 @@
       "description": "Retrieve an Existing Project",
       "parameters": [
         {
-          "name": "project_id",
+          "name": "projectId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a project."
@@ -10022,7 +10022,7 @@
       "description": "Patch a Project",
       "parameters": [
         {
-          "name": "project_id",
+          "name": "projectId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a project."
@@ -10063,7 +10063,7 @@
       "description": "Update a Project",
       "parameters": [
         {
-          "name": "project_id",
+          "name": "projectId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a project."
@@ -10104,13 +10104,13 @@
       "description": "List Project Resources",
       "parameters": [
         {
-          "name": "project_id",
+          "name": "projectId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a project."
         },
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -10157,7 +10157,7 @@
       "description": "Assign Resources to a Project",
       "parameters": [
         {
-          "name": "project_id",
+          "name": "projectId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a project."
@@ -10203,7 +10203,7 @@
       "description": "List All Data Center Regions",
       "parameters": [
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -10355,13 +10355,13 @@
       "description": "Get Docker Credentials for Container Registry",
       "parameters": [
         {
-          "name": "expiry_seconds",
+          "name": "expirySeconds",
           "schema": "integer",
           "required": false,
           "description": "The duration in seconds that the returned registry credentials will be valid. If not set or 0, the credentials will not expire."
         },
         {
-          "name": "read_write",
+          "name": "readWrite",
           "schema": "boolean",
           "required": false,
           "description": "By default, the registry credentials allow for read-only access. Set this query parameter to `true` to obtain read-write credentials."
@@ -10531,7 +10531,7 @@
       "description": "Get Active Garbage Collection",
       "parameters": [
         {
-          "name": "registry_name",
+          "name": "registryName",
           "schema": "string",
           "required": true,
           "description": "The name of a container registry."
@@ -10572,7 +10572,7 @@
       "description": "Start Garbage Collection",
       "parameters": [
         {
-          "name": "registry_name",
+          "name": "registryName",
           "schema": "string",
           "required": true,
           "description": "The name of a container registry."
@@ -10613,13 +10613,13 @@
       "description": "Update Garbage Collection",
       "parameters": [
         {
-          "name": "registry_name",
+          "name": "registryName",
           "schema": "string",
           "required": true,
           "description": "The name of a container registry."
         },
         {
-          "name": "garbage_collection_uuid",
+          "name": "garbageCollectionUuid",
           "schema": "string",
           "required": true,
           "description": "The UUID of a garbage collection run."
@@ -10665,13 +10665,13 @@
       "description": "List Garbage Collections",
       "parameters": [
         {
-          "name": "registry_name",
+          "name": "registryName",
           "schema": "string",
           "required": true,
           "description": "The name of a container registry."
         },
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -10718,7 +10718,7 @@
       "description": "List All Container Registry Repositories",
       "parameters": [
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -10730,7 +10730,7 @@
           "description": "Which 'page' of paginated results to return."
         },
         {
-          "name": "registry_name",
+          "name": "registryName",
           "schema": "string",
           "required": true,
           "description": "The name of a container registry."
@@ -10771,7 +10771,7 @@
       "description": "List All Container Registry Repositories (V2)",
       "parameters": [
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -10783,13 +10783,13 @@
           "description": "Which 'page' of paginated results to return. Ignored when 'page_token' is provided."
         },
         {
-          "name": "page_token",
+          "name": "pageToken",
           "schema": "string",
           "required": false,
           "description": "Token to retrieve of the next or previous set of results more quickly than using 'page'."
         },
         {
-          "name": "registry_name",
+          "name": "registryName",
           "schema": "string",
           "required": true,
           "description": "The name of a container registry."
@@ -10834,7 +10834,7 @@
       "description": "List All Container Registry Repository Manifests",
       "parameters": [
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -10846,13 +10846,13 @@
           "description": "Which 'page' of paginated results to return."
         },
         {
-          "name": "registry_name",
+          "name": "registryName",
           "schema": "string",
           "required": true,
           "description": "The name of a container registry."
         },
         {
-          "name": "repository_name",
+          "name": "repositoryName",
           "schema": "string",
           "required": true,
           "description": "The name of a container registry repository. If the name contains `/` characters, they must be URL-encoded, e.g. `%2F`."
@@ -10893,19 +10893,19 @@
       "description": "Delete Container Registry Repository Manifest",
       "parameters": [
         {
-          "name": "registry_name",
+          "name": "registryName",
           "schema": "string",
           "required": true,
           "description": "The name of a container registry."
         },
         {
-          "name": "repository_name",
+          "name": "repositoryName",
           "schema": "string",
           "required": true,
           "description": "The name of a container registry repository. If the name contains `/` characters, they must be URL-encoded, e.g. `%2F`."
         },
         {
-          "name": "manifest_digest",
+          "name": "manifestDigest",
           "schema": "string",
           "required": true,
           "description": "The manifest digest of a container registry repository tag."
@@ -10942,7 +10942,7 @@
       "description": "List All Container Registry Repository Tags",
       "parameters": [
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -10954,13 +10954,13 @@
           "description": "Which 'page' of paginated results to return."
         },
         {
-          "name": "registry_name",
+          "name": "registryName",
           "schema": "string",
           "required": true,
           "description": "The name of a container registry."
         },
         {
-          "name": "repository_name",
+          "name": "repositoryName",
           "schema": "string",
           "required": true,
           "description": "The name of a container registry repository. If the name contains `/` characters, they must be URL-encoded, e.g. `%2F`."
@@ -11001,19 +11001,19 @@
       "description": "Delete Container Registry Repository Tag",
       "parameters": [
         {
-          "name": "registry_name",
+          "name": "registryName",
           "schema": "string",
           "required": true,
           "description": "The name of a container registry."
         },
         {
-          "name": "repository_name",
+          "name": "repositoryName",
           "schema": "string",
           "required": true,
           "description": "The name of a container registry repository. If the name contains `/` characters, they must be URL-encoded, e.g. `%2F`."
         },
         {
-          "name": "repository_tag",
+          "name": "repositoryTag",
           "schema": "string",
           "required": true,
           "description": "The name of a container registry repository tag."
@@ -11084,7 +11084,7 @@
       "description": "List All Reserved IPs",
       "parameters": [
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -11157,7 +11157,7 @@
       "description": "Delete a Reserved IP",
       "parameters": [
         {
-          "name": "reserved_ip",
+          "name": "reservedIp",
           "schema": "string",
           "required": true,
           "description": "A reserved IP address."
@@ -11194,7 +11194,7 @@
       "description": "Retrieve an Existing Reserved IP",
       "parameters": [
         {
-          "name": "reserved_ip",
+          "name": "reservedIp",
           "schema": "string",
           "required": true,
           "description": "A reserved IP address."
@@ -11235,7 +11235,7 @@
       "description": "List All Actions for a Reserved IP",
       "parameters": [
         {
-          "name": "reserved_ip",
+          "name": "reservedIp",
           "schema": "string",
           "required": true,
           "description": "A reserved IP address."
@@ -11276,7 +11276,7 @@
       "description": "Initiate a Reserved IP Action",
       "parameters": [
         {
-          "name": "reserved_ip",
+          "name": "reservedIp",
           "schema": "string",
           "required": true,
           "description": "A reserved IP address."
@@ -11317,13 +11317,13 @@
       "description": "Retrieve an Existing Reserved IP Action",
       "parameters": [
         {
-          "name": "reserved_ip",
+          "name": "reservedIp",
           "schema": "string",
           "required": true,
           "description": "A reserved IP address."
         },
         {
-          "name": "action_id",
+          "name": "actionId",
           "schema": "integer",
           "required": true,
           "description": "A unique numeric ID that can be used to identify and reference an action."
@@ -11364,7 +11364,7 @@
       "description": "List All Droplet Sizes",
       "parameters": [
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -11407,7 +11407,7 @@
       "description": "List All Snapshots",
       "parameters": [
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -11419,7 +11419,7 @@
           "description": "Which 'page' of paginated results to return."
         },
         {
-          "name": "resource_type",
+          "name": "resourceType",
           "schema": "string",
           "required": false,
           "description": "Used to filter snapshots by a resource type."
@@ -11456,7 +11456,7 @@
       "description": "Delete a Snapshot",
       "parameters": [
         {
-          "name": "snapshot_id",
+          "name": "snapshotId",
           "schema": "undefined",
           "required": true,
           "description": "Either the ID of an existing snapshot. This will be an integer for a Droplet snapshot or a string for a volume snapshot."
@@ -11493,7 +11493,7 @@
       "description": "Retrieve an Existing Snapshot",
       "parameters": [
         {
-          "name": "snapshot_id",
+          "name": "snapshotId",
           "schema": "undefined",
           "required": true,
           "description": "Either the ID of an existing snapshot. This will be an integer for a Droplet snapshot or a string for a volume snapshot."
@@ -11534,7 +11534,7 @@
       "description": "List All Tags",
       "parameters": [
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -11622,7 +11622,7 @@
       "description": "Delete a Tag",
       "parameters": [
         {
-          "name": "tag_id",
+          "name": "tagId",
           "schema": "string",
           "required": true,
           "description": "The name of the tag. Tags may contain letters, numbers, colons, dashes, and underscores. There is a limit of 255 characters per tag."
@@ -11659,7 +11659,7 @@
       "description": "Retrieve a Tag",
       "parameters": [
         {
-          "name": "tag_id",
+          "name": "tagId",
           "schema": "string",
           "required": true,
           "description": "The name of the tag. Tags may contain letters, numbers, colons, dashes, and underscores. There is a limit of 255 characters per tag."
@@ -11700,7 +11700,7 @@
       "description": "Untag a Resource",
       "parameters": [
         {
-          "name": "tag_id",
+          "name": "tagId",
           "schema": "string",
           "required": true,
           "description": "The name of the tag. Tags may contain letters, numbers, colons, dashes, and underscores. There is a limit of 255 characters per tag."
@@ -11743,7 +11743,7 @@
       "description": "Tag a Resource",
       "parameters": [
         {
-          "name": "tag_id",
+          "name": "tagId",
           "schema": "string",
           "required": true,
           "description": "The name of the tag. Tags may contain letters, numbers, colons, dashes, and underscores. There is a limit of 255 characters per tag."
@@ -11786,7 +11786,7 @@
       "description": "List All Checks",
       "parameters": [
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -11863,7 +11863,7 @@
       "description": "Delete a Check",
       "parameters": [
         {
-          "name": "check_id",
+          "name": "checkId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a check."
@@ -11900,7 +11900,7 @@
       "description": "Retrieve an Existing Check",
       "parameters": [
         {
-          "name": "check_id",
+          "name": "checkId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a check."
@@ -11941,7 +11941,7 @@
       "description": "Update a Check",
       "parameters": [
         {
-          "name": "check_id",
+          "name": "checkId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a check."
@@ -11982,13 +11982,13 @@
       "description": "List All Alerts",
       "parameters": [
         {
-          "name": "check_id",
+          "name": "checkId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a check."
         },
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -12035,7 +12035,7 @@
       "description": "Create a New Alert",
       "parameters": [
         {
-          "name": "check_id",
+          "name": "checkId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a check."
@@ -12076,13 +12076,13 @@
       "description": "Delete an Alert",
       "parameters": [
         {
-          "name": "check_id",
+          "name": "checkId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a check."
         },
         {
-          "name": "alert_id",
+          "name": "alertId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for an alert."
@@ -12119,13 +12119,13 @@
       "description": "Retrieve an Existing Alert",
       "parameters": [
         {
-          "name": "check_id",
+          "name": "checkId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a check."
         },
         {
-          "name": "alert_id",
+          "name": "alertId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for an alert."
@@ -12166,13 +12166,13 @@
       "description": "Update an Alert",
       "parameters": [
         {
-          "name": "check_id",
+          "name": "checkId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a check."
         },
         {
-          "name": "alert_id",
+          "name": "alertId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for an alert."
@@ -12213,7 +12213,7 @@
       "description": "Retrieve Check State",
       "parameters": [
         {
-          "name": "check_id",
+          "name": "checkId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a check."
@@ -12305,7 +12305,7 @@
           "description": "The slug identifier for the region where the resource is available."
         },
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -12386,7 +12386,7 @@
       "description": "Initiate A Block Storage Action By Volume Name",
       "parameters": [
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -12433,7 +12433,7 @@
       "description": "Delete a Volume Snapshot",
       "parameters": [
         {
-          "name": "snapshot_id",
+          "name": "snapshotId",
           "schema": "undefined",
           "required": true,
           "description": "Either the ID of an existing snapshot. This will be an integer for a Droplet snapshot or a string for a volume snapshot."
@@ -12470,7 +12470,7 @@
       "description": "Retrieve an Existing Volume Snapshot",
       "parameters": [
         {
-          "name": "snapshot_id",
+          "name": "snapshotId",
           "schema": "undefined",
           "required": true,
           "description": "Either the ID of an existing snapshot. This will be an integer for a Droplet snapshot or a string for a volume snapshot."
@@ -12511,7 +12511,7 @@
       "description": "Delete a Block Storage Volume",
       "parameters": [
         {
-          "name": "volume_id",
+          "name": "volumeId",
           "schema": "string",
           "required": true,
           "description": "The ID of the block storage volume."
@@ -12548,7 +12548,7 @@
       "description": "Retrieve an Existing Block Storage Volume",
       "parameters": [
         {
-          "name": "volume_id",
+          "name": "volumeId",
           "schema": "string",
           "required": true,
           "description": "The ID of the block storage volume."
@@ -12589,13 +12589,13 @@
       "description": "List All Actions for a Volume",
       "parameters": [
         {
-          "name": "volume_id",
+          "name": "volumeId",
           "schema": "string",
           "required": true,
           "description": "The ID of the block storage volume."
         },
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -12642,13 +12642,13 @@
       "description": "Initiate A Block Storage Action By Volume Id",
       "parameters": [
         {
-          "name": "volume_id",
+          "name": "volumeId",
           "schema": "string",
           "required": true,
           "description": "The ID of the block storage volume."
         },
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -12695,19 +12695,19 @@
       "description": "Retrieve an Existing Volume Action",
       "parameters": [
         {
-          "name": "volume_id",
+          "name": "volumeId",
           "schema": "string",
           "required": true,
           "description": "The ID of the block storage volume."
         },
         {
-          "name": "action_id",
+          "name": "actionId",
           "schema": "integer",
           "required": true,
           "description": "A unique numeric ID that can be used to identify and reference an action."
         },
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -12754,13 +12754,13 @@
       "description": "List Snapshots for a Volume",
       "parameters": [
         {
-          "name": "volume_id",
+          "name": "volumeId",
           "schema": "string",
           "required": true,
           "description": "The ID of the block storage volume."
         },
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -12807,7 +12807,7 @@
       "description": "Create Snapshot from a Volume",
       "parameters": [
         {
-          "name": "volume_id",
+          "name": "volumeId",
           "schema": "string",
           "required": true,
           "description": "The ID of the block storage volume."
@@ -12864,7 +12864,7 @@
       "description": "List All VPCs",
       "parameters": [
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"
@@ -12941,7 +12941,7 @@
       "description": "Delete a VPC",
       "parameters": [
         {
-          "name": "vpc_id",
+          "name": "vpcId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a VPC."
@@ -12978,7 +12978,7 @@
       "description": "Retrieve an Existing VPC",
       "parameters": [
         {
-          "name": "vpc_id",
+          "name": "vpcId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a VPC."
@@ -13019,7 +13019,7 @@
       "description": "Partially Update a VPC",
       "parameters": [
         {
-          "name": "vpc_id",
+          "name": "vpcId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a VPC."
@@ -13060,7 +13060,7 @@
       "description": "Update a VPC",
       "parameters": [
         {
-          "name": "vpc_id",
+          "name": "vpcId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a VPC."
@@ -13101,19 +13101,19 @@
       "description": "List the Member Resources of a VPC",
       "parameters": [
         {
-          "name": "vpc_id",
+          "name": "vpcId",
           "schema": "string",
           "required": true,
           "description": "A unique identifier for a VPC."
         },
         {
-          "name": "resource_type",
+          "name": "resourceType",
           "schema": "string",
           "required": false,
           "description": "Used to filter VPC members by a resource type."
         },
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Number of items returned per page"

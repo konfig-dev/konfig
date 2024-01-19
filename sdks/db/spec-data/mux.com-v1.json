@@ -33,7 +33,7 @@
       "description": "Lists the values for a specific dimension",
       "parameters": [
         {
-          "name": "DIMENSION_ID",
+          "name": "dimensionId",
           "schema": "string",
           "required": true,
           "description": "ID of the Dimension"
@@ -147,7 +147,7 @@
       "description": "Lists values for a specific filter",
       "parameters": [
         {
-          "name": "FILTER_ID",
+          "name": "filterId",
           "schema": "string",
           "required": true,
           "description": "ID of the Filter"
@@ -204,13 +204,13 @@
           "description": "Offset by this many pages, of the size of `limit`"
         },
         {
-          "name": "order_by",
+          "name": "orderBy",
           "schema": "string",
           "required": false,
           "description": "Value to order the results by"
         },
         {
-          "name": "order_direction",
+          "name": "orderDirection",
           "schema": "string",
           "required": false,
           "description": "Sort order."
@@ -243,7 +243,7 @@
       "description": "Get an Incident",
       "parameters": [
         {
-          "name": "INCIDENT_ID",
+          "name": "incidentId",
           "schema": "string",
           "required": true,
           "description": "ID of the Incident"
@@ -264,7 +264,7 @@
       "description": "List Related Incidents",
       "parameters": [
         {
-          "name": "INCIDENT_ID",
+          "name": "incidentId",
           "schema": "string",
           "required": true,
           "description": "ID of the Incident"
@@ -282,13 +282,13 @@
           "description": "Offset by this many pages, of the size of `limit`"
         },
         {
-          "name": "order_by",
+          "name": "orderBy",
           "schema": "string",
           "required": false,
           "description": "Value to order the results by"
         },
         {
-          "name": "order_direction",
+          "name": "orderDirection",
           "schema": "string",
           "required": false,
           "description": "Sort order."
@@ -348,13 +348,13 @@
       "description": "List breakdown values",
       "parameters": [
         {
-          "name": "METRIC_ID",
+          "name": "metricId",
           "schema": "string",
           "required": true,
           "description": "ID of the Metric"
         },
         {
-          "name": "group_by",
+          "name": "groupBy",
           "schema": "string",
           "required": false,
           "description": "Breakdown value to group the results by"
@@ -384,13 +384,13 @@
           "description": "Offset by this many pages, of the size of `limit`"
         },
         {
-          "name": "order_by",
+          "name": "orderBy",
           "schema": "string",
           "required": false,
           "description": "Value to order the results by"
         },
         {
-          "name": "order_direction",
+          "name": "orderDirection",
           "schema": "string",
           "required": false,
           "description": "Sort order."
@@ -417,7 +417,7 @@
       "description": "List Insights",
       "parameters": [
         {
-          "name": "METRIC_ID",
+          "name": "metricId",
           "schema": "string",
           "required": true,
           "description": "ID of the Metric"
@@ -429,7 +429,7 @@
           "description": "Measurement for the provided metric. If omitted, the default for the metric will be used."
         },
         {
-          "name": "order_direction",
+          "name": "orderDirection",
           "schema": "string",
           "required": false,
           "description": "Sort order."
@@ -456,7 +456,7 @@
       "description": "Get Overall values",
       "parameters": [
         {
-          "name": "METRIC_ID",
+          "name": "metricId",
           "schema": "string",
           "required": true,
           "description": "ID of the Metric"
@@ -495,7 +495,7 @@
       "description": "Get metric timeseries data",
       "parameters": [
         {
-          "name": "METRIC_ID",
+          "name": "metricId",
           "schema": "string",
           "required": true,
           "description": "ID of the Metric"
@@ -519,13 +519,13 @@
           "description": "Measurement for the provided metric. If omitted, the default for the metric will be used."
         },
         {
-          "name": "order_direction",
+          "name": "orderDirection",
           "schema": "string",
           "required": false,
           "description": "Sort order."
         },
         {
-          "name": "group_by",
+          "name": "groupBy",
           "schema": "string",
           "required": false,
           "description": "Time granularity to group results by. If this value is omitted, a default granularity is chosen based on the timeframe.\n\nFor timeframes of less than 90 minutes, the default granularity is `minute`. Between 90 minutes and 6 hours, the default granularity is `ten_minutes`. Between 6 hours and 15 days inclusive, the default granularity is `hour`. The granularity of timeframes that exceed 15 days is `day`. This default behavior is subject to change; it is strongly suggested that you explicitly specify the granularity.\n"
@@ -574,7 +574,7 @@
       "description": "Get Monitoring Histogram Timeseries",
       "parameters": [
         {
-          "name": "MONITORING_HISTOGRAM_METRIC_ID",
+          "name": "monitoringHistogramMetricId",
           "schema": "string",
           "required": true,
           "description": "ID of the Monitoring Histogram Metric"
@@ -601,7 +601,7 @@
       "description": "Get Monitoring Breakdown",
       "parameters": [
         {
-          "name": "MONITORING_METRIC_ID",
+          "name": "monitoringMetricId",
           "schema": "string",
           "required": true,
           "description": "ID of the Monitoring Metric"
@@ -625,13 +625,13 @@
           "description": "Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.\n\nTo exclude rows that match a certain condition, prepend a `!` character to the dimension.\n\nPossible filter names are the same as returned by the List Monitoring Dimensions endpoint.\n\nExample:\n\n  * `filters[]=operating_system:windows&filters[]=!country:US`\n"
         },
         {
-          "name": "order_by",
+          "name": "orderBy",
           "schema": "string",
           "required": false,
           "description": "Value to order the results by"
         },
         {
-          "name": "order_direction",
+          "name": "orderDirection",
           "schema": "string",
           "required": false,
           "description": "Sort order."
@@ -652,7 +652,7 @@
       "description": "Get Monitoring Breakdown Timeseries",
       "parameters": [
         {
-          "name": "MONITORING_METRIC_ID",
+          "name": "monitoringMetricId",
           "schema": "string",
           "required": true,
           "description": "ID of the Monitoring Metric"
@@ -682,13 +682,13 @@
           "description": "Number of items to include in each timestamp's `value` list.\n\nThe default is 10, and the maximum is 100.\n"
         },
         {
-          "name": "order_by",
+          "name": "orderBy",
           "schema": "string",
           "required": false,
           "description": "Value to order the results by"
         },
         {
-          "name": "order_direction",
+          "name": "orderDirection",
           "schema": "string",
           "required": false,
           "description": "Sort order."
@@ -709,7 +709,7 @@
       "description": "Get Monitoring Timeseries",
       "parameters": [
         {
-          "name": "MONITORING_METRIC_ID",
+          "name": "monitoringMetricId",
           "schema": "string",
           "required": true,
           "description": "ID of the Monitoring Metric"
@@ -770,7 +770,7 @@
       "description": "Get Real-Time Histogram Timeseries",
       "parameters": [
         {
-          "name": "REALTIME_HISTOGRAM_METRIC_ID",
+          "name": "realtimeHistogramMetricId",
           "schema": "string",
           "required": true,
           "description": "ID of the Realtime Histogram Metric"
@@ -797,7 +797,7 @@
       "description": "Get Real-Time Breakdown",
       "parameters": [
         {
-          "name": "REALTIME_METRIC_ID",
+          "name": "realtimeMetricId",
           "schema": "string",
           "required": true,
           "description": "ID of the Realtime Metric"
@@ -821,13 +821,13 @@
           "description": "Limit the results to rows that match conditions from provided key:value pairs. Must be provided as an array query string parameter.\n\nTo exclude rows that match a certain condition, prepend a `!` character to the dimension.\n\nPossible filter names are the same as returned by the List Monitoring Dimensions endpoint.\n\nExample:\n\n  * `filters[]=operating_system:windows&filters[]=!country:US`\n"
         },
         {
-          "name": "order_by",
+          "name": "orderBy",
           "schema": "string",
           "required": false,
           "description": "Value to order the results by"
         },
         {
-          "name": "order_direction",
+          "name": "orderDirection",
           "schema": "string",
           "required": false,
           "description": "Sort order."
@@ -848,7 +848,7 @@
       "description": "Get Real-Time Timeseries",
       "parameters": [
         {
-          "name": "REALTIME_METRIC_ID",
+          "name": "realtimeMetricId",
           "schema": "string",
           "required": true,
           "description": "ID of the Realtime Metric"
@@ -893,19 +893,19 @@
           "description": "Offset by this many pages, of the size of `limit`"
         },
         {
-          "name": "viewer_id",
+          "name": "viewerId",
           "schema": "string",
           "required": false,
           "description": "Viewer ID to filter results by. This value may be provided by the integration, or may be created by Mux."
         },
         {
-          "name": "error_id",
+          "name": "errorId",
           "schema": "integer",
           "required": false,
           "description": "Filter video views by the provided error ID (as returned in the error_type_id field in the list video views endpoint). If you provide any as the error ID, this will filter the results to those with any error."
         },
         {
-          "name": "order_direction",
+          "name": "orderDirection",
           "schema": "string",
           "required": false,
           "description": "Sort order."
@@ -938,7 +938,7 @@
       "description": "Get a Video View",
       "parameters": [
         {
-          "name": "VIDEO_VIEW_ID",
+          "name": "videoViewId",
           "schema": "string",
           "required": true,
           "description": "ID of the Video View"
@@ -1000,7 +1000,7 @@
       "description": "Delete a signing key",
       "parameters": [
         {
-          "name": "SIGNING_KEY_ID",
+          "name": "signingKeyId",
           "schema": "string",
           "required": true,
           "description": "The ID of the signing key."
@@ -1016,7 +1016,7 @@
       "description": "Retrieve a signing key",
       "parameters": [
         {
-          "name": "SIGNING_KEY_ID",
+          "name": "signingKeyId",
           "schema": "string",
           "required": true,
           "description": "The ID of the signing key."
@@ -1049,13 +1049,13 @@
           "description": "Offset by this many pages, of the size of `limit`"
         },
         {
-          "name": "live_stream_id",
+          "name": "liveStreamId",
           "schema": "string",
           "required": false,
           "description": "Filter response to return all the assets for this live stream only"
         },
         {
-          "name": "upload_id",
+          "name": "uploadId",
           "schema": "string",
           "required": false,
           "description": "Filter response to return an asset created from this direct upload only"
@@ -1141,7 +1141,7 @@
       "description": "Delete an asset",
       "parameters": [
         {
-          "name": "ASSET_ID",
+          "name": "assetId",
           "schema": "string",
           "required": true,
           "description": "The asset ID."
@@ -1157,7 +1157,7 @@
       "description": "Retrieve an asset",
       "parameters": [
         {
-          "name": "ASSET_ID",
+          "name": "assetId",
           "schema": "string",
           "required": true,
           "description": "The asset ID."
@@ -1178,7 +1178,7 @@
       "description": "Update an Asset",
       "parameters": [
         {
-          "name": "ASSET_ID",
+          "name": "assetId",
           "schema": "string",
           "required": true,
           "description": "The asset ID."
@@ -1204,7 +1204,7 @@
       "description": "Retrieve asset input info",
       "parameters": [
         {
-          "name": "ASSET_ID",
+          "name": "assetId",
           "schema": "string",
           "required": true,
           "description": "The asset ID."
@@ -1225,7 +1225,7 @@
       "description": "Update master access",
       "parameters": [
         {
-          "name": "ASSET_ID",
+          "name": "assetId",
           "schema": "string",
           "required": true,
           "description": "The asset ID."
@@ -1251,7 +1251,7 @@
       "description": "Update MP4 support",
       "parameters": [
         {
-          "name": "ASSET_ID",
+          "name": "assetId",
           "schema": "string",
           "required": true,
           "description": "The asset ID."
@@ -1277,7 +1277,7 @@
       "description": "Create a playback ID",
       "parameters": [
         {
-          "name": "ASSET_ID",
+          "name": "assetId",
           "schema": "string",
           "required": true,
           "description": "The asset ID."
@@ -1303,13 +1303,13 @@
       "description": "Delete a playback ID",
       "parameters": [
         {
-          "name": "ASSET_ID",
+          "name": "assetId",
           "schema": "string",
           "required": true,
           "description": "The asset ID."
         },
         {
-          "name": "PLAYBACK_ID",
+          "name": "playbackId",
           "schema": "string",
           "required": true,
           "description": "The live stream's playback ID."
@@ -1325,13 +1325,13 @@
       "description": "Retrieve a playback ID",
       "parameters": [
         {
-          "name": "ASSET_ID",
+          "name": "assetId",
           "schema": "string",
           "required": true,
           "description": "The asset ID."
         },
         {
-          "name": "PLAYBACK_ID",
+          "name": "playbackId",
           "schema": "string",
           "required": true,
           "description": "The live stream's playback ID."
@@ -1352,7 +1352,7 @@
       "description": "Create an asset track",
       "parameters": [
         {
-          "name": "ASSET_ID",
+          "name": "assetId",
           "schema": "string",
           "required": true,
           "description": "The asset ID."
@@ -1415,13 +1415,13 @@
       "description": "Delete an asset track",
       "parameters": [
         {
-          "name": "ASSET_ID",
+          "name": "assetId",
           "schema": "string",
           "required": true,
           "description": "The asset ID."
         },
         {
-          "name": "TRACK_ID",
+          "name": "trackId",
           "schema": "string",
           "required": true,
           "description": "The track ID."
@@ -1449,13 +1449,13 @@
           "description": "Number of items to include in the response"
         },
         {
-          "name": "asset_id",
+          "name": "assetId",
           "schema": "string",
           "required": false,
           "description": "Filter response to return delivery usage for this asset only. You cannot specify both the `asset_id` and `live_stream_id` parameters together."
         },
         {
-          "name": "live_stream_id",
+          "name": "liveStreamId",
           "schema": "string",
           "required": false,
           "description": "Filter response to return delivery usage for assets for this live stream. You cannot specify both the `asset_id` and `live_stream_id` parameters together."
@@ -1494,7 +1494,7 @@
           "description": "Offset by this many pages, of the size of `limit`"
         },
         {
-          "name": "stream_key",
+          "name": "streamKey",
           "schema": "string",
           "required": false,
           "description": "Filter response to return live stream for this stream key only"
@@ -1611,7 +1611,7 @@
       "description": "Delete a live stream",
       "parameters": [
         {
-          "name": "LIVE_STREAM_ID",
+          "name": "liveStreamId",
           "schema": "string",
           "required": true,
           "description": "The live stream ID"
@@ -1627,7 +1627,7 @@
       "description": "Retrieve a live stream",
       "parameters": [
         {
-          "name": "LIVE_STREAM_ID",
+          "name": "liveStreamId",
           "schema": "string",
           "required": true,
           "description": "The live stream ID"
@@ -1648,7 +1648,7 @@
       "description": "Update a live stream",
       "parameters": [
         {
-          "name": "LIVE_STREAM_ID",
+          "name": "liveStreamId",
           "schema": "string",
           "required": true,
           "description": "The live stream ID"
@@ -1699,7 +1699,7 @@
       "description": "Signal a live stream is finished",
       "parameters": [
         {
-          "name": "LIVE_STREAM_ID",
+          "name": "liveStreamId",
           "schema": "string",
           "required": true,
           "description": "The live stream ID"
@@ -1720,7 +1720,7 @@
       "description": "Disable a live stream",
       "parameters": [
         {
-          "name": "LIVE_STREAM_ID",
+          "name": "liveStreamId",
           "schema": "string",
           "required": true,
           "description": "The live stream ID"
@@ -1741,7 +1741,7 @@
       "description": "Update a live stream's embedded subtitles",
       "parameters": [
         {
-          "name": "LIVE_STREAM_ID",
+          "name": "liveStreamId",
           "schema": "string",
           "required": true,
           "description": "The live stream ID"
@@ -1767,7 +1767,7 @@
       "description": "Enable a live stream",
       "parameters": [
         {
-          "name": "LIVE_STREAM_ID",
+          "name": "liveStreamId",
           "schema": "string",
           "required": true,
           "description": "The live stream ID"
@@ -1788,7 +1788,7 @@
       "description": "Update a live stream's generated subtitles",
       "parameters": [
         {
-          "name": "LIVE_STREAM_ID",
+          "name": "liveStreamId",
           "schema": "string",
           "required": true,
           "description": "The live stream ID"
@@ -1814,7 +1814,7 @@
       "description": "Create a live stream playback ID",
       "parameters": [
         {
-          "name": "LIVE_STREAM_ID",
+          "name": "liveStreamId",
           "schema": "string",
           "required": true,
           "description": "The live stream ID"
@@ -1840,13 +1840,13 @@
       "description": "Delete a live stream playback ID",
       "parameters": [
         {
-          "name": "LIVE_STREAM_ID",
+          "name": "liveStreamId",
           "schema": "string",
           "required": true,
           "description": "The live stream ID"
         },
         {
-          "name": "PLAYBACK_ID",
+          "name": "playbackId",
           "schema": "string",
           "required": true,
           "description": "The live stream's playback ID."
@@ -1862,13 +1862,13 @@
       "description": "Retrieve a live stream playback ID",
       "parameters": [
         {
-          "name": "LIVE_STREAM_ID",
+          "name": "liveStreamId",
           "schema": "string",
           "required": true,
           "description": "The live stream ID"
         },
         {
-          "name": "PLAYBACK_ID",
+          "name": "playbackId",
           "schema": "string",
           "required": true,
           "description": "The live stream's playback ID."
@@ -1889,7 +1889,7 @@
       "description": "Reset a live stream's stream key",
       "parameters": [
         {
-          "name": "LIVE_STREAM_ID",
+          "name": "liveStreamId",
           "schema": "string",
           "required": true,
           "description": "The live stream ID"
@@ -1910,7 +1910,7 @@
       "description": "Create a live stream simulcast target",
       "parameters": [
         {
-          "name": "LIVE_STREAM_ID",
+          "name": "liveStreamId",
           "schema": "string",
           "required": true,
           "description": "The live stream ID"
@@ -1949,13 +1949,13 @@
       "description": "Delete a Live Stream Simulcast Target",
       "parameters": [
         {
-          "name": "LIVE_STREAM_ID",
+          "name": "liveStreamId",
           "schema": "string",
           "required": true,
           "description": "The live stream ID"
         },
         {
-          "name": "SIMULCAST_TARGET_ID",
+          "name": "simulcastTargetId",
           "schema": "string",
           "required": true,
           "description": "The ID of the simulcast target."
@@ -1971,13 +1971,13 @@
       "description": "Retrieve a Live Stream Simulcast Target",
       "parameters": [
         {
-          "name": "LIVE_STREAM_ID",
+          "name": "liveStreamId",
           "schema": "string",
           "required": true,
           "description": "The live stream ID"
         },
         {
-          "name": "SIMULCAST_TARGET_ID",
+          "name": "simulcastTargetId",
           "schema": "string",
           "required": true,
           "description": "The ID of the simulcast target."
@@ -1998,7 +1998,7 @@
       "description": "Retrieve an Asset or Live Stream ID",
       "parameters": [
         {
-          "name": "PLAYBACK_ID",
+          "name": "playbackId",
           "schema": "string",
           "required": true,
           "description": "The live stream's playback ID."
@@ -2066,7 +2066,7 @@
       "description": "Delete a Playback Restriction",
       "parameters": [
         {
-          "name": "PLAYBACK_RESTRICTION_ID",
+          "name": "playbackRestrictionId",
           "schema": "string",
           "required": true,
           "description": "ID of the Playback Restriction."
@@ -2082,7 +2082,7 @@
       "description": "Retrieve a Playback Restriction",
       "parameters": [
         {
-          "name": "PLAYBACK_RESTRICTION_ID",
+          "name": "playbackRestrictionId",
           "schema": "string",
           "required": true,
           "description": "ID of the Playback Restriction."
@@ -2103,7 +2103,7 @@
       "description": "Update the Referrer Playback Restriction",
       "parameters": [
         {
-          "name": "PLAYBACK_RESTRICTION_ID",
+          "name": "playbackRestrictionId",
           "schema": "string",
           "required": true,
           "description": "ID of the Playback Restriction."
@@ -2165,7 +2165,7 @@
       "description": "Delete a URL signing key",
       "parameters": [
         {
-          "name": "SIGNING_KEY_ID",
+          "name": "signingKeyId",
           "schema": "string",
           "required": true,
           "description": "The ID of the signing key."
@@ -2181,7 +2181,7 @@
       "description": "Retrieve a URL signing key",
       "parameters": [
         {
-          "name": "SIGNING_KEY_ID",
+          "name": "signingKeyId",
           "schema": "string",
           "required": true,
           "description": "The ID of the signing key."
@@ -2259,7 +2259,7 @@
       "description": "Delete a space",
       "parameters": [
         {
-          "name": "SPACE_ID",
+          "name": "spaceId",
           "schema": "string",
           "required": true,
           "description": "The space ID."
@@ -2275,7 +2275,7 @@
       "description": "Retrieve a space",
       "parameters": [
         {
-          "name": "SPACE_ID",
+          "name": "spaceId",
           "schema": "string",
           "required": true,
           "description": "The space ID."
@@ -2296,7 +2296,7 @@
       "description": "Create a space broadcast",
       "parameters": [
         {
-          "name": "SPACE_ID",
+          "name": "spaceId",
           "schema": "string",
           "required": true,
           "description": "The space ID."
@@ -2347,13 +2347,13 @@
       "description": "Delete a space broadcast",
       "parameters": [
         {
-          "name": "SPACE_ID",
+          "name": "spaceId",
           "schema": "string",
           "required": true,
           "description": "The space ID."
         },
         {
-          "name": "BROADCAST_ID",
+          "name": "broadcastId",
           "schema": "string",
           "required": true,
           "description": "The broadcast ID."
@@ -2369,13 +2369,13 @@
       "description": "Retrieve space broadcast",
       "parameters": [
         {
-          "name": "SPACE_ID",
+          "name": "spaceId",
           "schema": "string",
           "required": true,
           "description": "The space ID."
         },
         {
-          "name": "BROADCAST_ID",
+          "name": "broadcastId",
           "schema": "string",
           "required": true,
           "description": "The broadcast ID."
@@ -2396,13 +2396,13 @@
       "description": "Start a space broadcast",
       "parameters": [
         {
-          "name": "SPACE_ID",
+          "name": "spaceId",
           "schema": "string",
           "required": true,
           "description": "The space ID."
         },
         {
-          "name": "BROADCAST_ID",
+          "name": "broadcastId",
           "schema": "string",
           "required": true,
           "description": "The broadcast ID."
@@ -2423,13 +2423,13 @@
       "description": "Stop a space broadcast",
       "parameters": [
         {
-          "name": "SPACE_ID",
+          "name": "spaceId",
           "schema": "string",
           "required": true,
           "description": "The space ID."
         },
         {
-          "name": "BROADCAST_ID",
+          "name": "broadcastId",
           "schema": "string",
           "required": true,
           "description": "The broadcast ID."
@@ -2510,7 +2510,7 @@
       "description": "Delete a Transcription Vocabulary",
       "parameters": [
         {
-          "name": "TRANSCRIPTION_VOCABULARY_ID",
+          "name": "transcriptionVocabularyId",
           "schema": "string",
           "required": true,
           "description": "The ID of the Transcription Vocabulary."
@@ -2526,7 +2526,7 @@
       "description": "Retrieve a Transcription Vocabulary",
       "parameters": [
         {
-          "name": "TRANSCRIPTION_VOCABULARY_ID",
+          "name": "transcriptionVocabularyId",
           "schema": "string",
           "required": true,
           "description": "The ID of the Transcription Vocabulary."
@@ -2547,7 +2547,7 @@
       "description": "Update a Transcription Vocabulary",
       "parameters": [
         {
-          "name": "TRANSCRIPTION_VOCABULARY_ID",
+          "name": "transcriptionVocabularyId",
           "schema": "string",
           "required": true,
           "description": "The ID of the Transcription Vocabulary."
@@ -2652,7 +2652,7 @@
       "description": "Retrieve a single direct upload's info",
       "parameters": [
         {
-          "name": "UPLOAD_ID",
+          "name": "uploadId",
           "schema": "string",
           "required": true,
           "description": "ID of the Upload"
@@ -2673,7 +2673,7 @@
       "description": "Cancel a direct upload",
       "parameters": [
         {
-          "name": "UPLOAD_ID",
+          "name": "uploadId",
           "schema": "string",
           "required": true,
           "description": "ID of the Upload"

@@ -56,7 +56,7 @@
           "description": "For countries with regions (AU, CA, GB, US), search groups in a specific region as specified by the region abbreviation.  The supported regions and their abbreviations are listed below. <br /><br /> NOTE: The region and postal_code parameters cannot be used at the same time and if both are passed then the postal_code will take priority. <br /><br /> --- <br /><br /> **AU**<br /> - QLD: Queensland<br /> - SA: South Australia<br /> - TAS: Tasmania<br /> - VIC: Victoria<br /> - WA: Western Australia<br /> - NT: Northern Territory<br /> - NSW: New South Wales - ACT<br /> <br /> **CA**<br /> - AB: Alberta<br /> - BC: British Columbia<br /> - MB: Manitoba<br /> - NB: New Brunswick<br /> - NL: Newfoundland and Labrador<br /> - NS: Nova Scotia<br /> - ON: Ontario<br /> - QC: Quebec<br /> - SK: Saskatchewan<br /> - PE: Prince Edward Island<br /> <br /> **GB**<br /> - E: East<br /> - EM: East Midlands<br /> - LDN: London<br /> - NE: North East<br /> - NW: North West<br /> - NI: Northern Ireland<br /> - SC: Scotland<br /> - SE: South East<br /> - SW: South West<br /> - WA: Wales<br /> - WM: West Midlands<br /> - YH: Yorkshire and the Humber<br /> <br /> **US**<br /> All 50 states and the District of Columbia are supported.  For the abbreviations, see: https://github.com/jasonong/List-of-US-States/blob/master/states.csv\n"
         },
         {
-          "name": "postal_code",
+          "name": "postalCode",
           "schema": "string",
           "required": false,
           "description": "Find groups in the given postal code.  Only a few countries support postal code searches (US, CA, AU, GB).  The country parameter must be passed when the postal_code parameter is set. <br /><br /> NOTE: The region and postal_code parameters cannot be used at the same time and if both are passed then the postal_code will take priority.\n"
@@ -68,7 +68,7 @@
           "description": "The page of groups to return."
         },
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "The number of groups to return per page (must be >= 1 and <= 100)."
@@ -89,7 +89,7 @@
       "description": "Retrieve multiple groups",
       "parameters": [
         {
-          "name": "group_ids",
+          "name": "groupIds",
           "schema": "string",
           "required": true,
           "description": "The IDs of the groups to retrieve.  If more than 20 group IDs are passed, only the first 20 groups will be returned."
@@ -110,7 +110,7 @@
       "description": "Retrieve a group",
       "parameters": [
         {
-          "name": "group_id",
+          "name": "groupId",
           "schema": "string",
           "required": true,
           "description": "The ID of the group to retrieve."
@@ -131,7 +131,7 @@
       "description": "List posts",
       "parameters": [
         {
-          "name": "sort_by",
+          "name": "sortBy",
           "schema": "string",
           "required": false,
           "description": "How to sort the posts that are returned.  One of: date, active, distance <br /><br />\nDate sorting will sort posts from newest to oldest. Active sorting will sort active posts before satisfied, withdrawn and expired posts and then sort by date. Distance sorting will sort the closest posts first.\n"
@@ -149,13 +149,13 @@
           "description": "A comma separated list of the post sources to retrieve posts from. The available sources are: groups, trashnothing, open_archive_groups. The trashnothing source is for public posts that are posted on trash nothing but are not associated with any group. The open_archive_groups source provides a way to easily request posts from groups that have open_archives set to true without having to pass a group_ids parameter.  When passed, it will automatically return posts from open archive groups that are within the area specified by the latitude, longitude and radius parameters (or the current users' location if latitude, longitude and radius aren't passed). <br /><br /> NOTE: For requests using an api key instead of oauth, passing the trashnothing source or the open_archive_groups source makes the latitude, longitude and radius parameters required.\n"
         },
         {
-          "name": "group_ids",
+          "name": "groupIds",
           "schema": "string",
           "required": false,
           "description": "A comma separated list of the group IDs to retrieve posts from. This parameter is only used if the 'groups' source is passed in the sources parameter and only groups that the current user is a member of or that are open archives groups will be used (the group IDs of other groups will be silently discarded*). <br /><br /> NOTE: For requests using an api key instead of oauth, this field is required if the 'groups' source is passed. In addition, only posts from groups that have open_archives set to true will be used (the group IDS of other groups will be silently discarded*). <br /><br/> *To determine which group IDs were used and which were discarded, use the group_ids field in the response.\n"
         },
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "The number of posts to return per page (must be >= 1 and <= 100)."
@@ -167,7 +167,7 @@
           "description": "The page of posts to return."
         },
         {
-          "name": "device_pixel_ratio",
+          "name": "devicePixelRatio",
           "schema": "number",
           "required": false,
           "description": "Client device pixel ratio used to determine thumbnail size (default 1.0)."
@@ -191,13 +191,13 @@
           "description": "The radius in meters of a circle centered at the point defined by the latitude and longitude parameters. When latitude, longitude and radius are passed, only posts within the circle defined by these parameters will be returned.\n"
         },
         {
-          "name": "date_min",
+          "name": "dateMin",
           "schema": "string",
           "required": false,
           "description": "Only posts newer than or equal to this UTC date and time will be returned.  If unset, defaults to the current date and time minus 90 days.\n"
         },
         {
-          "name": "date_max",
+          "name": "dateMax",
           "schema": "string",
           "required": false,
           "description": "Only posts older than this UTC date and time will be returned.  If unset, defaults to the current date and time."
@@ -209,13 +209,13 @@
           "description": "A comma separated list of the post outcomes to return.  The available post outcomes are: satisfied, withdrawn <br /><br /> There are also a couple special values that can be passed.  If set to an empty string (the default), only posts that are not satisfied and not withdrawn and not expired are returned. If set to 'all', all posts will be returned no matter what outcome the posts have. If set to 'not-promised', only posts that are not satisfied ant not withdrawn and not expired and not promised are returned.\n"
         },
         {
-          "name": "user_state",
+          "name": "userState",
           "schema": "string",
           "required": false,
           "description": "If user_state is set, only posts matching the state specified will be returned.  Only one state may be passed and it must be one of the following: viewed, replied, bookmarked <br><br> NOTE: This option will only work with oauth requests.\n"
         },
         {
-          "name": "include_reposts",
+          "name": "includeReposts",
           "schema": "integer",
           "required": false,
           "description": "If set to 1 (the default), posts that are reposts will be included. If set to 0, reposts will be excluded. See the repost_count field of post objects for details about how reposts are identified.\n"
@@ -242,19 +242,19 @@
           "description": "A comma separated list of the post types to return.  The available post types are: offer, wanted\n"
         },
         {
-          "name": "date_min",
+          "name": "dateMin",
           "schema": "string",
           "required": true,
           "description": "Only posts newer than or equal to this UTC date and time will be returned. The UTC date and time used must be within a day or less of date_max. And the date and time must be within the last 30 days. And the date and time must be rounded to the nearest second.\n"
         },
         {
-          "name": "date_max",
+          "name": "dateMax",
           "schema": "string",
           "required": true,
           "description": "Only posts older than this UTC date and time will be returned. The UTC date and time used must be within a day or less of date_min. And the date and time must be rounded to the nearest second.\n"
         },
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "The number of posts to return per page (must be >= 1 and <= 50)."
@@ -266,7 +266,7 @@
           "description": "The page of posts to return."
         },
         {
-          "name": "device_pixel_ratio",
+          "name": "devicePixelRatio",
           "schema": "number",
           "required": false,
           "description": "Client device pixel ratio used to determine thumbnail size (default 1.0)."
@@ -287,19 +287,19 @@
       "description": "List all post changes",
       "parameters": [
         {
-          "name": "date_min",
+          "name": "dateMin",
           "schema": "string",
           "required": true,
           "description": "Only changes newer than or equal to this UTC date and time will be returned. The UTC date and time used must be within a day or less of date_max. And the date and time must be within the last 30 days. And the date and time must be rounded to the nearest second.\n"
         },
         {
-          "name": "date_max",
+          "name": "dateMax",
           "schema": "string",
           "required": true,
           "description": "Only changes older than this UTC date and time will be returned. The UTC date and time used must be within a day or less of date_min. And the date and time must be rounded to the nearest second.\n"
         },
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "The number of changes to return per page (must be >= 1 and <= 50)."
@@ -326,7 +326,7 @@
       "description": "Retrieve multiple posts",
       "parameters": [
         {
-          "name": "post_ids",
+          "name": "postIds",
           "schema": "string",
           "required": true,
           "description": "A comma separated list of the post IDs. If more than 10 post IDs are passed, only the first 10 posts will be returned.\n"
@@ -353,7 +353,7 @@
           "description": "The search query used to find posts."
         },
         {
-          "name": "sort_by",
+          "name": "sortBy",
           "schema": "string",
           "required": false,
           "description": "How to sort the posts that are returned.  One of: relevance, date, active, distance <br /><br /> Relevance sorting will sort the posts that best match the search query first. Date sorting will sort posts from newest to oldest. Active sorting will sort active posts before satisfied, withdrawn and expired posts and then sort by date. Distance sorting will sort the closest posts first.\n"
@@ -371,13 +371,13 @@
           "description": "A comma separated list of the post sources to retrieve posts from. The available sources are: groups, trashnothing, open_archive_groups. The trashnothing source is for public posts that are posted on trash nothing but are not associated with any group. The open_archive_groups source provides a way to easily request posts from groups that have open_archives set to true without having to pass a group_ids parameter.  When passed, it will automatically return posts from open archive groups that are within the area specified by the latitude, longitude and radius parameters (or the current users' location if latitude, longitude and radius aren't passed). <br /><br /> NOTE: For requests using an api key instead of oauth, passing the trashnothing source or the open_archive_groups source makes the latitude, longitude and radius parameters required.\n"
         },
         {
-          "name": "group_ids",
+          "name": "groupIds",
           "schema": "string",
           "required": false,
           "description": "A comma separated list of the group IDs to retrieve posts from. This parameter is only used if the 'groups' source is passed in the sources parameter and only groups that the current user is a member of or that are open archives groups will be used (the group IDs of other groups will be silently discarded*). <br /><br /> NOTE: For requests using an api key instead of oauth, this field is required if the 'groups' source is passed. In addition, only posts from groups that have open_archives set to true will be used (the group IDS of other groups will be silently discarded*). <br /><br/> *To determine which group IDs were used and which were discarded, use the group_ids field in the response.\n"
         },
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "The number of posts to return per page (must be >= 1 and <= 100)."
@@ -389,7 +389,7 @@
           "description": "The page of posts to return."
         },
         {
-          "name": "device_pixel_ratio",
+          "name": "devicePixelRatio",
           "schema": "number",
           "required": false,
           "description": "Client device pixel ratio used to determine thumbnail size (default 1.0)."
@@ -413,13 +413,13 @@
           "description": "The radius in meters of a circle centered at the point defined by the latitude and longitude parameters. When latitude, longitude and radius are passed, only posts within the circle defined by these parameters will be returned.\n"
         },
         {
-          "name": "date_min",
+          "name": "dateMin",
           "schema": "string",
           "required": false,
           "description": "Only posts newer than or equal to this UTC date and time will be returned.  If unset, defaults to the current date and time minus 90 days.\n"
         },
         {
-          "name": "date_max",
+          "name": "dateMax",
           "schema": "string",
           "required": false,
           "description": "Only posts older than this UTC date and time will be returned.  If unset, defaults to the current date and time."
@@ -431,13 +431,13 @@
           "description": "A comma separated list of the post outcomes to return.  The available post outcomes are: satisfied, withdrawn <br /><br /> There are also a couple special values that can be passed.  If set to an empty string (the default), only posts that are not satisfied and not withdrawn and not expired are returned. If set to 'all', all posts will be returned no matter what outcome the posts have. If set to 'not-promised', only posts that are not satisfied ant not withdrawn and not expired and not promised are returned.\n"
         },
         {
-          "name": "user_state",
+          "name": "userState",
           "schema": "string",
           "required": false,
           "description": "If user_state is set, only posts matching the state specified will be returned.  Only one state may be passed and it must be one of the following: viewed, replied, bookmarked <br><br> NOTE: This option will only work with oauth requests.\n"
         },
         {
-          "name": "include_reposts",
+          "name": "includeReposts",
           "schema": "integer",
           "required": false,
           "description": "If set to 1 (the default), posts that are reposts will be included. If set to 0, reposts will be excluded. See the repost_count field of post objects for details about how reposts are identified.\n"
@@ -458,7 +458,7 @@
       "description": "Retrieve a post",
       "parameters": [
         {
-          "name": "post_id",
+          "name": "postId",
           "schema": "string",
           "required": true,
           "description": "The ID of the post to retrieve."
@@ -479,7 +479,7 @@
       "description": "Retrieve post display data",
       "parameters": [
         {
-          "name": "post_id",
+          "name": "postId",
           "schema": "string",
           "required": true,
           "description": "The ID of the post to retrieve."
@@ -500,13 +500,13 @@
       "description": "List posts by a user",
       "parameters": [
         {
-          "name": "user_id",
+          "name": "userId",
           "schema": "string",
           "required": true,
           "description": "The user ID of the user whose posts will be retrieved. Using 'me' as the user_id will return the posts for the current user.\n"
         },
         {
-          "name": "sort_by",
+          "name": "sortBy",
           "schema": "string",
           "required": false,
           "description": "How to sort the posts that are returned.  One of: date, active, distance <br /><br />\nDate sorting will sort posts from newest to oldest. Active sorting will sort active posts before satisfied, withdrawn and expired posts and then sort by date. Distance sorting will sort the closest posts first.\n"
@@ -524,13 +524,13 @@
           "description": "A comma separated list of the post sources to retrieve posts from. The available sources are: groups, trashnothing, open_archive_groups. The trashnothing source is for public posts that are posted on trash nothing but are not associated with any group. The open_archive_groups source provides a way to easily request posts from groups that have open_archives set to true without having to pass a group_ids parameter.  When passed, it will automatically return posts from open archive groups that are within the area specified by the latitude, longitude and radius parameters (or all the open archive groups the requested user has posted to if latitude, longitude and radius aren't passed). <br /><br /> NOTE: For requests using an api key instead of oauth, passing the trashnothing source or the open_archive_groups source makes the latitude, longitude and radius parameters required.\n"
         },
         {
-          "name": "group_ids",
+          "name": "groupIds",
           "schema": "string",
           "required": false,
           "description": "A comma separated list of the group IDs to retrieve posts from. This parameter is only used if the 'groups' source is passed in the sources parameter and only groups that the current user is a member of or that are open archives groups will be used (the group IDs of other groups will be silently discarded*). <br /><br /> NOTE: For requests using an api key instead of oauth, this field is required if the 'groups' source is passed. In addition, only posts from groups that have open_archives set to true will be used (the group IDS of other groups will be silently discarded*). <br /><br/> *To determine which group IDs were used and which were discarded, use the group_ids field in the response.\n"
         },
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "The number of posts to return per page (must be >= 1 and <= 100)."
@@ -542,7 +542,7 @@
           "description": "The page of posts to return."
         },
         {
-          "name": "device_pixel_ratio",
+          "name": "devicePixelRatio",
           "schema": "number",
           "required": false,
           "description": "Client device pixel ratio used to determine thumbnail size (default 1.0)."
@@ -566,13 +566,13 @@
           "description": "The radius in meters of a circle centered at the point defined by the latitude and longitude parameters. When latitude, longitude and radius are passed, only posts within the circle defined by these parameters will be returned.\n"
         },
         {
-          "name": "date_min",
+          "name": "dateMin",
           "schema": "string",
           "required": false,
           "description": "Only posts newer than or equal to this UTC date and time will be returned.\n"
         },
         {
-          "name": "date_max",
+          "name": "dateMax",
           "schema": "string",
           "required": false,
           "description": "Only posts older than this UTC date and time will be returned."
@@ -584,7 +584,7 @@
           "description": "A comma separated list of the post outcomes to return.  The available post outcomes are: satisfied, withdrawn <br /><br /> There are also a couple special values that can be passed.  If set to an empty string (the default), only posts that are not satisfied and not withdrawn and not expired are returned. If set to 'all', all posts will be returned no matter what outcome the posts have. If set to 'not-promised', only posts that are not satisfied ant not withdrawn and not expired and not promised are returned.\n"
         },
         {
-          "name": "include_reposts",
+          "name": "includeReposts",
           "schema": "integer",
           "required": false,
           "description": "If set to 1 (the default), posts that are reposts will be included. If set to 0, reposts will be excluded. See the repost_count field of post objects for details about how reposts are identified.\n"
@@ -605,7 +605,7 @@
       "description": "Search posts by a user",
       "parameters": [
         {
-          "name": "user_id",
+          "name": "userId",
           "schema": "string",
           "required": true,
           "description": "The user ID of the user whose posts will be retrieved. Using 'me' as the user_id will return the posts for the current user.\n"
@@ -617,7 +617,7 @@
           "description": "The search query used to find posts."
         },
         {
-          "name": "sort_by",
+          "name": "sortBy",
           "schema": "string",
           "required": false,
           "description": "How to sort the posts that are returned.  One of: relevance, date, active, distance <br /><br /> Relevance sorting will sort the posts that best match the search query first. Date sorting will sort posts from newest to oldest. Active sorting will sort active posts before satisfied, withdrawn and expired posts and then sort by date. Distance sorting will sort the closest posts first.\n"
@@ -635,13 +635,13 @@
           "description": "A comma separated list of the post sources to retrieve posts from. The available sources are: groups, trashnothing, open_archive_groups. The trashnothing source is for public posts that are posted on trash nothing but are not associated with any group. The open_archive_groups source provides a way to easily request posts from groups that have open_archives set to true without having to pass a group_ids parameter.  When passed, it will automatically return posts from open archive groups that are within the area specified by the latitude, longitude and radius parameters (or all the open archive groups the requested user has posted to if latitude, longitude and radius aren't passed). <br /><br /> NOTE: For requests using an api key instead of oauth, passing the trashnothing source or the open_archive_groups source makes the latitude, longitude and radius parameters required.\n"
         },
         {
-          "name": "group_ids",
+          "name": "groupIds",
           "schema": "string",
           "required": false,
           "description": "A comma separated list of the group IDs to retrieve posts from. This parameter is only used if the 'groups' source is passed in the sources parameter and only groups that the current user is a member of or that are open archives groups will be used (the group IDs of other groups will be silently discarded*). <br /><br /> NOTE: For requests using an api key instead of oauth, this field is required if the 'groups' source is passed. In addition, only posts from groups that have open_archives set to true will be used (the group IDS of other groups will be silently discarded*). <br /><br/> *To determine which group IDs were used and which were discarded, use the group_ids field in the response.\n"
         },
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "The number of posts to return per page (must be >= 1 and <= 100)."
@@ -653,7 +653,7 @@
           "description": "The page of posts to return."
         },
         {
-          "name": "device_pixel_ratio",
+          "name": "devicePixelRatio",
           "schema": "number",
           "required": false,
           "description": "Client device pixel ratio used to determine thumbnail size (default 1.0)."
@@ -677,13 +677,13 @@
           "description": "The radius in meters of a circle centered at the point defined by the latitude and longitude parameters. When latitude, longitude and radius are passed, only posts within the circle defined by these parameters will be returned.\n"
         },
         {
-          "name": "date_min",
+          "name": "dateMin",
           "schema": "string",
           "required": false,
           "description": "Only posts newer than or equal to this UTC date and time will be returned.\n"
         },
         {
-          "name": "date_max",
+          "name": "dateMax",
           "schema": "string",
           "required": false,
           "description": "Only posts older than this UTC date and time will be returned."
@@ -695,7 +695,7 @@
           "description": "A comma separated list of the post outcomes to return.  The available post outcomes are: satisfied, withdrawn <br /><br /> There are also a couple special values that can be passed.  If set to an empty string (the default), only posts that are not satisfied and not withdrawn and not expired are returned. If set to 'all', all posts will be returned no matter what outcome the posts have. If set to 'not-promised', only posts that are not satisfied ant not withdrawn and not expired and not promised are returned.\n"
         },
         {
-          "name": "include_reposts",
+          "name": "includeReposts",
           "schema": "integer",
           "required": false,
           "description": "If set to 1 (the default), posts that are reposts will be included. If set to 0, reposts will be excluded. See the repost_count field of post objects for details about how reposts are identified.\n"

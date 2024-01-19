@@ -13,13 +13,13 @@
       "description": "Fetch a list of best podcasts by genre",
       "parameters": [
         {
-          "name": "X-ListenAPI-Key",
+          "name": "xListenApiKey",
           "schema": "string",
           "required": true,
           "description": "Get API Key on listennotes.com/api"
         },
         {
-          "name": "genre_id",
+          "name": "genreId",
           "schema": "string",
           "required": false,
           "description": "You can get the id from `GET /genres`. If not specified, it'll be the overall best podcasts, which can be considered as a special genre."
@@ -37,7 +37,7 @@
           "description": "Filter best podcasts by country/region.\nPlease note that podcasts that are \"best\" in a country/region may not be produced in that country/region.\nFor example, a podcast from the US may be very popular in Canada.\nYou can get the supported country codes (e.g., us, jp, gb...) from `GET /regions`.\nIf not specified, you'll get \"best podcasts\" in United States.\n"
         },
         {
-          "name": "publisher_region",
+          "name": "publisherRegion",
           "schema": "string",
           "required": false,
           "description": "Filter best podcasts by the publisher's country/region.\nThis is to narrow down the results to include \"best podcasts\" produced in a specific country/region.\nYou can get the supported country codes (e.g., us, jp, gb...) from `GET /regions`.\nIf not specified, you'll get \"best podcasts\" produced in any country/region.\nIf you want to get a country/region's \"best podcasts\" that are also produced in that country/region,\nthen you need to specify both **region** and **publisher_region**,\ne.g., `region=jp` and `publisher_region=jp`.\n"
@@ -55,7 +55,7 @@
           "description": "How do you want to sort these podcasts?\nIf you'd like to sort by popularity, please use **listen_score**.\n"
         },
         {
-          "name": "safe_mode",
+          "name": "safeMode",
           "schema": "integer",
           "required": false,
           "description": "Whether or not to exclude podcasts with explicit language. 1 is yes, and 0 is no."
@@ -76,7 +76,7 @@
       "description": "Fetch curated lists of podcasts",
       "parameters": [
         {
-          "name": "X-ListenAPI-Key",
+          "name": "xListenApiKey",
           "schema": "string",
           "required": true,
           "description": "Get API Key on listennotes.com/api"
@@ -103,7 +103,7 @@
       "description": "Fetch a curated list of podcasts by id",
       "parameters": [
         {
-          "name": "X-ListenAPI-Key",
+          "name": "xListenApiKey",
           "schema": "string",
           "required": true,
           "description": "Get API Key on listennotes.com/api"
@@ -130,7 +130,7 @@
       "description": "Batch fetch basic meta data for episodes",
       "parameters": [
         {
-          "name": "X-ListenAPI-Key",
+          "name": "xListenApiKey",
           "schema": "string",
           "required": true,
           "description": "Get API Key on listennotes.com/api"
@@ -157,7 +157,7 @@
       "description": "Fetch detailed meta data for an episode by id",
       "parameters": [
         {
-          "name": "X-ListenAPI-Key",
+          "name": "xListenApiKey",
           "schema": "string",
           "required": true,
           "description": "Get API Key on listennotes.com/api"
@@ -169,7 +169,7 @@
           "description": "id for a specific episode. You can get episode id from using other endpoints, e.g., `GET /search`..."
         },
         {
-          "name": "show_transcript",
+          "name": "showTranscript",
           "schema": "integer",
           "required": false,
           "description": "To include the transcript of this episode or not? If it is 1, then include the transcript in the **transcript** field. The default value is 0 - we don't include transcript by default, because 1) it would make the response data very big, thus slow response time; 2) less than 1% of episodes have transcripts. The transcript field is available only in the PRO/ENTERPRISE plan."
@@ -190,7 +190,7 @@
       "description": "Fetch recommendations for an episode",
       "parameters": [
         {
-          "name": "X-ListenAPI-Key",
+          "name": "xListenApiKey",
           "schema": "string",
           "required": true,
           "description": "Get API Key on listennotes.com/api"
@@ -202,7 +202,7 @@
           "description": "Episode id."
         },
         {
-          "name": "safe_mode",
+          "name": "safeMode",
           "schema": "integer",
           "required": false,
           "description": "Whether or not to exclude podcasts with explicit language. 1 is yes, and 0 is no."
@@ -223,13 +223,13 @@
       "description": "Fetch a list of podcast genres",
       "parameters": [
         {
-          "name": "X-ListenAPI-Key",
+          "name": "xListenApiKey",
           "schema": "string",
           "required": true,
           "description": "Get API Key on listennotes.com/api"
         },
         {
-          "name": "top_level_only",
+          "name": "topLevelOnly",
           "schema": "integer",
           "required": false,
           "description": "Just show top level genres? If 1, yes, just show top level genres. If 0, no, show all genres.\n"
@@ -250,7 +250,7 @@
       "description": "Fetch a random podcast episode",
       "parameters": [
         {
-          "name": "X-ListenAPI-Key",
+          "name": "xListenApiKey",
           "schema": "string",
           "required": true,
           "description": "Get API Key on listennotes.com/api"
@@ -271,7 +271,7 @@
       "description": "Fetch a list of supported languages for podcasts",
       "parameters": [
         {
-          "name": "X-ListenAPI-Key",
+          "name": "xListenApiKey",
           "schema": "string",
           "required": true,
           "description": "Get API Key on listennotes.com/api"
@@ -292,7 +292,7 @@
       "description": "Fetch a list of your playlists.",
       "parameters": [
         {
-          "name": "X-ListenAPI-Key",
+          "name": "xListenApiKey",
           "schema": "string",
           "required": true,
           "description": "Get API Key on listennotes.com/api"
@@ -325,7 +325,7 @@
       "description": "Fetch a playlist's info and items (i.e., episodes or podcasts).",
       "parameters": [
         {
-          "name": "X-ListenAPI-Key",
+          "name": "xListenApiKey",
           "schema": "string",
           "required": true,
           "description": "Get API Key on listennotes.com/api"
@@ -343,7 +343,7 @@
           "description": "The type of this playlist, which should be either **episode_list** or **podcast_list**.\n"
         },
         {
-          "name": "last_timestamp_ms",
+          "name": "lastTimestampMs",
           "schema": "integer",
           "required": false,
           "description": "For playlist items pagination.\nIt's the value of **last_timestamp_ms** from the response of last request.\nIf it's 0 or not specified, just return the latest or the oldest 20 items,\ndepending on the value of the **sort** parameter.\n"
@@ -370,7 +370,7 @@
       "description": "Batch fetch basic meta data for podcasts",
       "parameters": [
         {
-          "name": "X-ListenAPI-Key",
+          "name": "xListenApiKey",
           "schema": "string",
           "required": true,
           "description": "Get API Key on listennotes.com/api"
@@ -421,13 +421,13 @@
       "description": "Fetch podcasts by a publisher's domain name",
       "parameters": [
         {
-          "name": "X-ListenAPI-Key",
+          "name": "xListenApiKey",
           "schema": "string",
           "required": true,
           "description": "Get API Key on listennotes.com/api"
         },
         {
-          "name": "domain_name",
+          "name": "domainName",
           "schema": "string",
           "required": true,
           "description": "A publisher's domain name, e.g., nytimes.com, wondery.com, npr.org..."
@@ -454,7 +454,7 @@
       "description": "Submit a podcast to Listen Notes database",
       "parameters": [
         {
-          "name": "X-ListenAPI-Key",
+          "name": "xListenApiKey",
           "schema": "string",
           "required": true,
           "description": "Get API Key on listennotes.com/api"
@@ -487,7 +487,7 @@
       "description": "Request to delete a podcast",
       "parameters": [
         {
-          "name": "X-ListenAPI-Key",
+          "name": "xListenApiKey",
           "schema": "string",
           "required": true,
           "description": "Get API Key on listennotes.com/api"
@@ -520,7 +520,7 @@
       "description": "Fetch detailed meta data and episodes for a podcast by id",
       "parameters": [
         {
-          "name": "X-ListenAPI-Key",
+          "name": "xListenApiKey",
           "schema": "string",
           "required": true,
           "description": "Get API Key on listennotes.com/api"
@@ -532,7 +532,7 @@
           "description": "Podcast id. You can get podcast id from using other endpoints, e.g., `GET /search`, `GET /best_podcasts`..."
         },
         {
-          "name": "next_episode_pub_date",
+          "name": "nextEpisodePubDate",
           "schema": "integer",
           "required": false,
           "description": "For episodes pagination. It's the value of **next_episode_pub_date** from the response of last request. If not specified, just return latest 10 episodes or oldest 10 episodes, depending on the value of the **sort** parameter.\n"
@@ -559,7 +559,7 @@
       "description": "Fetch audience demographics for a podcast",
       "parameters": [
         {
-          "name": "X-ListenAPI-Key",
+          "name": "xListenApiKey",
           "schema": "string",
           "required": true,
           "description": "Get API Key on listennotes.com/api"
@@ -586,7 +586,7 @@
       "description": "Fetch recommendations for a podcast",
       "parameters": [
         {
-          "name": "X-ListenAPI-Key",
+          "name": "xListenApiKey",
           "schema": "string",
           "required": true,
           "description": "Get API Key on listennotes.com/api"
@@ -598,7 +598,7 @@
           "description": "Podcast id."
         },
         {
-          "name": "safe_mode",
+          "name": "safeMode",
           "schema": "integer",
           "required": false,
           "description": "Whether or not to exclude podcasts with explicit language. 1 is yes, and 0 is no."
@@ -619,7 +619,7 @@
       "description": "Fetch a list of supported countries/regions for best podcasts",
       "parameters": [
         {
-          "name": "X-ListenAPI-Key",
+          "name": "xListenApiKey",
           "schema": "string",
           "required": true,
           "description": "Get API Key on listennotes.com/api"
@@ -640,7 +640,7 @@
       "description": "Fetch related search terms",
       "parameters": [
         {
-          "name": "X-ListenAPI-Key",
+          "name": "xListenApiKey",
           "schema": "string",
           "required": true,
           "description": "Get API Key on listennotes.com/api"
@@ -667,7 +667,7 @@
       "description": "Full-text search",
       "parameters": [
         {
-          "name": "X-ListenAPI-Key",
+          "name": "xListenApiKey",
           "schema": "string",
           "required": true,
           "description": "Get API Key on listennotes.com/api"
@@ -679,7 +679,7 @@
           "description": "Search term, e.g., person, place, topic... You can use double quotes to do verbatim match, e.g., \"game of thrones\". Otherwise, it's fuzzy search.\n"
         },
         {
-          "name": "sort_by_date",
+          "name": "sortByDate",
           "schema": "integer",
           "required": false,
           "description": "Sort by date or not? If 0, then sort by relevance. If 1, then sort by date.\n"
@@ -697,61 +697,61 @@
           "description": "Offset for search results, for pagination. You'll use **next_offset** from response for this parameter.\n"
         },
         {
-          "name": "len_min",
+          "name": "lenMin",
           "schema": "integer",
           "required": false,
           "description": "Minimum audio length in minutes. Applicable only when **type** parameter is **episode** or **podcast**.\nIf **type** parameter is **episode**, it's for audio length of an episode.\nIf **type** parameter is **podcast**, it's for average audio length of all episodes in a podcast.\n"
         },
         {
-          "name": "len_max",
+          "name": "lenMax",
           "schema": "integer",
           "required": false,
           "description": "Maximum audio length in minutes. Applicable only when **type** parameter is **episode** or **podcast**.\nIf **type** parameter is **episode**, it's for audio length of an episode.\nIf **type** parameter is **podcast**, it's for average audio length of all episodes in a podcast.\n"
         },
         {
-          "name": "episode_count_min",
+          "name": "episodeCountMin",
           "schema": "integer",
           "required": false,
           "description": "Minimum number of episodes. Applicable only when type parameter is **podcast**.\n"
         },
         {
-          "name": "episode_count_max",
+          "name": "episodeCountMax",
           "schema": "integer",
           "required": false,
           "description": "Maximum number of episodes. Applicable only when type parameter is **podcast**.\n"
         },
         {
-          "name": "update_freq_min",
+          "name": "updateFreqMin",
           "schema": "integer",
           "required": false,
           "description": "Minimum update frequency in hours (how frequently does a podcast release a new episode). For example, if you want to find \"weekly\" podcasts, then you can set **update_freq_min**=144 hours (or 6 days) and **update_freq_max**=192 hours (or 8 days). Applicable only when type parameter is **podcast**.\n"
         },
         {
-          "name": "update_freq_max",
+          "name": "updateFreqMax",
           "schema": "integer",
           "required": false,
           "description": "Maximum update frequency in hours (how frequently does a podcast release a new episode). For example, if you want to find \"weekly\" podcasts, then you can set **update_freq_min**=144 hours (or 6 days) and **update_freq_max**=192 hours (or 8 days). Applicable only when type parameter is **podcast**.\n"
         },
         {
-          "name": "genre_ids",
+          "name": "genreIds",
           "schema": "string",
           "required": false,
           "description": "A comma-delimited string of a list of genre ids. If not specified, then all genres are included. You can find the id and the name of all genres from `GET /genres`. It works only when **type** is *episode* or *podcast*.\n"
         },
         {
-          "name": "published_before",
+          "name": "publishedBefore",
           "schema": "integer",
           "required": false,
           "description": "Only show episodes/podcasts/curated lists published before this timestamp (in milliseconds). If **published_before** & **published_after** are used at the same time, **published_before** should be bigger than **published_after**.\n"
         },
         {
-          "name": "published_after",
+          "name": "publishedAfter",
           "schema": "integer",
           "required": false,
           "description": "Only show episodes/podcasts/curated lists published after this timestamp (in milliseconds). If **published_before** & **published_after** are used at the same time, **published_before** should be bigger than **published_after**.\n"
         },
         {
-          "name": "only_in",
+          "name": "onlyIn",
           "schema": "string",
           "required": false,
           "description": "A comma-delimited string to search only in specific fields. Allowed values are title, description, author, and audio. If not specified, then search every fields.\n"
@@ -781,19 +781,19 @@
           "description": "A comma-delimited string of podcast ids (up to 5 podcasts) - you can get a podcast id from the **podcast_id** field in response. This parameter is to exclude search results of a few specific podcasts. It works only when **type** is *episode*.\n"
         },
         {
-          "name": "safe_mode",
+          "name": "safeMode",
           "schema": "integer",
           "required": false,
           "description": "Whether or not to exclude podcasts/episodes with explicit language. 1 is yes and 0 is no. It works only when **type** is *episode* or *podcast*.\n"
         },
         {
-          "name": "unique_podcasts",
+          "name": "uniquePodcasts",
           "schema": "integer",
           "required": false,
           "description": "Whether or not to keep only one episode per podcast in search results. 1 is yes and 0 is no. It works only when **type** is *episode*.\n"
         },
         {
-          "name": "page_size",
+          "name": "pageSize",
           "schema": "integer",
           "required": false,
           "description": "The maximum number of search results per page. A valid value should be an integer between 1 and 10 (inclusive).\n"
@@ -814,7 +814,7 @@
       "description": "Spell check on a search term",
       "parameters": [
         {
-          "name": "X-ListenAPI-Key",
+          "name": "xListenApiKey",
           "schema": "string",
           "required": true,
           "description": "Get API Key on listennotes.com/api"
@@ -841,7 +841,7 @@
       "description": "Fetch trending search terms",
       "parameters": [
         {
-          "name": "X-ListenAPI-Key",
+          "name": "xListenApiKey",
           "schema": "string",
           "required": true,
           "description": "Get API Key on listennotes.com/api"
@@ -862,7 +862,7 @@
       "description": "Typeahead search",
       "parameters": [
         {
-          "name": "X-ListenAPI-Key",
+          "name": "xListenApiKey",
           "schema": "string",
           "required": true,
           "description": "Get API Key on listennotes.com/api"
@@ -874,19 +874,19 @@
           "description": "Search term, e.g., person, place, topic... You can use double quotes to do verbatim match, e.g., \"game of thrones\". Otherwise, it's fuzzy search.\n"
         },
         {
-          "name": "show_podcasts",
+          "name": "showPodcasts",
           "schema": "integer",
           "required": false,
           "description": "Autosuggest podcasts. This only searches podcast title and publisher and returns very limited info of 5 podcasts. 1 is yes, 0 is no. It's a bit slow to autosuggest podcasts, so we turn it off by default. If show_podcasts=1, you can also pass iTunes id (e.g., 474722933) to the q parameter to fetch podcast meta data.\n"
         },
         {
-          "name": "show_genres",
+          "name": "showGenres",
           "schema": "integer",
           "required": false,
           "description": "Whether or not to autosuggest genres. 1 is yes, 0 is no.\n"
         },
         {
-          "name": "safe_mode",
+          "name": "safeMode",
           "schema": "integer",
           "required": false,
           "description": "Whether or not to exclude podcasts/episodes with explicit language. 1 is yes and 0 is no. It works only when **show_podcasts** is *1*.\n"

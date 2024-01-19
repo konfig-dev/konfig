@@ -25,13 +25,13 @@
       "description": "Get window to change seller",
       "parameters": [
         {
-          "name": "Content-Type",
+          "name": "contentType",
           "schema": "string",
           "required": true,
           "description": "Type of the content being sent."
         },
         {
-          "name": "Accept",
+          "name": "accept",
           "schema": "string",
           "required": true,
           "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
@@ -52,13 +52,13 @@
       "description": "Update window to change seller",
       "parameters": [
         {
-          "name": "Content-Type",
+          "name": "contentType",
           "schema": "string",
           "required": true,
           "description": "Type of the content being sent."
         },
         {
-          "name": "Accept",
+          "name": "accept",
           "schema": "string",
           "required": true,
           "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
@@ -80,13 +80,13 @@
       "description": "Export order report with status 'Completed'",
       "parameters": [
         {
-          "name": "Content-Type",
+          "name": "contentType",
           "schema": "string",
           "required": true,
           "description": "Type of the content being sent."
         },
         {
-          "name": "Accept",
+          "name": "accept",
           "schema": "string",
           "required": true,
           "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
@@ -107,13 +107,13 @@
       "description": "Export order report with status 'In Progress'",
       "parameters": [
         {
-          "name": "Content-Type",
+          "name": "contentType",
           "schema": "string",
           "required": true,
           "description": "Type of the content being sent."
         },
         {
-          "name": "Accept",
+          "name": "accept",
           "schema": "string",
           "required": true,
           "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
@@ -140,13 +140,13 @@
           "description": ""
         },
         {
-          "name": "Accept",
+          "name": "accept",
           "schema": "string",
           "required": true,
           "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
         },
         {
-          "name": "Content-Type",
+          "name": "contentType",
           "schema": "string",
           "required": true,
           "description": "Type of the content being sent"
@@ -162,13 +162,13 @@
       "description": "List orders",
       "parameters": [
         {
-          "name": "Accept",
+          "name": "accept",
           "schema": "string",
           "required": true,
           "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
         },
         {
-          "name": "Content-Type",
+          "name": "contentType",
           "schema": "string",
           "required": true,
           "description": "Type of the content being sent."
@@ -186,19 +186,19 @@
           "description": "Define the number of pages you wish to retrieve, restricted to the limit of 30 pages."
         },
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "required": false,
           "description": "Quantity of orders for each page, the default value is 15 and it goes up to 100 orders per page. Be aware that the limit of retrieval ofthis endpoint is 30 pages."
         },
         {
-          "name": "f_creationDate",
+          "name": "fCreationDate",
           "schema": "string",
           "required": true,
           "description": "Concatened value sufix `{{creationDate}}` and range date in Timestamp format. To use the `utc` query parameter, to filter orders by time zone, you must also fill the `f_creationDate` date parameter."
         },
         {
-          "name": "f_hasInputInvoice",
+          "name": "fHasInputInvoice",
           "schema": "boolean",
           "required": false,
           "description": "Filters list to return only orders with non `null` values for the `invoiceInput` field."
@@ -216,43 +216,43 @@
           "description": "Converts orders' time zone to the Universal Time Coordinated (UTC) format and shows the amount of orders set for that UTC, up to the limit of 30 pages. For it to work properly, you have to associate it with the `f_creationDate` parameter."
         },
         {
-          "name": "f_shippingEstimate",
+          "name": "fShippingEstimate",
           "schema": "string",
           "required": false,
           "description": "You can filter orders by shipping estimate time in days by concatenating the desired number of days with the sufix `.days`. For example: \r\n- Next 7 days: `7.days` \r\n- Tomorrow: `1.days` \r\n- Today: `0.days` \r\n- Late: `-1.days`"
         },
         {
-          "name": "f_invoicedDate",
+          "name": "fInvoicedDate",
           "schema": "string",
           "required": false,
           "description": "You can filter orders by invoiced date by concatenating the sufix `invoicedDate:` with the range date in Timestamp format. For example: \r\n- 1 Day: `invoicedDate:[2022-01-01T02:00:00.000Z TO 2022-01-02T01:59:59.999Z]`\r\n- 1 Month: `invoicedDate:[2022-01-01T02:00:00.000Z TO 2022-02-01T01:59:59.999Z]` \r\n- 1 Year: `invoicedDate:[2022-01-01T02:00:00.000Z TO 2022-01-01T01:59:59.999Z]`"
         },
         {
-          "name": "f_authorizedDate",
+          "name": "fAuthorizedDate",
           "schema": "string",
           "required": false,
           "description": "You can filter orders by creation date by concatenating the sufix `authorizedDate:` with the range date in Timestamp format. For example: \r\n- 1 Day: `authorizedDate:[2022-01-01T02:00:00.000Z TO 2022-01-02T01:59:59.999Z]`\r\n- 1 Month: `authorizedDate:[2022-01-01T02:00:00.000Z TO 2022-02-01T01:59:59.999Z]` \r\n- 1 Year: `authorizedDate:[2022-01-01T02:00:00.000Z TO 2022-01-01T01:59:59.999Z]`"
         },
         {
-          "name": "f_UtmSource",
+          "name": "fUtmSource",
           "schema": "string",
           "required": false,
           "description": "You can filter orders by using a Universal Transverse Mercator (UTM) source."
         },
         {
-          "name": "f_sellerNames",
+          "name": "fSellerNames",
           "schema": "string",
           "required": false,
           "description": "You can filter orders by using a seller's name."
         },
         {
-          "name": "f_callCenterOperatorName",
+          "name": "fCallCenterOperatorName",
           "schema": "string",
           "required": false,
           "description": "You can filter orders by using a Call Center Operator's identification."
         },
         {
-          "name": "f_salesChannel",
+          "name": "fSalesChannel",
           "schema": "string",
           "required": false,
           "description": "You can filter orders by sales channel's ([or trade policy](https://help.vtex.com/en/tutorial/how-trade-policies-work--6Xef8PZiFm40kg2STrMkMV)) name."
@@ -264,13 +264,13 @@
           "description": "You can filter orders by sales channel's ([or trade policy](https://help.vtex.com/en/tutorial/how-trade-policies-work--6Xef8PZiFm40kg2STrMkMV)) ID."
         },
         {
-          "name": "f_affiliateId",
+          "name": "fAffiliateId",
           "schema": "string",
           "required": false,
           "description": "You can filter orders by affiliate ID."
         },
         {
-          "name": "f_status",
+          "name": "fStatus",
           "schema": "string",
           "required": false,
           "description": "You can filter orders by the following [order status](https://help.vtex.com/en/tutorial/order-flow-and-status--tutorials_196): \r\n- `waiting-for-sellers-confirmation` \r\n- `payment-pending` \r\n- `payment-approved` \r\n- `ready-for-handling` \r\n- `handling` \r\n- `invoiced` \r\n- `canceled`"
@@ -282,13 +282,13 @@
           "description": "When set as `true`, you retrieve [incomplete orders](https://help.vtex.com/en/tutorial/understanding-incomplete-orders), when set as `false`, you retrieve orders that are not incomplete."
         },
         {
-          "name": "f_paymentNames",
+          "name": "fPaymentNames",
           "schema": "string",
           "required": false,
           "description": "You can filter orders by payment type."
         },
         {
-          "name": "f_RnB",
+          "name": "fRnB",
           "schema": "string",
           "required": false,
           "description": "You can filter orders by rates and benefits (promotions)."
@@ -300,7 +300,7 @@
           "description": "You can search orders by using one of the following criterias: \r\n- SKU ID - `sku_Ids&sku_Ids` \r\n- Gift List ID - `listId&listId` \r\n- Transaction ID (TID) - `tid&tid` \r\n- PCI Connector's Transaction ID (TID) - `pci_tid&pci_tid` \r\n- Payment ID (PID) - `paymentId&paymentId` \r\n- Connector's NSU - `nsu&nsu`"
         },
         {
-          "name": "f_isInstore",
+          "name": "fIsInstore",
           "schema": "boolean",
           "required": false,
           "description": "When set as `true`, this parameter filters orders made via [inStore](https://help.vtex.com/en/tracks/what-is-instore--zav76TFEZlAjnyBVL5tRc), and when set as `false`, it filters orders that were not made via inStore."
@@ -321,13 +321,13 @@
       "description": "Get order",
       "parameters": [
         {
-          "name": "Accept",
+          "name": "accept",
           "schema": "string",
           "required": true,
           "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
         },
         {
-          "name": "Content-Type",
+          "name": "contentType",
           "schema": "string",
           "required": true,
           "description": "Type of the content being sent."
@@ -354,13 +354,13 @@
       "description": "Cancel order",
       "parameters": [
         {
-          "name": "Accept",
+          "name": "accept",
           "schema": "string",
           "required": true,
           "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
         },
         {
-          "name": "Content-Type",
+          "name": "contentType",
           "schema": "string",
           "required": true,
           "description": "Describes the type of the content being sent."
@@ -392,13 +392,13 @@
       "description": "Register change on order",
       "parameters": [
         {
-          "name": "Content-Type",
+          "name": "contentType",
           "schema": "string",
           "required": true,
           "description": "Type of the content being sent."
         },
         {
-          "name": "Accept",
+          "name": "accept",
           "schema": "string",
           "required": true,
           "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
@@ -461,13 +461,13 @@
       "description": "Retrieve order conversation",
       "parameters": [
         {
-          "name": "Accept",
+          "name": "accept",
           "schema": "string",
           "required": true,
           "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
         },
         {
-          "name": "Content-Type",
+          "name": "contentType",
           "schema": "string",
           "required": true,
           "description": "Type of the content being sent."
@@ -500,13 +500,13 @@
       "description": "Add log in orders",
       "parameters": [
         {
-          "name": "Content-Type",
+          "name": "contentType",
           "schema": "string",
           "required": true,
           "description": "Type of the content being sent."
         },
         {
-          "name": "Accept",
+          "name": "accept",
           "schema": "string",
           "required": true,
           "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
@@ -540,13 +540,13 @@
       "description": "Order invoice notification",
       "parameters": [
         {
-          "name": "Accept",
+          "name": "accept",
           "schema": "string",
           "required": true,
           "description": "HTTP Client Negotiation _Accept_ Header. Indicates the types of responses the client can understand."
         },
         {
-          "name": "Content-Type",
+          "name": "contentType",
           "schema": "string",
           "required": true,
           "description": "Describes the type of the content being sent."
@@ -645,13 +645,13 @@
       "description": "Update order's partial invoice (send tracking number)",
       "parameters": [
         {
-          "name": "Content-Type",
+          "name": "contentType",
           "schema": "string",
           "required": true,
           "description": "Type of the content being sent."
         },
         {
-          "name": "Accept",
+          "name": "accept",
           "schema": "string",
           "required": true,
           "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
@@ -708,13 +708,13 @@
       "description": "Update order tracking status",
       "parameters": [
         {
-          "name": "Content-Type",
+          "name": "contentType",
           "schema": "string",
           "required": true,
           "description": "Type of the content being sent."
         },
         {
-          "name": "Accept",
+          "name": "accept",
           "schema": "string",
           "required": true,
           "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
@@ -765,13 +765,13 @@
       "description": "Retrieve payment transaction",
       "parameters": [
         {
-          "name": "Accept",
+          "name": "accept",
           "schema": "string",
           "required": true,
           "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
         },
         {
-          "name": "Content-Type",
+          "name": "contentType",
           "schema": "string",
           "required": true,
           "description": "Type of the content being sent."
@@ -798,13 +798,13 @@
       "description": "Send payment notification",
       "parameters": [
         {
-          "name": "Accept",
+          "name": "accept",
           "schema": "string",
           "required": true,
           "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
         },
         {
-          "name": "Content-Type",
+          "name": "contentType",
           "schema": "string",
           "required": true,
           "description": "Type of the content being sent."
@@ -832,13 +832,13 @@
       "description": "Start handling order",
       "parameters": [
         {
-          "name": "Accept",
+          "name": "accept",
           "schema": "string",
           "required": true,
           "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
         },
         {
-          "name": "Content-Type",
+          "name": "contentType",
           "schema": "string",
           "required": true,
           "description": "Type of the content being sent."
@@ -881,19 +881,19 @@
           "description": "Page number for result pagination."
         },
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "string",
           "required": true,
           "description": "Page quantity for result pagination."
         },
         {
-          "name": "Content-Type",
+          "name": "contentType",
           "schema": "string",
           "required": true,
           "description": "Type of the content being sent."
         },
         {
-          "name": "Accept",
+          "name": "accept",
           "schema": "string",
           "required": true,
           "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
@@ -920,13 +920,13 @@
           "description": "Customer email."
         },
         {
-          "name": "Content-Type",
+          "name": "contentType",
           "schema": "string",
           "required": true,
           "description": "Type of the content being sent."
         },
         {
-          "name": "Accept",
+          "name": "accept",
           "schema": "string",
           "required": true,
           "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
@@ -953,13 +953,13 @@
       "description": "Test JSONata expression",
       "parameters": [
         {
-          "name": "Accept",
+          "name": "accept",
           "schema": "string",
           "required": true,
           "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
         },
         {
-          "name": "Content-Type",
+          "name": "contentType",
           "schema": "string",
           "required": true,
           "description": "Type of the content being sent"
@@ -998,13 +998,13 @@
           "description": "Lot quantity to retrieve. Maximum accepted value is 10."
         },
         {
-          "name": "Accept",
+          "name": "accept",
           "schema": "string",
           "required": true,
           "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
         },
         {
-          "name": "Content-Type",
+          "name": "contentType",
           "schema": "string",
           "required": true,
           "description": "Type of the content being sent"
@@ -1025,13 +1025,13 @@
       "description": "Commit feed items",
       "parameters": [
         {
-          "name": "Content-Type",
+          "name": "contentType",
           "schema": "string",
           "required": true,
           "description": "Type of the content being sent."
         },
         {
-          "name": "Accept",
+          "name": "accept",
           "schema": "string",
           "required": true,
           "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
@@ -1058,13 +1058,13 @@
       "description": "Delete feed configuration",
       "parameters": [
         {
-          "name": "Accept",
+          "name": "accept",
           "schema": "string",
           "required": true,
           "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
         },
         {
-          "name": "Content-Type",
+          "name": "contentType",
           "schema": "string",
           "required": true,
           "description": "Type of the content being sent."
@@ -1080,13 +1080,13 @@
       "description": "Get feed configuration",
       "parameters": [
         {
-          "name": "Content-Type",
+          "name": "contentType",
           "schema": "string",
           "required": true,
           "description": "Type of the content being sent"
         },
         {
-          "name": "Accept",
+          "name": "accept",
           "schema": "string",
           "required": true,
           "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand"
@@ -1107,13 +1107,13 @@
       "description": "Create or update feed configuration",
       "parameters": [
         {
-          "name": "Accept",
+          "name": "accept",
           "schema": "string",
           "required": true,
           "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
         },
         {
-          "name": "Content-Type",
+          "name": "contentType",
           "schema": "string",
           "required": true,
           "description": "Type of the content being sent."
@@ -1141,13 +1141,13 @@
       "description": "Delete hook configuration",
       "parameters": [
         {
-          "name": "Accept",
+          "name": "accept",
           "schema": "string",
           "required": true,
           "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
         },
         {
-          "name": "Content-Type",
+          "name": "contentType",
           "schema": "string",
           "required": true,
           "description": "Type of the content being sent."
@@ -1163,13 +1163,13 @@
       "description": "Get hook configuration",
       "parameters": [
         {
-          "name": "Content-Type",
+          "name": "contentType",
           "schema": "string",
           "required": true,
           "description": "Type of the content being sent."
         },
         {
-          "name": "Accept",
+          "name": "accept",
           "schema": "string",
           "required": true,
           "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."
@@ -1187,7 +1187,7 @@
           "description": "Page number for result pagination."
         },
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "string",
           "required": false,
           "description": "Page quantity for result pagination."
@@ -1203,13 +1203,13 @@
       "description": "Create or update hook configuration",
       "parameters": [
         {
-          "name": "Content-Type",
+          "name": "contentType",
           "schema": "string",
           "required": true,
           "description": "Type of the content being sent."
         },
         {
-          "name": "Accept",
+          "name": "accept",
           "schema": "string",
           "required": true,
           "description": "HTTP Client Negotiation Accept Header. Indicates the types of responses the client can understand."

@@ -33,7 +33,7 @@
       "description": "Get analysis summary",
       "parameters": [
         {
-          "name": "analysis-id",
+          "name": "analysisId",
           "schema": "string",
           "required": true,
           "description": "The analysis identifier."
@@ -54,19 +54,19 @@
       "description": "Get detailed alert information",
       "parameters": [
         {
-          "name": "analysis-id",
+          "name": "analysisId",
           "schema": "string",
           "required": true,
           "description": "The analysis identifier."
         },
         {
-          "name": "sarif-version",
+          "name": "sarifVersion",
           "schema": "string",
           "required": false,
           "description": "The desired version of the SARIF format. Currently supported versions are `1.0.0`, `2.0.0`, and `2.1.0`."
         },
         {
-          "name": "excluded-files",
+          "name": "excludedFiles",
           "schema": "boolean",
           "required": false,
           "description": "Set `true` to include results in files that are excluded from the output by default. This includes results in test code and generated files. For more information, see [File classification](https://lgtm.com/help/lgtm/file-classification)."
@@ -87,7 +87,7 @@
       "description": "Run analysis of a specific commit",
       "parameters": [
         {
-          "name": "project-id",
+          "name": "projectId",
           "schema": "integer",
           "required": true,
           "description": "The numeric project identifier."
@@ -120,13 +120,13 @@
       "description": "Get analysis summary for a specific commit",
       "parameters": [
         {
-          "name": "project-id",
+          "name": "projectId",
           "schema": "integer",
           "required": true,
           "description": "The numeric project identifier."
         },
         {
-          "name": "commit-id",
+          "name": "commitId",
           "schema": "string",
           "required": true,
           "description": "The identifier of a specific commit. Alternatively, use `latest` for the most recent analyzed commit."
@@ -147,7 +147,7 @@
       "description": "Run code review for a patch",
       "parameters": [
         {
-          "name": "project-id",
+          "name": "projectId",
           "schema": "integer",
           "required": true,
           "description": "The numeric project identifier."
@@ -159,25 +159,25 @@
           "description": "The identifier for the base commit."
         },
         {
-          "name": "external-id",
+          "name": "externalId",
           "schema": "integer",
           "required": true,
           "description": "Your reference number for the code review."
         },
         {
-          "name": "review-url",
+          "name": "reviewUrl",
           "schema": "string",
           "required": false,
           "description": "An informative back-link to an external system."
         },
         {
-          "name": "callback-url",
+          "name": "callbackUrl",
           "schema": "string",
           "required": false,
           "description": "The callback URL for LGTM to post to on completion of the review.\nWhen the code review is complete, the API sends an HTTP POST request to the callback URL with the result of the code review in the request body. The code review results in the request body are identical to the results accessed through the [`/codereviews/{review-id}`](https://lgtm.com/help/lgtm/api/api-v1#opIdgetCodeReview) end-point.\nIf you specify a `callback-secret`, the request also includes an `x-lgtm-signature` header with a digital signature of the request's contents.\n"
         },
         {
-          "name": "callback-secret",
+          "name": "callbackSecret",
           "schema": "string",
           "required": false,
           "description": "The `callback-secret` is used to compute a signature which is included in the `x-lgtm-signature` header of the callback response.\nThe receiver of the callback can check the validity of the response by computing the signature using HMAC-SHA1 and verifying that it matches the `x-lgtm-signature` header value.\nThe HMAC algorithm requires byte sequences as inputs for both the secret and the message. The callback secret string must be converted to bytes using UTF-8 encoding. The response body should ideally be read as a plain byte sequence. Conversion to, for example a JSON object, and back to a byte sequence might change the formatting, and would invalidate the signature.\n"
@@ -198,7 +198,7 @@
       "description": "Get results of code review",
       "parameters": [
         {
-          "name": "review-id",
+          "name": "reviewId",
           "schema": "string",
           "required": true,
           "description": "The identifier for the review (from the `task-result-url`)."
@@ -219,13 +219,13 @@
       "description": "Get detailed alert information for an issue",
       "parameters": [
         {
-          "name": "project-id",
+          "name": "projectId",
           "schema": "integer",
           "required": true,
           "description": "The numeric project identifier."
         },
         {
-          "name": "alert-key",
+          "name": "alertKey",
           "schema": "string",
           "required": true,
           "description": "The alert key is generated by LGTM when it posts an issue `create` webhook request \n to an external system using the [issue tracker Webhook API](https://lgtm.com/admin/help/issuetracker-webhook-api).\n This key is an opaque identifier that tracks the alert's location over time. For example, if a file containing the alert\n is modified, the SARIF data will reflect the updated location of the alert.\n Note that the key needs to be URL encoded as it may contain characters that are not web-safe.  \n"
@@ -260,7 +260,7 @@
       "description": "Get operation status",
       "parameters": [
         {
-          "name": "operation-id",
+          "name": "operationId",
           "schema": "integer",
           "required": true,
           "description": "The operation identifier returned on creating the task."
@@ -338,7 +338,7 @@
           "description": "Optional when `mode=upload`, specify the date and time of the commit used to generate the database; defaults to the current time."
         },
         {
-          "name": "worker-label",
+          "name": "workerLabel",
           "schema": "array",
           "required": false,
           "description": "Optional, any [labels](https://lgtm.com/admin/help/defining-worker-labels) required by workers to analyze this project. \nTo specify more than one label, repeat the query parameter.\n"
@@ -359,7 +359,7 @@
       "description": "Delete project by numeric identifier",
       "parameters": [
         {
-          "name": "project-id",
+          "name": "projectId",
           "schema": "integer",
           "required": true,
           "description": "The numeric project identifier"
@@ -380,7 +380,7 @@
       "description": "Get project by numeric identifier",
       "parameters": [
         {
-          "name": "project-id",
+          "name": "projectId",
           "schema": "integer",
           "required": true,
           "description": "The numeric project identifier"
@@ -401,7 +401,7 @@
       "description": "Get configuration for a project identified by numeric identifier",
       "parameters": [
         {
-          "name": "project-id",
+          "name": "projectId",
           "schema": "integer",
           "required": true,
           "description": "The numeric project identifier"
@@ -432,7 +432,7 @@
       "description": "Set the administrator configuration for a project identified by numeric identifier",
       "parameters": [
         {
-          "name": "project-id",
+          "name": "projectId",
           "schema": "integer",
           "required": true,
           "description": "The numeric project identifier"
@@ -492,13 +492,13 @@
           "description": "The [language](https://lgtm.com/help/lgtm/analysis-faqs#which-languages-are-supported) you want to analyze.\n"
         },
         {
-          "name": "project-id",
+          "name": "projectId",
           "schema": "array",
           "required": false,
           "description": "The identifier of the project to analyze. Either `project-id` or `projects-list` must be specified."
         },
         {
-          "name": "projects-list",
+          "name": "projectsList",
           "schema": "string",
           "required": false,
           "description": "Name of the list containing the projects to analyze. Either `project-id` or `projects-list` must be specified."
@@ -519,7 +519,7 @@
       "description": "Get the status of a query job",
       "parameters": [
         {
-          "name": "queryjob-id",
+          "name": "queryjobId",
           "schema": "string",
           "required": true,
           "description": "The identifier of the query job, from the `task-result` given in the response to the initial `POST /queryjobs` request."
@@ -540,7 +540,7 @@
       "description": "Provide a summary of results for the projects in the query job",
       "parameters": [
         {
-          "name": "queryjob-id",
+          "name": "queryjobId",
           "schema": "string",
           "required": true,
           "description": "The identifier of the query job, from the `task-result` given in the response to the initial `POST /queryjobs` request."
@@ -579,13 +579,13 @@
       "description": "Fetch the results of a query job for a specific project",
       "parameters": [
         {
-          "name": "queryjob-id",
+          "name": "queryjobId",
           "schema": "string",
           "required": true,
           "description": "The identifier of the query job, from the `task-result` given in the response to the initial `POST /queryjobs` request."
         },
         {
-          "name": "project-id",
+          "name": "projectId",
           "schema": "string",
           "required": true,
           "description": "The identifier for the project."
@@ -624,7 +624,7 @@
       "description": "Abort database upload process",
       "parameters": [
         {
-          "name": "session-id",
+          "name": "sessionId",
           "schema": "string",
           "required": true,
           "description": "The id of the upload session."
@@ -645,7 +645,7 @@
       "description": "Complete snapshot upload session",
       "parameters": [
         {
-          "name": "session-id",
+          "name": "sessionId",
           "schema": "string",
           "required": true,
           "description": "The id of the upload session."
@@ -666,7 +666,7 @@
       "description": "Upload snapshot",
       "parameters": [
         {
-          "name": "session-id",
+          "name": "sessionId",
           "schema": "string",
           "required": true,
           "description": "The id of the upload session."
@@ -682,7 +682,7 @@
       "description": "Download a snapshot",
       "parameters": [
         {
-          "name": "project-id",
+          "name": "projectId",
           "schema": "integer",
           "required": true,
           "description": "The numeric project identifier."
@@ -704,7 +704,7 @@
       "description": "Start snapshot upload session",
       "parameters": [
         {
-          "name": "project-id",
+          "name": "projectId",
           "schema": "integer",
           "required": true,
           "description": "The numeric project identifier."
@@ -775,7 +775,7 @@
       "description": "Get the computed values of the specified metric",
       "parameters": [
         {
-          "name": "metric-id",
+          "name": "metricId",
           "schema": "string",
           "required": true,
           "description": "The identifier of the metric."

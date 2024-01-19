@@ -32,7 +32,7 @@
           "description": "Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
         },
         {
-          "name": "p_pretty_print",
+          "name": "pPrettyPrint",
           "schema": "number",
           "required": false,
           "description": "Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost."
@@ -98,529 +98,529 @@
           "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language."
         },
         {
-          "name": "p_fn",
+          "name": "pFn",
           "schema": "string",
           "required": false,
           "description": "Facility Name Filter. Enter one or more case-insensitive facility names to filter results.  Provide multiple values as a comma-delimited list.  See p_fntype for additional modifiers."
         },
         {
-          "name": "p_sa",
+          "name": "pSa",
           "schema": "string",
           "required": false,
           "description": "Facility street address. Enter a complete or partial street address."
         },
         {
-          "name": "p_sa1",
+          "name": "pSa1",
           "schema": "string",
           "required": false,
           "description": "Facility street address. Enter a complete or partial street address.   Note that p_sa1 is culmulative with p_sa."
         },
         {
-          "name": "p_ct",
+          "name": "pCt",
           "schema": "string",
           "required": false,
           "description": "Facility City Filter. Enter a single case-insensitive city name to filter results."
         },
         {
-          "name": "p_co",
+          "name": "pCo",
           "schema": "string",
           "required": false,
           "description": "Facility County Filter. Provide a single county name in combination with a state value provided via p_st."
         },
         {
-          "name": "p_fips",
+          "name": "pFips",
           "schema": "string",
           "required": false,
           "description": "FIPS Code Filter.  Enter a single 5-character Federal Information Processing Standards (FIPS) state + county value to restrict results.  E.g. to limit results to Kenosha County, Wisconsin, use 55059."
         },
         {
-          "name": "p_st",
+          "name": "pSt",
           "schema": "string",
           "required": false,
           "description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
         },
         {
-          "name": "p_stdist",
+          "name": "pStdist",
           "schema": "string",
           "required": false,
           "description": "State District Filter.  Enter a single state district to restrict results."
         },
         {
-          "name": "p_zip",
+          "name": "pZip",
           "schema": "string",
           "required": false,
           "description": "5-Digit ZIP Code Filter. Provide one or more 5-digit postal zip codes to filter results.  May contain multiple comma-separated values."
         },
         {
-          "name": "p_frs",
+          "name": "pFrs",
           "schema": "string",
           "required": false,
           "description": "Facility Registry Service ID Filter. Enter a single 12-digit FRS identifier to filter results."
         },
         {
-          "name": "p_reg",
+          "name": "pReg",
           "schema": "string",
           "required": false,
           "description": "EPA Region Filter. Provide a single value of 01 thru 10 to restrict results to a single EPA region."
         },
         {
-          "name": "p_sic",
+          "name": "pSic",
           "schema": "string",
           "required": false,
           "description": "Standard Industrial Classification (SIC) Code Filter.  Enter a single 4-digit SIC Code to filter results.  If more complex filtering is required, use p_sic2 and p_sic4."
         },
         {
-          "name": "p_ncs",
+          "name": "pNcs",
           "schema": "string",
           "required": false,
           "description": "North American Industry Classification System Filter. Enter two to six digits to filter results to facilities having matching NAICS codes.  Digits less than six will match to all codes beginning with the provided values."
         },
         {
-          "name": "p_pen",
+          "name": "pPen",
           "schema": "string",
           "required": false,
           "description": "Last Penality Date Qualifier Filter.  Enter one of the following:   \n- NEVER = No Penalties\n- ANY = Any Penalty\n- LEXX = Less than or equal to XX months.  Provide a number in place of XX, e.g. \"LE5\" for a facility with a penalty within previous 5 months.\n- GTXX = Greater than XX months.  Provide a number in place of XX, eg. GT12, for a facility with the last penalty greater than 12 months ago."
         },
         {
-          "name": "p_c1lat",
+          "name": "pC1Lat",
           "schema": "number",
           "required": false,
           "description": "In decimal degrees.  Latitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
         },
         {
-          "name": "p_c1lon",
+          "name": "pC1Lon",
           "schema": "number",
           "required": false,
           "description": "In decimal degrees.  Longitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
         },
         {
-          "name": "p_c2lat",
+          "name": "pC2Lat",
           "schema": "number",
           "required": false,
           "description": "In decimal degrees.  Latitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
         },
         {
-          "name": "p_c2lon",
+          "name": "pC2Lon",
           "schema": "number",
           "required": false,
           "description": "In decimal degrees.  Longitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
         },
         {
-          "name": "p_usmex",
+          "name": "pUsmex",
           "schema": "string",
           "required": false,
           "description": "US-Mexico Border Flag.  Enter Y/N to restrict searches to facilities located within 100KM of the border."
         },
         {
-          "name": "p_sic2",
+          "name": "pSic2",
           "schema": "string",
           "required": false,
           "description": "Standard Industrial Classification (SIC) Code Filter Alternate 2. Enter a wild-card search against SIC codes.  A final wild-card is always present allowing \"22\" to match all SIC codes beginning with 22.  Use the \"%\" character within strings to match any SIC values with the pattern.  For example, \"2%21\" matches 2021, 2121, 2221, etc."
         },
         {
-          "name": "p_sic4",
+          "name": "pSic4",
           "schema": "string",
           "required": false,
           "description": "Standard Industrial Classification (SIC) Code Filter Alternate 3.  Enter the first 2, 3 or 4 SIC code digits to filter results to facilities having those code prefixes.  As this alternative does not utilize an index, p_sic2 will generally be quicker."
         },
         {
-          "name": "p_fa",
+          "name": "pFa",
           "schema": "string",
           "required": false,
           "description": "Federal Agency. 1 character or 5-character values; may contain multiple comma-separated values. ALL will retrieve all facilities where the federal agency code is not null.  Use the Federal Agencies lookup service to obtain a list of values."
         },
         {
-          "name": "p_act",
+          "name": "pAct",
           "schema": "string",
           "required": false,
           "description": "Active Permits/Facilities Flag.  Provide Y or N to filter results to facilities with active permits."
         },
         {
-          "name": "p_fea",
+          "name": "pFea",
           "schema": "string",
           "required": false,
           "description": "Formal Enforcement Actions [within / not within] specified date range indicator. The date range is determined by parameters p_fead1 and p_fead2 or by parameter p_feay.\n- W = within date range\n- N = not within date range"
         },
         {
-          "name": "p_feay",
+          "name": "pFeay",
           "schema": "number",
           "required": false,
           "description": "Years (1 to 5) Range.  This value is used to create a date range for Formal Enforcement Actions (FEA). Used along with p_fea (which indicates whether to look within or outside of the date range) to find FEAs within (or not within) the number of years specified."
         },
         {
-          "name": "p_feaa",
+          "name": "pFeaa",
           "schema": "string",
           "required": false,
           "description": "Agency associated with Formal Enforcement Actions:\n- E = EPA\n- S = State\n- A = All"
         },
         {
-          "name": "p_iea",
+          "name": "pIea",
           "schema": "string",
           "required": false,
           "description": "Informal Enforcement Actions [within / not within] specified date range.  The date range is determined by parameters p_iead1 and p_iead2 or by parameter p_ieay.\n- W = within date range\n- N = not within date range"
         },
         {
-          "name": "p_ieay",
+          "name": "pIeay",
           "schema": "number",
           "required": false,
           "description": "Years (1 to 5) Range.  This value is used to create a date range for Informal Enforcement Actions (IEA). Used along with p_iea (which indicates whether to look within or outside of the date range) to find IEAs within (or not within) the number of years specified."
         },
         {
-          "name": "p_ieaa",
+          "name": "pIeaa",
           "schema": "string",
           "required": false,
           "description": "Agency associated with Informal Enforcement Actions. If left blank, both agencies are included.\n- E = EPA\n- S = State"
         },
         {
-          "name": "p_cmps",
+          "name": "pCmps",
           "schema": "string",
           "required": false,
           "description": "RCRA Current Compliance Status Limiter.  Enter one or more of the following keywords to limit results.  Enter multiple values as a comma-delimited list.\n- No Violation\n- In Violation\n- In Significant Noncompliance"
         },
         {
-          "name": "p_law",
+          "name": "pLaw",
           "schema": "string",
           "required": false,
           "description": "Law Statute Code Filter.  Enter a single statute code to limit results."
         },
         {
-          "name": "p_section",
+          "name": "pSection",
           "schema": "string",
           "required": false,
           "description": "Law Section Code Filter. Enter one or more law section codes to limit results.  Provide multiple values as a comma-delimited list."
         },
         {
-          "name": "p_qiv",
+          "name": "pQiv",
           "schema": "string",
           "required": false,
           "description": "Quarters in Noncompliance Limiter.  Enter a coded value to limit results to facilities with given quarter of noncompliance.\n- Z = Zero quarters in noncompliance.\n- GEXX = Replacing XX with a numeric value, that number of quarterd or more in noncompliance.\n- GTXX = Replacing XX with a numeric value, more than that number of quarters in noncompliance."
         },
         {
-          "name": "p_impw",
+          "name": "pImpw",
           "schema": "string",
           "required": false,
           "description": "Discharging into Impaired Waters Flag. Enter Y to limit results to facilities with discharge to waterbodies listed as impaired in the ATTAINS database."
         },
         {
-          "name": "p_trep",
+          "name": "pTrep",
           "schema": "string",
           "required": false,
           "description": "Current Toxics Release Inventory (TRI) Reporter Limiter.  Enter one of the following codes to limit results.\n- CURR = Current TRI reporter.\n- NONCURR = Has reported to TRI in the past but not for the current reporting year."
         },
         {
-          "name": "p_olr",
+          "name": "pOlr",
           "schema": "string",
           "required": false,
           "description": "Toxics Release Inventory Pounds of Off-Site Land Releases Limiter.  Enter a keyword to filter results.\n- Z = Zero pounds of land releases.\n- GT0 = More than zero pounds of land releases.\n- GT1000 = More than one thousand pounds of land releases.\n- GT5000 = More than five thousand pounds of land releases.\n- GT10000 = More than ten thousand pounds of land releases.\n- GT20000 = More than twenty thousand pounds of land releases.\n- GT50000 = More than fifty thousand pounds of land releases."
         },
         {
-          "name": "p_oct",
+          "name": "pOct",
           "schema": "string",
           "required": false,
           "description": "Toxic Release Inventory Pounds of Off-Site Chemical Releases Limiter.  Enter a keyword to filter results.\n- Z = Zero pounds of chemical releases.\n- GT0 = More than zero pounds of chemical releases.\n- GT1000 = More than one thousand pounds of chemical releases.\n- GT5000 = More than five thousand pounds of chemical releases.\n- GT10000 = More than ten thousand pounds of chemical releases.\n- GT20000 = More than twenty thousand pounds of chemical releases.\n- GT50000 = More than fifty thousand pounds of chemical releases."
         },
         {
-          "name": "p_trichem",
+          "name": "pTrichem",
           "schema": "string",
           "required": false,
           "description": ""
         },
         {
-          "name": "p_tri_lr_pol",
+          "name": "pTriLrPol",
           "schema": "string",
           "required": false,
           "description": ""
         },
         {
-          "name": "p_tri_lr_yr",
+          "name": "pTriLrYr",
           "schema": "string",
           "required": false,
           "description": ""
         },
         {
-          "name": "p_tri_lr_amt",
+          "name": "pTriLrAmt",
           "schema": "string",
           "required": false,
           "description": ""
         },
         {
-          "name": "p_pm",
+          "name": "pPm",
           "schema": "string",
           "required": false,
           "description": "Percent Minority Population Limiter.  Enter a value to restrict results to facilities with a given percentage of minority population within 3-mile radius.\n- NONE = 0%\n- GT5 = greater than 5%\n- GT10 = greater than 10%\n- GT25 = greater than 25%\n- GT50 = greater than 50%\n- GT75 = greater than 75%"
         },
         {
-          "name": "p_pd",
+          "name": "pPd",
           "schema": "string",
           "required": false,
           "description": "Population Density Limiter (per sq mile). Enter a value to limit results to facilities located in area of a given population density.\n- NONE = 0 population density per square mile\n- GT100 = More than 100 population density per square mile\n- GT500 = More than 500 population density per square mile\n- GT1000 = More than 1000 population density per square mile\n- GT5000 = More than 5000 population density per square mile\n- GT10000 = More than 10000 population density per square mile\n- GT20000 = More than 20000 population density per square mile"
         },
         {
-          "name": "p_ico",
+          "name": "pIco",
           "schema": "string",
           "required": false,
           "description": "Indian Country Flag.  Enter a \"Y\" or \"N\" to restrict searches to facilities inside or outside Indian Country."
         },
         {
-          "name": "p_huc",
+          "name": "pHuc",
           "schema": "string",
           "required": false,
           "description": "2-, 4-, 6-, or 8-character watershed code. May contain multiple comma-separated values."
         },
         {
-          "name": "p_wbd",
+          "name": "pWbd",
           "schema": "string",
           "required": false,
           "description": "2-, 4-, 6-, 8-, 10-, or 12-character watershed (WBD from the USGS Watershed Boundary Dataset). May contain multiple comma-separated values.  Uses the FRS Best Pick Coordinate to obtain the WBD12 Huc value."
         },
         {
-          "name": "p_pid",
+          "name": "pPid",
           "schema": "string",
           "required": false,
           "description": "Nine-digit permit IDs. May contain up to 2000 comma-separated values."
         },
         {
-          "name": "p_med",
+          "name": "pMed",
           "schema": "string",
           "required": false,
           "description": "Filter Results by Media.\n- A = Air\n- M = RMP (Risk Management Plan)\n- R = RCRA (Hazardous Waste)\n- S = SDWA (Public Drinking Water Systems)\n- W = Water\n- ALL = Air and Water and RCRA"
         },
         {
-          "name": "p_owc",
+          "name": "pOwc",
           "schema": "string",
           "required": false,
           "description": ""
         },
         {
-          "name": "p_owd",
+          "name": "pOwd",
           "schema": "string",
           "required": false,
           "description": ""
         },
         {
-          "name": "p_opc",
+          "name": "pOpc",
           "schema": "string",
           "required": false,
           "description": ""
         },
         {
-          "name": "p_opd",
+          "name": "pOpd",
           "schema": "string",
           "required": false,
           "description": ""
         },
         {
-          "name": "p_ysl",
+          "name": "pYsl",
           "schema": "string",
           "required": false,
           "description": "Last Facility Inspection [within / not within] Specified Date Range Indicator. The date range is determined by parameters p_idt1 and p_idt2 or by parameter p_ysly.\n- W = within date range\n- N = not within date range"
         },
         {
-          "name": "p_ysly",
+          "name": "pYsly",
           "schema": "number",
           "required": false,
           "description": "Number of years (1 to 5) since last facility inspection.  A value of 1 means that it has been inspected within the year."
         },
         {
-          "name": "p_ysla",
+          "name": "pYsla",
           "schema": "string",
           "required": false,
           "description": "Facility Last Inspection Code Filter.  If left blank, both agencies are included.  Enter a value to limit results:\n- E = EPA\n- S = State"
         },
         {
-          "name": "p_qs",
+          "name": "pQs",
           "schema": "string",
           "required": false,
           "description": "Quick Search. Allows entry for city, state, and/or zip code."
         },
         {
-          "name": "p_sfs",
+          "name": "pSfs",
           "schema": "string",
           "required": false,
           "description": "Single Facility Search Filter.  Provide a facility name or program system identifier to limit results.  For the all data search, the FRS registry identifier is also searched."
         },
         {
-          "name": "p_tribeid",
+          "name": "pTribeid",
           "schema": "number",
           "required": false,
           "description": "Numeric code for tribe (or list of tribes)."
         },
         {
-          "name": "p_tribename",
+          "name": "pTribename",
           "schema": "string",
           "required": false,
           "description": "Tribe Name Filter.  Enter a single tribe name to filter results."
         },
         {
-          "name": "p_tribedist",
+          "name": "pTribedist",
           "schema": "number",
           "required": false,
           "description": "Proximity to tribal land limiter. Enter an amount of mile between 0 and 25 to filter results.  This parameter is only evaluated if p_tribeid is populated."
         },
         {
-          "name": "p_owop",
+          "name": "pOwop",
           "schema": "string",
           "required": false,
           "description": "Owner/Operator code filter.  Enter one of the following codes to filter results:\n- PUBLIC\n- PRIVATE\n- FEDERAL"
         },
         {
-          "name": "p_agoo",
+          "name": "pAgoo",
           "schema": "string",
           "required": false,
           "description": "Indicates whether to AND or OR the Owner/Operator parameter (p_owop) and the federal agency code (p_fa) parameters."
         },
         {
-          "name": "p_idt1",
+          "name": "pIdt1",
           "schema": "string",
           "required": false,
           "description": "Beginning of date range of most recent facility inspection."
         },
         {
-          "name": "p_idt2",
+          "name": "pIdt2",
           "schema": "string",
           "required": false,
           "description": "End of date range of most recent facility inspection."
         },
         {
-          "name": "p_pityp",
+          "name": "pPityp",
           "schema": "string",
           "required": false,
           "description": "Inspection Type:\n- CAC = Corrective Action Inspection\n- CAV = Compliance Assistance Visit\n- CDI = Case Development Inspection\n- CEI = Inspection Inspection\n- CSE = Compliance Schedule Evaluation\n- FCI = Focused Compliance\n- FRR = Financial Record Review\n- FSD = Facility Self Disclosure\n- FUI = Follow-Up Inspection\n- GME = Groundwater Monitoring Evaluation\n- NRR = Non-Financial Record Review\n- OAM = Operation and Maintenance Inspection\nMay contain multiple comma-separated values."
         },
         {
-          "name": "p_cifdi",
+          "name": "pCifdi",
           "schema": "string",
           "required": false,
           "description": "Compliance issuess found during inspection."
         },
         {
-          "name": "p_pfead1",
+          "name": "pPfead1",
           "schema": "string",
           "required": false,
           "description": "Formal Enforcement Action Date Range Start.  Enter a date in MM/DD/YYYY format to set the start of the range for filtering by recent Formal Enforcement Action (FEA) taken against the facility within the last five years."
         },
         {
-          "name": "p_pfead2",
+          "name": "pPfead2",
           "schema": "string",
           "required": false,
           "description": "Formal Enforcement Action Date Range End.  Enter a date in MM/DD/YYYY format to set the end of the date range for filtering by recent Formal Enforcement Action (FEA) taken against the facility within the last five years."
         },
         {
-          "name": "p_pfeat",
+          "name": "pPfeat",
           "schema": "string",
           "required": false,
           "description": "Formal Enforcement Action (FEA) Code Filter.  Enter one or more three-letter FEA codes to restrict results to facilities with these attributes.  Use p_fead1 and p_fead2 parameters to further restrict this filter by entering a date range.  Provide multiple codes as a comma-delimited list."
         },
         {
-          "name": "p_psncq",
+          "name": "pPsncq",
           "schema": "string",
           "required": false,
           "description": "Quarters in Significant Noncompliance Limiter.  Enter a coded value to limit results to facilities with given quarter of significant noncompliance.\n- Z = Zero quarters in significant noncompliance.\n- GEXX = Replacing XX with a numeric value, that number of quarterd or more in significant noncompliance.\n- GTXX = Replacing XX with a numeric value, more than that number of quarters in significant noncompliance."
         },
         {
-          "name": "p_dwd",
+          "name": "pDwd",
           "schema": "string",
           "required": false,
           "description": "Direct Water Discharges. Pounds of toxic chemicals released directly to surface water as reported to the Toxics Release Inventory."
         },
         {
-          "name": "p_violy",
+          "name": "pVioly",
           "schema": "number",
           "required": false,
           "description": "Years Since Last Violation Limiter.  Enter a value in the format GTXX where XX is replaced by the number of years since the last violation."
         },
         {
-          "name": "p_ncv",
+          "name": "pNcv",
           "schema": "string",
           "required": false,
           "description": "Number of Current Violations Limiter.  Enter a value in the format GTXX replacing XX with a numeric value to select facilities with an equal to greater count of current violations.  Enter Z to select facilities with zero violations."
         },
         {
-          "name": "p_fcv",
+          "name": "pFcv",
           "schema": "string",
           "required": false,
           "description": "Years of Continuing Violations Limiter.  Enter a value in the format GTXX where XX is replaced by the number of years in continuing violation."
         },
         {
-          "name": "p_violt",
+          "name": "pViolt",
           "schema": "string",
           "required": false,
           "description": "RCRA Violation Type.  Enter one or more Resource Conservation and Recovery Act violation types to limit results.  Provide multiple values as a comma-delimited list."
         },
         {
-          "name": "p_des",
+          "name": "pDes",
           "schema": "string",
           "required": false,
           "description": "Universe Designation Limiter.  Enter one or more universe designation codes.  Provide multiple values as a comma-delimited list.  Use code \"TSDF\" to return the full enforcement TSDF universe and \"Operating TSDF\" to return the operating TSDF universe."
         },
         {
-          "name": "p_fntype",
+          "name": "pFntype",
           "schema": "string",
           "required": false,
           "description": "Controls type of text search performed on facility name with parameter p_fn.\n- EXACT = Find facilities having the exact provided name(s).\n- BEGINS = Find facilities with names starting with the provided term(s).\n- ALL = Find facilities using Oracle text search terms.\n- CONTAINS = "
         },
         {
-          "name": "p_pidall",
+          "name": "pPidall",
           "schema": "string",
           "required": false,
           "description": "Controls whether search is restricted to existing system. Y means the search will match the p_pid parameter against all associated permits (AIR, RCRA, SDWIS, etc)."
         },
         {
-          "name": "p_fac_ico",
+          "name": "pFacIco",
           "schema": "string",
           "required": false,
           "description": "FRS tribal land code flag.  Enter \"Y\" or \"N\" to include or exclude facilities based on FRS tribal land code."
         },
         {
-          "name": "p_icoo",
+          "name": "pIcoo",
           "schema": "string",
           "required": false,
           "description": "Indian country search and/or flag.  Enter \"Y\" to set indian country search conditions to return any results found using p_ico, p_fac_ico or p_fac_icoo.  Otherwise only results matching all provided p_ico, p_fac_ico or p_fac_icoo conditions will be returned."
         },
         {
-          "name": "p_fac_icos",
+          "name": "pFacIcos",
           "schema": "string",
           "required": false,
           "description": "FRS tribal land spatial flag.  Enter \"Y\" or \"N\" to include or exclude facilities based on FRS tribal land spatial flag."
         },
         {
-          "name": "p_ejscreen",
+          "name": "pEjscreen",
           "schema": "string",
           "required": false,
           "description": "Enter \"Y\" to limit facilities to Census block groups where one of more Environmental Justice indexes above 80th percentile."
         },
         {
-          "name": "p_limit_addr",
+          "name": "pLimitAddr",
           "schema": "string",
           "required": false,
           "description": "Limit Address Search Flag.  Enter Y to restrict facility searches to native data source only.  "
         },
         {
-          "name": "p_lat",
+          "name": "pLat",
           "schema": "number",
           "required": false,
           "description": "Latitude location in decimal degrees."
         },
         {
-          "name": "p_long",
+          "name": "pLong",
           "schema": "number",
           "required": false,
           "description": "Longitude location in decimal degrees."
         },
         {
-          "name": "p_radius",
+          "name": "pRadius",
           "schema": "number",
           "required": false,
           "description": "Spatial Search Radius.  Enter a radius up to 100 miles in which to spatially search for facilities."
         },
         {
-          "name": "p_decouple",
+          "name": "pDecouple",
           "schema": "string",
           "required": false,
           "description": "Decouple Inspection Code Search Flag.  Enter \"Y\" to search for inspection code types with p_pityp without respect to the date range search provided with p_ysl* parameters."
         },
         {
-          "name": "p_ejscreen_over80cnt",
+          "name": "pEjscreenOver80Cnt",
           "schema": "string",
           "required": false,
           "description": "The number of Environmenmt Justice Indicators above the 80th percentile.  Valid values are 1 through 11."
@@ -1184,85 +1184,85 @@
           "description": "Output Format Flag.  Enter one of the following keywords:\n- JSON = Data model formatted as Javascript Object Notation (default).\n- JSONP = Data model formatted as Javascript Object Notation with Padding.  \n- XML = Data model formatted as Extensible Markup Language.\n- CSV = Facility results formatted as comma delimited file download.\n- GEOJSON = Facility results formatted as GeoJSON feature collection.\n- GEOJSONP = Facility results formatted as GeoJSON feature collection with Padding.\n- GEOJSOND = Facility results formatted as GeoJSON feature collection download."
         },
         {
-          "name": "p_fn",
+          "name": "pFn",
           "schema": "string",
           "required": false,
           "description": "Facility Name Filter. Enter one or more case-insensitive facility names to filter results.  Provide multiple values as a comma-delimited list.  See p_fntype for additional modifiers."
         },
         {
-          "name": "p_sa",
+          "name": "pSa",
           "schema": "string",
           "required": false,
           "description": "Facility street address. Enter a complete or partial street address."
         },
         {
-          "name": "p_sa1",
+          "name": "pSa1",
           "schema": "string",
           "required": false,
           "description": "Facility street address. Enter a complete or partial street address.   Note that p_sa1 is culmulative with p_sa."
         },
         {
-          "name": "p_ct",
+          "name": "pCt",
           "schema": "string",
           "required": false,
           "description": "Facility City Filter. Enter a single case-insensitive city name to filter results."
         },
         {
-          "name": "p_co",
+          "name": "pCo",
           "schema": "string",
           "required": false,
           "description": "Facility County Filter. Provide a single county name in combination with a state value provided via p_st."
         },
         {
-          "name": "p_fips",
+          "name": "pFips",
           "schema": "string",
           "required": false,
           "description": "FIPS Code Filter.  Enter a single 5-character Federal Information Processing Standards (FIPS) state + county value to restrict results.  E.g. to limit results to Kenosha County, Wisconsin, use 55059."
         },
         {
-          "name": "p_st",
+          "name": "pSt",
           "schema": "string",
           "required": false,
           "description": "Facility State and State-Equivalent Filter.  Provide one or more USPS postal abbreviations for states and state-equivalents to filter results.  Provide multiple values as a comma-delimited list."
         },
         {
-          "name": "p_stdist",
+          "name": "pStdist",
           "schema": "string",
           "required": false,
           "description": "State District Filter.  Enter a single state district to restrict results."
         },
         {
-          "name": "p_zip",
+          "name": "pZip",
           "schema": "string",
           "required": false,
           "description": "5-Digit ZIP Code Filter. Provide one or more 5-digit postal zip codes to filter results.  May contain multiple comma-separated values."
         },
         {
-          "name": "p_frs",
+          "name": "pFrs",
           "schema": "string",
           "required": false,
           "description": "Facility Registry Service ID Filter. Enter a single 12-digit FRS identifier to filter results."
         },
         {
-          "name": "p_reg",
+          "name": "pReg",
           "schema": "string",
           "required": false,
           "description": "EPA Region Filter. Provide a single value of 01 thru 10 to restrict results to a single EPA region."
         },
         {
-          "name": "p_sic",
+          "name": "pSic",
           "schema": "string",
           "required": false,
           "description": "Standard Industrial Classification (SIC) Code Filter.  Enter a single 4-digit SIC Code to filter results.  If more complex filtering is required, use p_sic2 and p_sic4."
         },
         {
-          "name": "p_ncs",
+          "name": "pNcs",
           "schema": "string",
           "required": false,
           "description": "North American Industry Classification System Filter. Enter two to six digits to filter results to facilities having matching NAICS codes.  Digits less than six will match to all codes beginning with the provided values."
         },
         {
-          "name": "p_pen",
+          "name": "pPen",
           "schema": "string",
           "required": false,
           "description": "Last Penality Date Qualifier Filter.  Enter one of the following:   \n- NEVER = No Penalties\n- ANY = Any Penalty\n- LEXX = Less than or equal to XX months.  Provide a number in place of XX, e.g. \"LE5\" for a facility with a penalty within previous 5 months.\n- GTXX = Greater than XX months.  Provide a number in place of XX, eg. GT12, for a facility with the last penalty greater than 12 months ago."
@@ -1292,421 +1292,421 @@
           "description": "Maximum latitude value in decimal degrees."
         },
         {
-          "name": "p_usmex",
+          "name": "pUsmex",
           "schema": "string",
           "required": false,
           "description": "US-Mexico Border Flag.  Enter Y/N to restrict searches to facilities located within 100KM of the border."
         },
         {
-          "name": "p_sic2",
+          "name": "pSic2",
           "schema": "string",
           "required": false,
           "description": "Standard Industrial Classification (SIC) Code Filter Alternate 2. Enter a wild-card search against SIC codes.  A final wild-card is always present allowing \"22\" to match all SIC codes beginning with 22.  Use the \"%\" character within strings to match any SIC values with the pattern.  For example, \"2%21\" matches 2021, 2121, 2221, etc."
         },
         {
-          "name": "p_sic4",
+          "name": "pSic4",
           "schema": "string",
           "required": false,
           "description": "Standard Industrial Classification (SIC) Code Filter Alternate 3.  Enter the first 2, 3 or 4 SIC code digits to filter results to facilities having those code prefixes.  As this alternative does not utilize an index, p_sic2 will generally be quicker."
         },
         {
-          "name": "p_fa",
+          "name": "pFa",
           "schema": "string",
           "required": false,
           "description": "Federal Agency. 1 character or 5-character values; may contain multiple comma-separated values. ALL will retrieve all facilities where the federal agency code is not null.  Use the Federal Agencies lookup service to obtain a list of values."
         },
         {
-          "name": "p_act",
+          "name": "pAct",
           "schema": "string",
           "required": false,
           "description": "Active Permits/Facilities Flag.  Provide Y or N to filter results to facilities with active permits."
         },
         {
-          "name": "p_fea",
+          "name": "pFea",
           "schema": "string",
           "required": false,
           "description": "Formal Enforcement Actions [within / not within] specified date range indicator. The date range is determined by parameters p_fead1 and p_fead2 or by parameter p_feay.\n- W = within date range\n- N = not within date range"
         },
         {
-          "name": "p_feay",
+          "name": "pFeay",
           "schema": "number",
           "required": false,
           "description": "Years (1 to 5) Range.  This value is used to create a date range for Formal Enforcement Actions (FEA). Used along with p_fea (which indicates whether to look within or outside of the date range) to find FEAs within (or not within) the number of years specified."
         },
         {
-          "name": "p_feaa",
+          "name": "pFeaa",
           "schema": "string",
           "required": false,
           "description": "Agency associated with Formal Enforcement Actions:\n- E = EPA\n- S = State\n- A = All"
         },
         {
-          "name": "p_iea",
+          "name": "pIea",
           "schema": "string",
           "required": false,
           "description": "Informal Enforcement Actions [within / not within] specified date range.  The date range is determined by parameters p_iead1 and p_iead2 or by parameter p_ieay.\n- W = within date range\n- N = not within date range"
         },
         {
-          "name": "p_ieay",
+          "name": "pIeay",
           "schema": "number",
           "required": false,
           "description": "Years (1 to 5) Range.  This value is used to create a date range for Informal Enforcement Actions (IEA). Used along with p_iea (which indicates whether to look within or outside of the date range) to find IEAs within (or not within) the number of years specified."
         },
         {
-          "name": "p_ieaa",
+          "name": "pIeaa",
           "schema": "string",
           "required": false,
           "description": "Agency associated with Informal Enforcement Actions. If left blank, both agencies are included.\n- E = EPA\n- S = State"
         },
         {
-          "name": "p_cmps",
+          "name": "pCmps",
           "schema": "string",
           "required": false,
           "description": "RCRA Current Compliance Status Limiter.  Enter one or more of the following keywords to limit results.  Enter multiple values as a comma-delimited list.\n- No Violation\n- In Violation\n- In Significant Noncompliance"
         },
         {
-          "name": "p_law",
+          "name": "pLaw",
           "schema": "string",
           "required": false,
           "description": "Law Statute Code Filter.  Enter a single statute code to limit results."
         },
         {
-          "name": "p_section",
+          "name": "pSection",
           "schema": "string",
           "required": false,
           "description": "Law Section Code Filter. Enter one or more law section codes to limit results.  Provide multiple values as a comma-delimited list."
         },
         {
-          "name": "p_qiv",
+          "name": "pQiv",
           "schema": "string",
           "required": false,
           "description": "Quarters in Noncompliance Limiter.  Enter a coded value to limit results to facilities with given quarter of noncompliance.\n- Z = Zero quarters in noncompliance.\n- GEXX = Replacing XX with a numeric value, that number of quarterd or more in noncompliance.\n- GTXX = Replacing XX with a numeric value, more than that number of quarters in noncompliance."
         },
         {
-          "name": "p_impw",
+          "name": "pImpw",
           "schema": "string",
           "required": false,
           "description": "Discharging into Impaired Waters Flag. Enter Y to limit results to facilities with discharge to waterbodies listed as impaired in the ATTAINS database."
         },
         {
-          "name": "p_trep",
+          "name": "pTrep",
           "schema": "string",
           "required": false,
           "description": "Current Toxics Release Inventory (TRI) Reporter Limiter.  Enter one of the following codes to limit results.\n- CURR = Current TRI reporter.\n- NONCURR = Has reported to TRI in the past but not for the current reporting year."
         },
         {
-          "name": "p_olr",
+          "name": "pOlr",
           "schema": "string",
           "required": false,
           "description": "Toxics Release Inventory Pounds of Off-Site Land Releases Limiter.  Enter a keyword to filter results.\n- Z = Zero pounds of land releases.\n- GT0 = More than zero pounds of land releases.\n- GT1000 = More than one thousand pounds of land releases.\n- GT5000 = More than five thousand pounds of land releases.\n- GT10000 = More than ten thousand pounds of land releases.\n- GT20000 = More than twenty thousand pounds of land releases.\n- GT50000 = More than fifty thousand pounds of land releases."
         },
         {
-          "name": "p_oct",
+          "name": "pOct",
           "schema": "string",
           "required": false,
           "description": "Toxic Release Inventory Pounds of Off-Site Chemical Releases Limiter.  Enter a keyword to filter results.\n- Z = Zero pounds of chemical releases.\n- GT0 = More than zero pounds of chemical releases.\n- GT1000 = More than one thousand pounds of chemical releases.\n- GT5000 = More than five thousand pounds of chemical releases.\n- GT10000 = More than ten thousand pounds of chemical releases.\n- GT20000 = More than twenty thousand pounds of chemical releases.\n- GT50000 = More than fifty thousand pounds of chemical releases."
         },
         {
-          "name": "p_trichem",
+          "name": "pTrichem",
           "schema": "string",
           "required": false,
           "description": ""
         },
         {
-          "name": "p_tri_lr_pol",
+          "name": "pTriLrPol",
           "schema": "string",
           "required": false,
           "description": ""
         },
         {
-          "name": "p_tri_lr_yr",
+          "name": "pTriLrYr",
           "schema": "string",
           "required": false,
           "description": ""
         },
         {
-          "name": "p_tri_lr_amt",
+          "name": "pTriLrAmt",
           "schema": "string",
           "required": false,
           "description": ""
         },
         {
-          "name": "p_pm",
+          "name": "pPm",
           "schema": "string",
           "required": false,
           "description": "Percent Minority Population Limiter.  Enter a value to restrict results to facilities with a given percentage of minority population within 3-mile radius.\n- NONE = 0%\n- GT5 = greater than 5%\n- GT10 = greater than 10%\n- GT25 = greater than 25%\n- GT50 = greater than 50%\n- GT75 = greater than 75%"
         },
         {
-          "name": "p_pd",
+          "name": "pPd",
           "schema": "string",
           "required": false,
           "description": "Population Density Limiter (per sq mile). Enter a value to limit results to facilities located in area of a given population density.\n- NONE = 0 population density per square mile\n- GT100 = More than 100 population density per square mile\n- GT500 = More than 500 population density per square mile\n- GT1000 = More than 1000 population density per square mile\n- GT5000 = More than 5000 population density per square mile\n- GT10000 = More than 10000 population density per square mile\n- GT20000 = More than 20000 population density per square mile"
         },
         {
-          "name": "p_ico",
+          "name": "pIco",
           "schema": "string",
           "required": false,
           "description": "Indian Country Flag.  Enter a \"Y\" or \"N\" to restrict searches to facilities inside or outside Indian Country."
         },
         {
-          "name": "p_huc",
+          "name": "pHuc",
           "schema": "string",
           "required": false,
           "description": "2-, 4-, 6-, or 8-character watershed code. May contain multiple comma-separated values."
         },
         {
-          "name": "p_wbd",
+          "name": "pWbd",
           "schema": "string",
           "required": false,
           "description": "2-, 4-, 6-, 8-, 10-, or 12-character watershed (WBD from the USGS Watershed Boundary Dataset). May contain multiple comma-separated values.  Uses the FRS Best Pick Coordinate to obtain the WBD12 Huc value."
         },
         {
-          "name": "p_pid",
+          "name": "pPid",
           "schema": "string",
           "required": false,
           "description": "Nine-digit permit IDs. May contain up to 2000 comma-separated values."
         },
         {
-          "name": "p_med",
+          "name": "pMed",
           "schema": "string",
           "required": false,
           "description": "Filter Results by Media.\n- A = Air\n- M = RMP (Risk Management Plan)\n- R = RCRA (Hazardous Waste)\n- S = SDWA (Public Drinking Water Systems)\n- W = Water\n- ALL = Air and Water and RCRA"
         },
         {
-          "name": "p_owc",
+          "name": "pOwc",
           "schema": "string",
           "required": false,
           "description": ""
         },
         {
-          "name": "p_owd",
+          "name": "pOwd",
           "schema": "string",
           "required": false,
           "description": ""
         },
         {
-          "name": "p_opc",
+          "name": "pOpc",
           "schema": "string",
           "required": false,
           "description": ""
         },
         {
-          "name": "p_opd",
+          "name": "pOpd",
           "schema": "string",
           "required": false,
           "description": ""
         },
         {
-          "name": "p_ysl",
+          "name": "pYsl",
           "schema": "string",
           "required": false,
           "description": "Last Facility Inspection [within / not within] Specified Date Range Indicator. The date range is determined by parameters p_idt1 and p_idt2 or by parameter p_ysly.\n- W = within date range\n- N = not within date range"
         },
         {
-          "name": "p_ysly",
+          "name": "pYsly",
           "schema": "number",
           "required": false,
           "description": "Number of years (1 to 5) since last facility inspection.  A value of 1 means that it has been inspected within the year."
         },
         {
-          "name": "p_ysla",
+          "name": "pYsla",
           "schema": "string",
           "required": false,
           "description": "Facility Last Inspection Code Filter.  If left blank, both agencies are included.  Enter a value to limit results:\n- E = EPA\n- S = State"
         },
         {
-          "name": "p_qs",
+          "name": "pQs",
           "schema": "string",
           "required": false,
           "description": "Quick Search. Allows entry for city, state, and/or zip code."
         },
         {
-          "name": "p_sfs",
+          "name": "pSfs",
           "schema": "string",
           "required": false,
           "description": "Single Facility Search Filter.  Provide a facility name or program system identifier to limit results.  For the all data search, the FRS registry identifier is also searched."
         },
         {
-          "name": "p_tribeid",
+          "name": "pTribeid",
           "schema": "number",
           "required": false,
           "description": "Numeric code for tribe (or list of tribes)."
         },
         {
-          "name": "p_tribename",
+          "name": "pTribename",
           "schema": "string",
           "required": false,
           "description": "Tribe Name Filter.  Enter a single tribe name to filter results."
         },
         {
-          "name": "p_tribedist",
+          "name": "pTribedist",
           "schema": "number",
           "required": false,
           "description": "Proximity to tribal land limiter. Enter an amount of mile between 0 and 25 to filter results.  This parameter is only evaluated if p_tribeid is populated."
         },
         {
-          "name": "p_owop",
+          "name": "pOwop",
           "schema": "string",
           "required": false,
           "description": "Owner/Operator code filter.  Enter one of the following codes to filter results:\n- PUBLIC\n- PRIVATE\n- FEDERAL"
         },
         {
-          "name": "p_agoo",
+          "name": "pAgoo",
           "schema": "string",
           "required": false,
           "description": "Indicates whether to AND or OR the Owner/Operator parameter (p_owop) and the federal agency code (p_fa) parameters."
         },
         {
-          "name": "p_idt1",
+          "name": "pIdt1",
           "schema": "string",
           "required": false,
           "description": "Beginning of date range of most recent facility inspection."
         },
         {
-          "name": "p_idt2",
+          "name": "pIdt2",
           "schema": "string",
           "required": false,
           "description": "End of date range of most recent facility inspection."
         },
         {
-          "name": "p_pityp",
+          "name": "pPityp",
           "schema": "string",
           "required": false,
           "description": "Inspection Type:\n- CAC = Corrective Action Inspection\n- CAV = Compliance Assistance Visit\n- CDI = Case Development Inspection\n- CEI = Inspection Inspection\n- CSE = Compliance Schedule Evaluation\n- FCI = Focused Compliance\n- FRR = Financial Record Review\n- FSD = Facility Self Disclosure\n- FUI = Follow-Up Inspection\n- GME = Groundwater Monitoring Evaluation\n- NRR = Non-Financial Record Review\n- OAM = Operation and Maintenance Inspection\nMay contain multiple comma-separated values."
         },
         {
-          "name": "p_cifdi",
+          "name": "pCifdi",
           "schema": "string",
           "required": false,
           "description": "Compliance issuess found during inspection."
         },
         {
-          "name": "p_pfead1",
+          "name": "pPfead1",
           "schema": "string",
           "required": false,
           "description": "Formal Enforcement Action Date Range Start.  Enter a date in MM/DD/YYYY format to set the start of the range for filtering by recent Formal Enforcement Action (FEA) taken against the facility within the last five years."
         },
         {
-          "name": "p_pfead2",
+          "name": "pPfead2",
           "schema": "string",
           "required": false,
           "description": "Formal Enforcement Action Date Range End.  Enter a date in MM/DD/YYYY format to set the end of the date range for filtering by recent Formal Enforcement Action (FEA) taken against the facility within the last five years."
         },
         {
-          "name": "p_pfeat",
+          "name": "pPfeat",
           "schema": "string",
           "required": false,
           "description": "Formal Enforcement Action (FEA) Code Filter.  Enter one or more three-letter FEA codes to restrict results to facilities with these attributes.  Use p_fead1 and p_fead2 parameters to further restrict this filter by entering a date range.  Provide multiple codes as a comma-delimited list."
         },
         {
-          "name": "p_psncq",
+          "name": "pPsncq",
           "schema": "string",
           "required": false,
           "description": "Quarters in Significant Noncompliance Limiter.  Enter a coded value to limit results to facilities with given quarter of significant noncompliance.\n- Z = Zero quarters in significant noncompliance.\n- GEXX = Replacing XX with a numeric value, that number of quarterd or more in significant noncompliance.\n- GTXX = Replacing XX with a numeric value, more than that number of quarters in significant noncompliance."
         },
         {
-          "name": "p_dwd",
+          "name": "pDwd",
           "schema": "string",
           "required": false,
           "description": "Direct Water Discharges. Pounds of toxic chemicals released directly to surface water as reported to the Toxics Release Inventory."
         },
         {
-          "name": "p_violy",
+          "name": "pVioly",
           "schema": "number",
           "required": false,
           "description": "Years Since Last Violation Limiter.  Enter a value in the format GTXX where XX is replaced by the number of years since the last violation."
         },
         {
-          "name": "p_ncv",
+          "name": "pNcv",
           "schema": "string",
           "required": false,
           "description": "Number of Current Violations Limiter.  Enter a value in the format GTXX replacing XX with a numeric value to select facilities with an equal to greater count of current violations.  Enter Z to select facilities with zero violations."
         },
         {
-          "name": "p_fcv",
+          "name": "pFcv",
           "schema": "string",
           "required": false,
           "description": "Years of Continuing Violations Limiter.  Enter a value in the format GTXX where XX is replaced by the number of years in continuing violation."
         },
         {
-          "name": "p_violt",
+          "name": "pViolt",
           "schema": "string",
           "required": false,
           "description": "RCRA Violation Type.  Enter one or more Resource Conservation and Recovery Act violation types to limit results.  Provide multiple values as a comma-delimited list."
         },
         {
-          "name": "p_des",
+          "name": "pDes",
           "schema": "string",
           "required": false,
           "description": "Universe Designation Limiter.  Enter one or more universe designation codes.  Provide multiple values as a comma-delimited list.  Use code \"TSDF\" to return the full enforcement TSDF universe and \"Operating TSDF\" to return the operating TSDF universe."
         },
         {
-          "name": "p_fntype",
+          "name": "pFntype",
           "schema": "string",
           "required": false,
           "description": "Controls type of text search performed on facility name with parameter p_fn.\n- EXACT = Find facilities having the exact provided name(s).\n- BEGINS = Find facilities with names starting with the provided term(s).\n- ALL = Find facilities using Oracle text search terms.\n- CONTAINS = "
         },
         {
-          "name": "p_pidall",
+          "name": "pPidall",
           "schema": "string",
           "required": false,
           "description": "Controls whether search is restricted to existing system. Y means the search will match the p_pid parameter against all associated permits (AIR, RCRA, SDWIS, etc)."
         },
         {
-          "name": "p_fac_ico",
+          "name": "pFacIco",
           "schema": "string",
           "required": false,
           "description": "FRS tribal land code flag.  Enter \"Y\" or \"N\" to include or exclude facilities based on FRS tribal land code."
         },
         {
-          "name": "p_icoo",
+          "name": "pIcoo",
           "schema": "string",
           "required": false,
           "description": "Indian country search and/or flag.  Enter \"Y\" to set indian country search conditions to return any results found using p_ico, p_fac_ico or p_fac_icoo.  Otherwise only results matching all provided p_ico, p_fac_ico or p_fac_icoo conditions will be returned."
         },
         {
-          "name": "p_fac_icos",
+          "name": "pFacIcos",
           "schema": "string",
           "required": false,
           "description": "FRS tribal land spatial flag.  Enter \"Y\" or \"N\" to include or exclude facilities based on FRS tribal land spatial flag."
         },
         {
-          "name": "p_ejscreen",
+          "name": "pEjscreen",
           "schema": "string",
           "required": false,
           "description": "Enter \"Y\" to limit facilities to Census block groups where one of more Environmental Justice indexes above 80th percentile."
         },
         {
-          "name": "p_limit_addr",
+          "name": "pLimitAddr",
           "schema": "string",
           "required": false,
           "description": "Limit Address Search Flag.  Enter Y to restrict facility searches to native data source only.  "
         },
         {
-          "name": "p_lat",
+          "name": "pLat",
           "schema": "number",
           "required": false,
           "description": "Latitude location in decimal degrees."
         },
         {
-          "name": "p_long",
+          "name": "pLong",
           "schema": "number",
           "required": false,
           "description": "Longitude location in decimal degrees."
         },
         {
-          "name": "p_radius",
+          "name": "pRadius",
           "schema": "number",
           "required": false,
           "description": "Spatial Search Radius.  Enter a radius up to 100 miles in which to spatially search for facilities."
         },
         {
-          "name": "p_decouple",
+          "name": "pDecouple",
           "schema": "string",
           "required": false,
           "description": "Decouple Inspection Code Search Flag.  Enter \"Y\" to search for inspection code types with p_pityp without respect to the date range search provided with p_ysl* parameters."
         },
         {
-          "name": "p_ejscreen_over80cnt",
+          "name": "pEjscreenOver80Cnt",
           "schema": "string",
           "required": false,
           "description": "The number of Environmenmt Justice Indicators above the 80th percentile.  Valid values are 1 through 11."
@@ -1742,7 +1742,7 @@
           "description": "Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
         },
         {
-          "name": "p_pretty_print",
+          "name": "pPrettyPrint",
           "schema": "number",
           "required": false,
           "description": "Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost."
@@ -2289,7 +2289,7 @@
           "description": "Used to customize service output.  A list of comma-separated column IDs of output objects that will be returned in the service query object or download.  Use the metadata service endpoint for a complete list of Ids and definitions."
         },
         {
-          "name": "p_pretty_print",
+          "name": "pPrettyPrint",
           "schema": "number",
           "required": false,
           "description": "Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost."
@@ -2373,13 +2373,13 @@
           "description": "Output Format Flag.  Enter one of the following keywords:\n- CSV = Facility results formatted as comma delimited file download (default).\n- GEOJSOND = Facility results formatted as GeoJSON feature collection download."
         },
         {
-          "name": "p_qid",
+          "name": "pQid",
           "schema": "string",
           "required": true,
           "description": "Query ID Selector.  Enter the QueryID number from a previously run query."
         },
         {
-          "name": "p_pretty_print",
+          "name": "pPrettyPrint",
           "schema": "number",
           "required": false,
           "description": "Optional flag to request GeoJSON formatted results to be pretty printed.  Only provide a numeric value when the output needs to be human readable as pretty printing has a performance cost."
@@ -2457,31 +2457,31 @@
           "description": "Table List Flag. Enter a Y to display the first page of facility results."
         },
         {
-          "name": "c1_lat",
+          "name": "c1Lat",
           "schema": "number",
           "required": false,
           "description": "Latitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
         },
         {
-          "name": "c1_long",
+          "name": "c1Long",
           "schema": "number",
           "required": false,
           "description": "Longitude of 1st corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
         },
         {
-          "name": "c2_lat",
+          "name": "c2Lat",
           "schema": "number",
           "required": false,
           "description": "Latitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
         },
         {
-          "name": "c2_long",
+          "name": "c2Long",
           "schema": "number",
           "required": false,
           "description": "Longitude of 2nd corner of box that bounds the resulting facilities. The latitude and longitude of both corners of the bounding box must be provided."
         },
         {
-          "name": "p_id",
+          "name": "pId",
           "schema": "string",
           "required": true,
           "description": "Identifier for the service."

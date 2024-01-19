@@ -25,7 +25,7 @@
           "description": "Note - There is a small difference with some field names in the response between JSON and XML.  \nWhen a field name has more than one word, JSON format will separate the words with an underscore, eg. \"content_partner\", whereas XML uses a hyphenated naming convention, eg. \"content-partner\".\n"
         },
         {
-          "name": "Authentication-Token",
+          "name": "authenticationToken",
           "schema": "string",
           "required": false,
           "description": "The DigitalNZ API no longer requires a key to access public content. However, if you plan on using the API regularly, expect to be a high volume consumer or are planning on creating an application, we encourage you to use an API key so that we can:\n- provide targeted help and support\n- increase your query throughput (by negotiation)\n- notify you directly of changes to the API\n- gather usage metrics to help improve the service  \n\nAPI requests that do not pass a valid API key/token are treated as unauthenticated. A maximum rate limit applies across all unauthenticated requests. This rate limit is in place to protect the service from overuse, resulting in unsustainable costs, or potential attack.\n\n**Getting an API key**  \n[Create a DigitalNZ account](https://digitalnz.org/sign_up), log in and select \"[my API key](https://digitalnz.org/api_keys/edit)\" from your username drop-down menu (on the right hand side)'. The key is a long string of jumbled letters and numbers (hash) that is unique to you. You are required to keep the key secret. (Refer to the [Developer API Terms of Use](https://digitalnz.org/about/terms-of-use/developer-api-terms-of-use) for more information).\n\n**Using an API key**  \nWhen you make a call to the API you'll need to pass the key in a custom HTTP header: ‘Authentication-Token’.\nFor example, a query using the ‘curl’ command might look like the following (where ‘{YOUR_API_KEY}’ is replaced with a valid API key):\n\n`curl -H \"Authentication-Token:{YOUR_API_KEY}\" http://api.digitalnz.org/v3/records.json?text=kiwi`\n"
@@ -41,12 +41,12 @@
           "description": "These are the same categories that are used across the tabs in [digitalnz.org](https://digitalnz.org/records?text=&tab=Videos)"
         },
         {
-          "name": "and[content_partner][]",
+          "name": "and[contentPartner][]",
           "schema": "string",
           "description": "Allows filtering for records from a particular Content Partner.  \nExamples: `\"Ministry for Culture and Heritage\"` `\"Trove\"` `\"V.C. Browne & Son\"`\n  \n*Tip* - To see a list of Content Partners available for filtering use the *facets* parameter, eg. *\"&facets=content_partner\"*.  \n"
         },
         {
-          "name": "and[primary_collection][]",
+          "name": "and[primaryCollection][]",
           "schema": "string",
           "description": "Allows filtering for records from a particular *primary_collection*.  \nExamples: `\"Puke Ariki\"` `\"NZHistory\"` `\"TAPUHI\"`  \n  \n*Tip* - To see a list of Primary_Collections available for filtering use the *facets* parameter, eg. *\"&facets=primary_collection\"*.   \n"
         },
@@ -66,7 +66,7 @@
           "description": "Examples: `\"Cats\"` `\"Weddings\"` `\"climb*\"`\n"
         },
         {
-          "name": "and[dc_type][]",
+          "name": "and[dcType][]",
           "schema": "string",
           "description": "Examples: `\"Conference item\"` `\"Magazines\"`\n"
         },
@@ -111,32 +111,32 @@
           "description": "This field allows searching specifically by century. The metadata is derived from the same date information that is searchable and returned in the date field.  \nExample: `\"1900\"` `\"2000\"`\n"
         },
         {
-          "name": "without[{filter_field}]",
+          "name": "without[{filterField}]",
           "schema": "string",
           "description": "All of the above `and[___][]` filters in this document are also able to be used with this syntax to exclude specific matches. For example to exclude Papers Past content `&without[primary_collection]=Papers+Past`\n"
         },
         {
-          "name": "and[or][{filter_field}][]",
+          "name": "and[or][{filterField}][]",
           "schema": "string",
           "description": "All of the above `and[___][]` filters in this document are also able to be used with the `and[or][___][]` syntax to allow multi-select *OR* queries within one field.  \nBasic example: \n- To filter your results to only those with a category or Audio or Videos:   \n`&and[or][category][]=Audio&and[or][category][]=Videos` \n  \nIn order to combine *OR* filters across multiple fields the syntax needs to be nested as follows  \nNested examples: \n - To search for *(year is 2014 OR 2015) AND (primary_collection is TAPUHI OR Public Address)*  \n `&and[or][year][]=2015&and[or][year][]=2014&and[and][or][primary_collection][]=TAPUHI&and[and][or][primary_collection][]=Public+Address`  \n - To search for *(category is Images OR Video) AND (subject is cat OR cats)*  \n `&and[or][category][]=Images&and[or][category][]=Videos&and[and][or][subject][]=cat&and[and][or][subject][]=cats`  \n"
         },
         {
-          "name": "and[is_commercial_use]",
+          "name": "and[isCommercialUse]",
           "schema": "boolean",
           "description": "Some DigitalNZ partners offer their metadata for use in commercial applications. This content can be identified through the *is_commercial_use* flag. Only API results where the *is_commercial_use* field set to True can be used for commercial purposes. Check out the [terms of use](https://digitalnz.org/about/terms-of-use/developer-api-terms-of-use#commercial_use_terms) for more information.\n"
         },
         {
-          "name": "and[has_large_thumbnail_url]",
+          "name": "and[hasLargeThumbnailUrl]",
           "schema": "string",
           "description": "Filters results to only those records that have an image available in the *large_thumbnail_url* field.  \n**Note:** There is an issue with this field where, in order to get results, it needs to be specified with \"Y\" or not specified at all.\n"
         },
         {
-          "name": "and[has_lat_lng]",
+          "name": "and[hasLatLng]",
           "schema": "boolean",
           "description": "Filters results to only those records that have latitude and longitude coordinates present in the metadata.\n  \n*Tip* - To see the location metadata you'll need to specifically request that field using the *fields* parameter - *\"&fields=verbose,locations\"*  as it is not part of the default, or verbose field sets.\n"
         },
         {
-          "name": "geo_bbox",
+          "name": "geoBbox",
           "schema": "string",
           "description": "A geographic bounding box scoping a search to a geographic region. Order of latitude-longitude coordinates is north, west, south, east.   For example, filtering the Wellington region would be *\"&geo_bbox=-41,174,-42,175\"*\n"
         },
@@ -161,7 +161,7 @@
           "description": "Specify which page of results to return."
         },
         {
-          "name": "per_page",
+          "name": "perPage",
           "schema": "integer",
           "description": "The number of records to return per page of search results."
         },
@@ -171,17 +171,17 @@
           "description": "Shows a breakdown of record counts for the specified facets based on the current result set. In the [DigitalNZ search interface](https://digitalnz.org/records) these facets are used to list the values filterable for each field. A comma-separated list will return multiple facets in one call.\n"
         },
         {
-          "name": "facets_page",
+          "name": "facetsPage",
           "schema": "integer",
           "description": "This value specifies which page of facet results to return. Allowing pagination through large lists of facet values."
         },
         {
-          "name": "facets_per_page",
+          "name": "facetsPerPage",
           "schema": "integer",
           "description": "The number of facets to return per page of facet results."
         },
         {
-          "name": "exclude_filters_from_facets",
+          "name": "excludeFiltersFromFacets",
           "schema": "boolean",
           "description": "This field can be used when filtering into some facets, to maintain the context of the wider facet values. A common use case is to allow the results of a search to be filtered down into a specific category (eg Audio), while still showing the other possible filter options as facet counts (eg. Images, Audio, Video, etc). Setting this to 'true' will not effect the search results returned but will ignore all search filters (eg. \"and[category]=Audio\") when calculating the facet counts. \n"
         }
@@ -209,7 +209,7 @@
       "description": "View metadata associated with a single record.",
       "parameters": [
         {
-          "name": "record_id",
+          "name": "recordId",
           "schema": "integer",
           "required": true,
           "description": "Every record has a unique, persistent *record_id*."
@@ -221,7 +221,7 @@
           "description": "Note - There is a small difference with some field names in the response between JSON and XML.  \nWhen a field name has more than one word, JSON format will separate the words with an underscore, eg. \"content_partner\", whereas XML uses a hyphenated naming convention, eg. \"content-partner\".\n"
         },
         {
-          "name": "Authentication-Token",
+          "name": "authenticationToken",
           "schema": "string",
           "required": false,
           "description": "The DigitalNZ API no longer requires a key to access public content. However, if you plan on using the API regularly, expect to be a high volume consumer or are planning on creating an application, we encourage you to use an API key so that we can:\n- provide targeted help and support\n- increase your query throughput (by negotiation)\n- notify you directly of changes to the API\n- gather usage metrics to help improve the service  \n\nAPI requests that do not pass a valid API key/token are treated as unauthenticated. A maximum rate limit applies across all unauthenticated requests. This rate limit is in place to protect the service from overuse, resulting in unsustainable costs, or potential attack.\n\n**Getting an API key**  \n[Create a DigitalNZ account](https://digitalnz.org/sign_up), log in and select \"[my API key](https://digitalnz.org/api_keys/edit)\" from your username drop-down menu (on the right hand side)'. The key is a long string of jumbled letters and numbers (hash) that is unique to you. You are required to keep the key secret. (Refer to the [Developer API Terms of Use](https://digitalnz.org/about/terms-of-use/developer-api-terms-of-use) for more information).\n\n**Using an API key**  \nWhen you make a call to the API you'll need to pass the key in a custom HTTP header: ‘Authentication-Token’.\nFor example, a query using the ‘curl’ command might look like the following (where ‘{YOUR_API_KEY}’ is replaced with a valid API key):\n\n`curl -H \"Authentication-Token:{YOUR_API_KEY}\" http://api.digitalnz.org/v3/records.json?text=kiwi`\n"
@@ -255,7 +255,7 @@
       "description": "The \"More Like This\" call returns similar records to the specified ID.\n",
       "parameters": [
         {
-          "name": "record_id",
+          "name": "recordId",
           "schema": "integer",
           "required": true,
           "description": "Every record has a unique, persistent *record_id*."
@@ -267,7 +267,7 @@
           "description": "Note - There is a small difference with some field names in the response between JSON and XML.  \nWhen a field name has more than one word, JSON format will separate the words with an underscore, eg. \"content_partner\", whereas XML uses a hyphenated naming convention, eg. \"content-partner\".\n"
         },
         {
-          "name": "Authentication-Token",
+          "name": "authenticationToken",
           "schema": "string",
           "required": false,
           "description": "The DigitalNZ API no longer requires a key to access public content. However, if you plan on using the API regularly, expect to be a high volume consumer or are planning on creating an application, we encourage you to use an API key so that we can:\n- provide targeted help and support\n- increase your query throughput (by negotiation)\n- notify you directly of changes to the API\n- gather usage metrics to help improve the service  \n\nAPI requests that do not pass a valid API key/token are treated as unauthenticated. A maximum rate limit applies across all unauthenticated requests. This rate limit is in place to protect the service from overuse, resulting in unsustainable costs, or potential attack.\n\n**Getting an API key**  \n[Create a DigitalNZ account](https://digitalnz.org/sign_up), log in and select \"[my API key](https://digitalnz.org/api_keys/edit)\" from your username drop-down menu (on the right hand side)'. The key is a long string of jumbled letters and numbers (hash) that is unique to you. You are required to keep the key secret. (Refer to the [Developer API Terms of Use](https://digitalnz.org/about/terms-of-use/developer-api-terms-of-use) for more information).\n\n**Using an API key**  \nWhen you make a call to the API you'll need to pass the key in a custom HTTP header: ‘Authentication-Token’.\nFor example, a query using the ‘curl’ command might look like the following (where ‘{YOUR_API_KEY}’ is replaced with a valid API key):\n\n`curl -H \"Authentication-Token:{YOUR_API_KEY}\" http://api.digitalnz.org/v3/records.json?text=kiwi`\n"
@@ -278,7 +278,7 @@
           "description": "Comma-separated whitelist of fields to be returned. The syntax *\"&fields=verbose\"* can be used to return the bulk of the fields, or you can customise which fields you are interested in, eg. *\"&fields=id,title,subject,collection,landing_url,locations\"*.\n"
         },
         {
-          "name": "mlt_fields",
+          "name": "mltFields",
           "schema": "string",
           "description": "Comma-separated list of fields used to evaluate relatedness. Available fields to compare are *title* and *subject*, eg *&mlt_fields=title,subject* or *&mlt_fields=title*.\n"
         },

@@ -139,12 +139,12 @@
       "description": "Import registry data",
       "parameters": [
         {
-          "name": "X-Registry-Preserve-GlobalId",
+          "name": "xRegistryPreserveGlobalId",
           "schema": "boolean",
           "description": "If this header is set to false, global ids of imported data will be ignored and replaced by next id in global id sequence. This allows to import any data even thought the global ids would cause a conflict."
         },
         {
-          "name": "X-Registry-Preserve-ContentId",
+          "name": "xRegistryPreserveContentId",
           "schema": "boolean",
           "required": false,
           "description": "If this header is set to false, content ids of imported data will be ignored and replaced by next id in content id sequence. The mapping between content and artifacts will be preserved. This allows to import any data even thought the content ids would cause a conflict."
@@ -675,17 +675,17 @@
       "description": "Create artifact",
       "parameters": [
         {
-          "name": "X-Registry-ArtifactType",
+          "name": "xRegistryArtifactType",
           "schema": "string",
           "description": "Specifies the type of the artifact being added. Possible values include:\n\n* Avro (`AVRO`)\n* Protobuf (`PROTOBUF`)\n* JSON Schema (`JSON`)\n* Kafka Connect (`KCONNECT`)\n* OpenAPI (`OPENAPI`)\n* AsyncAPI (`ASYNCAPI`)\n* GraphQL (`GRAPHQL`)\n* Web Services Description Language (`WSDL`)\n* XML Schema (`XSD`)"
         },
         {
-          "name": "X-Registry-ArtifactId",
+          "name": "xRegistryArtifactId",
           "schema": "string",
           "description": "A client-provided, globally unique identifier for the new artifact."
         },
         {
-          "name": "X-Registry-Version",
+          "name": "xRegistryVersion",
           "schema": "string",
           "description": "Specifies the version number of this initial version of the artifact content.  This would typically\nbe a simple integer or a SemVer value.  If not provided, the server will assign a version number\nautomatically (starting with version `1`)."
         },
@@ -700,33 +700,33 @@
           "description": "Used only when the `ifExists` query parameter is set to `RETURN_OR_UPDATE`, this parameter can be set to `true` to indicate that the server should \"canonicalize\" the content when searching for a matching version.  The canonicalization algorithm is unique to each artifact type, but typically involves removing extra whitespace and formatting the content in a consistent manner."
         },
         {
-          "name": "X-Registry-Description",
+          "name": "xRegistryDescription",
           "schema": "string",
           "required": false,
           "description": "Specifies the description of artifact being added. Description must be ASCII-only string. If this is not provided, the server will extract the description from the artifact content."
         },
         {
-          "name": "X-Registry-Description-Encoded",
+          "name": "xRegistryDescriptionEncoded",
           "schema": "string",
           "description": "Specifies the description of artifact being added. Value of this must be Base64 encoded string. If this is not provided, the server will extract the description from the artifact content."
         },
         {
-          "name": "X-Registry-Name",
+          "name": "xRegistryName",
           "schema": "string",
           "description": "Specifies the name of artifact being added. Name must be ASCII-only string. If this is not provided, the server will extract the name from the artifact content."
         },
         {
-          "name": "X-Registry-Name-Encoded",
+          "name": "xRegistryNameEncoded",
           "schema": "string",
           "description": "Specifies the name of artifact being added. Value of this must be Base64 encoded string. If this is not provided, the server will extract the name from the artifact content."
         },
         {
-          "name": "X-Registry-Content-Hash",
+          "name": "xRegistryContentHash",
           "schema": "string",
           "description": "Specifies the (optional) hash of the artifact to be verified."
         },
         {
-          "name": "X-Registry-Hash-Algorithm",
+          "name": "xRegistryHashAlgorithm",
           "schema": "string",
           "description": "The algorithm to use when checking the content validity. (available: SHA256, MD5; default: SHA256)"
         }
@@ -805,27 +805,27 @@
       "description": "Update artifact",
       "parameters": [
         {
-          "name": "X-Registry-Version",
+          "name": "xRegistryVersion",
           "schema": "string",
           "description": "Specifies the version number of this new version of the artifact content.  This would typically\nbe a simple integer or a SemVer value.  If not provided, the server will assign a version number\nautomatically."
         },
         {
-          "name": "X-Registry-Name",
+          "name": "xRegistryName",
           "schema": "string",
           "description": "Specifies the artifact name of this new version of the artifact content. Name must be ASCII-only string. If this is not\nprovided, the server will extract the name from the artifact content."
         },
         {
-          "name": "X-Registry-Name-Encoded",
+          "name": "xRegistryNameEncoded",
           "schema": "string",
           "description": "Specifies the artifact name of this new version of the artifact content. Value of this must be Base64 encoded string. If this is not provided, the server will extract the name from the artifact content."
         },
         {
-          "name": "X-Registry-Description",
+          "name": "xRegistryDescription",
           "schema": "string",
           "description": "Specifies the artifact description of this new version of the artifact content. Description must be ASCII-only string. If this is not provided, the server will extract the description from the artifact content."
         },
         {
-          "name": "X-Registry-Description-Encoded",
+          "name": "xRegistryDescriptionEncoded",
           "schema": "string",
           "description": "Specifies the artifact description of this new version of the artifact content. Value of this must be Base64 encoded string. If this is not provided, the server will extract the description from the artifact content."
         }
@@ -1228,27 +1228,27 @@
       "description": "Create artifact version",
       "parameters": [
         {
-          "name": "X-Registry-Version",
+          "name": "xRegistryVersion",
           "schema": "string",
           "description": "Specifies the version number of this new version of the artifact content.  This would typically\nbe a simple integer or a SemVer value.  It must be unique within the artifact.  If this is not\nprovided, the server will generate a new, unique version number for this new updated content."
         },
         {
-          "name": "X-Registry-Name",
+          "name": "xRegistryName",
           "schema": "string",
           "description": "Specifies the artifact name of this new version of the artifact content. Name must be ASCII-only string. If this is not\nprovided, the server will extract the name from the artifact content."
         },
         {
-          "name": "X-Registry-Description",
+          "name": "xRegistryDescription",
           "schema": "string",
           "description": "Specifies the artifact description of this new version of the artifact content. Description must be ASCII-only string. If this is not provided, the server will extract the description from the artifact content."
         },
         {
-          "name": "X-Registry-Description-Encoded",
+          "name": "xRegistryDescriptionEncoded",
           "schema": "string",
           "description": "Specifies the artifact description of this new version of the artifact content. Value of this must be Base64 encoded string. If this is not provided, the server will extract the description from the artifact content."
         },
         {
-          "name": "X-Registry-Name-Encoded",
+          "name": "xRegistryNameEncoded",
           "schema": "string",
           "description": "Specifies the artifact name of this new version of the artifact content. Value of this must be Base64 encoded string. If this is not provided, the server will extract the name from the artifact content."
         }

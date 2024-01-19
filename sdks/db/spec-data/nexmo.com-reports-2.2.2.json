@@ -18,7 +18,7 @@
       "description": "List reports",
       "parameters": [
         {
-          "name": "account_id",
+          "name": "accountId",
           "schema": "string",
           "required": true,
           "description": "The account for which the list of reports will be queried."
@@ -30,12 +30,12 @@
           "description": "A comma-separated list of report status values. Reports with any of the statuses specified are returned. The values in the comma-seperated list specified for `status` can be any of `PENDING`, `PROCESSING`, `SUCCESS`, `ABORTED`, `FAILED`, `TRUNCATED`."
         },
         {
-          "name": "date_from",
+          "name": "dateFrom",
           "schema": "string",
           "description": "ISO-8601 extended time zone offset or ISO-8601 UTC zone offset formatted date from which the list of reports will be queried. Format `yyyy-mm-ddThh:mm:ss[.sss]±hh:mm` or `yyyy-mm-ddThh:mm:ss[.sss]Z`."
         },
         {
-          "name": "date_to",
+          "name": "dateTo",
           "schema": "string",
           "description": "ISO-8601 extended time zone offset or ISO-8601 UTC zone offset formatted date until which the list of reports will be queried. Format `yyyy-mm-ddThh:mm:ss[.sss]±hh:mm` or `yyyy-mm-ddThh:mm:ss[.sss]Z`."
         }
@@ -91,7 +91,7 @@
       "description": "Load records synchronously",
       "parameters": [
         {
-          "name": "account_id",
+          "name": "accountId",
           "schema": "string",
           "required": true,
           "description": "The account for which the list of reports will be queried."
@@ -113,22 +113,22 @@
           "description": "The UUID of the message or call to be searched for. You can specify a comma-separated list of UUIDs. If UUIDs are not found they are listed in the response in the `ids_not_found` field.\n\nIf you specify `id`, you must not specify `status`, `date_start` or `date_end`.\n"
         },
         {
-          "name": "date_start",
+          "name": "dateStart",
           "schema": "string",
           "description": "ISO-8601 extended time zone offset or ISO-8601 UTC zone offset formatted date (format `yyyy-mm-ddThh:mm:ss[.sss]±hh:mm` or `yyyy-mm-ddThh:mm:ss[.sss]Z`) for when reports should begin. \n\nIt filters on the time the API call was received by Vonage and corresponds to the field `date_received` (`date_start` for Voice) in the report file. It is inclusive, i.e. the provided value is less than or equal to the value in the field `date_received` (`date_start` for Voice) in the CDR.\n\nIf you provide this, you must provide `date_end` and must not provide `id`.\n"
         },
         {
-          "name": "date_end",
+          "name": "dateEnd",
           "schema": "string",
           "description": "**Must be no more than 24 hours later than `date_start`**\n\nISO-8601 extended time zone offset or ISO-8601 UTC zone offset formatted date (format `yyyy-mm-ddThh:mm:ss[.sss]±hh:mm` or `yyyy-mm-ddThh:mm:ss[.sss]Z`) for when report should end.\n\nIt is exclusive, i.e. the provided value is strictly greater than the value in the field `date_received` in the CDR.\n\nIf you provide this, you must provide `date_start` and must not provide `id`.\n"
         },
         {
-          "name": "include_message",
+          "name": "includeMessage",
           "schema": "boolean",
           "description": "Include the message contents in the records. Only applicable for use with products `SMS` and `MESSAGES`, where it is optional."
         },
         {
-          "name": "show_concatenated",
+          "name": "showConcatenated",
           "schema": "boolean",
           "description": "Indicates whether the SMS was split up into multiple parts (due to its length)."
         },
@@ -160,7 +160,7 @@
       "description": "Cancel the execution of a report",
       "parameters": [
         {
-          "name": "report_id",
+          "name": "reportId",
           "schema": "string",
           "required": true,
           "description": "UUID of the report"
@@ -192,7 +192,7 @@
       "description": "Get status of report",
       "parameters": [
         {
-          "name": "report_id",
+          "name": "reportId",
           "schema": "string",
           "required": true,
           "description": "UUID of the report request (`request_id` in response)."
@@ -220,7 +220,7 @@
       "description": "Get report data",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "UUID of the file."

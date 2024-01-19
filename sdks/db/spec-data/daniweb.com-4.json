@@ -76,7 +76,7 @@
       "description": "Fetch an array of Daniapps that are currently in production mode.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "array",
           "required": true,
           "description": ""
@@ -124,7 +124,7 @@
       "description": "Fetch an array of Daniapp audience segments that comprise the current access token's bubble.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "array",
           "required": true,
           "description": ""
@@ -145,7 +145,7 @@
       "description": "Create a membership record for the OAuth'ed end-user based on the current audience segment/bubble combination.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "integer",
           "required": true,
           "description": ""
@@ -278,7 +278,7 @@
           "description": ""
         },
         {
-          "name": "include_archived",
+          "name": "includeArchived",
           "schema": "boolean",
           "required": false,
           "description": ""
@@ -317,7 +317,7 @@
       "description": "Fetch an array of conversations. You can only retrieve conversations with users who exist within the current access token's bubble.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "array",
           "required": true,
           "description": ""
@@ -338,19 +338,19 @@
       "description": "Retrieve the last {limit} messages in the conversation, provided the conversations exist within the current access token's bubble. If a timeout is 0 or greater, the batch is sorted oldest first. Otherwise, if timeout is a negative number, the transcript is paginated and sorted newest first. Specify a timeout for long polling (which delays the server sending back results for up to n seconds or until results are available, whichever comes first), or default to 0 for immediate results. Optionally record your status as online along with sharing the latest message you've seen with the other conversation participant. Optionally specify a gt_message_id to retrieve only messages with an ID greater than that specified (such as greater than the latest message ID received in the last poll). Optionally only poll for messages authored by the other person in the conversation, and echo messages authored by you when sending, for a perceived increase in performance. Optionally only retrieve messages that were posted from within the current access token's bubble. Optionally specify a date formatted as YYYY-MM-DD to retrieve a transcript of messages from a single day. When record_seen is set to true, the new message count for the conversation is reset to zero.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "integer",
           "required": true,
           "description": ""
         },
         {
-          "name": "gt_message_id",
+          "name": "gtMessageId",
           "schema": "integer",
           "required": false,
           "description": ""
         },
         {
-          "name": "exclude_self",
+          "name": "excludeSelf",
           "schema": "boolean",
           "required": false,
           "description": ""
@@ -368,7 +368,7 @@
           "description": ""
         },
         {
-          "name": "record_seen",
+          "name": "recordSeen",
           "schema": "boolean",
           "required": false,
           "description": ""
@@ -407,7 +407,7 @@
       "description": "Post a message to a conversation that is with a user who exists within the current access token's bubble. Optionally specify whether emoticons should be parsed into smiley images. Optionally specify whether the message should be bubbled within the app. Additionally, optionally attach a single metadata key/value pair to the message upon submission.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "integer",
           "required": true,
           "description": ""
@@ -500,7 +500,7 @@
       "description": "Paginated report of information about messages contributed by conversation and date. Only conversations that exist within the current access token's bubble are considered in the calculations. Optionally roll up all conversations to retrieve one record per date. Optionally specify a date formatted as YYYY-MM-DD to retrieve information just from the single date, along with additional navigational information, which is useful when generating a transcript for a single day and wanting to reference the previous and next days there were messages within the conversation(s).",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "array",
           "required": true,
           "description": ""
@@ -546,7 +546,7 @@
       "description": "Fetch messages authored from within specified conversations that match a query string passed in as a search parameter along with their relevancy score.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "array",
           "required": true,
           "description": ""
@@ -597,7 +597,7 @@
       "description": "Status information about your current relationship with one or more conversations you participating in, provided the conversations exist within the current access token's bubble.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "array",
           "required": true,
           "description": ""
@@ -618,7 +618,7 @@
       "description": "Archive or unarchive a conversation that is with a user who exists within the same bubble.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "integer",
           "required": true,
           "description": ""
@@ -772,7 +772,7 @@
       "description": "Delete an array of group messages. You must be the owner or moderator of the group.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "array",
           "required": true,
           "description": ""
@@ -793,7 +793,7 @@
       "description": "Fetch an array of group messages. You can only retrieve messages authored by you or by users existing within the current access token's bubble.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "array",
           "required": true,
           "description": ""
@@ -814,7 +814,7 @@
       "description": "Retrieve all key/value pairs attached to the current message that you have access to, so long as the user who created the group exists within the current access token's bubble. This includes all public metadata, bubbled metadata that was created by an access token existing within the current bubble, user metadata that was created by you, or private metadata created by you from an access token existing within the current bubble.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "integer",
           "required": true,
           "description": ""
@@ -847,7 +847,7 @@
       "description": "Attach one-to-many key/value pairs of metadata to a group message, so long as the user who authored the message exists within the current access token's bubble and you are a member of their group. A key is unique for each author/bubble combination. Attaching metadata with an existing key that was previously created by you, from within the same bubble, overwrites the key with the new value or set of values. The privacy setting allows you to specify who will have access to the metadata: Public metadata by anyone using an access token which grants them access to the user who authored the message and who is also a member of the group the message belongs to; Bubbled metadata by anyone using an access token existing within the current bubble who is also a member of the group the message belongs to; User metadata by you, so long as you are using an access token which grants you access to the user who authored the message and you remain a member of the group; Private metadata by you, so long as you are using an access token existing within the current bubble and you remain a member of the group.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "integer",
           "required": true,
           "description": ""
@@ -913,7 +913,7 @@
       "description": "Retrieve all key/value pairs attached to the current message that you have access to, so long as the user who created the group exists within the current access token's bubble. This includes all public metadata, bubbled metadata that was created by an access token existing within the current bubble, user metadata that was created by you, or private metadata created by you from an access token existing within the current bubble. Metadata will be grouped by key.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "integer",
           "required": true,
           "description": ""
@@ -974,7 +974,7 @@
       "description": "Retrieve groups that were created by users within the current access token's bubble, along with your current relationship with the groups. The groups must be either Public or you must be a member of them. Unlisted and Private groups that you are not a member of are not listed. Optionally only retrieve groups that you are a member of.",
       "parameters": [
         {
-          "name": "existing_membership",
+          "name": "existingMembership",
           "schema": "boolean",
           "required": false,
           "description": ""
@@ -1007,7 +1007,7 @@
       "description": "Fetch an array of groups. You can only retrieve groups created by users existing within the current access token's bubble.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "array",
           "required": true,
           "description": ""
@@ -1028,7 +1028,7 @@
       "description": "Modify a group you previously created.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "integer",
           "required": true,
           "description": ""
@@ -1074,7 +1074,7 @@
       "description": "Leave a group that you are a member of and that was created by a user who exists within the current access token's bubble.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "integer",
           "required": true,
           "description": ""
@@ -1095,13 +1095,13 @@
       "description": "Fetch an array of users who are members of specific groups that you are also a member of. You can only retrieve users existing within the current access token's bubble.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "array",
           "required": true,
           "description": ""
         },
         {
-          "name": "moderators_only",
+          "name": "moderatorsOnly",
           "schema": "boolean",
           "required": false,
           "description": ""
@@ -1128,7 +1128,7 @@
       "description": "Promote or demote a member's privileges within a group that you created. The user must exist within the current access token's bubble and be an existing member of the group.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "integer",
           "required": true,
           "description": ""
@@ -1161,7 +1161,7 @@
       "description": "Join a group that was created by a user who exists within the current access token's bubble, or join other users into a group that you created. If you are the group owner, you can pass in a user_id to create membership records for a user you are in a conversation with. The user must exist within the current access token's bubble. If the group is private, you must successfully pass in its passphrase in order to join. You can obtain the passphrase from the group's owner.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "integer",
           "required": true,
           "description": ""
@@ -1192,25 +1192,25 @@
       "description": "Retrieve the last {limit} messages in the group, for messages authored by users within the current access token's bubble. If a timeout is 0 or greater, the batch is sorted oldest first. Otherwise, if timeout is a negative number, the transcript is paginated and sorted newest first. Specify a timeout for long polling (which delays the server sending back results for up to n seconds or until results are available, whichever comes first), or default to 0 for immediate results. Optionally record your status as online along with sharing the latest message you've seen with other group members. Optionally specify a gt_message_id to retrieve only messages with an ID greater than that specified (such as greater than the latest message ID received in the last poll). Optionally only poll for messages authored by other members of the group, and echo messages authored by you when sending, for a perceived increase in performance. Optionally only retrieve messages that were posted from within the current access token's bubble. Optionally specify a date formatted as YYYY-MM-DD to retrieve a transcript of messages from a single day. When record_seen is set to true, the new message count for the group is reset to zero.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "integer",
           "required": true,
           "description": ""
         },
         {
-          "name": "gt_message_id",
+          "name": "gtMessageId",
           "schema": "integer",
           "required": false,
           "description": ""
         },
         {
-          "name": "exclude_self",
+          "name": "excludeSelf",
           "schema": "boolean",
           "required": false,
           "description": ""
         },
         {
-          "name": "include_deleted",
+          "name": "includeDeleted",
           "schema": "boolean",
           "required": false,
           "description": ""
@@ -1228,7 +1228,7 @@
           "description": ""
         },
         {
-          "name": "record_seen",
+          "name": "recordSeen",
           "schema": "boolean",
           "required": false,
           "description": ""
@@ -1267,7 +1267,7 @@
       "description": "Post a message to a group that you are a member of and that was created by a user who exists within the current access token's bubble. Optionally specify whether emoticons should be parsed into smiley images. Additionally, optionally attach a single metadata key/value pair to the group message upon submission.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "integer",
           "required": true,
           "description": ""
@@ -1354,7 +1354,7 @@
       "description": "Paginated report of information about group messages contributed by conversation and date. Only groups you're a member of and group messages authored by users existing within the current access token's bubble are considered in the calculations. Optionally roll up all groups to retrieve one record per date. Optionally specify a date formatted as YYYY-MM-DD to retrieve information just from the single date, along with additional navigational information, which is useful when generating a transcript for a single day and wanting to reference the previous and next days there were messages within the group discussion(s).",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "array",
           "required": true,
           "description": ""
@@ -1400,7 +1400,7 @@
       "description": "Status information about your current relationship with one or more groups you are a member of, provided the users who created the groups exist within the current access token's bubble.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "array",
           "required": true,
           "description": ""
@@ -1531,7 +1531,7 @@
       "description": "Fetch an array of messages. You can only retrieve messages authored by you or by users who exist within the current access token's bubble.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "array",
           "required": true,
           "description": ""
@@ -1552,7 +1552,7 @@
       "description": "Retrieve all key/value pairs attached to the current message that you have access to, so long as the user who authored the message exists within the current access token's bubble. This includes all public metadata, bubbled metadata that was created by an access token existing within the current bubble, user metadata that was created by you, or private metadata created by you from an access token existing within the current bubble.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "integer",
           "required": true,
           "description": ""
@@ -1585,7 +1585,7 @@
       "description": "Attach one-to-many key/value pairs of metadata to a message, so long as the user who authored the message exists within the current access token's bubble. A key is unique for each author/bubble combination. Attaching metadata with an existing key that was previously created by you, from within the same bubble, overwrites the key with the new value or set of values. The privacy setting allows you to specify who will have access to the metadata: Public metadata by you or the other user in the message's conversation, using an access token which grants you access to the user who authored the message, if it wasn't you; Bubbled metadata by you or the other user in the message's conversation, using an access token existing within the current bubble; User metadata by you, so long as you are using an access token which grants you access to the user who authored the message, if it wasn't you; Private metadata by you, so long as you are using an access token existing within the current bubble.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "integer",
           "required": true,
           "description": ""
@@ -1651,7 +1651,7 @@
       "description": "Retrieve all key/value pairs attached to the current message that you have access to, so long as the user who authored the message exists within the current access token's bubble. This includes all public metadata, bubbled metadata that was created by an access token existing within the current bubble, user metadata that was created by you, or private metadata created by you from an access token existing within the current bubble. Metadata will be grouped by key.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "integer",
           "required": true,
           "description": ""
@@ -1741,7 +1741,7 @@
       "description": "Remove an item from the OAuth'ed end user's Curriculum Vitae.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "integer",
           "required": true,
           "description": ""
@@ -1762,7 +1762,7 @@
       "description": "Update the OAuth'ed end user's Curriculum Vitae by modifying an existing position.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "integer",
           "required": true,
           "description": ""
@@ -1843,7 +1843,7 @@
           "description": ""
         },
         {
-          "name": "order_by",
+          "name": "orderBy",
           "schema": "string",
           "required": false,
           "description": ""
@@ -2246,7 +2246,7 @@
       "description": "Fetch an array of users. You can only retrieve users existing within the current access token's bubble.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "array",
           "required": true,
           "description": ""
@@ -2267,7 +2267,7 @@
       "description": "You can only retrieve groups that were created by users existing within the current access token's bubble.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "integer",
           "required": true,
           "description": ""
@@ -2288,7 +2288,7 @@
       "description": "Paginated transcript of group messages authored by an individual user who exists within the current access token's bubble. Messages are sorted oldest to newest.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "integer",
           "required": true,
           "description": ""
@@ -2321,7 +2321,7 @@
       "description": "Initiate a conversation with a user who exists within the current access token's bubble by sending them an introductory message. If you aren't already in a conversation with them, this endpoint meets them first, and then sends the message. Note that if you aren't in an existing conversation, you still must meet the criteria to meet them, meaning the user must currently be free for you to meet. You will receive an error message unless it is currently free for you to meet the user. You can use the users/{:IDS}/synergies endpoint to first determine if the user isn't already in a conversation with you and is free for you to meet and, if they aren't, how to pay to meet them. If you don't specify a message, it defaults to your custom introductory message defined in your settings.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "integer",
           "required": true,
           "description": ""
@@ -2402,7 +2402,7 @@
       "description": "Retrieve all key/value pairs attached to the current user that you have access to, so long as the user exists within the current access token's bubble. This includes all public metadata, bubbled metadata that was created by an access token existing within the current bubble, user metadata that was created by you, or private metadata created by you from an access token existing within the current bubble. You will receive an error message unless either the current access token is bubbled, the user is an algorithmic match for you and you have not reached your quota of new introductions for the day, or you have paid to meet them. However, you can always use the /users/metadata/filters endpoint to filter across all users, including those that are unmatched, existing within the current access token's bubble based on preknown metadata key/value pairs.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "integer",
           "required": true,
           "description": ""
@@ -2435,7 +2435,7 @@
       "description": "Attach one-to-many key/value pairs of metadata to a user, so long as the user exists within the current access token's bubble. You can set one key at a time, with one or many values. A key is unique for each author/bubble combination. Attaching metadata with an existing key that was previously created by you, from within the same bubble, overwrites the key with the new value or set of values. The privacy setting allows you to specify who will have access to the metadata: Public metadata by anyone using an access token which grants them access to the user; Bubbled metadata by anyone using an access token existing within the current bubble; User metadata by you, so long as you are using an access token which grants you access to the user; Private metadata by you, so long as you are using an access token existing within the current bubble.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "integer",
           "required": true,
           "description": ""
@@ -2501,7 +2501,7 @@
       "description": "Retrieve all key/value pairs attached to the current user that you have access to, so long as the user exists within the current access token's bubble. This includes all public metadata, bubbled metadata that was created by an access token existing within the current bubble, user metadata that was created by you, or private metadata created by you from an access token existing within the current bubble. You will receive an error message unless either the current access token is bubbled, the user is an algorithmic match for you and you have not reached your quota of new introductions for the day, or you have paid to meet them. However, you can always use the /users/metadata/filters endpoint to filter across all users, including those that are unmatched, existing within the current access token's bubble based on preknown metadata key/value pairs. Metadata will be grouped by key.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "integer",
           "required": true,
           "description": ""
@@ -2522,7 +2522,7 @@
       "description": "Retrieve the CV of a user who exists within the current access token's bubble. You will receive an error message unless either the current access token is bubbled, the user is an algorithmic match for you and you have not reached your quota of new introductions for the day, or you have paid to meet them. You can only record CV data to your own account. However, any app that you have OAuth'ed against can do so. By default, you will receive CV data that all apps have recorded for the user. Optionally, you can choose to only receive data that the current access token's bubble has recorded.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "integer",
           "required": true,
           "description": ""
@@ -2549,7 +2549,7 @@
       "description": "Determine your match relationship with one or more users who exist within the current access token's bubble. Under some conditions, the price to meet the user will be $0. However, if this is not the case, the PayPal URL payment method will be provided along with the price to meet the user. The PayPal API can be leveraged to send payments programatically, provided the parameters passed in remain the same to ensure that the payment is correctly recorded. Once the payment has been recorded via PayPal IPN, the price to meet the user changes to $0. You can then call the users/{:ID}/meet endpoint to meet the user.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "array",
           "required": true,
           "description": ""
@@ -2570,7 +2570,7 @@
       "description": "Skip, mute or unmute a user you've been matched with. Skipped matches are only presented as algorithmic matches after all other candidates have been exhausted. You cannot be matched with or meet muted users. You can only skip, mute or unmute users existing within the same bubble.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "integer",
           "required": true,
           "description": ""
@@ -2764,7 +2764,7 @@
       "description": "Delete a webhook that was previously registered by the current user/bubble combination.",
       "parameters": [
         {
-          "name": "ID",
+          "name": "id",
           "schema": "integer",
           "required": true,
           "description": ""

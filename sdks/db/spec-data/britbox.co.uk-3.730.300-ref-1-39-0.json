@@ -1537,7 +1537,7 @@
           "description": "The page of items to load. Starts from page 1."
         },
         {
-          "name": "page_size",
+          "name": "pageSize",
           "schema": "integer",
           "description": "The number of items to return in a page."
         },
@@ -1547,7 +1547,7 @@
           "description": "The list sort order, either 'asc' or 'desc'."
         },
         {
-          "name": "item_type",
+          "name": "itemType",
           "schema": "string",
           "description": "The item type to filter by. Defaults to unspecified."
         },
@@ -1793,7 +1793,7 @@
       "description": "Returns a list of items which have been watched but not completed under the active\nprofile.\n\nMultiple episodes under the same show may be watched or in progress, however only a\nsingle item belonging to a particular show will be included in the returned list.\n\nThe next episode to continue watching for a particular show will be the most recent\nincompletely watched episode, or the next episode following the most recently\ncompletely watched episode. Based on the specified `show_item_type` type, either the next\nepisode, the season of the next episode, or the show will be included in the list.\n",
       "parameters": [
         {
-          "name": "show_item_type",
+          "name": "showItemType",
           "schema": "string",
           "description": "The item type to be returned for continue watching items belonging to a show.\n\nMultiple episodes under the same show may be watched or in progress, however only a\nsingle item belonging to a particular show will be included in the returned list.\n\nThe next episode to continue watching for a particular show will be the most recent\nincompletely watched episode, or the next episode following the most recently\ncompletely watched episode. Based on the specified `show_item_type` type, either the next\nepisode, the season of the next episode, or the show will be included in the list.\n\nIf `episode` is specified, then only the next episode to continue watching for a\nshow will be returned.\n\nIf `season` is specified, then only the season of the next episode will be returned.\n\nIf `show` is specified, then only the show of the next episode will be returned\n\nThe recommended value of this parameter should reflect the desitination the\nuser will be sent to when they select this item in the list. So if a user will\nbe sent to the show detail page then this should be `show` and you can use\nthe `include` parameter to get metadata about the episode or season if needed\n"
         },
@@ -1808,12 +1808,12 @@
           "description": "The page of items to load. Starts from page 1."
         },
         {
-          "name": "page_size",
+          "name": "pageSize",
           "schema": "integer",
           "description": "The number of items to return in a page."
         },
         {
-          "name": "max_rating",
+          "name": "maxRating",
           "schema": "string",
           "description": "The maximum rating (inclusive) of an item returned, e.g. 'auoflc-pg'."
         },
@@ -1892,7 +1892,7 @@
           "description": "The identifier of the source item to base the next to watch item off.\n"
         },
         {
-          "name": "max_rating",
+          "name": "maxRating",
           "schema": "string",
           "description": "The maximum rating (inclusive) of an item returned, e.g. 'auoflc-pg'."
         },
@@ -2028,7 +2028,7 @@
           "description": "The page of items to load. Starts from page 1."
         },
         {
-          "name": "page_size",
+          "name": "pageSize",
           "schema": "integer",
           "description": "The number of items to return in a page."
         },
@@ -2038,12 +2038,12 @@
           "description": "The list sort order, either 'asc' or 'desc'."
         },
         {
-          "name": "order_by",
+          "name": "orderBy",
           "schema": "string",
           "description": "What to order by.\n\nOrdering by `date-modified` equates to ordering by the last rated date.\n"
         },
         {
-          "name": "item_type",
+          "name": "itemType",
           "schema": "string",
           "description": "The item type to filter by. Defaults to unspecified."
         },
@@ -2240,7 +2240,7 @@
       "description": "Remove the watched status of items under the active profile. Passing in\nspecific `itemId`s to the `item_ids` query parameter will cause only these\nitems to be removed. **If this list is missing all watched items will be\nremoved**\n",
       "parameters": [
         {
-          "name": "item_ids",
+          "name": "itemIds",
           "schema": "array",
           "description": "List of `itemId`s to delete. Omit this parameter to delete all items\n"
         },
@@ -2352,7 +2352,7 @@
           "description": "The page of items to load. Starts from page 1."
         },
         {
-          "name": "page_size",
+          "name": "pageSize",
           "schema": "integer",
           "description": "The number of items to return in a page."
         },
@@ -2367,12 +2367,12 @@
           "description": "The list sort order, either 'asc' or 'desc'."
         },
         {
-          "name": "order_by",
+          "name": "orderBy",
           "schema": "string",
           "description": "What to order by.\n\nOrdering by `date-modified` equates to ordering by the last watched date.\n"
         },
         {
-          "name": "item_type",
+          "name": "itemType",
           "schema": "string",
           "description": "The item type to filter by. Defaults to unspecified."
         },
@@ -4036,7 +4036,7 @@
           "description": "The identifier of the item to load.\n\nThe custom identifier of an item can be used here if the `use_custom_id` parameter is true.\n"
         },
         {
-          "name": "max_rating",
+          "name": "maxRating",
           "schema": "string",
           "description": "The maximum rating (inclusive) of items returned, e.g. 'auoflc-pg'."
         },
@@ -4046,12 +4046,12 @@
           "description": "If no value is specified no dependencies are expanded.\n\nIf 'children' is specified then the list of any direct children will be expanded. For example\nseasons of a show or episodes of a season.\n\nIf 'all' is specified then the parent chain will be expanded along with any child list at each level.\nFor example if an episode is specified then its season will be expanded and that season's episode list.\nThe season will have its show expanded and the show will have its season list expanded.\n\nThe 'all' options is useful when you deep link into a show/season/episode for the first time as\nit provides full context for navigating around the show page. Subsequent navigation around\nchildren of the show should only need to request expand of children.\n\nIf 'ancestors' is specified then only the parent chain is included.\n\nIf 'parent' is specified then only the direct parent is included.\n\nIf an expand is specified which is not relevant to the item type, it will be ignored.\n"
         },
         {
-          "name": "select_season",
+          "name": "selectSeason",
           "schema": "string",
           "description": "Given a provided show id, it can be useful to get the details of a child season. This option\nprovides a means to return the `first` or `latest` season of a show given the show id.\n\nThe `expand` parameter also works here so for example you could land on a show page and request the\nlatest season along with `expand=all`. This would then return the detail of the latest season with\nits list of child episode summaries, and also expand the detail of the show with its list of seasons summaries.\n\nNote the `id` parameter must be a show id for this parameter to work correctly.\n"
         },
         {
-          "name": "use_custom_id",
+          "name": "useCustomId",
           "schema": "boolean",
           "description": "Set to true when passing a custom Id as the `id` path parameter."
         },
@@ -4127,12 +4127,12 @@
           "description": "The page of items to load. Starts from page 1."
         },
         {
-          "name": "page_size",
+          "name": "pageSize",
           "schema": "integer",
           "description": "The number of items to return in a page."
         },
         {
-          "name": "max_rating",
+          "name": "maxRating",
           "schema": "string",
           "description": "The maximum rating (inclusive) of items returned, e.g. 'auoflc-pg'."
         },
@@ -4213,12 +4213,12 @@
           "description": "The page of items to load. Starts from page 1."
         },
         {
-          "name": "page_size",
+          "name": "pageSize",
           "schema": "integer",
           "description": "The number of items to return in a page."
         },
         {
-          "name": "max_rating",
+          "name": "maxRating",
           "schema": "string",
           "description": "The maximum rating (inclusive) of items returned, e.g. 'auoflc-pg'."
         },
@@ -4372,7 +4372,7 @@
           "description": "The identifier of the source item to base the next to watch item off.\n"
         },
         {
-          "name": "max_rating",
+          "name": "maxRating",
           "schema": "string",
           "description": "The maximum rating (inclusive) of an item returned, e.g. 'auoflc-pg'."
         },
@@ -5090,37 +5090,37 @@
           "description": "The path of the page to load, e.g. '/movies'."
         },
         {
-          "name": "list_page_size",
+          "name": "listPageSize",
           "schema": "integer",
           "description": "The number of items to load when prefetching and paging each list in the page row."
         },
         {
-          "name": "list_page_size_large",
+          "name": "listPageSizeLarge",
           "schema": "integer",
           "description": "The number of items to load when prefetching a continuous scroll list entry in a page.\n\nBy default any list page entry with template pattern `/^CS\\d+$/` will\nbe considered a continuous scroll list.\n"
         },
         {
-          "name": "max_list_prefetch",
+          "name": "maxListPrefetch",
           "schema": "integer",
           "description": "The maximum number of lists to prefetch in the page."
         },
         {
-          "name": "item_detail_expand",
+          "name": "itemDetailExpand",
           "schema": "string",
           "description": "Only relevant when loading item detail pages as these embed a detailed item in the main page entry.\n\nIf no value is specified no item dependencies are expanded.\n\nIf 'children' is specified then the list of any direct children will be expanded. For example\nseasons of a show or episodes of a season.\n\nIf 'all' is specified then the parent chain will be expanded along with any child list at each level.\nFor example if an episode is specified then its season will be expanded and that season's episode list.\nThe season will have its show expanded and the show will have its season list expanded.\n\nThe 'all' options is useful when you deep link into a show/season/episode for the first time as\nit provides full context for navigating around the show page. Subsequent navigation around\nchildren of the show should only need to request expand of children.\n\nIf 'ancestors' is specified then only the parent chain is included\n\nIf an expand is specified which is not relevant to the item type, it will be ignored.\n"
         },
         {
-          "name": "item_detail_select_season",
+          "name": "itemDetailSelectSeason",
           "schema": "string",
           "description": "Only relevant when loading show detail pages as these embed a detailed item in the main page entry.\n\nSince the introduction of the D1,2,3 templates this parameter is now somewhat redundant, or less\nlikely to have any effect. While it may still be useful in some cases, most of the time the season\nselection will be dictated by the configuration of the rows scheduled on the show detail page.\nThis parameter will only take effect if there are rows used to schedule episodes of a season, like\nD1,2,3, or if no rows have a value set for their `seasonOrder` custom field.\n\nGiven a targeted show page, it can be useful to get the details of a child season. This option\nprovides a means to return the `first` or `latest` season of a show embedded in the page.\n\nThe `expand` parameter also works here so for example you could land on a show page and request the\n`item_detail_select_season=latest` along with `item_detail_expand=all`. This would then return the\ndetail of the latest season with its list of child episode summaries, and also expand\nthe detail of the show with its list of seasons summaries.\n"
         },
         {
-          "name": "text_entry_format",
+          "name": "textEntryFormat",
           "schema": "string",
           "description": "Only relevant to page entries of type `TextEntry`.\n\nConverts the value of a text page entry to the specified format.\n"
         },
         {
-          "name": "max_rating",
+          "name": "maxRating",
           "schema": "string",
           "description": "The maximum rating (inclusive) of items returned, e.g. 'auoflc-pg'."
         },
@@ -5465,7 +5465,7 @@
       "description": "Get the list of recommended items under the active profile.",
       "parameters": [
         {
-          "name": "item_types",
+          "name": "itemTypes",
           "schema": "array",
           "description": "List of item types to filter the recommendation list"
         },
@@ -5475,7 +5475,7 @@
           "description": "The page of items to load. Starts from page 1."
         },
         {
-          "name": "page_size",
+          "name": "pageSize",
           "schema": "integer",
           "description": "The number of items to return in a page."
         },
@@ -6445,12 +6445,12 @@
           "description": "A comma delimited list of item list identifiers.\n\nThese can be list ids e.g. `14354,65473,3234`\n\nOr more complex sort/filter queries using pipes e.g.\n\n`14354|max_rating=AUOFLC-E|order=asc|order_by=year-added,65473|page_size=30,3234`\n\n_Note the id must always come first for each encoded list query_\n\nList parameters may be provide without the `param=` prefix e.g. `14354|genre:action`\n\nOnly the following options can be present.\n  - `order`\n  - `order_by`\n  - `max_rating`\n  - `page_size`\n  - `item_type`\n  - `param`\n"
         },
         {
-          "name": "page_size",
+          "name": "pageSize",
           "schema": "integer",
           "description": "The number of items to return in a page."
         },
         {
-          "name": "max_rating",
+          "name": "maxRating",
           "schema": "string",
           "description": "The maximum rating (inclusive) of items returned, e.g. 'auoflc-pg'."
         },
@@ -6460,12 +6460,12 @@
           "description": "The list sort order, either 'asc' or 'desc'."
         },
         {
-          "name": "order_by",
+          "name": "orderBy",
           "schema": "string",
           "description": "What to order by."
         },
         {
-          "name": "item_type",
+          "name": "itemType",
           "schema": "string",
           "description": "The item type to filter by. Defaults to unspecified."
         },
@@ -6541,12 +6541,12 @@
           "description": "The page of items to load. Starts from page 1."
         },
         {
-          "name": "page_size",
+          "name": "pageSize",
           "schema": "integer",
           "description": "The number of items to return in a page."
         },
         {
-          "name": "max_rating",
+          "name": "maxRating",
           "schema": "string",
           "description": "The maximum rating (inclusive) of items returned, e.g. 'auoflc-pg'."
         },
@@ -6556,7 +6556,7 @@
           "description": "The list sort order, either 'asc' or 'desc'."
         },
         {
-          "name": "order_by",
+          "name": "orderBy",
           "schema": "string",
           "description": "What to order by."
         },
@@ -6566,7 +6566,7 @@
           "description": "The list parameter in format 'key:value', e.g. 'genre:action'."
         },
         {
-          "name": "item_type",
+          "name": "itemType",
           "schema": "string",
           "description": "The item type to filter by. Defaults to unspecified."
         },
@@ -6637,37 +6637,37 @@
           "description": "The path of the page to load, e.g. '/movies'."
         },
         {
-          "name": "list_page_size",
+          "name": "listPageSize",
           "schema": "integer",
           "description": "The number of items to load when prefetching and paging each list in the page row."
         },
         {
-          "name": "list_page_size_large",
+          "name": "listPageSizeLarge",
           "schema": "integer",
           "description": "The number of items to load when prefetching a continuous scroll list entry in a page.\n\nBy default any list page entry with template pattern `/^CS\\d+$/` will\nbe considered a continuous scroll list.\n"
         },
         {
-          "name": "max_list_prefetch",
+          "name": "maxListPrefetch",
           "schema": "integer",
           "description": "The maximum number of lists to prefetch in the page."
         },
         {
-          "name": "item_detail_expand",
+          "name": "itemDetailExpand",
           "schema": "string",
           "description": "Only relevant when loading item detail pages as these embed a detailed item in the main page entry.\n\nIf no value is specified no item dependencies are expanded.\n\nIf 'children' is specified then the list of any direct children will be expanded. For example\nseasons of a show or episodes of a season.\n\nIf 'all' is specified then the parent chain will be expanded along with any child list at each level.\nFor example if an episode is specified then its season will be expanded and that season's episode list.\nThe season will have its show expanded and the show will have its season list expanded.\n\nThe 'all' options is useful when you deep link into a show/season/episode for the first time as\nit provides full context for navigating around the show page. Subsequent navigation around\nchildren of the show should only need to request expand of children.\n\nIf 'ancestors' is specified then only the parent chain is included\n\nIf an expand is specified which is not relevant to the item type, it will be ignored.\n"
         },
         {
-          "name": "item_detail_select_season",
+          "name": "itemDetailSelectSeason",
           "schema": "string",
           "description": "Only relevant when loading show detail pages as these embed a detailed item in the main page entry.\n\nSince the introduction of the D1,2,3 templates this parameter is now somewhat redundant, or less\nlikely to have any effect. While it may still be useful in some cases, most of the time the season\nselection will be dictated by the configuration of the rows scheduled on the show detail page.\nThis parameter will only take effect if there are rows used to schedule episodes of a season, like\nD1,2,3, or if no rows have a value set for their `seasonOrder` custom field.\n\nGiven a targeted show page, it can be useful to get the details of a child season. This option\nprovides a means to return the `first` or `latest` season of a show embedded in the page.\n\nThe `expand` parameter also works here so for example you could land on a show page and request the\n`item_detail_select_season=latest` along with `item_detail_expand=all`. This would then return the\ndetail of the latest season with its list of child episode summaries, and also expand\nthe detail of the show with its list of seasons summaries.\n"
         },
         {
-          "name": "text_entry_format",
+          "name": "textEntryFormat",
           "schema": "string",
           "description": "Only relevant to page entries of type `TextEntry`.\n\nConverts the value of a text page entry to the specified format.\n"
         },
         {
-          "name": "max_rating",
+          "name": "maxRating",
           "schema": "string",
           "description": "The maximum rating (inclusive) of items returned, e.g. 'auoflc-pg'."
         },
@@ -7154,12 +7154,12 @@
           "description": "When this option is set, instead of all search result items being returned\nin a single list, they will instead be returned under two lists. One for\nmovies and another for tv (shows + programs).\n\nif the `cas` feature flag is set, a third `other` list will be\nincluded containing `customAsset` results\n\nDefault is undefined meaning items will be returned in a single list.\n\nThe array of `people` results will always be separate from items.\n"
         },
         {
-          "name": "max_results",
+          "name": "maxResults",
           "schema": "integer",
           "description": "The maximum number of results to return."
         },
         {
-          "name": "max_rating",
+          "name": "maxRating",
           "schema": "string",
           "description": "The maximum rating (inclusive) of items returned, e.g. 'auoflc-pg'."
         },

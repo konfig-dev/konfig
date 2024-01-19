@@ -34,19 +34,19 @@
       "description": "Authorize user",
       "parameters": [
         {
-          "name": "response_type",
+          "name": "responseType",
           "schema": "string",
           "required": true,
           "description": "The type of response we'd like to receive."
         },
         {
-          "name": "client_id",
+          "name": "clientId",
           "schema": "string",
           "required": true,
           "description": "The Client ID of the application that is requesting to authenticate\nthe user. To get the Client ID for your application, log in to your\nBox developer console and click the **Edit Application** link for\nthe application you're working with. In the OAuth 2.0 Parameters section\nof the configuration page, find the item labelled `client_id`. The\ntext of that item is your application's Client ID."
         },
         {
-          "name": "redirect_uri",
+          "name": "redirectUri",
           "schema": "string",
           "required": false,
           "description": "The URI to which Box redirects the browser after the user has granted\nor denied the application permission. This URI match one of the redirect\nURIs in the configuration of your application. It must be a\nvalid HTTPS URI and it needs to be able to handle the redirection to\ncomplete the next step in the OAuth 2.0 flow.\nAlthough this parameter is optional, it must be a part of the\nauthorization URL if you configured multiple redirect URIs\nfor the application in the developer console. A missing parameter causes\na `redirect_uri_missing` error after the user grants application access."
@@ -145,7 +145,7 @@
       "description": "Remove domain from list of allowed collaboration domains",
       "parameters": [
         {
-          "name": "collaboration_whitelist_entry_id",
+          "name": "collaborationWhitelistEntryId",
           "schema": "string",
           "required": true,
           "description": "The ID of the entry in the list."
@@ -166,7 +166,7 @@
       "description": "Get allowed collaboration domain",
       "parameters": [
         {
-          "name": "collaboration_whitelist_entry_id",
+          "name": "collaborationWhitelistEntryId",
           "schema": "string",
           "required": true,
           "description": "The ID of the entry in the list."
@@ -247,7 +247,7 @@
       "description": "Remove user from list of users exempt from domain restrictions",
       "parameters": [
         {
-          "name": "collaboration_whitelist_exempt_target_id",
+          "name": "collaborationWhitelistExemptTargetId",
           "schema": "string",
           "required": true,
           "description": "The ID of the exemption to the list."
@@ -268,7 +268,7 @@
       "description": "Get user exempt from collaboration domain restrictions",
       "parameters": [
         {
-          "name": "collaboration_whitelist_exempt_target_id",
+          "name": "collaborationWhitelistExemptTargetId",
           "schema": "string",
           "required": true,
           "description": "The ID of the exemption to the list."
@@ -401,7 +401,7 @@
       "description": "Remove collaboration",
       "parameters": [
         {
-          "name": "collaboration_id",
+          "name": "collaborationId",
           "schema": "string",
           "required": true,
           "description": "The ID of the collaboration"
@@ -422,7 +422,7 @@
       "description": "Get collaboration",
       "parameters": [
         {
-          "name": "collaboration_id",
+          "name": "collaborationId",
           "schema": "string",
           "required": true,
           "description": "The ID of the collaboration"
@@ -453,7 +453,7 @@
       "description": "Update collaboration",
       "parameters": [
         {
-          "name": "collaboration_id",
+          "name": "collaborationId",
           "schema": "string",
           "required": true,
           "description": "The ID of the collaboration"
@@ -547,7 +547,7 @@
       "description": "List collection items",
       "parameters": [
         {
-          "name": "collection_id",
+          "name": "collectionId",
           "schema": "string",
           "required": true,
           "description": "The ID of the collection."
@@ -633,7 +633,7 @@
       "description": "Remove comment",
       "parameters": [
         {
-          "name": "comment_id",
+          "name": "commentId",
           "schema": "string",
           "required": true,
           "description": "The ID of the comment."
@@ -654,7 +654,7 @@
       "description": "Get comment",
       "parameters": [
         {
-          "name": "comment_id",
+          "name": "commentId",
           "schema": "string",
           "required": true,
           "description": "The ID of the comment."
@@ -685,7 +685,7 @@
       "description": "Update comment",
       "parameters": [
         {
-          "name": "comment_id",
+          "name": "commentId",
           "schema": "string",
           "required": true,
           "description": "The ID of the comment."
@@ -721,7 +721,7 @@
       "description": "Remove device pin",
       "parameters": [
         {
-          "name": "device_pinner_id",
+          "name": "devicePinnerId",
           "schema": "string",
           "required": true,
           "description": "The ID of the device pin"
@@ -742,7 +742,7 @@
       "description": "Get device pin",
       "parameters": [
         {
-          "name": "device_pinner_id",
+          "name": "devicePinnerId",
           "schema": "string",
           "required": true,
           "description": "The ID of the device pin"
@@ -767,7 +767,7 @@
       "description": "List enterprise device pins",
       "parameters": [
         {
-          "name": "enterprise_id",
+          "name": "enterpriseId",
           "schema": "string",
           "required": true,
           "description": "The ID of the enterprise"
@@ -810,12 +810,12 @@
       "description": "List user and enterprise events",
       "parameters": [
         {
-          "name": "stream_type",
+          "name": "streamType",
           "schema": "string",
           "description": "Defines the type of events that are returned\n\n* `all` returns everything for a user and is the default\n* `changes` returns events that may cause file tree changes\n  such as file updates or collaborations.\n* `sync` is similar to `changes` but only applies to synced folders\n* `admin_logs` returns all events for an entire enterprise and\n  requires the user making the API call to have admin permissions. This\n  stream type is for programmatically pulling from a 1 year history of\n  events across all users within the enterprise and within a\n  `created_after` and `created_before` time frame. The complete history\n  of events will be returned in chronological order based on the event\n  time, but latency will be much higher than `admin_logs_streaming`.\n* `admin_logs_streaming` returns all events for an entire enterprise and\n  requires the user making the API call to have admin permissions. This\n  stream type is for polling for recent events across all users within\n  the enterprise. Latency will be much lower than `admin_logs`, but\n  events will not be returned in chronological order and may\n  contain duplicates."
         },
         {
-          "name": "stream_position",
+          "name": "streamPosition",
           "schema": "string",
           "description": "The location in the event stream to start receiving events from.\n\n* `now` will return an empty list events and\nthe latest stream position for initialization.\n* `0` or `null` will return all events."
         },
@@ -825,17 +825,17 @@
           "description": "Limits the number of events returned\n\nNote: Sometimes, the events less than the limit requested can be returned\neven when there may be more events remaining. This is primarily done in\nthe case where a number of events have already been retrieved and these\nretrieved events are returned rather than delaying for an unknown amount\nof time to see if there are any more results."
         },
         {
-          "name": "event_type",
+          "name": "eventType",
           "schema": "array",
           "description": "A comma-separated list of events to filter by. This can only be used when\nrequesting the events with a `stream_type` of `admin_logs` or\n`adming_logs_streaming`. For any other `stream_type` this value will be\nignored."
         },
         {
-          "name": "created_after",
+          "name": "createdAfter",
           "schema": "string",
           "description": "The lower bound date and time to return events for. This can only be used\nwhen requesting the events with a `stream_type` of `admin_logs`. For any\nother `stream_type` this value will be ignored."
         },
         {
-          "name": "created_before",
+          "name": "createdBefore",
           "schema": "string",
           "required": false,
           "description": "The upper bound date and time to return events for. This can only be used\nwhen requesting the events with a `stream_type` of `admin_logs`. For any\nother `stream_type` this value will be ignored."
@@ -878,7 +878,7 @@
       "description": "Delete file request",
       "parameters": [
         {
-          "name": "file_request_id",
+          "name": "fileRequestId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a file request.\n\nThe ID for any file request can be determined\nby visiting a file request builder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/filerequest/123`\nthe `file_request_id` is `123`."
@@ -911,7 +911,7 @@
       "description": "Get file request",
       "parameters": [
         {
-          "name": "file_request_id",
+          "name": "fileRequestId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a file request.\n\nThe ID for any file request can be determined\nby visiting a file request builder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/filerequest/123`\nthe `file_request_id` is `123`."
@@ -948,13 +948,13 @@
       "description": "Update file request",
       "parameters": [
         {
-          "name": "file_request_id",
+          "name": "fileRequestId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a file request.\n\nThe ID for any file request can be determined\nby visiting a file request builder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/filerequest/123`\nthe `file_request_id` is `123`."
         },
         {
-          "name": "if-match",
+          "name": "ifMatch",
           "schema": "string",
           "required": false,
           "description": "Ensures this item hasn't recently changed before\nmaking changes.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `412 Precondition Failed` if it\nhas changed since."
@@ -1029,7 +1029,7 @@
       "description": "Copy file request",
       "parameters": [
         {
-          "name": "file_request_id",
+          "name": "fileRequestId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a file request.\n\nThe ID for any file request can be determined\nby visiting a file request builder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/filerequest/123`\nthe `file_request_id` is `123`."
@@ -1070,7 +1070,7 @@
       "description": "List file version legal holds",
       "parameters": [
         {
-          "name": "policy_id",
+          "name": "policyId",
           "schema": "string",
           "required": true,
           "description": "The ID of the legal hold policy to get the file version legal\nholds for."
@@ -1107,7 +1107,7 @@
       "description": "Get file version legal hold",
       "parameters": [
         {
-          "name": "file_version_legal_hold_id",
+          "name": "fileVersionLegalHoldId",
           "schema": "string",
           "required": true,
           "description": "The ID of the file version legal hold"
@@ -1132,37 +1132,37 @@
       "description": "List file version retentions",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": false,
           "description": "Filters results by files with this ID."
         },
         {
-          "name": "file_version_id",
+          "name": "fileVersionId",
           "schema": "string",
           "required": false,
           "description": "Filters results by file versions with this ID."
         },
         {
-          "name": "policy_id",
+          "name": "policyId",
           "schema": "string",
           "required": false,
           "description": "Filters results by the retention policy with this ID."
         },
         {
-          "name": "disposition_action",
+          "name": "dispositionAction",
           "schema": "string",
           "required": false,
           "description": "Filters results by the retention policy with this disposition\naction."
         },
         {
-          "name": "disposition_before",
+          "name": "dispositionBefore",
           "schema": "string",
           "required": false,
           "description": "Filters results by files that will have their disposition\ncome into effect before this date."
         },
         {
-          "name": "disposition_after",
+          "name": "dispositionAfter",
           "schema": "string",
           "required": false,
           "description": "Filters results by files that will have their disposition\ncome into effect after this date."
@@ -1199,7 +1199,7 @@
       "description": "Get retention on file",
       "parameters": [
         {
-          "name": "file_version_retention_id",
+          "name": "fileVersionRetentionId",
           "schema": "string",
           "required": true,
           "description": "The ID of the file version retention"
@@ -1268,7 +1268,7 @@
           "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
         },
         {
-          "name": "content-md5",
+          "name": "contentMd5",
           "schema": "string",
           "required": false,
           "description": "An optional header containing the SHA1 hash of the file to\nensure that the file was not corrupted in transit."
@@ -1366,7 +1366,7 @@
       "description": "Remove upload session",
       "parameters": [
         {
-          "name": "upload_session_id",
+          "name": "uploadSessionId",
           "schema": "string",
           "required": true,
           "description": "The ID of the upload session."
@@ -1387,7 +1387,7 @@
       "description": "Get upload session",
       "parameters": [
         {
-          "name": "upload_session_id",
+          "name": "uploadSessionId",
           "schema": "string",
           "required": true,
           "description": "The ID of the upload session."
@@ -1412,7 +1412,7 @@
       "description": "Upload part of file",
       "parameters": [
         {
-          "name": "upload_session_id",
+          "name": "uploadSessionId",
           "schema": "string",
           "required": true,
           "description": "The ID of the upload session."
@@ -1424,7 +1424,7 @@
           "description": "The [RFC3230][1] message digest of the chunk uploaded.\n\nOnly SHA1 is supported. The SHA1 digest must be base64\nencoded. The format of this header is as\n`sha=BASE64_ENCODED_DIGEST`.\n\nTo get the value for the `SHA` digest, use the\nopenSSL command to encode the file part:\n`openssl sha1 -binary <FILE_PART_NAME> | base64`\n\n[1]: https://tools.ietf.org/html/rfc3230"
         },
         {
-          "name": "content-range",
+          "name": "contentRange",
           "schema": "string",
           "required": true,
           "description": "The byte range of the chunk.\n\nMust not overlap with the range of a part already\nuploaded this session. Each part’s size must be\nexactly equal in size to the part size specified\nin the upload session that you created.\nOne exception is the last part of the file, as this can be smaller.\n\nWhen providing the value for `content-range`, remember that:\n\n* The lower bound of each part's byte range\n  must be a multiple of the part size.\n* The higher bound must be a multiple of the part size - 1."
@@ -1461,7 +1461,7 @@
       "description": "Commit upload session",
       "parameters": [
         {
-          "name": "upload_session_id",
+          "name": "uploadSessionId",
           "schema": "string",
           "required": true,
           "description": "The ID of the upload session."
@@ -1473,13 +1473,13 @@
           "description": "The [RFC3230][1] message digest of the whole file.\n\nOnly SHA1 is supported. The SHA1 digest must be Base64\nencoded. The format of this header is as\n`sha=BASE64_ENCODED_DIGEST`.\n\n[1]: https://tools.ietf.org/html/rfc3230"
         },
         {
-          "name": "if-match",
+          "name": "ifMatch",
           "schema": "string",
           "required": false,
           "description": "Ensures this item hasn't recently changed before\nmaking changes.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `412 Precondition Failed` if it\nhas changed since."
         },
         {
-          "name": "if-none-match",
+          "name": "ifNoneMatch",
           "schema": "string",
           "required": false,
           "description": "Ensures an item is only returned if it has changed.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `304 Not Modified` if the item has not\nchanged since."
@@ -1518,7 +1518,7 @@
       "description": "List parts",
       "parameters": [
         {
-          "name": "upload_session_id",
+          "name": "uploadSessionId",
           "schema": "string",
           "required": true,
           "description": "The ID of the upload session."
@@ -1555,13 +1555,13 @@
       "description": "Delete file",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
         },
         {
-          "name": "if-match",
+          "name": "ifMatch",
           "schema": "string",
           "required": false,
           "description": "Ensures this item hasn't recently changed before\nmaking changes.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `412 Precondition Failed` if it\nhas changed since."
@@ -1598,7 +1598,7 @@
       "description": "Get file information",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -1610,7 +1610,7 @@
           "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.\n\nAdditionally this field can be used to query any metadata\napplied to the file by specifying the `metadata` field as well\nas the scope and key of the template to retrieve, for example\n`?field=metadata.enterprise_12345.contractTemplate`."
         },
         {
-          "name": "if-none-match",
+          "name": "ifNoneMatch",
           "schema": "string",
           "required": false,
           "description": "Ensures an item is only returned if it has changed.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `304 Not Modified` if the item has not\nchanged since."
@@ -1622,7 +1622,7 @@
           "description": "The URL, and optional password, for the shared link of this item.\n\nThis header can be used to access items that have not been\nexplicitly shared with a user.\n\nUse the format `shared_link=[link]` or if a password is required then\nuse `shared_link=[link]&shared_link_password=[password]`.\n\nThis header can be used on the file or folder shared, as well as on any files\nor folders nested within the item."
         },
         {
-          "name": "x-rep-hints",
+          "name": "xRepHints",
           "schema": "string",
           "required": false,
           "description": "A header required to request specific `representations`\nof a file. Use this in combination with the `fields` query\nparameter to request a specific file representation.\n\nThe general format for these representations is\n`X-Rep-Hints: [...]` where `[...]` is one or many\nhints in the format `[fileType?query]`.\n\nFor example, to request a `png` representation in `32x32`\nas well as `64x64` pixel dimensions provide the following\nhints.\n\n`x-rep-hints: [jpg?dimensions=32x32][jpg?dimensions=64x64]`\n\nAdditionally, a `text` representation is available for all\ndocument file types in Box using the `[extracted_text]`\nrepresentation.\n\n`x-rep-hints: [extracted_text]`"
@@ -1663,7 +1663,7 @@
       "description": "Restore file",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -1716,7 +1716,7 @@
       "description": "Update file",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -1728,7 +1728,7 @@
           "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
         },
         {
-          "name": "if-match",
+          "name": "ifMatch",
           "schema": "string",
           "required": false,
           "description": "Ensures this item hasn't recently changed before\nmaking changes.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `412 Precondition Failed` if it\nhas changed since."
@@ -1817,7 +1817,7 @@
       "description": "Add shared link to file",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -1877,7 +1877,7 @@
       "description": "Get shared link for file",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -1920,7 +1920,7 @@
       "description": "Remove shared link from file",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -1976,7 +1976,7 @@
       "description": "Update shared link on file",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -2036,7 +2036,7 @@
       "description": "List file collaborations",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -2079,7 +2079,7 @@
       "description": "List file comments",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -2122,7 +2122,7 @@
       "description": "Download file",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -2146,7 +2146,7 @@
           "description": "The file version to download"
         },
         {
-          "name": "access_token",
+          "name": "accessToken",
           "schema": "string",
           "required": false,
           "description": "An optional access token that can be used to pre-authenticate this request, which means that a download link can be shared with a browser or a third party service without them needing to know how to handle the authentication.\nWhen using this parameter, please make sure that the access token is sufficiently scoped down to only allow read access to that file and no other files or folders."
@@ -2167,13 +2167,13 @@
       "description": "Upload file version",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
         },
         {
-          "name": "if-match",
+          "name": "ifMatch",
           "schema": "string",
           "required": false,
           "description": "Ensures this item hasn't recently changed before\nmaking changes.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `412 Precondition Failed` if it\nhas changed since."
@@ -2185,7 +2185,7 @@
           "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
         },
         {
-          "name": "content-md5",
+          "name": "contentMd5",
           "schema": "string",
           "required": false,
           "description": "An optional header containing the SHA1 hash of the file to\nensure that the file was not corrupted in transit."
@@ -2226,7 +2226,7 @@
       "description": "Copy file",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -2291,7 +2291,7 @@
       "description": "List metadata instances on file",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -2324,7 +2324,7 @@
       "description": "Remove classification from file",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -2357,7 +2357,7 @@
       "description": "Get classification on file",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -2394,7 +2394,7 @@
       "description": "Add classification to file",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -2436,7 +2436,7 @@
       "description": "Update classification on file",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -2469,7 +2469,7 @@
       "description": "Remove Box Skill cards from file",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -2498,7 +2498,7 @@
       "description": "List Box Skill cards on file",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -2523,7 +2523,7 @@
       "description": "Create Box Skill cards on file",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -2566,7 +2566,7 @@
       "description": "Update Box Skill cards on file",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -2595,7 +2595,7 @@
       "description": "Remove metadata instance from file",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -2607,7 +2607,7 @@
           "description": "The scope of the metadata template"
         },
         {
-          "name": "template_key",
+          "name": "templateKey",
           "schema": "string",
           "required": true,
           "description": "The name of the metadata template"
@@ -2640,7 +2640,7 @@
       "description": "Get metadata instance on file",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -2652,7 +2652,7 @@
           "description": "The scope of the metadata template"
         },
         {
-          "name": "template_key",
+          "name": "templateKey",
           "schema": "string",
           "required": true,
           "description": "The name of the metadata template"
@@ -2689,7 +2689,7 @@
       "description": "Create metadata instance on file",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -2701,7 +2701,7 @@
           "description": "The scope of the metadata template"
         },
         {
-          "name": "template_key",
+          "name": "templateKey",
           "schema": "string",
           "required": true,
           "description": "The name of the metadata template"
@@ -2738,7 +2738,7 @@
       "description": "Update metadata instance on file",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -2750,7 +2750,7 @@
           "description": "The scope of the metadata template"
         },
         {
-          "name": "template_key",
+          "name": "templateKey",
           "schema": "string",
           "required": true,
           "description": "The name of the metadata template"
@@ -2783,7 +2783,7 @@
       "description": "List tasks on file",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -2820,7 +2820,7 @@
       "description": "Get file thumbnail",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -2832,23 +2832,23 @@
           "description": "The file format for the thumbnail"
         },
         {
-          "name": "min_height",
+          "name": "minHeight",
           "schema": "integer",
           "description": "The minimum height of the thumbnail"
         },
         {
-          "name": "min_width",
+          "name": "minWidth",
           "schema": "integer",
           "description": "The minimum width of the thumbnail"
         },
         {
-          "name": "max_height",
+          "name": "maxHeight",
           "schema": "integer",
           "required": false,
           "description": "The maximum height of the thumbnail"
         },
         {
-          "name": "max_width",
+          "name": "maxWidth",
           "schema": "integer",
           "required": false,
           "description": "The maximum width of the thumbnail"
@@ -2885,7 +2885,7 @@
       "description": "Permanently remove file",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -2910,7 +2910,7 @@
       "description": "Get trashed file",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -2945,7 +2945,7 @@
       "description": "Create upload session for existing file",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -2986,7 +2986,7 @@
       "description": "List all file versions",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -3029,7 +3029,7 @@
       "description": "Promote file version",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -3070,19 +3070,19 @@
       "description": "Remove file version",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
         },
         {
-          "name": "file_version_id",
+          "name": "fileVersionId",
           "schema": "string",
           "required": true,
           "description": "The ID of the file version"
         },
         {
-          "name": "if-match",
+          "name": "ifMatch",
           "schema": "string",
           "required": false,
           "description": "Ensures this item hasn't recently changed before\nmaking changes.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `412 Precondition Failed` if it\nhas changed since."
@@ -3103,7 +3103,7 @@
       "description": "Get file version",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -3115,7 +3115,7 @@
           "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
         },
         {
-          "name": "file_version_id",
+          "name": "fileVersionId",
           "schema": "string",
           "required": true,
           "description": "The ID of the file version"
@@ -3140,13 +3140,13 @@
       "description": "Restore file version",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
         },
         {
-          "name": "file_version_id",
+          "name": "fileVersionId",
           "schema": "string",
           "required": true,
           "description": "The ID of the file version"
@@ -3176,7 +3176,7 @@
       "description": "Remove watermark from file",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -3201,7 +3201,7 @@
       "description": "Get watermark on file",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -3230,7 +3230,7 @@
       "description": "Apply watermark to file",
       "parameters": [
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
@@ -3265,7 +3265,7 @@
       "description": "List folder locks",
       "parameters": [
         {
-          "name": "folder_id",
+          "name": "folderId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
@@ -3341,7 +3341,7 @@
       "description": "Delete folder lock",
       "parameters": [
         {
-          "name": "folder_lock_id",
+          "name": "folderLockId",
           "schema": "string",
           "required": true,
           "description": "The ID of the folder lock."
@@ -3500,13 +3500,13 @@
       "description": "Delete folder",
       "parameters": [
         {
-          "name": "folder_id",
+          "name": "folderId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
         },
         {
-          "name": "if-match",
+          "name": "ifMatch",
           "schema": "string",
           "required": false,
           "description": "Ensures this item hasn't recently changed before\nmaking changes.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `412 Precondition Failed` if it\nhas changed since."
@@ -3557,7 +3557,7 @@
       "description": "Get folder information",
       "parameters": [
         {
-          "name": "folder_id",
+          "name": "folderId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
@@ -3569,7 +3569,7 @@
           "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.\n\nAdditionally this field can be used to query any metadata\napplied to the file by specifying the `metadata` field as well\nas the scope and key of the template to retrieve, for example\n`?field=metadata.enterprise_12345.contractTemplate`."
         },
         {
-          "name": "if-none-match",
+          "name": "ifNoneMatch",
           "schema": "string",
           "required": false,
           "description": "Ensures an item is only returned if it has changed.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `304 Not Modified` if the item has not\nchanged since."
@@ -3612,7 +3612,7 @@
       "description": "Restore folder",
       "parameters": [
         {
-          "name": "folder_id",
+          "name": "folderId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
@@ -3665,7 +3665,7 @@
       "description": "Update folder",
       "parameters": [
         {
-          "name": "folder_id",
+          "name": "folderId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
@@ -3677,7 +3677,7 @@
           "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
         },
         {
-          "name": "if-match",
+          "name": "ifMatch",
           "schema": "string",
           "required": false,
           "description": "Ensures this item hasn't recently changed before\nmaking changes.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `412 Precondition Failed` if it\nhas changed since."
@@ -3781,7 +3781,7 @@
       "description": "Add shared link to folder",
       "parameters": [
         {
-          "name": "folder_id",
+          "name": "folderId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
@@ -3841,7 +3841,7 @@
       "description": "Get shared link for folder",
       "parameters": [
         {
-          "name": "folder_id",
+          "name": "folderId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
@@ -3884,7 +3884,7 @@
       "description": "Remove shared link from folder",
       "parameters": [
         {
-          "name": "folder_id",
+          "name": "folderId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
@@ -3940,7 +3940,7 @@
       "description": "Update shared link on folder",
       "parameters": [
         {
-          "name": "folder_id",
+          "name": "folderId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
@@ -4000,7 +4000,7 @@
       "description": "List folder collaborations",
       "parameters": [
         {
-          "name": "folder_id",
+          "name": "folderId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`."
@@ -4031,7 +4031,7 @@
       "description": "Copy folder",
       "parameters": [
         {
-          "name": "folder_id",
+          "name": "folderId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier of the folder to copy.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder with the ID `0` can not be copied."
@@ -4094,7 +4094,7 @@
       "description": "List items in folder",
       "parameters": [
         {
-          "name": "folder_id",
+          "name": "folderId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
@@ -4179,7 +4179,7 @@
       "description": "List metadata instances on folder",
       "parameters": [
         {
-          "name": "folder_id",
+          "name": "folderId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
@@ -4212,7 +4212,7 @@
       "description": "Remove classification from folder",
       "parameters": [
         {
-          "name": "folder_id",
+          "name": "folderId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
@@ -4245,7 +4245,7 @@
       "description": "Get classification on folder",
       "parameters": [
         {
-          "name": "folder_id",
+          "name": "folderId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
@@ -4282,7 +4282,7 @@
       "description": "Add classification to folder",
       "parameters": [
         {
-          "name": "folder_id",
+          "name": "folderId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
@@ -4324,7 +4324,7 @@
       "description": "Update classification on folder",
       "parameters": [
         {
-          "name": "folder_id",
+          "name": "folderId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
@@ -4357,7 +4357,7 @@
       "description": "Remove metadata instance from folder",
       "parameters": [
         {
-          "name": "folder_id",
+          "name": "folderId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
@@ -4369,7 +4369,7 @@
           "description": "The scope of the metadata template"
         },
         {
-          "name": "template_key",
+          "name": "templateKey",
           "schema": "string",
           "required": true,
           "description": "The name of the metadata template"
@@ -4402,7 +4402,7 @@
       "description": "Get metadata instance on folder",
       "parameters": [
         {
-          "name": "folder_id",
+          "name": "folderId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
@@ -4414,7 +4414,7 @@
           "description": "The scope of the metadata template"
         },
         {
-          "name": "template_key",
+          "name": "templateKey",
           "schema": "string",
           "required": true,
           "description": "The name of the metadata template"
@@ -4451,7 +4451,7 @@
       "description": "Create metadata instance on folder",
       "parameters": [
         {
-          "name": "folder_id",
+          "name": "folderId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
@@ -4463,7 +4463,7 @@
           "description": "The scope of the metadata template"
         },
         {
-          "name": "template_key",
+          "name": "templateKey",
           "schema": "string",
           "required": true,
           "description": "The name of the metadata template"
@@ -4500,7 +4500,7 @@
       "description": "Update metadata instance on folder",
       "parameters": [
         {
-          "name": "folder_id",
+          "name": "folderId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
@@ -4512,7 +4512,7 @@
           "description": "The scope of the metadata template"
         },
         {
-          "name": "template_key",
+          "name": "templateKey",
           "schema": "string",
           "required": true,
           "description": "The name of the metadata template"
@@ -4545,7 +4545,7 @@
       "description": "Permanently remove folder",
       "parameters": [
         {
-          "name": "folder_id",
+          "name": "folderId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
@@ -4570,7 +4570,7 @@
       "description": "Get trashed folder",
       "parameters": [
         {
-          "name": "folder_id",
+          "name": "folderId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
@@ -4605,7 +4605,7 @@
       "description": "Remove watermark from folder",
       "parameters": [
         {
-          "name": "folder_id",
+          "name": "folderId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
@@ -4630,7 +4630,7 @@
       "description": "Get watermark for folder",
       "parameters": [
         {
-          "name": "folder_id",
+          "name": "folderId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
@@ -4659,7 +4659,7 @@
       "description": "Apply watermark to folder",
       "parameters": [
         {
-          "name": "folder_id",
+          "name": "folderId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
@@ -4747,7 +4747,7 @@
       "description": "Remove user from group",
       "parameters": [
         {
-          "name": "group_membership_id",
+          "name": "groupMembershipId",
           "schema": "string",
           "required": true,
           "description": "The ID of the group membership."
@@ -4768,7 +4768,7 @@
       "description": "Get group membership",
       "parameters": [
         {
-          "name": "group_membership_id",
+          "name": "groupMembershipId",
           "schema": "string",
           "required": true,
           "description": "The ID of the group membership."
@@ -4799,7 +4799,7 @@
       "description": "Update group membership",
       "parameters": [
         {
-          "name": "group_membership_id",
+          "name": "groupMembershipId",
           "schema": "string",
           "required": true,
           "description": "The ID of the group membership."
@@ -4840,7 +4840,7 @@
       "description": "List groups for enterprise",
       "parameters": [
         {
-          "name": "filter_term",
+          "name": "filterTerm",
           "schema": "string",
           "required": false,
           "description": "Limits the results to only groups whose `name` starts\nwith the search term."
@@ -4997,7 +4997,7 @@
       "description": "Remove group",
       "parameters": [
         {
-          "name": "group_id",
+          "name": "groupId",
           "schema": "string",
           "required": true,
           "description": "The ID of the group."
@@ -5018,7 +5018,7 @@
       "description": "Get group",
       "parameters": [
         {
-          "name": "group_id",
+          "name": "groupId",
           "schema": "string",
           "required": true,
           "description": "The ID of the group."
@@ -5049,7 +5049,7 @@
       "description": "Update group",
       "parameters": [
         {
-          "name": "group_id",
+          "name": "groupId",
           "schema": "string",
           "required": true,
           "description": "The ID of the group."
@@ -5114,7 +5114,7 @@
       "description": "List group collaborations",
       "parameters": [
         {
-          "name": "group_id",
+          "name": "groupId",
           "schema": "string",
           "required": true,
           "description": "The ID of the group."
@@ -5151,7 +5151,7 @@
       "description": "List members of group",
       "parameters": [
         {
-          "name": "group_id",
+          "name": "groupId",
           "schema": "string",
           "required": true,
           "description": "The ID of the group."
@@ -5225,7 +5225,7 @@
       "description": "Get user invite status",
       "parameters": [
         {
-          "name": "invite_id",
+          "name": "inviteId",
           "schema": "string",
           "required": true,
           "description": "The ID of an invite."
@@ -5256,7 +5256,7 @@
       "description": "List all legal hold policies",
       "parameters": [
         {
-          "name": "policy_name",
+          "name": "policyName",
           "schema": "string",
           "required": false,
           "description": "Limits results to policies for which the names start with\nthis search term. This is a case-insensitive prefix."
@@ -5356,7 +5356,7 @@
       "description": "Remove legal hold policy",
       "parameters": [
         {
-          "name": "legal_hold_policy_id",
+          "name": "legalHoldPolicyId",
           "schema": "string",
           "required": true,
           "description": "The ID of the legal hold policy"
@@ -5377,7 +5377,7 @@
       "description": "Get legal hold policy",
       "parameters": [
         {
-          "name": "legal_hold_policy_id",
+          "name": "legalHoldPolicyId",
           "schema": "string",
           "required": true,
           "description": "The ID of the legal hold policy"
@@ -5402,7 +5402,7 @@
       "description": "Update legal hold policy",
       "parameters": [
         {
-          "name": "legal_hold_policy_id",
+          "name": "legalHoldPolicyId",
           "schema": "string",
           "required": true,
           "description": "The ID of the legal hold policy"
@@ -5446,18 +5446,18 @@
       "description": "List legal hold policy assignments",
       "parameters": [
         {
-          "name": "policy_id",
+          "name": "policyId",
           "schema": "string",
           "required": true,
           "description": "The ID of the legal hold policy"
         },
         {
-          "name": "assign_to_type",
+          "name": "assignToType",
           "schema": "string",
           "description": "Filters the results by the type of item the\npolicy was applied to."
         },
         {
-          "name": "assign_to_id",
+          "name": "assignToId",
           "schema": "string",
           "description": "Filters the results by the ID of item the\npolicy was applied to."
         },
@@ -5530,7 +5530,7 @@
       "description": "Unassign legal hold policy",
       "parameters": [
         {
-          "name": "legal_hold_policy_assignment_id",
+          "name": "legalHoldPolicyAssignmentId",
           "schema": "string",
           "required": true,
           "description": "The ID of the legal hold policy assignment"
@@ -5551,7 +5551,7 @@
       "description": "Get legal hold policy assignment",
       "parameters": [
         {
-          "name": "legal_hold_policy_assignment_id",
+          "name": "legalHoldPolicyAssignmentId",
           "schema": "string",
           "required": true,
           "description": "The ID of the legal hold policy assignment"
@@ -5576,7 +5576,7 @@
       "description": "List previous file versions for legal hold policy assignment",
       "parameters": [
         {
-          "name": "legal_hold_policy_assignment_id",
+          "name": "legalHoldPolicyAssignmentId",
           "schema": "string",
           "required": true,
           "description": "The ID of the legal hold policy assignment"
@@ -5619,7 +5619,7 @@
       "description": "List current file versions for legal hold policy assignment",
       "parameters": [
         {
-          "name": "legal_hold_policy_assignment_id",
+          "name": "legalHoldPolicyAssignmentId",
           "schema": "string",
           "required": true,
           "description": "The ID of the legal hold policy assignment"
@@ -5662,13 +5662,13 @@
       "description": "List metadata cascade policies",
       "parameters": [
         {
-          "name": "folder_id",
+          "name": "folderId",
           "schema": "string",
           "required": true,
           "description": "Specifies which folder to return policies for. This can not be used on the\nroot folder with ID `0`."
         },
         {
-          "name": "owner_enterprise_id",
+          "name": "ownerEnterpriseId",
           "schema": "string",
           "description": "The ID of the enterprise ID for which to find metadata\ncascade policies. If not specified, it defaults to the\ncurrent enterprise."
         },
@@ -5769,7 +5769,7 @@
       "description": "Remove metadata cascade policy",
       "parameters": [
         {
-          "name": "metadata_cascade_policy_id",
+          "name": "metadataCascadePolicyId",
           "schema": "string",
           "required": true,
           "description": "The ID of the metadata cascade policy."
@@ -5794,7 +5794,7 @@
       "description": "Get metadata cascade policy",
       "parameters": [
         {
-          "name": "metadata_cascade_policy_id",
+          "name": "metadataCascadePolicyId",
           "schema": "string",
           "required": true,
           "description": "The ID of the metadata cascade policy."
@@ -5823,7 +5823,7 @@
       "description": "Force-apply metadata cascade policy to folder",
       "parameters": [
         {
-          "name": "metadata_cascade_policy_id",
+          "name": "metadataCascadePolicyId",
           "schema": "string",
           "required": true,
           "description": "The ID of the cascade policy to force-apply."
@@ -5935,7 +5935,7 @@
           "description": "The scope of the metadata template"
         },
         {
-          "name": "template_key",
+          "name": "templateKey",
           "schema": "string",
           "required": true,
           "description": "The name of the metadata template"
@@ -5968,7 +5968,7 @@
       "description": "Find metadata template by instance ID",
       "parameters": [
         {
-          "name": "metadata_instance_id",
+          "name": "metadataInstanceId",
           "schema": "string",
           "required": true,
           "description": "The ID of an instance of the metadata template to find."
@@ -6317,7 +6317,7 @@
           "description": "The scope of the metadata template"
         },
         {
-          "name": "template_key",
+          "name": "templateKey",
           "schema": "string",
           "required": true,
           "description": "The name of the metadata template"
@@ -6352,7 +6352,7 @@
           "description": "The scope of the metadata template"
         },
         {
-          "name": "template_key",
+          "name": "templateKey",
           "schema": "string",
           "required": true,
           "description": "The name of the metadata template"
@@ -6391,7 +6391,7 @@
           "description": "The scope of the metadata template"
         },
         {
-          "name": "template_key",
+          "name": "templateKey",
           "schema": "string",
           "required": true,
           "description": "The name of the metadata template"
@@ -6428,7 +6428,7 @@
       "description": "Get metadata template by ID",
       "parameters": [
         {
-          "name": "template_id",
+          "name": "templateId",
           "schema": "string",
           "required": true,
           "description": "The ID of the template"
@@ -6691,19 +6691,19 @@
       "description": "List retention policies",
       "parameters": [
         {
-          "name": "policy_name",
+          "name": "policyName",
           "schema": "string",
           "required": false,
           "description": "Filters results by a case sensitive prefix of the name of\nretention policies."
         },
         {
-          "name": "policy_type",
+          "name": "policyType",
           "schema": "string",
           "required": false,
           "description": "Filters results by the type of retention policy."
         },
         {
-          "name": "created_by_user_id",
+          "name": "createdByUserId",
           "schema": "string",
           "required": false,
           "description": "Filters results by the ID of the user who created policy."
@@ -6835,7 +6835,7 @@
       "description": "Delete retention policy",
       "parameters": [
         {
-          "name": "retention_policy_id",
+          "name": "retentionPolicyId",
           "schema": "string",
           "required": true,
           "description": "The ID of the retention policy."
@@ -6864,7 +6864,7 @@
       "description": "Get retention policy",
       "parameters": [
         {
-          "name": "retention_policy_id",
+          "name": "retentionPolicyId",
           "schema": "string",
           "required": true,
           "description": "The ID of the retention policy."
@@ -6895,7 +6895,7 @@
       "description": "Update retention policy",
       "parameters": [
         {
-          "name": "retention_policy_id",
+          "name": "retentionPolicyId",
           "schema": "string",
           "required": true,
           "description": "The ID of the retention policy."
@@ -6977,7 +6977,7 @@
       "description": "List retention policy assignments",
       "parameters": [
         {
-          "name": "retention_policy_id",
+          "name": "retentionPolicyId",
           "schema": "string",
           "required": true,
           "description": "The ID of the retention policy."
@@ -7085,7 +7085,7 @@
       "description": "Remove retention policy assignment",
       "parameters": [
         {
-          "name": "retention_policy_assignment_id",
+          "name": "retentionPolicyAssignmentId",
           "schema": "string",
           "required": true,
           "description": "The ID of the retention policy assignment."
@@ -7114,7 +7114,7 @@
       "description": "Get retention policy assignment",
       "parameters": [
         {
-          "name": "retention_policy_assignment_id",
+          "name": "retentionPolicyAssignmentId",
           "schema": "string",
           "required": true,
           "description": "The ID of the retention policy assignment."
@@ -7145,7 +7145,7 @@
       "description": "Get file versions under retention",
       "parameters": [
         {
-          "name": "retention_policy_assignment_id",
+          "name": "retentionPolicyAssignmentId",
           "schema": "string",
           "required": true,
           "description": "The ID of the retention policy assignment."
@@ -7186,7 +7186,7 @@
       "description": "Get files under retention",
       "parameters": [
         {
-          "name": "retention_policy_assignment_id",
+          "name": "retentionPolicyAssignmentId",
           "schema": "string",
           "required": true,
           "description": "The ID of the retention policy assignment."
@@ -7239,49 +7239,49 @@
           "description": "Limits the search results to either the files that the user has\naccess to, or to files available to the entire enterprise.\n\nThe scope defaults to `user_content`, which limits the search\nresults to content that is available to the currently authenticated\nuser.\n\nThe `enterprise_content` can be requested by an admin through our\nsupport channels. Once this scope has been enabled for a user, it\nwill allow that use to query for content across the entire\nenterprise and not only the content that they have access to."
         },
         {
-          "name": "file_extensions",
+          "name": "fileExtensions",
           "schema": "array",
           "required": false,
           "description": "Limits the search results to any files that match any of the provided\nfile extensions. This list is a comma-separated list of file extensions\nwithout the dots."
         },
         {
-          "name": "created_at_range",
+          "name": "createdAtRange",
           "schema": "array",
           "required": false,
           "description": "Limits the search results to any items created within\na given date range.\n\nDate ranges are defined as comma separated RFC3339\ntimestamps.\n\nIf the the start date is omitted (`,2014-05-17T13:35:01-07:00`)\nanything created before the end date will be returned.\n\nIf the end date is omitted (`2014-05-15T13:35:01-07:00,`) the\ncurrent date will be used as the end date instead."
         },
         {
-          "name": "updated_at_range",
+          "name": "updatedAtRange",
           "schema": "array",
           "required": false,
           "description": "Limits the search results to any items updated within\na given date range.\n\nDate ranges are defined as comma separated RFC3339\ntimestamps.\n\nIf the start date is omitted (`,2014-05-17T13:35:01-07:00`)\nanything updated before the end date will be returned.\n\nIf the end date is omitted (`2014-05-15T13:35:01-07:00,`) the\ncurrent date will be used as the end date instead."
         },
         {
-          "name": "size_range",
+          "name": "sizeRange",
           "schema": "array",
           "required": false,
           "description": "Limits the search results to any items with a size within\na given file size range. This applied to files and folders.\n\nSize ranges are defined as comma separated list of a lower\nand upper byte size limit (inclusive).\n\nThe upper and lower bound can be omitted to create open ranges."
         },
         {
-          "name": "owner_user_ids",
+          "name": "ownerUserIds",
           "schema": "array",
           "required": false,
           "description": "Limits the search results to any items that are owned\nby the given list of owners, defined as a list of comma separated\nuser IDs.\n\nThe items still need to be owned or shared with\nthe currently authenticated user for them to show up in the search\nresults. If the user does not have access to any files owned by any of\nthe users an empty result set will be returned.\n\nTo search across an entire enterprise, we recommend using the\n`enterprise_content` scope parameter which can be requested with our\nsupport team."
         },
         {
-          "name": "recent_updater_user_ids",
+          "name": "recentUpdaterUserIds",
           "schema": "array",
           "required": false,
           "description": "Limits the search results to any items that have been updated\nby the given list of users, defined as a list of comma separated\nuser IDs.\n\nThe items still need to be owned or shared with\nthe currently authenticated user for them to show up in the search\nresults. If the user does not have access to any files owned by any of\nthe users an empty result set will be returned.\n\nThis feature only searches back to the last 10 versions of an item."
         },
         {
-          "name": "ancestor_folder_ids",
+          "name": "ancestorFolderIds",
           "schema": "array",
           "required": false,
           "description": "Limits the search results to items within the given\nlist of folders, defined as a comma separated lists\nof folder IDs.\n\nSearch results will also include items within any subfolders\nof those ancestor folders.\n\nThe folders still need to be owned or shared with\nthe currently authenticated user. If the folder is not accessible by this\nuser, or it does not exist, a `HTTP 404` error code will be returned\ninstead.\n\nTo search across an entire enterprise, we recommend using the\n`enterprise_content` scope parameter which can be requested with our\nsupport team."
         },
         {
-          "name": "content_types",
+          "name": "contentTypes",
           "schema": "array",
           "required": false,
           "description": "Limits the search results to any items that match the search query\nfor a specific part of the file, for example the file description.\n\nContent types are defined as a comma separated lists\nof Box recognized content types. The allowed content types are as follows.\n\n* `name` - The name of the item, as defined by its `name` field.\n* `description` - The description of the item, as defined by its\n  `description` field.\n* `file_content` - The actual content of the file.\n* `comments` - The content of any of the comments on a file or\n   folder.\n* `tags` - Any tags that are applied to an item, as defined by its\n   `tags` field."
@@ -7293,7 +7293,7 @@
           "description": "Limits the search results to any items of this type. This\nparameter only takes one value. By default the API returns\nitems that match any of these types.\n\n* `file` - Limits the search results to files\n* `folder` - Limits the search results to folders\n* `web_link` - Limits the search results to web links, also known\n   as bookmarks"
         },
         {
-          "name": "trash_content",
+          "name": "trashContent",
           "schema": "string",
           "required": false,
           "description": "Determines if the search should look in the trash for items.\n\nBy default, this API only returns search results for items\nnot currently in the trash (`non_trashed_only`).\n\n* `trashed_only` - Only searches for items currently in the trash\n* `non_trashed_only` - Only searches for items currently not in\n  the trash"
@@ -7323,7 +7323,7 @@
           "description": "Defines the maximum number of items to return as part of a page of\nresults."
         },
         {
-          "name": "include_recent_shared_links",
+          "name": "includeRecentSharedLinks",
           "schema": "boolean",
           "required": false,
           "description": "Defines whether the search results should include any items\nthat the user recently accessed through a shared link.\n\nWhen this parameter has been set to true,\nthe format of the response of this API changes to return\na list of [Search Results with\nShared Links](r://search_results_with_shared_links)"
@@ -7341,13 +7341,13 @@
           "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response."
         },
         {
-          "name": "deleted_user_ids",
+          "name": "deletedUserIds",
           "schema": "array",
           "required": false,
           "description": "Limits the search results to items that were deleted by the given\nlist of users, defined as a list of comma separated user IDs.\n\nThe `trash_content` parameter needs to be set to `trashed_only`.\n\nIf searching in trash is not performed, an empty result set\nis returned. The items need to be owned or shared with\nthe currently authenticated user for them to show up in the search\nresults.\n\nIf the user does not have access to any files owned by\nany of the users, an empty result set is returned.\n\nData available from 2023-02-01 onwards."
         },
         {
-          "name": "deleted_at_range",
+          "name": "deletedAtRange",
           "schema": "array",
           "required": false,
           "description": "Limits the search results to any items deleted within a given\ndate range.\n\nDate ranges are defined as comma separated RFC3339 timestamps.\n\nIf the the start date is omitted (`2014-05-17T13:35:01-07:00`),\nanything deleted before the end date will be returned.\n\nIf the end date is omitted (`2014-05-15T13:35:01-07:00`),\nthe current date will be used as the end date instead.\n\nThe `trash_content` parameter needs to be set to `trashed_only`.\n\nIf searching in trash is not performed, then an empty result\nis returned.\n\nData available from 2023-02-01 onwards."
@@ -7384,7 +7384,7 @@
       "description": "Find file for shared link",
       "parameters": [
         {
-          "name": "if-none-match",
+          "name": "ifNoneMatch",
           "schema": "string",
           "required": false,
           "description": "Ensures an item is only returned if it has changed.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `304 Not Modified` if the item has not\nchanged since."
@@ -7421,7 +7421,7 @@
       "description": "Find folder for shared link",
       "parameters": [
         {
-          "name": "if-none-match",
+          "name": "ifNoneMatch",
           "schema": "string",
           "required": false,
           "description": "Ensures an item is only returned if it has changed.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `304 Not Modified` if the item has not\nchanged since."
@@ -7458,7 +7458,7 @@
       "description": "Find web link for shared link",
       "parameters": [
         {
-          "name": "if-none-match",
+          "name": "ifNoneMatch",
           "schema": "string",
           "required": false,
           "description": "Ensures an item is only returned if it has changed.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `304 Not Modified` if the item has not\nchanged since."
@@ -7495,7 +7495,7 @@
       "description": "List shield information barrier reports",
       "parameters": [
         {
-          "name": "shield_information_barrier_id",
+          "name": "shieldInformationBarrierId",
           "schema": "string",
           "required": true,
           "description": "The ID of the shield information barrier."
@@ -7568,7 +7568,7 @@
       "description": "Get shield information barrier report by ID",
       "parameters": [
         {
-          "name": "shield_information_barrier_report_id",
+          "name": "shieldInformationBarrierReportId",
           "schema": "string",
           "required": true,
           "description": "The ID of the shield information barrier Report."
@@ -7597,7 +7597,7 @@
       "description": "List shield information barrier segment members",
       "parameters": [
         {
-          "name": "shield_information_barrier_segment_id",
+          "name": "shieldInformationBarrierSegmentId",
           "schema": "string",
           "required": true,
           "description": "The ID of the shield information barrier segment."
@@ -7681,7 +7681,7 @@
       "description": "Delete shield information barrier segment member by ID",
       "parameters": [
         {
-          "name": "shield_information_barrier_segment_member_id",
+          "name": "shieldInformationBarrierSegmentMemberId",
           "schema": "string",
           "required": true,
           "description": "The ID of the shield information barrier segment Member."
@@ -7706,7 +7706,7 @@
       "description": "Get shield information barrier segment member by ID",
       "parameters": [
         {
-          "name": "shield_information_barrier_segment_member_id",
+          "name": "shieldInformationBarrierSegmentMemberId",
           "schema": "string",
           "required": true,
           "description": "The ID of the shield information barrier segment Member."
@@ -7735,7 +7735,7 @@
       "description": "List shield information barrier segment restrictions",
       "parameters": [
         {
-          "name": "shield_information_barrier_segment_id",
+          "name": "shieldInformationBarrierSegmentId",
           "schema": "string",
           "required": true,
           "description": "The ID of the shield information barrier segment."
@@ -7819,7 +7819,7 @@
       "description": "Delete shield information barrier segment restriction by ID",
       "parameters": [
         {
-          "name": "shield_information_barrier_segment_restriction_id",
+          "name": "shieldInformationBarrierSegmentRestrictionId",
           "schema": "string",
           "required": true,
           "description": "The ID of the shield information barrier segment Restriction."
@@ -7844,7 +7844,7 @@
       "description": "Get shield information barrier segment restriction by ID",
       "parameters": [
         {
-          "name": "shield_information_barrier_segment_restriction_id",
+          "name": "shieldInformationBarrierSegmentRestrictionId",
           "schema": "string",
           "required": true,
           "description": "The ID of the shield information barrier segment Restriction."
@@ -7873,7 +7873,7 @@
       "description": "List shield information barrier segments",
       "parameters": [
         {
-          "name": "shield_information_barrier_id",
+          "name": "shieldInformationBarrierId",
           "schema": "string",
           "required": true,
           "description": "The ID of the shield information barrier."
@@ -7959,7 +7959,7 @@
       "description": "Delete shield information barrier segment",
       "parameters": [
         {
-          "name": "shield_information_barrier_segment_id",
+          "name": "shieldInformationBarrierSegmentId",
           "schema": "string",
           "required": true,
           "description": "The ID of the shield information barrier segment."
@@ -7984,7 +7984,7 @@
       "description": "Get shield information barrier segment with specified ID",
       "parameters": [
         {
-          "name": "shield_information_barrier_segment_id",
+          "name": "shieldInformationBarrierSegmentId",
           "schema": "string",
           "required": true,
           "description": "The ID of the shield information barrier segment."
@@ -8013,7 +8013,7 @@
       "description": "Update shield information barrier segment with specified ID",
       "parameters": [
         {
-          "name": "shield_information_barrier_segment_id",
+          "name": "shieldInformationBarrierSegmentId",
           "schema": "string",
           "required": true,
           "description": "The ID of the shield information barrier segment."
@@ -8203,7 +8203,7 @@
       "description": "Get shield information barrier with specified ID",
       "parameters": [
         {
-          "name": "shield_information_barrier_id",
+          "name": "shieldInformationBarrierId",
           "schema": "string",
           "required": true,
           "description": "The ID of the shield information barrier."
@@ -8281,7 +8281,7 @@
       "description": "Get sign request by ID",
       "parameters": [
         {
-          "name": "sign_request_id",
+          "name": "signRequestId",
           "schema": "string",
           "required": true,
           "description": "The ID of the sign request"
@@ -8310,7 +8310,7 @@
       "description": "Cancel sign request",
       "parameters": [
         {
-          "name": "sign_request_id",
+          "name": "signRequestId",
           "schema": "string",
           "required": true,
           "description": "The ID of the sign request"
@@ -8339,7 +8339,7 @@
       "description": "Resend sign request",
       "parameters": [
         {
-          "name": "sign_request_id",
+          "name": "signRequestId",
           "schema": "string",
           "required": true,
           "description": "The ID of the sign request"
@@ -8364,7 +8364,7 @@
       "description": "Update all Box Skill cards on file",
       "parameters": [
         {
-          "name": "skill_id",
+          "name": "skillId",
           "schema": "string",
           "required": true,
           "description": "The ID of the skill to apply this metadata for."
@@ -8460,7 +8460,7 @@
       "description": "Get storage policy",
       "parameters": [
         {
-          "name": "storage_policy_id",
+          "name": "storagePolicyId",
           "schema": "string",
           "required": true,
           "description": "The ID of the storage policy."
@@ -8491,13 +8491,13 @@
           "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
         },
         {
-          "name": "resolved_for_type",
+          "name": "resolvedForType",
           "schema": "string",
           "required": true,
           "description": "The target type to return assignments for"
         },
         {
-          "name": "resolved_for_id",
+          "name": "resolvedForId",
           "schema": "string",
           "required": true,
           "description": "The ID of the user or enterprise to return assignments for"
@@ -8553,7 +8553,7 @@
       "description": "Unassign storage policy",
       "parameters": [
         {
-          "name": "storage_policy_assignment_id",
+          "name": "storagePolicyAssignmentId",
           "schema": "string",
           "required": true,
           "description": "The ID of the storage policy assignment."
@@ -8574,7 +8574,7 @@
       "description": "Get storage policy assignment",
       "parameters": [
         {
-          "name": "storage_policy_assignment_id",
+          "name": "storagePolicyAssignmentId",
           "schema": "string",
           "required": true,
           "description": "The ID of the storage policy assignment."
@@ -8599,7 +8599,7 @@
       "description": "Update storage policy assignment",
       "parameters": [
         {
-          "name": "storage_policy_assignment_id",
+          "name": "storagePolicyAssignmentId",
           "schema": "string",
           "required": true,
           "description": "The ID of the storage policy assignment."
@@ -8673,7 +8673,7 @@
       "description": "Unassign task",
       "parameters": [
         {
-          "name": "task_assignment_id",
+          "name": "taskAssignmentId",
           "schema": "string",
           "required": true,
           "description": "The ID of the task assignment."
@@ -8698,7 +8698,7 @@
       "description": "Get task assignment",
       "parameters": [
         {
-          "name": "task_assignment_id",
+          "name": "taskAssignmentId",
           "schema": "string",
           "required": true,
           "description": "The ID of the task assignment."
@@ -8727,7 +8727,7 @@
       "description": "Update task assignment",
       "parameters": [
         {
-          "name": "task_assignment_id",
+          "name": "taskAssignmentId",
           "schema": "string",
           "required": true,
           "description": "The ID of the task assignment."
@@ -8831,7 +8831,7 @@
       "description": "Remove task",
       "parameters": [
         {
-          "name": "task_id",
+          "name": "taskId",
           "schema": "string",
           "required": true,
           "description": "The ID of the task."
@@ -8856,7 +8856,7 @@
       "description": "Get task",
       "parameters": [
         {
-          "name": "task_id",
+          "name": "taskId",
           "schema": "string",
           "required": true,
           "description": "The ID of the task."
@@ -8885,7 +8885,7 @@
       "description": "Update task",
       "parameters": [
         {
-          "name": "task_id",
+          "name": "taskId",
           "schema": "string",
           "required": true,
           "description": "The ID of the task."
@@ -8942,7 +8942,7 @@
       "description": "List task assignments",
       "parameters": [
         {
-          "name": "task_id",
+          "name": "taskId",
           "schema": "string",
           "required": true,
           "description": "The ID of the task."
@@ -8975,13 +8975,13 @@
       "description": "List terms of service user statuses",
       "parameters": [
         {
-          "name": "tos_id",
+          "name": "tosId",
           "schema": "string",
           "required": true,
           "description": "The ID of the terms of service."
         },
         {
-          "name": "user_id",
+          "name": "userId",
           "schema": "string",
           "required": false,
           "description": "Limits results to the given user ID."
@@ -9043,7 +9043,7 @@
       "description": "Update terms of service status for existing user",
       "parameters": [
         {
-          "name": "terms_of_service_user_status_id",
+          "name": "termsOfServiceUserStatusId",
           "schema": "string",
           "required": true,
           "description": "The ID of the terms of service status."
@@ -9074,7 +9074,7 @@
       "description": "List terms of services",
       "parameters": [
         {
-          "name": "tos_type",
+          "name": "tosType",
           "schema": "string",
           "required": false,
           "description": "Limits the results to the terms of service of the given type."
@@ -9136,7 +9136,7 @@
       "description": "Get terms of service",
       "parameters": [
         {
-          "name": "terms_of_service_id",
+          "name": "termsOfServiceId",
           "schema": "string",
           "required": true,
           "description": "The ID of the terms of service."
@@ -9161,7 +9161,7 @@
       "description": "Update terms of service",
       "parameters": [
         {
-          "name": "terms_of_service_id",
+          "name": "termsOfServiceId",
           "schema": "string",
           "required": true,
           "description": "The ID of the terms of service."
@@ -9198,19 +9198,19 @@
       "description": "List enterprise users",
       "parameters": [
         {
-          "name": "filter_term",
+          "name": "filterTerm",
           "schema": "string",
           "required": false,
           "description": "Limits the results to only users who's `name` or\n`login` start with the search term.\n\nFor externally managed users, the search term needs\nto completely match the in order to find the user, and\nit will only return one user at a time."
         },
         {
-          "name": "user_type",
+          "name": "userType",
           "schema": "string",
           "required": false,
           "description": "Limits the results to the kind of user specified.\n\n* `all` returns every kind of user for whom the\n  `login` or `name` partially matches the\n  `filter_term`. It will only return an external user\n  if the login matches the `filter_term` completely,\n  and in that case it will only return that user.\n* `managed` returns all managed and app users for whom\n  the `login` or `name` partially matches the\n  `filter_term`.\n* `external` returns all external users for whom the\n  `login` matches the `filter_term` exactly."
         },
         {
-          "name": "external_app_user_id",
+          "name": "externalAppUserId",
           "schema": "string",
           "required": false,
           "description": "Limits the results to app users with the given\n`external_app_user_id` value.\n\nWhen creating an app user, an\n`external_app_user_id` value can be set. This value can\nthen be used in this endpoint to find any users that\nmatch that `external_app_user_id` value."
@@ -9478,7 +9478,7 @@
       "description": "Delete user",
       "parameters": [
         {
-          "name": "user_id",
+          "name": "userId",
           "schema": "string",
           "required": true,
           "description": "The ID of the user."
@@ -9509,7 +9509,7 @@
       "description": "Get user",
       "parameters": [
         {
-          "name": "user_id",
+          "name": "userId",
           "schema": "string",
           "required": true,
           "description": "The ID of the user."
@@ -9540,7 +9540,7 @@
       "description": "Update user",
       "parameters": [
         {
-          "name": "user_id",
+          "name": "userId",
           "schema": "string",
           "required": true,
           "description": "The ID of the user."
@@ -9684,7 +9684,7 @@
       "description": "Delete user avatar",
       "parameters": [
         {
-          "name": "user_id",
+          "name": "userId",
           "schema": "string",
           "required": true,
           "description": "The ID of the user."
@@ -9713,7 +9713,7 @@
       "description": "Get user avatar",
       "parameters": [
         {
-          "name": "user_id",
+          "name": "userId",
           "schema": "string",
           "required": true,
           "description": "The ID of the user."
@@ -9738,7 +9738,7 @@
       "description": "Add or update user avatar",
       "parameters": [
         {
-          "name": "user_id",
+          "name": "userId",
           "schema": "string",
           "required": true,
           "description": "The ID of the user."
@@ -9785,7 +9785,7 @@
       "description": "List user's email aliases",
       "parameters": [
         {
-          "name": "user_id",
+          "name": "userId",
           "schema": "string",
           "required": true,
           "description": "The ID of the user."
@@ -9810,7 +9810,7 @@
       "description": "Create email alias",
       "parameters": [
         {
-          "name": "user_id",
+          "name": "userId",
           "schema": "string",
           "required": true,
           "description": "The ID of the user."
@@ -9841,13 +9841,13 @@
       "description": "Remove email alias",
       "parameters": [
         {
-          "name": "user_id",
+          "name": "userId",
           "schema": "string",
           "required": true,
           "description": "The ID of the user."
         },
         {
-          "name": "email_alias_id",
+          "name": "emailAliasId",
           "schema": "string",
           "required": true,
           "description": "The ID of the email alias."
@@ -9868,7 +9868,7 @@
       "description": "Transfer owned folders",
       "parameters": [
         {
-          "name": "user_id",
+          "name": "userId",
           "schema": "string",
           "required": true,
           "description": "The ID of the user."
@@ -9915,7 +9915,7 @@
       "description": "List user's groups",
       "parameters": [
         {
-          "name": "user_id",
+          "name": "userId",
           "schema": "string",
           "required": true,
           "description": "The ID of the user."
@@ -10001,7 +10001,7 @@
       "description": "Remove web link",
       "parameters": [
         {
-          "name": "web_link_id",
+          "name": "webLinkId",
           "schema": "string",
           "required": true,
           "description": "The ID of the web link."
@@ -10022,7 +10022,7 @@
       "description": "Get web link",
       "parameters": [
         {
-          "name": "web_link_id",
+          "name": "webLinkId",
           "schema": "string",
           "required": true,
           "description": "The ID of the web link."
@@ -10053,7 +10053,7 @@
       "description": "Restore web link",
       "parameters": [
         {
-          "name": "web_link_id",
+          "name": "webLinkId",
           "schema": "string",
           "required": true,
           "description": "The ID of the web link."
@@ -10106,7 +10106,7 @@
       "description": "Update web link",
       "parameters": [
         {
-          "name": "web_link_id",
+          "name": "webLinkId",
           "schema": "string",
           "required": true,
           "description": "The ID of the web link."
@@ -10156,7 +10156,7 @@
       "description": "Add shared link to web link",
       "parameters": [
         {
-          "name": "web_link_id",
+          "name": "webLinkId",
           "schema": "string",
           "required": true,
           "description": "The ID of the web link."
@@ -10216,7 +10216,7 @@
       "description": "Get shared link for web link",
       "parameters": [
         {
-          "name": "web_link_id",
+          "name": "webLinkId",
           "schema": "string",
           "required": true,
           "description": "The ID of the web link."
@@ -10259,7 +10259,7 @@
       "description": "Remove shared link from web link",
       "parameters": [
         {
-          "name": "web_link_id",
+          "name": "webLinkId",
           "schema": "string",
           "required": true,
           "description": "The ID of the web link."
@@ -10315,7 +10315,7 @@
       "description": "Update shared link on web link",
       "parameters": [
         {
-          "name": "web_link_id",
+          "name": "webLinkId",
           "schema": "string",
           "required": true,
           "description": "The ID of the web link."
@@ -10375,7 +10375,7 @@
       "description": "Permanently remove web link",
       "parameters": [
         {
-          "name": "web_link_id",
+          "name": "webLinkId",
           "schema": "string",
           "required": true,
           "description": "The ID of the web link."
@@ -10400,7 +10400,7 @@
       "description": "Get trashed web link",
       "parameters": [
         {
-          "name": "web_link_id",
+          "name": "webLinkId",
           "schema": "string",
           "required": true,
           "description": "The ID of the web link."
@@ -10523,7 +10523,7 @@
       "description": "Remove webhook",
       "parameters": [
         {
-          "name": "webhook_id",
+          "name": "webhookId",
           "schema": "string",
           "required": true,
           "description": "The ID of the webhook."
@@ -10552,7 +10552,7 @@
       "description": "Get webhook",
       "parameters": [
         {
-          "name": "webhook_id",
+          "name": "webhookId",
           "schema": "string",
           "required": true,
           "description": "The ID of the webhook."
@@ -10585,7 +10585,7 @@
       "description": "Update webhook",
       "parameters": [
         {
-          "name": "webhook_id",
+          "name": "webhookId",
           "schema": "string",
           "required": true,
           "description": "The ID of the webhook."
@@ -10641,13 +10641,13 @@
       "description": "List workflows",
       "parameters": [
         {
-          "name": "folder_id",
+          "name": "folderId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
         },
         {
-          "name": "trigger_type",
+          "name": "triggerType",
           "schema": "string",
           "required": false,
           "description": "Type of trigger to search for."
@@ -10692,7 +10692,7 @@
       "description": "Starts workflow based on request body",
       "parameters": [
         {
-          "name": "workflow_id",
+          "name": "workflowId",
           "schema": "string",
           "required": true,
           "description": "The ID of the workflow."
@@ -10798,7 +10798,7 @@
       "description": "Download zip archive",
       "parameters": [
         {
-          "name": "zip_download_id",
+          "name": "zipDownloadId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent this `zip` archive."
@@ -10831,7 +10831,7 @@
       "description": "Get zip download status",
       "parameters": [
         {
-          "name": "zip_download_id",
+          "name": "zipDownloadId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier that represent this `zip` archive."

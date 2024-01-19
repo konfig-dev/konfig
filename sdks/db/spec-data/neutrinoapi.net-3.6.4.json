@@ -75,13 +75,13 @@
       "description": "BIN List Download",
       "parameters": [
         {
-          "name": "include-iso3",
+          "name": "includeIso3",
           "schema": "boolean",
           "required": false,
           "description": "Include ISO 3-letter country codes and ISO 3-letter currency codes in the data. These will be added to columns 10 and 11 respectively"
         },
         {
-          "name": "include-8digit",
+          "name": "include8Digit",
           "schema": "boolean",
           "required": false,
           "description": "Include 8-digit and higher BIN codes. This option includes all 6-digit BINs and all 8-digit and higher BINs (including some 9, 10 and 11 digit BINs where available)"
@@ -118,13 +118,13 @@
       "description": "BIN Lookup",
       "parameters": [
         {
-          "name": "bin-number",
+          "name": "binNumber",
           "schema": "string",
           "required": true,
           "description": "The BIN or IIN number. This is the first 6, 8 or 10 digits of a card number, use 8 (or more) digits for the highest level of accuracy"
         },
         {
-          "name": "customer-ip",
+          "name": "customerIp",
           "schema": "string",
           "required": false,
           "description": "Pass in the customers IP address and we will return some extra information about them"
@@ -234,19 +234,19 @@
       "description": "Convert",
       "parameters": [
         {
-          "name": "from-value",
+          "name": "fromValue",
           "schema": "string",
           "required": true,
           "description": "The value to convert from (e.g. 10.95)"
         },
         {
-          "name": "from-type",
+          "name": "fromType",
           "schema": "string",
           "required": true,
           "description": "The type of the value to convert from (e.g. USD)"
         },
         {
-          "name": "to-type",
+          "name": "toType",
           "schema": "string",
           "required": true,
           "description": "The type to convert to (e.g. EUR)"
@@ -332,7 +332,7 @@
           "description": "An email address"
         },
         {
-          "name": "fix-typos",
+          "name": "fixTypos",
           "schema": "boolean",
           "required": false,
           "description": "Automatically attempt to fix typos in the address"
@@ -375,7 +375,7 @@
           "description": "An email address"
         },
         {
-          "name": "fix-typos",
+          "name": "fixTypos",
           "schema": "boolean",
           "required": false,
           "description": "Automatically attempt to fix typos in the address"
@@ -418,7 +418,7 @@
           "description": "The full address, partial address or name of a place to try and locate. Comma separated address components are preferred."
         },
         {
-          "name": "house-number",
+          "name": "houseNumber",
           "schema": "string",
           "required": false,
           "description": "The house/building number to locate"
@@ -448,25 +448,25 @@
           "description": "The state name to locate"
         },
         {
-          "name": "postal-code",
+          "name": "postalCode",
           "schema": "string",
           "required": false,
           "description": "The postal code to locate"
         },
         {
-          "name": "country-code",
+          "name": "countryCode",
           "schema": "string",
           "required": false,
           "description": "Limit result to this country (the default is no country bias)"
         },
         {
-          "name": "language-code",
+          "name": "languageCode",
           "schema": "string",
           "required": false,
           "description": "The language to display results in, available languages are: <ul> <li>de, en, es, fr, it, pt, ru, zh</li> </ul>"
         },
         {
-          "name": "fuzzy-search",
+          "name": "fuzzySearch",
           "schema": "boolean",
           "required": false,
           "description": "If no matches are found for the given address, start performing a recursive fuzzy search until a geolocation is found. This option is recommended for processing user input or implementing auto-complete. We use a combination of approximate string matching and data cleansing to find possible location matches"
@@ -515,7 +515,7 @@
           "description": "The location longitude in decimal degrees format"
         },
         {
-          "name": "language-code",
+          "name": "languageCode",
           "schema": "string",
           "required": false,
           "description": "The language to display results in, available languages are: <ul> <li>de, en, es, fr, it, pt, ru</li> </ul>"
@@ -564,7 +564,7 @@
           "description": "A phone number"
         },
         {
-          "name": "country-code",
+          "name": "countryCode",
           "schema": "string",
           "required": false,
           "description": "ISO 2-letter country code, assume numbers are based in this country. <br>If not set numbers are assumed to be in international format (with or without the leading + sign)"
@@ -607,7 +607,7 @@
           "description": "An IP address, domain name, FQDN or URL. <br>If you supply a domain/URL it will be checked against the URI DNSBL lists"
         },
         {
-          "name": "list-rating",
+          "name": "listRating",
           "schema": "integer",
           "required": false,
           "description": "Only check lists with this rating or better"
@@ -1014,7 +1014,7 @@
           "description": "An IPv4 or IPv6 address. Accepts standard IP notation (with or without port number), CIDR notation and IPv6 compressed notation. If multiple IPs are passed using comma-separated values the first non-bogon address on the list will be checked"
         },
         {
-          "name": "vpn-lookup",
+          "name": "vpnLookup",
           "schema": "boolean",
           "required": false,
           "description": "Include public VPN provider IP addresses. <br><b>NOTE</b>: For more advanced VPN detection including the ability to identify private and stealth VPNs use the <a href=\"https://www.neutrinoapi.com/api/ip-probe/\">IP Probe API</a>"
@@ -1057,7 +1057,7 @@
           "description": "The data format. Can be either CSV or TXT"
         },
         {
-          "name": "include-vpn",
+          "name": "includeVpn",
           "schema": "boolean",
           "required": false,
           "description": "Include public VPN provider addresses, this option is only available for Tier 3 or higher accounts. Adds any IPs which are solely listed as VPN providers, IPs that are listed on multiple sensors will still be included without enabling this option. <br><b>WARNING</b>: This adds at least an additional 8 million IP addresses to the download if not using CIDR notation"
@@ -1112,7 +1112,7 @@
           "description": "IPv4 or IPv6 address"
         },
         {
-          "name": "reverse-lookup",
+          "name": "reverseLookup",
           "schema": "boolean",
           "required": false,
           "description": "Do a reverse DNS (PTR) lookup. This option can add extra delay to the request so only use it if you need it"
@@ -1247,7 +1247,7 @@
           "description": "A phone number. This can be in international format (E.164) or local format. If passing local format you must also set either the 'country-code' OR 'ip' options as well"
         },
         {
-          "name": "country-code",
+          "name": "countryCode",
           "schema": "string",
           "required": false,
           "description": "ISO 2-letter country code, assume numbers are based in this country. If not set numbers are assumed to be in international format (with or without the leading + sign)"
@@ -1509,37 +1509,37 @@
           "description": "The user-agent string to lookup. For client hints use the 'UA' header or the JSON data directly from 'navigator.userAgentData.brands' or 'navigator.userAgentData.getHighEntropyValues()'"
         },
         {
-          "name": "ua-version",
+          "name": "uaVersion",
           "schema": "string",
           "required": false,
           "description": "For client hints this corresponds to the 'UA-Full-Version' header or 'uaFullVersion' from NavigatorUAData"
         },
         {
-          "name": "ua-platform",
+          "name": "uaPlatform",
           "schema": "string",
           "required": false,
           "description": "For client hints this corresponds to the 'UA-Platform' header or 'platform' from NavigatorUAData"
         },
         {
-          "name": "ua-platform-version",
+          "name": "uaPlatformVersion",
           "schema": "string",
           "required": false,
           "description": "For client hints this corresponds to the 'UA-Platform-Version' header or 'platformVersion' from NavigatorUAData"
         },
         {
-          "name": "ua-mobile",
+          "name": "uaMobile",
           "schema": "string",
           "required": false,
           "description": "For client hints this corresponds to the 'UA-Mobile' header or 'mobile' from NavigatorUAData"
         },
         {
-          "name": "device-model",
+          "name": "deviceModel",
           "schema": "string",
           "required": false,
           "description": "For client hints this corresponds to the 'UA-Model' header or 'model' from NavigatorUAData. <br>You can also use this parameter to lookup a device directly by its model name, model code or hardware code, on android you can get the model name from: https://developer.android.com/reference/android/os/Build.html#MODEL"
         },
         {
-          "name": "device-brand",
+          "name": "deviceBrand",
           "schema": "string",
           "required": false,
           "description": "This parameter is only used in combination with 'device-model' when doing direct device lookups without any user-agent data. Set this to the brand or manufacturer name, this is required for accurate device detection with ambiguous model names. On android you can get the device brand from: https://developer.android.com/reference/android/os/Build#MANUFACTURER"
@@ -1582,13 +1582,13 @@
           "description": "The URL to probe"
         },
         {
-          "name": "fetch-content",
+          "name": "fetchContent",
           "schema": "boolean",
           "required": false,
           "description": "If this URL responds with html, text, json or xml then return the response. This option is useful if you want to perform further processing on the URL content (e.g. with the HTML Extract or HTML Clean APIs)"
         },
         {
-          "name": "ignore-certificate-errors",
+          "name": "ignoreCertificateErrors",
           "schema": "boolean",
           "required": false,
           "description": "Ignore any TLS/SSL certificate errors and load the URL anyway"
@@ -1637,13 +1637,13 @@
       "description": "Verify Security Code",
       "parameters": [
         {
-          "name": "security-code",
+          "name": "securityCode",
           "schema": "string",
           "required": true,
           "description": "The security code to verify"
         },
         {
-          "name": "limit-by",
+          "name": "limitBy",
           "schema": "string",
           "required": false,
           "description": "If set then enable additional brute-force protection by limiting the number of attempts by the supplied value. This can be set to any unique identifier you would like to limit by, for example a hash of the users email, phone number or IP address. Requests to this API will be ignored after approximately 10 failed verification attempts"

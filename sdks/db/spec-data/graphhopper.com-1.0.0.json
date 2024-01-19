@@ -174,12 +174,12 @@
           "description": "Specify the start coordinate"
         },
         {
-          "name": "time_limit",
+          "name": "timeLimit",
           "schema": "integer",
           "description": "Specify which time the vehicle should travel. In seconds."
         },
         {
-          "name": "distance_limit",
+          "name": "distanceLimit",
           "schema": "integer",
           "description": "Specify which distance the vehicle should travel. In meters."
         },
@@ -194,7 +194,7 @@
           "description": "Number by which to divide the given `time_limit` to create `buckets` nested isochrones of time intervals `time_limit-n*time_limit/buckets`. Applies analogously to `distance_limit`."
         },
         {
-          "name": "reverse_flow",
+          "name": "reverseFlow",
           "schema": "boolean",
           "description": "If `false` the flow goes from point to the polygon, if `true` the flow goes from the polygon \"inside\" to the point.\nExample use case for `false`&#58; *How many potential customer can be reached within 30min travel time from your store* vs. `true`&#58; *How many customers can reach your store within 30min travel time.*\n"
         },
@@ -223,7 +223,7 @@
       "description": "Map-match a GPX file",
       "parameters": [
         {
-          "name": "gps_accuracy",
+          "name": "gpsAccuracy",
           "schema": "integer",
           "required": false,
           "description": "Specify the precision of a point, in meter"
@@ -260,37 +260,37 @@
           "description": "Specify multiple points in `latitude,longitude` for which the weight-, route-, time- or distance-matrix should be calculated. In this case the starts are identical to the destinations. If there are N points, then NxN entries will be calculated. The order of the point parameter is important. Specify at least three points. Cannot be used together with from_point or to_point."
         },
         {
-          "name": "from_point",
+          "name": "fromPoint",
           "schema": "array",
           "required": false,
           "description": "The starting points for the routes in `latitude,longitude`. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters."
         },
         {
-          "name": "to_point",
+          "name": "toPoint",
           "schema": "array",
           "required": false,
           "description": "The destination points for the routes in `latitude,longitude`."
         },
         {
-          "name": "point_hint",
+          "name": "pointHint",
           "schema": "array",
           "required": false,
           "description": "Optional parameter. Specifies a hint for each `point` parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up."
         },
         {
-          "name": "from_point_hint",
+          "name": "fromPointHint",
           "schema": "array",
           "required": false,
           "description": "For the from_point parameter. See point_hint"
         },
         {
-          "name": "to_point_hint",
+          "name": "toPointHint",
           "schema": "array",
           "required": false,
           "description": "For the to_point parameter. See point_hint"
         },
         {
-          "name": "snap_prevention",
+          "name": "snapPrevention",
           "schema": "array",
           "description": "Optional parameter to avoid snapping to a certain road class or road environment. Current supported values `motorway`, `trunk`, `ferry`, `tunnel`, `bridge` and `ford`. Multiple values are specified like `snap_prevention=ferry&snap_prevention=motorway`\n"
         },
@@ -301,19 +301,19 @@
           "description": "Optional parameter. It specifies on which side a point should be relative to the driver when she leaves/arrives at a start/target/via point. You need to specify this parameter for either none or all points. Only supported for motor vehicles and OpenStreetMap."
         },
         {
-          "name": "from_curbside",
+          "name": "fromCurbside",
           "schema": "array",
           "required": false,
           "description": "Curbside setting for the from_point parameter. See curbside."
         },
         {
-          "name": "to_curbside",
+          "name": "toCurbside",
           "schema": "array",
           "required": false,
           "description": "Curbside setting for the to_point parameter. See curbside."
         },
         {
-          "name": "out_array",
+          "name": "outArray",
           "schema": "array",
           "required": false,
           "description": "Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API."
@@ -324,13 +324,13 @@
           "description": "The vehicle profile for which the matrix should be calculated."
         },
         {
-          "name": "fail_fast",
+          "name": "failFast",
           "schema": "boolean",
           "required": false,
           "description": "Specifies whether or not the matrix calculation should return with an error as soon as possible in case some points cannot be found or some points are not connected. If set to `false` the time/weight/distance matrix will be calculated for all valid points and contain the `null` value for all entries that could not be calculated. The `hint` field of the response will also contain additional information about what went wrong (see its documentation)."
         },
         {
-          "name": "turn_costs",
+          "name": "turnCosts",
           "schema": "boolean",
           "required": false,
           "description": "Specifies if turn restrictions should be considered. Enabling this option increases the matrix computation time. Only supported for motor vehicles and OpenStreetMap."
@@ -422,12 +422,12 @@
           "description": "The points for which the route should be calculated. Format: `[latitude,longitude]`. Specify at least an origin and a destination. Via points are possible.\nThe maximum number depends on your plan.\n"
         },
         {
-          "name": "point_hint",
+          "name": "pointHint",
           "schema": "array",
           "description": "The `point_hint` is typically a road name to which the associated `point` parameter should be snapped to. Specify no `point_hint` parameter or the same number as you have `point` parameters.\n"
         },
         {
-          "name": "snap_prevention",
+          "name": "snapPrevention",
           "schema": "array",
           "description": "Optional parameter to avoid snapping to a certain road class or road environment. Currently supported values are `motorway`, `trunk`, `ferry`, `tunnel`, `bridge` and `ford`. Multiple values are specified like `snap_prevention=ferry&snap_prevention=motorway`.\n"
         },
@@ -442,7 +442,7 @@
           "description": "Optional parameter. It specifies on which side a point should be relative to the driver when she leaves/arrives at a start/target/via point. You need to specify this parameter for either none or all points. Only supported for motor vehicles and OpenStreetMap.\n"
         },
         {
-          "name": "turn_costs",
+          "name": "turnCosts",
           "schema": "boolean",
           "description": "Specifies if turn restrictions should be considered. Enabling this option increases the route computation time. Only supported for motor vehicles and OpenStreetMap.\n"
         },
@@ -472,7 +472,7 @@
           "description": "If instructions should be calculated and returned\n"
         },
         {
-          "name": "calc_points",
+          "name": "calcPoints",
           "schema": "boolean",
           "description": "If the points for the route should be calculated at all.\n"
         },
@@ -482,12 +482,12 @@
           "description": "If `true`, the output will be formatted.\n"
         },
         {
-          "name": "points_encoded",
+          "name": "pointsEncoded",
           "schema": "boolean",
           "description": "Allows changing the encoding of location data in the response. The default is polyline encoding, which is compact\nbut requires special client code to unpack. (We provide it in our JavaScript client library!)\nSet this parameter to `false` to switch the encoding to simple coordinate pairs like `[lon,lat]`, or `[lon,lat,elevation]`.\nSee the description of the response format for more information.\n"
         },
         {
-          "name": "ch.disable",
+          "name": "chDisable",
           "schema": "boolean",
           "description": "Use this parameter in combination with one or more parameters from below.\n"
         },
@@ -502,17 +502,17 @@
           "description": "Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points.\nIn this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree.\nThis parameter also influences the tour generated with `algorithm=round_trip` and forces the initial direction.  Requires `ch.disable=true`.\n"
         },
         {
-          "name": "heading_penalty",
+          "name": "headingPenalty",
           "schema": "integer",
           "description": "Time penalty in seconds for not obeying a specified heading. Requires `ch.disable=true`.\n"
         },
         {
-          "name": "pass_through",
+          "name": "passThrough",
           "schema": "boolean",
           "description": "If `true`, u-turns are avoided at via-points with regard to the `heading_penalty`. Requires `ch.disable=true`.\n"
         },
         {
-          "name": "block_area",
+          "name": "blockArea",
           "schema": "string",
           "description": "Block road access by specifying a point close to the road segment to be blocked, with the format `lat,lon`.\nYou can also block all road segments crossing a geometric shape. Specify a circle using the format `lat,lon,radius`, or a polygon using the format `lat1,lon1,lat2,lon2,...,latN,lonN`.\nYou can specify several shapes, separating them with `;`. Requires `ch.disable=true`.\n"
         },
@@ -527,27 +527,27 @@
           "description": "Rather than looking for the shortest or fastest path, this parameter lets you solve two different problems related to routing:\nWith `alternative_route`, we give you not one but several routes that are close to optimal, but\nnot too similar to each other. \nWith `round_trip`, the route will get you back to where you started. This is meant for fun (think of\na bike trip), so we will add some randomness. The `round_trip` option requires `ch.disable=true`.\nYou can control both of these features with additional parameters, see below. \n"
         },
         {
-          "name": "round_trip.distance",
+          "name": "roundTripDistance",
           "schema": "integer",
           "description": "If `algorithm=round_trip`, this parameter configures approximative length of the resulting round trip. Requires `ch.disable=true`.\n"
         },
         {
-          "name": "round_trip.seed",
+          "name": "roundTripSeed",
           "schema": "integer",
           "description": "If `algorithm=round_trip`, this sets the random seed. Change this to get a different tour for each value.\n"
         },
         {
-          "name": "alternative_route.max_paths",
+          "name": "alternativeRouteMaxPaths",
           "schema": "integer",
           "description": "If `algorithm=alternative_route`, this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.\n"
         },
         {
-          "name": "alternative_route.max_weight_factor",
+          "name": "alternativeRouteMaxWeightFactor",
           "schema": "number",
           "description": "If `algorithm=alternative_route`, this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives.\n"
         },
         {
-          "name": "alternative_route.max_share_factor",
+          "name": "alternativeRouteMaxShareFactor",
           "schema": "number",
           "description": "If `algorithm=alternative_route`, this parameter specifies how similar an alternative route can be to the optimal route. Increasing can lead to worse alternatives.\n"
         }

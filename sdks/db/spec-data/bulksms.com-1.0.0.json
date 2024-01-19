@@ -19,7 +19,7 @@
       "description": "List blocked numbers",
       "parameters": [
         {
-          "name": "min-id",
+          "name": "minId",
           "schema": "integer",
           "description": "Records with an `id` that is greater or equal to min-id will be returned. The default value is `0`.  You can add 1 to an id that you previously retrieved, to return subsequent records."
         },
@@ -128,22 +128,22 @@
       "description": "Send Messages",
       "parameters": [
         {
-          "name": "deduplication-id",
+          "name": "deduplicationId",
           "schema": "integer",
           "description": "Safeguards against the possibility of sending the same messages more than once.\n\nIf a communication failure occurs during a submission, you cannot be sure that the submission was processed; therefore you would have to submit it again. When you post the retry, you must use the `deduplication-id` of the original post. The BulkSMS system uses this ID to check that the request was not previously processed. (If it was previously processed, the submission will succeed, and the behaviour will be indistinguishable to you from a non-duplicated submission). The ID expires after about 12 hours.\n"
         },
         {
-          "name": "auto-unicode",
+          "name": "autoUnicode",
           "schema": "boolean",
           "description": "Specifies how to deal with message text that contains characters not present in the GSM 03.38 character set.\n\nMessages that contain only GSM 03.38 characters are not affected by this setting. \nIf the value is `true` then a message containing non-GSM 03.38 characters will be transmitted as a Unicode SMS (which is most likely more costly). \n\nPlease note: when `auto-unicode` is `true` and the value of the `encoding` property is specified as `UNICODE`, the message will always be sent as `UNICODE`.\n\nIf the value is `false` and the `encoding` property is `TEXT` then non-GSM 03.38 characters will be replaced by the `?` character.\n\nWhen using this setting on the API, you should take case to ensure that your message is _clean_.  \n\nInvisible unicode and unexpected characters could unintentionally convert an message to `UNICODE`.  A common mistake is to use the backtick character (\\`) which is unicode and will turn your `TEXT` message into a `UNICODE` message.\n"
         },
         {
-          "name": "schedule-date",
+          "name": "scheduleDate",
           "schema": "string",
           "description": "Allows you to send a message in the future.\n\nAn example value is `2019-02-18T13:00:00+02:00`.  It encodes to `2019-02-18T13%3A00%3A00%2B02%3A00`.\nCredits are deducted from your account immediately. Once submitted, scheduled messages cannot be changed or cancelled.\nThe date can be a maximum of two years in the future. If the value is in the past, the message will be sent immediately.\nThe date format requires you to supply an offset from UTC. You can decide to use the offset of your timezone, or maybe the zone of the recipient's location is more appropriate.\nIf the destination is a group, the group members are determined at the time that you submit the message; not the time the message is scheduled to be sent.\n"
         },
         {
-          "name": "schedule-description",
+          "name": "scheduleDescription",
           "schema": "string",
           "description": "A note that is stored together with a scheduled submission, which could be used to more easily identify the scheduled submission at a later date.\n\nThe value of this field is ignored if the `schedule-date` is not provided.\nA value that is longer than 256 characters is truncated.\n"
         }
@@ -183,7 +183,7 @@
           "description": "The text you want to send."
         },
         {
-          "name": "deduplication-id",
+          "name": "deduplicationId",
           "schema": "integer",
           "description": "Refer to the `deduplication-id` parameter."
         }

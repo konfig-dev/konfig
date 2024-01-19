@@ -183,18 +183,18 @@
       "description": "Get Authorization Code",
       "parameters": [
         {
-          "name": "client_id",
+          "name": "clientId",
           "schema": "string",
           "description": "Provide the client id that was created during the application registration process on Partners Portal."
         },
         {
-          "name": "response_type",
+          "name": "responseType",
           "schema": "string",
           "required": true,
           "description": "Provide the grant type requested, either token or code."
         },
         {
-          "name": "redirect_uri",
+          "name": "redirectUri",
           "schema": "string",
           "required": true,
           "description": "The URI to redirect the user after authorization has completed."
@@ -206,25 +206,25 @@
           "description": "This is your application specific data that will be passed back to your application through redirect_uri."
         },
         {
-          "name": "Code_challenge",
+          "name": "codeChallenge",
           "schema": "string",
           "required": false,
           "description": "A unique random string called code verifier (code_verifier) is\ncreated by the client application for every authorization request.\nThe code_challenge sent as this parameter is the Base64URL (with no\npadding) encoded SHA256 hash of the code verifier.\n        Code block:\n\n       ```\n       string base64_url_encode_without_padding(string arg)\n       { \n          string s = base64encode(arg); //Regular base64encoder with padding\n          s = s.replace(’=’,’’); //Remove any trailing ’=’\n          s = s.replace(’+’, ’-’); //Replace ’+’ with ’-’\n          s = s.replace(’/’, ’_’); //Replace ’/’ with ’_’ return s;\n        }\n        ```\n"
         },
         {
-          "name": "Code_challenge_method",
+          "name": "codeChallengeMethod",
           "schema": "string",
           "required": false,
           "description": "Specifies what method was used to encode a code_verifier to generate code_challenge parameter above. This parameter must be used with the code_challenge parameter. The only supported values for this parameter is S256."
         },
         {
-          "name": "dl_flow",
+          "name": "dlFlow",
           "schema": "string",
           "required": false,
           "description": "If this parameter is provided its value will always be signup. This parameter indicates that the user does not have a DigiLocker account and will be directed to the signup flow directly. After the account is created, the user will be directed to the authorization flow. If this parameter is not sent, the user will be redirected to the sign in flow."
         },
         {
-          "name": "Verified_mobile",
+          "name": "verifiedMobile",
           "schema": "integer",
           "required": false,
           "description": "Verified mobile number of the user. If this parameter is passed, DigiLocker will skip the mobile OTP verification step during sign up. DigiLocker will treat the mobile number passed in this parameter as a verified mobile number by the trusted client application. This parameter will be used only if dl_flow parameter mentioned above is set to signup and will be ignored otherwise."

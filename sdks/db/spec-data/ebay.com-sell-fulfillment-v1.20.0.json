@@ -192,7 +192,7 @@
       "description": "Issue Refund",
       "parameters": [
         {
-          "name": "order_id",
+          "name": "orderId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier of the order. Order IDs are returned in the <b>getOrders</b> method (and <b>GetOrders</b> call of Trading API). The <b>issueRefund</b> method supports the legacy API Order IDs and REST API order IDs."
@@ -233,7 +233,7 @@
       "description": "Get Payment Dispute Details",
       "parameters": [
         {
-          "name": "payment_dispute_id",
+          "name": "paymentDisputeId",
           "schema": "string",
           "required": true,
           "description": "This is the unique identifier of the payment dispute. This path parameter must be passed in at the end of the call URI to identify the payment dispute to retrieve. This identifier is automatically created by eBay once the payment dispute comes into the eBay system. The unique identifier for payment disputes is returned in the <strong>paymentDisputeId</strong> field in the <strong>getPaymentDisputeSummaries</strong> response."
@@ -254,7 +254,7 @@
       "description": "Accept Payment Dispute",
       "parameters": [
         {
-          "name": "payment_dispute_id",
+          "name": "paymentDisputeId",
           "schema": "string",
           "required": true,
           "description": "This is the unique identifier of the payment dispute. This path parameter must be passed into the call URI to identify the payment dispute for which the user plans to accept. This identifier is automatically created by eBay once the payment dispute comes into the eBay system. The unique identifier for payment disputes is returned in the <strong>paymentDisputeId</strong> field in the <strong>getPaymentDisputeSummaries</strong> response.<br><br>This path parameter is required, and the actual identifier value is passed in right after the <strong>payment_dispute</strong> resource. See the Resource URI above."
@@ -280,7 +280,7 @@
       "description": "Get Payment Dispute Activity",
       "parameters": [
         {
-          "name": "payment_dispute_id",
+          "name": "paymentDisputeId",
           "schema": "string",
           "required": true,
           "description": "This is the unique identifier of the payment dispute. This path parameter must be passed in at the end of the call URI to identify the payment dispute for which the user wishes to see all activity. This identifier is automatically created by eBay once the payment dispute comes into the eBay system. The unique identifier for payment disputes is returned in the <strong>paymentDisputeId</strong> field in the <strong>getPaymentDisputeSummaries</strong> response.<br><br>This path parameter is required, and the actual identifier value is passed in right after the <strong>payment_dispute</strong> resource. See the Resource URI above."
@@ -301,7 +301,7 @@
       "description": "Add an Evidence File",
       "parameters": [
         {
-          "name": "payment_dispute_id",
+          "name": "paymentDisputeId",
           "schema": "string",
           "required": true,
           "description": "This is the unique identifier of the payment dispute. This path parameter must be passed into the call URI to identify the payment dispute for which the user plans to add evidence for a contested payment dispute. This identifier is automatically created by eBay once the payment dispute comes into the eBay system. The unique identifier for payment disputes is returned in the <strong>paymentDisputeId</strong> field in the <strong>getPaymentDisputeSummaries</strong> response.<br><br>This path parameter is required, and the actual identifier value is passed in right after the <strong>payment_dispute</strong> resource. See the Resource URI above."
@@ -337,7 +337,7 @@
       "description": "Contest Payment Dispute",
       "parameters": [
         {
-          "name": "payment_dispute_id",
+          "name": "paymentDisputeId",
           "schema": "string",
           "required": true,
           "description": "This is the unique identifier of the payment dispute. This path parameter must be passed into the call URI to identify the payment dispute for which the user plans to contest. This identifier is automatically created by eBay once the payment dispute comes into the eBay system. The unique identifier for payment disputes is returned in the <strong>paymentDisputeId</strong> field in the <strong>getPaymentDisputeSummaries</strong> response.<br><br>This path parameter is required, and the actual identifier value is passed in right after the <strong>payment_dispute</strong> resource. See the Resource URI above."
@@ -368,19 +368,19 @@
       "description": "Get Payment Dispute Evidence File",
       "parameters": [
         {
-          "name": "payment_dispute_id",
+          "name": "paymentDisputeId",
           "schema": "string",
           "required": true,
           "description": "The identifier of the payment dispute. The identifier of each payment dispute is returned in the <strong>getPaymentDisputeSummaries</strong> response. This identifier is passed in as a path parameter at the end of the call URI."
         },
         {
-          "name": "evidence_id",
+          "name": "evidenceId",
           "schema": "string",
           "required": true,
           "description": "The identifier of the evidential file set. The identifier of an evidential file set for a payment dispute is returned under the <strong>evidence</strong> array in the <strong>getPaymentDispute</strong> response.<br><br>Below is an example of the syntax to use for this query parameter:<br><br><code>evidence_id=12345678</code>"
         },
         {
-          "name": "file_id",
+          "name": "fileId",
           "schema": "string",
           "required": true,
           "description": "The identifier of an evidential file. This file must belong to the evidential file set identified through the <strong>evidence_id</strong> query parameter. The identifier of each evidential file is returned under the <strong>evidence.files</strong> array in the <strong>getPaymentDispute</strong> response. <br><br>Below is an example of the syntax to use for this query parameter:<br><br><code>file_id=12345678</code> "
@@ -401,7 +401,7 @@
       "description": "Update evidence",
       "parameters": [
         {
-          "name": "payment_dispute_id",
+          "name": "paymentDisputeId",
           "schema": "string",
           "required": true,
           "description": "This is the unique identifier of the payment dispute. This path parameter must be passed into the call URI to identify the payment dispute for which the user plans to update the evidence set for a contested payment dispute. This identifier is automatically created by eBay once the payment dispute comes into the eBay system. The unique identifier for payment disputes is returned in the <strong>paymentDisputeId</strong> field in the <strong>getPaymentDisputeSummaries</strong> response.<br><br>This path parameter is required, and the actual identifier value is passed in right after the <strong>payment_dispute</strong> resource. See the Resource URI above."
@@ -437,7 +437,7 @@
       "description": "Upload an Evidence File",
       "parameters": [
         {
-          "name": "payment_dispute_id",
+          "name": "paymentDisputeId",
           "schema": "string",
           "required": true,
           "description": "This is the unique identifier of the payment dispute. This path parameter must be passed into the call URI to identify the payment dispute for which the user plans to upload an evidence file. This identifier is automatically created by eBay after the payment dispute comes into the eBay system. The unique identifier for payment disputes is returned in the <strong>paymentDisputeId</strong> field in the <strong>getPaymentDisputeSummaries</strong> response.<br><br>This path parameter is required, and the actual identifier value is passed in right after the <strong>payment_dispute</strong> resource. See the Resource URI above."
@@ -458,31 +458,31 @@
       "description": "Search Payment Dispute by Filters",
       "parameters": [
         {
-          "name": "order_id",
+          "name": "orderId",
           "schema": "string",
           "required": false,
           "description": "This filter is used if the seller wishes to retrieve one or more payment disputes filed against a specific order. It is possible that there can be more than one dispute filed against an order if the order has multiple line items. If this filter is used, any other filters are ignored."
         },
         {
-          "name": "buyer_username",
+          "name": "buyerUsername",
           "schema": "string",
           "required": false,
           "description": "This filter is used if the seller wishes to retrieve one or more payment disputes opened by a specific seller. The string that is passed in to this query parameter is the eBay user ID of the buyer."
         },
         {
-          "name": "open_date_from",
+          "name": "openDateFrom",
           "schema": "string",
           "required": false,
           "description": "The <b>open_date_from</b> and/or <b>open_date_to</b> date filters are used if the seller wishes to retrieve payment disputes opened within a specific date range. A maximum date range that may be set with the <b>open_date_from</b> and/or <b>open_date_to</b> filters is 90 days. These date filters use the ISO-8601 24-hour date and time format, and time zone used is Universal Coordinated Time (UTC), also known as Greenwich Mean Time (GMT), or Zulu.<br><br>The <b>open_date_from</b> field sets the beginning date of the date range, and can be set as far back as 18 months from the present time. If a <b>open_date_from</b> field is used, but a <b>open_date_to</b> field is not used, the <b>open_date_to</b> value will default to 90 days after the date specified in the <b>open_date_from</b> field, or to the present time if less than 90 days in the past.<br><br>The ISO-8601 format looks like this: <em>yyyy-MM-ddThh:mm.ss.sssZ</em>. An example would be <code>2019-08-04T19:09:02.768Z</code>."
         },
         {
-          "name": "open_date_to",
+          "name": "openDateTo",
           "schema": "string",
           "required": false,
           "description": "The <b>open_date_from</b> and/or <b>open_date_to</b> date filters are used if the seller wishes to retrieve payment disputes opened within a specific date range. A maximum date range that may be set with the <b>open_date_from</b> and/or <b>open_date_to</b> filters is 90 days. These date filters use the ISO-8601 24-hour date and time format, and the time zone used is Universal Coordinated Time (UTC), also known as Greenwich Mean Time (GMT), or Zulu.<br><br>The <b>open_date_to</b> field sets the ending date of the date range, and can be set up to 90 days from the date set in the <b>open_date_from</b> field. <br><br>The ISO-8601 format looks like this: <em>yyyy-MM-ddThh:mm.ss.sssZ</em>. An example would be <code>2019-08-04T19:09:02.768Z</code>."
         },
         {
-          "name": "payment_dispute_status",
+          "name": "paymentDisputeStatus",
           "schema": "string",
           "required": false,
           "description": "This filter is used if the seller wishes to only retrieve payment disputes in a specific state. More than one value can be specified. If no <b>payment_dispute_status</b> filter is used, payment disputes in all states are returned in the response. See <strong>DisputeStateEnum</strong> type for supported values."

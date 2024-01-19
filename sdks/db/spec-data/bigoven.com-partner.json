@@ -2207,7 +2207,7 @@
       "description": "Search for recipes. There are many parameters that you can apply. Starting with the most common, use title_kw to search within a title.\r\n            Use any_kw to search across the entire recipe.\r\n            If you'd like to limit by course, set the parameter \"include_primarycat\" to one of (appetizers,bread,breakfast,dessert,drinks,maindish,salad,sidedish,soup,marinades,other).\r\n            If you'd like to exclude a category, set exclude_cat to one or more (comma-separated) list of those categories to exclude.\r\n            If you'd like to include a category, set include_cat to one or more (comma-separated) of those categories to include.\r\n            To explicitly include an ingredient in your search, set the parameter \"include_ing\" to a CSV of up to three ingredients, e.g.:include_ing=mustard,chicken,beef%20tips\r\n            To explicitly exclude an ingredient in your search, set the parameter \"exclude_ing\" to a CSV of up to three ingredients.\r\n            All searches must contain the paging parameters pg and rpp, which are integers, and represent the page number (1-based) and results per page (rpp).\r\n            So, to get the third page of a result set paged with 25 recipes per page, you'd pass pg=3&amp;rpp=25\r\n            If you'd like to target searches to just a single target user's recipes, set userId=the target userId (number).\r\n            Or, you can set username=theirusername\r\n            vtn;vgn;chs;glf;ntf;dyf;sff;slf;tnf;wmf;rmf;cps\r\n            cuisine\r\n            photos\r\n            filter=added,try,favorites,myrecipes\\r\\n\\r\\n\r\n            folder=FolderNameCaseSensitive\r\n            coll=ID of Collection",
       "parameters": [
         {
-          "name": "any_kw",
+          "name": "anyKw",
           "schema": "string",
           "required": false,
           "description": "Search anywhere in the recipe for the keyword"
@@ -2231,7 +2231,7 @@
           "description": "optionally set to either \"myrecipes\", \"try\", \"favorites\",\"added\" to filter to just the authenticated user's recipe set"
         },
         {
-          "name": "title_kw",
+          "name": "titleKw",
           "schema": "string",
           "required": false,
           "description": "Search just in the recipe title for the keyword"
@@ -2267,37 +2267,37 @@
           "description": "if set to true, boost my own recipes in my folders so they show up high in the list (at the expense of other sort orders)"
         },
         {
-          "name": "include_cat",
+          "name": "includeCat",
           "schema": "string",
           "required": false,
           "description": "integer of the subcategory you'd like to limit searches to (see the /recipe/categories endpoint for available id numbers). For instance, 58 is \"Main Dish &gt; Casseroles\"."
         },
         {
-          "name": "exclude_cat",
+          "name": "excludeCat",
           "schema": "string",
           "required": false,
           "description": "like include_cat, set this to an integer to exclude a specific category"
         },
         {
-          "name": "include_primarycat",
+          "name": "includePrimarycat",
           "schema": "string",
           "required": false,
           "description": "csv indicating up to three top-level categories -- valid values are [appetizers,bread,breakfast,desserts,drinks,maindish,salads,sidedish,soups,marinades,other]"
         },
         {
-          "name": "exclude_primarycat",
+          "name": "excludePrimarycat",
           "schema": "string",
           "required": false,
           "description": "csv indicating integer values for up to 3 top-level categories -- valid values are 1...11 [appetizers,bread,breakfast,desserts,drinks,maindish,salads,sidedish,soups,marinades,other]"
         },
         {
-          "name": "include_ing",
+          "name": "includeIng",
           "schema": "string",
           "required": false,
           "description": "A CSV representing up to 3 ingredients to include, e.g., tomatoes,corn%20%starch,chicken"
         },
         {
-          "name": "exclude_ing",
+          "name": "excludeIng",
           "schema": "string",
           "required": false,
           "description": "A CSV representing up to 3 ingredients to exclude  (Powersearch-capable plan required)"
@@ -2524,7 +2524,7 @@
       "description": "Search for recipes. There are many parameters that you can apply. Starting with the most common, use title_kw to search within a title.\r\n            Use any_kw to search across the entire recipe.\r\n            If you'd like to limit by course, set the parameter \"include_primarycat\" to one of (appetizers,bread,breakfast,dessert,drinks,maindish,salad,sidedish,soup,marinades,other).\r\n            If you'd like to exclude a category, set exclude_cat to one or more (comma-separated) list of those categories to exclude.\r\n            If you'd like to include a category, set include_cat to one or more (comma-separated) of those categories to include.\r\n            To explicitly include an ingredient in your search, set the parameter \"include_ing\" to a CSV of up to three ingredients, e.g.:include_ing=mustard,chicken,beef%20tips\r\n            To explicitly exclude an ingredient in your search, set the parameter \"exclude_ing\" to a CSV of up to three ingredients.\r\n            All searches must contain the paging parameters pg and rpp, which are integers, and represent the page number (1-based) and results per page (rpp).\r\n            So, to get the third page of a result set paged with 25 recipes per page, you'd pass pg=3&amp;rpp=25\r\n            If you'd like to target searches to just a single target user's recipes, set userId=the target userId (number).\r\n            Or, you can set username=theirusername\r\n            vtn;vgn;chs;glf;ntf;dyf;sff;slf;tnf;wmf;rmf;cps\r\n            cuisine\r\n            photos\r\n            filter=added,try,favorites,myrecipes\\r\\n\\r\\n\r\n            folder=FolderNameCaseSensitive\r\n            coll=ID of Collection",
       "parameters": [
         {
-          "name": "any_kw",
+          "name": "anyKw",
           "schema": "string",
           "required": false,
           "description": "Search anywhere in the recipe for the keyword"
@@ -2548,7 +2548,7 @@
           "description": "optionally set to either \"myrecipes\", \"try\", \"favorites\",\"added\" to filter to just the authenticated user's recipe set"
         },
         {
-          "name": "title_kw",
+          "name": "titleKw",
           "schema": "string",
           "required": false,
           "description": "Search just in the recipe title for the keyword"
@@ -2584,37 +2584,37 @@
           "description": "if set to true, boost my own recipes in my folders so they show up high in the list (at the expense of other sort orders)"
         },
         {
-          "name": "include_cat",
+          "name": "includeCat",
           "schema": "string",
           "required": false,
           "description": "integer of the subcategory you'd like to limit searches to (see the /recipe/categories endpoint for available id numbers). For instance, 58 is \"Main Dish &gt; Casseroles\"."
         },
         {
-          "name": "exclude_cat",
+          "name": "excludeCat",
           "schema": "string",
           "required": false,
           "description": "like include_cat, set this to an integer to exclude a specific category"
         },
         {
-          "name": "include_primarycat",
+          "name": "includePrimarycat",
           "schema": "string",
           "required": false,
           "description": "csv indicating up to three top-level categories -- valid values are [appetizers,bread,breakfast,desserts,drinks,maindish,salads,sidedish,soups,marinades,other]"
         },
         {
-          "name": "exclude_primarycat",
+          "name": "excludePrimarycat",
           "schema": "string",
           "required": false,
           "description": "csv indicating integer values for up to 3 top-level categories -- valid values are 1...11 [appetizers,bread,breakfast,desserts,drinks,maindish,salads,sidedish,soups,marinades,other]"
         },
         {
-          "name": "include_ing",
+          "name": "includeIng",
           "schema": "string",
           "required": false,
           "description": "A CSV representing up to 3 ingredients to include, e.g., tomatoes,corn%20%starch,chicken"
         },
         {
-          "name": "exclude_ing",
+          "name": "excludeIng",
           "schema": "string",
           "required": false,
           "description": "A CSV representing up to 3 ingredients to exclude  (Powersearch-capable plan required)"

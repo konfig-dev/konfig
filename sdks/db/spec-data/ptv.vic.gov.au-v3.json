@@ -13,25 +13,25 @@
       "description": "View departures for all routes from a stop",
       "parameters": [
         {
-          "name": "route_type",
+          "name": "routeType",
           "schema": "integer",
           "required": true,
           "description": "Number identifying transport mode; values returned via RouteTypes API"
         },
         {
-          "name": "stop_id",
+          "name": "stopId",
           "schema": "integer",
           "required": true,
           "description": "Identifier of stop; values returned by Stops API"
         },
         {
-          "name": "platform_numbers",
+          "name": "platformNumbers",
           "schema": "array",
           "required": false,
           "description": "Filter by platform number at stop"
         },
         {
-          "name": "direction_id",
+          "name": "directionId",
           "schema": "integer",
           "required": false,
           "description": "Filter by identifier of direction of travel; values returned by Directions API - /v3/directions/route/{route_id}"
@@ -43,25 +43,25 @@
           "description": "Indicates that stop_id parameter will accept \"GTFS stop_id\" data"
         },
         {
-          "name": "date_utc",
+          "name": "dateUtc",
           "schema": "string",
           "required": false,
           "description": "Filter by the date and time of the request (ISO 8601 UTC format) (default = current date and time)"
         },
         {
-          "name": "max_results",
+          "name": "maxResults",
           "schema": "integer",
           "required": false,
           "description": "Maximum number of results returned"
         },
         {
-          "name": "include_cancelled",
+          "name": "includeCancelled",
           "schema": "boolean",
           "required": false,
           "description": "Indicates if cancelled services (if they exist) are returned (default = false) - metropolitan train only"
         },
         {
-          "name": "look_backwards",
+          "name": "lookBackwards",
           "schema": "boolean",
           "required": false,
           "description": "Indicates if filtering runs (and their departures) to those that arrive at destination before date_utc (default = false). Requires max_results &gt; 0."
@@ -73,7 +73,7 @@
           "description": "List of objects to be returned in full (i.e. expanded) - options include: All, Stop, Route, Run, Direction, Disruption, VehiclePosition, VehicleDescriptor or None.\r\n            Run must be expanded to receive VehiclePosition and VehicleDescriptor information."
         },
         {
-          "name": "include_geopath",
+          "name": "includeGeopath",
           "schema": "boolean",
           "required": false,
           "description": "Indicates if the route geopath should be returned"
@@ -120,25 +120,25 @@
       "description": "View departures for a specific route from a stop",
       "parameters": [
         {
-          "name": "route_type",
+          "name": "routeType",
           "schema": "integer",
           "required": true,
           "description": "Number identifying transport mode; values returned via RouteTypes API"
         },
         {
-          "name": "stop_id",
+          "name": "stopId",
           "schema": "integer",
           "required": true,
           "description": "Identifier of stop; values returned by Stops API"
         },
         {
-          "name": "route_id",
+          "name": "routeId",
           "schema": "string",
           "required": true,
           "description": "Identifier of route; values returned by Routes API - v3/routes"
         },
         {
-          "name": "direction_id",
+          "name": "directionId",
           "schema": "integer",
           "required": false,
           "description": "Filter by identifier of direction of travel; values returned by Directions API - /v3/directions/route/{route_id}"
@@ -150,25 +150,25 @@
           "description": "Indicates that stop_id parameter will accept \"GTFS stop_id\" data"
         },
         {
-          "name": "date_utc",
+          "name": "dateUtc",
           "schema": "string",
           "required": false,
           "description": "Filter by the date and time of the request (ISO 8601 UTC format) (default = current date and time)"
         },
         {
-          "name": "max_results",
+          "name": "maxResults",
           "schema": "integer",
           "required": false,
           "description": "Maximum number of results returned"
         },
         {
-          "name": "include_cancelled",
+          "name": "includeCancelled",
           "schema": "boolean",
           "required": false,
           "description": "Indicates if cancelled services (if they exist) are returned (default = false) - metropolitan train only"
         },
         {
-          "name": "look_backwards",
+          "name": "lookBackwards",
           "schema": "boolean",
           "required": false,
           "description": "Indicates if filtering runs (and their departures) to those that arrive at destination before date_utc (default = false). Requires max_results &gt; 0."
@@ -180,7 +180,7 @@
           "description": "List of objects to be returned in full (i.e. expanded) - options include: All, Stop, Route, Run, Direction, Disruption, VehiclePosition, VehicleDescriptor or None.\r\n            Run must be expanded to receive VehiclePosition and VehicleDescriptor information."
         },
         {
-          "name": "include_geopath",
+          "name": "includeGeopath",
           "schema": "boolean",
           "required": false,
           "description": "Indicates if the route geopath should be returned"
@@ -227,7 +227,7 @@
       "description": "View directions that a route travels in",
       "parameters": [
         {
-          "name": "route_id",
+          "name": "routeId",
           "schema": "integer",
           "required": true,
           "description": "Identifier of route; values returned by Routes API - v3/routes"
@@ -274,7 +274,7 @@
       "description": "View all routes for a direction of travel",
       "parameters": [
         {
-          "name": "direction_id",
+          "name": "directionId",
           "schema": "integer",
           "required": true,
           "description": "Identifier of direction of travel; values returned by Directions API - /v3/directions/route/{route_id}"
@@ -321,13 +321,13 @@
       "description": "View all routes of a particular type for a direction of travel",
       "parameters": [
         {
-          "name": "direction_id",
+          "name": "directionId",
           "schema": "integer",
           "required": true,
           "description": "Identifier of direction of travel; values returned by Directions API - /v3/directions/route/{route_id}"
         },
         {
-          "name": "route_type",
+          "name": "routeType",
           "schema": "integer",
           "required": true,
           "description": "Number identifying transport mode; values returned via RouteTypes API"
@@ -374,19 +374,19 @@
       "description": "View all disruptions for all route types",
       "parameters": [
         {
-          "name": "route_types",
+          "name": "routeTypes",
           "schema": "array",
           "required": false,
           "description": "Filter by route_type; values returned via RouteTypes API"
         },
         {
-          "name": "disruption_modes",
+          "name": "disruptionModes",
           "schema": "array",
           "required": false,
           "description": "Filter by disruption_mode; values returned via v3/disruptions/modes API"
         },
         {
-          "name": "disruption_status",
+          "name": "disruptionStatus",
           "schema": "string",
           "required": false,
           "description": "Filter by status of disruption"
@@ -474,13 +474,13 @@
       "description": "View all disruptions for a particular route",
       "parameters": [
         {
-          "name": "route_id",
+          "name": "routeId",
           "schema": "integer",
           "required": true,
           "description": "Identifier of route; values returned by Routes API - v3/routes"
         },
         {
-          "name": "disruption_status",
+          "name": "disruptionStatus",
           "schema": "string",
           "required": false,
           "description": "Filter by status of disruption"
@@ -527,19 +527,19 @@
       "description": "View all disruptions for a particular route and stop",
       "parameters": [
         {
-          "name": "route_id",
+          "name": "routeId",
           "schema": "integer",
           "required": true,
           "description": "Identifier of route; values returned by Routes API - v3/routes"
         },
         {
-          "name": "stop_id",
+          "name": "stopId",
           "schema": "integer",
           "required": true,
           "description": "Identifier of stop; values returned by Stops API - v3/stops"
         },
         {
-          "name": "disruption_status",
+          "name": "disruptionStatus",
           "schema": "string",
           "required": false,
           "description": "Filter by status of disruption"
@@ -586,13 +586,13 @@
       "description": "View all disruptions for a particular stop",
       "parameters": [
         {
-          "name": "stop_id",
+          "name": "stopId",
           "schema": "integer",
           "required": true,
           "description": "Identifier of stop; values returned by Stops API - v3/stops"
         },
         {
-          "name": "disruption_status",
+          "name": "disruptionStatus",
           "schema": "string",
           "required": false,
           "description": "Filter by status of disruption"
@@ -639,7 +639,7 @@
       "description": "View a specific disruption",
       "parameters": [
         {
-          "name": "disruption_id",
+          "name": "disruptionId",
           "schema": "integer",
           "required": true,
           "description": "Identifier of disruption; values returned by Disruptions API - /v3/disruptions OR /v3/disruptions/route/{route_id}"
@@ -698,25 +698,25 @@
           "description": "Maximum Zone travelled through id. 6"
         },
         {
-          "name": "journey_touch_on_utc",
+          "name": "journeyTouchOnUtc",
           "schema": "string",
           "required": false,
           "description": "JourneyTouchOnUtc in format yyyy-M-d h:m (e.g 2016-5-31 16:53)."
         },
         {
-          "name": "journey_touch_off_utc",
+          "name": "journeyTouchOffUtc",
           "schema": "string",
           "required": false,
           "description": "JourneyTouchOffUtc in format yyyy-M-d h:m (e.g 2016-5-31 16:53)."
         },
         {
-          "name": "is_journey_in_free_tram_zone",
+          "name": "isJourneyInFreeTramZone",
           "schema": "boolean",
           "required": false,
           "description": ""
         },
         {
-          "name": "travelled_route_types",
+          "name": "travelledRouteTypes",
           "schema": "array",
           "required": false,
           "description": ""
@@ -763,7 +763,7 @@
       "description": "List all ticket outlets",
       "parameters": [
         {
-          "name": "max_results",
+          "name": "maxResults",
           "schema": "integer",
           "required": false,
           "description": "Maximum number of results returned (default = 30)"
@@ -822,13 +822,13 @@
           "description": "Geographic coordinate of longitude"
         },
         {
-          "name": "max_distance",
+          "name": "maxDistance",
           "schema": "number",
           "required": false,
           "description": "Filter by maximum distance (in metres) from location specified via latitude and longitude parameters (default = 300)"
         },
         {
-          "name": "max_results",
+          "name": "maxResults",
           "schema": "integer",
           "required": false,
           "description": "Maximum number of results returned (default = 30)"
@@ -875,13 +875,13 @@
       "description": "View the stopping pattern for a specific trip/service run",
       "parameters": [
         {
-          "name": "run_ref",
+          "name": "runRef",
           "schema": "string",
           "required": true,
           "description": "The run_ref is the identifier of a run as returned by the departures/* and runs/* endpoints. WARNING, run_id is deprecated. Use run_ref instead."
         },
         {
-          "name": "route_type",
+          "name": "routeType",
           "schema": "integer",
           "required": true,
           "description": "Number identifying transport mode; values returned via RouteTypes API"
@@ -893,25 +893,25 @@
           "description": "List of objects to be returned in full (i.e. expanded) - options include: All, Stop, Route, Run, Direction, Disruption, VehiclePosition, VehicleDescriptor and None. Default is Disruption. Run must be expanded to receive VehiclePosition and VehicleDescriptor information."
         },
         {
-          "name": "stop_id",
+          "name": "stopId",
           "schema": "integer",
           "required": false,
           "description": "Filter by stop_id; values returned by Stops API"
         },
         {
-          "name": "date_utc",
+          "name": "dateUtc",
           "schema": "string",
           "required": false,
           "description": "Filter by the date and time of the request (ISO 8601 UTC format)"
         },
         {
-          "name": "include_skipped_stops",
+          "name": "includeSkippedStops",
           "schema": "boolean",
           "required": false,
           "description": "Include any skipped stops in a stopping pattern. Defaults to false."
         },
         {
-          "name": "include_geopath",
+          "name": "includeGeopath",
           "schema": "boolean",
           "required": false,
           "description": "Indicates if geopath data will be returned (default = false)"
@@ -999,13 +999,13 @@
       "description": "View route names and numbers for all routes",
       "parameters": [
         {
-          "name": "route_types",
+          "name": "routeTypes",
           "schema": "array",
           "required": false,
           "description": "Filter by route_type; values returned via RouteTypes API"
         },
         {
-          "name": "route_name",
+          "name": "routeName",
           "schema": "string",
           "required": false,
           "description": "Filter by name  of route (accepts partial route name matches)"
@@ -1052,19 +1052,19 @@
       "description": "View route name and number for specific route ID",
       "parameters": [
         {
-          "name": "route_id",
+          "name": "routeId",
           "schema": "integer",
           "required": true,
           "description": "Identifier of route; values returned by Departures, Directions and Disruptions APIs"
         },
         {
-          "name": "include_geopath",
+          "name": "includeGeopath",
           "schema": "boolean",
           "required": false,
           "description": "Indicates kif geopath data will be returned (default = false)"
         },
         {
-          "name": "geopath_utc",
+          "name": "geopathUtc",
           "schema": "string",
           "required": false,
           "description": "Filter geopaths by date (ISO 8601 UTC format) (default = current date)"
@@ -1111,7 +1111,7 @@
       "description": "View all trip/service runs for a specific route ID",
       "parameters": [
         {
-          "name": "route_id",
+          "name": "routeId",
           "schema": "integer",
           "required": true,
           "description": "Identifier of route; values returned by Routes API - v3/routes."
@@ -1123,7 +1123,7 @@
           "description": "List of objects to be returned in full (i.e. expanded) - options include: All, VehiclePosition, VehicleDescriptor, or None. Default is None."
         },
         {
-          "name": "date_utc",
+          "name": "dateUtc",
           "schema": "string",
           "required": false,
           "description": "Date of the request. (optional - defaults to now)"
@@ -1170,13 +1170,13 @@
       "description": "View all trip/service runs for a specific route ID and route type",
       "parameters": [
         {
-          "name": "route_id",
+          "name": "routeId",
           "schema": "integer",
           "required": true,
           "description": "Identifier of route; values returned by Routes API - v3/routes."
         },
         {
-          "name": "route_type",
+          "name": "routeType",
           "schema": "integer",
           "required": true,
           "description": "Number identifying transport mode; values returned via RouteTypes API"
@@ -1188,7 +1188,7 @@
           "description": "List of objects to be returned in full (i.e. expanded) - options include: All, VehiclePosition, VehicleDescriptor, or None. Default is All."
         },
         {
-          "name": "date_utc",
+          "name": "dateUtc",
           "schema": "string",
           "required": false,
           "description": "Date of the request. (optional - defaults to now)"
@@ -1235,7 +1235,7 @@
       "description": "View all trip/service runs for a specific run_ref",
       "parameters": [
         {
-          "name": "run_ref",
+          "name": "runRef",
           "schema": "string",
           "required": true,
           "description": "The run_ref is the identifier of a run as returned by the departures/* and runs/* endpoints. WARNING, run_id is deprecated. Use run_ref instead."
@@ -1247,13 +1247,13 @@
           "description": "List of objects to be returned in full (i.e. expanded) - options include: All, VehiclePosition, VehicleDescriptor, or None. Default is None."
         },
         {
-          "name": "date_utc",
+          "name": "dateUtc",
           "schema": "string",
           "required": false,
           "description": "Date of the request. (optional - defaults to now)"
         },
         {
-          "name": "include_geopath",
+          "name": "includeGeopath",
           "schema": "boolean",
           "required": false,
           "description": "Indicates if geopath data will be returned (default = false)"
@@ -1300,13 +1300,13 @@
       "description": "View the trip/service run for a specific run_ref and route type",
       "parameters": [
         {
-          "name": "run_ref",
+          "name": "runRef",
           "schema": "string",
           "required": true,
           "description": "The run_ref is the identifier of a run as returned by the departures/* and runs/* endpoints. WARNING, run_id is deprecated. Use run_ref instead."
         },
         {
-          "name": "route_type",
+          "name": "routeType",
           "schema": "integer",
           "required": true,
           "description": "Number identifying transport mode; values returned via RouteTypes API"
@@ -1318,13 +1318,13 @@
           "description": "List of objects to be returned in full (i.e. expanded) - options include: All, VehiclePosition, VehicleDescriptor, or None. Default is None."
         },
         {
-          "name": "date_utc",
+          "name": "dateUtc",
           "schema": "string",
           "required": false,
           "description": "Date of the request. (optional - defaults to now)"
         },
         {
-          "name": "include_geopath",
+          "name": "includeGeopath",
           "schema": "boolean",
           "required": false,
           "description": "Indicates if geopath data will be returned (default = false)"
@@ -1371,13 +1371,13 @@
       "description": "View stops, routes and myki ticket outlets that match the search term",
       "parameters": [
         {
-          "name": "search_term",
+          "name": "searchTerm",
           "schema": "string",
           "required": true,
           "description": "Search text (note: if search text is numeric and/or less than 3 characters, the API will only return routes)"
         },
         {
-          "name": "route_types",
+          "name": "routeTypes",
           "schema": "array",
           "required": false,
           "description": "Filter by route_type; values returned via RouteTypes API (note: stops and routes are ordered by route_types specified)"
@@ -1395,37 +1395,37 @@
           "description": "Filter by geographic coordinate of longitude"
         },
         {
-          "name": "max_distance",
+          "name": "maxDistance",
           "schema": "number",
           "required": false,
           "description": "Filter by maximum distance (in metres) from location specified via latitude and longitude parameters"
         },
         {
-          "name": "include_addresses",
+          "name": "includeAddresses",
           "schema": "boolean",
           "required": false,
           "description": "Placeholder for future development; currently unavailable"
         },
         {
-          "name": "include_outlets",
+          "name": "includeOutlets",
           "schema": "boolean",
           "required": false,
           "description": "Indicates if outlets will be returned in response (default = true)"
         },
         {
-          "name": "match_stop_by_suburb",
+          "name": "matchStopBySuburb",
           "schema": "boolean",
           "required": false,
           "description": "Indicates whether to find stops by suburbs in the search term (default = true)"
         },
         {
-          "name": "match_route_by_suburb",
+          "name": "matchRouteBySuburb",
           "schema": "boolean",
           "required": false,
           "description": "Indicates whether to find routes by suburbs in the search term (default = true)"
         },
         {
-          "name": "match_stop_by_gtfs_stop_id",
+          "name": "matchStopByGtfsStopId",
           "schema": "boolean",
           "required": false,
           "description": "Indicates whether to search for stops according to a metlink stop ID (default = false)"
@@ -1484,25 +1484,25 @@
           "description": "Geographic coordinate of longitude"
         },
         {
-          "name": "route_types",
+          "name": "routeTypes",
           "schema": "array",
           "required": false,
           "description": "Filter by route_type; values returned via RouteTypes API"
         },
         {
-          "name": "max_results",
+          "name": "maxResults",
           "schema": "integer",
           "required": false,
           "description": "Maximum number of results returned (default = 30)"
         },
         {
-          "name": "max_distance",
+          "name": "maxDistance",
           "schema": "number",
           "required": false,
           "description": "Filter by maximum distance (in metres) from location specified via latitude and longitude parameters (default = 300)"
         },
         {
-          "name": "stop_disruptions",
+          "name": "stopDisruptions",
           "schema": "boolean",
           "required": false,
           "description": "Indicates if stop disruption information will be returned (default = false)"
@@ -1549,37 +1549,37 @@
       "description": "View all stops on a specific route",
       "parameters": [
         {
-          "name": "route_id",
+          "name": "routeId",
           "schema": "integer",
           "required": true,
           "description": "Identifier of route; values returned by Routes API - v3/routes"
         },
         {
-          "name": "route_type",
+          "name": "routeType",
           "schema": "integer",
           "required": true,
           "description": "Number identifying transport mode; values returned via RouteTypes API"
         },
         {
-          "name": "direction_id",
+          "name": "directionId",
           "schema": "integer",
           "required": false,
           "description": "An optional direction; values returned by Directions API. When this is set, stop sequence information is returned in the response."
         },
         {
-          "name": "stop_disruptions",
+          "name": "stopDisruptions",
           "schema": "boolean",
           "required": false,
           "description": "Indicates if stop disruption information will be returned (default = false)"
         },
         {
-          "name": "include_geopath",
+          "name": "includeGeopath",
           "schema": "boolean",
           "required": false,
           "description": "Indicates if geopath data will be returned (default = false)"
         },
         {
-          "name": "geopath_utc",
+          "name": "geopathUtc",
           "schema": "string",
           "required": false,
           "description": "Filter geopaths by date (ISO 8601 UTC format) (default = current date)"
@@ -1626,43 +1626,43 @@
       "description": "View facilities at a specific stop (Metro and V/Line stations only)",
       "parameters": [
         {
-          "name": "stop_id",
+          "name": "stopId",
           "schema": "integer",
           "required": true,
           "description": "Identifier of stop; values returned by Stops API"
         },
         {
-          "name": "route_type",
+          "name": "routeType",
           "schema": "integer",
           "required": true,
           "description": "Number identifying transport mode; values returned via RouteTypes API"
         },
         {
-          "name": "stop_location",
+          "name": "stopLocation",
           "schema": "boolean",
           "required": false,
           "description": "Indicates if stop location information will be returned (default = false)"
         },
         {
-          "name": "stop_amenities",
+          "name": "stopAmenities",
           "schema": "boolean",
           "required": false,
           "description": "Indicates if stop amenity information will be returned (default = false)"
         },
         {
-          "name": "stop_accessibility",
+          "name": "stopAccessibility",
           "schema": "boolean",
           "required": false,
           "description": "Indicates if stop accessibility information will be returned (default = false)"
         },
         {
-          "name": "stop_contact",
+          "name": "stopContact",
           "schema": "boolean",
           "required": false,
           "description": "Indicates if stop contact information will be returned (default = false)"
         },
         {
-          "name": "stop_ticket",
+          "name": "stopTicket",
           "schema": "boolean",
           "required": false,
           "description": "Indicates if stop ticket information will be returned (default = false)"
@@ -1674,13 +1674,13 @@
           "description": "Incdicates whether the stop_id is a GTFS ID or not"
         },
         {
-          "name": "stop_staffing",
+          "name": "stopStaffing",
           "schema": "boolean",
           "required": false,
           "description": "Indicates if stop staffing information will be returned (default = false)"
         },
         {
-          "name": "stop_disruptions",
+          "name": "stopDisruptions",
           "schema": "boolean",
           "required": false,
           "description": "Indicates if stop disruption information will be returned (default = false)"

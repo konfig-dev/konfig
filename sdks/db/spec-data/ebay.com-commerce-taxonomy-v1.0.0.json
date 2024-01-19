@@ -28,7 +28,7 @@
       "description": "Get a Category Tree",
       "parameters": [
         {
-          "name": "category_tree_id",
+          "name": "categoryTreeId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier of the eBay category tree being requested."
@@ -49,7 +49,7 @@
       "description": "Get Aspects for All Leaf Categories in a Marketplace",
       "parameters": [
         {
-          "name": "category_tree_id",
+          "name": "categoryTreeId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier of the eBay category tree being requested."
@@ -70,13 +70,13 @@
       "description": "Get a Category Subtree",
       "parameters": [
         {
-          "name": "category_id",
+          "name": "categoryId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier of the category at the top of the subtree being requested. Note: If the category_id submitted identifies the root node of the tree, this call returns an error. To retrieve the complete tree, use this value with the getCategoryTree call. If the category_id submitted identifies a leaf node of the tree, the call response will contain information about only that leaf node, which is a valid subtree."
         },
         {
-          "name": "category_tree_id",
+          "name": "categoryTreeId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier of the eBay category tree from which a category subtree is being requested."
@@ -97,7 +97,7 @@
       "description": "Get Suggested Categories",
       "parameters": [
         {
-          "name": "category_tree_id",
+          "name": "categoryTreeId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier of the eBay category tree for which suggested nodes are being requested."
@@ -124,13 +124,13 @@
       "description": "Get Compatibility Properties",
       "parameters": [
         {
-          "name": "category_tree_id",
+          "name": "categoryTreeId",
           "schema": "string",
           "required": true,
           "description": "This is the unique identifier of category tree. The following is the list of category_tree_id values and the eBay marketplaces that they represent. One of these ID values must be passed in as a path parameter, and the category_id value, that is passed in as query parameter, must be a valid eBay category on that eBay marketplace that supports parts compatibility for cars, trucks, or motorcyles. eBay US: 0 eBay Motors US: 100 eBay Canada: 2 eBay UK: 3 eBay Germany: 77 eBay Australia: 15 eBay France: 71 eBay Italy: 101 eBay Spain: 186"
         },
         {
-          "name": "category_id",
+          "name": "categoryId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier of an eBay category. This eBay category must be a valid eBay category on the specified eBay marketplace, and the category must support parts compatibility for cars, trucks, or motorcyles. The getAutomotivePartsCompatibilityPolicies method of the Selling Metadata API can be used to retrieve all eBay categories for an eBay marketplace that supports parts compatibility cars, trucks, or motorcyles. The getAutomotivePartsCompatibilityPolicies method can also be used to see if one or more specific eBay categories support parts compatibility."
@@ -151,19 +151,19 @@
       "description": "Get Compatibility Property Values",
       "parameters": [
         {
-          "name": "category_tree_id",
+          "name": "categoryTreeId",
           "schema": "string",
           "required": true,
           "description": "This is the unique identifier of the category tree. The following is the list of category_tree_id values and the eBay marketplaces that they represent. One of these ID values must be passed in as a path parameter, and the category_id value, that is passed in as query parameter, must be a valid eBay category on that eBay marketplace that supports parts compatibility for cars, trucks, or motorcyles. eBay US: 0 eBay Motors US: 100 eBay Canada: 2 eBay UK: 3 eBay Germany: 77 eBay Australia: 15 eBay France: 71 eBay Italy: 101 eBay Spain: 186"
         },
         {
-          "name": "compatibility_property",
+          "name": "compatibilityProperty",
           "schema": "string",
           "required": true,
           "description": "One compatible vehicle property applicable to the specified eBay marketplace and eBay category is specified in this required filter. Compatible vehicle properties are returned in the compatibilityProperties.name field of a getCompatibilityProperties response. For example, if you wanted to retrieve all vehicle trims for a 2018 Toyota Camry, you would set this filter as follows: compatibility_property=Trim; and then include the following three name/value filters through one filter parameter: filter=Year:2018,Make:Toyota,Model:Camry. So, putting this all together, your URI would look something like this: GET https://api.ebay.com/commerce/ taxonomy/v1/category_tree/100/ get_compatibility_property_values? category_id=6016&amp;compatibility_property=Trim &amp;filter=filter=Year:2018,Make:Toyota,Model:Camry"
         },
         {
-          "name": "category_id",
+          "name": "categoryId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier of an eBay category. This eBay category must be a valid eBay category on the specified eBay marketplace, and the category must support parts compatibility for cars, trucks, or motorcyles. The getAutomotivePartsCompatibilityPolicies method of the Selling Metadata API can be used to retrieve all eBay categories for an eBay marketplace that supports parts compatibility cars, trucks, or motorcyles. The getAutomotivePartsCompatibilityPolicies method can also be used to see if one or more specific eBay categories support parts compatibility."
@@ -190,13 +190,13 @@
       "description": "Note: The General Availability (GA) version of the Taxonomy API has been released. Developers currently using the Beta version should make plans to migrate to the new GA version, as the Beta version will be decommissioned on March 31, 2021. Until that date, the Beta version documentation set can be accessed through the All API Documentation page. This call returns a list of aspects that are appropriate or necessary for accurately describing items in the specified leaf category. Each aspect identifies an item attribute (for example, color) for which the seller will be required or encouraged to provide a value (or variation values) when offering an item in that category on eBay. For each aspect, getItemAspectsForCategory provides complete metadata, including: The aspect's data type, format, and entry mode Whether the aspect is required in listings Whether the aspect can be used for item variations Whether the aspect accepts multiple values for an item Allowed values for the aspect Use this information to construct an interface through which sellers can enter or select the appropriate values for their items or item variations. Once you collect those values, include them as product aspects when creating inventory items using the Inventory API.",
       "parameters": [
         {
-          "name": "category_id",
+          "name": "categoryId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier of the leaf category for which aspects are being requested. Note: If the category_id submitted does not identify a leaf node of the tree, this call returns an error."
         },
         {
-          "name": "category_tree_id",
+          "name": "categoryTreeId",
           "schema": "string",
           "required": true,
           "description": "The unique identifier of the eBay category tree from which the specified category's aspects are being requested."
@@ -217,13 +217,13 @@
       "description": "Get a Default Category Tree ID",
       "parameters": [
         {
-          "name": "Accept-Language",
+          "name": "acceptLanguage",
           "schema": "string",
           "required": false,
           "description": "A header used to indicate the natural language the seller prefers for the response. This specifies the language that the seller wants to use when the field values provided in the request body are displayed to consumers. Note: For details, see Accept-Language in HTTP request headers. Valid Values: For EBAY_CA in French: Accept-Language: fr-CA For EBAY_BE in French: Accept-Language: fr-BE"
         },
         {
-          "name": "marketplace_id",
+          "name": "marketplaceId",
           "schema": "string",
           "required": true,
           "description": "The ID of the eBay marketplace for which the category tree ID is being requested. For a list of supported marketplace IDs, see Marketplaces with Default Category Trees."

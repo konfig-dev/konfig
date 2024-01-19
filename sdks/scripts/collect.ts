@@ -26,15 +26,6 @@ const apiDirectory = path.join(
   "APIs"
 );
 
-// Some paths hang on parsing, even with a timeout, so we hardcode them here to skip them
-const skip: string[] = [
-  "stripe.com/2022-11-15/openapi.yaml",
-  "presalytics.io/ooxml/0.1.0/openapi.yaml",
-  "microsoft.com/graph-beta/1.0.1/openapi.yaml",
-  "microsoft.com/graph/1.0.1/openapi.yaml",
-  "bungie.net/2.18.0/openapi.yaml",
-];
-
 function calculateZScores(numbers: number[]): number[] {
   const mean = math.mean(numbers);
   const stdDev = math.std(numbers) as unknown as number;
@@ -78,7 +69,7 @@ function getMethodObjects(spec: Spec): Method[] {
               "undefined"
             : "undefined";
         parameters.push({
-          name: parameter.name,
+          name: camelcase(parameter.name),
           schema,
           required: parameter.required,
           description: parameter.description ?? "",
@@ -325,6 +316,10 @@ function writeData(db: Db) {
 }
 
 const doNotProcess = [
+  "bungie.net",
+  "presalytics.io",
+  "stripe.com",
+  "adyen.com",
   "googleapis.com",
   "google.home",
   "google.com",
@@ -344,9 +339,7 @@ async function collectFilterAndSave(): Promise<void> {
   const paths = collectOasFilePaths();
 
   const filteredPaths = paths.filter(
-    ({ oasPath }) =>
-      !doNotProcess.some((f) => oasPath.includes(f)) &&
-      skip.every((s) => !oasPath.includes(s))
+    ({ oasPath }) => !doNotProcess.some((f) => oasPath.includes(f))
   );
 
   const specsForFilteredPaths: { spec: Spec; oasPath: string }[] = [];

@@ -33,7 +33,7 @@
       "description": "List a server",
       "parameters": [
         {
-          "name": "server_id",
+          "name": "serverId",
           "schema": "string",
           "required": true,
           "description": "The id of the server to retrieve"
@@ -54,7 +54,7 @@
       "description": "Flush a cache-entry by name",
       "parameters": [
         {
-          "name": "server_id",
+          "name": "serverId",
           "schema": "string",
           "required": true,
           "description": "The id of the server to retrieve"
@@ -81,7 +81,7 @@
       "description": "Returns all ConfigSettings for a single server",
       "parameters": [
         {
-          "name": "server_id",
+          "name": "serverId",
           "schema": "string",
           "required": true,
           "description": "The id of the server to retrieve"
@@ -102,13 +102,13 @@
       "description": "Returns a specific ConfigSetting for a single server",
       "parameters": [
         {
-          "name": "server_id",
+          "name": "serverId",
           "schema": "string",
           "required": true,
           "description": "The id of the server to retrieve"
         },
         {
-          "name": "config_setting_name",
+          "name": "configSettingName",
           "schema": "string",
           "required": true,
           "description": "The name of the setting to retrieve"
@@ -129,7 +129,7 @@
       "description": "Search the data inside PowerDNS",
       "parameters": [
         {
-          "name": "server_id",
+          "name": "serverId",
           "schema": "string",
           "required": true,
           "description": "The id of the server to retrieve"
@@ -147,7 +147,7 @@
           "description": "Maximum number of entries to return"
         },
         {
-          "name": "object_type",
+          "name": "objectType",
           "schema": "string",
           "required": false,
           "description": "Type of data to search for, one of “all”, “zone”, “record”, “comment”"
@@ -168,7 +168,7 @@
       "description": "Query statistics.",
       "parameters": [
         {
-          "name": "server_id",
+          "name": "serverId",
           "schema": "string",
           "required": true,
           "description": "The id of the server to retrieve"
@@ -359,7 +359,7 @@
       "description": "List all Zones in a server",
       "parameters": [
         {
-          "name": "server_id",
+          "name": "serverId",
           "schema": "string",
           "required": true,
           "description": "The id of the server to retrieve"
@@ -392,7 +392,7 @@
       "description": "Creates a new domain, returns the Zone on creation.",
       "parameters": [
         {
-          "name": "server_id",
+          "name": "serverId",
           "schema": "string",
           "required": true,
           "description": "The id of the server to retrieve"
@@ -528,13 +528,13 @@
       "description": "Deletes this zone, all attached metadata and rrsets.",
       "parameters": [
         {
-          "name": "server_id",
+          "name": "serverId",
           "schema": "string",
           "required": true,
           "description": "The id of the server to retrieve"
         },
         {
-          "name": "zone_id",
+          "name": "zoneId",
           "schema": "string",
           "required": true,
           "description": "The id of the zone to retrieve"
@@ -550,13 +550,13 @@
       "description": "zone managed by a server",
       "parameters": [
         {
-          "name": "server_id",
+          "name": "serverId",
           "schema": "string",
           "required": true,
           "description": "The id of the server to retrieve"
         },
         {
-          "name": "zone_id",
+          "name": "zoneId",
           "schema": "string",
           "required": true,
           "description": "The id of the zone to retrieve"
@@ -582,13 +582,13 @@
       "description": "Creates/modifies/deletes RRsets present in the payload and their comments. Returns 204 No Content on success.",
       "parameters": [
         {
-          "name": "server_id",
+          "name": "serverId",
           "schema": "string",
           "required": true,
           "description": "The id of the server to retrieve"
         },
         {
-          "name": "zone_id",
+          "name": "zoneId",
           "schema": "string",
           "required": true,
           "description": ""
@@ -714,13 +714,13 @@
       "description": "Modifies basic zone data.",
       "parameters": [
         {
-          "name": "server_id",
+          "name": "serverId",
           "schema": "string",
           "required": true,
           "description": "The id of the server to retrieve"
         },
         {
-          "name": "zone_id",
+          "name": "zoneId",
           "schema": "string",
           "required": true,
           "description": ""
@@ -846,13 +846,13 @@
       "description": "Retrieve slave zone from its master.",
       "parameters": [
         {
-          "name": "server_id",
+          "name": "serverId",
           "schema": "string",
           "required": true,
           "description": "The id of the server to retrieve"
         },
         {
-          "name": "zone_id",
+          "name": "zoneId",
           "schema": "string",
           "required": true,
           "description": "The id of the zone to retrieve"
@@ -868,13 +868,13 @@
       "description": "Get all CryptoKeys for a zone, except the privatekey",
       "parameters": [
         {
-          "name": "server_id",
+          "name": "serverId",
           "schema": "string",
           "required": true,
           "description": "The id of the server to retrieve"
         },
         {
-          "name": "zone_id",
+          "name": "zoneId",
           "schema": "string",
           "required": true,
           "description": "The id of the zone to retrieve"
@@ -895,13 +895,13 @@
       "description": "Creates a Cryptokey",
       "parameters": [
         {
-          "name": "server_id",
+          "name": "serverId",
           "schema": "string",
           "required": true,
           "description": "The id of the server to retrieve"
         },
         {
-          "name": "zone_id",
+          "name": "zoneId",
           "schema": "string",
           "required": true,
           "description": ""
@@ -972,19 +972,19 @@
       "description": "This method deletes a key specified by cryptokey_id.",
       "parameters": [
         {
-          "name": "server_id",
+          "name": "serverId",
           "schema": "string",
           "required": true,
           "description": "The id of the server to retrieve"
         },
         {
-          "name": "zone_id",
+          "name": "zoneId",
           "schema": "string",
           "required": true,
           "description": "The id of the zone to retrieve"
         },
         {
-          "name": "cryptokey_id",
+          "name": "cryptokeyId",
           "schema": "string",
           "required": true,
           "description": "The id value of the Cryptokey"
@@ -1000,19 +1000,19 @@
       "description": "Returns all data about the CryptoKey, including the privatekey.",
       "parameters": [
         {
-          "name": "server_id",
+          "name": "serverId",
           "schema": "string",
           "required": true,
           "description": "The id of the server to retrieve"
         },
         {
-          "name": "zone_id",
+          "name": "zoneId",
           "schema": "string",
           "required": true,
           "description": "The id of the zone to retrieve"
         },
         {
-          "name": "cryptokey_id",
+          "name": "cryptokeyId",
           "schema": "string",
           "required": true,
           "description": "The id value of the CryptoKey"
@@ -1033,19 +1033,19 @@
       "description": "This method (de)activates a key from zone_name specified by cryptokey_id",
       "parameters": [
         {
-          "name": "server_id",
+          "name": "serverId",
           "schema": "string",
           "required": true,
           "description": "The id of the server to retrieve"
         },
         {
-          "name": "zone_id",
+          "name": "zoneId",
           "schema": "string",
           "required": true,
           "description": ""
         },
         {
-          "name": "cryptokey_id",
+          "name": "cryptokeyId",
           "schema": "string",
           "required": true,
           "description": "Cryptokey to manipulate"
@@ -1111,13 +1111,13 @@
       "description": "Returns the zone in AXFR format.",
       "parameters": [
         {
-          "name": "server_id",
+          "name": "serverId",
           "schema": "string",
           "required": true,
           "description": "The id of the server to retrieve"
         },
         {
-          "name": "zone_id",
+          "name": "zoneId",
           "schema": "string",
           "required": true,
           "description": "The id of the zone to retrieve"
@@ -1138,13 +1138,13 @@
       "description": "Get all the Metadata associated with the zone.",
       "parameters": [
         {
-          "name": "server_id",
+          "name": "serverId",
           "schema": "string",
           "required": true,
           "description": "The id of the server to retrieve"
         },
         {
-          "name": "zone_id",
+          "name": "zoneId",
           "schema": "string",
           "required": true,
           "description": "The id of the zone to retrieve"
@@ -1165,13 +1165,13 @@
       "description": "Creates a set of metadata entries",
       "parameters": [
         {
-          "name": "server_id",
+          "name": "serverId",
           "schema": "string",
           "required": true,
           "description": "The id of the server to retrieve"
         },
         {
-          "name": "zone_id",
+          "name": "zoneId",
           "schema": "string",
           "required": true,
           "description": ""
@@ -1197,19 +1197,19 @@
       "description": "Delete all items of a single kind of domain metadata.",
       "parameters": [
         {
-          "name": "server_id",
+          "name": "serverId",
           "schema": "string",
           "required": true,
           "description": "The id of the server to retrieve"
         },
         {
-          "name": "zone_id",
+          "name": "zoneId",
           "schema": "string",
           "required": true,
           "description": "The id of the zone to retrieve"
         },
         {
-          "name": "metadata_kind",
+          "name": "metadataKind",
           "schema": "string",
           "required": true,
           "description": "The kind of metadata"
@@ -1225,19 +1225,19 @@
       "description": "Get the content of a single kind of domain metadata as a Metadata object.",
       "parameters": [
         {
-          "name": "server_id",
+          "name": "serverId",
           "schema": "string",
           "required": true,
           "description": "The id of the server to retrieve"
         },
         {
-          "name": "zone_id",
+          "name": "zoneId",
           "schema": "string",
           "required": true,
           "description": "The id of the zone to retrieve"
         },
         {
-          "name": "metadata_kind",
+          "name": "metadataKind",
           "schema": "string",
           "required": true,
           "description": "The kind of metadata"
@@ -1258,19 +1258,19 @@
       "description": "Replace the content of a single kind of domain metadata.",
       "parameters": [
         {
-          "name": "server_id",
+          "name": "serverId",
           "schema": "string",
           "required": true,
           "description": "The id of the server to retrieve"
         },
         {
-          "name": "zone_id",
+          "name": "zoneId",
           "schema": "string",
           "required": true,
           "description": ""
         },
         {
-          "name": "metadata_kind",
+          "name": "metadataKind",
           "schema": "string",
           "required": true,
           "description": "The kind of metadata"
@@ -1301,13 +1301,13 @@
       "description": "Send a DNS NOTIFY to all slaves.",
       "parameters": [
         {
-          "name": "server_id",
+          "name": "serverId",
           "schema": "string",
           "required": true,
           "description": "The id of the server to retrieve"
         },
         {
-          "name": "zone_id",
+          "name": "zoneId",
           "schema": "string",
           "required": true,
           "description": "The id of the zone to retrieve"
@@ -1323,13 +1323,13 @@
       "description": "Rectify the zone data.",
       "parameters": [
         {
-          "name": "server_id",
+          "name": "serverId",
           "schema": "string",
           "required": true,
           "description": "The id of the server to retrieve"
         },
         {
-          "name": "zone_id",
+          "name": "zoneId",
           "schema": "string",
           "required": true,
           "description": "The id of the zone to retrieve"

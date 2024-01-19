@@ -31,7 +31,7 @@
           "description": "Indicates how query results should be sorted. See below for a list of the sorting options. By default `sort=score`. <p> <table>\n  <tr>\n    <th>Option</th>\n    <th>Explanation</th>\n  </tr>\n  <tr>\n    <td>score</td>\n    <td>Sort by a relevance score returned by our search engine (default).</td>\n  </tr>\n  <tr>\n    <td>duration_desc\n    <td>Sort by the duration of the sounds, longest sounds first.\n  </tr>\n  <tr>\n    <td>duration_asc\n    <td>Same as above, but shortest sounds first.\n  </tr>\n  <tr>\n    <td>created_desc\n    <td>Sort by the date of when the sound was added. newest sounds first.\n  </tr>\n  <tr>\n    <td>created_asc\n    <td>Same as above, but oldest sounds first.\n  </tr>\n  <tr>\n    <td>downloads_desc\n    <td>Sort by the number of downloads, most downloaded sounds first.\n  </tr>\n  <tr>\n    <td>downloads_asc\n    <td>Same as above, but least downloaded sounds first.\n  </tr>\n  <tr>\n    <td>rating_desc\n    <td>Sort by the average rating given to the sounds, highest rated first.\n  </tr>\n  <tr>\n    <td>rating_asc\n    <td>Same as above, but lowest rated sounds first.\n  </tr>\n</table> </p>"
         },
         {
-          "name": "group_by_pack",
+          "name": "groupByPack",
           "schema": "integer",
           "required": false,
           "description": "This parameter represents a boolean option to indicate whether to collapse results belonging to sounds of the same pack into single entries in the results list. If `group_by_pack=1` and search results contain more than one sound that belongs to the same pack, only one sound for each distinct pack is returned (sounds with no packs are returned as well). However, the returned sound will feature two extra properties to access these other sounds omitted from the results list: `n_from_same_pack`: indicates how many other results belong to the same pack (and have not been returned) `more_from_same_pack`: uri pointing to the list of omitted sound results of the same pack (also including the result which has already been returned). See examples below. By default `group_by_pack=0`."
@@ -43,7 +43,7 @@
           "description": "Query results are paginated, this parameter indicates what page should be returned. By default `page=1`."
         },
         {
-          "name": "page_size",
+          "name": "pageSize",
           "schema": "integer",
           "required": false,
           "description": "Indicates the number of sounds per page to include in the result. By default `page_size=15`, and the maximum is `page_size=150`. Not that with bigger `page_size`, more data will need to be transferred."
