@@ -189,11 +189,16 @@ function computeDifficultyScore(
   return numberOfOperations + 0.5 * numberOfSchemas + 0.25 * numberOfParameters;
 }
 
+// something that doesn't fail github actions
+// and is not the "-" character since "-" is used to replace special characters
+// can't be "|" or "=" because those are special to shell
+const KEY_DELIMITER = "_";
 function getKey(spec: Spec): string {
   const serviceName = getServiceName(spec);
   if (serviceName === undefined)
-    return `${getProviderName(spec)}|${getVersion(spec)}`;
-  return `${getProviderName(spec)}|${serviceName}|${getVersion(spec)}`
+    return [getProviderName(spec), getVersion(spec)].join(KEY_DELIMITER);
+  return [getProviderName(spec), serviceName, getVersion(spec)]
+    .join(KEY_DELIMITER)
     .replaceAll(" ", "-")
     .replaceAll("/", "-")
     .replaceAll("&", "")
