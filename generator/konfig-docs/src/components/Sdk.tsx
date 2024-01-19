@@ -622,7 +622,7 @@ function Sidebar({
               <div>Difficulty</div>
               <a
                 target="_blank"
-                href="/sdk-difficulty"
+                href="/sdk/difficulty-explanation"
                 className="text-xs font-normal lowercase"
               >
                 (What is this?)
