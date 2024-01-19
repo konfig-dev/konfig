@@ -13,7 +13,6 @@ export default function AblyTypeScriptSdk() {
       metaDescription="Ably provides a suite of APIs to build, extend, and deliver powerful digital experiences in realtime. Organizations like Toyota, Bloomberg, HubSpot, and Hopin depend on Ably’s platform to offload the growing complexity of business-critical realtime data synchronization at global scale."
       company="Ably"
       serviceName="platform"
-      favicon="https://ably.com/favicon.ico"
       logo="https://voltaire.ably.com/static/ably-logo-46433d9937b94509fc62ef6dd6d94ff1.png"
       homepage="https://ably.com/"
       lastUpdated={new Date("2021-10-13T00:00:00Z")}

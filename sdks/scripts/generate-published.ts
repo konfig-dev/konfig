@@ -19,17 +19,14 @@ const publishJsonSchema = z.object({
       service: z.string(),
       sdkName: z.string(),
       clientName: z.string(),
+      previewLinkImage: z.string().optional(),
+      metaDescription: z.string().optional(),
+      logo: z.string().optional(),
     })
   ),
 });
 
-type SdkPagePropsWithoutScrapedProperties = Omit<
-  SdkPageProps,
-  | "previewLinkImage" // TODO
-  | "metaDescription" // TODO
-  | "logo" // TODO
-  | "previewLinkImage" // TODO
-> & {
+type SdkPagePropsWithoutScrapedProperties = SdkPageProps & {
   sdkUsageCode: string;
 };
 
@@ -37,23 +34,43 @@ function main() {
   const publishJson = publishJsonSchema.parse(
     JSON.parse(fs.readFileSync(publishJsonPath, "utf-8"))
   );
+  // delete and recreate "published/" directory
+  fs.rmSync(publishedDirPath, { recursive: true, force: true });
+  fs.mkdirSync(publishedDirPath, { recursive: true });
   const now = new Date();
   for (const spec in publishJson.publish) {
+    console.log("Generating published data for", spec);
+
     const specDataPath = path.join(specDataDirPath, spec);
     const publishData = publishJson.publish[spec];
     const specData: SdkPagePropsWithPropertiesOmitted = JSON.parse(
       fs.readFileSync(`${specDataPath}.json`, "utf-8")
     );
     const sdkUsageCode = generateSdkUsageCode({ ...publishData, ...specData });
+
+    if (publishData.previewLinkImage === undefined) {
+      console.log("No previewLinkImage for", spec);
+      continue;
+    }
+    if (publishData.metaDescription === undefined) {
+      console.log("No metaDescription for", spec);
+      continue;
+    }
+    if (publishData.logo === undefined) {
+      console.log("No logo for", spec);
+      continue;
+    }
+
     const merged: SdkPagePropsWithoutScrapedProperties = {
       ...specData,
       ...publishData,
+      logo: publishData.logo,
+      metaDescription: publishData.metaDescription,
+      previewLinkImage: publishData.previewLinkImage,
       lastUpdated: now,
       sdkUsageCode,
     };
-    // delete and recreate "published/" directory
-    fs.rmSync(publishedDirPath, { recursive: true, force: true });
-    fs.mkdirSync(publishedDirPath, { recursive: true });
+
     // write to "published/" directory
     const publishedPath = path.join(publishedDirPath, spec);
     fs.writeFileSync(`${publishedPath}.json`, JSON.stringify(merged, null, 2));
