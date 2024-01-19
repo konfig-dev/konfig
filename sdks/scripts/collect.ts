@@ -16,12 +16,9 @@ import type {
   SdkPageProps,
 } from "../../generator/konfig-docs/src/components/SdkComponentProps";
 import camelcase from "konfig-lib/dist/util/camelcase";
+import { specFolder } from "./util";
 
 type Paths = { oasPath: string }[];
-
-const dbFolder = path.join(path.dirname(__dirname), "db");
-
-const specFolder = path.join(dbFolder, "spec-data");
 
 const apiDirectory = path.join(
   path.dirname(__dirname),
