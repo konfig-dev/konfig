@@ -26,7 +26,7 @@ const publishJsonSchema = z.object({
   ),
 });
 
-type SdkPagePropsWithoutScrapedProperties = SdkPageProps & {
+export type SdkPagePropsWithoutScrapedProperties = SdkPageProps & {
   sdkUsageCode: string;
 };
 
@@ -133,7 +133,14 @@ function generateSdkUsageCode({
 
     // Comment out all but the first security scheme
     if (i++ > 0) {
-      newLines = newLines.map((line) => `    // ${line}`);
+      newLines = newLines.map((line) => {
+        // strip spaces at beginning of line
+        line = line.replace(/^ +/, "");
+
+        // if line starts with comment already, don't add another comment
+        if (line.startsWith("//")) return `    ${line}`;
+        return `    // ${line}`;
+      });
     }
     setupLines.push(...newLines);
   }
