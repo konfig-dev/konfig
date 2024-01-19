@@ -194,10 +194,10 @@ function getKey(spec: Spec): string {
   if (serviceName === undefined)
     return `${getProviderName(spec)}|${getVersion(spec)}`;
   return `${getProviderName(spec)}|${serviceName}|${getVersion(spec)}`
-    .replace(" ", "-")
-    .replace("/", "-")
-    .replace("&", "")
-    .replace("--", "-");
+    .replaceAll(" ", "-")
+    .replaceAll("/", "-")
+    .replaceAll("&", "")
+    .replaceAll("--", "-");
 }
 
 function getNumberOfEndpoints(spec: Spec): number {
@@ -302,7 +302,6 @@ export type Db = {
 };
 
 function writeData(db: Db) {
-  console.log(`Turning data into JSON string`);
   let i = 0;
   for (const key in db.specifications) {
     console.log(
