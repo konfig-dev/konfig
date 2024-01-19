@@ -32,7 +32,6 @@ type ReactProps = {
 export function Sdk({
   metaDescription,
   company,
-  favicon,
   logo,
   homepage,
   lastUpdated,
@@ -60,7 +59,10 @@ export function Sdk({
       description={`${company} API TypeScript SDK, Documentation, and OpenAPI Specification - ${metaDescription}}`}
     >
       <Head>
-        <link rel="icon" href={favicon} />
+        <link
+          rel="icon"
+          href={`https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${homepage}&size=128`}
+        />
         <meta property="og:image" content={previewLinkImage} />
         <meta property="og:description" content={metaDescription} />
         <style>

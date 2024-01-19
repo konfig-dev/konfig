@@ -23,7 +23,6 @@ export type Method = {
 export type SdkPageProps = {
   metaDescription: string;
   company: string;
-  favicon: string;
   logo: string;
   homepage: string;
   lastUpdated: Date;

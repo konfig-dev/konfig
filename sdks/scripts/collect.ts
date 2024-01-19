@@ -290,7 +290,6 @@ export type SdkPagePropsWithPropertiesOmitted = Omit<
   SdkPageProps,
   | "previewLinkImage" // DONE IN SEPARATE SCRIPT
   | "metaDescription" // DONE IN SEPARATE SCRIPT
-  | "favicon" // DONE IN SEPARATE SCRIPT
   | "lastUpdated" // PICK UP FROM DIFFERENT FILE
   | "logo" // DONE IN SEPARATE SCRIPT
   | "sdkName" // DO MANUALLY

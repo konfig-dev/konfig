@@ -27,7 +27,6 @@ type SdkPagePropsWithoutScrapedProperties = Omit<
   SdkPageProps,
   | "previewLinkImage" // TODO
   | "metaDescription" // TODO
-  | "favicon" // TODO
   | "logo" // TODO
   | "previewLinkImage" // TODO
 > & {
