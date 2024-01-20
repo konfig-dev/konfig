@@ -61,7 +61,7 @@ export function Sdk({
       <Head>
         <link
           rel="icon"
-          href={`https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${homepage}&size=128`}
+          href={`http://www.google.com/s2/favicons?domain=${homepage}&sz=128`}
         />
         <meta property="og:image" content={previewLinkImage} />
         <meta property="og:description" content={metaDescription} />
@@ -90,7 +90,14 @@ export function Sdk({
                 </div>
                 <Dot />
                 <div className="font-mono">
-                  <a href={homepage} target="_blank">
+                  <a
+                    href={
+                      homepage.startsWith("http")
+                        ? homepage
+                        : `https://${homepage}`
+                    }
+                    target="_blank"
+                  >
                     {homepage}
                   </a>
                 </div>
@@ -104,7 +111,7 @@ export function Sdk({
         </div>
         <BigSection>
           <div className="flex flex-col pt-24 pb-10 lg:flex-row lg:gap-10 items-start justify-between">
-            <div className="grow w-full">
+            <div className="grow w-full max-w-3xl">
               <SignupForm company={company} serviceName={serviceName} />
               <div className="text-slate-500 mb-1 text-sm font-bold">
                 What is {company}?
@@ -138,7 +145,9 @@ export function Sdk({
                       <div>SDK Initialization</div>
                     </div>
                   </AboutTitle>
-                  <GettingStarted />
+                  <div className="w-full">
+                    <GettingStarted />
+                  </div>
                 </AboutContentSection>
                 <AboutTitle>
                   <div className="flex items-center gap-2">
@@ -159,6 +168,7 @@ export function Sdk({
                     }) => {
                       return (
                         <SdkMethod
+                          key={`${method}-${url}`}
                           tag={tag}
                           method={method}
                           url={url}
@@ -242,9 +252,9 @@ function SdkMethod({
                 ? `${company.toLowerCase()}.${tag}.${method}()`
                 : `${company.toLowerCase()}.${method}()`}
             </h4>
-            <p className={clsx("mb-0")}>
+            <div className={clsx("mb-0")}>
               {<Markdown markdownText={description} />}
-            </p>
+            </div>
           </div>
         </div>
         <IconChevronDown
@@ -262,14 +272,16 @@ function SdkMethod({
         <SdkMethodSection Icon={IconAdjustments} header="Parameter">
           <div className="space-y-2">
             {parameters.map((parameter) => {
-              return <SdkMethodParameter {...parameter} />;
+              return <SdkMethodParameter key={parameter.name} {...parameter} />;
             })}
           </div>
         </SdkMethodSection>
         <SdkMethodSection header="Response" Icon={IconCube}>
           <div className="space-y-2 w-full">
             {responses.map((response) => {
-              return <SdkMethodResponse {...response} />;
+              return (
+                <SdkMethodResponse key={response.statusCode} {...response} />
+              );
             })}
           </div>
         </SdkMethodSection>
@@ -300,7 +312,7 @@ function SdkMethodResponse({
     >
       <span className="font-semibold">{statusCode}</span>
       {description && (
-        <p className="mb-1">{<Markdown markdownText={description} />}</p>
+        <div className="mb-1">{<Markdown markdownText={description} />}</div>
       )}
     </div>
   );
@@ -319,7 +331,7 @@ function SdkMethodParameter({
         <SdkMethodParameterSchema>{schema}</SdkMethodParameterSchema>
         {required && <SdkMethodParameterRequired />}
       </div>
-      <p className="mt-1">{<Markdown markdownText={description} />}</p>
+      <div className="mt-1">{<Markdown markdownText={description} />}</div>
     </div>
   );
 }
@@ -622,7 +634,7 @@ function Sidebar({
               <div>Difficulty</div>
               <a
                 target="_blank"
-                href="/sdk/difficulty-explanation"
+                href="/difficulty-explanation"
                 className="text-xs font-normal lowercase"
               >
                 (What is this?)
@@ -630,31 +642,40 @@ function Sidebar({
             </div>
           </SidebarSectionTitle>
           <SidebarSectionContent>
-            <div className="text-red-500">{difficulty}</div>
+            <div className="">{difficulty}</div>
           </SidebarSectionContent>
         </SidebarSection>
         <SidebarSection>
           <SidebarSectionTitle>Homepage</SidebarSectionTitle>
           <SidebarSectionContent>
-            <a href={homepage} target="_blank">
+            <a
+              href={
+                homepage.startsWith("http") ? homepage : `https://${homepage}`
+              }
+              target="_blank"
+            >
               {homepage}
             </a>
           </SidebarSectionContent>
         </SidebarSection>
-        <SidebarSection>
-          <SidebarSectionTitle>Contact URL</SidebarSectionTitle>
-          <SidebarSectionContent>
-            <a href={contactUrl} target="_blank">
-              {contactUrl}
-            </a>
-          </SidebarSectionContent>
-        </SidebarSection>
-        <SidebarSection>
-          <SidebarSectionTitle>Contact Email</SidebarSectionTitle>
-          <SidebarSectionContent>
-            <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
-          </SidebarSectionContent>
-        </SidebarSection>
+        {contactUrl && (
+          <SidebarSection>
+            <SidebarSectionTitle>Contact URL</SidebarSectionTitle>
+            <SidebarSectionContent>
+              <a href={contactUrl} target="_blank">
+                {contactUrl}
+              </a>
+            </SidebarSectionContent>
+          </SidebarSection>
+        )}
+        {contactEmail && (
+          <SidebarSection>
+            <SidebarSectionTitle>Contact Email</SidebarSectionTitle>
+            <SidebarSectionContent>
+              <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+            </SidebarSectionContent>
+          </SidebarSection>
+        )}
         <SidebarSection>
           <SidebarSectionTitle>OpenAPI Specification</SidebarSectionTitle>
           <SidebarSectionContent>

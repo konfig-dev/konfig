@@ -1,9 +1,8 @@
 import * as path from "path";
 import * as fs from "fs";
 import { Published } from "./generate-published";
-import { SdkPageProps } from "../../generator/konfig-docs/src/components/SdkComponentProps";
 import kebabcase from "lodash.kebabcase";
-import { parameterStateConfig } from "konfig-lib";
+import camelcase from "konfig-lib/dist/util/camelcase";
 
 const publishedDirPath = path.join(path.dirname(__dirname), "db", "published");
 
@@ -15,6 +14,19 @@ function main() {
 
   const files = fs.readdirSync(publishedDirPath);
 
+  const sdkDir = path.join(
+    path.dirname(path.dirname(__dirname)),
+    "generator",
+    "konfig-docs",
+    "src",
+    "pages",
+    "sdk"
+  );
+
+  // delete everything under sdkDir and remake the directory
+  fs.rmSync(sdkDir, { recursive: true });
+  fs.mkdirSync(sdkDir, { recursive: true });
+
   for (const file of files) {
     const filePath = path.join(publishedDirPath, file);
     const fileContent = fs.readFileSync(filePath, "utf-8");
@@ -23,10 +35,7 @@ function main() {
     const indexTsx = generateIndexTsx(json);
 
     const dirPath = path.join(
-      path.dirname(__dirname),
-      "konfig-docs",
-      "src",
-      "pages",
+      sdkDir,
       kebabcase(json.company),
       kebabcase(json.serviceName),
       "typescript"
@@ -91,7 +100,10 @@ import Description from "./_description.mdx";
 import GettingStarted from "./_getting-started.mdx";
 import { Sdk } from "@site/src/components/Sdk";
 
-export default function ${company}TypeScriptSdk() {
+export default function ${camelcase(company, { pascalCase: true })}${camelcase(
+    serviceName,
+    { pascalCase: true }
+  )}TypeScriptSdk() {
   return (
     <Sdk
       sdkName="${sdkName}"
@@ -101,11 +113,42 @@ export default function ${company}TypeScriptSdk() {
       logo="${logo}"
       homepage="${homepage}"
       lastUpdated={new Date("${lastUpdated}")}
-      contactUrl="${contactUrl}"
+      ${
+        contactUrl !== undefined
+          ? `contactUrl="${contactUrl}"`
+          : "// Missing contactUrl"
+      }
+      ${
+        contactEmail !== undefined
+          ? `contactEmail="${contactEmail}"`
+          : "// Missing contactEmail"
+      }
       previewLinkImage="${previewLinkImage}"
       GettingStarted={GettingStarted}
       Description={Description}
-      methods={${JSON.stringify(methods, null, 2)}}
+      methods={${JSON.stringify(
+        methods,
+        (key, value) => {
+          if (key === "httpMethod") {
+            if (value === "get") return "HttpMethodsEnum.GET";
+            if (value === "post") return "HttpMethodsEnum.POST";
+            if (value === "put") return "HttpMethodsEnum.PUT";
+            if (value === "patch") return "HttpMethodsEnum.PATCH";
+            if (value === "delete") return "HttpMethodsEnum.DELETE";
+            if (value === "head") return "HttpMethodsEnum.HEAD";
+            if (value === "options") return "HttpMethodsEnum.OPTIONS";
+            if (value === "trace") return "HttpMethodsEnum.TRACE";
+          }
+          return value;
+        },
+        2
+      )
+        // remove quotes for all HttpMethodsEnum values
+        .replace(
+          /"HttpMethodsEnum.(GET|POST|PUT|PATCH|DELETE|HEAD|OPTIONS|TRACE)"/g,
+          "HttpMethodsEnum.$1"
+        )}
+    }
       apiTitle="${apiTitle}"
       apiBaseUrl="${apiBaseUrl}"
       apiVersion="${apiVersion}"
@@ -114,7 +157,6 @@ export default function ${company}TypeScriptSdk() {
       schemas={${schemas}}
       parameters={${parameters}}
       difficulty="${difficulty}"
-      contactEmail="${contactEmail}"
       openApiRaw="${openApiRaw}"
     />
   );

@@ -16,11 +16,12 @@ const publishJsonSchema = z.object({
   publish: z.record(
     z.object({
       company: z.string(),
-      service: z.string(),
+      serviceName: z.string(),
       sdkName: z.string(),
       clientName: z.string(),
       previewLinkImage: z.string().optional(),
       metaDescription: z.string().optional(),
+      homepage: z.string().optional(),
       logo: z.string().optional(),
     })
   ),

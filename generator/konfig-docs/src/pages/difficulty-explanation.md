@@ -17,10 +17,10 @@ The API is bucketed according to the z-score thresholds of each bucket.
 
 Let us consider an API with 15 operations, 16 schemas, and 20 parameters.
 
-![Example calculation](../../../static/img/example-difficulty-calculation.png)
+![Example calculation](/img/example-difficulty-calculation.png)
 
 ## Visualization
 
 Below is a histogram of all of the difficulty scores of the APIs in our database. Approximate bucket margins are drawn below the x-axis.
 
-![Difficulty score histogram](../../../static/img/difficulty-histogram.png)
+![Difficulty score histogram](/img/difficulty-histogram.png)
