@@ -68,6 +68,7 @@ function main() {
       logo: publishData.logo,
       metaDescription: publishData.metaDescription,
       previewLinkImage: publishData.previewLinkImage,
+      clientNameCamelCase: camelcase(publishData.clientName),
       lastUpdated: now,
       sdkUsageCode,
     };

@@ -50,6 +50,7 @@ export function Sdk({
   openApiRaw,
   previewLinkImage,
   sdkName,
+  clientNameCamelCase,
   GettingStarted,
   Description,
 }: Omit<SdkPageProps, "difficultyScore" | "providerName"> & ReactProps) {
@@ -111,7 +112,7 @@ export function Sdk({
         </div>
         <BigSection>
           <div className="flex flex-col pt-24 pb-10 lg:flex-row lg:gap-10 items-start justify-between">
-            <div className="grow w-full max-w-3xl">
+            <div className="grow w-full lg:max-w-2xl xl:max-w-4xl">
               <SignupForm company={company} serviceName={serviceName} />
               <div className="text-slate-500 mb-1 text-sm font-bold">
                 What is {company}?
@@ -164,15 +165,18 @@ export function Sdk({
                       httpMethod,
                       parameters,
                       responses,
+                      typeScriptTag,
                       tag,
                     }) => {
                       return (
                         <SdkMethod
+                          clientNameCamelCase={clientNameCamelCase}
                           key={`${method}-${url}`}
                           tag={tag}
                           method={method}
                           url={url}
                           description={description}
+                          typeScriptTag={typeScriptTag}
                           httpMethod={httpMethod}
                           parameters={parameters}
                           responses={responses}
@@ -218,9 +222,11 @@ function SdkMethod({
   parameters,
   tag,
   responses,
-  company,
+  clientNameCamelCase,
+  typeScriptTag,
 }: Method & {
   company: string;
+  clientNameCamelCase: string;
 }) {
   const [expanded, setExpanded] = useState(false);
   return (
@@ -236,32 +242,30 @@ function SdkMethod({
       )}
     >
       <button
-        className="w-full flex items-center"
+        className="w-full"
         onClick={() => {
           setExpanded(!expanded);
         }}
       >
-        <div className="grow">
-          <div className="flex flex-col items-start">
-            <h4
-              className={clsx(
-                "font-bold whitespace-nowrap mb-1 text-xs lg:text-sm font-mono text-slate-800"
-              )}
-            >
-              {tag !== undefined
-                ? `${company.toLowerCase()}.${tag}.${method}()`
-                : `${company.toLowerCase()}.${method}()`}
-            </h4>
-            <div className={clsx("mb-0")}>
-              {<Markdown markdownText={description} />}
-            </div>
+        <div className="flex flex-col items-start">
+          <h4
+            className={clsx(
+              "font-bold whitespace-nowrap mb-1 text-xs lg:text-sm font-mono text-slate-800"
+            )}
+          >
+            {typeScriptTag !== undefined
+              ? `${clientNameCamelCase}.${typeScriptTag}.${method}()`
+              : `${clientNameCamelCase}.${method}()`}
+          </h4>
+          <div className={clsx("mb-0 flex w-full justify-between")}>
+            {<Markdown markdownText={description} />}
+            <IconChevronDown
+              className={clsx("h-4 transition-transform shrink-0", {
+                "rotate-180": expanded,
+              })}
+            />
           </div>
         </div>
-        <IconChevronDown
-          className={clsx("h-4 transition-transform", {
-            "rotate-180": expanded,
-          })}
-        />
       </button>
       <div
         className={clsx("text-left w-full", {
@@ -446,8 +450,8 @@ function SignupForm({
         },
         body: JSON.stringify({
           email: email,
-          company: { company },
-          service: { serviceName },
+          company,
+          service: serviceName,
           language: "TypeScript",
         }),
       });

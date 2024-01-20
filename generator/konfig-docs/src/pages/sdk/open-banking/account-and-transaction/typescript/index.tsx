@@ -14,8 +14,9 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
       company="Open Banking"
       serviceName="Account and Transaction"
       logo="https://www.openbanking.org.uk/wp-content/uploads/2021/03/open-banking-logo.svg"
+      clientNameCamelCase="openBanking"
       homepage="openbanking.org.uk"
-      lastUpdated={new Date("2024-01-20T00:34:44.134Z")}
+      lastUpdated={new Date("2024-01-20T00:56:23.942Z")}
       // Missing contactUrl
       contactEmail="ServiceDesk@openbanking.org.uk"
       previewLinkImage="https://www.openbanking.org.uk/wp-content/uploads/Circit-quote-carousel-banner.png"
@@ -27,6 +28,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     "method": "createAccountAccessConsents",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Account Access",
+    "typeScriptTag": "accountAccess",
     "description": "Create Account Access Consents",
     "parameters": [
       {
@@ -96,6 +98,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     "method": "deleteAccountAccessConsentsConsentId",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Account Access",
+    "typeScriptTag": "accountAccess",
     "description": "Delete Account Access Consents",
     "parameters": [
       {
@@ -155,6 +158,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     "method": "getAccountAccessConsentsConsentId",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Account Access",
+    "typeScriptTag": "accountAccess",
     "description": "Get Account Access Consents",
     "parameters": [
       {
@@ -218,6 +222,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     "method": "getAccounts",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Accounts",
+    "typeScriptTag": "accounts",
     "description": "Get Accounts",
     "parameters": [
       {
@@ -275,6 +280,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     "method": "getAccountsAccountId",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Accounts",
+    "typeScriptTag": "accounts",
     "description": "Get Accounts",
     "parameters": [
       {
@@ -338,6 +344,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     "method": "getAccountsAccountIdBalances",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Balances",
+    "typeScriptTag": "balances",
     "description": "Get Balances",
     "parameters": [
       {
@@ -401,6 +408,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     "method": "getAccountsAccountIdBeneficiaries",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Beneficiaries",
+    "typeScriptTag": "beneficiaries",
     "description": "Get Beneficiaries",
     "parameters": [
       {
@@ -464,6 +472,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     "method": "getAccountsAccountIdDirectDebits",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Direct Debits",
+    "typeScriptTag": "directDebits",
     "description": "Get Direct Debits",
     "parameters": [
       {
@@ -527,6 +536,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     "method": "getAccountsAccountIdOffers",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Offers",
+    "typeScriptTag": "offers",
     "description": "Get Offers",
     "parameters": [
       {
@@ -590,6 +600,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     "method": "getAccountsAccountIdParties",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Parties",
+    "typeScriptTag": "parties",
     "description": "Get Parties",
     "parameters": [
       {
@@ -653,6 +664,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     "method": "getAccountsAccountIdParty",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Parties",
+    "typeScriptTag": "parties",
     "description": "Get Parties",
     "parameters": [
       {
@@ -716,6 +728,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     "method": "getAccountsAccountIdProduct",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Products",
+    "typeScriptTag": "products",
     "description": "Get Products",
     "parameters": [
       {
@@ -779,6 +792,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     "method": "getAccountsAccountIdScheduledPayments",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Scheduled Payments",
+    "typeScriptTag": "scheduledPayments",
     "description": "Get Scheduled Payments",
     "parameters": [
       {
@@ -842,6 +856,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     "method": "getAccountsAccountIdStandingOrders",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Standing Orders",
+    "typeScriptTag": "standingOrders",
     "description": "Get Standing Orders",
     "parameters": [
       {
@@ -905,6 +920,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     "method": "getAccountsAccountIdStatements",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Statements",
+    "typeScriptTag": "statements",
     "description": "Get Statements",
     "parameters": [
       {
@@ -978,6 +994,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     "method": "getAccountsAccountIdStatementsStatementId",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Statements",
+    "typeScriptTag": "statements",
     "description": "Get Statements",
     "parameters": [
       {
@@ -1047,6 +1064,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     "method": "getAccountsAccountIdStatementsStatementIdFile",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Statements",
+    "typeScriptTag": "statements",
     "description": "Get Statements",
     "parameters": [
       {
@@ -1116,6 +1134,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     "method": "getAccountsAccountIdStatementsStatementIdTransactions",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Transactions",
+    "typeScriptTag": "transactions",
     "description": "Get Transactions",
     "parameters": [
       {
@@ -1185,6 +1204,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     "method": "getAccountsAccountIdTransactions",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Transactions",
+    "typeScriptTag": "transactions",
     "description": "Get Transactions",
     "parameters": [
       {
@@ -1258,6 +1278,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     "method": "getBalances",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Balances",
+    "typeScriptTag": "balances",
     "description": "Get Balances",
     "parameters": [
       {
@@ -1315,6 +1336,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     "method": "getBeneficiaries",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Beneficiaries",
+    "typeScriptTag": "beneficiaries",
     "description": "Get Beneficiaries",
     "parameters": [
       {
@@ -1372,6 +1394,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     "method": "getDirectDebits",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Direct Debits",
+    "typeScriptTag": "directDebits",
     "description": "Get Direct Debits",
     "parameters": [
       {
@@ -1429,6 +1452,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     "method": "getOffers",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Offers",
+    "typeScriptTag": "offers",
     "description": "Get Offers",
     "parameters": [
       {
@@ -1486,6 +1510,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     "method": "getParty",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Parties",
+    "typeScriptTag": "parties",
     "description": "Get Parties",
     "parameters": [
       {
@@ -1543,6 +1568,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     "method": "getProducts",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Products",
+    "typeScriptTag": "products",
     "description": "Get Products",
     "parameters": [
       {
@@ -1600,6 +1626,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     "method": "getScheduledPayments",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Scheduled Payments",
+    "typeScriptTag": "scheduledPayments",
     "description": "Get Scheduled Payments",
     "parameters": [
       {
@@ -1657,6 +1684,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     "method": "getStandingOrders",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Standing Orders",
+    "typeScriptTag": "standingOrders",
     "description": "Get Standing Orders",
     "parameters": [
       {
@@ -1714,6 +1742,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     "method": "getStatements",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Statements",
+    "typeScriptTag": "statements",
     "description": "Get Statements",
     "parameters": [
       {
@@ -1781,6 +1810,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     "method": "getTransactions",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Transactions",
+    "typeScriptTag": "transactions",
     "description": "Get Transactions",
     "parameters": [
       {

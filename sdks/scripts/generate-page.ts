@@ -89,6 +89,7 @@ function generateIndexTsx({
   schemas,
   difficulty,
   contactEmail,
+  clientNameCamelCase,
   openApiRaw,
   parameters,
 }: Published): string {
@@ -111,6 +112,7 @@ export default function ${camelcase(company, { pascalCase: true })}${camelcase(
       company="${company}"
       serviceName="${serviceName}"
       logo="${logo}"
+      clientNameCamelCase="${clientNameCamelCase}"
       homepage="${homepage}"
       lastUpdated={new Date("${lastUpdated}")}
       ${

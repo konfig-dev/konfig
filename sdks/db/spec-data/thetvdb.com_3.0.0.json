@@ -17,6 +17,7 @@
       "method": "/episodes/{id}Get",
       "httpMethod": "get",
       "tag": "Episodes",
+      "typeScriptTag": "episodes",
       "description": "Returns the full information for a given episode id. __Deprecation Warning:__ The _director_ key will be deprecated in favor of the new _directors_ key in a future release.",
       "parameters": [
         {
@@ -51,6 +52,7 @@
       "method": "/languagesGet",
       "httpMethod": "get",
       "tag": "Languages",
+      "typeScriptTag": "languages",
       "description": "All available languages. These language abbreviations can be used in the `Accept-Language` header for routes that return translation records.",
       "parameters": [],
       "responses": [
@@ -69,6 +71,7 @@
       "method": "/languages/{id}Get",
       "httpMethod": "get",
       "tag": "Languages",
+      "typeScriptTag": "languages",
       "description": "Information about a particular language, given the language ID.",
       "parameters": [
         {
@@ -98,6 +101,7 @@
       "method": "/loginPost",
       "httpMethod": "post",
       "tag": "Authentication",
+      "typeScriptTag": "authentication",
       "description": "Returns a session token to be included in the rest of the requests. Note that API key authentication is required for all subsequent requests and user auth is required for routes in the `User` section",
       "parameters": [
         {
@@ -132,6 +136,7 @@
       "method": "/movies/{id}Get",
       "httpMethod": "get",
       "tag": "Movies",
+      "typeScriptTag": "movies",
       "description": "Returns a movies records that contains all information known about a particular movies id.",
       "parameters": [
         {
@@ -166,6 +171,7 @@
       "method": "/movieupdatesGet",
       "httpMethod": "get",
       "tag": "Movies",
+      "typeScriptTag": "movies",
       "description": "Returns all movies ids updated since a given timestamp.",
       "parameters": [
         {
@@ -199,6 +205,7 @@
       "method": "/refreshTokenGet",
       "httpMethod": "get",
       "tag": "Authentication",
+      "typeScriptTag": "authentication",
       "description": "Refreshes your current, valid JWT token and returns a new token. Hit this route so that you do not have to post to `/login` with your API key and credentials once you have already been authenticated.",
       "parameters": [],
       "responses": [
@@ -217,6 +224,7 @@
       "method": "/search/seriesGet",
       "httpMethod": "get",
       "tag": "Search",
+      "typeScriptTag": "search",
       "description": "Allows the user to search for a series based on the following parameters.",
       "parameters": [
         {
@@ -265,6 +273,7 @@
       "method": "/search/series/paramsGet",
       "httpMethod": "get",
       "tag": "Search",
+      "typeScriptTag": "search",
       "description": "Returns an array of parameters to query by in the `/search/series` route.",
       "parameters": [],
       "responses": [
@@ -283,6 +292,7 @@
       "method": "/series/{id}Get",
       "httpMethod": "get",
       "tag": "Series",
+      "typeScriptTag": "series",
       "description": "Returns a series records that contains all information known about a particular series id.",
       "parameters": [
         {
@@ -317,6 +327,7 @@
       "method": "/series/{id}Head",
       "httpMethod": "head",
       "tag": "Series",
+      "typeScriptTag": "series",
       "description": "Returns header information only about the given series ID.",
       "parameters": [
         {
@@ -347,6 +358,7 @@
       "method": "/series/{id}/actorsGet",
       "httpMethod": "get",
       "tag": "Series",
+      "typeScriptTag": "series",
       "description": "Returns actors for the given series id",
       "parameters": [
         {
@@ -376,6 +388,7 @@
       "method": "/series/{id}/episodesGet",
       "httpMethod": "get",
       "tag": "Series",
+      "typeScriptTag": "series",
       "description": "All episodes for a given series. Paginated with 100 results per page.",
       "parameters": [
         {
@@ -410,6 +423,7 @@
       "method": "/series/{id}/episodes/queryGet",
       "httpMethod": "get",
       "tag": "Series",
+      "typeScriptTag": "series",
       "description": "This route allows the user to query against episodes for the given series. The response is a paginated array of episode records.",
       "parameters": [
         {
@@ -479,6 +493,7 @@
       "method": "/series/{id}/episodes/query/paramsGet",
       "httpMethod": "get",
       "tag": "Series",
+      "typeScriptTag": "series",
       "description": "Returns the allowed query keys for the `/series/{id}/episodes/query` route",
       "parameters": [
         {
@@ -508,6 +523,7 @@
       "method": "/series/{id}/episodes/summaryGet",
       "httpMethod": "get",
       "tag": "Series",
+      "typeScriptTag": "series",
       "description": "Returns a summary of the episodes and seasons available for the series.\n\n__Note__: Season \"0\" is for all episodes that are considered to be specials.",
       "parameters": [
         {
@@ -537,6 +553,7 @@
       "method": "/series/{id}/filterGet",
       "httpMethod": "get",
       "tag": "Series",
+      "typeScriptTag": "series",
       "description": "Returns a series records, filtered by the supplied comma-separated list of keys. Query keys can be found at the `/series/{id}/filter/params` route.",
       "parameters": [
         {
@@ -577,6 +594,7 @@
       "method": "/series/{id}/filter/paramsGet",
       "httpMethod": "get",
       "tag": "Series",
+      "typeScriptTag": "series",
       "description": "Returns the list of keys available for the `/series/{id}/filter` route",
       "parameters": [
         {
@@ -611,6 +629,7 @@
       "method": "/series/{id}/imagesGet",
       "httpMethod": "get",
       "tag": "Series",
+      "typeScriptTag": "series",
       "description": "Returns a summary of the images for a particular series",
       "parameters": [
         {
@@ -645,6 +664,7 @@
       "method": "/series/{id}/images/queryGet",
       "httpMethod": "get",
       "tag": "Series",
+      "typeScriptTag": "series",
       "description": "Query images for the given series ID.",
       "parameters": [
         {
@@ -694,6 +714,7 @@
       "method": "/series/{id}/images/query/paramsGet",
       "httpMethod": "get",
       "tag": "Series",
+      "typeScriptTag": "series",
       "description": "Returns the allowed query keys for the `/series/{id}/images/query` route. Contains a parameter record for each unique `keyType`, listing values that will return results.",
       "parameters": [
         {
@@ -728,6 +749,7 @@
       "method": "/updated/queryGet",
       "httpMethod": "get",
       "tag": "Updates",
+      "typeScriptTag": "updates",
       "description": "Returns an array of series that have changed in a maximum of one week blocks since the provided `fromTime`.\n\n\nThe user may specify a `toTime` to grab results for less than a week. Any timespan larger than a week will be reduced down to one week automatically.",
       "parameters": [
         {
@@ -767,6 +789,7 @@
       "method": "/updated/query/paramsGet",
       "httpMethod": "get",
       "tag": "Updates",
+      "typeScriptTag": "updates",
       "description": "Returns an array of valid query keys for the `/updated/query/params` route.",
       "parameters": [],
       "responses": [
@@ -789,6 +812,7 @@
       "method": "/userGet",
       "httpMethod": "get",
       "tag": "Users",
+      "typeScriptTag": "users",
       "description": "Returns basic information about the currently authenticated user.",
       "parameters": [],
       "responses": [
@@ -811,6 +835,7 @@
       "method": "/user/favoritesGet",
       "httpMethod": "get",
       "tag": "Users",
+      "typeScriptTag": "users",
       "description": "Returns an array of favorite series for a given user, will be a blank array if no favorites exist.",
       "parameters": [],
       "responses": [
@@ -833,6 +858,7 @@
       "method": "/user/favorites/{id}Delete",
       "httpMethod": "delete",
       "tag": "Users",
+      "typeScriptTag": "users",
       "description": "Deletes the given series ID from the user’s favorite’s list and returns the updated list.",
       "parameters": [
         {
@@ -866,6 +892,7 @@
       "method": "/user/favorites/{id}Put",
       "httpMethod": "put",
       "tag": "Users",
+      "typeScriptTag": "users",
       "description": "Adds the supplied series ID to the user’s favorite’s list and returns the updated list.",
       "parameters": [
         {
@@ -899,6 +926,7 @@
       "method": "/user/ratingsGet",
       "httpMethod": "get",
       "tag": "Users",
+      "typeScriptTag": "users",
       "description": "Returns an array of ratings for the given user.",
       "parameters": [],
       "responses": [
@@ -921,6 +949,7 @@
       "method": "/user/ratings/queryGet",
       "httpMethod": "get",
       "tag": "Users",
+      "typeScriptTag": "users",
       "description": "Returns an array of ratings for a given user that match the query.",
       "parameters": [
         {
@@ -949,6 +978,7 @@
       "method": "/user/ratings/query/paramsGet",
       "httpMethod": "get",
       "tag": "Users",
+      "typeScriptTag": "users",
       "description": "Returns a list of query params for use in the `/user/ratings/query` route.",
       "parameters": [],
       "responses": [
@@ -971,6 +1001,7 @@
       "method": "/user/ratings/{itemType}/{itemId}Delete",
       "httpMethod": "delete",
       "tag": "Users",
+      "typeScriptTag": "users",
       "description": "This route deletes a given rating of a given type.",
       "parameters": [
         {
@@ -1006,6 +1037,7 @@
       "method": "/user/ratings/{itemType}/{itemId}/{itemRating}Put",
       "httpMethod": "put",
       "tag": "Users",
+      "typeScriptTag": "users",
       "description": "This route updates a given rating of a given type.",
       "parameters": [
         {

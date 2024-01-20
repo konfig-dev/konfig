@@ -12,6 +12,7 @@ export type Response = {
 
 export type Method = {
   tag?: string;
+  typeScriptTag?: string;
   method: string;
   description: string;
   parameters: Parameter[];
@@ -37,6 +38,7 @@ export type SdkPageProps = {
   sdkMethods: number;
   schemas: number;
   parameters: number;
+  clientNameCamelCase: string;
   difficulty?: string;
   contactUrl?: string;
   contactEmail?: string;

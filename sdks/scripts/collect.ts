@@ -152,11 +152,12 @@ function getMethodObjects(spec: Spec): Method[] {
 
     const method = camelcase(operation.operationId ?? `${path}-${httpMethod}`);
 
+    const tag = operation.tags?.[0];
     methods.push({
       url: path,
       method,
       httpMethod,
-      tag: operation.tags?.[0],
+      ...(tag ? { tag, typeScriptTag: camelcase(tag) } : {}),
       description: operation.summary ?? operation.description ?? "",
       parameters,
       responses,
@@ -299,6 +300,8 @@ export type SdkPagePropsWithPropertiesOmitted = Omit<
   | "lastUpdated" // PICK UP FROM DIFFERENT FILE
   | "logo" // DONE IN SEPARATE SCRIPT
   | "sdkName" // DO MANUALLY
+  | "clientName" // DO MANUALLY
+  | "clientNameCamelCase" // DO MANUALLY
   | "company" // DO MANUALLY
 > & { securitySchemes: SecuritySchemes };
 

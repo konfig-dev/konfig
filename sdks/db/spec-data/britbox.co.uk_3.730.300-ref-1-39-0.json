@@ -48,6 +48,7 @@
       "method": "getAccount",
       "httpMethod": "get",
       "tag": "account",
+      "typeScriptTag": "account",
       "description": "Get the details of an account along with the profiles and entitlements under it.",
       "parameters": [
         {
@@ -101,6 +102,7 @@
       "method": "updateAccount",
       "httpMethod": "patch",
       "tag": "account",
+      "typeScriptTag": "account",
       "description": "Update the details of an account.\n\nWith the exception of the address, this supports partial updates, so you can send just the\nproperties you wish to update.\n\nWhen the address is provided any properties which are omitted from the address will be cleared.\n",
       "parameters": [
         {
@@ -190,6 +192,7 @@
       "method": "getPaymentMethods",
       "httpMethod": "get",
       "tag": "account",
+      "typeScriptTag": "account",
       "description": "Get the available payment methods under an account.",
       "parameters": [
         {
@@ -243,6 +246,7 @@
       "method": "addPaymentMethod",
       "httpMethod": "post",
       "tag": "account",
+      "typeScriptTag": "account",
       "description": "Add a new payment method to an account.",
       "parameters": [
         {
@@ -314,6 +318,7 @@
       "method": "removePaymentMethod",
       "httpMethod": "delete",
       "tag": "account",
+      "typeScriptTag": "account",
       "description": "Remove a payment method from an account.",
       "parameters": [
         {
@@ -369,6 +374,7 @@
       "method": "getPaymentMethod",
       "httpMethod": "get",
       "tag": "account",
+      "typeScriptTag": "account",
       "description": "Get a payment method under an account.",
       "parameters": [
         {
@@ -428,6 +434,7 @@
       "method": "getPurchases",
       "httpMethod": "get",
       "tag": "account",
+      "typeScriptTag": "account",
       "description": "Get a list of all purchases made under an account.",
       "parameters": [
         {
@@ -481,6 +488,7 @@
       "method": "makePurchase",
       "httpMethod": "post",
       "tag": "account",
+      "typeScriptTag": "account",
       "description": "Purchase a plan or item offer.\nThe result of a successful transaction is a new entitlement.\n",
       "parameters": [
         {
@@ -554,6 +562,7 @@
       "method": "cancelSubscription",
       "httpMethod": "delete",
       "tag": "account",
+      "typeScriptTag": "account",
       "description": "Cancel a plan subscription.\n\nA cancelled subscription will continue to be valid until the subscription\nexpiry date or next renewal date.\n",
       "parameters": [
         {
@@ -609,6 +618,7 @@
       "method": "updateSubscription",
       "httpMethod": "put",
       "tag": "account",
+      "typeScriptTag": "account",
       "description": "Renew a cancelled subscription or switch subscription to a different plan.\n\nWhen renewing a cancelled subscription membership, hit this endpoint with\nthe id of subscription to renew.\n\nTo switch plans provide the id of the current active subscription membership\nof the account, and in the query specify the id of the plan to switch to.\n",
       "parameters": [
         {
@@ -669,6 +679,7 @@
       "method": "getDevices",
       "httpMethod": "get",
       "tag": "account",
+      "typeScriptTag": "account",
       "description": "Get all devices registered under this account.\n\nAlso includes information around device registration and deregistration limits.\n",
       "parameters": [
         {
@@ -722,6 +733,7 @@
       "method": "registerDevice",
       "httpMethod": "post",
       "tag": "account",
+      "typeScriptTag": "account",
       "description": "Register a playback device under an account.\n\nIf a device with the same id already exists a `409` conflict will be returned.\n",
       "parameters": [
         {
@@ -797,6 +809,7 @@
       "method": "authorizeDevice",
       "httpMethod": "post",
       "tag": "account",
+      "typeScriptTag": "account",
       "description": "Authorize a device from a generated device authorization code.\n\nThis is the second step in the process of authorizing a device by pin code.\n\nFirstly the device must request a generated authorization code via the\n`/authorization/device/code` endpoint.\n\nThis endpoint then authorizes the device associated with the code to sign in\nto a user account. Typically this endpoint will be called from a page\npresented in the web app under the account section.\n\nOnce authorized, the device will then be able to sign in to that account\nvia the `/authorization/device` endpoint, without needing to provide the \ncredentials of the user.\n",
       "parameters": [
         {
@@ -844,6 +857,7 @@
       "method": "deregisterDevice",
       "httpMethod": "delete",
       "tag": "account",
+      "typeScriptTag": "account",
       "description": "Deregister a playback device from an account.",
       "parameters": [
         {
@@ -899,6 +913,7 @@
       "method": "getDevice",
       "httpMethod": "get",
       "tag": "account",
+      "typeScriptTag": "account",
       "description": "Get a registered device.",
       "parameters": [
         {
@@ -958,6 +973,7 @@
       "method": "renameDevice",
       "httpMethod": "put",
       "tag": "account",
+      "typeScriptTag": "account",
       "description": "Rename a device",
       "parameters": [
         {
@@ -1019,6 +1035,7 @@
       "method": "getEntitlements",
       "httpMethod": "get",
       "tag": "account",
+      "typeScriptTag": "account",
       "description": "Get all entitlements under the account.\n\nThis list is returned under the call to get account information so a call here is\nonly required when wishing to refresh a local copy of entitlements.\n",
       "parameters": [
         {
@@ -1072,6 +1089,7 @@
       "method": "getItemMediaFiles",
       "httpMethod": "get",
       "tag": "account",
+      "typeScriptTag": "account",
       "description": "Get the video files associated with an item given maximum resolution, device type\nand one or more delivery types.\n\nThis endpoint accepts an Account Catalog token, however if when requesting\nplayback files you receive an *403 status code with error code 1* then the file\nyou're requesting is classification restricted. This means you should switch\nto target the `/account/items/{id}/videos-guarded` endpoint, passing it an Account\nPlayback token. If not already obtained, this token can be requested via the\n`/itv/pinauthorization` endpoint with an account level pin.\n\nFor convenience you may also access free / public files through this endpoint\ninstead of the /items/{id}/videos endpoint, when authenticated.\n\nReturns an array of video file objects which each include a url to a video.\n\nThe first entry in the array contains what is predicted to be the best match.\nThe remainder of the entries, if any, may contain resolutions below what was\nrequests. For example if you request HD-720 the response may also contain\nSD entries.\n\nIf you specify multiple delivery types, then the response array will insert\ntypes in the order you specify them in the query. For example `stream,progressive`\nwould return an array with 0 or more stream files followed by 0 or more progressive files.\n\nIf no files are found a 404 is returned.\n",
       "parameters": [
         {
@@ -1163,6 +1181,7 @@
       "method": "getItemMediaFilesGuarded",
       "httpMethod": "get",
       "tag": "account",
+      "typeScriptTag": "account",
       "description": "Get the video files associated with an item given maximum resolution, device type\nand one or more delivery types.\n\nThis endpoint is identical to the `/account/items/{id}/videos` however it expects\nan Account Playback token. This token, and in association this endpoint, is specifically\nfor use when playback files are classification restricted and require an account\nlevel pin to access them.\n\nReturns an array of video file objects which each include a url to a video.\n\nThe first entry in the array contains what is predicted to be the best match.\nThe remainder of the entries, if any, may contain resolutions below what was\nrequests. For example if you request HD-720 the response may also contain\nSD entries.\n\nIf you specify multiple delivery types, then the response array will insert\ntypes in the order you specify them in the query. For example `stream,progressive`\nwould return an array with 0 or more stream files followed by 0 or more progressive files.\n\nIf no files are found a 404 is returned.\n",
       "parameters": [
         {
@@ -1254,6 +1273,7 @@
       "method": "generateNonce",
       "httpMethod": "get",
       "tag": "account",
+      "typeScriptTag": "account",
       "description": "Generate a new account nonce.\n\nA nonce may be required to help sign a response from a third party\nservice which will be passed back to these services.\n\nFor example a Facebook single-sign-on request initiated by a client\napplication may first get a nonce from here to include in the request.\nFacebook will then include the nonce in the auth token it issues. This\ntoken can be passed back to our services and the nonce checked for validity.\n",
       "parameters": [
         {
@@ -1307,6 +1327,7 @@
       "method": "changePassword",
       "httpMethod": "put",
       "tag": "account",
+      "typeScriptTag": "account",
       "description": "Change the password of an account.\n\nThe expected token scope is Settings.\n",
       "parameters": [
         {
@@ -1368,6 +1389,7 @@
       "method": "changePin",
       "httpMethod": "put",
       "tag": "account",
+      "typeScriptTag": "account",
       "description": "Change the pin of an account.",
       "parameters": [
         {
@@ -1423,6 +1445,7 @@
       "method": "getProfile",
       "httpMethod": "get",
       "tag": "profile",
+      "typeScriptTag": "profile",
       "description": "Get the details of the active profile, including watched, bookmarked and rated items.",
       "parameters": [
         {
@@ -1476,6 +1499,7 @@
       "method": "getBookmarks",
       "httpMethod": "get",
       "tag": "profile",
+      "typeScriptTag": "profile",
       "description": "Get the map of bookmarked item ids (itemId => creationDate) under the active profile.",
       "parameters": [
         {
@@ -1529,6 +1553,7 @@
       "method": "getBookmarkList",
       "httpMethod": "get",
       "tag": "profile",
+      "typeScriptTag": "profile",
       "description": "Returns the list of bookmarked items under the active profile.",
       "parameters": [
         {
@@ -1617,6 +1642,7 @@
       "method": "deleteItemBookmark",
       "httpMethod": "delete",
       "tag": "profile",
+      "typeScriptTag": "profile",
       "description": "Unbookmark an item under the active profile.",
       "parameters": [
         {
@@ -1672,6 +1698,7 @@
       "method": "getItemBookmark",
       "httpMethod": "get",
       "tag": "profile",
+      "typeScriptTag": "profile",
       "description": "Get the bookmark for an item under the active profile.",
       "parameters": [
         {
@@ -1731,6 +1758,7 @@
       "method": "bookmarkItem",
       "httpMethod": "put",
       "tag": "profile",
+      "typeScriptTag": "profile",
       "description": "Bookmark an item under the active profile.\n\nCreates one if it doesn't exist, overwrites one if it does.\n",
       "parameters": [
         {
@@ -1790,6 +1818,7 @@
       "method": "getContinueWatchingList",
       "httpMethod": "get",
       "tag": "profile",
+      "typeScriptTag": "profile",
       "description": "Returns a list of items which have been watched but not completed under the active\nprofile.\n\nMultiple episodes under the same show may be watched or in progress, however only a\nsingle item belonging to a particular show will be included in the returned list.\n\nThe next episode to continue watching for a particular show will be the most recent\nincompletely watched episode, or the next episode following the most recently\ncompletely watched episode. Based on the specified `show_item_type` type, either the next\nepisode, the season of the next episode, or the show will be included in the list.\n",
       "parameters": [
         {
@@ -1883,6 +1912,7 @@
       "method": "getNextPlaybackItem",
       "httpMethod": "get",
       "tag": "profile",
+      "typeScriptTag": "profile",
       "description": "Returns the next item to play given a source item id.\n\nFor an unwatched show it returns the first episode available to the account.\n\nFor a watched show it returns the last incompletely watched episode by the profile,\nor the episode that immediately follows the last completely watched episode \nor nothing.\n\nFor an episode it always returns the immediately following episode, if available to\nthe account, or nothing.\n\nIf the response does not contain a `next` property then no item was found.\n",
       "parameters": [
         {
@@ -1967,6 +1997,7 @@
       "method": "getRatings",
       "httpMethod": "get",
       "tag": "profile",
+      "typeScriptTag": "profile",
       "description": "Get the map of rated item ids (itemId => rating out of 10) under the active profile.",
       "parameters": [
         {
@@ -2020,6 +2051,7 @@
       "method": "getRatingsList",
       "httpMethod": "get",
       "tag": "profile",
+      "typeScriptTag": "profile",
       "description": "Returns the list of rated items under the active profile.",
       "parameters": [
         {
@@ -2113,6 +2145,7 @@
       "method": "getItemRating",
       "httpMethod": "get",
       "tag": "profile",
+      "typeScriptTag": "profile",
       "description": "Get the rating info for an item under the active profile.",
       "parameters": [
         {
@@ -2172,6 +2205,7 @@
       "method": "rateItem",
       "httpMethod": "put",
       "tag": "profile",
+      "typeScriptTag": "profile",
       "description": "Rate an item under the active profile.\n\nCreates one if it doesn't exist, overwrites one if it does.\n",
       "parameters": [
         {
@@ -2237,6 +2271,7 @@
       "method": "deleteWatched",
       "httpMethod": "delete",
       "tag": "profile",
+      "typeScriptTag": "profile",
       "description": "Remove the watched status of items under the active profile. Passing in\nspecific `itemId`s to the `item_ids` query parameter will cause only these\nitems to be removed. **If this list is missing all watched items will be\nremoved**\n",
       "parameters": [
         {
@@ -2291,6 +2326,7 @@
       "method": "getWatched",
       "httpMethod": "get",
       "tag": "profile",
+      "typeScriptTag": "profile",
       "description": "Get the map of watched item ids (itemId => last playhead position) under the active profile.",
       "parameters": [
         {
@@ -2344,6 +2380,7 @@
       "method": "getWatchedList",
       "httpMethod": "get",
       "tag": "profile",
+      "typeScriptTag": "profile",
       "description": "Returns the list of watched items under the active profile.",
       "parameters": [
         {
@@ -2442,6 +2479,7 @@
       "method": "getItemWatchedStatus",
       "httpMethod": "get",
       "tag": "profile",
+      "typeScriptTag": "profile",
       "description": "Get the watched status info for an item under the active profile.",
       "parameters": [
         {
@@ -2501,6 +2539,7 @@
       "method": "setItemWatchedStatus",
       "httpMethod": "put",
       "tag": "profile",
+      "typeScriptTag": "profile",
       "description": "Record the watched playhead position of a video under the active profile.\n\nCan be used later to resume a video from where it was last watched.\n\nCreates one if it doesn't exist, overwrites one if it does.\n",
       "parameters": [
         {
@@ -2566,6 +2605,7 @@
       "method": "createProfile",
       "httpMethod": "post",
       "tag": "account",
+      "typeScriptTag": "account",
       "description": "Create a new profile under the active account.",
       "parameters": [
         {
@@ -2649,6 +2689,7 @@
       "method": "deleteProfileWithId",
       "httpMethod": "delete",
       "tag": "account",
+      "typeScriptTag": "account",
       "description": "Delete a profile with a specific id under the active account.\n\nNote that you cannot delete the primary profile.\n",
       "parameters": [
         {
@@ -2704,6 +2745,7 @@
       "method": "getProfileWithId",
       "httpMethod": "get",
       "tag": "account",
+      "typeScriptTag": "account",
       "description": "Get the summary of a profile with a specific id under the active account.",
       "parameters": [
         {
@@ -2763,6 +2805,7 @@
       "method": "updateProfileWithId",
       "httpMethod": "patch",
       "tag": "account",
+      "typeScriptTag": "account",
       "description": "Update the summary of a profile with a specific id under the active account.\n\nThis supports partial updates so you can send just the properties you wish to update.\n",
       "parameters": [
         {
@@ -2853,6 +2896,7 @@
       "method": "requestEmailVerification",
       "httpMethod": "post",
       "tag": "account",
+      "typeScriptTag": "account",
       "description": "Request that the email address tied to an account be verified.\n\nThis will send a verification email to the email address of the primary profile containing\na link which, once clicked, completes the verification process via the /verify-email endpoint.\n\nNote that when an account is created this email is sent automatically so there's no need\nto call this directly.\n\nIf the user doesn't click the link before it expires then this endpoint can be called\nto request a new verification email. In the future it may also be used if we add support\nfor changing an account email address.\n",
       "parameters": [
         {
@@ -2902,6 +2946,7 @@
       "method": "signOut",
       "httpMethod": "delete",
       "tag": "authorization",
+      "typeScriptTag": "authorization",
       "description": "When a user signs out of an application we need to clear some\nbasic cookies we assigned them during token authorization.\n",
       "parameters": [
         {
@@ -2943,6 +2988,7 @@
       "method": "getAccountToken",
       "httpMethod": "post",
       "tag": "authorization",
+      "typeScriptTag": "authorization",
       "description": "Request one or more `Account` level authorization tokens each with a chosen scope.\n\nTokens are used to access restricted service endpoints. These restricted endpoints\nwill require a specific token type (e.g Account) with a specific scope (e.g. Catalog)\nbefore access is granted.\n\nFor convenience, where a Profile level token with the same scope exists it will also be returned.\n\nAuthorization with pin is not supported on this endpoint anymore. Use `/itv/pinauthorization`\nendpoint instead.\n",
       "parameters": [
         {
@@ -3020,6 +3066,7 @@
       "method": "getAccountTokenByCode",
       "httpMethod": "post",
       "tag": "authorization",
+      "typeScriptTag": "authorization",
       "description": "Get Catalog tokens for an account using a device authorization code.\nWhere a Profile level token of Catalog scope exists it will also be returned.\n\nThis is the final step in the process of authorizing a device by pin code.\n\nFirstly the device must request a generated authorization code via the\n`/authorization/device/code` endpoint.\n\nThe code is subsequently used to authorize the device to sign in to a given\naccount via the `/account/devices/authorization` endpoint. Typically this\nwill be from a page presented in the web app under the account section.\n\nOnce authorized, this endpoint will allow the device to sign in without\nneeding to provide the credentials of the user.\n",
       "parameters": [
         {
@@ -3091,6 +3138,7 @@
       "method": "generateDeviceAuthorizationCode",
       "httpMethod": "post",
       "tag": "authorization",
+      "typeScriptTag": "authorization",
       "description": "Get a generated device authorization code.\n\nThis is the first step in the process of authorizing a device by pin code.\nThe device will make a request to this endpoint providing a unique identifier\nfor the device such as a serial number. This endpoint will then return a\ngenerated code which is tied to the given device.\n\nThe code may subsequently be used to authorize the device to sign in to an\naccount via the `/account/devices/authorization` endpoint. Typically this\nwill be from a page presented in the web app under the account section.\n\nOnce authorized, the device will then be able to sign in to that account\nvia the `/authorization/device` endpoint, without needing to provide the \ncredentials of the user.\n",
       "parameters": [
         {
@@ -3154,6 +3202,7 @@
       "method": "getProfileToken",
       "httpMethod": "post",
       "tag": "authorization",
+      "typeScriptTag": "authorization",
       "description": "Request one or more `Profile` level authorization tokens each with a chosen scope.\n\nTokens are used to access restricted service endpoints. These restriced endpoints\nwill require a specific token type (e.g Profile) with a specific scope (e.g. Catalog)\nbefore access is granted.\n",
       "parameters": [
         {
@@ -3231,6 +3280,7 @@
       "method": "refreshToken",
       "httpMethod": "post",
       "tag": "authorization",
+      "typeScriptTag": "authorization",
       "description": "Refresh an account or profile level authorization token which is marked as refreshable.",
       "parameters": [
         {
@@ -3296,6 +3346,7 @@
       "method": "singleSignOn",
       "httpMethod": "post",
       "tag": "authorization",
+      "typeScriptTag": "authorization",
       "description": "Exchange a third party single-sign-on token for our own authorization tokens.",
       "parameters": [
         {
@@ -3371,6 +3422,7 @@
       "method": "getPlanByToken",
       "httpMethod": "get",
       "tag": "bt",
+      "typeScriptTag": "bt",
       "description": "Returns all the plans available for BT flow including additional description data.",
       "parameters": [
         {
@@ -3417,6 +3469,7 @@
       "method": "getPlans",
       "httpMethod": "get",
       "tag": "bt",
+      "typeScriptTag": "bt",
       "description": "Returns all the plans available for BT flow including additional description data.",
       "parameters": [
         {
@@ -3457,6 +3510,7 @@
       "method": "assignToken",
       "httpMethod": "post",
       "tag": "bt",
+      "typeScriptTag": "bt",
       "description": "Assigns an UserToken to a profile on the ITV side. Currently throws an exception.",
       "parameters": [
         {
@@ -3489,6 +3543,7 @@
       "method": "checkUserToken",
       "httpMethod": "get",
       "tag": "bt",
+      "typeScriptTag": "bt",
       "description": "Checks a provided token for BT eligible user.\n",
       "parameters": [
         {
@@ -3536,6 +3591,7 @@
       "method": "getSubscriptionData",
       "httpMethod": "get",
       "tag": "support",
+      "typeScriptTag": "support",
       "description": "Returns the details of subscription data for a user with specified id.",
       "parameters": [
         {
@@ -3577,6 +3633,7 @@
       "method": "getAppConfig",
       "httpMethod": "get",
       "tag": "app",
+      "typeScriptTag": "app",
       "description": "Get the global configuration for an application. Should be called during app statup.\n\nThis includes things like device and playback rules, classifications,\nsitemap and subscriptions.\n\nYou have the option to select specific configuration objects using the 'include'\nparameter, or if unspecified, getting all configuration.\n",
       "parameters": [
         {
@@ -3648,6 +3705,7 @@
       "method": "checkEeBtEligibility",
       "httpMethod": "get",
       "tag": "ee",
+      "typeScriptTag": "ee",
       "description": "Check whether or not a user is eligible for switching to Bt or EE offers.",
       "parameters": [
         {
@@ -3668,6 +3726,7 @@
       "method": "assignMsisdn",
       "httpMethod": "post",
       "tag": "ee",
+      "typeScriptTag": "ee",
       "description": "Assigns a msisdn to a profile on ITV side.",
       "parameters": [
         {
@@ -3712,6 +3771,7 @@
       "method": "getEligibleOffers",
       "httpMethod": "post",
       "tag": "ee",
+      "typeScriptTag": "ee",
       "description": "Returns eligible partner specific offers for the querying partner for an EE MSISDN.\nThis call is supposed to be called after we have MSISDN accired.\nThis call should be followed by POST /ee/msisdn.\n",
       "parameters": [
         {
@@ -3775,6 +3835,7 @@
       "method": "validatePinRequest",
       "httpMethod": "post",
       "tag": "ee",
+      "typeScriptTag": "ee",
       "description": "Validate PIN request created by calling POST /ee/pin This call is to validate MSISDN entered by a user not comming through EE network. This call should be called after PUT /ee/pin. This call should be followed by POST /ee/offers.",
       "parameters": [
         {
@@ -3844,6 +3905,7 @@
       "method": "createPinRequest",
       "httpMethod": "put",
       "tag": "ee",
+      "typeScriptTag": "ee",
       "description": "Creates a PIN request that will send an SMS to the given msisdn.\nThis call is to validate MSISDN entered by a user not comming through EE network.\nThis call should be followed by POST ee/pin.\n",
       "parameters": [
         {
@@ -3907,6 +3969,7 @@
       "method": "/ee/plansGet",
       "httpMethod": "get",
       "tag": "ee",
+      "typeScriptTag": "ee",
       "description": "Returns all the plans available for EE flow including additional description data.",
       "parameters": [
         {
@@ -3947,6 +4010,7 @@
       "method": "getPlan",
       "httpMethod": "get",
       "tag": "ee",
+      "typeScriptTag": "ee",
       "description": "Returns the plan description for EE flow including additional description data.",
       "parameters": [
         {
@@ -3993,6 +4057,7 @@
       "method": "createToken",
       "httpMethod": "get",
       "tag": "ee",
+      "typeScriptTag": "ee",
       "description": "Returns a token for later calls to EE API. TTL is one hour. Recommended is FE refreshes this token before each call.",
       "parameters": [],
       "responses": [
@@ -4027,6 +4092,7 @@
       "method": "getItem",
       "httpMethod": "get",
       "tag": "content",
+      "typeScriptTag": "content",
       "description": "Returns the details of an item with the specified id.",
       "parameters": [
         {
@@ -4113,6 +4179,7 @@
       "method": "getItemChildrenList",
       "httpMethod": "get",
       "tag": "content",
+      "typeScriptTag": "content",
       "description": "Returns the List of child summary items under an item.\n\nIf the item is a Season then the children will be episodes and ordered by episode number.\n\nIf the item is a Show then the children will be Seasons and ordered by season number.\n\nReturns 404 if no children found.\n",
       "parameters": [
         {
@@ -4199,6 +4266,7 @@
       "method": "getItemRelatedList",
       "httpMethod": "get",
       "tag": "content",
+      "typeScriptTag": "content",
       "description": "Returns the list of items related to the parent item.\n\nNote for now, due to the size of the list being unknown, only a single page will be returned.\n",
       "parameters": [
         {
@@ -4280,6 +4348,7 @@
       "method": "getPublicItemMediaFiles",
       "httpMethod": "get",
       "tag": "content",
+      "typeScriptTag": "content",
       "description": "Get the free / public video files associated with an item given maximum resolution,\ndevice type and one or more delivery types.\n\nReturns an array of video file objects which each include a url to a video.\n\nThe first entry in the array contains what is predicted to be the best match.\nThe remainder of the entries, if any, may contain resolutions below what was\nrequests. For example if you request HD-720 the response may also contain\nSD entries.\n\nIf you specify multiple delivery types, then the response array will insert\ntypes in the order you specify them in the query. For example `stream,progressive`\nwould return an array with 0 or more stream files followed by 0 or more progressive files.\n\nIf no files are found a 404 is returned.\n",
       "parameters": [
         {
@@ -4363,6 +4432,7 @@
       "method": "getAnonNextPlaybackItem",
       "httpMethod": "get",
       "tag": "content",
+      "typeScriptTag": "content",
       "description": "Identical to GET /account/profile/items/{itemId}/next route but for users\nthat are not logged in i.e. this endpoint does not require authorisation\n",
       "parameters": [
         {
@@ -4434,6 +4504,7 @@
       "method": "getBillingHistory",
       "httpMethod": "post",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Returns the list of billing records for specified payment platform.",
       "parameters": [
         {
@@ -4486,6 +4557,7 @@
       "method": "getCardDetails",
       "httpMethod": "post",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Get payment card details.",
       "parameters": [
         {
@@ -4538,6 +4610,7 @@
       "method": "changeCardDetails",
       "httpMethod": "put",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Change payment card details.",
       "parameters": [
         {
@@ -4592,6 +4665,7 @@
       "method": "changeEmail",
       "httpMethod": "post",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Change email address related to account/profile.\n\nThe expected token scope is Settings.\n",
       "parameters": [
         {
@@ -4645,6 +4719,7 @@
       "method": "changeMarketing",
       "httpMethod": "post",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Change marketing preferences related to account/profile.\n\nThe expected token scope is Settings.\n",
       "parameters": [
         {
@@ -4698,6 +4773,7 @@
       "method": "deleteAccount",
       "httpMethod": "post",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Delete account in compliance with GDPR.\n\nThe expected token scope is Settings.\n",
       "parameters": [
         {
@@ -4745,6 +4821,7 @@
       "method": "getCurrentEntitlement",
       "httpMethod": "get",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Returns current entitlement.",
       "parameters": [
         {
@@ -4785,6 +4862,7 @@
       "method": "getEntitlementsHistory",
       "httpMethod": "get",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Returns the state of subscription for any payment platform.",
       "parameters": [
         {
@@ -4825,6 +4903,7 @@
       "method": "getFeatureFlag",
       "httpMethod": "get",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Gets info whether or not a feature is enabled or disabled using a feature flag. Feature flags are set as a custom field within PM. It also supports custom feature flag data if needed. Such data can be return as well.",
       "parameters": [
         {
@@ -4871,6 +4950,7 @@
       "method": "googlePaySubscription",
       "httpMethod": "post",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Get the list of recommended items under the active profile.",
       "parameters": [
         {
@@ -4898,6 +4978,7 @@
       "method": "checkPreviousEntitlements",
       "httpMethod": "get",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Check whether the user has been previously entitled.",
       "parameters": [
         {
@@ -4938,6 +5019,7 @@
       "method": "getItemsMediaClipFiles",
       "httpMethod": "post",
       "tag": "content",
+      "typeScriptTag": "content",
       "description": "Get the media clip files associated with items.\n",
       "parameters": [
         {
@@ -4989,6 +5071,7 @@
       "method": "getItemDownloadables",
       "httpMethod": "post",
       "tag": "content",
+      "typeScriptTag": "content",
       "description": "Returns the details of an item with the specified id.",
       "parameters": [
         {
@@ -5040,6 +5123,7 @@
       "method": "/itv/itemsummary/{externalId}Get",
       "httpMethod": "get",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Redirects to corresponding Axis Item details page.",
       "parameters": [
         {
@@ -5081,6 +5165,7 @@
       "method": "getItvPage",
       "httpMethod": "get",
       "tag": "app",
+      "typeScriptTag": "app",
       "description": "Returns a page with the specified id.\n\nThis is a cut down version for low memory devices.123\n\nIf targeting the search page you must url encode the search term as a parameter\nusing the `q` key. For example if your browser path looks like `/search?q=the`\nthen what you pass to this endpoint would look like `/itv/page?path=/search%3Fq%3Dthe`.\n",
       "parameters": [
         {
@@ -5182,6 +5267,7 @@
       "method": "getAccountTokenWithPin",
       "httpMethod": "post",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Provides authorization with parental control pin.\n\nReturns an array containing account token with Playback scope.\n\nRequires access token with Catalog scope.\n\nPin must be a 4-digit string\n",
       "parameters": [
         {
@@ -5245,6 +5331,7 @@
       "method": "upgradePlan",
       "httpMethod": "post",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Upgrades the plan for the current user.",
       "parameters": [
         {
@@ -5293,6 +5380,7 @@
       "method": "/itv/plans/{platform}Get",
       "httpMethod": "get",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Returns the plans available for specified payment platform.",
       "parameters": [
         {
@@ -5339,6 +5427,7 @@
       "method": "/itv/profileGet",
       "httpMethod": "get",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Returns the ITV profile object.",
       "parameters": [
         {
@@ -5379,6 +5468,7 @@
       "method": "updateProfile",
       "httpMethod": "put",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Update ITV profile.\n\nThe expected token scope is Settings.\n",
       "parameters": [
         {
@@ -5462,6 +5552,7 @@
       "method": "getRecommendedList",
       "httpMethod": "get",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Get the list of recommended items under the active profile.",
       "parameters": [
         {
@@ -5545,6 +5636,7 @@
       "method": "getItvProfileToken",
       "httpMethod": "post",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Returns the ITV profile token.",
       "parameters": [
         {
@@ -5591,6 +5683,7 @@
       "method": "/itv/purchase/{platform}Delete",
       "httpMethod": "delete",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Cancel a plan subscription.\n\nA cancelled subscription will continue to be valid until the subscription\nexpiry date or next renewal date.\n",
       "parameters": [
         {
@@ -5639,6 +5732,7 @@
       "method": "getCurrentSubscription",
       "httpMethod": "get",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Returns the details of current subscription for specified payment platform.",
       "parameters": [
         {
@@ -5685,6 +5779,7 @@
       "method": "confirmPurchase",
       "httpMethod": "post",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Confirms purchase and returns the details of purchased subscription for specified payment platform.",
       "parameters": [
         {
@@ -5755,6 +5850,7 @@
       "method": "confirmPurchaseStrong",
       "httpMethod": "post",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Confirms purchase and returns the details of purchased subscription for specified payment platform.",
       "parameters": [
         {
@@ -5831,6 +5927,7 @@
       "method": "confirmPurchaseWithOffer",
       "httpMethod": "post",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Confirms purchase and returns the details of purchased subscription for specified payment platform.",
       "parameters": [
         {
@@ -5907,6 +6004,7 @@
       "method": "resubscribe",
       "httpMethod": "post",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Resubscription for a user.",
       "parameters": [
         {
@@ -5939,6 +6037,7 @@
       "method": "/itv/roku/plansGet",
       "httpMethod": "get",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Gets available Roku plans.",
       "parameters": [
         {
@@ -5979,6 +6078,7 @@
       "method": "executeTransaction",
       "httpMethod": "post",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Sends request to execute specified transaction.",
       "parameters": [
         {
@@ -6027,6 +6127,7 @@
       "method": "getSaveOffer",
       "httpMethod": "get",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Checks the provided coupon id for a user. Only Stripe platform is currently supported.",
       "parameters": [
         {
@@ -6067,6 +6168,7 @@
       "method": "activateSaveOffer",
       "httpMethod": "post",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Activates the discount for a user. Only Stripe platform is currently supported.",
       "parameters": [
         {
@@ -6082,6 +6184,7 @@
       "method": "getFullPriceRenewal",
       "httpMethod": "get",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Returns full price renewal state and reason for specific user.",
       "parameters": [
         {
@@ -6102,6 +6205,7 @@
       "method": "getSubscriptionStatus",
       "httpMethod": "get",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Returns status of latest payment intent.",
       "parameters": [
         {
@@ -6128,6 +6232,7 @@
       "method": "getSubscriptionState",
       "httpMethod": "get",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Returns the state of subscription for any payment platform.",
       "parameters": [
         {
@@ -6168,6 +6273,7 @@
       "method": "getUpcomingInvoice",
       "httpMethod": "get",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Returns an upcoming invoice",
       "parameters": [
         {
@@ -6208,6 +6314,7 @@
       "method": "updatePaymentIntentStrong",
       "httpMethod": "put",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Change payment method details.",
       "parameters": [
         {
@@ -6272,6 +6379,7 @@
       "method": "updatePaymentMethodStrong",
       "httpMethod": "put",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Change payment method details.",
       "parameters": [
         {
@@ -6332,6 +6440,7 @@
       "method": "getVoucherById",
       "httpMethod": "get",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Checks the provided coupon id for a user. Only Stripe platform is currently supported.",
       "parameters": [
         {
@@ -6384,6 +6493,7 @@
       "method": "checkVoucher",
       "httpMethod": "post",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Validates the coupon/voucher for specified payment platform.",
       "parameters": [
         {
@@ -6436,6 +6546,7 @@
       "method": "getLists",
       "httpMethod": "get",
       "tag": "content",
+      "typeScriptTag": "content",
       "description": "Returns an array of item lists with their first page of content resolved.",
       "parameters": [
         {
@@ -6527,6 +6638,7 @@
       "method": "getList",
       "httpMethod": "get",
       "tag": "content",
+      "typeScriptTag": "content",
       "description": "Returns a list of items under the specified item list",
       "parameters": [
         {
@@ -6628,6 +6740,7 @@
       "method": "getPage",
       "httpMethod": "get",
       "tag": "app",
+      "typeScriptTag": "app",
       "description": "Returns a page with the specified id.\n\nIf targeting the search page you must url encode the search term as a parameter\nusing the `q` key. For example if your browser path looks like `/search?q=the`\nthen what you pass to this endpoint would look like `/page?path=/search%3Fq%3Dthe`.\n",
       "parameters": [
         {
@@ -6729,6 +6842,7 @@
       "method": "/plans/{id}Get",
       "httpMethod": "get",
       "tag": "content",
+      "typeScriptTag": "content",
       "description": "Returns the details of a Plan with the specified id.",
       "parameters": [
         {
@@ -6795,6 +6909,7 @@
       "method": "register",
       "httpMethod": "post",
       "tag": "registration",
+      "typeScriptTag": "registration",
       "description": "Register a new user, creating them an account.\n\nRegistration, when successful, will return an array of access tokens so the user is\nimmediately signed in.\n\nIt returns Catalog and Commerce scoped tokens for both Account and Profile.\nThe Commerce ones are intended to allow the purchase of a subscription plan\nin the step after registration, without the user being prompted to enter\ntheir username and password again.\n\nAn email will also be sent with a link they need to click to confirm their\nemail address. This confirmation is done via the /verify-email endpoint.\n",
       "parameters": [
         {
@@ -6896,6 +7011,7 @@
       "method": "forgotPassword",
       "httpMethod": "post",
       "tag": "support",
+      "typeScriptTag": "support",
       "description": "Request the password of an account's primary profile be reset.\n\nShould be called when a user has forgotten their password.\n\nThis will send an email with a password reset link to the email address of the\nprimary profile of an account.\n\nThe link, once clicked, should take the user to the \"reset-password\" page of the\nwebsite. Here they will enter their new password and submit to the /reset-password\nendpoint here, along with the password reset token provided in the original link.\n",
       "parameters": [
         {
@@ -6951,6 +7067,7 @@
       "method": "resetPassword",
       "httpMethod": "post",
       "tag": "support",
+      "typeScriptTag": "support",
       "description": "When a user requests to reset their password via the /request-password-reset endpoint, an\nemail is sent to the email address of the primary profile of the account. This email contains a link\nwith a reset token as query parameter. The link should take the user to the \"reset-password\"\npage of the website.\n\nFrom the reset-password page a user should enter the new password they wish to use. \nIt should then be submitted to this endpoint,\nalong with the reset token from the email link. \nThe token should be provided in the body as resetToken property.\n",
       "parameters": [
         {
@@ -7012,6 +7129,7 @@
       "method": "getPublicPreview",
       "httpMethod": "get",
       "tag": "itv",
+      "typeScriptTag": "itv",
       "description": "Returns public preview for Samsung based on the page '/samsung-preview' configured in PresentationManager.\nThere is a hard limit of max 40 items to be returned. It splits evenly items count into the page rows, remaining items are added into the first row.\n",
       "parameters": [],
       "responses": [
@@ -7046,6 +7164,7 @@
       "method": "getSchedules",
       "httpMethod": "get",
       "tag": "content",
+      "typeScriptTag": "content",
       "description": "Returns schedules for a defined set of channels over a requested period.\n\nSchedules are requested in hour blocks and returned grouped by the channel\nthey belong to.\n\nFor example, to load 12 hours of schedules for channels `4343` and `5234`,\non 21/2/2017 starting from 08:00.\n\n```\nchannels=4343,5234\ndate=2017-02-21\nhour=8\nduration=12\n```\n\nPlease remember that `date` and `hour` combined represent a normal datetime, \nso they should be converted to UTC on the client - this will help to avoid \nissues with EPG schedules near midnight.\n\nIf a channel id is passed which doesn't exist then this endpoint will\nreturn an empty schedule list for it. If instead we returned 404,\nthis would invalidate all other channel schedules in the same request\nwhich would be unfriendly for clients presenting these channel schedules.\n",
       "parameters": [
         {
@@ -7135,6 +7254,7 @@
       "method": "search",
       "httpMethod": "get",
       "tag": "content",
+      "typeScriptTag": "content",
       "description": "Search the catalog of items and people.",
       "parameters": [
         {
@@ -7221,6 +7341,7 @@
       "method": "verifyEmail",
       "httpMethod": "post",
       "tag": "support",
+      "typeScriptTag": "support",
       "description": "When an account is created an email is sent to the email address of the new account.\nThis contains a link, which once clicked, verifies the email address of the account is correct.\n\nThe link contains a token as a query parameter which should be passed as the authorization\nbearer token to this endpoint to complete email verification.\n\nThe token has en expiry, so if the link is not clicked before it expires, the account holder\nmay need to request a new verification email be sent. This can be done via the endpoint\n/account/request-email-verification.\n",
       "parameters": [
         {

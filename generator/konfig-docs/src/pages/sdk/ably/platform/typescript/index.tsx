@@ -14,8 +14,9 @@ export default function AblyPlatformTypeScriptSdk() {
       company="Ably"
       serviceName="Platform"
       logo="https://voltaire.ably.com/static/ably-logo-46433d9937b94509fc62ef6dd6d94ff1.png"
+      clientNameCamelCase="ably"
       homepage="ably.com"
-      lastUpdated={new Date("2024-01-20T00:34:44.134Z")}
+      lastUpdated={new Date("2024-01-20T00:56:23.942Z")}
       contactUrl="https://www.ably.io/contact"
       contactEmail="support@ably.io"
       previewLinkImage="https://voltaire.ably.com/static/ably-generic-53a7dd8e38ba16fd0190ec91150dad0a.jpeg"
@@ -27,6 +28,7 @@ export default function AblyPlatformTypeScriptSdk() {
     "method": "getMetadataOfAllChannels",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Status",
+    "typeScriptTag": "status",
     "description": "Enumerate all active channels of the application",
     "parameters": [
       {
@@ -61,6 +63,7 @@ export default function AblyPlatformTypeScriptSdk() {
     "method": "getMetadataOfChannel",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Status",
+    "typeScriptTag": "status",
     "description": "Get metadata of a channel",
     "parameters": [
       {
@@ -86,6 +89,7 @@ export default function AblyPlatformTypeScriptSdk() {
     "method": "getMessagesByChannel",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "History",
+    "typeScriptTag": "history",
     "description": "Get message history for a channel",
     "parameters": [
       {
@@ -127,6 +131,7 @@ export default function AblyPlatformTypeScriptSdk() {
     "method": "publishMessagesToChannel",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Publishing",
+    "typeScriptTag": "publishing",
     "description": "Publish a message to a channel",
     "parameters": [
       {
@@ -192,6 +197,7 @@ export default function AblyPlatformTypeScriptSdk() {
     "method": "getPresenceOfChannel",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Status",
+    "typeScriptTag": "status",
     "description": "Get presence of a channel",
     "parameters": [
       {
@@ -232,6 +238,7 @@ export default function AblyPlatformTypeScriptSdk() {
     "method": "getPresenceHistoryOfChannel",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "History",
+    "typeScriptTag": "history",
     "description": "Get presence history of a channel",
     "parameters": [
       {
@@ -277,6 +284,7 @@ export default function AblyPlatformTypeScriptSdk() {
     "method": "requestAccessToken",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Authentication",
+    "typeScriptTag": "authentication",
     "description": "Request an access token",
     "parameters": [
       {
@@ -302,6 +310,7 @@ export default function AblyPlatformTypeScriptSdk() {
     "method": "deletePushDeviceDetails",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Push",
+    "typeScriptTag": "push",
     "description": "Delete a registered device's update token",
     "parameters": [
       {
@@ -332,6 +341,7 @@ export default function AblyPlatformTypeScriptSdk() {
     "method": "getPushSubscriptionsOnChannels",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Push",
+    "typeScriptTag": "push",
     "description": "List channel subscriptions",
     "parameters": [
       {
@@ -371,6 +381,7 @@ export default function AblyPlatformTypeScriptSdk() {
     "method": "subscribePushDeviceToChannel",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Push",
+    "typeScriptTag": "push",
     "description": "Subscribe a device to a channel",
     "parameters": [],
     "responses": [
@@ -385,6 +396,7 @@ export default function AblyPlatformTypeScriptSdk() {
     "method": "getChannelsWithPushSubscribers",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Push",
+    "typeScriptTag": "push",
     "description": "List all channels with at least one subscribed device",
     "parameters": [],
     "responses": [
@@ -403,6 +415,7 @@ export default function AblyPlatformTypeScriptSdk() {
     "method": "unregisterAllPushDevices",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Push",
+    "typeScriptTag": "push",
     "description": "Unregister matching devices for push notifications",
     "parameters": [
       {
@@ -428,6 +441,7 @@ export default function AblyPlatformTypeScriptSdk() {
     "method": "getRegisteredPushDevices",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Push",
+    "typeScriptTag": "push",
     "description": "List devices registered for receiving push notifications",
     "parameters": [
       {
@@ -462,6 +476,7 @@ export default function AblyPlatformTypeScriptSdk() {
     "method": "registerPushDevice",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Push",
+    "typeScriptTag": "push",
     "description": "Register a device for receiving push notifications",
     "parameters": [
       {
@@ -521,6 +536,7 @@ export default function AblyPlatformTypeScriptSdk() {
     "method": "unregisterPushDevice",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Push",
+    "typeScriptTag": "push",
     "description": "Unregister a single device for push notifications",
     "parameters": [
       {
@@ -542,6 +558,7 @@ export default function AblyPlatformTypeScriptSdk() {
     "method": "getPushDeviceDetails",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Push",
+    "typeScriptTag": "push",
     "description": "Get a device registration",
     "parameters": [
       {
@@ -567,6 +584,7 @@ export default function AblyPlatformTypeScriptSdk() {
     "method": "patchPushDeviceDetails",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Push",
+    "typeScriptTag": "push",
     "description": "Update a device registration",
     "parameters": [
       {
@@ -632,6 +650,7 @@ export default function AblyPlatformTypeScriptSdk() {
     "method": "putPushDeviceDetails",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Push",
+    "typeScriptTag": "push",
     "description": "Update a device registration",
     "parameters": [
       {
@@ -697,6 +716,7 @@ export default function AblyPlatformTypeScriptSdk() {
     "method": "updatePushDeviceDetails",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Push",
+    "typeScriptTag": "push",
     "description": "Reset a registered device's update token",
     "parameters": [
       {
@@ -722,6 +742,7 @@ export default function AblyPlatformTypeScriptSdk() {
     "method": "publishPushNotificationToDevices",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Push",
+    "typeScriptTag": "push",
     "description": "Publish a push notification to device(s)",
     "parameters": [
       {
@@ -749,6 +770,7 @@ export default function AblyPlatformTypeScriptSdk() {
     "method": "getStats",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Stats",
+    "typeScriptTag": "stats",
     "description": "Retrieve usage statistics for an application",
     "parameters": [
       {
@@ -793,6 +815,7 @@ export default function AblyPlatformTypeScriptSdk() {
     "method": "getTime",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Stats",
+    "typeScriptTag": "stats",
     "description": "Get the service time",
     "parameters": [],
     "responses": [

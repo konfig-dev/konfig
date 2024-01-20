@@ -11,6 +11,7 @@
       "method": "/fraud/merchant/v3/addMerchantPost",
       "httpMethod": "post",
       "tag": "Add Terminated Merchant",
+      "typeScriptTag": "addTerminatedMerchant",
       "description": "Used by Acquirers to add a terminated a merchant in the MATCH system. Merchant information, and up to five principal owners per merchant, can be provided by an acquiring bank as part of the listing.",
       "parameters": [
         {
@@ -35,6 +36,7 @@
       "method": "/fraud/merchant/v3/common/contactDetailsPost",
       "httpMethod": "post",
       "tag": "Acquirer Contact Request",
+      "typeScriptTag": "acquirerContactRequest",
       "description": "Returns the contact information for the acquirer id requested. When MATCH returns a possible merchant match, this resource assists users by retrieving the contact information associated with the Acquirer ID/ICA that added the merchant to MATCH.",
       "parameters": [
         {
@@ -63,6 +65,7 @@
       "method": "/fraud/merchant/v3/retro/retroInquiryDetailsPost",
       "httpMethod": "post",
       "tag": "Retroactive Inquiry Details Request",
+      "typeScriptTag": "retroactiveInquiryDetailsRequest",
       "description": "Returns detailed information about Merchants, URLs and up to five principal owners, that have been terminated by an acquiring bank after the inquiry was made.  This MATCH resource assists acquirer's ability to consider the merchants terminated after the inquiry was made. If an initial inquiry does not result in a possible match, it is still possible that the merchant listing could appear sometime in the next 360 days. This may occur when another acquirer enters the merchant into the MATCH database. The system will automatically continue to search the MATCH system for 360 days. To view these notifications, acquirers must use the Retroactive Inquiry Summary service. This resource can be used to obtain detailed information, such as, if a Merchant or individual has been terminated by another acquirer after an inquiry was made, the reason for termination, and the history of fraudulent or risky business practices that led to that termination.",
       "parameters": [
         {
@@ -93,6 +96,7 @@
       "method": "/fraud/merchant/v3/retro/retroListPost",
       "httpMethod": "post",
       "tag": "Retroactive Inquiry Request",
+      "typeScriptTag": "retroactiveInquiryRequest",
       "description": "Returns the summary of Retro matches for the given Acquirer Id. This resource will return the summary of Retroactive Inquiry matches for the given Acquirer ID/ICA. If an initial inquiry does not result in a possible match, it is still possible that the merchant listing could appear sometime in the next 360 days. This may occur when another acquirer enters the merchant into the MATCH database. The system will automatically continue to search the MATCH system for 360 days. To view these notifications, acquirers must use the Retroactive Inquiry service.",
       "parameters": [
         {
@@ -117,6 +121,7 @@
       "method": "/fraud/merchant/v3/terminationInquiryPost",
       "httpMethod": "post",
       "tag": "TerminationInquiryRequest",
+      "typeScriptTag": "terminationInquiryRequest",
       "description": "Returns information on merchants that have been terminated and merchants that have inquired upon. Provides the acquiring bank with information, such as, if a Merchant or individual has been terminated by another acquirer already, the reason for termination, the history of fraudulent or risky business practices that led to that termination and the inquiry that was made already on the Merchant or individual by own or another acquiring bank (if opted).",
       "parameters": [
         {
@@ -153,6 +158,7 @@
       "method": "/fraud/merchant/v3/terminationInquiry/{irn}Get",
       "httpMethod": "get",
       "tag": "Termination Inquiry History Request",
+      "typeScriptTag": "terminationInquiryHistoryRequest",
       "description": "Returns information about Merchants, URLs and up to five principal owners, that have been terminated by an acquiring bank from a previous inquiry. The Inquiry History Results resource displays the inquiry with the option to view either; Possible Merchant Matches or Possible Inquiry Matches.",
       "parameters": [
         {
