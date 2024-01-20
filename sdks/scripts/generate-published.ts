@@ -26,7 +26,7 @@ const publishJsonSchema = z.object({
   ),
 });
 
-export type SdkPagePropsWithoutScrapedProperties = SdkPageProps & {
+export type Published = SdkPageProps & {
   sdkUsageCode: string;
 };
 
@@ -61,7 +61,7 @@ function main() {
       continue;
     }
 
-    const merged: SdkPagePropsWithoutScrapedProperties = {
+    const merged: Published = {
       ...specData,
       ...publishData,
       logo: publishData.logo,
