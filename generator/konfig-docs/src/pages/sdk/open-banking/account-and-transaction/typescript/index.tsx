@@ -10,7 +10,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   return (
     <Sdk
       sdkName="open-banking-account-and-transaction-typescript-sdk"
-      metaDescription="Ably provides a suite of APIs to build, extend, and deliver powerful digital experiences in realtime. Organizations like Toyota, Bloomberg, HubSpot, and Hopin depend on Ably’s platform to offload the growing complexity of business-critical realtime data synchronization at global scale."
+      metaDescription="The trusted technology that connects banks, fintechs & technical providers - technology that's helping 6m users take control of their money."
       company="Open Banking"
       serviceName="Account and Transaction"
       logo="https://www.openbanking.org.uk/wp-content/uploads/2021/03/open-banking-logo.svg"

@@ -112,7 +112,7 @@ export function Sdk({
         </div>
         <BigSection>
           <div className="flex flex-col pt-24 pb-10 lg:flex-row lg:gap-10 items-start justify-between">
-            <div className="grow w-full lg:max-w-2xl xl:max-w-4xl">
+            <div className="grow w-full lg:max-w-xl xl:max-w-3xl">
               <SignupForm company={company} serviceName={serviceName} />
               <div className="text-slate-500 mb-1 text-sm font-bold">
                 What is {company}?
