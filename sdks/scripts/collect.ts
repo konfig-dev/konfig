@@ -200,12 +200,20 @@ function getKey(spec: Spec): string {
     serviceName === undefined
       ? [getProviderName(spec), getVersion(spec)]
       : [getProviderName(spec), serviceName, getVersion(spec)];
-  return parts
-    .join(KEY_DELIMITER)
-    .replaceAll(" ", "-")
-    .replaceAll("/", "-")
-    .replaceAll("&", "")
-    .replaceAll("--", "-");
+  return (
+    parts
+      .join(KEY_DELIMITER)
+      // remove any special characters that shell doesn't like
+      // keep dot ".", "-", "_"
+      .replace(/[^a-zA-Z0-9\.\-_]/g, "")
+      // remove any double "-" characters
+      .replaceAll("--", "-")
+      .replaceAll("--", "-")
+      .replaceAll("--", "-")
+      .replaceAll("--", "-")
+      // remove any trailing "-"
+      .replaceAll(/-$/g, "")
+  );
 }
 
 function getNumberOfEndpoints(spec: Spec): number {
