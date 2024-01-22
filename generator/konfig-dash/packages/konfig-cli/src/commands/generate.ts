@@ -776,13 +776,6 @@ export default class Deploy extends Command {
               generator
             )
 
-            if (parsedKonfigYaml.readmeHeader) {
-              fs.copyFileSync(
-                path.join(configDir, parsedKonfigYaml.readmeHeader.image),
-                path.join(configDir, outputDirectory, 'header.png')
-              )
-            }
-
             this.debug(
               `Copying from ${topLevelSdkOutputDirectory} to ${outputDirectory}`
             )
@@ -822,6 +815,13 @@ export default class Deploy extends Command {
 
               fs.ensureDirSync(path.dirname(absoluteDestinationPath))
               fs.copyFileSync(file, absoluteDestinationPath)
+            }
+
+            if (parsedKonfigYaml.readmeHeader) {
+              fs.copyFileSync(
+                path.join(configDir, parsedKonfigYaml.readmeHeader.image),
+                path.join(configDir, outputDirectory, 'header.png')
+              )
             }
 
             if (generatorConfig.copyFiles) {
