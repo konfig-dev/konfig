@@ -89,7 +89,6 @@ export default {
       given: '#OperationObject',
       then: [
         {
-          field: 'operationId',
           function: duplicateSdkMethodName,
         },
       ],

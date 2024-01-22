@@ -7,7 +7,7 @@ testRule('duplicate-sdk-method-name', [
     document: {
       openapi: '3.0.0',
       info: { title: 'Example API', version: '1.0.0' },
-      tags: [{ name: 'Pet' }],
+      tags: [{ name: 'Pet' }, { name: 'User' }],
       paths: {
         '/': {
           get: {
@@ -21,6 +21,14 @@ testRule('duplicate-sdk-method-name', [
           get: {
             operationId: 'Pet_findMultiple',
             tags: ['pet'],
+            description: '',
+            responses: {},
+          },
+        },
+        '/user': {
+          get: {
+            operationId: 'User_findMultiple',
+            tags: ['user'],
             description: '',
             responses: {},
           },
@@ -58,13 +66,13 @@ testRule('duplicate-sdk-method-name', [
       {
         message:
           'Duplicate case-insensitive SDK method name "find" detected. Please rename one of the operations.',
-        path: ['paths', '/', 'get', 'operationId'],
+        path: ['paths', '/', 'get'],
         severity: DiagnosticSeverity.Warning,
       },
       {
         message:
           'Duplicate case-insensitive SDK method name "find" detected. Please rename one of the operations.',
-        path: ['paths', '/pet', 'get', 'operationId'],
+        path: ['paths', '/pet', 'get'],
         severity: DiagnosticSeverity.Warning,
       },
     ],
