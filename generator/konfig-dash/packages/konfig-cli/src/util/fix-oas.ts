@@ -32,6 +32,7 @@ import { ignorePotentialIncorrectTypeIfConfirmed } from './ignore-potential-inco
 import { fixInvalidServerUrlsOas3 } from './fix-invalid-server-urls-oas3'
 import { fixOas31Usage } from './fix-oas-3-1-usage'
 import { fixAnyOfTypeNullUsage } from './fix-any-of-type-null-usage'
+import { fixExamplesUsage } from './fix-examples-usage'
 
 export async function fixOas({
   spec,
@@ -63,6 +64,8 @@ export async function fixOas({
   const numberOfAnyOfTypeNullUsagesReverted = await fixAnyOfTypeNullUsage({
     spec,
   })
+
+  const numberOfExamplesUsageRemoved = await fixExamplesUsage({ spec })
 
   // Missing OpenAPI description
   const infoDescriptionFixed = await fixMissingInfoDescription({
@@ -272,6 +275,7 @@ export async function fixOas({
     numberOfNewTagNames,
     numberOfOas31UsagesFixed,
     numberOfAnyOfTypeNullUsagesReverted,
+    numberOfExamplesUsageRemoved,
   }
   const issuesFixed = Object.values(result).reduce((a, b) => a + b)
   return {
