@@ -21,6 +21,19 @@ export async function fixAnyOfTypeNullUsage({
     // check if anyOf is size 2 meaning it is a schemas + "type": "null"
     if (schema['anyOf'].length !== 2) return
 
+    // ensure that one of the schemas is a "type": "null"
+    const hasNullType = schema['anyOf'].some((schemaOrRef) => {
+      const schema = resolveRef({
+        refOrObject: schemaOrRef,
+        $ref: spec.$ref,
+      })
+      if (schema === null) return false
+      if (typeof schema !== 'object') return false
+      if (schema['type'] !== 'null') return false
+      return true
+    })
+    if (!hasNullType) return
+
     // check if the schema that is not "type": "null" is a "$ref" or inline schema that has a "type" property
     const nonNullSchema = schema['anyOf'].find((schemaOrRef) => {
       const schema = resolveRef({
