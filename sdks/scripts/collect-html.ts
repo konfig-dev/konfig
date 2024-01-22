@@ -27,13 +27,17 @@ async function collectData(): Promise<Record<string, object>> {
       /<meta\s+name=["']description["']\s+content=["'](.*?)["']\s*\/?>/;
     const imagePreviewRegex: RegExp =
       /<meta\s+property="og:image"\s+content="([^"]+)">/;
-    const siteData = { description: "", imagePreview: "" };
+    const logoRegex: RegExp =
+      /<img\b(?:[^>]*\blogo\b[^>]*\bsrc="([^"]*)"[^>]*|[^>]*\bsrc="([^"]*)"[^>]*\blogo\b[^>]*)>/;
+    const siteData = { description: "", imagePreview: "", logo: "" };
 
     const description = htmlData.match(descriptionRegex);
     const imagePreview = htmlData.match(imagePreviewRegex);
+    const logo = htmlData.match(logoRegex);
 
     if (description) siteData.description = description[1];
     if (imagePreview) siteData.imagePreview = imagePreview[1];
+    if (logo) siteData.logo = logo[1];
 
     data[key] = siteData;
   }
