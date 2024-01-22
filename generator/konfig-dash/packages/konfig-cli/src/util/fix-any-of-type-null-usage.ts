@@ -61,7 +61,12 @@ export async function fixAnyOfTypeNullUsage({
         $ref: spec.$ref,
       })
 
-      const copyOfSchema = { ...refSchema }
+      // remove anyOf from schema
+      delete schema['anyOf']
+
+      // create copy of referenced schema but also override and extra properties
+      // that were on the anyOf schema
+      const copyOfSchema = { ...refSchema, ...schema }
 
       copyOfSchema['nullable'] = true
 
@@ -75,8 +80,10 @@ export async function fixAnyOfTypeNullUsage({
 
       spec.spec.components.schemas[newSchemaName] = copyOfSchema
 
+      // delete all properties on schema to fix "no-$ref-siblings" rule
+      Object.keys(schema).forEach((key) => delete schema[key])
+
       // replace anyOf with ref to new schema
-      delete schema['anyOf']
       schema['$ref'] = `#/components/schemas/${newSchemaName}`
     } else {
       // if it is not a ref we can just add the "nullable": true property to the non null schema object
