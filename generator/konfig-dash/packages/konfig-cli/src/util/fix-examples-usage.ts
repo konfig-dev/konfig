@@ -34,7 +34,7 @@ export async function fixExamplesUsage({
     schema['x-examples'] = schema['examples']
     delete schema['examples']
 
-    numberOfExamplesUsageRemoved
+    numberOfExamplesUsageRemoved++
   })
 
   return numberOfExamplesUsageRemoved
