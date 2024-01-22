@@ -1,5 +1,13 @@
 # konfig-cli
 
+## 1.38.0
+
+### Minor Changes
+
+- [#474](https://github.com/konfig-dev/konfig/pull/474) [`5e38dc1c`](https://github.com/konfig-dev/konfig/commit/5e38dc1cd0d748d50e31451e782362c31c1c8dd5) Thanks [@dphuang2](https://github.com/dphuang2)! - Revert usage of anyOf schema with "type": "null" from OAS 3.1
+
+- [#474](https://github.com/konfig-dev/konfig/pull/474) [`5e38dc1c`](https://github.com/konfig-dev/konfig/commit/5e38dc1cd0d748d50e31451e782362c31c1c8dd5) Thanks [@dphuang2](https://github.com/dphuang2)! - Remove usage of "examples" from OAS 3.1
+
 ## 1.37.0
 
 ### Minor Changes
