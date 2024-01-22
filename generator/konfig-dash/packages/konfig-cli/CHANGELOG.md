@@ -1,5 +1,15 @@
 # konfig-cli
 
+## 1.37.0
+
+### Minor Changes
+
+- [#471](https://github.com/konfig-dev/konfig/pull/471) [`a56ccd42`](https://github.com/konfig-dev/konfig/commit/a56ccd42da81c27d2241534939857b3a6dddbcba) Thanks [@dphuang2](https://github.com/dphuang2)! - - Fix readmeHeader configuration causing ENOENT error when no SDK has been
+  generated before
+  - Fix duplicate-sdk-method-name throwing error if there is a match between two
+    methods in different tags. This shouldn't throw an error since they should be
+    separated by namespaces anyways
+
 ## 1.36.5
 
 ### Patch Changes
