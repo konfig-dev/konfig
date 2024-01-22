@@ -14,12 +14,15 @@ export async function githubGetKonfigYamls({
   repo: string
   octokit: Octokit
 }) {
+  console.debug('owner', owner)
+  console.debug('repo', repo)
   const konfigYamls = await githubSearchFiles({
     filename: KONFIG_YAML_NAME,
     owner,
     repo,
     octokit,
   })
+  console.debug('konfigYamls:', konfigYamls)
   if (konfigYamls === null) return null
   return await Promise.all(
     konfigYamls.map(async (konfigYamlInfo) => {
@@ -38,3 +41,12 @@ export async function githubGetKonfigYamls({
     })
   )
 }
+
+type PromiseType<T extends Promise<any>> = T extends Promise<infer U>
+  ? U
+  : never
+// infer type of return value from function
+// handles promise
+export type KonfigYamlsQuery = PromiseType<
+  ReturnType<typeof githubGetKonfigYamls>
+>

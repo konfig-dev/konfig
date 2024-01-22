@@ -19,6 +19,10 @@ export const domainToRepoMappings: Record<
     owner: 'passiv',
     repo: 'snaptrade-sdks',
   },
+  'bellhop.localhost:3000': {
+    owner: 'konfig-dev',
+    repo: 'bellhop-sdks',
+  },
   'dev.konfigthis.com:3000': {
     owner: 'konfig-dev',
     repo: 'acme-sdks',
@@ -29,6 +33,10 @@ export const domainToRepoMappings: Record<
   },
 
   // *.onkonfig.com
+  'bellhop.onkonfig.com': {
+    owner: 'konfig-dev',
+    repo: 'bellhop-sdks',
+  },
   'acme.onkonfig.com': {
     owner: 'konfig-dev',
     repo: 'acme-sdks',

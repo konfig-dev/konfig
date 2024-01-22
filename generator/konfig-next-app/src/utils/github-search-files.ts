@@ -38,11 +38,14 @@ export async function githubSearchFiles({
   const cacheKey = computeCacheKey({ filename, owner, repo })
   const cached = await getGithubApiCache({ namespace: 'search', key: cacheKey })
   if (cached) {
+    console.debug('using cached search results:', cached)
     return JSON.parse(cached)
   }
   try {
     const query = `filename:${filename} repo:${owner}/${repo}`
     const response: SearchResponse = await octokit.search.code({ q: query })
+
+    console.debug('response.data', response.data)
 
     if (response.data.total_count === 0) {
       return null

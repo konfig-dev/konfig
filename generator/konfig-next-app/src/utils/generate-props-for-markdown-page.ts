@@ -7,13 +7,11 @@ import {
 } from 'konfig-lib'
 import { GetStaticPropsResult } from 'next'
 import path from 'path'
-import { collectAllDocuments } from './collect-all-documents'
 import { findDocumentInConfiguration } from './find-document-in-configuration'
 import { findFirstDocumentInConfiguration } from './find-first-document-in-configuration'
 import { findFirstHeadingText } from './find-first-heading-text'
 import { generateDemosDataFromGithub } from './generate-demos-from-github'
 import { githubGetFileContent } from './github-get-file-content'
-import { githubGetKonfigYamls } from './github-get-konfig-yamls'
 import { githubGetRepository } from './github-get-repository'
 import { createOctokitInstance } from './octokit'
 import { transformImageLinks } from './transform-image-links'
@@ -21,6 +19,7 @@ import { transformInternalLinks } from './transform-internal-links'
 import { generateFaviconLink } from './generate-favicon-link'
 import { generateLogoLink } from './generate-logo-link'
 import { computeDocumentProps } from './compute-document-props'
+import { githubGetKonfigYamlsSafe } from './github-get-konfig-yamls-safe'
 
 export type MarkdownPageProps = {
   konfigYaml: KonfigYamlType
@@ -75,14 +74,20 @@ export async function generatePropsForMarkdownPage({
   })
   const defaultBranch = repoData.default_branch
 
+  console.debug('defaultBranch', defaultBranch)
+
   // time the next two lines
   const start = Date.now()
-  const konfigYamls = await githubGetKonfigYamls({ owner, repo, octokit })
+  const konfigYamls = await githubGetKonfigYamlsSafe({
+    owner,
+    repo,
+    octokit,
+    defaultBranch,
+  })
   console.log(`githubGetKonfigYamls took ${Date.now() - start}ms`)
 
   // TODO: handle multiple konfig.yaml
-  const konfigYaml = konfigYamls?.[0]
-  if (konfigYaml === undefined) throw Error("Couldn't find konfig.yaml")
+  const konfigYaml = konfigYamls[0]
 
   const faviconLink = generateFaviconLink({
     konfigYaml: konfigYaml.content,

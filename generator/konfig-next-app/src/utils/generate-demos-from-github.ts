@@ -1,7 +1,6 @@
 import { Demo, Organization, Portal } from './demos'
 import { generateDemosFromFilenameAndContent } from './generate-demos-from-file-name-and-content'
 import { createOctokitInstance } from './octokit'
-import { githubGetKonfigYamls } from './github-get-konfig-yamls'
 import { githubGetFileContent } from './github-get-file-content'
 import { githubGetRepository } from './github-get-repository'
 import type { KonfigYamlType, SocialObject } from 'konfig-lib'
@@ -10,6 +9,7 @@ import { generateFaviconLink } from './generate-favicon-link'
 import { generateLogoLink } from './generate-logo-link'
 import { MarkdownPageProps } from './generate-props-for-markdown-page'
 import { computeDocumentProps } from './compute-document-props'
+import { githubGetKonfigYamlsSafe } from './github-get-konfig-yamls-safe'
 
 /**
  * Custom mappings to preserve existing links for SnapTrade
@@ -145,10 +145,15 @@ async function _fetch({
     octokit,
   })
 
-  const konfigYamls = await githubGetKonfigYamls({ owner, repo, octokit })
+  const konfigYamls = await githubGetKonfigYamlsSafe({
+    owner,
+    repo,
+    octokit,
+    defaultBranch: repository.data.default_branch,
+  })
 
   // TODO: handle multiple konfig.yaml files
-  const konfigYaml = konfigYamls?.[0]
+  const konfigYaml = konfigYamls[0]
 
   if (konfigYaml === undefined) throw Error('No konfig.yaml file found')
   if (konfigYaml.content.portal === undefined)
