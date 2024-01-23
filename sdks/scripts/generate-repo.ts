@@ -8,6 +8,7 @@ export function generateSdkRepository(
   companyName: string,
   language: string,
   pathToOas: string,
+  siteUrl: string,
   debug: boolean = false
 ) {
   const repoName = generateRepoName(companyName, language);
@@ -24,11 +25,18 @@ export function generateSdkRepository(
   else if (!fs.existsSync(repoDir)) fs.mkdirSync(repoDir);
 
   // Copy the OAS into the cloned repository
-  execa.sync("cp", [
+  fs.copyFileSync(
     path.join(__dirname, "..", "openapi-directory", "APIs", pathToOas),
-    repoDir,
-  ]);
-  writeKonfigYaml(companyName, language, pathToOas);
+    path.join(repoDir, path.basename(pathToOas))
+  );
+
+  // Copy the header image into the cloned repository
+  fs.copyFileSync(
+    path.join(__dirname, "..", "headers", `${companyName}.png`),
+    path.join(repoDir, "header.png")
+  );
+
+  writeKonfigYaml(companyName, language, pathToOas, siteUrl);
 
   // Run konfig generate. If any errors occur, delete the repository and abort.
   try {
@@ -37,13 +45,15 @@ export function generateSdkRepository(
       stdio: "inherit",
     });
   } catch (error: any) {
-    console.log("Error occurred during konfig generate:" + error.stderr);
+    console.log("Error occurred during konfig generate.");
     console.log("Aborting process and deleting repository...");
-    execa.sync("rm", ["-rf", repoName], {
-      cwd: path.join(__dirname, "..", "sdks"),
-      stdio: "inherit",
-    });
-    if (!debug) deleteRepository(repoName);
+    if (!debug) {
+      execa.sync("rm", ["-rf", repoName], {
+        cwd: path.join(__dirname, "..", "sdks"),
+        stdio: "inherit",
+      });
+      deleteRepository(repoName);
+    }
     console.log("Repository deleted.");
     return;
   }
@@ -103,7 +113,8 @@ function deleteRepository(name: string) {
 function writeKonfigYaml(
   companyName: string,
   language: string,
-  pathToOas: string
+  pathToOas: string,
+  siteUrl: string
 ) {
   const template = fs.readFileSync(
     path.join(__dirname, "..", "templates", "konfig.yaml.mustache"),
@@ -112,6 +123,8 @@ function writeKonfigYaml(
   companyName = companyName.toLowerCase();
   const repoName = generateRepoName(companyName, language);
   const konfigYaml = mustache.render(template, {
+    companyName: capitalize(companyName),
+    siteUrl,
     repoName,
     lang: language,
     clientName: generateClientName(companyName, language),
@@ -184,7 +197,8 @@ function capitalize(str: string): string {
 
 generateSdkRepository(
   "Wikimedia",
-  "typescript",
+  "java",
   "wikimedia.org/1.0.0/swagger.yaml",
+  "wikimedia.org",
   true
 );
