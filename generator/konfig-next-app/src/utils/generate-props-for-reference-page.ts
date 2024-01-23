@@ -21,6 +21,7 @@ import { generateLogoLink } from './generate-logo-link'
 import { MarkdownPageProps } from './generate-props-for-markdown-page'
 import { computeDocumentProps } from './compute-document-props'
 import { createOctokitInstance } from './octokit'
+import { transformSpecForReferencePage } from './transform-spec-for-reference-page'
 
 export type ReferencePageProps = Omit<GithubResources, 'spec'> & {
   spec: Spec['spec']
@@ -77,6 +78,8 @@ export async function generatePropsForReferencePage({
     orgId: owner,
     portalId: repo,
   })
+
+  transformSpecForReferencePage({ spec })
 
   if (spec.specDereferenced === null) throw Error('specDereferenced is null')
 
