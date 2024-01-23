@@ -981,6 +981,206 @@ it('example with no setup', async () => {
   expect(code).toMatchSnapshot()
 })
 
+it('still generate parameters when non-request body parameter and request body parameter exists and non-body parameter is non-empty', async () => {
+  const code = await new CodeGeneratorTypeScript({
+    contentType: 'application/json',
+    httpMethod: HttpMethodsEnum.PUT,
+    path: '/quotes/service_groups/{service_group_id}/locations',
+    parameters: [
+      {
+        description: 'UUID of the service group',
+        name: 'service_group_id',
+        in: 'path',
+        required: true,
+        schema: {
+          title: 'Service Group Id',
+          description: 'UUID of the service group',
+          type: 'string',
+        },
+      },
+      {
+        name: '',
+        in: 'body',
+        schema: {
+          title: 'Location Ids',
+          description:
+            'List of location IDs to replace the existing locations on the service group',
+          type: 'array',
+          items: {
+            type: 'string',
+          },
+        },
+        isRequestBody: true,
+      },
+    ],
+    requestBody: {
+      name: '',
+      in: 'body',
+      schema: {
+        title: 'Location Ids',
+        description:
+          'List of location IDs to replace the existing locations on the service group',
+        type: 'array',
+        items: {
+          type: 'string',
+        },
+      },
+      isRequestBody: true,
+    },
+    securitySchemes: {
+      Auth0HTTPBearer: {
+        type: 'http',
+        scheme: 'bearer',
+      },
+    },
+    formData: {
+      parameters: {
+        service_group_id: 'hello',
+        '': '',
+        quote_id: 'fafaf',
+      },
+      security: {
+        Auth0HTTPBearer: {
+          type: 'bearer',
+          value: 'hello there',
+        },
+      },
+      requestBody: '',
+    },
+    languageConfigurations: {
+      typescript: {
+        clientName: 'Bellhop',
+        packageName: 'bellhop-partners-typescript',
+        git: {
+          owner: 'konfig-dev',
+          path: 'bellhop-sdks/tree/main/typescript',
+        },
+      },
+      python: {
+        clientName: 'Bellhop',
+        packageName: 'bellhop',
+        projectName: 'bellhop-partners-python',
+        git: {
+          owner: 'konfig-dev',
+          path: 'bellhop-sdks/tree/main/python',
+        },
+      },
+    },
+    servers: [
+      'https://partners.bellhops.dev/v5',
+      'https://partners.bellhop.com/v5',
+    ],
+    operationId: 'QuoteServiceGroups_changeLocations',
+    tag: 'QuoteServiceGroups',
+    basePath: 'https://partners.bellhops.dev/v5',
+    oauthTokenUrl: null,
+    originalOauthTokenUrl: null,
+    requestBodyRequired: true,
+    mode: 'copy',
+  }).snippet()
+  expect(code).toMatchSnapshot()
+})
+
+it('generate "requestBody" parameter when non-request body parameter and request body parameter exist', async () => {
+  const code = await new CodeGeneratorTypeScript({
+    contentType: 'application/json',
+    httpMethod: HttpMethodsEnum.PUT,
+    path: '/quotes/service_groups/{service_group_id}/locations',
+    parameters: [
+      {
+        description: 'UUID of the service group',
+        name: 'service_group_id',
+        in: 'path',
+        required: true,
+        schema: {
+          title: 'Service Group Id',
+          description: 'UUID of the service group',
+          type: 'string',
+        },
+      },
+      {
+        name: '',
+        in: 'body',
+        schema: {
+          title: 'Location Ids',
+          description:
+            'List of location IDs to replace the existing locations on the service group',
+          type: 'array',
+          items: {
+            type: 'string',
+          },
+        },
+        isRequestBody: true,
+      },
+    ],
+    requestBody: {
+      name: '',
+      in: 'body',
+      schema: {
+        title: 'Location Ids',
+        description:
+          'List of location IDs to replace the existing locations on the service group',
+        type: 'array',
+        items: {
+          type: 'string',
+        },
+      },
+      isRequestBody: true,
+    },
+    securitySchemes: {
+      Auth0HTTPBearer: {
+        type: 'http',
+        scheme: 'bearer',
+      },
+    },
+    formData: {
+      parameters: {
+        service_group_id: '',
+        '': '',
+        quote_id: 'fafaf',
+      },
+      security: {
+        Auth0HTTPBearer: {
+          type: 'bearer',
+          value: 'hello there',
+        },
+      },
+      requestBody: ['321'],
+    },
+    languageConfigurations: {
+      typescript: {
+        clientName: 'Bellhop',
+        packageName: 'bellhop-partners-typescript',
+        git: {
+          owner: 'konfig-dev',
+          path: 'bellhop-sdks/tree/main/typescript',
+        },
+      },
+      python: {
+        clientName: 'Bellhop',
+        packageName: 'bellhop',
+        projectName: 'bellhop-partners-python',
+        git: {
+          owner: 'konfig-dev',
+          path: 'bellhop-sdks/tree/main/python',
+        },
+      },
+    },
+    servers: [
+      'https://partners.bellhops.dev/v5',
+      'https://partners.bellhop.com/v5',
+    ],
+    operationId: 'QuoteServiceGroups_changeLocations',
+    tag: 'QuoteServiceGroups',
+    basePath: 'https://partners.bellhops.dev/v5',
+    oauthTokenUrl: null,
+    originalOauthTokenUrl: null,
+    requestBodyRequired: true,
+    mode: 'copy',
+  }).snippet()
+  expect(code).toMatchSnapshot()
+})
+
 it('tag with PascalCase is properly converted to camelCase', async () => {
   const code = await new CodeGeneratorTypeScript({
     path: '',

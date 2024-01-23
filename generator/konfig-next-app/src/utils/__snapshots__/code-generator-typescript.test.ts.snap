@@ -96,6 +96,21 @@ console.log(response.data);
 "
 `;
 
+exports[`generate "requestBody" parameter when non-request body parameter and request body parameter exist 1`] = `
+"import { Bellhop } from \\"bellhop-partners-typescript\\";
+
+const bellhop = new Bellhop({
+  accessToken: \\"hello there\\",
+});
+
+const response =
+  await bellhop.quoteServiceGroups.changeLocations(
+    { requestBody: [\\"321\\"] },
+  );
+console.log(response.data);
+"
+`;
+
 exports[`nested objects does not have empty properties 1`] = `
 "import { Groundx } from \\"groundx-typescript-sdk\\";
 
@@ -168,6 +183,21 @@ const test = new Test({
 const response =
   await test.authentication.registerSnapTradeUser(
     { userId: \\"321\\" },
+  );
+console.log(response.data);
+"
+`;
+
+exports[`still generate parameters when non-request body parameter and request body parameter exists and non-body parameter is non-empty 1`] = `
+"import { Bellhop } from \\"bellhop-partners-typescript\\";
+
+const bellhop = new Bellhop({
+  accessToken: \\"hello there\\",
+});
+
+const response =
+  await bellhop.quoteServiceGroups.changeLocations(
+    { serviceGroupId: \\"hello\\" },
   );
 console.log(response.data);
 "

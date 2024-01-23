@@ -235,6 +235,14 @@ export abstract class CodeGenerator {
     return parameter
   }
 
+  parameters() {
+    return this._parameters
+  }
+
+  nonBodyParameters() {
+    return this._parameters.filter((p) => p.in !== 'body')
+  }
+
   parameter(name: string) {
     const parameter = this._parameters.find((p) => p.name === name)
     return parameter

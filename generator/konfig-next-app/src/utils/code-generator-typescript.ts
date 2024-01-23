@@ -200,12 +200,25 @@ ${this.nonEmptySecurity()
   }
 
   get args(): string {
+    const nonEmptyBodyParameters = this.nonEmptyParameters()
+      .filter(([{ parameter }]) => {
+        return parameter.in !== 'body'
+      })
+      .map(([{ name }, value]) => {
+        return [name, value] as [string, SdkArg]
+      })
     if (this.isArrayRequestBody()) {
       const arrayValue = this.requestBodyValue()
       if (Array.isArray(arrayValue)) {
-        return `[${arrayValue.map((v) => this.argValue(v)).join(', ')}]`
+        if (this.nonBodyParameters().length === 0) {
+          return this.argValue(arrayValue)
+        } else {
+          return `{${this.innerObject(
+            nonEmptyBodyParameters
+          )}requestBody: ${this.argValue(arrayValue)}}`
+        }
       }
-      if (arrayValue === '') return ''
+      if (nonEmptyBodyParameters.length === 0 && arrayValue === '') return ''
     }
     if (this.nonEmptyParameters().length === 0) {
       if (this.requestBodyRequired) {
@@ -213,13 +226,6 @@ ${this.nonEmptySecurity()
       }
       return ''
     }
-    const nonBodyParameters = this.nonEmptyParameters()
-      .filter(([{ parameter }]) => {
-        return parameter.in !== 'body'
-      })
-      .map(([{ name }, value]) => {
-        return [name, value] as [string, SdkArg]
-      })
     const bodyParameters = this.nonEmptyParameters()
       .filter(([{ parameter }]) => {
         return parameter.in === 'body'
@@ -227,7 +233,7 @@ ${this.nonEmptySecurity()
       .map(([{ name }, value]) => {
         return [name, value] as [string, SdkArg]
       })
-    return `{${this.innerObject(nonBodyParameters)}${this.innerObject(
+    return `{${this.innerObject(nonEmptyBodyParameters)}${this.innerObject(
       bodyParameters,
       true
     )}}`

@@ -318,7 +318,10 @@ export function OperationReferenceMain({
                   }}
                 />
                 <ScrollArea type="never">
-                  <Code style={{ backgroundColor: 'unset' }}>
+                  <Code
+                    className="whitespace-nowrap"
+                    style={{ backgroundColor: 'unset' }}
+                  >
                     {`${basePath}${operation.path}`}
                   </Code>
                 </ScrollArea>
