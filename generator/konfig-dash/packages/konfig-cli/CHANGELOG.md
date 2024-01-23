@@ -1,5 +1,16 @@
 # konfig-cli
 
+## 1.38.1
+
+### Patch Changes
+
+- [#477](https://github.com/konfig-dev/konfig/pull/477) [`a7d61873`](https://github.com/konfig-dev/konfig/commit/a7d6187324c3e4b94c3de50413d854f622b0a77b) Thanks [@dphuang2](https://github.com/dphuang2)! - Fix handling of enum strings for TypeScript SDK
+
+- Updated dependencies [[`a7d61873`](https://github.com/konfig-dev/konfig/commit/a7d6187324c3e4b94c3de50413d854f622b0a77b)]:
+  - konfig-lib@1.36.1
+  - konfig-openapi-spec@1.8.6
+  - konfig-postman-to-openapi@3.1.6
+
 ## 1.38.0
 
 ### Minor Changes

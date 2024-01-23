@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.36.1
+
+### Patch Changes
+
+- [#477](https://github.com/konfig-dev/konfig/pull/477) [`a7d61873`](https://github.com/konfig-dev/konfig/commit/a7d6187324c3e4b94c3de50413d854f622b0a77b) Thanks [@dphuang2](https://github.com/dphuang2)! - Fix handling of enum strings for TypeScript SDK
+
 ## 1.36.0
 
 ### Minor Changes
