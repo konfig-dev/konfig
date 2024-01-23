@@ -981,6 +981,49 @@ it('example with no setup', async () => {
   expect(code).toMatchSnapshot()
 })
 
+it('tag with PascalCase is properly converted to camelCase', async () => {
+  const code = await new CodeGeneratorTypeScript({
+    path: '',
+    contentType: 'application/json',
+    httpMethod: HttpMethodsEnum.POST,
+    securitySchemes: {
+      apiKey: {
+        type: 'apiKey',
+        in: 'header',
+        name: 'Authorization',
+      },
+    },
+    formData: {
+      requestBody: '',
+      parameters: {},
+      security: {},
+    },
+    parameters: [],
+    languageConfigurations: {
+      typescript: {
+        clientName: 'Test',
+        packageName: 'test',
+        git: gitConfig,
+      },
+      python: {
+        clientName: 'Test',
+        packageName: 'test',
+        projectName: 'test',
+        git: gitConfig,
+      },
+    },
+    tag: 'ShouldBeCamelCase',
+    operationId: 'ShouldBeCamelCase_fetch',
+    requestBody: null,
+    basePath: 'https://test.com',
+    requestBodyRequired: false,
+    servers: ['https://test.com'],
+    oauthTokenUrl: null,
+    originalOauthTokenUrl: null,
+  }).snippet()
+  expect(code).to.include('test.shouldBeCamelCase.fetch')
+})
+
 it('example with no form data but > 1 parameters', async () => {
   const code = await new CodeGeneratorTypeScript({
     path: '',
