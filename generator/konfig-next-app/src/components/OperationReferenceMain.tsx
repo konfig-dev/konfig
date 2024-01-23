@@ -99,11 +99,6 @@ export function OperationReferenceMain({
       requestBodyProperties,
       requestBodyRequired,
     }),
-    // Also include the request body parameter if it exists so that generating
-    // initial form values can leverage the request body parameter's schema.
-    // This was particularly helpful when I needed to implememnt initialization
-    // of single element in request body array type schemas
-    ...(requestBodyParameter != null ? [requestBodyParameter] : []),
   ]
 
   const theme = useMantineTheme()
@@ -127,6 +122,7 @@ export function OperationReferenceMain({
     securitySchemes,
     clientState,
     hideSecurity,
+    requestBodyParameter,
   })
 
   const form = useForm(formValues)
@@ -148,6 +144,7 @@ export function OperationReferenceMain({
         owner,
         repo,
         hideSecurity,
+        requestBodyParameter,
       })
       console.debug(initialValues)
       if (initialValues) {

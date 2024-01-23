@@ -137,6 +137,7 @@ export function ParameterInput({
                 securitySchemes: {},
                 hideSecurity: [],
                 clientState: [],
+                requestBodyParameter: null,
               })
               const initialValues = formValues.initialValues
               if (initialValues === undefined) return

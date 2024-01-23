@@ -157,6 +157,7 @@ export async function generatePropsForReferencePage({
         in: 'body',
         schema: mediaTypeObject.schema,
         isRequestBody: true,
+        required: requestBody.required ?? false,
       }
     }
   }

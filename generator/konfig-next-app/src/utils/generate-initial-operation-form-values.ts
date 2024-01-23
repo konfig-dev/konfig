@@ -85,6 +85,7 @@ type FormValues = UseFormInput<
 
 type GenerateInitialFormValuesInput = {
   parameters: Parameter[]
+  requestBodyParameter?: Parameter | null
   securitySchemes: ReferencePageProps['securitySchemes']
   clientState: string[]
   hideSecurity: { name: string }[]
@@ -124,13 +125,21 @@ export async function generateInitialFormValuesWithStorage(
 
 type GenerateFormInputValuesInput = Pick<
   GenerateInitialFormValuesInput,
-  'parameters' | 'securitySchemes' | 'hideSecurity' | 'clientState'
+  | 'parameters'
+  | 'securitySchemes'
+  | 'hideSecurity'
+  | 'clientState'
+  | 'requestBodyParameter'
 >
+/**
+ * See https://v6.mantine.dev/form/use-form/
+ */
 function generateFormInputValues({
   parameters,
   securitySchemes,
   hideSecurity,
   clientState,
+  requestBodyParameter,
 }: GenerateFormInputValuesInput): Required<
   Pick<FormValues, 'initialValues' | 'validate'>
 > {
@@ -140,7 +149,21 @@ function generateFormInputValues({
     requestBody: '',
   }
   let validate: FormValues['validate'] = {}
+  if (requestBodyParameter !== null && requestBodyParameter !== undefined) {
+    if (requestBodyParameter.required) {
+      validate = deepmerge(validate, {
+        requestBody: validateValueForParameter(
+          requestBodyParameter,
+          'Request Body'
+        ),
+      })
+    }
+  }
   for (const parameter of parameters) {
+    // ensure that request body is validated
+    if (parameter.isRequestBody && parameter.required) {
+    }
+
     if (parameter.schema.type === 'object' && parameter.schema.properties) {
       const properties = generatePropertiesForSchemaObject({
         schema: parameter.schema,
@@ -151,6 +174,7 @@ function generateFormInputValues({
         securitySchemes: {},
         hideSecurity,
         clientState,
+        requestBodyParameter,
       }
 
       // TODO: handle nested field validation
@@ -169,7 +193,7 @@ function generateFormInputValues({
     } else if (
       // Checks if the parameter's schema is an array of objects
       parameter.schema.type === 'array' &&
-      !('$ref' in parameter.schema.items) &&
+      !('$ref' in parameter.schema.items) && // entire spec should be dereferenced
       parameter.schema.items?.type === 'object'
     ) {
       // If the array is an array of objects, we want to populate the array with at least one object
@@ -182,6 +206,7 @@ function generateFormInputValues({
         securitySchemes: {},
         hideSecurity,
         clientState,
+        requestBodyParameter,
       }
       const innerInitialValues = generateFormInputValues(innerInput)
       initialValues.parameters[parameter.name] = [
@@ -202,23 +227,10 @@ function generateFormInputValues({
       // If the parameter is not an array of objects, we want to populate the parameter with an empty string
       const validation: FormValues['validate'] = {
         parameters: {
-          [parameter.name]: (value) => {
-            if (parameter.required) {
-              const checkRequired = isNotEmpty(`${parameter.name} is required`)(
-                value
-              )
-              if (checkRequired) return checkRequired
-            }
-            if (parameter.schema.format === 'uuid') {
-              // Ensures that the value is a valid UUID. Other that are considered:
-              // Note that in case of empty string, we don't want to validate
-              // it, empty string validation should be handled by the required
-              // check.
-              if (typeof value === 'string' && value !== '' && !isUUID(value))
-                return `${parameter.name} is not a valid UUID`
-            }
-            return false
-          },
+          [parameter.name]: validateValueForParameter(
+            parameter,
+            parameter.name
+          ),
         },
       }
       validate = deepmerge(validation, validate)
@@ -313,6 +325,24 @@ function generateFormInputValues({
     }
   }
   return { initialValues, validate }
+}
+
+function validateValueForParameter(parameter: Parameter, name: string) {
+  return (value: FormInputValue) => {
+    if (parameter.required) {
+      const checkRequired = isNotEmpty(`${name} is required`)(value)
+      if (checkRequired) return checkRequired
+    }
+    if (parameter.schema.format === 'uuid') {
+      // Ensures that the value is a valid UUID. Other that are considered:
+      // Note that in case of empty string, we don't want to validate
+      // it, empty string validation should be handled by the required
+      // check.
+      if (typeof value === 'string' && value !== '' && !isUUID(value))
+        return `${parameter.name} is not a valid UUID`
+    }
+    return false
+  }
 }
 
 function generatePropertiesForSchemaObject({
