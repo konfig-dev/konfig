@@ -177,3 +177,89 @@ test('httpsnippet - deeply nested objects with files', async () => {
   const code = await new CodeGeneratorHttpsnippet(args).snippet()
   expect(code).toMatchSnapshot()
 })
+
+test('generate "requestBody" parameter when non-request body parameter and request body value exist', async () => {
+  const code = await new CodeGeneratorHttpsnippet({
+    contentType: 'application/json',
+    httpMethod: HttpMethodsEnum.PUT,
+    path: '/quotes/service_groups/{service_group_id}/locations',
+    parameters: [
+      {
+        description: 'UUID of the service group',
+        name: 'service_group_id',
+        in: 'path',
+        required: true,
+        schema: {
+          title: 'Service Group Id',
+          description: 'UUID of the service group',
+          type: 'string',
+        },
+      },
+    ],
+    requestBody: {
+      name: '',
+      in: 'body',
+      schema: {
+        title: 'Location Ids',
+        description:
+          'List of location IDs to replace the existing locations on the service group',
+        type: 'array',
+        items: {
+          type: 'string',
+        },
+      },
+      isRequestBody: true,
+      required: true,
+    },
+    securitySchemes: {
+      Auth0HTTPBearer: {
+        type: 'http',
+        scheme: 'bearer',
+      },
+    },
+    formData: {
+      parameters: {
+        service_group_id: '',
+      },
+      security: {
+        Auth0HTTPBearer: {
+          type: 'bearer',
+          value: '',
+        },
+      },
+      requestBody: ['123'],
+    },
+    languageConfigurations: {
+      typescript: {
+        clientName: 'Bellhop',
+        packageName: 'bellhop-partners-typescript',
+        git: {
+          owner: 'konfig-dev',
+          path: 'bellhop-sdks/tree/main/typescript',
+        },
+      },
+      python: {
+        clientName: 'Bellhop',
+        packageName: 'bellhop',
+        projectName: 'bellhop-partners-python',
+        git: {
+          owner: 'konfig-dev',
+          path: 'bellhop-sdks/tree/main/python',
+        },
+      },
+    },
+    servers: [
+      'https://partners.bellhops.dev/v5',
+      'https://partners.bellhop.com/v5',
+    ],
+    operationId: 'QuoteServiceGroups_changeLocations',
+    tag: 'QuoteServiceGroups',
+    basePath: 'https://partners.bellhops.dev/v5',
+    oauthTokenUrl: null,
+    originalOauthTokenUrl: null,
+    requestBodyRequired: true,
+    targetId: 'shell',
+    mode: 'copy',
+  }).snippet()
+  expect(code).toMatchSnapshot()
+})

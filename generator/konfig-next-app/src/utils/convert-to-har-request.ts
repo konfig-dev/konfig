@@ -125,6 +125,13 @@ export function convertToHarRequest(
     })
   } else if (contentType !== null) {
     har.headers.push({ name: 'Content-Type', value: contentType })
+
+    if (Array.isArray(requestBodyValue)) {
+      har.postData = {
+        mimeType: contentType,
+        text: JSON.stringify(requestBodyValue, null, 2),
+      }
+    }
   }
 
   const requestBody: JSONObject = {}
