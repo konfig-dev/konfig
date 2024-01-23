@@ -245,7 +245,7 @@ export interface LogResponse {
      */
     'evaluation_results': Array<EvaluationResultResponse>;
     /**
-     * 
+     * Status of a project datum for observability.
      * @type {ObservabilityStatus}
      * @memberof LogResponse
      */

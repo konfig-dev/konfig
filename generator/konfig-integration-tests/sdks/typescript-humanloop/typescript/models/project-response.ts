@@ -90,7 +90,7 @@ export interface ProjectResponse {
      */
     'team_id': string;
     /**
-     * 
+     * An enumeration.
      * @type {ConfigType}
      * @memberof ProjectResponse
      */

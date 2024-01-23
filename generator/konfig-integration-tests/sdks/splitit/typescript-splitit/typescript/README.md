@@ -323,7 +323,6 @@ const refundResponse = await typescriptsplitit.installmentPlan.refund({
   xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
   xSplititTouchPoint: "",
   Amount: 3.14,
-  RefundStrategy: "FutureInstallmentsFirst",
 });
 ```
 
@@ -339,7 +338,9 @@ const refundResponse = await typescriptsplitit.installmentPlan.refund({
 
 TouchPoint
 
-##### RefundStrategy:<a id="refundstrategy"></a>
+##### RefundStrategy: [`RefundStrategy`](./models/refund-strategy.ts)<a id="refundstrategy-refundstrategymodelsrefund-strategyts"></a>
+
+
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -406,7 +407,6 @@ const updateOrderResponse = await typescriptsplitit.installmentPlan.updateOrder(
     installmentPlanNumber: "installmentPlanNumber_example",
     xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
     xSplititTouchPoint: "",
-    ShippingStatus: "Pending",
   }
 );
 ```
@@ -425,7 +425,9 @@ TouchPoint
 
 ##### RefOrderNumber: `string`<a id="refordernumber-string"></a>
 
-##### ShippingStatus:<a id="shippingstatus"></a>
+##### ShippingStatus: [`ShippingStatus`](./models/shipping-status.ts)<a id="shippingstatus-shippingstatusmodelsshipping-statusts"></a>
+
+
 
 ##### Capture: `boolean`<a id="capture-boolean"></a>
 
@@ -453,7 +455,6 @@ const updateOrder2Response =
   await typescriptsplitit.installmentPlan.updateOrder2({
     xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
     xSplititTouchPoint: "",
-    ShippingStatus: "Shipped",
   });
 ```
 
@@ -471,7 +472,9 @@ TouchPoint
 
 ##### Capture: `boolean`<a id="capture-boolean"></a>
 
-##### ShippingStatus:<a id="shippingstatus"></a>
+##### ShippingStatus: [`ShippingStatus2`](./models/shipping-status2.ts)<a id="shippingstatus-shippingstatus2modelsshipping-status2ts"></a>
+
+
 
 ##### Identifier: [`IdentifierContract`](./models/identifier-contract.ts)<a id="identifier-identifiercontractmodelsidentifier-contractts"></a>
 

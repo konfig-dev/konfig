@@ -38,7 +38,7 @@ import { ToolType } from './tool-type';
  */
 export interface ToolChoice {
     /**
-     * 
+     * The type of tool to call.
      * @type {ToolType}
      * @memberof ToolChoice
      */

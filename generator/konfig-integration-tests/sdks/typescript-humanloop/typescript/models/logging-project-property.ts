@@ -91,7 +91,7 @@ export interface LoggingProjectProperty {
      */
     'team_id': string;
     /**
-     * 
+     * An enumeration.
      * @type {ConfigType}
      * @memberof LoggingProjectProperty
      */

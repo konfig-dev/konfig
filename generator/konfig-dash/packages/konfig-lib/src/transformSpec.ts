@@ -132,8 +132,13 @@ export const transformSpec = async ({
       // "components.schemas.Schema" with "type": "string" and "enum"
       if (path.length < 4) return
 
-      // if the ending path is already "allOf" then skip
+      // If the ending path shows that this is already polymorphic then skip.
+      // I think this makes it not a problem since our generator considers
+      // anything polymorphic as a "Model" and the rest of the code just works
+      // when that is the case.
       if (path[path.length - 2] === 'allOf') return
+      if (path[path.length - 2] === 'anyOf') return
+      if (path[path.length - 2] === 'oneOf') return
 
       // copy resolvedSchema and remove "type" and "enum"
       const copyOfResolvedSchema = { ...resolvedSchema }

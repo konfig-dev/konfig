@@ -48,7 +48,7 @@ export interface EvaluationResponse {
      */
     'id': string;
     /**
-     * 
+     * Status of an evaluation.
      * @type {EvaluationStatus}
      * @memberof EvaluationResponse
      */

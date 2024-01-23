@@ -44,7 +44,7 @@ export interface ToolCall {
      */
     'id': string;
     /**
-     * 
+     * The type of tool to call.
      * @type {ToolType}
      * @memberof ToolCall
      */

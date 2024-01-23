@@ -37,7 +37,7 @@ import { TimeUnit } from './time-unit';
  */
 export interface DashboardConfiguration {
     /**
-     * 
+     * An enumeration.
      * @type {TimeUnit}
      * @memberof DashboardConfiguration
      */

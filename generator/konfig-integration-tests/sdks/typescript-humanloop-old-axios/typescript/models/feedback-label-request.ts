@@ -43,7 +43,7 @@ export interface FeedbackLabelRequest {
      */
     'value': string;
     /**
-     * 
+     * How a label should be treated in calculating model config performance.  Used by a project\'s PAPV metric.
      * @type {LabelSentiment}
      * @memberof FeedbackLabelRequest
      */
