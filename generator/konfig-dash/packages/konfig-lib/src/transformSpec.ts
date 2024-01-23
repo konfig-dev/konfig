@@ -100,6 +100,57 @@ export const transformSpec = async ({
     })
   })
 
+  if (generator === 'typescript') {
+    // When using enum strings for some reason wrapping it inside of an allOf with 1 schema fixes an issue
+    // where the generated data type in TypeScript's README.md is empty
+    // before:
+    // ##### lead_type:<a id="lead_type"></a>
+    // after:
+    // ##### lead_type: [`LeadType`](./models/lead-type.ts)<a id="lead_type-leadtypemodelslead-typets"></a>
+
+    // find all ref objects that are pointing to "type": "string" with an "enum" property
+    // and wrap them in an allOf with 1 schema
+    recurseObject(spec.spec, ({ value: schema, path }) => {
+      if (schema === null) return
+      if (typeof schema !== 'object') return
+
+      // ensure schema has a $ref property
+      if (!('$ref' in schema)) return
+
+      const resolvedSchema = resolveRef({
+        refOrObject: schema,
+        $ref: spec.$ref,
+      })
+
+      if (resolvedSchema['type'] !== 'string') return
+      if (resolvedSchema['enum'] === undefined) return
+      if (!Array.isArray(resolvedSchema['enum'])) return
+      if (resolvedSchema['enum'].length === 0) return
+
+      // if the path length is < 4 then skip. This is to avoid infinite
+      // callstack when handling schema that is a string such as
+      // "components.schemas.Schema" with "type": "string" and "enum"
+      if (path.length < 4) return
+
+      // if the ending path is already "allOf" then skip
+      if (path[path.length - 2] === 'allOf') return
+
+      // copy resolvedSchema and remove "type" and "enum"
+      const copyOfResolvedSchema = { ...resolvedSchema }
+      delete copyOfResolvedSchema['type']
+      delete copyOfResolvedSchema['enum']
+
+      // save copy of schema then delete all properties on schema
+      const copyOfSchema = { ...schema }
+      Object.keys(schema).forEach((key) => delete schema[key])
+      // Assign allOf with 1 schema that is the original schema
+      Object.assign(schema, {
+        allOf: [copyOfSchema],
+        ...copyOfResolvedSchema,
+      })
+    })
+  }
+
   // Ruby generator throws a syntax error for SnapTrade when property of object type is enum w/ default:
   // 1) SnapTrade::ModelPortfolio test an instance of ModelPortfolio should create an instance of ModelPortfolio
   //    Failure/Error: self.model_type = MODEL_TYPE::NMINUS_1
