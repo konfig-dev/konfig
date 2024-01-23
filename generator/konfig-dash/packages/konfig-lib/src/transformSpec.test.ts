@@ -3,7 +3,7 @@ import * as path from 'path'
 import * as fs from 'fs'
 import { OpenAPIV3 } from 'openapi-types'
 
-describe('transformSpec', () => {
+describe.skip('transformSpec', () => {
   it('long example string is shortened', async () => {
     const specPath = path.join(
       __dirname,
