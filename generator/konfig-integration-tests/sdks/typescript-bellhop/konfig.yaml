@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://unpkg.com/konfig-lib@latest/konfig-yaml.schema.json
+
+outputDirectory: /tmp/bellhop-sdks-out
+specRemotePath: https://partners.bellhop.com/v5/openapi.json
+specInputPath: openapi.json
+specPath: openapi-fixed.json
+fixConfig:
+  modify:
+    components.schemas.FlexibleServiceRequest.properties.local_hours.example:
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+readmeHeader:
+  title: Bellhop
+  image: header.png
+  url: https://www.getbellhops.com
+generators:
+  typescript:
+    version: 0.1.0
+    npmName: bellhop-partners-typescript
+    outputDirectory: typescript
+    clientName: Bellhop
+    git:
+      userId: konfig-dev
+      repoId: bellhop-sdks/tree/main/typescript

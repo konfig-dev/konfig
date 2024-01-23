@@ -1,0 +1,4551 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "partner-api",
+    "contact": {
+      "name": "Bellhop Engineering",
+      "url": "http://www.bellhop.com/",
+      "email": "engineering@bellhop.com"
+    },
+    "version": "5.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://partners.bellhops.dev/v5",
+      "description": "Development"
+    },
+    {
+      "url": "https://partners.bellhop.com/v5",
+      "description": "Production"
+    }
+  ],
+  "paths": {
+    "/postal-codes/serviceability": {
+      "get": {
+        "tags": [
+          "Postal Codes"
+        ],
+        "summary": "Get Postal Codes Serviceability",
+        "operationId": "get_postal_codes_serviceability_postal_codes_serviceability_get",
+        "security": [
+          {
+            "Auth0HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "origin_postal_code",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Origin Postal Code"
+            }
+          },
+          {
+            "name": "destination_postal_code",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Destination Postal Code"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostalCodesServiceabilityResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/leads": {
+      "post": {
+        "tags": [
+          "Leads"
+        ],
+        "summary": "Create Lead",
+        "operationId": "create_lead_leads_post",
+        "security": [
+          {
+            "Auth0HTTPBearer": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateLeadRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeadResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Leads"
+        ],
+        "summary": "List Leads",
+        "operationId": "list_leads_leads_get",
+        "security": [
+          {
+            "Auth0HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "email"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Email"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LeadResponse"
+                  },
+                  "title": "Response List Leads Leads Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/leads/{code}": {
+      "get": {
+        "tags": [
+          "Leads"
+        ],
+        "summary": "Get Lead",
+        "operationId": "get_lead_leads__code__get",
+        "security": [
+          {
+            "Auth0HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Code"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeadResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Leads"
+        ],
+        "summary": "Cancel Lead",
+        "operationId": "cancel_lead_leads__code__delete",
+        "security": [
+          {
+            "Auth0HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Code"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Leads"
+        ],
+        "summary": "Update Lead",
+        "operationId": "update_lead_leads__code__patch",
+        "security": [
+          {
+            "Auth0HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Code"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LeadUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeadResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quotes": {
+      "post": {
+        "tags": [
+          "Quotes"
+        ],
+        "summary": "Create Quote",
+        "description": "Creates a quote\n\nCreates a quote for a given customer using the provided locations and service code.\nThe LOCALFULLSERVICE service code will generate a service group with\nLOADINGUNLOADING and TRANSIT services.\nAll other service codes generate service groups with a single service.",
+        "operationId": "create_quote_quotes_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateQuoteRequest"
+              },
+              "examples": {
+                "default": {
+                  "summary": "Create a quote",
+                  "description": "Create a quote",
+                  "value": {
+                    "customer": {
+                      "first_name": "John",
+                      "last_name": "Doe",
+                      "phone": "5555555555",
+                      "email": "heythereitsjon@gooogle.com"
+                    },
+                    "start_datetime": "2024-01-01T12:00:00",
+                    "service_code": "LOCALFULLSERVICE",
+                    "locations": {
+                      "1": {
+                        "line_1": "123 Main St",
+                        "city": "New York",
+                        "state": "NY",
+                        "postal_code": "10001",
+                        "country": "US",
+                        "property_type": "SINGLE_FAMILY_HOME"
+                      },
+                      "2": {
+                        "line_1": "321 Secondary St",
+                        "city": "New York",
+                        "state": "NY",
+                        "postal_code": "10001",
+                        "country": "US",
+                        "property_type": "SINGLE_FAMILY_HOME"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuoteResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Auth0HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/quotes/{quote_id}/service-groups": {
+      "post": {
+        "tags": [
+          "QuoteServiceGroups"
+        ],
+        "summary": "Create Service Group",
+        "description": "Creates a new service group\n\nA service group is a collection of services that are performed at the\nsame time and location.\nThe created service group will be created with the provided services,\nlocations, and start date time.\nThe workers, duration, and end date time will be estimated based on the\nlocations and inventory attached to the quote.",
+        "operationId": "create_service_group_quotes__quote_id__service_groups_post",
+        "security": [
+          {
+            "Auth0HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "quote_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "UUID of the quote",
+              "title": "Quote Id"
+            },
+            "description": "UUID of the quote"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateQuoteServiceGroupRequest"
+                  }
+                ],
+                "description": "Request body for creating a service group",
+                "title": "Body"
+              },
+              "examples": {
+                "default": {
+                  "summary": "Create a service group",
+                  "description": "Create a service group",
+                  "value": {
+                    "service_codes": [
+                      "LOADINGUNLOADING",
+                      "TRANSIT"
+                    ],
+                    "locations": [
+                      "a4cef656c2a04ca4aa6d19cee4eb9b7e",
+                      "b4cef656c2a04ca4aa6d19cee4eb9b7e"
+                    ],
+                    "start_datetime": "2024-01-01T12:00:00"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceGroupResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quotes/service_groups/{service_group_id}/locations": {
+      "put": {
+        "tags": [
+          "QuoteServiceGroups"
+        ],
+        "summary": "Change Locations On Service Group",
+        "description": "Overwrite the locations on a service group\n\nThe locations included in the request are overwritten as the locations on\nthe service group maintaining the sequence in the request.\nThis action triggers a re-estimation of the service group using the new locations.",
+        "operationId": "change_locations_on_service_group_quotes_service_groups__service_group_id__locations_put",
+        "security": [
+          {
+            "Auth0HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "service_group_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "UUID of the service group",
+              "title": "Service Group Id"
+            },
+            "description": "UUID of the service group"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of location IDs to replace the existing locations on the service group",
+                "title": "Location Ids"
+              },
+              "examples": {
+                "default": {
+                  "summary": "Change locations",
+                  "description": "Change locations on a service group",
+                  "value": [
+                    "a627084cd72247bf9217363f8772aa5f",
+                    "12fb179d05294c3e8f433c315966a515"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceGroupResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quotes/{quote_id}/service-group/{service_group_id}": {
+      "get": {
+        "tags": [
+          "QuoteServiceGroups"
+        ],
+        "summary": "Get Service Group",
+        "description": "Fetch a service group by quote ID and service group ID",
+        "operationId": "get_service_group_quotes__quote_id__service_group__service_group_id__get",
+        "security": [
+          {
+            "Auth0HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "quote_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "UUID of the quote",
+              "title": "Quote Id"
+            },
+            "description": "UUID of the quote"
+          },
+          {
+            "name": "service_group_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "UUID of the service group",
+              "title": "Service Group Id"
+            },
+            "description": "UUID of the service group"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceGroupResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "QuoteServiceGroups"
+        ],
+        "summary": "Delete Service Group",
+        "description": "Delete a service group by quote ID and service group ID",
+        "operationId": "delete_service_group_quotes__quote_id__service_group__service_group_id__delete",
+        "security": [
+          {
+            "Auth0HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "quote_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "UUID of the quote",
+              "title": "Quote Id"
+            },
+            "description": "UUID of the quote"
+          },
+          {
+            "name": "service_group_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "UUID of the service group to be deleted",
+              "title": "Service Group Id"
+            },
+            "description": "UUID of the service group to be deleted"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quotes/{quote_id}/service-groups/{service_group_id}": {
+      "patch": {
+        "tags": [
+          "QuoteServiceGroups"
+        ],
+        "summary": "Replace Service Group",
+        "description": "Replaces a service group with a flexible service group\n\nReplaces the existing service group with the selected flexible service group.",
+        "operationId": "Replace_Service_Group_quotes__quote_id__service_groups__service_group_id__patch",
+        "security": [
+          {
+            "Auth0HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "quote_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "UUID of the quote",
+              "title": "Quote Id"
+            },
+            "description": "UUID of the quote"
+          },
+          {
+            "name": "service_group_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "UUID of the service group",
+              "title": "Service Group Id"
+            },
+            "description": "UUID of the service group"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReplaceServiceGroupRequest"
+              },
+              "examples": {
+                "default": {
+                  "summary": "Replace a service group",
+                  "description": "Replace a service group",
+                  "value": {
+                    "flexible_quote_id": "b8877149-1088-4559-aeaf-4db68d0053cd"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceGroupResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quotes/{quote_id}/service-groups/{service_group_id}/services": {
+      "put": {
+        "tags": [
+          "QuoteServiceGroups"
+        ],
+        "summary": "Update Service Group Services",
+        "description": "Update the service configuration on a service group\n\nUpdate services, workers and duration on a service group.\nthe service_workers object is a mapping of service code and number of workers.\n\nOnly the included service codes will be retained on the service group.\n\nAny excluded services will be removed.",
+        "operationId": "Update_Service_Group_Services_quotes__quote_id__service_groups__service_group_id__services_put",
+        "security": [
+          {
+            "Auth0HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "quote_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "UUID of the quote",
+              "title": "Quote Id"
+            },
+            "description": "UUID of the quote"
+          },
+          {
+            "name": "service_group_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "UUID of the service group",
+              "title": "Service Group Id"
+            },
+            "description": "UUID of the service group"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateServiceGroupRequestV2"
+              },
+              "examples": {
+                "default": {
+                  "summary": "Update a service group",
+                  "description": "Update a service group",
+                  "value": {
+                    "duration": 120,
+                    "service_workers": [
+                      {
+                        "service_code": "LOADINGUNLOADING",
+                        "workers": 2
+                      },
+                      {
+                        "service_code": "TRANSIT",
+                        "workers": 2
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceGroupResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quotes/{quote_id}/service_groups/{service_group_id}/flexible": {
+      "post": {
+        "tags": [
+          "QuoteServiceGroups"
+        ],
+        "summary": "Create Flexible Service Groups",
+        "description": "Creates an array of flexible service groups from a service group\n\nGenerate an array of flexible service groups. The services and locations\nwill be copied from the source service group.\nOne flexible service group will be created for each day and hour combination in the input.",
+        "operationId": "create_flexible_service_groups_quotes__quote_id__service_groups__service_group_id__flexible_post",
+        "security": [
+          {
+            "Auth0HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "quote_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Quote ID",
+              "description": "UUID of the source quote"
+            },
+            "description": "UUID of the source quote"
+          },
+          {
+            "name": "service_group_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Service Group ID",
+              "description": "UUID of the Service Group to use as a template for the flexible service groups"
+            },
+            "description": "UUID of the Service Group to use as a template for the flexible service groups"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FlexibleServiceRequest"
+              },
+              "examples": {
+                "default": {
+                  "summary": "January, 8-10am",
+                  "description": "Create a flexible service group for January, 8-10am",
+                  "value": {
+                    "start_date": "2024-01-01",
+                    "end_date": "2024-02-01",
+                    "local_hours": [
+                      8,
+                      9,
+                      10
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FlexibleQuoteResponse"
+                  },
+                  "title": "Response Create Flexible Service Groups Quotes  Quote Id  Service Groups  Service Group Id  Flexible Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/locations": {
+      "post": {
+        "tags": [
+          "Locations"
+        ],
+        "summary": "Create Quoting Location",
+        "description": "Create quoting location object from address\n\nCreate Quoting Location standardizes input address via USPS and generates\ngeo-location details Google Maps APIs.\nThe location id is a hash of the required fields on the location object.",
+        "operationId": "Create_Quoting_Location_locations_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuotingLocationRequest"
+              },
+              "examples": {
+                "Example": {
+                  "summary": "Example",
+                  "description": "Example",
+                  "value": {
+                    "line_1": "123 Main St",
+                    "line_2": "Apt 2",
+                    "city": "Nashville",
+                    "state": "TN",
+                    "postal_code": "37201",
+                    "country": "US",
+                    "property_type": "APARTMENT"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Auth0HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/orders/{quote_id}": {
+      "post": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Create Order",
+        "description": "Creates an order from a quote",
+        "operationId": "create_order_orders__quote_id__post",
+        "security": [
+          {
+            "Auth0HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "quote_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Quote ID to generate order from",
+              "title": "Quote Id"
+            },
+            "description": "Quote ID to generate order from"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderResponseV2"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/authorize": {
+      "post": {
+        "tags": [
+          "Authorization"
+        ],
+        "summary": "Get Auth Token",
+        "operationId": "get_auth_token_authorize_post",
+        "parameters": [
+          {
+            "name": "use_cache",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": true,
+              "title": "Use Cache"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Auth0TokenRequest"
+              },
+              "examples": {
+                "Example": {
+                  "summary": "Example",
+                  "description": "Example",
+                  "value": {
+                    "client_id": "d41e79eac90444beacdb9f6062c206c9NOT_REAL",
+                    "client_secret": "02e44d6d7b9b4ed09205d5a8658c561e-b57ea47f8faa49ec9fc618fd52d330b1NOT_REAL",
+                    "audience": "https://partners.bellhops.dev"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth0TokenResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AccessFlagsResponse": {
+        "properties": {
+          "stairs": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stairs"
+          },
+          "elevator": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Elevator"
+          },
+          "elevator_reserved": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Elevator Reserved"
+          },
+          "long_walk_to_truck": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Long Walk To Truck"
+          }
+        },
+        "type": "object",
+        "required": [
+          "stairs",
+          "elevator",
+          "elevator_reserved",
+          "long_walk_to_truck"
+        ],
+        "title": "AccessFlagsResponse"
+      },
+      "AccountSource": {
+        "type": "string",
+        "enum": [
+          "123 Load Board",
+          "AllConnect",
+          "All My Sons",
+          "AllWebLeads",
+          "AMLI",
+          "Angie's List",
+          "Another Bellhop",
+          "ApartmentList.com",
+          "Apartments.com Site Search",
+          "Atlanta Moving Pros",
+          "Avail",
+          "Avvinue",
+          "Bark",
+          "BDS",
+          "Bellhop Site",
+          "Bellhop Site - Booking Flow",
+          "Bellhop Site - Out of Service Area",
+          "Beyond Self Storage",
+          "Brookfield",
+          "Citizen Home Solutions",
+          "Clever",
+          "College Recruiter",
+          "Consumer Affairs",
+          "Cortland Apartments",
+          "Craigslist",
+          "Crye-Leike",
+          "CubeSmart",
+          "Dallas Moving Pros",
+          "DAT Load Board",
+          "dotdash",
+          "DOT Registry",
+          "Drive for Bellhops",
+          "Email Capture Blog",
+          "Email Capture MLP",
+          "Email Only",
+          "Equate",
+          "Equate Live Transfers",
+          "Flatrate Moving",
+          "Flyhomes",
+          "From a Friend",
+          "GMB Request a Quote",
+          "Google Ads Lead Form",
+          "Google Local Services",
+          "Google My Business",
+          "havenly",
+          "Hello Alfred",
+          "HireAHelper",
+          "HomeAdvisor Exact Match",
+          "HomeAdvisor Market Match",
+          "Home Depot",
+          "homeexpert",
+          "HomeGuage",
+          "Ideal Agent",
+          "Inbound Call",
+          "Inbound Call - Drive for Bellhops",
+          "Indeed",
+          "Intercom Chat",
+          "IRELO",
+          "Job Case",
+          "Landing",
+          "Las Vegas Giveaway",
+          "Lead Hero",
+          "leadvision",
+          "Livly",
+          "LocalMovingPros.com",
+          "LongDistanceMover.com",
+          "MCR",
+          "Mediabids",
+          "Metropolitan Movers",
+          "Move Buddha",
+          "MoveEasy",
+          "MoveHQ",
+          "MoveInc",
+          "Move Matcher",
+          "Movermatch",
+          "Moverscom",
+          "Moves for Seniors",
+          "moving.com",
+          "movingbiz",
+          "Movingful",
+          "movinglabor-lead",
+          "movingwaldo",
+          "Mr. Cooper",
+          "MYMOVE",
+          "MyMovingLoads",
+          "newkeyz",
+          "Offerpad",
+          "OJO",
+          "OneSource",
+          "Other",
+          "Outbound Call",
+          "Partnerships",
+          "PetScreening",
+          "PODS",
+          "PODS CORP RELO",
+          "poweron",
+          "property managers",
+          "Purchased List",
+          "Quote Runner",
+          "Quote Runner Exclusive",
+          "Quote Runner LIVE",
+          "Real Estate Bidders",
+          "realtor referrals",
+          "Recleim",
+          "Redfin",
+          "redfin concierge",
+          "Referral",
+          "rego",
+          "Rent Application",
+          "Rexdirect",
+          "RexDirect Live",
+          "RexHomes",
+          "San Jose Moving Pros",
+          "SeveralBrands",
+          "Shyft",
+          "site-ld-form",
+          "Snag",
+          "Social Media",
+          "sold.com",
+          "Steady",
+          "Storage",
+          "Suited Connector",
+          "Swift Homes",
+          "thespruce",
+          "Thumbtack",
+          "TruckStop Load Board",
+          "Updatr",
+          "usnews",
+          "Utility Connect",
+          "Yelp",
+          "Yelp RAQ",
+          "Zendesk Lead",
+          "Zillow",
+          "Zillow Builder",
+          "Zillow - Outbound",
+          "Zippy Shell",
+          "Zippy Shell Corp Relo"
+        ],
+        "title": "AccountSource",
+        "description": "Pick-list values for account.accountsource"
+      },
+      "Auth0TokenRequest": {
+        "properties": {
+          "client_id": {
+            "type": "string",
+            "title": "Client Id"
+          },
+          "client_secret": {
+            "type": "string",
+            "title": "Client Secret"
+          },
+          "audience": {
+            "type": "string",
+            "title": "Audience"
+          }
+        },
+        "type": "object",
+        "required": [
+          "client_id",
+          "client_secret",
+          "audience"
+        ],
+        "title": "Auth0TokenRequest"
+      },
+      "Auth0TokenResponse": {
+        "properties": {
+          "token": {
+            "type": "string",
+            "title": "Token"
+          },
+          "cached": {
+            "type": "boolean",
+            "title": "Cached"
+          }
+        },
+        "type": "object",
+        "required": [
+          "token",
+          "cached"
+        ],
+        "title": "Auth0TokenResponse"
+      },
+      "CreateCustomerAccountRequest": {
+        "properties": {
+          "first_name": {
+            "type": "string",
+            "title": "First Name"
+          },
+          "last_name": {
+            "type": "string",
+            "title": "Last Name"
+          },
+          "phone": {
+            "type": "string",
+            "title": "Phone"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "title": "Email"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CustomerStatus"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Customer status",
+            "examples": [
+              "Active"
+            ]
+          },
+          "primary_market": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Primary Market"
+          },
+          "source": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AccountSource"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "hear_about_us": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/HearAboutUs"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "owner_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Owner Code"
+          }
+        },
+        "type": "object",
+        "required": [
+          "first_name",
+          "last_name",
+          "phone",
+          "email"
+        ],
+        "title": "CreateCustomerAccountRequest",
+        "description": "Create customer account request"
+      },
+      "CreateLeadRequest": {
+        "properties": {
+          "first_name": {
+            "type": "string",
+            "title": "First Name"
+          },
+          "last_name": {
+            "type": "string",
+            "title": "Last Name"
+          },
+          "lead_type": {
+            "$ref": "#/components/schemas/LeadType"
+          },
+          "lead_record_type": {
+            "$ref": "#/components/schemas/LeadRecordType"
+          },
+          "external_id": {
+            "type": "string",
+            "title": "External Id"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "lead_source": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lead Source"
+          },
+          "email": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Email"
+          },
+          "phone": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Phone"
+          },
+          "origin_postal_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin Postal Code",
+            "examples": [
+              "85001"
+            ]
+          },
+          "origin_street": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin Street"
+          },
+          "origin_city": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin City"
+          },
+          "origin_state": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin State",
+            "examples": [
+              "AZ"
+            ]
+          },
+          "origin_square_feet": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin Square Feet"
+          },
+          "destination_postal_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Destination Postal Code",
+            "examples": [
+              "85001"
+            ]
+          },
+          "destination_street": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Destination Street"
+          },
+          "destination_city": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Destination City"
+          },
+          "destination_state": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Destination State",
+            "examples": [
+              "AZ"
+            ]
+          },
+          "clickid": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Clickid"
+          },
+          "gclid": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Gclid"
+          },
+          "utm_medium": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Utm Medium"
+          },
+          "utm_source": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Utm Source"
+          },
+          "utm_campaign": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Utm Campaign"
+          },
+          "msclkid": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Msclkid"
+          },
+          "load_date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Load Date",
+            "examples": [
+              "2021-01-01"
+            ]
+          },
+          "close_date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Close Date",
+            "examples": [
+              "2021-01-01"
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "first_name",
+          "last_name",
+          "lead_type",
+          "lead_record_type"
+        ],
+        "title": "CreateLeadRequest",
+        "description": "Input model for creating a lead"
+      },
+      "CreateQuoteRequest": {
+        "properties": {
+          "customer": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CreateCustomerAccountRequest"
+              }
+            ],
+            "description": "Customer information",
+            "examples": [
+              {
+                "email": "heythereitsjon@gooogle.com",
+                "first_name": "John",
+                "last_name": "Doe",
+                "phone": "5555555555"
+              }
+            ]
+          },
+          "start_datetime": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Start Datetime",
+            "description": "Start date and time of the quote",
+            "examples": [
+              "2024-01-22T17:33:27.541275"
+            ]
+          },
+          "service_code": {
+            "type": "string",
+            "title": "Service Code",
+            "description": "Services to be quoted",
+            "examples": [
+              "LOCALFULLSERVICE",
+              "LOADING"
+            ]
+          },
+          "locations": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/LocationRequest"
+            },
+            "type": "object",
+            "title": "Locations",
+            "description": "Mapping locations and their sequence",
+            "examples": [
+              {
+                "1": {
+                  "city": "New York",
+                  "country": "US",
+                  "line_1": "123 Main St",
+                  "postal_code": "10001",
+                  "property_type": "SINGLE_FAMILY_HOME",
+                  "state": "NY"
+                },
+                "2": {
+                  "city": "New York",
+                  "country": "US",
+                  "line_1": "321 Secondary St",
+                  "postal_code": "10001",
+                  "property_type": "SINGLE_FAMILY_HOME",
+                  "state": "NY"
+                }
+              }
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "customer",
+          "start_datetime",
+          "service_code",
+          "locations"
+        ],
+        "title": "CreateQuoteRequest",
+        "description": "Create Quote Request"
+      },
+      "CreateQuoteServiceGroupRequest": {
+        "properties": {
+          "service_codes": {
+            "items": {
+              "$ref": "#/components/schemas/ServiceType"
+            },
+            "type": "array",
+            "minItems": 1,
+            "title": "Service Codes",
+            "description": "List of service codes",
+            "examples": [
+              [
+                "LOADINGUNLOADING"
+              ]
+            ]
+          },
+          "locations": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "minItems": 1,
+            "title": "Locations",
+            "description": "List of location ids",
+            "examples": [
+              [
+                "a4cef656c2a04ca4aa6d19cee4eb9b7e",
+                "b4cef656c2a04ca4aa6d19cee4eb9b7e"
+              ]
+            ]
+          },
+          "start_datetime": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Start Datetime",
+            "description": "Start datetime of service group",
+            "examples": [
+              "2021-01-01T12:00:00"
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "service_codes",
+          "locations",
+          "start_datetime"
+        ],
+        "title": "CreateQuoteServiceGroupRequest",
+        "description": "CreateQuoteServiceGroupRequest"
+      },
+      "CustomerStatus": {
+        "type": "string",
+        "enum": [
+          "Active",
+          "Do Not Book",
+          "Opportunity"
+        ],
+        "title": "CustomerStatus"
+      },
+      "ExtraDataResponse": {
+        "properties": {
+          "miles_to_origin": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Miles To Origin"
+          },
+          "weight": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Weight"
+          },
+          "assembly": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Assembly"
+          },
+          "disassembly": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Disassembly"
+          },
+          "extra_stop": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Extra Stop"
+          },
+          "zippy_move_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Zippy Move Type"
+          },
+          "number_of_shells": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Number Of Shells"
+          },
+          "stairs": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stairs"
+          },
+          "elevator": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Elevator"
+          },
+          "long_haul": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Long Haul"
+          },
+          "adjacent_market": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Adjacent Market"
+          }
+        },
+        "type": "object",
+        "required": [
+          "miles_to_origin",
+          "weight",
+          "assembly",
+          "disassembly",
+          "extra_stop",
+          "zippy_move_type",
+          "number_of_shells",
+          "stairs",
+          "elevator",
+          "long_haul",
+          "adjacent_market"
+        ],
+        "title": "ExtraDataResponse",
+        "description": "Extra data for inventory meta-data"
+      },
+      "FlexService": {
+        "properties": {
+          "service_code": {
+            "type": "string",
+            "title": "Service Code"
+          },
+          "estimated_unit_price": {
+            "type": "number",
+            "title": "Estimated Unit Price"
+          },
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "estimated_hours": {
+            "type": "number",
+            "title": "Estimated Hours"
+          },
+          "estimated_workers": {
+            "type": "integer",
+            "title": "Estimated Workers"
+          },
+          "estimated_pricing_strategy": {
+            "type": "string",
+            "title": "Estimated Pricing Strategy"
+          },
+          "total_cost": {
+            "type": "integer",
+            "title": "Total Cost"
+          },
+          "available": {
+            "type": "boolean",
+            "title": "Available",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "service_code",
+          "estimated_unit_price",
+          "id",
+          "estimated_hours",
+          "estimated_workers",
+          "estimated_pricing_strategy",
+          "total_cost",
+          "available"
+        ],
+        "title": "FlexService",
+        "description": "Services nested in flexible package quotes"
+      },
+      "FlexibleQuoteResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "start_datetime": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Start Datetime"
+          },
+          "is_available": {
+            "type": "boolean",
+            "title": "Is Available"
+          },
+          "timezone": {
+            "type": "string",
+            "title": "Timezone"
+          },
+          "services": {
+            "items": {
+              "$ref": "#/components/schemas/FlexService"
+            },
+            "type": "array",
+            "title": "Services"
+          },
+          "total_cost": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Total Cost"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "start_datetime",
+          "is_available",
+          "timezone",
+          "services",
+          "total_cost"
+        ],
+        "title": "FlexibleQuoteResponse",
+        "description": "Response for flexible-package quotes"
+      },
+      "FlexibleServiceRequest": {
+        "properties": {
+          "start_date": {
+            "type": "string",
+            "format": "date",
+            "title": "Start Date",
+            "description": "Date of earliest flexible service quote to generate",
+            "examples": [
+              "1970-01-01"
+            ]
+          },
+          "end_date": {
+            "type": "string",
+            "format": "date",
+            "title": "End Date",
+            "description": "Date of latest flexible service quote to generate",
+            "examples": [
+              "1970-01-01"
+            ]
+          },
+          "local_hours": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "integer",
+                  "enum": [
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20
+                  ]
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Local Hours",
+            "description": "List of hours in local time to generate quotes for: [8, 9, 10, 11, 12]",
+            "default": [
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20
+            ],
+            "examples": [
+              "[8, 9, 10, 11, 12]"
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "start_date",
+          "end_date"
+        ],
+        "title": "FlexibleServiceRequest",
+        "description": "Parameters for generating flexible package quotes"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "HearAboutUs": {
+        "type": "string",
+        "enum": [
+          "Friend/Family Referral",
+          "Google/Bing - Search Engine",
+          "Yelp",
+          "Billboard",
+          "Yard Sign",
+          "Truck",
+          "Social Media",
+          "All My Sons/Another Moving Company",
+          "Affiliates/Partners - Groupon",
+          "Blog",
+          "Outbound lead",
+          "Repeat Customer",
+          "Skipped",
+          "Used Bellhop before",
+          "PODS"
+        ],
+        "title": "HearAboutUs",
+        "description": "Pick-list values for account.how_did_customer_hear_about_us__c"
+      },
+      "InventoryItem": {
+        "properties": {
+          "slug": {
+            "type": "string",
+            "title": "Slug"
+          },
+          "count": {
+            "type": "integer",
+            "title": "Count"
+          },
+          "pretty_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pretty Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "slug",
+          "count",
+          "pretty_name"
+        ],
+        "title": "InventoryItem",
+        "description": "Handles rooms and additional items on inventory"
+      },
+      "InventoryResponse": {
+        "properties": {
+          "is_room_based_inventory": {
+            "type": "boolean",
+            "title": "Is Room Based Inventory"
+          },
+          "intent": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Intent"
+          },
+          "area": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Area"
+          },
+          "access_flags": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AccessFlagsResponse"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": {}
+          },
+          "extra_data": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ExtraDataResponse"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": {}
+          },
+          "additional_items": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/InventoryItem"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Additional Items",
+            "default": []
+          },
+          "rooms": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/InventoryItem"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rooms",
+            "default": []
+          },
+          "notes": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notes"
+          }
+        },
+        "type": "object",
+        "required": [
+          "is_room_based_inventory",
+          "intent",
+          "area",
+          "access_flags",
+          "extra_data",
+          "additional_items",
+          "rooms",
+          "notes"
+        ],
+        "title": "InventoryResponse",
+        "description": "TODO"
+      },
+      "LeadRecordType": {
+        "type": "string",
+        "enum": [
+          "Potential Customer",
+          "Long Distance Move",
+          "Referral"
+        ],
+        "title": "LeadRecordType"
+      },
+      "LeadResponse": {
+        "properties": {
+          "clickid": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Clickid"
+          },
+          "code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Code"
+          },
+          "company": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Company"
+          },
+          "customer_close_date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Customer Close Date"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "destination_city": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Destination City"
+          },
+          "destination_postal_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Destination Postal Code"
+          },
+          "destination_state": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Destination State"
+          },
+          "destination_street_address": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Destination Street Address"
+          },
+          "email": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "email"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Email"
+          },
+          "external_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "External Id"
+          },
+          "first_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "First Name"
+          },
+          "from_market": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "From Market"
+          },
+          "from_street_address": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "From Street Address"
+          },
+          "full_address_details": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Full Address Details"
+          },
+          "gclid": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Gclid"
+          },
+          "deleted": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Deleted"
+          },
+          "last_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Name"
+          },
+          "lead_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lead Type"
+          },
+          "lead_source": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lead Source"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "origin_city": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin City"
+          },
+          "origin_postal_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin Postal Code"
+          },
+          "origin_state": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin State"
+          },
+          "origin_street_address": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin Street Address"
+          },
+          "phone": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Phone"
+          },
+          "pipes_status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pipes Status"
+          },
+          "preferred_load_date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Preferred Load Date"
+          },
+          "primary_lost_reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Primary Lost Reason"
+          },
+          "recordtype_sfid": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Recordtype Sfid"
+          },
+          "square_feet": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Square Feet"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status"
+          },
+          "updated_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Updated At"
+          },
+          "partner_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Partner Code"
+          }
+        },
+        "type": "object",
+        "required": [
+          "clickid",
+          "code",
+          "company",
+          "customer_close_date",
+          "description",
+          "destination_city",
+          "destination_postal_code",
+          "destination_state",
+          "destination_street_address",
+          "email",
+          "external_id",
+          "first_name",
+          "from_market",
+          "from_street_address",
+          "full_address_details",
+          "gclid",
+          "deleted",
+          "last_name",
+          "lead_type",
+          "lead_source",
+          "name",
+          "origin_city",
+          "origin_postal_code",
+          "origin_state",
+          "origin_street_address",
+          "phone",
+          "pipes_status",
+          "preferred_load_date",
+          "primary_lost_reason",
+          "recordtype_sfid",
+          "square_feet",
+          "status",
+          "updated_at",
+          "partner_code"
+        ],
+        "title": "LeadResponse",
+        "description": "Response model for lead object"
+      },
+      "LeadType": {
+        "type": "string",
+        "enum": [
+          "Long Distance",
+          "Outbound",
+          "Offerpad",
+          "Partner",
+          "Zillow",
+          "MLC"
+        ],
+        "title": "LeadType"
+      },
+      "LeadUpdateRequest": {
+        "properties": {
+          "close_date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Close Date"
+          },
+          "load_date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Load Date"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          }
+        },
+        "type": "object",
+        "required": [
+          "description"
+        ],
+        "title": "LeadUpdateRequest"
+      },
+      "LocationRequest": {
+        "properties": {
+          "line_1": {
+            "type": "string",
+            "title": "Line 1"
+          },
+          "line_2": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Line 2"
+          },
+          "city": {
+            "type": "string",
+            "title": "City"
+          },
+          "state": {
+            "type": "string",
+            "title": "State"
+          },
+          "postal_code": {
+            "type": "string",
+            "title": "Postal Code"
+          },
+          "country": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Country",
+            "default": "US"
+          },
+          "property_type": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PropertyType"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": "SINGLE_FAMILY_HOME"
+          },
+          "rooms": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rooms"
+          },
+          "area": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Area"
+          },
+          "garage": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Garage"
+          },
+          "stories": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stories"
+          },
+          "floor": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Floor"
+          },
+          "attic": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Attic"
+          },
+          "basement": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Basement"
+          }
+        },
+        "type": "object",
+        "required": [
+          "line_1",
+          "city",
+          "state",
+          "postal_code"
+        ],
+        "title": "LocationRequest",
+        "description": "LocationRequest"
+      },
+      "LocationResponse": {
+        "properties": {
+          "line_1": {
+            "type": "string",
+            "title": "Line 1",
+            "description": "Address line 1",
+            "examples": [
+              "123 Main St"
+            ]
+          },
+          "line_2": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Line 2",
+            "description": "Address line 2",
+            "examples": [
+              "Apt 1"
+            ]
+          },
+          "city": {
+            "type": "string",
+            "title": "City",
+            "description": "City",
+            "examples": [
+              "New York City"
+            ]
+          },
+          "state": {
+            "type": "string",
+            "title": "State",
+            "description": "State",
+            "examples": [
+              "NY"
+            ]
+          },
+          "postal_code": {
+            "type": "string",
+            "title": "Postal Code",
+            "description": "Postal code",
+            "examples": [
+              "10001"
+            ]
+          },
+          "country": {
+            "type": "string",
+            "title": "Country",
+            "description": "Two Character Country Code",
+            "examples": [
+              "US"
+            ]
+          },
+          "market_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Market Code",
+            "description": "Market ID",
+            "examples": [
+              "NEW_YORK_NY"
+            ]
+          },
+          "id": {
+            "type": "string",
+            "title": "Id",
+            "description": "Location ID",
+            "examples": [
+              "a786e73c879040669225dcf4eb6214f0"
+            ]
+          },
+          "property_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Property Type",
+            "description": "Property type",
+            "examples": [
+              "APARTMENT",
+              "SINGLE_FAMILY_HOME"
+            ]
+          },
+          "timezone": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Timezone",
+            "description": "Timezone",
+            "examples": [
+              "America/New_York"
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "line_1",
+          "line_2",
+          "city",
+          "state",
+          "postal_code",
+          "country",
+          "market_code",
+          "id",
+          "property_type",
+          "timezone"
+        ],
+        "title": "LocationResponse",
+        "description": "LocationResponse extends USPSLocationResponse with additional fields"
+      },
+      "OrderResponseV2": {
+        "properties": {
+          "code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Code"
+          },
+          "account_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Account Code"
+          },
+          "affiliated_partner_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Affiliated Partner Code"
+          },
+          "affiliate_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Affiliate Code"
+          },
+          "cancellation_reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cancellation Reason"
+          },
+          "cancellation_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cancellation Type"
+          },
+          "confirmation_number": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Confirmation Number"
+          },
+          "created_date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Created Date"
+          },
+          "end_date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "End Date"
+          },
+          "end_date_time": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "End Date Time"
+          },
+          "end_time_zone": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "End Time Zone"
+          },
+          "end_market_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "End Market Code"
+          },
+          "is_fulfilled": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Is Fulfilled"
+          },
+          "guaranteed": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Guaranteed"
+          },
+          "long_distance": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Long Distance"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "notes": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notes"
+          },
+          "promo_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Promo Code"
+          },
+          "reschedule_reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reschedule Reason"
+          },
+          "reschedule_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reschedule Type"
+          },
+          "start_date_time": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Start Date Time"
+          },
+          "start_market_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Start Market Code"
+          },
+          "start_time_zone": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Start Time Zone"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status"
+          },
+          "transaction_failure_review": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Transaction Failure Review"
+          }
+        },
+        "type": "object",
+        "required": [
+          "code",
+          "account_code",
+          "affiliated_partner_code",
+          "affiliate_code",
+          "cancellation_reason",
+          "cancellation_type",
+          "confirmation_number",
+          "created_date",
+          "end_date",
+          "end_date_time",
+          "end_time_zone",
+          "end_market_code",
+          "is_fulfilled",
+          "guaranteed",
+          "long_distance",
+          "name",
+          "notes",
+          "promo_code",
+          "reschedule_reason",
+          "reschedule_type",
+          "start_date_time",
+          "start_market_code",
+          "start_time_zone",
+          "status",
+          "transaction_failure_review"
+        ],
+        "title": "OrderResponseV2",
+        "description": "A collection of services, produces and reductions for an order."
+      },
+      "PostalCodeServiceabilityResponse": {
+        "properties": {
+          "postal_code": {
+            "type": "string",
+            "title": "Postal Code"
+          },
+          "serviceable": {
+            "type": "boolean",
+            "title": "Serviceable"
+          }
+        },
+        "type": "object",
+        "required": [
+          "postal_code",
+          "serviceable"
+        ],
+        "title": "PostalCodeServiceabilityResponse"
+      },
+      "PostalCodesServiceabilityResponse": {
+        "properties": {
+          "origin_postal_code": {
+            "$ref": "#/components/schemas/PostalCodeServiceabilityResponse"
+          },
+          "destination_postal_code": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PostalCodeServiceabilityResponse"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "services": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Services"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          }
+        },
+        "type": "object",
+        "required": [
+          "origin_postal_code",
+          "destination_postal_code",
+          "services",
+          "message"
+        ],
+        "title": "PostalCodesServiceabilityResponse"
+      },
+      "PriceAdjustmentQuoteResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "adjustment_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Adjustment Code"
+          },
+          "adjustment_family": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Adjustment Family"
+          },
+          "adjustment_value": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Adjustment Value"
+          },
+          "adjustment_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Adjustment Type"
+          },
+          "estimated_amount": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Estimated Amount"
+          },
+          "adjustment_description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Adjustment Description"
+          },
+          "adjustment_reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Adjustment Reason"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "adjustment_code",
+          "adjustment_family",
+          "adjustment_value",
+          "adjustment_type",
+          "estimated_amount",
+          "adjustment_description",
+          "adjustment_reason"
+        ],
+        "title": "PriceAdjustmentQuoteResponse",
+        "description": "QuoteResponse serializes a Product quote object"
+      },
+      "ProductQuoteResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "product_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Product Code"
+          },
+          "estimated_quantity": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Estimated Quantity"
+          },
+          "estimated_unit_price": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Estimated Unit Price"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "product_code",
+          "estimated_quantity",
+          "estimated_unit_price"
+        ],
+        "title": "ProductQuoteResponse",
+        "description": "QuoteResponse serializes a Product quote object"
+      },
+      "PropertyType": {
+        "type": "string",
+        "enum": [
+          "APARTMENT",
+          "COMMERCIAL",
+          "OTHER",
+          "MULTI_FAMILY_HOME",
+          "SINGLE_FAMILY_HOME",
+          "STORAGE"
+        ],
+        "title": "PropertyType"
+      },
+      "QuoteResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "description": "Quote ID"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At",
+            "description": "Created at"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At",
+            "description": "Last updated at"
+          },
+          "price_updated_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Price Updated At",
+            "description": "Price updated at"
+          },
+          "partner_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Partner Code",
+            "description": "ID of the Partner that generated the quote"
+          },
+          "customer_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Customer Code",
+            "description": "Customer ID"
+          },
+          "service_groups": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/ServiceGroupResponse"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Service Groups",
+            "description": "Quote Service Group objects"
+          },
+          "products": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/ProductQuoteResponse"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Products",
+            "description": "Quote Product objects"
+          },
+          "price_adjustments": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/PriceAdjustmentQuoteResponse"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Price Adjustments",
+            "description": "Quote Price Adjustment objects"
+          },
+          "inventory": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/InventoryResponse"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Quote Inventory object"
+          },
+          "totals": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Totals"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Quote total estimated cost"
+          },
+          "inventory_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Inventory Type",
+            "description": "Quote Inventory type"
+          },
+          "marketplace_availability": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Marketplace Availability"
+          },
+          "valid_price": {
+            "type": "boolean",
+            "title": "Valid Price",
+            "description": "Quote price is valid, if false, the quote is not eligible to be booked",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "created_at",
+          "updated_at",
+          "price_updated_at",
+          "partner_code",
+          "customer_code",
+          "service_groups",
+          "products",
+          "price_adjustments",
+          "inventory",
+          "totals",
+          "inventory_type",
+          "marketplace_availability",
+          "valid_price"
+        ],
+        "title": "QuoteResponse",
+        "description": "QuoteResponse serializes a quote object"
+      },
+      "QuotingLocationRequest": {
+        "properties": {
+          "line_1": {
+            "type": "string",
+            "title": "Line 1"
+          },
+          "line_2": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Line 2"
+          },
+          "city": {
+            "type": "string",
+            "title": "City"
+          },
+          "state": {
+            "type": "string",
+            "title": "State"
+          },
+          "postal_code": {
+            "type": "string",
+            "title": "Postal Code"
+          },
+          "country": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Country",
+            "default": "US"
+          },
+          "property_type": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PropertyType"
+              }
+            ],
+            "description": "Type of the property.",
+            "examples": [
+              "APARTMENT"
+            ]
+          },
+          "rooms": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rooms",
+            "description": "Number of rooms in the property."
+          },
+          "area": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Area",
+            "description": "Total area of the property in square feet."
+          },
+          "garage": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Garage",
+            "description": "Indicates whether the property has a garage or not."
+          },
+          "stories": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stories",
+            "description": "Number of stories or floors in the property."
+          },
+          "floor": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Floor",
+            "description": "Floor number of the property."
+          },
+          "attic": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Attic",
+            "description": "Indicates whether the property has an attic or not."
+          },
+          "basement": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Basement",
+            "description": "Indicates whether the property has a basement or not."
+          }
+        },
+        "type": "object",
+        "required": [
+          "line_1",
+          "city",
+          "state",
+          "postal_code",
+          "property_type"
+        ],
+        "title": "QuotingLocationRequest",
+        "description": "PASS"
+      },
+      "ReplaceServiceGroupRequest": {
+        "properties": {
+          "flexible_quote_id": {
+            "type": "string",
+            "title": "Flexible Quote Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "flexible_quote_id"
+        ],
+        "title": "ReplaceServiceGroupRequest",
+        "description": "Request body for replacing a service group.\n\nflexible_quote_id: id of flexible quote replacing target service group attributes"
+      },
+      "ServiceGroupResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "description": "Service Group ID"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At",
+            "description": "Created at"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At",
+            "description": "Last updated at"
+          },
+          "quote_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Quote Id",
+            "description": "Quote ID"
+          },
+          "total_cost": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Total Cost",
+            "description": "Total estimated cost of the service group"
+          },
+          "locations": {
+            "items": {
+              "$ref": "#/components/schemas/ServiceQuoteLocationResponse"
+            },
+            "type": "array",
+            "title": "Locations",
+            "description": "Quote Location objects"
+          },
+          "services": {
+            "items": {
+              "$ref": "#/components/schemas/ServiceQuoteResponseV2"
+            },
+            "type": "array",
+            "title": "Services",
+            "description": "Quote Service objects",
+            "examples": [
+              [
+                {
+                  "created_at": "2024-01-22T17:33:25.537829+00:00",
+                  "end_datetime": "2024-01-22T17:33:25.537833+00:00",
+                  "end_timezone": "America/New_York",
+                  "estimated_hours": 2.5,
+                  "estimated_pricing_strategy": "HOURLY",
+                  "estimated_unit_price": 10000,
+                  "estimated_workers": 2,
+                  "id": "162e1110-16ea-49a2-af84-1d5ee38ba021",
+                  "locked": false,
+                  "service_code": "LOADING",
+                  "service_group_id": "715e6a3e-5836-477f-a28a-18feb0b0def2",
+                  "start_datetime": "2024-01-22T17:33:25.537832+00:00",
+                  "start_timezone": "America/New_York",
+                  "total_cost": 10000,
+                  "updated_at": "2024-01-22T17:33:25.537832+00:00"
+                }
+              ]
+            ]
+          },
+          "locked": {
+            "type": "boolean",
+            "title": "Locked",
+            "description": "A locked service group cannot be modified",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "created_at",
+          "updated_at",
+          "quote_id",
+          "total_cost",
+          "locations",
+          "services",
+          "locked"
+        ],
+        "title": "ServiceGroupResponse",
+        "description": "ServiceGroupResponse serializes a service group object"
+      },
+      "ServiceQuoteLocationResponse": {
+        "properties": {
+          "location_id": {
+            "type": "string",
+            "title": "Location Id",
+            "description": "Location ID",
+            "examples": [
+              "abl1304jdfh0"
+            ]
+          },
+          "sequence": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sequence",
+            "description": "Location sequence within a service group. Sequence 0 is first",
+            "examples": [
+              1
+            ]
+          },
+          "location": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/LocationResponse"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Location object",
+            "examples": [
+              {
+                "city": "New York City",
+                "country": "US",
+                "id": "c9e57f49ea874476a185c3fd44739c60",
+                "line_1": "123 Main St",
+                "line_2": "Apt 1",
+                "market_code": "NEW_YORK_NY",
+                "postal_code": "10001",
+                "property_type": "SINGLE_FAMILY_HOME",
+                "state": "NY",
+                "timezone": "America/New_York"
+              }
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "location_id",
+          "sequence",
+          "location"
+        ],
+        "title": "ServiceQuoteLocationResponse",
+        "description": "QuoteResponse serializes a service quote location object"
+      },
+      "ServiceQuoteResponseV2": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "description": "Service Quote ID",
+            "examples": [
+              "06b8347f-46c2-4578-aeed-3f5ef90513af"
+            ]
+          },
+          "created_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Created At",
+            "description": "Created at",
+            "examples": [
+              "2024-01-02T12:00:00"
+            ]
+          },
+          "updated_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Updated At",
+            "description": "Last updated at",
+            "examples": [
+              "2024-01-02T12:00:00"
+            ]
+          },
+          "start_datetime": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Start Datetime",
+            "description": "Start datetime",
+            "examples": [
+              "2024-01-02T12:00:00"
+            ]
+          },
+          "end_datetime": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "End Datetime",
+            "description": "End datetime",
+            "examples": [
+              "2024-01-02T12:00:00"
+            ]
+          },
+          "start_timezone": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Start Timezone",
+            "description": "Timezone of the start datetime",
+            "examples": [
+              "America/New_York"
+            ]
+          },
+          "end_timezone": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "End Timezone",
+            "description": "Timezone of the end datetime",
+            "examples": [
+              "America/New_York"
+            ]
+          },
+          "estimated_hours": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Estimated Hours",
+            "description": "Estimated number of hours",
+            "examples": [
+              2.5
+            ]
+          },
+          "estimated_workers": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Estimated Workers",
+            "description": "Estimated number of workers",
+            "examples": [
+              2
+            ]
+          },
+          "estimated_unit_price": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Estimated Unit Price",
+            "description": "Estimated unit price in cents",
+            "examples": [
+              10000
+            ]
+          },
+          "estimated_pricing_strategy": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Estimated Pricing Strategy",
+            "description": "Pricing strategy",
+            "examples": [
+              "HOURLY",
+              "FIXED"
+            ]
+          },
+          "service_group_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Service Group Id",
+            "description": "Service Group ID",
+            "examples": [
+              "da42b5c6-e786-49dd-b8e3-dc41e493e0d4"
+            ]
+          },
+          "service_code": {
+            "type": "string",
+            "title": "Service Code",
+            "description": "Service code",
+            "examples": [
+              "LOADING"
+            ]
+          },
+          "total_cost": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Total Cost",
+            "description": "Total estimated cost of the service",
+            "examples": [
+              10000
+            ]
+          },
+          "locked": {
+            "type": "boolean",
+            "title": "Locked",
+            "description": "A locked service cannot be modified",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "created_at",
+          "updated_at",
+          "start_datetime",
+          "end_datetime",
+          "start_timezone",
+          "end_timezone",
+          "estimated_hours",
+          "estimated_workers",
+          "estimated_unit_price",
+          "estimated_pricing_strategy",
+          "service_group_id",
+          "service_code",
+          "total_cost",
+          "locked"
+        ],
+        "title": "ServiceQuoteResponseV2",
+        "description": "QuoteResponse serializes a service quote object"
+      },
+      "ServiceType": {
+        "type": "string",
+        "enum": [
+          "HOURLYLABOR",
+          "LOADING",
+          "LOADINGUNLOADING",
+          "PACKINGSERVICE",
+          "TRANSIT",
+          "LDTRANSIT",
+          "UNLOADING",
+          "FINALMILE",
+          "JUNKREMOVAL",
+          "CARSHIPPING",
+          "RELOSERVICES",
+          "LOCALFULLSERVICE"
+        ],
+        "title": "ServiceType",
+        "description": "ServiceType"
+      },
+      "ServiceWorkers": {
+        "properties": {
+          "service_code": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ServiceType"
+              }
+            ],
+            "description": "Service Type",
+            "examples": [
+              "TRANSIT"
+            ]
+          },
+          "workers": {
+            "type": "integer",
+            "minimum": 1,
+            "title": "Workers",
+            "description": "Number of workers",
+            "examples": [
+              1
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "service_code",
+          "workers"
+        ],
+        "title": "ServiceWorkers",
+        "description": "ServiceWorkers"
+      },
+      "Totals": {
+        "properties": {
+          "service_total": {
+            "type": "integer",
+            "title": "Service Total"
+          },
+          "product_total": {
+            "type": "integer",
+            "title": "Product Total"
+          },
+          "fee_total": {
+            "type": "integer",
+            "title": "Fee Total"
+          },
+          "subtotal": {
+            "type": "integer",
+            "title": "Subtotal"
+          },
+          "discount_total": {
+            "type": "integer",
+            "title": "Discount Total"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          },
+          "deposit_amount": {
+            "type": "integer",
+            "title": "Deposit Amount"
+          }
+        },
+        "type": "object",
+        "required": [
+          "service_total",
+          "product_total",
+          "fee_total",
+          "subtotal",
+          "discount_total",
+          "total",
+          "deposit_amount"
+        ],
+        "title": "Totals",
+        "description": "Response for computed quote totals (populated by Quote.totals property)"
+      },
+      "UpdateServiceGroupRequestV2": {
+        "properties": {
+          "duration": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Duration",
+            "description": "Duration for all services in group",
+            "gte": 1
+          },
+          "service_workers": {
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/ServiceWorkers"
+                }
+              ],
+              "name": "Service Workers Object"
+            },
+            "type": "array",
+            "minItems": 1,
+            "title": "Service Workers",
+            "description": "Mapping of service code and number of workers. Only the included service codes will be retained on the service group. Any excluded services will be removed.",
+            "examples": [
+              [
+                {
+                  "service_code": "TRANSIT",
+                  "workers": 1
+                }
+              ]
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "service_workers"
+        ],
+        "title": "UpdateServiceGroupRequestV2",
+        "description": "Request body for updating a service group."
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    },
+    "securitySchemes": {
+      "Auth0HTTPBearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}

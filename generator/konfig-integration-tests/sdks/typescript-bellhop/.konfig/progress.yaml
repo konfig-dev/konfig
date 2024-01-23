@@ -1,0 +1,65 @@
+description: Bellhop's Partner API
+examples: {}
+examples_2: {}
+examples_3: {}
+ignorePotentialIncorrectType: true
+operationIds:
+  /authorize:
+    post: Authorization_getAuthToken
+  /leads:
+    get: Leads_list
+    post: Leads_create
+  /leads/{code}:
+    delete: Leads_cancel
+    get: Leads_get
+    patch: Leads_update
+  /locations:
+    post: Locations_createQuoting
+  /orders/{quote_id}:
+    post: Orders_create
+  /postal-codes/serviceability:
+    get: PostalCodes_getServiceability
+  /quotes:
+    post: Quotes_create
+  /quotes/service_groups/{service_group_id}/locations:
+    put: QuoteServiceGroups_changeLocations
+  /quotes/{quote_id}/service-group/{service_group_id}:
+    delete: QuoteServiceGroups_delete
+    get: QuoteServiceGroups_get
+  /quotes/{quote_id}/service-groups:
+    post: QuoteServiceGroups_create
+  /quotes/{quote_id}/service-groups/{service_group_id}:
+    patch: QuoteServiceGroups_replace
+  /quotes/{quote_id}/service-groups/{service_group_id}/services:
+    put: QuoteServiceGroups_update
+  /quotes/{quote_id}/service_groups/{service_group_id}/flexible:
+    post: QuoteServiceGroups_createFlexible
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /quotes/service_groups/{service_group_id}/locations:
+    put:
+      application/json: QuoteServiceGroupsChangeLocationsRequest
+  /quotes/{quote_id}/service-groups:
+    post:
+      application/json: QuoteServiceGroupsCreateRequest
+responseDescriptions: {}
+responseSchemaNames:
+  /leads:
+    get:
+      '200':
+        application/json: LeadsListResponse
+  /quotes/{quote_id}/service_groups/{service_group_id}/flexible:
+    post:
+      '200':
+        application/json: QuoteServiceGroupsCreateFlexibleResponse
+securityParameters:
+  destination_postal_code:
+    query: false
+  email:
+    query: false
+  origin_postal_code:
+    query: false
+  use_cache:
+    query: false
+validServerUrls: {}
