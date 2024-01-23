@@ -2175,7 +2175,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
         } else if (ModelUtils.isArraySchema(schema)) {
             if (objExample instanceof Iterable) {
                 // If the example is already a list, return it directly instead of wrongly wrap it in another list
-                return fullPrefix + objExample.toString() + closeChars;
+                return fullPrefix + listToStringWithQuotes((Iterable<Object>) objExample) + closeChars;
             }
             if (ModelUtils.isComposedSchema(schema)) {
                 // complex composed array type schemas not yet handled and the code returns early
@@ -2287,6 +2287,28 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
         }
 
         return example;
+    }
+
+    private static String listToStringWithQuotes(Iterable<Object> list) {
+        StringBuilder sb = new StringBuilder("[");
+
+        // Iterate over and append items to list while handling quotes
+        // Make sure that last element does not have "," appended
+        Iterator<Object> iter = list.iterator();
+        while (iter.hasNext()) {
+            Object item = iter.next();
+            if (item instanceof String) {
+                sb.append(ensureQuotes(item.toString()));
+            } else {
+                sb.append(item.toString());
+            }
+            if (iter.hasNext()) {
+                sb.append(", ");
+            }
+        }
+
+        sb.append("]");
+        return sb.toString();
     }
 
     private boolean potentiallySelfReferencingSchema(Schema schema) {
