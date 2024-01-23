@@ -149,7 +149,11 @@ function generateFormInputValues({
     requestBody: '',
   }
   let validate: FormValues['validate'] = {}
-  if (requestBodyParameter !== null && requestBodyParameter !== undefined) {
+  if (
+    requestBodyParameter !== null &&
+    requestBodyParameter !== undefined &&
+    requestBodyParameter.schema.type !== 'object' // object type schema is spread as parameters so no validation is required
+  ) {
     if (requestBodyParameter.required) {
       validate = deepmerge(validate, {
         requestBody: validateValueForParameter(
