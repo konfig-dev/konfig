@@ -33,8 +33,6 @@ import io.swagger.v3.oas.models.servers.Server;
 import io.swagger.v3.oas.models.tags.Tag;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.tuple.Pair;
-import org.apache.commons.lang3.tuple.Triple;
 import org.apache.commons.text.StringEscapeUtils;
 import org.openapitools.codegen.*;
 import org.openapitools.codegen.CodegenDiscriminator.MappedModel;
@@ -2175,7 +2173,10 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
         } else if (ModelUtils.isArraySchema(schema)) {
             if (objExample instanceof Iterable) {
                 // If the example is already a list, return it directly instead of wrongly wrap it in another list
-                return fullPrefix + listToStringWithQuotes((Iterable<Object>) objExample) + closeChars;
+                ArraySchema arrayschema = (ArraySchema) schema;
+                Schema itemSchema = arrayschema.getItems();
+                String itemModelName = getModelName(itemSchema);
+                return fullPrefix + serializeIterable((Iterable<Object>) objExample, itemModelName, itemSchema, "", exampleLine + 1, includedSchemas) + closeChars;
             }
             if (ModelUtils.isComposedSchema(schema)) {
                 // complex composed array type schemas not yet handled and the code returns early
@@ -2289,7 +2290,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
         return example;
     }
 
-    private static String listToStringWithQuotes(Iterable<Object> list) {
+    private String serializeIterable(Iterable<Object> list, String itemModelName, Schema itemSchema, String prefix, Integer exampleLine, List<Schema> includedSchemas) {
         StringBuilder sb = new StringBuilder("[");
 
         // Iterate over and append items to list while handling quotes
@@ -2297,8 +2298,9 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
         Iterator<Object> iter = list.iterator();
         while (iter.hasNext()) {
             Object item = iter.next();
-            if (item instanceof String) {
-                sb.append(ensureQuotes(item.toString()));
+            if (item instanceof String || item instanceof HashMap) {
+                String itemString = toExampleValueRecursive(itemModelName, itemSchema, item, 0, prefix, exampleLine, includedSchemas);
+                sb.append(itemString);
             } else {
                 sb.append(item.toString());
             }
