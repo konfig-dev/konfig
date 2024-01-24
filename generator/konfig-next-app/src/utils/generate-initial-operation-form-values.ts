@@ -108,13 +108,55 @@ export async function generateInitialFormValuesWithStorage(
     const storedValue = await localforage.getItem(
       FORM_VALUES_LOCAL_STORAGE_KEY({ owner, repo })
     )
-    const pruned =
+    const pruned: FormDataType | null = (
       storedValue !== null && storedValue !== undefined
         ? recursivelyRemoveEmptyValues(storedValue as any)
         : storedValue
-    if (storedValue) {
+    ) as FormDataType
+
+    if (pruned) {
+      // remove any irrelevant values from pruned (i.e. values that potentially
+      // have the same parameter name but different schemas)
+      const filtered: [string, FormInputValue][] = []
+      for (const [key, value] of Object.entries(
+        pruned[PARAMETER_FORM_NAME_PREFIX]
+      )) {
+        // check if input.parameters contains parameter with name and matching schema type for value
+        const parameter = input.parameters.find((p) => p.name === key)
+        const valueType = typeof value
+        if (parameter === undefined) {
+          // we still need to store the value so subsequent navigations to the page where the parameter is relevant can restore
+          // the value from storage
+          filtered.push([key, value])
+        } else if (
+          valueType === 'string' &&
+          parameter.schema.type === 'string'
+        ) {
+          filtered.push([key, value])
+        } else if (
+          valueType === 'number' &&
+          parameter.schema.type === 'number'
+        ) {
+          filtered.push([key, value])
+        } else if (
+          valueType === 'boolean' &&
+          parameter.schema.type === 'boolean'
+        ) {
+          filtered.push([key, value])
+        } else if (Array.isArray(value) && parameter.schema.type === 'array') {
+          filtered.push([key, value])
+        } else if (
+          valueType === 'object' &&
+          !Array.isArray(value) &&
+          parameter.schema.type === 'object'
+        ) {
+          filtered.push([key, value])
+        }
+      }
+      pruned[PARAMETER_FORM_NAME_PREFIX] = Object.fromEntries(filtered)
+
       try {
-        initialValues = deepmerge(initialValues, pruned as any)
+        initialValues = deepmerge(initialValues, pruned)
       } catch (e) {
         console.log('Failed to parse stored value')
       }
