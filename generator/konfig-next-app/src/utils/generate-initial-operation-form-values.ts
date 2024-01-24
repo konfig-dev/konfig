@@ -6,8 +6,8 @@ import { isNotEmpty } from './is-not-empty'
 import localforage from 'localforage'
 import { ReferencePageProps } from './generate-props-for-reference-page'
 import { isUUID } from './is-uuid'
-import { NonArraySchemaObject } from 'konfig-lib'
 import { recursivelyRemoveEmptyValues } from './recursively-remove-empty-values'
+import { generatePropertiesForSchemaObject } from './generate-properties-for-schema-object'
 
 export const FORM_VALUES_LOCAL_STORAGE_KEY = ({
   owner,
@@ -123,7 +123,7 @@ export async function generateInitialFormValuesWithStorage(
   return { initialValues, validate }
 }
 
-type GenerateFormInputValuesInput = Pick<
+export type GenerateFormInputValuesInput = Pick<
   GenerateInitialFormValuesInput,
   | 'parameters'
   | 'securitySchemes'
@@ -164,10 +164,6 @@ function generateFormInputValues({
     }
   }
   for (const parameter of parameters) {
-    // ensure that request body is validated
-    if (parameter.isRequestBody && parameter.required) {
-    }
-
     if (parameter.schema.type === 'object' && parameter.schema.properties) {
       const properties = generatePropertiesForSchemaObject({
         schema: parameter.schema,
@@ -205,6 +201,12 @@ function generateFormInputValues({
         schema: parameter.schema.items,
         example: parameter.schema.items.example,
       })
+      console.debug(
+        'Generated properties from array item schema',
+        properties,
+        ', schema:',
+        parameter.schema.items
+      )
       const innerInput: GenerateFormInputValuesInput = {
         parameters: properties,
         securitySchemes: {},
@@ -333,6 +335,7 @@ function generateFormInputValues({
 
 function validateValueForParameter(parameter: Parameter, name: string) {
   return (value: FormInputValue) => {
+    console.debug('Validating parameter:', parameter, name, ', value:', value)
     if (parameter.required) {
       const checkRequired = isNotEmpty(`${name} is required`)(value)
       if (checkRequired) return checkRequired
@@ -347,26 +350,4 @@ function validateValueForParameter(parameter: Parameter, name: string) {
     }
     return false
   }
-}
-
-function generatePropertiesForSchemaObject({
-  schema,
-  example,
-}: {
-  schema: NonArraySchemaObject
-  example?: any
-}) {
-  if (schema.properties == undefined) throw new Error('No properties')
-  const properties: GenerateFormInputValuesInput['parameters'] = Object.entries(
-    schema.properties
-  ).map(([name, schema]) => {
-    return {
-      name,
-      in: 'body',
-      required: schema.required?.includes(name) ?? false,
-      schema,
-      example,
-    }
-  })
-  return properties
 }
