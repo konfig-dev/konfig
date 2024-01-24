@@ -6,6 +6,7 @@ import * as mustache from "mustache";
 // In debug mode, repository is not created and code is not pushed to remote
 export function generateSdkRepository(
   companyName: string,
+  serviceName: string,
   language: string,
   pathToOas: string,
   siteUrl: string,
@@ -57,7 +58,7 @@ export function generateSdkRepository(
     console.log("Repository deleted.");
     return;
   }
-  removeInstallationFromReadme(repoDir, language);
+  addSignupLinkToReadmes(repoDir, companyName, serviceName, language);
 
   // Commit and push to remote
   if (!debug) {
@@ -79,14 +80,28 @@ export function generateSdkRepository(
   }
 }
 
-function removeInstallationFromReadme(repoDir: string, language: string) {
-  const readmeFilepath = path.join(repoDir, language, "README.md");
-  const readme = fs.readFileSync(readmeFilepath, "utf-8");
+function addSignupLinkToReadmes(
+  repoDir: string,
+  companyName: string,
+  serviceName: string,
+  language: string
+) {
+  companyName = capitalize(companyName);
+  const signupLink = `https://docs.google.com/forms/d/e/1FAIpQLSedvSvvlpgoeI1BBjTyra7nC-SgMyKjugu2j4_dZNIGZ6Ul1Q/viewform?usp=pp_url&entry.1993275387=${companyName}&entry.2022822177=${serviceName}&entry.2109629584=${language}`;
+  const sdkReadmeFilepath = path.join(repoDir, language, "README.md");
+  const sdkReadme = fs.readFileSync(sdkReadmeFilepath, "utf-8");
   const installationSectionRegex = /^## Installation([\s\S]*?)(?=\n##)/im;
-  const replacementText =
-    '## Installation<a id="installation"></a>\n\nTo install, please sign up for the SDK: placeholder.\n';
-  const newReadme = readme.replace(installationSectionRegex, replacementText);
-  fs.writeFileSync(readmeFilepath, newReadme);
+  const replacementText = `## Installation<a id="installation"></a>\n\nTo install, please sign up for the SDK [here](${signupLink}).\n`;
+  const newReadme = sdkReadme.replace(
+    installationSectionRegex,
+    replacementText
+  );
+  fs.writeFileSync(sdkReadmeFilepath, newReadme);
+
+  const rootReadmeFilepath = path.join(repoDir, "README.md");
+  const rootReadme = fs.readFileSync(rootReadmeFilepath, "utf-8");
+  const rootSignupMessage = `\nTo install, please sign up for the SDK [here](${signupLink}).`;
+  fs.writeFileSync(rootReadmeFilepath, rootReadme + rootSignupMessage);
 }
 
 function createRepository(name: string, description: string) {
@@ -197,6 +212,7 @@ function capitalize(str: string): string {
 
 generateSdkRepository(
   "Wikimedia",
+  "N/A",
   "java",
   "wikimedia.org/1.0.0/swagger.yaml",
   "wikimedia.org",
