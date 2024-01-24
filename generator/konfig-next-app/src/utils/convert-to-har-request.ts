@@ -10,6 +10,7 @@ import {
   SECURITY_TYPE_PROPERTY,
 } from './generate-initial-operation-form-values'
 import { JSONObject } from './json-value'
+import { Parameter } from '@/components/OperationParameter'
 
 function generateBoundaryWithPrefix() {
   return '----KonfigBoundary' + Math.random().toString(36).slice(2)
@@ -19,6 +20,7 @@ export function convertToHarRequest(
   params: NonEmptyParameters,
   securities: NonEmptySecurity,
   requestBodyValue: FormInputValue,
+  requestBodyParameter: Parameter | null,
   baseUrl: string,
   method: string,
   contentType: string | null
@@ -126,7 +128,7 @@ export function convertToHarRequest(
   } else if (contentType !== null) {
     har.headers.push({ name: 'Content-Type', value: contentType })
 
-    if (Array.isArray(requestBodyValue)) {
+    if (requestBodyParameter?.schema.type !== 'object') {
       har.postData = {
         mimeType: contentType,
         text: JSON.stringify(requestBodyValue, null, 2),

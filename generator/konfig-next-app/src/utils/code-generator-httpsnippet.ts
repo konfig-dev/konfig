@@ -23,6 +23,7 @@ export class CodeGeneratorHttpsnippet extends CodeGenerator {
       this.nonEmptyParameters(),
       securities,
       this.requestBodyValue(),
+      this.configuration.requestBody,
       // can't use URL because we don't want to encode { and } in path yet
       `${this.basePath}${this.configuration.path}`,
       this.configuration.httpMethod.toUpperCase(),
