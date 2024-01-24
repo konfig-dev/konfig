@@ -6,7 +6,26 @@ import { isUUID } from './is-uuid'
 export function validateValueForParameter(parameter: Parameter, name: string) {
   return (value: FormInputValue) => {
     console.debug('Validating parameter:', parameter, name, ', value:', value)
+    if (
+      parameter.schema.type === 'object' &&
+      parameter.schema.properties === undefined
+    ) {
+      if (value === '' && !parameter.required) return false
+      // must strictly be an object
+      if (typeof value !== 'object')
+        return `${parameter.name} must be an object JSON`
+      if (Array.isArray(value))
+        return `${parameter.name} must be an object JSON`
+    }
     if (parameter.required) {
+      // if not nullable then ensure value is not null
+      if (
+        'nullable' in parameter.schema &&
+        !parameter.schema.nullable &&
+        value === null
+      )
+        return `${name} is required`
+
       const checkRequired = isNotEmpty(`${name} is required`)(value)
       if (checkRequired) return checkRequired
     }
