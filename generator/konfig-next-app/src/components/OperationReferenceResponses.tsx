@@ -51,10 +51,8 @@ export function OperationReferenceResponses({
       </Title>
       <Accordion
         value={value}
-        onChange={(value) => {
-          if (value === null) return setValue(value)
-          const responseCode = value.split('-')[2]
-          // if schema does not exist for this response, don't allow it to be opened
+        onChange={(responseCode) => {
+          if (responseCode === null) return setValue(responseCode)
           if (responses[responseCode] === undefined) return
           if (responses[responseCode].content === undefined) {
             return
@@ -65,7 +63,7 @@ export function OperationReferenceResponses({
           if (contentObject[Object.keys(contentObject)[0]].schema === undefined)
             return
 
-          setValue(value)
+          setValue(responseCode)
         }}
         variant="separated"
       >
@@ -82,7 +80,7 @@ export function OperationReferenceResponses({
           return (
             <Accordion.Item
               className={classes.item}
-              value={`${operation.path}-${operation.method}-${responseCode}`}
+              value={responseCode}
               key={responseCode}
             >
               {/* 1. Render response code
