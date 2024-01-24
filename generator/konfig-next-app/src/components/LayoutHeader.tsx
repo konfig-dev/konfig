@@ -81,9 +81,10 @@ export const LayoutHeader = observer(
                 width: rem(140),
               }}
             >
-              <Link href={baseUrl}>
+              <Link style={{ position: 'relative' }} href={baseUrl}>
                 <Image
                   className={classes.logo}
+                  sizes="20vw"
                   style={{
                     objectFit: 'contain',
                   }}
