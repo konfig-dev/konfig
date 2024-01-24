@@ -26,7 +26,8 @@ import {
   generateParameterFromBodyParameter,
 } from '@/utils/generate-parameter-from-body-property'
 import type { SchemaObject } from 'konfig-lib'
-import { useState } from 'react'
+import { processSchemaExample } from '@/utils/process-schema-example'
+import { ReferencePageJsonInput } from './ReferencePageJsonInput'
 
 export function ParameterInput({
   parameter,
@@ -43,31 +44,10 @@ export function ParameterInput({
   const formInputName = generateParameterInputName(parameter, prefix)
   const inputProps = form.getInputProps(formInputName)
   const { colorScheme, colors } = useMantineTheme()
-  const [jsonInputValue, setJsonInputValue] = useState('')
   if (parameter.schema.type === 'object') {
     if (parameter.schema.properties !== undefined) return null
-    const { onChange, value, ...rest } = inputProps
     return (
-      <JsonInput
-        onChange={(value) => {
-          setJsonInputValue(value)
-          if (value === '') {
-            onChange('')
-          }
-          // set form value using onChange if "value" is a valid JSON string
-          try {
-            const parsed = JSON.parse(value)
-            onChange(parsed)
-          } catch (e) {}
-        }}
-        value={jsonInputValue}
-        {...rest}
-        placeholder={example(parameter.schema.example)}
-        validationError="Invalid JSON"
-        formatOnBlur
-        autosize
-        minRows={4}
-      />
+      <ReferencePageJsonInput parameter={parameter} inputProps={inputProps} />
     )
   }
   if (
@@ -156,7 +136,7 @@ export function ParameterInput({
     return (
       <NumberInput
         {...inputProps}
-        placeholder={example(parameter.schema.example)}
+        placeholder={processSchemaExample(parameter.schema.example)}
       />
     )
   }
@@ -183,7 +163,7 @@ export function ParameterInput({
       <NumberInput
         {...inputProps}
         precision={2}
-        placeholder={example(parameter.schema.example)}
+        placeholder={processSchemaExample(parameter.schema.example)}
       />
     )
   }
@@ -279,7 +259,7 @@ export function ParameterInput({
       // between using a controlled or uncontrolled input element for the lifetime of
       // the component. More info: https://reactjs.org/link/controlled-components"
       value={value ?? ''}
-      placeholder={example(parameter.schema.example)}
+      placeholder={processSchemaExample(parameter.schema.example)}
     />
   )
 }
@@ -300,12 +280,4 @@ export function generateParameterInputName(
   return `${prefix !== undefined ? prefix : PARAMETER_FORM_NAME_PREFIX}.${
     parameter.name
   }`
-}
-
-function example(example: unknown) {
-  if (typeof example === 'string') return example
-  if (typeof example === 'number') return example.toString()
-  if (typeof example === 'boolean') return example.toString()
-  if (typeof example === 'object') return JSON.stringify(example)
-  return ''
 }
