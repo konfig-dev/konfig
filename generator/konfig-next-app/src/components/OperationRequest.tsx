@@ -18,6 +18,10 @@ export type LanguageTab = {
   isSdk?: boolean
   label: string
 }
+
+/**
+ * The list of possible tabs to show in the UI
+ */
 const languages: LanguageTab[] = [
   {
     syntaxHighlightingLanguage: 'typescript',
